@@ -1,0 +1,40 @@
+Do not try to chown/chgrp when installing unless running
+as root. This is done for the same reasons as the patch for 
+lib/rubygems/ext/ext_conf_builder.rb in the Ruby port.
+
+Don't have it accidently use gmake, because the makefiles
+created can use BSD make extensions.
+
+Index: lib/rake/extensiontask.rb
+--- lib/rake/extensiontask.rb.orig
++++ lib/rake/extensiontask.rb
+@@ -169,6 +169,7 @@ module Rake
+           make_command_line << "install"
+           make_command_line << "sitearchdir=#{relative_lib_path}"
+           make_command_line << "sitelibdir=#{relative_lib_path}"
++          make_command_line << "INSTALL_PROG=/usr/bin/install -c -m 0755" unless Process.uid == 0
+           make_command_line << "target_prefix="
+ 
+           sh(*make_command_line, chdir: tmp_path)
+@@ -494,20 +495,7 @@ Java extension should be preferred.
+     end
+ 
+     def make
+-      unless @make
+-        @make =
+-          if RUBY_PLATFORM =~ /mswin/ then
+-            'nmake'
+-          else
+-            ENV['MAKE'] || find_make
+-          end
+-      end
+-
+-      unless @make
+-        raise "Couldn't find a suitable `make` tool. Use `MAKE` env to set an alternative."
+-      end
+-
+-      @make
++      @make ||= ENV['MAKE'] || 'make'
+     end
+ 
+     def find_make

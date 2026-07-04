@@ -1,0 +1,24 @@
+Index: source/log.c
+--- source/log.c.orig
++++ source/log.c
+@@ -155,12 +155,19 @@ set_log_file(u_char *filename)
+ void
+ add_to_log(FILE *fp, u_char *line)
+ {
++	time_t	t;
++	struct tm *tm;
++	char buf[32];
++
+ 	if (fp == NULL)
+ 		fp = irclog_fp;
+ 
+ 	if (fp)
+ 	{
+-		fprintf(fp, "%s\n", line);
++		t = time(0);
++		tm = localtime(&t);
++		strftime(buf, sizeof buf, "%b %d %R", tm);
++		fprintf(fp, "[%s] %s\n", buf, line);
+ 		fflush(fp);
+ 	}
+ }

@@ -1,0 +1,3 @@
+${P5SITE}/Color/
+${P5SITE}/Color/Scheme.pm
+@man man/man3p/Color::Scheme.3p

@@ -1,0 +1,19 @@
+Stop polluting syslog(3).
+
+Index: avahi-compat-libdns_sd/warn.c
+--- avahi-compat-libdns_sd/warn.c.orig
++++ avahi-compat-libdns_sd/warn.c
+@@ -110,11 +110,13 @@ void avahi_warn_linkage(void) {
+     linkage_warning = 1;
+     pthread_mutex_unlock(&linkage_mutex);
+ 
++#if 0
+     if (!w && !getenv("AVAHI_COMPAT_NOWARN")) {
+         avahi_warn("The program '%s' uses the "COMPAT_LAYER" compatibility layer of Avahi.", avahi_exe_name());
+         avahi_warn("Please fix your application to use the native API of Avahi!");
+         avahi_warn("For more information see <http://0pointer.de/blog/projects/avahi-compat.html>");
+     }
++#endif
+ }
+ 
+ void avahi_warn_unsupported(const char *function) {

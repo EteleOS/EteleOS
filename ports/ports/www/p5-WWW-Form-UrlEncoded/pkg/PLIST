@@ -1,0 +1,7 @@
+${P5SITE}/WWW/
+${P5SITE}/WWW/Form/
+${P5SITE}/WWW/Form/UrlEncoded/
+${P5SITE}/WWW/Form/UrlEncoded.pm
+${P5SITE}/WWW/Form/UrlEncoded/PP.pm
+@man man/man3p/WWW::Form::UrlEncoded.3p
+@man man/man3p/WWW::Form::UrlEncoded::PP.3p

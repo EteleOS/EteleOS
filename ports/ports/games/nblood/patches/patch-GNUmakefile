@@ -1,0 +1,20 @@
+Index: GNUmakefile
+--- GNUmakefile.orig
++++ GNUmakefile
+@@ -1212,7 +1212,7 @@ endif
+ 
+ #### Includes
+ 
+-COMPILERFLAGS += \
++COMPILERFLAGS := \
+     -I$(engine_inc) \
+     -I$(mact_inc) \
+     -I$(audiolib_inc) \
+@@ -1223,6 +1223,7 @@ COMPILERFLAGS += \
+     -I$(libsmackerdec_inc) \
+     -I$(hmpplay_inc) \
+     -MP -MMD \
++    $(COMPILERFLAGS)
+ 
+ ifneq (0,$(USE_PHYSFS))
+     COMPILERFLAGS += -I$(physfs_inc) -DUSE_PHYSFS

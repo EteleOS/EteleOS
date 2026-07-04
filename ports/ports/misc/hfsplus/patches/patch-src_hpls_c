@@ -1,0 +1,44 @@
+Fix LP64_ARCHS: change UInt32 and like types from long to int, so each
+type has exactly 32 bits; change printf()s to match.
+
+Index: src/hpls.c
+--- src/hpls.c.orig
++++ src/hpls.c
+@@ -408,16 +408,16 @@ void showmisc(record *ent, int flags)
+     if (flags & HPLS_CATIDS)
+     {
+         if (ent->record.type < HFSP_FOLDER_THREAD)
+-	    printf("%7lu ", ent->record.u.file.id);
++	    printf("%7u ", ent->record.u.file.id);
+ 	else
+-	    printf("%7lu ", ent->record.u.thread.parentID);
++	    printf("%7u ", ent->record.u.thread.parentID);
+     }
+     if (flags & HPLS_SIZE && 
+ 	ent->record.type == HFSP_FILE)
+     {
+ 	size = ent->record.u.file.data_fork.total_size + 
+ 	       ent->record.u.file.res_fork.total_size;
+-	printf("%4Lu ", size / 1024 + (size % 1024 != 0));
++	printf("%4llu ", size / 1024 + (size % 1024 != 0));
+     }
+ }
+ 
+@@ -476,7 +476,7 @@ void show_long(int sz, queueent *ents, char **strs,
+         if (ent->record.type == HFSP_FOLDER)
+ 	{
+ 	    hfsp_cat_folder* f = &ent->record.u.folder;
+-	    printf("d%c %9lu item%c               %s %s\n",
++	    printf("d%c %9u item%c               %s %s\n",
+ 	       f->user_info.frFlags & HFS_FNDR_ISINVISIBLE ? 'i' : ' ',
+ 	       f->valence, f->valence == 1 ? ' ' : 's',
+ 	       timebuf + 4, strs[i]);
+@@ -484,7 +484,7 @@ void show_long(int sz, queueent *ents, char **strs,
+ 	else if (ent->record.type == HFSP_FILE)
+ 	{
+ 	    hfsp_cat_file* f = &ent->record.u.file;
+-	    printf("%c%c %4.4s/%4.4s %9Lu %9Lu %s %s\n",
++	    printf("%c%c %4.4s/%4.4s %9llu %9llu %s %s\n",
+ 	       f->flags & HFSP_FILE_LOCKED ? 'F' : 'f',
+ 	       f->user_info.fdFlags & HFS_FNDR_ISINVISIBLE ? 'i' : ' ',
+ 	       (char*) &f->user_info.fdType, (char*) &f->user_info.fdCreator,

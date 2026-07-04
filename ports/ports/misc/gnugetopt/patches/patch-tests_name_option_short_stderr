@@ -1,0 +1,7 @@
+--- tests/name_option_short.stderr.orig	Mon Dec  8 12:48:12 2014
++++ tests/name_option_short.stderr	Mon Dec  8 12:48:28 2014
+@@ -1,2 +1,2 @@
+-THIS_PROGRAM: invalid option -- 'b'
+-THIS_PROGRAM: unrecognized option '--whatever'
++THIS_PROGRAM: invalid option -- b
++THIS_PROGRAM: unrecognized option `--whatever'

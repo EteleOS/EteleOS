@@ -1,0 +1,12 @@
+Index: src/tk/tkconfig.c
+--- src/tk/tkconfig.c.orig
++++ src/tk/tkconfig.c
+@@ -803,7 +803,7 @@ FormatConfigInfo(tkwin, specPtr, widgRec)
+ 	    argv[4] = buffer;
+ 	    break;
+ 	case TK_CONFIG_MM:
+-	    sprintf(buffer, "%gm", *((int *) ptr));
++	    sprintf(buffer, "%dm", *((int *) ptr));
+ 	    argv[4] = buffer;
+ 	    break;
+ 	case TK_CONFIG_WINDOW: {

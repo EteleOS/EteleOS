@@ -1,0 +1,13 @@
+${GEM_LIB}/cache/${DISTNAME}.gem
+${GEM_LIB}/gems/${DISTNAME}/
+${GEM_LIB}/gems/${DISTNAME}/ChangeLog
+${GEM_LIB}/gems/${DISTNAME}/MANIFEST
+${GEM_LIB}/gems/${DISTNAME}/README.ja.md
+${GEM_LIB}/gems/${DISTNAME}/README.md
+${GEM_LIB}/gems/${DISTNAME}/SPEC.en.txt
+${GEM_LIB}/gems/${DISTNAME}/SPEC.ja.txt
+${GEM_LIB}/gems/${DISTNAME}/narray.so
+${GEM_LIB}/gems/${DISTNAME}/narray/
+${GEM_LIB}/gems/${DISTNAME}/narray/narray_ext.rb
+${GEM_LIB}/gems/${DISTNAME}/narray/nmatrix.rb
+${GEM_LIB}/specifications/${DISTNAME}.gemspec

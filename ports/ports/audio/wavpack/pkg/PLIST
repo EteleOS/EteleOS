@@ -1,0 +1,22 @@
+@bin bin/wavpack
+@bin bin/wvgain
+@bin bin/wvtag
+@bin bin/wvunpack
+include/wavpack/
+include/wavpack/wavpack.h
+@static-lib lib/libwavpack.a
+lib/libwavpack.la
+@lib lib/libwavpack.so.${LIBwavpack_VERSION}
+lib/pkgconfig/wavpack.pc
+@man man/man1/wavpack.1
+@man man/man1/wvgain.1
+@man man/man1/wvtag.1
+@man man/man1/wvunpack.1
+share/doc/wavpack/
+share/doc/wavpack/ChangeLog
+share/doc/wavpack/README.md
+share/doc/wavpack/WavPack5FileFormat.pdf
+share/doc/wavpack/WavPack5LibraryDoc.pdf
+share/doc/wavpack/WavPack5PortingGuide.pdf
+share/doc/wavpack/style.css
+share/doc/wavpack/wavpack_doc.html

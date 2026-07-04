@@ -1,0 +1,11 @@
+--- plugins/musepack/musepack.c.orig	Tue Aug  5 19:54:03 2014
++++ plugins/musepack/musepack.c	Tue Sep 23 09:40:43 2014
+@@ -28,7 +28,7 @@
+ #include <limits.h>
+ #include <unistd.h>
+ #include <math.h>
+-#include "mpc/mpcdec.h"
++#include <mpc/mpcdec.h>
+ #ifdef HAVE_CONFIG_H
+ #  include <config.h>
+ #endif

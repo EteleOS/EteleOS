@@ -1,0 +1,18 @@
+@bin bin/lnkinfo
+include/liblnk/
+include/liblnk.h
+include/liblnk/codepage.h
+include/liblnk/definitions.h
+include/liblnk/error.h
+include/liblnk/extern.h
+include/liblnk/features.h
+include/liblnk/types.h
+@static-lib lib/liblnk.a
+lib/liblnk.la
+@lib lib/liblnk.so.${LIBlnk_VERSION}
+lib/pkgconfig/liblnk.pc
+lib/python${MODPY_VERSION}/site-packages/pylnk.a
+lib/python${MODPY_VERSION}/site-packages/pylnk.la
+@so lib/python${MODPY_VERSION}/site-packages/pylnk.so
+@man man/man1/lnkinfo.1
+@man man/man3/liblnk.3

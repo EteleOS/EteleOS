@@ -1,0 +1,17 @@
+Index: src/cg-merge-annotations.cpp
+--- src/cg-merge-annotations.cpp.orig
++++ src/cg-merge-annotations.cpp
+@@ -23,7 +23,13 @@
+ namespace fs = ::std::filesystem;
+ using namespace CG3;
+ 
++extern "C" int pledge(const char *, const char *);
++
+ int main(int argc, char* argv[]) {
++	if (pledge("stdio rpath wpath cpath", NULL) == -1) {
++		std::cerr << "pledge" << std::endl;
++		return 1;
++	}
+ 	Profiler out;
+ 	out.read(argv[2]);
+ 

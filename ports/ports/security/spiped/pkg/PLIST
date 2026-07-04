@@ -1,0 +1,15 @@
+@newgroup _spiped:707
+@newuser _spiped:707:_spiped::spiped user:/nonexistent:/sbin/nologin
+@extra ${SYSCONFDIR}/spiped/spiped.key
+@rcscript ${RCDIR}/spiped
+@bin bin/spipe
+@bin bin/spiped
+@man man/man1/spipe.1
+@man man/man1/spiped.1
+share/doc/spiped/
+share/doc/spiped/COPYRIGHT
+share/doc/spiped/README.md
+@mode 750
+@owner root
+@group _spiped
+@sample ${SYSCONFDIR}/spiped/

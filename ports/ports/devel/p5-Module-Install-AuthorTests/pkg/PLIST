@@ -1,0 +1,4 @@
+${P5SITE}/Module/
+${P5SITE}/Module/Install/
+${P5SITE}/Module/Install/AuthorTests.pm
+@man man/man3p/Module::Install::AuthorTests.3p

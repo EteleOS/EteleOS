@@ -1,0 +1,28 @@
+Index: Modules/Compiler/GNU.cmake
+--- Modules/Compiler/GNU.cmake.orig
++++ Modules/Compiler/GNU.cmake
+@@ -55,11 +55,19 @@ macro(__compiler_gnu lang)
+   endif()
+ 
+   # Initial configuration flags.
+-  string(APPEND CMAKE_${lang}_FLAGS_INIT " ")
+-  string(APPEND CMAKE_${lang}_FLAGS_DEBUG_INIT " -g")
+-  string(APPEND CMAKE_${lang}_FLAGS_MINSIZEREL_INIT " -Os")
+-  string(APPEND CMAKE_${lang}_FLAGS_RELEASE_INIT " -O3")
+-  string(APPEND CMAKE_${lang}_FLAGS_RELWITHDEBINFO_INIT " -O2 -g")
++  if(DEFINED ENV{MODCMAKE_PORT_BUILD})
++    string(APPEND CMAKE_${lang}_FLAGS_INIT " ")
++    string(APPEND CMAKE_${lang}_FLAGS_DEBUG_INIT " -g")
++    string(APPEND CMAKE_${lang}_FLAGS_MINSIZEREL_INIT " ")
++    string(APPEND CMAKE_${lang}_FLAGS_RELEASE_INIT " ")
++    string(APPEND CMAKE_${lang}_FLAGS_RELWITHDEBINFO_INIT " -g")
++  else()
++    string(APPEND CMAKE_${lang}_FLAGS_INIT " ")
++    string(APPEND CMAKE_${lang}_FLAGS_DEBUG_INIT " -g")
++    string(APPEND CMAKE_${lang}_FLAGS_MINSIZEREL_INIT " -Os")
++    string(APPEND CMAKE_${lang}_FLAGS_RELEASE_INIT " -O3")
++    string(APPEND CMAKE_${lang}_FLAGS_RELWITHDEBINFO_INIT " -O2 -g")
++  endif()
+   if(NOT "x${lang}" STREQUAL "xFortran")
+     string(APPEND CMAKE_${lang}_FLAGS_MINSIZEREL_INIT " -DNDEBUG")
+     string(APPEND CMAKE_${lang}_FLAGS_RELEASE_INIT " -DNDEBUG")

@@ -1,0 +1,13 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/buildbot-worker start --nodaemon"
+daemon_flags="${HOMEDIR}"
+daemon_user="_buildslave"
+
+. /etc/rc.d/rc.subr
+
+pexp="${MODPY_BIN} ${daemon}${daemon_flags:+ ${daemon_flags}}"
+rc_reload=NO
+rc_bg=YES
+
+rc_cmd $1

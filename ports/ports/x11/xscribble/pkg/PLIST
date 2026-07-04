@@ -1,0 +1,5 @@
+@bin bin/xscribble
+share/examples/xscribble/
+share/examples/xscribble/digits.cl
+share/examples/xscribble/letters.cl
+share/examples/xscribble/punc.cl

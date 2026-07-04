@@ -1,0 +1,16 @@
+--- base/magic.py.orig	Thu Jan 29 13:20:35 2015
++++ base/magic.py	Thu Feb  5 14:32:58 2015
+@@ -255,10 +255,10 @@ magic = [
+     [0, 'string', '=', b'#! /usr/bin/python', 'application/x-python'],
+     [0, 'string', '=', b'#! /usr/bin/python', 'application/x-python'],
+     [0, 'string', '=', b'eval "exec /usr/bin/python', 'application/x-python'],
+-    [0, 'string', '=', b'#!/usr/local/bin/python', 'application/x-python'],
++    [0, 'string', '=', b'#!${MODPY_BIN}', 'application/x-python'],
++    [0, 'string', '=', b'#! ${MODPY_BIN}', 'application/x-python'],
+     [0, 'string', '=', b'#! /usr/local/bin/python', 'application/x-python'],
+-    [0, 'string', '=', b'#! /usr/local/bin/python', 'application/x-python'],
+-    [0, 'string', '=', b'eval "exec /usr/local/bin/python', 'application/x-python'],
++    [0, 'string', '=', b'eval "exec ${MODPY_BIN}', 'application/x-python'],
+     [0, 'string', '=', b'#!/usr/bin/env python', 'application/x-python'],
+     [0, 'string', '=', b'#! /usr/bin/env python', 'application/x-python'],
+     [0, 'string', '=', b'#!/bin/rc', 'text/script'],

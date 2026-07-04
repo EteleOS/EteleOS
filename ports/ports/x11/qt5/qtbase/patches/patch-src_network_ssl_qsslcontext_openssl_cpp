@@ -1,0 +1,22 @@
+Index: src/network/ssl/qsslcontext_openssl.cpp
+--- src/network/ssl/qsslcontext_openssl.cpp.orig
++++ src/network/ssl/qsslcontext_openssl.cpp
+@@ -722,6 +722,7 @@ void QSslContext::applyBackendConfig(QSslContext *sslC
+     }
+ #endif // ocsp
+ 
++#ifndef LIBRESSL_VERSION_NUMBER
+     QSharedPointer<SSL_CONF_CTX> cctx(q_SSL_CONF_CTX_new(), &q_SSL_CONF_CTX_free);
+     if (cctx) {
+         q_SSL_CONF_CTX_set_ssl_ctx(cctx.data(), sslContext->ctx);
+@@ -768,7 +769,9 @@ void QSslContext::applyBackendConfig(QSslContext *sslC
+             sslContext->errorStr = msgErrorSettingBackendConfig(QSslSocket::tr("SSL_CONF_finish() failed"));
+             sslContext->errorCode = QSslError::UnspecifiedError;
+         }
+-    } else {
++    } else
++#endif // LIBRESSL_VERSION_NUMBER
++    {
+         sslContext->errorStr = msgErrorSettingBackendConfig(QSslSocket::tr("SSL_CONF_CTX_new() failed"));
+         sslContext->errorCode = QSslError::UnspecifiedError;
+     }

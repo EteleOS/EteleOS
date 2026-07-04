@@ -1,0 +1,27 @@
+Index: test/units/module_utils/basic/test_set_mode_if_different.py
+--- test/units/module_utils/basic/test_set_mode_if_different.py.orig
++++ test/units/module_utils/basic/test_set_mode_if_different.py
+@@ -8,6 +8,7 @@ from __future__ import annotations
+ import builtins
+ import errno
+ import os
++import sys
+ 
+ from itertools import product
+ 
+@@ -124,6 +125,7 @@ def test_missing_lchmod_is_not_link(am, mock_stats, mo
+         m_chmod.assert_called_with(b'/path/to/file/no_lchmod', 0o660)
+ 
+ 
++@pytest.mark.skipif(sys.platform.startswith('openbsd'), reason='lchmod tests fail on OpenBSD')
+ @pytest.mark.parametrize('check_mode, stdin',
+                          product((True, False), ({},)),
+                          indirect=['stdin'])
+@@ -151,6 +153,7 @@ def test_missing_lchmod_is_link(am, mock_stats, mocker
+     mocker.stopall()
+ 
+ 
++@pytest.mark.skipif(sys.platform.startswith('openbsd'), reason='lchmod tests fail on OpenBSD')
+ @pytest.mark.parametrize('stdin,',
+                          ({},),
+                          indirect=['stdin'])

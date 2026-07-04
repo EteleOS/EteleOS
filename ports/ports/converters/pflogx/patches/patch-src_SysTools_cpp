@@ -1,0 +1,11 @@
+Index: src/SysTools.cpp
+--- src/SysTools.cpp.orig
++++ src/SysTools.cpp
+@@ -30,6 +30,7 @@
+ 
+ #include "SysTools.h"
+ #include <errno.h>
++#include <string.h>
+ 
+ 
+ /* Retrieve last system error message */

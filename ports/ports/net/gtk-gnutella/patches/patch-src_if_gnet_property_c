@@ -1,0 +1,11 @@
+--- src/if/gnet_property.c.orig	Sun Sep 11 11:28:28 2011
++++ src/if/gnet_property.c	Wed Mar 14 14:32:05 2012
+@@ -4500,7 +4500,7 @@ gnet_prop_init(void) {
+     gnet_property->props[182].data.guint32.def   = (void *) &gnet_property_variable_max_ultrapeers_default;
+     gnet_property->props[182].data.guint32.value = (void *) &gnet_property_variable_max_ultrapeers;
+     gnet_property->props[182].data.guint32.choices = NULL;
+-    gnet_property->props[182].data.guint32.max   = 5;
++    gnet_property->props[182].data.guint32.max   = 64;
+     gnet_property->props[182].data.guint32.min   = 0;
+ 
+ 

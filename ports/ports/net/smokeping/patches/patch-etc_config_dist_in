@@ -1,0 +1,65 @@
+Index: etc/config.dist.in
+--- etc/config.dist.in.orig
++++ etc/config.dist.in
+@@ -1,19 +1,19 @@
+ *** General ***
+ 
+ owner    = Peter Random
+-contact  = some@address.nowhere
+-mailhost = my.mail.host
++contact  = root@localhost
++mailhost = localhost
+ sendmail = @SENDMAIL@
+ # NOTE: do not put the Image Cache below cgi-bin
+ # since all files under cgi-bin will be executed ... this is not
+ # good for images.
+-imgcache = @prefix@/cache
++imgcache = /var/www/htdocs/smokeping/cache
+ imgurl   = cache
+-datadir  = @prefix@/data
+-piddir  = @prefix@/var
+-cgiurl   = http://some.url/smokeping.cgi
+-smokemail = @prefix@/etc/smokemail.dist
+-tmail = @prefix@/etc/tmail.dist
++datadir  = /var/db/smokeping
++piddir  = /var/run/smokeping
++cgiurl   = http://localhost/smokeping/smokeping.cgi
++smokemail = @sysconfdir@/smokemail
++tmail = @sysconfdir@/tmail
+ # specify this to get syslog logging
+ syslogfacility = local0
+ # each probe is now run in its own process
+@@ -21,8 +21,8 @@ syslogfacility = local0
+ # concurrentprobes = no
+ 
+ *** Alerts ***
+-to = alertee@address.somewhere
+-from = smokealert@company.xy
++to = root@localhost
++from = smokealert@localhost
+ 
+ +someloss
+ type = loss
+@@ -47,7 +47,8 @@ AVERAGE  0.5 144   2400
+ 
+ *** Presentation ***
+ 
+-template = @prefix@/etc/basepage.html.dist
++template = @sysconfdir@/basepage.html
++
+ htmltitle = yes
+ graphborders = no
+ # If enabled, treat all filter menu queries as literal strings instead of regex
+@@ -109,10 +110,10 @@ unison_tolerance = 2
+ 
+ + FPing
+ 
+-binary = /usr/sbin/fping
++binary = ${LOCALBASE}/sbin/fping
+ 
+ *** Slaves ***
+-secrets=@prefix@/etc/smokeping_secrets.dist
++secrets=@sysconfdir@/smokeping_secrets
+ +boomer
+ display_name=boomer
+ color=0000ff

@@ -1,0 +1,15 @@
+Index: example/defaults
+--- example/defaults.orig
++++ example/defaults
+@@ -20,7 +20,9 @@
+ #
+ # hide_timeout 1
+ 
+-xpmpath	/usr/local/share/WindowMaker/Icons
+-xpmpath /usr/local/share/pixmaps
++xpmpath %%PREFIX%%/share/WindowMaker/Backgrounds
++xpmpath %%PREFIX%%/share/WindowMaker/Icons
++xpmpath %%PREFIX%%/share/WindowMaker/Pixmaps
++xpmpath %%PREFIX%%/include/pixmaps
+ tile	tile2.xpm
+ tile	!echo tile2.xpm

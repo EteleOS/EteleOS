@@ -1,0 +1,3 @@
+${P5SITE}/Sub/
+${P5SITE}/Sub/Uplevel.pm
+@man man/man3p/Sub::Uplevel.3p

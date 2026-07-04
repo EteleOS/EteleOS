@@ -1,0 +1,23 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+OpenBSD-specific Limitations
+============================
+OpenBSD is not on the list of supported platforms:
+https://www.elastic.co/support/matrix
+
+Running Logstash
+================
+Logstash should be started with it's own uid/gid _logstash, since this user
+has all necessary filesystem permissions. For example, to install opensearch
+output plugin:
+
+    $ doas su -s /bin/sh -c daemon _logstash -c \
+        '/usr/local/logstash/bin/logstash-plugin install --version 2.0.1 \
+        logstash-output-opensearch'
+
+Upgrading Logstash
+==================
+Please refer to the upstream documentation when performing upgrades:
+https://www.elastic.co/guide/en/logstash/current/upgrading-logstash.html

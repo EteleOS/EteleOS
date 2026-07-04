@@ -1,0 +1,10 @@
+@bin bin/celtdec
+@bin bin/celtenc
+include/celt/
+include/celt/celt.h
+include/celt/celt_header.h
+include/celt/celt_types.h
+lib/libcelt0.a
+lib/libcelt0.la
+@lib lib/libcelt0.so.${LIBcelt0_VERSION}
+lib/pkgconfig/celt.pc

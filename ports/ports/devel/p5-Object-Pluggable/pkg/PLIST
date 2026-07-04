@@ -1,0 +1,8 @@
+${P5SITE}/Object/
+${P5SITE}/Object/Pluggable/
+${P5SITE}/Object/Pluggable.pm
+${P5SITE}/Object/Pluggable/Constants.pm
+${P5SITE}/Object/Pluggable/Pipeline.pm
+@man man/man3p/Object::Pluggable.3p
+@man man/man3p/Object::Pluggable::Constants.3p
+@man man/man3p/Object::Pluggable::Pipeline.3p

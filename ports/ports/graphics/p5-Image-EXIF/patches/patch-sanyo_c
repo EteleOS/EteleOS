@@ -1,0 +1,23 @@
+--- sanyo.c.orig	Fri May 11 19:03:30 2012
++++ sanyo.c	Sat Jul 12 19:34:34 2014
+@@ -318,7 +318,7 @@ sanyo_prop(struct exifprop *prop, struct exiftags *t)
+ 		    (u_int16_t)((prop->value >> 8) & 0xff));
+ 		c2 = finddescr(sanyo_res, (u_int16_t)(prop->value & 0xff));
+ 		exifstralloc(&prop->str, strlen(c1) + strlen(c2) + 3);
+-		sprintf(prop->str, "%s, %s", c1, c2);
++		snprintf(prop->str, (strlen(c1) + strlen(c2) + 3), "%s, %s", c1, c2);
+ 		free(c1);
+ 		free(c2);
+ 		break;
+@@ -330,9 +330,9 @@ sanyo_prop(struct exifprop *prop, struct exiftags *t)
+ 		b = exif4byte(t->mkrmd.btiff + prop->value + 4, t->mkrmd.order);
+ 
+ 		if (!a || !b || a == b)
+-			snprintf(prop->str, 31, "None");
++			snprintf(prop->str, PROPSTR_SIZE, "None");
+ 		else
+-			snprintf(prop->str, 31, "x%.1f", (float)a / (float)b);
++			snprintf(prop->str, PROPSTR_SIZE, "x%.1f", (float)a / (float)b);
+ 		break;
+ 
+ 	/* Color adjust. */

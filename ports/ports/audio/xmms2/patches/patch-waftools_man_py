@@ -1,0 +1,32 @@
+Bypass the gzip function that compress man files.
+
+Index: waftools/man.py
+--- waftools/man.py.orig
++++ waftools/man.py
+@@ -29,11 +29,12 @@ def gzip_func(task):
+         if outf:
+             outf.close()
+ 
+-Task.task_factory('man', gzip_func, color='BLUE')
+ 
+ @feature('man')
+ @before_method('process_source')
+ def process_man(self):
++    def empty(x):
++        pass
+     source = self.to_nodes(getattr(self, 'source', []))
+     self.source = []
+ 
+@@ -50,11 +51,7 @@ def process_man(self):
+ 
+         out = self.path.find_or_declare(node.name + '.gz')
+ 
+-        tsk = self.create_task('man')
+-        tsk.set_inputs(node)
+-        tsk.set_outputs(out)
+-
+-        self.bld.install_files('${MANDIR}/man%s' % s, out)
++        self.bld.install_files('${MANDIR}/man%s' % s, node)
+ 
+ 
+ def configure(conf):

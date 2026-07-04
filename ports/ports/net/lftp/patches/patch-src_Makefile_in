@@ -1,0 +1,12 @@
+Index: src/Makefile.in
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -270,7 +270,7 @@ am__uninstall_files_from_dir = { \
+          $(am__cd) "$$dir" && rm -f $$files; }; \
+   }
+ LTLIBRARIES = $(lib_LTLIBRARIES) $(pkgverlib_LTLIBRARIES)
+-cmd_mirror_la_LIBADD =
++cmd_mirror_la_LIBADD = $(GNULIB)
+ am_cmd_mirror_la_OBJECTS = MirrorJob.lo
+ cmd_mirror_la_OBJECTS = $(am_cmd_mirror_la_OBJECTS)
+ AM_V_lt = $(am__v_lt_@AM_V@)

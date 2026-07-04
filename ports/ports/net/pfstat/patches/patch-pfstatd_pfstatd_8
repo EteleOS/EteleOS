@@ -1,0 +1,10 @@
+--- pfstatd/pfstatd.8.orig	Thu Apr  8 21:27:04 2010
++++ pfstatd/pfstatd.8	Thu Apr  8 21:27:20 2010
+@@ -64,6 +64,7 @@ after opening the device special file
+ .Pa /dev/pf .
+ Default is
+ .Sq nobody .
++.El
+ .Sh SECURITY CONSIDERATIONS
+ Clients are not authenticated and output is not encrypted.
+ The daemon does not read input from clients and immediately

@@ -1,0 +1,7 @@
+${P5SITE}/Math/
+${P5SITE}/Math/Random/
+${P5SITE}/Math/Random/ISAAC/
+${P5SITE}/Math/Random/ISAAC.pm
+${P5SITE}/Math/Random/ISAAC/PP.pm
+@man man/man3p/Math::Random::ISAAC.3p
+@man man/man3p/Math::Random::ISAAC::PP.3p

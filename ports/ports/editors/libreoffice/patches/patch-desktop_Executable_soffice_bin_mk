@@ -1,0 +1,12 @@
+Index: desktop/Executable_soffice_bin.mk
+--- desktop/Executable_soffice_bin.mk.orig
++++ desktop/Executable_soffice_bin.mk
+@@ -24,6 +24,8 @@ $(eval $(call gb_Executable_use_libraries,soffice_bin,
+     sofficeapp \
+ ))
+ 
++$(eval $(call gb_Executable_use_external,soffice_bin,orcus))
++
+ $(eval $(call gb_Executable_add_cobjects,soffice_bin,\
+     desktop/source/app/main \
+ ))

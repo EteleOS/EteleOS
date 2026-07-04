@@ -1,0 +1,4 @@
+${P5SITE}/Test/
+${P5SITE}/Test/Memory/
+${P5SITE}/Test/Memory/Cycle.pm
+@man man/man3p/Test::Memory::Cycle.3p

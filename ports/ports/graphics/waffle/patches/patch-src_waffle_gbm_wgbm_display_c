@@ -1,0 +1,40 @@
+Index: src/waffle/gbm/wgbm_display.c
+--- src/waffle/gbm/wgbm_display.c.orig
++++ src/waffle/gbm/wgbm_display.c
+@@ -29,7 +29,9 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ 
++#ifdef __linux__
+ #include <libudev.h>
++#endif
+ #include <fcntl.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -67,6 +69,9 @@ wgbm_display_destroy(struct wcore_display *wc_self)
+ int
+ wgbm_get_default_fd_for_pattern(const char *pattern)
+ {
++#ifndef __linux__
++    return open("/dev/dri/card0", O_RDWR, 0);
++#else
+     struct udev *ud;
+     struct udev_enumerate *en;
+     struct udev_list_entry *devices, *entry;
+@@ -97,6 +102,7 @@ wgbm_get_default_fd_for_pattern(const char *pattern)
+     udev_enumerate_unref(en);
+     udev_unref(ud);
+     return -1;
++#endif
+ }
+ 
+ static int
+@@ -146,7 +152,7 @@ wgbm_display_connect(struct wcore_platform *wc_plat,
+         }
+     }
+ 
+-    dlopen("libglapi.so.0", RTLD_LAZY | RTLD_GLOBAL);
++    dlopen("libglapi.so", RTLD_LAZY | RTLD_GLOBAL);
+     self->gbm_device = plat->gbm_create_device(fd);
+     if (!self->gbm_device) {
+         wcore_errorf(WAFFLE_ERROR_UNKNOWN, "gbm_create_device failed");

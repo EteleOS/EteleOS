@@ -1,0 +1,17 @@
+--- scripts/espdiff.in.orig	Wed Jun 11 11:01:28 2008
++++ scripts/espdiff.in	Tue Apr 21 15:07:14 2015
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/bin/sh
+ #
+ # espdiff - do whatever it was you wanted
+ # Copyright (C) 2003 Tim Waugh <twaugh@redhat.com>
+@@ -78,6 +78,7 @@ then
+   delay=$(($delay * 2))
+ fi
+ 
+-read -t $delay -p 'Please concentrate... ' || echo
++echo -n 'Please concentrate... '
++sleep $delay
+ echo 'No brainwave activity detected.  Aborting.'
+ exit 1

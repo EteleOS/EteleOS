@@ -1,0 +1,5 @@
+@rcscript ${RCDIR}/pgcluu_collectd
+bin/pgcluu
+bin/pgcluu_collectd
+@man man/man1/pgcluu.1p
+share/doc/pkg-readmes/${PKGSTEM}

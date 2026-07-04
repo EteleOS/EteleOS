@@ -1,0 +1,13 @@
+Index: unstable/mips64_x86_trans.h
+--- unstable/mips64_x86_trans.h.orig
++++ unstable/mips64_x86_trans.h
+@@ -53,8 +53,7 @@ static forced_inline void mips64_jit_tcb_exec(cpu_mips
+       return;
+    }
+ 
+-   asm volatile ("movl %0,%%edi"::"r"(cpu):
+-                 "esi","edi","eax","ebx","ecx","edx");
++   asm volatile ("movl %0,%%edi"::"r"(cpu));
+    jit_code();
+ }
+ 

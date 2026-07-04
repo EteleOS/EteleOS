@@ -1,0 +1,6 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+To avoid character encoding issues, ensure that you have your LC_CTYPE
+environment set to one of the UTF-8 variants. E.g. en_US.UTF-8.

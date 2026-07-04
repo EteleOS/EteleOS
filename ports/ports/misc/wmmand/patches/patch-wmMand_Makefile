@@ -1,0 +1,38 @@
+Index: wmMand/Makefile
+--- wmMand/Makefile.orig
++++ wmMand/Makefile
+@@ -1,8 +1,8 @@
+-CC     = gcc
+-CFLAGS = -O2 -Wall
+-INCDIR = -I/usr/X11R6/include/X11
+-DESTDIR= /usr/local
+-LIBDIR = -L/usr/X11R6/lib
++#CC     = gcc
++#CFLAGS = -O2 -Wall
++INCDIR = -I${X11BASE}/include
++#DESTDIR= /usr/local
++LIBDIR = -L${X11BASE}/lib
+ # for linux
+ LIBS   = -lXpm -lX11 -lXext
+ # for Solaris
+@@ -12,7 +12,7 @@ OBJS   = wmMand.o \
+ 
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -D$(shell echo `uname -s`) -c $< -o $*.o $(INCDIR)
++	$(CC) $(CFLAGS) $(INCDIR) -c $< -o $@
+ 
+ 
+ all:	wmMand.o wmMand
+@@ -28,9 +28,5 @@ clean:
+ 	rm -f wmMand
+ 
+ install:: wmMand
+-	install -d $(DESTDIR)
+-	install -d $(DESTDIR)/man/man6
+-	install -d $(DESTDIR)/share/pixmaps
+-	install -s -m 0755 wmMand $(DESTDIR)/bin
+-	install    -m 0644 wmMand.6.gz $(DESTDIR)/man/man6
+-	install	   -m 0644 wmMand.png $(DESTDIR)/share/pixmaps
++	${BSD_INSTALL_PROGRAM} wmMand $(PREFIX)/bin
++	${BSD_INSTALL_MAN} wmMand.6 $(PREFIX)/man/man6

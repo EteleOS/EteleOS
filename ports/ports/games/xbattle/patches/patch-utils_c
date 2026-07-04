@@ -1,0 +1,29 @@
+Index: utils.c
+--- utils.c.orig
++++ utils.c
+@@ -1,4 +1,6 @@
+ #include <stdio.h>
++#include <string.h> /* strlen */
++#include <stdlib.h>
+ 
+ #include "constant.h"
+   
+@@ -62,8 +64,10 @@ match_color (red, green, blue)
+   return <default_hue>.
+ ******************************************************************************/
+ 
++int
+ match_color_name (color_name, default_hue)
+   char *color_name;
++  int default_hue;
+ {
+   int hue;
+ 
+@@ -85,6 +89,7 @@ match_color_name (color_name, default_hue)
+   strncmp (line, word, strlen(word)).
+ ******************************************************************************/
+ 
++int
+ matchstr (line, word)
+   char line[],
+        word[];

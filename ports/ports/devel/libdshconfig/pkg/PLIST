@@ -1,0 +1,4 @@
+include/libdshconfig.h
+lib/libdshconfig.a
+lib/libdshconfig.la
+@lib lib/libdshconfig.so.${LIBdshconfig_VERSION}

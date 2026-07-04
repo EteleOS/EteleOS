@@ -1,0 +1,25 @@
+Don't hardcode CXX or optimization flags.
+
+Index: engines/togaII1.2.1a/src/Makefile
+--- engines/togaII1.2.1a/src/Makefile.orig
++++ engines/togaII1.2.1a/src/Makefile
+@@ -18,8 +18,8 @@ clean:
+ 
+ # general
+ 
+-CXX      = g++
+-CXXFLAGS = -pipe -Wall
++CXX      ?= g++
++CXXFLAGS += ${CXXFLAGS} -Wall
+ LDFLAGS  = -lm
+ 
+ # C++
+@@ -28,7 +28,7 @@ CXXFLAGS += -fno-exceptions -fno-rtti
+ 
+ # optimisation
+ 
+-CXXFLAGS += -O3 -fstrict-aliasing
++CXXFLAGS += -fstrict-aliasing
+ CXXFLAGS += -fomit-frame-pointer
+ # CXXFLAGS += -march=athlon-xp # SELECT ME
+ 

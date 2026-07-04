@@ -1,0 +1,25 @@
+nut 2.8 had some type cleanup;
+unsigned int changed to size_t for numa in upscli_list_next()
+int changed to uint16_t for port
+
+Index: src/nut.c
+--- src/nut.c.orig
++++ src/nut.c
+@@ -46,7 +46,7 @@ struct nut_ups_s {
+   collectd_upsconn_t *conn;
+   char *upsname;
+   char *hostname;
+-  int port;
++  uint16_t port;
+   nut_ups_t *next;
+ };
+ 
+@@ -250,7 +250,7 @@ static int nut_read(user_data_t *user_data) {
+   const char *query[3] = {"VAR", ups->upsname, NULL};
+   unsigned int query_num = 2;
+   char **answer;
+-  unsigned int answer_num;
++  size_t answer_num;
+   int status;
+ 
+   /* (Re-)Connect if we have no connection */

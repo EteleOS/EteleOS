@@ -1,0 +1,14 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -12139,8 +12139,8 @@ if  test -z "$GCC" ; then
+    DEBUG="-g $CFLAGS"
+    PROFILE="-g -p $CFLAGS"
+ else
+-   DEBUG="-g -Wall -std=gnu99 $CFLAGS"
+-   PROFILE="-g -p -std=gnu99 $CFLAGS"
++   DEBUG="$DEBUG -Wall -std=gnu99"
++   PROFILE="$PROFILE -g -p -std=gnu99"
+    CFLAGS="-std=gnu99 $CFLAGS"
+ fi
+ 

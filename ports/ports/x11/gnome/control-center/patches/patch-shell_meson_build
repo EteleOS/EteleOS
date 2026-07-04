@@ -1,0 +1,25 @@
+No GUdev on OpenBSD (XXX add HAVE_GUDEV to meson_options.txt)
+
+Find libkrb5.so
+
+Index: shell/meson.build
+--- shell/meson.build.orig
++++ shell/meson.build
+@@ -115,7 +115,6 @@ libshell_dep = declare_dependency(
+ shell_sources = common_sources + files('main.c')
+ 
+ shell_deps = common_deps + [
+-  libdevice_dep,
+   liblanguage_dep,
+   libwidgets_dep,
+   libshell_dep,
+@@ -135,7 +134,8 @@ executable(
+          dependencies : shell_deps,
+                c_args : cflags,
+             link_with : panels_libs,
+-              install : true
++              install : true,
++        install_rpath : '${LOCALBASE}/heimdal/lib'
+ )
+ 
+ 

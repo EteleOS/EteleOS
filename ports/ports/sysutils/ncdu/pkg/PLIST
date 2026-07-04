@@ -1,0 +1,2 @@
+@bin bin/ncdu
+@man man/man1/ncdu.1

@@ -1,0 +1,21 @@
+@bin bin/i-ls
+@info info/integrit.info
+@man man/man1/i-ls.1
+@man man/man1/i-viewdb.1
+@man man/man1/integrit.1
+@bin sbin/i-viewdb
+@bin sbin/integrit
+share/doc/integrit/
+share/doc/integrit/README
+share/doc/integrit/crontab
+share/doc/integrit/install_db
+share/doc/integrit/integrit_check
+share/doc/integrit/viewreport
+share/examples/integrit/
+@sample ${SYSCONFDIR}/integrit/
+share/examples/integrit/root.conf
+@sample ${SYSCONFDIR}/integrit/root.conf
+share/examples/integrit/src.conf
+@sample ${SYSCONFDIR}/integrit/src.conf
+share/examples/integrit/usr.conf
+@sample ${SYSCONFDIR}/integrit/usr.conf

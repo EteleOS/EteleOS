@@ -1,0 +1,39 @@
+Index: src/default_options.h
+--- src/default_options.h.orig
++++ src/default_options.h
+@@ -60,7 +60,7 @@ IMPORTANT: Some options will require "make clean" afte
+  * several kB in binary size however will make the symmetrical ciphers and hashes
+  * slower, perhaps by 50%. Recommended for small systems that aren't doing
+  * much traffic. */
+-#define DROPBEAR_SMALL_CODE 1
++#define DROPBEAR_SMALL_CODE 0
+ 
+ /* Enable X11 Forwarding - server only */
+ #define DROPBEAR_X11FWD 0
+@@ -323,7 +323,7 @@ group1 in Dropbear server too */
+ 
+ /* The command to invoke for xauth when using X11 forwarding.
+  * "-q" for quiet */
+-#define XAUTH_COMMAND "/usr/bin/xauth -q"
++#define XAUTH_COMMAND "/usr/X11R6/bin/xauth -q"
+ 
+ 
+ /* If you want to enable running an sftp server (such as the one included with
+@@ -336,7 +336,7 @@ group1 in Dropbear server too */
+ 
+ /* This is used by the scp binary when used as a client binary. If you're
+  * not using the Dropbear client, you'll need to change it */
+-#define DROPBEAR_PATH_SSH_PROGRAM "/usr/bin/dbclient"
++#define DROPBEAR_PATH_SSH_PROGRAM "/usr/local/bin/dbclient"
+ 
+ /* Whether to log commands executed by a client. This only logs the
+  * (single) command sent to the server, not what a user did in a
+@@ -372,7 +372,7 @@ be overridden at runtime with -I. 0 disables idle time
+ #define DEFAULT_IDLE_TIMEOUT 0
+ 
+ /* The default path. This will often get replaced by the shell */
+-#define DEFAULT_PATH "/usr/bin:/bin"
++#define DEFAULT_PATH "/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin"
+ #define DEFAULT_ROOT_PATH "/usr/sbin:/usr/bin:/sbin:/bin"
+ 
+ #endif /* DROPBEAR_DEFAULT_OPTIONS_H_ */

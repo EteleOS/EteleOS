@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Hash/
+${P5ARCH}/Hash/NoRef.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Hash/
+${P5ARCH}/auto/Hash/NoRef/
+${P5ARCH}/auto/Hash/NoRef/NoRef.so
+@man man/man3p/Hash::NoRef.3p

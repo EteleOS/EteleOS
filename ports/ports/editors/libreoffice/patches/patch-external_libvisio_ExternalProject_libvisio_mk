@@ -1,0 +1,12 @@
+Index: external/libvisio/ExternalProject_libvisio.mk
+--- external/libvisio/ExternalProject_libvisio.mk.orig
++++ external/libvisio/ExternalProject_libvisio.mk
+@@ -38,7 +38,7 @@ $(call gb_ExternalProject_get_state_target,libvisio,bu
+ 			$(if $(verbose),--disable-silent-rules,--enable-silent-rules) \
+ 			$(if $(gb_FULLDEPS),,--disable-dependency-tracking) \
+ 			CXXFLAGS="$(CXXFLAGS) $(gb_CXXFLAGS) $(call gb_ExternalProject_get_build_flags,libvisio)" \
+-			CPPFLAGS="$(CPPFLAGS) $(BOOST_CPPFLAGS)" \
++			CPPFLAGS="$(CPPFLAGS) -fPIC $(BOOST_CPPFLAGS)" \
+ 			LDFLAGS="$(call gb_ExternalProject_get_link_flags,libvisio)" \
+ 			$(gb_CONFIGURE_PLATFORMS) \
+ 		&& $(MAKE) \

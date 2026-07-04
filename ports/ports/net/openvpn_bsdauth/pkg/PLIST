@@ -1,0 +1,9 @@
+@newgroup _openvpnusers:811
+@mode 2550
+@owner _openvpn
+@group auth
+@bin libexec/openvpn_bsdauth
+@mode
+@owner
+@group
+@man man/man8/openvpn_bsdauth.8

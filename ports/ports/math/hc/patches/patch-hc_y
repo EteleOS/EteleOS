@@ -1,0 +1,11 @@
+--- hc.y.orig	Thu Sep 14 04:50:45 2000
++++ hc.y	Wed Mar 16 21:21:59 2005
+@@ -133,7 +133,7 @@ int yylex() {
+ 	
+ 	if (isdigit(c)) {
+ 		ungetc(c, stdin);
+-		scanf("%li",&yylval);
++		scanf("%i",&yylval);
+ 		return NUMBER;
+ 	}
+ 	if (c == '\n') 

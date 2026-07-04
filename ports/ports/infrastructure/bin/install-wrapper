@@ -1,0 +1,59 @@
+#! /usr/bin/perl
+# Copyright (c) 2014-2018
+# Marc Espie.  All rights reserved.
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Neither the name of OpenBSD nor the names of its contributors
+#    may be used to endorse or promote products derived from this software
+#    without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY ITS AUTHOR AND THE OpenBSD project ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+
+v5.36;
+use Getopt::Std;
+
+my %opts;
+getopts('bCcDdpSsB:f:g:m:o:', \%opts);
+
+for my $s (qw(b C c D d p S s)) {
+	if ($opts{$s}) {
+		unshift(@ARGV, "-$s");
+	}
+}
+
+if ($opts{m}) {
+	my $mode = $opts{m};
+	if ($mode eq '444' || $mode eq '0444') {
+		$mode = '644';
+	} elsif ($mode eq '555' || $mode eq '0555') {
+		$mode = '755';
+	}
+	unshift(@ARGV, '-m', $mode);
+}
+
+if (defined $ENV{FAKELOG} && ($opts{g} || $opts{o})) {
+	require Cwd;
+	open my $fh, ">>", $ENV{FAKELOG} or die;
+	my @args = @ARGV;
+	if ($opts{g}) {
+		unshift(@args, '-g', $opts{g});
+	}
+	if ($opts{o}) {
+		unshift(@args, '-o', $opts{o});
+	}
+	say $fh join(" ", Cwd::getcwd(), 'install', @args);
+}
+exec {'/usr/bin/install'} ('install', @ARGV);

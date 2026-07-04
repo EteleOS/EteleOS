@@ -1,0 +1,12 @@
+Index: plugins/node.d/sendmail_mailqueue.in
+--- plugins/node.d/sendmail_mailqueue.in.orig
++++ plugins/node.d/sendmail_mailqueue.in
+@@ -38,7 +38,7 @@ GPLv2
+ 
+ =cut
+ 
+-MSP_QUEUE=${mspqueue:-/var/spool/mqueue-client}
++MSP_QUEUE=${mspqueue:-/var/spool/clientmqueue}
+ MTA_QUEUE=${mtaqueue:-/var/spool/mqueue}
+ 
+ if [ "$1" = "autoconf" ]; then

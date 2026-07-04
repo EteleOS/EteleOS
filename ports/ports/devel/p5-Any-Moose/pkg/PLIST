@@ -1,0 +1,3 @@
+${P5SITE}/Any/
+${P5SITE}/Any/Moose.pm
+@man man/man3p/Any::Moose.3p

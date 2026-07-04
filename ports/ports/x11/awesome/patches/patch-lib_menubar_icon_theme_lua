@@ -1,0 +1,18 @@
+Index: lib/menubar/icon_theme.lua
+--- lib/menubar/icon_theme.lua.orig
++++ lib/menubar/icon_theme.lua
+@@ -47,12 +47,12 @@ local get_pragmatic_base_directories = function()
+         if gfs.dir_readable(dir) then
+             table.insert(dirs, dir)
+         end
+-        if dir == "/usr/share/pixmaps" then
++        if dir == "${LOCALBASE}/share/pixmaps" then
+             need_usr_share_pixmaps = false
+         end
+     end
+ 
+-    dir = "/usr/share/pixmaps"
++    dir = "${LOCALBASE}/share/pixmaps"
+     if need_usr_share_pixmaps and gfs.dir_readable(dir) then
+         table.insert(dirs, dir)
+     end

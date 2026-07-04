@@ -1,0 +1,9 @@
+# system-wide defaults for pam(3)
+
+auth		required	pam_bsdauth.so		no_warn try_first_pass nullok
+
+account		required	pam_bsdauth.so
+
+session		required	pam_bsdauth.so		no_fail
+
+password	required	pam_bsdauth.so		no_warn try_first_pass

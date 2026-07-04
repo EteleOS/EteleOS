@@ -1,0 +1,2 @@
+@bin bin/vmdktool
+@man man/man8/vmdktool.8

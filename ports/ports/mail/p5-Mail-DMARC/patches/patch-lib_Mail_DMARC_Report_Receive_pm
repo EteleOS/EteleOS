@@ -1,0 +1,12 @@
+Index: lib/Mail/DMARC/Report/Receive.pm
+--- lib/Mail/DMARC/Report/Receive.pm.orig
++++ lib/Mail/DMARC/Report/Receive.pm
+@@ -234,7 +234,7 @@ sub handle_body {
+ 
+     print "handling decompressed body\n" if $self->{verbose};
+ 
+-    my $dom = XML::LibXML->load_xml( string => $body );
++    my $dom = XML::LibXML->new->parse_string($body);
+     $self->do_node_report_metadata( $dom->findnodes("/feedback/report_metadata") );
+     $self->do_node_policy_published( $dom->findnodes("/feedback/policy_published") );
+ 

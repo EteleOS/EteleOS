@@ -1,0 +1,12 @@
+Index: res/barrier.desktop
+--- res/barrier.desktop.orig
++++ res/barrier.desktop
+@@ -2,7 +2,7 @@
+ Type=Application
+ Name=Barrier
+ Comment=Keyboard and mouse sharing solution
+-Exec=barrier
++Exec=barrier-gui
+ Icon=barrier
+ Terminal=false
+ Categories=Utility;DesktopUtility;

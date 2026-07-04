@@ -1,0 +1,27 @@
+--- gadgets/Makefile.orig	Sun Jul  6 11:19:45 2014
++++ gadgets/Makefile	Sun Jul  6 11:20:05 2014
+@@ -24,24 +24,20 @@ ${OBJ}: dbar.h config.mk
+ dbar: ${OBJ}
+ 	@echo LD $@
+ 	@${LD} -o $@ dbar-main.o dbar.o ${LDFLAGS}
+-	@strip $@
+ 
+ gdbar: ${OBJ}
+ 	@echo LD $@
+ #	@${LD} -o $@ gdbar.o dbar.o ${LDFLAGS} -L${X11LIB} -lX11
+ 	@${LD} -o $@ gdbar.o dbar.o ${LDFLAGS}
+-	@strip $@
+ 
+ gcpubar: ${OBJ}
+ 	@echo LD $@
+ #	@${LD} -o $@ gcpubar.o dbar.o ${LDFLAGS} -L${X11LIB}
+ 	@${LD} -o $@ gcpubar.o dbar.o ${LDFLAGS}
+-	@strip $@
+ 
+ textwidth: ${OBJ}
+ 	@echo LD $@
+ 	@${LD} -o $@ textwidth.o ${LDFLAGS} -L${X11LIB} -lX11
+-	@strip $@
+ 
+ clean:
+ 	@echo cleaning

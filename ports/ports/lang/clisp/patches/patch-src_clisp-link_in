@@ -1,0 +1,10 @@
+--- src/clisp-link.in.orig	Tue May 25 21:54:54 2010
++++ src/clisp-link.in	Mon Sep 28 20:59:27 2015
+@@ -382,6 +382,7 @@ case "$1" in
+       lncp_some "$sourcedir" "$destinationdir" ${LISPRUN} lispinit.mem modules.h modules.o makevars ${FILES};
+     else
+       cp "$sourcedir"/modules.h "$destinationdir"/modules.h
++      chmod +w ""$destinationdir"/modules.h"
+       FILES=`lncp_some "$sourcedir" "$destinationdir" ${FILES}`
+       # Prepare the module directories and read their variables
+       PRELOAD=''

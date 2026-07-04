@@ -1,0 +1,11 @@
+--- authdaemond.in.orig	Wed May 25 04:44:12 2011
++++ authdaemond.in	Fri Sep  7 14:34:02 2012
+@@ -9,7 +9,7 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+ sbindir=@sbindir@
+-localstatedir=@localstatedir@
++localstatedir=/var/run/courier-auth
+ 
+ set -a
+ . @authdaemonrc@

@@ -1,0 +1,12 @@
+Index: libinotifytools/src/Makefile.am
+--- libinotifytools/src/Makefile.am.orig
++++ libinotifytools/src/Makefile.am
+@@ -30,7 +30,7 @@ if DOXYGEN_ENABLE
+ doc/html/*: inotifytools.cpp Doxyfile
+ 	$(DOXYGEN)
+ 
+-shareddocdir = $(datadir)/doc
++docdir = $(datadir)/doc
+ doc_DATA = doc/html/*
+ 
+ clean-local:

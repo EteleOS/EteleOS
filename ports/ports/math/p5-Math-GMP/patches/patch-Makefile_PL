@@ -1,0 +1,26 @@
+Index: Makefile.PL
+--- Makefile.PL.orig
++++ Makefile.PL
+@@ -8,13 +8,10 @@ use warnings;
+ use 5.010;
+ use ExtUtils::MakeMaker;
+ 
+-use Alien::Base::Wrapper qw( Alien::GMP !export );
+-
+ my %WriteMakefileArgs = (
+   "ABSTRACT" => "High speed arbitrary size integer math",
+   "AUTHOR" => "Shlomi Fish <shlomif\@cpan.org>",
+   "CONFIGURE_REQUIRES" => {
+-    "Alien::GMP" => "1.08",
+     "ExtUtils::MakeMaker" => 0
+   },
+   "DISTNAME" => "Math-GMP",
+@@ -47,7 +44,7 @@ my %WriteMakefileArgs = (
+ 
+ %WriteMakefileArgs = (
+     %WriteMakefileArgs,
+-    Alien::Base::Wrapper->mm_args,
++    'LIBS' => ["$ENV{LDFLAGS} -lgmp"],
+ );
+ 
+ my %FallbackPrereqs = (

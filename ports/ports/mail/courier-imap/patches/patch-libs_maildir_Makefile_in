@@ -1,0 +1,12 @@
+Index: libs/maildir/Makefile.in
+--- libs/maildir/Makefile.in.orig
++++ libs/maildir/Makefile.in
+@@ -650,7 +650,7 @@ clean-noinstLTLIBRARIES:
+ 	}
+ 
+ libmaildir.la: $(libmaildir_la_OBJECTS) $(libmaildir_la_DEPENDENCIES) $(EXTRA_libmaildir_la_DEPENDENCIES) 
+-	$(AM_V_CXXLD)$(CXXLINK)  $(libmaildir_la_OBJECTS) $(libmaildir_la_LIBADD) $(LIBS)
++	$(AM_V_CXXLD)$(CXXLINK)  $(libmaildir_la_OBJECTS) $(libmaildir_la_LIBADD) $(LIBS) $(LIBPCRE)
+ 
+ deliverquota$(EXEEXT): $(deliverquota_OBJECTS) $(deliverquota_DEPENDENCIES) $(EXTRA_deliverquota_DEPENDENCIES) 
+ 	@rm -f deliverquota$(EXEEXT)

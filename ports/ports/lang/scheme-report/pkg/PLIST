@@ -1,0 +1,2 @@
+@conflict guile2-*
+@info info/r5rs.info

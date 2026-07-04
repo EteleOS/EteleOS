@@ -1,0 +1,11 @@
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -131,7 +131,6 @@ RM="$RM -f"
+ # Libtool & Compilers
+ AC_PROG_CC
+ AC_PROG_CXX
+-AC_OPTIMIZE
+ 
+ # C++
+ AC_LANG(C++)

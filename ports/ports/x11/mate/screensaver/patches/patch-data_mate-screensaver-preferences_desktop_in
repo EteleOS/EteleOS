@@ -1,0 +1,10 @@
+Index: data/mate-screensaver-preferences.desktop.in
+--- data/mate-screensaver-preferences.desktop.in.orig
++++ data/mate-screensaver-preferences.desktop.in
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Name=Screensaver
++Name=Screensaver (MATE)
+ Comment=Set your screensaver preferences
+ # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+ Icon=preferences-desktop-screensaver

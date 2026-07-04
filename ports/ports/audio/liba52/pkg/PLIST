@@ -1,0 +1,13 @@
+@bin bin/a52dec
+@bin bin/extract_a52
+include/a52dec/
+include/a52dec/a52.h
+include/a52dec/attributes.h
+include/a52dec/audio_out.h
+include/a52dec/mm_accel.h
+@static-lib lib/liba52.a
+lib/liba52.la
+@lib lib/liba52.so.${LIBa52_VERSION}
+lib/pkgconfig/liba52.pc
+@man man/man1/a52dec.1
+@man man/man1/extract_a52.1

@@ -1,0 +1,43 @@
+The unconditional define of _POSIX_C_SOURCE in pigz 2.5 (changed to
+_XOPEN_SOURCE in pigz 2.6) causes <sys/cdefs.h> to define __POSIX_VISIBLE and
+therefore (because _BSD_SOURCE is not defined) to also define __BSD_VISIBLE 0
+which prevents <unistd.h> from prototyping pledge(2).
+
+Define _BSD_SOURCE to get it back and use pledge.
+
+Index: pigz.c
+--- pigz.c.orig
++++ pigz.c
+@@ -347,6 +347,7 @@
+ #define _FILE_OFFSET_BITS 64            // Use large file functions
+ #define _LARGE_FILES                    // Same thing for AIX
+ #define _XOPEN_SOURCE 700               // For POSIX 2008
++#define _BSD_SOURCE                     // for pledge(2)
+ 
+ // Included headers and what is expected from each.
+ #include <stdio.h>      // fflush(), fprintf(), fputs(), getchar(), putc(),
+@@ -4604,6 +4605,11 @@ int main(int argc, char **argv) {
+     char *opts, *p;                 // environment default options, marker
+     ball_t err;                     // error information from throw()
+ 
++    if (pledge("stdio rpath wpath cpath fattr chown", NULL) == -1) {
++        complain("pledge");
++        exit(1);
++    }
++
+     g.ret = 0;
+     try {
+         // initialize globals
+@@ -4710,6 +4716,12 @@ int main(int argc, char **argv) {
+             else if (option(argv[n]))   // process argument
+                 argv[n] = NULL;         // remove if option
+         option(NULL);                   // check for missing parameter
++
++        if (g.pipeout || g.decode == 2 || g.list)
++            if (pledge("stdio rpath", NULL) == -1) {
++                complain("pledge");
++                exit(1);
++            }
+ 
+         // process command-line filenames
+         done = 0;

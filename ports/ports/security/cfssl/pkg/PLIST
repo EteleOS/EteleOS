@@ -1,0 +1,10 @@
+@bin bin/cfssl
+@bin bin/cfssl-bundle
+@bin bin/cfssl-certinfo
+@bin bin/cfssl-mkbundle
+@bin bin/cfssl-newkey
+@bin bin/cfssl-scan
+@bin bin/cfssljson
+@bin bin/maclient
+@bin bin/maserver
+@bin bin/multirootca

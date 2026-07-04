@@ -1,0 +1,12 @@
+Index: fitsio2.h
+--- fitsio2.h.orig
++++ fitsio2.h
+@@ -58,6 +58,8 @@ extern int Fitsio_Pthread_Status;
+ #define MINDIRECT 8640   /* minimum size for direct reads and writes */
+                          /* MINDIRECT must have a value >= 8640 */
+ 
++#undef  MACHINE          /* OpenBSD <machine/param.h> */
++
+ /*   it is useful to identify certain specific types of machines   */
+ #define NATIVE             0 /* machine that uses non-byteswapped IEEE formats */
+ #define OTHERTYPE          1  /* any other type of machine */

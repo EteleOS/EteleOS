@@ -1,0 +1,72 @@
+@pkgpath devel/boehm-gc
+include/gc/
+include/gc.h
+include/gc/cord.h
+include/gc/cord_pos.h
+include/gc/ec.h
+include/gc/gc.h
+include/gc/gc_allocator.h
+include/gc/gc_backptr.h
+include/gc/gc_config_macros.h
+include/gc/gc_cpp.h
+include/gc/gc_disclaim.h
+include/gc/gc_gcj.h
+include/gc/gc_inline.h
+include/gc/gc_mark.h
+include/gc/gc_pthread_redirects.h
+include/gc/gc_tiny_fl.h
+include/gc/gc_typed.h
+include/gc/gc_version.h
+include/gc/javaxfc.h
+include/gc/leak_detector.h
+include/gc_cpp.h
+@static-lib lib/libcord.a
+lib/libcord.la
+@lib lib/libcord.so.${LIBcord_VERSION}
+@static-lib lib/libgc.a
+lib/libgc.la
+@lib lib/libgc.so.${LIBgc_VERSION}
+@static-lib lib/libgccpp.a
+lib/libgccpp.la
+@lib lib/libgccpp.so.${LIBgccpp_VERSION}
+@static-lib lib/libgctba.a
+lib/libgctba.la
+@lib lib/libgctba.so.${LIBgctba_VERSION}
+lib/pkgconfig/bdw-gc.pc
+@man man/man3/gc.3
+@comment share/gc/gc.man
+share/doc/gc/
+share/doc/gc/AUTHORS
+share/doc/gc/README.DGUX386
+share/doc/gc/README.Mac
+share/doc/gc/README.OS2
+share/doc/gc/README.amiga
+share/doc/gc/README.arm.cross
+share/doc/gc/README.autoconf
+share/doc/gc/README.cmake
+share/doc/gc/README.cords
+share/doc/gc/README.darwin
+share/doc/gc/README.emscripten
+share/doc/gc/README.environment
+share/doc/gc/README.ews4800
+share/doc/gc/README.hp
+share/doc/gc/README.linux
+share/doc/gc/README.macros
+share/doc/gc/README.md
+share/doc/gc/README.rs6000
+share/doc/gc/README.sgi
+share/doc/gc/README.solaris2
+share/doc/gc/README.symbian
+share/doc/gc/README.uts
+share/doc/gc/README.win32
+share/doc/gc/README.win64
+share/doc/gc/debugging.md
+share/doc/gc/finalization.md
+share/doc/gc/gcdescr.md
+share/doc/gc/gcinterface.md
+share/doc/gc/leak.md
+share/doc/gc/overview.md
+share/doc/gc/porting.md
+share/doc/gc/scale.md
+share/doc/gc/simple_example.md
+share/doc/gc/tree.md

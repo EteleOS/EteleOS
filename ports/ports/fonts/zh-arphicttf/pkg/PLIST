@@ -1,0 +1,7 @@
+@pkgpath chinese/arphicttf
+share/fonts/
+@fontdir share/fonts/TrueType/
+share/fonts/TrueType/bkai00mp.ttf
+share/fonts/TrueType/bsmi00lp.ttf
+share/fonts/TrueType/gbsn00lp.ttf
+share/fonts/TrueType/gkai00mp.ttf

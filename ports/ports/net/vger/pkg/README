@@ -1,0 +1,46 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+Configuring inetd(8) and relayd(8)
+==================================
+
+Vger is meant to be run run by inetd(8) behind a relay daemon offering
+TLS capabilities like relayd(8).
+
+sample inetd.conf
+-----------------
+
+	127.0.0.1:11965 stream tcp nowait _vger ${TRUEPREFIX}/bin/vger vger
+
+sample relayd.conf
+------------------
+
+	log connection
+
+	tcp protocol "gemini" {
+		tls keypair hostname.example
+	}
+
+	relay "gemini" {
+		listen on hostname.example port 1965 tls
+		protocol "gemini"
+		forward to 127.0.0.1 port 11965
+	}
+
+Then enable and start inetd and relayd:
+
+    # rcctl enable relayd inetd
+    # rcctl start relayd inetd
+
+Firewall configuration
+======================
+
+Allow TCP traffic on port 1965.
+
+Usage
+=====
+
+Vger will serve files named index.gmi if no explicit filename is given.
+If this file doesn't exist and auto index is enabled, an index file
+with a link to every file in the directory will be served.

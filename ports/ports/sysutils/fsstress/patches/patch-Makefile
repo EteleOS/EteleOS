@@ -1,0 +1,10 @@
+--- Makefile.orig	Thu Jun 23 08:34:40 2011
++++ Makefile	Thu Jun 23 08:34:54 2011
+@@ -6,5 +6,7 @@ SRCS=   fsstress.c
+ CFLAGS+= -Wall -Wstrict-prototypes -I${.CURDIR}/../fsstress
+ .PATH:  ${.CURDIR}/../fsstress
+ 
++NOMAN=	yes
++
+ .include <bsd.prog.mk>
+ 

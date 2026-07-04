@@ -1,0 +1,11 @@
+--- Makefile.orig	Wed Dec 22 14:46:07 2010
++++ Makefile	Fri Jun 26 19:18:55 2015
+@@ -13,7 +13,7 @@ GTK_CONFIG ?=pkg-config
+ GTK_INCLUDE = `$(GTK_CONFIG) gtk+-2.0 --cflags`
+ GTK_LIB = `$(GTK_CONFIG) gtk+-2.0 --libs`
+ 
+-GKRELLM_INCLUDE= -I/usr/local/include
++GKRELLM_INCLUDE= -I${LOCALBASE}/include
+ 
+ INSTALL=install -c -m 755
+ 

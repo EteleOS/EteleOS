@@ -1,0 +1,40 @@
+V =		0.7.5
+COMMENT =	ridiculous shoot-em-up game
+DISTNAME =	mars_source_${V}
+PKGNAME =	mars-${V}
+CATEGORIES =	games x11
+REVISION =	11
+
+HOMEPAGE =	https://mars-game.sourceforge.net/
+
+# GPLv3+
+PERMIT_PACKAGE =	Yes
+
+WANTLIB += GL GLU X11 Xrandr c fribidi m pthread sfml-audio sfml-graphics
+WANTLIB += sfml-system sfml-window ${COMPILER_LIBCXX} tag
+
+COMPILER =		base-clang ports-gcc base-gcc
+# uses std;:random_shuffle
+CXXFLAGS_base-clang =	-std=gnu++14
+
+# Not using the GH_* variables on purpose. The tarball was generated
+# separately. Will update to use GH_* next time M.A.R.S. is updated.
+SITES =		https://github.com/downloads/thelaui/M.A.R.S./
+
+MODULES =	devel/cmake
+
+LIB_DEPENDS =	audio/taglib \
+		devel/fribidi \
+		multimedia/sfml
+
+RUN_DEPENDS =	devel/desktop-file-utils \
+		x11/gtk+4,-guic
+
+NO_TEST =	Yes
+WRKDIST =	${WRKDIR}/mars-game
+FIX_CRLF_FILES = src/Shaders/postFX.cpp src/System/window.cpp
+
+
+MODCMAKE_POLICY_VERSION_OVERRIDE = Yes
+
+.include <bsd.port.mk>

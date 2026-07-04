@@ -1,0 +1,11 @@
+Index: src/examples/component_example.cpp
+--- src/examples/component_example.cpp.orig
++++ src/examples/component_example.cpp
+@@ -22,6 +22,7 @@ using namespace gloox;
+ #include <string>
+ 
+ #include <cstdio> // [s]print[f]
++#include <ctime>
+ 
+ class ComponentTest : public DiscoHandler, ConnectionListener, LogHandler
+ {

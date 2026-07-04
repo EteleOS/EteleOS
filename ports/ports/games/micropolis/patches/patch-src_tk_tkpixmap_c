@@ -1,0 +1,12 @@
+Index: src/tk/tkpixmap.c
+--- src/tk/tkpixmap.c.orig
++++ src/tk/tkpixmap.c
+@@ -516,7 +516,7 @@ Tk_GetPixmapFromData(interp, tkwin, source, width, hei
+     Tk_Uid name = NULL;		/* Initialization need only to prevent
+ 				 * compiler warning. */
+     int new;
+-    static autoNumber = 0;
++    static int autoNumber = 0;
+     char string[20];
+ 
+     if (!initialized) {

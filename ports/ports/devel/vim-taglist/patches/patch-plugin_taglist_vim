@@ -1,0 +1,13 @@
+Index: plugin/taglist.vim
+--- plugin/taglist.vim.orig
++++ plugin/taglist.vim
+@@ -92,6 +92,9 @@ if !exists('loaded_taglist')
+         elseif executable('exctags')
+             " On Free-BSD, exuberant ctags is installed as exctags
+             let Tlist_Ctags_Cmd = 'exctags'
++        elseif executable('ectags')
++            " On OpenBSD, exuberant ctags is installed as ectags
++            let Tlist_Ctags_Cmd = 'ectags'
+         elseif executable('ctags')
+             let Tlist_Ctags_Cmd = 'ctags'
+         elseif executable('ctags.exe')

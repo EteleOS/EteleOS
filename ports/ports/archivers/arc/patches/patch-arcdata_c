@@ -1,0 +1,11 @@
+--- arcdata.c.orig	Sat Aug  7 10:06:42 2010
++++ arcdata.c	Thu May 19 23:35:46 2011
+@@ -35,7 +35,7 @@ char            tmpchr[2] = "-";/* Temporary file pref
+ #if	GEMDOS
+ int		hold = 0;	/* true to pause before exit */
+ #endif
+-int             warn = 1;	/* true to print warnings */
++int             arcwarn = 1;	/* true to print warnings */
+ int             note = 1;	/* true to print comments */
+ int             bose = 0;	/* true to be verbose */
+ int             nocomp = 0;	/* true to suppress compression */

@@ -1,0 +1,23 @@
+--- Makefile.orig	Thu Sep 30 12:41:44 2010
++++ Makefile	Tue Aug 21 09:03:15 2012
+@@ -11,10 +11,10 @@ LIBSRCS += hdhomerun_pkt.c
+ LIBSRCS += hdhomerun_sock_posix.c
+ LIBSRCS += hdhomerun_video.c
+ 
+-CC    := $(CROSS_COMPILE)gcc
++#CC    := $(CROSS_COMPILE)gcc
+ STRIP := $(CROSS_COMPILE)strip
+ 
+-CFLAGS += -Wall -O2 -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wpointer-arith
++CFLAGS += -Wall -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wpointer-arith
+ LDFLAGS += -lpthread
+ SHARED = -shared -Wl,-soname,libhdhomerun$(LIBEXT)
+ 
+@@ -42,7 +42,6 @@ all : hdhomerun_config$(BINEXT) libhdhomerun$(LIBEXT)
+ 
+ hdhomerun_config$(BINEXT) : hdhomerun_config.c $(LIBSRCS)
+ 	$(CC) $(CFLAGS) $+ $(LDFLAGS) -o $@
+-	$(STRIP) $@
+ 
+ libhdhomerun$(LIBEXT) : $(LIBSRCS)
+ 	$(CC) $(CFLAGS) -fPIC -DDLL_EXPORT $(SHARED) $+ $(LDFLAGS) -o $@

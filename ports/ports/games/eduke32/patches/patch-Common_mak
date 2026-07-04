@@ -1,0 +1,51 @@
+Index: Common.mak
+--- Common.mak.orig
++++ Common.mak
+@@ -188,9 +188,6 @@ ifeq ($(PLATFORM),WII)
+     CCFULLPATH = $(DEVKITPPC)/bin/$(CC)
+ endif
+ 
+-CC := $(CROSS)gcc$(CROSS_SUFFIX)
+-CXX := $(CROSS)g++$(CROSS_SUFFIX)
+-
+ ifeq ($(PLATFORM),DARWIN)
+     CC := $(CROSS)clang$(CROSS_SUFFIX)
+     CXX := $(CROSS)clang++$(CROSS_SUFFIX)
+@@ -213,9 +210,6 @@ PKG_CONFIG := pkg-config
+ ELF2DOL := elf2dol
+ 
+ # Override defaults that absolutely will not work.
+-ifeq ($(CC),cc)
+-    override CC := gcc
+-endif
+ ifeq ($(AS),as)
+     override AS := nasm
+ endif
+@@ -693,7 +687,7 @@ ifeq (0,$(RELEASE))
+     F_NO_STACK_PROTECTOR :=
+ else
+     ifeq (0,$(CLANG))
+-        COMMONFLAGS += -funswitch-loops
++        #COMMONFLAGS += -funswitch-loops
+     endif
+ 
+     ifeq (0,$(FORCEDEBUG))
+@@ -722,7 +716,7 @@ W_UNINITIALIZED := -Wuninitialized
+ W_GCC_4_1 := -Wno-attributes
+ W_GCC_4_2 := $(W_STRICT_OVERFLOW)
+ W_GCC_4_4 := -Wno-unused-result
+-W_GCC_4_5 := -Wlogical-op -Wcast-qual
++W_GCC_4_5 := -Wcast-qual
+ W_GCC_6 := -Wduplicated-cond -Wnull-dereference
+ W_GCC_7 := -Wduplicated-branches
+ W_GCC_8 := -Warray-bounds=2
+@@ -1014,7 +1008,8 @@ ifeq (,$(VC_HASH))
+     VC_HASH := $(shell git rev-parse --short=9 HEAD 2>&1)
+ endif
+ ifeq (,$(VC_BRANCH))
+-    VC_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>&1)
++#    VC_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>&1)
++    VC_BRANCH := master
+     ifneq (master,$(VC_BRANCH))
+         VC_REV := $(VC_REV)[$(VC_BRANCH)]
+     endif

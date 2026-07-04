@@ -1,0 +1,15 @@
+@bin bin/bon_csv2html
+bin/bon_csv2txt
+@bin bin/generate_randfile
+@man man/man1/bon_csv2html.1
+@man man/man1/bon_csv2txt.1
+@man man/man1/generate_randfile.1
+@man man/man8/bonnie++.8
+@man man/man8/getc_putc.8
+@man man/man8/zcav.8
+@bin sbin/bonnie++
+@bin sbin/getc_putc
+@bin sbin/getc_putc_helper
+@bin sbin/zcav
+share/doc/bonnie++/
+share/doc/bonnie++/readme.html

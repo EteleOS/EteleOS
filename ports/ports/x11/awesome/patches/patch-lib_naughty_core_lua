@@ -1,0 +1,21 @@
+Index: lib/naughty/core.lua
+--- lib/naughty/core.lua.orig
++++ lib/naughty/core.lua
+@@ -42,7 +42,7 @@ Naughty configuration - a table containing common popu
+ @tfield[opt=apply_dpi(4)] int padding Space between popups and edge of the
+   workarea.
+ @tfield[opt=apply_dpi(1)] int spacing Spacing between popups.
+-@tfield[opt={"/usr/share/pixmaps/"}] table icon_dirs List of directories
++@tfield[opt={"${LOCALBASE}/share/pixmaps/"}] table icon_dirs List of directories
+   that will be checked by `getIcon()`.
+ @tfield[opt={ "png", "gif" }] table icon_formats List of formats that will be
+   checked by `getIcon()`.
+@@ -67,7 +67,7 @@ notifications, e.g.
+ naughty.config = {
+     padding = dpi(4),
+     spacing = dpi(1),
+-    icon_dirs = { "/usr/share/pixmaps/", },
++    icon_dirs = { "${LOCALBASE}/share/pixmaps/", },
+     icon_formats = { "png", "gif" },
+     notify_callback = nil,
+ }

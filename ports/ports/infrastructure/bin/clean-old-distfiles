@@ -1,0 +1,163 @@
+#! /usr/bin/perl
+# ex:ts=8 sw=4:
+# $OpenBSD: clean-old-distfiles,v 1.11 2023/07/06 09:33:23 espie Exp $
+#
+# Copyright (c) 2012 Marc Espie <espie@openbsd.org>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+use v5.36;
+my $ports1;
+use FindBin;
+BEGIN {
+	$ports1 = $ENV{PORTSDIR} || '/usr/ports';
+}
+
+use lib ("$ports1/infrastructure/lib", "$FindBin::Bin/../lib");
+
+use OpenBSD::md5;
+use OpenBSD::State;
+use OpenBSD::ProgressMeter;
+use File::Basename;
+
+my $state = OpenBSD::State->new('clean-old-distfiles');
+
+our ($opt_v, $opt_n, $opt_e, $opt_h, $opt_x, $opt_m);
+
+$state->handle_options('e:h:vnxm',
+    "[-nmvx] [-e except] [-h history] [cutdate]");
+
+my $progress = OpenBSD::ProgressMeter->new;
+	
+if (!$opt_v) {
+	$progress->setup($opt_x, $opt_m, $state);
+}
+
+if (@ARGV > 1) {
+	usage("too many arguments");
+}
+
+if ($opt_h) {
+	$opt_n = 1;
+	$opt_v = 1;
+}
+
+sub really_remove($file)
+{
+	$state->say("rm #1", $file) if $opt_v;
+	return if $opt_n;
+	if (unlink $file) {
+		my $dirname = $file;
+		do {
+			$dirname = File::Basename::dirname $dirname;
+		} while (rmdir $dirname);
+	} else {
+		$state->errsay("Couldn't remove #1: #2", $file, $!);
+	}
+}
+
+sub remove_file($file, $sha)
+{
+	# let's do i-node caching to avoid doing the same file twice.
+	my $basename = $file;
+	my $inode;
+	$basename =~ s/^.*\///; # remove directory
+	$sha =~ m/(..)/;
+	my $link = "by_cipher/sha256/$1/$sha/$basename";
+	if (-f $link) {
+		$inode = (stat _)[1];
+		really_remove($link);
+	}
+	if (-f $file) {
+		my $inode2 = (stat _)[1];
+		if (defined $inode && $inode2 == $inode) {
+			really_remove($file);
+		} else {
+			my $ck = OpenBSD::sha->new($file)->stringize;
+			if ($ck eq $sha) {
+				really_remove($file);
+			} else {
+				$state->errsay(
+				    "SHA256 mismatch on #1: #2 vs #3",
+				    $file, $ck, $sha);
+			}
+	    	}
+    	}
+}
+
+my $cutdate = $ARGV[0];
+if (defined $cutdate && $cutdate !~ m/^\d+$/) {
+	require DPB::ISO8601;
+	$cutdate = DPB::ISO8601->string2time($cutdate, $state);
+}
+
+my $PORTSDIR = $ENV{PORTSDIR} // '/usr/ports';
+my $DISTDIR = $ENV{DISTDIR} // "$PORTSDIR/distfiles";
+chdir($DISTDIR) or die "Can't chdir to $DISTDIR";
+
+my $history = $opt_h ? $opt_h : 'history';
+
+open my $fh, '<', $history or 
+    $state->fatal("No #1 to prune: #2", $history, $!);
+
+my $fh2;
+
+unless ($opt_n) {
+	open $fh2, '>', "history.new" or 
+	    $state->fatal( "Can't write new history: #1", $!);
+}
+
+my $except = {};
+
+if ($opt_e) {
+	open(my $e, '<', $opt_e) or 
+	    $state->fatal("Can't read exception file #1: #2", $opt_e, $!);
+
+	while (<$e>) {
+		chomp;
+		$except->{$_} = 1;
+	}
+	close $e;
+}
+
+my @l = ();
+while (<$fh>) {
+	chomp;
+	my ($ts, $file, $sha);
+	if (m/^(\d+)\s+SHA256\s*\((.*)\) \= (.*)$/) {
+		($ts, $file, $sha) = ($1, $2, $3);
+	} else {
+		$state->fatal("Bad history line #1 at line #2", $1, $.);
+	}
+	if ($except->{$file} || (defined $cutdate && $ts > $cutdate)) {
+		if ($fh2) {
+			say $fh2 $_;
+		}
+	} else {
+		push(@l, [$file, $sha]);
+	}
+}
+close $fh;
+
+$progress->for_list("Removing files", \@l,
+	sub($entry) {
+		my ($file, $sha) = @$entry;
+		remove_file($file,$sha);
+	}
+);
+
+if ($fh2) {
+	close $fh2;
+	unlink('history');
+	rename('history.new', 'history');
+}

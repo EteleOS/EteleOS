@@ -1,0 +1,27 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+puppetboard has been installed into ${INSTDIR}
+
+Please be aware that this is still experimental software and may not
+be production ready.
+
+Configuration
+-------------
+You can configure the PuppetDB host and port through
+${INSTDIR}/puppetboard/default_settings.py
+
+PuppetDB
+--------
+Puppetboard requires PuppetDB 4, however compatability with PuppetDB 3
+is available (though PuppetDB 3 was never ported to OpenBSD).
+
+    pkg_add puppetdb
+
+Starting puppetboard
+--------------------
+
+By default Puppetboard will bind to 127.0.0.1:8000, to adjust this
+puppetboard_flags will need to be set in /etc/rc.conf.local. Please refer to the
+gunicorn documentation for the available options.

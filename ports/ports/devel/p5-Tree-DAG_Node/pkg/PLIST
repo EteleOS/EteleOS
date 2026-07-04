@@ -1,0 +1,3 @@
+${P5SITE}/Tree/
+${P5SITE}/Tree/DAG_Node.pm
+@man man/man3p/Tree::DAG_Node.3p

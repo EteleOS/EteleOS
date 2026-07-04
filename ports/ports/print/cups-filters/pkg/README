@@ -1,0 +1,83 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+Bonjour broadcasts of shared, remote printers
+=============================================
+
+The cups-browsed(8) daemon can be used to browse Bonjour (mDNS) broadcasts of
+remote printers and create/remove local raw queues pointing to these printers.
+This requires the cups-browsed and avahi packages to be installed and the
+messagebus and avahi-daemon(8) to be running first.
+To start it at boot time, the rc.conf.local(8) pkg_scripts line can be edited as
+follow:
+
+    pkg_scripts=[...] messagebus avahi_daemon cups_browsed [...]
+
+Using direct printing with foomatic-rip(1)
+==========================================
+
+The Foomatic framework supports direct printing which does not rely on CUPS (nor
+any spooler).
+
+Complete documentation can be found at:
+    https://wiki.linuxfoundation.org/openprinting/database/nospoolerdocumentation
+
+Foomatic configuration
+----------------------
+A specific PPD file has to be created for the printer.
+Refer to the documentation that comes with the foomatic-db-engine package to
+learn how to generate PPD files
+(cf. ${LOCALBASE}/share/doc/pkg-readmes/foomatic-db-engine).
+
+# mkdir -p ${SYSCONFDIR}/foomatic/direct
+# foomatic-ppdfile -p 'Samsung-ML-2850D' -d 'Postscript' \
+	>${SYSCONFDIR}/foomatic/direct/samsung-ml2850d.ppd
+
+Alternatively, you can look under ${LOCALBASE}/share/foomatic/db/source/PPD for
+existing PPD files matching your printer (in which case the PPD file can be
+copied and/or gunzip'd under ${SYSCONFDIR}/foomatic/direct).
+
+PPD file configuration
+----------------------
+For a TCP/Socket/JetDirect printer listening on port 192.168.0.10:9100 and
+supporting raw printing (does *not* work with LPD), add the following line near
+the top of ${SYSCONFDIR}/foomatic/direct/samsung-ml2850d.ppd:
+*FoomaticRIPPostPipe: "| /usr/bin/nc -w 1 192.168.0.10 9100"
+
+More examples are available in the official documentation (see link above).
+
+You should now be able to send jobs to this printer by running:
+    $ ${PREFIX}/bin/foomatic-rip -q -P samsung-ml2850d /path/to/file.ps
+
+Input filter script
+-------------------
+Files must be converted before being sent to foomatic-rip(1).
+Depending on your printer capabilities, it can accept PS and/or PDF input.
+
+Several packages can be used for convertion, a2ps being the most complete.
+Note that a2ps(1) requires external helper tools for converting files.
+They can be configured under ${SYSCONFDIR}/a2ps{,-site}.cfg.
+By default, converting images requires the ImageMagick package.
+
+Here's a sample converter script:
+
+---8<-------------------------------------------------------------------
+#!/bin/sh
+
+${LOCALBASE}/bin/a2ps -BRq --columns=1 -o - | \
+	${PREFIX}/bin/foomatic-rip -q -P samsung-ml2850d
+---8<-------------------------------------------------------------------
+
+Tips: you can symlink this script to "lpr" to ease out-of-the-box printing for
+applications supporting lpr(1) printing.
+
+If your printer uses PDF printing, you can pipe a2ps to ps2pdf (from the
+ghostscript package).
+
+Additional options can be passed to foomatic-rip(1).
+e.g.
+- to print in duplex mode: -o duplex
+- to set the page size to letter: -o pagesize=letter
+
+Default options can be set by editing the PPD file.

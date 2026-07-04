@@ -1,0 +1,14 @@
+# Fix for use on OpenBSD
+
+Index: getmails
+--- getmails.orig
++++ getmails
+@@ -38,7 +38,7 @@ isrc() {
+ [ -f "$1" ] && return 0 || return 1;
+ }
+ UID_BY_ID=$(id -u)
+-PID_GETMAILS=$(pgrep -U $UID_BY_ID '^getmails$')
++PID_GETMAILS=$(pgrep -f -U $UID_BY_ID '^/bin/sh /usr/local/bin/getmails$')
+ if [ "x$PID_GETMAILS" != "x$$" ]; then
+ 	echo "The getmails script is already running as PID=\"$PID_GETMAILS\" ." >&2
+ 	exit 1

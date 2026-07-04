@@ -1,0 +1,4 @@
+The Net::DNS::SEC suite provides additional packages required to
+support DNSSEC as described in RFC4033, RFC4034, RFC4035 and
+subsequent related documents.  Net::DNS::SEC is installed as an
+extension to an existing Net::DNS installation.

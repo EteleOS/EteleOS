@@ -1,0 +1,35 @@
+store log file in ~/.config/pcexhumed/
+
+Index: source/exhumed/src/exhumed.cpp
+--- source/exhumed/src/exhumed.cpp.orig
++++ source/exhumed/src/exhumed.cpp
+@@ -1849,6 +1849,29 @@ int app_main(int argc, char const* const* argv)
+         Xfree(homedir);
+     }
+     else
++#else
++    if (!g_useCwd)
++    {
++        char cwd[BMAX_PATH];
++        char *homedir = Bgethomedir();
++        int r;
++        if (homedir)
++        {
++            Bsnprintf(cwd, sizeof(cwd), "%s/.config/%s", homedir, APPBASENAME);
++            r = Bmkdir(cwd, S_IRWXU);
++            if (r == 0 || (r == -1 && errno == EEXIST)) {
++                Bsnprintf(cwd, sizeof(cwd), "%s/.config/%s/%s.log",
++                    homedir, APPBASENAME, APPBASENAME);
++            } else {
++                Bstrcpy(cwd, APPBASENAME ".log");
++            }
++        } else {
++            Bstrcpy(cwd, APPBASENAME ".log");
++        }
++        OSD_SetLogFile(cwd);
++        Xfree(homedir);
++    }
++    else
+ #endif
+     OSD_SetLogFile(APPBASENAME ".log");
+ 

@@ -1,0 +1,12 @@
+Index: utils/siege.config.in
+--- utils/siege.config.in.orig
++++ utils/siege.config.in
+@@ -22,7 +22,7 @@ if test -f $config; then
+   echo "siege.config"
+   echo "usage: siege.config [no arguments]"
+   echo "----------------------------------"
+-  echo "Resource file already install as $config"
++  echo "Resource file already installed as $config"
+   echo "Use your favorite editor to change  your configuration by"
+   echo "editing the values in that file or remove it and run this"
+   echo "program again."

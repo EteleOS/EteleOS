@@ -1,0 +1,8 @@
+bin/igal2
+@man man/man1/igal2.1
+share/igal2/
+share/igal2/directoryline2.html
+share/igal2/igal2.css
+share/igal2/indextemplate2.html
+share/igal2/slidetemplate2.html
+share/igal2/tile.png

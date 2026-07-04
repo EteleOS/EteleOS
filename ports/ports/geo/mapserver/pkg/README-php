@@ -1,0 +1,18 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+You can enable this module by creating a symbolic
+link from ${SYSCONFDIR}/php-${MODPHP_VERSION}.sample/mapscriptng.ini to
+${SYSCONFDIR}/php-${MODPHP_VERSION}/mapscriptng.ini.
+
+    # ln -fs ${SYSCONFDIR}/php-${MODPHP_VERSION}.sample/mapscriptng.ini \
+        ${SYSCONFDIR}/php-${MODPHP_VERSION}/mapscriptng.ini
+
+If you plan to use PHP mapscript extension with a chrooted web server, make
+sure to copy the libs needed by mapscriptng.so file binary from ${LOCALBASE}/lib,
+but also the projection definitions from proj package to the chroot:
+chroot:
+
+# mkdir -p /var/www${LOCALBASE}/share/proj
+# cp ${LOCALBASE}/share/proj/* /var/www${LOCALBASE}/share/proj

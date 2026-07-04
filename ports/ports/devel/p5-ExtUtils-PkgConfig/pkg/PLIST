@@ -1,0 +1,3 @@
+${P5SITE}/ExtUtils/
+${P5SITE}/ExtUtils/PkgConfig.pm
+@man man/man3p/ExtUtils::PkgConfig.3p

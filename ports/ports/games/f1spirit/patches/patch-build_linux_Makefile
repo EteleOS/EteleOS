@@ -1,0 +1,41 @@
+Index: build/linux/Makefile
+--- build/linux/Makefile.orig
++++ build/linux/Makefile
+@@ -1,11 +1,11 @@
+ EXE = f1spirit
+ SRC = sources
+-PREFIX = /usr
++PREFIX ?= /usr
+ EXTRADIR = ./build/linux
+ 
+-GAMEDIR = $(PREFIX)/games
++GAMEDIR = $(PREFIX)/bin
+ STARTUP = $(GAMEDIR)/$(EXE)
+-BINDIR = $(PREFIX)/share/games/$(EXE)
++BINDIR = $(PREFIX)/share/$(EXE)
+ ICNDIR = $(PREFIX)/share/pixmaps
+ APPDIR = $(PREFIX)/share/applications
+ 
+@@ -38,10 +38,10 @@ OBJS = \
+ 	$(SRC)/Vector.o					$(SRC)/weather.o				\
+ 	$(SRC)/filehandling.o			$(SRC)/CarEngineSound.o
+ 
+-CC = gcc
++CC ?= gcc
+ #CFLAGS = -g3 -O3 -Wall `sdl-config --cflags` `curl-config --cflags` -I/usr/X11R6/include
+-CFLAGS = -g3 -O3 -Wno-write-strings `sdl-config --cflags` `curl-config --cflags` -I/usr/X11R6/include
+-LDFLAGS = `sdl-config --libs` `curl-config --libs` -L/usr/X11R6/lib/ -lSDL_image -lSDL_mixer -lSDL_net -lGL -lGLU
++CFLAGS += -Wno-write-strings `sdl-config --cflags` `curl-config --cflags` -I/usr/X11R6/include
++LDFLAGS += `sdl-config --libs` `curl-config --libs` -L/usr/X11R6/lib/ -lSDL_image -lSDL_mixer -lSDL_net -lGL -lGLU
+ RM = rm -f
+ CP = cp -r
+ MD = mkdir -p
+@@ -71,7 +71,7 @@ install: all
+ 	@$(ECHO) " o Creating startup script $(STARTUP)"
+ 	@$(MD) "$(GAMEDIR)"
+ 	@$(ECHO) "#!/bin/sh" >"$(STARTUP)"
+-	@$(ECHO) "cd \"/usr/share/games/f1spirit/\"; ./$(EXE); cd -" >>"$(STARTUP)"
++	@$(ECHO) "cd \"${TRUEPREFIX}/share/f1spirit/\"; ./$(EXE); cd -" >>"$(STARTUP)"
+ #	@$(ECHO) "cd \"$(BINDIR)\"; ./$(EXE); cd -" >>"$(STARTUP)"
+ 	@$(CHMOD) 755 "$(STARTUP)"
+ 	@$(ECHO) " o Creating application menu entry"

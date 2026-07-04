@@ -1,0 +1,53 @@
+Index: gen.h
+--- gen.h.orig
++++ gen.h
+@@ -11,11 +11,11 @@ static char* sccs_gen_h = "%W%%G%";
+ #include <X11/Xaw/MenuButton.h>
+ #include <X11/Shell.h>
+ #include <X11/Xaw/Cardinals.h>
+-/* #include <stdlib.h>  */
+-#include <malloc.h>
++#include <X11/xpm.h>
++#include <stdlib.h>
++/* #include <malloc.h>  */
+ #include <ctype.h>
+ #include <unistd.h>
+-#include "xpm.h"
+ 
+ /*
+ 	Macro for using prototypes if ANSI C is available.
+@@ -32,7 +32,7 @@ static char* sccs_gen_h = "%W%%G%";
+ #define NO_OF_COLS  18		/* default number of columns */
+ 
+ #define	EDITOR		"xterm -e "	/* editor used to edit icon file. */
+-#define	FORMATTER	"xterm -e vi " 	/* text formatter for help file */
++#define	FORMATTER	"xterm -e man " 	/* text formatter for help file */
+ #define	HELP_VIEWER	" "		/* viewer for help file */
+ 
+ #define	MAXPROCS	20
+@@ -74,20 +74,18 @@ typedef struct	c_id{
+ 		Widget	w_id;
+ }ChildInfo;
+ 
+-ChildInfo	ci_ptr[MAXPROCS];
++extern ChildInfo	ci_ptr[MAXPROCS];
+ 
+-/* forward declarations */
+-int	fprintf(), ungetc(), fclose(), fscanf();
+-char	*strcpy(), *getenv(), *malloc(); 
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
+ 
+ typedef int     bool_t;
+ 
+-Pixmap  pix, pix2;
+-
+ typedef struct _XpmIcon{
+         Pixmap pixmap;
+         Pixmap mask;
+         XpmAttributes attributes;
+ }XpmIcon;
+ 
+-XpmIcon c_pix;
++extern XpmIcon c_pix;

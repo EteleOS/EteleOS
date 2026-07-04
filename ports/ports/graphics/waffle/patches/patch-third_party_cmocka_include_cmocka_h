@@ -1,0 +1,23 @@
+Avoid a conflicting typedef on 32-bit arch.
+
+Index: third_party/cmocka/include/cmocka.h
+--- third_party/cmocka/include/cmocka.h.orig
++++ third_party/cmocka/include/cmocka.h
+@@ -96,6 +96,9 @@ typedef uintmax_t LargestIntegralType;
+ #define cast_to_largest_integral_type(value) \
+     ((LargestIntegralType)(value))
+ 
++#if defined(__OpenBSD__)
++#include <stdint.h>
++#else
+ /* Smallest integral type capable of holding a pointer. */
+ #if !defined(_UINTPTR_T) && !defined(_UINTPTR_T_DEFINED)
+ # if defined(_WIN32)
+@@ -124,6 +127,7 @@ typedef uintmax_t LargestIntegralType;
+ # define _UINTPTR_T
+ # define _UINTPTR_T_DEFINED
+ #endif /* !defined(_UINTPTR_T) || !defined(_UINTPTR_T_DEFINED) */
++#endif /* !defined(__OpenBSD__) */
+ 
+ /* Perform an unsigned cast to uintptr_t. */
+ #define cast_to_pointer_integral_type(value) \

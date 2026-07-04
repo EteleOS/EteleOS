@@ -1,0 +1,39 @@
+--- mini_sendmail.8.orig	Fri May 20 21:10:23 2005
++++ mini_sendmail.8	Sun Aug  5 21:51:44 2012
+@@ -1,9 +1,11 @@
+-.TH mini_sendmail 8 "12 July 2001"
++.TH mini_sendmail 8 "7 May 2003"
+ .SH NAME
+ mini_sendmail - accept email on behalf of real sendmail
+ .SH SYNOPSIS
+ .B mini_sendmail
+ .RB [ -f<name> ]
++.RB [ -i ]
++.RB [ -oi ]
+ .RB [ -t ]
+ .RB [ -s<server> ]
+ .RB [ -p<port> ]
+@@ -26,6 +28,14 @@ can be used to send email from inside a chroot(2) area
+ .B -f
+ Sets the name of the "from" person (i.e. the sender of the mail).
+ .TP
++.B -i
++Don't parse for a dot-line, but read input up to an end-of-file.
++Currently, this is always the case, but this option is needed for
++compatibility with sendmail.
++.TP
++.B -oi
++Same as -i, needed for compatibility with sendmail.
++.TP
+ .B -t
+ Read message for recipients.
+ To:, Cc:, and Bcc: lines will be scanned for recipient addresses.
+@@ -47,7 +57,7 @@ Verbose mode - shows the conversation with the SMTP se
+ .SH "SEE ALSO"
+ sendmail(8)
+ .SH AUTHOR
+-Copyright © 1999 by Jef Poskanzer <jef@mail.acme.com>. All rights reserved.
++Copyright \(co 1999 by Jef Poskanzer <jef@mail.acme.com>. All rights reserved.
+ .\" Redistribution and use in source and binary forms, with or without
+ .\" modification, are permitted provided that the following conditions
+ .\" are met:

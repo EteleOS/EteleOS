@@ -1,0 +1,163 @@
+@newgroup _privoxy:516
+@newuser _privoxy:516:_privoxy::Privoxy Account:/var/privoxy:/sbin/nologin
+@rcscript ${RCDIR}/privoxy
+bin/privoxy-log-parser.pl
+bin/privoxy-regression-test.pl
+bin/uagen.pl
+bin/url-pattern-translator.pl
+@man man/man8/privoxy.8
+@bin sbin/privoxy
+share/doc/privoxy/
+share/doc/privoxy/AUTHORS
+share/doc/privoxy/ChangeLog
+share/doc/privoxy/LICENSE
+share/doc/privoxy/LICENSE.GPLv3
+share/doc/privoxy/README
+share/doc/privoxy/developer-manual/
+share/doc/privoxy/developer-manual/coding.html
+share/doc/privoxy/developer-manual/documentation.html
+share/doc/privoxy/developer-manual/git.html
+share/doc/privoxy/developer-manual/index.html
+share/doc/privoxy/developer-manual/introduction.html
+share/doc/privoxy/developer-manual/newrelease.html
+share/doc/privoxy/developer-manual/testing.html
+share/doc/privoxy/developer-manual/webserver-update.html
+share/doc/privoxy/faq/
+share/doc/privoxy/faq/configuration.html
+share/doc/privoxy/faq/contact.html
+share/doc/privoxy/faq/copyright.html
+share/doc/privoxy/faq/general.html
+share/doc/privoxy/faq/index.html
+share/doc/privoxy/faq/installation.html
+share/doc/privoxy/faq/misc.html
+share/doc/privoxy/faq/trouble.html
+share/doc/privoxy/index.html
+share/doc/privoxy/man-page/
+share/doc/privoxy/man-page/privoxy-man-page.html
+share/doc/privoxy/p_doc.css
+share/doc/privoxy/user-manual/
+share/doc/privoxy/user-manual/actions-file.html
+share/doc/privoxy/user-manual/appendix.html
+share/doc/privoxy/user-manual/config.html
+share/doc/privoxy/user-manual/configuration.html
+share/doc/privoxy/user-manual/contact.html
+share/doc/privoxy/user-manual/copyright.html
+share/doc/privoxy/user-manual/files-in-use.jpg
+share/doc/privoxy/user-manual/filter-file.html
+share/doc/privoxy/user-manual/howto.html
+share/doc/privoxy/user-manual/index.html
+share/doc/privoxy/user-manual/installation.html
+share/doc/privoxy/user-manual/introduction.html
+share/doc/privoxy/user-manual/p_doc.css
+share/doc/privoxy/user-manual/proxy2.jpg
+share/doc/privoxy/user-manual/proxy_setup.jpg
+share/doc/privoxy/user-manual/quickstart.html
+share/doc/privoxy/user-manual/seealso.html
+share/doc/privoxy/user-manual/startup.html
+share/doc/privoxy/user-manual/templates.html
+share/doc/privoxy/user-manual/whatsnew.html
+share/examples/privoxy/
+@sample ${PRIVOXYCONF}/
+@owner _privoxy
+@group _privoxy
+share/examples/privoxy/config
+@sample ${PRIVOXYCONF}/config
+share/examples/privoxy/default.action
+@sample ${PRIVOXYCONF}/default.action
+share/examples/privoxy/default.filter
+@sample ${PRIVOXYCONF}/default.filter
+share/examples/privoxy/match-all.action
+@sample ${PRIVOXYCONF}/match-all.action
+share/examples/privoxy/regression-tests.action
+@sample ${PRIVOXYCONF}/regression-tests.action
+share/examples/privoxy/templates/
+@sample ${PRIVOXYCONF}/templates/
+share/examples/privoxy/templates/blocked
+@sample ${PRIVOXYCONF}/templates/blocked
+share/examples/privoxy/templates/cgi-error-404
+@sample ${PRIVOXYCONF}/templates/cgi-error-404
+share/examples/privoxy/templates/cgi-error-bad-param
+@sample ${PRIVOXYCONF}/templates/cgi-error-bad-param
+share/examples/privoxy/templates/cgi-error-disabled
+@sample ${PRIVOXYCONF}/templates/cgi-error-disabled
+share/examples/privoxy/templates/cgi-error-file
+@sample ${PRIVOXYCONF}/templates/cgi-error-file
+share/examples/privoxy/templates/cgi-error-file-read-only
+@sample ${PRIVOXYCONF}/templates/cgi-error-file-read-only
+share/examples/privoxy/templates/cgi-error-modified
+@sample ${PRIVOXYCONF}/templates/cgi-error-modified
+share/examples/privoxy/templates/cgi-error-parse
+@sample ${PRIVOXYCONF}/templates/cgi-error-parse
+share/examples/privoxy/templates/cgi-style.css
+@sample ${PRIVOXYCONF}/templates/cgi-style.css
+share/examples/privoxy/templates/client-tags
+@sample ${PRIVOXYCONF}/templates/client-tags
+share/examples/privoxy/templates/connect-failed
+@sample ${PRIVOXYCONF}/templates/connect-failed
+share/examples/privoxy/templates/connection-timeout
+@sample ${PRIVOXYCONF}/templates/connection-timeout
+share/examples/privoxy/templates/default
+@sample ${PRIVOXYCONF}/templates/default
+share/examples/privoxy/templates/edit-actions-add-url-form
+@sample ${PRIVOXYCONF}/templates/edit-actions-add-url-form
+share/examples/privoxy/templates/edit-actions-for-url
+@sample ${PRIVOXYCONF}/templates/edit-actions-for-url
+share/examples/privoxy/templates/edit-actions-for-url-filter
+@sample ${PRIVOXYCONF}/templates/edit-actions-for-url-filter
+share/examples/privoxy/templates/edit-actions-for-url-string-action
+@sample ${PRIVOXYCONF}/templates/edit-actions-for-url-string-action
+share/examples/privoxy/templates/edit-actions-list
+@sample ${PRIVOXYCONF}/templates/edit-actions-list
+share/examples/privoxy/templates/edit-actions-list-button
+@sample ${PRIVOXYCONF}/templates/edit-actions-list-button
+share/examples/privoxy/templates/edit-actions-list-section
+@sample ${PRIVOXYCONF}/templates/edit-actions-list-section
+share/examples/privoxy/templates/edit-actions-list-url
+@sample ${PRIVOXYCONF}/templates/edit-actions-list-url
+share/examples/privoxy/templates/edit-actions-remove-url-form
+@sample ${PRIVOXYCONF}/templates/edit-actions-remove-url-form
+share/examples/privoxy/templates/edit-actions-url-form
+@sample ${PRIVOXYCONF}/templates/edit-actions-url-form
+share/examples/privoxy/templates/forwarding-failed
+@sample ${PRIVOXYCONF}/templates/forwarding-failed
+share/examples/privoxy/templates/mod-local-help
+@sample ${PRIVOXYCONF}/templates/mod-local-help
+share/examples/privoxy/templates/mod-support-and-service
+@sample ${PRIVOXYCONF}/templates/mod-support-and-service
+share/examples/privoxy/templates/mod-title
+@sample ${PRIVOXYCONF}/templates/mod-title
+share/examples/privoxy/templates/mod-unstable-warning
+@sample ${PRIVOXYCONF}/templates/mod-unstable-warning
+share/examples/privoxy/templates/no-server-data
+@sample ${PRIVOXYCONF}/templates/no-server-data
+share/examples/privoxy/templates/no-such-domain
+@sample ${PRIVOXYCONF}/templates/no-such-domain
+share/examples/privoxy/templates/show-request
+@sample ${PRIVOXYCONF}/templates/show-request
+share/examples/privoxy/templates/show-status
+@sample ${PRIVOXYCONF}/templates/show-status
+share/examples/privoxy/templates/show-status-file
+@sample ${PRIVOXYCONF}/templates/show-status-file
+share/examples/privoxy/templates/show-url-info
+@sample ${PRIVOXYCONF}/templates/show-url-info
+share/examples/privoxy/templates/toggle
+@sample ${PRIVOXYCONF}/templates/toggle
+share/examples/privoxy/templates/toggle-mini
+@sample ${PRIVOXYCONF}/templates/toggle-mini
+share/examples/privoxy/templates/untrusted
+@sample ${PRIVOXYCONF}/templates/untrusted
+share/examples/privoxy/templates/url-info-osd.xml
+@sample ${PRIVOXYCONF}/templates/url-info-osd.xml
+share/examples/privoxy/templates/wpad.dat
+@sample ${PRIVOXYCONF}/templates/wpad.dat
+share/examples/privoxy/trust
+@sample ${PRIVOXYCONF}/trust
+share/examples/privoxy/user.action
+@sample ${PRIVOXYCONF}/user.action
+share/examples/privoxy/user.filter
+@sample ${PRIVOXYCONF}/user.filter
+@sample /var/privoxy/
+@mode 775
+@owner
+@sample /var/privoxy/log/
+@extraunexec rm -rf /var/privoxy/log/*

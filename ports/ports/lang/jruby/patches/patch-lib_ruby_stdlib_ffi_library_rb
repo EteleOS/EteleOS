@@ -1,0 +1,17 @@
+Index: lib/ruby/stdlib/ffi/library.rb
+--- lib/ruby/stdlib/ffi/library.rb.orig
++++ lib/ruby/stdlib/ffi/library.rb
+@@ -90,10 +90,13 @@ module FFI
+       raise LoadError.new("library names list must not be empty") if names.empty?
+ 
+       lib_flags = defined?(@ffi_lib_flags) && @ffi_lib_flags
++      libc = FFI::DynamicLibrary.open('libc.so', FFI::DynamicLibrary::RTLD_LAZY | FFI::DynamicLibrary::RTLD_GLOBAL)
+ 
+       @ffi_libs = names.map do |name|
+         FFI::DynamicLibrary.send(:load_library, name, lib_flags)
+       end
++      @ffi_libs.unshift(libc)
++      @ffi_libs
+     end
+ 
+     # Set the calling convention for {#attach_function} and {#callback}

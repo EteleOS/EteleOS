@@ -1,0 +1,3 @@
+@bin bin/atob
+@bin bin/btoa
+@man man/man1/btoa.1

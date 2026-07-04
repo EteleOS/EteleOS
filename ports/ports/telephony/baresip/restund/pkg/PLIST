@@ -1,0 +1,22 @@
+@newgroup _restund:742
+@newuser _restund:742:742::restund user:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/restund
+@bin bin/restund
+lib/restund/
+lib/restund/modules/
+@so lib/restund/modules/auth.so
+@so lib/restund/modules/binding.so
+@so lib/restund/modules/drain.so
+@so lib/restund/modules/filedb.so
+@so lib/restund/modules/mysql_ser.so
+@so lib/restund/modules/restauth.so
+@so lib/restund/modules/stat.so
+@so lib/restund/modules/status.so
+@so lib/restund/modules/syslog.so
+@so lib/restund/modules/turn.so
+@so lib/restund/modules/zrest.so
+share/examples/restund/
+share/examples/restund/restund.auth
+@sample ${SYSCONFDIR}/restund.auth
+share/examples/restund/restund.conf
+@sample ${SYSCONFDIR}/restund.conf

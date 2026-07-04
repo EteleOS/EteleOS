@@ -1,0 +1,12 @@
+Index: src/clients/lib/xmmsclient++-glib/wscript
+--- src/clients/lib/xmmsclient++-glib/wscript.orig
++++ src/clients/lib/xmmsclient++-glib/wscript
+@@ -6,7 +6,7 @@ def build(bld):
+         uselib = 'glib2',
+         use = 'xmmsclient xmmsclient-glib',
+         includes = '../../../.. ../../../include ../../../includepriv',
+-        vnum = '1.0.0'
++        vnum = '${LIBxmmsclient++-glib_VERSION}'
+         )
+ 
+     tool.add_install_flag(bld, obj)

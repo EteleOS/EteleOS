@@ -1,0 +1,12 @@
+Index: man/man.pro
+--- man/man.pro.orig
++++ man/man.pro
+@@ -15,7 +15,7 @@ MAN_SRC      = qdirstat.1                 \
+ MAN_TARGET   = qdirstat.1.gz              \
+                qdirstat-cache-writer.1.gz
+ 
+-MAN_PATH     = $$INSTALL_PREFIX/share/man/man1
++MAN_PATH     = $$INSTALL_PREFIX/man/man1
+ 
+ man.files    = $$MAN_TARGET
+ man.path     = $$MAN_PATH

@@ -1,0 +1,14 @@
+Replace the malloc.h header with stdlib.h.
+
+Index: src/image/tim_memory_crt.cpp
+--- src/image/tim_memory_crt.cpp.orig
++++ src/image/tim_memory_crt.cpp
+@@ -23,7 +23,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
+  * CRT memory driver.
+  */
+ 
+-#if defined(__FreeBSD__) || (defined(__APPLE__) && defined(__MACH__))
++#if defined(__FreeBSD__) || defined(__OpenBSD__) || (defined(__APPLE__) && defined(__MACH__))
+ #include <stdlib.h>
+ #else
+ #include <malloc.h>

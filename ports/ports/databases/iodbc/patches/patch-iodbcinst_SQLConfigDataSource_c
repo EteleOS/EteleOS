@@ -1,0 +1,17 @@
+Index: iodbcinst/SQLConfigDataSource.c
+--- iodbcinst/SQLConfigDataSource.c.orig
++++ iodbcinst/SQLConfigDataSource.c
+@@ -580,11 +580,11 @@ SQLConfigDataSource_Internal (HWND hwndParent, WORD fR
+ 
+   if (waMode == 'A')
+     {
+-      CALL_CONFIG_DSN ("libdrvproxy.so.2");
++      CALL_CONFIG_DSN ("libdrvproxy.so");
+     }
+   else
+     {
+-      CALL_CONFIG_DSNW ("libdrvproxy.so.2");
++      CALL_CONFIG_DSNW ("libdrvproxy.so");
+     }
+ #endif
+ 

@@ -1,0 +1,53 @@
+Index: commandline/Makefile
+--- commandline/Makefile.orig
++++ commandline/Makefile
+@@ -124,7 +124,8 @@ endif
+ # allow overriding of GIT_TAG & BLINK1_VERSION on commandline for automated builds
+ 
+ MACH_TYPE:="$(strip $(shell uname -m))"
+-GIT_TAG?="$(strip $(shell git tag 2>&1 | tail -1 | cut -f1 -d' '))"
++#GIT_TAG?="$(strip $(shell git tag 2>&1 | tail -1 | cut -f1 -d' '))"
++GIT_TAG:=${GH_TAGNAME}
+ # deal with case of no git or no git tags, check for presence of "v" (i.e. "v1.93")
+ ifneq ($(findstring v,$(GIT_TAG)), v)
+   GIT_TAG:="v0"
+@@ -289,7 +290,7 @@ endif
+ 
+ #################  OpenBSD  ###################################################
+ ifeq "$(OS)" "openbsd"
+-LIBTARGET = libblink1.so
++LIBTARGET = libblink1.so.${SO_V}
+ # was blink1-lib.so
+ 
+ ifeq "$(USBLIB_TYPE)" "HIDAPI"
+@@ -411,7 +412,7 @@ endif
+ 
+ #CFLAGS += -O -Wall -std=gnu99 -I ../hardware/firmware
+ CFLAGS += -std=gnu99
+-CFLAGS += -g
++#CFLAGS += -g
+ CFLAGS += -DBLINK1_VERSION=\"$(BLINK1_VERSION)\"
+ 
+ OBJS +=  blink1-lib.o
+@@ -451,7 +452,7 @@ $(OBJS): %.o: %.c
+ 
+ blink1-tool: $(OBJS) blink1-tool.o
+ 	$(CC) $(CFLAGS) -c blink1-tool.c -o blink1-tool.o
+-	$(CC) $(CFLAGS) $(EXEFLAGS) -g $(OBJS) $(LIBS) blink1-tool.o -o blink1-tool$(EXE)
++	$(CC) $(CFLAGS) $(EXEFLAGS) $(OBJS) $(LIBS) blink1-tool.o -o blink1-tool$(EXE)
+ 
+ blink1-tiny-server: $(OBJS) server/blink1-tiny-server.c
+ #	$(CC) $(CFLAGS) -DMG_ENABLE_THREADS -I. -I./server/mongoose -c server/blink1-tiny-server.c -o blink1-tiny-server.o
+@@ -473,9 +474,9 @@ package-tiny-server: blink1-tiny-server
+ 	zip blink1-tiny-server-$(PKGOS).zip blink1-tiny-server$(EXE)
+ 
+ install: all
+-	$(INSTALL) blink1-tool$(EXE) $(DESTDIR)$(EXELOCATION)/blink1-tool$(EXE)
+-	$(INSTALL) $(LIBTARGET) $(DESTDIR)$(LIBLOCATION)/$(LIBTARGET)
+-	$(INSTALL) blink1-lib.h $(DESTDIR)$(INCLOCATION)/blink1-lib.h
++	$(BSD_INSTALL_PROGRAM) blink1-tool$(EXE) $(DESTDIR)$(EXELOCATION)/blink1-tool$(EXE)
++	$(BSD_INSTALL_DATA) $(LIBTARGET) $(DESTDIR)$(LIBLOCATION)/$(LIBTARGET)
++	$(BSD_INSTALL_DATA) blink1-lib.h $(DESTDIR)$(INCLOCATION)/blink1-lib.h
+ 
+ .PHONY: install
+ 

@@ -1,0 +1,17 @@
+--- library/tm.tcl.orig	Fri Sep 13 12:06:53 2013
++++ library/tm.tcl	Fri Sep 13 12:52:31 2013
+@@ -328,10 +328,10 @@ proc ::tcl::tm::Defaults {} {
+ 
+     # Note that we're using [::list], not [list] because [list] means
+     # something other than [::list] in this namespace.
+-    roots [::list \
+-	    [file dirname [info library]] \
+-	    [file join [file dirname [file dirname $exe]] lib] \
+-	    ]
++
++    # OpenBSD layout
++    add [file join [info library] modules] \
++	[file join [lindex $::tcl_pkgPath 0] modules 85]
+ 
+     if {$tcl_platform(platform) eq "windows"} {
+ 	set sep ";"

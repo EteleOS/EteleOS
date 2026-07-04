@@ -1,0 +1,38 @@
+Index: installer/dcheck.py
+--- installer/dcheck.py.orig
++++ installer/dcheck.py
+@@ -48,7 +48,7 @@ mod_output = ''
+ def update_ld_output():
+     # For library checks
+     global ld_output
+-    status, ld_output = utils.run('%s -p' % os.path.join(utils.which('ldconfig'), 'ldconfig'), log_output=False)
++    status, ld_output = utils.run('%s -r' % os.path.join(utils.which('ldconfig'), 'ldconfig'), log_output=False)
+ 
+     if status != 0:
+         log.debug("ldconfig failed.")
+@@ -103,7 +103,7 @@ def check_lib(lib, min_ver=0):
+         log.debug("Not found.")
+         return False
+ 
+-def check_file(f, dir="/usr/include"):
++def check_file(f, dir="${LOCALBASE}/include"):
+     log.debug("Searching for file '%s' in '%s'..." % (f, dir))
+     for w in utils.walkFiles(dir, recurse=True, abs_paths=True, return_folders=False, pattern=f):
+         log.debug("File found at '%s'" % w)
+@@ -380,10 +380,13 @@ def get_libpthread_version():
+     except ImportError:
+         return '-'
+     else:
++        if sys.platform.startswith('linux'):
+ #        LIBC = ctypes.CDLL(ctypes.util.find_library('c'), use_errno=True)
+-        LIBC = ctypes.CDLL(ctypes.util.find_library('c'),ctypes.DEFAULT_MODE,None, True)
+-        LIBC.gnu_get_libc_version.restype = ctypes.c_char_p
+-        return LIBC.gnu_get_libc_version()
++            LIBC = ctypes.CDLL(ctypes.util.find_library('c'),ctypes.DEFAULT_MODE,None, True)
++            LIBC.gnu_get_libc_version.restype = ctypes.c_char_p
++            return LIBC.gnu_get_libc_version()
++        else:
++            return '-'
+ 
+ def get_python_xml_version():
+     try:

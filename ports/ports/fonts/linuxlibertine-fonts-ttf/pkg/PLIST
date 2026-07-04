@@ -1,0 +1,25 @@
+share/doc/linuxlibertine-fonts-ttf/
+share/doc/linuxlibertine-fonts-ttf/Bugs.txt
+share/doc/linuxlibertine-fonts-ttf/ChangeLog.txt
+share/doc/linuxlibertine-fonts-ttf/GPL.txt
+share/doc/linuxlibertine-fonts-ttf/INSTALL.txt
+share/doc/linuxlibertine-fonts-ttf/LICENCE.txt
+share/doc/linuxlibertine-fonts-ttf/OFL-1.1.txt
+share/doc/linuxlibertine-fonts-ttf/README
+share/doc/linuxlibertine-fonts-ttf/Readme-TEX.txt
+share/doc/linuxlibertine-fonts-ttf/ToDo.txt
+share/fonts/
+@fontdir share/fonts/linuxlibertine/
+share/fonts/linuxlibertine/LinBiolinum_Kah.ttf
+share/fonts/linuxlibertine/LinBiolinum_RBah.ttf
+share/fonts/linuxlibertine/LinBiolinum_RIah.ttf
+share/fonts/linuxlibertine/LinBiolinum_Rah.ttf
+share/fonts/linuxlibertine/LinLibertine_DRah.ttf
+share/fonts/linuxlibertine/LinLibertine_I.ttf
+share/fonts/linuxlibertine/LinLibertine_Mah.ttf
+share/fonts/linuxlibertine/LinLibertine_RBIah.ttf
+share/fonts/linuxlibertine/LinLibertine_RBah.ttf
+share/fonts/linuxlibertine/LinLibertine_RIah.ttf
+share/fonts/linuxlibertine/LinLibertine_RZIah.ttf
+share/fonts/linuxlibertine/LinLibertine_RZah.ttf
+share/fonts/linuxlibertine/LinLibertine_Rah.ttf

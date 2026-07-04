@@ -1,0 +1,7 @@
+@conflict putty-<=0.71p0
+@bin bin/pageant
+@bin bin/pterm
+@bin bin/putty
+@man man/man1/pageant.1
+@man man/man1/pterm.1
+@man man/man1/putty.1

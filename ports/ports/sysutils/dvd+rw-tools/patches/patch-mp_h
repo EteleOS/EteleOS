@@ -1,0 +1,11 @@
+--- mp.h.orig	Sun Feb 24 18:56:07 2008
++++ mp.h	Fri Jun 26 20:33:22 2015
+@@ -46,7 +46,7 @@ static void *__thread_create(int (*func)(void *),void 
+ 
+     if (pthread_attr_init(&attr)==0 &&
+ 	pthread_attr_setstacksize(&attr,stack_sz)==0 &&
+-	pthread_attr_setscope(&attr,PTHREAD_SCOPE_SYSTEM)==0 &&
++	pthread_attr_setscope(&attr,PTHREAD_SCOPE_PROCESS)==0 &&
+ 	pthread_create(&h,&attr,(void *(*)(void *))func,arg)==0 )
+ 	return (void *)h;
+ 

@@ -1,0 +1,27 @@
+Index: .env.example
+--- .env.example.orig
++++ .env.example
+@@ -1,11 +1,17 @@
+-APP_KEY=
++#APP_KEY=base64:xxx  << insert this from "php artisan key:generate"
+ 
+-#DB_HOST=
+-#DB_DATABASE=
+-#DB_USERNAME=
+-#DB_PASSWORD=
++#DB_HOST=localhost
++#DB_DATABASE=librenms
++#DB_USERNAME=librenms
++#DB_PASSWORD=password
++#DB_PORT=<< optional >>
++#DB_SOCKET=<< optional >>
+ 
+-#APP_URL=
++#NODE_ID=librenms.example.com
++#APP_URL=https://librenms.example.com
++
++LIBRENMS_USER=_librenms
++LIBRENMS_GROUP=_librenms
+ 
+ APP_LOCALE=en
+ APP_FALLBACK_LOCALE=en

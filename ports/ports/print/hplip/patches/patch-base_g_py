@@ -1,0 +1,37 @@
+Index: base/g.py
+--- base/g.py.orig
++++ base/g.py
+@@ -189,16 +189,16 @@ class ConfigBase(object):
+         
+ class SysConfig(ConfigBase):
+     def __init__(self):
+-        ConfigBase.__init__(self, '/etc/hp/hplip.conf')
++        ConfigBase.__init__(self, '${SYSCONFDIR}/hp/hplip.conf')
+ 
+ 
+ class State(ConfigBase):
+     def __init__(self):
+-        if not os.path.exists('/var/lib/hp/') and os.geteuid() == 0:
+-            os.makedirs('/var/lib/hp/')
+-            cmd = 'chmod 755 /var/lib/hp/'
++        if not os.path.exists('/var/db/hp/') and os.geteuid() == 0:
++            os.makedirs('/var/db/hp/')
++            cmd = 'chmod 755 /var/db/hp/'
+             os_utils.execute(cmd)
+-        ConfigBase.__init__(self, '/var/lib/hp/hplip.state')
++        ConfigBase.__init__(self, '/var/db/hp/hplip.state')
+ 
+ 
+ class UserConfig(ConfigBase):
+@@ -290,9 +290,9 @@ prop.max_message_len = 8192
+ prop.max_message_read = 65536
+ prop.read_timeout = 90
+ 
+-prop.ppd_search_path = '/usr/share;/usr/local/share;/usr/lib;/usr/local/lib;/usr/libexec;/opt;/usr/lib64'
++prop.ppd_search_path = '/usr/share;${LOCALBASE}/share;${LOCALBASE}/share/foomatic/db/source/PPD/HP;/usr/lib;/usr/local/lib;/usr/libexec;/opt;/usr/lib64'
+ prop.ppd_search_pattern = 'HP-*.ppd.*'
+-prop.ppd_download_url = 'http://www.linuxprinting.org/ppd-o-matic.cgi'
++prop.ppd_download_url = 'http://www.openprinting.org/ppd-o-matic.php'
+ prop.ppd_file_suffix = '-hpijs.ppd'
+ 
+ # Build and install configurations

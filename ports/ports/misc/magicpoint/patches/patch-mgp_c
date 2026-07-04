@@ -1,0 +1,25 @@
+Fix with clang 15: invalid pointer to integer conversion.
+
+Index: mgp.c
+--- mgp.c.orig
++++ mgp.c
+@@ -506,16 +506,16 @@ genhtml(start_page)
+ 	char *childdebug;
+ 	char *convdb[][3] = {{ "jpg", "cjpeg", "djpeg" },
+ 				{ "png", "pnmtopng", "pngtopnm" },
+-				{ NULL, NULL, NULL }};
++				{ "", "", "" }};
+ 	int inum = 0;
+ 
+ 	/* check image type */
+ 	if (htmlimage) {
+-		for (inum = 0; *convdb[inum] != NULL; inum++) {
++		for (inum = 0; **convdb[inum] != '\0'; inum++) {
+ 			if (strcmp(*convdb[inum], htmlimage) == 0)
+ 				break;
+ 		}
+-		if (*convdb[inum] == NULL) {
++		if (**convdb[inum] == '\0') {
+ 			fprintf(stderr, "unknwon image type %s.\n", htmlimage);
+ 			/* print out valid image types */
+ 			fprintf(stderr, "Valid image types: ");

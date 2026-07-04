@@ -1,0 +1,34 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+distcc
+======
+To spawn compilation jobs on remote hosts, a minimal configuration
+such as the following can be used as `~/.distcc/hosts`:
+
+    localhost 192.168.178.13
+
+or `/etc/distcc/hosts` for a system-wide configuration.
+For SSH connections prefix hosts with `@` in the host specification.
+distcc will run the jobs as the user invoking distcc.
+
+Then set `$CC` to `distcc` to distribute compilation jobs across the
+configured nodes.
+
+Masquerading
+============
+Since distcc 3.3 it is recommended to use whitelisted compiler binaries.
+This feature is called masquerading and it's enabled by default. See
+the MASQUERADING section in distcc(1) how to set this up.
+If you wish to disable it and fallback to the old behaviour, use the
+`--make-me-a-botnet` parameter for distccd.
+
+References
+==========
+For more information on using distcc and setting up a build cluster, please
+refer to the Gentoo and Arch Linux wikis. While containing information
+specific to their build systems, they do provide good general information:
+
+  - https://wiki.gentoo.org/wiki/Distcc
+  - https://wiki.archlinux.org/index.php/Distcc

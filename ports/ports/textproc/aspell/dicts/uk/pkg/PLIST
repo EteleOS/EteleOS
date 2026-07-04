@@ -1,0 +1,9 @@
+@pkgpath textproc/aspell/dicts/aspell-uk
+lib/aspell/koi8-u-nl.cmap
+lib/aspell/koi8-u-nl.cset
+lib/aspell/uk.dat
+lib/aspell/uk_affix.dat
+lib/aspell/ukrainian.kbd
+share/aspell/uk.multi
+share/aspell/uk.rws
+share/aspell/ukrainian.alias

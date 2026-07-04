@@ -1,0 +1,14 @@
+Remove flags that base-gcc doesn't like
+
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -3,7 +3,7 @@
+ PREFIX=/usr/local
+ BINDIR=$(PREFIX)/bin
+ MANDIR=$(PREFIX)/share/man
+-ALL_CFLAGS=$(CFLAGS) -std=c99 -Wall -Wextra -Wpedantic -Wno-unused-parameter
++ALL_CFLAGS=$(CFLAGS) -std=c99 -Wall -Wextra
+ OBJ=\
+ 	build.o\
+ 	deps.o\

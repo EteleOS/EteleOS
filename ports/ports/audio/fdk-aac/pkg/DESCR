@@ -1,0 +1,4 @@
+The Fraunhofer FDK AAC codec library provides high-quality open source
+AAC encoder and decoder implementations.  It was released as part of
+the Android Open Source Project and consequently repackaged, modified
+and published as part of the opencore-amr project.

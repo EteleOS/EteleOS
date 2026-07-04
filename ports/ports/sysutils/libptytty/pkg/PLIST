@@ -1,0 +1,4 @@
+include/libptytty.h
+@lib lib/libptytty.so.${LIBptytty_VERSION}
+lib/pkgconfig/libptytty.pc
+@man man/man3/libptytty.3

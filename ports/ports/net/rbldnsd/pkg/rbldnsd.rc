@@ -1,0 +1,9 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/rbldnsd -r ${RBLDNSD_BASE} -w var"
+
+. /etc/rc.d/rc.subr
+
+pexp="rbldnsd -r ${RBLDNSD_BASE} -w var${daemon_flags:+ ${daemon_flags}}"
+
+rc_cmd $1

@@ -1,0 +1,121 @@
+#!/bin/ksh
+#
+# Copyright (c) 2021-2022 Klemens Nanni <kn@openbsd.org>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+# no, do not prefer braces around variables
+#	shellcheck disable=SC2250
+
+# ksh does not implicitly disable errexit in command substitution
+#	shellcheck disable=SC2311
+
+set -Cefu -o pipefail
+
+readonly self=${0##*/}
+
+err() {
+	printf '%s: %s\n' "$self" "$*" 1>&2
+	exit 1
+}
+
+usage() {
+	printf 'usage:\t%s [-Ujo] [-m maintainer [-p pkgpath]] [-u url]\n' \
+	    "$self" 1>&2
+	exit 1
+}
+
+fetch_data() {
+	ftp -MVo- -- "${url}/json/${1}.json"
+}
+
+show_totals() {
+	fetch_data totals | jq --argjson oflag "$oflag" '.results[] |
+		if $oflag then select(.withnewdistfile > 0) else . end'
+}
+
+show_ports() {
+	fetch_data "$1" | jq --argjson oflag "$oflag" \
+	    --argjson pflag "$pflag" --arg pkgpath "$pkgpath" '.[] |
+		if $oflag then select(.newdistfile | length > 0) else . end |
+		if $pflag then select(.basepkgpath | test($pkgpath; "in")) else . end'
+}
+
+readonly portslist='the OpenBSD ports mailing-list <ports@openbsd.org>'
+Uflag=false
+mflag=false maintainer=
+jflag=false
+oflag=false
+pflag=false pkgpath=
+uflag=false url=https://portroach.openbsd.org
+
+while getopts Ujm:op:u: opt
+do
+	case $opt in
+	U)	Uflag=true maintainer=$portslist;;
+	j)	jflag=true ;;
+	m)	mflag=true maintainer=$OPTARG ;;
+	o)	oflag=true ;;
+	p)	pflag=true pkgpath=$OPTARG ;;
+	u)	uflag=true url=$OPTARG ;;
+	*)	usage
+	esac
+done
+shift $((OPTIND - 1))
+$pflag && ! $Uflag && ! $mflag && usage
+$uflag && [[ $url != @(file|ftp|http|https)://* ]] && err 'invalid URL'
+(($# == 0)) || usage
+
+if $Uflag || $mflag
+then
+	show_totals | jq -r --arg maintainer "$maintainer" '
+		.maintainer | select(. | test($maintainer; "in"))' |
+	while read -r match
+	do
+		if $jflag
+		then
+			show_ports "$match"
+			continue
+		fi
+
+		ports=$(show_ports "$match" | jq -r '
+			def aorb($a; $b): if ($a | length) > 0 then $a else $b end;
+
+			[.basepkgpath, .ver, aorb(.newver; "up-to-date"),
+			 aorb(.homepage; .comment)] |
+			@tsv')
+
+		# `show_ports()' always yields at least one port unless `-p'
+		# fails to match any of their PKGPATHs
+		if [[ -n $ports ]]
+		then
+			printf '===>\t%s\n' "$match"
+			{
+			printf 'BASE_PKGPATH\tVERSION\tNEW\tHOMEPAGE/COMMENT\n'
+			printf '%s' "$ports"
+			} |	column -tc4 -s'	'
+			printf '\n'
+		fi
+	done
+else
+	if $jflag
+	then
+		show_totals
+		exit
+	fi
+
+	show_totals | jq -r '
+		[.maintainer, .total, .withnewdistfile,
+		 (.percentage | tostring) + "%"] |
+		@tsv' | column -tc4 -s'	'
+fi

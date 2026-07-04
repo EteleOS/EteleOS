@@ -1,0 +1,12 @@
+Index: Makefile.am
+--- Makefile.am.orig
++++ Makefile.am
+@@ -25,7 +25,7 @@ else
+ if FBSD
+ 	sed -i '' -e "s|(DESTDIR)|${DESTDIR}|g" $(pcfiles)
+ else
+-	${SED} -i "s|(DESTDIR)|${DESTDIR}|g" $(pcfiles)
++	${SED} -i "s|(DESTDIR)||g" $(pcfiles)
+ endif
+ endif
+ 

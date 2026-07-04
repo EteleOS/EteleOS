@@ -1,0 +1,69 @@
+Index: Makefile.gnu
+--- Makefile.gnu.orig
++++ Makefile.gnu
+@@ -5,9 +5,10 @@ include Makefile.srcs
+ 
+ # General configuration variables:
+ DESTDIR ?= /
+-INCDIR ?= $(DESTDIR)/usr/include
+-INSTALLDIR ?= $(DESTDIR)/usr/lib
++INCDIR ?= $(PREFIX)/include
++INSTALLDIR ?= $(PREFIX)/lib
+ 
++
+ # Converts cr/lf to just lf
+ DOS2UNIX = dos2unix
+ 
+@@ -23,19 +24,17 @@ CFLAGS += -DNO_LCMS
+ # LibJXR
+ CFLAGS += -DDISABLE_PERF_MEASUREMENT -D__ANSI__
+ CFLAGS += $(INCLUDE)
+-CXXFLAGS ?= -O3 -fPIC -fexceptions -fvisibility=hidden -Wno-ctor-dtor-privacy
++CXXFLAGS ?= -fPIC -fexceptions -fvisibility=hidden -Wno-ctor-dtor-privacy
+ # LibJXR
+ CXXFLAGS += -D__ANSI__
+ CXXFLAGS += $(INCLUDE)
+ 
+-ifeq ($(shell sh -c 'uname -m 2>/dev/null || echo not'),x86_64)
+-	CFLAGS += -fPIC
+-	CXXFLAGS += -fPIC
+-endif
++CFLAGS += -fPIC
++CXXFLAGS += -fPIC
+ 
+ TARGET  = freeimage
+ STATICLIB = lib$(TARGET).a
+-SHAREDLIB = lib$(TARGET)-$(VER_MAJOR).$(VER_MINOR).so
++SHAREDLIB = lib$(TARGET).so.$(LIBfreeimage_VERSION)
+ LIBNAME	= lib$(TARGET).so
+ VERLIBNAME = $(LIBNAME).$(VER_MAJOR)
+ HEADER = Source/FreeImage.h
+@@ -49,7 +48,6 @@ all: dist
+ dist: FreeImage
+ 	mkdir -p Dist
+ 	cp *.a Dist/
+-	cp *.so Dist/
+ 	cp Source/FreeImage.h Dist/
+ 
+ dos2unix:
+@@ -67,16 +65,13 @@ $(STATICLIB): $(MODULES)
+ 	$(AR) r $@ $(MODULES)
+ 
+ $(SHAREDLIB): $(MODULES)
+-	$(CC) -s -shared -Wl,-soname,$(VERLIBNAME) $(LDFLAGS) -o $@ $(MODULES) $(LIBRARIES)
++	$(CXX) $(CXXFLAGS) -shared $(LDFLAGS) -o $@ $(MODULES) $(LIBRARIES)
+ 
+ install:
+ 	install -d $(INCDIR) $(INSTALLDIR)
+-	install -m 644 -o root -g root $(HEADER) $(INCDIR)
+-	install -m 644 -o root -g root $(STATICLIB) $(INSTALLDIR)
+-	install -m 755 -o root -g root $(SHAREDLIB) $(INSTALLDIR)
+-	ln -sf $(SHAREDLIB) $(INSTALLDIR)/$(VERLIBNAME)
+-	ln -sf $(VERLIBNAME) $(INSTALLDIR)/$(LIBNAME)	
+-#	ldconfig
++	install -m 644 -o root -g bin $(HEADER) $(INCDIR)
++	install -m 644 -o root -g bin $(STATICLIB) $(INSTALLDIR)
++	install -m 755 -o root -g bin $(SHAREDLIB) $(INSTALLDIR)
+ 
+ clean:
+ 	rm -f core Dist/*.* u2dtmp* $(MODULES) $(STATICLIB) $(SHAREDLIB) $(LIBNAME)

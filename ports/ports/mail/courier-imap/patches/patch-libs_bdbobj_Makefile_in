@@ -1,0 +1,11 @@
+--- libs/bdbobj/Makefile.in.orig	Sat Jun  6 16:45:18 2015
++++ libs/bdbobj/Makefile.in	Sun Mar  6 23:13:09 2016
+@@ -126,7 +126,7 @@ am__objects_2 = testbdb.$(OBJEXT)
+ testbdb_OBJECTS = $(am_testbdb_OBJECTS)
+ testbdb_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
+ 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+-	$(CXXFLAGS) $(testbdb_LDFLAGS) $(LDFLAGS) -o $@
++	$(CXXFLAGS) $(LDFLAGS) -o $@
+ SCRIPTS = $(noinst_SCRIPTS)
+ AM_V_P = $(am__v_P_@AM_V@)
+ am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)

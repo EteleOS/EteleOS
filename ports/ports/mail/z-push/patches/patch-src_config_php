@@ -1,0 +1,12 @@
+Index: src/config.php
+--- src/config.php.orig
++++ src/config.php
+@@ -68,7 +68,7 @@
+  *           State migration script is available, more informations: https://wiki.z-hub.io/x/xIAa
+  */
+     define('STATE_MACHINE', 'FILE');
+-    define('STATE_DIR', '/var/lib/z-push/');
++    define('STATE_DIR', '/var/db/z-push/');
+ 
+ /**********************************************************************************
+  *  IPC - InterProcessCommunication

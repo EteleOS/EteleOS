@@ -1,0 +1,34 @@
+mtest.c calls gets()
+
+Index: imap/Makefile
+--- imap/Makefile.orig
++++ imap/Makefile
+@@ -587,8 +587,8 @@ sslunix sslsco:
+ 	@echo ++ SSLTYPE=$(SSLTYPE).nopwd
+ 	@echo +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 	@echo
+-	@echo Do you want to continue this build anyway?  Type y or n please:
+-	@$(SH) -c 'read x; case "$$x" in y) exit 0;; *) (make nounenc;exit 1);; esac'
++	#@echo Do you want to continue this build anyway?  Type y or n please:
++	#@$(SH) -c 'read x; case "$$x" in y) exit 0;; *) (make nounenc;exit 1);; esac'
+ 
+ nounenc:
+ 	@echo +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+@@ -677,7 +677,7 @@ an ua:
+ 	$(TOOLS)/$@ "$(LN)" src/ansilib c-client
+ 	$(TOOLS)/$@ "$(LN)" src/charset c-client
+ 	$(TOOLS)/$@ "$(LN)" src/osdep/$(SYSTEM) c-client
+-	$(TOOLS)/$@ "$(LN)" src/mtest mtest
++#	$(TOOLS)/$@ "$(LN)" src/mtest mtest
+ 	$(TOOLS)/$@ "$(LN)" src/ipopd ipopd
+ 	$(TOOLS)/$@ "$(LN)" src/imapd imapd
+ 	$(TOOLS)/$@ "$(LN)" src/mailutil mailutil
+@@ -718,7 +718,7 @@ bundledno:
+ bundled:
+ 	@echo Building bundled tools...
+ 	@echo BUNDLED=$(BUNDLED)
+-	$(CD) mtest;$(MAKE)
++#	$(CD) mtest;$(MAKE)
+ 	$(CD) ipopd;$(MAKE)
+ 	$(CD) imapd;$(MAKE)
+ 	$(CD) mailutil;$(MAKE)

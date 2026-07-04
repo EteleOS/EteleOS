@@ -1,0 +1,8 @@
+--- tests/test.lua.orig	Thu Oct  4 16:25:54 2012
++++ tests/test.lua	Mon Jan  7 10:59:01 2013
+@@ -1,5 +1,3 @@
+-#!/usr/bin/env lua5.1
+-
+ local tmp = "/tmp"
+ local sep = string.match (package.config, "[^\n]+")
+ local upper = ".."

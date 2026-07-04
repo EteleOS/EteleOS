@@ -1,0 +1,4 @@
+@conflict sl-*
+bin/sl
+share/examples/sl/
+share/examples/sl/sl.tcl

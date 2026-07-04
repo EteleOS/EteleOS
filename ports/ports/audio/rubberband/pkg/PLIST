@@ -1,0 +1,22 @@
+@bin bin/rubberband
+@bin bin/rubberband-r3
+include/rubberband/
+include/rubberband/RubberBandLiveShifter.h
+include/rubberband/RubberBandStretcher.h
+include/rubberband/rubberband-c.h
+lib/ladspa/
+lib/ladspa/ladspa-rubberband.cat
+@so lib/ladspa/ladspa-rubberband.so
+@static-lib lib/librubberband.a
+@lib lib/librubberband.so.${LIBrubberband_VERSION}
+lib/lv2/
+lib/lv2/rubberband.lv2/
+@so lib/lv2/rubberband.lv2/lv2-rubberband.so
+lib/lv2/rubberband.lv2/lv2-rubberband.ttl
+lib/lv2/rubberband.lv2/manifest.ttl
+lib/pkgconfig/rubberband.pc
+lib/vamp/vamp-rubberband.cat
+@so lib/vamp/vamp-rubberband.so
+share/ladspa/
+share/ladspa/rdf/
+share/ladspa/rdf/ladspa-rubberband.rdf

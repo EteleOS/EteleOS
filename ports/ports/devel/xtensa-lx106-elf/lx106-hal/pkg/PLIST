@@ -1,0 +1,14 @@
+xtensa-lx106-elf/xtensa-lx106-elf/include/xtensa/cacheasm.h
+@comment xtensa-lx106-elf/xtensa-lx106-elf/include/xtensa/config/core-isa.h
+xtensa-lx106-elf/xtensa-lx106-elf/include/xtensa/config/core-matmap.h
+xtensa-lx106-elf/xtensa-lx106-elf/include/xtensa/config/core.h
+xtensa-lx106-elf/xtensa-lx106-elf/include/xtensa/config/defs.h
+xtensa-lx106-elf/xtensa-lx106-elf/include/xtensa/config/specreg.h
+xtensa-lx106-elf/xtensa-lx106-elf/include/xtensa/config/system.h
+xtensa-lx106-elf/xtensa-lx106-elf/include/xtensa/config/tie-asm.h
+xtensa-lx106-elf/xtensa-lx106-elf/include/xtensa/config/tie.h
+xtensa-lx106-elf/xtensa-lx106-elf/include/xtensa/coreasm.h
+xtensa-lx106-elf/xtensa-lx106-elf/include/xtensa/corebits.h
+xtensa-lx106-elf/xtensa-lx106-elf/include/xtensa/hal.h
+xtensa-lx106-elf/xtensa-lx106-elf/include/xtensa/xtensa-xer.h
+@static-lib xtensa-lx106-elf/xtensa-lx106-elf/lib/libhal.a

@@ -1,0 +1,4 @@
+libexec/tray-app/
+@bin libexec/tray-app/battery
+@bin libexec/tray-app/eject
+@bin libexec/tray-app/sound

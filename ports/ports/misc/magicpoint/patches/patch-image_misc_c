@@ -1,0 +1,13 @@
+For abort() declaration.
+
+Index: image/misc.c
+--- image/misc.c.orig
++++ image/misc.c
+@@ -12,7 +12,6 @@
+ #include "xloadimage.h"
+ #include "patchlevel"
+ #include <signal.h>
+-#include <stdlib.h>
+ 
+ extern int      _Xdebug;
+ extern Display *display;

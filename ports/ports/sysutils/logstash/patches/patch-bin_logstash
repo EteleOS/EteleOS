@@ -1,0 +1,9 @@
+Index: bin/logstash
+--- bin/logstash.orig
++++ bin/logstash
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ # Run logstash
+ #
+ # Usage:

@@ -1,0 +1,15 @@
+@bin bin/atoc_conv
+@bin bin/kakasi
+bin/kakasi-config
+@bin bin/mkkanwa
+@bin bin/rdic_conv
+@bin bin/wx2_conv
+include/libkakasi.h
+lib/libkakasi.a
+lib/libkakasi.la
+@lib lib/libkakasi.so.${LIBkakasi_VERSION}
+@man man/ja_JP.EUC/cat1/kakasi.0
+@man man/ja_JP.EUC/man1/kakasi.1
+share/kakasi/
+share/kakasi/itaijidict
+share/kakasi/kanwadict

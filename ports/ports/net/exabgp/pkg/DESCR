@@ -1,0 +1,12 @@
+ExaBGP is software which speaks BGP. It is used for injecting routes
+or performing complex route mangling with BGP, it is not intended to
+transform a server into a BGP router.
+
+Potential uses include:
+
+ - injecting routes for service IPs (e.g. anycasting health-checked services)
+ - injecting flowspec routes, possibly to handle DDOS
+ - adding the received default route to a host
+ - filtering and/or modifying routes using your own logic
+ - tracking changes in the global routing table
+ - passing received routes in text/JSON form to a third-party application

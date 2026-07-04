@@ -1,0 +1,15 @@
+Fix build on powerpc64 where we don't need this header and regular powerpc
+doesn't use it.
+
+Index: libretro-common/audio/audio_mix.c
+--- libretro-common/audio/audio_mix.c.orig
++++ libretro-common/audio/audio_mix.c
+@@ -28,8 +28,6 @@
+ 
+ #if defined(__SSE2__)
+ #include <emmintrin.h>
+-#elif defined(__ALTIVEC__)
+-#include <altivec.h>
+ #endif
+ 
+ #include <retro_miscellaneous.h>

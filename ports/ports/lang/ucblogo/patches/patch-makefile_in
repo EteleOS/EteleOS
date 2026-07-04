@@ -1,0 +1,19 @@
+Index: makefile.in
+--- makefile.in.orig
++++ makefile.in
+@@ -1,5 +1,5 @@
+ CC	= @CC@
+-CFLAGS	= @CFLAGS@ @CPPFLAGS@ @X_CFLAGS@ -O0 -DUSE_OLD_TTY
++CFLAGS	= @CFLAGS@ @CPPFLAGS@ @X_CFLAGS@ -DUSE_OLD_TTY
+ CXX     = g++
+ CXXFLAGS = -g @CXXFLAGS@
+ LDFLAGS	= @LDFLAGS@
+@@ -28,7 +28,7 @@ everything:	logo logolib/Messages helpfiles helpfiles/
+ #logo-mode
+ 
+ mem.o:	mem.c
+-	$(CC) $(CFLAGS) -O0 -c mem.c
++	$(CC) $(CFLAGS) -c mem.c
+ 
+ svn.c:	$(SRCS)
+ 	echo 'char* SVN = "('`svnversion|tr -d '\r'`')";' > svn.c

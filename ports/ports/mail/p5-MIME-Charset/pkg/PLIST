@@ -1,0 +1,12 @@
+${P5SITE}/MIME/
+${P5SITE}/MIME/Charset/
+${P5SITE}/MIME/Charset.pm
+${P5SITE}/MIME/Charset/Defaults.pm.sample
+${P5SITE}/MIME/Charset/UTF.pm
+${P5SITE}/MIME/Charset/_Compat.pm
+${P5SITE}/POD2/
+${P5SITE}/POD2/JA/
+${P5SITE}/POD2/JA/MIME/
+${P5SITE}/POD2/JA/MIME/Charset.pod
+@man man/man3p/MIME::Charset.3p
+@man man/man3p/POD2::JA::MIME::Charset.3p

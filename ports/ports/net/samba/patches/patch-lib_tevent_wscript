@@ -1,0 +1,13 @@
+Force building standalone library (e.g., put headers in appropriate place).
+
+Index: lib/tevent/wscript
+--- lib/tevent/wscript.orig
++++ lib/tevent/wscript
+@@ -42,6 +42,7 @@ def configure(conf):
+             conf.define('USING_SYSTEM_CMOCKA', 1)
+ 
+     conf.env.standalone_tevent = conf.IN_LAUNCH_DIR()
++    conf.env.standalone_tevent = True
+ 
+     if not conf.env.standalone_tevent:
+         if conf.CHECK_BUNDLED_SYSTEM_PKG('tevent', minversion=VERSION,

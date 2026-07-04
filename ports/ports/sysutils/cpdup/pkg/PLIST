@@ -1,0 +1,2 @@
+@bin bin/cpdup
+@man man/man1/cpdup.1

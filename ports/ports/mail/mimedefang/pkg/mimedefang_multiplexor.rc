@@ -1,0 +1,12 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/mimedefang-multiplexor"
+daemon_flags="-G -U _mdefang -E -l -m 2 -q 10 -x 10 -b 600"
+
+. /etc/rc.d/rc.subr
+
+rc_reload() {
+	${TRUEPREFIX}/bin/md-mx-ctrl reread
+}
+
+rc_cmd $1

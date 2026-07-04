@@ -1,0 +1,22 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/ossec-hids/bin/ossec-control"
+daemon_flags="start"
+
+. /etc/rc.d/rc.subr
+
+rc_usercheck=NO
+
+rc_check() {
+	${daemon} status
+}
+
+rc_reload() {
+	${daemon} reload
+}
+
+rc_stop() {
+	${daemon} stop
+}
+
+rc_cmd $1

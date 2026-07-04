@@ -1,0 +1,21 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -13,14 +13,14 @@ INSTALL_PROGRAM=$(INSTALL) -Dm 755
+ INSTALL_DATA=$(INSTALL) -m 644
+ 
+ # Directories into which to install the various files
+-bindir=$(DESTDIR)$(PREFIX)/bin
+-sharedir=$(DESTDIR)$(PREFIX)/share
++bindir=$(PREFIX)/bin
++sharedir=$(PREFIX)/share
+ mandir=$(DESTDIR)$(MANPATH2)/man1
+ MAKEDIR=mkdir -p
+ 
+ # Default Qmake Command For Ubuntu (and probably other Debian) distributions
+ 
+-QMAKE_COMMAND := qmake
++QMAKE_COMMAND := qmake-qt5
+ # For Fedora 32 and similar distributions, use the next line instead of the above.
+ # QMAKE_COMMAND := /usr/bin/qmake-qt5
+ 

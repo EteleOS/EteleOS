@@ -1,0 +1,12 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -385,7 +385,7 @@ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ ACLOCAL_AMFLAGS = -I m4
+-SUBDIRS = src include examples doc
++SUBDIRS = src include examples
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = cppunit.pc
+ doc_DATA = \

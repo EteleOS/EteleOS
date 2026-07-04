@@ -1,0 +1,14 @@
+Index: groupsock/inet.c
+--- groupsock/inet.c.orig
++++ groupsock/inet.c
+@@ -51,6 +51,10 @@ int initializeWinsockIfNecessary(void) { return 1; }
+ long our_random() {
+ #if defined(__WIN32__) || defined(_WIN32)
+   return rand();
++#elif defined(__OpenBSD__)
++  long r;
++  arc4random_buf(&r, sizeof(r));
++  return r;
+ #else
+   return random();
+ #endif

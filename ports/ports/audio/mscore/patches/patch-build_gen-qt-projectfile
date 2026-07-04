@@ -1,0 +1,20 @@
+Index: build/gen-qt-projectfile
+--- build/gen-qt-projectfile.orig
++++ build/gen-qt-projectfile
+@@ -8,14 +8,14 @@ for a in $uis; do
+ echo
+ 
+ echo "FORMS = \\"
+-uis=`find $1 -name "*.ui"`
++uis=`gfind $1 -name "*.ui"`
+ for a in $uis; do
+       echo "    " $a \\;
+       done
+ echo
+ 
+ echo "SOURCES = \\"
+-uis=`find $1 -name "*.cpp"`
++uis=`gfind $1 -name "*.cpp"`
+ for a in $uis; do
+       echo "    " $a \\;
+       done

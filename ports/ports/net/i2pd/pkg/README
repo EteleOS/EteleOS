@@ -1,0 +1,26 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Resource Limits: File Descriptors
+=================================
+
+${PKGSTEM} needs to open a lot of file descriptors.
+
+For a regular node, you should raise the system-wide maxfiles limit to
+8192:
+
+	# sysctl kern.maxfiles=8192
+	# echo "kern.maxfiles=8192" >> /etc/sysctl.conf
+
+If you intend to run a floodfill, you should raise this limit even more:
+ 
+	# sysctl kern.maxfiles=16000
+	# echo "kern.maxfiles=16000" >> /etc/sysctl.conf
+
+and also edit /etc/login.conf.d/i2pd:
+
+	i2pd:\
+		:openfiles-cur=8192:\
+		:openfiles-max=8192:\
+		:tc=daemon:

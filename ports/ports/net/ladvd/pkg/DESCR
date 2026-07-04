@@ -1,0 +1,17 @@
+LADVD is a daemon to handle link-layer advertisements on UNIX.
+It can send and receive frames for the LLDP, CDP, EDP, FDP and NDP
+protocols. These are used to inform devices about the equipment
+on the other side of an ethernet link. This includes hostname,
+port information and more. For example, a switch can display a
+list of which device is connected to each port.
+
+LADVD uses privilege separation; privileges are required to handle
+raw sockets and certain ioctl()s. Network data is parsed by an
+unprivileged child process.
+
+Every 30 seconds the child generates advertisement frames reflecting
+the current system state. Interfaces (bridge, bonding, wireless),
+capabilities (bridging, forwarding, wireless) and addresses (IPv4,
+IPv6) are detected dynamically. Secondly ladvd can listen for incoming
+frames and utilize these for various features (protocol auto-enable,
+logging, interface descriptions).

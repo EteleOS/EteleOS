@@ -1,0 +1,4 @@
+@bin bin/2bwm
+@bin bin/hidden
+@man man/man1/2bwm.1
+@man man/man1/hidden.1

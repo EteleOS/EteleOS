@@ -1,0 +1,13 @@
+Fix default location of where to find ghostscript
+
+--- GSPdf.m.orig	Wed Apr 18 23:58:09 2012
++++ GSPdf.m	Mon Jul  2 19:46:27 2012
+@@ -133,7 +133,7 @@ static GSPdf *gspdf = nil;
+ #if defined __NetBSD__
+     gsPathStr = @"/usr/pkg/bin/gs";
+ #else
+-    gsPathStr = @"/usr/bin/gs";
++    gsPathStr = @"${LOCALBASE}/bin/gs";
+ #endif
+     }
+   [gsPath release];

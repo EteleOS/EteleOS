@@ -1,0 +1,20 @@
+--- io_method.c.orig	Wed Mar 27 05:41:23 2002
++++ io_method.c	Sat May 22 22:34:22 2010
+@@ -59,7 +59,7 @@ ssize_t
+ io_method_accept(int fd, void *buf, size_t size)
+ {
+ 	struct sockaddr_storage from;
+-	size_t fromlen = sizeof(from);
++	socklen_t fromlen = sizeof(from);
+ 
+ 	if (size < sizeof(int))
+ 		return (0);
+@@ -177,7 +177,7 @@ io_method_connect(struct io_obj *obj, int fd, void *bu
+ 
+ 	/* Check if the connection completed */
+ 	if (getsockopt(fd, SOL_SOCKET, SO_ERROR, &error, &errsz) == -1) {
+-		warn(__FUNCTION__": getsockopt for %d", fd);
++		warn("%s: getsockopt for %d", __FUNCTION__, fd);
+ 		return (-1);
+ 	}
+ 

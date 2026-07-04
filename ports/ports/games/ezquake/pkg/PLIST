@@ -1,0 +1,13 @@
+@bin bin/ezquake
+share/doc/pkg-readmes/${PKGSTEM}
+share/ezquake/
+share/ezquake/au-sv.txt
+share/ezquake/ctf.txt
+share/ezquake/eu-4on4.txt
+share/ezquake/eu-sv.txt
+share/ezquake/global.txt
+share/ezquake/na-sv.txt
+share/ezquake/qizmo.txt
+share/ezquake/sa-sv.txt
+share/ezquake/sources.txt
+share/ezquake/tf.txt

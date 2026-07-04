@@ -1,0 +1,43 @@
+Add -u flag, to drop privileges to that user given
+
+Index: arpwatch.8
+--- arpwatch.8.orig
++++ arpwatch.8
+@@ -43,6 +43,9 @@ arpwatch - keep track of ethernet/ip address pairings
+ ]] [
+ .B -r
+ .I file
++] [
++.B -u
++.I username
+ ]
+ .ad
+ .SH DESCRIPTION
+@@ -94,6 +97,18 @@ of reading from the network. In this case,
+ .B arpwatch
+ does not fork.
+ .LP
++The
++.B -u
++flag instructs
++.B arpwatch
++to drop root privileges and change the UID to
++.I username
++and GID to the primary group of
++.I username .
++This is recommended for security reasons, but
++.I username
++has to have write access to the default directory.
++.LP
+ Note that an empty
+ .I arp.dat
+ file must be created before the first time you run
+@@ -152,7 +167,7 @@ addresses was a DECnet address.
+ .na
+ .nh
+ .nf
+-/usr/operator/arpwatch - default directory
++${LOCALSTATEDIR}/arpwatch - default directory
+ arp.dat - ethernet/ip address database
+ ethercodes.dat - vendor ethernet block list
+ .ad

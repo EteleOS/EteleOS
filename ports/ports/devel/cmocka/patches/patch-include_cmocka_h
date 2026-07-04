@@ -1,0 +1,32 @@
+Avoid a conflicting typedef on 32-bit arch.
+
+Index: include/cmocka.h
+--- include/cmocka.h.orig
++++ include/cmocka.h
+@@ -58,7 +58,7 @@ int __stdcall IsDebuggerPresent();
+ 
+ /* If __WORDSIZE is not set, try to figure it out and default to 32 bit. */
+ #ifndef __WORDSIZE
+-# if (defined(__x86_64__) && !defined(__ILP32__)) || defined(__sparc_v9__) || defined(__sparcv9)
++# if defined(_LP64)
+ #  define __WORDSIZE 64
+ # else
+ #  define __WORDSIZE 32
+@@ -115,6 +115,9 @@ typedef uintmax_t LargestIntegralType;
+ #define cast_to_largest_integral_type(value) \
+     ((LargestIntegralType)(value))
+ 
++#if defined(__OpenBSD__)
++#include <stdint.h>
++#else
+ /* Smallest integral type capable of holding a pointer. */
+ #if !defined(_UINTPTR_T) && !defined(_UINTPTR_T_DEFINED)
+ # if defined(_WIN32)
+@@ -143,6 +146,7 @@ typedef uintmax_t LargestIntegralType;
+ # define _UINTPTR_T
+ # define _UINTPTR_T_DEFINED
+ #endif /* !defined(_UINTPTR_T) || !defined(_UINTPTR_T_DEFINED) */
++#endif
+ 
+ /* Perform an unsigned cast to uintptr_t. */
+ #define cast_to_pointer_integral_type(value) \

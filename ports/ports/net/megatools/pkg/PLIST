@@ -1,0 +1,30 @@
+bin/megacopy
+bin/megadf
+bin/megadl
+bin/megaexport
+bin/megaget
+bin/megals
+bin/megamkdir
+bin/megaput
+bin/megareg
+bin/megarm
+bin/megatest
+@bin bin/megatools
+@man man/man1/megatools-copy.1
+@man man/man1/megatools-df.1
+@man man/man1/megatools-dl.1
+@man man/man1/megatools-export.1
+@man man/man1/megatools-get.1
+@man man/man1/megatools-ls.1
+@man man/man1/megatools-mkdir.1
+@man man/man1/megatools-put.1
+@man man/man1/megatools-reg.1
+@man man/man1/megatools-rm.1
+@man man/man1/megatools-test.1
+@man man/man1/megatools.1
+@man man/man5/megarc.5
+share/doc/megatools/
+share/doc/megatools/LICENSE
+share/doc/megatools/NEWS
+share/doc/megatools/README
+share/doc/megatools/TODO

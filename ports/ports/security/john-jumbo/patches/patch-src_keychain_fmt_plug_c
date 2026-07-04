@@ -1,0 +1,14 @@
+Index: src/keychain_fmt_plug.c
+--- src/keychain_fmt_plug.c.orig
++++ src/keychain_fmt_plug.c
+@@ -38,6 +38,10 @@ john_register_one(&fmt_keychain);
+ #include "pbkdf2_hmac_sha1.h"
+ #include "jumbo.h"
+ 
++#ifndef C_Block
++#define C_Block DES_cblock
++#endif
++
+ #define FORMAT_LABEL            "keychain"
+ 
+ #ifdef SIMD_COEF_32

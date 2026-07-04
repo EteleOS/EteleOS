@@ -1,0 +1,12 @@
+Index: lavtools/lavpipe.c
+--- lavtools/lavpipe.c.orig
++++ lavtools/lavpipe.c
+@@ -540,7 +540,7 @@ KEEP_SOURCE: ;
+ static
+ void parse_command_line(int argc, char *argv[], commandline_params_t *cl)
+ {
+-  char c;
++  int c;
+   int err;
+ 
+   cl->verbose = 1;

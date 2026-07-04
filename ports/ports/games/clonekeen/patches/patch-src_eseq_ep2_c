@@ -1,0 +1,12 @@
+Index: src/eseq_ep2.c
+--- src/eseq_ep2.c.orig
++++ src/eseq_ep2.c
+@@ -356,7 +356,7 @@ void eseq_showmsg(char *text, int boxleft, int boxtop,
+ int draw;
+ int i;
+ 
+-char tempbuf[1024];
++static char tempbuf[1024];
+ char textline, showtimer;
+ int amountshown;
+ int waittimer;

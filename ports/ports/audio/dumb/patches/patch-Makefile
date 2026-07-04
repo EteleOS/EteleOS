@@ -1,0 +1,34 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -41,10 +41,10 @@ else
+ ifdef USE_SGICC
+ CC := cc
+ else
+-CC := gcc
++CC ?= gcc
+ endif
+ endif
+-AR := ar
++AR ?= ar
+ 
+ 
+ # Configuration.
+@@ -226,13 +226,13 @@ DBGFLAGS := -n32 -g3 -DDEBUGMODE=1
+ else
+ WFLAGS := -Wall -W -Wwrite-strings -Wstrict-prototypes -Wmissing-declarations -DDUMB_DECLARE_DEPRECATED
+ WFLAGS_ALLEGRO := -Wno-missing-declarations
+-OFLAGS := -O2 -ffast-math -fomit-frame-pointer
+-DBGFLAGS := -DDEBUGMODE=1 -g3
++OFLAGS := -O2 -ffast-math -fomit-frame-pointer -fgnu89-inline
++DBGFLAGS := -DDEBUGMODE=1 -g3 -fgnu89-inline
+ endif
+ endif
+ 
+-CFLAGS_RELEASE := -Iinclude $(WFLAGS) $(OFLAGS)
+-CFLAGS_DEBUG := -Iinclude $(WFLAGS) $(DBGFLAGS)
++CFLAGS_RELEASE := -Iinclude ${CFLAGS} $(WFLAGS) $(OFLAGS)
++CFLAGS_DEBUG := -Iinclude ${CFLAGS} $(WFLAGS) $(DBGFLAGS)
+ 
+ LDFLAGS := -s
+ 

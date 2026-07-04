@@ -1,0 +1,15 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/prosody -D"
+daemon_user="_prosody"
+
+. /etc/rc.d/rc.subr
+
+pexp="${MODLUA_BIN} ${daemon}${daemon_flags:+ ${daemon_flags}}"
+rc_usercheck=NO
+
+rc_check() {
+	${TRUEPREFIX}/sbin/prosodyctl status
+}
+
+rc_cmd $1

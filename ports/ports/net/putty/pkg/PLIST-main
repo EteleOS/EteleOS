@@ -1,0 +1,10 @@
+@bin bin/plink
+@bin bin/pscp
+@bin bin/psftp
+@bin bin/psusan
+@bin bin/puttygen
+@man man/man1/plink.1
+@man man/man1/pscp.1
+@man man/man1/psftp.1
+@man man/man1/psusan.1
+@man man/man1/puttygen.1

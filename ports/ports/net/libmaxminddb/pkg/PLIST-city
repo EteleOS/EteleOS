@@ -1,0 +1,4 @@
+share/examples/libmaxminddb/
+@sample ${LOCALSTATEDIR}/db/GeoIP/
+share/examples/libmaxminddb/GeoLite2-City.mmdb
+@sample ${LOCALSTATEDIR}/db/GeoIP/GeoLite2-City.mmdb

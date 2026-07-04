@@ -1,0 +1,8 @@
+@bin bin/qjs
+@bin bin/qjsc
+bin/qjscalc
+include/quickjs/
+include/quickjs/quickjs-libc.h
+include/quickjs/quickjs.h
+lib/quickjs/
+@static-lib lib/quickjs/libquickjs.a

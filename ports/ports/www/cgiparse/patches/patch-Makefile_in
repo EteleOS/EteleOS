@@ -1,0 +1,15 @@
+--- Makefile.in.orig	Sun Sep 24 20:32:11 2000
++++ Makefile.in	Thu Mar 10 22:45:07 2016
+@@ -30,10 +30,10 @@ AFLAGS = -Wall -I. -I$(srcdir) $(CPPFLAGS) $(DEBUG) $(
+ 
+ MAJOR=1
+ ARNAME = lib$(LIB).a
+-SONAME = lib$(LIB).so.$(MAJOR)
++SONAME = lib$(LIB).so.$(LIBcgiparse_VERSION)
+ PANAME = lib$(LIB)_p.a
+ 
+-prefix = @prefix@
++prefix = ${DESTDIR}@prefix@
+ exec_prefix = @exec_prefix@
+ LIBDIR = @libdir@
+ LIBOWN = 0

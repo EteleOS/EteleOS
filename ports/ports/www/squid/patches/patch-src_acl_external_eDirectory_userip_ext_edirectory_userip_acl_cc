@@ -1,0 +1,13 @@
+Index: src/acl/external/eDirectory_userip/ext_edirectory_userip_acl.cc
+--- src/acl/external/eDirectory_userip/ext_edirectory_userip_acl.cc.orig
++++ src/acl/external/eDirectory_userip/ext_edirectory_userip_acl.cc
+@@ -75,6 +75,9 @@
+ #ifdef HAVE_NETINET_IN_H
+ #include <netinet/in.h>
+ #endif
++#ifdef HAVE_SYS_SOCKET_H
++#include <sys/socket.h>
++#endif
+ 
+ #ifdef HELPER_INPUT_BUFFER
+ #define EDUI_MAXLEN     HELPER_INPUT_BUFFER

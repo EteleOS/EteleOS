@@ -1,0 +1,12 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -813,7 +813,7 @@ install-dvi: install-dvi-recursive
+ 
+ install-dvi-am:
+ 
+-install-exec-am: install-sysconfDATA
++install-exec-am:
+ 
+ install-html: install-html-recursive
+ 

@@ -1,0 +1,25 @@
+bin/sslmate
+libexec/sslmate/
+libexec/sslmate/approval/
+libexec/sslmate/approval/dns/
+libexec/sslmate/approval/dns/cloudflare
+libexec/sslmate/approval/dns/digitalocean
+libexec/sslmate/approval/dns/dnsimple
+libexec/sslmate/approval/dns/route53
+libexec/sslmate/approval/http/
+libexec/sslmate/approval/http/documentroot
+@man man/man1/sslmate.1
+share/doc/sslmate/
+share/doc/sslmate/NEWS
+share/doc/sslmate/README
+share/sslmate/
+share/sslmate/dhparams/
+share/sslmate/dhparams/dh2048-group14.pem
+share/sslmate/dhparams/dh3072-group15.pem
+share/sslmate/dhparams/dh4096-group16.pem
+share/sslmate/dhparams/dh6144-group17.pem
+share/sslmate/dhparams/dh8192-group18.pem
+share/sslmate/perllib/
+share/sslmate/perllib/SSLMate/
+share/sslmate/perllib/SSLMate.pm
+share/sslmate/perllib/SSLMate/HTTPSClient.pm

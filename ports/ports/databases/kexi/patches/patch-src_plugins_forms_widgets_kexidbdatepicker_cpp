@@ -1,0 +1,11 @@
+Index: src/plugins/forms/widgets/kexidbdatepicker.cpp
+--- src/plugins/forms/widgets/kexidbdatepicker.cpp.orig
++++ src/plugins/forms/widgets/kexidbdatepicker.cpp
+@@ -22,6 +22,7 @@
+ #include "kexidbdatepicker.h"
+ #include <kexiutils/utils.h>
+ 
++#include <QDate>
+ #include <QLineEdit>
+ #include <QInputMethodEvent>
+ 

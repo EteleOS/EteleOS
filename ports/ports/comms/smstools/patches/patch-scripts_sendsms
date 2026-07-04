@@ -1,0 +1,18 @@
+Index: scripts/sendsms
+--- scripts/sendsms.orig
++++ scripts/sendsms
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/bin/sh
+ # This script send a text sms at the command line by creating
+ # a sms file in the outgoing queue.
+ 
+@@ -18,7 +18,7 @@ KEYS=""
+ # When creating keys, remember to use -n for echo:
+ # echo -n "key" | md5sum
+ 
+-smsd_group="smsd"
++smsd_group="_smsd"
+ 
+ # Will need echo which accepts -n argument:
+ ECHO=echo

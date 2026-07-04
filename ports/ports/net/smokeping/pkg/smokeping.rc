@@ -1,0 +1,15 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/smokeping"
+daemon_user="_smokeping"
+
+. /etc/rc.d/rc.subr
+
+# N.B. If adjusting, has to match single and multi process modes, but not cgi  
+pexp="(perl:|/usr/bin/perl) ${daemon}( .*|$)"
+
+rc_pre() {
+	install -d -o ${daemon_user} /var/run/smokeping
+}
+
+rc_cmd $1

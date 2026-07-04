@@ -1,0 +1,11 @@
+Index: src/ipeui/Makefile
+--- src/ipeui/Makefile.orig
++++ src/ipeui/Makefile
+@@ -15,6 +15,7 @@ ifdef IPE_SPELLCHECK
+ CPPFLAGS += -DIPE_SPELLCHECK
+ endif
+ CXXFLAGS += $(UI_CFLAGS) $(LUA_CFLAGS) $(DLL_CFLAGS) $(SPELL_CFLAGS)
++CPPFLAGS += $(CXXFLAGS)
+ LIBS += $(UI_LIBS) $(LUA_LIBS) $(SPELL_LIBS)
+ 
+ all: $(TARGET)

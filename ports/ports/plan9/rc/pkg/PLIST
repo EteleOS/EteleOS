@@ -1,0 +1,7 @@
+@bin bin/-
+@bin bin/--
+@bin bin/--p
+@bin bin/-p
+@shell bin/rc
+@man man/man1/history.1
+@man man/man1/rc.1

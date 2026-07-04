@@ -1,0 +1,14 @@
+do not force -O3
+
+Index: src/CMakeLists.txt
+--- src/CMakeLists.txt.orig
++++ src/CMakeLists.txt
+@@ -68,7 +68,7 @@ file(GLOB headers
+ 
+ add_library(stegseek_lib ${sources} ${headers})
+ 
+-set(CMAKE_CXX_FLAGS_RELEASE "-O2")
++set(CMAKE_CXX_FLAGS_RELEASE "")
+ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
+ 
+ add_executable(stegseek main.cc)

@@ -1,0 +1,5 @@
+@bin bin/wmMoonClock
+@man man/man1/wmMoonClock.1
+share/applications/
+share/applications/wmmoonclock.desktop
+@tag update-desktop-database

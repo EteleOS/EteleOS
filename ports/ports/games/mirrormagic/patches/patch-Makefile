@@ -1,0 +1,33 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -15,25 +15,25 @@
+ 
+ # command name of your favorite ANSI C compiler
+ # (this must be set to "cc" for some systems)
+-CC = gcc
++#CC = gcc
+ 
+ # command name of GNU make on your system
+ # (this must be set to "gmake" for some systems)
+-MAKE = make
++#MAKE = make
+ 
+ # directory for read-only game data (like graphics, sounds, levels)
+ # (this directory is usually the game's installation directory)
+ # default is '.' to be able to run program without installation
+ # RO_GAME_DIR = .
+ # use the following setting for Debian / Ubuntu installations:
+-# RO_GAME_DIR = /usr/share/games/rocksndiamonds
++RO_GAME_DIR = ${PREFIX}/share/mirrormagic
+ 
+ # directory for writable game data (like highscore files)
+ # (if no "scores" directory exists, scores are saved in user data directory)
+ # default is '.' to be able to run program without installation
+ # RW_GAME_DIR = .
+ # use the following setting for Debian / Ubuntu installations:
+-# RW_GAME_DIR = /var/games/rocksndiamonds
++RW_GAME_DIR = /var/games/mirrormagic
+ 
+ # uncomment if system has no joystick include file
+ # JOYSTICK = -DNO_JOYSTICK

@@ -1,0 +1,3 @@
+@bin bin/misspell
+share/doc/misspell/
+share/doc/misspell/README.md

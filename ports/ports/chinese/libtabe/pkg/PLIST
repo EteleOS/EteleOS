@@ -1,0 +1,17 @@
+@bin bin/tsiadd
+@bin bin/tsidel
+@bin bin/tsidump
+@bin bin/tsiguess
+@bin bin/tsiyincheck
+@bin bin/tsiyindump
+include/bims.h
+include/tabe.h
+lib/libbims.a
+lib/libbims.la
+@lib lib/libbims.so.${LIBbims_VERSION}
+lib/libtabe.a
+lib/libtabe.la
+@lib lib/libtabe.so.${LIBtabe_VERSION}
+lib/tabe/
+lib/tabe/tsi.db
+lib/tabe/yin.db

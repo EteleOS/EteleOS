@@ -1,0 +1,23 @@
+Index: apertium/gen_modes.cc
+--- apertium/gen_modes.cc.orig
++++ apertium/gen_modes.cc
+@@ -28,6 +28,7 @@
+ #include <vector>
+ #include <map>
+ #include <string>
++#include <unistd.h>
+ 
+ using namespace std;
+ 
+@@ -297,6 +298,11 @@ void gen_modes(map<string, pipeline>& modes, fs::path&
+ 
+ int main(int argc, char* argv[])
+ {
++  if (pledge("stdio rpath wpath cpath", NULL) == -1) {
++    cerr << "pledge" << endl;
++    exit(EXIT_FAILURE);
++  }
++
+   LtLocale::tryToSetLocale();
+   CLI cli("Generate mode command files from XML");
+   cli.add_bool_arg('f', "full", "expect absolute installation path");

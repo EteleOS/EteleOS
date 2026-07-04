@@ -1,0 +1,4 @@
+bin/ldap-schema-manager
+bin/schema2ldif
+@man man/man1/ldap-schema-manager.1
+@man man/man1/schema2ldif.1

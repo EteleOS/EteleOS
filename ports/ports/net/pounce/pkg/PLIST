@@ -1,0 +1,6 @@
+@bin bin/calico
+@bin bin/pounce
+@bin bin/pounce-notify
+@man man/man1/calico.1
+@man man/man1/pounce-notify.1
+@man man/man1/pounce.1

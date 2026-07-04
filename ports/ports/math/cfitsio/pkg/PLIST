@@ -1,0 +1,18 @@
+@bin bin/fitscopy
+@bin bin/fpack
+@bin bin/funpack
+@bin bin/imcopy
+@bin bin/smem
+include/drvrsmem.h
+include/fitsio.h
+include/fitsio2.h
+include/longnam.h
+@static-lib lib/libcfitsio.a
+@lib lib/libcfitsio.so.${LIBcfitsio_VERSION}
+lib/pkgconfig/cfitsio.pc
+share/doc/cfitsio/
+share/doc/cfitsio/License.txt
+share/doc/cfitsio/README
+share/doc/cfitsio/cfortran.doc
+share/doc/cfitsio/cookbook.c
+share/doc/cfitsio/fitsio.doc

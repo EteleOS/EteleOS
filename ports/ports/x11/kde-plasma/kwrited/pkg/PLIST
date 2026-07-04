@@ -1,0 +1,8 @@
+@bin bin/kwrited
+share/examples/kwrited/
+share/examples/kwrited/xdg/
+share/examples/kwrited/xdg/autostart/
+share/examples/kwrited/xdg/autostart/kwrited-autostart.desktop
+@sample ${SYSCONFDIR}/xdg/autostart/kwrited-autostart.desktop
+share/knotifications6/
+share/knotifications6/kwrited.notifyrc

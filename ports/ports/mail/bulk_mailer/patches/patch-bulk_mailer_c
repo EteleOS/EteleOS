@@ -1,0 +1,133 @@
+--- bulk_mailer.c.orig	Thu May 25 03:34:33 2000
++++ bulk_mailer.c	Tue Jun 29 14:23:23 2010
+@@ -95,6 +95,8 @@
+ #include <sysexits.h>
+ #include <errno.h>
+ #include <time.h>
++#include <stdlib.h>
++#include <unistd.h>
+ #ifdef HAVE_STRING_H
+ #include <string.h>
+ #endif
+@@ -122,9 +124,6 @@ char *strdup();
+ char *strchr();
+ char *strrchr();
+ #endif
+-char *malloc ();
+-char *realloc ();
+-char *mktemp ();
+ 
+ /*
+  * (default) max different domains per envelope.
+@@ -292,23 +291,6 @@ char *str;
+ 
+ 
+ /*
+- * copy the first 'len' characters of a string into malloc'ed
+- * memory, appending a NUL to the copy.
+- */
+-
+-static char *
+-strndup (str, len)
+-char *str;
+-int len;
+-{
+-    char *result = malloc_or_else (len + 1);
+-
+-    strncpy (result, str, len);
+-    result[len] = '\0';
+-    return result;
+-}
+-
+-/*
+  * sort by case-folded reversed domain
+  */
+ 
+@@ -337,15 +319,15 @@ char *addr;
+ {
+     char *at;
+     char *ptr;
+-    char *domain;
++ /* char *domain; */
+     char tempbuf[1024];
+-    char c;
++ /* char c; */
+ 
+     /*
+      * make sure there's room in the buffer.
+      */
+     if (num_addrs >= num_addr_slots) {
+-	struct address *new;
++    /* struct address *new; */
+ 	
+ 	num_addr_slots += 1000;
+ 	if (address_list == NULL)
+@@ -353,7 +335,7 @@ char *addr;
+ 		malloc_or_else (num_addr_slots * sizeof (struct address));
+ 	else
+ 	    address_list = (struct address *)
+-		realloc_or_else (address_list,
++		realloc_or_else ((char *) address_list,
+ 				 num_addr_slots * sizeof (struct address));
+     }
+ 
+@@ -985,7 +967,7 @@ static int
+ copy_message (out, in)
+ FILE *out, *in;
+ {
+-    int c;
++ /* int c; */
+     char linebuf[32*1024];
+     int has_valid_approved_hdr = 0;
+     int has_resent_to_hdr = 0;
+@@ -1218,14 +1200,14 @@ FILE *out, *in;
+      */
+     lines = 0;
+     while (fgets (linebuf, sizeof (linebuf), in) != NULL) {
+-	if (lines < 5 && 
++	if (lines < 5 && (
+ 	    /*
+ 	     * these often occur in English-text unsubscribe requests
+ 	     */
+ 	    contains (linebuf, "delete me") ||
+ 	    contains (linebuf, "remove me") ||
+ 	    contains (linebuf, "subscribe") ||
+-	    contains (linebuf, "unsubscribe"))
++	    contains (linebuf, "unsubscribe")))
+ 	    saw_command = 1;
+ 	++lines;
+ 	fputs (linebuf, out);
+@@ -1326,13 +1308,13 @@ main (argc, argv)
+ int argc;
+ char *argv[];
+ {
+-    int i;
++ /* int i; */
+     FILE *fp;
+     FILE *tmp;
+     static char template[] = "/tmp/blkXXXXXX";
+     char *tempname;
+-    int c;
+-    char buf[1024];
++ /* int c; */
++ /* char buf[1024]; */
+ 
+     while (argc > 1 && (*argv[1] == '-' || *argv[1] == '+')) {
+ 	if (strcmp (argv[1], "-comment") == 0 && argc > 2) {
+@@ -1513,8 +1495,8 @@ char *argv[];
+ 	exit (EX_OSFILE);
+     }
+ 
+-    tempname = mktemp (template);
+-    tmp = fopen (template, "w");
++    tmp = fdopen (mkstemp(template), "w");
++    tempname = strdup(template);
+     switch (copy_message (tmp, stdin)) {
+ 
+     case HAS_EMBEDDED_COMMAND:
+@@ -1592,4 +1574,5 @@ char *argv[];
+ 	
+ 	exit (EX_OK);
+     }
++    exit (EX_OK);
+ }

@@ -1,0 +1,13 @@
+--- src/Makefile.in.orig	Fri Apr  4 17:22:20 2008
++++ src/Makefile.in	Sat Nov  2 12:04:27 2013
+@@ -270,8 +270,8 @@ top_srcdir = @top_srcdir@
+ AUTOMAKE_OPTIONS = subdir-objects
+ lib_LTLIBRARIES = libvidcap.la
+ libvidcap_la_CPPFLAGS = -I$(top_srcdir)/include
+-libvidcap_la_CFLAGS = -Wall -Wextra -Wno-unused-parameter $(PTHREAD_CFLAGS)
+-libvidcap_la_CXXFLAGS = -Wall -Wextra -Wno-unused-parameter $(PTHREAD_CFLAGS)
++libvidcap_la_CFLAGS = -Wall -Wextra $(PTHREAD_CFLAGS)
++libvidcap_la_CXXFLAGS = -Wall -Wextra $(PTHREAD_CFLAGS)
+ libvidcap_la_LIBADD = $(PTHREAD_LIBS)
+ libvidcap_la_LDFLAGS = -no-undefined -version-info \
+ 	@VC_LT_CURRENT@:@VC_LT_REVISION@:@VC_LT_AGE@ \

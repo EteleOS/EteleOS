@@ -1,0 +1,18 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+By default, xdg-open(1) opens URLs using a predefined order of known
+browsers executables. To change this behavior and set up a default
+WWW browser, the "BROWSER" variable needs be set to the corresponding
+executable.
+
+e.g. ~/.profile
+export BROWSER="firefox"
+
+Alternatively, for applications that follow the XDG specification,
+xdg-mime(1) can query/set the default utility for particular mime type.
+e.g.
+    $ xdg-mime default firefox.desktop text/html
+    $ xdg-mime query default text/html
+    firefox.desktop

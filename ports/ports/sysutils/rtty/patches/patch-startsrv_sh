@@ -1,0 +1,11 @@
+--- startsrv.sh.orig	Wed May  8 12:30:37 2002
++++ startsrv.sh	Wed May  8 12:30:37 2002
+@@ -19,7 +19,7 @@
+ 
+ default_options='-b 9600 -w 8 -p none'
+ default_sock_prot='ug=rw,o='
+-default_sock_owner='root.wheel'
++default_sock_owner='root:dialer'
+ default_log_prot='u=rw,g=r,o='
+ 
+ for host

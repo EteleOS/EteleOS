@@ -1,0 +1,34 @@
+* Missing header.
+* Fix build with png-1.6; __attribute__((noreturn)) already set in <png.h>.
+
+Index: src/Core/Materials/OOPNGTextureLoader.m
+--- src/Core/Materials/OOPNGTextureLoader.m.orig
++++ src/Core/Materials/OOPNGTextureLoader.m
+@@ -51,8 +51,8 @@ SOFTWARE.
+ #import "OOLogging.h"
+ #import "OOCPUInfo.h"
+ 
++#include <assert.h>
+ 
+-void png_error(png_structp, png_const_charp) NO_RETURN_FUNC;
+ 
+ 
+ static void PNGError(png_structp png, png_const_charp message);
+@@ -242,7 +242,7 @@ static void PNGError(png_structp png, png_const_charp 
+ {
+ 	OOPNGTextureLoader		*loader = nil;
+ 	
+-	loader = png->error_ptr;
++	loader = png_get_error_ptr(png);
+ 	OOLog(@"texture.load.png.error", @"***** A PNG loading error occurred for %@: %s", [loader path], message);
+ }
+ 
+@@ -251,7 +251,7 @@ static void PNGWarning(png_structp png, png_const_char
+ {
+ 	OOPNGTextureLoader		*loader = nil;
+ 	
+-	loader = png->error_ptr;
++	loader = png_get_error_ptr(png);
+ 	OOLog(@"texture.load.png.warning", @"***** A PNG loading warning occurred for %@: %s", [loader path], message);
+ }
+ 

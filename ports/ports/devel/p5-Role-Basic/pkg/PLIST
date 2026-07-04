@@ -1,0 +1,6 @@
+${P5SITE}/Role/
+${P5SITE}/Role/Basic/
+${P5SITE}/Role/Basic.pm
+${P5SITE}/Role/Basic/Philosophy.pod
+@man man/man3p/Role::Basic.3p
+@man man/man3p/Role::Basic::Philosophy.3p

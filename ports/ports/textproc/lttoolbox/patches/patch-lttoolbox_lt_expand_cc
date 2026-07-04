@@ -1,0 +1,20 @@
+Index: lttoolbox/lt_expand.cc
+--- lttoolbox/lt_expand.cc.orig
++++ lttoolbox/lt_expand.cc
+@@ -20,8 +20,16 @@
+ #include <lttoolbox/file_utils.h>
+ #include <lttoolbox/cli.h>
+ 
++#include <iostream>
++#include <unistd.h>
++
+ int main(int argc, char *argv[])
+ {
++  if (pledge("stdio rpath wpath cpath", NULL) == -1) {
++    std::cerr << "pledge" << std::endl;
++    return EXIT_FAILURE;
++  }
++
+   LtLocale::tryToSetLocale();
+   CLI cli("expand the contents of a dictionary file", PACKAGE_VERSION);
+   cli.add_bool_arg('m', "keep-boundaries", "keep morpheme boundaries");

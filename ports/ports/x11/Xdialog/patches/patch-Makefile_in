@@ -1,0 +1,11 @@
+--- Makefile.in.orig	Fri Aug 18 18:20:20 2006
++++ Makefile.in	Wed Mar 24 18:15:42 2010
+@@ -186,7 +186,7 @@ sysconfdir = @sysconfdir@
+ target_alias = @target_alias@
+ AUTOMAKE_OPTIONS = foreign no-dependencies
+ SUBDIRS = m4 lib src po doc
+-docdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)
++docdir = $(datadir)/examples/$(PACKAGE)
+ CONFIG_CLEAN_FILES = ltmain.sh ltconfig autom4te.cache/*
+ doc_DATA = $(srcdir)/samples/*
+ ACLOCAL_AMFLAGS = -I m4

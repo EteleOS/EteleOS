@@ -1,0 +1,37 @@
+Index: gram.y
+--- gram.y.orig
++++ gram.y
+@@ -829,19 +829,20 @@ number		: NUMBER		{ $$ = $1; }
+ 		;
+ 
+ %%
+-yyerror(s) char *s;
++static void yyerror(s) char *s;
+ {
+     twmrc_error_prefix();
+     fprintf (stderr, "error in input file:  %s\n", s ? s : "");
+     fprintf (stderr, ": %s", current_input_line());
+     ParseError = 1;
+ }
+-RemoveDQuote(str)
++
++static void RemoveDQuote(str)
+ char *str;
+ {
+     register char *i, *o;
+-    register n;
+-    register count;
++    register int n;
++    register int count;
+ 
+     for (i=str+1, o=str; *i && *i != '\"'; o++)
+     {
+@@ -1053,7 +1054,7 @@ static Bool CheckColormapArg (s)
+ }
+ 
+ 
+-twmrc_error_prefix ()
++void twmrc_error_prefix ()
+ {
+     fprintf (stderr, "%s:  line %d:  ", ProgramName, yylineno);
+ }

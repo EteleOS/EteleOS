@@ -1,0 +1,16 @@
+Index: src/nametable.cc
+--- src/nametable.cc.orig
++++ src/nametable.cc
+@@ -22,9 +22,11 @@
+ */
+ 
+ #include <assert.h>
+-#include <iostream.h>
++#include <iostream>
+ #include <stdlib.h>
+ #include <string.h>
++
++using std::endl;
+ 
+ #include "McString.h"
+ #include "nametable.h"

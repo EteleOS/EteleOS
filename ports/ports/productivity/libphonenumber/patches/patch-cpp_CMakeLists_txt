@@ -1,0 +1,73 @@
+CMake Error:
+ninja: error: build.ninja:1485: multiple rules generate ...
+phonenumbers/metadata.h [-w dupbuild=err] 
+
+Also Eliminate -Werror to fix sparc64 build
+
+Fix build on i386
+
+Index: cpp/CMakeLists.txt
+--- cpp/CMakeLists.txt.orig
++++ cpp/CMakeLists.txt
+@@ -32,7 +32,6 @@ set (TOOLS_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/too
+ # Helper functions dealing with finding libraries and programs this library
+ # depends on.
+ 
+-include (FetchContent)
+ include (GNUInstallDirs)
+ 
+ function (print_error DESCRIPTION FILE)
+@@ -102,34 +101,8 @@ endif ()
+ # Find all the required libraries and programs.
+ find_package(absl)
+ 
+-if(NOT absl_FOUND)
+-  # Overide abseil install rules for subprojects
+-  set(ABSL_ENABLE_INSTALL ON)
+-  
+-  # Downloading the abseil sources at particular version to not catch up
+-  # with its new build requirements like min C++14 is mandated in that lib.
+-  FetchContent_Declare(
+-      abseil-cpp
+-      GIT_REPOSITORY  https://github.com/abseil/abseil-cpp.git
+-      GIT_TAG         273292d
+-  )
++find_package (absl REQUIRED)
+ 
+-  # Building the abseil binaries
+-  FetchContent_GetProperties(abseil-cpp)
+-  if (NOT abseil-cpp_POPULATED)
+-      FetchContent_Populate(abseil-cpp)
+-  endif ()
+-
+-  if (NOT abseil-cpp_POPULATED)
+-     message (FATAL_ERROR "Could not build abseil-cpp binaries.")
+-  endif ()
+-
+-  # Safeguarding against any potential link errors as mentioned in
+-  # https://github.com/abseil/abseil-cpp/issues/225
+-  set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+-  add_subdirectory(${abseil-cpp_SOURCE_DIR} ${abseil-cpp_BINARY_DIR})
+-endif()
+-
+ if (BUILD_TESTING)
+   include (../tools/cpp/gtest.cmake)
+   find_or_build_gtest ()
+@@ -418,7 +391,7 @@ if (USE_ICU_REGEXP)
+ endif ()
+ 
+ if (NOT WIN32)
+-  add_definitions ("-Wall -Werror")
++  add_definitions ("-Wall")
+ endif ()
+ 
+ include_directories ("src")
+@@ -427,7 +400,7 @@ include_directories ("src")
+ # Collate dependencies
+ #----------------------------------------------------------------
+ 
+-set (LIBRARY_DEPS ${ICU_LIB} ${PROTOBUF_LIB} absl::node_hash_set absl::strings absl::synchronization)
++set (LIBRARY_DEPS ${ICU_LIB} ${PROTOBUF_LIB} absl::check absl::log absl::node_hash_set absl::strings absl::synchronization)
+ 
+ if (USE_BOOST)
+   list (APPEND LIBRARY_DEPS ${Boost_LIBRARIES})

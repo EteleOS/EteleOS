@@ -1,0 +1,4 @@
+share/fonts/
+@fontdir share/fonts/hanazono/
+share/fonts/hanazono/HanaMinA.ttf
+share/fonts/hanazono/HanaMinB.ttf

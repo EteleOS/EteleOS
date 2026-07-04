@@ -1,0 +1,7 @@
+# Common source for Qt5 version
+
+QT5_VERSION ?=			5.15.18
+
+# This one is used for building dependencies for examples and documentation,
+# which obviously should be in sync with core packages.
+QT5_NEXT_VERSION =	6.0

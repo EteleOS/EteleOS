@@ -1,0 +1,20 @@
+Index: interface/ouimessage.c
+--- interface/ouimessage.c.orig
++++ interface/ouimessage.c
+@@ -1,6 +1,8 @@
+ /*
+  *	MESSAGE OUTPUT TO APPLICATION USER INTERFACE
+  */
++#include <string.h>
++#include <stdio.h>
+ char *Onew_RK_smode();
+ char *romkan_help();
+ 
+@@ -16,6 +18,7 @@ extern int ONEW_modedepth;
+ static int ONEW_msg_overw;
+ static int ONEW_msg_retain;
+ 
++void
+ Onew_putmode(mode,help)
+ 	char *mode,*help;
+ {	int modeflags,xmodef;

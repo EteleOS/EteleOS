@@ -1,0 +1,12 @@
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -115,7 +115,7 @@ dnl Checks for libraries.
+ 
+ 
+ dnl Some platforms will complain about missing included functions if libstdc++ is not included.
+-AC_CHECK_LIB(stdc++, main, , AC_MSG_ERROR([missing libstdc++]))
++dnl AC_CHECK_LIB(stdc++, main, , AC_MSG_ERROR([missing libstdc++]))
+ AC_CHECK_HEADERS(list, , , AC_MSG_ERROR([missing STL list class header]))
+ AC_CHECK_HEADERS(map, , , AC_MSG_ERROR([missing STL map class header]))
+ AC_CHECK_HEADERS(queue, , , AC_MSG_ERROR([missing STL queue class header]))

@@ -1,0 +1,54 @@
+--- Wnn/uum/wnnrc_op.c.orig
++++ Wnn/uum/wnnrc_op.c
+@@ -50,7 +50,8 @@
+  */
+ /* uumrc operations */
+ 
+-#include "stdio.h"
++#include <stdio.h>
++#include <stdlib.h>
+ #include <ctype.h>
+ #include <sys/errno.h>
+ #include <pwd.h>
+@@ -61,12 +62,7 @@
+ #include "rk_spclval.h"
+ #include "sdefine.h"
+ #include "sheader.h"
+-
+-#ifdef BSD42
+-#include <strings.h>
+-#else
+ #include <string.h>
+-#endif
+ 
+ extern char     *getenv();
+ extern FILE	*fopen();
+@@ -148,7 +144,7 @@ char	*s;
+ #endif /* defined(SYSVR2) && !defined(AIXV3) */
+ 
+     if(*s != '~' && *s != '@') {
+-	strcpy(tmp, s);
++	strlcpy(tmp, s, sizeof(tmp));
+ 	*s = '\0';
+ 	noerr = 1;
+     }else{
+@@ -160,7 +156,7 @@ char	*s;
+ #else
+ 	if(NULL != (p = strchr(++s1, '/'))){
+ #endif
+-		strcpy(tmp, p);
++		strlcpy(tmp, p, sizeof(tmp));
+ 		*p = '\0';
+ 	} else *tmp = '\0';
+  /* ここまでは準備。s…先頭、s1…２文字目、p…最初の'/'のあったところ
+@@ -581,8 +577,8 @@ open_uumrc()
+     }
+     strcpy(buf, LIBDIR);
+     strcat(buf, "/");
+-    strcat(buf, lang_dir);
+-    strcat(buf, RCFILE);
++    strlcat(buf, lang_dir, sizeof buf);
++    strlcat(buf, RCFILE, sizeof buf);
+     if((fp = fopen(buf, "r")) != NULL){
+ 	if(verbose_option) fprintf(stderr, "uumrc: using uumrc %s\r\n", buf);
+ 	return fp;

@@ -1,0 +1,19 @@
+@newgroup _step-ca:883
+@newuser _step-ca:883:883::Step-ca Account:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/step_ca
+@mode 700
+@owner _step-ca
+@group _step-ca
+@sample ${LOCALSTATEDIR}/step-ca/
+@mode
+@owner
+@group
+@bin bin/step-ca
+share/doc/pkg-readmes/${PKGSTEM}
+share/doc/step-ca/
+share/doc/step-ca/CHANGELOG.md
+share/doc/step-ca/CONTRIBUTING.md
+share/doc/step-ca/README.md
+share/doc/step-ca/SECURITY.md
+share/examples/login.conf.d/step_ca
+@sample ${SYSCONFDIR}/login.conf.d/step_ca

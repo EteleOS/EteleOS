@@ -1,0 +1,13 @@
+Index: doc/haproxy.1
+--- doc/haproxy.1.orig
++++ doc/haproxy.1
+@@ -218,8 +218,7 @@ This signal is intercepted and ignored on systems with
+ 
+ .SH SEE ALSO
+ 
+-A much better documentation can be found in configuration.txt. On Debian
+-systems, you can find this file in /usr/share/doc/haproxy/configuration.txt.gz.
++More complete documentation can be found in ${TRUEPREFIX}/share/doc/haproxy/configuration.txt.
+ 
+ .SH AUTHOR
+ 

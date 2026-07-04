@@ -1,0 +1,36 @@
+--- build.sh.orig	Sun Jul 19 21:11:34 2015
++++ build.sh	Sun Jul 19 21:12:18 2015
+@@ -18,10 +18,10 @@ BASIC_CFLAGS="-Wall -Wno-format -I/usr/local/include/ 
+ 
+ BASIC_LDFLAGS="-L/usr/local/lib/ -L/opt/local/lib $LDFLAGS"
+ 
+-USE_CFLAGS="-fstack-protector-all -fPIE -D_FORTIFY_SOURCE=2 -g -ggdb \
++USE_CFLAGS="-fstack-protector-all -D_FORTIFY_SOURCE=2 -g -ggdb \
+             $BASIC_CFLAGS"
+ 
+-USE_LDFLAGS="-Wl,-z,relro -pie $BASIC_LDFLAGS"
++USE_LDFLAGS="-Wl,-z,relro $BASIC_LDFLAGS"
+ 
+ if [ "$OSTYPE" = "cygwin" ]; then
+   USE_LIBS="-lwpcap $LIBS"
+@@ -81,8 +81,8 @@ if [ "$1" = "clean" -o "$1" = "publish" ]; then
+ elif [ "$1" = "all" -o "$1" = "" ]; then
+ 
+   echo "[+] Configuring production build."
+-  BASIC_CFLAGS="$BASIC_CFLAGS -O3"
+-  USE_CFLAGS="$USE_CFLAGS -O3"
++  #BASIC_CFLAGS="$BASIC_CFLAGS -O3"
++  #USE_CFLAGS="$USE_CFLAGS -O3"
+ 
+ elif [ "$1" = "debug" ]; then
+ 
+@@ -318,7 +318,8 @@ echo -n "[*] Compiling $PROGNAME... "
+ 
+ rm -f "$PROGNAME" || exit 1
+ 
+-$CC $USE_CFLAGS $USE_LDFLAGS "$PROGNAME.c" $OBJFILES -o "$PROGNAME" $USE_LIBS &>"$TMP.log"
++echo $CC $USE_CFLAGS $USE_LDFLAGS "$PROGNAME.c" $OBJFILES -o "$PROGNAME" $USE_LIBS
++$CC $USE_CFLAGS $USE_LDFLAGS "$PROGNAME.c" $OBJFILES -o "$PROGNAME" $USE_LIBS 2>&1 | tee "$TMP.log"
+ 
+ if [ ! -x "$PROGNAME" ]; then
+ 

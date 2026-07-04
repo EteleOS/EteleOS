@@ -1,0 +1,17 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/amavisd"
+
+. /etc/rc.d/rc.subr
+
+pexp="perl: ${daemon} \(master\)"
+
+rc_stop() {
+	${daemon} stop
+}
+
+rc_reload() {
+	${daemon} reload
+}
+
+rc_cmd $1

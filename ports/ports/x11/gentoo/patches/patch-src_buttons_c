@@ -1,0 +1,12 @@
+Index: src/buttons.c
+--- src/buttons.c.orig
++++ src/buttons.c
+@@ -998,7 +998,7 @@ static ButtonSheet * btn_buttonsheet_new_default_short
+ 	ButtonSheet	*bsh;
+ 	ButtonRow	*brw;
+ 	const gchar	*lab[] = { "Home", "Local", "/", "CD-ROM" },
+-			*pth[] = { "$HOME", "/usr/local/", "/", "/cdrom/" };
++			*pth[] = { "$HOME", "${LOCALBASE}", "/", "/cdrom/" };
+ 	gchar		buf[1024];
+ 	guint		i;
+ 

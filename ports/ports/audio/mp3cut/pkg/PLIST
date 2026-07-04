@@ -1,0 +1,6 @@
+bin/cddb2cue
+bin/mp3cat
+bin/mp3cut
+@man man/man1/cddb2cue.1
+@man man/man1/mp3cat.1
+@man man/man1/mp3cut.1

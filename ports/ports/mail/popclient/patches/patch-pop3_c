@@ -1,0 +1,56 @@
+--- pop3.c.orig	Mon Sep 11 19:48:48 1995
++++ pop3.c	Thu Jul  8 21:33:54 2010
+@@ -67,6 +67,7 @@
+ 
+ #include  <sys/time.h>
+ #include  <ctype.h>
++#include  <netdb.h>
+ #include  <errno.h>
+ 
+ #include  "socket.h"
+@@ -122,7 +123,10 @@ struct optrec *options;
+     
+   /* open the socket and get the greeting */
+   if ((socket = Socket(servername,POP3_PORT)) < 0) {
+-    perror("doPOP3: socket");
++    if (socket == -2)
++	herror("doPOP3: socket");
++    else
++    	perror("doPOP3: socket");
+     return(PS_SOCKET);
+   }
+ 
+@@ -583,10 +587,10 @@ int socket;
+ int mboxfd;
+ int topipe;
+ { 
+-  char buf [MSGBUFSIZE]; 
++  char buf [POPMSGBUFSIZE]; 
+   char *bufp;
+   char savec;
+-  char fromBuf[MSGBUFSIZE];
++  char fromBuf[POPMSGBUFSIZE];
+   int needFrom;
+   int lines,sizeticker;
+   time_t now;
+@@ -607,9 +611,9 @@ int topipe;
+ 
+   /* read the message content from the server */
+   lines = 0;
+-  sizeticker = MSGBUFSIZE;
++  sizeticker = POPMSGBUFSIZE;
+   while (1) {
+-    if (SockGets(socket,buf,sizeof(buf)) < 0)
++    if (SockGets(socket,buf,sizeof(buf)-1) < 0)
+       return(PS_SOCKET);
+     bufp = buf;
+     if (*bufp == '.') {
+@@ -653,7 +657,7 @@ int topipe;
+     if (sizeticker <= 0) {
+       if (outlevel > O_SILENT && outlevel < O_VERBOSE && mboxfd != 1)
+         fputc('.',stderr);
+-      sizeticker = MSGBUFSIZE;
++      sizeticker = POPMSGBUFSIZE;
+     }
+     lines++;
+   }

@@ -1,0 +1,3 @@
+@bin bin/stemwords
+include/libstemmer.h
+@lib lib/libstemmer.so.${LIBstemmer_VERSION}

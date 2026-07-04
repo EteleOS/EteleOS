@@ -1,0 +1,11 @@
+--- gui/MyGL/AppController.m.orig	Thu May 19 09:45:25 2011
++++ gui/MyGL/AppController.m	Sun Sep  1 14:40:57 2013
+@@ -413,7 +413,7 @@ static void Normalize (Vector *v)
+ 
+   h = [MySAX new];
+   p = [GSXMLParser parserWithSAXHandler:h
+-             withContentsOfFile:@"girl.dae"];
++	     withContentsOfFile:@"${LOCALBASE}/libexec/GNUstep/MyGL.app/Resources/girl.dae"];
+   if ([p parse])
+   {
+     [meshArray addObject:[h currentMesh]];

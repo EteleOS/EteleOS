@@ -1,0 +1,5 @@
+@bin bin/c2html
+@man man/man1/c2html.1
+share/doc/c2html/
+share/doc/c2html/COPYING
+share/doc/c2html/README

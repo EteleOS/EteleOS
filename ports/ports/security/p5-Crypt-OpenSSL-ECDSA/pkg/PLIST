@@ -1,0 +1,5 @@
+${P5ARCH}/Crypt/OpenSSL/ECDSA.pm
+${P5ARCH}/auto/Crypt/OpenSSL/ECDSA/
+@so ${P5ARCH}/auto/Crypt/OpenSSL/ECDSA/ECDSA.so
+${P5ARCH}/auto/Crypt/OpenSSL/ECDSA/autosplit.ix
+@man man/man3p/Crypt::OpenSSL::ECDSA.3p

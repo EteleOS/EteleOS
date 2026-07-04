@@ -1,0 +1,16 @@
+- Don't use 'rep insb' to read IO ports, vmm does not support that yet.
+
+Index: src/fw/paravirt.c
+--- src/fw/paravirt.c.orig
++++ src/fw/paravirt.c
+@@ -379,7 +379,9 @@ qemu_cfg_read(void *buf, int len)
+     if (qemu_cfg_dma_enabled()) {
+         qemu_cfg_dma_transfer(buf, len, QEMU_CFG_DMA_CTL_READ);
+     } else {
+-        insb(PORT_QEMU_CFG_DATA, buf, len);
++	u8 *d = buf;
++	while (len-- > 0)
++		*d++ = inb(PORT_QEMU_CFG_DATA);
+     }
+ }
+ 

@@ -1,0 +1,3 @@
+@bin bin/xmine
+lib/X11/app-defaults/Xmine
+@man man/man6/xmine.6

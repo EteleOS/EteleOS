@@ -1,0 +1,39 @@
+Index: src/wmMoonClock.c
+--- src/wmMoonClock.c.orig
++++ src/wmMoonClock.c
+@@ -157,7 +157,7 @@ int main(int argc, char *argv[]) {
+     struct tm		*GMTTime, *LocalTime;
+     XEvent		event;
+     int			i, n, j, ImageNumber, Year, Month, DayOfMonth, digit;
+-    long		CurrentLocalTime, CurrentGMTTime, date;
++    time_t		CurrentLocalTime, CurrentGMTTime, date;
+     double		UT, val, RA, DEC, UTRise, UTSet, LocalHour, hour24();
+     int			D, H, M, S, sgn, A, B, q;
+     CTrans           	c;
+@@ -775,7 +775,7 @@ void ParseCMDLine(int argc, char *argv[]) {
+                 print_usage();
+                 exit(-1);
+             }
+-            strcpy(BackColor, argv[++i]);
++            strlcpy(BackColor, argv[++i], sizeof(BackColor));
+ 
+         } else if (!strcmp(argv[i], "-lc")){
+ 
+@@ -784,7 +784,7 @@ void ParseCMDLine(int argc, char *argv[]) {
+                 print_usage();
+                 exit(-1);
+             }
+-            strcpy(LabelColor, argv[++i]);
++            strlcpy(LabelColor, argv[++i], sizeof(LabelColor));
+ 
+         } else if (!strcmp(argv[i], "-dc")){
+ 
+@@ -793,7 +793,7 @@ void ParseCMDLine(int argc, char *argv[]) {
+                 print_usage();
+                 exit(-1);
+             }
+-            strcpy(DataColor, argv[++i]);
++            strlcpy(DataColor, argv[++i], sizeof(DataColor));
+ 
+         } else if (!strcmp(argv[i], "-low")){
+ 

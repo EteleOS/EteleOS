@@ -1,0 +1,17 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/upsd"
+
+. /etc/rc.d/rc.subr
+
+upsdrvctl="${TRUEPREFIX}/sbin/upsdrvctl"
+
+rc_pre() {
+	${upsdrvctl} start
+}
+
+rc_post() {
+	${upsdrvctl} stop
+}
+
+rc_cmd $1

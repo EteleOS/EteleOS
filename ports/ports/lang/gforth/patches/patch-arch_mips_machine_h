@@ -1,0 +1,16 @@
+http://git.savannah.gnu.org/cgit/gforth.git/commit/?id=4a03e4ff51314fc3a97acedeee928822b3bf1433
+
+--- arch/mips/machine.h.orig	Fri Oct 11 23:31:28 2013
++++ arch/mips/machine.h	Tue Jan 26 09:04:42 2016
+@@ -26,8 +26,10 @@
+ #endif
+ 
+ /* cache flush stuff */
+-#ifdef ultrix
++#if defined(ultrix)
+ #include <mips/cachectl.h>
++#elif defined(__OpenBSD__)
++#include <mips64/sysarch.h>
+ #else
+ /* works on Irix */
+ #include <sys/cachectl.h>

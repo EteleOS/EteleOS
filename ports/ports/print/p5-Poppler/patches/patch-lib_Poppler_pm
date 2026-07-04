@@ -1,0 +1,20 @@
+Index: lib/Poppler.pm
+--- lib/Poppler.pm.orig
++++ lib/Poppler.pm
+@@ -103,7 +103,6 @@ use warnings;
+ use Carp qw/croak/;
+ use Cwd qw/abs_path/;
+ use Exporter;
+-use File::ShareDir;
+ use Glib::Object::Introspection;
+ use URI::file;
+ use FindBin;
+@@ -204,7 +203,7 @@ my @_POPPLER_HANDLE_SENTINEL_BOOLEAN_FOR = qw/
+ sub import {
+ 
+   Glib::Object::Introspection->setup (
+-    search_path => File::ShareDir::dist_dir('Poppler'),
++    search_path => '${LOCALBASE}/lib/girepository-1.0',
+     basename    => $_POPPLER_BASENAME,
+     version     => $_POPPLER_VERSION,
+     package     => $_POPPLER_PACKAGE,

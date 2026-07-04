@@ -1,0 +1,57 @@
+--- libjbig/Makefile.orig	Thu Mar 27 19:47:15 2014
++++ libjbig/Makefile	Thu Mar 10 21:49:56 2016
+@@ -6,8 +6,10 @@ CC = gcc
+ # Options for the compiler: A high optimization level is suggested
+ CFLAGS = -g -O -W -Wall -ansi -pedantic # --coverage
+ 
+-all: libjbig.a libjbig85.a tstcodec tstcodec85
++PICFLAG= -fpic
+ 
++all: libjbig.a libjbig.so.$(VERSION) libjbig85.a libjbig85.so.$(VERSION) tstcodec tstcodec85
++
+ tstcodec: tstcodec.o jbig.o jbig_ar.o
+ 	$(CC) $(CFLAGS) -o tstcodec tstcodec.o jbig.o jbig_ar.o
+ 
+@@ -15,15 +17,28 @@ tstcodec85: tstcodec85.o jbig85.o jbig_ar.o
+ 	$(CC) $(CFLAGS) -o tstcodec85 tstcodec85.o jbig85.o jbig_ar.o
+ 
+ libjbig.a: jbig.o jbig_ar.o
+-	rm -f libjbig.a
+-	ar rc libjbig.a jbig.o jbig_ar.o
+-	-ranlib libjbig.a
++	rm -f ${.TARGET}
++	ar rc ${.TARGET} ${.ALLSRC}
++	-ranlib ${.TARGET}
+ 
++libjbig.so.$(VERSION): jbig.so jbig_ar.so
++	rm -f ${.TARGET}
++	${CC} -shared $(PICFLAG) -o ${.TARGET} ${.ALLSRC}
++
+ libjbig85.a: jbig85.o jbig_ar.o
+-	rm -f libjbig85.a
+-	ar rc libjbig85.a jbig85.o jbig_ar.o
+-	-ranlib libjbig85.a
++	rm -f ${.TARGET}
++	ar rc ${.TARGET} ${.ALLSRC}
++	-ranlib ${.TARGET}
+ 
++libjbig85.so.$(VERSION): jbig85.so jbig_ar.so
++	rm -f ${.TARGET}
++	${CC} -shared $(PICFLAG) -o ${.TARGET} ${.ALLSRC}
++
++.SUFFIXES: .o .so
++
++.c.so:
++	${CC} ${CFLAGS} $(PICFLAG) -c ${.IMPSRC} -o ${.TARGET}
++
+ jbig.o: jbig.c jbig.h jbig_ar.h
+ jbig85.o: jbig85.c jbig85.h jbig_ar.h
+ jbig_ar.o: jbig_ar.c jbig_ar.h
+@@ -50,6 +65,5 @@ t82test.pbm: tstcodec
+ 	./tstcodec $@
+ 
+ clean:
+-	rm -f *.o *.gcda *.gcno *.gcov *.plist *~ core gmon.out dbg_d\=??.pbm
+-	rm -f t82test.pbm
++	rm -f *.{o,gcda,gcno,gcov} *~ core gmon.out dbg_d\=??.pbm libjbig.so.$(VERSION) libjbig85.so.$(VERSION)
+ 	rm -f tstcodec tstcodec85

@@ -1,0 +1,21 @@
+Index: plugins/node.d/perdition.in
+--- plugins/node.d/perdition.in.orig
++++ plugins/node.d/perdition.in
+@@ -12,7 +12,7 @@ perdition - Plugin to graph perdition connections and 
+ The following configuration variables are available for this plugin:
+ 
+  logfile - Log file to tail (default: "/var/log/perdition.log")
+- logtail - Path to logtail (default: "/usr/sbin/logtail")
++ logtail - Path to logtail (default: "/usr/local/bin/logtail")
+ 
+ =head1 DEPENDENCIES
+ 
+@@ -53,7 +53,7 @@ Unknown
+ # Set the location of the perdition logs
+ PERDITION_LOG=${logfile:-/var/log/perdition.log}
+ OFFSET_FILE=${MUNIN_PLUGSTATE}/perdition.offset
+-LOGTAIL=${logtail:-/usr/sbin/logtail}
++LOGTAIL=${logtail:-/usr/local/bin/logtail}
+ 
+ case $1 in
+     autoconf|detect)

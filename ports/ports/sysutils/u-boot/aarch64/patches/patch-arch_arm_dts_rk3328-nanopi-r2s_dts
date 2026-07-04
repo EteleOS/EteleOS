@@ -1,0 +1,12 @@
+Index: arch/arm/dts/rk3328-nanopi-r2s.dts
+--- arch/arm/dts/rk3328-nanopi-r2s.dts.orig
++++ arch/arm/dts/rk3328-nanopi-r2s.dts
+@@ -19,7 +19,7 @@
+ 	};
+ 
+ 	chosen {
+-		stdout-path = "serial2:1500000n8";
++		stdout-path = "serial2:115200n8";
+ 	};
+ 
+ 	gmac_clk: gmac-clock {

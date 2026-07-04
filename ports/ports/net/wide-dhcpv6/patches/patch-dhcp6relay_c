@@ -1,0 +1,41 @@
+- Close inherited file descriptors
+
+wide-dhcpv6 binaries should close inherited fds.
+
+- Close file descriptors on exec
+
+Avoid FD leakage to children.
+
+--- dhcp6relay.c.orig	Sun Jun 15 03:48:41 2008
++++ dhcp6relay.c	Sun Jan 10 00:50:57 2016
+@@ -207,8 +207,14 @@ main(argc, argv)
+ 	}
+ 
+ 	if (foreground == 0) {
++		int fd;
++
+ 		if (daemon(0, 0) < 0)
+ 			err(1, "daemon");
++
++		for (fd = 3; fd < 1024; fd++)
++			close(fd);
++
+ 		openlog(progname, LOG_NDELAY|LOG_PID, LOG_DAEMON);
+ 	}
+ 	setloglevel(debug);
+@@ -353,6 +359,7 @@ relay6_init(int ifnum, char *iflist[])
+ 		    gai_strerror(error));
+ 		goto failexit;
+ 	}
++	res->ai_socktype |= SOCK_CLOEXEC;
+ 	csock = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
+ 	if (csock < 0) {
+ 		dprintf(LOG_ERR, FNAME, "socket(csock): %s", strerror(errno));
+@@ -459,6 +466,7 @@ relay6_init(int ifnum, char *iflist[])
+ 		goto failexit;
+ 	}
+ 	memcpy(&sa6_client, res->ai_addr, sizeof (sa6_client));
++	res->ai_socktype |= SOCK_CLOEXEC;
+ 	ssock = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
+ 	if (ssock < 0) {
+ 		dprintf(LOG_ERR, FNAME, "socket(outsock): %s",

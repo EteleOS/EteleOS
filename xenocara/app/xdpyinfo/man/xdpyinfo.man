@@ -1,0 +1,75 @@
+.\" Copyright 1988, 1989, 1994, 1998  The Open Group
+.\"
+.\" Permission to use, copy, modify, distribute, and sell this software and its
+.\" documentation for any purpose is hereby granted without fee, provided that
+.\" the above copyright notice appear in all copies and that both that
+.\" copyright notice and this permission notice appear in supporting
+.\" documentation.
+.\"
+.\" The above copyright notice and this permission notice shall be included
+.\" in all copies or substantial portions of the Software.
+.\"
+.\" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+.\" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+.\" MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+.\" IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
+.\" OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+.\" ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+.\" OTHER DEALINGS IN THE SOFTWARE.
+.\"
+.\" Except as contained in this notice, the name of The Open Group shall
+.\" not be used in advertising or otherwise to promote the sale, use or
+.\" other dealings in this Software without prior written authorization
+.\" from The Open Group.
+.\"
+.TH XDPYINFO 1 2025-03-23 __xorgversion__
+.SH NAME
+xdpyinfo \- display information utility for X
+.SH SYNOPSIS
+.nf
+\fBxdpyinfo\fR [\fB\-display\fR \fIdisplayname\fP] [\fB\-queryExtensions\fR] \
+[\fB\-ext\fR \fIextension-name\fP]
+         [\fB\-help\fR | \fB\-version\fR]
+.fi
+.SH DESCRIPTION
+.B Xdpyinfo
+is a utility for displaying information about an X server.  It is used to
+examine the
+capabilities of a server, the predefined values for various parameters used
+in communicating between clients and the server, and the different types of
+screens and visuals that are available.
+.PP
+By default, numeric information (opcode, base event, base error) about
+protocol extensions is not displayed.  This information can be obtained
+with the \fB\-queryExtensions\fP option.  Use of this option on servers
+that dynamically load extensions will likely cause all possible extensions
+to be loaded, which can be slow and can consume significant server resources.
+.PP
+Detailed information about a particular extension is displayed with the
+\fB\-ext\fP \fIextensionName\fP option.  If \fIextensionName\fP is
+\fBall\fP, information about all extensions supported by both \fBxdpyinfo\fP
+and the server is displayed.
+.PP
+If \fB\-help\fP is specified, \fBxdpyinfo\fP prints its usage message and exits,
+without contacting the X server.
+.PP
+If \fB\-version\fP is specified, \fBxdpyinfo\fP prints its version and exits,
+without contacting the X server.
+.SH ENVIRONMENT
+.TP 8
+.B DISPLAY
+To get the default host, display number, and screen.
+.SH "SEE ALSO"
+.BR X (__miscmansuffix__),
+.BR xprop (__appmansuffix__),
+.BR xrdb (__appmansuffix__),
+.BR xwininfo (__appmansuffix__),
+.BR xrandr (__appmansuffix__),
+.BR xdriinfo (__appmansuffix__),
+.BR xvinfo (__appmansuffix__),
+.BR glxinfo (__appmansuffix__)
+.SH AUTHOR
+Jim Fulton, MIT X Consortium
+.br
+Support for the XFree86-VidModeExtension, XFree86-DGA, XFree86-Misc,
+and XKB extensions added by Joe Moss

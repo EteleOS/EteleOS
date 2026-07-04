@@ -1,0 +1,16 @@
+Motion is a C program that monitors the video signal from one or
+more V4L2/video(4) cameras or network-based webcams, and is able to
+detect whether a significant part of the picture has changed. Or in
+other words, it can detect motion.
+
+Motion is a command-line tool. It has a simple web interface as well.
+Everything is set up either via the command line or via a set of
+configuration files (simple ASCII files that can be edited by any
+ASCII editor).
+
+Motion can output JPEG/PPM images and MPEG video sequences, call
+external programs, log to a database, etc.
+
+Flavours:
+	mysql - build with MySQL/MariaDB database support
+	pgsql - build with PostgreSQL database support

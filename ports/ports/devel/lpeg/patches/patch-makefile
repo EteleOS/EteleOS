@@ -1,0 +1,11 @@
+Index: makefile
+--- makefile.orig
++++ makefile
+@@ -16,7 +16,6 @@ CWARNS = -Wall -Wextra -pedantic \
+ 	-Wundef \
+ 	-Wwrite-strings \
+ 	-Wbad-function-cast \
+-	-Wdeclaration-after-statement \
+ 	-Wmissing-prototypes \
+ 	-Wmissing-declarations \
+ 	-Wnested-externs \

@@ -1,0 +1,144 @@
+@conflict p5-Wx-media-*
+@conflict p5-Wx-webkit-*
+@pkgpath x11/p5-Wx,-main
+@pkgpath x11/p5-Wx,-media
+@pkgpath x11/p5-Wx,-webkit
+bin/wxperl_overload
+${P5ARCH}/
+${P5ARCH}/Wx/
+${P5ARCH}/Wx.pm
+${P5ARCH}/Wx/AUI.pm
+${P5ARCH}/Wx/Api.pod
+${P5ARCH}/Wx/App.pm
+${P5ARCH}/Wx/ArtProvider.pm
+${P5ARCH}/Wx/Calendar.pm
+${P5ARCH}/Wx/DND.pm
+${P5ARCH}/Wx/DataView.pm
+${P5ARCH}/Wx/DateTime.pm
+${P5ARCH}/Wx/DocView.pm
+${P5ARCH}/Wx/DropSource.pm
+${P5ARCH}/Wx/Event.pm
+${P5ARCH}/Wx/FS.pm
+${P5ARCH}/Wx/Grid.pm
+${P5ARCH}/Wx/Help.pm
+${P5ARCH}/Wx/Html.pm
+${P5ARCH}/Wx/IPC.pm
+${P5ARCH}/Wx/Loader.pod
+${P5ARCH}/Wx/Locale.pm
+${P5ARCH}/Wx/MDI.pm
+${P5ARCH}/Wx/Media.pm
+${P5ARCH}/Wx/Menu.pm
+${P5ARCH}/Wx/Mini.pm
+${P5ARCH}/Wx/NewClass.pod
+${P5ARCH}/Wx/Overload/
+${P5ARCH}/Wx/Overload/Driver.pm
+${P5ARCH}/Wx/Overload/Handle.pm
+${P5ARCH}/Wx/Perl/
+${P5ARCH}/Wx/Perl/Carp.pm
+${P5ARCH}/Wx/Perl/SplashFast.pm
+${P5ARCH}/Wx/Perl/TextValidator.pm
+${P5ARCH}/Wx/PerlTest.pm
+${P5ARCH}/Wx/Print.pm
+${P5ARCH}/Wx/PropertyGrid.pm
+${P5ARCH}/Wx/RadioBox.pm
+${P5ARCH}/Wx/Ribbon.pm
+${P5ARCH}/Wx/RichText.pm
+${P5ARCH}/Wx/STC.pm
+${P5ARCH}/Wx/Socket.pm
+${P5ARCH}/Wx/Thread.pod
+${P5ARCH}/Wx/Timer.pm
+${P5ARCH}/Wx/Wx_Exp.pm
+${P5ARCH}/Wx/XRC.pm
+${P5ARCH}/Wx/XSP/
+${P5ARCH}/Wx/XSP/Enum.pm
+${P5ARCH}/Wx/XSP/Event.pm
+${P5ARCH}/Wx/XSP/Overload.pm
+${P5ARCH}/Wx/XSP/Virtual.pm
+${P5ARCH}/Wx/build/
+${P5ARCH}/Wx/build/MakeMaker/
+${P5ARCH}/Wx/build/MakeMaker.pm
+${P5ARCH}/Wx/build/MakeMaker/Any_OS.pm
+${P5ARCH}/Wx/build/MakeMaker/Any_wx_config.pm
+${P5ARCH}/Wx/build/MakeMaker/Core.pm
+${P5ARCH}/Wx/build/MakeMaker/Hacks.pm
+${P5ARCH}/Wx/build/MakeMaker/MacOSX_GCC.pm
+${P5ARCH}/Wx/build/MakeMaker/Win32.pm
+${P5ARCH}/Wx/build/MakeMaker/Win32_MSVC.pm
+${P5ARCH}/Wx/build/MakeMaker/Win32_MinGW.pm
+${P5ARCH}/Wx/build/Opt.pm
+${P5ARCH}/Wx/build/Options.pm
+${P5ARCH}/Wx/build/Utils.pm
+${P5ARCH}/Wx/cpp/
+${P5ARCH}/Wx/cpp/chkconfig.h
+${P5ARCH}/Wx/cpp/compat.h
+${P5ARCH}/Wx/cpp/constants.h
+${P5ARCH}/Wx/cpp/e_cback.h
+${P5ARCH}/Wx/cpp/event.h
+${P5ARCH}/Wx/cpp/helpers.h
+${P5ARCH}/Wx/cpp/overload.h
+${P5ARCH}/Wx/cpp/setup.h
+${P5ARCH}/Wx/cpp/streams.h
+${P5ARCH}/Wx/cpp/v_cback.h
+${P5ARCH}/Wx/cpp/v_cback_def.h
+${P5ARCH}/Wx/cpp/wxapi.h
+${P5ARCH}/Wx/typemap
+${P5ARCH}/auto/
+${P5ARCH}/auto/Wx/
+${P5ARCH}/auto/Wx/AUI/
+@so ${P5ARCH}/auto/Wx/AUI/AUI.so
+${P5ARCH}/auto/Wx/Calendar/
+@so ${P5ARCH}/auto/Wx/Calendar/Calendar.so
+${P5ARCH}/auto/Wx/DND/
+@so ${P5ARCH}/auto/Wx/DND/DND.so
+${P5ARCH}/auto/Wx/DataView/
+@so ${P5ARCH}/auto/Wx/DataView/DataView.so
+${P5ARCH}/auto/Wx/DateTime/
+@so ${P5ARCH}/auto/Wx/DateTime/DateTime.so
+${P5ARCH}/auto/Wx/DocView/
+@so ${P5ARCH}/auto/Wx/DocView/DocView.so
+${P5ARCH}/auto/Wx/FS/
+@so ${P5ARCH}/auto/Wx/FS/FS.so
+${P5ARCH}/auto/Wx/Grid/
+@so ${P5ARCH}/auto/Wx/Grid/Grid.so
+${P5ARCH}/auto/Wx/Help/
+@so ${P5ARCH}/auto/Wx/Help/Help.so
+${P5ARCH}/auto/Wx/Html/
+@so ${P5ARCH}/auto/Wx/Html/Html.so
+${P5ARCH}/auto/Wx/IPC/
+@so ${P5ARCH}/auto/Wx/IPC/IPC.so
+${P5ARCH}/auto/Wx/MDI/
+@so ${P5ARCH}/auto/Wx/MDI/MDI.so
+${P5ARCH}/auto/Wx/Media/
+@so ${P5ARCH}/auto/Wx/Media/Media.so
+${P5ARCH}/auto/Wx/PerlTest/
+@so ${P5ARCH}/auto/Wx/PerlTest/PerlTest.so
+${P5ARCH}/auto/Wx/Print/
+@so ${P5ARCH}/auto/Wx/Print/Print.so
+${P5ARCH}/auto/Wx/PropertyGrid/
+@so ${P5ARCH}/auto/Wx/PropertyGrid/PropertyGrid.so
+${P5ARCH}/auto/Wx/Ribbon/
+@so ${P5ARCH}/auto/Wx/Ribbon/Ribbon.so
+${P5ARCH}/auto/Wx/RichText/
+@so ${P5ARCH}/auto/Wx/RichText/RichText.so
+${P5ARCH}/auto/Wx/STC/
+@so ${P5ARCH}/auto/Wx/STC/STC.so
+${P5ARCH}/auto/Wx/Socket/
+@so ${P5ARCH}/auto/Wx/Socket/Socket.so
+@so ${P5ARCH}/auto/Wx/Wx.so
+${P5ARCH}/auto/Wx/XRC/
+@so ${P5ARCH}/auto/Wx/XRC/XRC.so
+@man man/man1/wxperl_overload.1
+@man man/man3p/Wx.3p
+@man man/man3p/Wx::Api.3p
+@man man/man3p/Wx::Loader.3p
+@man man/man3p/Wx::NewClass.3p
+@man man/man3p/Wx::Perl::Carp.3p
+@man man/man3p/Wx::Perl::SplashFast.3p
+@man man/man3p/Wx::Perl::TextValidator.3p
+@man man/man3p/Wx::Socket.3p
+@man man/man3p/Wx::Thread.3p
+@man man/man3p/Wx::XSP::Overload.3p
+@man man/man3p/Wx::build::MakeMaker.3p
+@man man/man3p/Wx::build::MakeMaker::Win32_MSVC.3p
+@man man/man3p/Wx::build::Options.3p
+@man man/man3p/Wx::build::Utils.3p

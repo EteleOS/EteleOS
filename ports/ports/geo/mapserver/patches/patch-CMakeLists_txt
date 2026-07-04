@@ -1,0 +1,21 @@
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -1124,7 +1124,7 @@ if(UNIX)
+ else()
+   set(DEFAULT_DATA_SUBDIR share/mapserver)
+ endif()
+-set(DEFAULT_CONFIG_FILE ${CMAKE_INSTALL_FULL_SYSCONFDIR}/mapserver.conf)
++set(DEFAULT_CONFIG_FILE /${CMAKE_INSTALL_SYSCONFDIR}/mapserver.conf)
+ 
+ # Locations are changeable by user to customize layout of MapServer installation
+ # (default values are platform-specific)
+@@ -1190,7 +1190,7 @@ endif()
+ 
+ install(
+   FILES ${PROJECT_SOURCE_DIR}/etc/mapserver-sample.conf
+-  DESTINATION ${CMAKE_INSTALL_SYSCONFDIR}/
++  DESTINATION ${MAPSERVER_DATA_SUBDIR}/
+ )
+ 
+ option(BUILD_TESTING "Build unit test" ON)

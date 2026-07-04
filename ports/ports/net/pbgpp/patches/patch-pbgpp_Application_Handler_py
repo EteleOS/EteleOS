@@ -1,0 +1,40 @@
+Avoid using Kafka
+
+Index: pbgpp/Application/Handler.py
+--- pbgpp/Application/Handler.py.orig
++++ pbgpp/Application/Handler.py
+@@ -49,7 +49,7 @@ from pbgpp.Output.Formatters.JSON import JSONFormatter
+ from pbgpp.Output.Formatters.LineBased import LineBasedFormatter
+ from pbgpp.Output.Handler import OutputHandler
+ from pbgpp.Output.Pipes.FilePipe import FilePipe
+-from pbgpp.Output.Pipes.KafkaPipe import KafkaPipe
++#from pbgpp.Output.Pipes.KafkaPipe import KafkaPipe
+ from pbgpp.Output.Pipes.StdOutPipe import StdOutPipe
+ from pbgpp.PCAP.CookedCapture import PCAPCookedCapture
+ from pbgpp.PCAP.Ethernet import PCAPEthernet
+@@ -68,8 +68,8 @@ class PBGPPHandler:
+ 
+         self.fields = None
+ 
+-        self.kafka_server = None
+-        self.kafka_topic = None
++#        self.kafka_server = None
++#        self.kafka_topic = None
+ 
+         self.formatter = None
+         self.pipe = None
+@@ -252,10 +252,10 @@ class PBGPPHandler:
+             self.pipe = FilePipe(self.args.output_target)
+         elif self.args.pipe == "STDOUT":
+             self.pipe = StdOutPipe()
+-        elif self.args.pipe == "KAFKA":
+-            if self.args.kafka_server is None or self.args.kafka_topic is None:
+-                self.__parser.error("You need to specify Kafka server (--kafka-server) and topic (--kafka-topic) when using KAFKA as output pipe.")
+-            self.pipe = KafkaPipe(server=self.args.kafka_server, topic=self.args.kafka_topic)
++#        elif self.args.pipe == "KAFKA":
++#            if self.args.kafka_server is None or self.args.kafka_topic is None:
++#                self.__parser.error("You need to specify Kafka server (--kafka-server) and topic (--kafka-topic) when using KAFKA as output pipe.")
++#            self.pipe = KafkaPipe(server=self.args.kafka_server, topic=self.args.kafka_topic)
+         else:
+             self.__parser.error("Can't recognize the output pipe.")
+ 

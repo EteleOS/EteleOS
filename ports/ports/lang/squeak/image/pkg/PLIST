@@ -1,0 +1,3 @@
+lib/squeak/
+lib/squeak/Squeak${V}.2-${IMAGE_V}-basic.changes
+lib/squeak/Squeak${V}.2-${IMAGE_V}-basic.image

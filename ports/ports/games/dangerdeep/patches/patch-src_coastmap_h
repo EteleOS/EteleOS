@@ -1,0 +1,30 @@
+Index: src/coastmap.h
+--- src/coastmap.h.orig
++++ src/coastmap.h
+@@ -90,7 +90,7 @@ class coastsegment (public)
+ class coastmap
+ {
+ 	friend class coastsegment;	// just request some values
+-	friend class coastsegment::segcl;	// just request some values
++	friend struct coastsegment::segcl;	// just request some values
+ 
+ 	// some attributes used for map reading/processing
+ 	std::vector<Uint8> themap;		// pixel data of map file, y points up, like in OpenGL
+@@ -148,7 +148,7 @@ class coastmap
+ 	void process_coastline(int x, int y);
+ 	void process_segment(int x, int y);
+ 
+-	class worker : public thread
++	class worker : public ::thread
+ 	{
+ 		coastmap& cm;
+ 	public:
+@@ -160,7 +160,7 @@ class coastmap
+ 		}
+ 	};
+ 
+-	thread::auto_ptr<worker> myworker;
++	::thread::auto_ptr<worker> myworker;
+ 	void construction_threaded();
+ 
+ public:	

@@ -1,0 +1,12 @@
+Index: inetsim
+--- inetsim.orig
++++ inetsim
+@@ -9,7 +9,7 @@
+ ################################################################
+ 
+ # Installation path of INetSim packages
+-use lib "./lib";
++#use lib "./lib";
+ 
+ ################################################################
+ # NO USER CONFIGURATION BELOW

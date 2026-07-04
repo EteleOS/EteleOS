@@ -1,0 +1,5 @@
+bin/fluxter
+share/fluxbox/
+share/fluxbox/README.fluxter
+share/fluxbox/fluxter.bb
+share/fluxbox/fluxter.nobb

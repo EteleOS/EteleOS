@@ -1,0 +1,19 @@
+Index: libntfs-3g/Makefile.in
+--- libntfs-3g/Makefile.in.orig
++++ libntfs-3g/Makefile.in
+@@ -1170,15 +1170,9 @@ uninstall-am: uninstall-libLTLIBRARIES uninstall-local
+ # We may need to move .so files to root
+ # And create ldscript or symbolic link from /usr
+ install-exec-hook: install-rootlibLTLIBRARIES
+-@INSTALL_LIBRARY_TRUE@	if [ ! "$(rootlibdir)" -ef "$(libdir)" ]; then \
+-@INSTALL_LIBRARY_TRUE@		$(MV) -f "$(DESTDIR)/$(libdir)"/libntfs-3g.so* "$(DESTDIR)/$(rootlibdir)";  \
+-@INSTALL_LIBRARY_TRUE@	fi
+ @GENERATE_LDSCRIPT_TRUE@@INSTALL_LIBRARY_TRUE@	if [ ! "$(rootlibdir)" -ef "$(libdir)" ]; then \
+ @GENERATE_LDSCRIPT_TRUE@@INSTALL_LIBRARY_TRUE@		$(install_sh_PROGRAM) "libntfs-3g.script.so" "$(DESTDIR)/$(libdir)/libntfs-3g.so"; \
+ @GENERATE_LDSCRIPT_TRUE@@INSTALL_LIBRARY_TRUE@	fi
+-@GENERATE_LDSCRIPT_FALSE@@INSTALL_LIBRARY_TRUE@	if [ ! "$(rootlibdir)" -ef "$(libdir)" ]; then \
+-@GENERATE_LDSCRIPT_FALSE@@INSTALL_LIBRARY_TRUE@		$(LN_S) "$(rootlibdir)/libntfs-3g.so" "$(DESTDIR)/$(libdir)/libntfs-3g.so"; \
+-@GENERATE_LDSCRIPT_FALSE@@INSTALL_LIBRARY_TRUE@	fi
+ 
+ uninstall-local:
+ @INSTALL_LIBRARY_TRUE@	$(RM) -f "$(DESTDIR)/$(rootlibdir)"/libntfs-3g.so*

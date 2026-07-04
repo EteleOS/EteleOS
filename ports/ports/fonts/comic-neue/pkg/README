@@ -1,0 +1,8 @@
++-----------------------------------------------------------------------
+| Using ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+To enjoy browsing www.libressl.org you can use the provided fontconfig
+file.
+
+# ln -s ${TRUEPREFIX}/share/comic-neue/30-comic-sans-aliases.conf /etc/fonts/conf.d/

@@ -1,0 +1,12 @@
+--- Makefile.PL.orig	Mon Sep 15 21:40:55 2014
++++ Makefile.PL	Mon Sep 15 21:41:23 2014
+@@ -28,8 +28,7 @@ else
+           "    'perl Makefile.PL -n' to skip installation\n";
+     foreach my $prompt (@prompts)
+       { my ($program, $default, $description) = @$prompt;
+-        if( prompt("Do you want to install '$program' ($description)?", $default) =~ /^y/i)
+-          { push(@programs, $program); }
++          push(@programs, $program);
+       }
+   }
+ 

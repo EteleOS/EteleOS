@@ -1,0 +1,2 @@
+@bin bin/osd_clock
+@man man/man1/osd_clock.1

@@ -1,0 +1,3 @@
+${P5SITE}/Test/
+${P5SITE}/Test/Pod.pm
+@man man/man3p/Test::Pod.3p

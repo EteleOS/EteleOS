@@ -1,0 +1,7 @@
+The Recode library converts files between character sets and usages.
+It recognises or produces over 200 different character sets (or about
+300 if combined with an iconv library) and transliterates files between
+almost any pair. When exact transliterations are not possible, it gets
+rid of offending characters or falls back on approximations.
+
+The recode(1) program is a handy front-end to the library.

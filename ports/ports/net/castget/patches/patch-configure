@@ -1,0 +1,15 @@
+Honor the result of AC_SEARCH_LIBS() and don't hardcode linking with
+libstdc++.
+
+Index: configure
+--- configure.orig
++++ configure
+@@ -12346,7 +12346,7 @@ else
+ fi
+ 
+ 
+-    LIBS="-lz -lstdc++ $LIBS"
++#   LIBS="-lz -lstdc++ $LIBS"
+ 
+ 
+ $as_echo "#define ENABLE_ID3LIB 1" >>confdefs.h

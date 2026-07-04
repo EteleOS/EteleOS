@@ -1,0 +1,7 @@
+${P5SITE}/LaTeX/
+${P5SITE}/LaTeX/TOM/
+${P5SITE}/LaTeX/TOM.pm
+${P5SITE}/LaTeX/TOM/Node.pm
+${P5SITE}/LaTeX/TOM/Parser.pm
+${P5SITE}/LaTeX/TOM/Tree.pm
+@man man/man3p/LaTeX::TOM.3p

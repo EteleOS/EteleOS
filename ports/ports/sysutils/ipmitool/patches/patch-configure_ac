@@ -1,0 +1,55 @@
+Disable the noisy warnings, it makes it hard to see the more important basic
+problems (missing prototypes for internal functions, etc - lots of sloppiness)
+in amongst the chaff.
+
+Prefer libedit over libreadline.
+
+Fix bad AC_TRY_COMPILE check.
+
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -36,7 +36,7 @@ AC_CHECK_FUNCS([alarm gethostbyname getaddrinfo getifa
+ AC_CHECK_FUNCS([memmove memset strchr strdup strerror])
+ AC_CHECK_FUNCS([getpassphrase])
+ 
+-CFLAGS="$CFLAGS -Wall -Wextra -std=gnu11 -pedantic -Wformat -Wformat-nonliteral"
++CFLAGS="$CFLAGS -std=gnu11 -pedantic -Wformat"
+ 
+ AM_PROG_LIBTOOL
+ LIBTOOL="$LIBTOOL --silent"
+@@ -624,7 +624,7 @@ AC_ARG_ENABLE([ipmishell],
+ 
+ dnl check for readline library to enable ipmi shell
+ if test "x$xenable_ipmishell" = "xyes"; then
+-	AC_SEARCH_LIBS([readline], [readline edit], [have_readline=yes])
++	AC_SEARCH_LIBS([readline], [edit readline], [have_readline=yes])
+ 	if test "x$have_readline" != "xyes"; then
+ 		AC_MSG_ERROR([** Unable to find readline required by ipmishell.])
+ 		xenable_ipmishell=no
+@@ -654,9 +654,7 @@ if test "x$xenable_file_security" != "xno"; then
+ fi
+ 
+ 
+-AC_TRY_COMPILE([],[
+-	#include <stdio.h>
+-	
++AC_TRY_COMPILE([#include <stdio.h>],[
+ 	struct packstruct {
+ 		unsigned char t0       :5;
+ 		unsigned char t1       :5;
+@@ -665,14 +663,10 @@ AC_TRY_COMPILE([],[
+ 		unsigned char t4       :4;
+ 	} __attribute__ ((packed));
+ 	
+-	int
+-	main(int argc, char ** argv)
+-	{
+ 	if(sizeof(struct packstruct) != 3)
+ 	return(1);
+ 	else
+ 	return(0);
+-	}
+ 	],
+ 	[],
+ 	[AC_DEFINE(HAVE_PRAGMA_PACK,[1],

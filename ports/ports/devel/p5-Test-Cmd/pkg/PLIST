@@ -1,0 +1,6 @@
+${P5SITE}/Test/
+${P5SITE}/Test/Cmd/
+${P5SITE}/Test/Cmd.pm
+${P5SITE}/Test/Cmd/Common.pm
+@man man/man3p/Test::Cmd.3p
+@man man/man3p/Test::Cmd::Common.3p

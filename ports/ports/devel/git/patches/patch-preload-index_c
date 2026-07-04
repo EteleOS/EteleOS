@@ -1,0 +1,15 @@
+cap the number of cpus detected by git to 4; on many-cpu systems, significant
+cpu time is accounted to spinlocks when running various operations on OpenBSD
+
+Index: preload-index.c
+--- preload-index.c.orig
++++ preload-index.c
+@@ -127,6 +127,8 @@ void preload_index(struct index_state *index,
+ 	trace2_region_enter("index", "preload", NULL);
+ 
+ 	trace_performance_enter();
++	if (threads > online_cpus())
++		threads = online_cpus();
+ 	if (threads > MAX_PARALLEL)
+ 		threads = MAX_PARALLEL;
+ 	offset = 0;

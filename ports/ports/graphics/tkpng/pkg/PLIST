@@ -1,0 +1,6 @@
+lib/tcl/tkpng/
+lib/tcl/tkpng/libtkpng${VER}.so
+lib/tcl/tkpng/pkgIndex.tcl
+share/doc/tkpng/
+share/doc/tkpng/README
+share/doc/tkpng/license.terms

@@ -1,0 +1,37 @@
+Index: spider.c
+--- spider.c.orig
++++ spider.c
+@@ -17,7 +17,7 @@
+ #include	"defs.h"
+ #include	"globals.h"
+ #include	<ctype.h>
+-
++#include <stdlib.h>
+ static void	fix_coords();
+ 
+ int 	deltamod = 0;
+@@ -218,6 +218,7 @@ int	num;
+ /*
+  * deal hand of 10
+  */
++void
+ deal_next_hand(log)
+ Bool	log;
+ {
+@@ -619,7 +620,7 @@ Type	type;
+ 
+ 	return (type_names[type]);
+ }
+-#endif DEBUG
++#endif
+ 
+ 
+ /*
+@@ -936,6 +937,7 @@ char	buf[128];
+ /*
+  * print cards in list
+  */
++void
+ expand(list)
+ CardList	list;
+ {

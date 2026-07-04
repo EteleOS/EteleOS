@@ -1,0 +1,26 @@
+@pkgpath devel/py-pure_eval,python3
+lib/python${MODPY_VERSION}/site-packages/pure_eval/
+lib/python${MODPY_VERSION}/site-packages/pure_eval-${MODPY_DISTV}.dist-info/
+lib/python${MODPY_VERSION}/site-packages/pure_eval-${MODPY_DISTV}.dist-info/METADATA
+lib/python${MODPY_VERSION}/site-packages/pure_eval-${MODPY_DISTV}.dist-info/RECORD
+lib/python${MODPY_VERSION}/site-packages/pure_eval-${MODPY_DISTV}.dist-info/WHEEL
+lib/python${MODPY_VERSION}/site-packages/pure_eval-${MODPY_DISTV}.dist-info/licenses/
+lib/python${MODPY_VERSION}/site-packages/pure_eval-${MODPY_DISTV}.dist-info/licenses/LICENSE.txt
+lib/python${MODPY_VERSION}/site-packages/pure_eval-${MODPY_DISTV}.dist-info/top_level.txt
+lib/python${MODPY_VERSION}/site-packages/pure_eval/__init__.py
+lib/python${MODPY_VERSION}/site-packages/pure_eval/${MODPY_PYCACHE}/
+lib/python${MODPY_VERSION}/site-packages/pure_eval/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/pure_eval/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/pure_eval/${MODPY_PYCACHE}core.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/pure_eval/${MODPY_PYCACHE}core.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/pure_eval/${MODPY_PYCACHE}my_getattr_static.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/pure_eval/${MODPY_PYCACHE}my_getattr_static.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/pure_eval/${MODPY_PYCACHE}utils.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/pure_eval/${MODPY_PYCACHE}utils.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/pure_eval/${MODPY_PYCACHE}version.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/pure_eval/${MODPY_PYCACHE}version.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/pure_eval/core.py
+lib/python${MODPY_VERSION}/site-packages/pure_eval/my_getattr_static.py
+lib/python${MODPY_VERSION}/site-packages/pure_eval/py.typed
+lib/python${MODPY_VERSION}/site-packages/pure_eval/utils.py
+lib/python${MODPY_VERSION}/site-packages/pure_eval/version.py

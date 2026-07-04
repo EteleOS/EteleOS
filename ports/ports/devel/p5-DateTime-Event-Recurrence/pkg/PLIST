@@ -1,0 +1,3 @@
+${P5SITE}/DateTime/Event/
+${P5SITE}/DateTime/Event/Recurrence.pm
+@man man/man3p/DateTime::Event::Recurrence.3p

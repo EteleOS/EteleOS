@@ -1,0 +1,12 @@
+Index: source/monplace.cc
+--- source/monplace.cc.orig
++++ source/monplace.cc
+@@ -8,6 +8,8 @@
+  *               <1>     -/--/--        LRH             Created
+  */
+ 
++#include <string.h>
++
+ #include "AppHdr.h"
+ #include "monplace.h"
+ 

@@ -1,0 +1,14 @@
+key is already used with const, doubling it confuses libc++
+
+Index: src/tools/radiant/radiant/ui/colourscheme/ColourSchemeManager.h
+--- src/tools/radiant/radiant/ui/colourscheme/ColourSchemeManager.h.orig
++++ src/tools/radiant/radiant/ui/colourscheme/ColourSchemeManager.h
+@@ -7,7 +7,7 @@
+ namespace ui {
+ 
+ // A map storing all the ColourSchemes with the name as key
+-typedef std::map<const std::string, ColourScheme> ColourSchemeMap;
++typedef std::map<std::string, ColourScheme> ColourSchemeMap;
+ 
+ class ColourSchemeManager {
+ 	private:

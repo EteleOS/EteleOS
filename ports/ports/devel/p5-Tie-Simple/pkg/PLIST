@@ -1,0 +1,14 @@
+${P5SITE}/Tie/
+${P5SITE}/Tie/Simple/
+${P5SITE}/Tie/Simple.pm
+${P5SITE}/Tie/Simple/Array.pm
+${P5SITE}/Tie/Simple/Handle.pm
+${P5SITE}/Tie/Simple/Hash.pm
+${P5SITE}/Tie/Simple/Scalar.pm
+${P5SITE}/Tie/Simple/Util.pm
+@man man/man3p/Tie::Simple.3p
+@man man/man3p/Tie::Simple::Array.3p
+@man man/man3p/Tie::Simple::Handle.3p
+@man man/man3p/Tie::Simple::Hash.3p
+@man man/man3p/Tie::Simple::Scalar.3p
+@man man/man3p/Tie::Simple::Util.3p

@@ -1,0 +1,12 @@
+Index: src/arch/ArchHooks/ArchHooks_Unix.cpp
+--- src/arch/ArchHooks/ArchHooks_Unix.cpp.orig
++++ src/arch/ArchHooks/ArchHooks_Unix.cpp
+@@ -370,7 +370,7 @@ RString ArchHooks_Unix::GetClipboard()
+ static LocalizedString COULDNT_FIND_SONGS( "ArchHooks_Unix", "Couldn't find 'Songs'" );
+ void ArchHooks::MountInitialFilesystems( const RString &sDirOfExecutable )
+ {
+-#if defined(UNIX)
++#if 0
+ 	/* Mount the root filesystem, so we can read files in /proc, /etc, and so on.
+ 	 * This is /rootfs, not /root, to avoid confusion with root's home directory. */
+ 	FILEMAN->Mount( "dir", "/", "/rootfs" );

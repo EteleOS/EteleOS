@@ -1,0 +1,11 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+On a remote machine:
+
+	remote% DEVDRAW=devdrawserver acme
+
+and locally:
+
+	% dialdevdraw 'ssh remote dial -e unix!/tmp/devdrawserver'

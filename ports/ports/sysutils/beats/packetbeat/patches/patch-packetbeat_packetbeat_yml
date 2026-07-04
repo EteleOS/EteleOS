@@ -1,0 +1,29 @@
+'any' interface doesn't work on non-Linux
+
+Index: packetbeat/packetbeat.yml
+--- packetbeat/packetbeat.yml.orig
++++ packetbeat/packetbeat.yml
+@@ -11,7 +11,7 @@
+ 
+ # Select the network interface to sniff the data. On Linux, you can use the
+ # "any" keyword to sniff on all connected interfaces.
+-packetbeat.interfaces.device: any
++packetbeat.interfaces.device: em0
+ 
+ # The network CIDR blocks that are considered "internal" networks for
+ # the purpose of network perimeter boundary classification. The valid
+@@ -222,10 +222,10 @@ processors:
+     then:
+       - drop_fields:
+           fields: [host]
+-    else:
+-      - add_host_metadata: ~
+-  - add_cloud_metadata: ~
+-  - add_docker_metadata: ~
++  #  else:
++  #    - add_host_metadata: ~
++  #- add_cloud_metadata: ~
++  #- add_docker_metadata: ~
+   - detect_mime_type:
+       field: http.request.body.content
+       target: http.request.mime_type

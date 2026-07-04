@@ -1,0 +1,10 @@
+--- allegro.cfg.orig	Sun May 21 03:01:46 2006
++++ allegro.cfg	Wed Jan 13 02:32:09 2010
+@@ -326,6 +326,7 @@ mouse_accel_factor = 
+ #  ARTS     - aRts (Analog Real-Time Synthesizer)
+ #  ALSA     - ALSA Sound System
+ #  JACK     - JACK Audio Server
++#  SIOD     - sndio Audio API
+ #
+ # BeOS digital sound drivers:
+ #

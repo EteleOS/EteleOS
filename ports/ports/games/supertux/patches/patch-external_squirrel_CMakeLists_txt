@@ -1,0 +1,14 @@
+Index: external/squirrel/CMakeLists.txt
+--- external/squirrel/CMakeLists.txt.orig
++++ external/squirrel/CMakeLists.txt
+@@ -14,9 +14,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includ
+ if(CMAKE_COMPILER_IS_GNUCXX)
+   set(SQ_FLAGS -fno-exceptions -fno-strict-aliasing -Wall -Wextra -pedantic -Wcast-qual)
+ 
+-  if(CMAKE_BUILD_TYPE STREQUAL "Release")
+-    set(SQ_FLAGS ${SQ_FLAGS} -O3)
+-  elseif(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
++  if(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+     set(SQ_FLAGS ${SQ_FLAGS} -O3 -g)
+   elseif(CMAKE_BUILD_TYPE STREQUAL "MinSizeRel")
+     set(SQ_FLAGS ${SQ_FLAGS} -Os)

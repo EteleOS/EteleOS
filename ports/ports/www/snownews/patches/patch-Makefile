@@ -1,0 +1,39 @@
+Don't hide compilation/installation invocations
+
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -20,16 +20,13 @@ run:	${exe}
+ 	@${exe}
+ 
+ ${exe}:	${objs}
+-	@echo "Linking $@ ..."
+-	@${CC} ${ldflags} -o $@ $^ ${libs}
++	${CC} ${ldflags} -o $@ $^ ${libs}
+ 
+ $O%.o:	%.c
+-	@echo "    Compiling $< ..."
+-	@${CC} ${cflags} -MMD -MT "$(<:.c=.s) $@" -o $@ -c $<
++	${CC} ${cflags} -MMD -MT "$(<:.c=.s) $@" -o $@ -c $<
+ 
+ %.s:	%.c
+-	@echo "    Compiling $< to assembly ..."
+-	@${CC} ${cflags} -S -o $@ -c $<
++	${CC} ${cflags} -S -o $@ -c $<
+ 
+ include man/Module.mk
+ include po/Module.mk
+@@ -43,11 +40,9 @@ exed	:= ${DESTDIR}${bindir}
+ exei	:= ${exed}/$(notdir ${exe})
+ 
+ ${exed}:
+-	@echo "Creating $@ ..."
+-	@${INSTALL} -d $@
++	${INSTALL} -d $@
+ ${exei}:	${exe} | ${exed}
+-	@echo "Installing $@ ..."
+-	@${INSTALL_PROGRAM} $< $@
++	${INSTALL_PROGRAM} $< $@
+ 
+ installdirs:	${exed}
+ install:	${exei}

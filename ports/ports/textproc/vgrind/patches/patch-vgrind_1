@@ -1,0 +1,30 @@
+--- vgrind.1.orig      Sat Oct 23 20:30:17 2010
++++ vgrind.1   Mon May 30 11:09:49 2011
+@@ -99,7 +99,7 @@ The options are as follows:
+ .It Fl d Ar file
+ Specifies an alternate language definitions
+ file (default is
+-.Pa /usr/share/misc/vgrindefs ) .
++.Pa ${PREFIX}/share/misc/vgrindefs ) .
+ .It Fl f
+ Forces filter mode.
+ .It Fl h Ar header
+@@ -164,14 +164,14 @@ option and the file
+ as argument.
+ .El
+ .Sh FILES
+-.Bl -tag -width /usr/share/misc/vgrindefsxx -compact
++.Bl -tag -width ${PREFIX}/share/misc/vgrindefsxx -compact
+ .It Pa index
+ file where source for index is created
+-.It Pa /usr/share/tmac/tmac.vgrind
++.It Pa ${PREFIX}/share/groff/site-tmac/tmac.vgrind
+ macro package
+-.It Pa /usr/libexec/vfontedpr
++.It Pa ${PREFIX}/libexec/vfontedpr
+ preprocessor
+-.It Pa /usr/share/misc/vgrindefs
++.It Pa ${PREFIX}/share/misc/vgrindefs
+ language descriptions
+ .El
+ .Sh SEE ALSO

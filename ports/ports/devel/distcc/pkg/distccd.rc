@@ -1,0 +1,11 @@
+#!/bin/ksh
+
+daemon="${PREFIX}/bin/distccd --daemon"
+daemon_user="_distcc"
+daemon_flags="--allow 127.0.0.1"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_cmd $1

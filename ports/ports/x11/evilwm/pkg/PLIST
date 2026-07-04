@@ -1,0 +1,4 @@
+@bin bin/evilwm
+@man man/man1/evilwm.1
+share/doc/evilwm/
+share/doc/evilwm/README

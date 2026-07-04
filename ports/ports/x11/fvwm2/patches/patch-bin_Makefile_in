@@ -1,0 +1,20 @@
+Index: bin/Makefile.in
+--- bin/Makefile.in.orig
++++ bin/Makefile.in
+@@ -835,14 +835,13 @@ info: info-am
+ 
+ info-am:
+ 
+-install-data-am: install-configDATA install-data-local install-man
++install-data-am: install-configDATA install-man
+ 
+ install-dvi: install-dvi-am
+ 
+ install-dvi-am:
+ 
+-install-exec-am: install-binPROGRAMS install-binSCRIPTS \
+-	install-exec-local
++install-exec-am: install-binPROGRAMS install-binSCRIPTS
+ 
+ install-html: install-html-am
+ 

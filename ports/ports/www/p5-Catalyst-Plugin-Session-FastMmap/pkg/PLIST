@@ -1,0 +1,4 @@
+${P5SITE}/Catalyst/Plugin/
+${P5SITE}/Catalyst/Plugin/Session/
+${P5SITE}/Catalyst/Plugin/Session/FastMmap.pm
+@man man/man3p/Catalyst::Plugin::Session::FastMmap.3p

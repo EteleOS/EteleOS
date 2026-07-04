@@ -1,0 +1,4 @@
+${P5ACE}/Ace/Freesubs.pm
+${P5ACE}/auto/Ace/Freesubs/
+@comment ${P5ACE}/auto/Ace/Freesubs/Freesubs.bs
+${P5ACE}/auto/Ace/Freesubs/Freesubs.so

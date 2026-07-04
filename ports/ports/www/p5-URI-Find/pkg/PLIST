@@ -1,0 +1,7 @@
+bin/urifind
+${P5SITE}/URI/Find/
+${P5SITE}/URI/Find.pm
+${P5SITE}/URI/Find/Schemeless.pm
+@man man/man1/urifind.1
+@man man/man3p/URI::Find.3p
+@man man/man3p/URI::Find::Schemeless.3p

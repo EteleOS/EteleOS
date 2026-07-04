@@ -1,0 +1,4 @@
+${P5SITE}/File/
+${P5SITE}/File/Slurp/
+${P5SITE}/File/Slurp/Tiny.pm
+@man man/man3p/File::Slurp::Tiny.3p

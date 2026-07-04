@@ -1,0 +1,5 @@
+include/ident.h
+lib/libident.a
+lib/libident.la
+@lib lib/libident.so.${LIBident_VERSION}
+@man man/man3/ident.3

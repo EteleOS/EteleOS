@@ -1,0 +1,12 @@
+--- src/time.c.orig	Tue May 17 21:31:50 2005
++++ src/time.c	Thu Feb  4 19:22:46 2010
+@@ -254,7 +254,8 @@ void guess_tzone(void)
+ 		tm = localtime(&now);
+ 		zone = -tm->tm_gmtoff;
+ #else
+-#if defined(__FreeBSD__) /* by Stefan `Sec` Zehl <sec@42.org> */
++#if defined(__FreeBSD__) || defined(__OpenBSD__)
++/* by Stefan `Sec` Zehl <sec@42.org> */
+ 		time_t now = time(0);
+ 		struct tm *tm = localtime(&now);
+ 		config.tzone = tm->tm_gmtoff;

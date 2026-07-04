@@ -1,0 +1,3 @@
+${P5SITE}/Lingua/EN/Number/
+${P5SITE}/Lingua/EN/Number/IsOrdinal.pm
+@man man/man3p/Lingua::EN::Number::IsOrdinal.3p

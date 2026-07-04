@@ -1,0 +1,14 @@
+Fix rules for parallel make.
+
+Index: modules/syscalls/Makefile.in
+--- modules/syscalls/Makefile.in.orig
++++ modules/syscalls/Makefile.in
+@@ -47,7 +47,7 @@ preload.lisp : $(srcdir)/preload.lisp
+ am--refresh :
+ 
+ # syscalls relies on src/gllib, so we must also include files in the build dir
+-gllib libgnu_sc.a : force
++gllib libgnu_sc.a &: force
+ 	rm -f libgnu_sc.a
+ 	mkdir -p gllib
+ 	test -f gllib/Makefile || sh config.status gllib/Makefile depfiles

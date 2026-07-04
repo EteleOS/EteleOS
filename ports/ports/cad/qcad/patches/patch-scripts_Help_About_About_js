@@ -1,0 +1,13 @@
+Index: scripts/Help/About/About.js
+--- scripts/Help/About/About.js.orig
++++ scripts/Help/About/About.js
+@@ -475,6 +475,9 @@ About.prototype.initAboutSystem = function(textEdit) {
+     if (RS.getSystemId()==="solaris") {
+         text += "Solaris";
+     }
++    if (RS.getSystemId()==="openbsd") {
++        text += "OpenBSD";
++    }
+     text += "\nOS version: " + RSettings.getOSVersion();
+ 
+     text += "\n";

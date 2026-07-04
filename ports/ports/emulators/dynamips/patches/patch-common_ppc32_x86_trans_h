@@ -1,0 +1,13 @@
+Index: common/ppc32_x86_trans.h
+--- common/ppc32_x86_trans.h.orig
++++ common/ppc32_x86_trans.h
+@@ -60,8 +60,7 @@ void ppc32_jit_tcb_exec(cpu_ppc_t *cpu,ppc32_jit_tcb_t
+       }
+    }
+ 
+-   asm volatile ("movl %0,%%edi"::"r"(cpu):
+-                 "esi","edi","eax","ebx","ecx","edx");
++   asm volatile ("movl %0,%%edi"::"r"(cpu));
+    jit_code();
+ }
+ 

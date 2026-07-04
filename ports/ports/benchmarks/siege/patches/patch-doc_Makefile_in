@@ -1,0 +1,23 @@
+Index: doc/Makefile.in
+--- doc/Makefile.in.orig
++++ doc/Makefile.in
+@@ -305,8 +305,8 @@ siege2csv.1.in         
+ 
+ EXTRA_DIST = $(man_SOURCE) $(man_SHELLS) urls.txt siegerc.in
+ DISTCLEANFILES = siegerc $(man_MANS) $(man_SHELLS)
+-SIEGERC = $(sysconfdir)/siegerc
+-URLSTXT = $(sysconfdir)/urls.txt
++SIEGERC = $(sysconfdir)/siege/siegerc
++URLSTXT = $(sysconfdir)/siege/urls.txt
+ all: all-am
+ 
+ .SUFFIXES:
+@@ -440,7 +440,7 @@ install-exec: install-exec-am
+ install-data: install-data-am
+ 
+ install-am: all-am
+-	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
++	@$(MAKE) $(AM_MAKEFLAGS) install-data-am
+ 
+ installcheck: installcheck-am
+ install-strip:

@@ -1,0 +1,11 @@
+--- perlbal.orig	Mon Dec 20 02:24:35 2010
++++ perlbal	Wed Nov 18 09:40:53 2015
+@@ -47,7 +47,7 @@ usage(1) unless
+                              'version'  => \$opt_version,
+                );
+ 
+-my $default_config = "/etc/perlbal/perlbal.conf";
++my $default_config = "${SYSCONFDIR}/perlbal/perlbal.conf";
+ $opt_config = $default_config if ! $opt_config && -e $default_config;
+ 
+ usage(0) if $opt_help;

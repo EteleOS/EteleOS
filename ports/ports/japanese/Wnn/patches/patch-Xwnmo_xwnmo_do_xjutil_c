@@ -1,0 +1,31 @@
+--- Xwnmo/xwnmo/do_xjutil.c.orig
++++ Xwnmo/xwnmo/do_xjutil.c
+@@ -37,6 +37,7 @@
+ #ifdef	USING_XJUTIL
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <sys/wait.h>
+ #include <signal.h>
+ #include <X11/Xos.h>
+@@ -247,18 +248,14 @@ int counter;
+     } else {
+ 	p = (unsigned char *)xjutil_name;
+     }
+-    execlp((char*)p, (char*)p, DisplayString(dpy), prop_name, tmp, 0);
++    execlp((char*)p, (char*)p, DisplayString(dpy), prop_name, tmp, NULL);
+ }
+ 
+ static void
+ catch_sigchld()
+ {
+     XIMLangDataBase *ld;
+-#ifdef SYSVR2
+-   int status;
+-#else
+-    union wait status;
+-#endif
++    int status;
+     int pid;
+ 
+ #ifdef SYSVR2

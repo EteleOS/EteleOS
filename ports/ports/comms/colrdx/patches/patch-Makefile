@@ -1,0 +1,23 @@
+--- Makefile.orig	Thu Mar  9 19:28:59 2006
++++ Makefile	Mon Feb 27 16:38:52 2017
+@@ -1,16 +1,17 @@
+ # Makefile for colrdx, copyright 2005, 2006 Joop Stakenborg <pg4i@amsat.org>
+ 
++PREFIX?=/usr/local
+ VERSION=1.02
+ 
+ all: colrdx
+ 
+ colrdx: colrdx.c
+-	gcc $(CFLAGS) -O2 -Wall -I/usr/include/ncurses colrdx.c \
++	$(CC) $(CFLAGS) -Wall -I/usr/include/ncurses colrdx.c \
+ 	-lncurses -o colrdx
+ 
+ install:
+-	install -s -o root -g root colrdx $(DESTDIR)/usr/bin
+-	install -m 0644 colrdx.1 $(DESTDIR)/usr/share/man/man1
++	install -s -m 755 colrdx $(PREFIX)/bin
++	install -m 644 colrdx.1 $(PREFIX)/man/man1
+ 	
+ clean:
+ 	rm -f colrdx *~ build colrdx-$(VERSION).tar.gz

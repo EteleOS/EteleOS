@@ -1,0 +1,16 @@
+Index: src/hacklib.c
+--- src/hacklib.c.orig
++++ src/hacklib.c
+@@ -1016,12 +1016,7 @@ time_t date;
+     if (date == 0)
+         lt = getlt();
+     else
+-#if (defined(ULTRIX) && !(defined(ULTRIX_PROTO) || defined(NHSTDC))) \
+-    || defined(BSD)
+-        lt = localtime((long *) (&date));
+-#else
+         lt = localtime(&date);
+-#endif
+     /* just in case somebody's localtime supplies (year % 100)
+        rather than the expected (year - 1900) */
+     if (lt->tm_year < 70)

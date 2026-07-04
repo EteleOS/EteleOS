@@ -1,0 +1,10 @@
+--- src/Attack.cxx.orig	Fri May 13 20:00:02 2005
++++ src/Attack.cxx	Thu Aug 25 14:44:25 2011
+@@ -83,6 +83,7 @@ int main ( int argc, char **argv )
+   int height = -1, width = -1;
+   
+   player_name[0] = '\0';
++  glutInit(&argc, argv);
+   parseCommandLine(argc, argv, mode, port, host_name, player_name, height, width);
+   run_crack_attack(mode, port, host_name, player_name, height, width);
+ 

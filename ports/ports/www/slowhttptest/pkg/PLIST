@@ -1,0 +1,2 @@
+@bin bin/slowhttptest
+@man man/man1/slowhttptest.1

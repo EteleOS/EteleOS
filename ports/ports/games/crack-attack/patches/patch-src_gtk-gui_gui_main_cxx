@@ -1,0 +1,22 @@
+--- src/gtk-gui/gui_main.cxx.orig	Sun May  1 05:04:12 2005
++++ src/gtk-gui/gui_main.cxx	Fri Oct 19 14:26:56 2007
+@@ -50,6 +50,10 @@ using namespace std;
+ int glut_argc;
+ char **glut_argv;
+ 
++static void destroy_window(GtkObject *object, gpointer data) {
++	gtk_main_quit();
++}
++
+ /*
+  * Documentation
+  *   html tables don't work right in explorer
+@@ -76,6 +80,8 @@ int gui_main ( int argc, char **argv )
+     winCrackAttackSplash = create_winCrackAttackSplash ();
+ 		gui_data_read(winCrackAttackSplash);
+     gtk_widget_show (winCrackAttackSplash);
++		g_signal_connect(GTK_OBJECT(winCrackAttackSplash), "destroy",
++				G_CALLBACK(destroy_window), NULL);
+     gtk_main ();
+ 
+   return 0;

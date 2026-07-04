@@ -1,0 +1,7 @@
+Index: repro/users.txt
+--- repro/users.txt.orig
++++ repro/users.txt
+@@ -1,2 +1,2 @@
+ # default user admin with password admin
+-admin:repro:587c67fddee5b46eef47c36d93016965
++#admin:repro:587c67fddee5b46eef47c36d93016965

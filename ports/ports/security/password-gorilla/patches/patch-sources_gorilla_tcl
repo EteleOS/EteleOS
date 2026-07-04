@@ -1,0 +1,16 @@
+XXX hand-made with diff -U1 to prevent CVS keyword expansion.
+
+--- sources/gorilla.tcl.orig	Sat Mar  9 15:13:00 2013
++++ sources/gorilla.tcl	Mon May 11 09:46:31 2015
+@@ -37,10 +37,3 @@
+ 
+-	# find the location of the install directory even when "executing" a symlink
+-	# pointing to the gorilla.tcl file
+-	if { [ file type [ info script ] ] eq "link" } {
+-		variable Dir [ file normalize [ file dirname [ file join [ file dirname [ info script ] ] [ file readlink [ info script ] ] ] ] ]
+-	} else {
+-		variable Dir [ file normalize [ file dirname [ info script ] ] ]
+-	}
+-
++	variable Dir "${TRUEPREFIX}/lib/password-gorilla"
+ 	variable PicsDir [ file join $::gorilla::Dir pics ]

@@ -1,0 +1,9 @@
+Index: test/tools/hfst-check-environment.sh
+--- test/tools/hfst-check-environment.sh.orig
++++ test/tools/hfst-check-environment.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/bin/ksh
+ TOOLDIR=../../tools/src
+ old_opts="$HFST_OPTIONS"
+ export HFST_OPTIONS="--version"

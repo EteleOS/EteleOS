@@ -1,0 +1,7 @@
+${P5SITE}/GD/
+${P5SITE}/GD/SVG.pm
+@man man/man3p/GD::SVG.3p
+share/examples/p5-GD-SVG/
+share/examples/p5-GD-SVG/generate_test_image.pl
+share/examples/p5-GD-SVG/test_image.png
+share/examples/p5-GD-SVG/test_image.svg

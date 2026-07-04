@@ -1,0 +1,11 @@
+--- foomatic-combo-xml.c.orig	Fri Feb 18 13:30:22 2011
++++ foomatic-combo-xml.c	Fri Apr 15 20:45:20 2011
+@@ -2225,7 +2225,7 @@ main(int  argc,     /* I - Number of command-line argu
+   /* Set libdir to the default if empty */
+ 
+   if (libdir == NULL)
+-    libdir = "/usr/share/foomatic";
++    libdir = "${LOCALBASE}/share/foomatic";
+ 
+   /* Load translation table for old printer IDs */
+   sprintf(oldidfilename, "%s/db/oldprinterids",

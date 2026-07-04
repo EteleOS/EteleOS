@@ -1,0 +1,46 @@
+lib/lua/${MODLUA_VERSION}/mime/
+@so lib/lua/${MODLUA_VERSION}/mime/core.so
+lib/lua/${MODLUA_VERSION}/socket/
+@so lib/lua/${MODLUA_VERSION}/socket/core.so
+@so lib/lua/${MODLUA_VERSION}/socket/serial.so
+@so lib/lua/${MODLUA_VERSION}/socket/unix.so
+share/doc/${FULLPKGNAME}/
+share/doc/${FULLPKGNAME}/dns.html
+share/doc/${FULLPKGNAME}/ftp.html
+share/doc/${FULLPKGNAME}/http.html
+share/doc/${FULLPKGNAME}/index.html
+share/doc/${FULLPKGNAME}/installation.html
+share/doc/${FULLPKGNAME}/introduction.html
+share/doc/${FULLPKGNAME}/ltn12.html
+share/doc/${FULLPKGNAME}/lua05.ppt
+share/doc/${FULLPKGNAME}/luasocket.png
+share/doc/${FULLPKGNAME}/mime.html
+share/doc/${FULLPKGNAME}/reference.css
+share/doc/${FULLPKGNAME}/reference.html
+share/doc/${FULLPKGNAME}/smtp.html
+share/doc/${FULLPKGNAME}/socket.html
+share/doc/${FULLPKGNAME}/tcp.html
+share/doc/${FULLPKGNAME}/udp.html
+share/doc/${FULLPKGNAME}/url.html
+share/examples/${FULLPKGNAME}/
+share/examples/${FULLPKGNAME}/README
+share/examples/${FULLPKGNAME}/cddb.lua
+share/examples/${FULLPKGNAME}/daytimeclnt.lua
+share/examples/${FULLPKGNAME}/echoclnt.lua
+share/examples/${FULLPKGNAME}/echosrvr.lua
+share/examples/${FULLPKGNAME}/listener.lua
+share/examples/${FULLPKGNAME}/lpr.lua
+share/examples/${FULLPKGNAME}/mclisten.lua
+share/examples/${FULLPKGNAME}/mcsend.lua
+share/examples/${FULLPKGNAME}/talker.lua
+share/examples/${FULLPKGNAME}/tinyirc.lua
+share/lua/${MODLUA_VERSION}/ltn12.lua
+share/lua/${MODLUA_VERSION}/mime.lua
+share/lua/${MODLUA_VERSION}/socket/
+share/lua/${MODLUA_VERSION}/socket.lua
+share/lua/${MODLUA_VERSION}/socket/ftp.lua
+share/lua/${MODLUA_VERSION}/socket/headers.lua
+share/lua/${MODLUA_VERSION}/socket/http.lua
+share/lua/${MODLUA_VERSION}/socket/smtp.lua
+share/lua/${MODLUA_VERSION}/socket/tp.lua
+share/lua/${MODLUA_VERSION}/socket/url.lua

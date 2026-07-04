@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/String/
+${P5ARCH}/String/Approx.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/String/
+${P5ARCH}/auto/String/Approx/
+${P5ARCH}/auto/String/Approx/Approx.so
+@man man/man3p/String::Approx.3p

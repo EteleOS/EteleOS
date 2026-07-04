@@ -1,0 +1,25 @@
+Unbreak with lua 5.2.
+
+--- lpack.c.orig	Mon Jul 31 18:19:59 2006
++++ lpack.c	Tue May 17 09:18:25 2016
+@@ -100,7 +100,11 @@ static int l_unpack(lua_State *L) 		/** unpack(s,f,[in
+  const char *s=luaL_checkstring(L,1);
+  const char *f=luaL_checkstring(L,2);
+  int i=luaL_optnumber(L,3,1)-1;
++#if LUA_VERSION_NUM <= 501
+  size_t len=lua_strlen(L,1);
++#else
++ size_t len=lua_rawlen(L,1);
++#endif
+  int n=0;
+  int swap=0;
+  lua_pushnil(L);
+@@ -251,7 +255,7 @@ static int l_pack(lua_State *L) 		/** pack(f,...) */
+  return 1;
+ }
+ 
+-static const luaL_reg R[] =
++static const luaL_Reg R[] =
+ {
+ 	{"pack",	l_pack},
+ 	{"unpack",	l_unpack},

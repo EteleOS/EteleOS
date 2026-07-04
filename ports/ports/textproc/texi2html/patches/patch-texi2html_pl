@@ -1,0 +1,29 @@
+Index: texi2html.pl
+--- texi2html.pl.orig
++++ texi2html.pl
+@@ -1,7 +1,5 @@
+ #! @PERL@ --
+ # perl
+-'di ';
+-'ig 00 ';
+ #+##############################################################################
+ #
+ # texi2html: Program to transform Texinfo documents to HTML
+@@ -31,8 +29,6 @@
+ # switch of texinfo to GPLv3+.
+ #
+ #-##############################################################################
+-# The man page for this program is included at the end of this file and can be
+-# viewed using the command 'nroff -man texi2html'.
+ 
+ # for POSIX::setlocale and File::Spec
+ require 5.00405;
+@@ -5609,7 +5605,7 @@ sub common_misc_commands($$$$)
+     }
+     elsif ($command eq 'clickstyle')
+     {
+-        if ($line =~ s/^\s+@([^\s\{\}\@]+)({})?\s*//)
++        if ($line =~ s/^\s+@([^\s\{\}\@]+)(\{})?\s*//)
+         {
+             $Texi2HTML::THISDOC{$command} = $1;
+             # FIXME warn about what remains on the line?

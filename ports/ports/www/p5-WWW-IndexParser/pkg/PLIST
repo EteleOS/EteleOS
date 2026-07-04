@@ -1,0 +1,6 @@
+${P5SITE}/WWW/
+${P5SITE}/WWW/IndexParser/
+${P5SITE}/WWW/IndexParser.pm
+${P5SITE}/WWW/IndexParser/Entry.pm
+@man man/man3p/WWW::IndexParser.3p
+@man man/man3p/WWW::IndexParser::Entry.3p

@@ -1,0 +1,15 @@
+Our file(1) does not have a -v flag.
+Lie and produce the version number diffoscope is looking for.
+
+Index: tests/utils/tools.py
+--- tests/utils/tools.py.orig
++++ tests/utils/tools.py
+@@ -31,7 +31,7 @@ from ..utils.versions import Version
+ 
+ def file_version():
+     return (
+-        subprocess.check_output(("file", "-v"))
++        subprocess.check_output(("echo", "5.33"))
+         .decode("utf-8")
+         .splitlines()[0]
+         .split("-")[-1]

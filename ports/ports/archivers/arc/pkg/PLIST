@@ -1,0 +1,7 @@
+@bin bin/arc
+@bin bin/marc
+@man man/man1/arc.1
+@man man/man1/marc.1
+share/doc/arc/
+share/doc/arc/Arc521.doc
+share/doc/arc/Arcinfo

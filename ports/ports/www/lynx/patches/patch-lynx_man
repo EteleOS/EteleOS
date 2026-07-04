@@ -1,0 +1,26 @@
+Index: lynx.man
+--- lynx.man.orig
++++ lynx.man
+@@ -642,6 +642,22 @@ flushes the cache on a proxy server
+ allows a list of services to be disabled selectively.
+ Dashes and underscores in option names can be intermixed.
+ The following list is printed if no options are specified.
++.IP
++On OpenBSD the following restrictions are always enabled:
++\fBeditor\fR,
++\fBexec\fR,
++\fBmail\fR,
++and
++\fBshell\fR.
++Additionally,
++\fBbibp-urls\fR,
++\fBdired\fR,
++\fBfinger\fR,
++\fBrlogin\fR,
++and
++\fBtelnet \fR
++features have been disabled entirely.
++.IP
+ .RS
+ .TP 3
+ .B all

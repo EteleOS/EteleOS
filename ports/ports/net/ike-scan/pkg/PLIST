@@ -1,0 +1,11 @@
+@bin bin/ike-scan
+@bin bin/psk-crack
+@man man/man1/ike-scan.1
+@man man/man1/psk-crack.1
+share/doc/ike-scan/
+share/doc/ike-scan/README
+share/doc/ike-scan/udp-backoff-fingerprinting-paper.txt
+share/ike-scan/
+share/ike-scan/ike-backoff-patterns
+share/ike-scan/ike-vendor-ids
+share/ike-scan/psk-crack-dictionary

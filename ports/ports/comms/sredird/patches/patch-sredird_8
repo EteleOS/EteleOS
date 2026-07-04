@@ -1,0 +1,16 @@
+--- sredird.8.orig	Fri Aug 12 15:16:14 2005
++++ sredird.8	Thu May 16 11:58:39 2013
+@@ -29,8 +29,11 @@ between modem and
+ .I sredird.
+ 
+ .SH "EXAMPLE"
+-Here is a configuration line for running it from inetd:
+-sredir          stream  tcp     nowait  root    /usr/sbin/tcpd /usr/sbin/sredird 5 /dev/modem /var/lock/LCK..modem
++The following configuration line for
++.I inetd.conf
++will start sredird on port 2001 and attach it to serial port cua00:
++.P
++:2001 stream  tcp  nowait  root  %%LOCALBASE%%/libexec/sredird sredird 5 /dev/cua00 /var/spool/lock/LCK..cua00
+ 
+ .SH "AUTHOR"
+ This man page was written by Russell Coker <russell@coker.com.au>.  May be

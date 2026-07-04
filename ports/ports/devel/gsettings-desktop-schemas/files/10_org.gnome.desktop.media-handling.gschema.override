@@ -1,0 +1,5 @@
+# media auto{mount,run} requires udev(8)
+[org.gnome.desktop.media-handling]
+automount=false
+automount-open=false
+autorun-never=true

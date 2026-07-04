@@ -1,0 +1,9 @@
+@pkgpath net/amap
+@bin bin/amap
+@bin bin/amap6
+@bin bin/amapcrap
+@man man/man1/amap.1
+share/amap/
+share/amap/appdefs.resp
+share/amap/appdefs.rpc
+share/amap/appdefs.trig

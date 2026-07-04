@@ -1,0 +1,22 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -427,6 +427,9 @@ EOF
+ 	fi
+ done # for parm in ...
+ 
++PNG_CFLAGS=$(pkg-config --cflags libpng)
++PNG_LIBS=$(pkg-config --libs libpng)
++
+ for ac_option in $@; do
+ 	case "$ac_option" in
+ 	# Silently ignore options valid for Autotools configure.
+@@ -1175,7 +1178,7 @@ test $TMPR -eq 0 || exit 1	# check exit code of subshe
+ # for the smaller sizes.
+ echo_n "Alignment required... "
+ case $_host_cpu in
+-	i[3-6]86 | x86_64 | ppc*)
++	i[3-6]86 | amd64 | x86_64 | powerpc* | ppc*)
+ 		# Unaligned access should work
+ 		_need_memalign=no
+ 		;;

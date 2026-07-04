@@ -1,0 +1,5 @@
+${P5SITE}/Catalyst/Plugin/ConfigLoader/
+${P5SITE}/Catalyst/Plugin/ConfigLoader.pm
+${P5SITE}/Catalyst/Plugin/ConfigLoader/Manual.pod
+@man man/man3p/Catalyst::Plugin::ConfigLoader.3p
+@man man/man3p/Catalyst::Plugin::ConfigLoader::Manual.3p

@@ -1,0 +1,92 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Note for users familiar with wpa_supplicant on other OS
+=======================================================
+On OpenBSD, scanning and joining wireless networks is controlled by the
+kernel and configured by ifconfig(8) commands or /etc/hostname.if, so
+configuration is a little different than you may be used to.
+
+Use of wpa_supplicant on OpenBSD
+================================
+wpa_supplicant is used for authentication on wired networks using 802.1x
+and for wireless networks using WPA-Enterprise.
+
+On OpenBSD, wpa_supplicant is *not* used for the more common WPA-PSK
+wireless networks. These only need to be configured according to the
+"IEEE 802.11 (WIRELESS DEVICES)" section in ifconfig(8) and the manual
+page for your wireless interface - iwm(4), iwn(4), etc - i.e. by using
+ifconfig(8) commands or hostname.if(5) files.
+
+Configuring networks in wpa_supplicant.conf
+-------------------------------------------
+Add your network login information to wpa_supplicant's configuration in
+${SYSCONFDIR}/wpa_supplicant.conf - either uncomment and edit the supplied example
+or consult wpa_supplicant documentation or sample configuration from your
+network operator. (In the case of distributed networks like Eduroam, this
+would be from your home institution rather than the local network that
+you're connecting to).
+
+Do not enable "ap_scan" - it is not supported by the OpenBSD support code.
+
+Configuring wireless interfaces for use with WPA-Enterprise
+-----------------------------------------------------------
+For most convenient use, the kernel can be configured to automatically join
+the "best" network from a preconfigured list (it calculates a score based
+on factors including signal strength and security options). This is done
+using ifconfig's "join" command - e.g. to add a network "Laakista Humppa"
+using WPA-Enterprise you could use
+
+# ifconfig iwm0 join "Laakista Humppa" wpa wpaakms 802.1x
+
+Or to configure from boot, add to /etc/hostname.iwm0 - as you would expect
+this may be combined with WPA-PSK networks:
+
+# cat /etc/hostname.iwm0
+join "Laakista Humppa" wpa wpaakms 802.1x
+join "Perjantaina Humpassa" wpa wpakey fridayfriday
+join Lumpiohumppa wpa wpaprotos wpa1,wpa2 wpakey whatsecurity
+inet6 autoconf
+dhcp
+
+If you would like to avoid "join" and connect to a single network only,
+you would instead use "nwid", for example:
+
+# ifconfig iwm0 nwid humppa wpa wpaakms 802.1x up
+
+or to do this and also lock to a specific BSSID:
+
+# ifconfig iwm0 nwid humppa bssid 11:22:33:44:55:66 wpa wpaakms 802.1x up
+
+Starting wpa_supplicant
+-----------------------
+After configuring as above, enable wpa_supplicant via rcctl(8) -
+"rcctl enable wpa_supplicant" as usual. It will attempt to auto detect
+the interface name and type, but if there is a problem with this it can
+be hardcoded instead. For a wireless network on iwm0:
+
+# rcctl set wpa_supplicant flags -c ${SYSCONFDIR}/wpa_supplicant.conf -s -D openbsd -i iwm0
+
+For a 802.1x wired network on ix0:
+
+# rcctl set wpa_supplicant flags -c ${SYSCONFDIR}/wpa_supplicant.conf -s -D wired -i ix0
+
+Then start as normal ("rcctl start wpa_supplicant"). wpa_supplicant should
+automatically authenticate when it notices that the connection is up.
+
+Networks only supporting TLSv1.1 or earlier
+-------------------------------------------
+These obsolete and insecure TLS protocols have been removed from LibreSSL.
+If you must use a legacy network with an insecure authentication server
+which cannot be corrected, you can try installing the "openssl" flavour
+of the wpa_supplicant package and setting some or all of the following
+in wpa_supplicant.conf:
+
+network={
+	# allow ciphers supporting TLSv1.0
+	openssl_ciphers="DEFAULT@SECLEVEL=0"
+	# permit insecure TLS renegotiation (pre-2010)
+	phase1="allow_unsafe_renegotiation=1"
+	...
+}

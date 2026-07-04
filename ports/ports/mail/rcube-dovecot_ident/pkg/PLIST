@@ -1,0 +1,4 @@
+roundcubemail/plugins/dovecot_ident/
+roundcubemail/plugins/dovecot_ident/README.md
+roundcubemail/plugins/dovecot_ident/composer.json
+roundcubemail/plugins/dovecot_ident/dovecot_ident.php

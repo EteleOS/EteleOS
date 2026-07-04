@@ -1,0 +1,6 @@
+${P5SITE}/HTML/
+${P5SITE}/HTML/Template/
+${P5SITE}/HTML/Template.pm
+${P5SITE}/HTML/Template/FAQ.pm
+@man man/man3p/HTML::Template.3p
+@man man/man3p/HTML::Template::FAQ.3p

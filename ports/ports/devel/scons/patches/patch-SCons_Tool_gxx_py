@@ -1,0 +1,12 @@
+Index: SCons/Tool/gxx.py
+--- SCons/Tool/gxx.py.orig
++++ SCons/Tool/gxx.py
+@@ -38,7 +38,7 @@ import SCons.Util
+ from . import gcc
+ from . import cxx
+ 
+-compilers = ['g++']
++compilers = ['c++']
+ 
+ 
+ def generate(env) -> None:

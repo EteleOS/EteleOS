@@ -1,0 +1,5 @@
+@bin bin/wmtune
+@man man/man1/wmtune.1
+share/examples/wmtune/
+share/examples/wmtune/sample.wmtunerc
+@sample ${SYSCONFDIR}/wmtunerc

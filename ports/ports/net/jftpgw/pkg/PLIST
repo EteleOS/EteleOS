@@ -1,0 +1,5 @@
+@man man/man1/jftpgw.1
+@bin sbin/jftpgw
+share/examples/jftpgw/
+share/examples/jftpgw/jftpgw.conf
+@sample ${SYSCONFDIR}/jftpgw.conf

@@ -1,0 +1,8 @@
+Index: autogen.sh
+--- autogen.sh.orig
++++ autogen.sh
+@@ -7,4 +7,3 @@ autoheader
+ automake --add-missing
+ autoconf configure.ac > configure
+ chmod +x configure
+-./configure

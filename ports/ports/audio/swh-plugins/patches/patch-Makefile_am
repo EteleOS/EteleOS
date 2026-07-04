@@ -1,0 +1,78 @@
+- don't use -nostartfiles: relocation R_X86_64_PC32 against `__guard_local' ...
+- use "libtool archives" (PIC) instead of static archives
+
+--- Makefile.am.orig	Tue Aug  8 17:56:35 2006
++++ Makefile.am	Thu May 21 13:06:06 2015
+@@ -43,15 +43,15 @@ plugindir = @prefix@/lib/ladspa
+ 
+ # Uncomment below for Darwin support.  Or add a conditional for this.
+ #AM_CFLAGS = -fno-common -flat_namespace -bundle -undefined suppress -lbundle1.o
+-AM_LDFLAGS = -module -avoid-version -Wc,-nostartfiles
++AM_LDFLAGS = -module -avoid-version
+ DESTDIR = $(INSTALL_ROOT)
+ DISTFN = $(distdir)
+ 
+ # Files needed for FFT based plugins
+-pitch_scale_1193_la_LIBADD = util/libpitchscale.a $(FFTW_LIBS)
++pitch_scale_1193_la_LIBADD = util/libpitchscale.la $(FFTW_LIBS)
+ pitch_scale_1193_la_CFLAGS = $(FFTW_CFLAGS)
+ pitch_scale_1193_la_SOURCES = pitch_scale_1193.c
+-pitch_scale_1194_la_LIBADD = util/libpitchscale.a $(FFTW_LIBS)
++pitch_scale_1194_la_LIBADD = util/libpitchscale.la $(FFTW_LIBS)
+ pitch_scale_1194_la_CFLAGS = $(FFTW_CFLAGS)
+ pitch_scale_1194_la_SOURCES = pitch_scale_1194.c
+ mbeq_1197_la_LIBADD = $(FFTW_LIBS)
+@@ -60,33 +60,33 @@ mbeq_1197_la_SOURCES = mbeq_1197.c
+ imp_1199_la_LIBADD = $(FFTW_LIBS)
+ imp_1199_la_CFLAGS = $(FFTW_CFLAGS)
+ imp_1199_la_DEPENDENCIES = @top_srcdir@/impulses/*
+-hermes_filter_1200_la_DEPENDENCIES = util/libblo.a
+-hermes_filter_1200_la_LIBADD = util/libblo.a
+-fm_osc_1415_la_DEPENDENCIES = util/libblo.a
+-fm_osc_1415_la_LIBADD = util/libblo.a
+-analogue_osc_1416_la_DEPENDENCIES = util/libblo.a
+-analogue_osc_1416_la_LIBADD = util/libblo.a
+-sc1_1425_la_LIBADD = util/libdb.a util/librms.a
+-sc2_1426_la_LIBADD = util/libdb.a util/librms.a
+-sc3_1427_la_LIBADD = util/libdb.a util/librms.a
+-sc4_1882_la_LIBADD = util/libdb.a util/librms.a
+-sc4m_1916_la_LIBADD = util/libdb.a util/librms.a
+-se4_1883_la_LIBADD = util/libdb.a util/librms.a
+-gsm_1215_la_LIBADD = gsm/libgsm.a
+-gverb_1216_la_LIBADD = gverb/libgverb.a
++hermes_filter_1200_la_DEPENDENCIES = util/libblo.la
++hermes_filter_1200_la_LIBADD = util/libblo.la
++fm_osc_1415_la_DEPENDENCIES = util/libblo.la
++fm_osc_1415_la_LIBADD = util/libblo.la
++analogue_osc_1416_la_DEPENDENCIES = util/libblo.la
++analogue_osc_1416_la_LIBADD = util/libblo.la
++sc1_1425_la_LIBADD = util/libdb.la util/librms.la
++sc2_1426_la_LIBADD = util/libdb.la util/librms.la
++sc3_1427_la_LIBADD = util/libdb.la util/librms.la
++sc4_1882_la_LIBADD = util/libdb.la util/librms.la
++sc4m_1916_la_LIBADD = util/libdb.la util/librms.la
++se4_1883_la_LIBADD = util/libdb.la util/librms.la
++gsm_1215_la_LIBADD = gsm/libgsm.la
++gverb_1216_la_LIBADD = gverb/libgverb.la
+ lcr_delay_1436_la_DEPENDENCIES = util/biquad.h
+ 
+-highpass_iir_1890_la_LIBADD = util/libiir.a
++highpass_iir_1890_la_LIBADD = util/libiir.la
+ highpass_iir_1890_la_SOURCES = highpass_iir_1890.c
+-lowpass_iir_1891_la_LIBADD = util/libiir.a
++lowpass_iir_1891_la_LIBADD = util/libiir.la
+ lowpass_iir_1891_la_SOURCES = lowpass_iir_1891.c
+-bandpass_iir_1892_la_LIBADD = util/libiir.a
++bandpass_iir_1892_la_LIBADD = util/libiir.la
+ bandpass_iir_1892_la_SOURCES = bandpass_iir_1892.c
+-bandpass_a_iir_1893_la_LIBADD = util/libiir.a
++bandpass_a_iir_1893_la_LIBADD = util/libiir.la
+ bandpass_a_iir_1893_la_SOURCES = bandpass_a_iir_1893.c
+-notch_iir_1894_la_LIBADD = util/libiir.a
++notch_iir_1894_la_LIBADD = util/libiir.la
+ notch_iir_1894_la_SOURCES = notch_iir_1894.c
+-butterworth_1902_la_LIBADD = util/libiir.a
++butterworth_1902_la_LIBADD = util/libiir.la
+ butterworth_1902_la_SOURCES = butterworth_1902.c
+ 
+ # Rule to build .c files from XML source

@@ -1,0 +1,14 @@
+Remove hardcoded optimizations
+
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -6,7 +6,7 @@
+ #CC ?= clang
+ 
+ # Enable compiler warnings. This is an absolute minimum.
+-CFLAGS += -Wall -std=c99 -O3 #-Wextra
++CFLAGS += -Wall -std=c99 #-Wextra
+ 
+ # Define your optimization flags.
+ #

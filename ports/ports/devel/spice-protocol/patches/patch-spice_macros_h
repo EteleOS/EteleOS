@@ -1,0 +1,30 @@
+__builtin_bswap16 only found in gcc-4.5+.
+
+https://bugs.freedesktop.org/show_bug.cgi?id=94570
+
+Index: spice/macros.h
+--- spice/macros.h.orig
++++ spice/macros.h
+@@ -240,7 +240,7 @@
+ 
+ /* Arch specific stuff for speed
+  */
+-#if defined (__GNUC__) && (__GNUC__ >= 4) && defined (__OPTIMIZE__)
++#if (defined(__clang__) || defined (__GNUC__) && __GNUC__ >= 4 && __GNUC_MINOR__ >= 5) && defined (__OPTIMIZE__)
+ #  define SPICE_BYTESWAP16(val) __builtin_bswap16(val)
+ #  define SPICE_BYTESWAP32(val) __builtin_bswap32(val)
+ #  define SPICE_BYTESWAP64(val) __builtin_bswap64(val)
+@@ -260,6 +260,13 @@
+ #define SPICE_ENDIAN_LITTLE 4321
+ #define SPICE_ENDIAN_BIG    1234
+ #define SPICE_ENDIAN_PDP    2143
++
++#include <endian.h>
++#if BYTE_ORDER == LITTLE_ENDIAN
++#  define SPICE_ENDIAN SPICE_ENDIAN_LITTLE
++#elif BYTE_ORDER == BIG_ENDIAN
++#  define SPICE_ENDIAN SPICE_ENDIAN_BIG
++#endif
+ 
+ /* gcc already defined these, use them */
+ #if defined(__BYTE_ORDER__) && defined(__ORDER_LITTLE_ENDIAN__) \

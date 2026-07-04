@@ -1,0 +1,649 @@
+@bin bin/rawtherapee
+@bin bin/rawtherapee-cli
+@man man/man1/rawtherapee.1
+share/applications/rawtherapee.desktop
+share/doc/pkg-readmes/${PKGSTEM}
+share/doc/rawtherapee/
+share/doc/rawtherapee/AUTHORS.txt
+share/doc/rawtherapee/AboutThisBuild.txt
+share/doc/rawtherapee/LICENSE
+share/doc/rawtherapee/RELEASE_NOTES.txt
+share/icons/hicolor/128x128/apps/rawtherapee.png
+share/icons/hicolor/16x16/apps/rawtherapee.png
+share/icons/hicolor/24x24/apps/rawtherapee.png
+share/icons/hicolor/256x256/apps/rawtherapee.png
+share/icons/hicolor/32x32/apps/rawtherapee.png
+share/icons/hicolor/48x48/apps/rawtherapee.png
+share/icons/hicolor/64x64/apps/rawtherapee.png
+share/icons/hicolor/scalable/apps/rawtherapee.svg
+share/icons/rawtherapee/
+share/icons/rawtherapee/24x24/
+share/icons/rawtherapee/24x24/apps/
+share/icons/rawtherapee/24x24/apps/empty.png
+share/icons/rawtherapee/index.theme
+share/icons/rawtherapee/scalable/
+share/icons/rawtherapee/scalable/apps/
+share/icons/rawtherapee/scalable/apps/add-small.svg
+share/icons/rawtherapee/scalable/apps/add.svg
+share/icons/rawtherapee/scalable/apps/aperture.svg
+share/icons/rawtherapee/scalable/apps/arrow-down-small.svg
+share/icons/rawtherapee/scalable/apps/arrow-left-small.svg
+share/icons/rawtherapee/scalable/apps/arrow-right-small.svg
+share/icons/rawtherapee/scalable/apps/arrow-up-small.svg
+share/icons/rawtherapee/scalable/apps/arrow-updown.svg
+share/icons/rawtherapee/scalable/apps/arrow2-left.svg
+share/icons/rawtherapee/scalable/apps/arrow2-right.svg
+share/icons/rawtherapee/scalable/apps/atom.svg
+share/icons/rawtherapee/scalable/apps/bayer.svg
+share/icons/rawtherapee/scalable/apps/beforeafter.svg
+share/icons/rawtherapee/scalable/apps/bidirectional-arrow-horizontal-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/bidirectional-arrow-horizontal-prelight.svg
+share/icons/rawtherapee/scalable/apps/bidirectional-arrow-vertical-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/bidirectional-arrow-vertical-prelight.svg
+share/icons/rawtherapee/scalable/apps/box.svg
+share/icons/rawtherapee/scalable/apps/cancel-small.svg
+share/icons/rawtherapee/scalable/apps/cancel.svg
+share/icons/rawtherapee/scalable/apps/circle-black-small.svg
+share/icons/rawtherapee/scalable/apps/circle-blue-green-small.svg
+share/icons/rawtherapee/scalable/apps/circle-blue-red-small.svg
+share/icons/rawtherapee/scalable/apps/circle-blue-small.svg
+share/icons/rawtherapee/scalable/apps/circle-blue-yellow-small.svg
+share/icons/rawtherapee/scalable/apps/circle-cyan-red-small.svg
+share/icons/rawtherapee/scalable/apps/circle-cyan-small.svg
+share/icons/rawtherapee/scalable/apps/circle-darkgray-small.svg
+share/icons/rawtherapee/scalable/apps/circle-empty-blue-small.svg
+share/icons/rawtherapee/scalable/apps/circle-empty-darkgray-small.svg
+share/icons/rawtherapee/scalable/apps/circle-empty-gray-small.svg
+share/icons/rawtherapee/scalable/apps/circle-empty-green-small.svg
+share/icons/rawtherapee/scalable/apps/circle-empty-purple-small.svg
+share/icons/rawtherapee/scalable/apps/circle-empty-red-small.svg
+share/icons/rawtherapee/scalable/apps/circle-empty-yellow-small.svg
+share/icons/rawtherapee/scalable/apps/circle-gray-blue-small.svg
+share/icons/rawtherapee/scalable/apps/circle-gray-green-small.svg
+share/icons/rawtherapee/scalable/apps/circle-gray-red-small.svg
+share/icons/rawtherapee/scalable/apps/circle-gray-small.svg
+share/icons/rawtherapee/scalable/apps/circle-green-blue-small.svg
+share/icons/rawtherapee/scalable/apps/circle-green-red-small.svg
+share/icons/rawtherapee/scalable/apps/circle-green-small.svg
+share/icons/rawtherapee/scalable/apps/circle-magenta-small.svg
+share/icons/rawtherapee/scalable/apps/circle-multicolor-small.svg
+share/icons/rawtherapee/scalable/apps/circle-orange-small.svg
+share/icons/rawtherapee/scalable/apps/circle-purple-small.svg
+share/icons/rawtherapee/scalable/apps/circle-red-blue-small.svg
+share/icons/rawtherapee/scalable/apps/circle-red-cyan-small.svg
+share/icons/rawtherapee/scalable/apps/circle-red-green-small.svg
+share/icons/rawtherapee/scalable/apps/circle-red-small.svg
+share/icons/rawtherapee/scalable/apps/circle-white-small.svg
+share/icons/rawtherapee/scalable/apps/circle-yellow-blue-small.svg
+share/icons/rawtherapee/scalable/apps/circle-yellow-small.svg
+share/icons/rawtherapee/scalable/apps/color-circles.svg
+share/icons/rawtherapee/scalable/apps/color-picker-add-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/color-picker-add.svg
+share/icons/rawtherapee/scalable/apps/color-picker-bars.svg
+share/icons/rawtherapee/scalable/apps/color-picker-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/color-picker-hide.svg
+share/icons/rawtherapee/scalable/apps/color-picker-small.svg
+share/icons/rawtherapee/scalable/apps/color-picker.svg
+share/icons/rawtherapee/scalable/apps/contrastmask-off.svg
+share/icons/rawtherapee/scalable/apps/contrastmask-on.svg
+share/icons/rawtherapee/scalable/apps/copy.svg
+share/icons/rawtherapee/scalable/apps/crop-auto-small.svg
+share/icons/rawtherapee/scalable/apps/crop-auto.svg
+share/icons/rawtherapee/scalable/apps/crop-point-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/crop-small.svg
+share/icons/rawtherapee/scalable/apps/crop.svg
+share/icons/rawtherapee/scalable/apps/crossed-arrows-in.svg
+share/icons/rawtherapee/scalable/apps/crossed-arrows-out.svg
+share/icons/rawtherapee/scalable/apps/crosshair-adjust.svg
+share/icons/rawtherapee/scalable/apps/crosshair-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/crosshair-node-curve.svg
+share/icons/rawtherapee/scalable/apps/crosshair-small.svg
+share/icons/rawtherapee/scalable/apps/curve-catmullrom-small.svg
+share/icons/rawtherapee/scalable/apps/curve-catmullrom.svg
+share/icons/rawtherapee/scalable/apps/curve-controlpoints-small.svg
+share/icons/rawtherapee/scalable/apps/curve-controlpoints.svg
+share/icons/rawtherapee/scalable/apps/curve-flat-small.svg
+share/icons/rawtherapee/scalable/apps/curve-flat.svg
+share/icons/rawtherapee/scalable/apps/curve-linear-small.svg
+share/icons/rawtherapee/scalable/apps/curve-linear.svg
+share/icons/rawtherapee/scalable/apps/curve-nurbs-small.svg
+share/icons/rawtherapee/scalable/apps/curve-nurbs.svg
+share/icons/rawtherapee/scalable/apps/curve-parametric-small.svg
+share/icons/rawtherapee/scalable/apps/curve-parametric.svg
+share/icons/rawtherapee/scalable/apps/curve-spline-small.svg
+share/icons/rawtherapee/scalable/apps/curve-spline.svg
+share/icons/rawtherapee/scalable/apps/detail.svg
+share/icons/rawtherapee/scalable/apps/device-floppy.svg
+share/icons/rawtherapee/scalable/apps/device-hdd.svg
+share/icons/rawtherapee/scalable/apps/device-network.svg
+share/icons/rawtherapee/scalable/apps/device-optical.svg
+share/icons/rawtherapee/scalable/apps/device-usb.svg
+share/icons/rawtherapee/scalable/apps/distortion-auto-small.svg
+share/icons/rawtherapee/scalable/apps/distortion-auto.svg
+share/icons/rawtherapee/scalable/apps/distortion-barrel-small.svg
+share/icons/rawtherapee/scalable/apps/distortion-barrel.svg
+share/icons/rawtherapee/scalable/apps/distortion-pincushion-small.svg
+share/icons/rawtherapee/scalable/apps/distortion-pincushion.svg
+share/icons/rawtherapee/scalable/apps/draw.svg
+share/icons/rawtherapee/scalable/apps/edit-point.svg
+share/icons/rawtherapee/scalable/apps/edit-small.svg
+share/icons/rawtherapee/scalable/apps/edit.svg
+share/icons/rawtherapee/scalable/apps/equilizer-narrow.svg
+share/icons/rawtherapee/scalable/apps/equilizer-wide.svg
+share/icons/rawtherapee/scalable/apps/expander-closed-small.svg
+share/icons/rawtherapee/scalable/apps/expander-open-small.svg
+share/icons/rawtherapee/scalable/apps/exposure.svg
+share/icons/rawtherapee/scalable/apps/filetype-hdr.svg
+share/icons/rawtherapee/scalable/apps/filetype-ps.svg
+share/icons/rawtherapee/scalable/apps/filter-clear.svg
+share/icons/rawtherapee/scalable/apps/filter-original.svg
+share/icons/rawtherapee/scalable/apps/filter-original2.svg
+share/icons/rawtherapee/scalable/apps/filter.svg
+share/icons/rawtherapee/scalable/apps/flip-horizontal.svg
+share/icons/rawtherapee/scalable/apps/flip-vertical.svg
+share/icons/rawtherapee/scalable/apps/focusscreen-off.svg
+share/icons/rawtherapee/scalable/apps/focusscreen-on.svg
+share/icons/rawtherapee/scalable/apps/folder-closed-home-small.svg
+share/icons/rawtherapee/scalable/apps/folder-closed-home.svg
+share/icons/rawtherapee/scalable/apps/folder-closed-recent-small.svg
+share/icons/rawtherapee/scalable/apps/folder-closed-recent.svg
+share/icons/rawtherapee/scalable/apps/folder-closed-small.svg
+share/icons/rawtherapee/scalable/apps/folder-closed.svg
+share/icons/rawtherapee/scalable/apps/folder-open-recent-small.svg
+share/icons/rawtherapee/scalable/apps/folder-open-recent.svg
+share/icons/rawtherapee/scalable/apps/folder-open-small.svg
+share/icons/rawtherapee/scalable/apps/folder-open.svg
+share/icons/rawtherapee/scalable/apps/folder-subfolder.svg
+share/icons/rawtherapee/scalable/apps/fullscreen-enter.svg
+share/icons/rawtherapee/scalable/apps/fullscreen-leave.svg
+share/icons/rawtherapee/scalable/apps/gamut-hist.svg
+share/icons/rawtherapee/scalable/apps/gamut-plus.svg
+share/icons/rawtherapee/scalable/apps/gamut-softproof.svg
+share/icons/rawtherapee/scalable/apps/gamut-warning.svg
+share/icons/rawtherapee/scalable/apps/gamut_srgb_prophoto_xy.svg
+share/icons/rawtherapee/scalable/apps/gears-pause.svg
+share/icons/rawtherapee/scalable/apps/gears-play.svg
+share/icons/rawtherapee/scalable/apps/gears-small.svg
+share/icons/rawtherapee/scalable/apps/gears.svg
+share/icons/rawtherapee/scalable/apps/goto-end-small.svg
+share/icons/rawtherapee/scalable/apps/goto-start-small.svg
+share/icons/rawtherapee/scalable/apps/hand-closed-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/hand-open-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/hand-open.svg
+share/icons/rawtherapee/scalable/apps/histogram-bar-off-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-bar-on-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-blue-off-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-blue-on-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-ellipsis-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-gold-off-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-gold-on-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-green-off-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-green-on-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-mode-linear-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-mode-logx-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-mode-logxy-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-red-off-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-red-on-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-silver-off-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-silver-on-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-type-histogram-raw-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-type-histogram-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-type-parade-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-type-vectorscope-hc-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-type-vectorscope-hs-small.svg
+share/icons/rawtherapee/scalable/apps/histogram-type-waveform-small.svg
+share/icons/rawtherapee/scalable/apps/info.svg
+share/icons/rawtherapee/scalable/apps/intent-absolute.svg
+share/icons/rawtherapee/scalable/apps/intent-perceptual.svg
+share/icons/rawtherapee/scalable/apps/intent-relative.svg
+share/icons/rawtherapee/scalable/apps/intent-saturation.svg
+share/icons/rawtherapee/scalable/apps/magnifier-1to1-small.svg
+share/icons/rawtherapee/scalable/apps/magnifier-1to1.svg
+share/icons/rawtherapee/scalable/apps/magnifier-crop.svg
+share/icons/rawtherapee/scalable/apps/magnifier-fit.svg
+share/icons/rawtherapee/scalable/apps/magnifier-minus-small.svg
+share/icons/rawtherapee/scalable/apps/magnifier-minus.svg
+share/icons/rawtherapee/scalable/apps/magnifier-plus-small.svg
+share/icons/rawtherapee/scalable/apps/magnifier-plus.svg
+share/icons/rawtherapee/scalable/apps/magnifier.svg
+share/icons/rawtherapee/scalable/apps/metadata.svg
+share/icons/rawtherapee/scalable/apps/node-move-nw-se-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/node-move-sw-ne-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/node-move-x-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/node-move-xy-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/node-move-y-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/one-to-one-small.svg
+share/icons/rawtherapee/scalable/apps/padlock-locked-small.svg
+share/icons/rawtherapee/scalable/apps/padlock-unlocked-small.svg
+share/icons/rawtherapee/scalable/apps/palette-brush.svg
+share/icons/rawtherapee/scalable/apps/panel-to-bottom.svg
+share/icons/rawtherapee/scalable/apps/panel-to-left.svg
+share/icons/rawtherapee/scalable/apps/panel-to-right.svg
+share/icons/rawtherapee/scalable/apps/panel-to-top.svg
+share/icons/rawtherapee/scalable/apps/paste.svg
+share/icons/rawtherapee/scalable/apps/perspective-horizontal-left-small.svg
+share/icons/rawtherapee/scalable/apps/perspective-horizontal-left.svg
+share/icons/rawtherapee/scalable/apps/perspective-horizontal-right-small.svg
+share/icons/rawtherapee/scalable/apps/perspective-horizontal-right.svg
+share/icons/rawtherapee/scalable/apps/perspective-horizontal-vertical.svg
+share/icons/rawtherapee/scalable/apps/perspective-vertical-bottom-small.svg
+share/icons/rawtherapee/scalable/apps/perspective-vertical-bottom.svg
+share/icons/rawtherapee/scalable/apps/perspective-vertical-top-small.svg
+share/icons/rawtherapee/scalable/apps/perspective-vertical-top.svg
+share/icons/rawtherapee/scalable/apps/power-inconsistent-small.svg
+share/icons/rawtherapee/scalable/apps/power-off-small.svg
+share/icons/rawtherapee/scalable/apps/power-on-small.svg
+share/icons/rawtherapee/scalable/apps/preferences.svg
+share/icons/rawtherapee/scalable/apps/profile-filled.svg
+share/icons/rawtherapee/scalable/apps/profile-partial.svg
+share/icons/rawtherapee/scalable/apps/questionmark.svg
+share/icons/rawtherapee/scalable/apps/redo-all.svg
+share/icons/rawtherapee/scalable/apps/redo-small.svg
+share/icons/rawtherapee/scalable/apps/redo.svg
+share/icons/rawtherapee/scalable/apps/refresh-red-small.svg
+share/icons/rawtherapee/scalable/apps/refresh-small.svg
+share/icons/rawtherapee/scalable/apps/refresh.svg
+share/icons/rawtherapee/scalable/apps/remove-small.svg
+share/icons/rawtherapee/scalable/apps/remove.svg
+share/icons/rawtherapee/scalable/apps/rotate-aroundnode-hicontrast.svg
+share/icons/rawtherapee/scalable/apps/rotate-aroundnode.svg
+share/icons/rawtherapee/scalable/apps/rotate-left-90.svg
+share/icons/rawtherapee/scalable/apps/rotate-left-small.svg
+share/icons/rawtherapee/scalable/apps/rotate-left.svg
+share/icons/rawtherapee/scalable/apps/rotate-right-90.svg
+share/icons/rawtherapee/scalable/apps/rotate-right-small.svg
+share/icons/rawtherapee/scalable/apps/rotate-right.svg
+share/icons/rawtherapee/scalable/apps/rotate-straighten-small.svg
+share/icons/rawtherapee/scalable/apps/rotate-straighten.svg
+share/icons/rawtherapee/scalable/apps/rt-spot.svg
+share/icons/rawtherapee/scalable/apps/save-small.svg
+share/icons/rawtherapee/scalable/apps/save.svg
+share/icons/rawtherapee/scalable/apps/saved-no-small.svg
+share/icons/rawtherapee/scalable/apps/saved-yes-small.svg
+share/icons/rawtherapee/scalable/apps/spot-active.svg
+share/icons/rawtherapee/scalable/apps/spot-normal.svg
+share/icons/rawtherapee/scalable/apps/spot-prelight.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-black-off-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-black-on-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-blue-off-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-blue-on-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-gray-off-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-gray-on-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-green-off-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-green-on-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-luminosity-off-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-luminosity-on-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-red-off-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-red-on-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-theme-off-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-theme-on-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-white-off-narrow.svg
+share/icons/rawtherapee/scalable/apps/square-toggle-white-on-narrow.svg
+share/icons/rawtherapee/scalable/apps/star-gold-hollow-narrow.svg
+share/icons/rawtherapee/scalable/apps/star-gold-hollow-small.svg
+share/icons/rawtherapee/scalable/apps/star-gold-narrow.svg
+share/icons/rawtherapee/scalable/apps/star-gold-small.svg
+share/icons/rawtherapee/scalable/apps/star-hollow-narrow.svg
+share/icons/rawtherapee/scalable/apps/star-hollow-small.svg
+share/icons/rawtherapee/scalable/apps/star-narrow.svg
+share/icons/rawtherapee/scalable/apps/star-small.svg
+share/icons/rawtherapee/scalable/apps/star.svg
+share/icons/rawtherapee/scalable/apps/template-16.svg
+share/icons/rawtherapee/scalable/apps/template-24.svg
+share/icons/rawtherapee/scalable/apps/template-narrow.svg
+share/icons/rawtherapee/scalable/apps/tick-green-hollow-small.svg
+share/icons/rawtherapee/scalable/apps/tick-green-hollow.svg
+share/icons/rawtherapee/scalable/apps/tick-green-small.svg
+share/icons/rawtherapee/scalable/apps/tick-green.svg
+share/icons/rawtherapee/scalable/apps/tick-hollow-small.svg
+share/icons/rawtherapee/scalable/apps/tick-small.svg
+share/icons/rawtherapee/scalable/apps/tick.svg
+share/icons/rawtherapee/scalable/apps/transform.svg
+share/icons/rawtherapee/scalable/apps/trash-delete.svg
+share/icons/rawtherapee/scalable/apps/trash-empty-show.svg
+share/icons/rawtherapee/scalable/apps/trash-empty.svg
+share/icons/rawtherapee/scalable/apps/trash-full-show.svg
+share/icons/rawtherapee/scalable/apps/trash-full.svg
+share/icons/rawtherapee/scalable/apps/trash-hide-deleted.svg
+share/icons/rawtherapee/scalable/apps/trash-remove-small.svg
+share/icons/rawtherapee/scalable/apps/trash-remove.svg
+share/icons/rawtherapee/scalable/apps/trash-small.svg
+share/icons/rawtherapee/scalable/apps/undo-all.svg
+share/icons/rawtherapee/scalable/apps/undo-small.svg
+share/icons/rawtherapee/scalable/apps/undo.svg
+share/icons/rawtherapee/scalable/apps/warning-highlights.svg
+share/icons/rawtherapee/scalable/apps/warning-shadows.svg
+share/icons/rawtherapee/scalable/apps/warning.svg
+share/icons/rawtherapee/scalable/apps/wavelets.svg
+share/icons/rawtherapee/scalable/apps/wb-auto-small.svg
+share/icons/rawtherapee/scalable/apps/wb-auto.svg
+share/icons/rawtherapee/scalable/apps/wb-camera-small.svg
+share/icons/rawtherapee/scalable/apps/wb-camera.svg
+share/icons/rawtherapee/scalable/apps/wb-cloudy-small.svg
+share/icons/rawtherapee/scalable/apps/wb-cloudy.svg
+share/icons/rawtherapee/scalable/apps/wb-custom-small.svg
+share/icons/rawtherapee/scalable/apps/wb-custom.svg
+share/icons/rawtherapee/scalable/apps/wb-flash-small.svg
+share/icons/rawtherapee/scalable/apps/wb-flash.svg
+share/icons/rawtherapee/scalable/apps/wb-fluorescent-small.svg
+share/icons/rawtherapee/scalable/apps/wb-fluorescent.svg
+share/icons/rawtherapee/scalable/apps/wb-lamp-small.svg
+share/icons/rawtherapee/scalable/apps/wb-lamp.svg
+share/icons/rawtherapee/scalable/apps/wb-led-small.svg
+share/icons/rawtherapee/scalable/apps/wb-led.svg
+share/icons/rawtherapee/scalable/apps/wb-shade-small.svg
+share/icons/rawtherapee/scalable/apps/wb-shade.svg
+share/icons/rawtherapee/scalable/apps/wb-sun-small.svg
+share/icons/rawtherapee/scalable/apps/wb-sun.svg
+share/icons/rawtherapee/scalable/apps/wb-tungsten-small.svg
+share/icons/rawtherapee/scalable/apps/wb-tungsten.svg
+share/icons/rawtherapee/scalable/apps/wb-water-small.svg
+share/icons/rawtherapee/scalable/apps/wb-water.svg
+share/icons/rawtherapee/scalable/apps/window-add.svg
+share/metainfo/
+share/metainfo/com.rawtherapee.RawTherapee.appdata.xml
+share/rawtherapee/
+share/rawtherapee/camconst.json
+share/rawtherapee/cammatrices.json
+share/rawtherapee/dcpprofiles/
+share/rawtherapee/dcpprofiles/CANON EOS 250D.dcp
+share/rawtherapee/dcpprofiles/CANON EOS 800D.dcp
+share/rawtherapee/dcpprofiles/CANON EOS M50.dcp
+share/rawtherapee/dcpprofiles/CANON POWERSHOT G5 X MARK II.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 100D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 1300D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 20D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 400D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 40D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 450D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 50D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 550D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 5D Mark II.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 5D Mark III.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 5D Mark IV.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 5D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 600D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 60D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 650D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 6D Mark II.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 6D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 7D Mark II.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 7D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS 90D.dcp
+share/rawtherapee/dcpprofiles/Canon EOS D60.dcp
+share/rawtherapee/dcpprofiles/Canon EOS M6 Mark II.dcp
+share/rawtherapee/dcpprofiles/Canon EOS R.dcp
+share/rawtherapee/dcpprofiles/Canon EOS R5.dcp
+share/rawtherapee/dcpprofiles/Canon EOS R6.dcp
+share/rawtherapee/dcpprofiles/Canon EOS R8.dcp
+share/rawtherapee/dcpprofiles/Canon EOS RP.dcp
+share/rawtherapee/dcpprofiles/Canon EOS-1D Mark III.dcp
+share/rawtherapee/dcpprofiles/Canon EOS-1D X Mark III.dcp
+share/rawtherapee/dcpprofiles/Canon EOS-1Ds Mark II.dcp
+share/rawtherapee/dcpprofiles/Canon PowerShot G1 X Mark II.dcp
+share/rawtherapee/dcpprofiles/Canon PowerShot G10.dcp
+share/rawtherapee/dcpprofiles/Canon PowerShot G12.dcp
+share/rawtherapee/dcpprofiles/Canon PowerShot G7 X.dcp
+share/rawtherapee/dcpprofiles/Canon PowerShot S110.dcp
+share/rawtherapee/dcpprofiles/Canon PowerShot S120.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM DBP for GX680.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM FinePix F600EXR.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM GFX 50R.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-A5.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-A7.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-E3.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-H1.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-Pro2.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-Pro3.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-S1.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-S10.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-T1.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-T10.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-T2.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-T20.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-T3.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-T30.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X-T4.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X100S.dcp
+share/rawtherapee/dcpprofiles/FUJIFILM X100T.dcp
+share/rawtherapee/dcpprofiles/Fujifilm FinePix S9500.dcp
+share/rawtherapee/dcpprofiles/Fujifilm X-E1.dcp
+share/rawtherapee/dcpprofiles/Fujifilm X-E2.dcp
+share/rawtherapee/dcpprofiles/LG Mobile LG-H815.dcp
+share/rawtherapee/dcpprofiles/Leaf Aptus 75.dcp
+share/rawtherapee/dcpprofiles/MINOLTA DYNAX 7D.dcp
+share/rawtherapee/dcpprofiles/NIKON COOLPIX P7800.dcp
+share/rawtherapee/dcpprofiles/NIKON D300.dcp
+share/rawtherapee/dcpprofiles/NIKON D3300.dcp
+share/rawtherapee/dcpprofiles/NIKON D50.dcp
+share/rawtherapee/dcpprofiles/NIKON D500.dcp
+share/rawtherapee/dcpprofiles/NIKON D5000.dcp
+share/rawtherapee/dcpprofiles/NIKON D5300.dcp
+share/rawtherapee/dcpprofiles/NIKON D5600.dcp
+share/rawtherapee/dcpprofiles/NIKON D600.dcp
+share/rawtherapee/dcpprofiles/NIKON D610.dcp
+share/rawtherapee/dcpprofiles/NIKON D700.dcp
+share/rawtherapee/dcpprofiles/NIKON D70s.dcp
+share/rawtherapee/dcpprofiles/NIKON D7100.dcp
+share/rawtherapee/dcpprofiles/NIKON D7200.dcp
+share/rawtherapee/dcpprofiles/NIKON D750.dcp
+share/rawtherapee/dcpprofiles/NIKON D7500.dcp
+share/rawtherapee/dcpprofiles/NIKON D80.dcp
+share/rawtherapee/dcpprofiles/NIKON D800.dcp
+share/rawtherapee/dcpprofiles/NIKON D800E.dcp
+share/rawtherapee/dcpprofiles/NIKON D810.dcp
+share/rawtherapee/dcpprofiles/NIKON D850.dcp
+share/rawtherapee/dcpprofiles/NIKON Z 5.dcp
+share/rawtherapee/dcpprofiles/NIKON Z 50.dcp
+share/rawtherapee/dcpprofiles/NIKON Z 6.dcp
+share/rawtherapee/dcpprofiles/NIKON Z 6_2.dcp
+share/rawtherapee/dcpprofiles/NIKON Z 7.dcp
+share/rawtherapee/dcpprofiles/NIKON Z 8.dcp
+share/rawtherapee/dcpprofiles/NIKON Z 9.dcp
+share/rawtherapee/dcpprofiles/NIKON Z F.dcp
+share/rawtherapee/dcpprofiles/Nikon D200.dcp
+share/rawtherapee/dcpprofiles/Nikon D3000.dcp
+share/rawtherapee/dcpprofiles/Nikon D3100.dcp
+share/rawtherapee/dcpprofiles/Nikon D3S.dcp
+share/rawtherapee/dcpprofiles/Nikon D5100.dcp
+share/rawtherapee/dcpprofiles/Nikon D7000.dcp
+share/rawtherapee/dcpprofiles/OLYMPUS E-510.dcp
+share/rawtherapee/dcpprofiles/OLYMPUS E-M1.dcp
+share/rawtherapee/dcpprofiles/OLYMPUS E-M10.dcp
+share/rawtherapee/dcpprofiles/OLYMPUS E-M1MarkII.dcp
+share/rawtherapee/dcpprofiles/OLYMPUS E-M5MarkII.dcp
+share/rawtherapee/dcpprofiles/Olympus E-1.dcp
+share/rawtherapee/dcpprofiles/Olympus E-520.dcp
+share/rawtherapee/dcpprofiles/Olympus E-M5.dcp
+share/rawtherapee/dcpprofiles/Olympus E-P2.dcp
+share/rawtherapee/dcpprofiles/Olympus XZ-1.dcp
+share/rawtherapee/dcpprofiles/PANASONIC DC-S5M2.dcp
+share/rawtherapee/dcpprofiles/PANASONIC DMC-LX100.dcp
+share/rawtherapee/dcpprofiles/PENTAX K-5 II.dcp
+share/rawtherapee/dcpprofiles/PENTAX K-5.dcp
+share/rawtherapee/dcpprofiles/PENTAX K-50.dcp
+share/rawtherapee/dcpprofiles/PENTAX K10D.dcp
+share/rawtherapee/dcpprofiles/Panasonic DC-G9.dcp
+share/rawtherapee/dcpprofiles/Panasonic DC-GX9.dcp
+share/rawtherapee/dcpprofiles/Panasonic DC-S1.dcp
+share/rawtherapee/dcpprofiles/Panasonic DC-S5.dcp
+share/rawtherapee/dcpprofiles/Panasonic DC-TZ91.dcp
+share/rawtherapee/dcpprofiles/Panasonic DMC-FZ1000.dcp
+share/rawtherapee/dcpprofiles/Panasonic DMC-FZ150.dcp
+share/rawtherapee/dcpprofiles/Panasonic DMC-FZ35.dcp
+share/rawtherapee/dcpprofiles/Panasonic DMC-FZ38.dcp
+share/rawtherapee/dcpprofiles/Panasonic DMC-G1.dcp
+share/rawtherapee/dcpprofiles/Panasonic DMC-G3.dcp
+share/rawtherapee/dcpprofiles/Panasonic DMC-G5.dcp
+share/rawtherapee/dcpprofiles/Panasonic DMC-GH1.dcp
+share/rawtherapee/dcpprofiles/Panasonic DMC-GH2.dcp
+share/rawtherapee/dcpprofiles/Panasonic DMC-GX7.dcp
+share/rawtherapee/dcpprofiles/Panasonic DMC-GX85.dcp
+share/rawtherapee/dcpprofiles/Pentax K-r.dcp
+share/rawtherapee/dcpprofiles/Pentax K200D.dcp
+share/rawtherapee/dcpprofiles/RICOH GR III.dcp
+share/rawtherapee/dcpprofiles/RICOH PENTAX K-1.dcp
+share/rawtherapee/dcpprofiles/RICOH PENTAX K-3.dcp
+share/rawtherapee/dcpprofiles/SONY DSC-RX100M6.dcp
+share/rawtherapee/dcpprofiles/SONY DSLR-A580.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-6000.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-6300.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-6400.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-6500.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-6600.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-7.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-7C.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-7M2.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-7M3.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-7M4.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-7RM3.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-7RM4.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-7SM3.dcp
+share/rawtherapee/dcpprofiles/SONY ILCE-9.dcp
+share/rawtherapee/dcpprofiles/SONY SLT-A99V.dcp
+share/rawtherapee/dcpprofiles/Sony DSLR-A700.dcp
+share/rawtherapee/dcpprofiles/Sony DSLR-A900.dcp
+share/rawtherapee/dcpprofiles/Sony NEX-5N.dcp
+share/rawtherapee/dcpprofiles/Sony SLT-A55V.dcp
+share/rawtherapee/dcpprofiles/YI TECHNOLOGY M1.dcp
+share/rawtherapee/dcpprofiles/camera_model_aliases.json
+share/rawtherapee/dcpprofiles/samsung SM-G930V.dcp
+share/rawtherapee/dcraw.json
+share/rawtherapee/iccprofiles/
+share/rawtherapee/iccprofiles/input/
+share/rawtherapee/iccprofiles/input/Canon EOS 20D.icc
+share/rawtherapee/iccprofiles/input/Canon EOS 40D.icc
+share/rawtherapee/iccprofiles/input/Canon EOS 450D.icc
+share/rawtherapee/iccprofiles/input/Canon EOS 550D.icc
+share/rawtherapee/iccprofiles/input/Canon EOS 5D.icc
+share/rawtherapee/iccprofiles/input/Canon EOS-1D Mark III.icc
+share/rawtherapee/iccprofiles/input/Canon PowerShot G10.icc
+share/rawtherapee/iccprofiles/input/Canon PowerShot G12.icc
+share/rawtherapee/iccprofiles/input/Nikon D200.icc
+share/rawtherapee/iccprofiles/input/Nikon D3000.icc
+share/rawtherapee/iccprofiles/input/Nikon D3100.icc
+share/rawtherapee/iccprofiles/input/Nikon D3S.icc
+share/rawtherapee/iccprofiles/input/Nikon D700.icc
+share/rawtherapee/iccprofiles/input/Nikon D7000.icc
+share/rawtherapee/iccprofiles/input/Olympus E-P2.icc
+share/rawtherapee/iccprofiles/input/Panasonic DMC-FZ150.icc
+share/rawtherapee/iccprofiles/input/Panasonic DMC-FZ35.icc
+share/rawtherapee/iccprofiles/input/Panasonic DMC-FZ38.icc
+share/rawtherapee/iccprofiles/input/Panasonic DMC-G1.icc
+share/rawtherapee/iccprofiles/input/Panasonic DMC-G3.icc
+share/rawtherapee/iccprofiles/input/Panasonic DMC-GH1.icc
+share/rawtherapee/iccprofiles/input/Panasonic DMC-GH2.icc
+share/rawtherapee/iccprofiles/input/Pentax K200D.icc
+share/rawtherapee/iccprofiles/input/Sony DSLR-A700.icc
+share/rawtherapee/iccprofiles/input/Sony DSLR-A900.icc
+share/rawtherapee/iccprofiles/input/Sony SLT-A55V.icc
+share/rawtherapee/iccprofiles/input/sd14-bl15-crop-matrix-gamma-wp10.icm
+share/rawtherapee/iccprofiles/input/sd14-bl15-crop-matrix-gamma-wp11.icm
+share/rawtherapee/iccprofiles/input/sd14-bl15-crop-matrix-gamma-wp12.icm
+share/rawtherapee/iccprofiles/input/sd1_merrill_cloudy8140-CROP-WP10.icm
+share/rawtherapee/iccprofiles/input/sd1_merrill_cloudy8140-CROP-WP11.icm
+share/rawtherapee/iccprofiles/input/sd1_merrill_sunny8161-crop-wp10.icm
+share/rawtherapee/iccprofiles/input/sd1_merrill_sunny8161-crop-wp11.icm
+share/rawtherapee/iccprofiles/input/sd1_merrill_tungsten8130-CROP-WP10.icm
+share/rawtherapee/iccprofiles/input/sd1_merrill_tungsten8130-CROP-WP11.icm
+share/rawtherapee/iccprofiles/output/
+share/rawtherapee/iccprofiles/output/DCI-P3 D65.icc
+share/rawtherapee/iccprofiles/output/DCI-P3 Theater.icc
+share/rawtherapee/iccprofiles/output/RTv2_ACES-AP0.icc
+share/rawtherapee/iccprofiles/output/RTv2_ACES-AP1.icc
+share/rawtherapee/iccprofiles/output/RTv2_Best.icc
+share/rawtherapee/iccprofiles/output/RTv2_Beta.icc
+share/rawtherapee/iccprofiles/output/RTv2_Bruce.icc
+share/rawtherapee/iccprofiles/output/RTv2_Large.icc
+share/rawtherapee/iccprofiles/output/RTv2_Medium.icc
+share/rawtherapee/iccprofiles/output/RTv2_Rec2020.icc
+share/rawtherapee/iccprofiles/output/RTv2_Wide.icc
+share/rawtherapee/iccprofiles/output/RTv2_sRGB.icc
+share/rawtherapee/iccprofiles/output/RTv4_ACES-AP0.icc
+share/rawtherapee/iccprofiles/output/RTv4_ACES-AP1.icc
+share/rawtherapee/iccprofiles/output/RTv4_Best.icc
+share/rawtherapee/iccprofiles/output/RTv4_Beta.icc
+share/rawtherapee/iccprofiles/output/RTv4_Bruce.icc
+share/rawtherapee/iccprofiles/output/RTv4_Large.icc
+share/rawtherapee/iccprofiles/output/RTv4_Medium.icc
+share/rawtherapee/iccprofiles/output/RTv4_Rec2020.icc
+share/rawtherapee/iccprofiles/output/RTv4_Wide.icc
+share/rawtherapee/iccprofiles/output/RTv4_sRGB.icc
+share/rawtherapee/images/
+share/rawtherapee/images/ornament1.svg
+share/rawtherapee/images/rawtherapee.ico
+share/rawtherapee/images/rt-logo-text-black.svg
+share/rawtherapee/images/rt-logo-text-white.svg
+share/rawtherapee/images/splash.svg
+share/rawtherapee/images/splash_template.svg
+share/rawtherapee/languages/
+share/rawtherapee/languages/Catala
+share/rawtherapee/languages/Chinese (Simplified)
+share/rawtherapee/languages/Czech
+share/rawtherapee/languages/Dansk
+share/rawtherapee/languages/Deutsch
+share/rawtherapee/languages/English (UK)
+share/rawtherapee/languages/English (US)
+share/rawtherapee/languages/Espanol (Castellano)
+share/rawtherapee/languages/Espanol (Latin America)
+share/rawtherapee/languages/Francais
+share/rawtherapee/languages/Italiano
+share/rawtherapee/languages/Japanese
+share/rawtherapee/languages/LICENSE
+share/rawtherapee/languages/Magyar
+share/rawtherapee/languages/Nederlands
+share/rawtherapee/languages/Polish
+share/rawtherapee/languages/Portugues
+share/rawtherapee/languages/Portugues (Brasil)
+share/rawtherapee/languages/README
+share/rawtherapee/languages/Russian
+share/rawtherapee/languages/Serbian (Cyrilic Characters)
+share/rawtherapee/languages/Slovenian
+share/rawtherapee/languages/Swedish
+share/rawtherapee/languages/Ukrainian
+share/rawtherapee/languages/default
+share/rawtherapee/options
+share/rawtherapee/profiles/
+share/rawtherapee/profiles/Auto-Matched Curve - ISO High.pp3
+share/rawtherapee/profiles/Auto-Matched Curve - ISO Low.pp3
+share/rawtherapee/profiles/Auto-Matched Curve - ISO Medium.pp3
+share/rawtherapee/profiles/Film Negative - Black and White.pp3
+share/rawtherapee/profiles/Film Negative.pp3
+share/rawtherapee/profiles/Non-raw/
+share/rawtherapee/profiles/Non-raw/Brighten.pp3
+share/rawtherapee/profiles/Pixel Shift/
+share/rawtherapee/profiles/Pixel Shift/PS ISO High.pp3
+share/rawtherapee/profiles/Pixel Shift/PS ISO Low.pp3
+share/rawtherapee/profiles/Pixel Shift/PS ISO Medium.pp3
+share/rawtherapee/profiles/Pixel Shift/PS No Motion.pp3
+share/rawtherapee/profiles/Pop/
+share/rawtherapee/profiles/Pop/Pop 1.pp3
+share/rawtherapee/profiles/Pop/Pop 2 Lab.pp3
+share/rawtherapee/profiles/Pop/Pop 3 Skin.pp3
+share/rawtherapee/profiles/Pop/Pop 4 Black-and-White.pp3
+share/rawtherapee/profiles/Standard Film Curve - ISO High.pp3
+share/rawtherapee/profiles/Standard Film Curve - ISO Low.pp3
+share/rawtherapee/profiles/Standard Film Curve - ISO Medium.pp3
+share/rawtherapee/profiles/Unclipped.pp3
+share/rawtherapee/rt.json
+share/rawtherapee/sounds/
+share/rawtherapee/sounds/BatchComplete.wav
+share/rawtherapee/sounds/Empty.wav
+share/rawtherapee/sounds/ProcessComplete.wav
+share/rawtherapee/themes/
+share/rawtherapee/themes/RawTherapee - Legacy.css
+share/rawtherapee/themes/RawTherapee.css
+share/rawtherapee/themes/TooWaBlue - Bright.css
+share/rawtherapee/themes/TooWaBlue - Dark.css
+share/rawtherapee/themes/TooWaBlue.css
+share/rawtherapee/themes/TooWaGrey - Average Surround.css
+share/rawtherapee/themes/TooWaGrey - Bright.css
+share/rawtherapee/themes/TooWaGrey - Dark.css
+share/rawtherapee/themes/TooWaGrey.css
+share/rawtherapee/themes/common/
+share/rawtherapee/themes/common/size - Legacy.css
+share/rawtherapee/themes/common/size.css
+share/rawtherapee/themes/system.iconset
+@tag update-desktop-database
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag gtk-update-icon-cache %D/share/icons/rawtherapee

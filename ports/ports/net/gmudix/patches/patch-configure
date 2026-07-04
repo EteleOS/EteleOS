@@ -1,0 +1,22 @@
+--- configure.orig	Mon Dec  9 06:58:47 2002
++++ configure	Sat Jul 19 11:44:10 2003
+@@ -991,15 +991,15 @@ if test "$ac_test_CFLAGS" = set; then
+   CFLAGS="$ac_save_CFLAGS"
+ elif test $ac_cv_prog_cc_g = yes; then
+   if test "$GCC" = yes; then
+-    CFLAGS="-g -O2"
++    CFLAGS=$(CFLAGS)
+   else
+-    CFLAGS="-g"
++    CFLAGS=$(CFLAGS)
+   fi
+ else
+   if test "$GCC" = yes; then
+-    CFLAGS="-O2"
++    CFLAGS=$(CFLAGS)
+   else
+-    CFLAGS=
++    CFLAGS=$(CFLAGS)
+   fi
+ fi
+ 

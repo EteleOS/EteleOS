@@ -1,0 +1,12 @@
+Index: backend/vilter-icap/scan.l
+--- backend/vilter-icap/scan.l.orig
++++ backend/vilter-icap/scan.l
+@@ -19,7 +19,7 @@
+ 
+ #include <string.h>
+ 
+-#include "y.tab.h"
++#include "parse.h"
+ 
+ %}
+ 

@@ -1,0 +1,12 @@
+Index: setup.py
+--- setup.py.orig
++++ setup.py
+@@ -37,7 +37,7 @@ else:
+ AUTHOR, EMAIL = re.match(r'(.*) <(.*)>', AUTHOR_EMAIL).groups()
+ 
+ DATA_FILES = [
+-    ('share/man/man1', glob.glob('man/*')),
++    ('man/man1', glob.glob('man/*')),
+ ]
+ 
+ CLASSIFIERS = [

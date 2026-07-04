@@ -1,0 +1,40 @@
+Index: src/sim/w_graph.c
+--- src/sim/w_graph.c.orig
++++ src/sim/w_graph.c
+@@ -71,6 +71,8 @@ short Graph10Max, Graph120Max;
+ Tcl_HashTable GraphCmds;
+ int GraphUpdateTime = 100;
+ 
++void DoResizeGraph(SimGraph *graph, int w, int h);
++void DoUpdateGraph(SimGraph *graph);
+ 
+ #define DEF_GRAPH_FONT	"-Adobe-Helvetica-Bold-R-Normal-*-140-*"
+ #define DEF_GRAPH_BG_COLOR	"#b0b0b0"
+@@ -568,9 +570,10 @@ initGraphs(void)
+ 
+ 
+ /* comefrom: InitWillStuff */
++void
+ InitGraphMax(void)
+ {
+-  register x;
++  register int x;
+ 
+   ResHisMax = 0;
+   ComHisMax = 0;
+@@ -666,6 +669,7 @@ DestroyGraph(SimGraph *graph)
+ }
+ 
+ 
++void
+ DoResizeGraph(SimGraph *graph, int w, int h)
+ {
+   int resize = 0;
+@@ -698,6 +702,7 @@ DoNewGraph(SimGraph *graph)
+ 
+ #define BORDER 5
+ 
++void
+ DoUpdateGraph(SimGraph *graph)
+ {
+   Display *dpy;

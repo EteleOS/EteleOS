@@ -1,0 +1,3 @@
+${P5SITE}/Sort/
+${P5SITE}/Sort/Versions.pm
+@man man/man3p/Sort::Versions.3p

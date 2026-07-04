@@ -1,0 +1,4 @@
+@bin bin/zmrx
+@bin bin/zmtx
+@man man/man1/zmrx.1
+@man man/man1/zmtx.1

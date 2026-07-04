@@ -1,0 +1,14 @@
+--- CMakeLists.txt.orig	Sun Dec  1 18:28:12 2013
++++ CMakeLists.txt	Sun Mar 23 13:31:15 2014
+@@ -104,7 +104,11 @@ if (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_COMPILER_IS_CLAN
+   # This is a set of sensible warnings that provide meaningful output
+   set(OGRE_WARNING_FLAGS "-Wall -Winit-self -Wno-overloaded-virtual -Wcast-qual -Wwrite-strings -Wextra -Wno-unused-parameter -Wshadow -Wno-missing-field-initializers -Wno-long-long")
+   if (NOT APPLE)
++    execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpversion
++                    OUTPUT_VARIABLE GCC_VERSION)
++    if (GCC_VERSION VERSION_GREATER 4.6 OR GCC_VERSION VERSION_EQUAL 4.6)
+       set(OGRE_WARNING_FLAGS "${OGRE_WARNING_FLAGS} -Wno-unused-but-set-parameter")
++    endif()
+   endif ()
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OGRE_WARNING_FLAGS}")
+ endif ()

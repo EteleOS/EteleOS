@@ -1,0 +1,14 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -14617,10 +14617,6 @@ _ACEOF
+ fi
+ 
+ case "${target}" in
+-    *-openbsd*)
+-        NAME_OF_DEV_RANDOM="/dev/srandom"
+-        NAME_OF_DEV_URANDOM="/dev/urandom"
+-        ;;
+     *-cygwin*)
+ 
+ cat >>confdefs.h <<\_ACEOF

@@ -1,0 +1,11 @@
+Index: src/action.cpp
+--- src/action.cpp.orig
++++ src/action.cpp
+@@ -5,5 +5,7 @@
+ 
+ #include <string>
++#include <cstring>
++#include <cstdlib>
+ #include "wmi.h"
+ 
+ #include "action.h"

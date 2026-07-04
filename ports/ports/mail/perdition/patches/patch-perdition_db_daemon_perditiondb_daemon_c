@@ -1,0 +1,11 @@
+--- perdition/db/daemon/perditiondb_daemon.c.orig	Wed Sep  1 08:13:30 2010
++++ perdition/db/daemon/perditiondb_daemon.c	Sat Nov 13 10:09:27 2010
+@@ -237,7 +237,7 @@ dbserver_get2(const char *key_str, const char *UNUSED(
+ 
+ 	perdition_un_init(&sock);
+ 
+-	memcpy(sock.dir, DIR_TEMPLATE, PERDITION_UN_STR_LEN-1);
++	strlcpy(sock.dir, DIR_TEMPLATE, sizeof(sock.dir));
+ 	if(!mkdtemp(sock.dir)) {
+ 		VANESSA_LOGGER_DEBUG_ERRNO("mkdtemp");
+ 		return (-1);

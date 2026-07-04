@@ -1,0 +1,12 @@
+Index: themes/xresources/theme.lua
+--- themes/xresources/theme.lua.orig
++++ themes/xresources/theme.lua
+@@ -94,7 +94,7 @@ theme = theme_assets.recolor_titlebar(
+ )
+ 
+ -- Define the icon theme for application icons. If not set then the icons
+--- from /usr/share/icons and /usr/share/icons/hicolor will be used.
++-- from ${LOCALBASE}/share/icons and /usr/share/icons/hicolor will be used.
+ theme.icon_theme = nil
+ 
+ -- Generate Awesome icon:

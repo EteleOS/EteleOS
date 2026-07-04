@@ -1,0 +1,12 @@
+Index: draw.c
+--- draw.c.orig
++++ draw.c
+@@ -615,8 +615,6 @@ void draw_gain_phi(int j,Radpattern *rp)
+ #define R270 (1.5*M_PI)
+ #define R360 (2*M_PI)
+ 
+-#include <sys/timeb.h>
+-
+ void draw_gain(int ie,Radpattern *rp)
+ {
+    int i,j;

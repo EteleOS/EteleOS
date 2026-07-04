@@ -1,0 +1,12 @@
+Index: lib/gears/filesystem.lua
+--- lib/gears/filesystem.lua.orig
++++ lib/gears/filesystem.lua
+@@ -103,7 +103,7 @@ end
+ --- Get the data dirs according to the XDG basedir specification.
+ -- @treturn table the data dirs (XDG_DATA_DIRS) with a slash at the end of each entry.
+ function filesystem.get_xdg_data_dirs()
+-    local xdg_data_dirs = os.getenv("XDG_DATA_DIRS") or "/usr/share:/usr/local/share"
++    local xdg_data_dirs = os.getenv("XDG_DATA_DIRS") or "${LOCALBASE}/share:/usr/local/share"
+     return gtable.map(
+         function(dir) return dir .. "/" end,
+         gstring.split(xdg_data_dirs, ":"))

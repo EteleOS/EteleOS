@@ -1,0 +1,15 @@
+- clearenv(3) is a GNU extension
+
+--- usertable.cpp.orig	Sat Apr  7 00:19:27 2012
++++ usertable.cpp	Wed Apr 27 11:01:00 2016
+@@ -545,8 +545,8 @@ void UserTable::RunAsUser(char* const* argv) const
+   }
+ 
+   if (pwd->pw_uid != 0) {
+-    if (clearenv() != 0)
+-      goto failed;
++    extern char **environ;
++    environ = (char **)calloc(1, sizeof(*environ));
+ 
+     if (    setenv("LOGNAME",   pwd->pw_name,   1) != 0
+         ||  setenv("USER",      pwd->pw_name,   1) != 0

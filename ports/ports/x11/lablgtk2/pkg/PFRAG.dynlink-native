@@ -1,0 +1,5 @@
+@bin lib/ocaml/lablgtk2/lablglade.cmxs
+@bin lib/ocaml/lablgtk2/lablgnomecanvas.cmxs
+@bin lib/ocaml/lablgtk2/lablgtk.cmxs
+@bin lib/ocaml/lablgtk2/lablgtksourceview2.cmxs
+@bin lib/ocaml/lablgtk2/lablrsvg.cmxs

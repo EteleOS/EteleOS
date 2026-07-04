@@ -1,0 +1,661 @@
+#!/usr/bin/perl
+
+# $OpenBSD: check-lib-depends,v 1.51 2023/09/09 14:56:17 espie Exp $
+# Copyright (c) 2004-2010 Marc Espie <espie@openbsd.org>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+use v5.36;
+my $ports1;
+use FindBin;
+BEGIN {
+	$ports1 = $ENV{PORTSDIR} || '/usr/ports';
+}
+use lib ("$ports1/infrastructure/lib", "$FindBin::Bin/../lib");
+
+use File::Spec;
+use OpenBSD::PackingList;
+use OpenBSD::LibSpec;
+use OpenBSD::Temp;
+use OpenBSD::AddCreateDelete;
+use OpenBSD::Getopt;
+use OpenBSD::FileSource;
+use OpenBSD::BinaryScan;
+use OpenBSD::Recorder;
+use OpenBSD::Issue;
+
+package Logger;
+sub new($class, $dir)
+{
+	require File::Path;
+
+	File::Path::make_path($dir);
+	bless {dir => $dir}, $class;
+}
+
+sub log($self, $name)
+{
+	$name =~ s/^\/*//;
+	$name =~ s/\//./g;
+	return "$self->{dir}/$name";
+}
+
+sub open($self, $name)
+{
+	open my $fh, '>>', $self->log($name);
+	return $fh;
+}
+
+package MyFile;
+our @ISA = qw(OpenBSD::PackingElement::FileBase);
+
+sub fullname($self)
+{
+	return $self->{name};
+}
+
+package OpenBSD::PackingElement;
+# $item->scan_binaries_for_libs($state)
+sub scan_binaries_for_libs($, $)
+{
+}
+
+# $item->find_libs($dest, $dump)
+sub find_libs($, $, $)
+{
+}
+
+# $item->register_libs($stash)
+sub register_libs($, $)
+{
+}
+
+# $item->depwalk($h)
+sub depwalk($, $)
+{
+}
+
+# $item->find_binaries($h)
+sub find_binaries($, $)
+{
+}
+
+# $item->find_perl($state)
+sub find_perl($, $)
+{
+}
+
+package OpenBSD::PackingElement::Wantlib;
+sub register_libs($item, $t)
+{
+	my $name = $item->{name};
+	$name =~ s/^(.*\/)?(.*)\.(\d+)\.\d+$/$2.$3/;
+	$t->{$name} = 1;
+}
+
+package OpenBSD::PackingElement::Lib;
+
+sub register_libs($item, $t)
+{
+	if ($item->fullname =~ m/^(.*\/)?lib(.*)\.so\.(\d+)\.\d+$/) {
+		$t->{"$2.$3"} = 2;
+	}
+}
+
+package OpenBSD::PackingElement::FileBase;
+
+sub find_libs($item, $dest, $dump)
+{
+	my $fullname = $item->fullname;
+	for my $lib ($dump->libraries($fullname)) {
+		$dest->record($lib, $fullname);
+	}
+}
+
+sub scan_binaries_for_libs($item, $state)
+{
+	if (my $fullname = $item->is_binary) {
+		$state->{scanner}->retrieve_and_scan_binary($item, $fullname);
+		if ($item->is_perl_so) {
+			$state->{scanner}->record_libs($fullname, 
+			    $state->perllibs);
+		}
+	} else {
+		$state->{scanner}->dont_scan($item);
+	}
+}
+
+sub is_binary($item)
+{
+	my $fullname = File::Spec->canonpath($item->fullname);
+
+	if ($item->{symlink} || $item->{link}) {
+		return 0;
+	} else {
+		return $fullname;
+	}
+}
+
+sub is_perl_so($item)
+{
+	my $fullname = File::Spec->canonpath($item->fullname);
+
+	if ($fullname =~ m,/libdata/perl5/.*\.so$,) {
+		return $fullname;
+	} else {
+		return 0;
+	}
+}
+
+sub find_binaries($item, $h)
+{
+	if ($item->is_binary) {
+		$h->{$item->name} = $item;
+	}
+}
+
+sub find_perl($item, $state)
+{
+	if (my $fullname = $item->is_perl_so) {
+		$state->{scanner}->record_libs($fullname, $state->perllibs);
+	}
+}
+
+package OpenBSD::PackingElement::Dependency;
+
+sub depwalk($self, $h)
+{
+	$h->{$self->{def}} = $self->{pkgpath};
+}
+
+package CheckLibDepends::State;
+our @ISA = qw(OpenBSD::AddCreateDelete::State);
+
+sub parse_variable($state, $opt)
+{
+	# this looks a bit like the subst module, but goes much further
+	if ($opt =~ m/^([^=]+)\=(.*)$/o) {
+		my ($k, $v) = ($1, $2);
+		$v =~ s/^\'(.*)\'$/$1/;
+		$v =~ s/^\"(.*)\"$/$1/;
+		my @list = split(/\s+/, $v);
+		for my $l (@list) {
+			$l =~ s/\>\=\d.*//;	# zap extra version req
+		}
+		# the order matters!
+		push(@{$state->{possibilities}}, [$k, \@list]);
+	} else {
+		$state->usage("Incorrect -S option");
+	}
+}
+
+sub handle_options($state)
+{
+	$state->{opt}{i} = 0;
+	$state->{opt}{S} = sub($opt) {
+		$state->parse_variable($opt);
+	};
+	$state->{opt}{F} = sub($v) {
+		$state->{may_be_missing}{$v} = 1;
+	};
+	$state->SUPER::handle_options('id:D:fF:B:qS:s:O:',
+		'[-fimqx] [-B destdir] [-d pkgrepo] [-F fuzz] [-O dest] [-S var=value] [-s source]');
+
+	$state->{destdir} = $state->opt('B');
+	if ($state->opt('O')) {
+		open $state->{dest}, '>', $state->opt('O') or 
+		    $state->fatal("Can't write to #1: #2", 
+			$state->opt('O'), $!);
+	}
+	$state->{source} = $state->opt('s');
+	$state->{full} = $state->opt('f');
+	$state->{repository} = $state->opt('d');
+	$state->{stdin} = $state->opt('i');
+	$state->{scanner} = OpenBSD::BinaryScan::Objdump->new($state);
+	$state->{quiet} = $state->opt('q');
+	if ($state->opt('D')) {
+		$state->{logger} = Logger->new($state->opt('D'));
+	}
+}
+
+sub init($self, @parms)
+{
+	$self->{errors} = 0;
+	$self->SUPER::init(@parms);
+}
+
+sub context($self, $pkgname)
+{
+	$self->{context} = $pkgname;
+}
+
+sub error($state, @msg)
+{
+	$state->{errors}++;
+	$state->say_with_context(@msg);
+}
+
+sub say_with_context($state, @msg)
+{
+	if ($state->{context}) {
+		$state->say("\n#1:", $state->{context});
+		undef $state->{context};
+	}
+	$state->say(@msg);
+}
+
+sub set_context($state, $plist)
+{
+	my $pkgname = $plist->pkgname;
+	if ($plist->fullpkgpath) {
+		$state->context($pkgname."(".$plist->fullpkgpath.")");
+	} else {
+		$state->context($pkgname);
+	}
+}
+
+sub perllibs($state)
+{
+	if (!defined $state->{perllibs}) {
+		$state->shlibs->add_libs_from_system('/');
+		eval {
+		    my $perl = $state->shlibs->find_best('perl');
+		    my $c = $state->shlibs->find_best('c');
+		    if (!defined $perl || !defined $c) {
+			    $state->fatal("can't find system perl and c");
+		    }
+		    $state->{perllibs} = ["perl.".$perl->major, "c.".$c->major];
+		};
+		if ($@) {
+			$state->fatal("please upgrade pkg_add first");
+		}
+	}
+	return @{$state->{perllibs}};
+}
+
+package CheckLibDepends;
+
+use OpenBSD::PackageInfo;
+use File::Path;
+use File::Find;
+
+my $dependencies = {};
+
+sub register_dependencies($plist)
+{
+	my $pkgname = $plist->pkgname;
+	my $h = {};
+	$dependencies->{$pkgname} = $h;
+	$plist->depwalk($h);
+}
+
+sub get_plist($self, $state, $pkgname, $pkgpath)
+{
+	# try physical package
+	if (defined $state->{repository}) {
+		my $location = "$state->{repository}/$pkgname.tgz";
+
+		my $true_package = $state->repo->find($location);
+		if ($true_package) {
+			my $dir = $true_package->info;
+			if (-d $dir) {
+				my $plist = OpenBSD::PackingList->fromfile($dir.CONTENTS);
+				$true_package->close;
+				rmtree($dir);
+				return $plist;
+			}
+		}
+	}
+	my $cachefile;
+	if (exists $ENV{_DEPENDS_CACHE}) {
+		$cachefile = "$ENV{_DEPENDS_CACHE}/$pkgname";
+	}
+	# check the cache
+	if (defined $cachefile && 
+	    open my $fh, '<', "$ENV{_DEPENDS_CACHE}/$pkgname") {
+		my $plist = OpenBSD::PackingList->read($fh);
+		return $plist;
+	}
+	# or ask the ports tree directly
+	my $portsdir = $ENV{PORTSDIR} || "/usr/ports";
+	my ($make, @extra) = split(/\s+/, $ENV{MAKE} || "make");
+	my $pid = open(my $fh, "-|");
+	if ($pid) {
+		my $plist = OpenBSD::PackingList->read($fh);
+		close $fh;
+		waitpid $pid, 0;
+		if (defined $cachefile && !-f $cachefile) {
+			$plist->tofile($cachefile);
+		}
+		return $plist;
+	} else {
+		chdir($portsdir);
+		my %myenv = (
+			SUBDIR => $pkgpath,
+			FULLPATH => "Yes",
+			ECHO_MSG => ':'
+		);
+		for my $v (qw(_DEPENDS_CACHE PORTSDIR_PATH)) {
+			if (exists $ENV{$v}) {
+				$myenv{$v} = $ENV{$v};
+			}
+		}
+		%ENV = %myenv;
+		exec { $make }
+			($make, @extra, 'print-plist-libs-with-depends',
+				'wantlib_args=no-wantlib-args');
+		exit 1;
+	}
+}
+
+sub handle_dependency($self, $state, $pkgname, $pkgpath)
+{
+	my $plist = $self->get_plist($state, $pkgname, $pkgpath);
+
+	if (!defined $plist || !defined $plist->pkgname) {
+		$state->errsay("Error: can't solve dependency for #1(#2)",
+		    $pkgname, $pkgpath);
+		return;
+	}
+
+	if ($plist->pkgname ne $pkgname) {
+		delete $dependencies->{$pkgname};
+		for my $p (keys %$dependencies) {
+			if ($dependencies->{$p}->{$pkgname}) {
+				$dependencies->{$p}->{$plist->pkgname} =
+				    $dependencies->{$p}->{$pkgname};
+				delete $dependencies->{$p}->{$pkgname};
+			}
+		}
+	}
+
+	register_dependencies($plist);
+	$state->shlibs->add_libs_from_plist($plist);
+
+	return $plist->pkgname;
+}
+
+sub lookup_library($state, $dir, $spec)
+{
+	my $libspec = OpenBSD::LibSpec->from_string($spec);
+	my $r = $state->shlibs->lookup_libspec($dir, $libspec);
+	if (!defined $r) {
+		return ();
+	} else {
+		return map {$_->origin} @$r;
+	}
+}
+
+sub report_lib_issue($self, $state, $plist, $lib, $binary)
+{
+
+	$state->shlibs->add_libs_from_system('/');
+	my $libspec = "$lib.0";
+	my $want = $lib;
+	$want =~ s/\.\d+$//;
+	for my $dir (qw(/usr /usr/X11R6)) {
+		my @r = lookup_library($state, $dir, $libspec);
+		if (grep { $_ eq 'system' } @r) {
+			return OpenBSD::Issue::SystemLib->new($lib, $binary);
+		}
+	}
+
+	while (my ($p, $pkgpath) = each %{$dependencies->{$plist->pkgname}}) {
+		next if defined $dependencies->{$p};
+		$self->handle_dependency($state, $p, $pkgpath);
+	}
+
+	my @r = lookup_library($state, '/usr/local', $libspec);
+	if (@r > 0) {
+		for my $p (@r) {
+			if (defined $dependencies->{$plist->pkgname}->{$p}) {
+				return OpenBSD::Issue::DirectDependency->new($lib, $binary, $p);
+			}
+		}
+	}
+	# okay, let's walk for WANTLIB
+	my @todo = %{$dependencies->{$plist->pkgname}};
+	my $done = {};
+	while (@todo >= 2) {
+		my $path = pop @todo;
+		my $dep = pop @todo;
+		next if $done->{$dep};
+		$done->{$dep} = 1;
+		$dep = $self->handle_dependency($state, $dep, $path)
+		    	unless defined $dependencies->{$dep};
+		next if !defined $dep;
+		$done->{$dep} = 1;
+		push(@todo, %{$dependencies->{$dep}});
+	}
+	@r = lookup_library($state, OpenBSD::Paths->localbase, $libspec);
+	for my $p (@r) {
+		if (defined $done->{$p}) {
+			return OpenBSD::Issue::IndirectDependency->new($lib, $binary, $p);
+		}
+	}
+	return OpenBSD::Issue::NotReachable->new($lib,, $binary, @r);
+}
+
+sub has_all_libs($self, $absent, $libs, $list)
+{
+	for my $l (@$list) {
+		if ($absent->{$l}) {
+			next;
+		}
+		if (!defined $libs->{$l}) {
+			return 0;
+		}
+	}
+	return 1;
+}
+
+sub backsubst($self, $h, $state)
+{
+	return unless defined $state->{possibilities};
+	for my $p (@{$state->{possibilities}}) {
+		my ($v, $list) = @$p;
+		next unless $self->has_all_libs($h, $state->{may_be_missing},
+		    $list);
+		for my $l (@$list) {
+			if ($state->{may_be_missing}{$l}) {
+				$state->{cant_be_extra} = 1;
+			}
+			delete $h->{$l};
+		}
+		$h->{'${'.$v.'}'} = 1;
+	}
+}
+
+sub print_list($self, $state, $head, $h)
+{
+	$self->backsubst($h, $state);
+	my $line = "";
+	for my $k (sort keys %$h) {
+		if (length $line > 50) {
+			$state->say_with_context("#1#2", $head, $line);
+			$line = "";
+		}
+		$line .= ' '.$k;
+	}
+	if ($line ne '') {
+		$state->say_with_context("#1#2", $head, $line);
+	}
+}
+
+sub scan_package($self, $state, $plist, $source)
+{
+	$state->{scanner}->set_source($source);
+	$plist->scan_binaries_for_libs($state);
+	$state->{scanner}->finish_scanning;
+}
+
+sub scan_true_package($self, $state, $plist, $source)
+{
+	$state->{scanner}->set_source($source);
+	my $h = {};
+	$plist->find_binaries($h);
+	$plist->find_perl($state);
+	while (my $o = $source->next) {
+		my $item = $h->{$o->name};
+		if (defined $item) {
+			delete $h->{$o->name};
+			$state->{scanner}->finish_retrieve_and_scan(
+			    $item, $o);
+		}
+	}
+	if (keys %$h != 0) {
+		$state->fatal("Not all files accounted for");
+	}
+	$state->{scanner}->finish_scanning;
+}
+
+sub analyze($self, $state, $plist)
+{
+	my $pkgname = $plist->pkgname;
+	my $needed_libs = $state->{full} ? OpenBSD::AllRecorder->new : 
+	    OpenBSD::SimpleRecorder->new;
+	my $has_libs = {};
+	$plist->find_libs($needed_libs, $state->{dump});
+	$plist->register_libs($has_libs);
+
+	if (!defined $dependencies->{$pkgname}) {
+		register_dependencies($plist);
+		$state->shlibs->add_libs_from_plist($plist);
+	}
+	my $r = { wantlib => {}, libdepends => {}, wantlib2 => {} };
+	for my $lib (sort $needed_libs->libs) {
+		my $fullname = $needed_libs->binary($lib);
+		if (!defined $has_libs->{$lib}) {
+			my $issue = $self->report_lib_issue($state, $plist, 
+			    $lib, $fullname);
+			$state->error("#1", $issue->message);
+			$issue->record_wantlib($r->{wantlib});
+		} elsif ($has_libs->{$lib} == 1) {
+			my $issue = $self->report_lib_issue($state, $plist, 
+			    $lib, $fullname);
+			if ($issue->not_reachable) {
+				$state->error("#1", $issue->not_reachable);
+			}
+		}
+		$has_libs->{$lib} = 2;
+	}
+	my $extra = {};
+	for my $k (keys %$has_libs) {
+		my $v = $has_libs->{$k};
+		next if $v == 2;
+		my $l = $k;
+		$l =~ s/\.\d+$//;
+		next if defined $state->{cant_be_extra}{$l};
+		$extra->{$k} = 1;
+	}
+	unless ($state->{quiet} && keys %{$r->{wantlib}} == 0) {
+		$self->print_list($state, "Extra: ", $extra);
+	}
+	my $subpkg = $plist->{extrainfo}{path}{subpackage} // '';
+	$self->print_list($state, "WANTLIB$subpkg +=", $r->{wantlib});
+	if ($state->{full}) {
+		$needed_libs->dump(\*STDOUT);
+	}
+}
+
+sub do_pkg($self, $state, $pkgname)
+{
+	my $true_package = $state->repo->find($pkgname);
+	return 0 unless $true_package;
+	my $dir = $true_package->info;
+	# twice read
+	return 0 unless -d $dir;
+	my $plist = OpenBSD::PackingList->fromfile($dir.CONTENTS);
+	$state->set_context($plist);
+	my $temp = OpenBSD::Temp->dir;
+	$state->{dump} = OpenBSD::DumpRecorder->new;
+	$self->scan_true_package($state, $plist,
+	    OpenBSD::PkgFileSource->new($true_package, $temp));
+	$self->analyze($state, $plist);
+	$true_package->close;
+	$true_package->wipe_info;
+	if ($state->{dest}) {
+		$state->{dump}->dump($state->{dest});
+	}
+	return 1;
+}
+
+sub do_plist($self, $state)
+{
+	my $plist = OpenBSD::PackingList->read(\*STDIN);
+	if (!defined $plist->{name}) {
+		$state->error("Error reading plist");
+		return;
+	} else {
+		$state->set_context($plist);
+		$self->analyze($state, $plist);
+	}
+}
+
+sub scan_directory($self, $state, $fs)
+{
+	my $source = OpenBSD::FsFileSource->new($fs);
+	$state->{scanner}->set_source($source);
+	find({
+		wanted => sub {
+		    return if -l $_;
+		    return unless -f _;
+		    my $name = $_;
+		    $name =~ s/^\Q$fs\E/\//;
+		    # XXX hack FileBase object;
+		    my $i = bless {name => $name}, "MyFile";
+		    $i->scan_binaries_for_libs($state);
+		},
+		no_chdir => 1 }, $fs);
+	$state->{scanner}->finish_scanning;
+}
+
+sub main($self)
+{
+	my $state = CheckLibDepends::State->new;
+	$state->{signature_style} = 'unsigned';
+	$state->handle_options;
+	my $need_package = 0;
+	# find files if we can
+	if ($state->{source}) {
+		$state->{dump} = OpenBSD::DumpRecorder->new;
+		$state->{dump}->retrieve($state, $state->{source});
+	} elsif ($state->{destdir}) {
+		$state->{dump} = OpenBSD::DumpRecorder->new;
+		$self->scan_directory($state, $state->{destdir});
+		if ($state->{dest}) {
+			$state->{dump}->dump($state->{dest});
+		}
+	} else {
+		$need_package = 1;
+	}
+
+	if ($state->{stdin}) {
+		if ($need_package) {
+			$state->fatal("no source for actual files given");
+		}
+		$self->do_plist($state);
+	} elsif (@ARGV != 0) {
+		$state->progress->for_list("Scanning", \@ARGV,
+		    sub {
+			$self->do_pkg($state, shift);
+		    });
+	}
+
+	exit($state->{errors} ? 1 : 0);
+}
+
+# XXX wrap line to avoid converting this to RCS keyword
+$OpenBSD::Temp::tempbase =
+    $ENV{'TMPDIR'} || "/tmp";
+__PACKAGE__->main;

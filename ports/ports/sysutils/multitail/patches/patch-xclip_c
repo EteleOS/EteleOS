@@ -1,0 +1,10 @@
+--- xclip.c.orig	Sun Jul 17 22:21:01 2016
++++ xclip.c	Sun Jul 17 22:21:40 2016
+@@ -4,6 +4,7 @@
+  */
+ #define _LARGEFILE64_SOURCE
+ #include <fcntl.h>
++#include <netinet/in.h>
+ #include <signal.h>
+ #include <stdlib.h>
+ #include <string.h>

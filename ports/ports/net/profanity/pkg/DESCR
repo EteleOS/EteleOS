@@ -1,0 +1,12 @@
+Profanity is a console based XMPP client written in C using ncurses and
+libstrophe, inspired by irssi.
+
+Features:
+
+* Supports XMPP chat services
+* MUC chat room support
+* OTR, PGP and OMEMO message encryption
+* Roster management
+* Flexible resource and priority settings
+* Desktop notifications
+* Plugins in Python and C

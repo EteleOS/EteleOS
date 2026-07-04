@@ -1,0 +1,27 @@
+OpenBSD doesn't support timeb api
+add SI_ASYNCIO define
+
+Index: src/c/wrapper_unix.c
+--- src/c/wrapper_unix.c.orig
++++ src/c/wrapper_unix.c
+@@ -56,7 +56,9 @@
+  #include <sys/filio.h> /* for FIONREAD */
+ #endif
+ #include <sys/resource.h>
++#ifndef OPENBSD
+ #include <sys/timeb.h>
++#endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/wait.h>
+@@ -506,8 +508,10 @@ const TCHAR* getSignalCodeDesc(int code) {
+         return TEXT("mesq state changed");
+ #endif
+ 
++#ifdef SI_ASYNCIO
+     case SI_ASYNCIO:
+         return TEXT("AIO completed");
++#endif
+ 
+ #ifdef SI_SIGIO
+     case SI_SIGIO:

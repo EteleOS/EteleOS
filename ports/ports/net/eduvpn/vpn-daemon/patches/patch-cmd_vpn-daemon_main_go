@@ -1,0 +1,14 @@
+Index: cmd/vpn-daemon/main.go
+--- cmd/vpn-daemon/main.go.orig
++++ cmd/vpn-daemon/main.go
+@@ -27,8 +27,8 @@ import (
+ 
+ var (
+ 	credDirEnvVar       = "CREDENTIALS_DIRECTORY"
+-	socketDir           = "/run/openvpn-server"
+-	maintenanceModePath = "/run/vpn-daemon/maintenance-mode"
++	socketDir           = "/var/run/openvpn-server"
++	maintenanceModePath = "/var/run/vpn-daemon/maintenance-mode"
+ )
+ 
+ type NodeInfo struct {

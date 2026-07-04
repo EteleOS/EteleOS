@@ -1,0 +1,4 @@
+@bin bin/enblend
+@bin bin/enfuse
+@man man/man1/enblend.1
+@man man/man1/enfuse.1

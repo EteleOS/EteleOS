@@ -1,0 +1,27 @@
+Index: check_postgres.pl
+--- check_postgres.pl.orig
++++ check_postgres.pl
+@@ -1608,12 +1608,9 @@ if (! $opt{'no-check_postgresrc'}) {
+     elsif (exists $ENV{HOME} and -e "$ENV{HOME}/.check_postgresrc") {
+         $rcfile = "$ENV{HOME}/.check_postgresrc";
+     }
+-    elsif (-e '/etc/check_postgresrc') {
+-        $rcfile = '/etc/check_postgresrc';
++    elsif (-e '${SYSCONFDIR}/check_postgresrc') {
++        $rcfile = '${SYSCONFDIR}/check_postgresrc';
+     }
+-    elsif (-e '/usr/local/etc/check_postgresrc') {
+-        $rcfile = '/usr/local/etc/check_postgresrc';
+-    }
+ }
+ ## We need a temporary hash so that multi-value options can be overridden on the command line
+ my %tempopt;
+@@ -2874,7 +2871,7 @@ sub build_symlinks {
+             next;
+         }
+ 
+-        if (symlink $0, $file) {
++        if (symlink '${TRUEPREFIX}/bin/check_postgres.pl', $file) {
+             print msgn('symlink-create', $file);
+         }
+         else {

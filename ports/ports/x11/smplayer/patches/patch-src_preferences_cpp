@@ -1,0 +1,30 @@
+Index: src/preferences.cpp
+--- src/preferences.cpp.orig
++++ src/preferences.cpp
+@@ -209,8 +209,8 @@ void Preferences::reset() {
+        Drives (CD/DVD)
+        *************** */
+ 
+-	dvd_device = "";
+-	cdrom_device = "";
++	dvd_device = "/dev/cd0c";
++	cdrom_device = "/dev/cd0c";
+ #ifdef BLURAY_SUPPORT
+ 	bluray_device = "";
+ #endif
+@@ -332,13 +332,13 @@ void Preferences::reset() {
+     mplayer_additional_audio_filters="";
+ 
+ #ifdef LOG_MPLAYER
+-	log_mplayer = true;
++	log_mplayer = false;
+ 	verbose_log = false;
+ 	autosave_mplayer_log = false;
+ 	mplayer_log_saveto = "";
+ #endif
+ #ifdef LOG_SMPLAYER
+-	log_smplayer = true;
++	log_smplayer = false;
+ 	log_filter = ".*";
+ 	save_smplayer_log = false;
+ #endif

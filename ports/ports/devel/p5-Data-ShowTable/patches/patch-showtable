@@ -1,0 +1,8 @@
+--- showtable.orig	Wed Feb 26 04:15:48 1997
++++ showtable	Mon Mar 12 20:57:41 2001
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl5
++#!/usr/bin/perl
+ # showtable - read data and show it
+ #
+ #    Copyright (C) 1996,1997  Alan K. Stebbens <aks@sgi.com>

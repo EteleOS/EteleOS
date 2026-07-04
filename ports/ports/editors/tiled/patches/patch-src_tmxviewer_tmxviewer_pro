@@ -1,0 +1,11 @@
+Index: src/tmxviewer/tmxviewer.pro
+--- src/tmxviewer/tmxviewer.pro.orig
++++ src/tmxviewer/tmxviewer.pro
+@@ -36,6 +36,6 @@ SOURCES += main.cpp \
+ 
+ HEADERS += tmxviewer.h
+ 
+-manpage.path = $${PREFIX}/share/man/man1/
++manpage.path = $${PREFIX}/man/man1/
+ manpage.files += ../../man/tmxviewer.1
+ INSTALLS += manpage

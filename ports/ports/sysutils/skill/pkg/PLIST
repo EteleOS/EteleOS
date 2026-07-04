@@ -1,0 +1,4 @@
+@bin bin/skill
+@bin bin/snice
+@man man/man1/skill.1
+@man man/man1/snice.1

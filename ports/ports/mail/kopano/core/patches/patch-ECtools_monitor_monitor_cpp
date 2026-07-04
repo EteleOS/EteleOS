@@ -1,0 +1,14 @@
+Index: ECtools/monitor/monitor.cpp
+--- ECtools/monitor/monitor.cpp.orig
++++ ECtools/monitor/monitor.cpp
+@@ -122,8 +122,8 @@ static ECRESULT main2(int argc, char **argv)
+ 	static const configsetting_t lpDefaults[] = {
+ 		{ "smtp_server","localhost" },
+ 		{ "server_socket", "default:" },
+-		{ "run_as_user", "kopano" },
+-		{ "run_as_group", "kopano" },
++		{ "run_as_user", "_kopano" },
++		{ "run_as_group", "_kopano" },
+ 		{"pid_file", "", CONFIGSETTING_OBSOLETE},
+ 		{"log_method", "auto", CONFIGSETTING_NONEMPTY},
+ 		{"log_file", ""},

@@ -1,0 +1,12 @@
+Index: defaults.h
+--- defaults.h.orig
++++ defaults.h
+@@ -45,7 +45,7 @@
+  *
+  * Make sure to also patch the manual page if you patch this.
+  */
+-#define DFLT_DROPUSER "nobody"
++#define DFLT_DROPUSER "_sslsplit"
+ 
+ /*
+  * Default file and directory modes for newly created files and directories

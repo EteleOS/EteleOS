@@ -1,0 +1,14 @@
+Add support for boost 1.73.
+
+Index: src/cpp/core/system/PosixOutputCapture.cpp
+--- src/cpp/core/system/PosixOutputCapture.cpp.orig
++++ src/cpp/core/system/PosixOutputCapture.cpp
+@@ -28,6 +28,8 @@
+ 
+ #include <core/system/System.hpp>
+ 
++#include <boost/bind.hpp>
++
+ namespace rstudio {
+ namespace core {
+ namespace system {

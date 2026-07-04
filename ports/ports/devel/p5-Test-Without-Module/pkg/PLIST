@@ -1,0 +1,4 @@
+${P5SITE}/Test/
+${P5SITE}/Test/Without/
+${P5SITE}/Test/Without/Module.pm
+@man man/man3p/Test::Without::Module.3p

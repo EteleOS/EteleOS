@@ -1,0 +1,18 @@
+@bin bin/kermit
+@man man/man1/kermit.1
+share/doc/kermit/
+share/doc/kermit/COPYING.TXT
+share/doc/kermit/ckaaaa.txt
+share/doc/kermit/ckc302.txt
+share/doc/kermit/ckcbwr.txt
+share/doc/kermit/ckccfg.txt
+share/doc/kermit/ckcplm.txt
+share/doc/kermit/ckermit70.txt
+share/doc/kermit/ckermit80.txt
+share/doc/kermit/ckermit90.txt
+share/doc/kermit/ckubwr.txt
+share/doc/kermit/ckuins.txt
+share/doc/kermit/ckututor.txt
+share/examples/kermit/
+share/examples/kermit/dot.kermrc
+share/examples/kermit/dot.mykermrc

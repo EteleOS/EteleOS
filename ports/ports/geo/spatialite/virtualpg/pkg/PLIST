@@ -1,0 +1,6 @@
+include/virtualpg.h
+lib/libvirtualpg.la
+@lib lib/libvirtualpg.so.${LIBvirtualpg_VERSION}
+lib/mod_virtualpg.la
+@so lib/mod_virtualpg.so
+lib/pkgconfig/virtualpg.pc

@@ -1,0 +1,21 @@
+Index: platforms/unix/npsqueak/Makefile
+--- platforms/unix/npsqueak/Makefile.orig
++++ platforms/unix/npsqueak/Makefile
+@@ -8,7 +8,7 @@ INC	= -I./include -I/usr/X11R6/include
+ CC	= gcc
+ CFLAGS	= $(INC) -O2 -fPIC -Wall
+ LD	= gcc
+-LDFLAGS = -lXt
++LDFLAGS = -L/usr/X11R6/lib -lXt
+ 
+ # usually overridden from top level makefile
+ VM_VERSION=  3.9-12
+@@ -26,7 +26,7 @@ all: npsqueak.so npsqueakrun
+ 
+ npsqueak.so : npsqueak.la 
+ 	-@rm -f $@ 
+-	ln .libs/npsqueak $@ 
++	ln .libs/npsqueak.so $@ 
+ 
+ npsqueak.la : npsqueak.lo npunix.lo 
+ 	../libtool --mode=link $(LD) $(LDFLAGS) npsqueak.lo npunix.lo -avoid-version -module -rpath $(plgdir) -o $@

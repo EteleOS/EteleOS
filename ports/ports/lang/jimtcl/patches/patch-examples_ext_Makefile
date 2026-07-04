@@ -1,0 +1,28 @@
+--- examples.ext/Makefile.orig	Fri Oct 10 02:34:34 2014
++++ examples.ext/Makefile	Fri Oct 10 15:43:42 2014
+@@ -9,21 +9,20 @@
+ # Prefer jimsh in the PATH because it is more likely to be built
+ # for the build-host rather than the target.
+ 
+-ifdef NOTEST
++.ifdef NOTEST
+ BUILDOPTS := --notest
+-endif
++.endif
+ 
+-export PATH := $(PATH):..
+ 
+ all: helloworld.so
+ 
+ helloworld.so: helloworld.c
+-	../build-jim-ext -I.. -L.. $(BUILDOPTS) $^
++	${LOCALBASE}/share/examples/jim/build-jim-ext $(BUILDOPTS) $>
+ 
+ # Note: Currently we don't attempt to set LD_LIBRARY_PATH or equivalent
+ 
+ test:
+-	JIMLIB=. ../jimsh -e 'package require helloworld; hello'
++	JIMLIB=. jimsh -e 'package require helloworld; hello'
+ 
+ clean:
+ 	rm -f *.o *.so

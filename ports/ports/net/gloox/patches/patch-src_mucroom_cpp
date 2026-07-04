@@ -1,0 +1,11 @@
+--- src/mucroom.cpp.orig	Thu Apr 20 01:44:19 2017
++++ src/mucroom.cpp	Thu Apr 20 01:45:18 2017
+@@ -22,6 +22,8 @@
+ #include "error.h"
+ #include "util.h"
+ #include "tag.h"
++#include <cstdlib>
++using std::atoi;
+ 
+ namespace gloox
+ {

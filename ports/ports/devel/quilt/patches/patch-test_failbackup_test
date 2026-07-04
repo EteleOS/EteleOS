@@ -1,0 +1,12 @@
+Index: test/failbackup.test
+--- test/failbackup.test.orig
++++ test/failbackup.test
+@@ -16,7 +16,7 @@ What happens when refresh fails because of a permissio
+ 	$ cat > test.txt
+ 	< This is updated test.txt.
+ 	$ quilt refresh --backup
+-	>~ mv: cannot move [`']?patches/test.diff'? to [`']?patches/test.diff~'?: Permission denied
++	>~ mv: rename [`']?patches/test.diff'? to [`']?patches/test.diff~'?: Permission denied
+ 	$ echo %{?}
+ 	> 1
+ 

@@ -1,0 +1,9 @@
+Index: plugins/node.d/squeezebox_.in
+--- plugins/node.d/squeezebox_.in.orig
++++ plugins/node.d/squeezebox_.in
+@@ -1,4 +1,4 @@
+-#!@@BASH@@
++#!@@GOODSH@@
+ # -*- sh -*-
+ 
+ : <<=cut

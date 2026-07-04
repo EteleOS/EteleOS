@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/dhcpd"
+daemon_flags="-user _isc-dhcp -group _isc-dhcp"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_cmd $1

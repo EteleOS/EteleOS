@@ -1,0 +1,5 @@
+@pkgpath games/uqm,-content
+share/uqm/
+share/uqm/content/
+share/uqm/content/packages/
+share/uqm/content/packages/uqm-${V}-content.uqm

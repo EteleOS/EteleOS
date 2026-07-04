@@ -1,0 +1,37 @@
+Use /var/www/etc/icingaweb2.
+
+Index: library/Icinga/Application/ApplicationBootstrap.php
+--- library/Icinga/Application/ApplicationBootstrap.php.orig
++++ library/Icinga/Application/ApplicationBootstrap.php
+@@ -170,7 +170,7 @@ abstract class ApplicationBootstrap
+             if ($configDir === false) {
+                 $configDir = Platform::isWindows()
+                     ? $baseDir . '/config'
+-                    : '/etc/icingaweb2';
++                    : dirname($baseDir) . '/etc/icingaweb2';
+             }
+         }
+         $canonical = realpath($configDir);
+@@ -195,9 +195,9 @@ abstract class ApplicationBootstrap
+                     explode(':', $libraryPaths)
+                 ), 'is_dir');
+             } else {
+-                $this->libraryPaths = is_dir('/usr/share/icinga-php')
+-                    ? ['/usr/share/icinga-php']
+-                    : [];
++                $this->libraryPaths = is_dir('/var/www/icinga-php')
++                    ? ['/var/www/icinga-php']
++                    : ['/icinga-php'];
+             }
+         }
+ 
+@@ -429,6 +429,9 @@ abstract class ApplicationBootstrap
+         $paths = [];
+ 
+         $configured = getenv('ICINGAWEB_MODULES_DIR');
++        if (! $configured && is_dir($this->baseDir . '/modules')) {
++            $configured = $this->baseDir . '/modules';
++        }
+         if (! $configured) {
+             $configured = $this->config->get('global', 'module_path', $this->baseDir . '/modules');
+         }

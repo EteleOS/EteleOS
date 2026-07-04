@@ -1,0 +1,17 @@
+--- main.c.orig	Mon Dec 28 21:16:43 1998
++++ main.c	Fri Mar 23 22:04:01 2012
+@@ -1,4 +1,5 @@
+ #include <stdlib.h>
++#include <string.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+@@ -103,7 +104,7 @@ static void execute (void);
+ static void docmdreg (int c);
+ static void doscrreg (int c);
+ 
+-void main (int argc, char **argv, char **envp)
++int main (int argc, char **argv, char **envp)
+ {
+ 	register c;
+ 

@@ -1,0 +1,4 @@
+${P5SITE}/Email/
+${P5SITE}/Email/Date/
+${P5SITE}/Email/Date/Format.pm
+@man man/man3p/Email::Date::Format.3p

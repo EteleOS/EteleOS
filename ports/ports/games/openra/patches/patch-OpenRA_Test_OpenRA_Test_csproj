@@ -1,0 +1,12 @@
+Index: OpenRA.Test/OpenRA.Test.csproj
+--- OpenRA.Test/OpenRA.Test.csproj.orig
++++ OpenRA.Test/OpenRA.Test.csproj
+@@ -2,7 +2,7 @@
+   <PropertyGroup>
+     <TargetFramework>net472</TargetFramework>
+     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+-    <LangVersion>7.3</LangVersion>
++    <LangVersion>7.2</LangVersion>
+     <DebugSymbols>true</DebugSymbols>
+     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+     <OutputPath>../bin</OutputPath>

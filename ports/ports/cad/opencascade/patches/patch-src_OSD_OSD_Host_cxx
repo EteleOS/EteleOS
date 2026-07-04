@@ -1,0 +1,12 @@
+Index: src/OSD/OSD_Host.cxx
+--- src/OSD/OSD_Host.cxx.orig
++++ src/OSD/OSD_Host.cxx
+@@ -79,6 +79,8 @@ OSD_SysType OSD_Host::SystemId() const
+     return (OSD_UnixBSD);
+   if (!strcmp(info.sysname, "FreeBSD"))
+     return (OSD_UnixBSD);
++  if (!strcmp(info.sysname, "OpenBSD"))
++    return (OSD_UnixBSD);
+   if (!strncmp(info.sysname, "Linux", 5))
+     return (OSD_LinuxREDHAT);
+   if (!strncmp(info.sysname, "IRIX", 4))

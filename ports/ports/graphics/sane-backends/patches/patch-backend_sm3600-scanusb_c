@@ -1,0 +1,16 @@
+XXX patch manually created with diff(1) to remove the CVS Id from the file.
+
+errno.h header is required now that errno is a per-thread variable.
+"undefined symbol 'errno'" at runtime with dlopen()'d modules.
+
+Index: backend/sm3600-scanusb.c
+--- backend/sm3600-scanusb.c.orig
++++ backend/sm3600-scanusb.c
+@@ -47,6 +47,7 @@ Userspace scan tool for the Microtek 3600 scanner
+ 
+ ====================================================================== */
+ 
++#include <errno.h>
+ #include "sm3600-scantool.h"
+ 
+ /* **********************************************************************

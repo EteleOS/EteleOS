@@ -1,0 +1,12 @@
+Index: config/config.go
+--- config/config.go.orig
++++ config/config.go
+@@ -14,7 +14,7 @@ import (
+ 
+ var (
+ 	DefaultPath          string
+-	DefaultUnixAdminPath = "/run/soju/admin"
++	DefaultUnixAdminPath = "/var/run/soju/admin"
+ )
+ 
+ type IPSet []*net.IPNet

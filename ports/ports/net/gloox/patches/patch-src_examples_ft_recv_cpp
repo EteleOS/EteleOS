@@ -1,0 +1,11 @@
+Index: src/examples/ft_recv.cpp
+--- src/examples/ft_recv.cpp.orig
++++ src/examples/ft_recv.cpp
+@@ -24,6 +24,7 @@ using namespace gloox;
+ 
+ #include <unistd.h>
+ #include <stdio.h>
++#include <time.h>
+ #include <string>
+ 
+ #include <cstdio> // [s]print[f]

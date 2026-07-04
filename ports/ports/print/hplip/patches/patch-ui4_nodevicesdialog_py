@@ -1,0 +1,11 @@
+--- ui4/nodevicesdialog.py.orig	Wed Feb 13 17:35:05 2013
++++ ui4/nodevicesdialog.py	Fri Feb 22 15:05:19 2013
+@@ -53,7 +53,7 @@ class NoDevicesDialog(QDialog, Ui_NoDevicesDialog_base
+         if utils.which('hp-setup'):
+             cmd = 'hp-setup -u'
+         else:
+-            cmd = 'python ./setup.py -u'
++            cmd = '${MODPY_BIN} ./setup.py -u'
+ 
+         log.debug(cmd)
+         utils.run(cmd)

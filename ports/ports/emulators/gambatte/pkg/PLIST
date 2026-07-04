@@ -1,0 +1,3 @@
+@pkgpath emulators/gambatte,-main
+@bin bin/gambatte_sdl
+@man man/man6/gambatte_sdl.6

@@ -1,0 +1,14 @@
+--- wordwarvi.c.orig	Tue May 24 23:48:26 2011
++++ wordwarvi.c	Tue May 24 23:49:42 2011
+@@ -18,9 +18,10 @@
+     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ 
+  */
++#include <sys/param.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+-#if !defined(__APPLE__)
++#if !defined(__APPLE__) && !defined(BSD)
+ /* Apple gets what it needs for malloc from stdlib.h, */
+ /* or so the internets would have me believe.  I don't */
+ /* have a mac to test this, so if this doesn't work, */

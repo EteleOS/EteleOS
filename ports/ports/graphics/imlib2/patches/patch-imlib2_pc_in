@@ -1,0 +1,11 @@
+--- imlib2.pc.in.orig	Tue Nov 22 21:21:26 2016
++++ imlib2.pc.in	Tue Nov 22 21:22:21 2016
+@@ -6,6 +6,6 @@ includedir=@includedir@
+ Name: imlib2
+ Description: Powerful image loading and rendering library
+ Version: @VERSION@
+-Libs: -L${libdir} -lImlib2
+-Cflags: -I${includedir}
++Libs: -L${libdir} -L${X11BASE}/lib -lImlib2
++Cflags: -I${includedir} -I${X11BASE}/include
+ 

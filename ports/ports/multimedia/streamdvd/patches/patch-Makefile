@@ -1,0 +1,38 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -1,16 +1,28 @@
+-INSTALLDIR = /usr/local/bin/
++INSTALLDIR = /u.o/local/bin/
++OBJS = streamdvd.o requant.o ac3strm_in.o audiostrm_out.o bits.o \
++    buffer.o dtsstrm_in.o inputstrm.o interact.o lpcmstrm_in.o \
++    mjpeg_logging.o mpastrm_in.o mpegconsts.o mplex.o multiplexor.o \
++    padstrm.o stillsstream.o stream_params.o systems.o vector.o \
++    videostrm_in.o videostrm_out.o yuv4mpeg_ratio.o zalphastrm_in.o \
++    zalphastrm_out.o
++CPPFLAGS = -I. -Implex -I${LOCALBASE}/include
++CXXFLAGS += ${CPPFLAGS}
++CFLAGS += ${CPPFLAGS}
++VPATH = mplex
+ 
+-all:
+-	g++ -g -Wall -ldvdread -lm -o streamdvd -I. -Implex streamdvd.c requant.c mplex/*.c mplex/*.cpp
++all: streamdvd
+ 
++streamdvd: ${OBJS}
++	${CXX} ${CXXFLAGS} -L${LOCALBASE}/lib $(OBJS) -ldvdread -lm -o $@
++
+ addon:
+-	gcc -g -Wall -ldvdread -o streamanalyze contrib/StreamAnalyze/streamanalyze.c
+-	gcc -g -Wall -ldvdread -DVERSION=\"0.9\" -o lsdvd contrib/lsdvd/lsdvd.c
++	${CC} ${CFLAGS} -Wall -L${LOCALBASE}/lib -ldvdread -o streamanalyze -I${LOCALBASE}/include contrib/StreamAnalyze/streamanalyze.c
++#	${CC} ${CFLAGS} -Wall -L${LOCALBASE}/lib -ldvdread -DVERSION=\"0.9\" -o lsdvd -I${LOCALBASE}/include contrib/lsdvd/lsdvd.c
+ 
+ gui:
+ 	g++ -g -Wall -ldvdread -lm -o streamdvd -I. -Implex streamdvd.c requant.c mplex/*.c mplex/*.cpp
+ 	gcc -g -Wall -ldvdread -o streamanalyze contrib/StreamAnalyze/streamanalyze.c
+-	gcc -g -Wall -ldvdread -DVERSION=\"0.9\" -o lsdvd contrib/lsdvd/lsdvd.c
++#	gcc -g -Wall -ldvdread -DVERSION=\"0.9\" -o lsdvd contrib/lsdvd/lsdvd.c
+ 
+ clean: 
+ 	rm -f streamdvd streamanalyze lsdvd

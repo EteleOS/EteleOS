@@ -1,0 +1,32 @@
+Index: src/core/rand/fastrand.c
+--- src/core/rand/fastrand.c.orig
++++ src/core/rand/fastrand.c
+@@ -23,6 +23,23 @@
+ #include "fastrand.h"
+ 
+ #include <stdlib.h>
++
++#ifdef HAVE_ARC4RANDOM
++unsigned int fastrand()
++{
++	return arc4random();
++}
++
++unsigned int fastrand_max(unsigned int max)
++{
++	return arc4random_uniform(max+1);
++}
++
++void fastrand_seed(unsigned int seed)
++{
++	return;
++}
++#else
+ #include "isaac/rand.h"
+ 
+ #define FASTRAND_MAX  ((unsigned int)(-1))
+@@ -52,3 +69,4 @@ unsigned int fastrand_max(unsigned int max)
+ {
+ 	return fastrand()%(max+1);
+ }
++#endif

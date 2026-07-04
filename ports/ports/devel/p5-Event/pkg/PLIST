@@ -1,0 +1,37 @@
+${P5ARCH}/
+${P5ARCH}/Event/
+${P5ARCH}/Event.pm
+${P5ARCH}/Event.pod
+${P5ARCH}/Event/EventAPI.h
+${P5ARCH}/Event/MakeMaker.pm
+${P5ARCH}/Event/Watcher.pm
+${P5ARCH}/Event/generic.pm
+${P5ARCH}/Event/generic.pod
+${P5ARCH}/Event/group.pm
+${P5ARCH}/Event/idle.pm
+${P5ARCH}/Event/io.pm
+${P5ARCH}/Event/signal.pm
+${P5ARCH}/Event/timer.pm
+${P5ARCH}/Event/type.pm
+${P5ARCH}/Event/typemap
+${P5ARCH}/Event/var.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Event/
+@so ${P5ARCH}/auto/Event/Event.so
+@man man/man3p/Event.3p
+@man man/man3p/Event::MakeMaker.3p
+@man man/man3p/Event::generic.3p
+share/doc/p5-Event/
+share/doc/p5-Event/Tutorial.pdf
+share/examples/p5-Event/
+share/examples/p5-Event/echo.t
+share/examples/p5-Event/group.t
+share/examples/p5-Event/idle2.t
+share/examples/p5-Event/msg.pm
+share/examples/p5-Event/perlqt.t
+share/examples/p5-Event/process.pm
+share/examples/p5-Event/queue_pending.t
+share/examples/p5-Event/rand_interval.t
+share/examples/p5-Event/readline.t
+share/examples/p5-Event/repeat.t
+share/examples/p5-Event/semaphore.pm

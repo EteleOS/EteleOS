@@ -1,0 +1,14 @@
+Fix -fno-common build failure.
+
+Index: network.h
+--- network.h.orig
++++ network.h
+@@ -105,7 +105,7 @@ typedef enum
+ #define TEAM_UNDEF 252
+ 
+ /* team color assignment */
+-const XBColor teamColors[NUM_XBTS];
++extern const XBColor teamColors[NUM_XBTS];
+ 
+ /* results of game config receive/create */
+ typedef enum

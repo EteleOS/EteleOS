@@ -1,0 +1,19 @@
+Index: siglist.c
+--- siglist.c.orig
++++ siglist.c
+@@ -22,6 +22,7 @@ with Bash; see the file COPYING.  If not, write to the
+ Foundation, 675 Mass Ave, Cambridge, MA 02139, USA. */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <signal.h>
+ 
+ #if !defined (NSIG)
+@@ -39,7 +40,6 @@ Foundation, 675 Mass Ave, Cambridge, MA 02139, USA. */
+ #if !(defined(BSD) && (BSD >=199306))
+ char *sys_siglist[NSIG];
+ #endif
+-extern *malloc ();
+ 
+ void initialize_siglist ()
+ {

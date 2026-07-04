@@ -1,0 +1,12 @@
+Index: src/tk/tkwm.c
+--- src/tk/tkwm.c.orig
++++ src/tk/tkwm.c
+@@ -1246,7 +1246,7 @@ Tk_SetGrid(tkwin, reqWidth, reqHeight, widthInc, heigh
+ 	    && (wmPtr->widthInc != widthInc)
+ 	    && (wmPtr->heightInc != heightInc)
+ 	    && ((wmPtr->sizeHintsFlags & (PBaseSize|PResizeInc))
+-		    == PBaseSize|PResizeInc)) {
++		    == (PBaseSize|PResizeInc))) {
+ 	return;
+     }
+ 

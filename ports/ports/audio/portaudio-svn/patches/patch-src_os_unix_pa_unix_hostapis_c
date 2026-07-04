@@ -1,0 +1,34 @@
+Add support for sndio (#878)
+45c12e8d18ae4434000ed1521e49d9b5ef91dedf
+
+Index: src/os/unix/pa_unix_hostapis.c
+--- src/os/unix/pa_unix_hostapis.c.orig
++++ src/os/unix/pa_unix_hostapis.c
+@@ -44,6 +44,7 @@
+ 
+ PaError PaJack_Initialize( PaUtilHostApiRepresentation **hostApi, PaHostApiIndex index );
+ PaError PaAlsa_Initialize( PaUtilHostApiRepresentation **hostApi, PaHostApiIndex index );
++PaError PaSndio_Initialize( PaUtilHostApiRepresentation **hostApi, PaHostApiIndex index );
+ PaError PaOSS_Initialize( PaUtilHostApiRepresentation **hostApi, PaHostApiIndex index );
+ /* Added for IRIX, Pieter, oct 2, 2003: */
+ PaError PaSGI_Initialize( PaUtilHostApiRepresentation **hostApi, PaHostApiIndex index );
+@@ -63,11 +64,19 @@ PaUtilHostApiInitializer *paHostApiInitializers[] =
+         PaAlsa_Initialize,
+ #endif
+ 
++#ifdef PA_USE_SNDIO
++        PaSndio_Initialize,
++#endif
++
+ #if PA_USE_OSS
+         PaOSS_Initialize,
+ #endif
+ 
+ #else   /* __linux__ */
++
++#ifdef PA_USE_SNDIO
++        PaSndio_Initialize,
++#endif
+ 
+ #if PA_USE_OSS
+         PaOSS_Initialize,

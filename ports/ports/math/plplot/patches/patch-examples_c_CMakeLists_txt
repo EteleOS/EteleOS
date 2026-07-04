@@ -1,0 +1,26 @@
+Index: examples/c/CMakeLists.txt
+--- examples/c/CMakeLists.txt.orig
++++ examples/c/CMakeLists.txt
+@@ -84,11 +84,11 @@ if(CORE_BUILD)
+   endif(PLD_xcairo OR PLD_extcairo)
+ 
+   install(FILES ${c_SRCS} ${extXdrawable_SRC} ${extcairo_SRC} ${cairo_DOCS}
+-    DESTINATION ${DATA_DIR}/examples/c
++    DESTINATION ${EXAMPLE_DIR}/c
+     )
+ 
+   install(FILES CMakeLists.txt
+-    DESTINATION ${DATA_DIR}/examples/c
++    DESTINATION ${EXAMPLE_DIR}/c
+     )
+ 
+   set(CC "${CMAKE_C_COMPILER} ${CMAKE_C_COMPILER_ARG1} ${CMAKE_C_FLAGS}")
+@@ -209,7 +209,7 @@ if(CORE_BUILD)
+     )
+ 
+   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/Makefile.examples
+-    DESTINATION ${DATA_DIR}/examples/c
++    DESTINATION ${EXAMPLE_DIR}/c
+     RENAME Makefile
+     )
+ endif(CORE_BUILD)

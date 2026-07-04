@@ -1,0 +1,9 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -31,4 +31,4 @@ clean:
+ 
+ install: all
+ 	install -m 0755 -D vpn-ca $(DESTDIR)$(PREFIX)/bin/vpn-ca
+-	install -m 0644 -D vpn-ca.1 $(DESTDIR)$(PREFIX)/share/man/man1/vpn-ca.1
++	install -m 0644 -D vpn-ca.1 $(DESTDIR)$(PREFIX)/man/man1/vpn-ca.1

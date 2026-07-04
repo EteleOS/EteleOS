@@ -1,0 +1,13 @@
+#!/bin/ksh
+#
+
+daemon="${TRUEPREFIX}/bin/murmurd"
+daemon_flags="-ini ${SYSCONFDIR}/murmur.ini"
+daemon_user="_murmurd"
+
+. /etc/rc.d/rc.subr
+
+# only reloads TLS settings
+rc_reload_signal=USR1
+
+rc_cmd $1

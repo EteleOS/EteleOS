@@ -1,0 +1,18 @@
+--- Makefile.orig	Wed Oct 26 06:08:03 2005
++++ Makefile	Wed Aug 24 21:13:18 2011
+@@ -18,13 +18,13 @@
+ #
+ # Use /lib/cpp or /usr/ccs/lib/cpp for CPP on Solaris or SVR4 machines.
+ 
+-CC =		cc
++#CC =		cc
+ 
+ CPP =		$(CC) -E
+ #CPP =		/lib/cpp
+ #CPP =		/usr/bin/cpp -no-cpp-precomp	# for MacOS X
+ 
+-CFLAGS =	-O # -g -Wall -ansi -pedantic
++#CFLAGS =	-O # -g -Wall -ansi -pedantic
+ #CFLAGS =	-O # -w0 -g3			# for DEC
+ 
+ MAKE =		make

@@ -1,0 +1,12 @@
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -74,7 +74,7 @@ dnl Checks for system type
+ 
+ AC_CANONICAL_HOST
+ 
+-GVPLUGIN_VERSION=$GVPLUGIN_CURRENT
++GVPLUGIN_VERSION=$GVPLUGIN_CURRENT.0
+ AC_DEFINE_UNQUOTED(GVPLUGIN_VERSION,$GVPLUGIN_VERSION,[Compatibility version number for plugins.])
+ AC_SUBST([GVPLUGIN_VERSION])
+ 

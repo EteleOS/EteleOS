@@ -1,0 +1,29 @@
+--- src/sl/slPortability.h.orig	Mon Mar 10 19:06:24 2008
++++ src/sl/slPortability.h	Wed Dec 16 01:43:22 2009
+@@ -51,7 +51,7 @@
+ #include <limits.h>
+ #include <math.h>
+ 
+-#if (defined(UL_LINUX) || defined(UL_BSD)) && !defined(__NetBSD__)
++#if (defined(UL_LINUX) || defined(UL_BSD)) && !defined(__NetBSD__) && !defined(__OpenBSD__)
+ #define SL_USING_OSS_AUDIO 1
+ #endif
+ 
+@@ -75,9 +75,14 @@
+ #endif
+ 
+ #ifdef UL_BSD
+-#ifndef __FreeBSD__
+-#  include <sys/audioio.h>
+-#endif
++#  ifdef __OpenBSD__
++#    define SL_USING_SNDIO
++#    include <sndio.h>
++#  else
++#    ifndef __FreeBSD__
++#      include <sys/audioio.h>
++#    endif
++#  endif
+ #endif
+ 
+ /* Tom */

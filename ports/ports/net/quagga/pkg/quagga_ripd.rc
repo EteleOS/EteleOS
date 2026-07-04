@@ -1,0 +1,7 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/ripd -d"
+
+. /etc/rc.d/rc.subr
+
+rc_cmd $1

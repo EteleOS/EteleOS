@@ -1,0 +1,4 @@
+${P5SITE}/AsciiDB/
+${P5SITE}/AsciiDB/TagFile.pm
+${P5SITE}/AsciiDB/TagRecord.pm
+@man man/man3p/AsciiDB::TagFile.3p

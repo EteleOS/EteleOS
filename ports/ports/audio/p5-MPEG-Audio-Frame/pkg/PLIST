@@ -1,0 +1,4 @@
+${P5SITE}/MPEG/
+${P5SITE}/MPEG/Audio/
+${P5SITE}/MPEG/Audio/Frame.pm
+@man man/man3p/MPEG::Audio::Frame.3p

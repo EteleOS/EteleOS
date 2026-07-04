@@ -1,0 +1,6 @@
+@bin bin/mj-player
+@bin bin/mj-server
+@bin bin/xmj
+@man man/man1/mj-player.1
+@man man/man1/mj-server.1
+@man man/man1/xmj.1

@@ -1,0 +1,40 @@
+Index: src/os/unix/pa_unix_util.c
+--- src/os/unix/pa_unix_util.c.orig
++++ src/os/unix/pa_unix_util.c
+@@ -251,6 +251,7 @@ static PaError BoostPriority( PaUnixThread* self )
+ 
+     assert( self );
+ 
++#if defined(_POSIX_THREAD_PRIORITY_SCHEDULINGG) && (_POSIX_THREAD_PRIORITY_SCHEDULING > 0)
+     if( pthread_setschedparam( self->thread, SCHED_FIFO, &spm ) != 0 )
+     {
+         PA_UNLESS( errno == EPERM, paInternalError );  /* Lack permission to raise priority */
+@@ -261,6 +262,7 @@ static PaError BoostPriority( PaUnixThread* self )
+     {
+         result = 1; /* Success */
+     }
++#endif
+ error:
+     return result;
+ }
+@@ -299,8 +301,10 @@ PaError PaUnixThread_New( PaUnixThread* self, void* (*
+ #endif
+ 
+     PA_UNLESS( !pthread_attr_init( &attr ), paInternalError );
++#if defined(_POSIX_THREAD_PRIORITY_SCHEDULING) && (_POSIX_THREAD_PRIORITY_SCHEDULING > 0)
+     /* Priority relative to other processes */
+     PA_UNLESS( !pthread_attr_setscope( &attr, PTHREAD_SCOPE_SYSTEM ), paInternalError );
++#endif
+ 
+     PA_UNLESS( !pthread_create( &self->thread, &attr, threadFunc, threadArg ), paInternalError );
+     started = 1;
+@@ -347,7 +351,9 @@ PaError PaUnixThread_New( PaUnixThread* self, void* (*
+         {
+             int policy;
+             struct sched_param spm;
++#if defined(_POSIX_THREAD_PRIORITY_SCHEDULING) && (_POSIX_THREAD_PRIORITY_SCHEDULING > 0)
+             pthread_getschedparam(self->thread, &policy, &spm);
++#endif
+         }
+     }
+ 

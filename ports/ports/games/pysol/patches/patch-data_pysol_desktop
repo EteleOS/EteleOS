@@ -1,0 +1,12 @@
+Index: data/pysol.desktop
+--- data/pysol.desktop.orig
++++ data/pysol.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=PySol Fan Club Edition
+ Comment=More than 1000 solitaire card games
+-Exec=pysol.py
++Exec=pysol
+ StartupWMClass=Pysol
+ Terminal=false
+ Type=Application

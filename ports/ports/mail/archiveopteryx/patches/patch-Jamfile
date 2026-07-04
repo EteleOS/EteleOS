@@ -1,0 +1,37 @@
+--- Jamfile.orig	Mon Mar 10 14:44:59 2014
++++ Jamfile	Thu May  1 10:34:10 2014
+@@ -14,7 +14,6 @@ SubInclude TOP recorder ;
+ SubInclude TOP sasl ;
+ SubInclude TOP schema ;
+ SubInclude TOP scripts ;
+-SubInclude TOP installer ;
+ SubInclude TOP extractors ;
+ SubInclude TOP archiveopteryx ;
+ SubInclude TOP aoximport ;
+@@ -47,26 +46,12 @@ actions together Prepare
+ }
+ 
+ 
+-Prepare $(INSTALLROOT)$(JAILDIR) ;
+-Prepare $(INSTALLROOT)$(JAILDIR)/var/run ;
+-Prepare $(INSTALLROOT)$(MESSAGEDIR) ;
+ Prepare $(INSTALLROOT)$(PIDFILEDIR) ;
+ Prepare $(INSTALLROOT)$(CONFIGDIR) ;
+ Prepare $(INSTALLROOT)$(LIBDIR)/contrib ;
+ if ( $(LOGFILE:D) != "" && $(LOGFILE:D) != "syslog" ) {
+     Prepare $(INSTALLROOT)$(LOGFILE:D) ;
+ }
+-
+-
+-# if we make JAILDIR, we should chmod it so noone can read it:
+-MODE on $(INSTALLROOT)$(JAILDIR) = 701 ;
+-Chmod $(INSTALLROOT)$(JAILDIR) ;
+-
+-# if we make MESSAGEDIR, we should chmod it similarly. AOXUSER needs to
+-# be able to write to it, but we can't chown here, because the user may
+-# not exist yet.
+-MODE on $(INSTALLROOT)$(MESSAGEDIR) = 700 ;
+-Chmod $(INSTALLROOT)$(MESSAGEDIR) ;
+ 
+ 
+ actions Message {

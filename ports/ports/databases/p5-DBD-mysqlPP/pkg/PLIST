@@ -1,0 +1,3 @@
+${P5SITE}/DBD/
+${P5SITE}/DBD/mysqlPP.pm
+@man man/man3p/DBD::mysqlPP.3p

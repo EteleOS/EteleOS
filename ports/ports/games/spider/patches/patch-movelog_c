@@ -1,0 +1,74 @@
+Index: movelog.c
+--- movelog.c.orig
++++ movelog.c
+@@ -17,6 +17,7 @@
+ #include	"defs.h"
+ #include	"globals.h"
+ #include	<string.h>
++#include        <stdlib.h>
+ #include	<sys/file.h>
+ #include	<ctype.h>
+ #ifdef SVR4
+@@ -31,7 +32,11 @@ static int	cache_size = 0;
+ int	deck_cache[NUM_CARDS];
+ int	deck_index = 0;
+ 
++
+ extern int	cheat_count;
++static int card_to_int(CardPtr);
++static int restore_game(char *, char *);
++void read_file(char *fname);
+ 
+ make_deck_cache()
+ {
+@@ -93,6 +98,7 @@ Bool	*exposed;
+ 	*exposed = (val >= 14);
+ }
+ 
++void
+ undo()
+ {
+ int	val;
+@@ -572,6 +578,7 @@ int	val;
+ 	}
+ }
+ 
++void
+ write_file(fname, confirmer)
+ char	*fname;
+ Bool	(*confirmer)();
+@@ -739,12 +746,14 @@ char	*fname;
+ 	}
+ }
+ 
++void
+ read_file(fname)
+ char	*fname;
+ {
+ FILE	*fp;
+ char	buf[1024], buf2[1024];
+ char	*dp;
++int	c;
+ 
+ 	fname = remove_newlines(fname);
+ 	if ((fp = fopen(fname, "r")) == NULL)	{
+@@ -756,7 +765,8 @@ char	*dp;
+ 
+ 	/* read card string */
+ 	dp = buf;
+-	while ((*dp = (char)fgetc(fp)) != EOF)	{
++	while ((c = fgetc(fp)) != EOF)	{
++		*dp = c;
+ 		if (*dp == '\n')	/* ignore any CR */
+ 			continue;
+ 		if (*dp == '.')
+@@ -767,7 +777,8 @@ char	*dp;
+ 
+ 	/* read moves string */
+ 	dp = buf2;
+-	while ((*dp = (char)fgetc(fp)) != EOF)	{
++	while ((c = fgetc(fp)) != EOF)	{
++		*dp = c;
+ 		if (*dp == '\n')	/* ignore any CR */
+ 			continue;
+ 		if (*dp == '.')

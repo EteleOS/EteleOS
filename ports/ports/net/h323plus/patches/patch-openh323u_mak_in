@@ -1,0 +1,35 @@
+h225_2.cxx:8:10: fatal error: 'h225.h' file not found
+
+Do not append the platform_type and suffix to the library name.
+
+Index: openh323u.mak.in
+--- openh323u.mak.in.orig
++++ openh323u.mak.in
+@@ -102,11 +102,11 @@ LIBDIRS += $(OPENH323DIR)
+ #OH323_SUPPRESS_H235	= 1
+ 
+ OH323_SRCDIR = $(OPENH323DIR)/src
+-ifdef PREFIX
+-OH323_INCDIR = $(PREFIX)/include/openh323
+-else
++#ifdef PREFIX
++#OH323_INCDIR = $(PREFIX)/include/openh323
++#else
+ OH323_INCDIR = $(OPENH323DIR)/include
+-endif # PREFIX
++#endif # PREFIX
+ 
+ ifndef OH323_LIBDIR
+ OH323_LIBDIR = $(OPENH323DIR)/lib
+@@ -133,7 +133,11 @@ OH323_SUFFIX = $(OBJ_SUFFIX)
+ endif # OH323_SUFFIX
+ endif # HAS_PTLIB_LIB_MAK
+ 
++ifneq ($(OSTYPE),OpenBSD)
+ OH323_BASE  = h323_$(PLATFORM_TYPE)_$(OH323_SUFFIX)$(LIB_TYPE)
++else
++OH323_BASE  = h323
++endif
+ OH323_FILE  = lib$(OH323_BASE).$(LIB_SUFFIX)
+ 
+ LDFLAGS	    += -L$(OH323_LIBDIR)

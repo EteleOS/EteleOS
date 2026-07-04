@@ -1,0 +1,16 @@
+@bin bin/ssdeep
+include/edit_dist.h
+include/fuzzy.h
+lib/libfuzzy.a
+lib/libfuzzy.la
+@lib lib/libfuzzy.so.${LIBfuzzy_VERSION}
+@man man/man1/ssdeep.1
+share/doc/ssdeep/
+share/doc/ssdeep/AUTHORS
+share/doc/ssdeep/ChangeLog
+share/doc/ssdeep/FILEFORMAT
+share/doc/ssdeep/INSTALL
+share/doc/ssdeep/NEWS
+share/doc/ssdeep/README
+share/examples/ssdeep/
+share/examples/ssdeep/sample.c

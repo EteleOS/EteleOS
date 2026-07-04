@@ -1,0 +1,30 @@
+--- src/ircd.c.orig	Tue Oct 13 10:48:47 2015
++++ src/ircd.c	Wed Dec 16 00:29:54 2015
+@@ -241,7 +241,6 @@ make_daemon(void)
+ 	}
+ 	else if(pid > 0)
+ 	{
+-		print_startup(pid);
+ 		exit(EXIT_SUCCESS);
+ 	}
+ 
+@@ -534,8 +533,17 @@ ratbox_main(int argc, char *argv[])
+ #ifndef _WIN32
+ 	if(geteuid() == 0)
+ 	{
+-		fprintf(stderr, "Don't run ircd as root!!!\n");
+-		exit(EXIT_FAILURE);
++		struct passwd *pw;
++
++		if ((pw = getpwnam(IRCD_USER)) == NULL) {
++			fprintf(stderr, "Don't run ircd as root!!!\n");
++			exit(EXIT_FAILURE);
++		}
++
++		if (setusercontext(NULL, pw, pw->pw_uid, LOGIN_SETALL) < 0) {
++			fprintf(stderr, "Can't set user context to %s!\n", IRCD_USER);
++			exit(EXIT_FAILURE);
++		}
+ 	}
+ #endif
+ 	init_sys();

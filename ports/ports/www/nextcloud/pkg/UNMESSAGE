@@ -1,0 +1,2 @@
+To completely deinstall nextcloud you need to remove the "backgroundjobs"
+cron(8) job if it exists.

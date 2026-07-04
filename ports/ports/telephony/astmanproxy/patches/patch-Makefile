@@ -1,0 +1,37 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -27,7 +27,8 @@ SOBJS := $(HANDLERS:%=%.so)
+ LIBS := -lssl
+ 
+ # Add -g below for debug/GDB symbols
+-CFLAGS:=-Wall -O2 -D_REENTRANT -fPIC -Isrc/include -I/usr/include/openssl
++CFLAGS ?= -O2
++CFLAGS += -Wall -D_REENTRANT -fPIC -iquotesrc/include -I/usr/include/openssl
+ 
+ ifeq (${OSARCH},Darwin)  
+   LIBS+=-lresolv
+@@ -48,8 +49,13 @@ ifeq (${OSARCH},Darwin)  
+   MKTEMP=/usr/bin/mktemp
+ else
+   #These are used for all but Darwin
+-  CFLAGS+=-I-
++ifeq (${OSARCH},OpenBSD)
++  LIBS+=-pthread -lcrypto
++  MKTEMP=/usr/bin/mktemp
++else
+   LIBS+=-ldl -pthread
++  MKTEMP=/bin/mktemp
++endif
+   ASTLINK=-Wl,-E
+   SOLINK=-shared -Xlinker -x
+   LOGDIR=/var/log/asterisk   
+@@ -137,7 +143,7 @@ certificate:
+ 	fi
+ 
+ 
+-install: uninstall all
++install: astmanproxy
+ 	install -d $(BINDIR)
+ 	install astmanproxy $(BINDIR)
+ 	install -d $(LIBDIR)

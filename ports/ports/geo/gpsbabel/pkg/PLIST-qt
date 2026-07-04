@@ -1,0 +1,5 @@
+@bin bin/guibabel-qt
+share/applications/gpsbabel.desktop
+share/pixmaps/
+share/pixmaps/gpsbabel.png
+@tag update-desktop-database

@@ -1,0 +1,8 @@
+abcde is a front end command-line utility that grabs tracks off a CD, encodes
+them to OGG or many other formats, and tags and names them with data from
+MusicBrainz.org or a CDDB server, all in one go.
+
+That package comes with the default OGG Vorbis support only. For example, to
+use the MP3 format, install the lame and eyeD3 packages, and set
+OUTPUTTYPE=mp3 in ${SYSCONFDIR}/abcde.conf (copy this to ~/.abcde.conf for
+per-user configuration).

@@ -1,0 +1,12 @@
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -155,7 +155,7 @@ if(SHIP_SYSTEM_ICU)
+   set_package_properties(ICU PROPERTIES TYPE REQUIRED)
+ endif()
+ 
+-find_package(OpenSSL)
++find_package(OpenSSL CONFIG)
+ # OpenSSL will be compiled as external_project for android
+ if(NOT ANDROID)
+   set_package_properties(OpenSSL PROPERTIES TYPE REQUIRED)

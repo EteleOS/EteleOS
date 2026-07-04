@@ -1,0 +1,6 @@
+@pkgpath mail/mini_sendmail
+@bin bin/mini_sendmail
+@man man/man8/mini_sendmail.8
+share/doc/mini_sendmail/
+share/doc/mini_sendmail/README
+share/doc/pkg-readmes/${PKGSTEM}

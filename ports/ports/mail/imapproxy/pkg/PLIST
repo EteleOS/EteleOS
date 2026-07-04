@@ -1,0 +1,11 @@
+@newgroup _imapproxy:592
+@newuser _imapproxy:592:_imapproxy::IMAP Proxy Account:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/imapproxyd
+@bin sbin/imapproxyd
+@bin sbin/pimpstat
+share/doc/imapproxy/
+share/doc/imapproxy/README
+share/doc/imapproxy/README.ssl
+share/examples/imapproxy/
+share/examples/imapproxy/imapproxy.conf
+@sample ${SYSCONFDIR}/imapproxy.conf

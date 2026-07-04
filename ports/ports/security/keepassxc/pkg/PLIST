@@ -1,0 +1,83 @@
+@bin bin/keepassxc
+@bin bin/keepassxc-cli
+%%browser%%
+lib/keepassxc/
+@so lib/keepassxc/libkeepassxc-autotype-xcb.so
+@man man/man1/keepassxc-cli.1
+@man man/man1/keepassxc.1
+share/applications/org.keepassxc.KeePassXC.desktop
+share/doc/pkg-readmes/${PKGSTEM}
+share/icons/hicolor/256x256/apps/keepassxc.png
+share/icons/hicolor/scalable/apps/keepassxc-locked.svg
+share/icons/hicolor/scalable/apps/keepassxc-monochrome-dark-locked.svg
+share/icons/hicolor/scalable/apps/keepassxc-monochrome-dark.svg
+share/icons/hicolor/scalable/apps/keepassxc-monochrome-light-locked.svg
+share/icons/hicolor/scalable/apps/keepassxc-monochrome-light.svg
+share/icons/hicolor/scalable/apps/keepassxc-unlocked.svg
+share/icons/hicolor/scalable/apps/keepassxc.svg
+share/icons/hicolor/scalable/mimetypes/application-x-keepassxc.svg
+share/keepassxc/
+share/keepassxc/docs/
+share/keepassxc/docs/KeePassXC_GettingStarted.html
+share/keepassxc/docs/KeePassXC_KeyboardShortcuts.html
+share/keepassxc/docs/KeePassXC_UserGuide.html
+share/keepassxc/icons/
+share/keepassxc/icons/application/
+share/keepassxc/icons/application/256x256/
+share/keepassxc/icons/application/256x256/apps/
+share/keepassxc/icons/application/256x256/apps/keepassxc.png
+share/keepassxc/translations/
+share/keepassxc/translations/keepassxc_ar.qm
+share/keepassxc/translations/keepassxc_be.qm
+share/keepassxc/translations/keepassxc_bg.qm
+share/keepassxc/translations/keepassxc_ca.qm
+share/keepassxc/translations/keepassxc_cs.qm
+share/keepassxc/translations/keepassxc_da.qm
+share/keepassxc/translations/keepassxc_de.qm
+share/keepassxc/translations/keepassxc_el.qm
+share/keepassxc/translations/keepassxc_en.qm
+share/keepassxc/translations/keepassxc_en_GB.qm
+share/keepassxc/translations/keepassxc_en_US.qm
+share/keepassxc/translations/keepassxc_es.qm
+share/keepassxc/translations/keepassxc_et.qm
+share/keepassxc/translations/keepassxc_fi.qm
+share/keepassxc/translations/keepassxc_fil.qm
+share/keepassxc/translations/keepassxc_fr.qm
+share/keepassxc/translations/keepassxc_fr_CA.qm
+share/keepassxc/translations/keepassxc_he.qm
+share/keepassxc/translations/keepassxc_hr.qm
+share/keepassxc/translations/keepassxc_hu.qm
+share/keepassxc/translations/keepassxc_id.qm
+share/keepassxc/translations/keepassxc_it.qm
+share/keepassxc/translations/keepassxc_ja.qm
+share/keepassxc/translations/keepassxc_km.qm
+share/keepassxc/translations/keepassxc_ko.qm
+share/keepassxc/translations/keepassxc_lt.qm
+share/keepassxc/translations/keepassxc_my.qm
+share/keepassxc/translations/keepassxc_nb.qm
+share/keepassxc/translations/keepassxc_nl.qm
+share/keepassxc/translations/keepassxc_pl.qm
+share/keepassxc/translations/keepassxc_pt_BR.qm
+share/keepassxc/translations/keepassxc_pt_PT.qm
+share/keepassxc/translations/keepassxc_ro.qm
+share/keepassxc/translations/keepassxc_ru.qm
+share/keepassxc/translations/keepassxc_si.qm
+share/keepassxc/translations/keepassxc_sk.qm
+share/keepassxc/translations/keepassxc_sl.qm
+share/keepassxc/translations/keepassxc_sq.qm
+share/keepassxc/translations/keepassxc_sr.qm
+share/keepassxc/translations/keepassxc_sv.qm
+share/keepassxc/translations/keepassxc_th.qm
+share/keepassxc/translations/keepassxc_tr.qm
+share/keepassxc/translations/keepassxc_uk.qm
+share/keepassxc/translations/keepassxc_vi.qm
+share/keepassxc/translations/keepassxc_zh_CN.qm
+share/keepassxc/translations/keepassxc_zh_TW.qm
+share/keepassxc/wordlists/
+share/keepassxc/wordlists/eff_large.wordlist
+share/metainfo/
+share/metainfo/org.keepassxc.KeePassXC.appdata.xml
+share/mime/packages/keepassxc.xml
+@tag update-desktop-database
+@tag update-mime-database
+@tag gtk-update-icon-cache %D/share/icons/hicolor

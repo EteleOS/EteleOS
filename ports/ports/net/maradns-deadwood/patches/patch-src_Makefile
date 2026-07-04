@@ -1,0 +1,18 @@
+--- src/Makefile.orig	Sat Jan 24 03:09:04 2015
++++ src/Makefile	Wed Feb 25 03:00:19 2015
+@@ -68,7 +68,7 @@ DwSys.o:	DwSys.c DwStr.h version.h
+ 	$(CC) $(FLAGS) -Wall -c -o DwSys.o DwSys.c
+ 
+ RandomPrime:	RandomPrime.c
+-	$(CC) -O3 -o RandomPrime RandomPrime.c
++	$(CC) ${FLAGS} -o RandomPrime RandomPrime.c
+ 
+ DwRandPrime.h: RandomPrime
+ 	if [ -e /dev/urandom ] ; then ./RandomPrime > DwRandPrime.h ; fi
+@@ -86,5 +86,5 @@ Test:		Test.c DwStr.o DwStr.h DwStr_functions.h $(OBJS
+ 	$(CC) $(FLAGS) -Wall -o Test Test.c $(OBJS)
+ 
+ Deadwood:	DwMain.c $(OBJS) DwStr_functions.h version.h
+-	$(CC) $(FLAGS) -Wall -o Deadwood DwMain.c $(OBJS) -lrt
++	$(CC) $(FLAGS) -Wall -o Deadwood DwMain.c $(OBJS)
+ 

@@ -1,0 +1,13 @@
+@bin bin/siren
+lib/siren/
+lib/siren/ip/
+lib/siren/ip/aac.so
+lib/siren/ip/flac.so
+lib/siren/ip/mpg123.so
+lib/siren/ip/opus.so
+lib/siren/ip/sndfile.so
+lib/siren/ip/vorbis.so
+lib/siren/ip/wavpack.so
+lib/siren/op/
+lib/siren/op/sndio.so
+@man man/man1/siren.1

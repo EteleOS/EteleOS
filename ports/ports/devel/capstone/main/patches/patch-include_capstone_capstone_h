@@ -1,0 +1,15 @@
+The 'mips' symbol is special on MIPS platforms, so rename it to prevent a
+conflict.
+
+Index: include/capstone/capstone.h
+--- include/capstone/capstone.h.orig
++++ include/capstone/capstone.h
+@@ -355,7 +355,7 @@ typedef struct cs_detail {
+ 		cs_arm64 arm64; ///< ARM64 architecture (aka AArch64)
+ 		cs_arm arm;     ///< ARM architecture (including Thumb/Thumb2)
+ 		cs_m68k m68k;   ///< M68K architecture
+-		cs_mips mips;   ///< MIPS architecture
++		cs_mips mipsen;   ///< MIPS architecture
+ 		cs_ppc ppc;	    ///< PowerPC architecture
+ 		cs_sparc sparc; ///< Sparc architecture
+ 		cs_sysz sysz;   ///< SystemZ architecture

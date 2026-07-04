@@ -1,0 +1,12 @@
+Index: client/as-compose.c
+--- client/as-compose.c.orig
++++ client/as-compose.c
+@@ -364,7 +364,7 @@ main (int argc, char **argv)
+ 
+ 	/* set defaults */
+ 	if (prefix == NULL)
+-		prefix = g_strdup ("/usr");
++		prefix = g_strdup ("${LOCALBASE}");
+ 	if (output_dir == NULL)
+ 		output_dir = g_build_filename (prefix, "share/app-info/xmls", NULL);
+ 	if (icons_dir == NULL)

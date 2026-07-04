@@ -1,0 +1,7 @@
+@conflict hplip-<3.13.7p2
+@so lib/python${MODPY_VERSION}/site-packages/scanext.so
+@so lib/sane/libsane-hpaio.so
+share/examples/hplip/sane.d/
+share/examples/hplip/sane.d/dll.d/
+share/examples/hplip/sane.d/dll.d/hpaio
+@sample ${SYSCONFDIR}/sane.d/dll.d/hpaio

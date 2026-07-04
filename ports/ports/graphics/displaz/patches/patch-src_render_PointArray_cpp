@@ -1,0 +1,14 @@
+Fix build with OpenEXR>=3: error: use of undeclared identifier 'DBL_MAX'
+
+Index: src/render/PointArray.cpp
+--- src/render/PointArray.cpp.orig
++++ src/render/PointArray.cpp
+@@ -7,6 +7,8 @@
+ 
+ #include "glutil.h"
+ 
++#include <float.h>
++
+ #include <QGLShaderProgram>
+ #include <QTime>
+ 

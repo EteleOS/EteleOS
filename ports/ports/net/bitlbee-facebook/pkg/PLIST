@@ -1,0 +1,3 @@
+lib/bitlbee/
+@comment lib/bitlbee/facebook.la
+@so lib/bitlbee/facebook.so

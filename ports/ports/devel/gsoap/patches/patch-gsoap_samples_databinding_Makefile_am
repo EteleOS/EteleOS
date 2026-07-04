@@ -1,0 +1,14 @@
+from Fedora: gsoap-libtool.patch (creates shared libraries)
+
+Index: gsoap/samples/databinding/Makefile.am
+--- gsoap/samples/databinding/Makefile.am.orig
++++ gsoap/samples/databinding/Makefile.am
+@@ -14,7 +14,7 @@ SOAP_FLAGS=-0 -CS -p address -I$(top_srcdir)/gsoap/imp
+ WSDLINPUT=$(top_srcdir)/gsoap/samples/databinding/address.xsd
+ SOAPHEADER=$(top_srcdir)/gsoap/samples/databinding/address.h
+ SOAP_CPP_SRC=addressC.cpp
+-SOAP_CPP_LIB=$(top_builddir)/gsoap/libgsoap++.a
++SOAP_CPP_LIB=$(top_builddir)/gsoap/libgsoap++.la
+ 
+ $(SOAP_CPP_SRC) : $(WSDLINPUT)
+ 	$(WSDL) $(WSDL_FLAGS) $(WSDLINPUT)

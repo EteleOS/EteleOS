@@ -1,0 +1,3 @@
+Lifeograph is an off-line and private journal and note taking application.
+It supports markdown formatting, basic search and filtering, drawing
+trips on a map. Diaries can be encrypted (using AES256).

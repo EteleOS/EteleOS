@@ -1,0 +1,14 @@
+Breaking the "bison.help: bison" dependency is non-trivial with MAKE_JOBS>1;
+instead make the problematic target a NOOP.
+
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -9579,6 +9579,7 @@ doc/$(am__dirstamp):
+ 	@: > doc/$(am__dirstamp)
+ 
+ $(srcdir)/doc/bison.info: doc/bison.texi $(srcdir)/doc/version.texi $(doc_bison_TEXINFOS)
++neutered-bison-info:
+ 	$(AM_V_MAKEINFO)restore=: && backupdir="$(am__leading_dot)am$$$$" && \
+ 	am__cwd=`pwd` && $(am__cd) $(srcdir) && \
+ 	rm -rf $$backupdir && mkdir $$backupdir && \

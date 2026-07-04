@@ -1,0 +1,9 @@
+include/lrdf.h
+include/lrdf_types.h
+@static-lib lib/liblrdf.a
+lib/liblrdf.la
+@lib lib/liblrdf.so.${LIBlrdf_VERSION}
+lib/pkgconfig/lrdf.pc
+share/ladspa/
+share/ladspa/rdf/
+share/ladspa/rdf/ladspa.rdfs

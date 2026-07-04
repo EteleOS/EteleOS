@@ -1,0 +1,3 @@
+@conflict texlive_texmf-minimal-<=2012p0
+@bin bin/detex
+@man man/man1/detex.1

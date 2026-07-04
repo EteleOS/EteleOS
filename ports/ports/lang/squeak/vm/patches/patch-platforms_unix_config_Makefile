@@ -1,0 +1,9 @@
+Index: platforms/unix/config/Makefile
+--- platforms/unix/config/Makefile.orig
++++ platforms/unix/config/Makefile
+@@ -1,4 +1,5 @@
+ configure : .force
++	libtoolize -c
+ 	./mkacinc > acplugins.m4
+ 	aclocal
+ 	autoconf

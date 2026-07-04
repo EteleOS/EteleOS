@@ -1,0 +1,16 @@
+--- data/actions/Makefile.in.orig	Wed Nov  6 12:55:10 2002
++++ data/actions/Makefile.in	Mon Aug  9 23:53:26 2010
+@@ -228,11 +228,11 @@ uninstall-am: uninstall-actionsDATA uninstall-info-am 
+ 
+ 
+ install-data-local:
+-	cd $(pkgdatadir)/actions && \
++	cd $(DESTDIR)$(pkgdatadir)/actions && \
+ 	ln -sf action.sloppy-focus action
+ 
+ uninstall-local:
+-	rm -f $(pkgdatadir)/actions/action
++	rm -f $(DESTDIR)$(pkgdatadir)/actions/action
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:

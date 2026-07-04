@@ -1,0 +1,14 @@
+- net/isc-bind group name
+
+Index: python/samba/provision/__init__.py
+--- python/samba/provision/__init__.py.orig
++++ python/samba/provision/__init__.py
+@@ -2208,7 +2208,7 @@ def provision(logger, session_info, smbconf=None,
+     root_gid = pwd.getpwuid(root_uid).pw_gid
+ 
+     try:
+-        bind_gid = findnss_gid(["bind", "named"])
++        bind_gid = findnss_gid(["_bind"])
+     except KeyError:
+         bind_gid = None
+ 

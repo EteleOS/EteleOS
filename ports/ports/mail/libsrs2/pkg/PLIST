@@ -1,0 +1,5 @@
+@bin bin/srs
+include/srs2.h
+lib/libsrs2.a
+lib/libsrs2.la
+@lib lib/libsrs2.so.${LIBsrs2_VERSION}

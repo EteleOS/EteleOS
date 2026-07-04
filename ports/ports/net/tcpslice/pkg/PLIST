@@ -1,0 +1,5 @@
+@bin bin/tcpslice
+@man man/man1/tcpslice.1
+share/doc/tcpslice/
+@comment share/doc/tcpslice/CHANGES
+share/doc/tcpslice/README.md

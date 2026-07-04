@@ -1,0 +1,11 @@
+--- doc/libnet.3.orig	Sun Feb  4 00:27:21 2001
++++ doc/libnet.3	Sat Nov  8 22:07:54 2008
+@@ -19,7 +19,7 @@ supplementary and complementary functionality.
+ 
+ For a much more verbose treatment of libnet, including verbosely commented
+ examples, please see the online web-based documentation at
+-http://www.packetfactory.net/libnet/manual/.
++http://packetfactory.openwall.net/projects/libnet/dist/deprecated/manual/.
+ 
+ .SH SYNOPSIS
+ .nf

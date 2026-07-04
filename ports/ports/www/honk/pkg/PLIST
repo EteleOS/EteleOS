@@ -1,0 +1,122 @@
+@newgroup _honk:833
+@newuser _honk:833:_honk::Honk User:${LOCALSTATEDIR}/honk:/sbin/nologin
+@rcscript ${RCDIR}/honk
+@bin bin/autobonker
+@bin bin/gettoken
+@bin bin/honk
+@bin bin/newstrigger
+@bin bin/saytheday
+@bin bin/sprayandpray
+@bin bin/youvegothonks
+@man man/man8/honk.8
+@mode 750
+@owner _honk
+@group _honk
+@sample ${LOCALSTATEDIR}/honk/
+@sample ${LOCALSTATEDIR}/honk/docs/
+@sample ${LOCALSTATEDIR}/honk/emus/
+@sample ${LOCALSTATEDIR}/honk/memes/
+@sample ${LOCALSTATEDIR}/honk/views/
+@mode
+@owner
+@group
+share/doc/honk/
+share/doc/honk/LICENSE
+share/doc/honk/README
+share/doc/honk/TODO
+share/doc/honk/activitypub.7.html
+@sample ${LOCALSTATEDIR}/honk/docs/activitypub.7.html
+share/doc/honk/changelog.txt
+share/doc/honk/encrypted-messages.txt
+share/doc/honk/filter.png
+@sample ${LOCALSTATEDIR}/honk/docs/filter.png
+share/doc/honk/filtermemes.png
+@sample ${LOCALSTATEDIR}/honk/docs/filtermemes.png
+share/doc/honk/followhonk.png
+@sample ${LOCALSTATEDIR}/honk/docs/followhonk.png
+share/doc/honk/hfcs.1.html
+@sample ${LOCALSTATEDIR}/honk/docs/hfcs.1.html
+share/doc/honk/honk.1.html
+@sample ${LOCALSTATEDIR}/honk/docs/honk.1.html
+share/doc/honk/honk.3.html
+@sample ${LOCALSTATEDIR}/honk/docs/honk.3.html
+share/doc/honk/honk.5.html
+@sample ${LOCALSTATEDIR}/honk/docs/honk.5.html
+share/doc/honk/honk.8.html
+@sample ${LOCALSTATEDIR}/honk/docs/honk.8.html
+share/doc/honk/intro.1.html
+@sample ${LOCALSTATEDIR}/honk/docs/intro.1.html
+share/doc/honk/mandoc.css
+@sample ${LOCALSTATEDIR}/honk/docs/mandoc.css
+share/doc/honk/ping.txt
+share/doc/honk/screenshot-afterpost.jpg
+@sample ${LOCALSTATEDIR}/honk/docs/screenshot-afterpost.jpg
+share/doc/honk/screenshot-compose.png
+@sample ${LOCALSTATEDIR}/honk/docs/screenshot-compose.png
+share/doc/honk/screenshot-honk.png
+@sample ${LOCALSTATEDIR}/honk/docs/screenshot-honk.png
+share/doc/honk/tagcombo.png
+@sample ${LOCALSTATEDIR}/honk/docs/tagcombo.png
+share/doc/honk/tagrss.png
+@sample ${LOCALSTATEDIR}/honk/docs/tagrss.png
+share/doc/honk/toys/
+share/doc/honk/toys/README
+share/doc/honk/vim.3.html
+@sample ${LOCALSTATEDIR}/honk/docs/vim.3.html
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/honk/
+share/examples/honk/emus/
+share/examples/honk/emus/disputed.png
+@sample ${LOCALSTATEDIR}/honk/emus/disputed.png
+share/examples/honk/memes/
+share/examples/honk/memes/twowires.jpg
+@sample ${LOCALSTATEDIR}/honk/memes/twowires.jpg
+share/examples/honk/schema.sql
+@sample ${LOCALSTATEDIR}/honk/schema.sql
+share/examples/honk/views/
+share/examples/honk/views/about.html
+@sample ${LOCALSTATEDIR}/honk/views/about.html
+share/examples/honk/views/account.html
+@sample ${LOCALSTATEDIR}/honk/views/account.html
+share/examples/honk/views/chatter.html
+@sample ${LOCALSTATEDIR}/honk/views/chatter.html
+share/examples/honk/views/combos.html
+@sample ${LOCALSTATEDIR}/honk/views/combos.html
+share/examples/honk/views/common.js
+@sample ${LOCALSTATEDIR}/honk/views/common.js
+share/examples/honk/views/emus.html
+@sample ${LOCALSTATEDIR}/honk/views/emus.html
+share/examples/honk/views/funzone.html
+@sample ${LOCALSTATEDIR}/honk/views/funzone.html
+share/examples/honk/views/header.html
+@sample ${LOCALSTATEDIR}/honk/views/header.html
+share/examples/honk/views/hfcs.html
+@sample ${LOCALSTATEDIR}/honk/views/hfcs.html
+share/examples/honk/views/honk.html
+@sample ${LOCALSTATEDIR}/honk/views/honk.html
+share/examples/honk/views/honkers.html
+@sample ${LOCALSTATEDIR}/honk/views/honkers.html
+share/examples/honk/views/honkform.html
+@sample ${LOCALSTATEDIR}/honk/views/honkform.html
+share/examples/honk/views/honkfrags.html
+@sample ${LOCALSTATEDIR}/honk/views/honkfrags.html
+share/examples/honk/views/honkpage.html
+@sample ${LOCALSTATEDIR}/honk/views/honkpage.html
+share/examples/honk/views/honkpage.js
+@sample ${LOCALSTATEDIR}/honk/views/honkpage.js
+share/examples/honk/views/icon.png
+@sample ${LOCALSTATEDIR}/honk/views/icon.png
+share/examples/honk/views/login.html
+@sample ${LOCALSTATEDIR}/honk/views/login.html
+share/examples/honk/views/mastodon.css
+@sample ${LOCALSTATEDIR}/honk/views/mastodon.css
+share/examples/honk/views/misc.js
+@sample ${LOCALSTATEDIR}/honk/views/misc.js
+share/examples/honk/views/msg.html
+@sample ${LOCALSTATEDIR}/honk/views/msg.html
+share/examples/honk/views/onts.html
+@sample ${LOCALSTATEDIR}/honk/views/onts.html
+share/examples/honk/views/style.css
+@sample ${LOCALSTATEDIR}/honk/views/style.css
+share/examples/honk/views/xzone.html
+@sample ${LOCALSTATEDIR}/honk/views/xzone.html

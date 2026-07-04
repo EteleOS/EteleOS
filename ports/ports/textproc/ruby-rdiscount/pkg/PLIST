@@ -1,0 +1,22 @@
+${GEM_BIN}/rdiscount${GEM_BIN_SUFFIX}
+${GEM_LIB}/cache/${DISTNAME}.gem
+${GEM_LIB}/gems/${DISTNAME}/
+${GEM_LIB}/gems/${DISTNAME}/BUILDING
+${GEM_LIB}/gems/${DISTNAME}/COPYING
+${GEM_LIB}/gems/${DISTNAME}/README.markdown
+${GEM_LIB}/gems/${DISTNAME}/Rakefile
+${GEM_LIB}/gems/${DISTNAME}/bin/
+${GEM_LIB}/gems/${DISTNAME}/bin/rdiscount
+${GEM_LIB}/gems/${DISTNAME}/lib/
+${GEM_LIB}/gems/${DISTNAME}/lib/markdown.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/rdiscount.rb
+@so ${GEM_LIB}/gems/${DISTNAME}/lib/rdiscount.so
+${GEM_LIB}/gems/${DISTNAME}/rdiscount.gemspec
+${GEM_LIB}/gems/${DISTNAME}/test/
+${GEM_LIB}/gems/${DISTNAME}/test/benchmark.rb
+${GEM_LIB}/gems/${DISTNAME}/test/benchmark.txt
+${GEM_LIB}/gems/${DISTNAME}/test/markdown_test.rb
+${GEM_LIB}/gems/${DISTNAME}/test/rdiscount_test.rb
+${GEM_LIB}/specifications/${DISTNAME}.gemspec
+@man man/man1/rdiscount${GEM_MAN_SUFFIX}.1
+@man man/man7/markdown${GEM_MAN_SUFFIX}.7

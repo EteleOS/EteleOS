@@ -1,0 +1,33 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -22,6 +22,9 @@ else
+ 	ifeq ($(UNAME_S),FreeBSD)
+ 		TARGET_OS := freebsd
+ 	endif
++	ifeq ($(UNAME_S),OpenBSD)
++		TARGET_OS := openbsd
++	endif
+ endif
+ endif # TARGET_OS
+ 
+@@ -48,8 +51,6 @@ endif
+ 
+ STRIP ?= strip
+ 
+-VERSION ?= $(shell git describe --tag)
+-LITTLEFS_VERSION := $(shell git -C littlefs describe --tags || echo "unknown")
+ BUILD_CONFIG_NAME ?= -generic
+ 
+ OBJ		:= main.o \
+@@ -75,8 +76,8 @@ override CPPFLAGS := \
+ 	-D LFS_NAME_MAX=255 \
+ 	$(CPPFLAGS)
+ 
+-override CFLAGS := -std=gnu99 -Os -Wall -Wextra -Werror $(TARGET_CFLAGS) $(CFLAGS)
+-override CXXFLAGS := -std=gnu++11 -Os -Wall -Wextra -Werror $(TARGET_CXXFLAGS) $(CXXFLAGS)
++override CFLAGS := -std=gnu99 -Wall -Wextra $(TARGET_CFLAGS) $(CFLAGS)
++override CXXFLAGS := -std=gnu++11 -Wall -Wextra $(TARGET_CXXFLAGS) $(CXXFLAGS)
+ override LDFLAGS := $(TARGET_LDFLAGS) $(LDFLAGS)
+ 
+ DIST_NAME := mklittlefs-$(VERSION)$(BUILD_CONFIG_NAME)-$(TARGET_OS)

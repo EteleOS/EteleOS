@@ -1,0 +1,7 @@
+@conflict dbus-<1.8.16p0v0
+@mode 4750
+@group _dbus
+@bin libexec/dbus-daemon-launch-helper
+@mode
+@group
+share/dbus-1/system-services/

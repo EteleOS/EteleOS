@@ -1,0 +1,9 @@
+@bin bin/aacs_info
+include/libaacs/
+include/libaacs/aacs-version.h
+include/libaacs/aacs.h
+include/libaacs/filesystem.h
+@static-lib lib/libaacs.a
+lib/libaacs.la
+@lib lib/libaacs.so.${LIBaacs_VERSION}
+lib/pkgconfig/libaacs.pc

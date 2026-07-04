@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/nzbget -D"
+daemon_execdir="${LOCALSTATEDIR}/nzbget"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_stop() {
+	${TRUEPREFIX}/bin/nzbget -Q
+}
+
+rc_cmd $1

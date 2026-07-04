@@ -1,0 +1,12 @@
+Add missing header for malloc().
+
+--- win/jtp/jtp_mou.c.orig	Sun Nov 30 01:44:54 2014
++++ win/jtp/jtp_mou.c	Sun Nov 30 01:45:40 2014
+@@ -6,6 +6,7 @@
+ #define _jtp_mou_c_
+ 
+ #include "jtp_def.h"
++#include <stdlib.h>
+ #ifdef USE_DIRECTX_SYSCALLS
+ #include "jtp_dirx.h"
+ #endif

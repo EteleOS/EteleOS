@@ -1,0 +1,29 @@
+the comment portion is evil
+
+Index: src/client/client/SecureID.cpp
+--- src/client/client/SecureID.cpp.orig
++++ src/client/client/SecureID.cpp
+@@ -76,6 +76,7 @@ std::string SecureID::GetPrivateKey(void)
+ #include <unistd.h>
+ #include <sys/ioctl.h>
+ #include <net/if.h>
++#include <unistd.h>
+ 
+ std::string SecureID::GetPrivateKey(void)
+ {
+@@ -110,6 +111,7 @@ std::string SecureID::GetPrivateKey(void)
+ 
+ 	if_freenameindex(NameList); //free the memory
+ 
++/*
+ 	strcpy (dev.ifr_name, InterfaceName.c_str()); //select from the name
+ 	if (ioctl(sock, SIOCGIFHWADDR, &dev) < 0) //get the interface data
+ 	{
+@@ -123,6 +125,7 @@ std::string SecureID::GetPrivateKey(void)
+         if (i != 5) Key += ':';
+     }
+ 	close(sock);
++*/
+ 
+     return Key;
+ }

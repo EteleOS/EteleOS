@@ -1,0 +1,25 @@
+Index: src/tools/wasm-strip.cc
+--- src/tools/wasm-strip.cc.orig
++++ src/tools/wasm-strip.cc
+@@ -15,6 +15,9 @@
+  */
+ #include <set>
+ 
++#include <err.h>
++#include <unistd.h>
++
+ #include "wabt/binary-reader-nop.h"
+ #include "wabt/binary-reader.h"
+ #include "wabt/binary.h"
+@@ -126,6 +129,11 @@ int ProgramMain(int argc, char** argv) {
+   InitStdio();
+   ParseOptions(argc, argv);
+ 
++  if (unveil(s_filename.c_str(), "rwc") != 0)
++    err(1, "unveil: %s", s_filename.c_str());
++  if (pledge("stdio rpath wpath cpath", NULL) != 0)
++    err(1, "pledge");
++  
+   std::vector<uint8_t> file_data;
+   result = ReadFile(s_filename.c_str(), &file_data);
+   if (Failed(result)) {

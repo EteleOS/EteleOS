@@ -1,0 +1,3 @@
+@option no-default-conflict
+@conflict ${CONFLICT_MARKER}
+@bin bin/fossil

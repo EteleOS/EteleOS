@@ -1,0 +1,14 @@
+Index: mp3blaster.1
+--- mp3blaster.1.orig
++++ mp3blaster.1
+@@ -281,8 +281,8 @@ Some keywords can have multiple values, in that case i
+ .TP
+ \fBKeyword\fR = \fBValue1\fR, \fBValue2\fR
+ .PP
+-Escape comma's in a value with a backslash (\,). If you want a literal
+-backslash, escape it with another backslash (\\). Keywords are case-sensitive.
++Escape commas in a value with a backslash (\e,). If you want a literal
++backslash, escape it with another backslash (\e\e). Keywords are case-sensitive.
+ .PP
+ There are a few types of values: numbers, booleans, keybindings, colours,
+ and everything else is a string. The syntax of these types are:

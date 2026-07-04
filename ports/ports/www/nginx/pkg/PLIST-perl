@@ -1,0 +1,7 @@
+${P5ARCH}/
+${P5ARCH}/auto/
+${P5ARCH}/auto/nginx/
+@so ${P5ARCH}/auto/nginx/nginx.so
+${P5ARCH}/nginx.pm
+@cwd ${NGINX_DIR}/modules
+@so ngx_http_perl_module.so

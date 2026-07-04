@@ -1,0 +1,12 @@
+Index: src/3rdparty/chromium/third_party/swiftshader/BUILD.gn
+--- src/3rdparty/chromium/third_party/swiftshader/BUILD.gn.orig
++++ src/3rdparty/chromium/third_party/swiftshader/BUILD.gn
+@@ -155,8 +155,6 @@ config("swiftshader_config") {
+           "-Wl,--hash-style=sysv",
+           "-mips64r2",
+         ]
+-      } else {
+-        ldflags += [ "-Wl,--hash-style=both" ]
+       }
+ 
+       # A bug in the gold linker prevents using ICF on 32-bit (crbug.com/729532)

@@ -1,0 +1,18 @@
+Index: src/config.h
+--- src/config.h.orig
++++ src/config.h
+@@ -9,7 +9,13 @@
+ //#define BUILD_CPUNAME8 "QEMUCPU "
+ //#define BUILD_APPNAME6 "QEMU  "
+ //#define BUILD_APPNAME4 "QEMU"
+-#define BUILD_APPNAME  "Bochs"
++
++/* For SMBIOS */
++#define BUILD_BIOSNAME "SeaBIOS"
++#define BUILD_APPNAME  "OpenBSD"
++#define BUILD_PRODNAME "VMM"
++
++/* For ACPI */
+ #define BUILD_CPUNAME8 "BOCHSCPU"
+ #define BUILD_APPNAME6 "BOCHS "
+ #define BUILD_APPNAME4 "BXPC"

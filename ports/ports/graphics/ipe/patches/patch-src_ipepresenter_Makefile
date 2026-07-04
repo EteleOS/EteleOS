@@ -1,0 +1,11 @@
+Index: src/ipepresenter/Makefile
+--- src/ipepresenter/Makefile.orig
++++ src/ipepresenter/Makefile
+@@ -10,6 +10,7 @@ TARGET = $(call exe_target,ipepresenter)
+ 
+ CPPFLAGS += -I../include -I../ipecanvas -I../ipecairo \
+ 	$(UI_CFLAGS) $(CAIRO_CFLAGS) $(ZLIB_CFLAGS)
++CPPFLAGS += $(CXXFLAGS)
+ LIBS += -L$(buildlib) -lipecanvas -lipecairo -lipe \
+ 	$(UI_LIBS) $(CAIRO_LIBS) $(ZLIB_LIBS)
+ 

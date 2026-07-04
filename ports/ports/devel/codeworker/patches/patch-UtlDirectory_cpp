@@ -1,0 +1,13 @@
+fix various include errors with ports-gcc
+Index: UtlDirectory.cpp
+--- UtlDirectory.cpp.orig
++++ UtlDirectory.cpp
+@@ -30,6 +30,8 @@ To contact the author: codeworker@free.fr
+ #	include <sys/stat.h>
+ #	include <unistd.h>
+ #	include <glob.h>
++#	include <stdlib.h>
++#	include <string.h>
+ #endif
+ 
+ #include "UtlException.h"

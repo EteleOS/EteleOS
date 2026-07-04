@@ -1,0 +1,40 @@
+COMMENT=	simple, correct PEP 517 build frontend
+
+MODPY_DISTV=	1.4.3
+DISTNAME=	build-${MODPY_DISTV}
+PKGNAME=	py-${DISTNAME}
+
+CATEGORIES=	devel
+
+HOMEPAGE=	https://pypa-build.readthedocs.io/en/latest/
+
+# MIT
+PERMIT_PACKAGE=	Yes
+
+MODULES=	lang/python
+MODPY_PI=	Yes
+MODPY_PYTEST=	Yes
+
+BUILD_DEPENDS=	devel/py-installer \
+		devel/py-flit_core \
+		devel/py-wheel \
+		${RUN_DEPENDS}
+
+RUN_DEPENDS=	devel/py-pyproject_hooks \
+		sysutils/py-packaging
+
+TEST_DEPENDS=	devel/py-flaky \
+		devel/py-test-mock \
+		sysutils/py-filelock
+
+# point to the copy of py-build in WRKSRC for a self-hosting build
+# replicate most of MODPY_PYBUILD steps because we can't use it directly
+do-build:
+	cd ${WRKSRC} && PYTHONPATH=${WRKSRC}/src ${MODPY_BIN} \
+	    -sBm build -w --no-isolation
+
+do-install:
+	${INSTALL_DATA_DIR} ${WRKINST}${MODPY_LIBDIR}; \
+	${_MODPY_RUNBIN} -m installer -d ${WRKINST} ${WRKSRC}/dist/*.whl
+
+.include <bsd.port.mk>

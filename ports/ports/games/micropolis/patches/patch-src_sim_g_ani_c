@@ -1,0 +1,11 @@
+Index: src/sim/g_ani.c
+--- src/sim/g_ani.c.orig
++++ src/sim/g_ani.c
+@@ -64,6 +64,7 @@
+ 
+ 
+ /* comefrom: moveWorld doEditWindow scoreDoer doMapInFront graphDoer */
++void
+ animateTiles(void)
+ {
+   unsigned short tilevalue, tileflags;

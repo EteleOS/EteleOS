@@ -1,0 +1,18 @@
+COMMENT =	ELF visualizer, generating HTML files from ELF binaries
+
+GH_ACCOUNT =	ruslashev
+GH_PROJECT =	elfcat
+GH_TAGNAME =	0.1.10
+
+CATEGORIES =	devel
+
+# zlib
+PERMIT_PACKAGE =	Yes
+
+WANTLIB += 	${MODCARGO_WANTLIB} m
+
+MODULES =	devel/cargo
+
+CONFIGURE_STYLE =	cargo
+
+.include <bsd.port.mk>

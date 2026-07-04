@@ -1,0 +1,12 @@
+Index: Source/JavaScriptCore/assembler/ARM64Assembler.h
+--- Source/JavaScriptCore/assembler/ARM64Assembler.h.orig
++++ Source/JavaScriptCore/assembler/ARM64Assembler.h
+@@ -3892,6 +3892,8 @@ class ARM64Assembler { (public)
+     {
+ #if OS(DARWIN)
+         sys_icache_invalidate(code, size);
++#elif OS(FREEBSD) || OS(NETBSD) || OS(OPENBSD)
++        __clear_cache(code, reinterpret_cast<char*>(code) + size);
+ #elif OS(FUCHSIA)
+         zx_cache_flush(code, size, ZX_CACHE_FLUSH_INSN);
+ #elif OS(LINUX)

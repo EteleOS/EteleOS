@@ -1,0 +1,37 @@
+@bin bin/naken430asm
+@bin bin/naken430util
+share/examples/naken430asm/
+share/examples/naken430asm/call.asm
+share/examples/naken430asm/comments.asm
+share/examples/naken430asm/data.asm
+share/examples/naken430asm/defines.asm
+share/examples/naken430asm/emulated.asm
+share/examples/naken430asm/equ.asm
+share/examples/naken430asm/expression.asm
+share/examples/naken430asm/guitar_proc.asm
+share/examples/naken430asm/ifdef.asm
+share/examples/naken430asm/launchpad_blink.asm
+share/examples/naken430asm/launchpad_blink_gcc.asm
+share/examples/naken430asm/macro_lst.asm
+share/examples/naken430asm/nested_defs.asm
+share/examples/naken430asm/octal.asm
+share/examples/naken430asm/olimex.asm
+share/examples/naken430asm/padding.asm
+share/examples/naken430asm/rotate.asm
+share/examples/naken430asm/simulator.asm
+share/examples/naken430asm/spi.asm
+share/examples/naken430asm/subtract.asm
+share/naken430asm/
+share/naken430asm/include/
+share/naken430asm/include/msp430g2553.inc
+share/naken430asm/include/msp430g2x31.inc
+share/naken430asm/include/msp430x14x.inc
+share/naken430asm/include/msp430x15x.inc
+share/naken430asm/include/msp430x161x.inc
+share/naken430asm/include/msp430x16x.inc
+share/naken430asm/include/msp430x2xx.inc
+share/naken430asm/scripts/
+share/naken430asm/scripts/makeInc.lua
+share/naken430asm/scripts/make_include.py
+share/naken430asm/scripts/msp430f16x.txt
+share/naken430asm/scripts/msp430g2x31.txt

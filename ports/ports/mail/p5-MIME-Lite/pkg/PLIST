@@ -1,0 +1,4 @@
+${P5SITE}/MIME/Lite.pm
+${P5SITE}/MIME/changes.pod
+@man man/man3p/MIME::Lite.3p
+@man man/man3p/MIME::changes.3p

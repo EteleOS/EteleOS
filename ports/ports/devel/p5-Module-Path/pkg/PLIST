@@ -1,0 +1,5 @@
+bin/mpath
+${P5SITE}/Module/
+${P5SITE}/Module/Path.pm
+@man man/man1/mpath.1
+@man man/man3p/Module::Path.3p

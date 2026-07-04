@@ -1,0 +1,11 @@
+Index: lib/ext2fs/blkmap64_rb.c
+--- lib/ext2fs/blkmap64_rb.c.orig
++++ lib/ext2fs/blkmap64_rb.c
+@@ -16,6 +16,7 @@
+ #include <unistd.h>
+ #endif
+ #include <fcntl.h>
++#include <sys/select.h> /* timeval */
+ #include <time.h>
+ #if HAVE_SYS_STAT_H
+ #include <sys/stat.h>

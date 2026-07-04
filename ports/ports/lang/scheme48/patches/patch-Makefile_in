@@ -1,0 +1,35 @@
+Fix fake-stage.
+
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -72,8 +72,8 @@ VERSION = 1.`cat $(srcdir)/build/minor-version-number`
+ RUNNABLE = scheme48
+ CONFIG_SCRIPT = scheme48-config
+ MANPAGE = $(RUNNABLE).$(manext)
+-LIB = $(libdir)/scheme48-$(VERSION)
+-SHARE = $(datadir)/scheme48-$(VERSION)
++LIB = $(libdir)/scheme48
++SHARE = $(datadir)/scheme48
+ 
+ distdir = /tmp
+ 
+@@ -470,7 +470,7 @@ doc/html/manual.html: doc/manual.pdf
+ 
+ doc: doc/manual.pdf doc/manual.ps doc/html/manual.html
+ 
+-install: install-no-doc install-doc
++install: install-no-doc
+ 
+ install-no-doc: enough dirs
+ # install the VM
+@@ -532,9 +532,6 @@ install-no-doc: enough dirs
+ 	chmod +x $$config_script
+ # install the external modules
+ 	$(INSTALL_PROGRAM) $(EXTERNALS) $(DESTDIR)$(LIB)/
+-# install the documentation
+-	$(srcdir)/mkinstalldirs $(DESTDIR)$(docdir)
+-	$(INSTALL_DATA) $(srcdir)/COPYING $(DESTDIR)$(docdir)
+ 
+ install-doc: dirs doc
+ 	$(srcdir)/mkinstalldirs $(DESTDIR)$(docdir)

@@ -1,0 +1,9 @@
+bin/html2ps-podbrowser
+bin/podbrowser
+@man man/man1/podbrowser.1
+share/applications/podbrowser.desktop
+share/icons/hicolor/48x48/apps/podbrowser.png
+share/podbrowser/
+share/podbrowser/podbrowser.glade
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

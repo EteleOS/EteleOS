@@ -1,0 +1,128 @@
+@bin bin/mlcc
+@bin bin/mlclient
+@bin bin/mlclientx
+@bin bin/mlfc
+@mode 2555
+@group utmp
+@bin bin/mlterm
+@mode
+@group
+@mode 4555
+@bin bin/mlterm-fb
+@mode
+@comment lib/libmef.a
+@comment lib/libmef.la
+@lib lib/libmef.so.${LIBmef_VERSION}
+@comment lib/libpobl.a
+@comment lib/libpobl.la
+@lib lib/libpobl.so.${LIBpobl_VERSION}
+lib/mef/
+@comment lib/mef/libmef_8bits.a
+@comment lib/mef/libmef_8bits.la
+@so lib/mef/libmef_8bits.so
+@comment lib/mef/libmef_jajp.a
+@comment lib/mef/libmef_jajp.la
+@so lib/mef/libmef_jajp.so
+@comment lib/mef/libmef_kokr.a
+@comment lib/mef/libmef_kokr.la
+@so lib/mef/libmef_kokr.so
+@comment lib/mef/libmef_zh.a
+@comment lib/mef/libmef_zh.la
+@so lib/mef/libmef_zh.so
+lib/mlterm/
+@comment lib/mlterm/libathena.a
+@comment lib/mlterm/libathena.la
+@so lib/mlterm/libathena.so
+@comment lib/mlterm/libim-kbd-fb.a
+@comment lib/mlterm/libim-kbd-fb.la
+@so lib/mlterm/libim-kbd-fb.so
+@comment lib/mlterm/libim-kbd.a
+@comment lib/mlterm/libim-kbd.la
+@so lib/mlterm/libim-kbd.so
+@comment lib/mlterm/libim-skk-fb.a
+@comment lib/mlterm/libim-skk-fb.la
+@so lib/mlterm/libim-skk-fb.so
+@comment lib/mlterm/libim-skk.a
+@comment lib/mlterm/libim-skk.la
+@so lib/mlterm/libim-skk.so
+@comment lib/mlterm/libmotif.a
+@comment lib/mlterm/libmotif.la
+@so lib/mlterm/libmotif.so
+@comment lib/mlterm/libmozmodern.a
+@comment lib/mlterm/libmozmodern.la
+@so lib/mlterm/libmozmodern.so
+@comment lib/mlterm/libnext.a
+@comment lib/mlterm/libnext.la
+@so lib/mlterm/libnext.so
+@comment lib/mlterm/libotl.a
+@comment lib/mlterm/libotl.la
+@so lib/mlterm/libotl.so
+@comment lib/mlterm/libpixmap_engine.a
+@comment lib/mlterm/libpixmap_engine.la
+@so lib/mlterm/libpixmap_engine.so
+@comment lib/mlterm/libsample.a
+@comment lib/mlterm/libsample.la
+@so lib/mlterm/libsample.so
+@comment lib/mlterm/libtype_cairo.a
+@comment lib/mlterm/libtype_cairo.la
+@so lib/mlterm/libtype_cairo.so
+@comment lib/mlterm/libtype_xft.a
+@comment lib/mlterm/libtype_xft.la
+@so lib/mlterm/libtype_xft.so
+libexec/mlterm/
+@bin libexec/mlterm/mlconfig
+@bin libexec/mlterm/mlimgloader
+@bin libexec/mlterm/mlterm-menu
+@man man/man1/mlclient.1
+@man man/man1/mlterm.1
+share/examples/mlterm/
+@sample ${SYSCONFDIR}/mlterm/
+share/examples/mlterm/aafont
+@sample ${SYSCONFDIR}/mlterm/aafont
+share/examples/mlterm/color
+@sample ${SYSCONFDIR}/mlterm/color
+share/examples/mlterm/font
+@sample ${SYSCONFDIR}/mlterm/font
+share/examples/mlterm/font-fb
+@sample ${SYSCONFDIR}/mlterm/font-fb
+share/examples/mlterm/key
+@sample ${SYSCONFDIR}/mlterm/key
+share/examples/mlterm/main
+@sample ${SYSCONFDIR}/mlterm/main
+share/examples/mlterm/menu
+@sample ${SYSCONFDIR}/mlterm/menu
+share/examples/mlterm/taafont
+@sample ${SYSCONFDIR}/mlterm/taafont
+share/examples/mlterm/termcap
+@sample ${SYSCONFDIR}/mlterm/termcap
+share/examples/mlterm/tfont
+@sample ${SYSCONFDIR}/mlterm/tfont
+share/examples/mlterm/vaafont
+@sample ${SYSCONFDIR}/mlterm/vaafont
+share/examples/mlterm/vfont
+@sample ${SYSCONFDIR}/mlterm/vfont
+share/examples/mlterm/xim
+@sample ${SYSCONFDIR}/mlterm/xim
+share/locale/ar/LC_MESSAGES/mlconfig.mo
+share/locale/de/LC_MESSAGES/mlconfig.mo
+share/locale/ja/LC_MESSAGES/mlconfig.mo
+share/locale/vi/LC_MESSAGES/mlconfig.mo
+share/locale/zh_TW/LC_MESSAGES/mlconfig.mo
+share/mlterm/
+share/mlterm/kbd/
+share/mlterm/kbd/kbd.six
+share/mlterm/kbd/pressed_kbd.six
+share/mlterm/scrollbars/
+share/mlterm/scrollbars/sample3/
+share/mlterm/scrollbars/sample3/bg_body.png
+share/mlterm/scrollbars/sample3/bg_bottom.png
+share/mlterm/scrollbars/sample3/bg_top.png
+share/mlterm/scrollbars/sample3/button_down.png
+share/mlterm/scrollbars/sample3/button_down_pressed.png
+share/mlterm/scrollbars/sample3/button_up.png
+share/mlterm/scrollbars/sample3/button_up_pressed.png
+share/mlterm/scrollbars/sample3/rc
+share/mlterm/scrollbars/sample3/slider_body.png
+share/mlterm/scrollbars/sample3/slider_bottom.png
+share/mlterm/scrollbars/sample3/slider_knob.png
+share/mlterm/scrollbars/sample3/slider_top.png

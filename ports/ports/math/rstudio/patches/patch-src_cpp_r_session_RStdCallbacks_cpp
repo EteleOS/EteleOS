@@ -1,0 +1,21 @@
+fix building with boost 1.75.
+
+Index: src/cpp/r/session/RStdCallbacks.cpp
+--- src/cpp/r/session/RStdCallbacks.cpp.orig
++++ src/cpp/r/session/RStdCallbacks.cpp
+@@ -19,6 +19,7 @@
+ 
+ #include <boost/function.hpp>
+ #include <boost/regex.hpp>
++#include <boost/bind/bind.hpp>
+ 
+ #include <r/RExec.hpp>
+ #include <r/ROptions.hpp>
+@@ -57,6 +58,7 @@ __declspec(dllimport) SA_TYPE SaveAction;
+ }
+ 
+ using namespace rstudio::core;
++using namespace boost::placeholders;
+ 
+ namespace rstudio {
+ namespace r {

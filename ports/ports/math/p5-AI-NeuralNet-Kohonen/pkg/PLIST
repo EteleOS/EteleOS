@@ -1,0 +1,9 @@
+${P5SITE}/AI/
+${P5SITE}/AI/NeuralNet/
+${P5SITE}/AI/NeuralNet/Kohonen/
+${P5SITE}/AI/NeuralNet/Kohonen.pm
+${P5SITE}/AI/NeuralNet/Kohonen/Input.pm
+${P5SITE}/AI/NeuralNet/Kohonen/Node.pm
+@man man/man3p/AI::NeuralNet::Kohonen.3p
+@man man/man3p/AI::NeuralNet::Kohonen::Input.3p
+@man man/man3p/AI::NeuralNet::Kohonen::Node.3p

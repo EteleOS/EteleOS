@@ -1,0 +1,10 @@
+--- Xwnmo/romkan_m/rk_main.c.orig	Fri Jul 24 18:31:11 2015
++++ Xwnmo/romkan_m/rk_main.c	Fri Jul 24 18:31:32 2015
+@@ -64,6 +64,7 @@
+ #endif	/*MULTI*/
+ #endif
+ #include "rext.h"
++#include <stdlib.h>
+ 
+ #ifdef	MULTI
+ #define	DISOUT ((cur_rk->flags & RK_NONISE) ? cur_rk->rk_output : cur_rk->disout)

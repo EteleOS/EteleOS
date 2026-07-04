@@ -1,0 +1,11 @@
+Index: common/libkcutil.sym.in
+--- common/libkcutil.sym.in.orig
++++ common/libkcutil.sym.in
+@@ -29,6 +29,7 @@ global:
+ 	};
+ 	_ZG*;
+ 	_ZT*;
++	__emutls*;
+ local:
+ 	*;
+ };

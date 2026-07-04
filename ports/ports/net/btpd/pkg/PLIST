@@ -1,0 +1,8 @@
+@bin bin/btcli
+@bin bin/btinfo
+@bin bin/btpd
+@man man/man1/btcli.1
+@man man/man1/btinfo.1
+@man man/man1/btpd.1
+share/doc/btpd/
+share/doc/btpd/README

@@ -1,0 +1,13 @@
+--- src/util/md5.c.orig	Sat May 30 10:30:00 2015
++++ src/util/md5.c	Wed Nov 18 00:05:36 2015
+@@ -24,6 +24,10 @@
+ #endif
+ #if defined HAVE_ENDIAN_H
+ #   include <endian.h>
++#      if !defined(__BYTE_ORDER)
++#         define __BYTE_ORDER BYTE_ORDER
++#         define __LITTLE_ENDIAN LITTLE_ENDIAN
++#      endif
+ #endif
+ #include <string.h>
+ #include <stdlib.h>

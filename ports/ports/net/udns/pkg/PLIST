@@ -1,0 +1,8 @@
+@bin bin/dnsget
+@bin bin/rblcheck
+include/udns.h
+@static-lib lib/libudns.a
+@lib lib/libudns.so.${LIBudns_VERSION}
+@man man/man1/dnsget.1
+@man man/man1/rblcheck.1
+@man man/man3/udns.3

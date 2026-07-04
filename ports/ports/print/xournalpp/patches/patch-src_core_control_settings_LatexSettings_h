@@ -1,0 +1,12 @@
+Index: src/core/control/settings/LatexSettings.h
+--- src/core/control/settings/LatexSettings.h.orig
++++ src/core/control/settings/LatexSettings.h
+@@ -20,7 +20,7 @@ class LatexSettings {
+ public:
+     bool autoCheckDependencies{true};
+     std::string defaultText{"x^2"};
+-    fs::path globalTemplatePath{};
++    fs::path globalTemplatePath{ "${LOCALBASE}/share/xournalpp/resources/default_template.tex" };
+ #ifdef __APPLE__
+     std::string genCmd{"/Library/TeX/texbin/pdflatex -halt-on-error -interaction=nonstopmode '{}'"};
+ #else

@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/odoo"
+daemon_flags="-c ${SYSCONFDIR}/odoo/odoo.conf"
+daemon_user="_odoo"
+
+. /etc/rc.d/rc.subr
+
+pexp="${MODPY_BIN} ${daemon}${daemon_flags:+ ${daemon_flags}}"
+ 
+rc_bg=YES
+rc_reload=NO
+
+rc_cmd $1

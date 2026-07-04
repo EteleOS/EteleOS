@@ -1,0 +1,15 @@
+@bin bin/netperf
+@bin bin/netserver
+@info info/netperf.info
+@man man/man1/netperf.1
+@man man/man1/netserver.1
+share/examples/netperf/
+share/examples/netperf/arr_script
+share/examples/netperf/packet_byte_script
+share/examples/netperf/sctp_stream_script
+share/examples/netperf/snapshot_script
+share/examples/netperf/tcp_range_script
+share/examples/netperf/tcp_rr_script
+share/examples/netperf/tcp_stream_script
+share/examples/netperf/udp_rr_script
+share/examples/netperf/udp_stream_script

@@ -1,0 +1,20 @@
+bin/gci
+bin/gco
+@bin bin/gident
+@bin bin/gmerge
+@bin bin/grcs
+bin/grcsclean
+bin/grcsdiff
+bin/grcsmerge
+bin/grlog
+@info info/rcs.info
+@man man/man1/gci.1
+@man man/man1/gco.1
+@man man/man1/gident.1
+@man man/man1/gmerge.1
+@man man/man1/grcs.1
+@man man/man1/grcsclean.1
+@man man/man1/grcsdiff.1
+@man man/man1/grcsmerge.1
+@man man/man1/grlog.1
+@man man/man5/grcsfile.5

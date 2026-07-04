@@ -1,0 +1,5 @@
+@bin bin/cmatrix
+@man man/man6/cmatrix.6
+share/fonts/
+@fontdir share/fonts/misc/
+share/fonts/misc/mtx.pcf

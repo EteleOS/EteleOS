@@ -1,0 +1,4 @@
+${P5SITE}/MooseX/
+${P5SITE}/MooseX/Traits/
+${P5SITE}/MooseX/Traits/Pluggable.pm
+@man man/man3p/MooseX::Traits::Pluggable.3p

@@ -1,0 +1,12 @@
+Index: lib/util/fork_util.cpp
+--- lib/util/fork_util.cpp.orig
++++ lib/util/fork_util.cpp
+@@ -183,7 +183,7 @@ int invoke_debugger(const char *path,
+         int *in, int *out, const char *new_ui_tty)
+ {
+     pid_t pid;
+-    const char *const GDB = "gdb";
++    const char *const GDB = "egdb";
+     const char *const NW = "--nw";
+     const char *const EX = "-ex";
+     char **local_argv;

@@ -1,0 +1,4 @@
+${P5SITE}/PerlIO/
+${P5SITE}/PerlIO/via/
+${P5SITE}/PerlIO/via/Timeout.pm
+@man man/man3p/PerlIO::via::Timeout.3p

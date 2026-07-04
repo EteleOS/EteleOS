@@ -1,0 +1,2 @@
+@bin bin/http_ping
+@man man/man1/http_ping.1

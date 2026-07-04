@@ -1,0 +1,4 @@
+bin/csvheader
+@bin bin/csvquote
+share/doc/csvquote/
+share/doc/csvquote/README.md

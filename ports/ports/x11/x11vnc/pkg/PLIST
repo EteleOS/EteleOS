@@ -1,0 +1,8 @@
+@rcscript ${RCDIR}/x11vnc
+bin/Xdummy
+@bin bin/x11vnc
+@man man/man1/x11vnc.1
+share/applications/x11vnc.desktop
+share/doc/x11vnc/
+share/doc/x11vnc/README
+@tag update-desktop-database

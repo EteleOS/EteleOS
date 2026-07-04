@@ -1,0 +1,14 @@
+Correct pkg-config file for overlinking.
+
+Index: theora.pc.in
+--- theora.pc.in.orig
++++ theora.pc.in
+@@ -8,7 +8,7 @@ includedir=@includedir@
+ Name: theora
+ Description: Theora video codec
+ Version: @VERSION@
+-Requires: ogg >= @THEORA_LIBOGG_REQ_VERSION@
++Requires.private: ogg >= @THEORA_LIBOGG_REQ_VERSION@
+ Conflicts:
+ Libs: -L${libdir} -ltheora
+ Cflags: -I${includedir}

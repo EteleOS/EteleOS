@@ -1,0 +1,5 @@
+@bin bin/beav
+@man man/man1/beav.1
+@comment man/man1/beav.1.beforesubst
+share/doc/beav/
+share/doc/beav/beav.txt

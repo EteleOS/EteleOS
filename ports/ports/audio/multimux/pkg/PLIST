@@ -1,0 +1,4 @@
+@bin bin/multimux
+@man man/man1/multimux.1
+share/doc/multimux/
+share/doc/multimux/README

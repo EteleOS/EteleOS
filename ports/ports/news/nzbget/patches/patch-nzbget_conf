@@ -1,0 +1,30 @@
+Index: nzbget.conf
+--- nzbget.conf.orig
++++ nzbget.conf
+@@ -8,7 +8,7 @@
+ #
+ # On POSIX you can use "~" as alias for home directory (e.g. "~/downloads").
+ # On Windows use absolute paths (e.g. "C:\Downloads").
+-MainDir=~/downloads
++MainDir=${LOCALSTATEDIR}/nzbget
+ 
+ # Destination directory for downloaded files.
+ #
+@@ -304,7 +304,7 @@ Server1.Notes=
+ # NOTE: NZBGet also supports listening on Unix domain sockets instead of TCP/IP
+ # sockets. To activate this mode set option <ControlIP> to a local path
+ # (e. g. "ControlIP=/var/sock").
+-ControlIP=0.0.0.0
++ControlIP=127.0.0.1
+ 
+ # Port which NZBGet server and remote client use (1-65535).
+ #
+@@ -457,7 +457,7 @@ UpdateCheck=stable
+ # NOTE: If DaemonUsername is not "root" and doesn't exist the daemon will not start.
+ # NOTE: If the daemon is running as root (superuser) and DaemonUsername exists,
+ # nzbget will drop root privileges to the user specified by DaemonUsername.
+-DaemonUsername=root
++DaemonUsername=_nzbget
+ 
+ # Specify default umask, POSIX only (000-1000).
+ #

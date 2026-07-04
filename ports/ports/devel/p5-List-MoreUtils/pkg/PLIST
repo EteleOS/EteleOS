@@ -1,0 +1,8 @@
+${P5SITE}/List/
+${P5SITE}/List/MoreUtils/
+${P5SITE}/List/MoreUtils.pm
+${P5SITE}/List/MoreUtils/Contributing.pod
+${P5SITE}/List/MoreUtils/PP.pm
+@man man/man3p/List::MoreUtils.3p
+@man man/man3p/List::MoreUtils::Contributing.3p
+@man man/man3p/List::MoreUtils::PP.3p

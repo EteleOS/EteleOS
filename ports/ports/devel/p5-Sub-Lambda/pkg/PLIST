@@ -1,0 +1,8 @@
+${P5SITE}/Sub/
+${P5SITE}/Sub/Lambda/
+${P5SITE}/Sub/Lambda.pm
+${P5SITE}/Sub/Lambda/Filter.pm
+${P5SITE}/Sub/Lambda/Grammar.pm
+@man man/man3p/Sub::Lambda.3p
+@man man/man3p/Sub::Lambda::Filter.3p
+@man man/man3p/Sub::Lambda::Grammar.3p

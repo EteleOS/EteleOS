@@ -1,0 +1,18 @@
+include/compat_time.h
+include/doublefann.h
+include/fann.h
+include/fann_activation.h
+include/fann_cascade.h
+include/fann_cpp.h
+include/fann_data.h
+include/fann_error.h
+include/fann_internal.h
+include/fann_io.h
+include/fann_train.h
+include/fixedfann.h
+include/floatfann.h
+@lib lib/libdoublefann.so.${LIBdoublefann_VERSION}
+@lib lib/libfann.so.${LIBfann_VERSION}
+@lib lib/libfixedfann.so.${LIBfixedfann_VERSION}
+@lib lib/libfloatfann.so.${LIBfloatfann_VERSION}
+lib/pkgconfig/fann.pc

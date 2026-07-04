@@ -1,0 +1,16 @@
+--- Imakefile.orig
++++ Imakefile
+@@ -9,11 +9,10 @@ LOCAL_LIBRARIES = XkbClientLibs XawClientLibs $(XTESTL
+            SRCS = xscribble.c Scribble.c
+            OBJS = xscribble.o Scribble.o
+         HEADERS = ScribbleP.h Scribble.h
+-        DEFINES = XkbClientDefines
++        DEFINES = XkbClientDefines -Dunix=1
+        INCLUDES = -Ilirec -Irecman
+ 
+ MakeSubdirs($(SUBDIRS))
+ DependSubdirs($(SUBDIRS))
+ 
+-ComplexProgramTarget(xscribble)
+-
++ComplexProgramTargetNoMan(xscribble)

@@ -1,0 +1,2 @@
+@bin bin/docbook2mdoc
+@man man/man1/docbook2mdoc.1

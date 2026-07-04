@@ -1,0 +1,13 @@
+--- src/dird/bacula-dir.conf.in.orig	Tue Feb  7 14:07:45 2017
++++ src/dird/bacula-dir.conf.in	Wed Feb  8 12:15:33 2017
+@@ -185,8 +185,8 @@ Client {
+ #  You should change Name, Address, and Password before using
+ #
+ #Client {
+-#  Name = @basename@2-fd
+-#  Address = @hostname@2
++#  Name = client2-fd
++#  Address = client2.domain.tld
+ #  FDPort = @fd_port@
+ #  Catalog = MyCatalog
+ #  Password = "@fd_password@2"        # password for FileDaemon 2

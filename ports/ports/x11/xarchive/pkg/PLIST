@@ -1,0 +1,18 @@
+@bin bin/xarchive
+lib/xarchive/
+lib/xarchive/wrappers/
+lib/xarchive/wrappers/7za-wrap.sh
+lib/xarchive/wrappers/ace-wrap.sh
+lib/xarchive/wrappers/arj-wrap.sh
+lib/xarchive/wrappers/deb-wrap.sh
+lib/xarchive/wrappers/rar-wrap.sh
+lib/xarchive/wrappers/rpm-wrap.sh
+lib/xarchive/wrappers/tar-wrap.sh
+lib/xarchive/wrappers/zip-wrap.sh
+@man man/man1/xarchive.1
+share/applications/xarchive.desktop
+share/doc/xarchive/
+share/doc/xarchive/xarchive.1.txt
+share/pixmaps/
+share/pixmaps/xarchive.xpm
+@tag update-desktop-database

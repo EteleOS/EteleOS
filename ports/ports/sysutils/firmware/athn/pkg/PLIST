@@ -1,0 +1,9 @@
+@pkgpath sysutils/athn-firmware
+@ask-update athn-firmware-<1.1 Make sure you have a matching kernel
+firmware/athn-ar7010
+firmware/athn-ar7010-11
+firmware/athn-ar9271
+firmware/athn-license
+firmware/athn-open-ar7010
+firmware/athn-open-ar9271
+firmware/athn-open-license

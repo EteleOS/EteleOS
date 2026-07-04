@@ -1,0 +1,12 @@
+Index: Makefile.pre.in
+--- Makefile.pre.in.orig
++++ Makefile.pre.in
+@@ -1161,7 +1161,7 @@ libinstall:	build_all $(srcdir)/Lib/$(PLATDIR) $(srcdi
+ 		$(PYTHON_FOR_BUILD) -m lib2to3.pgen2.driver $(DESTDIR)$(LIBDEST)/lib2to3/PatternGrammar.txt
+ 
+ # Create the PLATDIR source directory, if one wasn't distributed..
+-$(srcdir)/Lib/$(PLATDIR):
++$(srcdir)/Lib/$(PLATDIR): pybuilddir.txt
+ 	mkdir $(srcdir)/Lib/$(PLATDIR)
+ 	cp $(srcdir)/Lib/plat-generic/regen $(srcdir)/Lib/$(PLATDIR)/regen
+ 	export PATH; PATH="`pwd`:$$PATH"; \

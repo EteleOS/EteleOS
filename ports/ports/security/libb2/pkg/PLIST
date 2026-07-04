@@ -1,0 +1,5 @@
+include/blake2.h
+lib/libb2.a
+lib/libb2.la
+@lib lib/libb2.so.${LIBb2_VERSION}
+lib/pkgconfig/libb2.pc

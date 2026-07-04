@@ -1,0 +1,16 @@
+As noted in the comment our struct statvfs doesn't have f_type so the checks
+performed are meaningless on OpenBSD.  They're comparisons against hardcoded
+magic values anyway.  While here, fix the | vs || mismatch.
+
+Index: ntfsprogs/ntfsclone.c
+--- ntfsprogs/ntfsclone.c.orig
++++ ntfsprogs/ntfsclone.c
+@@ -105,7 +105,7 @@
+ #undef HAVE_WINDOWS_H
+ #endif
+ 
+-#if defined(__sun) | defined(HAVE_WINDOWS_H)
++#if defined(__sun) || defined(HAVE_WINDOWS_H) || defined(__OpenBSD__)
+ #define NO_STATFS 1	/* statfs(2) and f_type are not universal */
+ #endif
+ 

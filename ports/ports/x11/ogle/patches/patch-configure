@@ -1,0 +1,66 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -11184,7 +11184,7 @@ fi
+ echo "$as_me:$LINENO: result: $ac_cv_lib_jpeg_main" >&5
+ echo "${ECHO_T}$ac_cv_lib_jpeg_main" >&6
+ if test $ac_cv_lib_jpeg_main = yes; then
+-   JPEG_LIBS="-L$jpeg_path/lib -R$jpeg_path/lib -ljpeg"
++   JPEG_LIBS="-L$jpeg_path/lib -ljpeg"
+     JPEG_CPPFLAGS=-I$jpeg_path/include
+ 
+ else
+@@ -11826,7 +11826,7 @@ fi
+ echo "$as_me:$LINENO: result: $ac_cv_lib_dvdread_DVDDiscID" >&5
+ echo "${ECHO_T}$ac_cv_lib_dvdread_DVDDiscID" >&6
+ if test $ac_cv_lib_dvdread_DVDDiscID = yes; then
+-   DVDREAD_LIBS="-L$dvd_path/lib -R$dvd_path/lib -ldvdread"
++   DVDREAD_LIBS="-L$dvd_path/lib -ldvdread"
+     DVDREAD_CPPFLAGS=-I$dvd_path/include
+ 
+ else
+@@ -12346,7 +12346,7 @@ echo "$as_me:$LINENO: result: $ac_cv_lib_a52_a52_free"
+ echo "${ECHO_T}$ac_cv_lib_a52_a52_free" >&6
+ if test $ac_cv_lib_a52_a52_free = yes; then
+ 
+-    A52_LIBS="-L$a52_path/lib -R$a52_path/lib -la52"
++    A52_LIBS="-L$a52_path/lib -la52"
+     A52_CPPFLAGS=-I$a52_path/include
+ 
+ else
+@@ -12710,7 +12710,7 @@ echo "$as_me:$LINENO: result: $ac_cv_lib_mad_mad_frame
+ echo "${ECHO_T}$ac_cv_lib_mad_mad_frame_decode" >&6
+ if test $ac_cv_lib_mad_mad_frame_decode = yes; then
+ 
+-    MAD_LIBS="-L$mad_path/lib -R$mad_path/lib -lmad"
++    MAD_LIBS="-L$mad_path/lib -lmad"
+     MAD_CPPFLAGS=-I$mad_path/include
+ 
+ else
+@@ -13022,7 +13022,7 @@ _ACEOF
+ 
+ 	BUILD_AUDIO_OBSD=1
+ 	DEFAULT_AUDIO_DRIVER="obsd"
+-	DEFAULT_AUDIO_DEVICE="/dev/audio"
++	DEFAULT_AUDIO_DEVICE="ao_obsd_default"
+     ;;
+     esac
+ fi
+@@ -13824,7 +13824,7 @@ case "$host_cpu" in
+ i?86)
+ 	if test "x$GCC" = xyes; then
+ 	  O_CFLAGS="$O_CFLAGS -fomit-frame-pointer -funroll-loops"
+-	  XCFLAGS="$CFLAGS -march=i586 -mcpu=pentiumpro"
++	  XCFLAGS="$CFLAGS -march=i586"
+ 	fi
+ 	USE_MMX=yes
+ 	;;
+@@ -13842,7 +13842,7 @@ _ACEOF
+ powerpc|ppc)
+ 	if test "x$GCC" = xyes; then
+ 	  O_CFLAGS="$O_CFLAGS -fomit-frame-pointer -funroll-loops"
+-	  XCFLAGS="-Wa,-m7400"
++	  XCFLAGS="-maltivec -mabi=altivec"
+ 	  USE_ALTIVEC=yes
+ 	fi
+         ;;

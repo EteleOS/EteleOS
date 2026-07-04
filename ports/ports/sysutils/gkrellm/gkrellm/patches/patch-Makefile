@@ -1,0 +1,23 @@
+--- Makefile.orig	Wed Feb  1 23:21:42 2017
++++ Makefile	Wed Feb  1 23:21:47 2017
+@@ -92,16 +92,12 @@ BINMODE = 755
+ 
+ VERSION = 2.3.10
+ 
+-INSTALLROOT ?= $(DESTDIR)$(PREFIX)
++INSTALLROOT ?= ${PREFIX}
+ 
+-ifeq ($(INSTALLROOT),)
+-	INSTALLROOT = /usr/local
+-endif
+-
+ INSTALLDIR = $(INSTALLROOT)/bin
+-SINSTALLDIR ?= $(INSTALLDIR)
+-MANDIR ?= $(INSTALLROOT)/share/man/man1
+-SMANDIR ?= $(MANDIR)
++SINSTALLDIR ?= $(INSTALLROOT)/sbin
++MANDIR ?= $(INSTALLROOT)/man/man1
++SMANDIR ?= $(INSTALLROOT)/man/man1
+ MANMODE = 644
+ MANDIRMODE = 755
+ INCLUDEDIR = $(INSTALLROOT)/include

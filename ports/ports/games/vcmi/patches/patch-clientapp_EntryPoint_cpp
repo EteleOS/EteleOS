@@ -1,0 +1,12 @@
+Index: clientapp/EntryPoint.cpp
+--- clientapp/EntryPoint.cpp.orig
++++ clientapp/EntryPoint.cpp
+@@ -447,7 +447,7 @@ static void mainLoop()
+ 	// destruction of locked mutexes (fails an assertion), even in third-party libraries (as well as native libs on Android)
+ 	// Android - std::quick_exit is available only starting from API level 21
+ 	// Mingw, macOS and iOS - std::quick_exit is unavailable (at least in current version of CI)
+-#if (defined(__ANDROID_API__) && __ANDROID_API__ < 21) || (defined(__MINGW32__)) || defined(VCMI_APPLE)
++#if (defined(__ANDROID_API__) && __ANDROID_API__ < 21) || (defined(__MINGW32__)) || defined(VCMI_APPLE) || defined(__OpenBSD__)
+ 	::exit(error_code);
+ #else
+ 	std::quick_exit(error_code);

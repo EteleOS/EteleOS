@@ -1,0 +1,12 @@
+Index: scripts/translation-update.sh
+--- scripts/translation-update.sh.orig
++++ scripts/translation-update.sh
+@@ -101,7 +101,7 @@ updatemo()
+ 
+     # clean the mess
+     for LANGCODE in `cat locale/LINGUAS | grep -v "#"`; do
+-      unlink ./locale/$LANGCODE/LC_MESSAGES/$LANGCODE.mo
++      rm -f ./locale/$LANGCODE/LC_MESSAGES/$LANGCODE.mo
+     done
+   else
+     if [ x"$(uname -s)" = x"Linux" ]; then

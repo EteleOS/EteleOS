@@ -1,0 +1,12 @@
+Index: src/coccigrep.py
+--- src/coccigrep.py.orig
++++ src/coccigrep.py
+@@ -83,7 +83,7 @@ class CocciRunException(CocciException):
+ _CONF_FILES = tuple((path.join(dirname, name_format % 'coccigrep')
+     for dirname, name_format in
+     ((path.dirname(__file__), '%s.cfg'),
+-    ('/etc', '%s'),
++    ('${SYSCONFDIR}', '%s'),
+     (path.expanduser('~'), '.%s'),
+     (getcwd(), '.%s'))))
+ 

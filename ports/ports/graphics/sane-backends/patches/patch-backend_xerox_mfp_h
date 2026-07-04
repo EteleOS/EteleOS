@@ -1,0 +1,15 @@
+/usr/include/sys/param.h:190:1: warning: this is the location of the previous definition
+
+Index: backend/xerox_mfp.h
+--- backend/xerox_mfp.h.orig
++++ backend/xerox_mfp.h
+@@ -21,7 +21,9 @@
+ #define UNUSED(x) x
+ #endif
+ 
++#ifndef MIN
+ #define MIN(a,b) (((a) < (b)) ? (a) : (b))
++#endif
+ 
+ #define UNCONST(ptr) ((void *)(long)(ptr))
+ 

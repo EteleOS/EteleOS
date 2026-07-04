@@ -1,0 +1,14 @@
+Index: src/gui/midi.cpp
+--- src/gui/midi.cpp.orig
++++ src/gui/midi.cpp
+@@ -116,6 +116,10 @@ static struct {
+ 
+ #include "midi_win32.h"
+ 
++#elif defined (HAVE_SNDIO)
++
++#include "midi_sndio.h"
++
+ #else
+ 
+ #include "midi_oss.h"

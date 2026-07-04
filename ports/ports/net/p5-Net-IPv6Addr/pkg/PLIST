@@ -1,0 +1,4 @@
+${P5SITE}/Net/
+${P5SITE}/Net/IPv6Addr.pm
+${P5SITE}/Net/IPv6Addr.pod
+@man man/man3p/Net::IPv6Addr.3p

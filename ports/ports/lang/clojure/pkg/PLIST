@@ -1,0 +1,12 @@
+bin/clj
+bin/clojure
+clojure/
+clojure/clj_completions
+clojure/deps.edn
+clojure/example-deps.edn
+clojure/libexec/
+clojure/libexec/clojure-tools-${V}.jar
+clojure/libexec/exec.jar
+clojure/tools.edn
+@man man/man1/clj.1
+@man man/man1/clojure.1

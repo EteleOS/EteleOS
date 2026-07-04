@@ -1,0 +1,13 @@
+Missing include.
+
+Index: scanner.c
+--- scanner.c.orig
++++ scanner.c
+@@ -25,6 +25,7 @@ extern double strtod(const char *nptr, char **endptr);
+ #include "main.h"
+ #include "misc.h"
+ #include "scanner.h"
++#include "utf8.h"
+ /*}}}*/
+ 
+ /* identcode  -- return number of identifier */ /*{{{*/

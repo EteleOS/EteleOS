@@ -1,0 +1,10 @@
+--- Makefile.libretro.orig	Tue Aug 30 11:48:52 2016
++++ Makefile.libretro	Tue Aug 30 11:48:49 2016
+@@ -176,7 +176,6 @@ ifeq ($(platform),win)
+ 	MAIN_LDLIBS += -lws2_32
+ else ifneq ($(platform),qnx)
+ 	LDLIBS += -lpthread
+-	MAIN_LDLIBS += -ldl
+ endif
+ MAIN_LDFLAGS += -shared
+ MAIN_LDLIBS += -lm -lz

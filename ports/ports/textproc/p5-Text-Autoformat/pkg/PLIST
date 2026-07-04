@@ -1,0 +1,8 @@
+${P5SITE}/Text/Autoformat/
+${P5SITE}/Text/Autoformat.pm
+${P5SITE}/Text/Autoformat/Hang.pm
+${P5SITE}/Text/Autoformat/NullHang.pm
+@man man/man3p/Text::Autoformat.3p
+share/examples/p5-Text-Autoformat/
+share/examples/p5-Text-Autoformat/dot.emacs
+share/examples/p5-Text-Autoformat/dot.vimrc

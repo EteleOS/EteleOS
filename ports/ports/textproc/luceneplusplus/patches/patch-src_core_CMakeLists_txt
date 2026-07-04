@@ -1,0 +1,15 @@
+disable cotire as it's deprecated and breaks the build with newer libc++
+
+Index: src/core/CMakeLists.txt
+--- src/core/CMakeLists.txt.orig
++++ src/core/CMakeLists.txt
+@@ -79,9 +79,6 @@ set_target_properties(lucene++
+     VERSION ${lucene++_VERSION}
+     SOVERSION ${lucene++_SOVERSION})
+ 
+-cotire(lucene++)
+-
+-
+ install(TARGETS lucene++
+   DESTINATION "${LIB_DESTINATION}"
+   COMPONENT runtime)

@@ -1,0 +1,4 @@
+${P5SITE}/Class/
+${P5SITE}/Class/Factory/
+${P5SITE}/Class/Factory/Util.pm
+@man man/man3p/Class::Factory::Util.3p

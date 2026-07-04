@@ -1,0 +1,41 @@
+@conflict cmus-<2.7.1
+@pkgpath audio/cmus,-flac
+@pkgpath audio/cmus,-wavpack
+@bin bin/cmus
+@bin bin/cmus-remote
+lib/cmus/
+lib/cmus/ip/
+@so lib/cmus/ip/cdio.so
+@so lib/cmus/ip/cue.so
+@so lib/cmus/ip/flac.so
+@so lib/cmus/ip/mad.so
+@so lib/cmus/ip/opus.so
+@so lib/cmus/ip/vorbis.so
+@so lib/cmus/ip/wav.so
+@so lib/cmus/ip/wavpack.so
+lib/cmus/op/
+@so lib/cmus/op/sndio.so
+@man man/man1/cmus-remote.1
+@man man/man1/cmus.1
+@man man/man7/cmus-tutorial.7
+share/cmus/
+share/cmus/amazon.theme
+share/cmus/cyan.theme
+share/cmus/default.theme
+share/cmus/dracula.theme
+share/cmus/gray-88.theme
+share/cmus/green-mono-88.theme
+share/cmus/green.theme
+share/cmus/gruvbox-alt.theme
+share/cmus/gruvbox-warm.theme
+share/cmus/gruvbox.theme
+share/cmus/jellybeans.theme
+share/cmus/night.theme
+share/cmus/rc
+share/cmus/solarized-dark.theme
+share/cmus/solarized-light.theme
+share/cmus/spotify.theme
+share/cmus/xterm-white.theme
+share/cmus/zenburn.theme
+share/examples/cmus/
+share/examples/cmus/cmus-status-display

@@ -1,0 +1,4 @@
+${P5SITE}/Class/
+${P5SITE}/Class/Std/
+${P5SITE}/Class/Std/Utils.pm
+@man man/man3p/Class::Std::Utils.3p

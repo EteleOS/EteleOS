@@ -1,0 +1,16 @@
+OpenBSD doesn't have x-terminal-emulator.
+
+Index: driver/XScreenSaver.ad.in
+--- driver/XScreenSaver.ad.in.orig
++++ driver/XScreenSaver.ad.in
+@@ -80,8 +80,8 @@
+ !
+ @GNOME24@*loadURL: @WITH_BROWSER@ '%s'
+ @GNOME24@*manualCommand: yelp man:%s || \
+-@GNOME24@			x-terminal-emulator -t '%s manual' \
+-@GNOME24@			  -e /bin/sh -c "man %s; read foo"
++@GNOME24@			xterm -sb -fg black -bg gray75 -T '%s manual' \
++@GNOME24@			  -e /bin/sh -c 'man "%s" ; read foo'
+ 
+ !
+ !   Gnome 2.2:

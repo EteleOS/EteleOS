@@ -1,0 +1,11 @@
+--- test/bug-mmap.c.orig	Sat May 30 10:30:00 2015
++++ test/bug-mmap.c	Wed Nov 18 16:39:20 2015
+@@ -13,8 +13,6 @@
+ 
+ #include "config.h"
+ 
+-#define _BSD_SOURCE 1 /* for MAP_POPULATE */
+-
+ #if HAVE_SYS_MMAN_H
+ #   include <sys/mman.h>
+ #endif

@@ -1,0 +1,41 @@
+--- src/netd.c.orig	Wed Feb  8 10:02:15 2012
++++ src/netd.c	Fri Sep  7 10:00:52 2012
+@@ -77,7 +77,10 @@
+ #include <sys/wait.h>
+ #include <time.h>
+ #include <assert.h>
++#include <pwd.h>
+ 
++#define ZIPROXY_USER "_ziproxy"
++
+ #include "cfgfile.h"
+ #include "log.h"
+ #include "ziproxy.h"
+@@ -221,6 +224,27 @@ int main(int argc, char **argv, char *env[])
+ 	i = ReadCfgFile(cfg_file);
+ 	if (i != 0)
+ 		return (5);
++
++	if (geteuid() == 0) {
++		/* We are root; drop privileges */
++		struct passwd *pw;
++
++		if ((pw = getpwnam(ZIPROXY_USER)) == NULL) {
++			fprintf(stderr, "No user %s.\n", ZIPROXY_USER);
++			exit(1);
++		}
++
++		if (setgroups(1, &pw->pw_gid) ||
++				setegid(pw->pw_gid) ||
++				setgid(pw->pw_gid) ||
++				seteuid(pw->pw_uid) ||
++				setuid(pw->pw_uid)) {
++			fprintf(stderr, "can not drop privileges to '%s'\n",
++					ZIPROXY_USER);
++			exit(1);
++		}
++		endpwent();
++	}
+ 
+ 	/* is that a 'stop daemon' request? */
+ 	if (command_options.stop_daemon != 0) {

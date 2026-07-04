@@ -1,0 +1,8 @@
+@conflict libusb-*
+@pkgpath devel/libusb
+bin/libusb-config
+include/usb.h
+lib/libusb.a
+lib/libusb.la
+@lib lib/libusb.so.${LIBusb_VERSION}
+lib/pkgconfig/libusb.pc

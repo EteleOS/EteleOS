@@ -1,0 +1,2 @@
+@bin bin/diffstat
+@man man/man1/diffstat.1

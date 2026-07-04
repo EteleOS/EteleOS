@@ -1,0 +1,14 @@
+ports-gcc: fix missing header
+
+Index: src/lib/WPXHeader.cpp
+--- src/lib/WPXHeader.cpp.orig
++++ src/lib/WPXHeader.cpp
+@@ -23,6 +23,8 @@
+  * Corel Corporation or Corel Corporation Limited."
+  */
+ 
++#include <string.h>
++
+ #include "WPXHeader.h"
+ #include "WP3Header.h"
+ #include "WP5Header.h"

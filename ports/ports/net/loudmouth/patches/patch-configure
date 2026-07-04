@@ -1,0 +1,18 @@
+--- configure.orig	Wed Oct 29 21:25:57 2008
++++ configure	Tue Nov 18 12:33:20 2008
+@@ -21423,6 +21423,7 @@ cat >>conftest.$ac_ext <<_ACEOF
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #include <check.h>
+ 
+@@ -21532,6 +21533,7 @@ cat >>conftest.$ac_ext <<_ACEOF
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #include <check.h>
+ 

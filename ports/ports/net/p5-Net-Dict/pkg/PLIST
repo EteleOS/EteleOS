@@ -1,0 +1,9 @@
+@conflict dictd-client-*
+bin/dict
+@comment bin/tkdict
+${P5SITE}/Net/
+${P5SITE}/Net/Dict.pm
+${P5SITE}/Net/Dict.pod
+@man man/man1/dict.1
+@man man/man1/tkdict.1
+@man man/man3p/Net::Dict.3p

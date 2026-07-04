@@ -1,0 +1,6 @@
+${P5SITE}/IO/
+${P5SITE}/IO/LockedFile/
+${P5SITE}/IO/LockedFile.pm
+${P5SITE}/IO/LockedFile/Flock.pm
+@man man/man3p/IO::LockedFile.3p
+@man man/man3p/IO::LockedFile::Flock.3p

@@ -1,0 +1,26 @@
+COMMENT=	retrieve system information and utilisation
+
+MODPY_DISTV=	7.2.2
+DISTNAME=	psutil-${MODPY_DISTV}
+PKGNAME=	py-psutil-${MODPY_DISTV}
+CATEGORIES=	sysutils
+
+HOMEPAGE=	https://github.com/giampaolo/psutil
+
+# BSD
+PERMIT_PACKAGE=	Yes
+
+WANTLIB += kvm
+
+MODULES=	lang/python
+MODPY_PYBUILD=	setuptools
+MODPY_PI=	Yes
+
+MODPY_TEST_LINK_SO= Yes
+# needs https://github.com/giampaolo/psleak
+MODPY_PYTEST_ARGS= --ignore tests/test_memleaks.py
+TEST_DEPENDS=	devel/py-test-instafail \
+		devel/py-test-subtests \
+		devel/py-test-xdist
+
+.include <bsd.port.mk>

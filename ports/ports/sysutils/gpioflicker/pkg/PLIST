@@ -1,0 +1,3 @@
+@man man/man8/gpioflicker.8
+sbin/gpioflicker
+@rcscript ${RCDIR}/gpioflicker

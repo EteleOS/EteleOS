@@ -1,0 +1,10 @@
+share/fonts/
+@fontdir share/fonts/league-fonts/
+share/fonts/league-fonts/Orbitron Black.otf
+share/fonts/league-fonts/Orbitron Black.ttf
+share/fonts/league-fonts/Orbitron Bold.otf
+share/fonts/league-fonts/Orbitron Bold.ttf
+share/fonts/league-fonts/Orbitron Light.otf
+share/fonts/league-fonts/Orbitron Light.ttf
+share/fonts/league-fonts/Orbitron Medium.otf
+share/fonts/league-fonts/Orbitron Medium.ttf

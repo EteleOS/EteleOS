@@ -1,0 +1,24 @@
+bin/snmpkey
+${P5SITE}/Net/
+${P5SITE}/Net/SNMP/
+${P5SITE}/Net/SNMP.pm
+${P5SITE}/Net/SNMP/Dispatcher.pm
+${P5SITE}/Net/SNMP/Message.pm
+${P5SITE}/Net/SNMP/MessageProcessing.pm
+${P5SITE}/Net/SNMP/PDU.pm
+${P5SITE}/Net/SNMP/Security/
+${P5SITE}/Net/SNMP/Security.pm
+${P5SITE}/Net/SNMP/Security/Community.pm
+${P5SITE}/Net/SNMP/Security/USM.pm
+${P5SITE}/Net/SNMP/Transport/
+${P5SITE}/Net/SNMP/Transport.pm
+${P5SITE}/Net/SNMP/Transport/IPv4/
+${P5SITE}/Net/SNMP/Transport/IPv4.pm
+${P5SITE}/Net/SNMP/Transport/IPv4/TCP.pm
+${P5SITE}/Net/SNMP/Transport/IPv4/UDP.pm
+${P5SITE}/Net/SNMP/Transport/IPv6/
+${P5SITE}/Net/SNMP/Transport/IPv6.pm
+${P5SITE}/Net/SNMP/Transport/IPv6/TCP.pm
+${P5SITE}/Net/SNMP/Transport/IPv6/UDP.pm
+@man man/man1/snmpkey.1
+@man man/man3p/Net::SNMP.3p

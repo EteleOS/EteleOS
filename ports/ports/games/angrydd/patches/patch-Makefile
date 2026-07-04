@@ -1,0 +1,26 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -29,7 +29,7 @@ all: check
+ 
+ check:
+ 	@/bin/echo -n "Checking for Python... "
+-	@which python || ( echo "Not found." && /bin/false )
++	@which python3 || ( echo "Not found." && /bin/false )
+ 	@./check.py
+ 
+ install:
+@@ -38,10 +38,9 @@ install:
+ 	install -m 644 $(MODULES) angrydd.png $(DESTDIR)$(PREFIX)/$(TO)
+ 	cp -R music sounds images $(DESTDIR)$(PREFIX)/$(TO)
+ 	cp -R characters/*.dwarf* characters/default $(DESTDIR)$(PREFIX)/$(TO)/characters
+-	install -d $(DESTDIR)$(PREFIX)/games
+-	ln -sf ../$(TO)/angrydd.py $(DESTDIR)$(PREFIX)/games/angrydd
+-	mkdir -p $(DESTDIR)$(PREFIX)/share/man/man6/
+-	install -m 644 angrydd.6 $(DESTDIR)$(PREFIX)/share/man/man6/angrydd.6
++	ln -sf ../$(TO)/angrydd.py $(DESTDIR)$(PREFIX)/bin/angrydd
++	mkdir -p $(DESTDIR)$(PREFIX)/man/man6/
++	install -m 644 angrydd.6 $(DESTDIR)$(PREFIX)/man/man6/angrydd.6
+ 
+ clean:
+ 	rm -f *.pyc

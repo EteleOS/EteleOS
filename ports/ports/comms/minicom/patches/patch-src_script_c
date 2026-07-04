@@ -1,0 +1,19 @@
+Index: src/script.c
+--- src/script.c.orig
++++ src/script.c
+@@ -1089,11 +1089,14 @@ void do_args(int argc, char **argv)
+ int main(int argc, char **argv)
+ {
+   char *s;
++  sigset_t set;
+ #if 0 /* Shouldn't need this.. */
+   signal(SIGHUP, SIG_IGN);
+ #endif
+   /* On some Linux systems SIGALRM is masked by default. Unmask it */  
+-  sigrelse(SIGALRM);  
++  if (sigemptyset(&set) != -1 &&
++      sigaddset(&set, SIGALRM) != -1)
++    sigprocmask(SIG_UNBLOCK, &set, NULL);
+ 
+   /* initialize locale support */
+   setlocale(LC_ALL, "");

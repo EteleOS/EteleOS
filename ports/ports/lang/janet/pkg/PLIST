@@ -1,0 +1,9 @@
+@bin bin/janet
+include/janet/
+include/janet.h
+include/janet/janet.h
+lib/janet/
+@static-lib lib/libjanet.a
+@lib lib/libjanet.so.${LIBjanet_VERSION}
+lib/pkgconfig/janet.pc
+@man man/man1/janet.1

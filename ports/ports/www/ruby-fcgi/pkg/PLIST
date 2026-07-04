@@ -1,0 +1,14 @@
+${GEM_LIB}/cache/${DISTNAME}.gem
+${GEM_LIB}/gems/${DISTNAME}/
+${GEM_LIB}/gems/${DISTNAME}/LICENSE
+${GEM_LIB}/gems/${DISTNAME}/README.rdoc
+${GEM_LIB}/gems/${DISTNAME}/README.signals
+${GEM_LIB}/gems/${DISTNAME}/VERSION
+${GEM_LIB}/gems/${DISTNAME}/fcgi.gemspec
+${GEM_LIB}/gems/${DISTNAME}/lib/
+${GEM_LIB}/gems/${DISTNAME}/lib/fcgi.rb
+@so ${GEM_LIB}/gems/${DISTNAME}/lib/fcgi.so
+${GEM_LIB}/gems/${DISTNAME}/test/
+${GEM_LIB}/gems/${DISTNAME}/test/helper.rb
+${GEM_LIB}/gems/${DISTNAME}/test/test_fcgi.rb
+${GEM_LIB}/specifications/${DISTNAME}.gemspec

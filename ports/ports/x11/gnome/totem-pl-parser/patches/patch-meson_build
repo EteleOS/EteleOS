@@ -1,0 +1,14 @@
+Drop flags that break the build with base gcc.
+
+Index: meson.build
+--- meson.build.orig
++++ meson.build
+@@ -106,8 +106,6 @@ elif cc.get_id() == 'gcc' or cc.get_id() == 'clang'
+     '-Wno-uninitialized',
+     '-Wno-shadow',
+     '-Wno-int-conversion',
+-    '-Wno-discarded-qualifiers',
+-    '-Werror=redundant-decls',
+     '-Werror=implicit',
+     '-Werror=nonnull',
+     '-Werror=init-self',

@@ -1,0 +1,14 @@
+--- Makefile.orig	Sat Mar 21 15:44:26 2009
++++ Makefile	Sun Apr  5 20:54:17 2009
+@@ -23,9 +23,9 @@ CGIBINS=$(wildcard cgi-bin/*.cgi) contrib/sudoku.pl
+ MANPAGE=$(PROGNAME).1
+ DOCS=$(wildcard *.html) COPYING README INSTALL cgi-bin/README_CGI
+ 
+-CC=gcc
++#CC=gcc
+ LDFLAGS= -lm -lz -lpthread
+-CFLAGS=-g -I. -Wall
++CFLAGS+= -I. -Wall
+ 
+ all: $(PROGNAME)
+ 

@@ -1,0 +1,12 @@
+include/OffiX/
+include/OffiX/DragAndDrop.h
+include/OffiX/DragAndDropTypes.h
+lib/libDnd++.a
+@lib lib/libDnd++.so.${LIBDnd++_VERSION}
+lib/libDnd.a
+@lib lib/libDnd.so.${LIBDnd_VERSION}
+share/doc/libdnd/
+share/doc/libdnd/DND.dvi
+share/doc/libdnd/DNDa4.ps
+share/doc/libdnd/DNDletter.ps
+share/doc/libdnd/README

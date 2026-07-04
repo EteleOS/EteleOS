@@ -1,0 +1,36 @@
+@conflict logcheck-1.1.1
+@conflict logtail-*
+@extraunexec rm -rf /var/cache/logsentry/*
+@bin bin/logtail
+share/doc/logsentry/
+share/doc/logsentry/CREDITS
+share/doc/logsentry/INSTALL
+share/doc/logsentry/README
+share/doc/logsentry/README.how.to.interpret
+share/doc/logsentry/README.keywords
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/logsentry/
+@mode 600
+@sample ${SYSCONFDIR}/logsentry/
+@mode
+share/examples/logsentry/logsentry.hacking
+@mode 600
+@sample ${SYSCONFDIR}/logsentry/logsentry.hacking
+@mode
+share/examples/logsentry/logsentry.ignore
+@mode 600
+@sample ${SYSCONFDIR}/logsentry/logsentry.ignore
+@mode
+share/examples/logsentry/logsentry.sh
+@mode 700
+@sample ${SYSCONFDIR}/logsentry/logsentry.sh
+@mode
+share/examples/logsentry/logsentry.violations
+@mode 600
+@sample ${SYSCONFDIR}/logsentry/logsentry.violations
+@mode
+share/examples/logsentry/logsentry.violations.ignore
+@mode 600
+@sample ${SYSCONFDIR}/logsentry/logsentry.violations.ignore
+@mode 700
+@sample /var/cache/logsentry/

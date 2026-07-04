@@ -1,0 +1,12 @@
+Index: ode/demo/demo_jointPR.cpp
+--- ode/demo/demo_jointPR.cpp.orig
++++ ode/demo/demo_jointPR.cpp
+@@ -329,7 +329,7 @@ int main (int argc, char **argv)
+             {
+                 int j = i+1;
+                 if ( j >= argc      ||  // Check if we have enough arguments
+-                        argv[j][0] == '\0' ||  // We should have a path here
++                        argv[j][0] == 'NULL' ||  // We should have a path here
+                         argv[j][0] == '-' ) // We should have a path not a command line
+                     Help(argv);
+                 else

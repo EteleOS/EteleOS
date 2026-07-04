@@ -1,0 +1,9 @@
+Index: test/testCampaignAll.cmake
+--- test/testCampaignAll.cmake.orig
++++ test/testCampaignAll.cmake
+@@ -1,4 +1,4 @@
+-#! /bin/bash
++#!/bin/sh
+ # This script check if we have the tests patterns and download them if needed
+ # then run all available tests
+ 

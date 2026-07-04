@@ -1,0 +1,57 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -13093,7 +13093,7 @@ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-ldl  $LIBS"
++LIBS="$LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -13155,7 +13155,7 @@ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-ldld  $LIBS"
++LIBS="$LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -13199,7 +13199,7 @@ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-ldl  $LIBS"
++LIBS="$LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -13277,7 +13277,7 @@ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-ldld  $LIBS"
++LIBS="$LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -20179,7 +20179,7 @@ fi
+ 
+ if test "$CONFIG_EXCOMPILER" = "yes"; then
+ 			found_dlopen_lib="no"
+-	DL_LIBS="-ldl"
++	DL_LIBS=""
+ 	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for dlopen in -ldl" >&5
+ printf %s "checking for dlopen in -ldl... " >&6; }
+ if test ${ac_cv_lib_dl_dlopen+y}
+@@ -20187,7 +20187,7 @@ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-ldl  $LIBS"
++LIBS="$LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 

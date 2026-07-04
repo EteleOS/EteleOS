@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/PerlIO/
+${P5ARCH}/PerlIO/eol.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/PerlIO/
+${P5ARCH}/auto/PerlIO/eol/
+@so ${P5ARCH}/auto/PerlIO/eol/eol.so
+@man man/man3p/PerlIO::eol.3p

@@ -1,0 +1,71 @@
+@conflict cups-<1.6.0
+@conflict ghostscript-<9.06p3
+@conflict foomatic-filters-*
+@pkgpath print/foomatic-filters
+@pkgpath print/cups-filters,ldap
+bin/driverless
+bin/driverless-fax
+bin/foomatic-rip
+@bin libexec/cups/backend/beh
+libexec/cups/backend/driverless
+libexec/cups/backend/driverless-fax
+@bin libexec/cups/backend/parallel
+@bin libexec/cups/backend/serial
+@bin libexec/cups/driver/driverless
+libexec/cups/driver/driverless-fax
+@bin libexec/cups/filter/bannertopdf
+@bin libexec/cups/filter/commandtoescpx
+@bin libexec/cups/filter/commandtopclx
+@bin libexec/cups/filter/foomatic-rip
+@bin libexec/cups/filter/gstopdf
+@bin libexec/cups/filter/gstopxl
+@bin libexec/cups/filter/gstoraster
+@bin libexec/cups/filter/imagetopdf
+@bin libexec/cups/filter/imagetops
+@bin libexec/cups/filter/imagetoraster
+@bin libexec/cups/filter/pclmtoraster
+@bin libexec/cups/filter/pdftopdf
+@bin libexec/cups/filter/pdftops
+@bin libexec/cups/filter/pdftoraster
+libexec/cups/filter/pstopxl
+libexec/cups/filter/pstoraster
+@bin libexec/cups/filter/pwgtopclm
+@bin libexec/cups/filter/pwgtopdf
+@bin libexec/cups/filter/pwgtoraster
+@bin libexec/cups/filter/rastertoescpx
+@bin libexec/cups/filter/rastertopclx
+@bin libexec/cups/filter/rastertops
+@bin libexec/cups/filter/texttopdf
+libexec/cups/filter/texttops
+@bin libexec/cups/filter/texttotext
+@bin libexec/cups/filter/universal
+@man man/man1/driverless.1
+@man man/man1/foomatic-rip.1
+share/cups/drv/cupsfilters.drv
+share/cups/mime/cupsfilters-universal-postscript.convs
+share/cups/mime/cupsfilters-universal.convs
+share/cups/mime/cupsfilters.convs
+share/cups/mime/cupsfilters.types
+share/doc/cups-filters/
+share/doc/cups-filters/ABOUT-NLS
+share/doc/cups-filters/AUTHORS
+share/doc/cups-filters/CHANGES-1.x.md
+share/doc/cups-filters/CHANGES.md
+share/doc/cups-filters/CONTRIBUTING.md
+share/doc/cups-filters/COPYING
+share/doc/cups-filters/DEVELOPING.md
+share/doc/cups-filters/INSTALL
+share/doc/cups-filters/LICENSE
+share/doc/cups-filters/NOTICE
+share/doc/cups-filters/README.md
+share/doc/pkg-readmes/${PKGSTEM}
+share/ppd/
+share/ppd/cupsfilters/
+share/ppd/cupsfilters/Fuji_Xerox-DocuPrint_CM305_df-PDF.ppd
+share/ppd/cupsfilters/Generic-PDF_Printer-PDF.ppd
+share/ppd/cupsfilters/HP-Color_LaserJet_CM3530_MFP-PDF.ppd
+share/ppd/cupsfilters/Ricoh-PDF_Printer-PDF.ppd
+share/ppd/cupsfilters/pxlcolor.ppd
+share/ppd/cupsfilters/pxlmono.ppd
+share/ppdc/escp.h
+share/ppdc/pcl.h

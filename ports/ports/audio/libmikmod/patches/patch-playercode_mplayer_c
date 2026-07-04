@@ -1,0 +1,15 @@
+Index: playercode/mplayer.c
+--- playercode/mplayer.c.orig
++++ playercode/mplayer.c
+@@ -380,9 +380,9 @@ static SWORD StartEnvelope(ENVPR *t,UBYTE flg,UBYTE pt
+ 	}
+ 
+ 	/* Fit in the envelope, still */
+-	if (t->a >= t->pts)
++	if (t->a >= t->pts && t->pts != 0)
+ 		t->a = t->pts - 1;
+-	if (t->b >= t->pts)
++	if (t->b >= t->pts && t->pts != 0)
+ 		t->b = t->pts-1;
+ 
+ 	return t->env[t->a].val;

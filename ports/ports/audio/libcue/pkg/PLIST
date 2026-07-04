@@ -1,0 +1,5 @@
+include/libcue/
+include/libcue.h
+include/libcue/libcue.h
+@lib lib/libcue.so.${LIBcue_VERSION}
+lib/pkgconfig/libcue.pc

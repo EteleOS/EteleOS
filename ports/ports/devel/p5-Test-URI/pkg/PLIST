@@ -1,0 +1,3 @@
+${P5SITE}/Test/
+${P5SITE}/Test/URI.pm
+@man man/man3p/Test::URI.3p

@@ -1,0 +1,12 @@
+Index: src/Makefile.am
+--- src/Makefile.am.orig
++++ src/Makefile.am
+@@ -8,6 +8,8 @@ AUTOMAKE_OPTIONS = subdir-objects
+ #	     ASAN_OPTIONS=detect_leaks=1
+ 
+ if ENABLE_MANAPLUSGAME
++LIBS += @LTLIBINTL@
++
+ if ENABLE_DYECMD
+ bin_PROGRAMS = manaplus dyecmd
+ else

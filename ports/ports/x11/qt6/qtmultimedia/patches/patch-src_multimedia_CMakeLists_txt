@@ -1,0 +1,21 @@
+Index: src/multimedia/CMakeLists.txt
+--- src/multimedia/CMakeLists.txt.orig
++++ src/multimedia/CMakeLists.txt
+@@ -158,7 +158,7 @@ qt_internal_extend_target(Multimedia CONDITION QT_FEAT
+ )
+ 
+ qt_internal_extend_target(Multimedia
+-    CONDITION (LINUX OR ANDROID) AND QT_FEATURE_library
++    CONDITION (UNIX OR ANDROID) AND QT_FEATURE_library
+     SOURCES qsymbolsresolveutils.cpp qsymbolsresolveutils_p.h)
+ 
+ qt_internal_add_simd_part(Multimedia SIMD sse2
+@@ -284,7 +284,7 @@ if(ANDROID)
+     )
+ endif()
+ 
+-qt_internal_extend_target(Multimedia CONDITION LINUX OR ANDROID
++qt_internal_extend_target(Multimedia CONDITION UNUX OR ANDROID
+     SOURCES
+         audio/qautoresetevent_linux_p.h audio/qautoresetevent_linux.cpp
+ )

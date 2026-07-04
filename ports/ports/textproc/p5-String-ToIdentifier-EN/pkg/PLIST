@@ -1,0 +1,7 @@
+${P5SITE}/String/
+${P5SITE}/String/ToIdentifier/
+${P5SITE}/String/ToIdentifier/EN/
+${P5SITE}/String/ToIdentifier/EN.pm
+${P5SITE}/String/ToIdentifier/EN/Unicode.pm
+@man man/man3p/String::ToIdentifier::EN.3p
+@man man/man3p/String::ToIdentifier::EN::Unicode.3p

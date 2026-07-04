@@ -1,0 +1,4 @@
+include/libfprint/
+include/libfprint/fprint.h
+@lib lib/libfprint.so.${LIBfprint_VERSION}
+lib/pkgconfig/libfprint.pc

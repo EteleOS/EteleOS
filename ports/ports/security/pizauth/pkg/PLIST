@@ -1,0 +1,11 @@
+@bin bin/pizauth
+@man man/man1/pizauth.1
+@man man/man5/pizauth.conf.5
+share/bash-completion/
+share/bash-completion/completions/
+share/bash-completion/completions/pizauth
+share/examples/pizauth/
+share/examples/pizauth/pizauth.conf
+share/fish/
+share/fish/vendor_completions.d/
+share/fish/vendor_completions.d/pizauth.fish

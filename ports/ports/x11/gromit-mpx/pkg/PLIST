@@ -1,0 +1,24 @@
+@bin bin/gromit-mpx
+@man man/man1/gromit-mpx.1
+share/applications/net.christianbeier.Gromit-MPX.desktop
+share/doc/gromit-mpx/
+share/doc/gromit-mpx/AUTHORS
+share/doc/gromit-mpx/NEWS.md
+share/doc/gromit-mpx/README.md
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/gromit-mpx/
+@sample ${SYSCONFDIR}/gromit-mpx/
+share/examples/gromit-mpx/gromit-mpx.cfg
+@sample ${SYSCONFDIR}/gromit-mpx/gromit-mpx.cfg
+share/icons/hicolor/scalable/apps/net.christianbeier.Gromit-MPX.active.svg
+share/icons/hicolor/scalable/apps/net.christianbeier.Gromit-MPX.svg
+share/locale/de/LC_MESSAGES/gromit-mpx.mo
+share/locale/es/LC_MESSAGES/gromit-mpx.mo
+share/locale/fa/LC_MESSAGES/gromit-mpx.mo
+share/locale/he/LC_MESSAGES/gromit-mpx.mo
+share/locale/it/LC_MESSAGES/gromit-mpx.mo
+share/metainfo/
+share/metainfo/net.christianbeier.Gromit-MPX.appdata.xml
+share/pixmaps/
+@tag update-desktop-database
+@tag gtk-update-icon-cache %D/share/icons/hicolor

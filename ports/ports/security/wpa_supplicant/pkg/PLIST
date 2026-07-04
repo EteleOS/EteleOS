@@ -1,0 +1,21 @@
+@comment @bin sbin/wpa_priv
+@rcscript ${RCDIR}/wpa_supplicant
+@bin bin/eapol_test
+@man man/man5/wpa_supplicant.conf.5
+@man man/man8/eapol_test.8
+@man man/man8/wpa_background.8
+@man man/man8/wpa_cli.8
+@comment @man man/man8/wpa_gui.8
+@man man/man8/wpa_passphrase.8
+@comment @man man/man8/wpa_priv.8
+@man man/man8/wpa_supplicant.8
+@bin sbin/wpa_cli
+@bin sbin/wpa_passphrase
+@bin sbin/wpa_supplicant
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/wpa_supplicant/
+share/examples/wpa_supplicant/wpa_supplicant.conf
+@mode 0600
+@sample ${SYSCONFDIR}/wpa_supplicant.conf
+@mode
+share/examples/wpa_supplicant/wpa_supplicant.conf.dist

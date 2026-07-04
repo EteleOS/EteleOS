@@ -1,0 +1,12 @@
+@bin bin/cdrdao
+@bin bin/cue2toc
+@bin bin/toc2cddb
+@bin bin/toc2cue
+%%audio%%
+@man man/man1/cdrdao.1
+@man man/man1/cue2toc.1
+share/cdrdao/
+share/cdrdao/drivers
+share/doc/cdrdao/
+share/doc/cdrdao/README
+share/doc/cdrdao/README.PlexDAE

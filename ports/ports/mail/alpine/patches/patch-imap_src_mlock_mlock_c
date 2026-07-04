@@ -1,0 +1,16 @@
+--- imap/src/mlock/mlock.c.orig	Mon Feb  6 01:06:22 2017
++++ imap/src/mlock/mlock.c	Tue Apr 25 11:10:11 2017
+@@ -71,11 +71,11 @@ int main (int argc,char *argv[])
+   char *s,*dir,*file,*lock,*hitch,tmp[1024];
+   size_t dlen,len;
+   struct stat sb,fsb;
+-  struct group *grp = getgrnam ("mail");
++  struct group *grp = getgrnam ("_smmsp");
+ 				/* get syslog */
+   openlog (argv[0],LOG_PID,LOG_MAIL);
+   if (!grp || (grp->gr_gid != getegid ()))
+-    return die ("not setgid mail",EX_USAGE);
++    return die ("not setgid _smmsp",EX_USAGE);
+   if (argc != 3) return die ("invalid arguments",EX_USAGE);
+   for (s = argv[1]; *s; s++)
+     if (!isdigit (*s)) return die ("invalid fd",EX_USAGE);

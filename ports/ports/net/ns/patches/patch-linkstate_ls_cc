@@ -1,0 +1,12 @@
+Index: linkstate/ls.cc
+--- linkstate/ls.cc.orig
++++ linkstate/ls.cc
+@@ -81,7 +81,7 @@ static class initRouting { (public)
+ 	}
+ } lsRoutingInitializer;
+ 
+-static void ls_error(char* msg) 
++static void ls_error(const char* msg) 
+ { 
+ 	fprintf(stderr, "%s\n", msg);
+ 	abort();

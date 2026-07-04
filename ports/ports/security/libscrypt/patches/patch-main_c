@@ -1,0 +1,15 @@
+Trivial change of strcpy() to strlcpy().
+Size of stack variable mcf and mcf2 is well known.
+`make check` runs fine with it.
+Index: main.c
+--- main.c.orig
++++ main.c
+@@ -161,7 +161,7 @@ int main()
+ 	printf("TEST EIGHT: SUCCESSFUL, calculated mcf\n%s\n", mcf);
+ 
+ 	/* Since later calls to scrypt_check() butcher mcf, make a second */
+-	strcpy(mcf2, mcf);
++	strlcpy(mcf2, mcf, SCRYPT_MCF_LEN);
+ 
+ 	/* Couldn't be simpler - for a given mcf, check is the password is valid
+ 	* Returns < 0 on failure to calculate hash

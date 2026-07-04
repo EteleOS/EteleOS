@@ -1,0 +1,6 @@
+create variables marked as read-only, applicable to scalar, list, hashes
+and all sorts of recursive data-structures.
+
+Use as an alternative to constant, the main difference is that Readonly
+creates scalars and other variables that are much easier to interpolate
+into strings and other contexts.

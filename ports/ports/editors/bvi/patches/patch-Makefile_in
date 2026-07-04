@@ -1,0 +1,12 @@
+--- Makefile.in.orig	Wed Oct  1 20:59:36 2014
++++ Makefile.in	Mon Oct 27 22:38:09 2014
+@@ -57,7 +57,8 @@ bvi: $(OBJS) $(HEADER)
+ bmore: $(BMOBJ)
+ 	$(CC) $(LDFLAGS) -o bmore $(BMOBJ) $(LIBS)
+ 
+-%.o: %.c $(INCLUDES)
++$(OBJS:.o=.c): $(INCLUDES)
++.c.o:
+ 	$(CC) $(CFLAGS) $(DEFS) -c $<
+ 
+ bmore.o: bmore.c

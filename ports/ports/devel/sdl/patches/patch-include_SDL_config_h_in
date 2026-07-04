@@ -1,0 +1,10 @@
+--- include/SDL_config.h.in.orig	Thu Jan 19 01:30:05 2012
++++ include/SDL_config.h.in	Wed Feb 22 13:39:54 2012
+@@ -184,6 +184,7 @@
+ #undef SDL_AUDIO_DRIVER_QNXNTO
+ #undef SDL_AUDIO_DRIVER_SNDMGR
+ #undef SDL_AUDIO_DRIVER_SUNAUDIO
++#undef SDL_AUDIO_DRIVER_SNDIO
+ #undef SDL_AUDIO_DRIVER_WAVEOUT
+ 
+ /* Enable various cdrom drivers */

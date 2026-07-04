@@ -1,0 +1,4 @@
+@rcscript ${RCDIR}/minissdpd
+@man man/man1/minissdpd.1
+@bin sbin/minissdpd
+share/doc/pkg-readmes/${PKGSTEM}

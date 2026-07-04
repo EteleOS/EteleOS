@@ -1,0 +1,13 @@
+GNUstep requires gmake, so let it point to gmake by default.
+
+--- Modules/Preferences/Build/PCBuildPrefs.h.orig	Tue Apr  5 11:42:51 2011
++++ Modules/Preferences/Build/PCBuildPrefs.h	Wed Apr  6 14:47:47 2011
+@@ -27,7 +27,7 @@
+ #import <Protocols/Preferences.h>
+ 
+ #ifndef PCDefaultBuildTool 
+-#define PCDefaultBuildTool @"/usr/bin/make"
++#define PCDefaultBuildTool @"${LOCALBASE}/bin/gmake"
+ #endif
+ 
+ #define SuccessSound            @"SuccessSound"

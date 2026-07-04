@@ -1,0 +1,12 @@
+Index: src/updown.c
+--- src/updown.c.orig
++++ src/updown.c
+@@ -47,7 +47,7 @@ static int mcd(char *dir)
+ {
+   char buf[256];
+   char err[50];
+-  static char odir[256];
++  static char odir[PATH_MAX];
+   static int init = 0;
+ 
+   if (!init) {

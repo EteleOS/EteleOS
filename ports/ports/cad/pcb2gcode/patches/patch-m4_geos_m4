@@ -1,0 +1,15 @@
+# --libs creates -lgeos-${VERSION}, which we don't build. --static-cclibs does
+# the right thing here.
+
+Index: m4/geos.m4
+--- m4/geos.m4.orig
++++ m4/geos.m4
+@@ -77,7 +77,7 @@ AC_DEFUN([GEOS_INIT],[
+         if $GEOS_CONFIG --libs >/dev/null 2>&1; then
+           AC_MSG_RESULT(yes)
+           HAVE_GEOS="yes"
+-          GEOS_LIBS="`$GEOS_CONFIG --libs`"
++          GEOS_LIBS="`$GEOS_CONFIG --static-cclibs`"
+           GEOS_C_LIBS="`$GEOS_CONFIG --ldflags` -lgeos_c"
+           GEOS_CC_LIBS="`$GEOS_CONFIG --ldflags` -lgeos"
+           GEOS_CFLAGS="`$GEOS_CONFIG --cflags`"

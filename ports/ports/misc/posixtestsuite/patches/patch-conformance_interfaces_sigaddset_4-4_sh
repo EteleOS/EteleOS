@@ -1,0 +1,11 @@
+Use installed package to execute buildonly test.
+
+Index: conformance/interfaces/sigaddset/4-4.sh
+--- conformance/interfaces/sigaddset/4-4.sh.orig
++++ conformance/interfaces/sigaddset/4-4.sh
+@@ -9,4 +9,4 @@
+ #   Test various methods of adding invalid signals to sigaddset().
+ # 
+ 
+-conformance/interfaces/sigaddset/4-core-buildonly.test 4
++${TRUEPREFIX}/libexec/posixtestsuite/conformance/interfaces/sigaddset/4-core-buildonly.test 4

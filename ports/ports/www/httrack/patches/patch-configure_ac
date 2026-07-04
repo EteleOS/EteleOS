@@ -1,0 +1,13 @@
+Fix SSL library detection.
+--- configure.ac.ports.orig	Sun Mar 15 17:47:27 2015
++++ configure.ac	Sat May  9 13:49:28 2015
+@@ -171,7 +171,8 @@ AC_CHECK_LIB(ssl, SSL_library_init,
+ 	else
+ 	AC_MSG_RESULT([not available])
+ 	fi
+-	]
++	],
++	[-lcrypto]
+ 	)
+ LIBS=$SAVE_LIBS
+ AC_SUBST(OPENSSL_LIBS)

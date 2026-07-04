@@ -1,0 +1,19 @@
+Index: src/sim/w_map.c
+--- src/sim/w_map.c.orig
++++ src/sim/w_map.c
+@@ -69,6 +69,7 @@ extern Tk_ConfigSpec TileViewConfigSpecs[];
+ 
+ 
+ Ink *NewInk();
++void WireDrawMap(SimView *view);
+ 
+ 
+ MapCmdconfigure(VIEW_ARGS)
+@@ -491,6 +492,7 @@ CompareColor(struct Pix *p1, struct Pix *p2)
+ }
+ 
+ 
++void
+ WireDrawMap(SimView *view)
+ {
+   int different, x, y, i, last, pts;

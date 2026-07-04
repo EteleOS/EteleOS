@@ -1,0 +1,15 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -16,7 +16,9 @@ LDADD+= -lcurses
+ MANDIR=${LOCALBASE}/man/cat
+ BINDIR=${LOCALBASE}/sbin
+ 
+-.y.c:
+-	${YACC.y} -d -b ${.TARGET:R} -o ${.TARGET} ${.IMPSRC}
++sf-grammer.c sf-grammer.h: sf-grammer.y
++	${YACC.y} -d -b ${.TARGET:R} -o sf-grammer.c sf-grammer.y
++
++sf-scanner.o: sf-grammer.h
+ 
+ .include <bsd.prog.mk>

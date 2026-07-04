@@ -1,0 +1,12 @@
+Index: lsort.c
+--- lsort.c.orig
++++ lsort.c
+@@ -164,7 +164,7 @@ process( char *arg )
+     int
+ main( int argc, char **argv )
+ {
+-    char	c;
++    int		c;
+     int		i, err = 0;
+     extern char	*version;
+ 

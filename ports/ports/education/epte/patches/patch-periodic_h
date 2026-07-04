@@ -1,0 +1,11 @@
+--- periodic.h.orig	Sat Aug 14 22:55:52 2010
++++ periodic.h	Sat Aug 14 22:56:09 2010
+@@ -296,7 +296,7 @@ modification follow.
+ #ifdef VMS
+ #include <curses.h>
+ #endif
+-#if defined(linux) || defined(__FreeBSD)
++#if defined(linux) || defined(__FreeBSD) || defined(__OpenBSD__)
+ #include <ncurses.h>
+ #endif
+ 

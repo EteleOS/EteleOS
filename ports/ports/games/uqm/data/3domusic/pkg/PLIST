@@ -1,0 +1,5 @@
+@pkgpath games/uqm,-threedomusic
+share/uqm/
+share/uqm/content/
+share/uqm/content/addons/
+share/uqm/content/addons/uqm-${V}-3domusic.uqm

@@ -1,0 +1,3 @@
+${P5SITE}/Email/MIME/Attachment/
+${P5SITE}/Email/MIME/Attachment/Stripper.pm
+@man man/man3p/Email::MIME::Attachment::Stripper.3p

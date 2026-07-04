@@ -1,0 +1,106 @@
+#! /bin/sh
+# $OpenBSD: show-reverse-deps,v 1.11 2025/11/03 14:46:04 sthen Exp $
+#
+# Copyright (c) 2018 Marc Espie <espie@openbsd.org>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+# compute reverse dependencies
+# XXX this is not perfect yet! it *does* require collating lib-depends over
+# multi-packages setup, which this is NOT doing yet, but it is close to
+# actually doing it.
+# we just require a few more views for that.
+
+usage="Usage: show-reverse-deps [-ftv] [-d sqlite_db] pkgpath"
+args=`getopt d:ftv $*`
+if [ $? -ne 0 ]
+then
+    echo 2>&1 $usage
+fi
+set -e
+
+db=${TRUEPREFIX}/share/sqlports
+type_root="root.type!=3"
+type_child="child.type!=3"
+fuzzy=false
+verbose=false
+
+set -- $args
+while [ $# -ne 0 ]
+do
+	case "$1" in
+		-d)
+			db="$2"
+			shift
+			shift
+			;;
+		-f)
+			fuzzy=true
+			shift
+			;;
+		-t)
+			type_root=true
+			type_child=true
+			shift
+			;;
+		-v)
+			verbose=true
+			shift
+			;;
+		--)
+			shift
+			break
+			;;
+	esac
+done
+
+if [ $# -ne 1 ]
+then
+	echo 2>&1 $usage
+	exit 1
+fi
+
+if $fuzzy
+then
+	query="p2.fullpkgpath like '%$1%'"
+else
+	query="p2.fullpkgpath='$1'"
+fi
+if $verbose
+then
+	adj=", _paths2.fullpkgpath, case d.type when 0 then 'LIB_DEPENDS' when 1 then 'RUN_DEPENDS' when 2 then 'BUILD_DEPENDS' when 3 then 'TEST_DEPENDS' end"
+	join_adj="join _paths _paths2 on _paths2.id=d.dependspath"
+else
+	adj=""
+	join_adj=""
+fi
+
+sqlite3 "$db" <<EOSQL
+with recursive d (fullpkgpath, dependspath, type) as
+	(select root.fullpkgpath, root.dependspath, root.type
+		from _canonical_depends root
+			join _paths 
+			    on root.dependspath=_paths.canonical
+			join _paths p2 
+			    on $query and p2.id=_paths.pkgpath
+			where $type_root
+	    union
+	    select child.fullpkgpath, child.dependspath, child.type
+	    from d parent, _canonical_depends child  
+	    	where parent.fullpkgpath=child.dependspath and $type_child)
+select distinct _paths.fullpkgpath $adj from d 
+    join _paths 
+	on _paths.id=d.fullpkgpath
+    $join_adj
+order by _paths.fullpkgpath $adj;
+EOSQL

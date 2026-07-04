@@ -1,0 +1,22 @@
+lib/tcl/tktable/
+lib/tcl/tktable/libTktable${TKTABLE_VER}.so
+lib/tcl/tktable/pkgIndex.tcl
+lib/tcl/tktable/tkTable.tcl
+lib/tcl/tktable/tktable.py
+@man man/mann/tktable.n
+share/doc/tktable/
+share/doc/tktable/README.txt
+share/doc/tktable/license.txt
+share/doc/tktable/tktable.html
+share/examples/tktable/
+share/examples/tktable/basic.tcl
+share/examples/tktable/buttons.tcl
+share/examples/tktable/command.tcl
+share/examples/tktable/debug.tcl
+share/examples/tktable/dynarows.tcl
+share/examples/tktable/loadtable.tcl
+share/examples/tktable/maxsize.tcl
+share/examples/tktable/spreadsheet.tcl
+share/examples/tktable/tcllogo.gif
+share/examples/tktable/tktable.py
+share/examples/tktable/valid.tcl

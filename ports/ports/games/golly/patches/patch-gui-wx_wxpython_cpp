@@ -1,0 +1,51 @@
+Index: gui-wx/wxpython.cpp
+--- gui-wx/wxpython.cpp.orig
++++ gui-wx/wxpython.cpp
+@@ -158,6 +158,8 @@ extern "C" {
+     PyObject *G_Py_None = NULL;
+ }
+ 
++// handle for libutil
++static wxDllType libutildll = NULL;
+ // handle for Python lib
+ static wxDllType pythondll = NULL;
+ 
+@@ -167,16 +169,38 @@ static void FreePythonLib()
+         wxDynamicLibrary::Unload(pythondll);
+         pythondll = NULL;
+     }
++
++    if ( libutildll ) {
++        wxDynamicLibrary::Unload(libutildll);
++        libutildll = NULL;
++    }
+ }
+ 
+ static bool LoadPythonLib()
+ {
++    // load libutil
++    wxDynamicLibrary dynlibUtil;
+     // load the Python library
+     wxDynamicLibrary dynlib;
+     
+     // if dynlib.Load fails then only see the detailed log error if GollyPrefs sets debug_level=2
+     wxLogNull* noLog = new wxLogNull();
+     if (debuglevel == 2) delete noLog;
++
++    // Load libutil first, needed for openpty() and forkpty() symbols
++    if ( !dynlibUtil.Load(wxT("libutil.so"), wxDL_NOW | wxDL_VERBATIM | wxDL_GLOBAL) ) {
++        return false;
++    }
++    
++    if ( dynlibUtil.IsLoaded() ) {
++        libutildll = dynlibUtil.Detach();
++    }
++    
++    if ( libutildll == NULL ) {
++        // should never happen
++        Warning(_("Oh dear, libutil is not loaded!"));
++        return false;
++    }
+ 
+     // the prompt message for loading the Python library
+     wxString prompt = _(

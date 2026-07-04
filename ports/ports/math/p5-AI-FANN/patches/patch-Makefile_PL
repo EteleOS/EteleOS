@@ -1,0 +1,11 @@
+--- Makefile.PL.orig	Mon Mar 23 00:25:55 2009
++++ Makefile.PL	Mon Mar 23 00:26:02 2009
+@@ -33,7 +33,7 @@ WriteMakefile( NAME => 'AI::FANN',
+                PREREQ_PM => {},
+                ABSTRACT_FROM => 'lib/AI/FANN.pm',
+                AUTHOR => 'Salvador Fandiño <sfandino@yahoo.com>',
+-               LIBS => ["${fann_lib}-ldoublefann"],
++               LIBS => ["${fann_lib} -ldoublefann"],
+                DEFINE => '',
+                INC => "${fann_inc}-I.",
+                OBJECT => '$(BASEEXT)$(OBJ_EXT) morefann$(OBJ_EXT)',

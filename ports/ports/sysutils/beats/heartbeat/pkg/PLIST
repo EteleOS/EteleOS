@@ -1,0 +1,15 @@
+@extraunexec rm -rf ${LOCALSTATEDIR}/db/heartbeat/*
+@extraunexec rm -rf ${LOCALSTATEDIR}/log/heartbeat/*
+@rcscript ${RCDIR}/heartbeat
+@bin bin/heartbeat
+share/examples/heartbeat/
+@sample ${SYSCONFDIR}/heartbeat/
+@sample ${LOCALSTATEDIR}/db/heartbeat/
+@sample ${LOCALSTATEDIR}/log/heartbeat/
+share/examples/heartbeat/heartbeat.reference.yml
+share/examples/heartbeat/heartbeat.yml
+@sample ${SYSCONFDIR}/heartbeat/heartbeat.yml
+share/examples/heartbeat/monitors.d/
+share/examples/heartbeat/monitors.d/sample.http.yml.disabled
+share/examples/heartbeat/monitors.d/sample.icmp.yml.disabled
+share/examples/heartbeat/monitors.d/sample.tcp.yml.disabled

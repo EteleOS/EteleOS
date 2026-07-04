@@ -1,0 +1,27 @@
+Index: src/tools/wasm-stats.cc
+--- src/tools/wasm-stats.cc.orig
++++ src/tools/wasm-stats.cc
+@@ -23,6 +23,9 @@
+ #include <iterator>
+ #include <map>
+ #include <vector>
++ 
++#include <err.h>
++#include <unistd.h>
+ 
+ #include "wabt/binary-reader-stats.h"
+ #include "wabt/binary-reader.h"
+@@ -143,6 +146,13 @@ void WriteCountsWithImmediates(Stream& stream, const O
+ int ProgramMain(int argc, char** argv) {
+   InitStdio();
+   ParseOptions(argc, argv);
++
++  if (unveil(s_infile, "r") != 0)
++    err(1, "unveil: %s", s_infile);
++  if (s_outfile != NULL && unveil(s_outfile, "wc") != 0)
++    err(1, "unveil: %s", s_outfile);
++  if (pledge("stdio rpath wpath cpath", NULL) != 0)
++    err(1, "pledge");
+ 
+   std::vector<uint8_t> file_data;
+   Result result = ReadFile(s_infile, &file_data);

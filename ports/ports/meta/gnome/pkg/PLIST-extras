@@ -1,0 +1,2 @@
+@conflict gnome-extra-*
+@pkgpath ${BASE_PKGPATH},-extra

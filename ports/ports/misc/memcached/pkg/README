@@ -1,0 +1,20 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+From the upstream documentation, "Memcached does not spend much, if any,
+effort in ensuring its defensibility from random internet connections.
+So you must not expose memcached directly to the internet, or otherwise
+any untrusted users. Using SASL authentication here helps, but should
+not be totally trusted."
+
+The default setting in this package is now to listen on localhost only.
+If you need it to listen on the network, change the flags, and make sure
+that the memcached port (default 11211) is firewalled.
+
+# rcctl set memcached flags '-u _memcached'
+
+To change to listening on a unix socket (local machine only) and allowing
+access only from members of group _memcached:
+
+# rcctl set memcached flags '-u _memcached -s /var/run/memcached/sock -a 0660'

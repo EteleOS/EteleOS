@@ -1,0 +1,12 @@
+Index: src/3rdparty/chromium/components/download/internal/common/base_file.cc
+--- src/3rdparty/chromium/components/download/internal/common/base_file.cc.orig
++++ src/3rdparty/chromium/components/download/internal/common/base_file.cc
+@@ -605,7 +605,7 @@ GURL GetEffectiveAuthorityURL(const GURL& source_url,
+ }  // namespace
+ 
+ #if defined(OS_WIN) || defined(OS_APPLE) || defined(OS_LINUX) || \
+-    defined(OS_CHROMEOS)
++    defined(OS_CHROMEOS) || defined(OS_BSD)
+ 
+ DownloadInterruptReason BaseFile::AnnotateWithSourceInformationSync(
+     const std::string& client_guid,

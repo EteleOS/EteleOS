@@ -1,0 +1,23 @@
+--- libAfterImage/configure.orig	Wed May  1 15:34:11 2013
++++ libAfterImage/configure	Mon Jun 29 14:43:46 2015
+@@ -4081,7 +4081,7 @@ fi
+ 
+ if test "x$enable_gdb" = "xno"; then
+ 		DIRTY_CFLAGS="$CFLAGS"
+-  		CFLAGS="-O3"
++  		CFLAGS=""
+   		for f in $DIRTY_CFLAGS; do
+        		if test "x$f" != "x-O2" -a "x$f" != "x-O3" -a "x$f" != "x-O"; then
+ 		   		CFLAGS="$CFLAGS $f"
+@@ -6697,9 +6697,9 @@ if test "x$have_afterbase" = "xyes"; then
+ 		user_ldflags="$user_ldflags $RDYNAMIC"
+   	fi
+     if test "x$have_x" != "xyes" -a "x$have_gif" = "xyes"; then
+-    	AFTERIMAGE_LIBS="$AFTERIMAGE_LIBS -lAfterBase"
++    	AFTERIMAGE_LIBS="$AFTERIMAGE_LIBS -lAfterBase -L${LOCALBASE}/lib -lexecinfo"
+     else
+-    	AFTERIMAGE_LIBS="-lAfterBase $AFTERIMAGE_LIBS"
++    	AFTERIMAGE_LIBS="-lAfterBase -L${LOCALBASE}/lib -lexecinfo $AFTERIMAGE_LIBS"
+     fi
+     if test -r "../libAfterBase/astypes.h"; then
+     	AFTERIMAGE_APPS_LIBS="-L../ -L../../libAfterBase -lAfterImage $AFTERIMAGE_LIBS"

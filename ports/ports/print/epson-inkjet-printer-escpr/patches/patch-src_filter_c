@@ -1,0 +1,87 @@
+Index: src/filter.c
+--- src/filter.c.orig
++++ src/filter.c
+@@ -31,7 +31,10 @@
+ 
+ #include "epson-protocol.h"
+ #include "epson-escpr-api.h"
++#include "epson-escpr-api-private.h"
++#include "epson-escpr-services.h"
+ #include "epson-escpr-mem.h"
++#include "epson-escpage.h"
+ 
+ #include "err.h"
+ #include "mem.h"
+@@ -403,7 +406,7 @@ main (int argc, char *argv[])
+ 	}
+ 	
+ 	printJob.jobStatus = EPS_STATUS_ESTABLISHED;
+-	int printHeight = 0;
++	EPS_UINT32 printHeight = 0;
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////	
+ 
+ 	print_area_x = printJob.printableAreaWidth;
+@@ -437,7 +440,7 @@ main (int argc, char *argv[])
+ 	while ((read_page_no = read (STDIN_FILENO, &page_num, 1)) > 0)  // 最初に page番号を読み込み
+ 	{
+ 		long x_count, y_count;
+-		int band_line_count;
++		EPS_UINT32 band_line_count;
+ 		y_count = 0;
+ 		band_line_count = 0;
+ 
+@@ -526,7 +529,11 @@ main (int argc, char *argv[])
+ 					pagebuf+= bandBmp.widthBytes;
+ 					posbuf+=bandBmp.widthBytes;
+ 
++					if (band_line_count > printHeight) {
+ 					band_line_count -= printHeight;
++					} else {
++						band_line_count = 0;
++					}
+ 					bandBmp.bits += band_line_count;
+ 					
+ 				}
+@@ -537,13 +544,17 @@ main (int argc, char *argv[])
+ 				memcpy(pagebuf, bandBmp.bits, bandBmp.widthBytes);
+ 				pagebuf+= bandBmp.widthBytes;
+ 				posbuf+= bandBmp.widthBytes;
++				if (band_line_count > printHeight) {
+ 				band_line_count -= printHeight;
++				} else {
++					band_line_count = 0;
++				}
+ 				bandBmp.bits += band_line_count;
+ 			}
+ 		
+ 			int revert = 0;
+ 			int pos = posbuf - bandBmp.widthBytes ;
+-			char *rever_buf = malloc(bandBmp.widthBytes + 1000);
++			EPS_UINT8 *rever_buf = (EPS_UINT8 *)malloc(bandBmp.widthBytes + 1000);
+ 			for (revert = print_area_y; revert > 0; revert--)
+ 			{
+ 				if (3 != byte_par_pixel)
+@@ -679,7 +690,11 @@ main (int argc, char *argv[])
+ 
+ 					debug_msg("printHeight = %d\n", printHeight);
+ 					debug_msg("widthByte = %d\n", bandBmp.widthBytes);
++					if (band_line_count > printHeight) {
+ 					band_line_count -= printHeight;
++					} else {
++						band_line_count = 0;
++					}
+ 					bandBmp.bits += band_line_count;
+ 				}
+ 				
+@@ -693,7 +708,11 @@ main (int argc, char *argv[])
+ 				if(err)
+ 					err_fatal ("Error occurred in \"OUT_FUNC\"."); /* exit */
+ 
++				if (band_line_count > printHeight) {
+ 				band_line_count -= printHeight;
++				} else {
++					band_line_count = 0;
++				}
+ 				bandBmp.bits += band_line_count;
+ 			}
+ 

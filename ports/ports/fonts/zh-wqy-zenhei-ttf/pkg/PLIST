@@ -1,0 +1,4 @@
+@pkgpath x11/wqy-zenhei-ttf
+share/fonts/
+@fontdir share/fonts/wqy/
+share/fonts/wqy/wqy-zenhei.ttc

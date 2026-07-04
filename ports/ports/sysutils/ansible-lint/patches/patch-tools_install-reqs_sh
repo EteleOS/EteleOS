@@ -1,0 +1,9 @@
+Index: tools/install-reqs.sh
+--- tools/install-reqs.sh.orig
++++ tools/install-reqs.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/local/bin/bash
+ set -euo pipefail
+ echo "Install requirements.yml ..."
+ ansible-galaxy collection install -r requirements.yml -p examples/playbooks/collections

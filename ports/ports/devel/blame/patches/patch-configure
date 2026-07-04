@@ -1,0 +1,12 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -20832,8 +20832,6 @@ else
+   GCC_FALSE=
+ fi
+ 
+-CFLAGS=`echo $CFLAGS | sed -e s,-O2,-O3,`
+-
+ NEWS=NEWS
+ 
+ 

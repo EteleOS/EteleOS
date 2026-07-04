@@ -1,0 +1,8 @@
+@conflict gvfs-<=1.8.2p3
+@bin libexec/gvfsd-smb
+@bin libexec/gvfsd-smb-browse
+share/GConf/gsettings/gvfs-smb.convert
+share/glib-2.0/schemas/org.gnome.system.smb.gschema.xml
+share/gvfs/mounts/smb-browse.mount
+share/gvfs/mounts/smb.mount
+@tag glib-compile-schemas

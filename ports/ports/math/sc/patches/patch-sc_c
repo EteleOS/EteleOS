@@ -1,0 +1,56 @@
+Index: sc.c
+--- sc.c.orig
++++ sc.c
+@@ -212,7 +212,7 @@ flush_saved()
+ 
+     if (dbidx < 0)
+ 	return;
+-    if (p = delbuf[dbidx]) {
++    if ((p = delbuf[dbidx])) {
+ 	scxfree(delbuffmt[dbidx]);
+ 	delbuffmt[dbidx] = NULL;
+     }
+@@ -274,7 +274,7 @@ main (int argc, char  **argv)
+     else
+ 	progname = argv[0];
+ 
+-    while ((c = getopt(argc, argv, "axmoncrCReP:W:vq")) != EOF) {
++    while ((c = getopt(argc, argv, "axmoncrCReP:W:vq")) != -1) {
+     	switch (c) {
+ 	    case 'a':
+ 		    skipautorun = 1;
+@@ -425,7 +425,7 @@ main (int argc, char  **argv)
+ #endif
+ 	optind = 1;
+ 	stopdisp();
+-	while ((o = getopt(argc, argv, "axmoncrCReP:W:vq")) != EOF) {
++	while ((o = getopt(argc, argv, "axmoncrCReP:W:vq")) != -1) {
+ 	    switch (o) {
+ 		case 'v':
+ 		    Vopt = 1;
+@@ -520,7 +520,7 @@ main (int argc, char  **argv)
+ 		    break;
+ 	    }
+ 	}
+-	if (redraw) printf(redraw);
++	if (redraw) printf("%s", redraw);
+ 	exit (0);
+     }
+ 
+@@ -845,7 +845,7 @@ main (int argc, char  **argv)
+ 			    break;
+ 			case 'C':
+ 			    color = !color;
+-			    if (has_colors())
++			    if (has_colors()) {
+ 				if (color) {
+ 				    attron(COLOR_PAIR(1));
+ 				    bkgd(COLOR_PAIR(1) | ' ');
+@@ -853,6 +853,7 @@ main (int argc, char  **argv)
+ 				    attron(COLOR_PAIR(0));
+ 				    bkgd(COLOR_PAIR(0) | ' ');
+ 				}
++			    }
+ 			    error("Color %sabled.", color ? "en" : "dis");
+ 			    break;
+ 			case 'N':

@@ -1,0 +1,56 @@
+Index: src/sysdep1.c
+--- src/sysdep1.c.orig
++++ src/sysdep1.c
+@@ -66,13 +66,13 @@ static void m_setrts(int fd)
+   if (portfd_is_socket)
+     return;
+ #endif
+-#if defined(TIOCM_RTS) && defined(TIOCMODG)
++#if defined(TIOCM_RTS) && defined(TIOCMGET)
+   {
+     int mcs=0;
+ 
+-    ioctl(fd, TIOCMODG, &mcs);
++    ioctl(fd, TIOCMGET, &mcs);
+     mcs |= TIOCM_RTS;
+-    ioctl(fd, TIOCMODS, &mcs);
++    ioctl(fd, TIOCMSET, &mcs);
+   }
+ #endif
+ }
+@@ -179,11 +179,11 @@ int m_getdcd(int fd)
+     return portfd_is_connected;
+   }
+ #endif
+-#ifdef TIOCMODG
++#ifdef TIOCMGET
+   {
+     int mcs = 0;
+ 
+-    if (ioctl(fd, TIOCMODG, &mcs) < 0)
++    if (ioctl(fd, TIOCMGET, &mcs) < 0)
+       return -1;
+     return mcs & TIOCM_CAR ? 1 : 0;
+   }
+@@ -226,8 +226,8 @@ void m_savestate(int fd)
+   ioctl(fd, TIOCLGET, &lsw);
+ #  endif
+ #endif
+-#ifdef TIOCMODG
+-  ioctl(fd, TIOCMODG, &m_word);
++#ifdef TIOCMGET
++  ioctl(fd, TIOCMGET, &m_word);
+ #endif
+ }
+ 
+@@ -251,8 +251,8 @@ void m_restorestate(int fd)
+   ioctl(fd, TIOCLSET, &lsw);
+ #  endif
+ #endif
+-#ifdef TIOCMODS
+-  ioctl(fd, TIOCMODS, &m_word);
++#ifdef TIOCMSET
++  ioctl(fd, TIOCMSET, &m_word);
+ #endif
+ }
+ 

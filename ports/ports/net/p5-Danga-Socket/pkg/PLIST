@@ -1,0 +1,3 @@
+${P5SITE}/Danga/
+${P5SITE}/Danga/Socket.pm
+@man man/man3p/Danga::Socket.3p

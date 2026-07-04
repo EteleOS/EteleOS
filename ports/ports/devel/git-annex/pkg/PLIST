@@ -1,0 +1,4 @@
+@bin bin/${MODCABAL_STEM}
+bin/${MODCABAL_STEM}-shell
+bin/git-remote-annex
+bin/git-remote-tor-annex

@@ -1,0 +1,11 @@
+@bin bin/mcs-getconfval
+@bin bin/mcs-info
+@bin bin/mcs-query-backends
+@bin bin/mcs-setconfval
+@bin bin/mcs-walk-config
+include/libmcs/
+include/libmcs/mcs.h
+@lib lib/libmcs.so.${LIBmcs_VERSION}
+lib/mcs/
+lib/mcs/keyfile.so
+lib/pkgconfig/libmcs.pc

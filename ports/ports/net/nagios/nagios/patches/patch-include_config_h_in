@@ -1,0 +1,27 @@
+Index: include/config.h.in
+--- include/config.h.in.orig
++++ include/config.h.in
+@@ -135,11 +135,6 @@
+ #endif
+ #endif
+ 
+-#undef HAVE_SYS_RESOURCE_H
+-#ifdef HAVE_SYS_RESOURCE_H
+-#include <sys/resource.h>
+-#endif
+-
+ #undef HAVE_LIMITS_H
+ #ifdef HAVE_LIMITS_H
+ #include <limits.h>
+@@ -227,6 +222,11 @@
+ #undef HAVE_SYS_TIMEB_H
+ #if HAVE_SYS_TIMEB_H
+ #include <sys/timeb.h>
++#endif
++
++#undef HAVE_SYS_RESOURCE_H
++#ifdef HAVE_SYS_RESOURCE_H
++#include <sys/resource.h>
+ #endif
+ 
+ #undef HAVE_SYS_IPC_H

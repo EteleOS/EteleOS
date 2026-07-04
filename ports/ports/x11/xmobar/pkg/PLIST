@@ -1,0 +1,5 @@
+@comment share/doc/${PKGNAME}/
+@comment share/doc/${PKGNAME}/license
+@bin bin/${MODCABAL_STEM}
+share/examples/${MODCABAL_STEM}/
+share/examples/${MODCABAL_STEM}/${MODCABAL_STEM}rc

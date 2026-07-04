@@ -1,0 +1,11 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/cntlm"
+daemon_flags="-c ${SYSCONFDIR}/cntlm/cntlm.conf"
+daemon_user="_cntlm"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_cmd $1

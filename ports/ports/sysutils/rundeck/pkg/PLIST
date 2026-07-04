@@ -1,0 +1,54 @@
+@newgroup _rundeck:780
+@newuser _rundeck:780:_rundeck::RunDeck user:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/rundeck
+@extraunexec rm -rf ${PREFIX}/rundeck/libext
+@extraunexec rm -rf ${PREFIX}/rundeck/projects
+@extraunexec rm -rf ${PREFIX}/rundeck/repository
+@extraunexec rm -rf ${PREFIX}/rundeck/server/data/*
+@extraunexec rm -rf ${PREFIX}/rundeck/server/logs/*
+@extraunexec rm -rf ${PREFIX}/rundeck/var/* ${PREFIX}/rundeck/var/.first*
+@extra rundeck/server/config/artifact-repositories.yaml
+@mode 0750
+@owner _rundeck
+@group _rundeck
+rundeck/
+rundeck/.ssh/
+rundeck/etc/
+rundeck/etc/admin.aclpolicy.dist
+@sample rundeck/etc/admin.aclpolicy
+rundeck/etc/framework.properties.dist
+@sample rundeck/etc/framework.properties
+rundeck/etc/profile.dist
+@sample rundeck/etc/profile
+rundeck/etc/project.properties.dist
+@sample rundeck/etc/project.properties
+rundeck/etc/system-job_reader.aclpolicy_template.dist
+@sample rundeck/etc/system-job_reader.aclpolicy_template
+rundeck/etc/system-job_runner.aclpolicy_template.dist
+@sample rundeck/etc/system-job_runner.aclpolicy_template
+rundeck/etc/system-job_viewer.aclpolicy_template.dist
+@sample rundeck/etc/system-job_viewer.aclpolicy_template
+rundeck/etc/system-job_writer.aclpolicy_template.dist
+@sample rundeck/etc/system-job_writer.aclpolicy_template
+rundeck/etc/system-project_admin.aclpolicy_template.dist
+@sample rundeck/etc/system-project_admin.aclpolicy_template
+rundeck/rundeck.war
+rundeck/server/
+rundeck/server/addons/
+rundeck/server/config/
+rundeck/server/config/jaas-loginmodule.conf.dist
+@sample rundeck/server/config/jaas-loginmodule.conf
+rundeck/server/config/log4j2.properties.dist
+@sample rundeck/server/config/log4j2.properties
+rundeck/server/config/realm.properties.dist
+@sample rundeck/server/config/realm.properties
+rundeck/server/config/rundeck-config.properties.dist
+@sample rundeck/server/config/rundeck-config.properties
+rundeck/server/config/ssl.properties.dist
+@sample rundeck/server/config/ssl.properties
+rundeck/server/data/
+rundeck/server/lib/
+rundeck/server/logs/
+rundeck/server/work/
+rundeck/user-assets/
+rundeck/var/

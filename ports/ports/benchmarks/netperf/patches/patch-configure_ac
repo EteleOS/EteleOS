@@ -1,0 +1,11 @@
+--- configure.ac.orig	Mon Jul 20 18:29:53 2015
++++ configure.ac	Wed Oct 21 13:59:28 2015
+@@ -699,7 +699,7 @@ case "$enable_cpuutil" in
+ 			enable_cpuutil="kstat - auto"
+ 			NETCPU_SOURCE="kstat"
+ 			;;
+-                     *-*-freebsd[[4-8]].* | *-*-netbsd[[1-9]].* )
++                     *-*-freebsd[[4-8]].* | *-*-netbsd[[1-9]].* | *-*-openbsd* )
+ 			use_cpuutil=true
+ 			AC_DEFINE([USE_SYSCTL],,[Use MumbleBSD's sysctl interface to measure CPU util.])
+ 			enable_cpuutil="sysctl - auto"

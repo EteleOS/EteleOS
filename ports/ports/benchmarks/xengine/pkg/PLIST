@@ -1,0 +1,4 @@
+@bin bin/xengine
+@man man/man1/xengine.1
+share/doc/xengine/
+share/doc/xengine/README

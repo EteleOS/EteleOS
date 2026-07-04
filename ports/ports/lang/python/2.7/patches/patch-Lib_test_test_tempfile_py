@@ -1,0 +1,12 @@
+Index: Lib/test/test_tempfile.py
+--- Lib/test/test_tempfile.py.orig
++++ Lib/test/test_tempfile.py
+@@ -28,7 +28,7 @@ has_spawnl = hasattr(os, 'spawnl')
+ 
+ # TEST_FILES may need to be tweaked for systems depending on the maximum
+ # number of files that can be opened at one time (see ulimit -n)
+-if sys.platform in ('openbsd3', 'openbsd4'):
++if sys.platform in ('openbsd3', 'openbsd4', 'openbsd5', 'openbsd6', 'openbsd7'):
+     TEST_FILES = 48
+ else:
+     TEST_FILES = 100

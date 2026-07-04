@@ -1,0 +1,8 @@
+Add the following to your OpenVPN configuration file:
+
+        plugin ${PREFIX}/lib/openvpn-auth-ldap.so <config>
+
+The config directive must point to an auth-ldap configuration file - a sample
+configuration file can be found at:
+
+	${PREFIX}/share/examples/openvpn-auth-ldap/auth-ldap.conf

@@ -1,0 +1,4 @@
+${P5SITE}/Text/
+${P5SITE}/Text/Password/
+${P5SITE}/Text/Password/Pronounceable.pm
+@man man/man3p/Text::Password::Pronounceable.3p

@@ -1,0 +1,1 @@
+squeak -plugins ${SC_DIR}/Plugins ${SC_DIR}/Scratch.image

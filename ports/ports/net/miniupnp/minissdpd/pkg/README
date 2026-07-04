@@ -1,0 +1,11 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+minissdpd(1) _must_ be started before miniupnpd(1) (or any other UPnP
+daemon); i.e. it must appear before miniupnpd in the "pkg_scripts"
+variable in rc.conf.local(8).
+
+Multicast needs to be allowed on the listening interface. To do so the
+following line needs to be added to pf.conf(5):
+pass on $listening_interface from any to { 224.0.0.2, 239.0.0.0/8 }

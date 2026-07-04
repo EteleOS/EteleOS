@@ -1,0 +1,5 @@
+bin/poppy
+bin/spamkill
+${P5SITE}/Poppy.pm
+@man man/man1/poppy.1
+@man man/man3p/Poppy.3p

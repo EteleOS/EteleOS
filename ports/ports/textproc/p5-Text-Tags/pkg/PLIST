@@ -1,0 +1,6 @@
+${P5SITE}/Text/
+${P5SITE}/Text/Tags/
+${P5SITE}/Text/Tags.pm
+${P5SITE}/Text/Tags/Parser.pm
+@man man/man3p/Text::Tags.3p
+@man man/man3p/Text::Tags::Parser.3p

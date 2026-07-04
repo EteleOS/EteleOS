@@ -1,0 +1,11 @@
+--- src/plugins/Makefile.in.orig	Tue Jan 28 00:57:41 2014
++++ src/plugins/Makefile.in	Tue May 27 17:06:54 2014
+@@ -388,7 +388,7 @@ $(am__recursive_targets):
+ 	  else \
+ 	    local_target="$$target"; \
+ 	  fi; \
+-	  ($(am__cd) $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
++	  ($(am__cd) $$subdir && $(MAKE) $(AM_MAKEFLAGS) LIBTOOL="$(LIBTOOL) --tag=disable-static" $$local_target) \
+ 	  || eval $$failcom; \
+ 	done; \
+ 	if test "$$dot_seen" = "no"; then \

@@ -1,0 +1,5 @@
+${P5SITE}/Test/
+${P5SITE}/Test/NoWarnings/
+${P5SITE}/Test/NoWarnings.pm
+${P5SITE}/Test/NoWarnings/Warning.pm
+@man man/man3p/Test::NoWarnings.3p

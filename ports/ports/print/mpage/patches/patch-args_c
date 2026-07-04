@@ -1,0 +1,35 @@
+Index: args.c
+--- args.c.orig
++++ args.c
+@@ -44,6 +44,7 @@ do_args(int argc, char **argv, int envflag)
+     int finished;
+     int currarg;
+     int opterrors;
++    size_t len;
+ 
+     int i;
+ 
+@@ -160,18 +161,17 @@ do_args(int argc, char **argv, int envflag)
+                         break;
+                 case 'C':    /* select character definitions */
+                         consumed = 1;
++                        len = (strlen(libdir) + strlen(optstr) + 2);
+                         if (*++optstr) { /* did we get a encoding name ? */
+-                            if ((charvec_file = (char *) malloc(strlen(libdir) +
+-                                                                strlen(optstr) +
+-                                                                2)) == NULL) {
++                            if ((charvec_file = (char *) malloc(len)) == NULL) {
+                                 perror(optstr);
+                                 fprintf(stderr,
+                                     "ignoring character encoding definition\n");
+                             }
+                             else {
+-                                (void) strcpy(charvec_file, libdir);
+-                                (void) strcat(charvec_file, "/");
+-                                (void) strcat(charvec_file, optstr);
++                                (void) strlcpy(charvec_file, libdir, len);
++                                (void) strlcat(charvec_file, "/", len);
++                                (void) strlcat(charvec_file, optstr, len);
+                                 opt_encoding = 1;
+                             }
+                         }

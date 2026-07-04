@@ -1,0 +1,11 @@
+--- src/launch.c.orig	Sat Jun 25 20:00:55 2005
++++ src/launch.c	Thu Jan 17 13:44:53 2013
+@@ -261,7 +261,7 @@ void ArgsToLocale(GString **args)
+   char *new_str;
+   GString *new_arg;
+   int pos;
+-  int len;
++  gsize len;
+ 
+   for(pos=1;args[pos];pos++) {
+     new_str=g_locale_from_utf8(args[pos]->str,-1,NULL,&len,NULL);

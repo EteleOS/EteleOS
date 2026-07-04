@@ -1,0 +1,23 @@
+Index: manpages/Makefile.in
+--- manpages/Makefile.in.orig
++++ manpages/Makefile.in
+@@ -21,17 +21,9 @@ depend:
+ 
+ install:
+ 	$(MKDIR) $(DESTDIR)/$(mandir)/man8
+-	for I in ${MAN8}; \
+-	  do ($(RMF) $$I.gz; gzip -c $$I >$$I.gz; \
+-	     $(INSTALL_DATA) $$I.gz $(DESTDIR)$(mandir)/man8/$$I.gz; \
+-	     rm -f $$I.gz); \
+-	done
++	$(INSTALL_DATA) ${MAN8} $(DESTDIR)$(mandir)/man8/
+ 	$(MKDIR) $(DESTDIR)/$(mandir)/man1
+-	for I in ${MAN1}; \
+-	  do ($(RMF) $$I.gz; gzip -c $$I >$$I.gz; \
+-	     $(INSTALL_DATA) $$I.gz $(DESTDIR)$(mandir)/man1/$$I.gz; \
+-	     rm -f $$I.gz); \
+-	done
++	$(INSTALL_DATA) ${MAN1} $(DESTDIR)$(mandir)/man1/
+ 
+ uninstall:
+ 	for I in ${MAN8}; \

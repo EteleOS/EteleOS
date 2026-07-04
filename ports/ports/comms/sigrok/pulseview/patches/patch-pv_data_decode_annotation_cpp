@@ -1,0 +1,15 @@
+Fix build with GLib >=2.68
+
+Index: pv/data/decode/annotation.cpp
+--- pv/data/decode/annotation.cpp.orig
++++ pv/data/decode/annotation.cpp
+@@ -17,9 +17,7 @@
+  * along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-extern "C" {
+ #include <libsigrokdecode/libsigrokdecode.h>
+-}
+ 
+ #include <cassert>
+ #include <vector>

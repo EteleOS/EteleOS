@@ -1,0 +1,12 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+Included Libraries by Game
+==========================
+
+|Game			|Library		|
+|-----------------------+-----------------------|
+|Atom Zombie Smasher	|libatomstb		|
+|Celeste		|libfmod_SDL		|
+|MidBoss		|libSDL_image_compact	|

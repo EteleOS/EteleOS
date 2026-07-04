@@ -1,0 +1,6 @@
+@bin bin/iperf
+@man man/man1/iperf.1
+share/doc/iperf/
+share/doc/iperf/dast.gif
+share/doc/iperf/index.html
+share/doc/iperf/ui_license.html

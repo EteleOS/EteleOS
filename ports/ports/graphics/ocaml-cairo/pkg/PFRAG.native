@@ -1,0 +1,10 @@
+%%dynlink%%
+lib/ocaml/cairo2-gtk/cairo_gtk.a
+lib/ocaml/cairo2-gtk/cairo_gtk.cmx
+lib/ocaml/cairo2-gtk/cairo_gtk.cmxa
+lib/ocaml/cairo2-pango/cairo_pango.a
+lib/ocaml/cairo2-pango/cairo_pango.cmx
+lib/ocaml/cairo2-pango/cairo_pango.cmxa
+lib/ocaml/cairo2/cairo.a
+lib/ocaml/cairo2/cairo.cmx
+lib/ocaml/cairo2/cairo.cmxa

@@ -1,0 +1,11 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/pdnsd -d"
+
+. /etc/rc.d/rc.subr
+
+rc_reload() {
+	${TRUEPREFIX}/sbin/pdnsd-ctl config
+}
+
+rc_cmd $1

@@ -1,0 +1,12 @@
+Index: src/3rdparty/chromium/third_party/angle/third_party/vulkan-loader/src/BUILD.gn
+--- src/3rdparty/chromium/third_party/angle/third_party/vulkan-loader/src/BUILD.gn.orig
++++ src/3rdparty/chromium/third_party/angle/third_party/vulkan-loader/src/BUILD.gn
+@@ -59,7 +59,7 @@ config("vulkan_loader_config") {
+   if (is_win) {
+     cflags = [ "/wd4201" ]
+   }
+-  if (is_linux) {
++  if (is_linux && !is_openbsd) {
+     # assume secure_getenv() is available
+     defines += [ "HAVE_SECURE_GETENV" ]
+   }

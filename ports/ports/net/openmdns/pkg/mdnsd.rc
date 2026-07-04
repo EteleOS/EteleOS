@@ -1,0 +1,11 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/mdnsd"
+daemon_flags="em0"
+
+. /etc/rc.d/rc.subr
+
+pexp="mdnsd: mdnsd"
+rc_reload=NO
+
+rc_cmd $1

@@ -1,0 +1,11 @@
+--- src/common/3dsparse/aseFile.tab.cpp.orig	Sat Oct 23 16:32:33 2010
++++ src/common/3dsparse/aseFile.tab.cpp	Sat Oct 23 16:32:41 2010
+@@ -5,7 +5,7 @@
+ 
+ #define YYBISON 1  /* Identify Bison output.  */
+ 
+-#if !defined(__FreeBSD__) && !defined(__DARWIN__) && !defined(_WIN32)
++#if !defined(__OpenBSD__) && !defined(__FreeBSD__) && !defined(__DARWIN__) && !defined(_WIN32)
+ #define alloca 
+ #endif //!defined(__FreeBSD__) && !defined(__DARWIN__)
+ 

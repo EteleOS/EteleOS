@@ -1,0 +1,20 @@
+Index: src/md.h
+--- src/md.h.orig
++++ src/md.h
+@@ -32,6 +32,8 @@
+ /*--------------------------------------------------------------------------*/
+ /* std collection of includes */
+ // system
++#include <sys/param.h>
++#undef ctob
+ #include <new>
+ #include <cstdarg>
+ #include <cassert>
+@@ -43,6 +45,7 @@
+ #include <cerrno>
+ #include <csetjmp>
+ #include <csignal>
++#include <cstring>
+ #include <iostream>
+ // types
+ #include <complex>

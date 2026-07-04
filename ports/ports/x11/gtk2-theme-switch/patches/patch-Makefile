@@ -1,0 +1,30 @@
+--- Makefile.orig	Wed Jun 11 07:16:36 2003
++++ Makefile	Fri Apr 18 13:58:40 2014
+@@ -1,8 +1,8 @@
+-GCC = cc
+-PREFIX=/usr/local
+-CFLAGS = -O2 -Wall $(shell pkg-config --cflags gtk+-2.0)
+-LIBS = $(shell pkg-config --libs gtk+-2.0)
+-CFLAGS += -DGTK_DISABLE_BROKEN -DGTK_DISABLE_DEPRECATED
++GCC = ${CC}
++PREFIX ?= /usr/local
++CFLAGS += -Wall $$(pkg-config --cflags gtk+-2.0)
++LIBS = $$(pkg-config --libs gtk+-2.0)
++CFLAGS += -DGTK_DISABLE_BROKEN
+ 
+ VERSION = 2.0.0rc2
+ all: switch
+@@ -14,11 +14,10 @@ clean:
+ 	-rm -f switch2 *~
+ 	
+ install: all
+-	strip switch2
+ 	mkdir -p ${PREFIX}/bin
+ 	mkdir -p ${PREFIX}/man
+-	install -c switch2 ${PREFIX}/bin
+-	install -c switch.1 ${PREFIX}/man
++	${BSD_INSTALL_PROGRAM} switch2 ${PREFIX}/bin/gtk-theme-switch2
++	${BSD_INSTALL_MAN} switch.1 ${PREFIX}/man/man1/gtk-theme-switch2.1
+ 
+ dist: clean
+ 	rm -rf /tmp/gtk-theme-switch-$(VERSION)

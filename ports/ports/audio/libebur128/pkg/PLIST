@@ -1,0 +1,3 @@
+include/ebur128.h
+@lib lib/libebur128.so.${LIBebur128_VERSION}
+lib/pkgconfig/libebur128.pc

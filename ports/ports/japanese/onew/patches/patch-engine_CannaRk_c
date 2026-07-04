@@ -1,0 +1,18 @@
+Index: engine/CannaRk.c
+--- engine/CannaRk.c.orig
++++ engine/CannaRk.c
+@@ -20,11 +20,12 @@ History:
+ 	931127	added RKTAB searching in RKPATH
+ 	931214	deleted exceptional NN handling
+ ///////////////////////////////////////////////////////////////////////*/
+-int RomkanExists;
+-int ONEW_kanamode;
++extern int RomkanExists;
++extern int ONEW_kanamode;
+ 
+ #include <ctype.h>
+ #include <stdio.h>
++#include <string.h>
+ 
+ #include <canna/RK.h>
+ #include <canna/jrkanji.h>

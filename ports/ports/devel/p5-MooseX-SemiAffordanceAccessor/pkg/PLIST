@@ -1,0 +1,7 @@
+${P5SITE}/MooseX/
+${P5SITE}/MooseX/SemiAffordanceAccessor/
+${P5SITE}/MooseX/SemiAffordanceAccessor.pm
+${P5SITE}/MooseX/SemiAffordanceAccessor/Role/
+${P5SITE}/MooseX/SemiAffordanceAccessor/Role/Attribute.pm
+@man man/man3p/MooseX::SemiAffordanceAccessor.3p
+@man man/man3p/MooseX::SemiAffordanceAccessor::Role::Attribute.3p

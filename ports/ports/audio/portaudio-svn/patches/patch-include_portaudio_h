@@ -1,0 +1,16 @@
+Add support for sndio (#878)
+45c12e8d18ae4434000ed1521e49d9b5ef91dedf
+
+Index: include/portaudio.h
+--- include/portaudio.h.orig
++++ include/portaudio.h
+@@ -287,7 +287,8 @@ typedef enum PaHostApiTypeId
+     paWDMKS=11,
+     paJACK=12,
+     paWASAPI=13,
+-    paAudioScienceHPI=14
++    paAudioScienceHPI=14,
++    paSndio=15
+ } PaHostApiTypeId;
+ 
+ 

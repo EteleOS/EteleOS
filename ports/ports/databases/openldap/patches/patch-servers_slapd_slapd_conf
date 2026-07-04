@@ -1,0 +1,14 @@
+Index: servers/slapd/slapd.conf
+--- servers/slapd/slapd.conf.orig
++++ servers/slapd/slapd.conf
+@@ -10,8 +10,8 @@ include		%SYSCONFDIR%/schema/core.schema
+ # service AND an understanding of referrals.
+ #referral	ldap://root.openldap.org
+ 
+-pidfile		%LOCALSTATEDIR%/run/slapd.pid
+-argsfile	%LOCALSTATEDIR%/run/slapd.args
++pidfile		%LOCALSTATEDIR%/run/openldap/slapd.pid
++argsfile	%LOCALSTATEDIR%/run/openldap/slapd.args
+ 
+ # Load dynamic backend modules:
+ modulepath	%MODULEDIR%

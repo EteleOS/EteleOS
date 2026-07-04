@@ -1,0 +1,98 @@
+Set some sane defaults:
+use xv as default video output
+disable bar animation in full screen
+disable fetching of cover artworks (erratic behaviour)
+use mplayer's software volume control
+disable PulseAudio's flat volume option
+remember the software volume value
+set location of mplayer binary
+use /dev/rcd0c as default optical device
+use sndio as default audio device
+disable nautilus plugin
+
+--- apps.gnome-mplayer.preferences.gschema.xml.orig	Mon Nov 25 20:44:09 2013
++++ apps.gnome-mplayer.preferences.gschema.xml	Tue Apr 29 14:44:16 2014
+@@ -1,7 +1,7 @@
+ <schemalist>
+   <schema id="apps.gnome-mplayer.preferences" path="/apps/gnome-mplayer/preferences/">
+     <key name="vo" type="s">
+-      <default>''</default>
++      <default>'xv'</default>
+       <summary>Default video output</summary>
+       <description>Default video output</description>
+     </key>
+@@ -116,7 +116,7 @@
+       <description>When set to TRUE the ability to pause on mouse click is disabled</description>
+     </key>
+     <key name="disable-animation" type="b">
+-      <default>false</default>
++      <default>true</default>
+       <summary>Disable Animation</summary>
+       <description>Disable animation of fullscreen control bar sliding away</description>
+     </key>
+@@ -126,7 +126,7 @@
+       <description>Time in seconds before controls are hidden when in fullscreen mode values less than 1 disable auto hide</description>
+     </key>
+     <key name="disable-cover-art-fetch" type="b">
+-      <default>false</default>
++      <default>true</default>
+       <summary>Disable Fetch of Cover Art</summary>
+       <description>When set to TRUE cached covers are loaded, but new ones are not retrieved</description>
+     </key>
+@@ -136,7 +136,7 @@
+       <description>When set to TRUE the cache value is always used, even for streaming media</description>
+     </key>
+     <key name="softvol" type="b">
+-      <default>false</default>
++      <default>true</default>
+       <summary>Have mplayer use the softvol option</summary>
+       <description>When set to TRUE the softvol option is passed to mplayer, useful for machines without pulseaudio</description>
+     </key>
+@@ -246,7 +246,7 @@
+       <description>Place status icon in the tray</description>
+     </key>
+     <key name="use-pulse-flat-volume" type="b">
+-      <default>true</default>
++      <default>false</default>
+       <summary>Set to TRUE if using with pulseaudio 0.9.15</summary>
+       <description>PulseAudio started using a flat volume option by default in 0.9.15 (you can disable however)</description>
+     </key>
+@@ -271,7 +271,7 @@
+       <description>Configuration value for mplayer to control the number of audio channels</description>
+     </key>
+     <key name="remember-softvol" type="b">
+-      <default>false</default>
++      <default>true</default>
+       <summary>Remember the software volume</summary>
+       <description>Remember the software volume value</description>
+     </key>
+@@ -306,17 +306,17 @@
+       <description>Subtitle loading</description>
+     </key>
+     <key name="mplayer-bin" type="s">
+-      <default>''</default>
++      <default>'${LOCALBASE}/bin/mplayer'</default>
+       <summary>Location of mplayer binary if not in path</summary>
+       <description>Location of mplayer binary if not in path</description>
+     </key>
+     <key name="mplayer-dvd-device" type="s">
+-      <default>''</default>
++      <default>'/dev/rcd0c'</default>
+       <summary>DVD device name</summary>
+       <description>DVD device name</description>
+     </key>
+     <key name="audio-device-name" type="s">
+-      <default>''</default>
++      <default>'SNDIO'</default>
+       <summary>Name of the preferred audio device</summary>
+       <description>Name of the preferred audio device</description>
+     </key>
+@@ -351,7 +351,7 @@
+       <description>Preferred Subtitle Language</description>
+     </key>
+     <key name="enable-nautilus-plugin" type="b">
+-      <default>true</default>
++      <default>false</default>
+       <summary>Enable Audio/Video plugin in Nautilus</summary>
+       <description>Enable Audio/Video plugin in Nautilus</description>
+     </key>

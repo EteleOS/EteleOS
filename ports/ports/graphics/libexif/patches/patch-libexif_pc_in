@@ -1,0 +1,9 @@
+Index: libexif.pc.in
+--- libexif.pc.in.orig
++++ libexif.pc.in
+@@ -11,4 +11,4 @@ Requires:
+ Version: @VERSION@
+ Libs: -L${libdir} -lexif
+ Libs.private: -lm
+-Cflags: -I${includedir}
++Cflags: -I${includedir} -I${includedir}/libexif

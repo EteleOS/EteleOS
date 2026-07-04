@@ -1,0 +1,27 @@
+include/libconfig.h
+include/libconfig.h++
+@info info/libconfig.info
+lib/cmake/
+lib/cmake/libconfig/
+lib/cmake/libconfig++/
+lib/cmake/libconfig++/libconfig++Config.cmake
+lib/cmake/libconfig/libconfigConfig.cmake
+@static-lib lib/libconfig++.a
+lib/libconfig++.la
+@lib lib/libconfig++.so.${LIBconfig++_VERSION}
+@static-lib lib/libconfig.a
+lib/libconfig.la
+@lib lib/libconfig.so.${LIBconfig_VERSION}
+lib/pkgconfig/libconfig++.pc
+lib/pkgconfig/libconfig.pc
+share/examples/libconfig/
+share/examples/libconfig/example.cfg
+share/examples/libconfig/example1.c
+share/examples/libconfig/example1.cpp
+share/examples/libconfig/example2.c
+share/examples/libconfig/example2.cpp
+share/examples/libconfig/example3.c
+share/examples/libconfig/example3.cpp
+share/examples/libconfig/example4.c
+share/examples/libconfig/example4.cfg
+share/examples/libconfig/example4.cpp

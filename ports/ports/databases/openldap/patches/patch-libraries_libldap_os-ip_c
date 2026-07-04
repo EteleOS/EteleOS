@@ -1,0 +1,27 @@
+avoid format/type mismatch on ILP32 archs (time_t is always 64 bit on OpenBSD)
+
+Index: libraries/libldap/os-ip.c
+--- libraries/libldap/os-ip.c.orig
++++ libraries/libldap/os-ip.c
+@@ -287,8 +287,8 @@ ldap_int_poll(
+ 	int		rc;
+ 		
+ 
+-	Debug2(LDAP_DEBUG_TRACE, "ldap_int_poll: fd: %d tm: %ld\n",
+-		s, tvp ? tvp->tv_sec : -1L );
++	Debug2(LDAP_DEBUG_TRACE, "ldap_int_poll: fd: %d tm: %lld\n",
++		s, tvp ? (long long)tvp->tv_sec : -1LL );
+ 
+ #ifdef HAVE_POLL
+ 	{
+@@ -439,8 +439,8 @@ ldap_pvt_connect(LDAP *ld, ber_socket_t s,
+ 	}
+ 
+ 	Debug3(LDAP_DEBUG_TRACE,
+-			"ldap_pvt_connect: fd: %d tm: %ld async: %d\n",
+-			s, opt_tv ? tv.tv_sec : -1L, async);
++			"ldap_pvt_connect: fd: %d tm: %lld async: %d\n",
++			s, opt_tv ? (long long)tv.tv_sec : -1LL, async);
+ 
+ 	if ( opt_tv && ldap_pvt_ndelay_on(ld, s) == -1 )
+ 		return ( -1 );

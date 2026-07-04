@@ -1,0 +1,10 @@
+--- Wnn/uum/hinsi.c.orig
++++ Wnn/uum/hinsi.c
+@@ -49,6 +49,7 @@
+ /*	Version 4.0
+  */
+ #include <stdio.h>
++#include <string.h>
+ #include "commonhd.h"
+ #include "sdefine.h"
+ #include "sheader.h"

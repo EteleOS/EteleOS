@@ -1,0 +1,73 @@
+bin/urlwatch
+lib/python${MODPY_VERSION}/site-packages/urlwatch/
+lib/python${MODPY_VERSION}/site-packages/urlwatch-${MODPY_DISTV}.dist-info/
+lib/python${MODPY_VERSION}/site-packages/urlwatch-${MODPY_DISTV}.dist-info/METADATA
+lib/python${MODPY_VERSION}/site-packages/urlwatch-${MODPY_DISTV}.dist-info/RECORD
+lib/python${MODPY_VERSION}/site-packages/urlwatch-${MODPY_DISTV}.dist-info/WHEEL
+lib/python${MODPY_VERSION}/site-packages/urlwatch-${MODPY_DISTV}.dist-info/entry_points.txt
+lib/python${MODPY_VERSION}/site-packages/urlwatch-${MODPY_DISTV}.dist-info/licenses/
+lib/python${MODPY_VERSION}/site-packages/urlwatch-${MODPY_DISTV}.dist-info/licenses/COPYING
+lib/python${MODPY_VERSION}/site-packages/urlwatch-${MODPY_DISTV}.dist-info/top_level.txt
+lib/python${MODPY_VERSION}/site-packages/urlwatch/__init__.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}/
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}cli.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}cli.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}command.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}command.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}config.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}config.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}filters.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}filters.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}handler.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}handler.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}html2txt.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}html2txt.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}ical2txt.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}ical2txt.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}jobs.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}jobs.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}mailer.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}mailer.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}main.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}main.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}migration.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}migration.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}reporters.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}reporters.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}storage.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}storage.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}util.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}util.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}worker.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}worker.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}xmpp.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/urlwatch/${MODPY_PYCACHE}xmpp.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/urlwatch/cli.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/command.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/config.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/filters.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/handler.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/html2txt.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/ical2txt.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/jobs.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/mailer.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/main.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/migration.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/reporters.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/storage.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/util.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/worker.py
+lib/python${MODPY_VERSION}/site-packages/urlwatch/xmpp.py
+@man man/man1/urlwatch.1
+@man man/man5/urlwatch-config.5
+@man man/man5/urlwatch-filters.5
+@man man/man5/urlwatch-jobs.5
+@man man/man5/urlwatch-reporters.5
+@man man/man7/urlwatch-cookbook.7
+@man man/man7/urlwatch-deprecated.7
+@man man/man7/urlwatch-intro.7
+share/examples/urlwatch/
+share/examples/urlwatch/hooks.py.example
+share/examples/urlwatch/urls.yaml.example

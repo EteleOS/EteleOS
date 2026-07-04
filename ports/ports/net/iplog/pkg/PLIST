@@ -1,0 +1,6 @@
+@man man/man5/iplog.conf.5
+@man man/man8/iplog.8
+sbin/iplog
+share/examples/iplog/
+share/examples/iplog/iplog.conf
+@sample ${SYSCONFDIR}/iplog.conf

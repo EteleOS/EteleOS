@@ -1,0 +1,11 @@
+@bin bin/hdhomerun_config
+share/hdhomerun/
+share/hdhomerun/hdhomerun3_atsc_firmware_${V}.bin
+share/hdhomerun/hdhomerun3_cablecard_firmware_${V}.bin
+share/hdhomerun/hdhomerun3_dvbc_firmware_${V}.bin
+share/hdhomerun/hdhomerun3_dvbt_firmware_${V}.bin
+share/hdhomerun/hdhomerun3_dvbtc_firmware_${V}.bin
+share/hdhomerun/hdhomerun4_atsc_firmware_${V}.bin
+share/hdhomerun/hdhomerun_atsc_firmware_${V}.bin
+share/hdhomerun/hdhomerun_dvbt_firmware_${V}.bin
+share/hdhomerun/hdhomeruntc_atsc_firmware_${V}.bin

@@ -1,0 +1,15 @@
+--- bin/Sophos.install.orig	Sat Aug 20 08:32:02 2011
++++ bin/Sophos.install	Sat Aug 20 21:38:21 2011
+@@ -208,9 +208,9 @@ if [ -f /etc/sav.conf ]; then
+   rm -f /etc/sav.conf
+ fi
+ 
+-echo Creating links so Perl-SAVI module compiles
+-[ -e ${SOPHOS}/lib/libsavi.so.2 ] && ln -sf libsavi.so.2 ${SOPHOS}/lib/libsavi.so
+-[ -e ${SOPHOS}/lib/libsavi.so.3 ] && ln -sf libsavi.so.3 ${SOPHOS}/lib/libsavi.so
++#echo Creating links so Perl-SAVI module compiles
++#[ -e ${SOPHOS}/lib/libsavi.so.2 ] && ln -sf libsavi.so.2 ${SOPHOS}/lib/libsavi.so
++#[ -e ${SOPHOS}/lib/libsavi.so.3 ] && ln -sf libsavi.so.3 ${SOPHOS}/lib/libsavi.so
+ 
+ echo
+ echo Fetching latest IDE virus identities from www.sophos.com

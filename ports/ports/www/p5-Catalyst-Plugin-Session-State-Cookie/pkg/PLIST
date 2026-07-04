@@ -1,0 +1,3 @@
+${P5SITE}/Catalyst/Plugin/Session/State/
+${P5SITE}/Catalyst/Plugin/Session/State/Cookie.pm
+@man man/man3p/Catalyst::Plugin::Session::State::Cookie.3p

@@ -1,0 +1,26 @@
+@pkgpath databases/libdbi-drivers,-sqlite
+lib/dbd/
+@static-lib lib/dbd/libdbdmysql.a
+lib/dbd/libdbdmysql.la
+@so lib/dbd/libdbdmysql.so
+share/doc/libdbi-drivers/
+share/doc/libdbi-drivers/dbd_mysql/
+share/doc/libdbi-drivers/dbd_mysql.pdf
+share/doc/libdbi-drivers/dbd_mysql/c101.html
+share/doc/libdbi-drivers/dbd_mysql/c177.html
+share/doc/libdbi-drivers/dbd_mysql/c180.html
+share/doc/libdbi-drivers/dbd_mysql/c40.html
+share/doc/libdbi-drivers/dbd_mysql/c43.html
+share/doc/libdbi-drivers/dbd_mysql/c44.html
+share/doc/libdbi-drivers/dbd_mysql/c47.html
+share/doc/libdbi-drivers/dbd_mysql/c98.html
+share/doc/libdbi-drivers/dbd_mysql/copying-fdl.html
+share/doc/libdbi-drivers/dbd_mysql/f29.html
+share/doc/libdbi-drivers/dbd_mysql/f32.html
+share/doc/libdbi-drivers/dbd_mysql/index.html
+share/doc/libdbi-drivers/dbd_mysql/x180.html
+share/doc/libdbi-drivers/dbd_mysql/x183.html
+share/doc/libdbi-drivers/dbd_mysql/x47.html
+share/doc/libdbi-drivers/dbd_mysql/x50.html
+share/doc/libdbi-drivers/dbd_mysql/x61.html
+share/doc/libdbi-drivers/dbd_mysql/x64.html

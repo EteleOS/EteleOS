@@ -1,0 +1,24 @@
+Index: src/osgPlugins/CMakeLists.txt
+--- src/osgPlugins/CMakeLists.txt.orig
++++ src/osgPlugins/CMakeLists.txt
+@@ -213,10 +213,6 @@ IF(FFMPEG_FOUND AND OSG_CPP_EXCEPTIONS_AVAILABLE)
+     ADD_PLUGIN_DIRECTORY(ffmpeg)
+ ENDIF()
+ 
+-IF(GSTREAMER_FOUND AND GLIB_FOUND)
+-    ADD_PLUGIN_DIRECTORY(gstreamer)
+-ENDIF()
+-
+ IF(DIRECTSHOW_FOUND)
+     ADD_PLUGIN_DIRECTORY(directshow)
+ ENDIF()
+@@ -281,9 +277,6 @@ ENDIF()
+ #
+ # ScriptEngines
+ #
+-IF ((LUA_LIBRARIES AND LUA_INCLUDE_DIR) OR (LUA_SOURCE_DIR AND LUA_INCLUDE_DIR) OR (OSG_USE_LOCAL_LUA_SOURCE))
+-    ADD_PLUGIN_DIRECTORY(lua)
+-ENDIF()
+ 
+ 
+ # V8 and Python plugins are tests for linking against these libraries but aren't functionality beyond this.

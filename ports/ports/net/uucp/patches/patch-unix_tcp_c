@@ -1,0 +1,22 @@
+64 bit clean; ross
+
+--- unix/tcp.c.orig	Thu May 29 08:08:49 2003
++++ unix/tcp.c	Fri Apr 13 15:57:26 2012
+@@ -395,7 +395,7 @@ ftcp_open (qconn, ibaud, fwait, fuser)
+   while (! FGOT_SIGNAL ())
+     {
+       sockaddr_storage speer;
+-      size_t clen;
++      int clen;
+       int onew;
+       pid_t ipid;
+ 
+@@ -613,7 +613,7 @@ ftcp_dial (qconn, puuconf, qsys, zphone, qdialer, ptdi
+ 
+ 	  sin.sin_family = AF_INET;
+ 	  sin.sin_addr.s_addr = inet_addr ((char *) zhost);
+-	  if ((long) sin.sin_addr.s_addr == (long) -1)
++	  if (sin.sin_addr.s_addr == INADDR_NONE)
+ 	    {
+ 	      ulog (LOG_ERROR, "%s: unknown host name", zhost);
+ 	      return FALSE;

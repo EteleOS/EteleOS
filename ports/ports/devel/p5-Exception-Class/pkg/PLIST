@@ -1,0 +1,6 @@
+${P5SITE}/Exception/
+${P5SITE}/Exception/Class/
+${P5SITE}/Exception/Class.pm
+${P5SITE}/Exception/Class/Base.pm
+@man man/man3p/Exception::Class.3p
+@man man/man3p/Exception::Class::Base.3p

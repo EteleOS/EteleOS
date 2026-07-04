@@ -1,0 +1,4 @@
+${P5SITE}/WWW/Robot.pm
+@man man/man3p/WWW::Robot.3p
+share/examples/p5-WWW-Robot/
+share/examples/p5-WWW-Robot/poacher

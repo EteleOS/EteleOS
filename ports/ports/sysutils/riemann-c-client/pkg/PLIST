@@ -1,0 +1,17 @@
+@bin bin/riemann-client
+include/riemann/
+include/riemann/attribute.h
+include/riemann/client.h
+include/riemann/communicate.h
+include/riemann/event.h
+include/riemann/message.h
+include/riemann/proto/
+include/riemann/proto/riemann.pb-c.h
+include/riemann/query.h
+include/riemann/riemann-client.h
+include/riemann/simple.h
+@static-lib lib/libriemann-client-gnutls.a
+lib/libriemann-client-gnutls.la
+@lib lib/libriemann-client-gnutls.so.${LIBriemann-client-gnutls_VERSION}
+lib/pkgconfig/riemann-client.pc
+@man man/man1/riemann-client.1

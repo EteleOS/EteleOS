@@ -1,0 +1,31 @@
+Index: hiscore.cpp
+--- hiscore.cpp.orig
++++ hiscore.cpp
+@@ -17,7 +17,8 @@ You should have received a copy of the GNU General Pub
+ along with Vodovod in file COPYING; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ -----------------------------------------------------------------------------*/
+-#include "stdio.h"
++#include <stdio.h>
++#include <stdlib.h>
+ #include "hiscore.h"
+ //-----------------------------------------------------------------------------
+ HiScores &hiScores()
+@@ -47,7 +48,7 @@ bool HiScores::canEnter(int score)
+ HiScores::HiScores()
+ {
+     // on Linux use /usr/share/abandoned/hiscore.dat  ?
+-    FILE *fp = fopen("hiscore.dat", "r");
++    FILE *fp = fopen(HIGHSCOREDIR "/vodovod.sco", "r");
+     if (!fp)
+     {
+         std::string defaultNames[] = {      // create default hiscore
+@@ -104,7 +105,7 @@ HiScores::~HiScores()
+ {
+     // save to file
+     // format: NAME#POINTS#SWAPS#
+-    FILE *fp = fopen("hiscore.dat", "w+");
++    FILE *fp = fopen(HIGHSCOREDIR "/vodovod.sco", "w+");
+     if (fp)
+     {
+         for (iterator it = begin(); it != end(); ++it)

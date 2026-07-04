@@ -1,0 +1,10 @@
+Index: mpeg2enc/ontheflyratectlpass1.hh
+--- mpeg2enc/ontheflyratectlpass1.hh.orig
++++ mpeg2enc/ontheflyratectlpass1.hh
+@@ -1,5 +1,5 @@
+ #ifndef _ONTHEFLYRATECTLPASS1_HH
+-#define _ONTHELFYRATECTLPASS1_HH
++#define _ONTHEFLYRATECTLPASS1_HH
+ 
+ /*  (C) 2003 Andrew Stevens */
+ 

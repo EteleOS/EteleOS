@@ -1,0 +1,3 @@
+${P5SITE}/MooseX/Types/Path/
+${P5SITE}/MooseX/Types/Path/Tiny.pm
+@man man/man3p/MooseX::Types::Path::Tiny.3p

@@ -1,0 +1,74 @@
+* retry SSL_write on blocking socket if we're told to do so.
+* use libssl built-in hostname verification rather than hand-rolled.
+https://sources.debian.org/patches/uw-imap/8:2007f~dfsg-7/1006_openssl1.1_autoverify.patch/
+adapted for alpine c-client.
+
+Index: imap/src/osdep/unix/ssl_unix.c
+--- imap/src/osdep/unix/ssl_unix.c.orig
++++ imap/src/osdep/unix/ssl_unix.c
+@@ -391,6 +391,7 @@ static char *ssl_start_work (SSLSTREAM *stream,char *h
+ {
+   BIO *bio;
+   X509 *cert;
++  int ssl_err;
+   unsigned long sl,tl;
+   int minv, maxv;
+   long masklow, maskhigh;
+@@ -413,7 +414,14 @@ static char *ssl_start_work (SSLSTREAM *stream,char *h
+ 				/* disable certificate validation? */
+   if (flags & NET_NOVALIDATECERT)
+     SSL_CTX_set_verify (stream->context,SSL_VERIFY_NONE,NIL);
+-  else SSL_CTX_set_verify (stream->context,SSL_VERIFY_PEER,ssl_open_verify);
++  else {
++#if OPENSSL_VERSION_NUMBER >= 0x10100000
++    X509_VERIFY_PARAM *param = SSL_CTX_get0_param(stream->context);
++    X509_VERIFY_PARAM_set_hostflags(param, X509_CHECK_FLAG_NO_PARTIAL_WILDCARDS);
++    X509_VERIFY_PARAM_set1_host(param, host, 0);
++#endif
++    SSL_CTX_set_verify (stream->context,SSL_VERIFY_PEER,ssl_open_verify);
++  }
+ 				/* set cipher list */
+   ciphers = (char *) mail_parameters (NIL,GET_SSLCIPHERS,NIL);
+   if(ciphers != NIL
+@@ -465,8 +473,16 @@ static char *ssl_start_work (SSLSTREAM *stream,char *h
+   SSL_set_connect_state (stream->con);
+   if (SSL_in_init (stream->con)) SSL_total_renegotiations (stream->con);
+ 				/* now negotiate SSL */
+-  if (SSL_write (stream->con,"",0) < 0)
++  do {
++    ssl_err = SSL_write (stream->con,"",0);
++  } while (ssl_err < 0 &&
++      ((SSL_get_error(stream->con, ssl_err) == SSL_ERROR_SYSCALL && errno == EINTR) ||
++       SSL_get_error(stream->con, ssl_err) == SSL_ERROR_WANT_READ ||
++        SSL_get_error(stream->con, ssl_err) == SSL_ERROR_WANT_WRITE));
++  if (ssl_err < 0)
+     return ssl_last_error ? ssl_last_error : "SSL negotiation failed";
++
++#if OPENSSL_VERSION_NUMBER < 0x10100000
+ 				/* need to validate host names? */
+   cert = SSL_get_peer_certificate (stream->con);
+   if (!(flags & NET_NOVALIDATECERT) &&
+@@ -480,6 +496,7 @@ static char *ssl_start_work (SSLSTREAM *stream,char *h
+     return ssl_last_error = cpystr (tmp);
+   }
+   X509_free(cert);
++#endif
+   return NIL;
+ }
+ 
+@@ -518,6 +535,7 @@ static int ssl_open_verify (int ok,X509_STORE_CTX *ctx
+  * Returns: NIL if validated, else string of error message
+  */
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000
+ static char *ssl_validate_cert (X509 *cert,char *host)
+ {
+   int i,j,n, m = 0;
+@@ -590,6 +608,7 @@ static char *ssl_validate_cert (X509 *cert,char *host)
+ 
+   return ret;
+ }
++#endif
+ 
+ /* Case-independent wildcard pattern match
+  * Accepts: base string

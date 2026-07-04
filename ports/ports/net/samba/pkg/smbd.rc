@@ -1,0 +1,23 @@
+#!/bin/ksh
+
+smbcontrol="${TRUEPREFIX}/bin/smbcontrol"
+
+daemon="${TRUEPREFIX}/sbin/smbd -D"
+
+. /etc/rc.d/rc.subr
+
+rc_usercheck=NO
+
+rc_check() {
+	${smbcontrol} smbd ping
+}
+
+rc_reload() {
+	${smbcontrol} smbd reload-config
+}
+
+rc_stop() {
+	${smbcontrol} smbd shutdown
+}
+
+rc_cmd $1

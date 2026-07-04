@@ -1,0 +1,10 @@
+@conflict jless-*
+@bin bin/jless
+@bin bin/jlessecho
+@bin bin/jlesskey
+@man man/man1/jless.1
+@man man/man1/jlesskey.1
+share/doc/ja-less/
+share/doc/ja-less/README.ext.jp
+share/doc/ja-less/README.iso
+share/doc/ja-less/README.iso.jp

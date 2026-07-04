@@ -1,0 +1,34 @@
+Index: rsnapshot.conf.default.in
+--- rsnapshot.conf.default.in.orig
++++ rsnapshot.conf.default.in
+@@ -50,7 +50,7 @@ snapshot_root	/.snapshots/
+ 
+ # Uncomment this to enable remote ssh backups over rsync.
+ #
+-#@CMD_SSH@
++@CMD_SSH@
+ 
+ # Comment this out to disable syslog support.
+ #
+@@ -179,7 +179,7 @@ lockfile	/var/run/rsnapshot.pid
+ # This is the best way to support special files (FIFOs, etc) cross-platform.
+ # The default is 0 (off).
+ #
+-#link_dest	0
++link_dest	1
+ 
+ # When sync_first is enabled, it changes the default behaviour of rsnapshot.
+ # Normally, when rsnapshot is called with its lowest interval
+@@ -235,9 +235,9 @@ lockfile	/var/run/rsnapshot.pid
+ ###############################
+ 
+ # LOCALHOST
+-backup	/home/		localhost/
+-backup	/etc/		localhost/
+-backup	/usr/local/	localhost/
++#backup	/home/		localhost/
++#backup	/etc/		localhost/
++#backup	/usr/local/	localhost/
+ #backup	/var/log/rsnapshot		localhost/
+ #backup	/etc/passwd	localhost/
+ #backup	/home/foo/My Documents/		localhost/

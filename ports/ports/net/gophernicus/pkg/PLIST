@@ -1,0 +1,20 @@
+@newgroup _gophernicus:704
+@newuser _gophernicus:704:704::Gophernicus Gopher Server:/nonexistent:/sbin/nologin
+@bin libexec/in.gophernicus
+@man man/man8/gophernicus.8
+share/doc/gophernicus/
+share/doc/gophernicus/LICENSE
+share/doc/gophernicus/README.gophermap
+share/doc/gophernicus/README.md
+share/doc/gophernicus/gophertag
+@mode 755
+@owner root
+@group daemon
+@sample /var/gopher/
+@mode
+@owner
+@group
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/gophernicus/
+share/examples/gophernicus/gophermap
+@sample /var/gopher/gophermap

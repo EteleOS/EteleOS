@@ -1,0 +1,5 @@
+${P5SITE}/Captcha/
+${P5SITE}/Captcha/reCAPTCHA.pm
+@man man/man3p/Captcha::reCAPTCHA.3p
+share/examples/p5-Captcha-reCaptcha/
+share/examples/p5-Captcha-reCaptcha/captcha.pl

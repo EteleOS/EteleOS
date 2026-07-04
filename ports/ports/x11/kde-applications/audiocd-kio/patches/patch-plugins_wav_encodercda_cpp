@@ -1,0 +1,17 @@
+fix conflict with /usr/include/sys/endian.h
+
+Index: plugins/wav/encodercda.cpp
+--- plugins/wav/encodercda.cpp.orig
++++ plugins/wav/encodercda.cpp
+@@ -44,11 +44,6 @@ extern "C" {
+ #include "cdda_interface.hpp"
+ }
+ 
+-inline qint16 swap16(qint16 i)
+-{
+-    return (((i >> 8) & 0xFF) | ((i << 8) & 0xFF00));
+-}
+-
+ long EncoderCda::read(qint16 *buf, int frames)
+ {
+     QByteArray output;

@@ -1,0 +1,11 @@
+Index: tests/test_asyncio.py
+--- tests/test_asyncio.py.orig
++++ tests/test_asyncio.py
+@@ -193,6 +193,7 @@ class HighLevelTest(TestCase):
+             )
+         )
+ 
++    @skipIf("ed448" in SKIP_TESTS, "Skipping ed448 tests")
+     @asynctest
+     async def test_connect_and_serve_with_ed25519_certificate(self):
+         await self._test_connect_and_serve_with_certificate(

@@ -1,0 +1,15 @@
+errno.h header is required now that errno is a per-thread variable.
+"undefined symbol 'errno'" at runtime with dlopen()'d modules.
+
+Index: backend/pint.c
+--- backend/pint.c.orig
++++ backend/pint.c
+@@ -42,7 +42,7 @@
+ #include <limits.h>
+ #include <stdlib.h>
+ #include <string.h>
+-extern int errno;
++#include <errno.h>
+ 
+ #include "../include/sane/sane.h"
+ #include "../include/sane/saneopts.h"

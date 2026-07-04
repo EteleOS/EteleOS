@@ -1,0 +1,111 @@
+@conflict ocsync-*
+@conflict mirall-*
+@pkgpath net/ocsync
+@pkgpath net/mirall
+@pkgpath net/owncloudclient,-qt5
+@bin bin/owncloud
+@bin bin/owncloudcmd
+include/ownCloud/
+include/ownCloud/common/
+include/ownCloud/common/filesystembase.h
+include/ownCloud/common/ocsynclib.h
+include/ownCloud/common/utility.h
+include/ownCloud/libsync/
+include/ownCloud/libsync/accessmanager.h
+include/ownCloud/libsync/logger.h
+include/ownCloud/libsync/owncloudlib.h
+lib/cmake/ownCloud/
+lib/cmake/ownCloud/ownCloudConfig${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/ownCloud/ownCloudConfig.cmake
+lib/cmake/ownCloud/ownCloudConfigVersion.cmake
+@lib lib/libowncloudResources.so.${LIBowncloudResources_VERSION}
+@lib lib/libowncloud_csync.so.${LIBowncloud_csync_VERSION}
+@lib lib/libowncloudsync.so.${LIBowncloudsync_VERSION}
+lib/ownCloud/
+lib/ownCloud/plugins/
+@so lib/ownCloud/plugins/owncloudsync_vfs_off.so
+@so lib/ownCloud/plugins/owncloudsync_vfs_suffix.so
+share/applications/owncloud.desktop
+share/caja-python/
+share/caja-python/extensions/
+share/caja-python/extensions/syncstate-ownCloud.py
+share/examples/ownCloud/
+@sample ${SYSCONFDIR}/ownCloud/
+share/examples/ownCloud/sync-exclude.lst
+@sample ${SYSCONFDIR}/ownCloud/sync-exclude.lst
+share/icons/hicolor/1024x1024/
+share/icons/hicolor/1024x1024/apps/
+share/icons/hicolor/1024x1024/apps/owncloud.png
+share/icons/hicolor/128x128/apps/ownCloud_error.png
+share/icons/hicolor/128x128/apps/ownCloud_error_shared.png
+share/icons/hicolor/128x128/apps/ownCloud_ok.png
+share/icons/hicolor/128x128/apps/ownCloud_ok_shared.png
+share/icons/hicolor/128x128/apps/ownCloud_sync.png
+share/icons/hicolor/128x128/apps/ownCloud_sync_shared.png
+share/icons/hicolor/128x128/apps/ownCloud_warn.png
+share/icons/hicolor/128x128/apps/ownCloud_warn_shared.png
+share/icons/hicolor/128x128/apps/owncloud.png
+share/icons/hicolor/16x16/apps/ownCloud_error.png
+share/icons/hicolor/16x16/apps/ownCloud_error_shared.png
+share/icons/hicolor/16x16/apps/ownCloud_ok.png
+share/icons/hicolor/16x16/apps/ownCloud_ok_shared.png
+share/icons/hicolor/16x16/apps/ownCloud_sync.png
+share/icons/hicolor/16x16/apps/ownCloud_sync_shared.png
+share/icons/hicolor/16x16/apps/ownCloud_warn.png
+share/icons/hicolor/16x16/apps/ownCloud_warn_shared.png
+share/icons/hicolor/16x16/apps/owncloud.png
+share/icons/hicolor/24x24/apps/owncloud.png
+share/icons/hicolor/256x256/apps/ownCloud_error.png
+share/icons/hicolor/256x256/apps/ownCloud_error_shared.png
+share/icons/hicolor/256x256/apps/ownCloud_ok.png
+share/icons/hicolor/256x256/apps/ownCloud_ok_shared.png
+share/icons/hicolor/256x256/apps/ownCloud_sync.png
+share/icons/hicolor/256x256/apps/ownCloud_sync_shared.png
+share/icons/hicolor/256x256/apps/ownCloud_warn.png
+share/icons/hicolor/256x256/apps/ownCloud_warn_shared.png
+share/icons/hicolor/256x256/apps/owncloud.png
+share/icons/hicolor/32x32/apps/ownCloud_error.png
+share/icons/hicolor/32x32/apps/ownCloud_error_shared.png
+share/icons/hicolor/32x32/apps/ownCloud_ok.png
+share/icons/hicolor/32x32/apps/ownCloud_ok_shared.png
+share/icons/hicolor/32x32/apps/ownCloud_sync.png
+share/icons/hicolor/32x32/apps/ownCloud_sync_shared.png
+share/icons/hicolor/32x32/apps/ownCloud_warn.png
+share/icons/hicolor/32x32/apps/ownCloud_warn_shared.png
+share/icons/hicolor/32x32/apps/owncloud.png
+share/icons/hicolor/48x48/apps/ownCloud_error.png
+share/icons/hicolor/48x48/apps/ownCloud_error_shared.png
+share/icons/hicolor/48x48/apps/ownCloud_ok.png
+share/icons/hicolor/48x48/apps/ownCloud_ok_shared.png
+share/icons/hicolor/48x48/apps/ownCloud_sync.png
+share/icons/hicolor/48x48/apps/ownCloud_sync_shared.png
+share/icons/hicolor/48x48/apps/ownCloud_warn.png
+share/icons/hicolor/48x48/apps/ownCloud_warn_shared.png
+share/icons/hicolor/48x48/apps/owncloud.png
+share/icons/hicolor/64x64/apps/ownCloud_error.png
+share/icons/hicolor/64x64/apps/ownCloud_error_shared.png
+share/icons/hicolor/64x64/apps/ownCloud_ok.png
+share/icons/hicolor/64x64/apps/ownCloud_ok_shared.png
+share/icons/hicolor/64x64/apps/ownCloud_sync.png
+share/icons/hicolor/64x64/apps/ownCloud_sync_shared.png
+share/icons/hicolor/64x64/apps/ownCloud_warn.png
+share/icons/hicolor/64x64/apps/ownCloud_warn_shared.png
+share/icons/hicolor/64x64/apps/owncloud.png
+share/icons/hicolor/72x72/apps/ownCloud_error.png
+share/icons/hicolor/72x72/apps/ownCloud_error_shared.png
+share/icons/hicolor/72x72/apps/ownCloud_ok.png
+share/icons/hicolor/72x72/apps/ownCloud_ok_shared.png
+share/icons/hicolor/72x72/apps/ownCloud_sync.png
+share/icons/hicolor/72x72/apps/ownCloud_sync_shared.png
+share/icons/hicolor/72x72/apps/ownCloud_warn.png
+share/icons/hicolor/72x72/apps/ownCloud_warn_shared.png
+share/mime/packages/owncloud.xml
+share/nautilus-python/
+share/nautilus-python/extensions/
+share/nautilus-python/extensions/syncstate-ownCloud.py
+share/nemo-python/
+share/nemo-python/extensions/
+share/nemo-python/extensions/syncstate-ownCloud.py
+@tag update-desktop-database
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-mime-database

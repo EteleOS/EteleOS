@@ -1,0 +1,12 @@
+Index: ext/extconf.rb
+--- ext/extconf.rb.orig
++++ ext/extconf.rb
+@@ -29,7 +29,7 @@ end
+ # see: https://github.com/sass/sassc-ruby/issues/148
+ enable_lto_by_default = (Gem::Platform.local.os == "darwin" && !ENV['NIX_CC'].nil?)
+ 
+-if enable_config('lto', enable_lto_by_default)
++if enable_config('lto', false)
+   $CFLAGS << ' -flto'
+   $CXXFLAGS << ' -flto'
+   $LDFLAGS << ' -flto'

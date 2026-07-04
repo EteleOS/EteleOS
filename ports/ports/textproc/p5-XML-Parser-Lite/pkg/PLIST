@@ -1,0 +1,4 @@
+${P5SITE}/XML/
+${P5SITE}/XML/Parser/
+${P5SITE}/XML/Parser/Lite.pm
+@man man/man3p/XML::Parser::Lite.3p

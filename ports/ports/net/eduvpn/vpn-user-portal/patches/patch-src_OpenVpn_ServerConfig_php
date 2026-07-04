@@ -1,0 +1,21 @@
+Index: src/OpenVpn/ServerConfig.php
+--- src/OpenVpn/ServerConfig.php.orig
++++ src/OpenVpn/ServerConfig.php
+@@ -21,7 +21,7 @@ use Vpn\Portal\OpenVpn\CA\CertInfo;
+ 
+ class ServerConfig
+ {
+-    public const LIBEXEC_DIR = '/usr/libexec/vpn-server-node';
++    public const LIBEXEC_DIR = '/usr/local/libexec/vpn-server-node';
+ 
+     private CaInterface $ca;
+     private TlsCrypt $tlsCrypt;
+@@ -157,7 +157,7 @@ class ServerConfig
+             'script-security 2',
+             sprintf('dev tun%d', $processConfig['tunDev']),
+             sprintf('port %d', $processConfig['port']),
+-            sprintf('management /run/openvpn-server/%s-%d.sock unix', $profileConfig->profileId(), $processConfig['processNumber']),
++            sprintf('management /var/run/openvpn-server/%s-%d.sock unix', $profileConfig->profileId(), $processConfig['processNumber']),
+             sprintf('setenv PROFILE_ID %s', $profileConfig->profileId()),
+             sprintf('proto %s', $processConfig['proto']),
+ 

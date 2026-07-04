@@ -1,0 +1,11 @@
+--- Cubes.c.orig	Mon Aug  2 10:42:11 1999
++++ Cubes.c	Wed Feb 20 15:42:56 2002
+@@ -472,7 +472,7 @@ static void
+ GetCubes(CubesWidget w, XEvent * event, char **args, int nArgs)
+ {
+ 	FILE       *fp;
+-	char        c;
++	int         c;
+ 	int         i, sizeX, sizeY, sizeZ, moves;
+ 	cubesCallbackStruct cb;
+ 

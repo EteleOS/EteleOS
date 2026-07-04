@@ -1,0 +1,15 @@
+@newgroup _influx:797
+@newuser _influx:797:_influx::InfluxDB user:${LOCALSTATEDIR}/influxdb:/sbin/nologin
+@rcscript ${RCDIR}/influxdb
+@extraunexec rm -rf ${LOCALSTATEDIR}/influxdb/
+@bin bin/influxd
+@bin bin/telemetryd
+@mode 0750
+@owner _influx
+@group _influx
+@sample ${LOCALSTATEDIR}/influxdb/
+@mode
+@owner
+@group
+share/examples/login.conf.d/influxdb
+@sample ${SYSCONFDIR}/login.conf.d/influxdb

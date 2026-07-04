@@ -1,0 +1,5 @@
+FreeRDP is a free implementation of RDP, Microsoft's Remote Desktop Protocol.
+It provides a library and client software to provide a user with a graphical
+interface to connect to another computer over a network connection.
+
+It includes features like clipboard sharing, device and folder redirection.

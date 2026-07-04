@@ -1,0 +1,7 @@
+bin/lss
+share/applications/lss.desktop
+share/locale/pl/LC_MESSAGES/lss.mo
+share/pixmaps/
+share/pixmaps/lss.png
+share/pixmaps/lss.svg
+@tag update-desktop-database

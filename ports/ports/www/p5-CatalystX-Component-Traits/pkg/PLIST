@@ -1,0 +1,4 @@
+${P5SITE}/CatalystX/
+${P5SITE}/CatalystX/Component/
+${P5SITE}/CatalystX/Component/Traits.pm
+@man man/man3p/CatalystX::Component::Traits.3p

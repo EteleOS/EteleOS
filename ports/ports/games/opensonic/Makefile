@@ -1,0 +1,46 @@
+COMMENT =		game based on the Sonic the Hedgehog universe
+
+V =			0.1.2
+DISTNAME =		opensnc-src${V}
+PKGNAME =		opensonic-${V}
+REVISION =		3
+
+CATEGORIES=		games
+
+HOMEPAGE =		https://opensnc.sourceforge.net
+SITES =			${SITE_SOURCEFORGE:=opensnc/}
+#SITES =		https://downloads.sourceforge.net/project/opensnc/Open%20Sonic/${V}/
+
+# GPLv2 or later
+PERMIT_PACKAGE=	Yes
+
+FIX_CRLF_FILES =	CMakeLists.txt
+
+MODULES =		devel/cmake
+
+BUILD_DEPENDS =		graphics/allegropng \
+			audio/dumb
+
+LIB_DEPENDS =		games/allegro \
+			audio/libvorbis
+
+WANTLIB =		alleg c ogg m pthread vorbis vorbisfile
+
+CFLAGS +=		-fgnu89-inline
+CONFIGURE_ENV =		OPENSNC_ALLEGRO_CFLAGS="`allegro-config --cflags`" \
+			OPENSNC_ALLEGRO_LIBS="`allegro-config --libs`" \
+			OPENSNC_ALLEGRO_VERSION="`allegro-config --version`"
+
+MODCMAKE_POLICY_VERSION_OVERRIDE = Yes
+
+pre-configure:
+	${SUBST_CMD} ${WRKSRC}/CMakeLists.txt
+
+post-install:
+	echo "#!/bin/sh\ncd ${TRUEPREFIX}/share/opensonic\n./opensonic_launcher" > \
+	    ${PREFIX}/bin/opensonic
+	chmod 755 ${PREFIX}/bin/opensonic
+
+NO_TEST=	Yes
+
+.include <bsd.port.mk>

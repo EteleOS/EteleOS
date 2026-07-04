@@ -1,0 +1,12 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -9,7 +9,7 @@ CFLAGS	=	-O2 -fPIE -fstack-protector --param=ssp-buffe
+ 	#-pedantic -Wconversion
+ 
+ LIBS	=	`./vsf_findlibs.sh`
+-LINK	=	-Wl,-s
++LINK	=	
+ LDFLAGS	=	-fPIE -pie -Wl,-z,relro -Wl,-z,now
+ 
+ OBJS	=	main.o utility.o prelogin.o ftpcmdio.o postlogin.o privsock.o \

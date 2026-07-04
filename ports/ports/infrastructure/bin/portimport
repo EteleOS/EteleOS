@@ -1,0 +1,77 @@
+#!/bin/ksh
+#
+# $OpenBSD: portimport,v 1.10 2020/02/19 17:53:18 sthen Exp $
+# Copyright (c) 2013 Robert Peichaer
+# 
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+#
+# Based on Marc Espie's portimport.
+# sthen: Modified to handle imports from mystuff/ and do a dry run first.
+# rpe:   rewrite based on sthen@'s version
+# zhuk:  checks and detection of pkgpath moved to portcheck(1)
+
+set -e
+set -u
+
+usage() {
+	echo "usage: $(basename $0) [-p portsdir] [-u username]" >&2
+	exit 1
+}
+
+user=$(id -un)
+portsdir=
+set -A portcheck_args -- -N
+
+while getopts "p:u:" OPT; do
+	case $OPT in
+	p)	portsdir="$OPTARG"
+		portcheck_args[${#portcheck_args[@]}]="-p$portsdir";;
+	u)	user=$OPTARG;;
+	*)	usage;;
+	esac
+done
+
+shift $(($OPTIND - 1))
+(($# > 0)) && usage
+
+error=false
+pkgpath=$(portcheck "${portcheck_args[@]}") || error=true
+if test -z $pkgpath; then
+	echo >&2 "Can't determine pkgpath"
+	exit 1
+fi
+if $error; then
+	read ans?'Do you want to continue after those errors? [y/N] '
+	[[ $ans == +(y|Y) ]] || exit 1
+fi
+
+portsdir=${portsdir:-${PWD%"/$pkgpath"}}
+timestamp=$(date '+%Y%m%d')
+cvsroot=$user@cvs.openbsd.org:/cvs
+
+echo -n "Package(s) would be named: "
+make show=PKGNAMES
+
+echo -n "Import would go into: "
+cvs -n -d$cvsroot import ports/$pkgpath $user ${user}_$timestamp 2>/dev/null | \
+	grep Makefile | head -1 | awk '{print $2}' | xargs dirname
+
+read ans?'Does this look correct? [y/n] '
+if [[ $ans == +(y|Y) ]]; then
+	cvs -d$cvsroot import ports/$pkgpath $user ${user}_$timestamp
+	grep -q "^@new" pkg/P* && echo "New users/groups, remember to commit infrastructure/db/user.list!"
+	cd "$portsdir/${pkgpath%/*}"
+	cvs -R -d$cvsroot update -AdP ${pkgpath##*/}
+	echo "Don't forget to commit the ${pkgpath%/*}/Makefile when you're done!"
+	pwd
+fi

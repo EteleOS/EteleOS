@@ -1,0 +1,20 @@
+@conflict isc-dhcp-*
+@bin bin/omshell
+include/dhcpctl/
+include/dhcpctl/dhcpctl.h
+include/omapip/
+include/omapip/alloc.h
+include/omapip/buffer.h
+include/omapip/convert.h
+include/omapip/hash.h
+include/omapip/isclib.h
+include/omapip/omapip.h
+include/omapip/omapip_p.h
+include/omapip/result.h
+include/omapip/trace.h
+@static-lib lib/libdhcp.a
+@static-lib lib/libdhcpctl.a
+@static-lib lib/libomapi.a
+@man man/man1/omshell.1
+@man man/man3/dhcpctl.3
+@man man/man3/omapi.3

@@ -1,0 +1,12 @@
+dnl	$OpenBSD: hardware,v 1.5 2026/04/20 21:47:00 jca Exp $
+The following machines are supported by OpenBSD/MACHINE:
+
+	SiFive HiFive Unmatched
+
+The following systems are being worked on and partially supported:
+
+	Microsemi PolarFire SoC Icicle Kit
+	StarFive VisionFive
+	OrangePi RV2
+	BananaPi F3
+	Milk-V Jupiter

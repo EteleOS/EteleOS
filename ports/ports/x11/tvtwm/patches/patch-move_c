@@ -1,0 +1,12 @@
+Index: move.c
+--- move.c.orig
++++ move.c
+@@ -48,6 +48,8 @@ static char RCSinfo[]=
+ #include "move.h"
+ #include "events.h"
+ #include "parse.h"
++#include "resize.h"
++#include "util.h"
+ 
+ static int dragX;
+ static int dragY;

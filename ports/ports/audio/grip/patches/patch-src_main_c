@@ -1,0 +1,12 @@
+Index: src/main.c
+--- src/main.c.orig
++++ src/main.c
+@@ -156,7 +156,7 @@ int Cmain(int argc, char* argv[])
+ 
+   gtk_init(&argc, &argv);
+ 
+-  bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF8");
++  bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+   setenv("CHARSET","UTF-8",1);
+ 
+   do_debug=verbose;

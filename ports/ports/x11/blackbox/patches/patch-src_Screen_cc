@@ -1,0 +1,11 @@
+Index: src/Screen.cc
+--- src/Screen.cc.orig
++++ src/Screen.cc
+@@ -47,6 +47,7 @@
+ #include <assert.h>
+ #include <ctype.h>
+ #include <dirent.h>
++#include <string.h>
+ 
+ 
+ static bool running = true;

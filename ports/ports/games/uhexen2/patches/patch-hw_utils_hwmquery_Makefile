@@ -1,0 +1,21 @@
+Use standard optimisations.
+
+Index: hw_utils/hwmquery/Makefile
+--- hw_utils/hwmquery/Makefile.orig
++++ hw_utils/hwmquery/Makefile
+@@ -47,15 +47,6 @@ endif
+ CPUFLAGS=$(CPU_X86)
+ 
+ CFLAGS += -Wall
+-CFLAGS += $(CPUFLAGS)
+-ifndef DEBUG
+-CFLAGS += -O2 -DNDEBUG=1
+-else
+-CFLAGS += -g
+-endif
+-
+-CPPFLAGS=
+-LDFLAGS =
+ 
+ # compiler includes
+ INCLUDES= -I. -I$(UHEXEN2_SHARED)

@@ -1,0 +1,14 @@
+default constructor must be declared first.
+
+Index: src/mixer.cpp
+--- src/mixer.cpp.orig
++++ src/mixer.cpp
+@@ -23,7 +23,7 @@
+ 
+ namespace Scenes
+ {
+-Mixer::Mixer(MixerMode mmode = Realtime)
++Mixer::Mixer(MixerMode mmode)
+         : mode(mmode), isPlaying(false)
+ {
+     mut_disposeList = SDL_CreateMutex();

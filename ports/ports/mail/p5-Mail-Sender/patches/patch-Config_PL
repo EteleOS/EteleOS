@@ -1,0 +1,11 @@
+--- Config.PL~	Tue Jun 14 14:04:10 2016
++++ Config.PL	Tue Jun 14 14:05:07 2016
+@@ -179,6 +179,8 @@
+     called_directly();
+ }
+ 
++exit;
++
+ $stderr->print("\nSpecify$new defaults for Mail::Sender? (y/N) ");
+ my $res = $stdin->getline();
+ chomp $res;

@@ -1,0 +1,20 @@
+Index: ode/demo/Makefile.am
+--- ode/demo/Makefile.am.orig
++++ ode/demo/Makefile.am
+@@ -1,6 +1,6 @@
+ AM_CPPFLAGS = -I$(top_srcdir)/include \
+         -I$(top_builddir)/include \
+-        -DDRAWSTUFF_TEXTURE_PATH="\"$(abs_top_srcdir)/drawstuff/textures\""
++        -DDRAWSTUFF_TEXTURE_PATH="\"$(prefix)/share/examples/ode/textures\""
+ 
+ if X11
+ AM_LDFLAGS = $(X_PRE_LIBS) $(X_LIBS) $(X_EXTRA_LIBS)
+@@ -52,7 +52,7 @@ noinst_PROGRAMS = \
+                 demo_tracks
+ 
+ demo_chain1_SOURCES = demo_chain1.c
+-demo_chain1_LDADD = $(LDADD) -lstdc++ 
++demo_chain1_LINK = $(CXXLINK)
+ 
+ 
+ if TRIMESH

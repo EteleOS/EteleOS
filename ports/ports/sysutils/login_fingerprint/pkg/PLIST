@@ -1,0 +1,15 @@
+@bin bin/enroll_fingerprint
+@mode 0750
+@group auth
+libexec/auth/
+@bin libexec/auth/login_fingerprint
+@mode 4555
+@owner root
+@sample /usr/libexec/auth/login_-fingerprint
+@mode
+@owner
+@group
+@man man/man1/enroll_fingerprint.1
+@man man/man8/login_fingerprint.8
+share/doc/login_fingerprint/
+share/doc/login_fingerprint/README

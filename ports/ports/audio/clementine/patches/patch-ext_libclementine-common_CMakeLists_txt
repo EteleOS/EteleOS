@@ -1,0 +1,17 @@
+Switch Clementine to FindBacktrace.cmake
+Index: ext/libclementine-common/CMakeLists.txt
+--- ext/libclementine-common/CMakeLists.txt.orig
++++ ext/libclementine-common/CMakeLists.txt
+@@ -39,4 +39,11 @@ target_link_libraries(libclementine-common
+ )
+ 
+ find_package(Backtrace)
+-configure_file(core/conf_backtrace.h.in conf_backtrace.h)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
++               ${CMAKE_CURRENT_BINARY_DIR}/config.h)
++if(Backtrace_FOUND)
++  include_directories(${Backtrace_INCLUDE_DIRS})
++  target_link_libraries(libclementine-common ${Backtrace_LIBRARIES})
++  configure_file(core/conf_backtrace.h.in conf_backtrace.h)
++endif(Backtrace_FOUND)
++

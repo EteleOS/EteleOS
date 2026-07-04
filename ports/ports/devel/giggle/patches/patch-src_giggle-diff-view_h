@@ -1,0 +1,27 @@
+chunk 1:Fix build with gtksourceview>=3.8.0
+
+chunk 2:Fix for -fno-common, from
+https://gitlab.gnome.org/GNOME/giggle/-/commit/57fd690279c4f8f0a367ec4f3599ab3a8159be49
+
+Index: src/giggle-diff-view.h
+--- src/giggle-diff-view.h.orig
++++ src/giggle-diff-view.h
+@@ -21,8 +21,7 @@
+ 
+ #include <glib-object.h>
+ #include <gtk/gtk.h>
+-#include <gtksourceview/gtksourceview.h>
+-#include <gtksourceview/gtksourcelanguagemanager.h>
++#include <gtksourceview/gtksource.h>
+ 
+ #include "libgiggle/giggle-revision.h"
+ 
+@@ -35,7 +34,7 @@ G_BEGIN_DECLS
+ #define GIGGLE_IS_DIFF_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GIGGLE_TYPE_DIFF_VIEW))
+ #define GIGGLE_DIFF_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GIGGLE_TYPE_DIFF_VIEW, GiggleDiffViewClass))
+ 
+-enum {
++typedef enum {
+ 	STYLE_CHUNK,
+ 	STYLE_FILE,
+ 	STYLE_ALL,

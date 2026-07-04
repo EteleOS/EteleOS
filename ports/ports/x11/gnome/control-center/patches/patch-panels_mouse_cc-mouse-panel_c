@@ -1,0 +1,31 @@
+No GUdev on OpenBSD (XXX add HAVE_GUDEV to meson_options.txt)
+
+Index: panels/mouse/cc-mouse-panel.c
+--- panels/mouse/cc-mouse-panel.c.orig
++++ panels/mouse/cc-mouse-panel.c
+@@ -430,7 +430,9 @@ test_button_row_activated_cb (CcMousePanel *self)
+ static void
+ cc_mouse_panel_init (CcMousePanel *self)
+ {
++#if 0
+   GsdDeviceManager  *device_manager;
++#endif
+ 
+   g_resources_register (cc_mouse_get_resource ());
+ 
+@@ -440,6 +442,7 @@ cc_mouse_panel_init (CcMousePanel *self)
+   self->touchpad_settings = g_settings_new ("org.gnome.desktop.peripherals.touchpad");
+   self->pointingstick_settings = g_settings_new ("org.gnome.desktop.peripherals.pointingstick");
+ 
++#if 0
+   device_manager = gsd_device_manager_get ();
+   g_signal_connect_object (device_manager, "device-added",
+                            G_CALLBACK (device_changed), self, G_CONNECT_SWAPPED);
+@@ -453,6 +456,7 @@ cc_mouse_panel_init (CcMousePanel *self)
+   self->have_synaptics = cc_synaptics_check ();
+   if (self->have_synaptics)
+     g_warning ("Detected synaptics X driver, please migrate to libinput");
++#endif
+ 
+   setup_dialog (self);
+ }

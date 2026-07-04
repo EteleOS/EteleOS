@@ -1,0 +1,40 @@
+find_first_of returns npos, which is a size_t.
+
+Index: src/util.cpp
+--- src/util.cpp.orig
++++ src/util.cpp
+@@ -5,5 +5,7 @@
+ 
+ extern "C" {
++#include <stddef.h>
++#include <stdlib.h>
+ #include <unistd.h>
+ #include <X11/Xlib.h>
+ }
+@@ -59,7 +61,7 @@ string Util::truncate(string str, char c) {
+ 
+ string Util::canonicalDir(string path) {
+     string dir = canonicalPath(path);
+-    unsigned int pos = 0;
++    size_t pos = 0;
+ 
+     pos = dir.find_last_of('/');
+     if (pos != string::npos) {
+@@ -123,7 +125,7 @@ string Util::encodeEscapes(string str) {
+ string Util::lastToken(string str, char delim) {
+ 
+     string result = "";
+-    unsigned int pos = str.find_last_of(delim);
++    size_t pos = str.find_last_of(delim);
+ 
+     if (pos != string::npos) {
+         result = str.substr(pos + 1, str.length() - pos);
+@@ -381,7 +383,7 @@ string Util::shortenString(string str, unsigned int n)
+ 
+ set<string> Util::stringSplit(string s, string delimiter){
+     set<string> res;
+-    unsigned int pos = 0;
++    size_t pos = 0;
+     while (pos != string::npos){
+         pos = s.find_first_of(delimiter);
+         res.insert(s.substr(0, pos));

@@ -1,0 +1,3 @@
+@pkgpath lang/fennel
+bin/fennel-${MODLUA_VERSION}
+lib/lua/${MODLUA_VERSION}/fennel.lua

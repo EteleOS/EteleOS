@@ -1,0 +1,12 @@
+Index: rijndael.c
+--- rijndael.c.orig
++++ rijndael.c
+@@ -19,6 +19,8 @@
+ 
+ #include "rijndael-boxes.dat"
+ 
++int ROUNDS;
++
+ static word8 shifts[3][4][2] = {
+   {
+     {0, 0},

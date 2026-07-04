@@ -1,0 +1,2 @@
+${P5SITE}/Mojolicious/Plugin/AccessLog.pm
+@man man/man3p/Mojolicious::Plugin::AccessLog.3p

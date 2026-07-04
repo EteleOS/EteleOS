@@ -1,0 +1,74 @@
+Index: m.c
+--- m.c.orig
++++ m.c
+@@ -21,6 +21,7 @@
+ 
+ 
+ #include <sys/time.h>
++#include <termcap.h>
+ #include "wand_head.h"
+ 
+ #define SCROLLING 0
+@@ -147,23 +148,24 @@ char *get_name(void)
+ char *name;
+ char *endchar;
+ 
+-    if((name = (char *)getenv("NEWNAME")) == NULL)
+-        if((name = (char *)getenv("NAME")) == NULL)
+-            if((name = (char *)getenv("FULLNAME")) == NULL)
+-                if((name = (char *)getenv("USER")) == NULL)
+-                          if((name = (char *)getenv("LOGNAME")) == NULL)
++    if((name = getenv("NEWNAME")) == NULL)
++        if((name = getenv("NAME")) == NULL)
++            if((name = getenv("FULLNAME")) == NULL)
++                if((name = getenv("USER")) == NULL)
++                          if((name = getenv("LOGNAME")) == NULL)
+ #define ASKNAME /* Marina */
+ #ifdef        ASKNAME        /* M001 */
+                     {
+-                        name = (char *)malloc(80);
++                        name = malloc(80);
+                         if (name == NULL) {
+                             printf("malloc error\n"); /* Replace with Err* */
+                             exit(1);
+                         }
+                         printf("Name? "); fflush(stdout);
+                         fgets(name,80,stdin); /* get rid of gets Marina*/
+-                        endchar=strchr(name,'\0'); 
+-                        endchar='\0';
++                        endchar=strchr(name,'\n'); 
++			if (endchar)
++			    *endchar='\0';
+                         if (name[0] == '\0')
+                             name = "noname";
+                     }
+@@ -181,9 +183,9 @@ char *get_keys()
+ {
+     char *keys = NULL;
+     if( ! keys ) {
+-        if((keys = (char *)getenv("NEWKEYS")) == NULL)
++        if((keys = getenv("NEWKEYS")) == NULL)
+             {
+-            keys = (char *)malloc(5);
++            keys = malloc(5);
+            strcpy(keys,"kjhl");
+             }
+     }
+@@ -200,7 +202,7 @@ extern char *optarg;
+ /***************************************
+ *  Main Program  -- Comment by Marina  *
+ ****************************************/
+-main(int argc,char **argv)
++int main(int argc,char **argv)
+ {
+ char (*frow)[ROWLEN+1] = screen;
+ long score = 0;
+@@ -214,7 +216,7 @@ char howdead[25],
+      *name,
+      *keys,
+      *dead,ch;
+-char c; 
++int c; 
+ 
+ while(( c = getopt(argc,argv,"01k:et:r:fmCcvsi")) != -1 )
+ {

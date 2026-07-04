@@ -1,0 +1,32 @@
+     SUBDIR =
+     SUBDIR += blogbench
+     SUBDIR += bonnie++
+     SUBDIR += fio
+     SUBDIR += fs_mark
+     SUBDIR += glmark2
+     SUBDIR += httperf
+     SUBDIR += hyperfine
+     SUBDIR += iozone
+     SUBDIR += netperf
+     SUBDIR += netperf-wrapper
+     SUBDIR += netpipe
+     SUBDIR += netstrain
+     SUBDIR += nuttcp
+     SUBDIR += p5-Dumbbench
+     SUBDIR += qmlbench
+     SUBDIR += randread
+     SUBDIR += siege
+     SUBDIR += smtp-benchmark
+     SUBDIR += speedtest-cli
+     SUBDIR += splicebench
+     SUBDIR += sysbench
+     SUBDIR += sysbench,mysql
+     SUBDIR += sysbench,pgsql
+     SUBDIR += tcpblast
+     SUBDIR += ubench
+     SUBDIR += udpbench
+     SUBDIR += vegeta
+     SUBDIR += wrk
+     SUBDIR += xengine
+
+.include <bsd.port.subdir.mk>

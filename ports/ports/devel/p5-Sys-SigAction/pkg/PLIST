@@ -1,0 +1,5 @@
+${P5SITE}/Sys/
+${P5SITE}/Sys/SigAction/
+${P5SITE}/Sys/SigAction.pm
+${P5SITE}/Sys/SigAction/Alarm.pm
+@man man/man3p/Sys::SigAction.3p

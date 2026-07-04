@@ -1,0 +1,26 @@
+--- Example/Test.c.orig	Mon Jul 10 21:23:42 2000
++++ Example/Test.c	Thu Apr  9 06:58:13 2009
+@@ -6,8 +6,8 @@
+  * http://www.wyatt100.freeserve.co.uk/download.htm
+  */
+ 
+-#include <gl/glpng.h>
+-#include <gl/glut.h>
++#include <GL/glpng.h>
++#include <GL/glut.h>
+ #include <stdlib.h>
+ 
+ int angle = 0;
+@@ -64,10 +64,11 @@ void Reshape(int w, int h) {
+ 
+ /***** Main function *****/
+ 
+-void main() {
++void main(int argc, char **argv) {
+ 	pngInfo info;
+ 	GLuint  texture;
+ 
++	glutInit(&argc, argv);
+ 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+ 	glutInitWindowSize(300, 300);
+ 	glutCreateWindow("glpng test");

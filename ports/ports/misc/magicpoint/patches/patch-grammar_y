@@ -1,0 +1,44 @@
+Index: grammar.y
+--- grammar.y.orig
++++ grammar.y
+@@ -73,7 +73,7 @@ static struct qual qerr = { Q_UNDEF, Q_UNDEF, Q_UNDEF,
+ int n_errors = 0;
+ struct ctrl *root;
+ char *yyfilename;
+-int yylineno;
++extern int yylineno;
+ 
+ #ifdef HAVE_STDARG_H
+ /* GCC complains if we declare this function in traditional style */
+@@ -145,6 +145,7 @@ gen_double_int(op, v)
+ 		return ct;
+ 	}
+ 	ct->ctf_value = (double)v;
++	ct->ct_type = CTL_DOUBLE;
+ 	return ct;
+ }
+ 
+@@ -175,6 +176,7 @@ gen_int(op, v)
+ 		return ct;
+ 	}
+ 	ct->cti_value = v;
++	ct->ct_type = CTL_INT;
+ 	return ct;
+ }
+ 
+@@ -226,6 +228,7 @@ gen_str(op, str)
+ 		return ct;
+ 	}
+ 	ct->ctc_value = strdup(str);
++	ct->ct_type = CTL_CHAR;
+ 	return ct;
+ }
+ 
+@@ -243,6 +246,7 @@ gen_str2(op, str1, str2)
+ 	}
+ 	ct->ctc2_value1 = strdup(str1);
+ 	ct->ctc2_value2 = strdup(str2);
++	ct->ct_type = CTL_CHAR2;
+ 	return ct;
+ }
+ 

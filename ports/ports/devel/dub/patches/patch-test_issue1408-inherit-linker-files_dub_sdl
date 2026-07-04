@@ -1,0 +1,12 @@
+Make sure the tested dub executable can be found.
+
+Index: test/issue1408-inherit-linker-files/dub.sdl
+--- test/issue1408-inherit-linker-files/dub.sdl.orig
++++ test/issue1408-inherit-linker-files/dub.sdl
+@@ -10,5 +10,5 @@ subPackage {
+ 	sourceFiles "dep.d"
+ 	sourceFiles "lib/liblib.a" platform="posix"
+ 	sourceFiles "lib/lib.lib" platform="windows"
+-	preBuildCommands "$DUB_EXE build --root=\"$PACKAGE_DIR/lib\""
++	preBuildCommands "../../bin/dub build --cache=local --root=\"$PACKAGE_DIR/lib\""
+ }

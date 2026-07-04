@@ -1,0 +1,11 @@
+Index: src/providers/mdal/CMakeLists.txt
+--- src/providers/mdal/CMakeLists.txt.orig
++++ src/providers/mdal/CMakeLists.txt
+@@ -15,7 +15,6 @@ if(MSVC)
+   find_package(Threads)
+ endif()
+ find_package(HDF5)
+-find_package(NetCDF)
+ find_package(LibXml2)
+ 
+ ########################################################

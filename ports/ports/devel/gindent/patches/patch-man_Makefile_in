@@ -1,0 +1,11 @@
+--- man/Makefile.in.orig	Tue Mar 11 18:54:15 2008
++++ man/Makefile.in	Wed Sep 12 00:26:00 2012
+@@ -508,7 +508,7 @@ uninstall-man: uninstall-man1
+ 
+ 
+ @PACKAGE@.1: ${srcdir}/@PACKAGE@.1.in  ${srcdir}/../doc/@PACKAGE@.texinfo texinfo2man.c  Makefile.am
+-	./texinfo2man ${srcdir}/@PACKAGE@.1.in ${srcdir}/../doc/@PACKAGE@.texinfo > $@
++	../man/texinfo2man ${srcdir}/@PACKAGE@.1.in ${srcdir}/../doc/@PACKAGE@.texinfo > $@
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:

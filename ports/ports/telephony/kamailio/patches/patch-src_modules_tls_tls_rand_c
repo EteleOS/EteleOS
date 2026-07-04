@@ -1,0 +1,12 @@
+Index: src/modules/tls/tls_rand.c
+--- src/modules/tls/tls_rand.c.orig
++++ src/modules/tls/tls_rand.c
+@@ -29,7 +29,7 @@
+ 
+ #include "tls_rand.h"
+ 
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
+ 
+ #include "../../core/dprint.h"
+ #include "../../core/locking.h"

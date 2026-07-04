@@ -1,0 +1,11 @@
+--- Makefile.orig	Sat Jan 19 20:44:06 2008
++++ Makefile	Sat Jan 19 20:46:14 2008
+@@ -8,7 +8,7 @@
+ #
+ 
+ INSTALL  = install
+-INSTROOT = /usr/local
++INSTROOT = ${PREFIX}
+ INSTBIN  = bin
+ INSTMAN  = man
+ 

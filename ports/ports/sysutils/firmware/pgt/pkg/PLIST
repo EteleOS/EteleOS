@@ -1,0 +1,6 @@
+@pkgpath mystuff/pgt-firmware
+@pkgpath pgt-firmware
+@pkgpath sysutils/pgt-firmware
+firmware/pgt-info
+firmware/pgt-isl3877
+firmware/pgt-isl3890

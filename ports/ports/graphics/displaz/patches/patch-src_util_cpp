@@ -1,0 +1,13 @@
+Fix build with OpenEXR>=3: error: use of undeclared identifier 'DBL_MAX'
+
+Index: src/util.cpp
+--- src/util.cpp.orig
++++ src/util.cpp
+@@ -15,6 +15,7 @@
+ #   include <shellapi.h> // For CommandLineToArgvW
+ #   include <io.h>
+ #else
++#   include <float.h>
+ #   include <unistd.h>
+ #   include <signal.h>
+ #endif

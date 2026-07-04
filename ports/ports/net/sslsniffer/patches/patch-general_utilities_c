@@ -1,0 +1,11 @@
+Index: general_utilities.c
+--- general_utilities.c.orig
++++ general_utilities.c
+@@ -25,6 +25,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h> /* memcpy */
+ #include <ctype.h>
+ 
+ #include "general_utilities.h"

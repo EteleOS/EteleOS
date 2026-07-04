@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${PREFIX}/sbin/varnishd"
+daemon_flags="-j unix,user=_varnish,ccgroup=_varnish -f ${SYSCONFDIR}/varnish/default.vcl -T ${MGTSOCK}"
+
+. /etc/rc.d/rc.subr
+
+pexp="varnishd: Varnish-Mgt -i $(hostname)"
+
+rc_reload() {
+	${PREFIX}/bin/varnishreload
+}
+
+rc_cmd $1

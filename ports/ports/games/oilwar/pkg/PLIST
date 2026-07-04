@@ -1,0 +1,21 @@
+@mode 2555
+@group games
+@bin bin/oilwar
+@mode
+@group
+share/doc/oilwar/
+share/doc/oilwar/README
+share/examples/oilwar/
+share/examples/oilwar/oilwar.scores
+@mode 664
+@group games
+@sample /var/games/oilwar.scores
+@mode
+@group
+share/oilwar/
+share/oilwar/background.png
+share/oilwar/bitmaps.png
+share/oilwar/bulletricochet.wav
+share/oilwar/explode.wav
+share/oilwar/gasp.wav
+share/oilwar/singlegunshot.wav

@@ -1,0 +1,5 @@
+@pkgpath japanese/sazanami-ttf
+share/fonts/
+@fontdir share/fonts/sazanami/
+share/fonts/sazanami/sazanami-gothic.ttf
+share/fonts/sazanami/sazanami-mincho.ttf

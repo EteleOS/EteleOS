@@ -1,0 +1,53 @@
+Index: intel2gas.cc
+--- intel2gas.cc.orig
++++ intel2gas.cc
+@@ -57,7 +57,7 @@ syntaxlist_t *findSyntax(char const *name)
+   int counter = 0;
+   char* prev = 0;
+   while (l) {
+-    if (int(l->name) > 0x10000000) {
++    if (long(l->name) > 0x10000000) {
+       printf("Error %d, prev=%s\n", counter, prev);
+       break;
+     }
+@@ -255,7 +255,7 @@ static int numberparse(char const *tag, char const *in
+   return len;
+ }
+ 
+-static int str_parse(syntaxlist_t *s, char *parse, char *outline);
++static int str_parse(syntaxlist_t *s, const char *parse, char *outline);
+ 
+ static int parsematch(char *text, char *parse)
+ {
+@@ -394,8 +394,9 @@ static int parsematch(char *text, char *parse)
+ }
+ 
+ 
+-static int str_parse(syntaxlist_t *sl, char *parse, char *outline)
++static int str_parse(syntaxlist_t *sl, const char *p, char *outline)
+ {
++  char *parse = const_cast<char *>(p); // XXX
+   *outline = '\0';
+   parse = str_skipspace(parse);
+   if (str_empty(parse))
+@@ -446,9 +447,9 @@ static void findComment(char const *source, comment_ma
+ {
+   match.at = NULL;
+   for (int c=0; c<comments; c++) {
+-    char *pos = strstr(source, comment[c].src);
++    const char *pos = strstr(source, comment[c].src);
+     if (!match.at || (pos && pos < match.at)) {
+-      match.at = pos;
++      match.at = const_cast<char *>(pos);
+       match.data = &comment[c];
+     }
+   }
+@@ -535,7 +536,7 @@ static void clean_clobber_list(void)
+   if (str_empty(var)) return;
+     
+   static struct {
+-    char *reg;
++    const char *reg;
+     int   mask;
+   } reglist[] = {
+     {"bp",0x40000},{"ebp",0xc0000},

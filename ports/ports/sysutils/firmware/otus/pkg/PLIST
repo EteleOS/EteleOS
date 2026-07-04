@@ -1,0 +1,5 @@
+@pkgpath sysutils/otus-firmware
+@ask-update iwn-firmware-<1.0 Make sure you have a matching kernel
+firmware/otus-init
+firmware/otus-license
+firmware/otus-main

@@ -1,0 +1,12 @@
+Index: docs/hypermail.1
+--- docs/hypermail.1.orig
++++ docs/hypermail.1
+@@ -235,7 +235,7 @@ sign, such as:
+ Settings are read in this order: from the program's hard-wired internal defaults, from environment variables, from the configuration file, from command-line options.
+ .LP
+ See 
+-.B hmrc.4
++.B hmrc.5
+ for more information on configuration file usage.
+ .LP
+ Below is a partial list of variables that Hypermail understands. A full list is available in the file hmrc.html, or you can also look in setup.c. Boolean numbers can have the value of

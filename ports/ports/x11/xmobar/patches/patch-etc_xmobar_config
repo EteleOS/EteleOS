@@ -1,0 +1,31 @@
+Index: etc/xmobar.config
+--- etc/xmobar.config.orig
++++ etc/xmobar.config
+@@ -1,4 +1,4 @@
+-Config { font = "DejaVu Sans Mono 9"
++Config { font = "fixed"
+        , additionalFonts = ["DejaVu Sans Mono italic 9"]
+        , borderColor = "black"
+        , border = FullB
+@@ -21,19 +21,11 @@ Config { font = "DejaVu Sans Mono 9"
+                                           "--normal","green",
+                                           "--high","red",
+                                           "--low","lightblue"] 36000
+-                    , Run Network "eth0" ["-L","0","-H","32",
+-                                          "--normal","green","--high","red"] 10
+-                    , Run Network "eth1" ["-L","0","-H","32",
+-                                          "--normal","green","--high","red"] 10
+-                    , Run Cpu ["-L","3","-H","50",
+-                               "--normal","green","--high","red"] 10
+-                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+-                    , Run Swap [] 10
++                    , Run Battery ["-t","AC: <status> Batt: <left> <minleft>"] 10
+                     , Run Com "uname" ["-s","-r"] "" 36000
+                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                     ]
+        , sepChar = "%"
+        , alignSep = "}{"
+-       , template = "%cpu% | <box>%memory% * %swap%</box> | %eth0% - %eth1% }\
+-                    \{ <fc=#ee9a00><fn=1>%date%</fn></fc>| %EGPF% | %uname%"
++       , template = "%battery% }{ <fc=#ee9a00>%date%</fc> | %EGPF% | %uname%"
+        }

@@ -1,0 +1,26 @@
+Index: data/lock-dialog-default.ui
+--- data/lock-dialog-default.ui.orig
++++ data/lock-dialog-default.ui
+@@ -245,22 +245,6 @@
+                       </packing>
+                     </child>
+                     <child>
+-                      <object class="GtkButton" id="auth-switch-button">
+-                        <property name="label" translatable="yes">_Switch User</property>
+-                        <property name="visible">True</property>
+-                        <property name="can-focus">True</property>
+-                        <property name="focus-on-click">False</property>
+-                        <property name="can-default">True</property>
+-                        <property name="receives-default">False</property>
+-                        <property name="use-underline">True</property>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">False</property>
+-                        <property name="position">1</property>
+-                      </packing>
+-                    </child>
+-                    <child>
+                       <object class="GtkButton" id="auth-logout-button">
+                         <property name="label" translatable="yes">_Log Out</property>
+                         <property name="visible">True</property>

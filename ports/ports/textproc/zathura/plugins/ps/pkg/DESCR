@@ -1,0 +1,2 @@
+The zathura-pdf-ps plugin adds Postscript support to zathura by using
+the libspectre library.

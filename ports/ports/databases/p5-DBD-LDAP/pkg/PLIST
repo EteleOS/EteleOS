@@ -1,0 +1,4 @@
+${P5SITE}/DBD/
+${P5SITE}/DBD/LDAP.pm
+${P5SITE}/JLdap.pm
+@man man/man3p/DBD::LDAP.3p

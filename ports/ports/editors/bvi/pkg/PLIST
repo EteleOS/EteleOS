@@ -1,0 +1,8 @@
+@bin bin/bmore
+@bin bin/bvedit
+@bin bin/bvi
+@bin bin/bview
+@man man/man1/bmore.1
+@man man/man1/bvi.1
+share/bvi/
+share/bvi/bmore.help

@@ -1,0 +1,2 @@
+${P5SITE}/Catalyst/Plugin/Session/PerUser.pm
+@man man/man3p/Catalyst::Plugin::Session::PerUser.3p

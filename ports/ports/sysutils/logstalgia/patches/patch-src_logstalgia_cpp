@@ -1,0 +1,21 @@
+Index: src/logstalgia.cpp
+--- src/logstalgia.cpp.orig
++++ src/logstalgia.cpp
+@@ -718,7 +718,7 @@ std::string Logstalgia::dateAtPosition(float percent) 
+ 
+             time_t timestamp = le.timestamp;
+ 
+-            struct tm* timeinfo = localtime ( &timestamp );
++	    struct tm *timeinfo = localtime( (const time_t *)(&timestamp) );
+             strftime(datestr, 256, "%H:%M:%S %B %d, %Y", timeinfo);
+             date = std::string(datestr);
+         }
+@@ -1451,7 +1451,7 @@ void Logstalgia::logic(float t, float dt) {
+             char datestr[256];
+             char timestr[256];
+ 
+-            struct tm* timeinfo = localtime ( &currtime );
++	    struct tm *timeinfo = localtime( (const time_t *)(&currtime) );
+             strftime(datestr, 256, "%A, %B %d, %Y", timeinfo);
+             strftime(timestr, 256, "%X", timeinfo);
+ 

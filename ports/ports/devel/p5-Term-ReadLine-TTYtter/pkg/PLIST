@@ -1,0 +1,4 @@
+${P5SITE}/Term/
+${P5SITE}/Term/ReadLine/
+${P5SITE}/Term/ReadLine/TTYtter.pm
+${P5SITE}/Term/ReadLine/readline_ttytter.pm

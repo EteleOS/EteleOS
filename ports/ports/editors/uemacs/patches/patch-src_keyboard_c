@@ -1,0 +1,12 @@
+Index: src/keyboard.c
+--- src/keyboard.c.orig
++++ src/keyboard.c
+@@ -224,7 +224,7 @@ case 0x90:	return(SPEC | CTRL | '+');	/* ctrl grey + *
+ #endif
+ #endif
+ 
+-#if BSD || FREEBSD || USG || AIX || AUX || SMOS || HPUX8 || HPUX9 || SUN || XENIX || (AVVION || TERMIOS) || (VMS && SMG) || MPE
++#if BSD || FREEBSD || USG || AIX || AUX || SMOS || HPUX8 || HPUX9 || SUN || XENIX || (AVVION || TERMIOS) || (VMS && SMG) || MPE || OPENBSD
+ 
+ #define NKEYSEQ		300		/* Number of keymap entries	*/
+ 

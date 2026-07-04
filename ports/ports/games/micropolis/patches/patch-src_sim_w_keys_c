@@ -1,0 +1,11 @@
+Index: src/sim/w_keys.c
+--- src/sim/w_keys.c.orig
++++ src/sim/w_keys.c
+@@ -79,6 +79,7 @@ static char LastKeys[5];
+ */
+ 
+ 
++void
+ ResetLastKeys()
+ {
+   LastKeys[0] = ' ';

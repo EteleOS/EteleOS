@@ -1,0 +1,3 @@
+${P5SITE}/Check/
+${P5SITE}/Check/ISA.pm
+@man man/man3p/Check::ISA.3p

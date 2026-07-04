@@ -1,0 +1,24 @@
+Index: src/lsx_proc.cc
+--- src/lsx_proc.cc.orig
++++ src/lsx_proc.cc
+@@ -1,6 +1,8 @@
+ #include <lttoolbox/lt_locale.h>
+ #include <lttoolbox/file_utils.h>
+ #include <lttoolbox/cli.h>
++#include <iostream>
++#include <unistd.h>
+ 
+ #include "lsx_processor.h"
+ 
+@@ -8,6 +10,11 @@ using namespace std;
+ 
+ int main (int argc, char** argv)
+ {
++  if (pledge("stdio rpath wpath cpath", NULL) == -1) {
++    cerr << "pledge" << endl;
++    return EXIT_FAILURE;
++  }
++
+   LtLocale::tryToSetLocale();
+   CLI cli("re-tokenize a stream", PACKAGE_VERSION);
+   cli.add_bool_arg('p', "postgen", "act as a postgenerator");

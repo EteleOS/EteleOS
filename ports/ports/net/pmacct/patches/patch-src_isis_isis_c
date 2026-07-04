@@ -1,0 +1,12 @@
+Index: src/isis/isis.c
+--- src/isis/isis.c.orig
++++ src/isis/isis.c
+@@ -807,7 +807,7 @@ void igp_daemon_map_initialize(char *filename, struct 
+   pcap_t *p;
+ 
+   if (config.debug && config.igp_daemon_map_msglog) {
+-    p = pcap_open_dead(DLT_CHDLC, RECEIVE_LSP_BUFFER_SIZE+sizeof(struct chdlc_header)+sizeof(struct isis_fixed_hdr));
++    p = pcap_open_dead(DLT_C_HDLC, RECEIVE_LSP_BUFFER_SIZE+sizeof(struct chdlc_header)+sizeof(struct isis_fixed_hdr));
+ 
+     if ((idmm_fd = pcap_dump_open(p, config.igp_daemon_map_msglog)) == NULL) {
+       Log(LOG_ERR, "ERROR ( %s/core/ISIS ): Can not open igp_daemon_map_msglog '%s' (%s).\n",

@@ -1,0 +1,14 @@
+--- configure.orig	Tue Sep 27 03:48:25 2011
++++ configure	Sat Oct  1 18:24:30 2011
+@@ -3289,9 +3289,9 @@ $as_echo "Solaris" >&6; }
+ $as_echo "OpenBSD" >&6; }
+ 			LIB_CPPFLAGS='-DPIC'
+ 			LIB_CFLAGS='-fPIC'
+-			LIB_LDFLAGS='-shared -fPIC'
++			LIB_LDFLAGS='-shared -fPIC -Wl,-soname=${LIB}'
+ 			LIB_PREFIX='lib'
+-			LIB_SUFFIX='.so.${LIB_MAJOR}.${LIB_MINOR}'
++			LIB_SUFFIX='.so'
+ 			LDFLAGS_RPATH='-Wl,-rpath,${libdir}'
+ 			PLUGIN_CPPFLAGS='-DPIC'
+ 			PLUGIN_CFLAGS='-fPIC'

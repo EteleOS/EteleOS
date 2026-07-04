@@ -1,0 +1,11 @@
+Index: core/synctex/synctex_parser.c
+--- core/synctex/synctex_parser.c.orig
++++ core/synctex/synctex_parser.c
+@@ -69,7 +69,6 @@
+ 
+ #include <errno.h>
+ #include <limits.h>
+-#include <stdarg.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

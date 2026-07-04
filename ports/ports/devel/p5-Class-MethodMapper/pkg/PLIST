@@ -1,0 +1,7 @@
+${P5SITE}/Class/
+${P5SITE}/Class/MethodMapper.pm
+${P5SITE}/auto/
+${P5SITE}/auto/Class/
+${P5SITE}/auto/Class/MethodMapper/
+${P5SITE}/auto/Class/MethodMapper/autosplit.ix
+@man man/man3p/Class::MethodMapper.3p

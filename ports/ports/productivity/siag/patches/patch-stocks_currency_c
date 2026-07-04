@@ -1,0 +1,12 @@
+Don't use malloc.h header on OpenBSD.
+
+--- stocks/currency.c.orig	Thu Nov 20 01:56:30 2014
++++ stocks/currency.c	Thu Nov 20 01:56:37 2014
+@@ -23,7 +23,6 @@
+ 
+ #include <stdio.h>
+ #include <string.h>
+-#include <malloc.h>
+ #include <stdlib.h>
+ 
+ #include "stocks.h"

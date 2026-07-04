@@ -1,0 +1,12 @@
+Index: man/Makefile
+--- man/Makefile.orig
++++ man/Makefile
+@@ -25,7 +25,7 @@ ifeq ($(RELOCATABLE),1)
+ REL="/..."
+ endif
+ 
+-NROFF=nroff -man -Tlatin1
++NROFF=mandoc
+ #FILTERCRAP=perl -p -i -e 's/.\10//g'
+ FILTERCRAP=$(LUA) -e 'io.write((string.gsub(io.read("*a"), ".\8", "")))'
+ 

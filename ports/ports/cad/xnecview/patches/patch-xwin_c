@@ -1,0 +1,10 @@
+--- xwin.c.orig	Sun Jan 12 15:19:48 2020
++++ xwin.c	Mon Feb 10 11:32:25 2020
+@@ -13,6 +13,7 @@
+ #include <math.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <gtk/gtk.h>
+ #include <gdk/gdkkeysyms.h>
+ 

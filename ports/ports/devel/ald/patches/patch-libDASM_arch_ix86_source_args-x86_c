@@ -1,0 +1,10 @@
+--- libDASM/arch/ix86/source/args-x86.c.orig	2003-11-15 17:39:57.000000000 +0100
++++ libDASM/arch/ix86/source/args-x86.c	2003-11-15 17:40:30.000000000 +0100
+@@ -16,6 +16,7 @@
+ 
+ #include <stdio.h>
+ #include <assert.h>
++#include <string.h>
+ 
+ #include "args-x86.h"
+ #include "common-x86.h"

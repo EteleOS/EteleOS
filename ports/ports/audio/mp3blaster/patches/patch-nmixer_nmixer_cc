@@ -1,0 +1,14 @@
+--- nmixer/nmixer.cc.orig	Sun Dec 27 01:47:42 2009
++++ nmixer/nmixer.cc	Sun Dec 27 01:48:15 2009
+@@ -151,6 +151,11 @@ NMixer::InitMixerDevice() {
+ 		mixers = new OSSMixer(mixdev);
+ #endif
+ 
++#ifdef WANT_SNDIO
++	if (!mixers)
++		mixers = new SndioMixer(mixdev);
++#endif
++
+ 	if (!mixers)
+ 	{
+ 		//fallback option if no mixers are available

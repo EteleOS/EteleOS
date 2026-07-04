@@ -1,0 +1,18 @@
+Index: xcalib.c
+--- xcalib.c.orig
++++ xcalib.c
+@@ -153,12 +153,12 @@ usage (void)
+ 	   "last parameter must be an ICC profile containing a vcgt-tag\n");
+   fprintf (stdout, "\n");
+ #ifndef _WIN32 
+-  fprintf (stdout, "Example: ./xcalib -d :0 -s 0 -v bluish.icc\n");
++  fprintf (stdout, "Example: xcalib -d :0 -s 0 -v bluish.icc\n");
+ #else
+   fprintf (stdout, "Example: ./xcalib -v bluish.icc\n");
+ #endif
+ #ifndef FGLRX
+-  fprintf (stdout, "Example: ./xcalib -red 1.1 10.0 100.0\n");
++  fprintf (stdout, "Example: xcalib -red 1.1 10.0 100.0\n");
+ #endif
+   fprintf (stdout, "\n");
+   exit (0);

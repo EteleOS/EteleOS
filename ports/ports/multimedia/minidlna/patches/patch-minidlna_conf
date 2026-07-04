@@ -1,0 +1,65 @@
+Index: minidlna.conf
+--- minidlna.conf.orig
++++ minidlna.conf
+@@ -1,11 +1,13 @@
+ # port for HTTP (descriptions, SOAP, media transfer) traffic
++# if firewalling, this TCP port, as well as UDP port 1900, must be open.
+ port=8200
+ 
+ # network interfaces to serve, comma delimited (8 interfaces max)
+ #network_interface=eth0
+ 
+-# specify the user account name or uid to run as
+-#user=jmaggard
++# specify the user account name or uid to run as;
++# usually handled by daemon_user variable in the rc.d(8) script
++#user=_minidlna
+ 
+ # set this to the directory you want scanned.
+ # * if you want multiple directories, you can have multiple media_dir= lines
+@@ -15,7 +17,7 @@ port=8200
+ #   + "V" for video  (eg. media_dir=V,/home/jmaggard/Videos)
+ #   + "P" for images (eg. media_dir=P,/home/jmaggard/Pictures)
+ #   + "PV" for pictures and video (eg. media_dir=PV,/home/jmaggard/digital_camera)
+-media_dir=/opt
++media_dir=/share
+ 
+ # set this to merge all media_dir base contents into the root container
+ # note: the default is no
+@@ -25,20 +27,20 @@ media_dir=/opt
+ #friendly_name=My DLNA Server
+ 
+ # set this if you would like to specify the directory where you want MiniDLNA to store its database and album art cache
+-#db_dir=/var/cache/minidlna
++#db_dir=/var/db/minidlna
+ 
+ # set this if you would like to specify the directory where you want MiniDLNA to store its log file
+-#log_dir=/var/log
++#log_dir=/var/log/minidlna
+ 
+ # set this to change the verbosity of the information that is logged
+ # each section can use a different level: off, fatal, error, warn, info, or debug
+-#log_level=general,artwork,database,inotify,scanner,metadata,http,ssdp,tivo=warn
++#log_level=general,artwork,database,scanner,metadata,http,ssdp,tivo=warn
+ 
+ # this should be a list of file names to check for when searching for album art
+ # note: names should be delimited with a forward slash ("/")
+ album_art_names=Cover.jpg/cover.jpg/AlbumArtSmall.jpg/albumartsmall.jpg/AlbumArt.jpg/albumart.jpg/Album.jpg/album.jpg/Folder.jpg/folder.jpg/Thumb.jpg/thumb.jpg
+ 
+-# set this to no to disable inotify monitoring to automatically discover new files
++# set this to no to disable kqueue monitoring to automatically discover new files
+ # note: the default is yes
+ inotify=yes
+ 
+@@ -64,6 +66,11 @@ notify_interval=900
+ # in its XML description
+ serial=12345678
+ model_number=1
++
++# specify fixed uuid, rather than generating a fresh one at startup;
++# helps some clients at restart time and allow running multiple instances;
++# see uuid(1) or uuidgen(1).
++#uuid=abc12345-5678-9abc-def0-123456789abc
+ 
+ # specify the path to the MiniSSDPd socket
+ #minissdpdsocket=/var/run/minissdpd.sock

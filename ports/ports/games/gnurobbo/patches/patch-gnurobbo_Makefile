@@ -1,0 +1,12 @@
+Index: gnurobbo/Makefile
+--- gnurobbo/Makefile.orig
++++ gnurobbo/Makefile
+@@ -61,7 +61,7 @@ SDL_CONFIG?=sdl-config
+ 
+ 
+ 
+-CFLAGS+=-d -Wall  `$(SDL_CONFIG) --cflags` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" $(SMOOTH_SCRL) $(LIGHTNING)\
++CFLAGS+=-Wall -fcommon `$(SDL_CONFIG) --cflags` -DPLATFORM_PC -DVERSION=\"$(VERSION)\" $(SMOOTH_SCRL) $(LIGHTNING)\
+ 	-DPACKAGE_DATA_DIR=\"$(PACKAGE_DATA_DIR)\" $(FONT_USE_PIXMAP) $(MUSIC) $(DESIGNER)
+ LDFLAGS=
+ # Use these instead for debugging and/or profiling (mainly intended for GNU Robbo developers)

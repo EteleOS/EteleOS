@@ -1,0 +1,4 @@
+@bin bin/virtualjaguar
+@man man/man1/virtualjaguar.1
+share/doc/virtualjaguar/
+share/doc/virtualjaguar/README

@@ -1,0 +1,10 @@
+Index: makefile.mk
+--- makefile.mk.orig
++++ makefile.mk
+@@ -1,5 +1,5 @@
+ NAME='retrosmart-icon-theme'
+-PREFIX='/usr'
++PREFIX='${TRUEPREFIX}'
+ DESTDIR=''
+ TEMPDIR := $(shell mktemp -u --suffix .$(NAME))
+ 

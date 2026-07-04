@@ -1,0 +1,12 @@
+Index: wmgeneral/wmgeneral.h
+--- wmgeneral/wmgeneral.h.orig
++++ wmgeneral/wmgeneral.h
+@@ -28,7 +28,7 @@ typedef struct {
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
++extern Display		*display;
+ 
+   /***********************/
+  /* Function Prototypes */

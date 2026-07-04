@@ -1,0 +1,11 @@
+--- bootstrap/boot.lua.orig	Tue Nov 29 16:40:45 2016
++++ bootstrap/boot.lua	Tue Nov 29 16:40:50 2016
+@@ -18,7 +18,7 @@ if __SELFEXE then
+ 
+ 	if not __APPLE__ then
+ 		-- Now remove executable name
+-		dir = dir:gsub("(.*"..fs.getPathSeparator()..").+", "%1")
++		--dir = dir:gsub("(.*"..fs.getPathSeparator()..").+", "%1")
+ 	else
+ 		-- This is a little un-OSX like: we grab our data from the folder containing T-Engine.app
+ 		-- It is a bit strange but way way better for people to install addons and such

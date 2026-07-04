@@ -1,0 +1,25 @@
+${GEM_LIB}/cache/${DISTNAME}.gem
+${GEM_LIB}/gems/${DISTNAME}/
+${GEM_LIB}/gems/${DISTNAME}/CHANGELOG.md
+${GEM_LIB}/gems/${DISTNAME}/LICENSE
+${GEM_LIB}/gems/${DISTNAME}/README.md
+${GEM_LIB}/gems/${DISTNAME}/lib/
+${GEM_LIB}/gems/${DISTNAME}/lib/mysql2/
+${GEM_LIB}/gems/${DISTNAME}/lib/mysql2.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/mysql2/client.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/mysql2/console.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/mysql2/em.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/mysql2/error.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/mysql2/field.rb
+@so ${GEM_LIB}/gems/${DISTNAME}/lib/mysql2/mysql2.so
+${GEM_LIB}/gems/${DISTNAME}/lib/mysql2/result.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/mysql2/statement.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/mysql2/version.rb
+${GEM_LIB}/gems/${DISTNAME}/support/
+${GEM_LIB}/gems/${DISTNAME}/support/3A79BD29.asc
+${GEM_LIB}/gems/${DISTNAME}/support/5072E1F5.asc
+${GEM_LIB}/gems/${DISTNAME}/support/C74CD1D8.asc
+${GEM_LIB}/gems/${DISTNAME}/support/libmysql.def
+${GEM_LIB}/gems/${DISTNAME}/support/mysql_enc_to_ruby.rb
+${GEM_LIB}/gems/${DISTNAME}/support/ruby_enc_to_mysql.rb
+${GEM_LIB}/specifications/${DISTNAME}.gemspec

@@ -1,0 +1,23 @@
+@pkgpath devel/py-setuptools_trial,python3
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial/
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial-${MODPY_DISTV}.dist-info/
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial-${MODPY_DISTV}.dist-info/METADATA
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial-${MODPY_DISTV}.dist-info/RECORD
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial-${MODPY_DISTV}.dist-info/WHEEL
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial-${MODPY_DISTV}.dist-info/entry_points.txt
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial-${MODPY_DISTV}.dist-info/licenses/
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial-${MODPY_DISTV}.dist-info/licenses/COPYING.SPL.txt
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial-${MODPY_DISTV}.dist-info/top_level.txt
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial/__init__.py
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial/${MODPY_PYCACHE}/
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial/${MODPY_PYCACHE}_version.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial/${MODPY_PYCACHE}_version.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial/${MODPY_PYCACHE}setuptools_trial.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial/${MODPY_PYCACHE}setuptools_trial.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial/_version.py
+lib/python${MODPY_VERSION}/site-packages/setuptools_trial/setuptools_trial.py
+@comment share/doc/python-setuptools_trial/
+@comment share/doc/python-setuptools_trial/COPYING.SPL.txt
+@comment share/doc/python-setuptools_trial/README.rst

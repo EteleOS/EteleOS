@@ -1,0 +1,11 @@
+Index: src/library/groupbydialog.h
+--- src/library/groupbydialog.h.orig
++++ src/library/groupbydialog.h
+@@ -20,6 +20,7 @@
+ 
+ #include <QDialog>
+ #include <memory>
++#include <functional>
+ 
+ #include "librarymodel.h"
+ 

@@ -1,0 +1,7 @@
+lib/tcl/tclcurl/
+@so lib/tcl/tclcurl/libTclCurl${VER}.so
+lib/tcl/tclcurl/pkgIndex.tcl
+lib/tcl/tclcurl/tclcurl.tcl
+@man man/mann/tclcurl.n
+@man man/mann/tclcurl_multi.n
+@man man/mann/tclcurl_share.n

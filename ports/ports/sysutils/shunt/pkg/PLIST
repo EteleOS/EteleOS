@@ -1,0 +1,5 @@
+@bin bin/exactly
+@bin bin/flyisofs
+@bin bin/shunt
+share/doc/shunt/
+share/doc/shunt/README.TXT

@@ -1,0 +1,13 @@
+Index: src/tlsopensslbase.cpp
+--- src/tlsopensslbase.cpp.orig
++++ src/tlsopensslbase.cpp
+@@ -56,7 +56,9 @@ namespace gloox
+       SSL_library_init();
+ #endif // OPENSSL_VERSION_NUMBER < 0x10100000
+ 
++#ifndef OPENSSL_NO_COMP
+     SSL_COMP_add_compression_method( 193, COMP_zlib() );
++#endif
+ 
+     OpenSSL_add_all_algorithms();
+ 

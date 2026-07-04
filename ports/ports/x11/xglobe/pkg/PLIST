@@ -1,0 +1,9 @@
+bin/getcloudmap
+@bin bin/xglobe
+share/doc/xglobe/
+share/doc/xglobe/README.md
+share/doc/xglobe/README.xglobe-0.5
+share/doc/xglobe/README.xglobe-0.5.maps
+share/xglobe/
+share/xglobe/xglobe-markers
+!%%no_map%%

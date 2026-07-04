@@ -1,0 +1,19 @@
+@newgroup _flowd:542
+@newuser _flowd:542:542::flowd user:/var/empty:/sbin/nologin
+@bin bin/flowd-reader
+include/flowd/
+include/flowd/addr.h
+include/flowd/crc32.h
+include/flowd/flowd-common.h
+include/flowd/flowd-config.h
+include/flowd/flowd-pytypes.h
+include/flowd/store-v2.h
+include/flowd/store.h
+lib/libflowd.a
+@man man/man5/flowd.conf.5
+@man man/man8/flowd-reader.8
+@man man/man8/flowd.8
+@bin sbin/flowd
+share/examples/flowd/
+share/examples/flowd/flowd.conf
+@sample ${SYSCONFDIR}/flowd.conf

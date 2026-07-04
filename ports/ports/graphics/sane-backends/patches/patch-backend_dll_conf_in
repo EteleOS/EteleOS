@@ -1,0 +1,21 @@
+Index: backend/dll.conf.in
+--- backend/dll.conf.in.orig
++++ backend/dll.conf.in
+@@ -46,7 +46,7 @@ hp4200
+ hp5400
+ hp5590
+ hpljm1005
+-hpsj5s
++#hpsj5s
+ hs2p
+ ibm
+ kodak
+@@ -75,7 +75,7 @@ pixma
+ plustek
+ #plustek_pp
+ #pnm
+-qcam
++#qcam
+ ricoh
+ ricoh2
+ rts8891

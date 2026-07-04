@@ -1,0 +1,5 @@
+lib/tcl/gpg/
+lib/tcl/gpg/libgpg11.so
+lib/tcl/gpg/pkgIndex.tcl
+lib/tcl/gpg/tclgpg.tcl
+@man man/mann/gpg.n

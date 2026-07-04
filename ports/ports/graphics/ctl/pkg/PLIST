@@ -1,0 +1,43 @@
+@conflict openexr-ctl-*
+@pkgpath graphics/openexr-ctl
+@bin bin/ctlrender
+@bin bin/exr_ctl_exr
+@bin bin/exrdpx
+include/CTL/
+include/CTL/CtlAddr.h
+include/CTL/CtlAlign.h
+include/CTL/CtlColorSpace.h
+include/CTL/CtlErrors.h
+include/CTL/CtlExc.h
+include/CTL/CtlFunctionCall.h
+include/CTL/CtlInterpreter.h
+include/CTL/CtlLContext.h
+include/CTL/CtlLookupTable.h
+include/CTL/CtlMessage.h
+include/CTL/CtlModule.h
+include/CTL/CtlRbfInterpolator.h
+include/CTL/CtlRcPtr.h
+include/CTL/CtlReadWriteAccess.h
+include/CTL/CtlSimdInterpreter.h
+include/CTL/CtlSparseMatrix.h
+include/CTL/CtlStdType.h
+include/CTL/CtlSymbolTable.h
+include/CTL/CtlSyntaxTree.h
+include/CTL/CtlTokens.h
+include/CTL/CtlType.h
+include/CTL/CtlTypeStorage.h
+include/CTL/CtlVersion.h
+include/OpenEXR/ImfCtlApplyTransforms.h
+@lib lib/libIlmCtl.so.${LIBIlmCtl_VERSION}
+@lib lib/libIlmCtlMath.so.${LIBIlmCtlMath_VERSION}
+@lib lib/libIlmCtlSimd.so.${LIBIlmCtlSimd_VERSION}
+@lib lib/libIlmImfCtl.so.${LIBIlmImfCtl_VERSION}
+share/CTL/
+share/CTL/change_saturation.ctl
+share/CTL/transform_DPX_EXR.ctl
+share/CTL/transform_EXR_DPX.ctl
+share/CTL/utilities.ctl
+share/doc/CTL/
+share/doc/CTL/CTL/
+share/doc/CTL/CTL/CtlManual.doc
+share/doc/CTL/CTL/CtlManual.pdf

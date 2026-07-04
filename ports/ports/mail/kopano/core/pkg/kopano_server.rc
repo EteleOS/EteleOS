@@ -1,0 +1,13 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/kopano-server"
+
+. /etc/rc.d/rc.subr
+
+rc_bg=YES
+
+rc_pre() {
+	install -d -o _kopano -g _kopano /var/run/kopano
+}
+
+rc_cmd $1

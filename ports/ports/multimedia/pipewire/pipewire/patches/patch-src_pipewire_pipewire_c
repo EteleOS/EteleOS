@@ -1,0 +1,91 @@
+Middle chunks: https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/1819
+
+Index: src/pipewire/pipewire.c
+--- src/pipewire/pipewire.c.orig
++++ src/pipewire/pipewire.c
+@@ -7,9 +7,13 @@
+ #include <unistd.h>
+ #include <limits.h>
+ #include <stdio.h>
+-#if !defined(__FreeBSD__) && !defined(__MidnightBSD__) && !defined(__GNU__)
++#if !defined(__FreeBSD__) && !defined(__MidnightBSD__) && !defined(__OpenBSD__) && !defined(__GNU__)
+ #include <sys/prctl.h>
+ #endif
++#include <sys/types.h>
++#include <sys/socket.h>
++#include <sys/ioctl.h>
++#include <net/if.h>
+ #include <pwd.h>
+ #include <errno.h>
+ #include <dlfcn.h>
+@@ -484,7 +488,7 @@ static struct spa_log *load_journal_logger(struct supp
+  * This function can be called multiple times.
+  */
+ SPA_EXPORT
+-void pw_init(int *argc, char **argv[])
++void pipewire_init(int *argc, char **argv[])
+ {
+ 	const char *str;
+ 	struct spa_dict_item items[6];
+@@ -599,7 +603,7 @@ done:
+  * used again after being deinitialized with a new pw_init() call.
+  */
+ SPA_EXPORT
+-void pw_deinit(void)
++void pipewire_deinit(void)
+ {
+ 	struct support *support = &global_support;
+ 	struct registry *registry = &support->registry;
+@@ -625,6 +629,21 @@ done:
+ 
+ }
+ 
++#if !defined(__FreeBSD__) && !defined(__OpenBSD__)
++#undef pw_init
++SPA_EXPORT
++void pw_init(int *argc, char **argv[])
++{
++	pipewire_init(argc, argv);
++}
++#undef pw_deinit
++SPA_EXPORT
++void pw_deinit(void)
++{
++	pipewire_deinit();
++}
++#endif
++
+ /** Check if a debug category is enabled
+  *
+  * \param name the name of the category to check
+@@ -672,7 +691,7 @@ static void init_prgname(void)
+ 		}
+ 	}
+ #endif
+-#if !defined(__FreeBSD__) && !defined(__MidnightBSD__) && !defined(__GNU__)
++#if !defined(__FreeBSD__) && !defined(__MidnightBSD__) && !defined(__OpenBSD__) && !defined(__GNU__)
+ 	{
+ 		if (prctl(PR_GET_NAME, (unsigned long) name, 0, 0, 0) == 0) {
+ 			prgname = name;
+@@ -790,4 +809,21 @@ SPA_EXPORT
+ const struct spa_type_info * pw_type_info(void)
+ {
+ 	return type_info;
++}
++
++SPA_EXPORT
++unsigned int pw_if_nametoindex(const char *ifname, int fd)
++{
++#ifdef SIOCGIFINDEX
++	struct ifreq ifr;
++	snprintf(req.ifr_name, sizeof(req.ifr_name), "%s", ifname);
++	if (ioctl(fd, SIOCGIFINDEX, &ifr) < 0)
++		return -1;
++	return ifr.ifr_ifindex;
++#else
++	int res;
++	if ((res = if_nametoindex(ifname)) == 0)
++		return -1;
++	return res;
++#endif
+ }

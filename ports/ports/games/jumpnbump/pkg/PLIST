@@ -1,0 +1,13 @@
+@bin bin/gobpack
+@bin bin/jnbpack
+@bin bin/jnbunpack
+@bin bin/jumpnbump
+@man man/man6/jumpnbump.6
+share/applications/jumpnbump.desktop
+share/icons/
+share/icons/jumpnbump.png
+share/jumpnbump/
+share/jumpnbump/jumpbump.dat
+share/metainfo/
+share/metainfo/jumpnbump.appdata.xml
+@tag update-desktop-database

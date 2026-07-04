@@ -1,0 +1,12 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+By default, the Dovecot processes run in the login(1) class of "dovecot".
+
+The capability database file is located at /etc/login.conf.d/dovecot
+
+For larger servers these numbers and memory limits (e.g. datasize
+and stacksize) may also need to be increased. Please report any
+changes and experiences to the package maintainers so that we can
+update this file for future versions.

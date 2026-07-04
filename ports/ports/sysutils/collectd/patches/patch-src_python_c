@@ -1,0 +1,21 @@
+Index: src/python.c
+--- src/python.c.orig
++++ src/python.c
+@@ -1141,7 +1141,7 @@ static void *cpy_interactive(void *pipefd) {
+ #else
+   PyOS_AfterFork_Child();
+ #endif
+-  PyEval_InitThreads();
++  Py_Initialize();
+   close(*(int *)pipefd);
+   PyRun_InteractiveLoop(stdin, "<stdin>");
+   PyOS_setsig(SIGINT, cur_sig);
+@@ -1178,7 +1178,7 @@ static int cpy_init(void) {
+       ;
+     (void)close(pipefd[0]);
+   } else {
+-    PyEval_InitThreads();
++    Py_Initialize();
+     state = PyEval_SaveThread();
+   }
+   CPY_LOCK_THREADS

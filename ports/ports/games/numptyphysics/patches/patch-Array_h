@@ -1,0 +1,25 @@
+--- Array.h.orig	Wed Dec  5 17:20:19 2012
++++ Array.h	Wed Dec  5 17:21:33 2012
+@@ -32,18 +32,18 @@ class Array
+   
+  Array( int n, const T* d ) : m_data(NULL), m_size(0), m_capacity(0)
+   {
+-    if ( n ) {
++    if ( n > 0 ) {
+       capacity( n );
+-      memcpy( m_data, d, n * sizeof(T) );
++      if ( m_data ) memcpy( m_data, d, n * sizeof(T) );
+       m_size = n;
+     }
+   }
+ 
+   Array( const Array& other ) : m_data(NULL), m_size(0), m_capacity(0)
+   {
+-    if ( other.size() ) {
++    if ( other.size() > 0 ) {
+       capacity( other.size() );
+-      memcpy( m_data, other.m_data, other.size() * sizeof(T) );
++      if ( m_data ) memcpy( m_data, other.m_data, other.size() * sizeof(T) );
+       m_size = other.size();
+     }
+   }

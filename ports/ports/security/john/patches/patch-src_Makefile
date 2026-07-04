@@ -1,0 +1,12 @@
+--- src/Makefile.orig	Thu May 30 01:21:25 2013
++++ src/Makefile	Fri May 31 06:48:10 2013
+@@ -397,8 +397,7 @@ openbsd-ppc64:
+ 
+ openbsd-pa-risc:
+ 	$(LN) pa-risc.h arch.h
+-	$(MAKE) $(PROJ) \
+-		CFLAGS="-c -Wall -O3 -fomit-frame-pointer"
++	$(MAKE) $(PROJ)
+ 
+ openbsd-vax:
+ 	$(LN) vax.h arch.h

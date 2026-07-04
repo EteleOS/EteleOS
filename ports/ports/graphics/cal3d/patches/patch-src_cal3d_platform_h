@@ -1,0 +1,11 @@
+Index: src/cal3d/platform.h
+--- src/cal3d/platform.h.orig
++++ src/cal3d/platform.h
+@@ -76,6 +76,7 @@ typedef int intptr_t;
+ 
+ // standard includes
+ #include <stdlib.h>
++#include <string.h>
+ #include <math.h>
+ 
+ // debug includes

@@ -1,0 +1,37 @@
+@bin bin/zbarimg
+include/zbar/
+include/zbar.h
+include/zbar/Decoder.h
+include/zbar/Exception.h
+include/zbar/Image.h
+include/zbar/ImageScanner.h
+include/zbar/Processor.h
+include/zbar/Scanner.h
+include/zbar/Symbol.h
+include/zbar/Video.h
+include/zbar/Window.h
+include/zbar/zbargtk.h
+lib/girepository-1.0/ZBar-1.0.typelib
+@static-lib lib/libzbar.a
+lib/libzbar.la
+@lib lib/libzbar.so.${LIBzbar_VERSION}
+@static-lib lib/libzbargtk.a
+lib/libzbargtk.la
+@lib lib/libzbargtk.so.${LIBzbargtk_VERSION}
+lib/pkgconfig/zbar-gtk.pc
+lib/pkgconfig/zbar.pc
+@comment lib/python${MODPY_VERSION}/site-packages/zbar.a
+@comment lib/python${MODPY_VERSION}/site-packages/zbar.la
+@so lib/python${MODPY_VERSION}/site-packages/zbar.so
+@man man/man1/zbarimg.1
+share/doc/zbar/
+share/doc/zbar/ABOUT-NLS
+share/doc/zbar/COPYING
+share/doc/zbar/HACKING.md
+share/doc/zbar/INSTALL.md
+share/doc/zbar/LICENSE.md
+share/doc/zbar/NEWS.md
+share/doc/zbar/README.md
+share/doc/zbar/TODO.md
+share/gir-1.0/ZBar-1.0.gir
+share/locale/pt_BR/LC_MESSAGES/zbar.mo

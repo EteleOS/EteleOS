@@ -1,0 +1,6 @@
+include/oauth.h
+lib/liboauth.a
+lib/liboauth.la
+@lib lib/liboauth.so.${LIBoauth_VERSION}
+lib/pkgconfig/oauth.pc
+@man man/man3/oauth.3

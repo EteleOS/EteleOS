@@ -1,0 +1,24 @@
+fix for -fno-common
+https://gitweb.gentoo.org/repo/gentoo.git/commit/media-sound/scmpc/files?id=c9f42ac8feb314f3f2f6ec7cfd8c535ff33fe735
+
+Index: src/preferences.c
+--- src/preferences.c.orig
++++ src/preferences.c
+@@ -36,6 +36,8 @@
+ #include "scmpc.h"
+ #include "preferences.h"
+ 
++struct prefs_t prefs;
++
+ static gint cf_log_level(cfg_t *cfg, cfg_opt_t *opt, const gchar *value,
+ 		void *result);
+ static gint cf_validate_num(cfg_t *cfg, cfg_opt_t *opt);
+@@ -180,7 +182,7 @@ static gboolean parse_config_file(void)
+ 				&cf_log_level),
+ 		CFG_STR("log_file", "/var/log/scmpc.log", CFGF_NONE),
+ 		CFG_STR("pid_file", "/var/run/scmpc.pid", CFGF_NONE),
+-		CFG_STR("cache_file", "/var/lib/scmpc/scmpc.cache", CFGF_NONE),
++		CFG_STR("cache_file", "/var/scmpc/scmpc.cache", CFGF_NONE),
+ 		CFG_INT("queue_length", 500, CFGF_NONE),
+ 		CFG_INT("cache_interval", 10, CFGF_NONE),
+ 		CFG_SEC("mpd", mpd_opts, CFGF_NONE),

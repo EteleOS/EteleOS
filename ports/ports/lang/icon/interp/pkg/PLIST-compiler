@@ -1,0 +1,7 @@
+bin/iconc
+lib/icon/
+lib/icon/dlrgint.o
+lib/icon/rt.a
+lib/icon/rt.db
+lib/icon/rt.h
+@man man/man1/iconc.1

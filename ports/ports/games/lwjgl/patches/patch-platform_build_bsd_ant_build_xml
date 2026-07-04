@@ -1,0 +1,55 @@
+Build with jdk-11
+Build only 32 bit on i386 and 64bit only otherwise
+
+Index: platform_build/bsd_ant/build.xml
+--- platform_build/bsd_ant/build.xml.orig
++++ platform_build/bsd_ant/build.xml
+@@ -4,8 +4,9 @@
+ 	<property name="native" location="../../src/native"/>
+ 	<property name="libname32" value="liblwjgl.so"/>
+ 	<property name="libname64" value="liblwjgl64.so"/>
+-	<property name="libs32" value="-L/usr/X11R6/lib -L/usr/local/lib -lm -lX11 -lXext -lXcursor -lXrandr -pthread -L${java.home}/lib/i386 -ljawt" />
+-	<property name="libs64" value="-L/usr/X11R6/lib -L/usr/local/lib -lm -lX11 -lXext -lXcursor -lXrandr -lXxf86vm -pthread -L${java.home}/lib/amd64 -ljawt" />
++	<!-- After JDK 8 (at least on JDK 11), the architecture isn't part of the lib folder anymore -->
++	<property name="libs32" value="-L/usr/X11R6/lib -L/usr/local/lib -lm -lX11 -lXext -lXcursor -lXrandr -pthread -L${java.home}/lib -ljawt" />
++	<property name="libs64" value="-L/usr/X11R6/lib -L/usr/local/lib -lm -lX11 -lXext -lXcursor -lXrandr -lXxf86vm -pthread -L${java.home}/lib -ljawt" />
+     <property name="cflags32" value="-O2 -Wall -c -fPIC -std=c99 -Wunused"/>
+ 
+ 	<target name="clean">
+@@ -64,10 +65,19 @@
+             </and>
+         </condition>
+ 
++    	<condition property="build.32bit.only">
++            <and>
++                <os name="OpenBSD"/>
++                <equals arg1="${hwplatform}" arg2="i386"/>
++            </and>
++        </condition>
++
+     	<condition property="build.64bit.only">
+             <and>
+                 <os name="OpenBSD"/>
+-                <equals arg1="${hwplatform}" arg2="amd64"/>
++                <not>
++                    <equals arg1="${hwplatform}" arg2="i386"/>
++                </not>
+             </and>
+         </condition>
+ 
+@@ -87,6 +97,7 @@
+ 			<arg value="-I${java.home}/../include/openbsd"/>
+ 			<arg value="-I/usr/local/include"/>
+ 			<arg value="-I/usr/X11R6/include"/>
++			<arg value="-I${native}"/>
+ 			<arg value="-I${native}/common"/>
+ 		    <arg value="-I${native}/common/opengl"/>
+ 			<arg value="-I${native}/linux"/>
+@@ -124,6 +135,7 @@
+ 			<arg value="-I/usr/X11R6/include"/>
+             <arg value="-I${native}/common"/>
+ 		    <arg value="-I${native}/common/opengl"/>
++			<arg value="-I${native}"/>
+ 			<arg value="-I${native}/linux"/>
+ 		    <arg value="-I${native}/linux/opengl"/>
+ 			<mapper type="glob" from="*.c" to="*.o"/>

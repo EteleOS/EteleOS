@@ -1,0 +1,6 @@
+${P5SITE}/WebService/
+${P5SITE}/WebService/MusicBrainz/
+${P5SITE}/WebService/MusicBrainz.pm
+${P5SITE}/WebService/MusicBrainz/Request.pm
+@man man/man3p/WebService::MusicBrainz.3p
+@man man/man3p/WebService::MusicBrainz::Request.3p

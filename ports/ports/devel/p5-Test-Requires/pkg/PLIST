@@ -1,0 +1,3 @@
+${P5SITE}/Test/
+${P5SITE}/Test/Requires.pm
+@man man/man3p/Test::Requires.3p

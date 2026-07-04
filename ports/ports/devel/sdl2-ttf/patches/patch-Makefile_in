@@ -1,0 +1,11 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -835,7 +835,6 @@ HARFBUZZ_SOURCES = \
+ @USE_BUILTIN_HARFBUZZ_FALSE@LINKER = $(LINK)
+ libSDL2_ttf_la_LDFLAGS = \
+ 	-no-undefined		\
+-	-release $(LT_RELEASE)	\
+ 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LT_EXTRA)
+ 
+ @USE_VERSION_RC_TRUE@libSDL2_ttf_la_DEPENDENCIES = version.o

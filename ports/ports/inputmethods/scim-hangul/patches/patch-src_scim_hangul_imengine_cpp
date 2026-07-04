@@ -1,0 +1,15 @@
+Add missing headers fort ports-gcc
+
+Index: src/scim_hangul_imengine.cpp
+--- src/scim_hangul_imengine.cpp.orig
++++ src/scim_hangul_imengine.cpp
+@@ -48,6 +48,9 @@
+   #define bind_textdomain_codeset(domain,codeset)
+ #endif
+ 
++#include <string.h>
++#include <unistd.h>
++
+ #define scim_module_init hangul_LTX_scim_module_init
+ #define scim_module_exit hangul_LTX_scim_module_exit
+ #define scim_imengine_module_init hangul_LTX_scim_imengine_module_init

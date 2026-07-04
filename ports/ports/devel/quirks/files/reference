@@ -1,0 +1,3 @@
+Obsolete package: cheese-1 (no longer maintained upstream)
+Obsolete package: opensmtpd-extras-1 (no longer maintained upstream, suggest opensmtpd-table-ldap, opensmtpd-table-passwd, opensmtpd-table-socketmap, opensmtpd-table-sqlite)
+Obsolete package: depotdownloader-1 (dependencies for recent versions can't be met, suggest steamctl)

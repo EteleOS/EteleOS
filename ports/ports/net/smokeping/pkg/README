@@ -1,0 +1,122 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Basic configuration
+===================
+Smokeping is split into two main parts, the daemon (running the probes
+and updating RRD files) and the part responsible for generating website
+graphs.
+
+For the daemon, edit ${SYSCONFDIR}/config (at least add some hosts to
+monitor) and enable it:
+
+    rcctl enable smokeping
+    rcctl start smokeping
+
+For graph generation, the simplest method is generate static HTML
+and image files from a cron job. This doesn't allow zoom into graphs
+interactively from the browser, but it is easy to configure, more
+secure, and is good enough for many use cases. To do this, add a cron
+job to run this as the _smokeping user (adjust path as necessary):
+
+    smokeping --static=/var/www/htdocs/smokeping
+
+Alternatively it can run as a CGI/FastCGI script with a web server.
+A normal installation runs smokeping_fcgi as a daemon and the web
+server is told to communicate with it over a UNIX socket.
+If you wish to use this method, enable the daemon:
+
+    rcctl enable smokeping_fcgi
+    rcctl start smokeping_fcgi
+
+And configure your web server to access it - here is a sample
+configuration section for use with nginx:
+
+    location ~ /smokeping/smokeping.cgi$ {
+	fastcgi_pass	unix:run/smokeping.sock;
+	fastcgi_split_path_info ^(/cgi-bin/[^/]+)(.*);
+	fastcgi_param	PATH_INFO $fastcgi_path_info;
+	fastcgi_param	SCRIPT_FILENAME $fastcgi_script_name;
+	include		fastcgi_params;
+    }
+
+Or the httpd(8) in OpenBSD base:
+
+    server "example.org" {
+	listen on * port 80
+	location "/smokeping/smokeping.cgi*" {
+	    fastcgi socket "/run/smokeping.sock"
+	    root "/"
+	}
+    }
+
+Other probe types
+=================
+Smokeping is most often used to perform ICMP monitoring via fping,
+but has "Probe" modules for other protocols too. Some of these require
+additional packages to be installed:
+
+ RADIUS:	   p5-Authen-Radius
+ TelnetIOSPing:	   p5-Net-Telnet
+ OpenSSHEOSPing:   p5-Net-OpenSSH p5-IO-Pty
+ OpenSSHJunOSPing: p5-Net-OpenSSH p5-IO-Pty
+ AnotherDNS:	   p5-Net-DNS
+ LDAP:		   p5-ldap p5-IO-Socket-SSL
+
+Advanced topic: Heavy load systems
+==================================
+If problems are seen with excessive load or i/o, it is possible to
+configure Smokeping to use rrdcached instead. This is not needed for
+a typical setup but will typically reduce the amount of data that
+needs to be written to disk (the RRD files are flushed periodically
+according to the command-line flags, allowing some writes to be
+aggregated).
+
+To use this, group permissions should be set to allow Smokeping to
+access the rrdcached socket, and to allow rrdcached to access
+Smokeping's files, e.g.:
+
+	$ grep _smokeping /etc/group
+	_smokeping:*:562:_rrdcached
+	_rrdcached:*:726:_smokeping
+
+	# chgrp -R _rrdcached /var/db/smokeping
+	# chmod -R g+w /var/db/smokeping
+
+The rrdcached daemon must be running:
+
+	# rcctl enable rrdcached
+	# rcctl set rrdcached flags -b /var/db/smokeping -B -m 770 \
+	    -l unix:/var/run/rrd/rrdcached.sock -j /var/db/smokeping/journal \
+	    -p /var/run/rrd/rrdcached.pid
+	# rcctl restart rrdcached
+
+The Smokeping daemon must be told to use rrdcached when writing data.
+This is done by setting an environment variable; add this to /etc/login.conf:
+
+smokeping:setenv=RRDCACHED_ADDRESS=unix\c/var/run/rrd/rrdcached.sock:tc=daemon
+
+Then restart smokeping. Use -d to show more information in case
+of errors at startup.
+
+	# rcctl -d restart smokeping
+
+You can also have Smokeping's FastCGI script use rrdcached when accessing
+data to display. This will be needed in order that it displays the most
+up-to-date information (otherwise it will only see updates that have been
+flushed to disk) and *may* improve performance, however it can also
+result in too much kernel contention (the OpenBSD kernel does not have
+great SMP support for disk access yet) so can actually slow down display.
+Test to see what's best for your system.
+
+To do this, a FastCGI parameter needs to be passed across from your
+web server. For nginx:
+
+fastcgi_param  RRDCACHED_ADDRESS unix:/var/run/rrd/rrdcached.sock;
+
+Or the httpd(8) in OpenBSD base:
+
+param RRDCACHED_ADDRESS "unix:/var/www/run/rrd/rrdcached.sock"
+
+And reload the web server configuration.

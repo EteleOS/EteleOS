@@ -1,0 +1,14 @@
+Use versioned escript
+
+Index: apps/rebar/src/rebar_prv_escriptize.erl
+--- apps/rebar/src/rebar_prv_escriptize.erl.orig
++++ apps/rebar/src/rebar_prv_escriptize.erl
+@@ -138,7 +138,7 @@ escriptize(State0, App) ->
+                           [AppNameStr, AppNameStr, AppNameStr]),
+     EscriptSections =
+         [ {shebang,
+-           def("#!", State, escript_shebang, "#!/usr/bin/env escript\n")}
++           def("#!", State, escript_shebang, "#!/usr/bin/env escript${MODERL_VERSION}\n")}
+         , {comment, def("%%", State, escript_comment, "%%\n")}
+         , {emu_args, def("%%!", State, escript_emu_args, DefaultEmuArgs)}
+         , {archive, Files, []} ],

@@ -1,0 +1,12 @@
+Index: stegdeimage.c
+--- stegdeimage.c.orig
++++ stegdeimage.c
+@@ -151,7 +151,7 @@ main(int argc, char *argv[])
+ {
+ 	extern char *optarg;
+ 	extern int optind;
+-	char ch;
++	int ch;
+ 
+ 	progname = argv[0];
+ 

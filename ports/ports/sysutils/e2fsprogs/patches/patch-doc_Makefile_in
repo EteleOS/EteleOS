@@ -1,0 +1,24 @@
+Index: doc/Makefile.in
+--- doc/Makefile.in.orig
++++ doc/Makefile.in
+@@ -18,9 +18,9 @@ INFO=@MAKEINFO@
+ HTML=makeinfo --html --no-split
+ PS2PDF=ps2pdf
+ 
+-all:: libext2fs.info libext2fs.dvi libext2fs.html
++all:: libext2fs.info
+ 
+-install-doc-libs: libext2fs.info libext2fs.dvi
++install-doc-libs: libext2fs.info
+ 	$(Q) $(RM) -rf $(DESTDIR)$(infodir)/libext2fs.info*
+ 	$(E) "	MKDIR_P $(infodir)"
+ 	$(Q) $(MKDIR_P) $(DESTDIR)$(infodir)
+@@ -28,8 +28,6 @@ install-doc-libs: libext2fs.info libext2fs.dvi
+ 		echo "	INSTALL_DATA $(infodir)/$$i" ; \
+ 		$(INSTALL_DATA) $$i $(DESTDIR)$(infodir)/$$i ; \
+ 	done
+-	$(E) "	GZIP $(infodir)/libext2fs.info*"
+-	-$(Q) gzip -9n $(DESTDIR)$(infodir)/libext2fs.info*
+ 
+ uninstall-doc-libs:
+ 	$(RM) -rf $(DESTDIR)$(infodir)/libext2fs.info*

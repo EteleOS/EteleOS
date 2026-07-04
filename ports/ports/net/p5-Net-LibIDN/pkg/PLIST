@@ -1,0 +1,9 @@
+${P5ARCH}/
+${P5ARCH}/Net/
+${P5ARCH}/Net/LibIDN.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Net/
+${P5ARCH}/auto/Net/LibIDN/
+${P5ARCH}/auto/Net/LibIDN/autosplit.ix
+@man man/man3p/Net::LibIDN.3p
+${P5ARCH}/auto/Net/LibIDN/LibIDN.so

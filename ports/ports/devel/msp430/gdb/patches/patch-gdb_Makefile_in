@@ -1,0 +1,13 @@
+Don't install the xml syscall files which only contain Linux' syscalls.
+
+--- gdb/Makefile.in.orig	Thu Sep  1 19:30:12 2011
++++ gdb/Makefile.in	Thu Sep  1 19:30:12 2011
+@@ -1004,7 +1004,7 @@ install: all install-only 
+ 
+ # The "install-only" target also installs the syscalls' XML files in
+ # the system.
+-install-only: $(CONFIG_INSTALL) xml-syscall-install
++install-only: $(CONFIG_INSTALL)
+ 	transformed_name=`t='$(program_transform_name)'; \
+ 			  echo gdb | sed -e "$$t"` ; \
+ 		if test "x$$transformed_name" = x; then \

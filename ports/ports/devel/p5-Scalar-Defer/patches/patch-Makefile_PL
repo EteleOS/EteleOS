@@ -1,0 +1,13 @@
+--- Makefile.PL.orig	Fri Aug  8 17:17:52 2008
++++ Makefile.PL	Fri Oct  3 12:26:14 2008
+@@ -4,8 +4,8 @@ use inc::Module::Install;
+ name        'Scalar-Defer';
+ all_from    'lib/Scalar/Defer.pm';
+ 
+-requires    'Class::InsideOut';
+-requires    'Exporter::Lite';
++#requires    'Class::InsideOut';
++#requires    'Exporter::Lite';
+ 
+ include_deps 'ok';
+ include_deps 'Test::More';

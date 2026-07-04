@@ -1,0 +1,15 @@
+Index: Makefile.PL
+--- Makefile.PL.orig
++++ Makefile.PL
+@@ -117,9 +117,8 @@ my %options = (
+   ABSTRACT => 'Perl interface to the GMP integer functions',
+   DEFINE   => $defines,
+ 
+-  LIBS => [
+-    $libopts
+-  ],
++  INC  => "$ENV{CPPFLAGS}",
++  LIBS => ["$ENV{LDFLAGS} -lgmp"],
+ 
+   LICENSE  => 'perl',
+   VERSION_FROM => 'GMPz.pm',

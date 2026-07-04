@@ -1,0 +1,30 @@
+@conflict libcanberra-gtk-*
+@pkgpath audio/libcanberra
+@pkgpath audio/libcanberra,-gtk
+include/canberra.h
+lib/libcanberra-0.30/
+@so lib/libcanberra-0.30/libcanberra-multi.so
+@so lib/libcanberra-0.30/libcanberra-sndio.so
+@static-lib lib/libcanberra.a
+lib/libcanberra.la
+@lib lib/libcanberra.so.${LIBcanberra_VERSION}
+lib/pkgconfig/libcanberra.pc
+share/doc/libcanberra/
+share/doc/libcanberra/README
+share/gtk-doc/
+share/gtk-doc/html/
+share/gtk-doc/html/libcanberra/
+share/gtk-doc/html/libcanberra/ch01.html
+share/gtk-doc/html/libcanberra/home.png
+share/gtk-doc/html/libcanberra/index.html
+share/gtk-doc/html/libcanberra/index.sgml
+share/gtk-doc/html/libcanberra/left.png
+share/gtk-doc/html/libcanberra/libcanberra-canberra-gtk.html
+share/gtk-doc/html/libcanberra/libcanberra-canberra.html
+share/gtk-doc/html/libcanberra/libcanberra.devhelp2
+share/gtk-doc/html/libcanberra/right.png
+share/gtk-doc/html/libcanberra/style.css
+share/gtk-doc/html/libcanberra/up.png
+share/vala/
+share/vala/vapi/
+share/vala/vapi/libcanberra.vapi

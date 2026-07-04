@@ -1,0 +1,25 @@
+Index: gettext-runtime/intl/log.c
+--- gettext-runtime/intl/log.c.orig
++++ gettext-runtime/intl/log.c
+@@ -69,6 +69,7 @@ _nl_log_untranslated_locked (const char *logfilename, 
+ {
+   FILE *logfile;
+   const char *separator;
++  size_t len;
+ 
+   /* Can we reuse the last opened logfile?  */
+   if (last_logfilename == NULL || strcmp (logfilename, last_logfilename) != 0)
+@@ -85,10 +86,11 @@ _nl_log_untranslated_locked (const char *logfilename, 
+           last_logfilename = NULL;
+         }
+       /* Open the logfile.  */
+-      last_logfilename = (char *) malloc (strlen (logfilename) + 1);
++      len = strlen (logfilename) + 1;
++      last_logfilename = (char *) malloc (len);
+       if (last_logfilename == NULL)
+         return;
+-      strcpy (last_logfilename, logfilename);
++      strlcpy (last_logfilename, logfilename, len);
+       last_logfile = fopen (logfilename, "a");
+       if (last_logfile == NULL)
+         return;

@@ -1,0 +1,11 @@
+--- engine/h2shared/snd_sys.h.orig	Sun Jan 10 19:51:45 2016
++++ engine/h2shared/snd_sys.h	Mon Dec 26 13:16:56 2016
+@@ -48,7 +48,7 @@
+ #if defined(NO_SUN_AUDIO)
+ #define HAVE_SUN_SOUND	0
+ /* add more systems with SUN audio here */
+-#elif defined(__OpenBSD__) || defined(__NetBSD__) || defined(__sun) || defined(sun)
++#elif defined(__NetBSD__) || defined(__sun) || defined(sun)
+ #define HAVE_SUN_SOUND	1
+ #else
+ #define HAVE_SUN_SOUND	0

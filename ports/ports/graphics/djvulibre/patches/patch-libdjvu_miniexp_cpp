@@ -1,0 +1,12 @@
+Index: libdjvu/miniexp.cpp
+--- libdjvu/miniexp.cpp.orig
++++ libdjvu/miniexp.cpp
+@@ -1300,7 +1300,7 @@ static int stdio_fputs(miniexp_io_t *io, const char *s
+ 
+ static int true_stdio_fgetc(miniexp_io_t *io) {
+   FILE *f = (io->data[0]) ? (FILE*)(io->data[0]) : stdin;
+-  return ::getc(f);
++  return ::fgetc(f);
+ }
+ static int compat_getc() { 
+   return true_stdio_fgetc(&miniexp_io); 

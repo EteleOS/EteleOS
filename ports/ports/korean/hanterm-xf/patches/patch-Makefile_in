@@ -1,0 +1,43 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -175,15 +175,12 @@ install \
+ install-bin \
+ install-full :: $(BINNAME)$x resize$x $(BINDIR)
+ 	$(SHELL) $(srcdir)/sinstall.sh "$(INSTALL_PROGRAM)" $(BINNAME)$x  @XTERM_PATH@ $(BINDIR)/$(binary_xterm)
+-	$(INSTALL_PROGRAM) -s -m  755 resize$x $(BINDIR)/$(binary_resize)
+ 	$(INSTALL_DATA) -m 444 $(srcdir)/keyboard/*.kbd $(srcdir)/keyboard/*.map $(KEYBDIR)
+-	$(INSTALL_PROGRAM) -m  755 $(srcdir)/uxterm $(BINDIR)/$(binary_uxterm)
+ 
+ install \
+ install-man \
+ install-full :: $(MANDIR)
+ 	$(SHELL) $(srcdir)/minstall.sh "$(INSTALL_DATA)" $(srcdir)/$(BINNAME).man    $(MANDIR)/$(actual_xterm).$(manext)
+-	$(SHELL) $(srcdir)/minstall.sh "$(INSTALL_DATA)" $(srcdir)/resize.man   $(MANDIR)/$(actual_resize).$(manext)
+ 
+ install \
+ install-app \
+@@ -194,9 +191,6 @@ install-full :: $(APPSDIR)
+ 	@echo installing $(APPSDIR)/$(CLASS)-color
+ 	@sed -e s/$(RESFNAME)/$(CLASS)/ $(srcdir)/$(RESFNAME)-col.ad >XTerm.tmp
+ 	@$(INSTALL_DATA) XTerm.tmp $(APPSDIR)/$(CLASS)-color
+-	@echo installing $(APPSDIR)/UXTerm
+-	@sed -e s/XTerm/$(CLASS)/ $(srcdir)/UXTerm.ad >XTerm.tmp
+-	@$(INSTALL_DATA) XTerm.tmp $(APPSDIR)/UXTerm
+ 	@rm -f XTerm.tmp
+ 
+ install ::
+@@ -219,13 +213,9 @@ installdirs: $(INSTALL_DIRS)
+ 
+ uninstall:
+ 	-$(RM) $(BINDIR)/$(binary_xterm)
+-	-$(RM) $(BINDIR)/$(binary_resize)
+-	-$(RM) $(BINDIR)/$(binary_uxterm)
+ 	-$(RM) $(MANDIR)/$(actual_xterm).$(manext)
+-	-$(RM) $(MANDIR)/$(actual_resize).$(manext)
+ 	-$(RM) $(APPSDIR)/$(CLASS)
+ 	-$(RM) $(APPSDIR)/$(CLASS)-color
+-	-$(RM) $(APPSDIR)/UXTerm
+ 
+ mostlyclean:
+ 	-$(RM) *.[ois] XtermLog.* .pure core *~ */*~ *.bak *.BAK *.out *.tmp

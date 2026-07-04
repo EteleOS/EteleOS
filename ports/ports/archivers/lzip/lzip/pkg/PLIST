@@ -1,0 +1,3 @@
+@bin bin/lzip
+@info info/lzip.info
+@man man/man1/lzip.1

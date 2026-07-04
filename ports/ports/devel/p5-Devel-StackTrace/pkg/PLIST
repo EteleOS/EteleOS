@@ -1,0 +1,6 @@
+${P5SITE}/Devel/
+${P5SITE}/Devel/StackTrace/
+${P5SITE}/Devel/StackTrace.pm
+${P5SITE}/Devel/StackTrace/Frame.pm
+@man man/man3p/Devel::StackTrace.3p
+@man man/man3p/Devel::StackTrace::Frame.3p

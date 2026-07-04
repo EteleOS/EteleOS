@@ -1,0 +1,5 @@
+bin/latex-encode
+${P5SITE}/LaTeX/
+${P5SITE}/LaTeX/Encode.pm
+@man man/man1/latex-encode.1
+@man man/man3p/LaTeX::Encode.3p

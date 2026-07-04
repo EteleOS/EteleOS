@@ -1,0 +1,4 @@
+${P5SITE}/DateTime/Calendar/
+${P5SITE}/DateTime/Calendar/Mayan.pm
+${P5SITE}/DateTime/Calendar/Mayan.pod
+@man man/man3p/DateTime::Calendar::Mayan.3p

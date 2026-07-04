@@ -1,0 +1,14 @@
+Index: config.def.h
+--- config.def.h.orig
++++ config.def.h
+@@ -9,8 +9,8 @@ static char *fontfallbacks[] = {
+ #define FONTSZ(x) ((int)(10.0 * powf(1.1288, (x)))) /* x in [0, NUMFONTSCALES-1] */
+ 
+ static const char *colors[] = {
+-	"#000000", /* foreground color */
+-	"#FFFFFF", /* background color */
++	"#c0c0c0", /* foreground color */
++	"#202020", /* background color */
+ };
+ 
+ static const float linespacing = 1.4;

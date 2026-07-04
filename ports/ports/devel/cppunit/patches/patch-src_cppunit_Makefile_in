@@ -1,0 +1,13 @@
+Index: src/cppunit/Makefile.in
+--- src/cppunit/Makefile.in.orig
++++ src/cppunit/Makefile.in
+@@ -446,8 +446,7 @@ libcppunit_la_SOURCES = \
+   Win32DynamicLibraryManager.cpp
+ 
+ libcppunit_la_LDFLAGS = \
+- -no-undefined -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
+- -release $(LT_RELEASE) $(LIBADD_DL)
++ -no-undefined -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ 
+ libcppunit_la_LIBADD = $(LIBADD_DL)
+ all: all-am

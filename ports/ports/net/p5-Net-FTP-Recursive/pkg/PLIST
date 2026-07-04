@@ -1,0 +1,9 @@
+${P5SITE}/Net/
+${P5SITE}/Net/FTP/
+${P5SITE}/Net/FTP/Recursive.pm
+@man man/man3p/Net::FTP::Recursive.3p
+share/examples/p5-Net-FTP-Recursive/
+share/examples/p5-Net-FTP-Recursive/rdelete
+share/examples/p5-Net-FTP-Recursive/rdir
+share/examples/p5-Net-FTP-Recursive/rget
+share/examples/p5-Net-FTP-Recursive/rput

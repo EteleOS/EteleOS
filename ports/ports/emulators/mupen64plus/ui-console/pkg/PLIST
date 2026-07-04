@@ -1,0 +1,7 @@
+@bin bin/mupen64plus
+@man man/man6/mupen64plus.6
+share/applications/mupen64plus.desktop
+share/icons/hicolor/48x48/apps/mupen64plus.png
+share/icons/hicolor/scalable/apps/mupen64plus.svg
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

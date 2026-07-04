@@ -1,0 +1,26 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+Migrating to 0.9.3
+==================
+
+The command cycle_value now expects an attribute path instead of a settings
+name. For compatibility reasons, passing settings name directly (without the
+prefix settings.) is still supported.
+
+In ipc commands, herbstclient prints error messages always on stderr and normal
+output always on stdout. Before, both were printed to the same channel, either
+to stdout or stderr depending on the command’s exit status. This mainly
+affects combined commands.
+
+In the rules, toggle can not be used anymore in rule consequences. Moreover,
+invalid arguments to rule consequences now will be reported during rule
+creation, already.
+
+Migrating to 0.9.0
+==================
+
+The tag_renamed hook has changed. The hook now emits two parameters. The first
+parameter contains the old name of the tag and the second parameter is the new
+name of the tag.

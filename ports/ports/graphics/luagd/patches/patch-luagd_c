@@ -1,0 +1,28 @@
+--- luagd.c.orig	Thu May  4 03:03:48 2006
++++ luagd.c	Thu May 30 19:58:52 2013
+@@ -2143,7 +2143,7 @@ static int LgdImageGifAnimEndPtr(lua_State *L) {
+ 
+ 
+ 
+-static const luaL_reg LgdFunctions[] =
++static const luaL_Reg LgdFunctions[] =
+ {
+ /*  Leave Lua do it!
+     { "destroy",                LgdImageDestroy }, */
+@@ -2287,14 +2287,14 @@ static const luaL_reg LgdFunctions[] =
+ };
+ 
+ 
+-static const luaL_reg LgdMetatable[] =
++static const luaL_Reg LgdMetatable[] =
+ {
+     { "__gc", LgdImageDestroy },
+     { NULL, NULL }
+ };
+ 
+ 
+-int luaopen_gd(lua_State *L) {
++int luaopen_gd_core(lua_State *L) {
+     luaL_register(L, LIB_NAME, LgdFunctions);
+ 
+     lua_pushliteral(L, "VERSION");

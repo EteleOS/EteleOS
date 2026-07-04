@@ -1,0 +1,24 @@
+Increase timeout for the PPD file to be copied so that it doesn't fail
+on low-end configurations.
+
+Index: scheduler/ipp.c
+--- scheduler/ipp.c.orig
++++ scheduler/ipp.c
+@@ -4518,7 +4518,7 @@ copy_model(cupsd_client_t *con,		/* I - Client connect
+   close(temppipe[1]);
+ 
+  /*
+-  * Wait up to 30 seconds for the PPD file to be copied...
++  * Wait up to 90 seconds for the PPD file to be copied...
+   */
+ 
+   total = 0;
+@@ -4538,7 +4538,7 @@ copy_model(cupsd_client_t *con,		/* I - Client connect
+     FD_SET(temppipe[0], &input);
+     FD_SET(CGIPipes[0], &input);
+ 
+-    timeout.tv_sec  = 30;
++    timeout.tv_sec  = 90;
+     timeout.tv_usec = 0;
+ 
+     if ((i = select(maxfd, &input, NULL, NULL, &timeout)) < 0)

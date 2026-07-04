@@ -1,0 +1,11 @@
+Index: projects/unix/Makefile
+--- projects/unix/Makefile.orig
++++ projects/unix/Makefile
+@@ -822,7 +822,6 @@ install: $(TARGET)
+ 	$(INSTALL) -d "$(DESTDIR)$(INCDIR)"
+ 	$(INSTALL) -m 0644 $(SRCDIR)/api/m64p_*.h "$(DESTDIR)$(INCDIR)"
+ 	-$(LDCONFIG) "$(DESTDIR)$(LIBDIR)"
+-	if [ ! -e "$(DESTDIR)$(LIBDIR)/$(SONAME)" ]; then ln -sf "$(TARGET)" "$(DESTDIR)$(LIBDIR)/$(SONAME)"; fi
+ 
+ uninstall:
+ 	$(RM) "$(DESTDIR)$(LIBDIR)/$(TARGET)"

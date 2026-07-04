@@ -1,0 +1,11 @@
+Index: source/initfile.cc
+--- source/initfile.cc.orig
++++ source/initfile.cc
+@@ -15,6 +15,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <string>
+ #include <ctype.h>
+ 

@@ -1,0 +1,13 @@
+Index: Isearch-cgi/cgi-util.cxx
+--- Isearch-cgi/cgi-util.cxx.orig
++++ Isearch-cgi/cgi-util.cxx
+@@ -182,8 +182,7 @@ PCHR CGIAPP::GetValueByName(const PCHR field) {
+ }
+ 
+ CGIAPP::~CGIAPP() {
+-  delete [] name;
+-  delete [] value;
++	// this leaks ! how many pointers do I have ?
+ }
+ 
+ 

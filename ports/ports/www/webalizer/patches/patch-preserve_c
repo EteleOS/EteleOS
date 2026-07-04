@@ -1,0 +1,176 @@
+- use memmove() instead of memcpy() to prevent a backwards copy
+
+--- preserve.c.orig	Tue Apr  8 20:58:18 2014
++++ preserve.c	Sat Jan  3 09:51:46 2015
+@@ -157,7 +157,7 @@ void put_history()
+    char    timestamp[48];
+ 
+    /* generate 'new' filename */
+-   sprintf(new_fname, "%s.new", hist_fname);
++   snprintf(new_fname, sizeof(new_fname), "%s.new", hist_fname);
+ 
+    /* stat the file */
+    if ( !(lstat(new_fname, &hist_stat)) )
+@@ -207,7 +207,7 @@ void put_history()
+       /* if time-warp error detected, save old */
+       if (hist_gap)
+       {
+-         sprintf(old_fname, "%s.sav", hist_fname);
++         snprintf(old_fname, sizeof(old_fname), "%s.sav", hist_fname);
+          if ((rename(hist_fname,old_fname)==-1)&&(errno!=ENOENT)&&verbose)
+             fprintf(stderr,"Failed renaming %s to %s: %s\n",
+                hist_fname,old_fname,strerror(errno));
+@@ -282,7 +282,7 @@ void update_history()
+                   yr = hist[i].year;
+                   mth= hist[i].month+1;
+                   if (mth>12) { mth=1; yr++; }
+-                  memcpy(&hist[0],&hist[1],sizeof(hist[0])*i);
++                  memmove(&hist[0],&hist[1],sizeof(hist[0])*i);
+                   memset(&hist[i], 0, sizeof(struct hist_rec));
+                   hist[i].year=yr; hist[i].month=mth; n--;
+                }
+@@ -329,7 +329,7 @@ int save_state()
+    char new_fname[MAXKVAL+4];
+ 
+    /* generate 'new' filename */
+-   sprintf(new_fname, "%s.new", state_fname);
++   snprintf(new_fname, sizeof(new_fname), "%s.new", state_fname);
+ 
+    /* stat the file */
+    if ( !(lstat(new_fname, &state_stat)) )
+@@ -350,7 +350,7 @@ int save_state()
+    /* Saving current run data... */
+    if (verbose>1)
+    {
+-      sprintf(buffer,"%02d/%02d/%04d %02d:%02d:%02d",
++      snprintf(buffer,sizeof buffer,"%02d/%02d/%04d %02d:%02d:%02d",
+        cur_month,cur_day,cur_year,cur_hour,cur_min,cur_sec);
+       printf("%s [%s]\n",msg_put_data,buffer);
+    }
+@@ -363,25 +363,25 @@ int save_state()
+    if (fputs(buffer,fp)==EOF) return 1;  /* error exit */
+ 
+    /* Current date/time          */
+-   sprintf(buffer,"%d %d %d %d %d %d\n",
++   snprintf(buffer, sizeof(buffer), "%d %d %d %d %d %d\n",
+         cur_year, cur_month, cur_day, cur_hour, cur_min, cur_sec);
+    if (fputs(buffer,fp)==EOF) return 1;  /* error exit */
+ 
+    /* Monthly totals for sites, urls, etc... */
+-   sprintf(buffer,"%llu %llu %llu %llu %llu %llu %.0f %llu %llu %llu %.0f %.0f\n",
++   snprintf(buffer, sizeof(buffer), "%llu %llu %llu %llu %llu %llu %.0f %llu %llu %llu %.0f %.0f\n",
+         t_hit, t_file, t_site, t_url,
+         t_ref, t_agent, t_xfer, t_page, t_visit, t_user, t_ixfer, t_oxfer);
+    if (fputs(buffer,fp)==EOF) return 1;  /* error exit */
+ 
+    /* Daily totals for sites, urls, etc... */
+-   sprintf(buffer,"%llu %llu %llu %d %d\n",
++   snprintf(buffer, sizeof(buffer), "%llu %llu %llu %d %d\n",
+         dt_site, ht_hit, mh_hit, f_day, l_day);
+    if (fputs(buffer,fp)==EOF) return 1;  /* error exit */
+ 
+    /* Monthly (by day) total array */
+    for (i=0;i<31;i++)
+    {
+-      sprintf(buffer,"%llu %llu %.0f %llu %llu %llu %.0f %.0f\n",
++      snprintf(buffer, sizeof(buffer), "%llu %llu %.0f %llu %llu %llu %.0f %.0f\n",
+         tm_hit[i],tm_file[i],tm_xfer[i],tm_site[i],
+         tm_page[i],tm_visit[i],tm_ixfer[i],tm_oxfer[i]);
+       if (fputs(buffer,fp)==EOF) return 1;  /* error exit */
+@@ -390,7 +390,7 @@ int save_state()
+    /* Daily (by hour) total array */
+    for (i=0;i<24;i++)
+    {
+-      sprintf(buffer,"%llu %llu %.0f %llu %.0f %.0f\n",
++      snprintf(buffer, sizeof(buffer), "%llu %llu %.0f %llu %.0f %.0f\n",
+         th_hit[i],th_file[i],th_xfer[i],th_page[i],th_ixfer[i],th_oxfer[i]);
+       if (fputs(buffer,fp)==EOF) return 1;  /* error exit */
+    }
+@@ -398,7 +398,7 @@ int save_state()
+    /* Response codes */
+    for (i=0;i<TOTAL_RC;i++)
+    {
+-      sprintf(buffer,"%llu\n",response[i].count);
++      snprintf(buffer, sizeof(buffer), "%llu\n",response[i].count);
+       if (fputs(buffer,fp)==EOF) return 1;  /* error exit */
+    }
+ 
+@@ -587,13 +587,13 @@ int restore_state()
+    if (verbose>1) printf("%s %s\n",msg_get_data,state_fname);
+ 
+    /* get easy stuff */
+-   sprintf(tmp_buf,"# Webalizer V%s    ",version);
++   snprintf(tmp_buf,sizeof tmp_buf,"# Webalizer V%s    ",version);
+    if ((fgets(buffer,BUFSIZE,fp)) != NULL)                 /* Header record */
+    {
+       if (strncmp(buffer,tmp_buf,16))
+       {
+          /* Kludge to allow 2.01 files also */
+-         sprintf(tmp_buf,"# Webalizer V2.01-1");
++         snprintf(tmp_buf, sizeof(tmp_buf), "# Webalizer V2.01-1");
+          if (strncmp(buffer,tmp_buf,19)) return 99; /* bad magic? */
+       }
+    }
+@@ -687,7 +687,7 @@ int restore_state()
+    while ((fgets(buffer,BUFSIZE,fp)) != NULL)
+    {
+       if (!strncmp(buffer,"# End Of Table ",15)) break;
+-      strncpy(tmp_buf,buffer,MAXURLH);
++      strlcpy(tmp_buf,buffer,sizeof tmp_buf);
+       tmp_buf[strlen(tmp_buf)-1]=0;
+ 
+       if ((fgets(buffer,BUFSIZE,fp)) == NULL) return 10;  /* error exit */
+@@ -724,7 +724,7 @@ int restore_state()
+    {
+       /* Check for end of table */
+       if (!strncmp(buffer,"# End Of Table ",15)) break;
+-      strncpy(tmp_buf,buffer,MAXHOST);
++      strlcpy(tmp_buf,buffer,sizeof tmp_buf);
+       tmp_buf[strlen(buffer)-1]=0;
+ 
+       if ((fgets(buffer,BUFSIZE,fp)) == NULL) return 8;  /* error exit */
+@@ -769,7 +769,7 @@ int restore_state()
+    {
+       /* Check for end of table */
+       if (!strncmp(buffer,"# End Of Table ",15)) break;
+-      strncpy(tmp_buf,buffer,MAXHOST);
++      strlcpy(tmp_buf,buffer,sizeof tmp_buf);
+       tmp_buf[strlen(buffer)-1]=0;
+ 
+       if ((fgets(buffer,BUFSIZE,fp)) == NULL) return 9;  /* error exit */
+@@ -813,7 +813,7 @@ int restore_state()
+    while ((fgets(buffer,BUFSIZE,fp)) != NULL)
+    {
+       if (!strncmp(buffer,"# End Of Table ",15)) break;
+-      strncpy(tmp_buf,buffer,MAXREFH);
++      strlcpy(tmp_buf,buffer,sizeof tmp_buf);
+       tmp_buf[strlen(buffer)-1]=0;
+ 
+       if ((fgets(buffer,BUFSIZE,fp)) == NULL) return 11;  /* error exit */
+@@ -838,7 +838,7 @@ int restore_state()
+    while ((fgets(buffer,BUFSIZE,fp)) != NULL)
+    {
+       if (!strncmp(buffer,"# End Of Table ",15)) break;
+-      strncpy(tmp_buf,buffer,MAXAGENT);
++      strlcpy(tmp_buf,buffer,sizeof tmp_buf);
+       tmp_buf[strlen(buffer)-1]=0;
+ 
+       if ((fgets(buffer,BUFSIZE,fp)) == NULL) return 12;  /* error exit */
+@@ -863,7 +863,7 @@ int restore_state()
+    while ((fgets(buffer,BUFSIZE,fp)) != NULL)
+    {
+       if (!strncmp(buffer,"# End Of Table ",15)) break;
+-      strncpy(tmp_buf,buffer,MAXSRCH);
++      strlcpy(tmp_buf,buffer,sizeof tmp_buf);
+       tmp_buf[strlen(buffer)-1]=0;
+ 
+       if ((fgets(buffer,BUFSIZE,fp)) == NULL) return 13;  /* error exit */
+@@ -888,7 +888,7 @@ int restore_state()
+    {
+       /* Check for end of table */
+       if (!strncmp(buffer,"# End Of Table ",15)) break;
+-      strncpy(tmp_buf,buffer,MAXIDENT);
++      strncpy(tmp_buf,buffer,sizeof tmp_buf);
+       tmp_buf[strlen(buffer)-1]=0;
+ 
+       if ((fgets(buffer,BUFSIZE,fp)) == NULL) return 14;  /* error exit */

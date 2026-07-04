@@ -1,0 +1,22 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+Initialization
+==============
+
+The step-cli package is required and must be used to initialize Step CA.
+Execute the following command as user _step-ca to initialize Step CA.
+
+# su -s /bin/sh _step-ca -c "env STEPPATH=${LOCALSTATEDIR}/step-ca step ca init"
+
+Step CA cannot bind to privileged ports. During initialization select a port
+above 1024.
+
+Add the CA cert to system store
+===============================
+
+The root certificate for step-ca is stored in ${LOCALSTATEDIR}/step-ca/certs/root_ca.crt
+which should be added to the system by appending it to ${SYSCONFDIR}/ssl/cert.pem
+
+# cat ${LOCALSTATEDIR}/step-ca/certs/root_ca.crt >> ${SYSCONFDIR}/ssl/cert.pem

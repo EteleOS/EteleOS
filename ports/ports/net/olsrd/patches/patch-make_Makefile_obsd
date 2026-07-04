@@ -1,0 +1,36 @@
+Index: make/Makefile.obsd
+--- make/Makefile.obsd.orig
++++ make/Makefile.obsd
+@@ -51,22 +51,24 @@ ETCDIR =        /etc/olsrd
+ LIBDIR =        $(PREFIX)/lib
+ DOCDIR =        $(PREFIX)/share/doc
+ MANDIR =        $(PREFIX)/man
+-RCDIR =         /etc/rc.d
++RCDIR =         ${DESTDIR}/etc/rc.d
+ 
+ RCFILE =        openbsd/olsrd.rcd
+ 
+ SRCS +=		$(wildcard src/bsd/*.c src/unix/*.c)
+ HDRS +=		$(wildcard src/bsd/*.h src/unix/*.h)
+ 
+-CPPFLAGS +=	-D__OpenBSD__
+-LIBS +=		
++CPPFLAGS +=	-DOLSRD_GLOBAL_CONF_FILE=\"$(CFGFILE)\"	-D__OpenBSD__
+ 
++ifdef LIBNET
++CPPFLAGS +=	-DSPOOF -I$(LOCALBASE)/include/libnet-1.1
++LIBS +=		-L$(LOCALBASE)/lib/libnet-1.1 -lnet
++endif
++
+ PLUGIN_SONAME ?= $(PLUGIN_NAME)
+-PLUGIN_FULLNAME ?= $(PLUGIN_NAME).so.$(PLUGIN_VER)
+-INSTALL_LIB =	install -m 755 $(PLUGIN_FULLNAME) $(LIBDIR)/$(PLUGIN_FULLNAME); \
+-		/sbin/ldconfig
+-UNINSTALL_LIB =	rm -f $(LIBDIR)/$(PLUGIN_FULLNAME); \
+-		/sbin/ldconfig
++PLUGIN_FULLNAME ?= $(PLUGIN_NAME).so
++INSTALL_LIB =	install -m 755 $(PLUGIN_FULLNAME) $(LIBDIR)/$(PLUGIN_FULLNAME);
++UNINSTALL_LIB =	rm -f $(LIBDIR)/$(PLUGIN_FULLNAME)
+ 
+ ifdef OLSRD_PLUGIN
+ CFLAGS +=	-fPIC

@@ -1,0 +1,12 @@
+Index: src/target/iscsi-target.c
+--- src/target/iscsi-target.c.orig
++++ src/target/iscsi-target.c
+@@ -61,7 +61,7 @@ main(int argc, char **argv)
+ 		switch (i) {
+ 		case '4':
+ 		case '6':
+-			(void) snprintf(buf, sizeof(buf), "%d", i);
++			(void) snprintf(buf, sizeof(buf), "%c", i);
+ 			iscsi_target_setvar(&tgt, "address family", buf);
+ 			break;
+ 		case 'b':

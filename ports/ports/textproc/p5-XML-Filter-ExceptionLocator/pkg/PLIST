@@ -1,0 +1,4 @@
+${P5SITE}/XML/Filter/
+${P5SITE}/XML/Filter/Chucker.pm
+${P5SITE}/XML/Filter/ExceptionLocator.pm
+@man man/man3p/XML::Filter::ExceptionLocator.3p

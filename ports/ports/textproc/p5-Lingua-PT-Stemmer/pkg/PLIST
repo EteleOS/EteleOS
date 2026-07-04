@@ -1,0 +1,7 @@
+${P5SITE}/Lingua/
+${P5SITE}/Lingua/GL/
+${P5SITE}/Lingua/GL/Stemmer.pm
+${P5SITE}/Lingua/PT/
+${P5SITE}/Lingua/PT/Stemmer.pm
+@man man/man3p/Lingua::GL::Stemmer.3p
+@man man/man3p/Lingua::PT::Stemmer.3p

@@ -1,0 +1,4 @@
+SHA256 (msp430/binutils-2.21.1a.tar.bz2) = zez6afAqp7BfvN9njjMTcVHzYTE7Lz5Iq6kl9k6r9lQ=
+SHA256 (msp430/msp430-binutils-2.21.1a-20120406.patch) = IMD37Vjb2uhs9bz4dBpJ5PO1WWMR62gULWBuJAm1WBk=
+SIZE (msp430/binutils-2.21.1a.tar.bz2) = 18997755
+SIZE (msp430/msp430-binutils-2.21.1a-20120406.patch) = 342378

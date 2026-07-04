@@ -1,0 +1,21 @@
+COMMENT=	logs smurf attacks
+DISTNAME=	smurflog-2.1
+REVISION =	1
+CATEGORIES=	net security
+
+SITES=		${SITE_PACKETSTORM:=UNIX/loggers/}
+
+PERMIT_PACKAGE=	Yes
+WANTLIB=		c pcap
+
+AUTOCONF_VERSION=	2.13
+CONFIGURE_STYLE=	autoconf no-autoheader
+
+NO_TEST=	Yes
+
+do-install:
+	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/smurflog/
+	${INSTALL_DATA} ${WRKSRC}/README ${PREFIX}/share/doc/smurflog/
+	${INSTALL_PROGRAM} ${WRKSRC}/smurflog ${PREFIX}/sbin/smurflog
+
+.include <bsd.port.mk>

@@ -1,0 +1,67 @@
+@bin bin/cbcodec
+@bin bin/cbtest
+@bin bin/crmgr
+@bin bin/crtest
+@bin bin/crtsv
+@bin bin/dpmgr
+@bin bin/dptest
+@bin bin/dptsv
+@bin bin/hvmgr
+@bin bin/hvtest
+@bin bin/odidx
+@bin bin/odmgr
+@bin bin/odtest
+@bin bin/qmttest
+@bin bin/rlmgr
+@bin bin/rltest
+@bin bin/vlmgr
+@bin bin/vltest
+@bin bin/vltsv
+include/cabin.h
+include/curia.h
+include/depot.h
+include/hovel.h
+include/odeum.h
+include/relic.h
+include/villa.h
+include/vista.h
+lib/libqdbm.a
+@lib lib/libqdbm.so.${LIBqdbm_VERSION}
+lib/pkgconfig/qdbm.pc
+@man man/man1/cbcodec.1
+@man man/man1/cbtest.1
+@man man/man1/crmgr.1
+@man man/man1/crtest.1
+@man man/man1/crtsv.1
+@man man/man1/dpmgr.1
+@man man/man1/dptest.1
+@man man/man1/dptsv.1
+@man man/man1/hvmgr.1
+@man man/man1/hvtest.1
+@man man/man1/odidx.1
+@man man/man1/odmgr.1
+@man man/man1/odtest.1
+@man man/man1/qmttest.1
+@man man/man1/rlmgr.1
+@man man/man1/rltest.1
+@man man/man1/vlmgr.1
+@man man/man1/vltest.1
+@man man/man1/vltsv.1
+@man man/man3/cabin.3
+@man man/man3/cropen.3
+@man man/man3/curia.3
+@man man/man3/depot.3
+@man man/man3/dpopen.3
+@man man/man3/hovel.3
+@man man/man3/odeum.3
+@man man/man3/odopen.3
+@man man/man3/qdbm.3
+@man man/man3/relic.3
+@man man/man3/villa.3
+@man man/man3/vista.3
+@man man/man3/vlopen.3
+share/doc/qdbm/
+share/doc/qdbm/COPYING
+share/doc/qdbm/ChangeLog
+share/doc/qdbm/NEWS
+share/doc/qdbm/THANKS

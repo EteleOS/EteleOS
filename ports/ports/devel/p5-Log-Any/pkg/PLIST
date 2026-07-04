@@ -1,0 +1,43 @@
+${P5SITE}/Log/
+@comment ${P5SITE}/Log/.gitignore
+${P5SITE}/Log/Any/
+${P5SITE}/Log/Any.pm
+${P5SITE}/Log/Any/Adapter/
+${P5SITE}/Log/Any/Adapter.pm
+${P5SITE}/Log/Any/Adapter/Base.pm
+${P5SITE}/Log/Any/Adapter/Capture.pm
+${P5SITE}/Log/Any/Adapter/Development.pod
+${P5SITE}/Log/Any/Adapter/File.pm
+${P5SITE}/Log/Any/Adapter/Multiplex.pm
+${P5SITE}/Log/Any/Adapter/Null.pm
+${P5SITE}/Log/Any/Adapter/Stderr.pm
+${P5SITE}/Log/Any/Adapter/Stdout.pm
+${P5SITE}/Log/Any/Adapter/Syslog.pm
+${P5SITE}/Log/Any/Adapter/Test.pm
+${P5SITE}/Log/Any/Adapter/Util.pm
+${P5SITE}/Log/Any/Manager.pm
+${P5SITE}/Log/Any/Proxy/
+${P5SITE}/Log/Any/Proxy.pm
+${P5SITE}/Log/Any/Proxy/Null.pm
+${P5SITE}/Log/Any/Proxy/Test.pm
+${P5SITE}/Log/Any/Proxy/WithStackTrace.pm
+${P5SITE}/Log/Any/Test.pm
+@man man/man3p/Log::Any.3p
+@man man/man3p/Log::Any::Adapter.3p
+@man man/man3p/Log::Any::Adapter::Base.3p
+@man man/man3p/Log::Any::Adapter::Capture.3p
+@man man/man3p/Log::Any::Adapter::Development.3p
+@man man/man3p/Log::Any::Adapter::File.3p
+@man man/man3p/Log::Any::Adapter::Multiplex.3p
+@man man/man3p/Log::Any::Adapter::Null.3p
+@man man/man3p/Log::Any::Adapter::Stderr.3p
+@man man/man3p/Log::Any::Adapter::Stdout.3p
+@man man/man3p/Log::Any::Adapter::Syslog.3p
+@man man/man3p/Log::Any::Adapter::Test.3p
+@man man/man3p/Log::Any::Adapter::Util.3p
+@man man/man3p/Log::Any::Manager.3p
+@man man/man3p/Log::Any::Proxy.3p
+@man man/man3p/Log::Any::Proxy::Null.3p
+@man man/man3p/Log::Any::Proxy::Test.3p
+@man man/man3p/Log::Any::Proxy::WithStackTrace.3p
+@man man/man3p/Log::Any::Test.3p

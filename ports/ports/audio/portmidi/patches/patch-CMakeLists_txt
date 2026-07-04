@@ -1,0 +1,24 @@
+-Fix version number
+-Install static lib as well
+
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -12,7 +12,7 @@ cmake_policy(SET CMP0091 NEW) # enables MSVC_RUNTIME_L
+ # Versions are now in the form x.y.z
+ # Changed 1.0 to 2.0 because API is extended with virtual ports:
+ set(SOVERSION "2")
+-set(VERSION "2.0.7")
++set(VERSION "2.0.8")
+ 
+ project(portmidi VERSION "${VERSION}"
+                  DESCRIPTION "Cross-Platform MIDI IO")
+@@ -112,7 +112,7 @@ if(BUILD_JAVA_NATIVE_INTERFACE)
+ endif(BUILD_JAVA_NATIVE_INTERFACE)
+ 
+ # Install the libraries and headers (Linux and Mac OS X command line)
+-INSTALL(TARGETS portmidi ${PMJNI_IF_EXISTS}
++INSTALL(TARGETS portmidi portmidi_s ${PMJNI_IF_EXISTS}
+   EXPORT PortMidiTargets
+   LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+   ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"

@@ -1,0 +1,6 @@
+${P5SITE}/Catalyst/Plugin/
+${P5SITE}/Catalyst/Plugin/I18N/
+${P5SITE}/Catalyst/Plugin/I18N.pm
+${P5SITE}/Catalyst/Plugin/I18N/Manual.pod
+@man man/man3p/Catalyst::Plugin::I18N.3p
+@man man/man3p/Catalyst::Plugin::I18N::Manual.3p

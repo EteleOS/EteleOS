@@ -1,0 +1,17 @@
+Index: iodbcinst/SQLCreateDataSource.c
+--- iodbcinst/SQLCreateDataSource.c.orig
++++ iodbcinst/SQLCreateDataSource.c
+@@ -172,11 +172,11 @@ CreateDataSource (HWND parent, LPCSTR lpszDSN, SQLCHAR
+ #else
+   if (waMode == 'A')
+     {
+-      CALL_DRVCONN_DIALBOX ("libiodbcadm.so.2");
++      CALL_DRVCONN_DIALBOX ("libiodbcadm.so");
+     }
+   else
+     {
+-      CALL_DRVCONN_DIALBOXW ("libiodbcadm.so.2");
++      CALL_DRVCONN_DIALBOXW ("libiodbcadm.so");
+     }
+ #endif
+ 

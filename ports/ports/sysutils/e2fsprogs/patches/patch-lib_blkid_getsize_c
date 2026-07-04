@@ -1,0 +1,11 @@
+Index: lib/blkid/getsize.c
+--- lib/blkid/getsize.c.orig
++++ lib/blkid/getsize.c
+@@ -29,6 +29,7 @@
+ #include <fcntl.h>
+ #ifdef HAVE_SYS_IOCTL_H
+ #include <sys/ioctl.h>
++#include <sys/dkio.h>
+ #endif
+ #ifdef HAVE_LINUX_FD_H
+ #include <linux/fd.h>

@@ -1,0 +1,30 @@
+COMMENT=	Fast Artificial Neural Network Library
+
+GH_ACCOUNT=	libfann
+GH_PROJECT=	fann
+GH_TAGNAME=	2.2.0
+
+SHARED_LIBS +=  floatfann            1.0      # .2.1
+SHARED_LIBS +=  doublefann           1.0      # .2.1
+SHARED_LIBS +=  fixedfann            1.0      # .2.1
+SHARED_LIBS +=  fann                 1.0      # .2.1
+
+CATEGORIES=	math devel
+
+HOMEPAGE=	http://leenissen.dk/fann/
+
+# LGPLv2.1+
+PERMIT_PACKAGE=	Yes
+
+MODULES=	devel/cmake
+
+USE_GMAKE=	Yes
+TEST_DEPENDS=	math/fann
+
+MODCMAKE_POLICY_VERSION_OVERRIDE = Yes
+
+do-test:
+	cd ${WRKSRC}/examples; ${MAKE_PROGRAM} runtest GCC="${CC}" \
+	    CFLAGS="${CFLAGS} -I${TRUEPREFIX}/include -L${TRUEPREFIX}/lib"
+
+.include <bsd.port.mk>

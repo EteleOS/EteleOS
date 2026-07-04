@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${LOCALBASE}/bin/spawn-fcgi"
+daemon_flags="-c ${VARBASE}/www -s run/mapserv.sock -u www -- /cgi-bin/mapserv"
+
+. /etc/rc.d/rc.subr
+
+pexp=".*/cgi-bin/mapserv"
+
+rc_cmd $1

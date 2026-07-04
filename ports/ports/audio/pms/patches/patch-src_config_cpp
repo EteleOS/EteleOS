@@ -1,0 +1,15 @@
+Don't bail out when the default configuration file is not found,
+defaults just works fine.
+
+--- src/config.cpp.orig	Tue Aug 10 00:06:16 2010
++++ src/config.cpp	Tue Aug 10 00:06:39 2010
+@@ -407,6 +407,9 @@ bool			Configurator::source(string fn)
+ 
+ 	if (fd == NULL)
+ 	{
++		if (fn.substr(fn.length() - 7,7) == ".pms/rc")
++			return true;
++
+ 		pms->msg->code = CERR_NO_FILE;
+ 		pms->msg->str = fn + _(": could not open file.\n");
+ 		return false;

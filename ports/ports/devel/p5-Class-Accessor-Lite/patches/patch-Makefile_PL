@@ -1,0 +1,10 @@
+Fix for perl 5.26.0+ (no . in @inc by default)
+Index: Makefile.PL
+--- Makefile.PL.orig
++++ Makefile.PL
+@@ -1,4 +1,5 @@
+ use strict;
++BEGIN { push @INC, '.'; }
+ use inc::Module::Install;
+ 
+ name('Class-Accessor-Lite');

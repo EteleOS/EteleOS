@@ -1,0 +1,32 @@
+checking whether build environment is sane... ./configure[2334]: syntax error: `&' unexpected
+
+--- configure.orig	Sun Dec  6 10:04:23 2009
++++ configure	Thu Dec 31 11:15:21 2009
+@@ -2330,18 +2330,6 @@ echo timestamp > conftest.file
+ # name.  Accept space and tab only in the latter.
+ am_lf='
+ '
+-case `pwd` in
+-  *[\\\"\#\$\&\'\`$am_lf]*)
+-    { { $as_echo "$as_me:$LINENO: error: unsafe absolute working directory name" >&5
+-$as_echo "$as_me: error: unsafe absolute working directory name" >&2;}
+-   { (exit 1); exit 1; }; };;
+-esac
+-case $srcdir in
+-  *[\\\"\#\$\&\'\`$am_lf\ \	]*)
+-    { { $as_echo "$as_me:$LINENO: error: unsafe srcdir value: \`$srcdir'" >&5
+-$as_echo "$as_me: error: unsafe srcdir value: \`$srcdir'" >&2;}
+-   { (exit 1); exit 1; }; };;
+-esac
+ 
+ # Do `set' in a subshell so we don't clobber the current shell's
+ # arguments.  Must try -L first in case configure is actually a
+@@ -22734,7 +22722,7 @@ Configuration:
+ 	Plugins gui dir:        $libral_plugins_gui_dir
+ 	Pixmap  dir:		$rubrica_pixmaps_dir
+         Icons   dir:            $rubrica_icons_dir
+-	Config  dir:            ${sysconfdir}/gconf/schemas
++	Config  dir:            ${LOCALBASE}/schare/schemas/rubrica2
+ 	Code name:		$RUBRICA_CODE_NAME $RUBRICA_INFO_CODE_NAME
+ "
+ 

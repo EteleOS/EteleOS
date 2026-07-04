@@ -1,0 +1,10 @@
+--- Src/main.h.orig	Wed Jan  2 13:14:55 2002
++++ Src/main.h	Thu Jan 14 08:50:10 2010
+@@ -119,6 +119,7 @@ class Frodo { (public)
+ 
+ private:
+ 	bool load_rom_files(void);
++	bool do_load_rom_files(void);
+ 
+ 	static char prefs_path[256];	// Pathname of current preferences file
+ };

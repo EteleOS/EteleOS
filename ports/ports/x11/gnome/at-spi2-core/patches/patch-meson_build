@@ -1,0 +1,26 @@
+XXX push upstream; this is what gdk-pixbuf is doing
+
+Index: meson.build
+--- meson.build.orig
++++ meson.build
+@@ -88,16 +88,10 @@ if host_machine.system() == 'darwin'
+   add_project_arguments([ '-D_DARWIN_C_SOURCE' ], language: 'c')
+ endif
+ 
+-# Functions
+-checked_funcs = [
+-  'bind_textdomain_codeset',
+-]
+-
+-foreach f: checked_funcs
+-  if cc.has_function(f)
+-    at_spi_conf.set('HAVE_' + f.underscorify().to_upper(), 1)
+-  endif
+-endforeach
++intl_dep = cc.find_library('intl', required: false)                             
++if cc.has_function('bind_textdomain_codeset', prefix: '#include <libintl.h>', dependencies: intl_dep)
++  at_spi_conf.set('HAVE_BIND_TEXTDOMAIN_CODESET', 1)                        
++endif
+ 
+ root_inc = include_directories('.')
+ atk_inc = include_directories('atk')

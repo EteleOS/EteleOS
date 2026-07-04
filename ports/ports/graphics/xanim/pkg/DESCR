@@ -1,0 +1,5 @@
+Xanim is an old animation player.  There are some formats, for
+instance the ANIM format used on the amiga by Eric Schwartz, that
+are currently not playable with anything else.
+
+For almost anything else, use ffmpeg-derived players.

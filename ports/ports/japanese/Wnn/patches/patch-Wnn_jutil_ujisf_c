@@ -1,0 +1,11 @@
+--- Wnn/jutil/ujisf.c.orig
++++ Wnn/jutil/ujisf.c
+@@ -55,6 +55,8 @@
+ int wnnerror;
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include "commonhd.h"
+ #include "jslib.h"
+ #include "jh.h"

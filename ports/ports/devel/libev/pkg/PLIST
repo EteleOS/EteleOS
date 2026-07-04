@@ -1,0 +1,6 @@
+include/ev++.h
+include/ev.h
+@static-lib lib/libev.a
+lib/libev.la
+@lib lib/libev.so.${LIBev_VERSION}
+@man man/man3/ev.3

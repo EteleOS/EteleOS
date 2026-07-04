@@ -1,0 +1,11 @@
+--- defaults/Makefile.in.orig	Tue Jan 22 02:59:40 2013
++++ defaults/Makefile.in	Tue Jan 22 07:03:47 2013
+@@ -376,7 +376,7 @@ gconf_defaults_mechanism_SOURCES = \
+ INCLUDES = \
+ 	-I$(top_srcdir) \
+ 	-I$(top_builddir) \
+-	-DSYSGCONFDIR=\"$(sysgconfdir)\" \
++	-DSYSGCONFDIR=\""/var/db/gconf"\" \
+ 	$(DEFAULTS_CFLAGS)
+ 
+ gconf_defaults_mechanism_LDADD = \

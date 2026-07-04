@@ -1,0 +1,6 @@
+bin/hashcash
+@man man/man1/hashcash.1
+share/doc/hashcash/
+share/doc/hashcash/CHANGELOG
+share/doc/hashcash/LICENSE
+share/doc/hashcash/README

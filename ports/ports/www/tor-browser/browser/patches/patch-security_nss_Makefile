@@ -1,0 +1,13 @@
+Taken from security/nss
+
+Index: security/nss/Makefile
+--- security/nss/Makefile.orig
++++ security/nss/Makefile
+@@ -48,7 +48,6 @@ include $(CORE_DEPTH)/coreconf/rules.mk
+ #######################################################################
+ 
+ nss_build_all:
+-	$(MAKE) build_nspr
+ 	$(MAKE) all
+ 	$(MAKE) latest
+ 

@@ -1,0 +1,10 @@
+--- Wnn/etc/sstrings.c.orig
++++ Wnn/etc/sstrings.c
+@@ -50,6 +50,7 @@
+  */
+ #include "commonhd.h"
+ #include <stdio.h>
++#include <string.h>
+ #include "wnn_os.h"
+ #include "wnn_string.h"
+ 

@@ -1,0 +1,3 @@
+@bin bin/jaeger-query-proxy
+@bin bin/prom-migrator
+@bin bin/promscale

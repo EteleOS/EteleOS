@@ -1,0 +1,19 @@
+Unbreak launching Xfe as root with sudo or su (fix gnuisms)
+
+Index: src/xfedefs.h
+--- src/xfedefs.h.orig
++++ src/xfedefs.h
+@@ -190,11 +190,11 @@
+ 
+ // Command to launch Xfe as root with sudo or su, using st as a terminal
+ #ifndef DEFAULT_SUDO_CMD
+-#define DEFAULT_SUDO_CMD    "sudo -b xfe"
++#define DEFAULT_SUDO_CMD    "doas su root -c 'nohup xfe >/dev/null 2>&1 & sleep 1'"
+ #endif
+ 
+ #ifndef DEFAULT_SU_CMD
+-#define DEFAULT_SU_CMD    "su -c 'nohup xfe >& /dev/null &'"
++#define DEFAULT_SU_CMD    "su root -c 'nohup xfe >/dev/null 2>&1 & sleep 1'"
+ #endif
+ 
+ // Tooltips setup time and duration

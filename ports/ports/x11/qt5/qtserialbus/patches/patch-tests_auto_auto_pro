@@ -1,0 +1,12 @@
+Index: tests/auto/auto.pro
+--- tests/auto/auto.pro.orig
++++ tests/auto/auto.pro
+@@ -14,7 +14,7 @@ SUBDIRS += cmake \
+ 
+ QT_FOR_CONFIG += serialbus
+ 
+-qtConfig(modbus-serialport): SUBDIRS += qmodbusrtuserialmaster
++!openbsd:qtConfig(modbus-serialport): SUBDIRS += qmodbusrtuserialmaster
+ 
+ !android: SUBDIRS += qcanbus
+ 

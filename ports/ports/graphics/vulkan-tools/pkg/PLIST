@@ -1,0 +1,3 @@
+@bin bin/vkcube
+@bin bin/vkcubepp
+@bin bin/vulkaninfo

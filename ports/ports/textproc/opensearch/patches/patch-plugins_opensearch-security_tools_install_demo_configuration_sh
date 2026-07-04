@@ -1,0 +1,20 @@
+fix shebang in generated script
+
+Index: plugins/opensearch-security/tools/install_demo_configuration.sh
+--- plugins/opensearch-security/tools/install_demo_configuration.sh.orig
++++ plugins/opensearch-security/tools/install_demo_configuration.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ #install_demo_configuration.sh [-y]
+ 
+ UNAME=$(uname -s)
+@@ -9,6 +9,8 @@ elif [ "$UNAME" = "Darwin" ]; then
+ else
+   OS="other"
+ fi
++
++JAVA_HOME="$(${TRUEPREFIX}/bin/javaPathHelper -h opensearch)"
+ 
+ SCRIPT_PATH="${BASH_SOURCE[0]}"
+ if ! [ -x "$(command -v realpath)" ]; then

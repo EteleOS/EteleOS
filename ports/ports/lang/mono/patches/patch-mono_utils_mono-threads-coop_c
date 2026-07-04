@@ -1,0 +1,14 @@
+adapt to the coop-by-default syntax in our port
+
+Index: mono/utils/mono-threads-coop.c
+--- mono/utils/mono-threads-coop.c.orig
++++ mono/utils/mono-threads-coop.c
+@@ -580,7 +580,7 @@ mono_threads_assert_gc_unsafe_region (void)
+ static int
+ threads_suspend_policy_default (void)
+ {
+-#if defined (ENABLE_COOP_SUSPEND)
++#if !defined (DISABLE_COOP_SUSPEND)
+ 	return MONO_THREADS_SUSPEND_FULL_COOP;
+ #elif defined (ENABLE_HYBRID_SUSPEND)
+ 	return MONO_THREADS_SUSPEND_HYBRID;

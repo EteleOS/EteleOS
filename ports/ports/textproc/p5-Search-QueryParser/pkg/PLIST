@@ -1,0 +1,3 @@
+${P5SITE}/Search/
+${P5SITE}/Search/QueryParser.pm
+@man man/man3p/Search::QueryParser.3p

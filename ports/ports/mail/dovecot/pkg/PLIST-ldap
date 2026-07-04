@@ -1,0 +1,5 @@
+@conflict dovecot-<=2.2.26.0p0
+include/dovecot/ldap-client.h
+@so lib/dovecot/auth/libauthdb_ldap.so
+@so lib/dovecot/dict/libdict_ldap.so
+@lib lib/dovecot/libdovecot-ldap.so.${LIBdovecot-ldap_VERSION}

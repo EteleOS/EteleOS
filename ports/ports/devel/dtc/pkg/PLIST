@@ -1,0 +1,16 @@
+@bin bin/convert-dtsv0
+@bin bin/dtc
+bin/dtdiff
+@bin bin/fdtdump
+@bin bin/fdtget
+@bin bin/fdtoverlay
+@bin bin/fdtput
+include/fdt.h
+include/libfdt.h
+include/libfdt_env.h
+@static-lib lib/libfdt.a
+@lib lib/libfdt.so.${LIBfdt_VERSION}
+share/doc/dtc/
+share/doc/dtc/dt-object-internal.txt
+share/doc/dtc/dts-format.txt
+share/doc/dtc/manual.txt

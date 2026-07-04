@@ -1,0 +1,22 @@
+--- configure.orig	Thu Mar 18 21:49:35 2010
++++ configure	Wed Apr 21 14:24:52 2010
+@@ -7432,11 +7432,18 @@ fi
+ 
+                         ;;
+                 # FIXME: isn't this the same OSS as on Linux?
+-                *-*-freebsd*|*-*-netbsd*|*-*-openbsd*)
++                *-*-freebsd*|*-*-netbsd*)
+                         ad_files="ad_oss_bsd.lo"
+                         ad_backend="AD_BACKEND_OSS_BSD"
+ 
+ $as_echo "#define AD_BACKEND_OSS_BSD /**/" >>confdefs.h
++
++			;;
++                *-*-openbsd*)
++                        ad_files="ad_sndio.lo"
++                        ad_backend="AD_BACKEND_SNDIO"
++
++$as_echo "#define AD_BACKEND_SNDIO /**/" >>confdefs.h
+ 
+                         ;;
+                 *-*-sunos4*)

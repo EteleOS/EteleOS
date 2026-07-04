@@ -1,0 +1,27 @@
+- Set $sysinfo{"RELEASE"}, $sysinfo{"CPU"} (minus cache)
+
+Index: pgcluu_collectd
+--- pgcluu_collectd.orig
++++ pgcluu_collectd
+@@ -1678,9 +1678,9 @@ sub grab_os_information
+ 	my $out_dir = shift();
+ 
+ 	# Look at CPU informations
+-	my $cmd = 'cat /proc/cpuinfo 2>/dev/null';
++	my $cmd = 'sysctl hw.ncpuonline hw.model hw.cpuspeed 2>/dev/null';
+ 	$cmd = $sshcmd . ' "' . $cmd . "\"" if ($sshcmd);
+-	my @cpuinfo = `$cmd | grep -E "model name|cpu MHz|cache size|cpu cores|processor"`;
++	my @cpuinfo = `$cmd`;
+ 	# Look at kernel informations
+ 	$cmd = 'uname -a  2>/dev/null';
+ 	$cmd = $sshcmd . ' "' . $cmd . "\"" if ($sshcmd);
+@@ -1717,8 +1717,7 @@ sub grab_os_information
+ 	$cmd = $sshcmd . ' "' . $cmd . "\"" if ($sshcmd);
+ 	my @pciinfo = `$cmd`;
+ 	# Release informations
+-	$cmd = 'cat /etc/*release 2>/dev/null';
+-	$cmd = $sshcmd . ' "' . $cmd . "\"" if ($sshcmd);
++	$cmd = 'uname -srv 2>/dev/null';
+ 	my @releaseinfo = `$cmd`;
+ 	# Process list
+ 	$cmd = 'ps -faux 2>/dev/null';

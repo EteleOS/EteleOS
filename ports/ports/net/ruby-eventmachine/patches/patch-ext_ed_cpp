@@ -1,0 +1,27 @@
+Index: ext/ed.cpp
+--- ext/ed.cpp.orig
++++ ext/ed.cpp
+@@ -1115,11 +1115,8 @@ void ConnectionDescriptor::_WriteOutboundData()
+ 	}
+ 	#endif
+ 
+-	// We should never have gotten here if there were no data to write,
+-	// so assert that as a sanity check.
+-	// Don't bother to make sure nbytes is less than output_buffer because
+-	// if it were we probably would have crashed already.
+-	assert (nbytes > 0);
++	if (nbytes <= 0)
++		return;
+ 
+ 	assert (GetSocket() != INVALID_SOCKET);
+ 	#ifdef HAVE_WRITEV
+@@ -1862,6 +1859,9 @@ void DatagramDescriptor::Write()
+ 		EpollEvent.events |= EPOLLOUT;
+ 	assert (MyEventMachine);
+ 	MyEventMachine->Modify (this);
++	#endif
++	#ifdef HAVE_KQUEUE
++	MyEventMachine->ArmKqueueWriter (this);
+ 	#endif
+ 	#ifdef HAVE_KQUEUE
+ 	bKqueueArmWrite = SelectForWrite();

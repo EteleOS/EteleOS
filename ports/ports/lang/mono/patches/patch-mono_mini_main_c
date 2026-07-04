@@ -1,0 +1,19 @@
+Index: mono/mini/main.c
+--- mono/mini/main.c.orig
++++ mono/mini/main.c
+@@ -385,10 +385,14 @@ main (int _argc, char* _argv[])
+ }
+ 
+ #else
+-
++#include <sched.h>
+ int
+ main (int argc, char* argv[])
+ {
++#if defined(__powerpc__) && defined (__GLIBC__)
++  unsigned long mask = 1;
++  sched_setaffinity(0, sizeof(mask), &mask);
++#endif
+ 	mono_build_date = build_date;
+ 
+ #if TEST_ICALL_SYMBOL_MAP

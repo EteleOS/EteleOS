@@ -1,0 +1,11 @@
+--- src/YSM_Setup.c.orig	Mon Apr 24 11:32:11 2017
++++ src/YSM_Setup.c	Mon Apr 24 11:32:32 2017
+@@ -743,7 +743,7 @@ int	tries = 0;
+ #define YSMOPENCONFIG(rwx)	(fd = YSM_fopen(YSM_cfgfile,rwx))
+ #define YSMCLOSECONFIG()	YSM_fclose(fd)
+ 
+-__inline void
++static __inline void
+ CFGWRITE(FILE *fd, const u_int8_t *foo, ...)
+ {
+ va_list	args;

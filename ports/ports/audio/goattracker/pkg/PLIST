@@ -1,0 +1,7 @@
+@bin bin/goattrk2
+@bin bin/gt2reloc
+@bin bin/ins2snd2
+@bin bin/mod2sng
+@bin bin/sngspli2
+share/doc/goattracker/
+share/doc/goattracker/readme.txt

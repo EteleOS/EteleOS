@@ -1,0 +1,5 @@
+@bin bin/mpdscribble
+@man man/man1/mpdscribble.1
+share/doc/mpdscribble/
+share/doc/mpdscribble/mpdscribble.conf
+@sample ${SYSCONFDIR}/mpdscribble.conf

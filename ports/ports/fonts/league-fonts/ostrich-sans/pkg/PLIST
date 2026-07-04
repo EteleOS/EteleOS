@@ -1,0 +1,11 @@
+share/fonts/
+@fontdir share/fonts/league-fonts/
+share/fonts/league-fonts/OstrichSans-Black.otf
+share/fonts/league-fonts/OstrichSans-Bold.otf
+share/fonts/league-fonts/OstrichSans-Heavy.otf
+share/fonts/league-fonts/OstrichSans-Light.otf
+share/fonts/league-fonts/OstrichSans-Medium.otf
+share/fonts/league-fonts/OstrichSansDashed-Medium.otf
+share/fonts/league-fonts/OstrichSansInline-Italic.otf
+share/fonts/league-fonts/OstrichSansInline-Regular.otf
+share/fonts/league-fonts/OstrichSansRounded-Medium.otf

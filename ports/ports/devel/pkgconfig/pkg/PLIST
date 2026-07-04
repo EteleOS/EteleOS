@@ -1,0 +1,5 @@
+@bin bin/pkg-config
+@man man/man1/pkg-config.1
+@comment share/aclocal/pkg.m4
+share/doc/pkg-config/
+share/doc/pkg-config/pkg-config-guide.html

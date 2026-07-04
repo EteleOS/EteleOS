@@ -1,0 +1,4 @@
+lib/mupen64plus/
+@so lib/mupen64plus/mupen64plus-video-glide64mk2.so
+share/mupen64plus/
+share/mupen64plus/Glide64mk2.ini

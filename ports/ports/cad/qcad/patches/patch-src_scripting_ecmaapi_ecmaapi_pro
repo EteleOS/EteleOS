@@ -1,0 +1,13 @@
+CONFIG -= plugin if shared_app.pri links to it.
+
+Index: src/scripting/ecmaapi/ecmaapi.pro
+--- src/scripting/ecmaapi/ecmaapi.pro.orig
++++ src/scripting/ecmaapi/ecmaapi.pro
+@@ -1,6 +1,6 @@
+ include( ../../../shared.pri )
+ TEMPLATE = lib
+-CONFIG += plugin
++#CONFIG += plugin
+ TARGET = $${RLIBNAME}ecmaapi
+ CONFIG -= warn_on
+ CONFIG += warn_off

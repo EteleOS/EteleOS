@@ -1,0 +1,66 @@
+Index: file.c
+--- file.c.orig
++++ file.c
+@@ -26,6 +26,7 @@
+  */
+ 
+ 
++#include <string.h>
+ #include "mpage.h"
+ 
+ 
+@@ -127,11 +128,11 @@ do_pr_file(fname, asheet, outfd)
+      */
+ #define DASHES "-- "
+     if (opt_header != NULL)
+-        (void)sprintf(command, "%s -l%d -w%d -h \"%s\" %s%s", prprog,
++        (void)snprintf(command, sizeof(command),"%s -l%d -w%d -h \"%s\" %s%s", prprog,
+                   asheet->sh_plength, asheet->sh_cwidth, opt_header,
+                   fname[0] == '-' ? DASHES : "", fname);
+     else
+-        (void)sprintf(command, "%s -l%d -w%d %s%s", prprog,
++        (void)snprintf(command, sizeof(command), "%s -l%d -w%d %s%s", prprog,
+                   asheet->sh_plength, asheet->sh_cwidth,
+                   fname[0] == '-' ? DASHES : "", fname);
+     /*
+@@ -176,7 +177,7 @@ do_stdin(asheet, outfd)
+      * but the tmpfilename
+      */
+      
+-    (void) strcpy(tmpfile, "/tmp/mpage-stdin-XXXXXX");
++    (void) strlcpy(tmpfile, "/tmp/mpage-stdin-XXXXXX", sizeof(tmpfile));
+     if ( (tmpfd = mkstemp(tmpfile)) == -1) {
+         fprintf(stderr, "%s: cannot create temporary file", MPAGE);
+         perror(MPAGE);
+@@ -217,7 +218,7 @@ do_stdin(asheet, outfd)
+          * a temporary file; this temporary file will then
+          * be used as input to the do_doc routine
+          */
+-        (void)strcpy(tmpfile, "/tmp/mpageXXXXXX");
++        (void)strlcpy(tmpfile, "/tmp/mpageXXXXXX", sizeof(tmpfile));
+         if ( (tmpfd = mkstemp(tmpfile)) == -1) {
+             fprintf(stderr, "%s: cannot create temporary file", MPAGE);
+             perror(MPAGE);
+@@ -225,11 +226,11 @@ do_stdin(asheet, outfd)
+ 	}
+         close(tmpfd);
+         if (opt_header != NULL)
+-            (void)sprintf(command, "%s -l%d -w%d -h \"%s\" > %s", prprog,
++            (void)snprintf(command, sizeof(command), "%s -l%d -w%d -h \"%s\" > %s", prprog,
+                       asheet->sh_plength, asheet->sh_cwidth,
+                       opt_header, tmpfile);
+         else
+-            (void)sprintf(command, "%s -l%d -w%d > %s", prprog,
++            (void)snprintf(command, sizeof(command), "%s -l%d -w%d > %s", prprog,
+                       asheet->sh_plength, asheet->sh_cwidth, tmpfile);
+         /*
+          * open a pipe to the pr(1) command which will create a
+@@ -289,7 +290,7 @@ do_stdin(asheet, outfd)
+ 	/*
+ 	 * store the input to the temporary file to guess encoding correctly
+ 	 */
+-        (void)strcpy(tmpfile, "/tmp/mpageXXXXXX");
++        (void)strlcpy(tmpfile, "/tmp/mpageXXXXXX", sizeof(tmpfile));
+         if ( (tmpfd = mkstemp(tmpfile)) == -1) {
+             fprintf(stderr, "%s: cannot create temporary file", MPAGE);
+ 	    tmpfile[0] = 0;

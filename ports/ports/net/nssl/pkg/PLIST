@@ -1,0 +1,3 @@
+@bin bin/nssl
+share/doc/nssl/
+share/doc/nssl/readme.txt

@@ -1,0 +1,33 @@
+--- makefile.orig	Sun Apr 14 16:08:33 2013
++++ makefile	Wed Apr 17 13:33:14 2013
+@@ -18,7 +18,7 @@
+ #AR= echo
+ 
+ # Unix, generally
+-CC = gcc -fpic -pedantic
++CC ?= gcc -fpic -pedantic
+ DEBUG=-g -Wall -Wno-char-subscripts -O
+ Osuf=o
+ SOsuf=so
+@@ -30,10 +30,10 @@ RM= -rm -f
+ AR= ar crs
+ 
+ # Linux
+-LD = gcc
++LD ?= gcc
+ LDFLAGS = -shared
+ DEBUG=-g -Wno-char-subscripts -O
+-SYS_LIBS= -ldl -lm
++SYS_LIBS= -lm
+ PLATFORM_FEATURES= -DSUN_DL=1
+ 
+ # Cygwin
+@@ -77,7 +77,7 @@ $(LIBTARGET): $(OBJS)
+ 	$(LD) $(LDFLAGS) $(OUT) $(OBJS) $(SYS_LIBS)
+ 
+ scheme$(EXE_EXT): $(OBJS)
+-	$(CC) -o $@ $(DEBUG) $(OBJS) $(SYS_LIBS)
++	$(CC) $(CFLAGS) -o $@ $(DEBUG) $(OBJS) $(SYS_LIBS)
+ 
+ $(STATICLIBTARGET): $(OBJS)
+ 	$(AR) $@ $(OBJS)

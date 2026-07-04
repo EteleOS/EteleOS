@@ -1,0 +1,15 @@
+shut up clang errors
+upstream commit 10ab227647593c709c5a5ae9ec73daa31154d93e
+
+Index: src/client/battlescape/cl_particle.cpp
+--- src/client/battlescape/cl_particle.cpp.orig
++++ src/client/battlescape/cl_particle.cpp
+@@ -138,7 +138,7 @@ static char const* const pc_strings[] = {
+ CASSERT(lengthof(pc_strings) == PC_NUM_PTLCMDS);
+ 
+ /** @brief particle commands parameter and types */
+-static const int pc_types[PC_NUM_PTLCMDS] = {
++static const unsigned int pc_types[PC_NUM_PTLCMDS] = {
+ 	0,
+ 
+ 	V_UNTYPED, V_UNTYPED, V_UNTYPED,

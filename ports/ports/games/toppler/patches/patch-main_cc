@@ -1,0 +1,12 @@
+--- main.cc.orig	Thu Jul 19 16:26:35 2007
++++ main.cc	Sat Oct 13 23:24:31 2007
+@@ -96,7 +96,8 @@ int main(int argc, char *argv[]) {
+ 
+   DIR *dir = opendir("locale");
+   bindtextdomain("toppler", dir == NULL ? LOCALEDIR : "locale");
+-  closedir(dir);
++  if (dir != NULL)
++  	closedir(dir);
+   textdomain("toppler");
+ #endif
+ 

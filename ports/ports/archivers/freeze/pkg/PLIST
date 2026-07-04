@@ -1,0 +1,10 @@
+@bin bin/fcat
+@bin bin/freeze
+@comment @bin bin/melt
+@bin bin/statist
+@bin bin/unfreeze
+@man man/man1/fcat.1
+@man man/man1/freeze.1
+@comment @man man/man1/melt.1
+@man man/man1/statist.1
+@man man/man1/unfreeze.1

@@ -1,0 +1,33 @@
+--- Makefile.orig	Fri Feb  6 10:12:00 2009
++++ Makefile	Fri Jun 18 19:24:48 2010
+@@ -32,22 +32,22 @@ help:
+ 	@echo "   make install - installs everything"
+ 
+ lib:
+-	make -C src/ lib
++	${MAKE_PROGRAM} -C src/ lib
+ solib:
+-	make -C src/ solib
++	${MAKE_PROGRAM} -C src/ solib
+ test: lib
+-	make -C test/
++	${MAKE_PROGRAM} -C test/
+ 
+ clean:
+ 	rm -f libqrupdate.a libqrupdate.so
+-	make -C src/ clean
+-	make -C test/ clean
++	${MAKE_PROGRAM} -C src/ clean
++	${MAKE_PROGRAM} -C test/ clean
+ 
+ install:
+-	make -C src/ install
++	${MAKE_PROGRAM} -C src/ install
+ 
+ install-shlib:
+-	make -C src/ install-shlib
++	${MAKE_PROGRAM} -C src/ install-shlib
+ 
+ install-staticlib:
+-	make -C src/ install-staticlib
++	${MAKE_PROGRAM} -C src/ install-staticlib

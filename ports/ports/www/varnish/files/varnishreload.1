@@ -1,0 +1,45 @@
+.Dd $Mdocdate: March 11 2022 $
+.Dt VARNISHRELOAD 1
+.Os
+.Sh NAME
+.Nm varnishreload
+.Nd reload active VCL
+.Sh SYNOPSIS
+.Nm
+.Op Ar file
+.Sh DESCRIPTION
+The
+.Nm
+utility loads a new Varnish configuration and activates it iff valid using
+.Xr varnishadm 1 .
+If no file is given the installation default is used.
+.Pp
+The new VCL name consists of the file name and a timestamp (UTC) to maintain a
+meaningful and ordered list of configuations.
+.Sh FILES
+.Bl -tag -width ${SYSCONFDIR}/varnish/default.vcl
+.It Pa ${SYSCONFDIR}/varnish/default.vcl
+default VCL file
+.El
+.Sh EXIT STATUS
+.Ex -std
+.Sh EXAMPLES
+List available configurations, reload the default one and verify:
+.Bd -literal -offset indent
+# varnishadm vcl.list
+active   auto    warm         0    boot
+
+# varnishreload
+VCL compiled.
+
+VCL 'default_20201107165406' now active
+# varnishadm vcl.list
+available   auto    warm         0    boot
+active      auto    warm         0    default_20201107165406
+
+.Ed
+.Sh SEE ALSO
+.Xr varnishadm 1 ,
+.Xr varnishd 1
+.Sh AUTHORS
+.An Klemens Nanni Aq Mt kn@openbsd.org

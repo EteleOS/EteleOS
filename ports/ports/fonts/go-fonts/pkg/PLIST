@@ -1,0 +1,16 @@
+share/doc/go-fonts/
+share/doc/go-fonts/README
+share/fonts/
+@fontdir share/fonts/go/
+share/fonts/go/Go-Bold-Italic.ttf
+share/fonts/go/Go-Bold.ttf
+share/fonts/go/Go-Italic.ttf
+share/fonts/go/Go-Medium-Italic.ttf
+share/fonts/go/Go-Medium.ttf
+share/fonts/go/Go-Mono-Bold-Italic.ttf
+share/fonts/go/Go-Mono-Bold.ttf
+share/fonts/go/Go-Mono-Italic.ttf
+share/fonts/go/Go-Mono.ttf
+share/fonts/go/Go-Regular.ttf
+share/fonts/go/Go-Smallcaps-Italic.ttf
+share/fonts/go/Go-Smallcaps.ttf

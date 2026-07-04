@@ -1,0 +1,12 @@
+Index: src/tk/tkbitmap.c
+--- src/tk/tkbitmap.c.orig
++++ src/tk/tkbitmap.c
+@@ -434,7 +434,7 @@ Tk_GetBitmapFromData(interp, tkwin, source, width, hei
+     Tk_Uid name = NULL;		/* Initialization need only to prevent
+ 				 * compiler warning. */
+     int new;
+-    static autoNumber = 0;
++    static int autoNumber = 0;
+     char string[20];
+ 
+     if (!initialized) {

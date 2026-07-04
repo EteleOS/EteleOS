@@ -1,0 +1,3 @@
+@bin bin/unionfs
+@bin bin/unionfsctl
+@man man/man8/unionfs.8

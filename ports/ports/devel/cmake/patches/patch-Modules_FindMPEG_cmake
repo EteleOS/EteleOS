@@ -1,0 +1,9 @@
+Index: Modules/FindMPEG.cmake
+--- Modules/FindMPEG.cmake.orig
++++ Modules/FindMPEG.cmake
+@@ -85,4 +85,4 @@ if(MPEG_FOUND)
+   endif()
+ endif()
+ 
+-mark_as_advanced(MPEG_INCLUDE_DIR MPEG_mpeg2_LIBRARY MPEG_vo_LIBRARY)
++mark_as_advanced(MPEG_INCLUDE_DIR MPEG_mpeg2_LIBRARY)

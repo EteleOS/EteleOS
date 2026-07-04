@@ -1,0 +1,5 @@
+${P5SITE}/Module/
+${P5SITE}/Module/Find.pm
+@man man/man3p/Module::Find.3p
+share/examples/p5-Module-Find/
+share/examples/p5-Module-Find/example.pl

@@ -1,0 +1,3 @@
+${P5SITE}/Number/
+${P5SITE}/Number/Compare.pm
+@man man/man3p/Number::Compare.3p

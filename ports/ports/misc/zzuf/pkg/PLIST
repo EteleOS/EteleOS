@@ -1,0 +1,9 @@
+@bin bin/zzat
+@bin bin/zzuf
+lib/zzuf/
+lib/zzuf/libzzuf.a
+lib/zzuf/libzzuf.la
+lib/zzuf/libzzuf.so
+@man man/man1/zzat.1
+@man man/man1/zzuf.1
+@man man/man3/libzzuf.3

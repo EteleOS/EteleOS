@@ -1,0 +1,31 @@
+--- output.c.orig	Thu Dec 30 14:52:23 2010
++++ output.c	Mon Jan  3 11:50:14 2011
+@@ -321,8 +321,8 @@ int write_month_html()
+    /* fill in filenames */
+    snprintf(html_fname,sizeof(html_fname),"usage_%04d%02d.%s",
+             cur_year,cur_month,html_ext);
+-   sprintf(png1_fname,"daily_usage_%04d%02d.png",cur_year,cur_month);
+-   sprintf(png2_fname,"hourly_usage_%04d%02d.png",cur_year,cur_month);
++   snprintf(png1_fname, sizeof(png1_fname), "daily_usage_%04d%02d.png",cur_year,cur_month);
++   snprintf(png2_fname, sizeof(png2_fname), "hourly_usage_%04d%02d.png",cur_year,cur_month);
+ 
+    /* create PNG images for web page */
+    if (daily_graph)
+@@ -2707,7 +2707,7 @@ void top_ctry_table()
+       }
+       snprintf(pie_title,sizeof(pie_title),"%s %s %d",
+                msg_ctry_use,l_month[cur_month-1],cur_year);
+-      sprintf(pie_fname,"ctry_usage_%04d%02d.png",cur_year,cur_month);
++      snprintf(pie_fname, sizeof(pie_fname), "ctry_usage_%04d%02d.png",cur_year,cur_month);
+ 
+       pie_chart(pie_fname,pie_title,t_hit,pie_data,pie_legend);  /* do it   */
+ 
+@@ -3366,7 +3366,7 @@ int write_main_index()
+             --i; // reduce loop-counter to keep the number of required months
+             continue;
+          }
+-         sprintf(filename,"usage_%04d%02d.%s",last_year, last_month, html_ext);
++         snprintf(filename, sizeof(filename), "usage_%04d%02d.%s",last_year, last_month, html_ext);
+          if (stat(filename, &st)==0) // check if file exists
+          {
+             fprintf(out_fp,"<TD WIDTH=\"16.66%%\"><A HREF=\"usage_%04d%02d.%s\">" \

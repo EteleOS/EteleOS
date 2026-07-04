@@ -1,0 +1,15 @@
+Don't runtime depend on mini_portile2, it's only need for compiling
+the extension.
+
+Index: .metadata
+--- .metadata.orig
++++ .metadata
+@@ -29,7 +29,7 @@ dependencies:
+     - - "~>"
+       - !ruby/object:Gem::Version
+         version: 2.8.2
+-  type: :runtime
++  type: :development
+   prerelease: false
+   version_requirements: !ruby/object:Gem::Requirement
+     requirements:

@@ -1,0 +1,12 @@
+Index: config.php
+--- config.php.orig
++++ config.php
+@@ -79,7 +79,7 @@ define('LOGUSERLEVEL', LOGLEVEL_DEVICEID);
+ $specialLogUsers = [];
+ 
+ // Filelog settings
+-define('LOGFILEDIR', '/var/log/grommunio-sync/');
++define('LOGFILEDIR', GTOPDIR . DIRECTORY_SEPARATOR . 'logs' . DIRECTORY_SEPARATOR);
+ define('LOGFILE', LOGFILEDIR . 'grommunio-sync.log');
+ define('LOGERRORFILE', LOGFILEDIR . 'grommunio-sync-error.log');
+ 

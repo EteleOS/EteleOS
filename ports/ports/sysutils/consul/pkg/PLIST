@@ -1,0 +1,18 @@
+@newgroup _consul:773
+@newuser _consul:773:_consul::Consul Agent:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/consul
+@extraunexec rm -rf /var/consul
+@bin bin/consul
+share/examples/consul/
+@sample ${SYSCONFDIR}/consul.d/
+@mode 0640
+@owner _consul
+@group _consul
+share/examples/consul/consul.hcl
+@sample ${SYSCONFDIR}/consul.d/consul.hcl
+@mode
+@sample ${LOCALSTATEDIR}/consul/
+@owner
+@group
+share/examples/login.conf.d/consul
+@sample ${SYSCONFDIR}/login.conf.d/consul

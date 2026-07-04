@@ -1,0 +1,11 @@
+--- xmalloc.c.orig	Sun Jan  8 00:04:35 2012
++++ xmalloc.c	Sun Jan  8 00:04:44 2012
+@@ -24,7 +24,7 @@
+  */
+ #include <stdio.h>
+ #include <string.h>
+-extern char *malloc(), *realloc();
++#include <stdlib.h>
+ 
+ char *xmalloc (int size)
+ {

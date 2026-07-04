@@ -1,0 +1,32 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -2,10 +2,12 @@ SCANNER := wayland-scanner
+ 
+ PREFIX=/usr/local
+ BINDIR=$(PREFIX)/bin
+-MANDIR=$(PREFIX)/share/man
++MANDIR=$(PREFIX)/man
+ BASHCOMPDIR=$(PREFIX)/share/bash-completion/completions
+ 
++CPPFLAGS=-I/usr/local/include
+ CFLAGS+=-Wall -Werror -Wextra -Wpedantic -Wno-unused-parameter -Wconversion -Wformat-security -Wformat -Wsign-conversion -Wfloat-conversion -Wunused-result -Wno-strict-prototypes
++LDFLAGS=-L/usr/local/lib -Wl,-rpath /usr/local/lib
+ LIBS=-lwayland-client
+ OBJ=wlopm.o wlr-output-power-management-unstable-v1.o
+ GEN=wlr-output-power-management-unstable-v1.c wlr-output-power-management-unstable-v1.h
+@@ -26,13 +28,13 @@ install: wlopm
+ 	install wlopm $(DESTDIR)$(BINDIR)
+ 	install -d $(DESTDIR)$(MANDIR)/man1
+ 	install -m 644 wlopm.1 $(DESTDIR)$(MANDIR)/man1
++	install -d $(DESTDIR)$(BASHCOMPDIR)
+ 	install bash-completion $(DESTDIR)$(BASHCOMPDIR)/wlopm
+ 
+ uninstall:
+ 	$(RM) $(DESTDIR)$(BINDIR)/wlopm
+ 	$(RM) $(DESTDIR)$(MANDIR)/man1/wlopm.1
+ 	$(RM) $(DESTDIR)$(BASHCOMPDIR)/wlopm
+-
+ clean:
+ 	$(RM) wlopm $(GEN) $(OBJ)
+ 

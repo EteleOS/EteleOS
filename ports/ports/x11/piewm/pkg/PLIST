@@ -1,0 +1,5 @@
+@bin bin/piewm
+@bin bin/ssetroot
+lib/X11/piewm/
+lib/X11/piewm/system.twmrc
+@man man/man1/piewm.1

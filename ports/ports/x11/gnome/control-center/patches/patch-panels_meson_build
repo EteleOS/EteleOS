@@ -1,0 +1,18 @@
+wwan needs network-manager
+
+Index: panels/meson.build
+--- panels/meson.build.orig
++++ panels/meson.build
+@@ -22,11 +22,11 @@ panels = [
+   'system',
+   'universal-access',
+   'wellbeing',
+-  'wwan',
+ ]
+ 
+ if host_is_linux
+   panels += ['network']
++  panels += ['wwan']
+ endif
+ 
+ if host_is_linux_not_s390

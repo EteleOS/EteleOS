@@ -1,0 +1,3 @@
+${P5SITE}/Devel/
+${P5SITE}/Devel/Hide.pm
+@man man/man3p/Devel::Hide.3p

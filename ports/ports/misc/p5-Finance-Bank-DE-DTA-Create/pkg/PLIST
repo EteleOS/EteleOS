@@ -1,0 +1,6 @@
+${P5SITE}/Finance/
+${P5SITE}/Finance/Bank/
+${P5SITE}/Finance/Bank/DE/
+${P5SITE}/Finance/Bank/DE/DTA/
+${P5SITE}/Finance/Bank/DE/DTA/Create.pm
+@man man/man3p/Finance::Bank::DE::DTA::Create.3p

@@ -1,0 +1,41 @@
+Index: src/compile.lsp.in
+--- src/compile.lsp.in.orig
++++ src/compile.lsp.in
+@@ -91,21 +91,21 @@
+ (setf c::*ld-libs* "@LIBPREFIX@ecl.@LIBEXT@ @CORE_LIBS@ @FASL_LIBS@ @LIBS@")
+ #+(and :wants-dlopen (not nonstop))
+ (setf c::*ld-libs*
+-      "@SHAREDPREFIX@ecl.@SHAREDEXT@ @LIBS@"
++      "-L. -lecl @LIBS@"
+       c::*ld-shared-flags*
+-      "@SHARED_LDFLAGS@ @LDFLAGS@"
++      "-L. -lecl @LDFLAGS@"
+       c::*ld-bundle-flags*
+-      "@BUNDLE_LDFLAGS@ @LDFLAGS@"
++      "@BUNDLE_LDFLAGS@ -L. -lecl @LDFLAGS@"
+       c::*ld-program-flags*
+-      "@PROGRAM_LDFLAGS@ @LDFLAGS@")
++      "@PROGRAM_LDFLAGS@ -L. -lecl @LDFLAGS@")
+ ;;; FIXME: The nonstop platform does not support soname
+ #+(and :wants-dlopen nonstop)
+ (setf c::*ld-libs*
+-      "-Wld=-l@SHAREDPREFIX@ecl.@SHAREDEXT@ @LIBS@"
++      "-Wld=-L.,-lecl @LIBS@"
+       c::*ld-shared-flags*
+-      "@SHARED_LDFLAGS@ @LDFLAGS@ -Wld=-l@SHAREDPREFIX@ecl.@SHAREDEXT@"
++      "@LDFLAGS@ -Wld=-L.,-lecl"
+       c::*ld-bundle-flags*
+-      "@BUNDLE_LDFLAGS@ @LDFLAGS@ -Wld=-l@SHAREDPREFIX@ecl.@SHAREDEXT@")
++      "@BUNDLE_LDFLAGS@ @LDFLAGS@ -Wld=-L.,-lecl")
+ 
+ ;;;
+ ;;; * Avoid name clashes with user supplied code.
+@@ -199,7 +199,7 @@
+ (si::pathname-translations "SYS" '(("**;*.*.*" "@ecldir\@/**/*.*")))
+ 
+ #+WANTS-CMP
+-(build-module "cmp" +cmp-module-files+ 
++(build-module "cmp" +cmp-module-files+
+               :dir "build:@ECL_CMPDIR@;" :prefix "CMP"
+               :builtin #+:BUILTIN-CMP t #-:BUILTIN-CMP nil)
+ 

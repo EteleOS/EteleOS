@@ -1,0 +1,10 @@
+--- src/tools/oggz-chop/httpdate_test.c.orig	Sat Jan 30 06:55:59 2010
++++ src/tools/oggz-chop/httpdate_test.c	Wed Nov  3 10:09:25 2010
+@@ -21,7 +21,6 @@ main (int argc, char * argv[])
+   if (t == (time_t)-1) {
+     FAIL ("Parse error");
+   } else {
+-    t -= timezone;
+     httpdate_snprint (d_out, 30, t);
+ 
+     INFO ("Output date:");

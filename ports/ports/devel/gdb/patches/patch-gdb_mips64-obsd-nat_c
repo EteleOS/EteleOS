@@ -1,0 +1,47 @@
+Fix build errors.
+Add support for threads.
+
+Index: gdb/mips64-obsd-nat.c
+--- gdb/mips64-obsd-nat.c.orig
++++ gdb/mips64-obsd-nat.c
+@@ -47,7 +47,7 @@ static mips64_obsd_nat_target the_mips64_obsd_nat_targ
+ static void
+ mips64obsd_supply_gregset (struct regcache *regcache, const void *gregs)
+ {
+-  const char *regs = gregs;
++  const char *regs = (const char *) gregs;
+   int regnum;
+ 
+   for (regnum = MIPS_ZERO_REGNUM; regnum <= MIPS_PC_REGNUM; regnum++)
+@@ -64,7 +64,7 @@ static void
+ mips64obsd_collect_gregset (const struct regcache *regcache,
+ 			    void *gregs, int regnum)
+ {
+-  char *regs = gregs;
++  char *regs = (char *) gregs;
+   int i;
+ 
+   for (i = MIPS_ZERO_REGNUM; i <= MIPS_PC_REGNUM; i++)
+@@ -88,7 +88,7 @@ void
+ mips64_obsd_nat_target::fetch_registers (struct regcache *regcache, int regnum)
+ {
+   struct reg regs;
+-  pid_t pid = regcache->ptid ().pid ();
++  pid_t pid = get_ptrace_pid (regcache->ptid ());
+ 
+   if (ptrace (PT_GETREGS, pid, (PTRACE_TYPE_ARG3) &regs, 0) == -1)
+     perror_with_name (_("Couldn't get registers"));
+@@ -99,11 +99,11 @@ mips64_obsd_nat_target::fetch_registers (struct regcac
+ /* Store register REGNUM back into the inferior.  If REGNUM is -1, do
+    this for all registers.  */
+ 
+-static void
++void
+ mips64_obsd_nat_target::store_registers (struct regcache *regcache, int regnum)
+ {
+   struct reg regs;
+-  pid_t pid = regcache->ptid ().pid ();
++  pid_t pid = get_ptrace_pid (regcache->ptid ());
+ 
+   if (ptrace (PT_GETREGS, pid, (PTRACE_TYPE_ARG3) &regs, 0) == -1)
+     perror_with_name (_("Couldn't get registers"));

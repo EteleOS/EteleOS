@@ -1,0 +1,11 @@
+PgBouncer is a lightweight connection pooler for PostgreSQL.
+
+- Low memory requirements (2 kB per connection by default)
+
+- It is not tied to one backend server; the destination databases
+can reside on different hosts
+
+- Supports online reconfiguration for most settings, and online
+restart/upgrade without dropping client connections
+
+- Several levels of brutality when rotating connections

@@ -1,0 +1,12 @@
+Index: options.c
+--- options.c.orig
++++ options.c
+@@ -44,7 +44,7 @@ extern int proxy_enable;
+ extern char *proxy_server;
+ extern int auth_enable;
+ extern int auth_enable_var;
+-extern remote_restart;
++extern int remote_restart;
+ /*Basic Authentication Arguments*/
+ char *basic_auth = NULL;
+ 

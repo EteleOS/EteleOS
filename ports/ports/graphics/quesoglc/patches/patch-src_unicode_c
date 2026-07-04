@@ -1,0 +1,18 @@
+Fix build with recent fribidi
+
+Index: src/unicode.c
+--- src/unicode.c.orig
++++ src/unicode.c
+@@ -25,10 +25,10 @@
+  *  defines the routines used to manipulate Unicode strings and characters
+  */
+ 
+-#include <fribidi/fribidi.h>
+-
+ #include "internal.h"
+ 
++#undef HAVE_CONFIG_H
++#include <fribidi/fribidi.h>
+ 
+ 
+ /* Find a Unicode name from its code */

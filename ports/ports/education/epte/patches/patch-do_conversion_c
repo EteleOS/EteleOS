@@ -1,0 +1,10 @@
+--- do_conversion.c.orig	Mon Aug 23 07:50:25 2010
++++ do_conversion.c	Mon Aug 23 07:50:46 2010
+@@ -292,6 +292,7 @@ modification follow.
+ 
+ 
+ #include <string.h>
++#include <ctype.h>
+ #include "periodic.h"
+ 
+ struct CONVERTS{

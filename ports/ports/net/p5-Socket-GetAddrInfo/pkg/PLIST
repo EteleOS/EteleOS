@@ -1,0 +1,16 @@
+bin/getaddrinfo
+bin/getnameinfo
+${P5SITE}/Socket/
+${P5SITE}/Socket/GetAddrInfo/
+${P5SITE}/Socket/GetAddrInfo.pm
+${P5SITE}/Socket/GetAddrInfo/Core.pm
+${P5SITE}/Socket/GetAddrInfo/Emul.pm
+${P5SITE}/Socket/GetAddrInfo/Socket6api.pm
+${P5SITE}/Socket/GetAddrInfo/Strict.pm
+${P5SITE}/Socket/GetAddrInfo/XS.pm
+@man man/man1/getaddrinfo.1
+@man man/man1/getnameinfo.1
+@man man/man3p/Socket::GetAddrInfo.3p
+@man man/man3p/Socket::GetAddrInfo::Emul.3p
+@man man/man3p/Socket::GetAddrInfo::Socket6api.3p
+@man man/man3p/Socket::GetAddrInfo::Strict.3p

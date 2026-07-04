@@ -1,0 +1,10 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Ruby Extensions
+===============
+
+Although there are currently no ruby extension scripts shipped with
+Inkscape, users are free to write their own. If you wish to write ruby
+extensions, then please install Ruby ${MODRUBY_REV}.

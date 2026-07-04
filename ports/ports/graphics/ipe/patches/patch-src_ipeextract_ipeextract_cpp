@@ -1,0 +1,11 @@
+Index: src/ipeextract/ipeextract.cpp
+--- src/ipeextract/ipeextract.cpp.orig
++++ src/ipeextract/ipeextract.cpp
+@@ -33,6 +33,7 @@
+ #include "ipepdfparser.h"
+ #include <cstdlib>
+ 
++using std::exit;
+ using namespace ipe;
+ 
+ // ---------------------------------------------------------------------

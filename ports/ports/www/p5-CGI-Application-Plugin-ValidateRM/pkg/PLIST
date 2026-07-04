@@ -1,0 +1,3 @@
+${P5SITE}/CGI/Application/Plugin/
+${P5SITE}/CGI/Application/Plugin/ValidateRM.pm
+@man man/man3p/CGI::Application::Plugin::ValidateRM.3p

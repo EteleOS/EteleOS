@@ -1,0 +1,2 @@
+@bin bin/xsel
+@man man/man1/xsel.1x

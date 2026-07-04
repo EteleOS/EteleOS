@@ -1,0 +1,4 @@
+share/fonts/
+@fontdir share/fonts/apl-fonts/
+share/fonts/apl-fonts/APL333.ttf
+share/fonts/apl-fonts/Apl385.ttf

@@ -1,0 +1,23 @@
+@newgroup _geomyidae:754
+@newuser _geomyidae:754:_geomyidae::Geomyidae Gopher Daemon:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/geomyidae
+@bin bin/geomyidae
+@man man/man8/geomyidae.8
+share/doc/geomyidae/
+share/doc/geomyidae/CGI.md
+share/doc/geomyidae/README
+@mode 755
+@owner root
+@group daemon
+@sample /var/gopher/
+@mode
+@owner
+@group
+share/examples/geomyidae/
+share/examples/geomyidae/index.gph
+@sample /var/gopher/index.gph
+share/examples/geomyidae/log
+@mode 640
+@owner _geomyidae
+@group _geomyidae
+@sample /var/log/geomyidae.log

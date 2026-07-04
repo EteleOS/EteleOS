@@ -1,0 +1,7 @@
+@bin bin/qqwing
+include/qqwing.hpp
+lib/libqqwing.a
+lib/libqqwing.la
+@lib lib/libqqwing.so.${LIBqqwing_VERSION}
+lib/pkgconfig/qqwing.pc
+@man man/man1/qqwing.1

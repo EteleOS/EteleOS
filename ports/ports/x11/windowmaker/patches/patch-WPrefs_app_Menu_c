@@ -1,0 +1,30 @@
+Index: WPrefs.app/Menu.c
+--- WPrefs.app/Menu.c.orig
++++ WPrefs.app/Menu.c
+@@ -521,7 +521,7 @@ static void createPanel(_Panel * p)
+ 		data->param.directory.command = "setstyle";
+ 		data->param.directory.directory =
+ 		    "/usr/share/" PACKAGE_TARNAME "/Themes"
+-		    " /usr/local/share/" PACKAGE_TARNAME "/Themes"
++		    " " PREFIX "/share/" PACKAGE_TARNAME "/Themes"
+ 		    " $HOME/" GSUSER_SUBDIR "/" USERDATA_SUBDIR "/" PACKAGE_TARNAME "/Themes";
+ 		data->param.directory.stripExt = 1;
+ 
+@@ -529,7 +529,7 @@ static void createPanel(_Panel * p)
+ 		data->param.directory.command = "wmsetbg -u -s";
+ 		data->param.directory.directory =
+ 		    "/opt/kde2/share/wallpapers"
+-		    " /usr/share/" PACKAGE_TARNAME "/Backgrounds"
++		    " " PREFIX "/share/" PACKAGE_TARNAME "/Backgrounds"
+ 		    " $HOME/" GSUSER_SUBDIR "/" USERDATA_SUBDIR "/" PACKAGE_TARNAME "/Backgrounds";
+ 		data->param.directory.stripExt = 1;
+ 
+@@ -537,7 +537,7 @@ static void createPanel(_Panel * p)
+ 		data->param.directory.command = "wmsetbg -u -t";
+ 		data->param.directory.directory =
+ 		    "/opt/kde2/share/wallpapers"
+-		    " /usr/share/" PACKAGE_TARNAME "/Backgrounds"
++		    " " PREFIX "/share/" PACKAGE_TARNAME "/Backgrounds"
+ 		    " $HOME/" GSUSER_SUBDIR "/" USERDATA_SUBDIR "/" PACKAGE_TARNAME "/Backgrounds";
+ 		data->param.directory.stripExt = 1;
+ 

@@ -1,0 +1,11 @@
+--- examples/rss_info.pl.orig	Fri Oct  3 00:52:13 2008
++++ examples/rss_info.pl	Fri Oct  3 00:52:23 2008
+@@ -3,8 +3,6 @@
+ # channel_info.pl
+ # print channel info
+ 
+-use lib '.';
+-
+ use strict;
+ use warnings;
+ 

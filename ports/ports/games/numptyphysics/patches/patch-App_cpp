@@ -1,0 +1,16 @@
+--- App.cpp.orig	Wed Dec  5 18:00:31 2012
++++ App.cpp	Wed Dec  5 18:02:02 2012
+@@ -177,12 +177,7 @@ class App : private Container (private)
+ 	levels->addPath( files[i] );
+       }
+     } else {
+-      struct stat st;
+-      if ( stat("Game.cpp",&st)==0 ) {
+-	levels->addPath( "data" );
+-      } else {
+-	levels->addPath( DEFAULT_LEVEL_PATH );
+-      }
++      levels->addPath( DEFAULT_LEVEL_PATH );
+       levels->addPath( Config::userDataDir().c_str() );
+     }
+         

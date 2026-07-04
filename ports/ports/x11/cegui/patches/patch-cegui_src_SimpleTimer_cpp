@@ -1,0 +1,11 @@
+--- cegui/src/SimpleTimer.cpp.orig.port	Thu Apr 28 21:12:57 2016
++++ cegui/src/SimpleTimer.cpp	Fri Apr 28 18:19:41 2017
+@@ -38,7 +38,7 @@ double CEGUI::SimpleTimer::currentTime()
+     return timeGetTime() / 1000.0;
+ }
+ 
+-#elif defined(__linux__) || defined(__APPLE__) || defined(__FreeBSD__) || defined(__NetBSD__) || defined(__HAIKU__) || defined(__CYGWIN__) || defined(__MINGW32__)
++#elif defined(__linux__) || defined(__APPLE__) || defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__HAIKU__) || defined(__CYGWIN__) || defined(__MINGW32__)
+ #include <sys/time.h>
+ double CEGUI::SimpleTimer::currentTime()
+ {

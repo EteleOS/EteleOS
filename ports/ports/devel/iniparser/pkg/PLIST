@@ -1,0 +1,4 @@
+include/dictionary.h
+include/iniparser.h
+lib/libiniparser.a
+@lib lib/libiniparser.so.${LIBiniparser_VERSION}

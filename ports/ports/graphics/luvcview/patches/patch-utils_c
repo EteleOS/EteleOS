@@ -1,0 +1,23 @@
+--- utils.c.orig	Sat May 12 12:13:11 2007
++++ utils.c	Mon May 17 18:50:46 2010
+@@ -26,10 +26,10 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+-#include <linux/types.h>
++#include <sys/types.h>
+ #include <string.h>
+ #include <fcntl.h>
+-#include <wait.h>
++#include <sys/wait.h>
+ #include <time.h>
+ #include <limits.h>
+ #include "huffman.h"
+@@ -235,7 +235,6 @@ static int readtables(int till, int *isDHT)
+ 	    break;
+ 
+ 	case M_DRI:
+-	printf("find DRI \n");
+ 	    l = getword();
+ 	    info.dri = getword();
+ 	    break;

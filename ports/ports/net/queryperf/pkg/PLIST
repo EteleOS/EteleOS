@@ -1,0 +1,4 @@
+@bin bin/queryperf
+share/doc/queryperf/
+share/doc/queryperf/README
+share/doc/queryperf/gen-data-queryperf.py

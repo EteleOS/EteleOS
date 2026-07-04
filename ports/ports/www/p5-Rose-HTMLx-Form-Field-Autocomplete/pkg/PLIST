@@ -1,0 +1,5 @@
+${P5SITE}/Rose/HTMLx/
+${P5SITE}/Rose/HTMLx/Form/
+${P5SITE}/Rose/HTMLx/Form/Field/
+${P5SITE}/Rose/HTMLx/Form/Field/Autocomplete.pm
+@man man/man3p/Rose::HTMLx::Form::Field::Autocomplete.3p

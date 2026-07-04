@@ -1,0 +1,4 @@
+${P5SITE}/Tie/
+${P5SITE}/Tie/Cache.pm
+${P5SITE}/Tie/tie-cache-bench.pl
+@man man/man3p/Tie::Cache.3p

@@ -1,0 +1,14 @@
+64bit time_t
+
+Index: src/wmweather.c
+--- src/wmweather.c.orig
++++ src/wmweather.c
+@@ -696,7 +696,7 @@ static void update(int force_read)
+ 	FILE   *F;
+ 	char   buffer[MAX_STRING], *i;
+ 	int    line, n, q, sgn;
+-	long   l = 0;
++	long long l = 0;
+ 
+ 	time(&l);
+ 	tm = gmtime(&l);

@@ -1,0 +1,2 @@
+bin/ptests.byte
+lib/frama-c/ptests_config.cmo

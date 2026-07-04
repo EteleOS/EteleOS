@@ -1,0 +1,12 @@
+Index: iodbcadm/drvconn.c
+--- iodbcadm/drvconn.c.orig
++++ iodbcadm/drvconn.c
+@@ -548,7 +548,7 @@ iodbcdm_drvconn_dialboxw (
+ # endif
+ #else
+ 
+-  CALL_DRVCONN_DIALBOXW ("libdrvproxy.so.2", 'A');
++  CALL_DRVCONN_DIALBOXW ("libdrvproxy.so", 'A');
+ #endif
+ 
+   if (sqlStat)

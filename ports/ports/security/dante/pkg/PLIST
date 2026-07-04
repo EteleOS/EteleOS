@@ -1,0 +1,34 @@
+@conflict dsocks-*
+@conflict socks5-*
+@newgroup _sockd:728
+@newuser _sockd:728:_sockd::sockd daemon:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/sockd
+bin/socksify
+include/socks.h
+lib/libdsocks.la
+@lib lib/libdsocks.so.${LIBdsocks_VERSION}
+@static-lib lib/libsocks.a
+lib/libsocks.la
+@lib lib/libsocks.so.${LIBsocks_VERSION}
+@man man/man1/socksify.1
+@man man/man5/sockd.conf.5
+@man man/man5/socks.conf.5
+@man man/man8/sockd.8
+@bin sbin/sockd
+share/doc/dante/
+share/doc/dante/README.socksify
+share/doc/dante/README.survey
+share/doc/dante/README.usage
+share/doc/dante/SOCKS4.protocol
+share/doc/dante/rfc1928.txt
+share/doc/dante/rfc1929.txt
+share/doc/dante/rfc1961.txt
+share/examples/dante/
+share/examples/dante/sockd-basic.conf
+@sample ${SYSCONFDIR}/sockd.conf
+share/examples/dante/sockd-chaining.conf
+share/examples/dante/sockd.conf
+share/examples/dante/socks-simple-withoutnameserver.conf
+share/examples/dante/socks-simple.conf
+@sample ${SYSCONFDIR}/socks.conf
+share/examples/dante/socks.conf

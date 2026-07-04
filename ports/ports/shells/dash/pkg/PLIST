@@ -1,0 +1,2 @@
+@shell bin/dash
+@man man/man1/dash.1

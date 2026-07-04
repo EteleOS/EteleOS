@@ -1,0 +1,59 @@
+--- check.py.orig	Wed May  4 07:23:31 2016
++++ check.py	Thu May  5 10:02:31 2016
+@@ -139,9 +139,9 @@ def get_comment(package, Inst_status, installed_ver):
+                 comment = "Python Programming is not supported if version is lessthan 2.2" 
+     elif package == 'hpaio':
+         if Inst_status == 'OK':
+-            comment = "'hpaio found in /etc/sane.d/dll.conf'"
++            comment = "'hpaio found in ${SYSCONFDIR}/sane.d/dll.conf'"
+         else:
+-            comment = "'hpaio not found in /etc/sane.d/dll.conf. hpaio needs to be added in this file.'"
++            comment = "'hpaio not found in ${SYSCONFDIR}/sane.d/dll.conf. hpaio needs to be added in this file.'"
+     elif package == 'cupsext' or package == 'pcardext' or package == 'hpmudext':
+         if Inst_status != 'OK':
+             comment = "'Not Found or Failed to load, Please reinstall HPLIP'"
+@@ -308,9 +308,9 @@ class DependenciesCheck(object):
+                      %(self.core.distro, self.core.distro_version, self.core.distro, supported_distro_vrs)))
+ 
+         tui.header("SYSTEM INFO")
+-        Sts, Kernel_info =utils.run("uname -r -v -o")
++        Sts, Kernel_info =utils.run("uname -r -v -s")
+         Sts, Host_info =utils.run("uname -n")
+-        Sts, Proc_info =utils.run("uname -r -v -o")
++        Sts, Proc_info =utils.run("uname -r -v -s")
+         log.info(" Kernel: %s Host: %s Proc: %s Distribution: %s %s"\
+              %(Kernel_info,Host_info,Proc_info,self.core.distro, self.core.distro_version))
+         log.info(" Bitness: %s bit\n"%utils.getBitness())
+@@ -326,9 +326,9 @@ class DependenciesCheck(object):
+                 log.warn("HPLIP-Installation: Auto installation is not supported for %s distro  %s version " %(self.core.distro, self.core.distro_version))
+ 
+             log.info()
+-            log.info(log.bold("Current contents of '/etc/hp/hplip.conf' file:"))
++            log.info(log.bold("Current contents of '${SYSCONFDIR}/hp/hplip.conf' file:"))
+             try:
+-                output = open('/etc/hp/hplip.conf', 'r').read()
++                output = open('${SYSCONFDIR}/hp/hplip.conf', 'r').read()
+             except (IOError, OSError) as e:
+                 log.error("Could not access file: %s. Check HPLIP installation." % e.strerror)
+                 self.num_errors += 1
+@@ -336,9 +336,9 @@ class DependenciesCheck(object):
+                 log.info(output)
+ 
+             log.info()
+-            log.info(log.bold("Current contents of '/var/lib/hp/hplip.state' file:"))
++            log.info(log.bold("Current contents of '/var/db/hp/hplip.state' file:"))
+             try:
+-                output = open(os.path.expanduser('/var/lib/hp/hplip.state'), 'r').read()
++                output = open(os.path.expanduser('/var/db/hp/hplip.state'), 'r').read()
+             except (IOError, OSError) as e:
+                 log.info("Plugins are not installed. Could not access file: %s" % e.strerror)
+             else:
+@@ -502,7 +502,7 @@ class DependenciesCheck(object):
+                         #log.info("Installed in HPLIP?: %s" % x)
+                         log.info("Device URI: %s" % device_uri)
+ 
+-                        ppd = os.path.join('/etc/cups/ppd', printer_name + '.ppd')
++                        ppd = os.path.join('${SYSCONFDIR}/cups/ppd', printer_name + '.ppd')
+ 
+                         if os.path.exists(ppd):
+                             log.info("PPD: %s" % ppd)

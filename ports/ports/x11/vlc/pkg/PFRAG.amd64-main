@@ -1,0 +1,6 @@
+@so lib/vlc/plugins/video_chroma/libi420_rgb_mmx_plugin.so
+@so lib/vlc/plugins/video_chroma/libi420_rgb_sse2_plugin.so
+@so lib/vlc/plugins/video_chroma/libi420_yuy2_mmx_plugin.so
+@so lib/vlc/plugins/video_chroma/libi420_yuy2_sse2_plugin.so
+@so lib/vlc/plugins/video_chroma/libi422_yuy2_mmx_plugin.so
+@so lib/vlc/plugins/video_chroma/libi422_yuy2_sse2_plugin.so

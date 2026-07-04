@@ -1,0 +1,17 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/consul agent"
+daemon_flags="-config-dir ${SYSCONFDIR}/consul.d"
+daemon_user="_consul"
+
+. /etc/rc.d/rc.subr
+
+rc_bg=YES
+rc_stop_signal=INT
+
+rc_configtest() {
+	# use rc_exec here to validate under daemon_user
+	rc_exec "${TRUEPREFIX}/bin/consul validate ${SYSCONFDIR}/consul.d"
+}
+
+rc_cmd $1

@@ -1,0 +1,5 @@
+@bin bin/pandoc
+@man man/man1/pandoc-lua.1
+@man man/man1/pandoc-server.1
+@man man/man1/pandoc.1
+share/doc/pkg-readmes/${PKGSTEM}

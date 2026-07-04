@@ -1,0 +1,13 @@
+Index: configure.in
+--- configure.in.orig
++++ configure.in
+@@ -92,8 +92,7 @@ dnl partly from icecast
+ AH_TEMPLATE(HAVE_SOCKLEN_T, Do we have the socklen_t data type?)
+ AC_MSG_CHECKING([for unix98 socklen_t])
+ AC_TRY_COMPILE([#include <sys/socket.h>],
+-	    [typedef socklen_t int; 
+-	    int dummy (void) {return 1;}],
++	    [typedef socklen_t int;],
+ 	AC_MSG_RESULT(yes)
+ 	HAVE_SOCKLEN_T=yes,
+ 	AC_MSG_RESULT(no)

@@ -1,0 +1,11 @@
+--- libsylph/procmime.c.orig	Mon Aug 22 20:22:10 2016
++++ libsylph/procmime.c	Mon Aug 22 20:24:11 2016
+@@ -1622,7 +1622,7 @@ static GHashTable *procmime_get_mime_type_table(void)
+ 			procmime_get_mime_type_list(SYSCONFDIR "/mime.types");
+ 		if (!mime_type_list)
+ 			mime_type_list =
+-				procmime_get_mime_type_list("/etc/mime.types");
++				procmime_get_mime_type_list("/var/www/conf/mime.types");
+ #endif
+ 		dir = g_strconcat(get_rc_dir(), G_DIR_SEPARATOR_S,
+ 				  "mime.types", NULL);

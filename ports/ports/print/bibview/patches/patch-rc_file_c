@@ -1,0 +1,11 @@
+Index: rc_file.c
+--- rc_file.c.orig
++++ rc_file.c
+@@ -19,6 +19,7 @@
+ /*                                                                   */
+ /*********************************************************************/
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>

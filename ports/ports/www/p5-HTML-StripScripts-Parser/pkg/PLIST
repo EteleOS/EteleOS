@@ -1,0 +1,3 @@
+${P5SITE}/HTML/StripScripts/
+${P5SITE}/HTML/StripScripts/Parser.pm
+@man man/man3p/HTML::StripScripts::Parser.3p

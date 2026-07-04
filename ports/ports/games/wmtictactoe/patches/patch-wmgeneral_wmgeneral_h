@@ -1,0 +1,16 @@
+Fix the build with -fno-common
+
+Index: wmgeneral/wmgeneral.h
+--- wmgeneral/wmgeneral.h.orig
++++ wmgeneral/wmgeneral.h
+@@ -36,8 +36,8 @@ typedef struct {
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
+-Window          Root, iconwin, win;
++extern Display		*display;
++extern Window          Root, iconwin, win;
+ 
+ 
+   /***********************/

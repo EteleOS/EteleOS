@@ -1,0 +1,14 @@
+Fix build with newer nasm.
+
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -1487,7 +1487,7 @@ uninstall-man: uninstall-man1 uninstall-man5
+ 
+ 
+ .asm.$(OBJEXT):
+-	@NASM@ -f @NASM_FORMAT@ -o $@ -- $<
++	@NASM@ -f @NASM_FORMAT@ -o $@ $<
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

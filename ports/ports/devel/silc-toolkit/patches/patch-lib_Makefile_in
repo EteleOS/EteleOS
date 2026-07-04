@@ -1,0 +1,11 @@
+--- lib/Makefile.in.orig	Tue May 13 02:20:24 2014
++++ lib/Makefile.in	Sat Jul 12 20:39:49 2014
+@@ -423,7 +423,7 @@ AUTOMAKE_OPTIONS = 1.0 no-dependencies foreign
+ # SILC Library dirs
+ SILCLIB_DIRS = contrib	silccore	silcutil	silcapputil	silccrypt	silcskr	silcmath	silcsim	silcasn1	silcske	silchttp	silcsftp	silcvcard
+ @SILC_ENABLE_SHARED_FALSE@LIBTOOL_OPTS = 
+-@SILC_ENABLE_SHARED_TRUE@@SILC_WIN32_FALSE@LIBTOOL_OPTS = -release $(LIB_BASE_VERSION) -rpath $(DESTDIR)$(libdir)
++@SILC_ENABLE_SHARED_TRUE@@SILC_WIN32_FALSE@LIBTOOL_OPTS = -rpath $(DESTDIR)$(libdir)
+ @SILC_ENABLE_SHARED_TRUE@@SILC_WIN32_TRUE@LIBTOOL_OPTS = -release $(LIB_BASE_VERSION) -rpath $(DESTDIR)$(libdir) -export-dynamic -no-undefined
+ @SILC_ENABLE_SHARED_FALSE@LIBTOOL_SILC_VERSION = 
+ @SILC_ENABLE_SHARED_TRUE@LIBTOOL_SILC_VERSION = -version-info $(LIBSILC_CURRENT):$(LIBSILC_REVISION):$(LIBSILC_AGE)

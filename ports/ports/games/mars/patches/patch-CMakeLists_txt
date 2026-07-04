@@ -1,0 +1,27 @@
+Enable Xrandr.
+
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -38,9 +38,10 @@ if(APPLE)
+ endif(APPLE)
+ 
+ # Xrandr library needed for unix
+-# if(UNIX)
+-#	find_library(XRANDR_LIBRARY Xrandr)
+-# endif(UNIX)
++if(UNIX)
++	find_library(XRANDR_LIBRARY Xrandr)
++	find_library(X11_LIBRARY X11)
++endif(UNIX)
+ 
+ # tag library needed for reading tags of music files
+ 	find_library(TAG_LIBRARY tag)
+@@ -63,7 +64,6 @@ endif(APPLE)
+ #####################################################################
+ 
+ # compile source
+-set(CMAKE_CXX_FLAGS "-s -O2")
+  add_subdirectory(src) 
+  
+ #####################################################################

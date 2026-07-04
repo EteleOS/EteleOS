@@ -1,0 +1,11 @@
+--- login_ldap.c.orig	Thu Feb  7 16:56:28 2008
++++ login_ldap.c	Fri Oct 23 21:06:18 2015
+@@ -170,7 +170,7 @@ main(int argc, char **argv)
+ 	else 
+ 		(void)fprintf(back, BI_REJECT "\n");
+ 
+-	(void) memset(password, 0, strlen(password));
++	explicit_bzero(password, strlen(password));
+ 
+ 	closelog();
+ 

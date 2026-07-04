@@ -1,0 +1,27 @@
+Do not gzip manual pages.
+Properly install shlib.
+
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -1063,11 +1063,6 @@ installbase: all
+ 	$(INSTALL) -m 644 -c $(srcdir)/regina-config.1 $(DESTDIR)$(mandir)/man1/regina-config.1
+ 	$(INSTALL) -m 644 -c $(srcdir)/rxstack.1 $(DESTDIR)$(mandir)/man1/rxstack.1
+ 	$(INSTALL) -m 644 -c $(srcdir)/rxqueue.1 $(DESTDIR)$(mandir)/man1/rxqueue.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/regina.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/rexx.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/regina-config.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/rxstack.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/rxqueue.1
+ 	$(INSTALL) -m 644 -c $(srcdir)/rexxsaa.h $(DESTDIR)$(includedir)/rexxsaa.h
+ 	$(INSTALL) -m 644 -c ./en.mtb $(DESTDIR)$(sharedir)/en.mtb
+ 	$(INSTALL) -m 644 -c ./pt.mtb $(DESTDIR)$(sharedir)/pt.mtb
+@@ -1098,7 +1093,7 @@ installlib: installregina
+ ##	$(INSTALL) -s -m 755 -c ./$(SHLPRE)regutil$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)regutil$(MODPST)
+ ##	$(INSTALL) -s -m 755 -c ./$(SHLPRE)rxtest1$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)rxtest1$(MODPST)
+ ##	$(INSTALL) -s -m 755 -c ./$(SHLPRE)rxtest2$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)rxtest2$(MODPST)
+-	$(INSTALL) -s -m 755 -c ./$(SHL_NAME_REGINA) $(DESTDIR)$(libdir)/$(SHL_NAME_REGINA)
++	$(INSTALL) -s -m 755 -c ./$(SHL_NAME_REGINA).${LIBregina_VERSION} $(DESTDIR)$(libdir)/$(SHL_NAME_REGINA).${LIBregina_VERSION}
+ 	$(INSTALL) -s -m 755 -c ./$(SHL_NAME_REGUTIL) $(DESTDIR)$(addonsdir)/$(SHL_NAME_REGUTIL)
+ 	$(INSTALL) -s -m 755 -c ./$(SHL_NAME_RXTEST1) $(DESTDIR)$(addonsdir)/$(SHL_NAME_RXTEST1)
+ 	$(INSTALL) -s -m 755 -c ./$(SHL_NAME_RXTEST2) $(DESTDIR)$(addonsdir)/$(SHL_NAME_RXTEST2)

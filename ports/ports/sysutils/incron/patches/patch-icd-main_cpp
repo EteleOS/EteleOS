@@ -1,0 +1,19 @@
+--- icd-main.cpp.orig	Sat Apr  7 00:19:27 2012
++++ icd-main.cpp	Mon Apr 24 03:09:02 2017
+@@ -18,7 +18,7 @@
+ 
+ #include <map>
+ #include <signal.h>
+-#include <wait.h>
++#include <sys/wait.h>
+ #include <fcntl.h>
+ #include <pwd.h>
+ #include <dirent.h>
+@@ -27,6 +27,7 @@
+ #include <sys/poll.h>
+ #include <sys/stat.h>
+ #include <cstdio>
++#include <cstdlib>
+ #include <cstring>
+ 
+ #include "inotify-cxx.h"

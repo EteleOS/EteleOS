@@ -1,0 +1,23 @@
+--- ddd/Makefile.in.orig	Wed Feb 11 17:25:55 2009
++++ ddd/Makefile.in	Mon Sep 28 09:40:49 2009
+@@ -2718,18 +2718,8 @@ configinfo.C: USERINFO.txt $(srcdir)/config-info
+ 	$(SHELL) $(srcdir)/config-info $(srcdir)/USERINFO.txt USERINFO.txt > $@~ && \
+ 	$(MV) $@~ $@
+ 
+-# If `~/.ddd_userinfo' exists, use this file as personal identification.
+-USERINFO.txt: userinfo$(EXEEXT)
+-	-(cat $$HOME/.ddd_userinfo 2> /dev/null || \
+-	./userinfo || echo '(unknown)') > $@~ && $(MV) $@~ $@
+-	@$(ECHO) ""
+-	@$(ECHO) "Please check your name and e-mail address:"
+-	@$(ECHO) ""
+-	@$(CAT) $@
+-	@$(ECHO) ""
+-	@$(ECHO) "This information will be compiled into $(DDD)."
+-	@$(ECHO) "If it is not correct, please edit $@ and re-compile."
+-	@$(ECHO) ""
++USERINFO.txt:
++	echo ${MAINTAINER} >$@
+ 
+ # EPS code stuff.
+ $(srcdir)/header.str: $(srcdir)/header.ps

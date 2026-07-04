@@ -1,0 +1,2 @@
+@bin bin/hexcalc
+@man man/man1/hexcalc.1

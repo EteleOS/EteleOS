@@ -1,0 +1,20 @@
+Index: lib/libpm.c
+--- lib/libpm.c.orig
++++ lib/libpm.c
+@@ -10,6 +10,7 @@
+ 
+ #define _DEFAULT_SOURCE      /* New name for SVID & BSD source defines */
+ #define _XOPEN_SOURCE 500    /* Make sure ftello, fseeko are defined */
++#define _BSD_SOURCE          /* arc4random */
+ 
+ #include "netpbm/pm_config.h"
+ 
+@@ -837,7 +838,7 @@ pm_arg0toprogname(const char arg0[]) {
+ unsigned int
+ pm_randseed(void) {
+ 
+-    return time(NULL) ^ getpid();
++    return arc4random();
+ 
+ }
+ 

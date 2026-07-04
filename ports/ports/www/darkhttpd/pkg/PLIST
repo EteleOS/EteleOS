@@ -1,0 +1,3 @@
+@bin sbin/darkhttpd
+share/doc/darkhttpd/
+share/doc/darkhttpd/README

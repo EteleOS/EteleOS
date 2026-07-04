@@ -1,0 +1,12 @@
+Index: src/global.cc
+--- src/global.cc.orig
++++ src/global.cc
+@@ -84,7 +84,7 @@ int global::IPUrl = 0;
+  * Everything is read from the config file (larbin.conf by default)
+  */
+ global::global (int argc, char *argv[]) {
+-  char *configFile = "larbin.conf";
++  char *configFile = "${SYSCONFDIR}/larbin/larbin.conf";
+ #ifdef RELOAD
+   bool reload = true;
+ #else

@@ -1,0 +1,11 @@
+Use C++ compiler when linking
+
+Index: examples/lg/Makefile.am
+--- examples/lg/Makefile.am.orig
++++ examples/lg/Makefile.am
+@@ -1,3 +1,5 @@
++CCLD = $(CXX)
++
+ AM_CFLAGS = $(PMACCT_CFLAGS)
+ 
+ if USING_BGP_BINS

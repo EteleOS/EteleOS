@@ -1,0 +1,13 @@
+@bin bin/wcmgr
+@bin bin/webalizer
+bin/webazolver
+@man man/man1/wcmgr.1
+@man man/man1/webalizer.1
+@man man/man1/webazolver.1
+share/doc/webalizer/
+share/doc/webalizer/DNS.README
+share/doc/webalizer/README
+share/doc/webalizer/README.FIRST
+share/examples/webalizer/
+share/examples/webalizer/sample.conf
+@sample ${SYSCONFDIR}/webalizer.conf

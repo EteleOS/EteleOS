@@ -1,0 +1,12 @@
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -25,7 +25,7 @@ find_package(Fcitx5Qt5WidgetsAddons REQUIRED)
+ endif ()
+ 
+ if (NOT SKK_DEFAULT_PATH)
+-    set(SKK_DEFAULT_PATH "/usr/share/skk/")
++    set(SKK_DEFAULT_PATH "${LOCALBASE}/share/skk/")
+ endif ()
+ 
+ include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cmake")

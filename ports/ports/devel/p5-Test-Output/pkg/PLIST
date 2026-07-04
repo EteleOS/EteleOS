@@ -1,0 +1,3 @@
+${P5SITE}/Test/
+${P5SITE}/Test/Output.pm
+@man man/man3p/Test::Output.3p

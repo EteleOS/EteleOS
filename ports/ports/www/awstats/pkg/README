@@ -1,0 +1,38 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+The configuration is prepared to produce reports for localhost.
+To generate reports execute either on the command line or from cron:
+
+    # ${TRUEPREFIX}/awstats/wwwroot/cgi-bin/awstats.pl -config=localhost -update
+
+
+To use awstats with nginx, create a symbolic link in the htdocs directory:
+
+    # ln -s ../awstats/wwwroot awstats
+
+Add this configuration example to ${SYSCONFDIR}/nginx/nginx.conf:
+
+    location ~ ^/awstats/cgi-bin/(.+\.pl)(.*)$ {
+        fastcgi_pass            unix:run/slowcgi.sock;
+        fastcgi_split_path_info ^/awstats/cgi-bin/(.+\.pl)(.*)$;
+        fastcgi_param           SCRIPT_FILENAME ${TRUEPREFIX}/awstats/wwwroot/cgi-bin/$fastcgi_script_name;
+        fastcgi_param           PATH_INFO $fastcgi_path_info;
+        include                 fastcgi_params;
+    }
+
+Enable and start nginx:
+
+    # rcctl enable nginx
+    # rcctl start nginx
+
+Enable, set flags to disable chroot(2) and start slowcgi(8):
+
+    # rcctl enable slowcgi
+    # rcctl set slowcgi flags -p /
+    # rcctl start slowcgi
+
+To access the reports for localhost point your browser to:
+
+    http://localhost/awstats/cgi-bin/awstats.pl?config=localhost

@@ -1,0 +1,35 @@
+Index: src/3rdparty/chromium/third_party/boringssl/src/crypto/cipher_extra/asm/chacha20_poly1305_x86_64.pl
+--- src/3rdparty/chromium/third_party/boringssl/src/crypto/cipher_extra/asm/chacha20_poly1305_x86_64.pl.orig
++++ src/3rdparty/chromium/third_party/boringssl/src/crypto/cipher_extra/asm/chacha20_poly1305_x86_64.pl
+@@ -42,6 +42,7 @@ $code.=<<___;
+ 
+ chacha20_poly1305_constants:
+ 
++.rodata
+ .align 64
+ .chacha20_consts:
+ .byte 'e','x','p','a','n','d',' ','3','2','-','b','y','t','e',' ','k'
+@@ -79,6 +80,7 @@ chacha20_poly1305_constants:
+ .byte 0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0x00,0x00
+ .byte 0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0x00
+ .byte 0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff
++.previous
+ ___
+ 
+ my ($oup,$inp,$inl,$adp,$keyp,$itr1,$itr2)=("%rdi","%rsi","%rbx","%rcx","%r9","%rcx","%r8");
+@@ -433,6 +435,7 @@ $code.="
+ .align 64
+ chacha20_poly1305_open:
+ .cfi_startproc
++    _CET_ENDBR
+     push %rbp
+ .cfi_adjust_cfa_offset 8
+     push %rbx
+@@ -831,6 +834,7 @@ open_sse_128:
+ .align 64
+ chacha20_poly1305_seal:
+ .cfi_startproc
++    _CET_ENDBR
+     push %rbp
+ .cfi_adjust_cfa_offset 8
+     push %rbx

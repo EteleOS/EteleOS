@@ -1,0 +1,12 @@
+Index: err.c
+--- err.c.orig
++++ err.c
+@@ -50,7 +50,7 @@ to_syslog(const char *type, const int want_err,
+       strlcat(buf, ": ", sizeof(buf));
+       strlcat(buf, strerror(saved_errno), sizeof(buf));
+    }
+-   syslog(LOG_DEBUG, "%s", buf);
++   syslog(LOG_INFO, "%s", buf);
+ }
+ 
+ void

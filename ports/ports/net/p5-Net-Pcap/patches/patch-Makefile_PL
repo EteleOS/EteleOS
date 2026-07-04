@@ -1,0 +1,13 @@
+Index: Makefile.PL
+--- Makefile.PL.orig
++++ Makefile.PL
+@@ -563,8 +563,7 @@ sub have_functions {
+     my @funcs = ();
+     print "detecting available functions... ";
+ 
+-    my @paths = DynaLoader::dl_findfile(qw(-lpcap));
+-    my $libref = DynaLoader::dl_load_file($paths[0]);
++    my $libref = DynaLoader::dl_load_file("libpcap.so");
+ 
+     for my $func (@_) {
+         my $symref = DynaLoader::dl_find_symbol($libref, $func);

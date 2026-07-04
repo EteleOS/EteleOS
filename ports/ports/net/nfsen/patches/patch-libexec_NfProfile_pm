@@ -1,0 +1,12 @@
+Index: libexec/NfProfile.pm
+--- libexec/NfProfile.pm.orig
++++ libexec/NfProfile.pm
+@@ -1342,7 +1342,7 @@ sub DoRebuild {
+ 				$completed = 100;
+ 			}
+ 			if ( ($counter % $modulo ) == 0 ) {
+-				print $socket ".info Rebuilding Profile '$profile': Completed: $completed\%\n";
++				print $socket ".info Rebuilding Profile '$profile': Completed: $completed\%\n" if $socket;
+ 				syslog('info', "Rebuilding Profile '$profile': Completed: $completed\%");
+ 			}
+ 

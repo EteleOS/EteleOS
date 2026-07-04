@@ -1,0 +1,3 @@
+@pkgpath x11/xtu,imlib
+@bin bin/xtu
+@man man/man1/xtu.1

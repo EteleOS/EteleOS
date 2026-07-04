@@ -1,0 +1,12 @@
+Index: src/main.cc
+--- src/main.cc.orig
++++ src/main.cc
+@@ -35,6 +35,8 @@
+ #include "../version.h"
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ 
+ static void showHelp(int exitval) {

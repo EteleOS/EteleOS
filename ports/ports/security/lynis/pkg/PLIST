@@ -1,0 +1,125 @@
+@group wheel
+bin/lynis
+@man man/man8/lynis.8
+share/doc/lynis/
+share/doc/lynis/CHANGELOG.md
+share/doc/lynis/FAQ
+share/doc/lynis/INSTALL
+share/doc/lynis/LICENSE
+share/doc/lynis/README
+share/examples/lynis/
+@sample ${SYSCONFDIR}/lynis/
+share/examples/lynis/default.prf
+@sample ${SYSCONFDIR}/lynis/default.prf
+share/lynis/
+@mode 0755
+share/lynis/db/
+@mode 0640
+share/lynis/db/control-links.db
+share/lynis/db/fileperms.db
+share/lynis/db/hints.db
+share/lynis/db/integrity.db
+@mode 0755
+share/lynis/db/languages/
+@mode
+share/lynis/db/languages/az
+share/lynis/db/languages/br
+share/lynis/db/languages/cn
+share/lynis/db/languages/da
+share/lynis/db/languages/de
+share/lynis/db/languages/de-AT
+share/lynis/db/languages/en
+share/lynis/db/languages/en-GB
+share/lynis/db/languages/en-US
+share/lynis/db/languages/es
+share/lynis/db/languages/fi
+share/lynis/db/languages/fr
+share/lynis/db/languages/gr
+share/lynis/db/languages/he
+share/lynis/db/languages/hu
+share/lynis/db/languages/id
+share/lynis/db/languages/it
+share/lynis/db/languages/ja
+share/lynis/db/languages/ko
+share/lynis/db/languages/nb-NO
+share/lynis/db/languages/nl
+share/lynis/db/languages/nl-BE
+share/lynis/db/languages/nl-NL
+share/lynis/db/languages/pl
+share/lynis/db/languages/pt
+share/lynis/db/languages/ru
+share/lynis/db/languages/se
+share/lynis/db/languages/sk
+share/lynis/db/languages/tr
+share/lynis/db/malware-susp.db
+share/lynis/db/malware.db
+share/lynis/db/sbl.db
+share/lynis/db/software-eol.db
+share/lynis/db/tests.db
+@mode 0755
+share/lynis/include/
+@mode 0640
+@owner root
+share/lynis/include/binaries
+share/lynis/include/consts
+share/lynis/include/data_upload
+share/lynis/include/functions
+share/lynis/include/helper_audit_dockerfile
+share/lynis/include/helper_configure
+share/lynis/include/helper_generate
+share/lynis/include/helper_show
+share/lynis/include/helper_system_remote_scan
+share/lynis/include/helper_update
+share/lynis/include/osdetection
+share/lynis/include/parameters
+share/lynis/include/profiles
+share/lynis/include/report
+share/lynis/include/tests_accounting
+share/lynis/include/tests_authentication
+share/lynis/include/tests_banners
+share/lynis/include/tests_boot_services
+share/lynis/include/tests_containers
+share/lynis/include/tests_crypto
+share/lynis/include/tests_custom.template
+share/lynis/include/tests_databases
+share/lynis/include/tests_dns
+share/lynis/include/tests_file_integrity
+share/lynis/include/tests_file_permissions
+share/lynis/include/tests_filesystems
+share/lynis/include/tests_firewalls
+share/lynis/include/tests_hardening
+share/lynis/include/tests_homedirs
+share/lynis/include/tests_insecure_services
+share/lynis/include/tests_kerberos
+share/lynis/include/tests_kernel
+share/lynis/include/tests_kernel_hardening
+share/lynis/include/tests_ldap
+share/lynis/include/tests_logging
+share/lynis/include/tests_mac_frameworks
+share/lynis/include/tests_mail_messaging
+share/lynis/include/tests_malware
+share/lynis/include/tests_memory_processes
+share/lynis/include/tests_nameservices
+share/lynis/include/tests_networking
+share/lynis/include/tests_php
+share/lynis/include/tests_ports_packages
+share/lynis/include/tests_printers_spoolers
+share/lynis/include/tests_scheduling
+share/lynis/include/tests_shells
+share/lynis/include/tests_snmp
+share/lynis/include/tests_squid
+share/lynis/include/tests_ssh
+share/lynis/include/tests_storage
+share/lynis/include/tests_storage_nfs
+share/lynis/include/tests_system_integrity
+share/lynis/include/tests_time
+share/lynis/include/tests_tooling
+share/lynis/include/tests_usb
+share/lynis/include/tests_virtualization
+share/lynis/include/tests_webservers
+share/lynis/include/tool_tips
+@mode 0755
+share/lynis/plugins/
+@mode 0600
+share/lynis/plugins/README
+share/lynis/plugins/custom_plugin.template

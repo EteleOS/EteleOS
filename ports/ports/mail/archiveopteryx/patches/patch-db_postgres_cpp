@@ -1,0 +1,12 @@
+Fix with psql 9.2
+--- db/postgres.cpp.orig	Mon Mar 10 14:44:59 2014
++++ db/postgres.cpp	Wed Apr 30 22:56:02 2014
+@@ -111,7 +111,7 @@ class PgData (public)
+                      "Transaction start time: " + r->getEString( "xact_start" ) + " "
+                      "Username: " + r->getEString( "usename" ) + " "
+                      "Client address: " + r->getEString( "client_addr" ) + " "
+-                     "Current query: " + r->getEString( "current_query" ).quoted(),
++                     "Current query: " + r->getEString( "query" ).quoted(),
+                      Log::Significant );
+             }
+         }

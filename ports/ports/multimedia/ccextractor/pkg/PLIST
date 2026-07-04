@@ -1,0 +1,8 @@
+@bin bin/ccextractor
+share/doc/ccextractor/
+share/doc/ccextractor/BINARY_FILE_FORMAT.TXT
+share/doc/ccextractor/CHANGES.TXT
+share/doc/ccextractor/FRONTEND_COMMUNICATIONS.TXT
+share/doc/ccextractor/MAILINGLIST.TXT
+share/doc/ccextractor/NOTE.FOR.EUROPEAN.USERS.TXT
+share/doc/ccextractor/README.TXT

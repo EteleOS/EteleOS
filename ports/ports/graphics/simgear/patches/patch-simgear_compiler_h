@@ -1,0 +1,12 @@
+--- simgear/compiler.h.orig	Tue Nov 22 10:06:52 2016
++++ simgear/compiler.h	Fri Dec  2 12:07:44 2016
+@@ -105,7 +105,8 @@
+ #  define SG_WINDOWS
+ #endif
+ 
+-#if defined(__linux__) || defined(_AIX) || defined ( sgi )
++#if defined(__linux__) || defined(_AIX) || defined ( sgi ) || \
++	defined(__OpenBSD__)
+ #  define SG_UNIX
+ #endif
+ 

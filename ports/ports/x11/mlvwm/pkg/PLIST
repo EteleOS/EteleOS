@@ -1,0 +1,3 @@
+@bin bin/mlvwm
+@man man/man1/mlvwm.1
+share/doc/pkg-readmes/${PKGSTEM}

@@ -1,0 +1,9 @@
+@extraunexec rm -f /var/log/snort/alert
+@man man/man8/snort2pf.8
+@man man/man8/snort2pfmon.8
+sbin/snort2pf
+sbin/snort2pfmon
+share/doc/pkg-readmes/${PKGSTEM}
+@sample /var/log/snort/
+@exec-add touch /var/log/snort/alert
+@rcscript ${RCDIR}/snort2pf

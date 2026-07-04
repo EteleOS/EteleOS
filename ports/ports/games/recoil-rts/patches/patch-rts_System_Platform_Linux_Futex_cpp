@@ -1,0 +1,15 @@
+use futex(2) instead of syscall on OpenBSD
+https://github.com/beyond-all-reason/spring/pull/1621
+
+Index: rts/System/Platform/Linux/Futex.cpp
+--- rts/System/Platform/Linux/Futex.cpp.orig
++++ rts/System/Platform/Linux/Futex.cpp
+@@ -83,7 +83,7 @@ void recursive_futex::lock()
+ 
+ 	do {
+ 		if ((c == 2) || __sync_val_compare_and_swap(&mtx, 1, 2) != 0)
+-			syscall(SYS_futex, &mtx, FUTEX_WAIT_PRIVATE, 2, NULL, NULL, 0);
++			do_futex(&mtx, FUTEX_WAIT, 2, NULL);
+ 	} while((c = __sync_val_compare_and_swap(&mtx, 0, 2)) != 0);
+ }
+ 

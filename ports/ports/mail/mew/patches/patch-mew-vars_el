@@ -1,0 +1,14 @@
+Index: elisp/mew-vars.el
+--- elisp/mew-vars.el.orig
++++ elisp/mew-vars.el
+@@ -3114,8 +3114,8 @@ your public key as well as receivers' one."
+   :group 'mew-privacy
+   :type 'string)
+ 
+-(defvar mew-prog-pgpkey      "wget")
+-(defvar mew-prog-pgpkey-args '("-q" "-O" "-"))
++(defvar mew-prog-pgpkey      "ftp")
++(defvar mew-prog-pgpkey-args '("-MVo" "-"))
+ 
+ (defvar mew-ssh-prog          "ssh")
+ (defvar mew-ssh-prog-args     nil)

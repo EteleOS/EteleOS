@@ -1,0 +1,30 @@
+Index: etc/common.php.in
+--- etc/common.php.in.orig
++++ etc/common.php.in
+@@ -5,15 +5,13 @@ $host = "localhost";
+ $user = "snmp";
+ $pass = "rtgdefault";
+ $db = "rtg";
++$port = 3306;
+ $refresh = 300;
+ 
+ date_default_timezone_set('UTC');
+  
+ /* Default locations to find RTG configuration file */
+-$configs[] = 'rtg.conf';
+-$configs[] = '@RTG_HOME@/etc/rtg.conf';
+-$configs[] = '/usr/local/rtg/etc/rtg.conf';
+-$configs[] = '/etc/rtg.conf';
++$configs[] = '/etc/rtg/rtg.conf';
+ 
+ while ($conf = each($configs))
+ {
+@@ -28,6 +26,8 @@ while ($conf = each($configs))
+ 				$cVals = preg_split("/[\s]+/", $line, 2);
+ 				if (!strcasecmp($cVals[0], "DB_Host"))
+ 					$host = chop($cVals[1]);
++				else if (!strcasecmp($cVals[0], "DB_Port"))
++					$port = chop($cVals[1]);
+ 				else if (!strcasecmp($cVals[0], "DB_User"))
+ 					$user = chop($cVals[1]);
+ 				else if (!strcasecmp($cVals[0], "DB_Pass"))

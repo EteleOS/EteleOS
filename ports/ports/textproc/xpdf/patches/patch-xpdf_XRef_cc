@@ -1,0 +1,29 @@
+Ignore owner passwords/permissions to always allow print, modify, etc.
+
+Index: xpdf/XRef.cc
+--- xpdf/XRef.cc.orig
++++ xpdf/XRef.cc
+@@ -1175,19 +1175,19 @@ GBool XRef::getEncryption(int *permFlagsA, GBool *owne
+ }
+ 
+ GBool XRef::okToPrint(GBool ignoreOwnerPW) {
+-  return (!ignoreOwnerPW && ownerPasswordOk) || (permFlags & permPrint);
++  return (1);
+ }
+ 
+ GBool XRef::okToChange(GBool ignoreOwnerPW) {
+-  return (!ignoreOwnerPW && ownerPasswordOk) || (permFlags & permChange);
++  return (1);
+ }
+ 
+ GBool XRef::okToCopy(GBool ignoreOwnerPW) {
+-  return (!ignoreOwnerPW && ownerPasswordOk) || (permFlags & permCopy);
++  return (1);
+ }
+ 
+ GBool XRef::okToAddNotes(GBool ignoreOwnerPW) {
+-  return (!ignoreOwnerPW && ownerPasswordOk) || (permFlags & permNotes);
++  return (1);
+ }
+ 
+ Object *XRef::fetch(int num, int gen, Object *obj, int recursion) {

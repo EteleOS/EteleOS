@@ -1,0 +1,24 @@
+From https://github.com/dylanaraps/neofetch/pull/1494
+
+Index: neofetch
+--- neofetch.orig
++++ neofetch
+@@ -2196,8 +2196,7 @@ get_cpu() {
+                 ;;
+                 "OpenBSD"* | "Bitrig"*)
+                     deg="$(sysctl hw.sensors | \
+-                           awk -F '=| degC' '/lm0.temp|cpu0.temp/ {print $2; exit}')"
+-                    deg="${deg/00/0}"
++                        awk -F'=|degC' '/(ksmn|adt|lm|cpu)0.temp0/ {printf("%2.1f", $2); exit}')"
+                 ;;
+             esac
+         ;;
+@@ -2520,7 +2519,7 @@ get_gpu() {
+                 ;;
+ 
+                 *)
+-                    gpu="$(glxinfo | grep -F 'OpenGL renderer string')"
++                    gpu="$(glxinfo -B | grep -F 'OpenGL renderer string')"
+                     gpu="${gpu/OpenGL renderer string: }"
+                 ;;
+             esac

@@ -1,0 +1,6 @@
+@bin bin/dwarfdump
+include/libdwarf/
+include/libdwarf/dwarf.h
+include/libdwarf/libdwarf.h
+lib/libdwarf.a
+@lib lib/libdwarf.so.${LIBdwarf_VERSION}

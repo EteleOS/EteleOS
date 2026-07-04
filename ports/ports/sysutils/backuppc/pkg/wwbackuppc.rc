@@ -1,0 +1,11 @@
+#!/bin/ksh
+
+daemon="${LOCALBASE}/bin/spawn-fcgi"
+daemon_flags="-u_backuppc -g_backuppc -p1028 ${TRUEPREFIX}/bin/BackupPC_Admin.fcgi"
+
+. /etc/rc.d/rc.subr
+
+pexp="/usr/bin/perl ${TRUEPREFIX}/bin/BackupPC_Admin.fcgi"
+rc_reload=NO
+
+rc_cmd $1

@@ -1,0 +1,14 @@
+Index: wmtime.c
+--- wmtime.c.orig
++++ wmtime.c
+@@ -282,8 +282,8 @@ void wmtime_routine(int argc, char **argv) {
+ 
+ 	struct tm	*time_struct;
+ 
+-	long		starttime;
+-	long		curtime;
++	time_t		starttime;
++	time_t		curtime;
+ 
+ 	char		*conffile = NULL;
+ 

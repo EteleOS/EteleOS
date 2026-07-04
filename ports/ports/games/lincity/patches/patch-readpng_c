@@ -1,0 +1,11 @@
+Index: readpng.c
+--- readpng.c.orig
++++ readpng.c
+@@ -4,7 +4,6 @@
+  * ---------------------------------------------------------------------- */
+ #include <stdlib.h>
+ #include "png.h"
+-#include "malloc.h"
+ #include "lin-city.h"
+ #include "lctypes.h"
+ #include "lintypes.h"

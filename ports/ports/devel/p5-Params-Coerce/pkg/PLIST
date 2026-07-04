@@ -1,0 +1,3 @@
+${P5SITE}/Params/
+${P5SITE}/Params/Coerce.pm
+@man man/man3p/Params::Coerce.3p

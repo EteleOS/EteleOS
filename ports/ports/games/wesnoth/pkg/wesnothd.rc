@@ -1,0 +1,9 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/wesnothd"
+daemon_flags="-d"
+daemon_user="_wesnothd"
+
+. /etc/rc.d/rc.subr
+
+rc_cmd $1

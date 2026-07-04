@@ -1,0 +1,7 @@
+Chocolate Doom is an SDL-based port of the classic DOOM.EXE experience from
+the days of DOS.  The project aims to provide an experience identical to that
+of the original games on original hardware.  A game configuration program is 
+included, and emulates the classic DOS-style SETUP.EXE of the originals.
+
+The project also maintains versions of the engine for Heretic, Hexen, and
+Strife.  All original game PWADs and demos should work flawlessly.

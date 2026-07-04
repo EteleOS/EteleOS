@@ -1,0 +1,10 @@
+${P5ARCH}/
+${P5ARCH}/Class/
+${P5ARCH}/Class/C3/
+${P5ARCH}/Class/C3/XS.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Class/
+${P5ARCH}/auto/Class/C3/
+${P5ARCH}/auto/Class/C3/XS/
+@so ${P5ARCH}/auto/Class/C3/XS/XS.so
+@man man/man3p/Class::C3::XS.3p

@@ -1,0 +1,10 @@
+${P5SITE}/Modern/
+${P5SITE}/Modern/Perl.pm
+${P5SITE}/odern/
+${P5SITE}/odern/Perl.pm
+@man man/man3p/Modern::Perl.3p
+@man man/man3p/odern::Perl.3p
+share/doc/p5-Modern-Perl/
+share/doc/p5-Modern-Perl/Changes
+share/doc/p5-Modern-Perl/LICENSE
+share/doc/p5-Modern-Perl/README

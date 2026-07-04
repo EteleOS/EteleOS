@@ -1,0 +1,4 @@
+${P5SITE}/CPAN/
+${P5SITE}/CPAN/Perl/
+${P5SITE}/CPAN/Perl/Releases.pm
+@man man/man3p/CPAN::Perl::Releases.3p

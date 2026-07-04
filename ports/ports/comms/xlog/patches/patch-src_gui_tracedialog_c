@@ -1,0 +1,14 @@
+--- src/gui_tracedialog.c.orig	Mon Sep 12 16:04:10 2011
++++ src/gui_tracedialog.c	Mon Sep 12 16:04:29 2011
+@@ -65,10 +65,8 @@ stop_tracing (void)
+ 	fclose (finfo.fd);
+ 	dup2 (saved_fd, STDERR_FILENO);
+ 	close (saved_fd);
+-#ifndef __NetBSD__
+-#ifndef G_OS_WIN32
++#if !defined(__NetBSD__) && !defined(__OpenBSD__) && !defined(WIN32)
+ 	stderr = fdopen (STDERR_FILENO, "w");
+-#endif
+ #endif
+ 	hamlibresult = start_hamlib (preferences.rigid, preferences.device,
+ 		RIG_DEBUG_NONE, preferences.polltime);

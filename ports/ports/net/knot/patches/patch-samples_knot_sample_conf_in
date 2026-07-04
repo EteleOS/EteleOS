@@ -1,0 +1,14 @@
+Adjust default user name.
+
+Index: samples/knot.sample.conf.in
+--- samples/knot.sample.conf.in.orig
++++ samples/knot.sample.conf.in
+@@ -3,7 +3,7 @@
+ 
+ server:
+     rundir: "@run_dir@"
+-    user: knot:knot
++    user: _knot:_knot
+     automatic-acl: on
+ #    listen: [ 127.0.0.1@53, ::1@53 ]
+ 

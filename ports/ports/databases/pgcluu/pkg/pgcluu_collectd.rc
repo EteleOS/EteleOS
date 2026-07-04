@@ -1,0 +1,17 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/pgcluu_collectd --daemon"
+daemon_flags="-i 60 -h localhost -U postgres --disable-sar -f /var/run/pgcluu_collectd.pid /var/db/pgcluu"
+
+. /etc/rc.d/rc.subr
+
+pexp="perl: pgcluu_collectd"
+rc_reload=NO
+
+rc_pre() {
+	install -d /var/db/pgcluu
+	# it doesn't clean up after itself and fails to start if pid file is found.
+	rm -f /var/run/pgcluu_collectd.pid
+}
+
+rc_cmd $1

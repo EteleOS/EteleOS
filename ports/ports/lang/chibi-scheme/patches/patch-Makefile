@@ -1,0 +1,20 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -378,8 +378,6 @@ install-base: all
+ 	$(MKDIR) $(DESTDIR)$(LIBDIR)
+ 	$(MKDIR) $(DESTDIR)$(SOLIBDIR)
+ 	$(INSTALL_EXE) -m0755 libchibi-scheme$(SO_VERSIONED_SUFFIX) $(DESTDIR)$(SOLIBDIR)/
+-	$(LN) libchibi-scheme$(SO_VERSIONED_SUFFIX) $(DESTDIR)$(SOLIBDIR)/libchibi-scheme$(SO_MAJOR_VERSIONED_SUFFIX)
+-	$(LN) libchibi-scheme$(SO_VERSIONED_SUFFIX) $(DESTDIR)$(SOLIBDIR)/libchibi-scheme$(SO)
+ 	-if test -f libchibi-scheme.a; then $(INSTALL) -m0644 libchibi-scheme.a $(DESTDIR)$(SOLIBDIR)/; fi
+ 	$(MKDIR) $(DESTDIR)$(PKGCONFDIR)
+ 	$(INSTALL) -m0644 chibi-scheme.pc $(DESTDIR)$(PKGCONFDIR)
+@@ -387,7 +385,6 @@ install-base: all
+ 	$(INSTALL) -m0644 doc/chibi-scheme.1 $(DESTDIR)$(MANDIR)/
+ 	$(INSTALL) -m0644 doc/chibi-ffi.1 $(DESTDIR)$(MANDIR)/
+ 	$(INSTALL) -m0644 doc/chibi-doc.1 $(DESTDIR)$(MANDIR)/
+-	-if type $(LDCONFIG) >/dev/null 2>/dev/null; then $(LDCONFIG); fi
+ 
+ install: install-base
+ ifneq "$(IMAGE_FILES)" ""

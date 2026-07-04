@@ -1,0 +1,5 @@
+bin/wtf
+@man man/man6/wtf.6
+share/misc/acronyms
+share/misc/acronyms-o
+share/misc/acronyms.comp

@@ -1,0 +1,11 @@
+--- web/Makefile.in.orig	Mon Jan  4 18:07:09 2016
++++ web/Makefile.in	Tue Jan 31 09:32:55 2017
+@@ -70,7 +70,7 @@ am__make_running_with_option = \
+   test $$has_opt = yes
+ am__make_dryrun = (target_option=n; $(am__make_running_with_option))
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+-pkgdatadir = $(datadir)/@PACKAGE@
++pkgdatadir = $(datadir)/examples/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+ pkglibdir = $(libdir)/@PACKAGE@
+ pkglibexecdir = $(libexecdir)/@PACKAGE@

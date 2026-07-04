@@ -1,0 +1,10 @@
+--- random.c.orig	Wed Dec 11 20:07:15 2013
++++ random.c	Wed Dec 11 20:07:15 2013
+@@ -73,7 +73,6 @@ extern bool read_pat_mode;
+ extern bool dont_repeat;
+ extern BUFFER sav_buf;
+ 
+-char dec_chr_ok ();
+ ulong get_long ();
+ void wind_on_dot_all ();
+ 

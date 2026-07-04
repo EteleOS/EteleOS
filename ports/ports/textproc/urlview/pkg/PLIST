@@ -1,0 +1,6 @@
+@bin bin/urlview
+@man man/man1/urlview.1
+share/examples/urlview/
+share/examples/urlview/sample.urlview
+@sample ${SYSCONFDIR}/urlview.conf
+share/examples/urlview/url_handler.sh

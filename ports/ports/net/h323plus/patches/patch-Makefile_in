@@ -1,0 +1,30 @@
+We only use versioned libraries (.so.X.Y versus .so).
+
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -100,22 +100,9 @@ install: opt
+ 	echo "*** 'make install' is usually a bad idea, use 'make optnoshared' and point OPENH323DIR to your source dir ***"
+ 	mkdir -p $(DESTDIR)$(LIBDIR)
+ 	rm -f $(DESTDIR)$(LIBDIR)/libh323_*_r.so*
+-	$(INSTALL) -m 444 lib/$(OH323_FILE).@MAJOR_VERSION@.@MINOR_VERSION@.@BUILD_NUMBER@ $(DESTDIR)$(LIBDIR)
++	$(INSTALL) -m 444 lib/$(OH323_FILE).${LIBh323_VERSION} $(DESTDIR)$(LIBDIR)
+ 	(cd $(DESTDIR)$(LIBDIR) ; \
+-		rm -f  $(OH323_FILE).@MAJOR_VERSION@.@MINOR_VERSION@ ; \
+-		ln -sf $(OH323_FILE).@MAJOR_VERSION@.@MINOR_VERSION@.@BUILD_NUMBER@ $(OH323_FILE).@MAJOR_VERSION@.@MINOR_VERSION@ \
+-	)
+-	(cd $(DESTDIR)$(LIBDIR) ; \
+-		rm -f  $(OH323_FILE).@MAJOR_VERSION@ ; \
+-		ln -sf $(OH323_FILE).@MAJOR_VERSION@.@MINOR_VERSION@.@BUILD_NUMBER@ $(OH323_FILE).@MAJOR_VERSION@ \
+-	)
+-	(cd $(DESTDIR)$(LIBDIR) ; \
+-		rm -f  $(OH323_FILE) ; \
+-		ln -sf $(OH323_FILE).@MAJOR_VERSION@.@MINOR_VERSION@.@BUILD_NUMBER@ $(OH323_FILE) \
+-	)
+-	(cd $(DESTDIR)$(LIBDIR); \
+-		rm -f  libopenh323.$(SHAREDLIBEXT) ; \
+-		ln -sf $(OH323_FILE) libopenh323.$(SHAREDLIBEXT) \
++		ln -sf $(OH323_FILE).${LIBh323_VERSION} $(OH323_FILE) \
+ 	)
+ 	( for dir in $(DESTDIR)$(LIBDIR) \
+ 		     $(DESTDIR)$(PREFIX)/include/openh323 \

@@ -1,0 +1,5 @@
+${P5SITE}/strictures/
+${P5SITE}/strictures.pm
+${P5SITE}/strictures/extra.pm
+@man man/man3p/strictures.3p
+@man man/man3p/strictures::extra.3p

@@ -1,0 +1,46 @@
+Index: doc/example-config/conf.d/10-mail.conf
+--- doc/example-config/conf.d/10-mail.conf.orig	Mon Jun 18 14:15:32 2018
++++ doc/example-config/conf.d/10-mail.conf	Sun Oct 21 15:56:45 2018
+@@ -147,8 +147,9 @@ namespace inbox {
+ ##
+ 
+ # Don't use mmap() at all. This is required if you store indexes to shared
+-# filesystems (NFS or clustered filesystem).
+-#mmap_disable = no
++# filesystems (NFS or clustered filesystem) or for some operating systems
++# which use a separate cache for mmap, such as OpenBSD.
++mmap_disable = yes
+ 
+ # Rely on O_EXCL to work when creating dotlock files. NFS supports O_EXCL
+ # since version 3, so this should be safe to use nowadays by default.
+@@ -175,7 +176,7 @@ namespace inbox {
+ # to make sure that users can't log in as daemons or other system users.
+ # Note that denying root logins is hardcoded to dovecot binary and can't
+ # be done even if first_valid_uid is set to 0.
+-#first_valid_uid = 500
++first_valid_uid = 1000
+ #last_valid_uid = 0
+ 
+ # Valid GID range for users, defaults to non-root/wheel. Users having
+@@ -208,10 +209,10 @@ namespace inbox {
+ 
+ # UNIX socket path to master authentication server to find users.
+ # This is used by imap (for shared users) and lda.
+-#auth_socket_path = /var/run/dovecot/auth-userdb
++#auth_socket_path = /var/dovecot/auth-userdb
+ 
+ # Directory where to look up mail plugins.
+-#mail_plugin_dir = /usr/lib/dovecot
++mail_plugin_dir = ${PREFIX}/lib/dovecot
+ 
+ # Space separated list of plugins to load for all services. Plugins specific to
+ # IMAP, LDA, etc. are added to this list in their own .conf files.
+@@ -321,7 +322,7 @@ protocol !indexer-worker {
+ # locking methods as well. Some operating systems don't allow using some of
+ # them simultaneously.
+ #mbox_read_locks = fcntl
+-#mbox_write_locks = dotlock fcntl
++mbox_write_locks = fcntl
+ 
+ # Maximum time to wait for lock (all of them) before aborting.
+ #mbox_lock_timeout = 5 mins

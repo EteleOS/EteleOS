@@ -1,0 +1,50 @@
+Index: replay.c
+--- replay.c.orig
++++ replay.c
+@@ -1,4 +1,6 @@
+ #include <stdio.h>
++#include <stdlib.h> /* exit */
++#include <string.h> /* strlen */
+ 
+ #include "constant.h"
+   
+@@ -22,6 +24,7 @@
+   information for replay can show the drawing.
+ ******************************************************************************/
+ 
++void
+ store_draw_cell (cell)
+   cell_type *cell;
+ {
+@@ -102,6 +105,7 @@ store_draw_cell (cell)
+   Load and replay an entire game from the previously opened Config->fp.
+ ******************************************************************************/
+ 
++void
+ replay_game ()
+ {
+   int i, j,
+@@ -281,6 +285,7 @@ replay_game ()
+   Store relevant game parameters to the previously opened Config->fp.
+ ******************************************************************************/
+ 
++void
+ store_parameters ()
+ {
+   int i,
+@@ -316,6 +321,7 @@ store_parameters ()
+   Load relevant game parameters from the previously opened Config->fp.
+ ******************************************************************************/
+ 
++void
+ load_parameters ()
+ {
+   int i,
+@@ -383,6 +389,7 @@ load_parameters ()
+   them to stdout.
+ ******************************************************************************/
+ 
++void
+ game_stats ()
+ {
+   int i, j,

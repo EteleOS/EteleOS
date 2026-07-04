@@ -1,0 +1,12 @@
+Index: Makefile.PL
+--- Makefile.PL.orig
++++ Makefile.PL
+@@ -822,7 +822,7 @@ sub MY::install {
+ 
+   foreach (@code) {
+     # Add our install targets as a dependency to all top-level install targets
+-    s/^(install(?:_[a-z]+)?\s*::?\s*.*)$/$1 conf__install data__install/;
++    s/^(install(?:_[a-z]+)?\s*::?\s*.*)$/$1 data__install/;
+   }
+ 
+   clean_MY_globals($self);

@@ -1,0 +1,12 @@
+Index: src/xmlParser.cpp
+--- src/xmlParser.cpp.orig
++++ src/xmlParser.cpp
+@@ -461,7 +461,7 @@ XMLSTR stringDup(XMLCSTR lpszData, int cbData)
+     if (lpszNew)
+     {
+         memcpy(lpszNew, lpszData, (cbData) * sizeof(XMLCHAR));
+-        lpszNew[cbData] = (XMLCHAR)NULL;
++        lpszNew[cbData] = '\0';
+     }
+     return lpszNew;
+ }

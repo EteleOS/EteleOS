@@ -1,0 +1,3 @@
+# cannot run >1 instance of X(7) under OpenBSD at default securelevel(7)
+[org.gnome.desktop.lockdown]
+disable-user-switching=true

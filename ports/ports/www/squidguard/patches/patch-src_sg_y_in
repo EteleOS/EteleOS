@@ -1,0 +1,12 @@
+Index: src/sg.y.in
+--- src/sg.y.in.orig
++++ src/sg.y.in
+@@ -35,7 +35,7 @@ extern int globalSyslog;
+ 
+ #include "sgEx.h"
+ 
+-FILE *yyin, *yyout;
++extern FILE *yyin, *yyout;
+ char *configFile;
+ 
+ int numTimeElements;

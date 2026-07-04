@@ -1,0 +1,7 @@
+@comment lib/libauthmysql.a
+@comment lib/libauthmysql.la
+@lib lib/libauthmysql.so.${LIBauthmysql_VERSION}
+share/doc/courier-authlib/README.authmysql.myownquery
+share/examples/courier-authlib/authmysqlrc.dist
+@mode 600
+@sample ${SYSCONFDIR}/courier/authmysqlrc

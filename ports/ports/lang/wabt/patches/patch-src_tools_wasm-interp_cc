@@ -1,0 +1,25 @@
+Index: src/tools/wasm-interp.cc
+--- src/tools/wasm-interp.cc.orig
++++ src/tools/wasm-interp.cc
+@@ -22,6 +22,9 @@
+ #include <string>
+ #include <vector>
+ 
++#include <err.h>
++#include <unistd.h>
++
+ #include "wabt/binary-reader.h"
+ #include "wabt/error-formatter.h"
+ #include "wabt/feature.h"
+@@ -447,6 +450,11 @@ int ProgramMain(int argc, char** argv) {
+   ParseOptions(argc, argv);
+   s_store.setFeatures(s_features);
+ 
++  if (unveil(s_infile, "r") != 0)
++    err(1, "unveil: %s", s_infile);
++  if (pledge("stdio rpath", NULL) != 0)
++    err(1, "pledge");
++  
+   wabt::Result result = ReadAndRunModule(s_infile);
+   return result != wabt::Result::Ok;
+ }

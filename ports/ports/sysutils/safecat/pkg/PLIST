@@ -1,0 +1,4 @@
+bin/maildir
+@bin bin/safecat
+@man man/man1/maildir.1
+@man man/man1/safecat.1

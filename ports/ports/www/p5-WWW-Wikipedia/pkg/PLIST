@@ -1,0 +1,8 @@
+@conflict surfraw-*
+bin/wikipedia
+${P5SITE}/WWW/Wikipedia/
+${P5SITE}/WWW/Wikipedia.pm
+${P5SITE}/WWW/Wikipedia/Entry.pm
+@man man/man1/wikipedia.1
+@man man/man3p/WWW::Wikipedia.3p
+@man man/man3p/WWW::Wikipedia::Entry.3p

@@ -1,0 +1,16 @@
+Index: server/channels/utils/fileutils/fileutils.go
+--- server/channels/utils/fileutils/fileutils.go.orig
++++ server/channels/utils/fileutils/fileutils.go
+@@ -12,11 +12,7 @@ import (
+ 
+ func CommonBaseSearchPaths() []string {
+ 	paths := []string{
+-		".",
+-		"..",
+-		"../..",
+-		"../../..",
+-		"../../../..",
++		"${PREFIX}/share/mattermost",
+ 	}
+ 
+ 	// this enables the server to be used in tests from a different repository

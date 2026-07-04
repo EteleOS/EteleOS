@@ -1,0 +1,5 @@
+bin/vkquake
+share/doc/pkg-readmes/${PKGSTEM}
+share/vkquake/
+share/vkquake/id1/
+@bin share/vkquake/vkquake

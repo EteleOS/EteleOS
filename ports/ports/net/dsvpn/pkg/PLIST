@@ -1,0 +1,3 @@
+@bin sbin/dsvpn
+share/doc/dsvpn/
+share/doc/dsvpn/README.md

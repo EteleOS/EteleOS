@@ -1,0 +1,11 @@
+--- imap/src/imapd/imapd.8.orig	Sat Oct  2 10:37:57 2010
++++ imap/src/imapd/imapd.8	Sun Sep 23 11:28:14 2012
+@@ -16,7 +16,7 @@
+ .SH NAME
+ IMAPd \- Internet Message Access Protocol server
+ .SH SYNOPSIS
+-.B /usr/etc/imapd
++.B imapd
+ .SH DESCRIPTION
+ .I imapd
+ is a server which supports the

@@ -1,0 +1,12 @@
+${GEM_LIB}/cache/${DISTNAME}.gem
+${GEM_LIB}/gems/${DISTNAME}/
+${GEM_LIB}/gems/${DISTNAME}/HISTORY
+${GEM_LIB}/gems/${DISTNAME}/LICENSE
+${GEM_LIB}/gems/${DISTNAME}/MANIFEST
+${GEM_LIB}/gems/${DISTNAME}/Makefile
+${GEM_LIB}/gems/${DISTNAME}/README
+${GEM_LIB}/gems/${DISTNAME}/README.euc
+${GEM_LIB}/gems/${DISTNAME}/lib/
+${GEM_LIB}/gems/${DISTNAME}/lib/shadow.so
+${GEM_LIB}/gems/${DISTNAME}/ruby-shadow.gemspec
+${GEM_LIB}/specifications/${DISTNAME}.gemspec

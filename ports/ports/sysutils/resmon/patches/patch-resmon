@@ -1,0 +1,10 @@
+--- resmon.orig	Mon Jun  8 14:32:28 2009
++++ resmon	Sun Aug  2 03:06:45 2009
+@@ -2,7 +2,6 @@
+ 
+ BEGIN {
+   (my $dir = $0) =~ s/\/?[^\/]+$//;
+-  eval "use lib '$dir/lib';";
+   die $@ if($@);
+ };
+ 

@@ -1,0 +1,30 @@
+Index: Makefile.rdy
+--- Makefile.rdy.orig
++++ Makefile.rdy
+@@ -226,13 +226,13 @@ DBGFLAGS := -n32 -g3 -DDEBUGMODE=1
+ else
+ WFLAGS := -Wall -W -Wwrite-strings -Wstrict-prototypes -Wmissing-declarations -DDUMB_DECLARE_DEPRECATED
+ WFLAGS_ALLEGRO := -Wno-missing-declarations
+-OFLAGS := -O2 -ffast-math -fomit-frame-pointer
+-DBGFLAGS := -DDEBUGMODE=1 -g3
++OFLAGS := -O2 -ffast-math -fomit-frame-pointer -fgnu89-inline
++DBGFLAGS := -DDEBUGMODE=1 -g3 -fgnu89-inline
+ endif
+ endif
+ 
+-CFLAGS_RELEASE := -Iinclude $(WFLAGS) $(OFLAGS)
+-CFLAGS_DEBUG := -Iinclude $(WFLAGS) $(DBGFLAGS)
++CFLAGS_RELEASE := -Iinclude -I/usr/local/include $(WFLAGS) $(OFLAGS)
++CFLAGS_DEBUG := -Iinclude -I${LOCALBASE}/include $(WFLAGS) $(DBGFLAGS)
+ 
+ LDFLAGS := -s
+ 
+@@ -332,7 +332,7 @@ $(CORE_EXAMPLES_EXE): examples/%$(EXE_SUFFIX): example
+ 	$(CC) $^ -o $@ $(LDFLAGS) $(LINK_MATH)
+ 
+ $(ALLEGRO_EXAMPLES_EXE): examples/%$(EXE_SUFFIX): examples/%.o $(ALLEGRO_LIB_FILE_RELEASE) $(CORE_LIB_FILE_RELEASE)
+-	$(CC) $^ -o $@ $(LDFLAGS) $(LINK_ALLEGRO)
++	$(CC) $^ -o $@ $(LDFLAGS) $(LINK_ALLEGRO) $(LINK_MATH)
+ 
+ $(CORE_EXAMPLES_OBJ): examples/%.o: examples/%.c include/dumb.h
+ 	$(CC) $(CFLAGS_RELEASE) -c $< -o $@

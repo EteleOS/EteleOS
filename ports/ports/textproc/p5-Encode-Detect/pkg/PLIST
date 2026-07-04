@@ -1,0 +1,12 @@
+${P5ARCH}/
+${P5ARCH}/Encode/
+${P5ARCH}/Encode/Detect/
+${P5ARCH}/Encode/Detect.pm
+${P5ARCH}/Encode/Detect/Detector.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Encode/
+${P5ARCH}/auto/Encode/Detect/
+${P5ARCH}/auto/Encode/Detect/Detector/
+${P5ARCH}/auto/Encode/Detect/Detector/Detector.so
+@man man/man3p/Encode::Detect.3p
+@man man/man3p/Encode::Detect::Detector.3p

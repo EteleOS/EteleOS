@@ -1,0 +1,12 @@
+Index: source/rltiles/Makefile
+--- source/rltiles/Makefile.orig
++++ source/rltiles/Makefile
+@@ -57,7 +57,7 @@ endif
+ 
+ # Attempt to use a full compiler name, to make
+ # distcc builds work nicely.
+-LMACH := $(shell gcc -dumpmachine)-
++LMACH := -
+ ifeq ($(LMACH),-)
+ LMACH :=
+ endif

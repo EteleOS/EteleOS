@@ -1,0 +1,11 @@
+--- sdl.pc.in.orig	Mon Oct 12 19:07:20 2009
++++ sdl.pc.in	Sat Nov  7 13:30:12 2009
+@@ -10,6 +10,5 @@ Description: Simple DirectMedia Layer is a cross-platf
+ Version: @SDL_VERSION@
+ Requires:
+ Conflicts:
+-Libs: -L${libdir} @SDL_RLD_FLAGS@ @SDL_LIBS@
+-Libs.private: @SDL_STATIC_LIBS@
+-Cflags: -I${includedir}/SDL @SDL_CFLAGS@
++Libs: -L${libdir} @SDL_RLD_FLAGS@ @SDL_LIBS@ @X_LIBS@
++Cflags: -I${includedir}/SDL @SDL_CFLAGS@ @X_CFLAGS@

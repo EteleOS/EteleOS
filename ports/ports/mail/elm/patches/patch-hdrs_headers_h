@@ -1,0 +1,10 @@
+--- hdrs/headers.h.orig	Tue Nov  9 20:42:41 1999
++++ hdrs/headers.h	Wed Mar 16 21:30:21 2016
+@@ -16,6 +16,7 @@
+ 
+ 
+ #include <stdio.h>
++#include <errno.h>
+ #include <fcntl.h>
+ #include <signal.h>
+ 

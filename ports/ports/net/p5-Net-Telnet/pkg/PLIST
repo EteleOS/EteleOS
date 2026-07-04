@@ -1,0 +1,3 @@
+${P5SITE}/Net/
+${P5SITE}/Net/Telnet.pm
+@man man/man3p/Net::Telnet.3p

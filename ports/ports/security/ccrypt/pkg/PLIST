@@ -1,0 +1,13 @@
+bin/ccat
+bin/ccdecrypt
+bin/ccencrypt
+@bin bin/ccguess
+@bin bin/ccrypt
+@man man/man1/ccat.1
+@man man/man1/ccdecrypt.1
+@man man/man1/ccencrypt.1
+@man man/man1/ccguess.1
+@man man/man1/ccrypt.1
+share/locale/de/LC_MESSAGES/ccrypt.mo
+share/locale/et/LC_MESSAGES/ccrypt.mo
+share/locale/fr/LC_MESSAGES/ccrypt.mo

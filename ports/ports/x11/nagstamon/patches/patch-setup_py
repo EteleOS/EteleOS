@@ -1,0 +1,21 @@
+Index: setup.py
+--- setup.py.orig
++++ setup.py
+@@ -41,6 +41,8 @@ if OS not in ['Windows', 'Darwin']:
+     # platform.dist() does not exist on NetBSD
+     elif OS == 'NetBSD':
+         DIST, DIST_VERSION, DIST_NAME = ('', '', '')
++    elif OS == 'OpenBSD':
++        DIST, DIST_VERSION, DIST_NAME = ('', '', '')
+     else:
+         DIST, DIST_VERSION, DIST_NAME = platform.dist()
+     NAME = NAME.lower()
+@@ -155,7 +157,7 @@ setup(name=NAME,
+                                   'resources/qui/*',
+                                   'resources/LICENSE',
+                                   'resources/CREDITS']},
+-      data_files=[(f'{sys.prefix}/share/man/man1', ['Nagstamon/resources/nagstamon.1.gz']),
++      data_files=[(f'{sys.prefix}/man/man1', ['Nagstamon/resources/nagstamon.1.gz']),
+                   (f'{sys.prefix}/share/pixmaps', ['Nagstamon/resources/nagstamon.svg']),
+                   (f'{sys.prefix}/share/applications', ['Nagstamon/resources/nagstamon.desktop'])],
+       options=dict(build_exe=build_exe_options,

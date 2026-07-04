@@ -1,0 +1,15 @@
+Index: gtk/updateiconcache.c
+--- gtk/updateiconcache.c.orig
++++ gtk/updateiconcache.c
+@@ -1736,6 +1736,11 @@ main (int argc, char **argv)
+   path = g_locale_to_utf8 (path, -1, NULL, NULL, NULL);
+ #endif
+ 
++  if (pledge("stdio rpath wpath cpath fattr", NULL) == -1) {
++	  g_printerr (_("pledge\n"));
++	  exit (1);
++  }
++
+   if (validate)
+     {
+        gchar *file = g_build_filename (path, CACHE_NAME, NULL);

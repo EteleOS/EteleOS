@@ -1,0 +1,55 @@
+@conflict flare-*
+@bin bin/flare
+share/applications/de.schmidhuberj.Flare.desktop
+share/dbus-1/services/de.schmidhuberj.Flare.service
+share/flare/
+share/flare/resources.gresource
+share/glib-2.0/schemas/de.schmidhuberj.Flare.gschema.xml
+share/icons/hicolor/scalable/apps/de.schmidhuberj.Flare.svg
+share/icons/hicolor/symbolic/apps/de.schmidhuberj.Flare-symbolic.svg
+share/locale/ar/LC_MESSAGES/flare.mo
+share/locale/bn/LC_MESSAGES/flare.mo
+share/locale/bs/LC_MESSAGES/flare.mo
+share/locale/ca/LC_MESSAGES/flare.mo
+share/locale/cs/LC_MESSAGES/flare.mo
+share/locale/da/LC_MESSAGES/flare.mo
+share/locale/de/LC_MESSAGES/flare.mo
+share/locale/el/LC_MESSAGES/flare.mo
+share/locale/es/LC_MESSAGES/flare.mo
+share/locale/et/LC_MESSAGES/flare.mo
+share/locale/eu/LC_MESSAGES/flare.mo
+share/locale/fa/LC_MESSAGES/flare.mo
+share/locale/fi/LC_MESSAGES/flare.mo
+share/locale/fr/LC_MESSAGES/flare.mo
+share/locale/hr/LC_MESSAGES/flare.mo
+share/locale/hu/LC_MESSAGES/flare.mo
+share/locale/ia/LC_MESSAGES/flare.mo
+share/locale/it/LC_MESSAGES/flare.mo
+share/locale/ja/LC_MESSAGES/flare.mo
+share/locale/kab/LC_MESSAGES/flare.mo
+share/locale/ko/LC_MESSAGES/flare.mo
+share/locale/ml/LC_MESSAGES/flare.mo
+share/locale/nb_NO/LC_MESSAGES/flare.mo
+share/locale/nl/LC_MESSAGES/flare.mo
+share/locale/oc/LC_MESSAGES/flare.mo
+share/locale/pl/LC_MESSAGES/flare.mo
+share/locale/pt/LC_MESSAGES/flare.mo
+share/locale/pt_BR/LC_MESSAGES/flare.mo
+share/locale/ro/LC_MESSAGES/flare.mo
+share/locale/ru/LC_MESSAGES/flare.mo
+share/locale/sv/LC_MESSAGES/flare.mo
+share/locale/ta/LC_MESSAGES/flare.mo
+share/locale/te/LC_MESSAGES/flare.mo
+share/locale/tr/LC_MESSAGES/flare.mo
+share/locale/uk/LC_MESSAGES/flare.mo
+share/locale/vi/LC_MESSAGES/flare.mo
+share/locale/zh_Hans/
+share/locale/zh_Hans/LC_MESSAGES/
+share/locale/zh_Hans/LC_MESSAGES/flare.mo
+share/locale/zh_Hant/
+share/locale/zh_Hant/LC_MESSAGES/
+share/locale/zh_Hant/LC_MESSAGES/flare.mo
+share/metainfo/de.schmidhuberj.Flare.metainfo.xml
+@tag glib-compile-schemas
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

@@ -1,0 +1,12 @@
+@bin bin/kanatest
+share/applications/kanatest.desktop
+share/locale/de/LC_MESSAGES/kanatest.mo
+share/locale/fr/LC_MESSAGES/kanatest.mo
+share/locale/hu/LC_MESSAGES/kanatest.mo
+share/locale/pl/LC_MESSAGES/kanatest.mo
+share/locale/pt/LC_MESSAGES/kanatest.mo
+share/locale/ru/LC_MESSAGES/kanatest.mo
+share/pixmaps/
+share/pixmaps/kanatest.png
+share/pixmaps/kanatest.svg
+@tag update-desktop-database

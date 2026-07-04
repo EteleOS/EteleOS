@@ -1,0 +1,6 @@
+share/fonts/
+@fontdir share/fonts/mononoki/
+share/fonts/mononoki/mononoki-Bold.ttf
+share/fonts/mononoki/mononoki-BoldItalic.ttf
+share/fonts/mononoki/mononoki-Italic.ttf
+share/fonts/mononoki/mononoki-Regular.ttf

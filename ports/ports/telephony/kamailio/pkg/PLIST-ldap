@@ -1,0 +1,6 @@
+@so lib/kamailio/modules/db2_ldap.so
+@so lib/kamailio/modules/h350.so
+@so lib/kamailio/modules/ldap.so
+share/doc/kamailio/modules/README.db2_ldap
+share/doc/kamailio/modules/README.h350
+share/doc/kamailio/modules/README.ldap

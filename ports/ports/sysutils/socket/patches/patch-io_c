@@ -1,0 +1,11 @@
+Index: io.c
+--- io.c.orig
++++ io.c
+@@ -15,6 +15,7 @@ Please read the file COPYRIGHT for further details.
+ #include <sys/bsdtypes.h>
+ #endif
+ #include <errno.h>
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>

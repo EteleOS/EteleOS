@@ -1,0 +1,12 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -352,7 +352,7 @@ libexecdir = @libexecdir@
+ localedir = @localedir@
+ localstatedir = @localstatedir@
+ lpr = @lpr@
+-mandir = ${prefix}/share/man
++mandir = ${prefix}/man
+ mkdir_p = @mkdir_p@
+ mv = @mv@
+ oldincludedir = @oldincludedir@

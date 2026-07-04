@@ -1,0 +1,2 @@
+@bin bin/nbtscan
+@man man/man1/nbtscan.1

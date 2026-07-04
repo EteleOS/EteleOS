@@ -1,0 +1,30 @@
+Index: src/libspf2/spf_compile.c
+--- src/libspf2/spf_compile.c.orig
++++ src/libspf2/spf_compile.c
+@@ -582,7 +582,7 @@ SPF_c_parse_macro(SPF_server_t *spf_server,
+ 		switch (src[idx]) {
+ 		case '%':
+ 			if (spf_server->debug > 3)
+-				SPF_debugf("Adding literal %%");
++				SPF_debugf("%s", "Adding literal %");
+ 			SPF_ENSURE_STRING_AVAIL(1);
+ 			*dst++ = '%';
+ 			ds_len++;
+@@ -591,7 +591,7 @@ SPF_c_parse_macro(SPF_server_t *spf_server,
+ 			
+ 		case '_':
+ 			if (spf_server->debug > 3)
+-				SPF_debugf("Adding literal space");
++				SPF_debugf("%s", "Adding literal space");
+ 			SPF_ENSURE_STRING_AVAIL(1);
+ 			*dst++ = ' ';
+ 			ds_len++;
+@@ -600,7 +600,7 @@ SPF_c_parse_macro(SPF_server_t *spf_server,
+ 
+ 		case '-':
+ 			if (spf_server->debug > 3)
+-				SPF_debugf("Adding escaped space");
++				SPF_debugf("%s", "Adding escaped space");
+ 			SPF_ENSURE_STRING_AVAIL(3);
+ 			*dst++ = '%'; *dst++ = '2'; *dst++ = '0';
+ 			ds_len += 3;

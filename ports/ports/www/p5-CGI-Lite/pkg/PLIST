@@ -1,0 +1,11 @@
+${P5SITE}/CGI/
+${P5SITE}/CGI/Lite.pm
+@man man/man3p/CGI::Lite.3p
+share/examples/p5-CGI-Lite/
+share/examples/p5-CGI-Lite/cookies
+share/examples/p5-CGI-Lite/file
+share/examples/p5-CGI-Lite/get_post
+share/examples/p5-CGI-Lite/post
+share/examples/p5-CGI-Lite/print
+share/examples/p5-CGI-Lite/reference
+share/examples/p5-CGI-Lite/upload

@@ -1,0 +1,18 @@
+--- 1.0/src/Flv_Style.cxx.orig	Sat Jan 22 14:28:44 2000
++++ 1.0/src/Flv_Style.cxx	Sat Feb 10 19:44:38 2001
+@@ -471,6 +471,15 @@ Flv_Style_List::Flv_Style_List()
+ 	vcount = vallocated = vcurrent = 0;
+ }
+ 
++Flv_Style_List::~Flv_Style_List()
++{
++	if(list) {
++		for (int t=0;	t<vcount; ++t)
++			list[t]->clear_all();
++		delete []list;
++	}
++}
++
+ void Flv_Style_List::compact(void)
+ {
+ 	int n, t;

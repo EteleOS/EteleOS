@@ -1,0 +1,13 @@
+High-performance inference of OpenAI's Whisper automatic speech
+recognition (ASR) model. Features include:
+
+- Plain C/C++ implementation depending only on GGML
+- AVX intrinsics support for amd64
+- VSX intrinsics support for POWER architectures
+- Mixed F16 / F32 precision
+- Integer quantization support
+- Zero memory allocations at runtime
+- Vulkan support
+- Support for CPU-only inference
+- C-style API
+- Voice Activity Detection (VAD)

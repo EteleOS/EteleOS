@@ -1,0 +1,14 @@
+Index: WindowMaker/Makefile.in
+--- WindowMaker/Makefile.in.orig
++++ WindowMaker/Makefile.in
+@@ -865,8 +865,8 @@ uninstall-am: uninstall-dist_prefsdataDATA \
+ 
+ 
+ $(GENERATED_MENUS):
+-	$(AM_V_GEN)sed -e "s:#wprefs#:$(wpexecbindir)/WPrefs:" \
+-		-e "s:#wmdatadir#:$(pkgdatadir):" $(srcdir)/$@.in > $@
++	$(AM_V_GEN)sed -e "s:#wprefs#:${TRUEPREFIX}/bin/WPrefs:" \
++		-e "s:#wmdatadir#:${TRUEPREFIX}/share/WindowMaker:" $(srcdir)/$@.in > $@
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

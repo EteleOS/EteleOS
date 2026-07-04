@@ -1,0 +1,40 @@
+COMMENT =	library to access the LVM volume system format
+
+VERSION =	20240504
+DISTNAME =	libvslvm-experimental-${VERSION}
+PKGNAME =	${DISTNAME:S/-experimental//}
+
+SHARED_LIBS +=  vslvm                       0.1 # 1.0
+
+CATEGORIES =	sysutils security
+
+HOMEPAGE =	https://github.com/libyal/libvslvm/wiki
+
+MAINTAINER =	Sebastian Reitenbach <sebastia@openbsd.org>
+
+SITES =		https://github.com/libyal/libvslvm/releases/download/${VERSION}/
+
+# LGPLv3+
+PERMIT_PACKAGE =	Yes
+
+WANTLIB =  ${MODPY_WANTLIB}
+WANTLIB += bfio c fuse iconv intl m pthread util
+
+CONFIGURE_STYLE =	gnu
+CONFIGURE_ARGS +=	--enable-python
+
+WRKDIST =	${WRKDIR}/${PKGNAME}
+
+MODULES +=	lang/python
+
+BUILD_DEPENDS=	devel/gettext,-tools \
+		devel/py-setuptools
+
+LIB_DEPENDS +=	devel/libbfio
+
+TEST_DEPENDS +=	shells/bash
+
+pre-test:
+	sed -i s,#!/bin/bash,#!/${LOCALBASE}/bin/bash, ${WRKSRC}/tests/test_*.sh
+
+.include <bsd.port.mk>

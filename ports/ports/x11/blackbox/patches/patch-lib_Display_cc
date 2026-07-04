@@ -1,0 +1,10 @@
+--- lib/Display.cc.orig	Tue Apr 25 16:22:31 2017
++++ lib/Display.cc	Tue Apr 25 16:22:38 2017
+@@ -31,6 +31,7 @@
+ #include <assert.h>
+ #include <fcntl.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ 
+ namespace bt {

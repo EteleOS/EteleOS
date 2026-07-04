@@ -1,0 +1,14 @@
+--- Wnn/uum/ttyfdslot.c.orig
++++ Wnn/uum/ttyfdslot.c
+@@ -100,9 +100,8 @@ int fd;
+ 
+ #include <ttyent.h>
+ #include <stdio.h>
+-
+-char *ttyname();
+-char *rindex();
++#include <string.h>
++#include <unistd.h>
+ 
+ int ttyfdslot(fd)
+ int fd;

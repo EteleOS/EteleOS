@@ -1,0 +1,11 @@
+--- src/apps/demo/run_demo.orig	Tue Jan 18 17:36:37 2005
++++ src/apps/demo/run_demo	Tue Jan 18 17:36:42 2005
+@@ -5,7 +5,7 @@
+ 
+ 	BASE='interL'
+ 	PROGRAM="$BASE.c"
+-	COMPILE="cc -I../.. -o $BASE $PROGRAM `find ../../ -name libJudy.a`"
++	COMPILE="cc -I${TRUEPREFIX}/include -o $BASE $PROGRAM ${TRUEPREFIX}/lib/libJudy.a"
+ 
+ 	set -e			# exit if anything goes wrong.
+ 

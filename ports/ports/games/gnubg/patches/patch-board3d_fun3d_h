@@ -1,0 +1,15 @@
+Use system-supplied DejaVu fonts instead of bundling Vera fonts.
+
+Index: board3d/fun3d.h
+--- board3d/fun3d.h.orig
++++ board3d/fun3d.h
+@@ -136,9 +136,6 @@ typedef struct {
+ #define CUBE_FONT_SIZE (base_unit / 24.0f)
+ #define CUBE_FONT_HEIGHT_RATIO 1.25f
+ 
+-#define FONT_VERA "fonts/Vera.ttf"
+-#define FONT_VERA_SERIF_BOLD "fonts/VeraSeBd.ttf"
+-
+ /* Setup functions */
+ void InitGL(const BoardData* bd);
+ 

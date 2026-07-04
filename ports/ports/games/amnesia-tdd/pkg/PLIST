@@ -1,0 +1,3 @@
+@bin bin/Amnesia-tdd
+share/amnesia-tdd/
+share/doc/pkg-readmes/${PKGSTEM}

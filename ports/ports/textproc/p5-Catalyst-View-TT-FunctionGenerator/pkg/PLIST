@@ -1,0 +1,3 @@
+${P5SITE}/Catalyst/View/TT/
+${P5SITE}/Catalyst/View/TT/FunctionGenerator.pm
+@man man/man3p/Catalyst::View::TT::FunctionGenerator.3p

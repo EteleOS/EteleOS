@@ -1,0 +1,14 @@
+Set this here so it propagates through everything.
+
+Index: configure
+--- configure.orig
++++ configure
+@@ -9322,7 +9322,7 @@ TDOMSHELL=tcldomsh
+     #--------------------------------------------------------------------
+ 
+     # pkglibdir must be a fully qualified path and (not ${exec_prefix}/lib)
+-    eval pkglibdir="${libdir}/tdom${PACKAGE_VERSION}"
++    eval pkglibdir="${libdir}"
+     if test "${TCL_LIB_VERSIONS_OK}" = "ok"; then
+ 	eval tdom_LIB_FLAG="-ltdom${PACKAGE_VERSION}"
+ 	eval tdom_STUB_LIB_FLAG="-ltdomstub${PACKAGE_VERSION}"

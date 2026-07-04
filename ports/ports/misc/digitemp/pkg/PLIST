@@ -1,0 +1,7 @@
+@bin bin/digitemp_DS2490
+@bin bin/digitemp_DS9097
+@bin bin/digitemp_DS9097U
+@man man/man1/digitemp.1
+share/doc/digitemp/
+share/doc/digitemp/FAQ
+share/doc/digitemp/README

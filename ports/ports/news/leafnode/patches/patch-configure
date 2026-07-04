@@ -1,0 +1,16 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -7462,11 +7462,7 @@ fi
+ 
+ 
+ tmp="`echo $sysconfdir | sed -f ${srcdir}/sanitize.sed`"
+-msysconfdir="`(
+-if test "x$prefix" = xNONE ; then
+-  prefix=$ac_default_prefix
+-fi
+-eval echo \"\\\"$tmp\\\"\" )`"
++msysconfdir="$sysconfdir"
+ 
+ ac_config_files="$ac_config_files subst leafnode.spec Makefile doc_german/Makefile"
+ 

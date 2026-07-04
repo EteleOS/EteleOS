@@ -1,0 +1,3 @@
+${P5SITE}/CGI/
+${P5SITE}/CGI/Compile.pm
+@man man/man3p/CGI::Compile.3p

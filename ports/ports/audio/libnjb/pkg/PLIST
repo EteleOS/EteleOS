@@ -1,0 +1,27 @@
+@bin bin/njb-cursesplay
+@bin bin/njb-delfile
+@bin bin/njb-deltr
+@bin bin/njb-dumpeax
+@bin bin/njb-dumptime
+@bin bin/njb-files
+@bin bin/njb-fwupgrade
+@bin bin/njb-getfile
+@bin bin/njb-getowner
+@bin bin/njb-gettr
+@bin bin/njb-getusage
+@bin bin/njb-handshake
+@bin bin/njb-pl
+@bin bin/njb-play
+@bin bin/njb-playlists
+@bin bin/njb-sendfile
+@bin bin/njb-sendtr
+@bin bin/njb-setowner
+@bin bin/njb-setpbm
+@bin bin/njb-settime
+@bin bin/njb-tagtr
+@bin bin/njb-tracks
+include/libnjb.h
+lib/libnjb.a
+lib/libnjb.la
+@lib lib/libnjb.so.${LIBnjb_VERSION}
+lib/pkgconfig/libnjb.pc

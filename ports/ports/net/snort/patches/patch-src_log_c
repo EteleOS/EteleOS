@@ -1,0 +1,30 @@
+Index: src/log.c
+--- src/log.c.orig
++++ src/log.c
+@@ -473,7 +473,7 @@ void PrintIPPkt(FILE * fp, int type, Packet * p)
+     DEBUG_WRAP(DebugMessage(DEBUG_LOG, "PrintIPPkt type = %d\n", type););
+ 
+     memset((char *) timestamp, 0, TIMEBUF_SIZE);
+-    ts_print((struct timeval *) & p->pkth->ts, timestamp);
++    ts_print((struct sf_timeval32 *) & p->pkth->ts, timestamp);
+ 
+     /* dump the timestamp */
+     fwrite(timestamp, strlen(timestamp), 1, fp);
+@@ -1975,7 +1975,7 @@ void PrintEapolPkt(FILE * fp, Packet * p)
+ 
+ 
+     memset((char *) timestamp, 0, TIMEBUF_SIZE);
+-    ts_print((struct timeval *) & p->pkth->ts, timestamp);
++    ts_print((struct sf_timeval32 *) & p->pkth->ts, timestamp);
+ 
+     /* dump the timestamp */
+     fwrite(timestamp, strlen(timestamp), 1, fp);
+@@ -2149,7 +2149,7 @@ void PrintWifiPkt(FILE * fp, Packet * p)
+ 
+ 
+     memset((char *) timestamp, 0, TIMEBUF_SIZE);
+-    ts_print((struct timeval *) & p->pkth->ts, timestamp);
++    ts_print((struct sf_timeval32 *) & p->pkth->ts, timestamp);
+ 
+     /* dump the timestamp */
+     fwrite(timestamp, strlen(timestamp), 1, fp);

@@ -1,0 +1,4 @@
+@bin bin/floppyd
+@bin bin/floppyd_installtest
+@man man/man1/floppyd.1
+@man man/man1/floppyd_installtest.1

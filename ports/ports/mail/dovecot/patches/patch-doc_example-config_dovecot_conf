@@ -1,0 +1,12 @@
+Index: doc/example-config/dovecot.conf
+--- doc/example-config/dovecot.conf.orig
++++ doc/example-config/dovecot.conf
+@@ -30,7 +30,7 @@
+ #listen = *, ::
+ 
+ # Base directory where to store runtime data.
+-#base_dir = /var/run/dovecot/
++#base_dir = /var/dovecot/
+ 
+ # Name of this instance. In multi-instance setup doveadm and other commands
+ # can use -i <instance_name> to select which instance is used (an alternative

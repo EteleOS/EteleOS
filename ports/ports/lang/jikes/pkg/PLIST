@@ -1,0 +1,5 @@
+bin/jikes
+include/jikesapi.h
+@man man/man1/jikes.1
+share/doc/jikes/
+share/doc/jikes/license.htm

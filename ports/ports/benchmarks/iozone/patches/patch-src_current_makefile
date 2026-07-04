@@ -1,0 +1,63 @@
+Index: src/current/makefile
+--- src/current/makefile.orig
++++ src/current/makefile
+@@ -227,24 +227,24 @@ linux-arm:	iozone_linux-arm.o  libbif.o libasync.o fil
+ #
+ 
+ android: iozone.c  makefile Android.mk Application.mk libbif.c
+-ifeq ($(NDK_ENV_VAR)$(NDKBUILD),)
+-	$(warning Your NDK environment is not set)
+-	$(warning Either add to your path ndk-bundle or define NDK environement variable)
+-	$(warning ndk-bundle is likely located within you android sdk e.g. <...>/Android/sdk/ndk-bundle )
+-	$(error e.g. export NDK='/home/me/Android/Sdk/ndk-bundle')
+-endif
++#ifeq ($(NDK_ENV_VAR)$(NDKBUILD),)
++#	$(warning Your NDK environment is not set)
++#	$(warning Either add to your path ndk-bundle or define NDK environement variable)
++#	$(warning ndk-bundle is likely located within you android sdk e.g. <...>/Android/sdk/ndk-bundle )
++#	$(error e.g. export NDK='/home/me/Android/Sdk/ndk-bundle')
++#endif
+ 	mkdir -p jni
+ 	ln -sf ../Android.mk ./jni/Android.mk
+ 	ln -sf ../Application.mk ./jni/Application.mk
+ 	ln -sf ../iozone.c ./jni/iozone.c
+ 	ln -sf ../libbif.c ./jni/libbif.c
+-ifeq ($(NDKBUILD),) 
+-ifneq ($(NDK_ENV_VAR),) 
+-	${NDK}/ndk-build 
+-endif 
+-else 
+-	${NDKBUILD} 
+-endif
++#ifeq ($(NDKBUILD),) 
++#ifneq ($(NDK_ENV_VAR),) 
++#	${NDK}/ndk-build 
++#endif 
++#else 
++#	${NDKBUILD} 
++#endif
+ 
+ #
+ # GNU 'C' compiler Linux build with threads, largefiles, async I/O 
+@@ -560,7 +560,7 @@ openbsd:	iozone_openbsd.o libbif.o fileop_openbsd.o pi
+ #
+ 
+ openbsd-threads:	iozone_openbsd-threads.o libbif.o
+-	$(CC) -O $(LDFLAGS) -pthread iozone_openbsd-threads.o \
++	$(CC) $(CFLAGS) $(LDFLAGS) -pthread iozone_openbsd-threads.o \
+ 		libbif.o -o iozone
+ 
+ #
+@@ -1473,10 +1473,10 @@ iozone_openbsd-threads.o:	iozone.c libbif.c
+ 	@echo ""
+ 	@echo "Build iozone for OpenBSD with threads"
+ 	@echo ""
+-	$(CC) -c -O -pthread -Dunix -Dbsd4_4 -DHAVE_ANSIC_C \
++	$(CC) -c $(CFLAGS) -pthread -Dunix -Dbsd4_4 -DHAVE_ANSIC_C \
+ 		-DNAME='"openbsd-threads"' $(CFLAGS) iozone.c \
+ 		-o iozone_openbsd-threads.o
+-	$(CC) -c -O -pthread -Dunix -Dbsd4_4 -DHAVE_ANSIC_C \
++	$(CC) -c $(CFLAGS) -pthread -Dunix -Dbsd4_4 -DHAVE_ANSIC_C \
+ 		$(CFLAGS) libbif.c -o libbif.o
+ 
+ iozone_OSFV3.o:	iozone.c libbif.c

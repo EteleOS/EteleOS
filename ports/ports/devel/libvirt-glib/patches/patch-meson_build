@@ -1,0 +1,26 @@
+Should match b_lundef in meson(1).
+
+https://gitlab.com/libvirt/libvirt-glib/-/issues/7
+
+Index: meson.build
+--- meson.build.orig
++++ meson.build
+@@ -91,9 +91,6 @@ else
+ endif
+ 
+ common_link_args = []
+-if meson.get_compiler('c').has_link_argument('-Wl,--no-undefined')
+-  common_link_args += ['-Wl,--no-undefined']
+-endif
+ 
+ 
+ build_tests = not get_option('tests').disabled()
+@@ -217,7 +214,7 @@ cc_flags += [
+   '-Wformat-y2k',
+   '-Wformat-zero-length',
+   '-Wframe-address',
+-  '-Wframe-larger-than=256',
++  '-Wframe-larger-than=512',
+   '-Wfree-nonheap-object',
+   '-Whsa',
+   '-Wif-not-aligned',

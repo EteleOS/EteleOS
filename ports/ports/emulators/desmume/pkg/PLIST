@@ -1,0 +1,8 @@
+@bin bin/desmume
+@bin bin/desmume-cli
+@man man/man1/desmume-cli.1
+@man man/man1/desmume.1
+share/applications/desmume.desktop
+share/pixmaps/
+share/pixmaps/DeSmuME.xpm
+@tag update-desktop-database

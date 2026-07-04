@@ -1,0 +1,9 @@
+@bin bin/ttfinfo
+bin/ttfm.sh
+@man man/man1/ttfm.sh.1
+share/doc/ttfm/
+share/doc/ttfm/README
+share/doc/ttfm/USAGE
+share/ttfm/
+share/ttfm/gscjk.ttfm
+share/ttfm/xttfm.ttfm

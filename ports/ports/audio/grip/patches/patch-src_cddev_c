@@ -1,0 +1,25 @@
+Index: src/cddev.c
+--- src/cddev.c.orig
++++ src/cddev.c
+@@ -52,7 +52,7 @@
+ #define NON_BLOCKING
+ #endif
+ 
+-#if defined(__FreeBSD__) || defined(__NetBSD__)
++#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__)
+     #define CDIOREADSUBCHANNEL CDIOCREADSUBCHANNEL
+ #endif
+ 
+@@ -641,7 +641,11 @@ gboolean CDEject(DiscInfo *disc)
+   if(ioctl(disc->cd_desc,CDROMEJECT)<0)
+     return FALSE;
+ #endif
+-   
++#ifdef __OpenBSD__
++  close( disc->cd_desc );
++  disc->cd_desc = -1;
++#endif
++
+   return TRUE;
+ }
+ 

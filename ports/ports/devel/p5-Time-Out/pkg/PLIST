@@ -1,0 +1,4 @@
+${P5SITE}/Time/
+${P5SITE}/Time/Out.pm
+${P5SITE}/Time/Out.pod
+@man man/man3p/Time::Out.3p

@@ -1,0 +1,12 @@
+Don't run ldconfig -m.
+
+--- Makefile.in.orig	Sat Dec 12 00:43:54 2009
++++ Makefile.in	Sat Dec 12 00:44:02 2009
+@@ -55,7 +55,6 @@ do=all
+ $(TARGETS): FORCE
+ 	@$(MAKE) -f Makefile do=$@ $(dodirs)
+ 	@if test $@ = 'install'; then \
+-	  $(LIBTOOL) --finish $(DESTDIR)$(libdir); \
+ 	  mkdir -p $(DESTDIR)$(datadir); \
+ 	  cp -f dsssl/builtins.dsl $(DESTDIR)$(datadir); \
+ 	fi;

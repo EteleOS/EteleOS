@@ -1,0 +1,8 @@
+${P5SITE}/Graphics/ColorNames/CSS.pm
+${P5SITE}/Graphics/ColorNames/IE.pm
+${P5SITE}/Graphics/ColorNames/SVG.pm
+${P5SITE}/Graphics/ColorNames/WWW.pm
+@man man/man3p/Graphics::ColorNames::CSS.3p
+@man man/man3p/Graphics::ColorNames::IE.3p
+@man man/man3p/Graphics::ColorNames::SVG.3p
+@man man/man3p/Graphics::ColorNames::WWW.3p

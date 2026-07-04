@@ -1,0 +1,3 @@
+${P5SITE}/CGI/
+${P5SITE}/CGI/SSI.pm
+@man man/man3p/CGI::SSI.3p

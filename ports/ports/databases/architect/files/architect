@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# OpenBSD-specific startup script for Architect.
+
+ARCHITECT_HOME=/usr/local/architect
+
+JAVA_CMD="${JAVA_HOME}/bin/java"
+
+if [ ! -x ${JAVA_CMD} ]; then
+	echo "$0: JAVA_CMD is not set correctly (not found)" >&2
+	exit 1
+fi
+
+for f in ${ARCHITECT_HOME}/*.jar
+do
+	CLASSPATH=${CLASSPATH}:$f
+done
+
+${JAVA_CMD} -cp ${CLASSPATH} ca.sqlpower.architect.swingui.ArchitectFrame $*

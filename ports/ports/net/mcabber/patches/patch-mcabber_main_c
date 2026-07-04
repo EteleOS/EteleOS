@@ -1,0 +1,23 @@
+Index: mcabber/main.c
+--- mcabber/main.c.orig
++++ mcabber/main.c
+@@ -453,6 +453,19 @@ int main(int argc, char **argv)
+   if (ret == -2)
+     exit(EXIT_FAILURE);
+ 
++  if (settings_opt_get("events_command")) {
++    if (pledge("stdio rpath wpath cpath fattr inet dns tty proc exec", NULL) ==
++      -1) {
++      fprintf(stderr, "Cannot pledge: %s\n", strerror(errno));
++      exit(EXIT_FAILURE);
++    }
++  } else {
++    if (pledge("stdio rpath wpath cpath fattr inet dns tty", NULL) == -1) {
++      fprintf(stderr, "Cannot pledge: %s\n", strerror(errno));
++      exit(EXIT_FAILURE);
++    }
++  }
++
+   /* Display configuration settings */
+   {
+     const char *p;

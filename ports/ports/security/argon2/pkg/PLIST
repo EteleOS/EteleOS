@@ -1,0 +1,9 @@
+@bin bin/argon2
+include/argon2.h
+@static-lib lib/libargon2.a
+@lib lib/libargon2.so.${LIBargon2_VERSION}
+lib/pkgconfig/libargon2.pc
+share/doc/argon2/
+share/doc/argon2/LICENSE
+share/doc/argon2/README.md
+share/doc/argon2/argon2-specs.pdf

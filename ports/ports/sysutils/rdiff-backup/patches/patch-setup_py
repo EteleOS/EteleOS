@@ -1,0 +1,12 @@
+Index: setup.py
+--- setup.py.orig
++++ setup.py
+@@ -294,7 +294,7 @@ setup(
+         ),
+     ],
+     data_files=[
+-        ("share/man/man1", ["dist/rdiff-backup.1",
++        ("man/man1", ["dist/rdiff-backup.1",
+                             "dist/rdiff-backup-old.1",
+                             "dist/rdiff-backup-delete.1",
+                             "dist/rdiff-backup-statistics.1"]),

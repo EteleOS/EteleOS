@@ -1,0 +1,4 @@
+${P5SITE}/Unix/
+${P5SITE}/Unix/PID.pm
+${P5SITE}/Unix/PID.pod
+@man man/man3p/Unix::PID.3p

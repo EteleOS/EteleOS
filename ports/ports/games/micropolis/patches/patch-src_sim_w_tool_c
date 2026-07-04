@@ -1,0 +1,28 @@
+Index: src/sim/w_tool.c
+--- src/sim/w_tool.c.orig
++++ src/sim/w_tool.c
+@@ -126,6 +126,7 @@ Ink *NewInk();
+ 
+ short tally(short tileValue);
+ int DoSetWandState(SimView *view, short state);
++void ToolDrag(SimView *view, int px, int py);
+ 
+ 
+ /*************************************************************************/
+@@ -1593,14 +1594,11 @@ ToolDown(SimView *view, int x, int y)
+ 
+ ToolUp(SimView *view, int x, int y)
+ {
+-  int result;
+-
+-  result = ToolDrag(view, x, y);
+-
+-  return (result);
++  ToolDrag(view, x, y);
+ }
+ 
+ 
++void
+ ToolDrag(SimView *view, int px, int py)
+ {
+   int x, y, dx, dy, adx, ady, lx, ly, dist;

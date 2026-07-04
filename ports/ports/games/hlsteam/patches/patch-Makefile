@@ -1,0 +1,37 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -2,7 +2,7 @@ LBITS := $(shell getconf LONG_BIT)
+ 
+ UNAME := $(shell uname)
+ 
+-CFLAGS = -Wall -O3 -I src -I native/include -fPIC -I ../sdk/public
++CFLAGS += -Wall -I src -I native/include -fPIC -I ../sdk/public
+ 
+ ifndef ARCH
+ 	ARCH = $(LBITS)
+@@ -18,13 +18,13 @@ OS=linux
+ CFLAGS += -std=c++0x
+ endif
+ 
+-LFLAGS = -lhl -lsteam_api -lstdc++ -L native/lib/$(OS)$(LIBARCH) -L ../sdk/redistributable_bin/$(OS)$(ARCH)
++LFLAGS = ${LDFLAGS} -lhl -lsteam_api
+ 
+ SRC = native/cloud.o native/common.o native/controller.o native/friends.o native/gameserver.o \
+ 	native/matchmaking.o native/networking.o native/stats.o native/ugc.o
+ 
+ all: ${SRC}
+-	${CC} ${CFLAGS} -shared -o steam.hdll ${SRC} ${LFLAGS}
++	${CXX} ${CFLAGS} -shared -o steam.hdll ${SRC} ${LFLAGS}
+ 
+ install:
+ 	cp steam.hdll /usr/lib
+@@ -33,7 +33,7 @@ install:
+ .SUFFIXES : .cpp .o
+ 
+ .cpp.o :
+-	${CC} ${CFLAGS} -o $@ -c $<
++	${CXX} ${CFLAGS} -o $@ -c $<
+ 	
+ clean_o:
+ 	rm -f ${SRC}

@@ -1,0 +1,17 @@
+Index: Makefile.inc
+--- Makefile.inc.orig
++++ Makefile.inc
+@@ -90,13 +90,6 @@ endif
+ #
+ 
+ # programs
+-CCACHE ?=       $(shell IFS=:; for i in $$PATH;do test -x "$$i/ccache" && echo "$$i/ccache" && break; done)
+-ifeq ($(origin CC),default)
+-CC = 		$(CCACHE) gcc
+-else
+-CC ?= 		$(CCACHE) gcc
+-endif
+-CC := $(strip $(CC))
+ ifeq ($(DEBUG),0)
+   ifeq ($(NOSTRIP),0)
+   STRIP ?=  strip

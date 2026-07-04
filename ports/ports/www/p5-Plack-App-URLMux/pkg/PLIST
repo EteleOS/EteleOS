@@ -1,0 +1,2 @@
+${P5SITE}/Plack/App/URLMux.pm
+@man man/man3p/Plack::App::URLMux.3p

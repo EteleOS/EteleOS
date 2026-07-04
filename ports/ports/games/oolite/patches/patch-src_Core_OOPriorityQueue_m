@@ -1,0 +1,15 @@
+missing header
+
+Index: src/Core/OOPriorityQueue.m
+--- src/Core/OOPriorityQueue.m.orig
++++ src/Core/OOPriorityQueue.m
+@@ -29,6 +29,9 @@ SOFTWARE.
+ #import "OOPriorityQueue.h"
+ #import "OOFunctionAttributes.h"
+ 
++#include <assert.h>
++
++
+ 
+ /*	Capacity grows by 50% each time. kMinCapacity must be at least 2 or Bad
+ 	Things will happen. Some examples of growth patterns based on kMinCapacity:

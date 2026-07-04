@@ -1,0 +1,31 @@
+@bin bin/ewfacquire
+@bin bin/ewfacquirestream
+@bin bin/ewfdebug
+@bin bin/ewfexport
+@bin bin/ewfinfo
+@bin bin/ewfmount
+@bin bin/ewfrecover
+@bin bin/ewfverify
+include/libewf/
+include/libewf.h
+include/libewf/codepage.h
+include/libewf/definitions.h
+include/libewf/error.h
+include/libewf/extern.h
+include/libewf/features.h
+include/libewf/types.h
+@static-lib lib/libewf.a
+lib/libewf.la
+@lib lib/libewf.so.${LIBewf_VERSION}
+lib/pkgconfig/libewf.pc
+lib/python${MODPY_VERSION}/site-packages/pyewf.a
+lib/python${MODPY_VERSION}/site-packages/pyewf.la
+@so lib/python${MODPY_VERSION}/site-packages/pyewf.so
+@man man/man1/ewfacquire.1
+@man man/man1/ewfacquirestream.1
+@man man/man1/ewfexport.1
+@man man/man1/ewfinfo.1
+@man man/man1/ewfmount.1
+@man man/man1/ewfrecover.1
+@man man/man1/ewfverify.1
+@man man/man3/libewf.3

@@ -1,0 +1,10 @@
+--- lib/Texture.cc.orig	Tue Apr 25 16:41:03 2017
++++ lib/Texture.cc	Tue Apr 25 16:41:25 2017
+@@ -31,6 +31,7 @@
+ 
+ #include <X11/Xlib.h>
+ #include <ctype.h>
++#include <stdlib.h>
+ 
+ 
+ void bt::Texture::setColor1(const bt::Color &new_color) {

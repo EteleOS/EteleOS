@@ -1,0 +1,3 @@
+@bin bin/mboxgrep
+@info info/mboxgrep.info
+@man man/man1/mboxgrep.1

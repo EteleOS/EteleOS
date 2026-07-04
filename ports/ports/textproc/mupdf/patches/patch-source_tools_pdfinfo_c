@@ -1,0 +1,27 @@
+add pledge(2) to "mutool info"
+
+Index: source/tools/pdfinfo.c
+--- source/tools/pdfinfo.c.orig
++++ source/tools/pdfinfo.c
+@@ -28,6 +28,8 @@
+ #include "mupdf/fitz.h"
+ #include "mupdf/pdf.h"
+ 
++#include <unistd.h>
++#include <errno.h>
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+@@ -1073,6 +1075,12 @@ int pdfinfo_main(int argc, char **argv)
+ 	{
+ 		infousage();
+ 		return 1;
++	}
++
++	if (pledge("stdio rpath", NULL) == -1)
++	{
++		fprintf(stderr, "pledge: %s\n", strerror(errno));
++		exit(1);
+ 	}
+ 
+ 	ctx = fz_new_context(NULL, NULL, FZ_STORE_UNLIMITED);

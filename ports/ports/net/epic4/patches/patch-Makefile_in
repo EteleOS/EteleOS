@@ -1,0 +1,11 @@
+--- Makefile.in.orig	Tue Feb 11 15:42:34 2014
++++ Makefile.in	Wed Jul 30 22:20:47 2014
+@@ -182,7 +182,7 @@ installscript: installdirs test
+ 
+ helpdir   = $(epicdir)/help
+ installhelp: installdirs
+-	if ./my_test -d help ; then \
++	if ./my_test -d @srcdir@/help ; then \
+ 		(cd @srcdir@/help; tar cf - .) | (cd $(IP)$(DESTDIR)$(helpdir); tar xf -)  ; \
+ 	else \
+ 		echo No help files to install. ; \

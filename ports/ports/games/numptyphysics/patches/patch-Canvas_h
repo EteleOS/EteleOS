@@ -1,0 +1,11 @@
+--- Canvas.h.orig	Wed Dec  5 17:28:40 2012
++++ Canvas.h	Wed Dec  5 17:29:05 2012
+@@ -70,7 +70,7 @@ class Window : public Canvas
+ class Image : public Canvas
+ {
+  public:
+-  Image( const char* file, bool alpha=false );
++  explicit Image( const char* file, bool alpha=false );
+ };
+ 
+ 

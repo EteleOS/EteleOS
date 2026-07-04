@@ -1,0 +1,22 @@
+add OpenBSD target
+
+Index: build-tests.xml
+--- build-tests.xml.orig
++++ build-tests.xml
+@@ -85,11 +85,15 @@
+         <property name="is.Unix" value="true"/>
+         <property name="is.shell.sh" value="true"/>
+     </target>
++    <target name="init-openbsd" if="is.OpenBSD">
++        <property name="is.Unix" value="true"/>
++        <property name="is.shell.sh" value="true"/>
++    </target>
+     
+     <!-- =================================================================== -->
+     <!-- Initialize build.                                                   -->
+     <!-- =================================================================== -->
+-    <target name="init" depends="init-windows, init-linux, init-solaris, init-aix, init-hpux, init-macosx, init-freebsd">
++    <target name="init" depends="init-windows, init-linux, init-solaris, init-aix, init-hpux, init-macosx, init-freebsd, init-openbsd">
+     </target>
+ 
+     <!-- =================================================================== -->

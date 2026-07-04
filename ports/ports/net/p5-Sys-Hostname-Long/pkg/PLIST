@@ -1,0 +1,5 @@
+${P5SITE}/Sys/
+${P5SITE}/Sys/Hostname/
+${P5SITE}/Sys/Hostname/Long.pm
+${P5SITE}/Sys/Hostname/testall.pl
+@man man/man3p/Sys::Hostname::Long.3p

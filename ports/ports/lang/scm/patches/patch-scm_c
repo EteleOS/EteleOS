@@ -1,0 +1,16 @@
+--- scm.c.orig	Mon Oct 18 03:44:40 2010
++++ scm.c	Fri Dec  6 15:20:06 2013
+@@ -723,6 +723,13 @@ void final_scm(freeall)
+ # ifndef MSDOS			/* DJGPP defines both */
+ #  define SYSTNAME "unix"
+ # endif
++#else 
++# ifdef __unix__
++#  define DIRSEP "/"
++#  ifndef MSDOS			/* DJGPP defines both */
++#   define SYSTNAME "unix"
++#  endif
++# endif
+ #endif
+ #ifdef MWC
+ # define SYSTNAME "coherent"

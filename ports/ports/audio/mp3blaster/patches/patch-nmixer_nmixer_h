@@ -1,0 +1,60 @@
+- sndio support
+- error: invalid suffix on literal; C++11 requires a space between literal and identifier
+
+Index: nmixer/nmixer.h
+--- nmixer/nmixer.h.orig
++++ nmixer/nmixer.h
+@@ -24,9 +24,17 @@
+ #include <audio/audiolib.h>
+ #endif
+ 
++#ifdef WANT_SNDIO
++#include <pthread.h>
++#endif
++
++#ifdef WANT_SNDIO
++#define MIXER_DEVICE "aucat:0"
++#else
+ #define MIXER_DEVICE "/dev/mixer"
++#endif
+ #define MYMIN(x, y) ((x) < (y) ? (x) : (y))
+-#define MYVERSION "<<NMixer "VERSION">>"
++#define MYVERSION "<<NMixer " VERSION ">>"
+ 
+ #define BOTH_CHANNELS 0x11
+ #define RIGHT_CHANNEL 0x10
+@@ -119,6 +127,34 @@ class NASMixer : public baseMixer (private)
+ 	AuDeviceAttributes *ada;
+ 	int num_ada;
+ };
++#endif
++
++#ifdef WANT_SNDIO
++
++struct sdata {
++	struct mio_hdl *hdl;
++	char dev[128];
++	int run_rt;
++	int cvol[16];
++};
++
++class SndioMixer : public baseMixer
++{
++public:
++	SndioMixer(const char *mixerDevice = NULL, baseMixer *next = 0);
++	~SndioMixer();
++	bool CanRecord(int device) { (void)device; return false; }
++	bool GetRecord(int device) { (void)device; return false; }
++	bool SetRecord(int device, bool set) { (void)device; (void)set; return false; }
++protected:
++	bool Set(int device, struct volume *vol);
++	bool Get(int device, struct volume *vol);
++	const char *Label(int device);
++private:
++	struct sdata s;
++	pthread_t rt;
++};
++
+ #endif
+ 
+ class NMixer

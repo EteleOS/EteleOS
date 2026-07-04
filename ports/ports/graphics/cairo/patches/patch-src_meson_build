@@ -1,0 +1,13 @@
+Properly find X libs are runtime
+
+Index: src/meson.build
+--- src/meson.build.orig
++++ src/meson.build
+@@ -264,6 +264,7 @@ libcairo_dep = declare_dependency(link_with: libcairo,
+ pkgmod.generate(libcairo,
+   description: 'Multi-platform 2D graphics library',
+   subdirs: [meson.project_name()],
++  libraries: ['-Wl,-rpath-link,${X11BASE}/lib'],
+ )
+ 
+ meson.override_dependency('cairo', libcairo_dep)

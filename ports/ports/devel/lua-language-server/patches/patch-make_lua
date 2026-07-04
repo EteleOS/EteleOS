@@ -1,0 +1,10 @@
+Index: make.lua
+--- make.lua.orig
++++ make.lua
+@@ -122,5 +122,5 @@ lm:build 'unit-test' {
+ }
+ 
+ lm:default {
+-    "unit-test",
++    "all",
+ }

@@ -1,0 +1,24 @@
+@conflict dnscrypt-proxy-plugins-*
+@pkgpath net/dnscrypt-proxy,-main
+@pkgpath net/dnscrypt-proxy,-utils
+@newgroup _dnscrypt-proxy:688
+@newuser _dnscrypt-proxy:688:_dnscrypt-proxy::dnscrypt-proxy user:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/dnscrypt_proxy
+@extraunexec rm -rf /var/dnscrypt-proxy/*
+@bin bin/dnscrypt-proxy
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/dnscrypt-proxy/
+share/examples/dnscrypt-proxy/example-allowed-ips.txt
+share/examples/dnscrypt-proxy/example-allowed-names.txt
+share/examples/dnscrypt-proxy/example-blocked-ips.txt
+share/examples/dnscrypt-proxy/example-blocked-names.txt
+share/examples/dnscrypt-proxy/example-captive-portals.txt
+share/examples/dnscrypt-proxy/example-cloaking-rules.txt
+share/examples/dnscrypt-proxy/example-dnscrypt-proxy.toml
+@sample ${SYSCONFDIR}/dnscrypt-proxy.toml
+share/examples/dnscrypt-proxy/example-forwarding-rules.txt
+@owner _dnscrypt-proxy
+@group _dnscrypt-proxy
+@sample ${LOCALSTATEDIR}/dnscrypt-proxy/
+@comment fix owner for upgrades since privsep downloaded cache files in 2.0.43
+@exec-update [[ $(stat -f '%u:%g' ${LOCALSTATEDIR}/dnscrypt-proxy/public-resolvers.md 2>/dev/null) != 688:688 ]] && chown -R _dnscrypt-proxy:_dnscrypt-proxy ${LOCALSTATEDIR}/dnscrypt-proxy || true

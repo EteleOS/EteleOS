@@ -1,0 +1,38 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Config File
+===========
+
+When using the included rc.d(8) script, ${PKGSTEM} uses the config file at
+`${SYSCONFDIR}/navidrome.toml`.
+
+Adding Music
+=============
+
+Music can be added by copying it to `${LOCALSTATEDIR}/navidrome/music/` or
+by changing `MusicFolder` in the config file.
+
+Web Interface
+=============
+
+By default, ${PKGSTEM} serves up a web interface on:
+
+	 http://127.0.0.1:4533
+
+If you wish to listen on a different address, change the `Address` setting in
+the config file.
+
+Jukebox Mode
+============
+
+${PKGSTEM} supports Subsonic's "Jukebox mode", where audio is played through
+the server's audio hardware, instead of being streamed to the client.
+
+This requires a client that supports jukebox mode (the built-in web interface
+does not).
+
+To use jukebox mode, install mpv (multimedia/mpv), set `Jukebox.Enabled = true`
+in the config file, and make sure that the `_navidrome` user can play audio via
+sndio.

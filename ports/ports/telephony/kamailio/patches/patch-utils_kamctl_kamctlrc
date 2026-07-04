@@ -1,0 +1,21 @@
+Index: utils/kamctl/kamctlrc
+--- utils/kamctl/kamctlrc.orig
++++ utils/kamctl/kamctlrc
+@@ -72,7 +72,7 @@
+ 
+ 
+ ## Program to calculate a message-digest fingerprint
+-# MD5="md5sum"
++MD5="md5"
+ 
+ ## awk tool
+ # AWK="awk"
+@@ -157,7 +157,7 @@
+ 
+ ## Kamailio START Options
+ ## PID file path - default is: /run/kamailio/kamailio.pid
+-# PID_FILE=/run/kamailio/kamailio.pid
++PID_FILE=/var/run/kamailio/kamailio.pid
+ 
+ ## Extra start options - default is: not set
+ ## example: start Kamailio with 64MB share memory: STARTOPTIONS="-m 64"

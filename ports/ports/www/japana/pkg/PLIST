@@ -1,0 +1,5 @@
+@man man/man1/japana.1
+sbin/japana
+share/examples/japana/
+share/examples/japana/japana.conf
+@sample ${SYSCONFDIR}/japana.conf

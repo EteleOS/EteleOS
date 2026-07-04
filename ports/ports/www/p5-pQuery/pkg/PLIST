@@ -1,0 +1,7 @@
+${P5SITE}/pQuery/
+${P5SITE}/pQuery.pm
+${P5SITE}/pQuery.pod
+${P5SITE}/pQuery/DOM.pm
+${P5SITE}/pQuery/DOM.pod
+@man man/man3p/pQuery.3p
+@man man/man3p/pQuery::DOM.3p

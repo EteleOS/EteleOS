@@ -1,0 +1,10 @@
+@bin bin/efile
+include/magic.h
+@static-lib lib/libmagic.a
+lib/libmagic.la
+@lib lib/libmagic.so.${LIBmagic_VERSION}
+lib/pkgconfig/libmagic.pc
+@man man/man1/efile.1
+@man man/man3/libmagic.3
+@man man/man5/magic.5
+share/misc/magic.mgc

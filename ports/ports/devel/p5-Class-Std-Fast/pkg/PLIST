@@ -1,0 +1,6 @@
+${P5SITE}/Class/Std/
+${P5SITE}/Class/Std/Fast/
+${P5SITE}/Class/Std/Fast.pm
+${P5SITE}/Class/Std/Fast/Storable.pm
+@man man/man3p/Class::Std::Fast.3p
+@man man/man3p/Class::Std::Fast::Storable.3p

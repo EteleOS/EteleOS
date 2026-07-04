@@ -1,0 +1,17 @@
+MODGO_MODULES =	\
+	github.com/creack/pty		 v1.1.18 \
+	github.com/frankban/quicktest	 v1.14.4 \
+	github.com/google/go-cmp	 v0.5.9 \
+	github.com/google/renameio/v2	 v2.0.0 \
+	github.com/kr/pretty		 v0.3.1 \
+	github.com/kr/text		 v0.2.0 \
+	github.com/pkg/diff		 v0.0.0-20210226163009-20ebb0f2a09e \
+	github.com/rogpeppe/go-internal	 v1.9.0 \
+	golang.org/x/sync		 v0.1.0 \
+	golang.org/x/sys		 v0.3.0 \
+	golang.org/x/term		 v0.3.0 \
+	mvdan.cc/editorconfig		 v0.2.0
+
+MODGO_MODFILES =	\
+	github.com/creack/pty	 v1.1.9
+

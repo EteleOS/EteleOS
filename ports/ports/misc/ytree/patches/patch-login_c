@@ -1,0 +1,14 @@
+Include sys/wait.h to avoid warnings.
+
+Index: login.c
+--- login.c.orig
++++ login.c
+@@ -6,7 +6,7 @@
+ 
+ 
+ #include "ytree.h"
+-/* #include <sys/wait.h> */  /* maybe wait.h is available */
++#include <sys/wait.h>  /* maybe wait.h is available */
+ 
+ 
+ 

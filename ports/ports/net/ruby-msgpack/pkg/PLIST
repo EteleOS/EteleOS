@@ -1,0 +1,21 @@
+${GEM_LIB}/cache/${DISTNAME}.gem
+${GEM_LIB}/gems/${DISTNAME}/
+${GEM_LIB}/gems/${DISTNAME}/ChangeLog
+${GEM_LIB}/gems/${DISTNAME}/LICENSE
+${GEM_LIB}/gems/${DISTNAME}/README.md
+${GEM_LIB}/gems/${DISTNAME}/lib/
+${GEM_LIB}/gems/${DISTNAME}/lib/msgpack/
+${GEM_LIB}/gems/${DISTNAME}/lib/msgpack.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/msgpack/bigint.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/msgpack/buffer.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/msgpack/core_ext.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/msgpack/factory.rb
+@so ${GEM_LIB}/gems/${DISTNAME}/lib/msgpack/msgpack.so
+${GEM_LIB}/gems/${DISTNAME}/lib/msgpack/packer.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/msgpack/symbol.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/msgpack/time.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/msgpack/timestamp.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/msgpack/unpacker.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/msgpack/version.rb
+${GEM_LIB}/gems/${DISTNAME}/msgpack.gemspec
+${GEM_LIB}/specifications/${DISTNAME}.gemspec

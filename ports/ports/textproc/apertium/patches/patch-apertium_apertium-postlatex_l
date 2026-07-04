@@ -1,0 +1,24 @@
+Index: apertium/apertium-postlatex.l
+--- apertium/apertium-postlatex.l.orig
++++ apertium/apertium-postlatex.l
+@@ -10,6 +10,7 @@
+ #include <string>
+ #include <vector>
+ #include <apertium/latex_accentsmap.h>
++#include <unistd.h>
+ 
+ extern "C" {
+ #if !defined(__STDC__)
+@@ -313,6 +314,12 @@ void usage(string const &progname)
+ 
+ int main(int argc, char *argv[])
+ {
++  if (pledge("stdio rpath wpath cpath", NULL) == -1)
++  {
++    cerr << "pledge" << endl;
++    exit(EXIT_FAILURE);
++  }
++
+   LtLocale::tryToSetLocale();
+   size_t base = 0;
+ 

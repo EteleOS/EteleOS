@@ -1,0 +1,20 @@
+--- usr/bin/zrm-pre-scheduler.orig	Mon Aug 26 22:45:37 2013
++++ usr/bin/zrm-pre-scheduler	Fri Sep  4 11:56:40 2015
+@@ -95,7 +95,7 @@ sub reschedule()
+     my $lev     = $_[4];
+     my $found=0;
+ 
+-    ($mycrontab_fh, $mycrontab) = mkstemp( "/tmp/zrm-preschedulerXXXXX" );
++    ($mycrontab_fh, $mycrontab) = mkstemp( "/tmp/zrm-preschedulerXXXXXXXXXX" );
+     $mycrontab_fh=$mycrontab_fh; # quiet warnings
+     system ("crontab -l > $mycrontab 2> /dev/null");
+     $exit_value  = $? >> 8;
+@@ -161,7 +161,7 @@ sub reschedule()
+ 	if ( $int eq "daily" ) {
+ 	    $mday = $wday = "*";
+ 	}
+-	print OUTF "$min $hr $mday * $wday /usr/bin/$prog ";
++	print OUTF "$min $hr $mday * $wday ${TRUEPREFIX}/bin/$prog ";
+ 	print OUTF "--action $myaction ";
+         print OUTF "--interval $int " if ( $int );
+ 	print OUTF "--backup-level $lev " if ( $lev );

@@ -1,0 +1,39 @@
+--- Makefile.orig	Fri Mar  6 03:49:55 2009
++++ Makefile	Mon Mar 14 20:33:13 2011
+@@ -1,10 +1,10 @@
+-CC = gcc
+-MAKE = make
+-LDFLAGS = -lncurses
++#CC = gcc
++#MAKE = make
++LDFLAGS = -L${LOCALBASE}/lib -lncurses -lintl -liconv
+ OBJFILES = main.o draw.o erwin.o network.o scores.o
+-PREFIX = /usr/local
+-LOCALEPATH = /usr/local/share/locale
+-CFLAGS = -Wall -O2 -DPREFIX="\"$(PREFIX)\"" -DLOCALEPATH="\"$(LOCALEPATH)\""
++#PREFIX = /usr/local
++LOCALEPATH = ${PREFIX}/share/locale
++CFLAGS+= -Wall -I${LOCALBASE}/include -DPREFIX="\"$(PREFIX)\"" -DLOCALEPATH="\"$(LOCALEPATH)\""
+ VERSION = `grep " VERSION" version.h | sed s/\"//g | sed s/\#define\ VERSION\ //`
+ LOCALES = de
+ MAN = doc/man
+@@ -49,19 +49,6 @@ install: tornado tornado.6 install-locale-data
+ 	install -s tornado $(PREFIX)/bin
+ 
+ 	$(MAKE) -C $(MAN) install-man
+-
+-	if [ -f "/var/games/tornado.scores" ]; then \
+-	  echo "Skipping install of the highscores file. File exists."; \
+-	  cat /var/games/tornado.scores | ./convert-highscorefile > score.tmp; \
+-	  mv -f score.tmp /var/games/tornado.scores; \
+-	  chmod a+rw-x "/var/games/tornado.scores"; \
+-	else \
+-	  if [ ! -d "/var/games" ]; then \
+-	    mkdir /var/games; \
+-	  fi; \
+-	  install tornado.scores /var/games; \
+-	  chmod a+w-x "/var/games/tornado.scores"; \
+-	fi
+ 
+ install-locale-data:
+ 	$(MAKE) -C po install-locale-data

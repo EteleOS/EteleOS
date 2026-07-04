@@ -1,0 +1,22 @@
+Index: scripts/wsrep_sst_mariabackup.sh
+--- scripts/wsrep_sst_mariabackup.sh.orig
++++ scripts/wsrep_sst_mariabackup.sh
+@@ -33,6 +33,18 @@ if [ -z "$BACKUP_BIN" ]; then
+     exit 42
+ fi
+ 
++GFIND_BIN=$(commandex 'gfind')
++if [ -z "$GFIND_BIN" ]; then
++    wsrep_log_error 'gfind binary not found in path'
++    exit 42
++fi
++
++GDU_BIN=$(commandex 'gdu')
++if [ -z "$GDU_BIN" ]; then
++    wsrep_log_error 'gdu binary not found in path'
++    exit 42
++fi
++
+ BACKUP_PID=""
+ 
+ INFO_FILE='mariadb_backup_galera_info'

@@ -1,0 +1,9 @@
+Index: web2png.1
+--- web2png.1.orig
++++ web2png.1
+@@ -1,4 +1,4 @@
+-'\" t
++.TH WEB2PNG 1 "6 October 1999"
+ .\"     Title: web2png
+ .\"    Author: [see the "AUTHORS" section]
+ .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>

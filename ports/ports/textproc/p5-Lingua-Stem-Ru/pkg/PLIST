@@ -1,0 +1,4 @@
+${P5SITE}/Lingua/
+${P5SITE}/Lingua/Stem/
+${P5SITE}/Lingua/Stem/Ru.pm
+@man man/man3p/Lingua::Stem::Ru.3p

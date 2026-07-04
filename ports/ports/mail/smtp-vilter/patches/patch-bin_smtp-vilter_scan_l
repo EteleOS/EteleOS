@@ -1,0 +1,20 @@
+Index: bin/smtp-vilter/scan.l
+--- bin/smtp-vilter/scan.l.orig
++++ bin/smtp-vilter/scan.l
+@@ -19,7 +19,7 @@
+ 
+ #include <string.h>
+ 
+-#include "y.tab.h"
++#include "parse.h"
+ 
+ %}
+ 
+@@ -52,6 +52,7 @@ logfile			{ return LOGFILE; }
+ config-file		{ return CFGFILE; }
+ statfile		{ return STATFILE; }
+ interval		{ return INTERVAL; }
++header-options		{ return HEADER_OPTIONS; }
+ spam-header		{ return SPAMHDR; }
+ 
+ ldaphost		{ return LDAPHOST; }

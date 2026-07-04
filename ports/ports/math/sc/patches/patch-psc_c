@@ -1,0 +1,12 @@
+Index: psc.c
+--- psc.c.orig
++++ psc.c
+@@ -73,7 +73,7 @@ main(int argc, char **argv)
+     register char *p;
+ 
+     progname = argv[0];
+-    while ((c = getopt(argc, argv, "rfLks:R:C:n:d:SPv")) != EOF) {
++    while ((c = getopt(argc, argv, "rfLks:R:C:n:d:SPv")) != -1) {
+ 	switch (c) {
+ 	case 'r':
+ 	    colfirst = TRUE;

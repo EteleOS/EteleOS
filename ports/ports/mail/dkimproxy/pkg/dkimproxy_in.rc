@@ -1,0 +1,12 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/dkimproxy.in --daemonize"
+daemon_flags="--conf_file=${SYSCONFDIR}/dkimproxy_in.conf --user=_dkimproxy --group=_dkimproxy"
+
+. /etc/rc.d/rc.subr
+
+pexp="/usr/bin/perl.*${daemon}${daemon_flags:+ ${daemon_flags}}"
+
+rc_reload=NO
+
+rc_cmd $1

@@ -1,0 +1,7 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+To be able to interact with the Bacula Director as non-root, the user
+needs to be part of the '_bacula' group so that the
+${SYSCONFDIR}/bconsole.conf and ${SYSCONFDIR}/bat.conf files can be read.

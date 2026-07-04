@@ -1,0 +1,11 @@
+Index: globdata.c
+--- globdata.c.orig
++++ globdata.c
+@@ -20,6 +20,7 @@
+ /*                                                                   */
+ /*********************************************************************/
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <unistd.h>

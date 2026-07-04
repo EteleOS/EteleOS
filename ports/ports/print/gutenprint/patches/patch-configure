@@ -1,0 +1,26 @@
+Don't set POSIX_C_SOURCE, this interferes with BSD_VISIBLE;
+see patch-src_escputil_escputil_c
+
+Don't enforce compiler optimizations.
+
+Index: configure
+--- configure.orig
++++ configure
+@@ -20454,7 +20454,7 @@ rm -f core conftest.err conftest.$ac_objext conftest.b
+ 
+   else
+ 
+-  for stp_ac_arg in -O3 -O2 -O1 -O ; do
++  for stp_ac_arg in '' ; do
+     stp_ac_save_CFLAGS="${CFLAGS}"
+ 
+   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports ${stp_ac_arg}" >&5
+@@ -20636,7 +20636,7 @@ fi
+ 
+ # C99 + POSIX extras
+ 
+-  for stp_ac_arg in -D_POSIX_C_SOURCE=200809L -std=c99 ; do
++  for stp_ac_arg in -std=c99 ; do
+ 
+   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if ${CC} supports ${stp_ac_arg}" >&5
+ printf %s "checking if ${CC} supports ${stp_ac_arg}... " >&6; }

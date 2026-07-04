@@ -1,0 +1,53 @@
+Index: src/main.c
+--- src/main.c.orig
++++ src/main.c
+@@ -460,14 +460,6 @@ int main( int argc, char *argv[] )
+     /* Set up OpenSSL thread protection */
+     ssl_thread_setup(fn);
+ 
+-#ifndef HAVE_RAND_EGD
+-    if ( RAND_egd( ( RAND_file_name( f_randfile, sizeof( f_randfile ) ) == f_randfile ) ? f_randfile : "/.rnd" ) ) 
+-#endif
+-    {
+-	if ( RAND_load_file( f_randfile, -1 ) )
+-	    RAND_write_file( f_randfile );
+-    }
+-
+     SSL_load_error_strings();
+ 
+     /* 
+@@ -681,6 +673,22 @@ int main( int argc, char *argv[] )
+     if ( BecomeNonRoot() )
+ 	exit( 1 );
+ 
++    /*
++     * Optional dir accessed at runtime if it exists, but allow unveil() to fail
++     * so the daemon can still run if the dir does not exist.
++     */
++    unveil("/etc/ssl/certs", "r");
++    if ( unveil(NULL, NULL) != 0 )
++    {
++	syslog(LOG_ERR, "%s: unveil() failed: [%d]\n", fn, rc);
++	exit( 1 );
++    }
++    if ( pledge("stdio inet dns rpath", NULL) != 0 )
++    {
++	syslog(LOG_ERR, "%s: pledge() failed: [%d]\n", fn, rc);
++	exit( 1 );
++    }
++
+     /* some misc thread setup */
+     rc = pthread_attr_init( &attr );
+     if ( rc )
+@@ -1574,9 +1582,9 @@ static int verify_callback(int ok, X509_STORE_CTX * ct
+ 	    verify_error = X509_V_ERR_CERT_CHAIN_TOO_LONG;
+ 	}
+     }
+-    switch (ctx->error) {
++    switch (err) {
+     case X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT:
+-	X509_NAME_oneline(X509_get_issuer_name(ctx->current_cert), buf, sizeof(buf));
++	X509_NAME_oneline(X509_get_issuer_name(err_cert), buf, sizeof(buf));
+ 	syslog(LOG_NOTICE, "issuer= %s", buf);
+ 	break;
+     case X509_V_ERR_CERT_NOT_YET_VALID:

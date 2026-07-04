@@ -1,0 +1,5 @@
+${P5SITE}/Net/
+${P5SITE}/Net/SSH/
+${P5SITE}/Net/SSH/Expect.pm
+${P5SITE}/Net/SSH/Expect.pod
+@man man/man3p/Net::SSH::Expect.3p

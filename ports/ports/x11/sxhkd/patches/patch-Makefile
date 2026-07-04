@@ -1,0 +1,14 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -32,8 +32,8 @@ install:
+ 	cp -pf $(OUT) "$(DESTDIR)$(BINPREFIX)"
+ 	mkdir -p "$(DESTDIR)$(MANPREFIX)"/man1
+ 	cp -p doc/$(OUT).1 "$(DESTDIR)$(MANPREFIX)"/man1
+-	mkdir -p "$(DESTDIR)$(DOCPREFIX)"
+-	cp -pr examples "$(DESTDIR)$(DOCPREFIX)"/examples
++	mkdir -p "$(DESTDIR)$(EGPREFIX)"
++	cp -pr examples/* "$(DESTDIR)$(EGPREFIX)"
+ 
+ uninstall:
+ 	rm -f "$(DESTDIR)$(BINPREFIX)"/$(OUT)

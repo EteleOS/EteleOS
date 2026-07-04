@@ -1,0 +1,138 @@
+Index: graphics.c
+--- graphics.c.orig
++++ graphics.c
+@@ -570,7 +570,7 @@ NODE *lback(NODE *arg) {
+ 
+ NODE *lshowturtle(NODE *args) {
+     if(!graphics_setup) graphics_setup++;
+-    prepare_to_draw;
++    prepare_to_draw_NULL;
+     if (!turtle_shown) {
+ 	turtle_shown = TRUE;
+ 	draw_turtle();
+@@ -616,7 +616,7 @@ NODE *lsetheading(NODE *arg) {
+     
+     val = numeric_arg(arg);
+     if (NOT_THROWING) {
+-	prepare_to_draw;
++	prepare_to_draw_NULL;
+ 	draw_turtle();
+ 	if (nodetype(val) == INT)
+ 	    turtle_heading = (FLONUM)getint(val);
+@@ -720,7 +720,7 @@ NODE *lscrunch(NODE *args) {
+ }
+ 
+ NODE *lhome(NODE *args) {
+-    prepare_to_draw;
++    prepare_to_draw_NULL;
+     out_of_bounds = FALSE;
+     setpos_bynumber((FLONUM)0.0, (FLONUM)0.0);
+     draw_turtle();
+@@ -884,7 +884,7 @@ NODE *lsety(NODE *args) {
+ }
+ 
+ NODE *lwrap(NODE *args) {
+-    prepare_to_draw;
++    prepare_to_draw_NULL;
+     draw_turtle();
+     current_mode = wrapmode;
+     while (turtle_x > turtle_right_max) {
+@@ -907,7 +907,7 @@ NODE *lwrap(NODE *args) {
+ 
+ NODE *lfence(NODE *args) {
+     (void)lwrap(args);	    /* get turtle inside the fence */
+-    prepare_to_draw;
++    prepare_to_draw_NULL;
+     draw_turtle();
+     current_mode = fencemode;
+     draw_turtle();
+@@ -916,7 +916,7 @@ NODE *lfence(NODE *args) {
+ }
+ 
+ NODE *lwindow(NODE *args) {
+-    prepare_to_draw;
++    prepare_to_draw_NULL;
+     draw_turtle();
+     current_mode = windowmode;
+     draw_turtle();
+@@ -935,7 +935,7 @@ NODE *lturtlemode(NODE *args) {
+ }
+ 
+ NODE *lfill(NODE *args) {    
+-    prepare_to_draw;
++    prepare_to_draw_NULL;
+     draw_turtle();
+     logofill();
+     draw_turtle();
+@@ -964,7 +964,7 @@ NODE *llabel(NODE *arg) {
+     print_stringlen = old_stringlen;
+ 	
+     if (NOT_THROWING) {
+-	prepare_to_draw;
++	prepare_to_draw_NULL;
+ 	draw_turtle();
+ 	theLength = strlen(textbuf);
+ #ifdef mac
+@@ -1085,7 +1085,7 @@ NODE *lsetpencolor(NODE *arg) {
+     NODE *val;
+ 
+     if (NOT_THROWING) {
+-	prepare_to_draw;
++	prepare_to_draw_NULL;
+ 	if (is_list(car(arg))) {
+ 	    val = make_intnode(PEN_COLOR_OFFSET);
+ 	    lsetpalette(cons(val,arg));
+@@ -1107,7 +1107,7 @@ NODE *lsetbackground(NODE *arg) {
+     }
+ 
+     if (NOT_THROWING) {
+-	prepare_to_draw;
++	prepare_to_draw_NULL;
+ 	if (is_list(car(arg))) {
+ 	    val = make_intnode(BACKGROUND_COLOR_OFFSET);
+ 	    lsetpalette(cons(val,arg));
+@@ -1188,7 +1188,7 @@ void restore_palette(FILE *fp) {
+ NODE *lsetpensize(NODE *args) {
+     NODE *arg;
+ 
+-    prepare_to_draw;
++    prepare_to_draw_NULL;
+     if (is_list(car(args))) {
+ 	arg = pos_int_vector_arg(args);
+ 	if (NOT_THROWING) {
+@@ -1216,7 +1216,7 @@ NODE *lsetpenpattern(NODE *args) {    
+ 	arg = err_logo(BAD_DATA, arg);
+ 	
+     if (NOT_THROWING) {
+-	prepare_to_draw;
++	prepare_to_draw_NULL;
+ 	set_list_pen_pattern(arg);
+ 	save_pattern();
+ 	done_drawing;
+@@ -1232,7 +1232,7 @@ NODE *lsetscrunch(NODE *args) {
+     ynode = numeric_arg(cdr(args));
+ 
+     if (NOT_THROWING) {
+-	prepare_to_draw;
++	prepare_to_draw_NULL;
+ 	draw_turtle();
+ 	x_scale = (nodetype(xnode) == FLOATT) ? getfloat(xnode) :
+ 			       (FLONUM)getint(xnode);
+@@ -1390,7 +1390,7 @@ NODE *larc(NODE *arg) {
+ 	    radius = getfloat(val2);
+ 
+ 	internal_hideturtle();
+-	prepare_to_draw;
++	prepare_to_draw_NULL;
+ 	draw_turtle();
+ 
+ 	/* save and force turtle state */
+@@ -2074,7 +2074,7 @@ NODE *lloadpict(NODE *args) {
+     lopenread(args);
+ #endif
+     if (NOT_THROWING) {
+-	prepare_to_draw;
++	prepare_to_draw_NULL;
+ 	fp = (FILE *)file_list->n_obj;
+ 	restore_palette(fp);
+ 	fread(&rec_idx, sizeof(FIXNUM), 1, fp);

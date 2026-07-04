@@ -1,0 +1,19 @@
+AppStream makes machine-readable software metadata easily accessible.  It is a
+foundational block for modern Linux software centers, offering a seamless way to
+retrieve information about available software, no matter the repository it is
+contained in.  It can provide data about available applications as well as
+available firmware, drivers, fonts and other components.  This project it part
+of freedesktop.org.
+
+What AppStream Offers:
+
+- Specifications & Standards: Describes the XML-based MetaInfo files for use by
+  upstream projects, as well as AppStream catalog metadata in XML or YAML for
+  use by repository providers.
+- Reference Implementation: Provides GLib/GObject libraries for easy
+  manipulation of metadata, with features for quick metadata indexing, querying
+  and system compatibility checks.  A Qt interface and other language bindings
+  are provided as well.
+- Tools: Includes `appstreamcli` for metadata queries, data verification and
+  diagnostics.  The `appstreamcli compose` tool can be used for simple catalog
+  metadata composition.

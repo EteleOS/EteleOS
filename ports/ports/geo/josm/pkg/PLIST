@@ -1,0 +1,7 @@
+bin/josm
+@man man/man1/josm.1
+share/applications/josm.desktop
+share/josm/
+share/josm/josm-latest.jar
+share/josm/osm_logo.svg
+@tag update-desktop-database

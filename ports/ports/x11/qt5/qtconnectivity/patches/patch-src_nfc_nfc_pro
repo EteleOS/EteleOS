@@ -1,0 +1,13 @@
+Let's try to build a functional NFC library.
+Index: src/nfc/nfc.pro
+--- src/nfc/nfc.pro.orig
++++ src/nfc/nfc.pro
+@@ -54,7 +54,7 @@ SOURCES += \
+     qnearfieldsharetarget.cpp \
+     qnfc.cpp
+ 
+-linux:!android:qtHaveModule(dbus) {
++bsd:!android:qtHaveModule(dbus) {
+     NFC_BACKEND_AVAILABLE = yes
+ 
+     QT_PRIVATE += dbus

@@ -1,0 +1,30 @@
+Fix configure check.
+Index: cmake/FindGoogleHash.cmake
+--- cmake/FindGoogleHash.cmake.orig
++++ cmake/FindGoogleHash.cmake
+@@ -1,4 +1,7 @@
+ 
++include(CMakePushCheckState)
++include(CheckCXXSourceCompiles)
++
+ if (GOOGLEHASH_INCLUDES AND GOOGLEHASH_LIBRARIES)
+   set(GOOGLEHASH_FIND_QUIETLY TRUE)
+ endif ()
+@@ -11,10 +14,13 @@ find_path(GOOGLEHASH_INCLUDES
+ )
+ 
+ if(GOOGLEHASH_INCLUDES)
+-  # let's make sure it compiles with the current compiler
+-  file(WRITE ${CMAKE_BINARY_DIR}/googlehash_test.cpp
+-  "#include <google/sparse_hash_map>\n#include <google/dense_hash_map>\nint main(int argc, char** argv) { google::dense_hash_map<int,float> a; google::sparse_hash_map<int,float> b; return 0;}\n")
+-  try_compile(GOOGLEHASH_COMPILE ${CMAKE_BINARY_DIR} ${CMAKE_BINARY_DIR}/googlehash_test.cpp OUTPUT_VARIABLE GOOGLEHASH_COMPILE_RESULT)
++  cmake_push_check_state()
++  set(CMAKE_REQUIRED_FLAGS)
++  set(CMAKE_REQUIRED_DEFINITIONS)
++  set(CMAKE_REQUIRED_INCLUDES ${GOOGLEHASH_INCLUDES})
++  set(CMAKE_REQUIRED_LIBRARIES)
++  check_cxx_source_compiles("#include <google/sparse_hash_map>\n#include <google/dense_hash_map>\nint main(int argc, char** argv) { google::dense_hash_map<int,float> a; google::sparse_hash_map<int,float> b; return 0;}\n" GOOGLEHASH_COMPILE)
++  cmake_pop_check_state()
+ endif()
+ 
+ include(FindPackageHandleStandardArgs)

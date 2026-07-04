@@ -1,0 +1,7 @@
+--- tests/unknown_options.stderr.orig	Mon Dec  8 12:52:00 2014
++++ tests/unknown_options.stderr	Mon Dec  8 12:52:10 2014
+@@ -1,2 +1,2 @@
+-$0: invalid option -- 'b'
+-$0: unrecognized option '--whatever'
++$0: invalid option -- b
++$0: unrecognized option `--whatever'

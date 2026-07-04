@@ -1,0 +1,41 @@
+Should match b_lundef in meson(1).
+
+Use a version script (matches Linux).
+
+Index: src/meson.build
+--- src/meson.build.orig
++++ src/meson.build
+@@ -105,12 +105,9 @@ endif
+ gvnc_sources += coroutine_sources
+ 
+ gvnc_link_args = []
+-if meson.get_compiler('c').has_link_argument('-Wl,--no-undefined')
+-  gvnc_link_args += ['-Wl,--no-undefined']
+-endif
+ 
+ gvnc_syms = join_paths(meson.current_source_dir(), 'libgvnc_sym.version')
+-if host_machine.system() == 'linux'
++if host_machine.system() == 'linux' or host_machine.system() == 'openbsd'
+   gvnc_link_args += ['-Wl,--version-script,' + gvnc_syms]
+ endif
+ 
+@@ -197,9 +194,6 @@ if libpulse_dep.found()
+   ]
+ 
+   gvncpulse_link_args = []
+-  if meson.get_compiler('c').has_link_argument('-Wl,--no-undefined')
+-    gvncpulse_link_args += ['-Wl,--no-undefined']
+-  endif
+ 
+   gvncpulse_syms = join_paths(meson.current_source_dir(), 'libgvncpulse_sym.version')
+   if host_machine.system() == 'linux'
+@@ -359,9 +353,6 @@ endforeach
+ 
+ 
+ gtk_vnc_link_args = []
+-if meson.get_compiler('c').has_link_argument('-Wl,--no-undefined')
+-  gtk_vnc_link_args += ['-Wl,--no-undefined']
+-endif
+ 
+ gtk_vnc_syms = join_paths(meson.current_source_dir(), 'libgtk-vnc_sym.version')
+ if host_machine.system() == 'linux'

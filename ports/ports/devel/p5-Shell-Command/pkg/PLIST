@@ -1,0 +1,3 @@
+${P5SITE}/Shell/
+${P5SITE}/Shell/Command.pm
+@man man/man3p/Shell::Command.3p

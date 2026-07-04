@@ -1,0 +1,35 @@
+Index: onewmisc.c
+--- onewmisc.c.orig
++++ onewmisc.c
+@@ -5,6 +5,7 @@
+ char *getenv();
+ #include <ctype.h>
+ #include <stdio.h>
++#include <string.h>
+ #include "onew.h"
+ 
+ char *Onew_env_substitute(istr,ostr)
+@@ -100,6 +101,7 @@ onew_messagefunc(func)
+ }
+ 
+ static FILE *LOG;
++void
+ Onew_dbglog(fmt,a,b,c,d,e,f,g)
+ 	char *fmt;
+ {	char *logfile;
+@@ -147,6 +149,7 @@ static strQovf(len){
+ 	}
+ 	return 0;
+ }
++void
+ strQenq(Q,c)
+ 	Uchar *Q,c;
+ {	int len;
+@@ -157,6 +160,7 @@ strQenq(Q,c)
+ 	Q[len] = c;
+ 	Q[len+1] = 0;
+ }
++void
+ strQins(Q,c)
+ 	Uchar *Q,c;
+ {	Linebuff buff;

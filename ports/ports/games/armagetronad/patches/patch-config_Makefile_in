@@ -1,0 +1,12 @@
+Index: config/Makefile.in
+--- config/Makefile.in.orig
++++ config/Makefile.in
+@@ -337,7 +337,7 @@ top_srcdir = @top_srcdir@
+ version = @version@
+ 
+ # configuration location
+-configdir = ${aa_sysconfdir}
++configdir = ${prefix}/share/examples/armagetronad
+ nobase_config_DATA = default.cfg master.srv settings.cfg\
+ 	subcultures.srv\
+ 	settings_visual.cfg\

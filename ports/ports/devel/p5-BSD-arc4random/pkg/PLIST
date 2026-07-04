@@ -1,0 +1,9 @@
+${P5ARCH}/
+${P5ARCH}/BSD/
+${P5ARCH}/BSD/arc4random.pm
+@comment ${P5ARCH}/BSD/arc4random.pm.orig
+${P5ARCH}/auto/
+${P5ARCH}/auto/BSD/
+${P5ARCH}/auto/BSD/arc4random/
+${P5ARCH}/auto/BSD/arc4random/arc4random.so
+@man man/man3p/BSD::arc4random.3p

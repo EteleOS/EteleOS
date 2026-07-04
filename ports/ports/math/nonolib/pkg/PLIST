@@ -1,0 +1,3 @@
+include/nonogram.h
+include/nonogram_version.h
+lib/libnonogram.a

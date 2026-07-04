@@ -1,0 +1,8 @@
+--- scripts/editdiff.in.orig	Thu Feb 10 15:36:06 2011
++++ scripts/editdiff.in	Tue Apr 21 15:07:14 2015
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/bin/sh
+ #
+ # editdiff - simple wrapper around rediff
+ # Copyright (C) 2001-2002, 2011 Tim Waugh <twaugh@redhat.com>

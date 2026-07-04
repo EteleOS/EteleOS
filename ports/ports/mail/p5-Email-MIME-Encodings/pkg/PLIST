@@ -1,0 +1,4 @@
+${P5SITE}/Email/
+${P5SITE}/Email/MIME/
+${P5SITE}/Email/MIME/Encodings.pm
+@man man/man3p/Email::MIME::Encodings.3p

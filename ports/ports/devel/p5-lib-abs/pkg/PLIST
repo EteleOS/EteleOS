@@ -1,0 +1,3 @@
+${P5SITE}/lib/
+${P5SITE}/lib/abs.pm
+@man man/man3p/lib::abs.3p

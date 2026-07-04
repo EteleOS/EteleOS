@@ -1,0 +1,18 @@
+%%native%%
+lib/ocaml/stublibs/dllzarith.so
+@comment lib/ocaml/stublibs/dllzarith.so.owner
+lib/ocaml/zarith/
+lib/ocaml/zarith/META
+lib/ocaml/zarith/big_int_Z.cmi
+lib/ocaml/zarith/big_int_Z.cmti
+lib/ocaml/zarith/big_int_Z.mli
+lib/ocaml/zarith/libzarith.a
+lib/ocaml/zarith/q.cmi
+lib/ocaml/zarith/q.cmti
+lib/ocaml/zarith/q.mli
+lib/ocaml/zarith/z.cmi
+lib/ocaml/zarith/z.cmti
+lib/ocaml/zarith/z.mli
+lib/ocaml/zarith/zarith.cma
+lib/ocaml/zarith/zarith.h
+lib/ocaml/zarith/zarith_top.cma

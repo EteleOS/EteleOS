@@ -1,0 +1,12 @@
+Index: support/rotatelogs.c
+--- support/rotatelogs.c.orig
++++ support/rotatelogs.c
+@@ -129,7 +129,7 @@ static void usage(const char *argv0, const char *reaso
+             "or \n\nTransferLog \"|%s /some/where 5M\"\n\n", argv0);
+ #endif
+     fprintf(stderr,
+-            "to httpd.conf. By default, the generated name will be\n"
++            "to httpd2.conf. By default, the generated name will be\n"
+             "<logfile>.nnnn where nnnn is the system time at which the log\n"
+             "nominally starts (N.B. if using a rotation time, the time will\n"
+             "always be a multiple of the rotation time, so you can synchronize\n"

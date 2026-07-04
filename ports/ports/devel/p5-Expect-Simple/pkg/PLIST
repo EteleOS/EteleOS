@@ -1,0 +1,3 @@
+${P5SITE}/Expect/
+${P5SITE}/Expect/Simple.pm
+@man man/man3p/Expect::Simple.3p

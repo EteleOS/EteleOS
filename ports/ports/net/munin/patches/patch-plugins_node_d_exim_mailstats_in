@@ -1,0 +1,12 @@
+Index: plugins/node.d/exim_mailstats.in
+--- plugins/node.d/exim_mailstats.in.orig
++++ plugins/node.d/exim_mailstats.in
+@@ -126,7 +126,7 @@ sub parseEximfile
+ }
+ 
+ 
+-my $EXIM = "/usr/sbin/exim";
++my $EXIM = "/usr/local/bin/exim";
+ 
+ $EXIM = "/usr/sbin/exim4" if (-x "/usr/sbin/exim4");    # a Debianism
+ $EXIM = $ENV{'exim'}      if defined $ENV{'exim'};

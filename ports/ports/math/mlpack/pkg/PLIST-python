@@ -1,0 +1,88 @@
+@conflict mlpack-<3.0.4
+@conflict py-mlpack-*
+@pkgpath math/mlpack,-python${FLAVOR_EXT}
+@pkgpath math/mlpack,
+include/mlpack/bindings/python/
+include/mlpack/bindings/python/get_arma_type.hpp
+include/mlpack/bindings/python/get_cython_type.hpp
+include/mlpack/bindings/python/get_numpy_type.hpp
+include/mlpack/bindings/python/get_numpy_type_char.hpp
+include/mlpack/bindings/python/get_param.hpp
+include/mlpack/bindings/python/get_printable_param.hpp
+include/mlpack/bindings/python/import_decl.hpp
+include/mlpack/bindings/python/mlpack/
+include/mlpack/bindings/python/mlpack/arma_util.hpp
+include/mlpack/bindings/python/mlpack/serialization.hpp
+include/mlpack/bindings/python/print_class_defn.hpp
+include/mlpack/bindings/python/print_defn.hpp
+include/mlpack/bindings/python/print_doc.hpp
+include/mlpack/bindings/python/print_doc_functions.hpp
+include/mlpack/bindings/python/print_doc_functions_impl.hpp
+include/mlpack/bindings/python/print_input_processing.hpp
+include/mlpack/bindings/python/print_output_processing.hpp
+include/mlpack/bindings/python/print_pyx.hpp
+include/mlpack/bindings/python/py_option.hpp
+include/mlpack/bindings/python/strip_type.hpp
+${SITEDIR}/
+${SITEDIR}/mlpack/
+${EGGDIR}/
+${EGGDIR}/PKG-INFO
+${EGGDIR}/SOURCES.txt
+${EGGDIR}/dependency_links.txt
+${EGGDIR}/not-zip-safe
+${EGGDIR}/requires.txt
+${EGGDIR}/top_level.txt
+${SITEDIR}/mlpack/__init__.py
+${SITEDIR}/mlpack/${MODPY_PYCACHE}/
+${SITEDIR}/mlpack/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+${SITEDIR}/mlpack/${MODPY_PYCACHE}matrix_utils.${MODPY_PYC_MAGIC_TAG}pyc
+@so ${SITEDIR}/mlpack/adaboost.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/approx_kfn.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/arma_numpy.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/bayesian_linear_regression.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/cf.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/dbscan.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/decision_stump.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/decision_tree.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/det.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/emst.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/fastmks.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/gmm_generate.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/gmm_probability.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/gmm_train.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/hmm_generate.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/hmm_loglik.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/hmm_train.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/hmm_viterbi.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/hoeffding_tree.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/image_converter.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/kde.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/kernel_pca.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/kfn.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/kmeans.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/knn.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/krann.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/lars.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/linear_regression.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/linear_svm.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/lmnn.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/local_coordinate_coding.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/logistic_regression.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/lsh.${MODPY_PYC_MAGIC_TAG}so
+${SITEDIR}/mlpack/matrix_utils.py
+@so ${SITEDIR}/mlpack/mean_shift.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/nbc.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/nca.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/nmf.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/pca.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/perceptron.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/preprocess_binarize.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/preprocess_describe.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/preprocess_one_hot_encoding.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/preprocess_scale.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/preprocess_split.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/radical.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/random_forest.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/softmax_regression.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/sparse_coding.${MODPY_PYC_MAGIC_TAG}so
+@so ${SITEDIR}/mlpack/test_python_binding.${MODPY_PYC_MAGIC_TAG}so

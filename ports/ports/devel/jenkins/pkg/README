@@ -1,0 +1,54 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+SECURITY NOTES
+==============
+
+Jenkins runs external processes such as CVS, Ant, Make and so on, whose
+path is configurable from the web menu system.
+
+Please make very sure to enable login restriction under Manage Jenkins
+-> Configure Global Security if your server is reachable from any
+(untrusted) network! If you only run it on localhost, be sure to block
+access to the HTTP port using pf(8).
+
+Take these steps before you start the server the first time!
+
+See more information at
+https://www.jenkins.io/doc/book/security/securing-jenkins/
+
+Post-installation
+=================
+
+To arrange for the standalone Jenkins server to run automatically
+on reboot, add "jenkins" to your pkg_scripts line in /etc/rc.conf.local.
+
+NOTE: This script runs Jenkins on port 8000, not 8080, since most
+Java application servers run on port 8080. By default we disable
+HTTPS, since the former is extra overhead on localhost.
+
+To change any of these options, carefully copy the line
+starting daemon_flags= from ${RCDIR}/jenkins into /etc/rc.conf.local
+and change the daemon_flags to jenkins_flags in addition to any
+changes to the ports and other options.
+
+To run Jenkins in another Java web/application server, copy the war
+file from ${TRUEPREFIX}/share/jenkins to your server's deploy
+directory, or read more at ${HOMEPAGE}. 
+
+To use the email notifications, you will have to configure a valid
+sending address (and SMTP server, if not localhost) under
+Manage Jenkins -> Email Configuration.
+
+The Jenkins data files are in the home directory (/var/jenkins),
+under the "hidden" directory ".jenkins".
+
+If you are upgrading from Hudson to Jenkins, you can copy the old
+content of /var/hudson/.hudson into /var/jenkins/.jenkins, e.g.,
+	# cp -r /var/hudson/.hudson/* /var/jenkins/.jenkins
+	# chown -R _jenkins:_jenkins /var/jenkins/.jenkins
+
+Please be aware that Jenkins offers an upgrade for the CVS plugin. It is
+strongly advised *not* to upgrade this plugin as the updated version assumes
+a GNU rlog command line option (-S) is available.

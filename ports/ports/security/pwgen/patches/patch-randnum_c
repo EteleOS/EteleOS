@@ -1,0 +1,27 @@
+Index: randnum.c
+--- randnum.c.orig
++++ randnum.c
+@@ -16,8 +16,18 @@
+ #include <fcntl.h>
+ #include <errno.h>
+ 
++#include "config.h"
+ #include "pwgen.h"
+ 
++#ifdef HAVE_ARC4RANDOM
++
++int pw_random_number(int max_num)
++{
++	return (arc4random_uniform(max_num));
++}
++
++#else
++
+ #ifdef HAVE_DRAND48
+ extern double drand48(void);
+ #endif
+@@ -75,3 +85,4 @@ int pw_random_number(max_num)
+ 	fprintf(stderr, "No entropy available!\n");
+ 	exit(1);
+ }
++#endif	/* HAVE_ARC4RANDOM */

@@ -1,0 +1,12 @@
+Index: src/menu_savegames.c
+--- src/menu_savegames.c.orig
++++ src/menu_savegames.c
+@@ -3,7 +3,7 @@
+ #include "menu.h"
+ 
+ // Menu for save and load games
+-uchar tempbuf[80];
++static uchar tempbuf[80];
+ 
+ uchar *loadgame_menu[MAXM] = {(7*8)-3,70,  0, loadsavegamenames, NULL, NULL, NULL,
+ 					"1", MNU_DYNAMICTEXT, loadgame_getgamename, 1,

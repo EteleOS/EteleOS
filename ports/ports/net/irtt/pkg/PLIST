@@ -1,0 +1,4 @@
+@bin bin/irtt
+@man man/man1/irtt-client.1
+@man man/man1/irtt-server.1
+@man man/man1/irtt.1

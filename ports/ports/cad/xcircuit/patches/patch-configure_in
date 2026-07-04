@@ -1,0 +1,15 @@
+--- configure.in.orig	Wed Aug 15 07:45:19 2012
++++ configure.in	Mon Feb  4 13:38:41 2013
+@@ -740,6 +740,12 @@ if test "x$xc_with_tcl" != "x" ; then
+ fi
+ 
+ if test "x$xc_with_tcl" != "x" ; then
++  # Tcl and Tk's lib versions can differ on some systems
++  case $target in
++     *-openbsd*)
++	SHDLIB_EXT=".so.${TK_LIB_FILE##*.so.}"
++	;;
++  esac
+   if test "x${xc_with_tk_libraries}" != "x" ; then
+     for libname in \
+      "${xc_with_tk_libraries}/lib${TK_LIB_NAME}${SHDLIB_EXT}"

@@ -1,0 +1,11 @@
+${P5ARCH}/
+${P5ARCH}/File/
+${P5ARCH}/File/LibMagic/
+${P5ARCH}/File/LibMagic.pm
+${P5ARCH}/File/LibMagic/Constants.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/File/
+${P5ARCH}/auto/File/LibMagic/
+@so ${P5ARCH}/auto/File/LibMagic/LibMagic.so
+@man man/man3p/File::LibMagic.3p
+@man man/man3p/File::LibMagic::Constants.3p

@@ -1,0 +1,28 @@
+Index: src/Core/Entities/PlanetEntity.h
+--- src/Core/Entities/PlanetEntity.h.orig
++++ src/Core/Entities/PlanetEntity.h
+@@ -65,6 +65,12 @@ typedef struct
+ 	GLuint					index_array[MAX_TRI_INDICES];
+ }	VertexData;
+ 
++// straight c
++extern double		corona_speed_factor;	// multiply delta_t by this before adding it to corona_stage
++extern double		corona_stage;			// 0.0 -> 1.0
++extern GLfloat		rvalue[729];			// stores random values for adjusting colors in the corona
++
++
+ @interface PlanetEntity: OOSelfDrawingEntity
+ {
+ @public
+@@ -121,11 +127,6 @@ typedef struct
+ 	
+ 	Vector					rotationAxis;
+ }
+-
+-// straight c
+-double		corona_speed_factor;	// multiply delta_t by this before adding it to corona_stage
+-double		corona_stage;			// 0.0 -> 1.0
+-GLfloat		rvalue[729];			// stores random values for adjusting colors in the corona
+ 
+ - (id) initSunWithColor:(OOColor*)sun_color andDictionary:(NSDictionary*) dict;
+ - (id) initWithSeed:(Random_Seed) p_seed;

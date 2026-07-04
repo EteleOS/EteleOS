@@ -1,0 +1,12 @@
+Index: src/occtl/occtl.c
+--- src/occtl/occtl.c.orig
++++ src/occtl/occtl.c
+@@ -262,7 +262,7 @@ static int handle_reset_cmd(CONN_TYPE *conn, const cha
+ 			    cmd_params_st *params)
+ {
+ 	rl_reset_terminal(NULL);
+-#ifdef HAVE_ORIG_READLINE
++#if defined(HAVE_ORIG_READLINE) && !defined(__OpenBSD__)
+ 	rl_reset_screen_size();
+ #endif
+ 

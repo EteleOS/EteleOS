@@ -1,0 +1,10 @@
+--- lib/signal_op.cpp.orig	Wed Apr 19 17:26:21 2017
++++ lib/signal_op.cpp	Wed Apr 19 17:26:25 2017
+@@ -13,6 +13,7 @@
+ 
+ 
+ #include <math.h>
++#include <cstdlib>
+ #include "signal_op.h"
+ #include "AFLIB/aflibConverter.h"
+ #include "error_op.h"

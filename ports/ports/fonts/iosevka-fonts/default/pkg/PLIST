@@ -1,0 +1,15 @@
+@conflict iosevka-fonts-default-*
+@conflict iosevka-fonts-term-*
+@pkgpath fonts/iosevka-fonts,-main
+@pkgpath fonts/iosevka-fonts,-term
+share/fonts/
+@fontdir share/fonts/iosevka/
+share/fonts/iosevka/Iosevka-Bold.ttc
+share/fonts/iosevka/Iosevka-ExtraBold.ttc
+share/fonts/iosevka/Iosevka-ExtraLight.ttc
+share/fonts/iosevka/Iosevka-Heavy.ttc
+share/fonts/iosevka/Iosevka-Light.ttc
+share/fonts/iosevka/Iosevka-Medium.ttc
+share/fonts/iosevka/Iosevka-Regular.ttc
+share/fonts/iosevka/Iosevka-SemiBold.ttc
+share/fonts/iosevka/Iosevka-Thin.ttc

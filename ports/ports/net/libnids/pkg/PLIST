@@ -1,0 +1,5 @@
+include/nids.h
+lib/libnids.a
+@comment lib/libnids.so
+@lib lib/libnids.so.${LIBnids_VERSION}
+@man man/man3/libnids.3

@@ -1,0 +1,25 @@
+Index: src/olsr_random.h
+--- src/olsr_random.h.orig
++++ src/olsr_random.h
+@@ -54,7 +54,14 @@
+ 
+ #define OLSR_RANDOM_MAX INT32_MAX
+ 
++#if defined(__OpenBSD__)
+ static INLINE long int olsr_random(void) {
++  long int r;
++  arc4random_buf(&r, sizeof(r));
++  return r;
++}
++#else
++static INLINE long int olsr_random(void) {
+   int32_t value;
+   int randomFile;
+ 
+@@ -77,5 +84,6 @@ static INLINE long int olsr_random(void) {
+ 
+   return abs(value);
+ }
++#endif /* __OpenBSD__ */
+ 
+ #endif /* _OLSR_RANDOM_H */

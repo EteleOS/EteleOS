@@ -1,0 +1,3 @@
+${P5SITE}/Tie/
+${P5SITE}/Tie/LLHash.pm
+@man man/man3p/Tie::LLHash.3p

@@ -1,0 +1,27 @@
+--- disdvi.c.orig	Thu Jan 23 11:31:00 2003
++++ disdvi.c	Tue May 11 08:35:29 2010
+@@ -107,15 +107,7 @@ char * progname;
+  * Function declarations
+  */
+ 
+-#if !defined(THINK_C)
+-char *          malloc          ();
+-#endif
+ 
+-#if defined(VMS)
+-                main            (int argc, char ** argv);
+-#else
+-void            main            (int argc, char ** argv);
+-#endif
+ void            bop             (void);
+ void            preamble        (void);
+ void            postamble       (void);
+@@ -138,7 +130,7 @@ void            usage           (void);
+ #if defined(VMS)
+      main(int argc, char **argv)
+ #else
+-void main(int argc, char **argv)
++int main(int argc, char **argv)
+ #endif
+ {
+     register int opcode;                /* dvi opcode                        */

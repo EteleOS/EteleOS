@@ -1,0 +1,17 @@
+Icinga 2 is an open source monitoring system which checks the
+availability of your network resources, notifies users of outages,
+and generates performance data for reporting.
+
+Scalable and extensible, Icinga 2 can monitor large, complex
+environments across multiple locations.
+
+* object-based, rule-driven configuration format, offering user-friendly
+features such as "apply" rules for dynamic object generation.
+
+* native support for Graphite, transmitting performance data directly
+via TCP socket connection.
+
+* REST API allowing access to objects and attributes and creation of
+objects at runtime (without restart).
+
+* clustering support for high-availability and distributed monitoring.

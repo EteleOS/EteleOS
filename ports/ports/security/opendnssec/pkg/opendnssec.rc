@@ -1,0 +1,20 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/ods-control"
+daemon_flags="start"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+pexp="${TRUEPREFIX}/sbin/ods-(enforcerd|signerd)"
+
+rc_pre() {
+	install -d -o _opendnssec /var/run/opendnssec/
+}
+
+rc_stop() {
+	${daemon} stop
+}
+
+rc_cmd $1

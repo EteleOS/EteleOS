@@ -1,0 +1,6 @@
+${P5ARCH}/
+${P5ARCH}/XString.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/XString/
+@so ${P5ARCH}/auto/XString/XString.so
+@man man/man3p/XString.3p

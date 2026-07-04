@@ -1,0 +1,12 @@
+Index: html/nfsen.php
+--- html/nfsen.php.orig
++++ html/nfsen.php
+@@ -695,7 +695,7 @@ switch ($label) {
+ 		}
+ 		if ( count($plugins) > 0 ) {
+ 			$plugin_name = $plugins[ $_SESSION['sub_tab'] ];
+-			$include_file = "$FRONTEND_PLUGINDIR/$plugin_name" . ".php";
++			$include_file = "plugins/$plugin_name" . ".php";
+ 			include($include_file);
+ 			$plugin_parse_input = $plugin_name . "_ParseInput";
+ 			$plugin_run 	    = $plugin_name . "_Run";

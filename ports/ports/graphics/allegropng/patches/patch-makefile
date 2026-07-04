@@ -1,0 +1,27 @@
+--- makefile.orig	Thu Jun  8 22:08:40 2006
++++ makefile	Sat Nov  2 12:00:57 2013
+@@ -13,19 +13,19 @@ libalpng.a: $(OBJECTS)
+ 	ar crs libalpng.a $?
+ 
+ objects/%.o: %.c
+-	gcc $(CFLAGS) -O3 -Wall -Wextra -ansi -pedantic -Isrc -c $< -o $@ 
++	${CC} $(CFLAGS) -O3 -Wall -Wextra -ansi -pedantic -Isrc -c $< -o $@ 
+ 
+ objects/%.o: src/%.c
+-	gcc $(CFLAGS) -O3 -Wall -Wextra -ansi -pedantic -Isrc -c $< -o $@ 
++	${CC} $(CFLAGS) -O3 -Wall -Wextra -ansi -pedantic -Isrc -c $< -o $@ 
+ 
+ objects/%.o: src/inflate/%.c
+-	gcc $(CFLAGS) -O3 -Wall -Wextra -ansi -pedantic -Isrc -c $< -o $@ 
++	${CC} $(CFLAGS) -O3 -Wall -Wextra -ansi -pedantic -Isrc -c $< -o $@ 
+ 
+ objects/%.o: src/quantization/%.c
+-	gcc $(CFLAGS) -O3 -Wall -Wextra -ansi -pedantic -Isrc -c $< -o $@ 
++	${CC} $(CFLAGS) -O3 -Wall -Wextra -ansi -pedantic -Isrc -c $< -o $@ 
+ 
+ ex01: objects/ex01.o libalpng.a
+-	gcc $(LDFLAGS)  -s -O3 -Wall -Wextra -ansi -pedantic $^ -o $@ -Isrc -L. `allegro-config --libs`  
++	${CC} $(LDFLAGS)  -s -O3 -Wall -Wextra -ansi -pedantic $^ -o $@ -Isrc -L. `allegro-config --libs`  
+ 
+ 
+ clean: 

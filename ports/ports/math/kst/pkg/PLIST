@@ -1,0 +1,31 @@
+@bin bin/kst2
+lib/kst2/
+lib/kst2/plugins/
+lib/kst2/plugins/libkst2_datasource_ascii.so
+lib/kst2/plugins/libkst2_datasource_qimagesource.so
+lib/kst2/plugins/libkst2_datasource_sampledatasource.so
+lib/kst2/plugins/libkst2_datasource_sourcelist.so
+lib/libkst2app.a
+@lib lib/libkst2core.so.${LIBkst2core_VERSION}
+@lib lib/libkst2math.so.${LIBkst2math_VERSION}
+@lib lib/libkst2widgets.so.${LIBkst2widgets_VERSION}
+@man man/man1/kst2.1
+share/applications/kst2.desktop
+share/applnk/
+share/applnk/Graphics/
+share/applnk/Graphics/kst2.desktop
+share/icons/hicolor/128x128/apps/application-x-kst.png
+share/icons/hicolor/128x128/apps/kst.png
+share/icons/hicolor/32x32/apps/application-x-kst.png
+share/icons/hicolor/32x32/apps/kst.png
+share/icons/hicolor/48x48/apps/application-x-kst.png
+share/icons/hicolor/48x48/apps/kst.png
+share/icons/hicolor/64x64/apps/application-x-kst.png
+share/icons/hicolor/64x64/apps/kst.png
+share/icons/hicolor/scalable/apps/application-x-kst.svg
+share/icons/hicolor/scalable/apps/kst.svg
+share/mimelink/
+share/mimelink/application/
+share/mimelink/application/x-kst2.desktop
+@tag update-desktop-database
+@tag gtk-update-icon-cache %D/share/icons/hicolor

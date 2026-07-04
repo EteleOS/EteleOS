@@ -1,0 +1,23 @@
+No wordexp(3) on OpenBSD.
+XXX check for the wordexp function instead + push upstream
+
+Index: libs/indibase/indidome.cpp
+--- libs/indibase/indidome.cpp.orig
++++ libs/indibase/indidome.cpp
+@@ -35,7 +35,16 @@
+ #include <cerrno>
+ #include <cmath>
+ #include <cstring>
++#ifndef __OpenBSD__
+ #include <wordexp.h>
++#else
++#include <glob.h>
++#define wordexp_t glob_t
++#define wordfree globfree
++#define wordexp(s,p,f) glob((s), GLOB_ERR, NULL, (p))
++#define we_wordc gl_pathc
++#define we_wordv gl_pathv
++#endif
+ #include <pwd.h>
+ #include <unistd.h>
+ #include <limits>

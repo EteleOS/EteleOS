@@ -1,0 +1,11 @@
+--- doc/Makefile.in.orig	Tue Jan 28 00:57:41 2014
++++ doc/Makefile.in	Tue May 27 17:07:14 2014
+@@ -257,7 +257,7 @@ build_vendor = @build_vendor@
+ builddir = @builddir@
+ datadir = @datadir@
+ datarootdir = @datarootdir@
+-docdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)
++docdir = $(datadir)/doc/$(PACKAGE)
+ dvidir = @dvidir@
+ exec_prefix = @exec_prefix@
+ host = @host@

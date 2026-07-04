@@ -1,0 +1,11 @@
+--- GNUmakefile.orig	Fri Apr  2 09:15:52 2004
++++ GNUmakefile	Sun Oct  6 17:34:34 2013
+@@ -25,7 +25,7 @@ CameraKit_HEADER_FILES = \
+ 	GSGPhoto2.h \
+ 	GSCamera.h
+ 
+-Camera_OBJC_FILES = \
++CameraKit_OBJC_FILES = \
+ 	GSGPhoto2.m \
+ 	GSCamera.m
+ 

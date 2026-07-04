@@ -1,0 +1,12 @@
+--- src/dscp.c.orig	Thu Oct 11 21:42:06 2012
++++ src/dscp.c	Wed Oct 21 13:59:28 2015
+@@ -56,6 +56,9 @@ const char * iptos2str(int iptos);
+ #if HAVE_NETINET_IN_SYSTM_H
+ #include <netinet/in_systm.h>
+ #endif
++#if HAVE_NETINET_IN_H
++#include <netinet/in.h>
++#endif
+ #if HAVE_NETINET_IP_H
+ #include <netinet/ip.h>
+ #endif

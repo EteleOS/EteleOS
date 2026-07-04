@@ -1,0 +1,9 @@
+--- src/lib/arch/CMakeLists.txt.orig	Thu Oct 15 21:09:45 2015
++++ src/lib/arch/CMakeLists.txt	Thu Oct 15 21:09:51 2015
+@@ -50,5 +50,5 @@ endif()
+ add_library(arch STATIC ${sources})
+ 
+ if (UNIX)
+-	target_link_libraries(arch dl ${libs})
++	target_link_libraries(arch ${libs})
+ endif()

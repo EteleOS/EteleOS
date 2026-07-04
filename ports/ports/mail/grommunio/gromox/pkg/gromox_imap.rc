@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/libexec/gromox/imap"
+daemon_logger="mail.info"
+
+. /etc/rc.d/rc.subr
+
+rc_bg=YES
+
+rc_cmd $1

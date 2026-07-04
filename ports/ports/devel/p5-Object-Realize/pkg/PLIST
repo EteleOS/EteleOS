@@ -1,0 +1,5 @@
+${P5SITE}/Object/
+${P5SITE}/Object/Realize/
+${P5SITE}/Object/Realize/Later.pm
+${P5SITE}/Object/Realize/Later.pod
+@man man/man3p/Object::Realize::Later.3p

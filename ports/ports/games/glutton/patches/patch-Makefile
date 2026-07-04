@@ -1,0 +1,25 @@
+--- Makefile.orig	Sat Feb 19 19:28:54 2000
++++ Makefile	Sat May 22 16:47:45 2010
+@@ -3,9 +3,9 @@
+ 
+ TARGET=glutton
+ TARGET_DEF=LINUX
++DATA_DIR?=.
+ 
+-
+-CFLAGS=-Wall -O2 $(SDL_CFLAGS) -DDATA_PREFIX=\"$(DATA_PREFIX)\" \
++CFLAGS+=$(SDL_CFLAGS) -DDATA_PREFIX=\"$(DATA_PREFIX)\" -DDATA_DIR=\"$(DATA_DIR)\" \
+ 	-D$(NOSOUNDFLAG) -D$(TARGET_DEF)
+ 
+ 
+@@ -13,8 +13,8 @@ CFLAGS=-Wall -O2 $(SDL_CFLAGS) -DDATA_PREFIX=\"$(DATA_
+ 
+ MIXER=
+ SDL_LIB=$(SDL_LDFLAGS) $(MIXER)
+-SDL_CFLAGS := $(shell sdl-config --cflags)
+-SDL_LDFLAGS := $(shell sdl-config --libs)
++SDL_CFLAGS=`sdl-config --cflags`
++SDL_LDFLAGS=`sdl-config --libs`
+ NOSOUNDFLAG=NOSOUND
+ 
+ # Make commands:

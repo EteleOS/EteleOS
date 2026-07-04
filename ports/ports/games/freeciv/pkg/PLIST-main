@@ -1,0 +1,58 @@
+@conflict freeciv-client-<2.4.4
+@pkgpath games/freeciv
+@bin bin/freeciv-manual
+@bin bin/freeciv-ruleup
+@bin bin/freeciv-server
+@man man/man6/freeciv-manual.6
+@man man/man6/freeciv-ruleup.6
+@man man/man6/freeciv-server.6
+share/applications/org.freeciv.server.desktop
+share/doc/freeciv/
+share/doc/freeciv/ABOUT-NLS
+share/doc/freeciv/AUTHORS
+share/doc/freeciv/BUGS
+share/doc/freeciv/COPYING
+share/doc/freeciv/ChangeLog
+share/doc/freeciv/CodingStyle
+share/doc/freeciv/FAQ
+share/doc/freeciv/HACKING
+share/doc/freeciv/HOWTOPLAY
+share/doc/freeciv/INSTALL
+share/doc/freeciv/INSTALL.Cygwin
+share/doc/freeciv/NEWS
+share/doc/freeciv/NEWS-3.0
+share/doc/freeciv/README.AI
+share/doc/freeciv/README.AI_modules
+share/doc/freeciv/README.achievements
+share/doc/freeciv/README.actions
+share/doc/freeciv/README.agents
+share/doc/freeciv/README.attributes
+share/doc/freeciv/README.crosser
+share/doc/freeciv/README.delta
+share/doc/freeciv/README.effects
+share/doc/freeciv/README.fcdb
+share/doc/freeciv/README.governor
+share/doc/freeciv/README.graphics
+share/doc/freeciv/README.modpack_installer
+share/doc/freeciv/README.msys2
+share/doc/freeciv/README.nations
+share/doc/freeciv/README.packaging
+share/doc/freeciv/README.rulesets
+share/doc/freeciv/README.scenarios
+share/doc/freeciv/README.scorelog
+share/doc/freeciv/README.sound
+share/doc/freeciv/README.tilesets
+share/doc/freeciv/TODO
+share/examples/freeciv/
+@sample ${SYSCONFDIR}/freeciv/
+share/examples/freeciv/database.lua
+@sample ${SYSCONFDIR}/freeciv/database.lua
+share/icons/hicolor/128x128/apps/freeciv-server.png
+share/icons/hicolor/16x16/apps/freeciv-server.png
+share/icons/hicolor/32x32/apps/freeciv-server.png
+share/icons/hicolor/48x48/apps/freeciv-server.png
+share/icons/hicolor/64x64/apps/freeciv-server.png
+share/metainfo/org.freeciv.server.appdata.xml
+share/pixmaps/freeciv-modpack.png
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

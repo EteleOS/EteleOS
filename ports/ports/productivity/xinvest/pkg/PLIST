@@ -1,0 +1,5 @@
+@pkgpath productivity/xinvest,lesstif
+bin/xinvest
+lib/X11/app-defaults/Xinvest.ad
+share/doc/xinvest/
+share/doc/xinvest/README

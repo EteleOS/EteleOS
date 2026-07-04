@@ -1,0 +1,11 @@
+--- PDP11/pdp11_hk.c.orig	Mon Mar 19 17:41:44 2012
++++ PDP11/pdp11_hk.c	Wed Jun 13 06:36:24 2012
+@@ -905,7 +905,7 @@ switch (fnc) {                                        
+             for (i = wc; i < awc; i++)                  /* fill buf */
+                 hkxb[i] = 0;
+             if (wc && !err) {                           /* write buf */
+-                fxwrite (hkxb, sizeof (uint16), wc, uptr->fileref);
++                fxwrite (hkxb, sizeof (uint16), awc, uptr->fileref);
+                 err = ferror (uptr->fileref);
+                 }
+             }                                           /* end if wr */

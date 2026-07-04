@@ -1,0 +1,14 @@
+@newgroup _umurmur:671
+@newuser _umurmur:671:_umurmur::uMurmur Account:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/umurmurd
+@man man/man5/umurmur.conf.5
+@man man/man8/umurmurd.8
+@bin sbin/umurmurd
+share/examples/umurmur/
+share/examples/umurmur/umurmur.conf
+@mode 770
+@owner _umurmur
+@group _umurmur
+@sample ${SYSCONFDIR}/umurmur/
+@mode 660
+@sample ${SYSCONFDIR}/umurmur/umurmur.conf

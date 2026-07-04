@@ -1,0 +1,6 @@
+@man man/man5/clamsmtpd.conf.5
+@man man/man8/clamsmtpd.8
+@bin sbin/clamsmtpd
+share/examples/clamsmtp/
+share/examples/clamsmtp/clamsmtpd.conf
+@sample ${SYSCONFDIR}/clamsmtpd.conf

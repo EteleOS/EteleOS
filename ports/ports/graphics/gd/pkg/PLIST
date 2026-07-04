@@ -1,0 +1,47 @@
+@bin bin/annotate
+bin/bdftogd
+@bin bin/gd2copypal
+@bin bin/gd2togif
+@bin bin/gd2topng
+@bin bin/gdcmpgif
+@bin bin/gdparttopng
+@bin bin/gdtopng
+@bin bin/giftogd2
+@bin bin/pngtogd
+@bin bin/pngtogd2
+@bin bin/webpng
+include/gd.h
+include/gd_color_map.h
+include/gd_errors.h
+include/gd_io.h
+include/gdcache.h
+include/gdfontg.h
+include/gdfontl.h
+include/gdfontmb.h
+include/gdfonts.h
+include/gdfontt.h
+include/gdfx.h
+include/gdpp.h
+@static-lib lib/libgd.a
+@lib lib/libgd.so.${LIBgd_VERSION}
+lib/pkgconfig/gdlib.pc
+share/doc/gd/
+share/doc/gd/INSTALL
+share/doc/gd/README.CMAKE
+share/doc/gd/README.JPN
+share/doc/gd/README.TESTING
+share/doc/gd/README.TXT
+share/doc/gd/arc.c
+share/doc/gd/copyrotated.c
+share/doc/gd/crop.c
+share/doc/gd/flip.c
+share/doc/gd/gif.c
+share/doc/gd/nnquant.c
+share/doc/gd/noIcon.pic
+share/doc/gd/noIcon.sgi
+share/doc/gd/noIcon.tga
+share/doc/gd/noIconAlpha.tga
+share/doc/gd/test_crop_threshold.png
+share/doc/gd/tgaread.c
+share/doc/gd/tiffread.c
+share/doc/gd/windows.c

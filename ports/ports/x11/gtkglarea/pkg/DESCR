@@ -1,0 +1,5 @@
+GtkGLArea is an OpenGL widget for GTK+2 GUI toolkit.
+
+Just as GTK+ is build on top of GDK, GtkGLArea is built on top of gdkgl
+which is basically wrapper around GLX functions. The widget itself is
+derived from GtkDrawinigArea widget and adds only few extra functions.

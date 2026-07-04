@@ -1,0 +1,3 @@
+Quagga is free software that manages various IPv4 and IPv6 routing
+protocols.  Currently it supports BGP4, BGP4+, OSPFv2, OSPFv3, RIPv1,
+RIPv2, and RIPng as well as very early support for IS-IS.

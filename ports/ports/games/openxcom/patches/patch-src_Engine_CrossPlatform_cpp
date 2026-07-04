@@ -1,0 +1,27 @@
+--- src/Engine/CrossPlatform.cpp.orig	Sat Jun 14 05:35:59 2014
++++ src/Engine/CrossPlatform.cpp	Sat Sep  6 18:24:48 2014
+@@ -159,6 +159,11 @@ std::vector<std::string> findDataFolders()
+ 		snprintf(path, MAXPATHLEN, "%s/Library/Application Support/OpenXcom/data/", home);
+ #else
+ 		snprintf(path, MAXPATHLEN, "%s/.local/share/openxcom/data/", home);
++	 	list.push_back(path);
++		snprintf(path, MAXPATHLEN, "%s/.openxcom/data/", home);
++	 	list.push_back(path);
++		snprintf(path, MAXPATHLEN, "%s/.openxcom/DATA/", home);
++	 	list.push_back(path);
+ #endif
+  	}
+  	list.push_back(path);
+@@ -178,10 +183,9 @@ std::vector<std::string> findDataFolders()
+ 	snprintf(path, MAXPATHLEN, "%s/Users/Shared/OpenXcom/data/", home);
+ 	list.push_back(path);
+ #else
++	list.push_back("/usr/local/share/openxcom/");
+ 	list.push_back("/usr/local/share/openxcom/data/");
+-#ifndef __FreeBSD__
+-	list.push_back("/usr/share/openxcom/data/");
+-#endif
++	list.push_back("/usr/local/share/openxcom/DATA/");
+ #ifdef DATADIR
+ 	snprintf(path, MAXPATHLEN, "%s/data/", DATADIR);
+ 	list.push_back(path);

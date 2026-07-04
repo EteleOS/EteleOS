@@ -1,0 +1,10 @@
+bin/fprofpp
+${P5ARCH}/Devel/
+${P5ARCH}/Devel/FastProf/
+${P5ARCH}/Devel/FastProf.pm
+${P5ARCH}/Devel/FastProf/Reader.pm
+${P5ARCH}/auto/Devel/
+${P5ARCH}/auto/Devel/FastProf/
+${P5ARCH}/auto/Devel/FastProf/FastProf.so
+@man man/man1/fprofpp.1
+@man man/man3p/Devel::FastProf.3p

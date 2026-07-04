@@ -1,0 +1,44 @@
+--- wmmon/Makefile.orig	Tue May 19 22:13:16 1998
++++ wmmon/Makefile	Thu Dec  6 22:30:02 2012
+@@ -1,19 +1,27 @@
+-LIBDIR = -L/usr/X11R6/lib
+-LIBS   = -lXpm -lXext -lX11
+-OBJS =  wmmon.o \
+-		../wmgeneral/wmgeneral.o \
+-		../wmgeneral/misc.o \
+-		../wmgeneral/list.o
++LIBDIR		= -L${X11BASE}/lib
++LIBS		= -lXpm -lXext -lX11 -lkvm
++CFLAGS		?= -O2 -Wall
++CFLAGS		+= -I${X11BASE}/include
++OBJS		=	wmmon.o \
++			../wmgeneral/wmgeneral.o \
++			../wmgeneral/misc.o \
++			../wmgeneral/list.o
++PROG	= wmmon
++PREFIX	?= /usr/local
+ 
+-
+ .c.o:
+-	cc -c -O2 -Wall $< -o $*.o
++	${CC} -c $(CFLAGS) $< -o $@
+ 
+-wmmon: $(OBJS)
+-	cc -o wmmon $^ $(LIBDIR) $(LIBS)
++$(PROG): $(OBJS)
++	${CC} -o $@ $> $(LIBDIR) $(LIBS)
+ 
++all:: $(PROG)
++
+ clean::
+-	for i in $(OBJS) ; do \
+-		rm $$i;\
+-	done
+-	rm wmmon
++	rm -f $(OBJS)
++	rm -f $(PROG)
++
++install::
++	mkdir -p $(PREFIX)/bin
++	install -c -s -o root -g bin -m 555 $(PROG) ${PREFIX}/bin
++

@@ -1,0 +1,3 @@
+@conflict procmail-<=3.22p5
+@bin bin/lockfile
+@man man/man1/lockfile.1

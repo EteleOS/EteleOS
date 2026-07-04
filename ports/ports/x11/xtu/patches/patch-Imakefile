@@ -1,0 +1,17 @@
+Index: Imakefile
+--- Imakefile.orig
++++ Imakefile
+@@ -4,10 +4,12 @@ LOCAL_LIBRARIES = -lXpm -lX11 -lXext
+ SRCS = TolleUhr.c XCC.c
+ OBJS = TolleUhr.o XCC.o
+ 
+-CDEBUGFLAGS = -O2 -g -Wall
++XCOMM CDEBUGFLAGS = -O2 -g -Wall
+ 
+ XCOMM CCOPTIONS= -DUSE_IMLIB
+ CCOPTIONS= -DUSE_XPM
++
++MANSRCSUFFIX = 1
+ 
+ ComplexProgramTarget(xtu)
+ 

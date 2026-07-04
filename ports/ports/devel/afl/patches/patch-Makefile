@@ -1,0 +1,30 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -18,7 +18,7 @@ VERSION     = $(shell grep '^\#define VERSION ' config
+ 
+ PREFIX     ?= /usr/local
+ BIN_PATH    = $(PREFIX)/bin
+-HELPER_PATH = $(PREFIX)/lib/afl
++HELPER_PATH = $(PREFIX)/libexec/afl
+ DOC_PATH    = $(PREFIX)/share/doc/afl
+ MISC_PATH   = $(PREFIX)/share/afl
+ 
+@@ -44,7 +44,7 @@ endif
+ 
+ COMM_HDR    = alloc-inl.h config.h debug.h types.h
+ 
+-all: test_x86 $(PROGS) afl-as test_build all_done
++all: test_x86 $(PROGS) afl-as
+ 
+ ifndef AFL_NO_X86
+ 
+@@ -133,7 +133,7 @@ endif
+ 	set -e; for i in afl-g++ afl-clang afl-clang++; do ln -sf afl-gcc $${DESTDIR}$(BIN_PATH)/$$i; done
+ 	install -m 755 afl-as $${DESTDIR}$(HELPER_PATH)
+ 	ln -sf afl-as $${DESTDIR}$(HELPER_PATH)/as
+-	install -m 644 docs/README docs/ChangeLog docs/*.txt $${DESTDIR}$(DOC_PATH)
++	install -m 644 README.md docs/ChangeLog docs/*.txt $${DESTDIR}$(DOC_PATH)
+ 	cp -r testcases/ $${DESTDIR}$(MISC_PATH)
+ 	cp -r dictionaries/ $${DESTDIR}$(MISC_PATH)
+ 

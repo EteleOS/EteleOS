@@ -1,0 +1,77 @@
+@conflict bacula-server-<5.2.1
+@pkgpath sysutils/bacula,-client
+@newgroup _bacula:591
+@newuser _bacula:591:_bacula::Bacula Director:/nonexistent:/sbin/nologin
+@comment lib/bpipe-fd.a
+@rcscript ${RCDIR}/bacula
+@rcscript ${RCDIR}/bacula_fd
+@so lib/bpipe-fd.so
+lib/libbac.la
+@lib lib/libbac.so.${LIBbac_VERSION}
+lib/libbaccfg.la
+@lib lib/libbaccfg.so.${LIBbaccfg_VERSION}
+lib/libbacfind.la
+@lib lib/libbacfind.so.${LIBbacfind_VERSION}
+libexec/bacula/
+libexec/bacula/bacula-ctl-fd
+libexec/bacula/bacula_config
+libexec/bacula/bconsole
+libexec/bacula/get_malware_abuse.ch
+libexec/bacula/install-key-manager.sh
+libexec/bacula/isworm
+libexec/bacula/key-manager.py
+libexec/bacula/md5tobase64.py
+libexec/bacula/tapealert
+@man man/man8/bacula-fd.8
+@man man/man8/bbconsjson.8
+@man man/man8/bconsole.8
+@man man/man8/bdirjson.8
+@man man/man8/bfdjson.8
+@man man/man8/bregex.8
+@man man/man8/bsdjson.8
+@man man/man8/bwild.8
+@bin sbin/bacula-fd
+@bin sbin/bbconsjson
+@bin sbin/bconsole
+@bin sbin/bdirjson
+@bin sbin/bfdjson
+@bin sbin/bsdjson
+share/applications/
+share/doc/bacula/
+share/doc/bacula/ChangeLog
+share/doc/bacula/INSTALL
+share/doc/bacula/LICENSE
+share/doc/bacula/LICENSE-FAQ
+share/doc/bacula/LICENSE-FOSS
+share/doc/bacula/README
+share/doc/bacula/ReleaseNotes
+share/doc/bacula/VERIFYING
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/bacula/
+@mode 750
+@group _bacula
+@sample ${SYSCONFDIR}/
+@mode 770
+@owner _bacula
+@sample ${LOCALSTATEDIR}/
+@mode 640
+@owner
+@group
+share/examples/bacula/bacula-fd.conf
+@group _bacula
+@sample ${SYSCONFDIR}/bacula-fd.conf
+@group
+share/examples/bacula/bconsole.conf
+@group _bacula
+@sample ${SYSCONFDIR}/bconsole.conf
+@mode
+@group
+share/examples/bacula/reports/
+share/examples/bacula/reports/bacula_mail_summary.sh
+share/examples/bacula/reports/baculareport.pl
+share/examples/bacula/reports/check_bacula_pools.sh
+share/examples/bacula/reports/checkhost
+share/examples/bacula/reports/is_client_alive
+share/examples/bacula/reports/next_tape.sh
+share/examples/bacula/reports/pool-query.txt
+share/examples/bacula/reports/report.pl

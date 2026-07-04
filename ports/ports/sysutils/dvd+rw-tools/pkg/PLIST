@@ -1,0 +1,7 @@
+@bin bin/dvd+rw-booktype
+@bin bin/dvd+rw-format
+@bin bin/dvd+rw-mediainfo
+@bin bin/growisofs
+@man man/man1/growisofs.1
+share/doc/dvd+rw-tools/
+share/doc/dvd+rw-tools/index.html

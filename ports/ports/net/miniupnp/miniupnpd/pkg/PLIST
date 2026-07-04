@@ -1,0 +1,7 @@
+@rcscript ${RCDIR}/miniupnpd
+@man man/man8/miniupnpd.8
+@bin sbin/miniupnpd
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/miniupnpd/
+share/examples/miniupnpd/miniupnpd.conf.sample
+@sample ${SYSCONFDIR}/miniupnpd.conf

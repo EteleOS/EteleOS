@@ -1,0 +1,6 @@
+share/fonts/
+@fontdir share/fonts/unifont/
+share/fonts/unifont/unifont.otf
+share/fonts/unifont/unifont_csur.otf
+share/fonts/unifont/unifont_jp.otf
+share/fonts/unifont/unifont_upper.otf

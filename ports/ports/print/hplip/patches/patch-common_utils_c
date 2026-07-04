@@ -1,0 +1,30 @@
+implicit declaration of function 'mkstemp'
+
+Index: common/utils.c
+--- common/utils.c.orig
++++ common/utils.c
+@@ -1,5 +1,6 @@
+ #include "utils.h"
+ #include "string.h"
++#include <stdlib.h>
+ #include <dlfcn.h>
+ #include <sys/stat.h>
+ #include <errno.h>
+@@ -159,7 +160,7 @@ enum UTILS_PLUGIN_STATUS validate_plugin_version()
+ 
+     if (get_key_value(HPLIP_PLUGIN_STATE,"[plugin]" , "version", plugin_version, sizeof(plugin_version)) != UTILS_CONF_OK )
+     {
+-        BUG("validate_plugin_version() Failed to get Plugin version from [%s]\n", "/var/lib/hp/hplip.state");
++        BUG("validate_plugin_version() Failed to get Plugin version from [%s]\n", "/var/db/hp/hplip.state");
+         return UTILS_PLUGIN_STATUS_NOT_INSTALLED;
+     }
+ 
+@@ -311,7 +312,7 @@ int getHPLogLevel()
+     char    *p;
+     int iLogLevel = 0;
+ 
+-    fp = fopen ("/etc/cups/cupsd.conf", "r");
++    fp = fopen ("${SYSCONFDIR}/cups/cupsd.conf", "r");
+     if (fp == NULL)
+         return 0;
+     while (!feof (fp))

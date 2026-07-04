@@ -1,0 +1,70 @@
+Index: src/Makefile.defs
+--- src/Makefile.defs.orig
++++ src/Makefile.defs
+@@ -376,10 +376,10 @@ ppc_macros= __powerpc __powerpc__ __POWERPC__ __ppc__ 
+ ppc64_macros= __ppc64__ _ARCH_PPC64
+ 
+ mips_macros= __mips__ __mips _MIPS_ARCH_MIPS1
+-mips2_macros= _MIPS_ISA_MIPS2 _MIPS_ISA_MIPS3 _MIPS_ISA_MIPS4 \
++mips2_macros= _MIPS_ISA_MIPS2 _MIPS_ISA_MIPS4 \
+ 			_MIPS_ARCH_MIPS2 _MIPS_ARCH_MIPS3 _MIPS_ARCH_MIPS4 \
+ 			_MIPS_ISA_MIPS32
+-mips64_macros= _MIPS_ISA_MIPS64 _MIPS_ARCH_MIPS64
++mips64_macros= _MIPS_ISA_MIPS64 _MIPS_ARCH_MIPS64 _MIPS_ISA_MIPS3
+ 
+ alpha_macros= __alpha__ __alpha _M_ALPHA_
+ 
+@@ -946,8 +946,7 @@ $(call				set_if_empty,CPUTYPE,generic)
+ 					CFLAGS+=-m32 -minline-all-stringops \
+ 							-falign-loops \
+ 							-ftree-vectorize \
+-							-fno-strict-overflow \
+-							-mtune=$(CPUTYPE)
++							-fno-strict-overflow
+ 					LDFLAGS+=-m32
+ else
+ 			#if gcc 4.0+
+@@ -996,7 +995,7 @@ else		# CC_NAME, gcc
+ ifeq		($(CC_NAME), clang)
+ $(call                          set_if_empty,CPUTYPE,athlon64)
+ 					C_DEFS+=-DCC_GCC_LIKE_ASM
+-					CFLAGS+=-m32 $(CC_OPT) -mtune=$(CPUTYPE)
++					CFLAGS+=-m32 $(CC_OPT)
+ 					LDFLAGS+=-m32
+ else			# CC_NAME, clang
+ ifeq		($(CC_NAME), icc)
+@@ -1028,8 +1027,7 @@ $(call				set_if_empty,CPUTYPE,generic)
+ 					CFLAGS+=-m64 -minline-all-stringops \
+ 							-falign-loops \
+ 							-ftree-vectorize \
+-							-fno-strict-overflow \
+-							-mtune=$(CPUTYPE)
++							-fno-strict-overflow
+ 					LDFLAGS+=-m64
+ else
+ 			#if gcc 4.0+
+@@ -1112,7 +1110,6 @@ ifeq (,$(strip $(filter-out 4.2+ 4.5+ 5.0+ 6.0+ 7.0+ 8
+ $(call				set_if_empty,CPUTYPE,ultrasparc)
+ 					#use 32bit for now
+ 					CFLAGS+=-m64 -mcpu=ultrasparc  \
+-							-mtune=$(CPUTYPE) \
+ 							-fno-strict-overflow \
+ 							-ftree-vectorize
+ 					# use -m64 to force 64 bit (but add it also to LDFLAGS and
+@@ -1604,7 +1601,6 @@ ifeq 				($(NOALTIVEC),)
+ 						CFLAGS += -ftree-vectorize
+ 						CFLAGS += -maltivec
+ 						CFLAGS += -fno-strict-overflow
+-						CFLAGS += -mtune=$(CPUTYPE)
+ endif
+ else
+ 			#if gcc 4.0+
+@@ -1658,7 +1654,7 @@ ifeq (,$(strip $(filter-out 4.2+ 4.5+ 5.0+ 6.0+ 7.0+ 8
+ $(call				set_if_empty,CPUTYPE,powerpc64)
+ 					CFLAGS+=-ftree-vectorize \
+ 							-fno-strict-overflow \
+-							-mtune=$(CPUTYPE) -maltivec
++							-maltivec
+ else
+ 			#if gcc 4.0+
+ ifeq			($(CC_SHORTVER), 4.x)

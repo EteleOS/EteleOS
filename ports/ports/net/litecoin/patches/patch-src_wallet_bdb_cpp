@@ -1,0 +1,35 @@
+Last hunk build fix for boost 1.87 from FreeBSD
+https://github.com/freebsd/freebsd-ports/commit/880b364108f5a935b6e62264a5b6a62428476d99
+
+Index: src/wallet/bdb.cpp
+--- src/wallet/bdb.cpp.orig
++++ src/wallet/bdb.cpp
+@@ -158,7 +158,9 @@ bool BerkeleyEnvironment::Open(bilingual_str& err)
+     dbenv->set_errfile(fsbridge::fopen(pathErrorFile, "a")); /// debug
+     dbenv->set_flags(DB_AUTO_COMMIT, 1);
+     dbenv->set_flags(DB_TXN_WRITE_NOSYNC, 1);
++#if ((DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR > 7))
+     dbenv->log_set_config(DB_LOG_AUTO_REMOVE, 1);
++#endif
+     int ret = dbenv->open(strPath.c_str(),
+                          DB_CREATE |
+                              DB_INIT_LOCK |
+@@ -201,7 +203,9 @@ BerkeleyEnvironment::BerkeleyEnvironment()
+     dbenv->set_lk_max_locks(10000);
+     dbenv->set_lk_max_objects(10000);
+     dbenv->set_flags(DB_AUTO_COMMIT, 1);
++#if ((DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR > 7))
+     dbenv->log_set_config(DB_LOG_IN_MEMORY, 1);
++#endif
+     int ret = dbenv->open(nullptr,
+                          DB_CREATE |
+                              DB_INIT_LOCK |
+@@ -627,7 +631,7 @@ bool BerkeleyDatabase::Backup(const std::string& strDe
+                         return false;
+                     }
+ 
+-                    fs::copy_file(pathSrc, pathDest, fs::copy_option::overwrite_if_exists);
++                    fs::copy_file(pathSrc, pathDest, fs::copy_options::overwrite_existing);
+                     LogPrintf("copied %s to %s\n", strFile, pathDest.string());
+                     return true;
+                 } catch (const fs::filesystem_error& e) {

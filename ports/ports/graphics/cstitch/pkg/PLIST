@@ -1,0 +1,9 @@
+@bin bin/cstitch
+share/applications/cstitch.desktop
+share/cstitch/
+share/cstitch/locale/
+share/cstitch/locale/cstitch_en.qm
+share/cstitch/locale/cstitch_it.qm
+share/icons/hicolor/scalable/apps/cstitch.svg
+@tag update-desktop-database
+@tag gtk-update-icon-cache %D/share/icons/hicolor

@@ -1,0 +1,6 @@
+${P5SITE}/MooX/
+${P5SITE}/MooX/Traits/
+${P5SITE}/MooX/Traits.pm
+${P5SITE}/MooX/Traits/Util.pm
+@man man/man3p/MooX::Traits.3p
+@man man/man3p/MooX::Traits::Util.3p

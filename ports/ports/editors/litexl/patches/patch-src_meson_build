@@ -1,0 +1,20 @@
+Index: src/meson.build
+--- src/meson.build.orig
++++ src/meson.build
+@@ -23,6 +23,7 @@ default_fallback_options = ['warning_level=0', 'werror
+ # Lua has no official .pc file
+ # so distros come up with their own names
+ lua_names = [
++    'lua${MODLUA_DEP_VERSION}', # OpenBSD
+     'lua5.4', # Debian
+     'lua-5.4', # FreeBSD
+     'lua',    # Fedora
+@@ -59,7 +60,7 @@ freetype_dep = dependency('freetype2', fallback: ['fre
+ )
+ 
+ 
+-sdl_dep = dependency('sdl3', static: true)
++sdl_dep = dependency('sdl3')
+ 
+ lite_deps = [lua_dep, sdl_dep, freetype_dep, pcre2_dep, libm, libdl]
+ 

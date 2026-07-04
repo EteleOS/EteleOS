@@ -1,0 +1,35 @@
+Index: make/unix.mak
+--- make/unix.mak.orig
++++ make/unix.mak
+@@ -281,11 +281,19 @@ ifeq ($(MACHTYPE),x86)
+ #STDCCFLAGS	+= -m486
+ endif
+ 
+-LDLIBS		+= -lossaudio
++ifeq ($(MACHTYPE),amd64)
++STDCCFLAGS	+= -DP_64BIT
++endif
+ 
++ifeq ($(MACHTYPE),sparc64)
++STDCCFLAGS	+= -DP_64BIT
++endif
++
+ P_USE_RANLIB		:= 1
+ #STDCCFLAGS      += -DP_USE_PRAGMA		# migrated to configure
++STDCCFLAGS      += -fPIC -DPIC
+ 
++SYSLIBDIR	:= $(shell $(PTLIBDIR)/make/ptlib-config --libdir)
+ 
+ endif # OpenBSD
+ 
+@@ -739,7 +747,9 @@ ifneq ($(OSTYPE),Darwin)
+       STDCCFLAGS	+= -xO3
+     endif
+   else
+-    STDCCFLAGS	+= -Os 
++    ifneq ($(OSTYPE),OpenBSD)
++      STDCCFLAGS	+= -Os
++    endif
+   endif
+ else
+   STDCCFLAGS	+= -O2

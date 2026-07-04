@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Term/
+${P5ARCH}/Term/Size.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Term/
+${P5ARCH}/auto/Term/Size/
+@so ${P5ARCH}/auto/Term/Size/Size.so
+@man man/man3p/Term::Size.3p

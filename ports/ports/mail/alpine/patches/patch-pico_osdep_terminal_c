@@ -1,0 +1,16 @@
+Index: pico/osdep/terminal.c
+--- pico/osdep/terminal.c.orig
++++ pico/osdep/terminal.c
+@@ -188,6 +188,12 @@ setup_dflt_esc_seq(void)
+     kpinsert("\033[H", KEY_HOME, 1);
+     kpinsert("\033[F", KEY_END, 1);
+ 
++    /*
++     * rxvt
++     */
++    kpinsert("\033[7~", KEY_HOME, 1);
++    kpinsert("\033[8~", KEY_END, 1);
++
+     /* 
+      * gnome-terminal 2.6.0, don't know why it
+      * changed from 2.2.1

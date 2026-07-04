@@ -1,0 +1,49 @@
+Shared modules cannot be linked into another target
+
+--- PlugIns/OctreeZone/CMakeLists.txt.orig	Sun Dec  1 18:28:12 2013
++++ PlugIns/OctreeZone/CMakeLists.txt	Sun Mar 23 14:09:43 2014
+@@ -10,25 +10,34 @@
+ # Configure OctreeZone SceneManager build
+ 
+ file(GLOB HEADER_FILES "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h")
+-file(GLOB SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
++file(GLOB SOURCE_FILES
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgreAntiPortal.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgreCapsule.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgreDefaultZone.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgrePCPlane.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgrePCZCamera.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgrePCZFrustum.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgrePCZLight.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgrePCZone.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgrePCZoneFactory.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgrePCZPlugin.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgrePCZSceneManager.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgrePCZSceneNode.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgrePCZSceneQuery.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgrePortal.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgrePortalBase.cpp
++  ${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/src/OgreSegment.cpp
++  "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+ 
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../PCZSceneManager/include)
+ add_definitions(-D_USRDLL)
+ 
+ ogre_add_library(Plugin_OctreeZone ${OGRE_LIB_TYPE} ${HEADER_FILES} ${SOURCE_FILES})
+-target_link_libraries(Plugin_OctreeZone OgreMain Plugin_PCZSceneManager)
++target_link_libraries(Plugin_OctreeZone OgreMain)
+ if (NOT OGRE_STATIC)
+   set_property(TARGET Plugin_OctreeZone PROPERTY
+     COMPILE_DEFINITIONS OGRE_OCTREEZONEPLUGIN_EXPORTS)
+-endif ()
+-
+-# need to include the plugins directory in the RPATH for OctreeZone to be able
+-# to find the PCZSceneManager library
+-if (UNIX)
+-  set_property(TARGET Plugin_OctreeZone APPEND PROPERTY
+-    INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/${OGRE_LIB_DIRECTORY}/OGRE
+-  )
+ endif ()
+ 
+ ogre_config_framework(Plugin_OctreeZone)

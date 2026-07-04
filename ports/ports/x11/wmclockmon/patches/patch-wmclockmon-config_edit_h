@@ -1,0 +1,14 @@
+Fix -fno-common build failure.
+
+Index: wmclockmon-config/edit.h
+--- wmclockmon-config/edit.h.orig
++++ wmclockmon-config/edit.h
+@@ -5,7 +5,7 @@
+ #ifndef EDIT_H
+ #define EDIT_H
+ 
+-char *newalarm;
++extern char *newalarm;
+ 
+ void edit_dialog(const char *title,
+         int on,

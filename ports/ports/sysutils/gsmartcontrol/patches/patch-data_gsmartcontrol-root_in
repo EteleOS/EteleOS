@@ -1,0 +1,20 @@
+Use sh(1), fix bashism
+
+Index: data/gsmartcontrol-root.in
+--- data/gsmartcontrol-root.in.orig
++++ data/gsmartcontrol-root.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/sh
+ ############################################################################
+ # Copyright:
+ #      (C) 2008 - 2014  Alexander Shaduri <ashaduri 'at' gmail.com>
+@@ -93,7 +93,7 @@ fi
+ 
+ if [ "$GSMARTCONTROL_SU" = "" ]; then
+ 	for subin in $candidates; do
+-		which $subin &>/dev/null
++		which $subin >/dev/null 2>&1
+ 		if [ $? -eq 0 ]; then
+ 			found_su="$subin";
+ 			break;

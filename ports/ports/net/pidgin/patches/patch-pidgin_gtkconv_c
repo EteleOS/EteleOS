@@ -1,0 +1,15 @@
+The code expects a deterministic result otherwise the colour
+of the nick changes with each restart of Pidgin.
+
+Index: pidgin/gtkconv.c
+--- pidgin/gtkconv.c.orig
++++ pidgin/gtkconv.c
+@@ -10410,7 +10410,7 @@ generate_nick_colors(guint *color_count, GdkColor back
+ 	pidgin_style_adjust_contrast(NULL, &nick_highlight);
+ 	pidgin_style_adjust_contrast(NULL, &send_color);
+ 
+-	srand(background.red + background.green + background.blue + 1);
++	srand_deterministic(background.red + background.green + background.blue + 1);
+ 
+ 	breakout_time = time(NULL) + 3;
+ 

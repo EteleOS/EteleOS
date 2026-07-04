@@ -1,0 +1,19 @@
+@bin bin/corrupt_mpeg2
+@bin bin/extract_mpeg2
+@bin bin/mpeg2dec
+include/mpeg2dec/
+include/mpeg2dec/mpeg2.h
+include/mpeg2dec/mpeg2convert.h
+lib/libmpeg2.a
+lib/libmpeg2.la
+@lib lib/libmpeg2.so.${LIBmpeg2_VERSION}
+lib/libmpeg2convert.a
+lib/libmpeg2convert.la
+@lib lib/libmpeg2convert.so.${LIBmpeg2convert_VERSION}
+lib/pkgconfig/libmpeg2.pc
+lib/pkgconfig/libmpeg2convert.pc
+@man man/man1/extract_mpeg2.1
+@man man/man1/mpeg2dec.1
+share/doc/libmpeg2/
+share/doc/libmpeg2/README
+share/doc/libmpeg2/libmpeg2.txt

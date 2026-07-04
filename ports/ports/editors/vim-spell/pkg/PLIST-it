@@ -1,0 +1,5 @@
+share/vim/
+share/vim/vimfiles/
+share/vim/vimfiles/spell/
+share/vim/vimfiles/spell/it.latin1.spl
+share/vim/vimfiles/spell/it.utf-8.spl

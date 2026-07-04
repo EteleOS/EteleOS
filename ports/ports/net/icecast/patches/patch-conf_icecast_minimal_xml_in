@@ -1,0 +1,30 @@
+--- conf/icecast_minimal.xml.in.orig	Mon Nov 10 00:17:57 2014
++++ conf/icecast_minimal.xml.in	Sun Jan  4 17:06:40 2015
+@@ -23,9 +23,10 @@
+     </listen-socket>
+     <fileserve>1</fileserve>
+     <paths>
+-        <logdir>@localstatedir@/log/@PACKAGE@</logdir>
+-        <webroot>@pkgdatadir@/web</webroot>
+-        <adminroot>@pkgdatadir@/admin</adminroot>
++        <basedir>/var/icecast</basedir>
++        <logdir>/log</logdir>
++        <webroot>/web</webroot>
++        <adminroot>/admin</adminroot>
+         <alias source="/" destination="/status.xsl"/>
+     </paths>
+     <logging>
+@@ -33,6 +34,13 @@
+         <errorlog>error.log</errorlog>
+         <loglevel>3</loglevel> <!-- 4 Debug, 3 Info, 2 Warn, 1 Error -->
+     </logging>
++    <security>
++        <chroot>1</chroot>  
++        <changeowner>
++            <user>_icecast</user>
++            <group>_icecast</group>
++        </changeowner>
++    </security>
+     <http-headers>
+         <header name="Access-Control-Allow-Origin" value="*" />
+     </http-headers>

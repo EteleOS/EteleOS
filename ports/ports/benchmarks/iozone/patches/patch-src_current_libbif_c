@@ -1,0 +1,12 @@
+Index: src/current/libbif.c
+--- src/current/libbif.c.orig
++++ src/current/libbif.c
+@@ -27,7 +27,7 @@
+ #include <string.h>
+ #endif
+ 
+-#if defined(linux) || defined(__DragonFly__) || defined(IOZ_macosx) || defined(__NetBSD__) || defined(Windows)
++#if defined(linux) || defined(__DragonFly__) || defined(IOZ_macosx) || defined(__NetBSD__) || defined(Windows) || defined(__OpenBSD__)
+ #include <unistd.h>
+ #include <stdlib.h>
+ #endif

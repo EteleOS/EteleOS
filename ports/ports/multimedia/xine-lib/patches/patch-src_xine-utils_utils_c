@@ -1,0 +1,16 @@
+Make use of clock_gettime() on OpenBSD. Until we have per-process
+timers and can enable _POSIX_TIMERS in unistd.h.
+
+Index: src/xine-utils/utils.c
+--- src/xine-utils/utils.c.orig
++++ src/xine-utils/utils.c
+@@ -726,7 +726,8 @@ void xine_xprintf(xine_t *xine, int verbose, const cha
+ 
+ int xine_monotonic_clock(struct timeval *tv, struct timezone *tz)
+ {
+-#if _POSIX_TIMERS > 0 && defined(_POSIX_MONOTONIC_CLOCK) && defined(HAVE_POSIX_TIMERS)
++#if _POSIX_TIMERS > 0 && defined(_POSIX_MONOTONIC_CLOCK) && defined(HAVE_POSIX_TIMERS) || \
++    defined(__OpenBSD__)
+   static int xmc_mode = 0;
+ 
+   do {

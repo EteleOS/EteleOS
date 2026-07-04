@@ -1,0 +1,11 @@
+Index: gc_entertainment.c
+--- gc_entertainment.c.orig
++++ gc_entertainment.c
+@@ -20,6 +20,7 @@
+ */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "geekcode.h"
+ 
+ int get_startrek(void)

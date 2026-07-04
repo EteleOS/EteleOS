@@ -1,0 +1,2 @@
+@bin bin/pktstat
+@man man/man1/pktstat.1

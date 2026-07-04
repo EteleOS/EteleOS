@@ -1,0 +1,16 @@
+changeset:   6573:808a332b5725
+user:        Philip Allgaier <mail@spacegaier.de>
+date:        Mon Sep 08 18:51:46 2014 +0200
+summary:     SampleBrowser CMakeList fix for CMake 3.x (fixes OGRE-419)
+
+--- Samples/Browser/CMakeLists.txt.orig	Wed Sep  3 13:24:15 2014
++++ Samples/Browser/CMakeLists.txt	Wed Sep  3 13:24:34 2014
+@@ -339,7 +339,7 @@ if (APPLE)
+ 
+     foreach(FWK ${FRAMEWORKS})
+ 	add_custom_command(TARGET SampleBrowser POST_BUILD
+-        COMMAND ARGS if [ -d ${OGRE_BINARY_DIR}/lib/${OGRE_OSX_BUILD_CONFIGURATION}/${FWK}.framework ]\; then ln -s -f ${OGRE_BINARY_DIR}/lib/${OGRE_OSX_BUILD_CONFIGURATION}/${FWK}.framework ${OGRE_SAMPLE_CONTENTS_PATH}/Frameworks/${FWK}.framework\; fi
++        COMMAND ARGS "if [ -d ${OGRE_BINARY_DIR}/lib/${OGRE_OSX_BUILD_CONFIGURATION}/${FWK}.framework ]\; then ln -s -f ${OGRE_BINARY_DIR}/lib/${OGRE_OSX_BUILD_CONFIGURATION}/${FWK}.framework ${OGRE_SAMPLE_CONTENTS_PATH}/Frameworks/${FWK}.framework\; fi"
+ 		)
+     endforeach(FWK)
+ 

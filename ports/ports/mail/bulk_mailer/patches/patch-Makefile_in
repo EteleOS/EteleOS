@@ -1,0 +1,30 @@
+--- Makefile.in.orig	Wed May 24 21:53:11 2000
++++ Makefile.in	Sat May 22 17:23:29 2010
+@@ -1,10 +1,12 @@
+-DEFINES = @DEFS@
++DEFINES = @DEFS@ -DDEFAULT_DOMAIN=1 -DPIPECOMMAND='"/usr/sbin/sendmail -bs %s"'
+ LIBS = @LIBS@
+ 
+-CFLAGS = $(DEFINES)
++CFLAGS += $(DEFINES)
+ 
+ FILES = bulk_mailer.README INSTALL bulk_mailer.c patchlevel.h Makefile.in
+ 
++all: bulk_mailer
++
+ bulk_mailer: bulk_mailer.o
+ 	$(CC) $(CFLAGS) -o bulk_mailer bulk_mailer.o $(LIBS)
+ 
+@@ -12,7 +14,11 @@ bulk_mailer.o: bulk_mailer.c patchlevel.h
+ 	$(CC) -c $(CFLAGS) bulk_mailer.c
+ 
+ install: bulk_mailer
+-	cp bulk_mailer /usr/local/bin
++	${BSD_INSTALL_DATA_DIR} ${PREFIX}/share/doc/bulk_mailer
++	${BSD_INSTALL_PROGRAM} bulk_mailer ${PREFIX}/bin
++	${BSD_INSTALL_DATA} bulk_mailer.README ${PREFIX}/share/doc/bulk_mailer
++	${BSD_INSTALL_DATA} bulk_mailer.ps ${PREFIX}/share/doc/bulk_mailer
++	${BSD_INSTALL_MAN} bulk_mailer.1 ${PREFIX}/man/man1
+ 
+ clean:
+ 	rm -f bulk_mailer *.o

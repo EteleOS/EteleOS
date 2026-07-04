@@ -1,0 +1,11 @@
+--- argus/ArgusModeler.c.orig	Wed Jun  1 19:27:04 2016
++++ argus/ArgusModeler.c	Fri Jun  3 19:21:11 2016
+@@ -2320,7 +2320,7 @@ ArgusUpdateBasicFlow (struct ArgusModelerStruct *model
+                bcopy ((char *)&model->ArgusThisEpHdr->ether_dhost, 
+                       (char *)&mac->mac.mac_union.ether.ehdr.ether_shost, sizeof(struct ether_addr));
+                bcopy ((char *)&model->ArgusThisEpHdr->ether_shost, 
+-                      (char *)&mac->mac.mac_union.ether.ehdr.ether_dhost, sizeof(struct ether_header));
++                      (char *)&mac->mac.mac_union.ether.ehdr.ether_dhost, sizeof(struct ether_addr));
+             }
+             mac->mac.mac_union.ether.ehdr.ether_type = ntohs(model->ArgusThisEpHdr->ether_type); 
+ 

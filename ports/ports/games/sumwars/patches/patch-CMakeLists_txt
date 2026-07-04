@@ -1,0 +1,14 @@
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -133,10 +133,6 @@ IF(WIN32)
+   SET(CMAKE_MODULE_PATH "$ENV{OGRE_HOME}/CMake/;${CMAKE_MODULE_PATH}")
+ ENDIF(WIN32)
+ 
+-IF(UNIX)
+-  SET(CMAKE_MODULE_PATH "/usr/local/lib/OGRE/cmake/;${CMAKE_MODULE_PATH}")
+-ENDIF(UNIX)
+-
+ SET(CMAKE_DEBUG_POSTFIX "_d")
+ 
+ if(NOT CMAKE_INSTALL_PREFIX)

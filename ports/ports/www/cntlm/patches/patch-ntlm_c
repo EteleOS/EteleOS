@@ -1,0 +1,10 @@
+--- ntlm.c.orig	Mon Nov 28 14:55:15 2011
++++ ntlm.c	Wed Jan 25 15:27:49 2012
+@@ -23,6 +23,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdint.h>
++#include <inttypes.h>
+ 
+ #include "ntlm.h"
+ #include "swap.h"

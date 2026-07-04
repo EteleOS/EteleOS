@@ -1,0 +1,12 @@
+Don't use malloc.h header on OpenBSD.
+
+--- src/buffer_event.c.orig	Mon Nov  3 23:32:12 2014
++++ src/buffer_event.c	Mon Nov  3 23:32:26 2014
+@@ -3,7 +3,6 @@
+ #include "buffer_event.h"
+ #include "utility.h"
+ #include <lauxlib.h>
+-#include <malloc.h>
+ #include "event_buffer.h"
+ 
+ #define BUFFER_EVENT_MT "BUFFER_EVENT_MT"

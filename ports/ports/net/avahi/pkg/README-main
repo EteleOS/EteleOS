@@ -1,0 +1,21 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+For proper functionality, multicast(4) needs to be enabled. To do so,
+add the following line to /etc/rc.conf.local(8):
+    multicast=YES
+
+Note that you MUST have a system-wide D-BUS daemon running BEFORE
+starting avahi, e.g.:
+    rcctl enable messagebus avahi_daemon
+    rcctl order messagebus avahi_daemon
+
+A rule similar to the one below can be used in pf.conf(5) to pass
+incoming avahi (multicast) traffic:
+    pass proto udp from any to 224.0.0.251 port mdns allow-opts
+    pass inet6 proto udp from any to ff02::fb port mdns allow-opts
+
+for SSDP:
+    pass proto udp from any to 239.255.255.250 port ssdp allow-opts
+    pass inet6 proto udp from any to { ff02::c, ff05::c, ff08::c } port ssdp allow-opts

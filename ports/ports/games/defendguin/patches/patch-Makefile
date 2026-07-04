@@ -1,0 +1,28 @@
+--- Makefile.orig.port	Tue May 26 06:29:37 2020
++++ Makefile	Fri Jun 30 11:04:58 2023
+@@ -9,8 +9,8 @@
+ 
+ # User-definable stuff:
+ 
+-CC=gcc
+-PREFIX=/usr/local
++#CC=gcc
++#PREFIX=/usr/local
+ MAN_PREFIX=$(PREFIX)
+ BIN_PREFIX=$(PREFIX)/bin
+ DATA_PREFIX=$(PREFIX)/share/defendguin/
+@@ -20,11 +20,11 @@
+ 
+ # Other definitions:
+ 
+-SDL_CFLAGS := $(shell sdl-config --cflags)
+-SDL_LDFLAGS := $(shell sdl-config --libs) -L/usr/X11R6/lib
++SDL_CFLAGS := `sdl-config --cflags`
++SDL_LDFLAGS := `sdl-config --libs` -L${X11BASE}/lib
+ MIXER=-lSDL_mixer
+ NOSOUNDFLAG=__SOUND
+-CFLAGS=-Wall $(SDL_CFLAGS) -DDATA_PREFIX=\"$(DATA_PREFIX)\" -D$(NOSOUNDFLAG) \
++CFLAGS+=$(SDL_CFLAGS) -DDATA_PREFIX=\"$(DATA_PREFIX)\" -D$(NOSOUNDFLAG) \
+ 	-DJOY_$(JOY)
+ SDL_LIB=$(SDL_LDFLAGS) $(MIXER)
+ 

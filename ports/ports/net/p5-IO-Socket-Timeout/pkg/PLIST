@@ -1,0 +1,4 @@
+${P5SITE}/IO/
+${P5SITE}/IO/Socket/
+${P5SITE}/IO/Socket/Timeout.pm
+@man man/man3p/IO::Socket::Timeout.3p

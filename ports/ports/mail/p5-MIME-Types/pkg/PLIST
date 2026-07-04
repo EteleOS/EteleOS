@@ -1,0 +1,13 @@
+${P5SITE}/MIME/
+${P5SITE}/MIME/Type.pm
+${P5SITE}/MIME/Type.pod
+${P5SITE}/MIME/Types.pm
+${P5SITE}/MIME/Types.pod
+${P5SITE}/MIME/types.db
+${P5SITE}/MojoX/
+${P5SITE}/MojoX/MIME/
+${P5SITE}/MojoX/MIME/Types.pm
+${P5SITE}/MojoX/MIME/Types.pod
+@man man/man3p/MIME::Type.3p
+@man man/man3p/MIME::Types.3p
+@man man/man3p/MojoX::MIME::Types.3p

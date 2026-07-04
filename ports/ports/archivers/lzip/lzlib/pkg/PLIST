@@ -1,0 +1,3 @@
+include/lzlib.h
+@info info/lzlib.info
+@lib lib/liblz.so.${LIBlz_VERSION}

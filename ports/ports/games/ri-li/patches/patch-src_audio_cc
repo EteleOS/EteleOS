@@ -1,0 +1,16 @@
+Index: src/audio.cc
+--- src/audio.cc.orig
++++ src/audio.cc
+@@ -22,9 +22,11 @@
+ //    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ 
+ #include <stdlib.h>
+-#include <iostream.h>
++#include <iostream>
+ #include <string.h>
+ 
++using std::cerr;
++using std::endl;
+ #include "audio.h"
+ #include "utils.h"
+ #include "preference.h"

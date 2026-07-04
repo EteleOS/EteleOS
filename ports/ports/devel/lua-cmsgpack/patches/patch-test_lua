@@ -1,0 +1,12 @@
+Index: test.lua
+--- test.lua.orig
++++ test.lua
+@@ -12,6 +12,8 @@ print("------------------------------------")
+ 
+ local unpack = unpack or table.unpack
+ 
++local cmsgpack = require 'cmsgpack'
++
+ passed = 0
+ failed = 0
+ skipped = 0

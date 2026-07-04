@@ -1,0 +1,19 @@
+@conflict avahi-<0.8p6
+@conflict avahi-gtk-<0.6.30p2
+bin/avahi-bookmarks
+bin/avahi-discover
+@bin bin/avahi-discover-standalone
+bin/bshell
+@bin bin/bssh
+bin/bvnc
+@man man/man1/avahi-bookmarks.1
+@man man/man1/avahi-discover.1
+@man man/man1/bshell.1
+@man man/man1/bssh.1
+@man man/man1/bvnc.1
+share/applications/avahi-discover.desktop
+share/applications/bssh.desktop
+share/applications/bvnc.desktop
+share/avahi/interfaces/
+share/avahi/interfaces/avahi-discover.ui
+@tag update-desktop-database

@@ -1,0 +1,11 @@
+@man man/man5/ipfm.conf.5
+@man man/man8/ipfm.8
+@bin sbin/ipfm
+share/doc/ipfm/
+share/doc/ipfm/HISTORY
+share/doc/ipfm/LICENSE
+share/doc/ipfm/TODO
+share/examples/ipfm/
+share/examples/ipfm/ipfm.conf.sample
+@sample ${SYSCONFDIR}/ipfm.conf
+@extraunexec rm -rf /var/log/ipfm

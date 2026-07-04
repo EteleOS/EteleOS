@@ -1,0 +1,4 @@
+${P5SITE}/Crypt/
+${P5SITE}/Crypt/PPDES.pm
+${P5SITE}/Crypt/TripleDES.pm
+@man man/man3p/Crypt::TripleDES.3p

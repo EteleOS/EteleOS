@@ -1,0 +1,53 @@
+bin/valadoc
+@bin bin/valadoc-${API_V}
+include/valadoc-${API_V}/
+include/valadoc-${API_V}/valadoc.h
+@static-lib lib/libvaladoc-${API_V}.a
+lib/libvaladoc-${API_V}.la
+@lib lib/libvaladoc-${API_V}.so.${LIBvaladoc-${API_V}_VERSION}
+lib/pkgconfig/valadoc-${API_V}.pc
+lib/valadoc-${API_V}/
+lib/valadoc-${API_V}/doclets/
+lib/valadoc-${API_V}/doclets/devhelp/
+@so lib/valadoc-${API_V}/doclets/devhelp/libdoclet.so
+lib/valadoc-${API_V}/doclets/gtkdoc/
+@so lib/valadoc-${API_V}/doclets/gtkdoc/libdoclet.so
+lib/valadoc-${API_V}/doclets/html/
+@so lib/valadoc-${API_V}/doclets/html/libdoclet.so
+@man man/man1/valadoc-${API_V}.1
+@man man/man1/valadoc.1
+share/vala/vapi/valadoc-${API_V}.deps
+share/vala/vapi/valadoc-${API_V}.vapi
+share/valadoc-${API_V}/
+share/valadoc-${API_V}/icons/
+share/valadoc-${API_V}/icons/abstractclass.svg
+share/valadoc-${API_V}/icons/abstractmethod.svg
+share/valadoc-${API_V}/icons/abstractproperty.svg
+share/valadoc-${API_V}/icons/class.svg
+share/valadoc-${API_V}/icons/coll_close.svg
+share/valadoc-${API_V}/icons/coll_open.svg
+share/valadoc-${API_V}/icons/constant.svg
+share/valadoc-${API_V}/icons/constructor.svg
+share/valadoc-${API_V}/icons/delegate.svg
+share/valadoc-${API_V}/icons/devhelpstyle.css
+share/valadoc-${API_V}/icons/enum.svg
+share/valadoc-${API_V}/icons/enumvalue.svg
+share/valadoc-${API_V}/icons/errorcode.svg
+share/valadoc-${API_V}/icons/errordomain.svg
+share/valadoc-${API_V}/icons/field.svg
+share/valadoc-${API_V}/icons/interface.svg
+share/valadoc-${API_V}/icons/method.svg
+share/valadoc-${API_V}/icons/namespace.svg
+share/valadoc-${API_V}/icons/package.svg
+share/valadoc-${API_V}/icons/packages.svg
+share/valadoc-${API_V}/icons/property.svg
+share/valadoc-${API_V}/icons/scripts.js
+share/valadoc-${API_V}/icons/signal.svg
+share/valadoc-${API_V}/icons/staticmethod.svg
+share/valadoc-${API_V}/icons/struct.svg
+share/valadoc-${API_V}/icons/style.css
+share/valadoc-${API_V}/icons/tip.svg
+share/valadoc-${API_V}/icons/virtualmethod.svg
+share/valadoc-${API_V}/icons/virtualproperty.svg
+share/valadoc-${API_V}/icons/warning.svg
+share/valadoc-${API_V}/icons/wikistyle.css

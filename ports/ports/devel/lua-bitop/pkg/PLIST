@@ -1,0 +1,14 @@
+@conflict luabitop-*
+@pkgpath devel/luabitop
+lib/lua/${MODLUA_VERSION}/bit.so
+share/doc/${FULLPKGNAME}/
+share/doc/${FULLPKGNAME}/api.html
+share/doc/${FULLPKGNAME}/bluequad-print.css
+share/doc/${FULLPKGNAME}/bluequad.css
+share/doc/${FULLPKGNAME}/changes.html
+share/doc/${FULLPKGNAME}/contact.html
+share/doc/${FULLPKGNAME}/img/
+share/doc/${FULLPKGNAME}/img/contact.png
+share/doc/${FULLPKGNAME}/index.html
+share/doc/${FULLPKGNAME}/install.html
+share/doc/${FULLPKGNAME}/semantics.html

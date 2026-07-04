@@ -1,0 +1,5 @@
+@bin bin/spaceinvaders
+@man man/man6/spaceinvaders.6
+share/spaceinvaders/
+share/spaceinvaders/ChangeLog
+share/spaceinvaders/README

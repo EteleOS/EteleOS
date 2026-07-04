@@ -1,0 +1,11 @@
+Index: src/libkst/editablematrix.cpp
+--- src/libkst/editablematrix.cpp.orig
++++ src/libkst/editablematrix.cpp
+@@ -19,6 +19,7 @@
+ #include "debug.h"
+ #include <qbytearray.h>
+ #include <QXmlStreamWriter>
++#include <QDataStream>
+ 
+ namespace Kst {
+ 

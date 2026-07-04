@@ -1,0 +1,28 @@
+--- Makefile.orig	Sun Sep  9 20:12:48 2007
++++ Makefile	Wed Oct 22 09:17:28 2008
+@@ -23,7 +23,7 @@ VERS=0.9
+ 
+ 
+ 
+-all: src man
++all: src man info
+ 
+ src: xzgv
+ 
+@@ -37,14 +37,11 @@ src/install-info: src/install-info.c
+ 
+ man: doc/xzgv.1
+ 
+-doc/xzgv.1: doc/xzgv.texi doc/makeman.awk
+-	cd doc && $(MAKE) xzgv.1
+-
+ # Like in GNU stuff, info files aren't automatically remade,
+ # as I don't want to assume everyone has texinfo's `makeinfo' handy.
+-info: doc/xzgv.gz
++info: doc/xzgv.info
+ 
+-doc/xzgv.gz: doc/xzgv.texi
++doc/xzgv.info: doc/xzgv.texi
+ 	cd doc && $(MAKE) info
+ 
+ clean:

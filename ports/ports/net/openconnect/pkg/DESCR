@@ -1,0 +1,20 @@
+OpenConnect is an SSL VPN client initially created to support Cisco's
+AnyConnect SSL VPN. It has since been ported to support the Juniper SSL
+VPN which is now known as Pulse Connect Secure.
+
+An associated project, ocserv, provides a compatible server which is
+available separately in packages.
+
+Features include:
+- Connection through HTTP/SOCKS5 proxy
+- Automatic detection of IPv4 and IPv6 address, routes
+- Authentication via HTTP forms and SSL certificates (incl. from PKCS#11)
+- Authentication via OATH TOTP or HOTP software tokens or Yubikey OATH
+- Data transport over TCP (HTTPS) or UDP (DTLS or ESP)
+- Keepalive and Dead Peer Detection on both HTTPS and DTLS
+- Automatic update of VPN server list / configuration
+- Roaming support, allowing reconnection when the local IP address changes
+- LZS/LZ4 compression
+
+Flavors:
+	light - don't include libproxy, pskc or pcsclite support.

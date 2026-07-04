@@ -1,0 +1,6 @@
+@bin bin/coma
+bin/coma-cmd
+bin/coma-remote
+@man man/man1/coma.1
+share/doc/coma/
+share/doc/coma/README.md

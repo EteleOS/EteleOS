@@ -1,0 +1,6 @@
+Kea aims to provide a high-performance, extensible DHCP server engine
+for use by enterprises and service providers, either as-is or with
+extensions and modifications.
+
+It includes DHCPv4 and DHCPv6 servers, a dynamic DNS update module,
+a portable DHCP library, and perfdhcp (a DHCP benchmarking tool).

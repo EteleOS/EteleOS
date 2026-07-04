@@ -1,0 +1,12 @@
+Index: src/java.base/share/classes/java/net/AbstractPlainDatagramSocketImpl.java
+--- src/java.base/share/classes/java/net/AbstractPlainDatagramSocketImpl.java.orig
++++ src/java.base/share/classes/java/net/AbstractPlainDatagramSocketImpl.java
+@@ -59,7 +59,7 @@ abstract class AbstractPlainDatagramSocketImpl extends
+     /**
+      * flag set if the native connect() call not to be used
+      */
+-    private static final boolean connectDisabled = os.contains("OS X");
++    private static final boolean connectDisabled = os.contains("OS X") || os.equals("OpenBSD");
+ 
+     /**
+      * Load net library into runtime.

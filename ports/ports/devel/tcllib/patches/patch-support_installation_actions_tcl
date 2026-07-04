@@ -1,0 +1,123 @@
+Retrieve module info from man pages.
+Perform shebang adjustments.
+
+Index: support/installation/actions.tcl
+--- support/installation/actions.tcl.orig
++++ support/installation/actions.tcl
+@@ -110,23 +110,101 @@ proc _trt {module libdir} {
+     return
+ }
+ 
+-proc _manfile {f format ext docdir} { return }
+-proc _man {module format ext docdir} { return }
++proc _manfile {fn dfn} {
++    global modinfos
++    set f [open $fn]
++    chan configure $f -buffersize 100000
++    set d [read -nonewline $f]
++    close $f
++    if {[regexp {\n\.SH NAME\n(.*?) \\- (.*?)\n} $d -> shname shtitle] && [regexp -line {^\.TH.*$} $d th]} {
++	set th [regsub {(.+(tcllib|tklib) ".+)(".+)(".+")$} $th {\1\\\3\\\4}]; # Escape nested quotes
++	lappend modinfos [list $shname [lindex $th 3] [lindex $th 5] $shtitle]
++    }
++    xcopyfile $fn $dfn
++}
+ 
+-proc _exa {module exadir} {
+-    global distribution
+-    xcopy \
+-	    [file join $distribution examples $module] \
+-	    [file join $exadir $module] \
+-	    1
+-    return
++proc _man {module srcdir dstdir} {
++    foreach fn [glob -nocomplain -dir [file join $srcdir $module] *] {
++	if {[file extension $fn] eq ".n"} {
++	    _manfile $fn [file join $dstdir [file tail $fn]]
++	} else {
++	    xcopyfile $fn $dstdir
++	}
++    }
+ }
+ 
+-proc _exax {actual module exadir} {
+-    global distribution
+-    xcopy \
+-	    [file join $distribution examples $actual] \
+-	    [file join $exadir $module] \
+-	    1
++proc _tcm {module libdir} {
++    global distribution config pkgs
++    file mkdir $config(mp)
++    xcopyfile [file join $distribution modules $module $module.tcl] \
++	[file join $config(mp) $module-$pkgs($module).tm]
+     return
++}
++
++proc _exafile {fn dfn} {
++    global config
++    set f [open $fn]
++    set d [read $f 2]
++    if {$d ne "#!"} {
++	close $f
++	xcopyfile $fn $dfn
++	return
++    }
++    chan configure $f -buffersize 100000
++    append d [read -nonewline $f]
++    close $f
++    set l [split $d \n]
++    if {
++	[string match {#!*/*} [lindex $l 0]] &&
++	[string match {#*\\} [lindex $l 1]] && 
++	[regexp {exec.+(tclsh|wish)} [lindex $l 2] -> whatsh]
++    } {
++	lset l 2 [format {exec %s "$0" ${1+"$@"}} $config($whatsh)]
++    } elseif {[regexp {#!.*/env.+(tclsh|wish)} [lindex $l 0] -> whatsh]} {
++	lset l 0 [format "#! %s" $config($whatsh)]
++    } else {
++	xcopyfile $fn $dfn
++	return
++    }
++    log "Installing $fn to $dfn"
++    set f [open $dfn w]
++    puts $f [join $l \n]
++    close $f
++    file attributes $dfn -permissions [expr {
++	"[file tail [file dirname $dfn]]/[file tail $dfn]" in {
++	    ftp/hpupdate.tcl ftp/mirror.tcl ftp/newer.tcl
++	    ftpd/ftpd ftpd/ftpd.test ftpd/ftpd.unix
++	    log/logtofile.tcl
++	    mime/maildemo.tcl mbot/personal.tcl mbot/impersonal.tcl
++	    nntp/postmsg nntp/postnews
++	} ? 0o444 : 0o555}]
++}
++
++proc _exa {module srcdir dstdir} {
++    _exax $module $module $srcdir $dstdir
++}
++
++proc _exax {actual module srcdir dstdir} {
++    set dstdir [file join $dstdir $module]
++    if {![file exists $dstdir]} {
++	log "Making directory $dstdir"
++	file mkdir $dstdir
++	file attributes $dstdir -permissions 0o755
++    }
++    foreach fn [glob -nocomplain -dir [file join $srcdir $actual] *] {
++	if {[file isdirectory $fn]} {
++	    set m [file tail $fn] 
++	    _exax $m $m [file dirname $fn] $dstdir
++	    continue
++	}
++	set t [file tail $fn]
++	set e [file extension $fn]
++	if {$t eq "ChangeLog" || $e in {.orig .beforesubst}} { continue }
++	if {$t in {run_tepam_demo.bat run_tepam_demo.sh}} { continue }
++	if {$e in {.tcl ""} || $t in {ftpd.test ftpd.unix}} {
++	    _exafile $fn [file join $dstdir $t]
++	} else {
++	    xcopyfile $fn $dstdir
++	}
++    }
+ }

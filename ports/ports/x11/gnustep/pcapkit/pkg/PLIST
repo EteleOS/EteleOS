@@ -1,0 +1,3 @@
+include/PcapKit/
+include/PcapKit/PcapKit.h
+@lib lib/libPcapKit.so.${LIBPcapKit_VERSION}

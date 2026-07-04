@@ -1,0 +1,11 @@
+--- empweb/empweb.h.orig	Thu Aug 25 20:58:05 2005
++++ empweb/empweb.h	Sat Oct 13 22:22:22 2007
+@@ -59,7 +59,7 @@
+ #include "random.h"
+ #include "timer-handler.h"
+ 
+-#include "lib/bsd-list.h"
++#include <sys/queue.h>
+ #include "node.h"
+ #include "tcp.h"
+ #include "tcp-sink.h"

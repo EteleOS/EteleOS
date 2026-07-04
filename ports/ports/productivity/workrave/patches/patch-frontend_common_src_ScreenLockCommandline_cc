@@ -1,0 +1,14 @@
+ScreenLockCommandline.cc:70:14: error: use of undeclared identifier 'WEXITSTATUS'
+
+Index: frontend/common/src/ScreenLockCommandline.cc
+--- frontend/common/src/ScreenLockCommandline.cc.orig
++++ frontend/common/src/ScreenLockCommandline.cc
+@@ -27,6 +27,8 @@
+ #  include <glib.h>
+ #endif
+ 
++#include <sys/wait.h>
++
+ #include "ScreenLockCommandline.hh"
+ #include "debug.hh"
+ 

@@ -1,0 +1,14 @@
+suppress warning on each startup of wfuzz
+
+Index: src/wfuzz/__init__.py
+--- src/wfuzz/__init__.py.orig
++++ src/wfuzz/__init__.py
+@@ -30,7 +30,7 @@ warnings.formatwarning = warning_on_one_line
+ try:
+     import pycurl
+ 
+-    if "openssl".lower() not in pycurl.version.lower():
++    if "libressl".lower() not in pycurl.version.lower():
+         warnings.warn(
+             "Pycurl is not compiled against Openssl. Wfuzz might not work correctly when fuzzing SSL sites. Check Wfuzz's documentation for more information."
+         )

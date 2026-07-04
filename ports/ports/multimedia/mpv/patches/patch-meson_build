@@ -1,0 +1,40 @@
+fix over-zealous detection of libatomic (it was picked up at configure
+time if present at all, rather than only if needed)
+Support for xcb-shm
+
+Index: meson.build
+--- meson.build.orig
++++ meson.build
+@@ -356,7 +356,19 @@ if features['libdl']
+ endif
+ 
+ # C11 atomics are mandatory but linking to the library is not always required.
+-dependencies += cc.find_library('atomic', required: false)
++if cc.links('''
++#include <stdint.h>
++int main(void) {
++  uint32_t x32 = 0;
++  uint64_t x64 = 0;
++  __atomic_load_n(&x32, __ATOMIC_SEQ_CST);
++  __atomic_load_n(&x64, __ATOMIC_SEQ_CST);
++  return 0;
++}''', name : 'built-in atomics')
++    stdatomic_dep = dependency('', required : false)
++else
++    stdatomic_dep = cc.find_library('atomic')
++endif
+ 
+ cplugins = get_option('cplugins').require(
+     win32 or (features['libdl'] and cc.has_link_argument('-rdynamic')),
+@@ -1089,7 +1101,10 @@ x11 = {
+              dependency('xscrnsaver', version: '>= 1.0.0', required: x11_opt),
+              dependency('xext', version: '>= 1.0.0', required: x11_opt),
+              dependency('xpresent', version: '>= 1.0.0', required: x11_opt),
+-             dependency('xrandr', version: '>= 1.4.0', required: x11_opt)],
++             dependency('xrandr', version: '>= 1.4.0', required: x11_opt),
++             dependency('x11-xcb', version: '>= 1.8.9', required: x11_opt),
++             dependency('xcb-shm', version: '>= 1.16', required: x11_opt),
++             dependency('xcb', version: '>= 1.16', required: x11_opt),]
+ }
+ x11_deps = true
+ foreach dep: x11['deps']

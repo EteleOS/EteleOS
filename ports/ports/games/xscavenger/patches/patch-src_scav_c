@@ -1,0 +1,11 @@
+--- src/scav.c.orig	Thu Apr 20 00:05:49 2017
++++ src/scav.c	Thu Apr 20 00:06:13 2017
+@@ -1572,7 +1572,7 @@ uchar *err;
+ 		if(err)
+ 		{
+ 			puts(err);
+-			return;
++			return 1;
+ 		}
+ 		createinout(i);
+ 	}

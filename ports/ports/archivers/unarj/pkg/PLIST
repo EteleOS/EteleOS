@@ -1,0 +1,4 @@
+@bin bin/unarj
+share/doc/unarj/
+share/doc/unarj/technote.doc
+share/doc/unarj/unarj.doc

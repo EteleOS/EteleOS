@@ -1,0 +1,2 @@
+@static-lib lib/libpgmath.a
+@lib lib/libpgmath.so.${LIBpgmath_VERSION}

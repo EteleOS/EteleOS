@@ -1,0 +1,9 @@
+Index: scripts/msmtpq/msmtp-queue
+--- scripts/msmtpq/msmtp-queue.orig
++++ scripts/msmtpq/msmtp-queue
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env sh
++#!/bin/sh
+ 
+ ##--------------------------------------------------------------
+ ##

@@ -1,0 +1,16 @@
+Index: pidgin/gtkdialogs.c
+--- pidgin/gtkdialogs.c.orig
++++ pidgin/gtkdialogs.c
+@@ -654,6 +654,12 @@ g_string_append(str, "<br/>  <b>Library Support</b><br
+ 	g_string_append(str, "    <b>GtkSpell:</b> Disabled<br/>");
+ #endif
+ 
++#ifdef HAVE_OPENSSL
++	g_string_append(str, "    <b>OpenSSL:</b> Enabled<br/>");
++#else
++	g_string_append(str, "    <b>OpenSSL:</b> Disabled<br/>");
++#endif
++
+ #ifdef HAVE_GNUTLS
+ 	g_string_append(str, "    <b>GnuTLS:</b> Enabled<br/>");
+ #else

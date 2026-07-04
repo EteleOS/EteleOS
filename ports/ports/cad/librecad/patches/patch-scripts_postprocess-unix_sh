@@ -1,0 +1,12 @@
+Index: scripts/postprocess-unix.sh
+--- scripts/postprocess-unix.sh.orig
++++ scripts/postprocess-unix.sh
+@@ -9,7 +9,7 @@ TSDIRLC="${LCDIR}/ts"
+ TSDIRPI="${PIDIR}/ts"
+ SPTDIR="${LCDIR}/support"
+ DESKTOPDIR="${THISDIR}/desktop"
+-LRELEASE="lrelease"
++LRELEASE="${MODQT_LRELEASE}"
+ 
+ cd "${THISDIR}"
+ 

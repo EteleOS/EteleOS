@@ -1,0 +1,15 @@
+${P5SITE}/Exporter/
+${P5SITE}/Exporter/Shiny.pm
+${P5SITE}/Exporter/Tiny/
+${P5SITE}/Exporter/Tiny.pm
+${P5SITE}/Exporter/Tiny/Manual/
+${P5SITE}/Exporter/Tiny/Manual/Etc.pod
+${P5SITE}/Exporter/Tiny/Manual/Exporting.pod
+${P5SITE}/Exporter/Tiny/Manual/Importing.pod
+${P5SITE}/Exporter/Tiny/Manual/QuickStart.pod
+@man man/man3p/Exporter::Shiny.3p
+@man man/man3p/Exporter::Tiny.3p
+@man man/man3p/Exporter::Tiny::Manual::Etc.3p
+@man man/man3p/Exporter::Tiny::Manual::Exporting.3p
+@man man/man3p/Exporter::Tiny::Manual::Importing.3p
+@man man/man3p/Exporter::Tiny::Manual::QuickStart.3p

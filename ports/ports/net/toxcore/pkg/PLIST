@@ -1,0 +1,14 @@
+@bin bin/DHT_bootstrap
+@bin bin/tox-bootstrapd
+include/tox/
+include/tox/tox.h
+include/tox/tox_dispatch.h
+include/tox/tox_events.h
+include/tox/toxav.h
+include/tox/toxencryptsave.h
+@static-lib lib/libtoxcore.a
+@lib lib/libtoxcore.so.${LIBtoxcore_VERSION}
+lib/pkgconfig/toxcore.pc
+share/bash-completion/
+share/bash-completion/completions/
+share/bash-completion/completions/tox-bootstrapd

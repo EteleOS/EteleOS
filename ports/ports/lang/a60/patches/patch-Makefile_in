@@ -1,0 +1,11 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -237,6 +237,7 @@ inst-man:
+ 	$(INSTALL_DATA) a60.man $(MANDIR)/$(PRG).$(MANSUFF)
+ 
+ inst-lib:
++	-install -d -m 755 $(LIBDIR)
+ 	-$(INSTALL_DATA) a60-mkc.inc $(LIBDIR)
+ 
+ install:	inst-man inst-bin inst-lib

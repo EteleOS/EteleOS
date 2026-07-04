@@ -1,0 +1,5 @@
+@pkgpath x11/ecoliercour-fonts
+share/fonts/
+@fontdir share/fonts/ecoliercourt/
+share/fonts/ecoliercourt/ec_cour.ttf
+share/fonts/ecoliercourt/ecl_cour.ttf

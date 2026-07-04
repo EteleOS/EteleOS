@@ -1,0 +1,22 @@
+--- polipo.h.orig	Thu May 15 00:19:43 2014
++++ polipo.h	Sun Aug 17 20:08:12 2014
+@@ -68,6 +68,9 @@ THE SOFTWARE.
+ #define MAP_ANONYMOUS MAP_ANON
+ #endif
+ 
++#include <pwd.h>
++#define POLIPO_USER	"_polipo"
++
+ #if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
+ /* nothing */
+ #elif defined(__GNUC__)
+@@ -161,7 +164,9 @@ THE SOFTWARE.
+ 
+ #ifdef __OpenBSD__
+ #if OpenBSD >= 200311
++#define HAVE_ASPRINTF
+ #define HAVE_IPv6
++#define HAVE_TIMEGM
+ #endif
+ #endif
+ 

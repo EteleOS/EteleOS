@@ -1,0 +1,11 @@
+--- Makefile.PL.orig	Fri Oct 10 14:44:21 2008
++++ Makefile.PL	Fri Oct 10 14:44:37 2008
+@@ -23,7 +23,7 @@ WriteMakefile(
+ 
+ 
+ ## add ourselves to the list of installed parsers
+-sub MY::install {
++sub do_not_want {
+     package MY;
+     my $script = shift->SUPER::install(@_);
+     unless ($ENV{'SKIP_SAX_INSTALL'}) {

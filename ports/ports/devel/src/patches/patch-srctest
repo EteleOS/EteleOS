@@ -1,0 +1,54 @@
+git config change: https://gitlab.com/esr/src/merge_requests/20
+
+other parts: don't exit immediately on test failure, keep running and
+count the passes
+
+Index: srctest
+--- srctest.orig
++++ srctest
+@@ -18,6 +18,11 @@ backend="rcs"
+ python="python"
+ testmode=no
+ 
++allgood=true
++testsrun=0
++ok=0
++failed=0
++
+ while getopts b:p:e:t opt
+ do
+     case $opt in
+@@ -43,9 +48,10 @@ fi
+ 
+ check() {
+     case $? in
+-	0) echo "srctest ($python $backend): $1 succeeded";;
+-	*) echo "srctest ($python $backend): $1 failed"; exit 1;;
++	0) echo "srctest ($python $backend): $1 succeeded"; ok=$((ok+1));;
++	*) echo "srctest ($python $backend): $1 failed"; failed=$((failed+1));;
+     esac
++    testsrun=$((testsrun+1))
+ }
+ 
+ historify () {
+@@ -1510,7 +1516,10 @@ author Eric Sunshine <sunshine@sunshineco.com> 1509732
+ committer Roy G. Biv <spectrum@color.com> 1511228715 +0000
+ EOF
+ 
+-    $src ${TESTOPTS#-T} fast-export 1 tiebreak |
++    git init --quiet &&
++        git config user.name user_name &&
++        git config user.email user_email &&
++        $src ${TESTOPTS#-T} fast-export 1 tiebreak |
+ 	grep -E 'author|committer' >rfc822export.actual
+     diff rfc822export.expect rfc822export.actual
+     check "fast-export: consult RFC 822 headers"
+@@ -1531,7 +1540,7 @@ fi
+ $src $TESTOPTS srcify && ls $history >/dev/null && ls srcifyfile >/dev/null
+ check "srcify command"
+ 
+-echo "srctest ($python $backend): all tests succeeded"
++echo "srctest ($python $backend): $ok/$testsrun tests succeeded ($failed failed)"
+ 
+ rm -fr $SANDBOX
+ 

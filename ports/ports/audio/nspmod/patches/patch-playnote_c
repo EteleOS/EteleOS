@@ -1,0 +1,9 @@
+Index: playnote.c
+--- playnote.c.orig
++++ playnote.c
+@@ -1,4 +1,5 @@
+ #include <stdio.h>	/**/
++#include <stdlib.h>	/*exit*/
+ #include "defs.h"	/*->inst.h (u8,u16x,...)*/
+ #include "inst.h"	/*SampleInfo*/
+ #include "playnote.h"	/*Note*/

@@ -1,0 +1,20 @@
+Index: lib/dpx/dpx_raw.hh
+--- lib/dpx/dpx_raw.hh.orig
++++ lib/dpx/dpx_raw.hh
+@@ -55,6 +55,16 @@
+ #if !defined(CTL_DPX_RAW_INTERNAL_INCLUDE)
+ #define CTL_DPX_RAW_INTERNAL_INCLUDE
+ 
++#ifdef swap64
++#undef swap64
++#endif
++#ifdef swap32
++#undef swap32
++#endif
++#ifdef swap16
++#undef swap16
++#endif
++
+ namespace ctl {
+ 
+ namespace dpxi {

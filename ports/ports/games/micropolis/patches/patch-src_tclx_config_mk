@@ -1,0 +1,25 @@
+Index: src/tclx/config.mk
+--- src/tclx/config.mk.orig
++++ src/tclx/config.mk
+@@ -60,9 +60,7 @@ XPM_LIBS=-L/usr/X11R6/lib -lXpm 
+ # profiling is enabled, the DO_STRIPPING option below must be disabled.
+ #
+ 
+-CC=gcc
+-
+-OPTIMIZE_FLAG=-O3 -DIS_LINUX
++OPTIMIZE_FLAG=-DIS_LINUX
+ #OPTIMIZE_FLAG=-g -DIS_LINUX
+ 
+ #------------------------------------------------------------------------------
+@@ -78,8 +76,8 @@ DO_STRIPPING=false
+ # compiler and linker.  Also the yacc program you wish to use.
+ #
+ AR=ar
+-XCFLAGS=
+-XLDFLAGS=
++XCFLAGS= -I${X11BASE}/include
++XLDFLAGS= -L${X11BASE}/lib
+ YACC=yacc
+ #YACC=bison -b y
+ 

@@ -1,0 +1,14 @@
+Disable submitting anonymous statistics by default
+
+Index: src/mumble/Settings.cpp
+--- src/mumble/Settings.cpp.orig
++++ src/mumble/Settings.cpp
+@@ -389,7 +389,7 @@ Settings::Settings() {
+ 	bHideInTray = !isUnityDesktop && QSystemTrayIcon::isSystemTrayAvailable();
+ #endif
+ 	bStateInTray              = true;
+-	bUsage                    = true;
++	bUsage                    = false;
+ 	bShowUserCount            = false;
+ 	bShowVolumeAdjustments    = true;
+ 	bShowNicknamesOnly        = false;

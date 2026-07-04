@@ -1,0 +1,12 @@
+Index: qjs.c
+--- qjs.c.orig
++++ qjs.c
+@@ -152,7 +152,7 @@ static size_t js_trace_malloc_usable_size(const void *
+     return malloc_usable_size((void *)ptr);
+ #else
+     /* change this to `return 0;` if compilation fails */
+-    return malloc_usable_size((void *)ptr);
++    return 0;
+ #endif
+ }
+ 

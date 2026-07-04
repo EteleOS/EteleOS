@@ -1,0 +1,3 @@
+${P5SITE}/Sort/
+${P5SITE}/Sort/SQL.pm
+@man man/man3p/Sort::SQL.3p

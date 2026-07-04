@@ -1,0 +1,10 @@
+--- appinst.cpp.orig	Wed Nov 26 21:48:29 2014
++++ appinst.cpp	Wed Nov 26 21:48:40 2014
+@@ -26,6 +26,7 @@
+ #include <errno.h>
+ #include <signal.h>
+ #include <cstdio>
++#include <sys/stat.h>
+ 
+ #include "appinst.h"
+ 

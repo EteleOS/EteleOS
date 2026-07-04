@@ -1,0 +1,13 @@
+fix backwards memcpy
+Index: src/tk/tkshare.c
+--- src/tk/tkshare.c.orig
++++ src/tk/tkshare.c
+@@ -186,7 +186,7 @@ Tk_UnshareEvents(tkwin, groupId)
+ 		continue;
+ 	    }
+ 	    if ((i+1) < groupPtr->numWindows) {
+-		memcpy((VOID *) (groupPtr->windows + i),
++		memmove((VOID *) (groupPtr->windows + i),
+ 			(VOID *) (groupPtr->windows + i + 1),
+ 			(groupPtr->numWindows - (i+1))*sizeof(Tk_Window *));
+ 	    }

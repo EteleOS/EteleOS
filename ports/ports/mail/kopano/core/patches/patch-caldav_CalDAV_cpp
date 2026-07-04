@@ -1,0 +1,14 @@
+Index: caldav/CalDAV.cpp
+--- caldav/CalDAV.cpp.orig
++++ caldav/CalDAV.cpp
+@@ -207,8 +207,8 @@ int main(int argc, char **argv) {
+ 	const char *lpszCfg = ECConfig::GetDefaultPath("ical.cfg");
+ 	bool exp_config = false;
+ 	static const configsetting_t lpDefaults[] = {
+-		{ "run_as_user", "kopano" },
+-		{ "run_as_group", "kopano" },
++		{ "run_as_user", "_kopano" },
++		{ "run_as_group", "_kopano" },
+ 		{ "pid_file", "/var/run/kopano/ical.pid" },
+ 		{"process_model", "thread", CONFIGSETTING_NONEMPTY},
+ 		{"coredump_enabled", "systemdefault"},

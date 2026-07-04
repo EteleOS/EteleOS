@@ -1,0 +1,11 @@
+Index: scripts/bacula-ctl-fd.in
+--- scripts/bacula-ctl-fd.in.orig
++++ scripts/bacula-ctl-fd.in
+@@ -216,6 +216,7 @@ case "$1" in
+    start)
+       [ -x ${BACFDBIN}/bacula-fd ] && {
+ 	 echo "Starting the $Bacula File daemon"
++	 cd ${SUBSYSDIR}
+ 	 OPTIONS=''
+ 	 if [ "${FD_USER}" != '' ]; then
+ 	    OPTIONS="${OPTIONS} -u ${FD_USER}"

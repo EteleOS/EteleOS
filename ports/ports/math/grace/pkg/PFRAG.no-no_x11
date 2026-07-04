@@ -1,0 +1,3 @@
+bin/xmgrace
+@bin grace/bin/xmgrace
+@man man/man1/xmgrace.1

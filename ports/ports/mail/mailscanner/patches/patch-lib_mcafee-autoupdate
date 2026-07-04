@@ -1,0 +1,11 @@
+--- lib/mcafee-autoupdate.orig	Thu Apr 22 15:40:18 2010
++++ lib/mcafee-autoupdate	Mon May 24 10:23:51 2010
+@@ -45,7 +45,7 @@
+ 
+ # defaults
+ OPTS="-d"
+-PREFIX=/opt/uvscan
++PREFIX=%PREFIX%/uvscan
+ FTPDIR=http://update.nai.com/products/commonupdater 
+ RETRIES=1
+ INTERVAL=300

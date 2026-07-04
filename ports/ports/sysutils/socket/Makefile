@@ -1,0 +1,20 @@
+COMMENT=	create tcp socket and connect to stdin/out
+
+DISTNAME=	socket-1.2
+CATEGORIES=	sysutils net
+SITES=		https://people.freebsd.org/~wosch/src/
+
+PERMIT_PACKAGE=	Yes
+
+WANTLIB=	c
+
+MAKE_FLAGS=	CC="${CC}" SWITCHES="-DHAVE_SYS_PARAM_H" \
+		CFLAGS='$${SWITCHES} ${CFLAGS}'
+
+NO_TEST=	Yes
+
+do-install:
+	${INSTALL_PROGRAM} ${WRKSRC}/socket ${PREFIX}/bin
+	${INSTALL_MAN} ${WRKSRC}/socket.1 ${PREFIX}/man/man1
+
+.include <bsd.port.mk>

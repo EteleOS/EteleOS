@@ -1,0 +1,20 @@
+--- check_email_delivery_epn.orig	Sun Feb 26 01:03:10 2012
++++ check_email_delivery_epn	Wed May  2 13:47:24 2012
+@@ -61,7 +61,7 @@ my $default_warn = 15;
+ my $default_wait = 5;
+ my $default_timeout = 60;
+ my $time_hires = "";
+-my $libexec = "/usr/local/nagios/libexec";
++my $libexec = "${LOCALBASE}/libexec/nagios";
+ my $ok;
+ $ok = Getopt::Long::GetOptions(
+ 	"V|version"=>\$show_version,
+@@ -138,7 +138,7 @@ if( $help_usage
+ 		&&
+ 		(
+ 			$smtp_server eq "" || $mailto eq "" || $mailfrom eq "" 
+-			|| $imap_server eq "" || $username eq "" || $password eq ""
++			|| $imap_server eq "" || $imap_username eq "" || $imap_password eq ""
+ 		)
+ 	)
+ 	) {

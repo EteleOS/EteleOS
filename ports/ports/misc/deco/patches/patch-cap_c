@@ -1,0 +1,10 @@
+--- cap.c.orig	Fri Mar 23 22:01:28 2012
++++ cap.c	Fri Mar 23 22:01:46 2012
+@@ -19,6 +19,7 @@
+ /* #define DEBUG */
+ 
+ #include <stdlib.h>
++#include <string.h>
+ #if HAVE_UNISTD_H
+ #   include <unistd.h>
+ #endif

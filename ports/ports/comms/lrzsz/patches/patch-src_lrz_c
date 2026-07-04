@@ -1,0 +1,11 @@
+--- src/lrz.c.orig	Thu Apr 19 14:24:36 2007
++++ src/lrz.c	Thu Apr 19 14:26:26 2007
+@@ -1251,7 +1251,7 @@ procheader(char *name, struct zm_fileinfo *zi)
+ 			if ( *p == '/')
+ 				*p = '_';
+ 
+-		if ( *--p == '.')		/* zap trailing period */
++		if (p != name_static && *--p == '.') /* zap trailing period */
+ 			*p = 0;
+ 	}
+ 

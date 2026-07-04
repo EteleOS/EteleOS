@@ -1,0 +1,12 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -79,7 +79,7 @@ LT_CURRENT  = @LT_CURRENT@
+ LT_RELEASE  = @LT_RELEASE@
+ LT_REVISION = @LT_REVISION@
+ LT_EXTRA    = @LT_EXTRA@
+-LT_LDFLAGS  = -no-undefined -rpath $(libdir) -release $(LT_RELEASE) -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LT_EXTRA)
++LT_LDFLAGS  = -no-undefined -rpath $(libdir) -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LT_EXTRA)
+ 
+ all: $(srcdir)/configure Makefile $(objects)/$(TARGET) $(objects)/playwave$(EXE) $(objects)/playmus$(EXE)
+ 

@@ -1,0 +1,4 @@
+@so lib/zathura/libcb.so
+share/applications/org.pwmt.zathura-cb.desktop
+share/metainfo/org.pwmt.zathura-cb.metainfo.xml
+@tag update-desktop-database

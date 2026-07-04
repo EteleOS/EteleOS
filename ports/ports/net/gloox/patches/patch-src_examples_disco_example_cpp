@@ -1,0 +1,11 @@
+Index: src/examples/disco_example.cpp
+--- src/examples/disco_example.cpp.orig
++++ src/examples/disco_example.cpp
+@@ -24,6 +24,7 @@ using namespace gloox;
+ #include <string>
+ 
+ #include <cstdio> // [s]print[f]
++#include <ctime>
+ 
+ class DiscoTest : public DiscoHandler, ConnectionListener, LogHandler
+ {

@@ -1,0 +1,20 @@
+--- parse.y.orig	Thu Jan 11 17:01:58 2007
++++ parse.y	Tue Apr 22 12:13:49 2014
+@@ -133,7 +133,7 @@ coldef		: GLOBAL STRING STRING
+ 			    "short", "normalize", "memory", "bad-timestamp",
+ 			    "congestion", "ip-option", "proto-cksum",
+ 			    "state-mismatch", "state-insert", "state-limit",
+-			    "src-limit", "synproxy", 0 };
++			    "src-limit", "synproxy", "translate", NULL };
+ 			int i;
+ 
+ 			$$.type = 0;
+@@ -181,6 +181,8 @@ coldef		: GLOBAL STRING STRING
+ 		/*      NAME   pass/drop packet/bytes */
+ 		| QUEUE STRING STRING STRING
+ 		{
++			yyerror("ALTQ-style queues not supported anymore");
++			YYERROR;
+ 			$$.type = 2;
+ 			$$.arg = strdup($2);
+ 			if (!strcmp($3, "other"))

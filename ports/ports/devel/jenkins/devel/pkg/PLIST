@@ -1,0 +1,15 @@
+@option is-branch
+@conflict hudson-*
+@pkgpath devel/jenkins
+@newgroup _jenkins:668
+@newuser _jenkins:668:_jenkins::Jenkins Account:${HOMEDIR}:/sbin/nologin
+@extraunexec rm -rf ${HOMEDIR}/*
+@owner _jenkins
+@group _jenkins
+@sample ${HOMEDIR}/
+@owner
+@group
+@rcscript ${RCDIR}/jenkins
+share/doc/pkg-readmes/${PKGSTEM}
+share/jenkins/
+share/jenkins/jenkins.war

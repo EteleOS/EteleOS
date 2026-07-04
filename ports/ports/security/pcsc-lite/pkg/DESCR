@@ -1,0 +1,4 @@
+PC/SC architecture for most Unix type operating systems.
+It allows easy porting of Windows smartcard software to other
+operating systems. It supports many types of serial, PCMCIA, and
+USB smartcard readers and cryptographic tokens.

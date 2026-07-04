@@ -1,0 +1,11 @@
+--- webcache/webtraf.h.orig	Sat Oct  1 18:00:14 2011
++++ webcache/webtraf.h	Sun Apr 22 21:58:54 2012
+@@ -61,7 +61,7 @@
+ #include "random.h"
+ #include "timer-handler.h"
+ 
+-#include "lib/bsd-list.h"
++#include <sys/queue.h>
+ #include "node.h"
+ #include "tcp.h"
+ #include "tcp-sink.h"

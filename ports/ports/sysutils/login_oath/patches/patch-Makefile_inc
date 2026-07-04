@@ -1,0 +1,10 @@
+Index: Makefile.inc
+--- Makefile.inc.orig
++++ Makefile.inc
+@@ -2,5 +2,5 @@
+ 
+-CFLAGS+= -Wall -Werror
++CFLAGS+= -Wall
+ 
+ MAN=		${PROG}.8
+ DPADD=		${LIBUTIL}

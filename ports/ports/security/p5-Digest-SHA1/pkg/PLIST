@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Digest/
+${P5ARCH}/Digest/SHA1.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Digest/
+${P5ARCH}/auto/Digest/SHA1/
+${P5ARCH}/auto/Digest/SHA1/SHA1.so
+@man man/man3p/Digest::SHA1.3p

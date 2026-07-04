@@ -1,0 +1,6 @@
+lib/ocaml/bigarray.cmxs
+lib/ocaml/dynlink.a
+lib/ocaml/dynlink.cmx
+lib/ocaml/dynlink.cmxa
+lib/ocaml/str.cmxs
+lib/ocaml/unix.cmxs

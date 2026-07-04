@@ -1,0 +1,13 @@
+error: #error "Only <glib.h> can be included directly."
+
+--- loudmouth/lm-error.c.orig	Sun Mar 18 07:26:55 2012
++++ loudmouth/lm-error.c	Sun Mar 18 07:27:04 2012
+@@ -19,7 +19,7 @@
+  */
+ 
+ #include <config.h>
+-#include <glib/gerror.h>
++#include <glib.h>
+ #include "lm-error.h"
+ 
+ /**

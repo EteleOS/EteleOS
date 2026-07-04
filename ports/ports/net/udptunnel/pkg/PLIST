@@ -1,0 +1,3 @@
+@bin bin/udptunnel
+share/doc/udptunnel/
+share/doc/udptunnel/udptunnel.html

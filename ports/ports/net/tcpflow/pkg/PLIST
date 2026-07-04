@@ -1,0 +1,2 @@
+@bin bin/tcpflow
+@man man/man1/tcpflow.1

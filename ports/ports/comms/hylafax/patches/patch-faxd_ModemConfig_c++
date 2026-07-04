@@ -1,0 +1,11 @@
+Index: faxd/ModemConfig.c++
+--- faxd/ModemConfig.c++.orig
++++ faxd/ModemConfig.c++
+@@ -359,6 +359,7 @@ ModemConfig::findRate(const char* cp, BaudRate& br)
+ 	{  "57600", ClassModem::BR57600 },
+ 	{  "76800", ClassModem::BR76800 },
+ 	{ "115200", ClassModem::BR115200 },
++	{ "230400", ClassModem::BR230400 },
+     };
+     for (int i = N(rates)-1; i >= 0; i--)
+ 	if (streq(cp, rates[i].name)) {

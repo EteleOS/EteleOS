@@ -1,0 +1,10 @@
+@extraunexec rm -f ${SYSCONFDIR}/sslsplit/!(sslsplit.conf)
+@newgroup _sslsplit:727
+@newuser _sslsplit:727:_sslsplit::sslsplit:/nonexistent:/sbin/nologin
+@bin bin/sslsplit
+@man man/man1/sslsplit.1
+@man man/man5/sslsplit.conf.5
+share/examples/sslsplit/
+@sample ${SYSCONFDIR}/sslsplit/
+share/examples/sslsplit/sslsplit.conf.sample
+@sample ${SYSCONFDIR}/sslsplit/sslsplit.conf

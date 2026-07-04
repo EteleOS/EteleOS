@@ -1,0 +1,21 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!${TRUEPREFIX}/bin/bash
+ 
+ #
+ # Note: When adding make options to this script, ensure that the source still
+@@ -372,9 +372,9 @@ genConfigMake() {
+     cfgwrite "FHS_INSTALL_ROOT:=$ARG_PREFIX"
+     cfgwrite ""
+     cfgwrite "SOPE_SYSLIBDIR=\${DESTDIR}\${FHS_INSTALL_ROOT}/\$(CGS_LIBDIR_NAME)"
+-    cfgwrite "SOPE_LIBDIR=\${SOPE_SYSLIBDIR}/sope-\${MAJOR_VERSION}.\${MINOR_VERSION}"
++    cfgwrite "SOPE_LIBDIR=\${SOPE_SYSLIBDIR}/sope-\${SOPE_MAJOR_VERSION}.\${SOPE_MINOR_VERSION}"
+     cfgwrite "SOPE_SYSSHAREDIR=\${DESTDIR}\${FHS_INSTALL_ROOT}/share"
+-    cfgwrite "SOPE_SHAREDIR=\${SOPE_SYSSHAREDIR}/sope-\${MAJOR_VERSION}.\${MINOR_VERSION}"
++    cfgwrite "SOPE_SHAREDIR=\${SOPE_SYSSHAREDIR}/sope-\${SOPE_MAJOR_VERSION}.\${SOPE_MINOR_VERSION}"
+     cfgwrite "SOPE_DBADAPTORS=\${SOPE_LIBDIR}/dbadaptors"
+     cfgwrite "SOPE_PRODUCTS=\${SOPE_LIBDIR}/products"
+     cfgwrite "SOPE_SAXDRIVERS=\${SOPE_LIBDIR}/saxdrivers"

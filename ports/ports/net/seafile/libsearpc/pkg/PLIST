@@ -1,0 +1,36 @@
+bin/searpc-codegen.py
+include/searpc-client.h
+include/searpc-named-pipe-transport.h
+include/searpc-server.h
+include/searpc-utils.h
+include/searpc.h
+@static-lib lib/libsearpc.a
+lib/libsearpc.la
+@lib lib/libsearpc.so.${LIBsearpc_VERSION}
+lib/pkgconfig/libsearpc.pc
+lib/python${MODPY_VERSION}/site-packages/pysearpc/
+lib/python${MODPY_VERSION}/site-packages/pysearpc/__init__.py
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}/
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}client.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}client.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}common.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}common.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}errors.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}errors.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}named_pipe.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}named_pipe.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}server.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}server.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}transport.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}transport.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}utils.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/pysearpc/${MODPY_PYCACHE}utils.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/pysearpc/client.py
+lib/python${MODPY_VERSION}/site-packages/pysearpc/common.py
+lib/python${MODPY_VERSION}/site-packages/pysearpc/errors.py
+lib/python${MODPY_VERSION}/site-packages/pysearpc/named_pipe.py
+lib/python${MODPY_VERSION}/site-packages/pysearpc/server.py
+lib/python${MODPY_VERSION}/site-packages/pysearpc/transport.py
+lib/python${MODPY_VERSION}/site-packages/pysearpc/utils.py

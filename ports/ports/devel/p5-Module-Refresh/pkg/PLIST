@@ -1,0 +1,3 @@
+${P5SITE}/Module/
+${P5SITE}/Module/Refresh.pm
+@man man/man3p/Module::Refresh.3p

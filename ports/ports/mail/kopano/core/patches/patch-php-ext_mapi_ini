@@ -1,0 +1,7 @@
+Index: php-ext/mapi.ini
+--- php-ext/mapi.ini.orig
++++ php-ext/mapi.ini
+@@ -1,2 +1,3 @@
+ ; Enable MAPI extension module
+ extension=mapi.so
++include_path="${include_path}:/usr/local/share/kopano/php"

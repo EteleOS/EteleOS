@@ -1,0 +1,29 @@
+--- data/numptyphysics.desktop.orig	Wed Dec  5 15:53:11 2012
++++ data/numptyphysics.desktop	Thu Dec  6 12:19:21 2012
+@@ -3,23 +3,11 @@ Encoding=UTF-8
+ Version=1.0
+ Type=Application
+ Name=Numpty Physics
++Comment=Physics based drawing puzzle game
+ Categories=Game;LogicGame;
+-Exec=/usr/bin/numptyphysics
++Exec=numptyphysics
+ StartupWMClass=NPhysics
+ Icon=numptyphysics
+-X-Icon-path=/usr/share/pixmaps
+ X-Window-Icon=numptyphysics
+ X-Window-Icon-Dimmed=numptyphysics
+-X-HildonDesk-ShowInToolbar=true
+-X-Osso-Type=application/x-executable
+-X-Osso-Service=org.maemo.garage.numptyphysics
+-MimeType=application/x-numptyphysics-level;application/x-numptyphysics-collection;application/x-numptyphysics-demo
+-
+-[X-Osso-URI-Actions]
+-http=X-Osso-URI-Action-Open;
+-nptp=X-Osso-URI-Action-Open;
+-
+-[X-Osso-URI-Action-Open]
+-Method=mime_open
+-Name=uri_link_play
+-TranslationDomain=osso-uri
++MimeType=application/x-numptyphysics-level;application/x-numptyphysics-collection;application/x-numptyphysics-demo;

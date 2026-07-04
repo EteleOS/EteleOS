@@ -1,0 +1,10 @@
+--- c/asc.c.orig	Wed Jan 11 23:51:34 1995
++++ c/asc.c	Mon Dec 23 00:26:56 2002
+@@ -19,7 +19,6 @@
+ 	HA ASC method
+ ***********************************************************************/
+ 
+-#include <malloc.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include "ha.h"

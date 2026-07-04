@@ -1,0 +1,91 @@
+Add option to drop privileges with pledge().
+From https://github.com/mgba-emu/mgba/pull/1271.
+
+Index: src/platform/sdl/main.c
+--- src/platform/sdl/main.c.orig
++++ src/platform/sdl/main.c
+@@ -45,6 +45,11 @@ static int mSDLRun(struct mSDLRenderer* renderer, stru
+ 
+ static struct mStandardLogger _logger;
+ 
++#ifdef USE_PLEDGE_UNVEIL
++static bool mPledgeBroad(struct mArguments* args);
++static bool mPledgeNarrow(struct mArguments* args);
++#endif
++
+ static struct VFile* _state = NULL;
+ 
+ static void _loadState(struct mCoreThread* thread) {
+@@ -171,6 +176,15 @@ int main(int argc, char** argv) {
+ 	renderer.player.bindings = &renderer.core->inputMap;
+ 	mSDLInitBindingsGBA(&renderer.core->inputMap);
+ 	mSDLInitEvents(&renderer.events);
++
++#ifdef USE_PLEDGE_UNVEIL
++	if (!mPledgeBroad(&args)) {
++		mArgumentsDeinit(&args);
++		fprintf(stderr, "pledge\n");
++		return 1;
++	}
++#endif
++
+ 	mSDLEventsLoadConfig(&renderer.events, mCoreConfigGetInput(&renderer.core->config));
+ 	mSDLAttachPlayer(&renderer.events, &renderer.player);
+ 	mSDLPlayerLoadConfig(&renderer.player, mCoreConfigGetInput(&renderer.core->config));
+@@ -295,6 +309,12 @@ int mSDLRun(struct mSDLRenderer* renderer, struct mArg
+ 					state->close(state);
+ 				}
+ 			}
++#ifdef USE_PLEDGE_UNVEIL
++		if (!mPledgeNarrow(args)) {
++			didFail = true;
++			fprintf(stderr, "pledge\n");
++		}
++#endif
+ 			renderer->runloop(renderer, &thread);
+ 			mSDLPauseAudio(&renderer->audio);
+ 			if (mCoreThreadHasCrashed(&thread)) {
+@@ -335,3 +355,43 @@ static void mSDLDeinit(struct mSDLRenderer* renderer) 
+ 
+ 	SDL_Quit();
+ }
++
++#ifdef USE_PLEDGE_UNVEIL
++static bool mPledgeBroad(struct mArguments *args) {
++	if (args->debuggerType == DEBUGGER_CLI) {
++		if (pledge("stdio rpath wpath cpath inet fattr flock unix dns sendfd prot_exec tty drm audio", NULL) == -1) {
++			return false;
++		}
++#ifdef USE_GDB_STUB
++	} else if (args->debuggerType == DEBUGGER_GDB) {
++		if (pledge("stdio rpath wpath cpath inet fattr flock unix dns sendfd prot_exec drm audio", NULL) == -1) {
++			return false;
++		}
++#endif
++	} else {
++		if (pledge("stdio rpath wpath cpath inet fattr flock unix dns sendfd prot_exec drm audio", NULL) == -1) {
++			return false;
++		}
++	}
++	return true;
++}
++
++static bool mPledgeNarrow(struct mArguments *args) {
++	if (args->debuggerType == DEBUGGER_CLI) {
++		if (pledge("stdio rpath wpath cpath fattr flock sendfd tty prot_exec drm audio", NULL) == -1) {
++			return false;
++		}
++#ifdef USE_GDB_STUB
++	} else if (args->debuggerType == DEBUGGER_GDB) {
++		if (pledge("stdio rpath wpath cpath inet fattr flock sendfd prot_exec drm audio", NULL) == -1) {
++			return false;
++		}
++#endif
++	} else {
++		if (pledge("stdio rpath wpath cpath fattr flock sendfd prot_exec drm audio", NULL) == -1) {
++			return false;
++		}
++	}
++	return true;
++}
++#endif

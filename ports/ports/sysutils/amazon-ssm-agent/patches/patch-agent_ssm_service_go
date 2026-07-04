@@ -1,0 +1,12 @@
+Index: agent/ssm/service.go
+--- agent/ssm/service.go.orig
++++ agent/ssm/service.go
+@@ -261,7 +261,7 @@ func (svc *sdkService) UpdateInstanceInformation(
+ 	switch goOS {
+ 	case "windows":
+ 		params.PlatformType = aws.String(ssm.PlatformTypeWindows)
+-	case "linux", "freebsd":
++	case "linux", "freebsd", "openbsd":
+ 		params.PlatformType = aws.String(ssm.PlatformTypeLinux)
+ 	case "darwin":
+ 		params.PlatformType = aws.String(ssm.PlatformTypeMacOs)

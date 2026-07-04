@@ -1,0 +1,19 @@
+calcurse uses long for times all over the place; dirty fix for 32-bit
+arch with 64-bit time_t
+
+Index: src/args.c
+--- src/args.c.orig
++++ src/args.c
+@@ -251,10 +251,11 @@ static void next_arg(void)
+ /*
+  * Print the date on stdout.
+  */
+-static void arg_print_date(long date)
++static void arg_print_date(long date_l)
+ {
+ 	char date_str[BUFSIZ];
+ 	struct tm lt;
++	time_t date = date_l;
+ 
+ 	localtime_r((time_t *) & date, &lt);
+ 	strftime(date_str, BUFSIZ, conf.output_datefmt, &lt);

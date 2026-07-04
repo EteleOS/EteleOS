@@ -1,0 +1,2 @@
+include/theorafile.h
+@lib lib/libtheorafile.so.${LIBtheorafile_VERSION}

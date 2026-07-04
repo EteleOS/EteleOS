@@ -1,0 +1,4 @@
+${P5SITE}/Unicode/
+${P5SITE}/Unicode/MapUTF8.pm
+${P5SITE}/Unicode/MapUTF8.pod
+@man man/man3p/Unicode::MapUTF8.3p

@@ -1,0 +1,12 @@
+Index: src/osgDB/FileUtils.cpp
+--- src/osgDB/FileUtils.cpp.orig
++++ src/osgDB/FileUtils.cpp
+@@ -81,7 +81,7 @@ typedef char TCHAR;
+         #define stat64 stat
+     #endif
+ #elif defined(__CYGWIN__) || defined(__FreeBSD__) || defined(__DragonFly__) || \
+-      (defined(__hpux) && !defined(_LARGEFILE64_SOURCE))
++      defined(__OpenBSD__) || (defined(__hpux) && !defined(_LARGEFILE64_SOURCE))
+     #define stat64 stat
+ #endif
+ 

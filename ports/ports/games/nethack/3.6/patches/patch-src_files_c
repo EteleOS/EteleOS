@@ -1,0 +1,13 @@
+Index: src/files.c
+--- src/files.c.orig
++++ src/files.c
+@@ -1397,7 +1397,9 @@ boolean uncomp;
+             redirect(filename, RDBMODE, stdin, uncomp);
+             redirect(cfn, WRBMODE, stdout, uncomp);
+         }
++	(void) setegid(getgid());
+         (void) setgid(getgid());
++	(void) seteuid(getuid());
+         (void) setuid(getuid());
+         (void) execv(args[0], (char *const *) args);
+         perror((char *) 0);

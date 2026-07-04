@@ -1,0 +1,43 @@
+Index: makefile
+--- makefile.orig
++++ makefile
+@@ -18,7 +18,7 @@ export GO_SPACE
+ 
+ checkstyle::
+ #   Run checkstyle script
+-	$(GO_SPACE)/Tools/src/checkstyle.sh
++#	$(GO_SPACE)/Tools/src/checkstyle.sh
+ 
+ analyze-install::
+ 	$(GO_SPACE)/Tools/src/static_analysis.sh $(shell echo ${flags} | tr ",\[\]" " \"") -I
+@@ -34,7 +34,7 @@ coverage:: build-linux
+ 	  github.com/aws/amazon-ssm-agent/agent/... \
+ 	  github.com/aws/amazon-ssm-agent/core/...
+ 
+-build:: build-linux build-freebsd build-windows build-linux-386 build-windows-386 build-arm build-arm64 build-darwin-amd64 build-darwin-arm64
++build:: build-linux build-freebsd build-openbsd build-windows build-linux-386 build-windows-386 build-arm build-arm64 build-darwin-amd64 build-darwin-arm64
+ 
+ prepack:: cpy-plugins copy-win-dep prepack-linux prepack-linux-arm64 prepack-linux-386 prepack-windows prepack-windows-386
+ 
+@@ -52,6 +52,8 @@ finalize:: build-tests copy-package-dep
+ dev-build-linux: clean quick-integtest checkstyle pre-release build-linux
+ .PHONY: dev-build-freebsd
+ dev-build-freebsd: clean quick-integtest checkstyle pre-release build-freebsd
++.PHONY: dev-build-openbsd
++dev-build-openbsd: clean quick-integtest checkstyle pre-release build-openbsd
+ .PHONY: dev-build-windows
+ dev-build-windows: clean quick-integtest checkstyle pre-release build-windows
+ .PHONY: dev-build-linux-386
+@@ -167,6 +169,12 @@ build-freebsd: GOARCH=amd64
+ build-freebsd: GOOS=freebsd
+ build-freebsd: GO_BUILD=$(GO_BUILD_NOPIE)
+ build-freebsd: build-any-amd64-freebsd
++
++.PHONY: build-openbsd
++build-openbsd: GOARCH=amd64
++build-openbsd: GOOS=openbsd
++build-openbsd: GO_BUILD=$(GO_BUILD_NOPIE)
++build-openbsd: build-any-amd64-openbsd
+ 
+ .PHONY: build-darwin-amd64
+ build-darwin-amd64: GOARCH=amd64

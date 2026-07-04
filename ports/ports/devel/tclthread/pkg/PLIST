@@ -1,0 +1,8 @@
+lib/tcl/thread/
+@so lib/tcl/thread/libthread${VER}.so
+lib/tcl/thread/pkgIndex.tcl
+lib/tcl/thread/ttrace.tcl
+@man man/mann/thread.n
+@man man/mann/tpool.n
+@man man/mann/tsv.n
+@man man/mann/ttrace.n

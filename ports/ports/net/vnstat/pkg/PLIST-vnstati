@@ -1,0 +1,4 @@
+@conflict vnstat-<1.14p0
+@bin bin/vnstati
+@man man/man1/vnstati.1
+share/examples/vnstat/vnstat.cgi

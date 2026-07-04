@@ -1,0 +1,5 @@
+include/libgadu.h
+lib/libgadu.a
+lib/libgadu.la
+@lib lib/libgadu.so.${LIBgadu_VERSION}
+lib/pkgconfig/libgadu.pc

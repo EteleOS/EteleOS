@@ -1,0 +1,7 @@
+bin/MsgFormat
+bin/XText
+${P5SITE}/Locale/
+${P5SITE}/Locale/PGetText.pm
+@man man/man1/MsgFormat.1
+@man man/man1/XText.1
+@man man/man3p/Locale::PGetText.3p

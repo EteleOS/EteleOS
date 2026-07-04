@@ -1,0 +1,22 @@
+@pkgpath www/goaccess,tokyocabinet
+@bin bin/goaccess
+@man man/man1/goaccess.1
+share/examples/goaccess/
+@sample ${SYSCONFDIR}/goaccess/
+share/examples/goaccess/browsers.list
+@sample ${SYSCONFDIR}/goaccess/browsers.list
+share/examples/goaccess/goaccess.conf
+@sample ${SYSCONFDIR}/goaccess/goaccess.conf
+share/examples/goaccess/podcast.list
+share/locale/de/LC_MESSAGES/goaccess.mo
+share/locale/es/LC_MESSAGES/goaccess.mo
+share/locale/fr/LC_MESSAGES/goaccess.mo
+share/locale/it/LC_MESSAGES/goaccess.mo
+share/locale/ja/LC_MESSAGES/goaccess.mo
+share/locale/ka/LC_MESSAGES/goaccess.mo
+share/locale/ko/LC_MESSAGES/goaccess.mo
+share/locale/pt_BR/LC_MESSAGES/goaccess.mo
+share/locale/ru/LC_MESSAGES/goaccess.mo
+share/locale/sv/LC_MESSAGES/goaccess.mo
+share/locale/uk/LC_MESSAGES/goaccess.mo
+share/locale/zh_CN/LC_MESSAGES/goaccess.mo

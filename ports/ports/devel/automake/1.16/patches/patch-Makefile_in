@@ -1,0 +1,17 @@
+Fix parallel build. Taken from FreeBSD.
+
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -3738,9 +3738,9 @@ doc/aclocal.1 doc/automake.1:
+ 	  && echo ".so man1/$$f-$(APIVERSION).1" > $@
+ 
+ doc/aclocal-$(APIVERSION).1: $(aclocal_script) lib/Automake/Config.pm
+-	$(update_mans) aclocal-$(APIVERSION)
++	$(update_mans) $(aclocal_script)
+ doc/automake-$(APIVERSION).1: $(automake_script) lib/Automake/Config.pm
+-	$(update_mans) automake-$(APIVERSION)
++	$(update_mans) $(automake_script)
+ .PHONY: checklinkx
+ checklinkx:
+ 	$(checklinkx) $(chlx_args) $(chlx_excludes) $(chlx_file)

@@ -1,0 +1,23 @@
+@pkgpath lang/ocaml,-graphics
+%%native%%
+lib/ocaml/graphics/
+lib/ocaml/graphics/META
+lib/ocaml/graphics/dune-package
+lib/ocaml/graphics/graphics.cma
+lib/ocaml/graphics/graphics.cmi
+lib/ocaml/graphics/graphics.cmt
+lib/ocaml/graphics/graphics.cmti
+lib/ocaml/graphics/graphics.ml
+lib/ocaml/graphics/graphics.mli
+lib/ocaml/graphics/graphicsX11.cmi
+lib/ocaml/graphics/graphicsX11.cmt
+lib/ocaml/graphics/graphicsX11.cmti
+lib/ocaml/graphics/graphicsX11.ml
+lib/ocaml/graphics/graphicsX11.mli
+@static-lib lib/ocaml/graphics/libgraphics_stubs.a
+lib/ocaml/graphics/opam
+@so lib/ocaml/stublibs/dllgraphics_stubs.so
+share/doc/ocaml-graphics/
+share/doc/ocaml-graphics/CHANGES.md
+share/doc/ocaml-graphics/LICENSE
+share/doc/ocaml-graphics/README.md

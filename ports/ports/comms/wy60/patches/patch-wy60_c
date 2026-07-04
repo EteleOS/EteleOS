@@ -1,0 +1,13 @@
+--- wy60.c.orig	Sat Feb  3 05:07:20 2007
++++ wy60.c	Wed Dec  5 21:09:50 2012
+@@ -5333,7 +5333,9 @@ static int forkPty(int *fd, char *name) {
+ 
+   /* Try to let the standard C library open a pty pair for us                */
+ #if HAVE_GRANTPT
+-#if HAVE_GETPT
++#if HAVE_POSIX_OPENPT
++  master             = posix_openpt(O_RDWR|O_NOCTTY);
++#elif HAVE_GETPT
+   master             = getpt();
+ #else
+   master             = open("/dev/ptmx", O_RDWR);

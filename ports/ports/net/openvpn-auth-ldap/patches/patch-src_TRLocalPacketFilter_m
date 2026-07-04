@@ -1,0 +1,19 @@
+Index: src/TRLocalPacketFilter.m
+--- src/TRLocalPacketFilter.m.orig
++++ src/TRLocalPacketFilter.m
+@@ -33,6 +33,7 @@
+  */
+ 
+ #import "TRLocalPacketFilter.h"
++#import "TRLog.h"
+ 
+ #ifdef HAVE_PF
+ 
+@@ -42,6 +43,7 @@
+ #import <string.h>
+ #import <errno.h>
+ #import <assert.h>
++#import "xmalloc.h"
+ 
+ 
+ /* Private Methods */

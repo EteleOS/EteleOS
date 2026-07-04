@@ -1,0 +1,7 @@
+@bin bin/ixpc
+@comment etc/
+include/ixp.h
+include/ixp_fcall.h
+lib/libixp.a
+lib/libixp_pthread.a
+@man man/man1/ixpc.1

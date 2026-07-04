@@ -1,0 +1,6 @@
+bin/ansiweather
+@man man/man1/ansiweather.1
+share/doc/ansiweather/
+share/doc/ansiweather/README.md
+share/examples/ansiweather/
+share/examples/ansiweather/ansiweatherrc.example

@@ -1,0 +1,14 @@
+lemonbar.c:1460:9: warning: call to undeclared function 'err'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+        err(EXIT_FAILURE, "pledge failed");
+
+Index: lemonbar.c
+--- lemonbar.c.orig
++++ lemonbar.c
+@@ -8,6 +8,7 @@
+ #include <poll.h>
+ #include <getopt.h>
+ #include <unistd.h>
++#include <err.h>
+ #include <errno.h>
+ #include <assert.h>
+ #include <xcb/xcb.h>

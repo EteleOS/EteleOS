@@ -1,0 +1,30 @@
+https://svnweb.freebsd.org/ports?view=revision&revision=547510
+
+Index: src/main.c
+--- src/main.c.orig
++++ src/main.c
+@@ -3,7 +3,12 @@
+ #endif
+ 
+ #include <gtk/gtk.h>
++#include <glib.h>
++#include <glib/gprintf.h>
++
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ #include "interface.h"
+ #include "support.h"
+@@ -13,7 +18,11 @@ GtkListStore *liststore;
+ GdkWindow    *gdkwin;
+ gchar        *user_filename;
+ gchar        *sys_filename;
++GtkWidget *gcolor2;
++GtkWidget *menu;
++GdkColor   colorvalue;
+ 
++#include "main.h"
+ 
+ void set_user_file ()
+ {

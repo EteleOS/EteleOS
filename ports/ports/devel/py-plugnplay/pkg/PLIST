@@ -1,0 +1,16 @@
+@pkgpath devel/py-plugnplay,python3
+lib/python${MODPY_VERSION}/site-packages/plugnplay/
+lib/python${MODPY_VERSION}/site-packages/plugnplay-${MODPY_DISTV}.dist-info/
+lib/python${MODPY_VERSION}/site-packages/plugnplay-${MODPY_DISTV}.dist-info/METADATA
+lib/python${MODPY_VERSION}/site-packages/plugnplay-${MODPY_DISTV}.dist-info/RECORD
+lib/python${MODPY_VERSION}/site-packages/plugnplay-${MODPY_DISTV}.dist-info/WHEEL
+lib/python${MODPY_VERSION}/site-packages/plugnplay-${MODPY_DISTV}.dist-info/licenses/
+lib/python${MODPY_VERSION}/site-packages/plugnplay-${MODPY_DISTV}.dist-info/licenses/LICENSE
+lib/python${MODPY_VERSION}/site-packages/plugnplay-${MODPY_DISTV}.dist-info/top_level.txt
+lib/python${MODPY_VERSION}/site-packages/plugnplay/__init__.py
+lib/python${MODPY_VERSION}/site-packages/plugnplay/${MODPY_PYCACHE}/
+lib/python${MODPY_VERSION}/site-packages/plugnplay/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/plugnplay/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/plugnplay/${MODPY_PYCACHE}manager.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/plugnplay/${MODPY_PYCACHE}manager.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/plugnplay/manager.py

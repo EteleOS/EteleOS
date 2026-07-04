@@ -1,0 +1,11 @@
+--- Makefile.orig	Fri May 11 16:17:47 2012
++++ Makefile	Sun Sep  7 21:29:46 2014
+@@ -87,7 +87,7 @@ $(SHAREDLIB): $(LIB_OBJS_PIC) $(LIBMAP)
+ 	-rm -f $(SOLIB)
+ 	ln -s $@ $(SOLIB)
+ 	$(LD) $(LDFLAGS) $(LDFLAGS_SHARED) -o $@ \
+-	 $(LDFLAGS_SONAME)$(SHAREDLIB) $(LDFLAGS_VSCRIPT)$(LIBMAP) \
++	 $(LDFLAGS_VSCRIPT)$(LIBMAP) \
+ 	 $(LIB_OBJS_PIC)
+ 
+ cdb: cdb.o $(CDB_USELIB)

@@ -1,0 +1,5 @@
+${P5SITE}/URI/Fetch/
+${P5SITE}/URI/Fetch.pm
+${P5SITE}/URI/Fetch/Response.pm
+@man man/man3p/URI::Fetch.3p
+@man man/man3p/URI::Fetch::Response.3p

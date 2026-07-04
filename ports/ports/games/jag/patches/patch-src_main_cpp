@@ -1,0 +1,12 @@
+Index: src/main.cpp
+--- src/main.cpp.orig
++++ src/main.cpp
+@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
+   // on X11, we'll check if data directory exists locally first
+ #ifdef Q_OS_UNIX
+   if (!QDir(resourcePath).exists())
+-    resourcePath = "/usr/share/games/jag/data/";
++    resourcePath = "${TRUEPREFIX}/share/jag/";
+ #endif
+ 
+   if (!QDir(resourcePath).exists()) {

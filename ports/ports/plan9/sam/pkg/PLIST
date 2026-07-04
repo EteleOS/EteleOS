@@ -1,0 +1,15 @@
+@bin bin/B
+@bin bin/sam
+@bin bin/samterm
+bin/ssam
+@man man/man1/sam.1
+@man man/man5/samrc.5
+share/applications/deadpixi-sam.desktop
+share/doc/sam/
+share/doc/sam/README.rst
+share/doc/sam/sam.ps
+share/doc/sam/sam.tut.ms
+share/doc/sam/se.ps
+share/examples/sam/
+share/examples/sam/samrc
+@tag update-desktop-database

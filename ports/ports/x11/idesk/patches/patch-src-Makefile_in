@@ -1,0 +1,15 @@
+Index: src/Makefile.in
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -389,8 +389,10 @@ uninstall-local uninstall-am uninstall all-redirect al
+ installdirs mostlyclean-generic distclean-generic clean-generic \
+ maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+ 
+-defaults.h: Makefile
++defaults.h:
+ 	echo '// This file is generated from makefile. Do not edit!' > defaults.h
++	echo '#include <sys/types.h>' >> defaults.h
++	echo '#include <sys/stat.h>' >> defaults.h
+ 	echo '#define DEFAULT_PREFIX "@DEFAULT_PREFIX@"' >> defaults.h
+ 	echo '#define PACKAGE "@PACKAGE@"' >> defaults.h
+ 

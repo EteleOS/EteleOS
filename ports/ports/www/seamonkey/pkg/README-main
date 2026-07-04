@@ -1,0 +1,17 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Debugging
+=========
+If you encounter crashes, you might want to build the debug FLAVOR of
+this package, and run seamonkey inside gdb, so that you can gather
+debugging logs and traces (for all threads !).
+Bug reports without that information will be ignored.
+
+Html5 audio/video support
+=========================
+For a full multimedia experience, such as playing MP3 audio or MPEG
+videos, install the "ffmpeg" package:
+
+# pkg_add ffmpeg

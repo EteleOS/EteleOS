@@ -1,0 +1,7 @@
+roundcubemail/plugins/ldapAliasSync/
+roundcubemail/plugins/ldapAliasSync/COPYING
+roundcubemail/plugins/ldapAliasSync/README.md
+roundcubemail/plugins/ldapAliasSync/composer.json
+roundcubemail/plugins/ldapAliasSync/config-default.inc.php
+@sample roundcubemail/plugins/ldapAliasSync/config.inc.php
+roundcubemail/plugins/ldapAliasSync/ldapAliasSync.php

@@ -1,0 +1,6 @@
+The WWW::Mechanize::GZip module tries to fetch a URL by requesting
+gzip-compression from the web server. If such compression is not
+available, the content will be available nonetheless.
+
+This module is a direct subclass of WWW::Mechanize and will therefore
+support any method provided by WWW::Mechanize.

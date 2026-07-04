@@ -1,0 +1,21 @@
+Index: rarcrack.c
+--- rarcrack.c.orig
++++ rarcrack.c
+@@ -42,7 +42,7 @@ char * getfirstpassword() {
+ 	return (char*) &ret;
+ }
+ 
+-inline void savestatus() {
++void savestatus() {
+ 	xmlNodePtr root = NULL;
+ 	xmlNodePtr node = NULL;
+ 	xmlChar* tmp = NULL;
+@@ -165,7 +165,7 @@ void nextpass2(char* p, unsigned int n) {
+    return;
+ }
+ 
+-inline char* nextpass() {	//IMPORTANT: the returned string must be freed
++char* nextpass() {	//IMPORTANT: the returned string must be freed
+    char *ok = malloc(sizeof(char)*(PWD_LEN+1));
+    xmlMutexLock(pwdMutex);
+    strcpy(ok, password);

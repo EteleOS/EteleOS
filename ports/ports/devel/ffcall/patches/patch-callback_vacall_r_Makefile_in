@@ -1,0 +1,18 @@
+--- callback/vacall_r/Makefile.in.orig	Sun Jan 25 15:17:01 2004
++++ callback/vacall_r/Makefile.in	Thu Jul 30 15:07:56 2015
+@@ -120,13 +120,11 @@ vacall-rs6000.lo : $(srcdir)/vacall-rs6000-aix.old.s $
+ 	case "$(OS)" in \
+ 	  aix3*) syntax=aix.old;; \
+ 	  aix*) syntax=aix.new;; \
+-	  linux*) syntax=linux;; \
++	  linux* | openbsd*) syntax=linux;; \
+ 	  macos* | darwin*) syntax=macos;; \
+ 	  *) syntax=sysv4;; \
+ 	esac; \
+-	$(LIBTOOL_COMPILE) $(CC) @GCC_X_NONE@ -c $(srcdir)/vacall-rs6000-$${syntax}.s ; \
+-	cp vacall-rs6000-$${syntax}.lo vacall-rs6000.lo ; rm -f vacall-rs6000-$${syntax}.lo ; \
+-	if test -f vacall-rs6000-$${syntax}.o; then mv vacall-rs6000-$${syntax}.o vacall-rs6000.o; fi
++	$(LIBTOOL_COMPILE) $(CC) @GCC_X_NONE@ -c $(srcdir)/vacall-rs6000-$${syntax}.s -o vacall-rs6000.lo
+ 
+ vacall-m88k.lo : $(srcdir)/vacall-m88k.s
+ 	$(LIBTOOL_COMPILE) $(CC) @GCC_X_NONE@ -c $(srcdir)/vacall-m88k.s

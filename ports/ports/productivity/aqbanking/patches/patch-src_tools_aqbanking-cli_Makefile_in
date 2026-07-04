@@ -1,0 +1,15 @@
+Do not hardcode -lstdc++
+
+Index: src/tools/aqbanking-cli/Makefile.in
+--- src/tools/aqbanking-cli/Makefile.in.orig
++++ src/tools/aqbanking-cli/Makefile.in
+@@ -496,8 +496,7 @@ aqcli_libs = ${abs_top_builddir}/src/libs/cli/libaqcli
+ aqbanking_cli_LDADD = \
+   $(aqbanking_internal_libs) \
+   $(gwenhywfar_libs) \
+-  $(aqcli_libs) \
+-  -lstdc++
++  $(aqcli_libs)
+ 
+ aqbanking_cli_SOURCES = \
+   main.c \

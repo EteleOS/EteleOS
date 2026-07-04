@@ -1,0 +1,29 @@
+--- contrib/mt-daapd.conf.orig	Sat Apr 19 22:17:11 2008
++++ contrib/mt-daapd.conf	Tue Aug  4 20:46:21 2009
+@@ -23,7 +23,7 @@
+ # path is probably /usr/local/share/mt-daapd/admin-root.
+ #
+ 
+-web_root	/usr/share/mt-daapd/admin-root
++web_root	${LOCALBASE}/share/mt-daapd/admin-root
+ 
+ #
+ # port (required)
+@@ -83,7 +83,7 @@ servername	mt-daapd
+ # as root or not.
+ #
+ 
+-runas	nobody
++runas	_mt-daapd
+ 
+ #
+ # playlist (optional)
+@@ -98,7 +98,7 @@ runas	nobody
+ # below.
+ #
+ 
+-playlist	/etc/mt-daapd.playlist
++playlist	${SYSCONFDIR}/mt-daapd.playlist
+ 
+ #
+ # password (optional)

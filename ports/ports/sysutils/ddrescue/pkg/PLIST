@@ -1,0 +1,5 @@
+@bin bin/ddrescue
+@bin bin/ddrescuelog
+@info info/ddrescue.info
+@man man/man1/ddrescue.1
+@man man/man1/ddrescuelog.1

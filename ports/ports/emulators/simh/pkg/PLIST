@@ -1,0 +1,51 @@
+@bin bin/simh-altair
+@bin bin/simh-altairz80
+@bin bin/simh-eclipse
+@bin bin/simh-gri
+@bin bin/simh-h316
+@bin bin/simh-hp2100
+@bin bin/simh-i1401
+@bin bin/simh-i1620
+@bin bin/simh-i7094
+@bin bin/simh-ibm1130
+@bin bin/simh-id16
+@bin bin/simh-id32
+@bin bin/simh-lgp
+@bin bin/simh-nova
+@bin bin/simh-pdp1
+@bin bin/simh-pdp10
+@bin bin/simh-pdp11
+@bin bin/simh-pdp15
+@bin bin/simh-pdp4
+@bin bin/simh-pdp7
+@bin bin/simh-pdp8
+@bin bin/simh-pdp9
+@bin bin/simh-s3
+@bin bin/simh-sds
+@bin bin/simh-swtp6800mp-a
+@bin bin/simh-swtp6800mp-a2
+@bin bin/simh-vax
+@bin bin/simh-vax780
+lib/simh/
+lib/simh/vax/
+lib/simh/vax/ka655x.bin
+lib/simh/vax/vmb.exe
+share/doc/simh/
+share/doc/simh/0readme_39.txt
+share/doc/simh/0readme_ethernet.txt
+share/doc/simh/altair.txt
+share/doc/simh/eclipse.txt
+share/doc/simh/haltguide.txt
+share/doc/simh/hp2100_bugfixes.txt
+share/doc/simh/hp2100_diag.txt
+share/doc/simh/i7094_bug_history.txt
+share/doc/simh/id_diag.txt
+share/doc/simh/pdp10_bug_history.txt
+share/doc/simh/pdp18b_diag.txt
+share/doc/simh/pdp1_diag.txt
+share/doc/simh/readme1130.txt
+share/doc/simh/readme_s3.txt
+share/doc/simh/readme_update.txt
+share/doc/simh/sds_diag.txt
+share/doc/simh/system3.txt
+share/doc/simh/vax780_bug_history.txt

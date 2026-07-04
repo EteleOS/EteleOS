@@ -1,0 +1,13 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -4475,9 +4475,6 @@ fi
+ done
+ 
+ 
+-if test "${ac_cv_c_compiler_gnu}" = "yes"; then
+-  CFLAGS="${CFLAGS} -Wall -Wno-unused-but-set-variable -Werror"
+-fi
+ 
+ 
+ 

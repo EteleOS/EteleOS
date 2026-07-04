@@ -1,0 +1,4 @@
+bin/spellcheck_source.pl
+${P5SITE}/Sourcecode/
+${P5SITE}/Sourcecode/Spellchecker.pm
+@man man/man3p/Sourcecode::Spellchecker.3p

@@ -1,0 +1,6 @@
+@conflict p5-Moo-<2.002003
+${P5SITE}/Sub/
+${P5SITE}/Sub/Defer.pm
+${P5SITE}/Sub/Quote.pm
+@man man/man3p/Sub::Defer.3p
+@man man/man3p/Sub::Quote.3p

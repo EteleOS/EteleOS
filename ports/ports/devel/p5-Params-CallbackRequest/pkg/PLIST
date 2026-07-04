@@ -1,0 +1,8 @@
+${P5SITE}/Params/
+${P5SITE}/Params/Callback.pm
+${P5SITE}/Params/CallbackRequest/
+${P5SITE}/Params/CallbackRequest.pm
+${P5SITE}/Params/CallbackRequest/Exceptions.pm
+@man man/man3p/Params::Callback.3p
+@man man/man3p/Params::CallbackRequest.3p
+@man man/man3p/Params::CallbackRequest::Exceptions.3p

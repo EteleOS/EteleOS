@@ -1,0 +1,5 @@
+bin/find2perl
+@comment ${P5SITE}/App/
+@comment ${P5SITE}/App/find2perl.pm
+@man man/man1/find2perl.1
+@comment @man man/man3p/App::find2perl.3p

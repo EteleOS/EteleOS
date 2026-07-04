@@ -1,0 +1,4 @@
+${P5SITE}/HTTP/
+${P5SITE}/HTTP/MultiPartParser.pm
+${P5SITE}/HTTP/MultiPartParser.pod
+@man man/man3p/HTTP::MultiPartParser.3p

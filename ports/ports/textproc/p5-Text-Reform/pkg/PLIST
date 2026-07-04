@@ -1,0 +1,18 @@
+${P5SITE}/Text/
+${P5SITE}/Text/Reform.pm
+@man man/man3p/Text::Reform.3p
+share/examples/p5-Text-Reform/
+share/examples/p5-Text-Reform/demo.pl
+share/examples/p5-Text-Reform/demo_badheader.pl
+share/examples/p5-Text-Reform/demo_cols.pl
+share/examples/p5-Text-Reform/demo_columns.pl
+share/examples/p5-Text-Reform/demo_filler.pl
+share/examples/p5-Text-Reform/demo_footer.pl
+share/examples/p5-Text-Reform/demo_leader1.pl
+share/examples/p5-Text-Reform/demo_locale.pl
+share/examples/p5-Text-Reform/demo_reentrant.pl
+share/examples/p5-Text-Reform/demo_simple.pl
+share/examples/p5-Text-Reform/demo_single.pl
+share/examples/p5-Text-Reform/demo_table.pl
+share/examples/p5-Text-Reform/demo_warnings.pl
+share/examples/p5-Text-Reform/demo_ws.pl

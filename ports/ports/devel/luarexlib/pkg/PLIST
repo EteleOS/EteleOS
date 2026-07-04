@@ -1,0 +1,7 @@
+lib/lua/${MODLUA_VERSION}/rex_onig.so
+lib/lua/${MODLUA_VERSION}/rex_pcre.so
+lib/lua/${MODLUA_VERSION}/rex_posix.so
+share/doc/${FULLPKGNAME}/
+share/doc/${FULLPKGNAME}/html4css1.css
+share/doc/${FULLPKGNAME}/lrexlib.css
+share/doc/${FULLPKGNAME}/manual.html

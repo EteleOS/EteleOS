@@ -1,0 +1,5 @@
+${P5SITE}/Benchmark/
+${P5SITE}/Benchmark/Timer.pm
+${P5SITE}/Benchmark/delta.pl
+@man man/man3p/Benchmark::Timer.3p
+@man man/man3p/Benchmark::delta.3p

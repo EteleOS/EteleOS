@@ -1,0 +1,20 @@
+--- libAfterBase/configure.orig	Wed May  1 15:34:11 2013
++++ libAfterBase/configure	Mon Jun 29 14:43:49 2015
+@@ -3906,7 +3906,7 @@ fi
+ 
+ if test "x$enable_gdb" = "xno"; then
+ 		DIRTY_CFLAGS="$CFLAGS"
+-  		CFLAGS="-O3"
++  		CFLAGS=""
+   		for f in $DIRTY_CFLAGS; do
+        		if test "x$f" != "x-O2" -a "x$f" != "x-O3"; then
+ 		   		CFLAGS="$CFLAGS $f"
+@@ -5639,6 +5639,8 @@ if test "x$ac_cv_lib_execinfo_backtrace" = xyes; then 
+ fi
+ 
+ 
++execinfo_libs="-L%%LOCALBASE%%/lib -lexecinfo"
++LIBS="$execinfo_libs $LIBS"
+ for ac_func in backtrace_symbols_fd backtrace_symbols backtrace
+ do :
+   as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`

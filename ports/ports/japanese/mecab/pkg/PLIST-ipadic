@@ -1,0 +1,12 @@
+share/mecab/
+share/mecab/dic/
+share/mecab/dic/ipadic/
+share/mecab/dic/ipadic/char.bin
+share/mecab/dic/ipadic/dicrc
+share/mecab/dic/ipadic/left-id.def
+share/mecab/dic/ipadic/matrix.bin
+share/mecab/dic/ipadic/pos-id.def
+share/mecab/dic/ipadic/rewrite.def
+share/mecab/dic/ipadic/right-id.def
+share/mecab/dic/ipadic/sys.dic
+share/mecab/dic/ipadic/unk.dic

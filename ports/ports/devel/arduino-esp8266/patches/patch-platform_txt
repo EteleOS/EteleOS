@@ -1,0 +1,16 @@
+Index: platform.txt
+--- platform.txt.orig
++++ platform.txt
+@@ -9,9 +9,9 @@ name=ESP8266 Boards (3.0.2)
+ version=3.0.2
+ 
+ # These will be removed by the packager script when doing a JSON release
+-
+-
+-
++runtime.tools.xtensa-lx106-elf-gcc.path=${LOCALBASE}/xtensa-lx106-elf
++runtime.tools.python3.path=${LOCALBASE}/bin/
++runtime.tools.esptool.path=${LOCALBASE}/bin
+ 
+ runtime.tools.signing={runtime.platform.path}/tools/signing.py
+ runtime.tools.elf2bin={runtime.platform.path}/tools/elf2bin.py

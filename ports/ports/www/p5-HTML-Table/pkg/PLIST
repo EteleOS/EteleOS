@@ -1,0 +1,3 @@
+${P5SITE}/HTML/
+${P5SITE}/HTML/Table.pm
+@man man/man3p/HTML::Table.3p

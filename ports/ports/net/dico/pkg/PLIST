@@ -1,0 +1,83 @@
+@newgroup _dicod:831
+@newuser _dicod:831:831::GNU dictionary server:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/dicod
+@bin bin/dico
+@bin bin/dicod
+include/dico/
+include/dico/argcv.h
+include/dico/assoc.h
+include/dico/conv.h
+include/dico/diag.h
+include/dico/dico.h
+include/dico/filter.h
+include/dico/list.h
+include/dico/markup.h
+include/dico/parseopt.h
+include/dico/strat.h
+include/dico/stream.h
+include/dico/tokenize.h
+include/dico/types.h
+include/dico/udb.h
+include/dico/url.h
+include/dico/utf8.h
+include/dico/util.h
+include/dico/xlat.h
+@info info/dico.info
+lib/dico/
+lib/dico/dictorg.la
+@so lib/dico/dictorg.so
+lib/dico/echo.la
+@so lib/dico/echo.so
+lib/dico/gcide.la
+@so lib/dico/gcide.so
+lib/dico/greek_kbd.la
+@so lib/dico/greek_kbd.so
+lib/dico/ldap.la
+@so lib/dico/ldap.so
+lib/dico/metaphone2.la
+@so lib/dico/metaphone2.so
+lib/dico/nprefix.la
+@so lib/dico/nprefix.so
+lib/dico/outline.la
+@so lib/dico/outline.so
+lib/dico/pam.la
+@so lib/dico/pam.so
+lib/dico/pcre.la
+@so lib/dico/pcre.so
+lib/dico/python.la
+@so lib/dico/python.so
+lib/dico/stratall.la
+@so lib/dico/stratall.so
+lib/dico/substr.la
+@so lib/dico/substr.so
+lib/dico/word.la
+@so lib/dico/word.so
+lib/libdico.la
+@lib lib/libdico.so.${LIBdico_VERSION}
+@bin libexec/idxgcide
+@man man/man1/dico.1
+@man man/man5/dicod.conf.5
+@man man/man8/dicod.8
+share/dico/
+share/dico/${V}/
+share/dico/${V}/include/
+share/dico/${V}/include/pp-setup
+share/examples/dico/
+share/examples/dico/dicod.conf
+@sample ${SYSCONFDIR}/dicod.conf
+@mode 775
+@group _dicod
+@sample ${LOCALSTATEDIR}/dicod/
+@mode
+@group
+share/locale/da/LC_MESSAGES/dico.mo
+share/locale/de/LC_MESSAGES/dico.mo
+share/locale/es/LC_MESSAGES/dico.mo
+share/locale/fi/LC_MESSAGES/dico.mo
+share/locale/fr/LC_MESSAGES/dico.mo
+share/locale/pl/LC_MESSAGES/dico.mo
+share/locale/pt_BR/LC_MESSAGES/dico.mo
+share/locale/ro/LC_MESSAGES/dico.mo
+share/locale/sr/LC_MESSAGES/dico.mo
+share/locale/sv/LC_MESSAGES/dico.mo
+share/locale/uk/LC_MESSAGES/dico.mo

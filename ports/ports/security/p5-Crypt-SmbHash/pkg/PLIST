@@ -1,0 +1,3 @@
+${P5SITE}/Crypt/
+${P5SITE}/Crypt/SmbHash.pm
+@man man/man3p/Crypt::SmbHash.3p

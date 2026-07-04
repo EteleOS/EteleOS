@@ -1,0 +1,6 @@
+@bin bin/tcpprof
+@bin bin/tcpstat
+@man man/man1/tcpprof.1
+@man man/man1/tcpstat.1
+share/examples/tcpstat/
+share/examples/tcpstat/Tips_and_Tricks.txt

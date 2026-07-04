@@ -1,0 +1,5 @@
+lib/apache2/
+lib/apache2/mod_dnssd.so
+share/doc/ap2-mod_dnssd/
+share/doc/ap2-mod_dnssd/README
+share/doc/pkg-readmes/${PKGSTEM}

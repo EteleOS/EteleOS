@@ -1,0 +1,5 @@
+${P5SITE}/Class/Accessor/Chained/
+${P5SITE}/Class/Accessor/Chained.pm
+${P5SITE}/Class/Accessor/Chained/Fast.pm
+@man man/man3p/Class::Accessor::Chained.3p
+@man man/man3p/Class::Accessor::Chained::Fast.3p

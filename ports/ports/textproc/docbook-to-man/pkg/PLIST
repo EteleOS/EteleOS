@@ -1,0 +1,6 @@
+bin/docbook-to-man
+@bin bin/instant2
+lib/tpt/
+lib/tpt/docbook-to-man.ts
+lib/tpt/roff.cmap
+lib/tpt/roff.sdata

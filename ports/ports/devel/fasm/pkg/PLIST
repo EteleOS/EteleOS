@@ -1,0 +1,9 @@
+@bin bin/fasm
+share/doc/fasm/
+share/doc/fasm/fasm.txt
+share/doc/fasm/libcdemo/
+share/doc/fasm/libcdemo/ccall.inc
+share/doc/fasm/libcdemo/libcdemo.asm
+share/doc/fasm/license.txt
+share/doc/fasm/readme.txt
+share/doc/fasm/whatsnew.txt

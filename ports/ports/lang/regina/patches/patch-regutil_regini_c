@@ -1,0 +1,18 @@
+time_t requires %lld
+
+Index: regutil/regini.c
+--- regutil/regini.c.orig
++++ regutil/regini.c
+@@ -547,10 +547,10 @@ rxfunc(sysqueryprocess)
+       result->strlength = 6;
+    }
+    else if (!strcmp(arg, "PTIME")) {
+-      result->strlength = sprintf(result->strptr, "%lu", clock());
++      result->strlength = sprintf(result->strptr, "%lld", clock());
+    }
+    else if (!strcmp(arg, "TTIME")) {
+-      result->strlength = sprintf(result->strptr, "%lu", clock());
++      result->strlength = sprintf(result->strptr, "%lld", clock());
+    }
+    else
+       return BADARGS;

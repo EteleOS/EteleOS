@@ -1,0 +1,197 @@
+Change asm comments from ";" to COM, which is "#".  Don't save the
+previous stack pointer more than once.  Save the link register in the
+caller's frame, as ELF requires.  Save the non-volatile registers.
+
+Emit code for the secure PLT, where r30 must point to the global
+offset table.
+
+Add a shape SGOTCON to emit code like "lwz %r3,.L459@got(30)" for
+loading a constant address from the global offset table.  This fixes
+string literals in PIC.
+
+Index: arch/powerpc/local2.c
+--- arch/powerpc/local2.c.orig
++++ arch/powerpc/local2.c
+@@ -121,7 +121,7 @@ int i, sz, addto = p2framesize; //p2maxautooff;
+ 			ipp->ip_tmpnum,
+ 			ipp->ip_lblnum);
+ 
+-	printf("; p2framesize = %d, p2calls = %d, p2autooff = %d\n", 
++	printf(COM "p2framesize = %d, p2calls = %d, p2autooff = %d\n", 
+ 			p2framesize, p2calls, p2autooff);
+ #endif
+ 
+@@ -133,44 +133,66 @@ int i, sz, addto = p2framesize; //p2maxautooff;
+ 	sz = p2autooff;
+ 
+ #ifdef FPREG
+-	printf("\tmr %s,%s	; preserve FPREG\n", rnames[R0], rnames[FPREG]);
+-	printf("\tmr %s,%s	; establish frame pointer\n", rnames[FPREG], rnames[R1]);
++	printf("\tmr %s,%s" COM "preserve FPREG\n", rnames[R0], rnames[FPREG]);
++	printf("\tmr %s,%s" COM "establish frame pointer\n", rnames[FPREG], rnames[R1]);
+ #else
+-	printf("\tmr %s,%s	; preserve previous stack pointer\n", rnames[R0], rnames[R1]);
++	printf("\tmr %s,%s" COM "preserve previous stack pointer\n", rnames[R0], rnames[R1]);
+ #endif
+ 
+ 	/* create the new stack frame */
+ 	if (addto > 32767) {
+-		printf("\tlis %s,%d	; stack frame ? 32767\n", rnames[R0], (-addto) >> 16);
++		printf("\tlis %s,%d" COM "stack frame ? 32767\n", rnames[R0], (-addto) >> 16);
+ 		printf("\tori %s,%s,%d\n", rnames[R0],
+ 		    rnames[R0], (-addto) & 0xffff);
+-		printf("\tstwux %s,%s,%s	; move the stack pointer\n", rnames[SPREG],
++		printf("\tstwux %s,%s,%s" COM "move the stack pointer\n", rnames[SPREG],
+ 		    rnames[R1], rnames[R0]);
+ 	} else {
+-		printf("\tstwu %s,-%d(%s)	; move the stack pointer\n", rnames[R1], addto, rnames[SPREG]);
++		printf("\tstwu %s,-%d(%s)" COM "move the stack pointer\n", rnames[R1], addto, rnames[SPREG]);
+ 	}
+ 
+ 	if (p2calls != 0 || kflag) {
+ 		/* save the previous stack location */
+ #ifdef FPREG
+-		printf("\tstw %s,-4(%s)	; save FPREG relative to frame pointer\n", rnames[R0], rnames[FPREG]);
+-		printf("\tstw %s,0(%s)	; save previous stack pointer\n", rnames[FPREG], rnames[SPREG]);
+-#else
+-		printf("\tstw %s,0(%s)	; save previous stack pointer\n", rnames[R0], rnames[SPREG]);
++		printf("\tstw %s,-4(%s)" COM "save FPREG relative to frame pointer\n", rnames[R0], rnames[FPREG]);
+ #endif
+ 		/* get return address (not required for leaf function) */
+ 		printf("\tmflr %s\n", rnames[R0]);
+-		printf("\tstw %s,4(%s)\n", rnames[R0], rnames[R1]);
++		printf("\tstw %s,%d(%s)\n", rnames[R0], addto + 4, rnames[R1]);
+ 		
+ 		if (kflag) {
++#if 0 /* BSS PLT */
+ 		/* save registers R30 and R31 */
+ 			printf("\tstmw %s,-8(%s)	; save GOTREG\n", rnames[GOTREG], rnames[FPREG]);
+ 			printf("\tbl _GLOBAL_OFFSET_TABLE_@local-4\n");
+ 			printf("\tmflr %s\n", rnames[GOTREG]);
++#else /* secure PLT */
++		const char *gotreg = rnames[GOTREG];
++		int lab = getlab2();
++
++		printf("\tstw %s,-8(%s)" COM "save GOTREG\n",
++		    gotreg, rnames[FPREG]);
++		printf("\tbcl 20,31," LABFMT "\n", lab);
++		deflab(lab);
++		printf("\tmflr %s\n", gotreg);
++		printf("\taddis %s,%s,_GLOBAL_OFFSET_TABLE_-" LABFMT "@ha\n",
++		    gotreg, gotreg, lab);
++		printf("\taddi %s,%s,_GLOBAL_OFFSET_TABLE_-" LABFMT "@l\n",
++		    gotreg, gotreg, lab);
++#endif
+ 		}
+ 	}
+ 
+-	
++	/* save non-volatile registers */
++	for (i = 0; i < MAXREGS; i++) {
++		if (TESTBIT(p2env.p_regs, i)) {
++			sz += (SZLONG/SZCHAR);
++			if (sz == addto)
++				cerror("collision between stack and frame");
++
++			printf("\tstw %s,-%d(%s)\n", rnames[i], sz, rnames[FPREG]);
++		}
++	}
++
+ #elif defined(MACHOABI)
+ 	/* 
+ 	 * Mach-O defines a "linkage area" where the LR, CR and SP are saved.
+@@ -300,7 +322,7 @@ int idx = 1;
+ 
+ #if defined(ELFABI)
+ 
+-	sz =  = p2autooff;
++	sz = p2autooff;
+ 
+ 	/* calculate the frame space */
+ 	for (i = 0; i < MAXREGS; i++) {
+@@ -315,36 +337,22 @@ int idx = 1;
+ 			sz += (SZLONG/SZCHAR);
+ 			if (sz == addto)
+ 				cerror("collision between stack and frame");
+-			printf("\tlwz %s, -%d(%s)\n", rnames[i], sz, rnames[SPREG]);
++			printf("\tlwz %s, -%d(%s)\n", rnames[i], sz, rnames[FPREG]);
+ 		}
+ 	}	
+ 	if (kflag) {
+-		printf("\tlwz %s,-8(%s)	; restore GOTREG\n", rnames[GOTREG], rnames[FPREG]);
++		printf("\tlwz %s,-8(%s)" COM "restore GOTREG\n", rnames[GOTREG], rnames[FPREG]);
+ 	}
+ #if defined(FPREG)
+-	printf("\tlwz %s,-4(%s)	; restore FPREG\n", rnames[FPREG], rnames[FPREG]);
++	printf("\tlwz %s,-4(%s)" COM "restore FPREG\n", rnames[FPREG], rnames[FPREG]);
+ #endif
+ 	
+-	printf("\tlwz %s,4(%s)	; reload stack pointer\n", rnames[R0], rnames[SPREG]);
+-	printf("\tmtlr %s		; restore link register\n", rnames[R0]);
+-	printf("\tlwz %s,0(%s)	; restore stack pointer\n", rnames[SPREG], rnames[SPREG]);
++	printf("\tlwz %s,%d(%s)\n", rnames[R0], p2framesize + 4, rnames[SPREG]);
++	printf("\tmtlr %s" COM "restore link register\n", rnames[R0]);
++	printf("\tlwz %s,0(%s)" COM "restore stack pointer\n", rnames[SPREG], rnames[SPREG]);
+ 	
+-	if (p2calls) {
+-		
+-		printf("\tlwz %s,4(%s)	; restore condition register\n", rnames[R0], rnames[SPREG]);
+-		printf("\tmtcr %s\n", rnames[R0]);
+-		printf("\tlwz %s,8(%s)	; reload link register\n", rnames[R0], rnames[SPREG]);
+ 	
+-		printf("\tmtlr %s			; restore link register\n", rnames[R0]);
+-	} else {
+-		/* restore the R31 we might have used with PIC labels*/
+-		//printf("\tlwz %s,-4(%s)\n", rnames[R31], rnames[SPREG]);
+-		printf("\tmr %s, %s\n", rnames[R31], rnames[R0]);
+-	}
+ 	
+-	printf("\tlwz %s,4(%s)	; reload stack pointer\n", rnames[R0], rnames[SPREG]);
+-	printf("\tmtlr %s		; restore link register\n", rnames[R0]);
+-	printf("\tlwz %s,0(%s)	; restore stack pointer\n", rnames[SPREG], rnames[SPREG]);
+ 	
+ 	
+ 	
+@@ -1298,8 +1306,6 @@ adrput(FILE *io, NODE *p)
+ 	case NAME:
+ 		if (p->n_name[0] != '\0') {
+ #if !(defined(MACHOABI))
+-			if (kflag)
+-				fprintf(io, "L%s$pb-", &p2env.ipp->ipp_name[1]);
+ 			fputs(p->n_name, io);
+ #else
+ 			/* MACHOABI requires kflag */
+@@ -1585,13 +1591,13 @@ myreader(struct interpass *ipole)
+ 	//p2maxautooff = p2framesize;
+ 	
+ #if 1
+-	printf(";;; MYREADER\n");
+-	printf(";;; p2maxautooff = %d\n", p2maxautooff);
+-	printf(";;; p2autooff = %d\n", p2autooff);
+-	printf(";;; p2temps = %d\n", p2temps);
+-	printf(";;; p2calls = %d\n", p2calls);
+-	printf(";;; p2maxstacksize = %d\n", p2maxstacksize);
+-	printf(";;; p2framesize = %d\n", p2framesize);
++	printf(COM "MYREADER\n");
++	printf(COM "p2maxautooff = %d\n", p2maxautooff);
++	printf(COM "p2autooff = %d\n", p2autooff);
++	printf(COM "p2temps = %d\n", p2temps);
++	printf(COM "p2calls = %d\n", p2calls);
++	printf(COM "p2maxstacksize = %d\n", p2maxstacksize);
++	printf(COM "p2framesize = %d\n", p2framesize);
+ #endif
+ 
+ 	if (x2debug)
+@@ -1807,6 +1813,12 @@ special(NODE *p, int shape)
+ 	case SPCON:
+ 		if (o == ICON && p->n_name[0] == 0 && (getlval(p) & ~0x7fff) == 0)
+ 			return SRDIR;
++		break;
++	case SGOTCON:
++#if defined(ELFABI)
++		if (o == ICON && strstr(p->n_name, "@got(30)"))
++			return SRDIR;
++#endif
+ 		break;
+ 	}
+ 	return SRNOPE;

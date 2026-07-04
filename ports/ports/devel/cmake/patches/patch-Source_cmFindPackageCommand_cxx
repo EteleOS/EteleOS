@@ -1,0 +1,20 @@
+Disable find_package QUIET option in openbsd ports builds.
+
+Index: Source/cmFindPackageCommand.cxx
+--- Source/cmFindPackageCommand.cxx.orig
++++ Source/cmFindPackageCommand.cxx
+@@ -758,7 +758,13 @@ bool cmFindPackageCommand::InitialPass(std::vector<std
+   std::vector<std::size_t> moduleArgs;
+   for (std::size_t i = 1u; i < args.size(); ++i) {
+     if (args[i] == "QUIET") {
+-      this->Quiet = true;
++      std::string openbsd_build;
++      bool quiet = true;
++      if (cmSystemTools::GetEnv("MODCMAKE_PORT_BUILD", openbsd_build)) {
++        if (openbsd_build == std::string("yes"))
++          quiet = false;
++      }
++      this->Quiet = quiet;
+       doing = DoingNone;
+     } else if (args[i] == "BYPASS_PROVIDER") {
+       this->BypassProvider = true;

@@ -1,0 +1,62 @@
+Index: xinvest.c
+--- xinvest.c.orig
++++ xinvest.c
+@@ -69,6 +69,42 @@ static char id[] = "$Header: /pack/anoncvs/xinvest/src
+ #include <Dt/Print.h>
+ #endif
+ 
++/* Globals */
++Widget Filemenu;
++Widget Editmenu;
++Widget Optionmenu;
++Widget Accountmenu;
++Widget Transtext;
++Widget Translabel;
++Widget Filecwdlabel;
++Widget Listfile;
++Widget Timesform;
++Widget Timelform;
++Widget Valrow;
++Widget Graphhbar;
++Widget Graphhline;
++Widget GraphconstToggle;
++Widget Graphscale;
++Widget Graphcform;
++Widget Portpbut;
++Widget Portmbut;
++Widget Portcbut;
++Widget Portabut;
++Widget Portpercentlist;
++Widget Portoptmenu;
++Widget Portvaluelabel;
++Widget Calclabel;
++Widget Calclabels[5];
++Widget Calctext[3]; 
++Widget Savebut;
++Widget Nextbut;
++Widget Prevbut;
++Widget Gainbut;
++Widget Graphbut;
++Widget Portbut;
++Widget Editbut;
++Widget Toolmenu, Infoframe, Graphform, Reportform, Portform, Calcform;
++
+ /* Menu & button callbacks */
+        void toolCB ();
+ extern void accountCB();
+@@ -1650,6 +1686,7 @@ int main (int argc, char **argv)
+   return (0);
+ }
+ 
++#ifdef XPRINT
+ void PageCB(Widget w, XtPointer client, XtPointer call)
+ {
+ 	XmPrintShellCallbackStruct *cbp = (XmPrintShellCallbackStruct *)call;
+@@ -1660,6 +1697,7 @@ void PageCB(Widget w, XtPointer client, XtPointer call
+ 
+ 	cbp->last_page = True;
+ }
++#endif
+ 
+ void PrintCB(Widget w, XtPointer client, XtPointer call)
+ {

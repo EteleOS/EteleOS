@@ -1,0 +1,17 @@
+uses syntax not in recent obj-c ??
+/usr/obj/ports/openvpn-openvpn-auth-ldap-auth-ldap-2.0.4/openvpn-auth-ldap-auth-ldap-2.0.4/tests/TRLocalPacketFilterTests.m:175: undefined reference to `suite_create'                
+/usr/obj/ports/openvpn-openvpn-auth-ldap-auth-ldap-2.0.4/openvpn-auth-ldap-auth-ldap-2.0.4/tests/TRLocalPacketFilterTests.m:177: undefined reference to `tcase_create'               
+/usr/obj/ports/openvpn-openvpn-auth-ldap-auth-ldap-2.0.4/openvpn-auth-ldap-auth-ldap-2.0.4/tests/TRLocalPacketFilterTests.m:178: undefined reference to `tcase_add_checked_fixture'   
+/usr/obj/ports/openvpn-openvpn-auth-ldap-auth-ldap-2.0.4/openvpn-auth-ldap-auth-ldap-2.0.4/tests/TRLocalPacketFilterTests.m:179: undefined reference to `suite_add_tcase'    
+
+Index: tests/Makefile.in
+--- tests/Makefile.in.orig
++++ tests/Makefile.in
+@@ -25,7 +25,6 @@ TEST_OBJS=	tests.o \
+ 		TRLDAPEntryTests.o \
+ 		TRLDAPGroupConfigTests.o \
+ 		TRLDAPSearchFilterTests.o \
+-		TRLocalPacketFilterTests.o \
+ 		TRObjectTests.o \
+ 		mockpf.o \
+ 		TRPFAddressTests.o \

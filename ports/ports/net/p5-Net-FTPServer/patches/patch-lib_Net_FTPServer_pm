@@ -1,0 +1,47 @@
+Hunk #1/2 - Default memory limit is too low, various tests fail with
+16MB. 32MB still has a failure in t/240abort.t but most things work
+ok and 240abort.t represents an unusual situation. (It can be made
+to work with 64MB in perl 5.28 - earlier perl needs even more).
+
+Hunk #3 - Typo found by newer perl's "Unescaped left brace in regex"
+deprecation warning.
+
+Index: lib/Net/FTPServer.pm
+--- lib/Net/FTPServer.pm.orig
++++ lib/Net/FTPServer.pm
+@@ -358,7 +358,7 @@ process and are important in avoiding denial of servic
+ attacks against the FTP server.
+ 
+  Resource         Default   Unit
+- limit memory       16384   KBytes  Amount of memory per child
++ limit memory       32768   KBytes  Amount of memory per child
+  limit nr processes    10   (none)  Number of processes
+  limit nr files        20   (none)  Number of open files
+ 
+@@ -367,7 +367,7 @@ limit to C<-1>.
+ 
+ Example:
+ 
+- limit memory:       32768
++ limit memory:       65536
+  limit nr processes:    20
+  limit nr files:        40
+ 
+@@ -2680,7 +2680,7 @@ sub run
+     # Perform normal per-process limits.
+     if ($r == 0)
+       {
+-	my $limit = 1024 * ($self->config ("limit memory") || 16384);
++	my $limit = 1024 * ($self->config ("limit memory") || 32768);
+ 	$self->_set_rlimit ("RLIMIT_DATA", $limit) if $limit >= 0;
+ 
+ 	$limit = $self->config ("limit nr processes") || 10;
+@@ -6688,7 +6688,7 @@ sub _LANG_command
+     # (b) there are all sorts of possible libc exploits available if
+     # the user is allowed to set this to arbitrary values.
+     unless (length ($rest) <= 8 &&
+-	    $rest =~ /^[A-Z]{1,8}(-[A-Z]{1-8})*$/i)
++	    $rest =~ /^[A-Z]{1,8}(-[A-Z]{1,8})*$/i)
+       {
+ 	$self->reply (504, "Incorrect language.");
+ 	return;

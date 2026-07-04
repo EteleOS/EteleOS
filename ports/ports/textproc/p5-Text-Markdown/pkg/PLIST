@@ -1,0 +1,5 @@
+bin/Markdown.pl
+${P5SITE}/Text/
+${P5SITE}/Text/Markdown.pm
+@man man/man1/Markdown.pl.1
+@man man/man3p/Text::Markdown.3p

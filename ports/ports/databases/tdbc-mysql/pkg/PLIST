@@ -1,0 +1,5 @@
+lib/tcl/tdbcmysql/
+@so lib/tcl/tdbcmysql/libtdbcmysql${VER}.so
+lib/tcl/tdbcmysql/pkgIndex.tcl
+lib/tcl/tdbcmysql/tdbcmysql.tcl
+@man man/mann/tdbc_mysql.n

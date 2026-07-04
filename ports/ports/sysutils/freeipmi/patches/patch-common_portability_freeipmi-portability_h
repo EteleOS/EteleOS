@@ -1,0 +1,12 @@
+Index: common/portability/freeipmi-portability.h
+--- common/portability/freeipmi-portability.h.orig
++++ common/portability/freeipmi-portability.h
+@@ -215,4 +215,8 @@ int freeipmi_gethostbyname_r (const char *name,
+                               int *h_errnop);
+ #endif /* !defined(HAVE_FUNC_GETHOSTBYNAME_R_6) && !defined(HAVE_FUNC_GETHOSTBYNAME_R_5) */
+ 
++#ifndef AI_V4MAPPED
++# define AI_V4MAPPED 0
++#endif
++
+ #endif /* FREEIPMI_PORTABILITY_H */

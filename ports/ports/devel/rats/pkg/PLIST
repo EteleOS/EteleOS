@@ -1,0 +1,11 @@
+@bin bin/rats
+@man man/man1/rats.1
+share/doc/rats/
+share/doc/rats/README
+share/rats/
+share/rats/rats-c.xml
+share/rats/rats-openssl.xml
+share/rats/rats-perl.xml
+share/rats/rats-php.xml
+share/rats/rats-python.xml
+share/rats/rats-ruby.xml

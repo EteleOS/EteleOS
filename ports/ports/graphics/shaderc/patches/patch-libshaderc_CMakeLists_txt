@@ -1,0 +1,14 @@
+fix libraries needed
+
+Index: libshaderc/CMakeLists.txt
+--- libshaderc/CMakeLists.txt.orig
++++ libshaderc/CMakeLists.txt
+@@ -102,7 +102,7 @@ endif(SHADERC_ENABLE_INSTALL)
+ 
+ shaderc_add_tests(
+   TEST_PREFIX shaderc_combined
+-  LINK_LIBS shaderc_combined ${CMAKE_THREAD_LIBS_INIT}
++  LINK_LIBS shaderc_combined ${SHADERC_LIBS}
+   INCLUDE_DIRS include ${shaderc_SOURCE_DIR}/libshaderc_util/include ${glslang_SOURCE_DIR}
+                ${spirv-tools_SOURCE_DIR}/include
+                ${SPIRV-Headers_SOURCE_DIR}/include

@@ -1,0 +1,30 @@
+Index: src/input.c
+--- src/input.c.orig
++++ src/input.c
+@@ -47,7 +47,7 @@
+ #include	"edef.h"
+ #include	"elang.h"
+ 
+-#if USG | AIX | AUX | BSD | FREEBSD | SUN | HPUX8 | HPUX9
++#if USG || AIX || AUX || BSD || FREEBSD || SUN || HPUX8 || HPUX9 || OPENBSD
+ #include	<pwd.h>
+ extern struct passwd *getpwnam();
+ #endif
+@@ -244,7 +244,7 @@ int maxlen;		/* maximum length of input field */
+ 	char *ptr;		/* string pointer */
+ 	char user_name[NSTRING]; /* user name for directory */
+ 	static char buf[NSTRING];/* buffer to hold tentative name */
+-#if USG | AIX | AUX | BSD | FREEBSD | SUN | HPUX8 | HPUX9
++#if USG || AIX || AUX || BSD || FREEBSD || SUN || HPUX8 || HPUX9 || OPENBSD
+ 	struct passwd *pwd;	/* password structure */
+ #endif
+ 
+@@ -353,7 +353,7 @@ int maxlen;		/* maximum length of input field */
+ 				--ttcol;
+ 			}
+ 
+-#if USG | AIX | AUX | BSD | FREEBSD | SUN | HPUX8 | HPUX9
++#if USG || AIX || AUX || BSD || FREEBSD || SUN || HPUX8 || HPUX9 || OPENBSD
+ 			/* lookup someone else's home directory! */
+ 			if (user_name[0] != 0) {
+ 				pwd = getpwnam(user_name);

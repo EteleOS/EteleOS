@@ -1,0 +1,13 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+As of version 1.0:
+The 'dbus-intf' Tcl package is now called 'dbif'.
+
+Man and doc files dbus-intf.n and dbus-intf.html are
+now dbif.n and dbif.html, respectively.
+All other port files and directories remain 'dbus-intf'.
+
+Occurrences of [package require dbus-intf]
+should be changed to [package require dbif].

@@ -1,0 +1,15 @@
+--- env.c.orig	Fri Jul  9 10:10:54 2010
++++ env.c	Fri Jul  9 10:11:30 2010
+@@ -9,7 +9,11 @@ extern const char* utoa(unsigned long);
+ void setup_env(int fd, const char* socket)
+ {
+ #ifdef SO_PEERCRED
+-  struct ucred peer;
++#ifndef __OpenBSD__
++   struct ucred peer;
++#else
++  struct sockpeercred peer;
++#endif
+   int optlen = sizeof(peer);
+   if(getsockopt(fd, SOL_SOCKET, SO_PEERCRED, &peer, &optlen) != -1) {
+     setenv("UNIXREMOTEEGID", utoa(peer.gid), 1);

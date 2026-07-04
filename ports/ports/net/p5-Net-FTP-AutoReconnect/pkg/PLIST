@@ -1,0 +1,4 @@
+${P5SITE}/Net/
+${P5SITE}/Net/FTP/
+${P5SITE}/Net/FTP/AutoReconnect.pm
+@man man/man3p/Net::FTP::AutoReconnect.3p

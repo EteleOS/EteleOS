@@ -1,0 +1,81 @@
+--- Wnn/uum/prologue.c.orig
++++ Wnn/uum/prologue.c
+@@ -56,6 +56,7 @@
+ #include <ctype.h>
+ #include <sys/errno.h>
+ #include <pwd.h>
++#include <string.h>
+ #include "jllib.h"
+ #include "commonhd.h"
+ #include "config.h"
+@@ -64,20 +65,14 @@
+ #include "sdefine.h"
+ #include "sheader.h"
+ #include "wnn_os.h"
+-#ifdef UX386
+ #include <unistd.h>
+-#endif
++#include <stdlib.h>
+ 
+ #undef putchar
+-extern int putchar();
+-extern struct passwd *getpwnam();
+ 
+-extern char     *getenv();
+-extern FILE	*fopen();
+ 
+ 
+ 
+-
+ /** romkan のイニシャライズ */
+ int
+ open_romkan()
+@@ -87,7 +82,7 @@ open_romkan()
+ 
+     romkan_set_lang(lang_dir);
+     if (*rkfile_name_in_uumrc != '\0') {
+-	strcpy(name, rkfile_name_in_uumrc);
++	strlcpy(name, rkfile_name_in_uumrc, sizeof name);
+     }else {
+ 	strcpy(name , LIBDIR);
+ 	strcat(name , RKFILE);
+@@ -136,7 +131,6 @@ char *str;
+ int
+ allocate_areas()
+ {
+-    char *malloc();
+     char *area_start;
+     char *area_pter;
+ 
+@@ -264,7 +258,6 @@ int first;
+     WnnEnv *save_cur_normal_env = NULL, *save_cur_reverse_env = NULL;
+     int (*yes_no_func)();
+     void (*puts_func)();
+-    extern char *malloc();
+ 
+     if (first == 0) {
+ 	bun_data_ = NULL;
+@@ -280,8 +273,8 @@ int first;
+     for (p = normal_env; p; p = p->next) {
+ 	cur_normal_env = p;
+ 	get_envrc_name(uumrc_name);
+-	strcpy(environment, username);
+-	strcat(environment, p->env_name_str);
++	strlcpy(environment, username, sizeof environment);
++	strlcat(environment, p->env_name_str, sizeof environment);
+ 	if (servername == NULL && def_servername && *def_servername) {
+             servername = malloc(strlen(def_servername)+1);
+ 	    strcpy(servername, def_servername);
+@@ -321,9 +314,9 @@ int first;
+     for (p = reverse_env; p; p = p->next) {
+         cur_reverse_env = p;
+         if (get_envrc_name_reverse(uumrc_name) > 0) {
+-            strcpy(environment, username);
+-            strcat(environment, p->env_name_str);
+-            strcat(environment, "R");
++            strlcpy(environment, username, sizeof environment);
++            strlcat(environment, p->env_name_str, sizeof environment);
++            strlcat(environment, "R", sizeof environment);
+ 	    if (reverse_servername == NULL && def_reverse_servername
+ 		&& *def_reverse_servername) {
+ 		reverse_servername =

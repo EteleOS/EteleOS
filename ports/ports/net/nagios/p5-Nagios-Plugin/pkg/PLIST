@@ -1,0 +1,19 @@
+@conflict p5-Nagios-Plugin-*
+${P5SITE}/Monitoring/
+${P5SITE}/Monitoring/Plugin/
+${P5SITE}/Monitoring/Plugin.pm
+${P5SITE}/Monitoring/Plugin/Config.pm
+${P5SITE}/Monitoring/Plugin/ExitResult.pm
+${P5SITE}/Monitoring/Plugin/Functions.pm
+${P5SITE}/Monitoring/Plugin/Getopt.pm
+${P5SITE}/Monitoring/Plugin/Performance.pm
+${P5SITE}/Monitoring/Plugin/Range.pm
+${P5SITE}/Monitoring/Plugin/Threshold.pm
+@man man/man3p/Monitoring::Plugin.3p
+@man man/man3p/Monitoring::Plugin::Config.3p
+@man man/man3p/Monitoring::Plugin::ExitResult.3p
+@man man/man3p/Monitoring::Plugin::Functions.3p
+@man man/man3p/Monitoring::Plugin::Getopt.3p
+@man man/man3p/Monitoring::Plugin::Performance.3p
+@man man/man3p/Monitoring::Plugin::Range.3p
+@man man/man3p/Monitoring::Plugin::Threshold.3p

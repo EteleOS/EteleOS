@@ -1,0 +1,11 @@
+#!/bin/ksh
+
+daemon_user="_logstash"
+daemon="${TRUEPREFIX}/logstash/bin/logstash"
+rc_bg=YES
+
+. /etc/rc.d/rc.subr
+
+pexp="$(${LOCALBASE}/bin/javaPathHelper -c logstash) .*logstash.*"
+
+rc_cmd $1

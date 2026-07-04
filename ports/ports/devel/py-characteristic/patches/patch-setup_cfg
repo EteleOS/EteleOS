@@ -1,0 +1,11 @@
+Newer setuptools requires tools:pytest
+
+Index: setup.cfg
+--- setup.cfg.orig
++++ setup.cfg
+@@ -1,4 +1,4 @@
+-[pytest]
++[tools:pytest]
+ minversion = 2.6
+ strict = true
+ norecursedirs = .* build dist test_data *.egg

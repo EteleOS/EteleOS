@@ -1,0 +1,11 @@
+bin/mailsync
+bin/mw
+lib/mutt-wizard/
+lib/mutt-wizard/openfile
+@man man/man1/mailsync.1
+@man man/man1/mw.1
+share/mutt-wizard/
+share/mutt-wizard/domains.csv
+share/mutt-wizard/mailcap
+share/mutt-wizard/mutt-wizard.muttrc
+share/mutt-wizard/switch.muttrc

@@ -1,0 +1,11 @@
+Index: mplex/padstrm.cpp
+--- mplex/padstrm.cpp.orig
++++ mplex/padstrm.cpp
+@@ -23,6 +23,7 @@
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"
+ #endif
++#include <string.h>
+ 
+ #include "padstrm.hpp"
+ 

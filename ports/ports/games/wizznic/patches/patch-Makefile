@@ -1,0 +1,11 @@
+--- Makefile.orig	Thu Dec 29 15:12:52 2011
++++ Makefile	Sat Jul 18 14:50:34 2015
+@@ -51,7 +51,7 @@ install:
+ 	install -d -D -m 755 "$(DESTDIR)$(DATADIR)"
+ 	cp -R data "$(DESTDIR)$(DATADIR)"
+ 	cp -R packs "$(DESTDIR)$(DATADIR)"
+-	chmod -R 755 "$(DESTIR)$(DATADIR)"
++	chmod -R 755 "$(DESTDIR)$(DATADIR)"
+ 
+ clean:
+ 	rm -f *.o $(NAME)

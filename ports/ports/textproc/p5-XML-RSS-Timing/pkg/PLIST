@@ -1,0 +1,4 @@
+${P5SITE}/XML/
+${P5SITE}/XML/RSS/
+${P5SITE}/XML/RSS/Timing.pm
+@man man/man3p/XML::RSS::Timing.3p

@@ -1,0 +1,6 @@
+SHA256 (prometheus-3.5.2.tar.gz) = 7cqtsJsdz1UEtiZ221PIiHRcNC7yevaay9mdWtvHnDM=
+SHA256 (prometheus-vendor-3.5.2.tar.gz) = C3Rv+cViXG+m58PRq4BZAVh0Nv0b5Hz4gmcZQu0zJSY=
+SHA256 (prometheus-web-ui-3.5.2.tar.gz) = I3ow9YQyFs+RHETURVRND9aoZvOb73PmfA5MpaJfVqU=
+SIZE (prometheus-3.5.2.tar.gz) = 5129100
+SIZE (prometheus-vendor-3.5.2.tar.gz) = 16689071
+SIZE (prometheus-web-ui-3.5.2.tar.gz) = 3490735

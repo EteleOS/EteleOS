@@ -1,0 +1,4 @@
+@conflict go-tools-*
+@bin bin/stress
+@info info/stress.info
+@man man/man1/stress.1

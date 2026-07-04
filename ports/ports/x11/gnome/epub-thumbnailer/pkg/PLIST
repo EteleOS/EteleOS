@@ -1,0 +1,4 @@
+@bin bin/gnome-epub-thumbnailer
+@bin bin/gnome-mobi-thumbnailer
+share/thumbnailers/gnome-epub-thumbnailer.thumbnailer
+share/thumbnailers/gnome-mobi-thumbnailer.thumbnailer

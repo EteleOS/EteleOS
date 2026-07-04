@@ -1,0 +1,3 @@
+${P5SITE}/UUID/
+${P5SITE}/UUID/Tiny.pm
+@man man/man3p/UUID::Tiny.3p

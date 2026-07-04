@@ -1,0 +1,172 @@
+@conflict zebra-*
+@newgroup _quagga:525
+@newuser _quagga:525:_quagga::Quagga Account:/nonexistent:/sbin/nologin
+@extraunexec rm -rf ${LOCALSTATEDIR}/*
+@extraunexec rm -rf /var/log/quagga/*
+@rcscript ${RCDIR}/quagga_babeld
+@rcscript ${RCDIR}/quagga_bgpd
+@rcscript ${RCDIR}/quagga_isisd
+@rcscript ${RCDIR}/quagga_ospf6d
+@rcscript ${RCDIR}/quagga_ospfd
+@rcscript ${RCDIR}/quagga_pimd
+@rcscript ${RCDIR}/quagga_ripd
+@rcscript ${RCDIR}/quagga_ripngd
+@rcscript ${RCDIR}/quagga_zebra
+@comment @bin bin/bgp_btoa
+@bin bin/test_igmpv3_join
+@bin bin/vtysh
+include/quagga/
+include/quagga/quagga/
+include/quagga/quagga/buffer.h
+include/quagga/quagga/checksum.h
+include/quagga/quagga/command.h
+include/quagga/quagga/distribute.h
+include/quagga/quagga/event_counter.h
+include/quagga/quagga/fifo.h
+include/quagga/quagga/filter.h
+include/quagga/quagga/getopt.h
+include/quagga/quagga/hash.h
+include/quagga/quagga/if.h
+include/quagga/quagga/if_rmap.h
+include/quagga/quagga/jhash.h
+include/quagga/quagga/keychain.h
+include/quagga/quagga/libospf.h
+include/quagga/quagga/linklist.h
+include/quagga/quagga/log.h
+include/quagga/quagga/md5.h
+include/quagga/quagga/memory.h
+include/quagga/quagga/memtypes.h
+include/quagga/quagga/network.h
+include/quagga/quagga/nexthop.h
+include/quagga/quagga/ospfapi/
+include/quagga/quagga/ospfapi/ospf_apiclient.h
+include/quagga/quagga/ospfd/
+include/quagga/quagga/ospfd/ospf_api.h
+include/quagga/quagga/ospfd/ospf_asbr.h
+include/quagga/quagga/ospfd/ospf_dump.h
+include/quagga/quagga/ospfd/ospf_ism.h
+include/quagga/quagga/ospfd/ospf_lsa.h
+include/quagga/quagga/ospfd/ospf_lsdb.h
+include/quagga/quagga/ospfd/ospf_nsm.h
+include/quagga/quagga/ospfd/ospf_opaque.h
+include/quagga/quagga/ospfd/ospfd.h
+include/quagga/quagga/plist.h
+include/quagga/quagga/pqueue.h
+include/quagga/quagga/prefix.h
+include/quagga/quagga/privs.h
+include/quagga/quagga/route_types.h
+include/quagga/quagga/routemap.h
+include/quagga/quagga/sigevent.h
+include/quagga/quagga/smux.h
+include/quagga/quagga/sockopt.h
+include/quagga/quagga/sockunion.h
+include/quagga/quagga/str.h
+include/quagga/quagga/stream.h
+include/quagga/quagga/table.h
+include/quagga/quagga/thread.h
+include/quagga/quagga/vector.h
+include/quagga/quagga/version.h
+include/quagga/quagga/vrf.h
+include/quagga/quagga/vty.h
+include/quagga/quagga/workqueue.h
+include/quagga/quagga/zassert.h
+include/quagga/quagga/zclient.h
+include/quagga/quagga/zebra.h
+@info info/quagga.info
+lib/libfpm_pb.la
+@lib lib/libfpm_pb.so.${LIBfpm_pb_VERSION}
+lib/libospf.la
+@lib lib/libospf.so.${LIBospf_VERSION}
+lib/libospfapiclient.la
+@lib lib/libospfapiclient.so.${LIBospfapiclient_VERSION}
+lib/libquagga_pb.la
+@lib lib/libquagga_pb.so.${LIBquagga_pb_VERSION}
+lib/libzebra.la
+@lib lib/libzebra.so.${LIBzebra_VERSION}
+@man man/man1/vtysh.1
+@man man/man8/bgpd.8
+@man man/man8/isisd.8
+@man man/man8/ospf6d.8
+@man man/man8/ospfclient.8
+@man man/man8/ospfd.8
+@man man/man8/pimd.8
+@man man/man8/ripd.8
+@man man/man8/ripngd.8
+@man man/man8/watchquagga.8
+@man man/man8/zebra.8
+@bin sbin/bgpd
+@bin sbin/isisd
+@bin sbin/ospf6d
+@bin sbin/ospfclient
+@bin sbin/ospfd
+@bin sbin/pimd
+@bin sbin/ripd
+@bin sbin/ripngd
+@bin sbin/watchquagga
+@bin sbin/zebra
+share/doc/quagga/
+share/doc/quagga/README
+share/doc/quagga/SERVICES
+share/examples/quagga/
+@mode 750
+@owner _quagga
+@group _quagga
+@sample ${SYSCONFDIR}/
+@mode
+@owner
+@group
+share/examples/quagga/bgpd.conf.sample
+@owner _quagga
+@group _quagga
+@sample ${SYSCONFDIR}/bgpd.conf
+@owner
+@group
+share/examples/quagga/bgpd.conf.sample2
+share/examples/quagga/isisd.conf.sample
+@owner _quagga
+@group _quagga
+@sample ${SYSCONFDIR}/isisd.conf
+@owner
+@group
+share/examples/quagga/ospf6d.conf.sample
+@owner _quagga
+@group _quagga
+@sample ${SYSCONFDIR}/ospf6d.conf
+@owner
+@group
+share/examples/quagga/ospfd.conf.sample
+@owner _quagga
+@group _quagga
+@sample ${SYSCONFDIR}/ospfd.conf
+@owner
+@group
+share/examples/quagga/pimd.conf.sample
+@owner _quagga
+@group _quagga
+@sample ${SYSCONFDIR}/pimd.conf
+@owner
+@group
+share/examples/quagga/ripd.conf.sample
+@owner _quagga
+@group _quagga
+@sample ${SYSCONFDIR}/ripd.conf
+@owner
+@group
+share/examples/quagga/ripngd.conf.sample
+@owner _quagga
+@group _quagga
+@sample ${SYSCONFDIR}/ripngd.conf
+@owner
+@group
+share/examples/quagga/vtysh.conf.sample
+@owner _quagga
+@group _quagga
+@sample ${SYSCONFDIR}/vtysh.conf
+@owner
+@group
+share/examples/quagga/zebra.conf.sample
+@owner _quagga
+@group _quagga
+@sample ${SYSCONFDIR}/zebra.conf
+@sample ${LOCALSTATEDIR}/
+@sample /var/log/quagga/

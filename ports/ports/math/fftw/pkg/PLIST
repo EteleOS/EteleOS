@@ -1,0 +1,11 @@
+include/fftw.h
+include/rfftw.h
+@info info/fftw.info
+lib/libfftw.a
+lib/libfftw.la
+@lib lib/libfftw.so.${LIBfftw_VERSION}
+lib/librfftw.a
+lib/librfftw.la
+@lib lib/librfftw.so.${LIBrfftw_VERSION}
+share/doc/fftw/
+share/doc/fftw/fftw.ps

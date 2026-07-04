@@ -1,0 +1,45 @@
+- Remove GNU make crap that never applied to us anyway.
+
+Index: tests/Makefile
+--- tests/Makefile.orig
++++ tests/Makefile
+@@ -23,39 +23,8 @@ CFLAGS += -Wall
+ #CFLAGS += -std=c89
+ CFLAGS += ${EXTRA_CFLAGS}
+ 
+-ifeq ($(HASH_DEBUG),1)
+-CFLAGS += -DHASH_DEBUG=1
+-endif
+-
+-ifeq ($(HASH_PEDANTIC),1)
+-CFLAGS += -pedantic
+-endif
+-
+ TEST_TARGET=run_tests
+ TESTS=./do_tests
+-
+-# detect Cygwin
+-ifneq ($(strip $(shell $(CC) -v 2>&1 |grep "cygwin")),)
+-  TESTS=./do_tests.cygwin
+-endif
+-
+-# detect MinGW
+-ifneq ($(strip $(shell $(CC) -v 2>&1 |grep "mingw")),)
+-  TEST_TARGET=run_tests_mingw
+-  TESTS=./do_tests.mingw
+-endif
+-
+-#detect Linux (platform specific utilities)
+-ifneq ($(strip $(shell $(CC) -v 2>&1 |grep "linux")),)
+-  PLAT_UTILS = hashscan sleep_test
+-endif
+-
+-#detect FreeBSD (platform specific utilities)
+-ifeq ($(strip $(shell uname -s)), FreeBSD)
+-  ifeq ($(shell if [ `sysctl -n kern.osreldate` -ge 0801000 ]; then echo "ok"; fi), ok)
+-    PLAT_UTILS = hashscan sleep_test
+-  endif
+-endif
+ 
+ all: $(PROGS) $(UTILS) $(PLAT_UTILS) keystat $(TEST_TARGET)
+ 

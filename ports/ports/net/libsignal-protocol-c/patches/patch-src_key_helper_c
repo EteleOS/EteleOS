@@ -1,0 +1,12 @@
+Index: src/key_helper.c
+--- src/key_helper.c.orig
++++ src/key_helper.c
+@@ -6,7 +6,7 @@
+ #include "ratchet.h"
+ #include "curve.h"
+ #include "signal_protocol_internal.h"
+-#include "utlist.h"
++#include "utlist_local.h"
+ 
+ struct signal_protocol_key_helper_pre_key_list_node
+ {

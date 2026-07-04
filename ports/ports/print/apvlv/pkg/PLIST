@@ -1,0 +1,16 @@
+@bin bin/apvlv
+@man man/man1/apvlv.1
+share/applications/apvlv.desktop
+share/doc/apvlv/
+share/doc/apvlv/Startup.pdf
+share/doc/apvlv/Startup.tex
+share/doc/apvlv/apvlvrc.example
+share/doc/apvlv/icons/
+share/doc/apvlv/icons/dir.png
+share/doc/apvlv/icons/pdf.png
+share/doc/apvlv/icons/reg.png
+share/doc/apvlv/main_menubar.glade
+share/examples/apvlv/
+share/examples/apvlv/apvlvrc
+@sample ${SYSCONFDIR}/apvlvrc
+@tag update-desktop-database

@@ -1,0 +1,3 @@
+@bin bin/gob2
+@man man/man1/gob2.1
+share/aclocal/gob2.m4

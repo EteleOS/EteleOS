@@ -1,0 +1,49 @@
+Index: abbrev.c
+--- abbrev.c.orig
++++ abbrev.c
+@@ -16,11 +16,15 @@
+ #endif
+ #endif
+ 
++#include <curses.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <ctype.h>
+ #include "sc.h"
+ 
++int	are_abbrevs();
++
+ static	struct abbrev *abbr_base;
+ 
+ void
+@@ -43,10 +47,10 @@ add_abbr(char *string)
+ 	    struct abbrev *a;
+ 	    struct abbrev *nexta;
+ 
+-	    (void) strcpy(px, "| ");
++	    (void) strlcpy(px, "| ", sizeof px);
+ 	    if (!(pager = getenv("PAGER")))
+ 		pager = DFLT_PAGER;
+-	    (void) strcat(px, pager);
++	    (void) strlcat(px, pager, sizeof px);
+ 	    f = openfile(px, &pid, NULL);
+ 	    if (!f) {
+ 		error("Can't open pipe to %s", pager);
+@@ -87,7 +91,7 @@ add_abbr(char *string)
+ 	    }
+     }
+     
+-    if (expansion == NULL)
++    if (expansion == NULL) {
+ 	if ((a = find_abbr(string, strlen(string), &prev))) {
+ 	    error("abbrev \"%s %s\"", a->abbr, a->exp);
+ 	    return;
+@@ -95,6 +99,7 @@ add_abbr(char *string)
+ 	    error("abreviation \"%s\" doesn't exist", string);
+ 	    return;
+ 	}
++    }
+  
+     if (find_abbr(string, strlen(string), &prev))
+ 	del_abbr(string);

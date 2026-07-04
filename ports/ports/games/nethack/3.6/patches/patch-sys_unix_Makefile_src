@@ -1,0 +1,94 @@
+* unhardcode g++
+* ensure linking qt flavor with C++
+* zap bogus shit that prevents parallelism
+* handle moc location
+
+Index: sys/unix/Makefile.src
+--- sys/unix/Makefile.src.orig
++++ sys/unix/Makefile.src
+@@ -177,7 +177,7 @@ GNOMEINC=-I/usr/lib/glib/include -I/usr/lib/gnome-libs
+ # NetHack is standard C.  If using Qt, uncomment the LINK line here to get
+ # the C++ libraries linked in.
+ CXXFLAGS = $(CFLAGS) -I. -I$(QTDIR)/include
+-CXX ?= g++
++CXX ?= c++
+ MOC ?= moc
+ #LINK=g++
+ #	For cross-compiling, eg. with gcc on Linux (see also CC further up):
+@@ -528,7 +528,7 @@ $(GAME):	$(SYSTEM)
+ 
+ Sysunix:	$(HOBJ) Makefile
+ 	@echo "Linking $(GAME)."
+-	$(AT)$(LINK) $(LFLAGS) -o $(GAME) $(HOBJ) $(WINLIB) $(LIBS)
++	$(AT)$(LINKCMD) $(LFLAGS) -o $(GAME) $(HOBJ) $(WINLIB) $(LIBS)
+ 	@touch Sysunix
+ 
+ Sys3B2:	$(HOBJ) Makefile
+@@ -589,43 +589,41 @@ all:	$(GAME)
+ # below in the 'make depend' output.
+ monst.o:
+ 	$(CC) $(CFLAGS) -c monst.c
+-	@rm -f $(MAKEDEFS)
+ 
+ objects.o:
+ 	$(CC) $(CFLAGS) -c objects.c
+-	@rm -f $(MAKEDEFS)
+ 
+ # Qt 3 windowport meta-object-compiler output
+ qt_kde0.moc: ../include/qt_kde0.h
+-	$(QTDIR)/bin/moc -o qt_kde0.moc ../include/qt_kde0.h
++	$(MOC) -o qt_kde0.moc ../include/qt_kde0.h
+ 
+ qt_win.moc: ../include/qt_win.h
+-	$(QTDIR)/bin/moc -o qt_win.moc ../include/qt_win.h
++	$(MOC) -o qt_win.moc ../include/qt_win.h
+ 
+ qttableview.moc: ../include/qttableview.h
+-	$(QTDIR)/bin/moc -o qttableview.moc ../include/qttableview.h
++	$(MOC) -o qttableview.moc ../include/qttableview.h
+ 
+ # Qt 4 windowport meta-object-compiler output
+ qt4kde0.moc : ../win/Qt4/qt4kde0.h
+-	$(QTDIR)/bin/$(MOC) -o qt4kde0.moc ../win/Qt4/qt4kde0.h
++	$(MOC) -o qt4kde0.moc ../win/Qt4/qt4kde0.h
+ qt4main.moc : ../win/Qt4/qt4main.h
+-	$(QTDIR)/bin/$(MOC) -o qt4main.moc ../win/Qt4/qt4main.h
++	$(MOC) -o qt4main.moc ../win/Qt4/qt4main.h
+ qt4map.moc : ../win/Qt4/qt4map.h
+-	$(QTDIR)/bin/$(MOC) -o qt4map.moc ../win/Qt4/qt4map.h
++	$(MOC) -o qt4map.moc ../win/Qt4/qt4map.h
+ qt4menu.moc : ../win/Qt4/qt4menu.h
+-	$(QTDIR)/bin/$(MOC) -o qt4menu.moc ../win/Qt4/qt4menu.h
++	$(MOC) -o qt4menu.moc ../win/Qt4/qt4menu.h
+ qt4msg.moc : ../win/Qt4/qt4msg.h
+-	$(QTDIR)/bin/$(MOC) -o qt4msg.moc ../win/Qt4/qt4msg.h
++	$(MOC) -o qt4msg.moc ../win/Qt4/qt4msg.h
+ qt4plsel.moc : ../win/Qt4/qt4plsel.h
+-	$(QTDIR)/bin/$(MOC) -o qt4plsel.moc ../win/Qt4/qt4plsel.h
++	$(MOC) -o qt4plsel.moc ../win/Qt4/qt4plsel.h
+ qt4set.moc : ../win/Qt4/qt4set.h
+-	$(QTDIR)/bin/$(MOC) -o qt4set.moc ../win/Qt4/qt4set.h
++	$(MOC) -o qt4set.moc ../win/Qt4/qt4set.h
+ qt4stat.moc : ../win/Qt4/qt4stat.h
+-	$(QTDIR)/bin/$(MOC) -o qt4stat.moc ../win/Qt4/qt4stat.h
++	$(MOC) -o qt4stat.moc ../win/Qt4/qt4stat.h
+ qt4xcmd.moc : ../win/Qt4/qt4xcmd.h
+-	$(QTDIR)/bin/$(MOC) -o qt4xcmd.moc ../win/Qt4/qt4xcmd.h
++	$(MOC) -o qt4xcmd.moc ../win/Qt4/qt4xcmd.h
+ qt4yndlg.moc : ../win/Qt4/qt4yndlg.h
+-	$(QTDIR)/bin/$(MOC) -o qt4yndlg.moc ../win/Qt4/qt4yndlg.h
++	$(MOC) -o qt4yndlg.moc ../win/Qt4/qt4yndlg.h
+ 
+ #	build monst.o and objects.o before executing '$(MAKE) makedefs'
+ $(MAKEDEFS): $(FIRSTOBJ) \
+@@ -666,9 +664,7 @@ tile.c: ../win/share/tilemap.c $(HACK_H)
+ #	Do NOT include ../dat/gitinfo.txt as either a prerequisite or target.
+ #	'makedefs -v' processes it when present and ignores it if not.
+ #
+-#	hack.h depends on makedefs' output, so we know makedefs will be
+-#	up to date before being executed
+-../include/date.h:	$(VERSOURCES) $(HACK_H)
++../include/date.h:	$(VERSOURCES) $(HACK_H) $(MAKEDEFS)
+ 	-$(SHELL) ../sys/unix/gitinfo.sh $(GITINFO) #before 'makedefs -v'
+ 	../util/makedefs -v
+ 

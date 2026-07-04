@@ -1,0 +1,20 @@
+--- Makefile.in.orig	Tue May 20 22:22:42 2014
++++ Makefile.in	Tue May 20 22:22:46 2014
+@@ -91,9 +91,6 @@ distclean: clean
+ 	@LN_S@ lang/webalizer_lang.@DEFAULT_LANG@ webalizer_lang.h
+ 
+ install: all
+-	mkdir -p ${DESTDIR}${BINDIR}
+-	mkdir -p ${DESTDIR}${MANDIR}
+-	mkdir -p ${DESTDIR}${ETCDIR}
+ 	$(INSTALL_PROGRAM) webalizer ${DESTDIR}${BINDIR}/webalizer
+ 	$(INSTALL_PROGRAM) wcmgr ${DESTDIR}${BINDIR}/wcmgr
+ 	rm -f ${DESTDIR}${BINDIR}/webazolver
+@@ -102,7 +99,6 @@ install: all
+ 	$(INSTALL_DATA) wcmgr.1 ${DESTDIR}${MANDIR}/wcmgr.1
+ 	rm -f ${DESTDIR}${MANDIR}/webazolver.1
+ 	@LN_S@ webalizer.1 ${DESTDIR}${MANDIR}/webazolver.1
+-	$(INSTALL_DATA) sample.conf ${DESTDIR}${ETCDIR}/webalizer.conf.sample
+ 
+ uninstall:
+ 	rm -f ${DESTDIR}${BINDIR}/webalizer

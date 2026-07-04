@@ -1,0 +1,11 @@
+--- Makefile.in.orig	Tue Apr  6 10:28:35 1999
++++ Makefile.in	Mon Jul 19 18:02:48 2004
+@@ -95,7 +95,7 @@ lispdir = @lispdir@
+ 
+ AUTOMAKE_OPTIONS = gnits 1.2h
+ 
+-SUBDIRS = lib libidu intl src lisp m4 po doc testsuite
++SUBDIRS = lib libidu intl src m4 po doc testsuite
+ 
+ # Remove this file here (it is created via configure), not from within intl.
+ DISTCLEANFILES = intl/libintl.h

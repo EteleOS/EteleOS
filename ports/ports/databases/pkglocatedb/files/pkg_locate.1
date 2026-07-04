@@ -1,0 +1,101 @@
+.\" Copyright (c) 2013 Robert Peichaer <rpe@openbsd.org>
+.\" Copyright (c) 2017 Marc Espie <espie@openbsd.org>
+.\"
+.\" Permission to use, copy, modify, and distribute this software for any
+.\" purpose with or without fee is hereby granted, provided that the above
+.\" copyright notice and this permission notice appear in all copies.
+.\"
+.\" THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+.\" WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+.\" MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+.\" ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+.\" WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+.\" ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+.\" OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.Dd $Mdocdate: March 11 2022 $
+.Dt PKG_LOCATE 1
+.Os
+.Sh NAME
+.Nm pkg_locate ,
+.Nm pkglocate
+.Nd find files in OpenBSD packages quickly
+.Sh SYNOPSIS
+.Nm
+.Op Cm locate-flags
+.Ar pattern ...
+.Sh DESCRIPTION
+.Nm
+is a front-end to
+.Xr locate 1
+using databases covering all base, X11, and package files known in
+.Ox
+.Pp
+Any parameters and options are passed to
+.Xr locate 1
+as-is.
+.Pp
+The search result for
+.Ox
+package files has the following format:
+.Pp
+.Dl fullpkgname:pkgpath:pathname
+.Pp
+where
+.Ar fullpkgname
+is the name of the package
+.Ar pkgpath
+its location within the ports tree (see
+.Xr pkgpath 7 )
+and
+.Ar pathname
+the absolute pathname of the installed file.
+.Pp
+The search result for base system and X Window System files has the
+following format:
+.Pp
+.Dl setname:pathname
+.Pp
+where
+.Ar setname
+is the name of the install set, and
+.Ar pathname
+the absolute pathname of the installed file.
+.Pp
+For instance, at the time of this writing:
+.Bd -literal -offset indent
+.Ns $ Nm Ar bin/urxvt
+rxvt-unicode-9.22p5:x11/rxvt-unicode:/usr/local/bin/urxvt
+rxvt-unicode-9.22p5:x11/rxvt-unicode:/usr/local/bin/urxvtc
+rxvt-unicode-9.22p5:x11/rxvt-unicode:/usr/local/bin/urxvtd
+
+.Ns $ Nm Fl i Ar libx11.
+xbase62:/usr/X11R6/lib/libX11.a
+xbase62:/usr/X11R6/lib/libX11.la
+xbase62:/usr/X11R6/lib/libX11.so.16.1
+
+.Ns $ Nm Ar clang.1
+comp62:/usr/share/man/man1/clang.1
+llvm-5.0.0p1:devel/llvm,-main:/usr/local/man/man1/clang.1
+.Ed
+.Sh FILES
+.Bl -tag -compact -width /usr/X11R6/lib/locate/xorg.db
+.It ${LOCALBASE}/share/pkglocatedb
+locate database containing information about files in
+.Ox
+packages.
+.It /usr/lib/locate/src.db
+locate database containing information about files in
+.Ox
+base installation.
+.It ${X11BASE}/lib/locate/xorg.db
+locate database containing information about files in
+.Xr X 7 ,
+if installed.
+.El
+.Sh SEE ALSO
+.Xr locate 1 ,
+.Xr pkg_mklocatedb 1 ,
+.Xr pkgpath 7
+.Sh AUTHORS
+.An Marc Espie Aq Mt espie@openbsd.org

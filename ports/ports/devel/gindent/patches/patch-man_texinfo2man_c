@@ -1,0 +1,10 @@
+--- man/texinfo2man.c.orig	Tue Mar 11 18:50:42 2008
++++ man/texinfo2man.c	Wed Sep 12 00:24:44 2012
+@@ -1,6 +1,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include <malloc.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <ctype.h>
+ 

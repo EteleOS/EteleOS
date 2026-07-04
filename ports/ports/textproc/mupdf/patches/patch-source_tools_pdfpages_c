@@ -1,0 +1,28 @@
+add pledge(2) to "mutool pages"
+
+Index: source/tools/pdfpages.c
+--- source/tools/pdfpages.c.orig
++++ source/tools/pdfpages.c
+@@ -28,6 +28,9 @@
+ #include "mupdf/fitz.h"
+ #include "mupdf/pdf.h"
+ 
++#include <unistd.h>
++#include <errno.h>
++#include <string.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ 
+@@ -223,6 +226,12 @@ int pdfpages_main(int argc, char **argv)
+ 
+ 	if (fz_optind == argc)
+ 		return infousage();
++
++	if (pledge("stdio rpath", NULL) == -1)
++	{
++		fprintf(stderr, "pledge: %s\n", strerror(errno));
++		exit(1);
++	}
+ 
+ 	ctx = fz_new_context(NULL, NULL, FZ_STORE_UNLIMITED);
+ 	if (!ctx)

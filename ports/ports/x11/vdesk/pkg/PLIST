@@ -1,0 +1,5 @@
+@bin bin/vdesk
+share/doc/vdesk/
+share/doc/vdesk/AUTHORS
+share/doc/vdesk/COPYING
+share/doc/vdesk/README

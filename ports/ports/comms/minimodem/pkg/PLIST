@@ -1,0 +1,2 @@
+@bin bin/minimodem
+@man man/man1/minimodem.1

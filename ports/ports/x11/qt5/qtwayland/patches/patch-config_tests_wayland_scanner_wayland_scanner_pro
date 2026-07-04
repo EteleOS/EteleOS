@@ -1,0 +1,15 @@
+Index: config.tests/wayland_scanner/wayland_scanner.pro
+--- config.tests/wayland_scanner/wayland_scanner.pro.orig
++++ config.tests/wayland_scanner/wayland_scanner.pro
+@@ -1,9 +1,10 @@
+ TARGET = wayland_scanner
+ 
+-isEmpty(QMAKE_WAYLAND_SCANNER):error("QMAKE_WAYLAND_SCANNER not defined for this mkspec")
+ 
+ # Input
+ SOURCES += main.cpp
++
++QMAKE_WAYLAND_SCANNER = ${LOCALBASE}/bin/wayland-scanner
+ 
+ wayland-check-header.name = wayland ${QMAKE_FILE_BASE}
+ wayland-check-header.input = WAYLANDCHECKSOURCES

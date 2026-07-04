@@ -1,0 +1,3 @@
+${P5SITE}/MIME/Lite/
+${P5SITE}/MIME/Lite/HTML.pm
+@man man/man3p/MIME::Lite::HTML.3p

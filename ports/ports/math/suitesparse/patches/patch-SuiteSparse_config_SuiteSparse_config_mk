@@ -1,0 +1,49 @@
+Index: SuiteSparse_config/SuiteSparse_config.mk
+--- SuiteSparse_config/SuiteSparse_config.mk.orig
++++ SuiteSparse_config/SuiteSparse_config.mk
+@@ -69,7 +69,7 @@
+ # C and C++ compiler flags.  The first three are standard for *.c and *.cpp
+ # Add -DNTIMER if you do use any timing routines (otherwise -lrt is required).
+ # CF = $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -O3 -fexceptions -fPIC -DNTIMER
+-  CF = $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -O3 -fexceptions -fPIC
++  CF = $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -fexceptions -fPIC
+ # for the MKL BLAS:
+ # CF = $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -O3 -fexceptions -fPIC -I$(MKLROOT)/include -D_GNU_SOURCE
+ # with no optimization:
+@@ -90,13 +90,13 @@ F77FLAGS = $(FFLAGS) -O
+ F77LIB =
+ 
+ # C and Fortran libraries.  Remove -lrt if you don't have it.
+-  LIB = -lm -lrt
++  LIB = -lm
+ # Using the following requires CF = ... -DNTIMER on POSIX C systems.
+ # LIB = -lm
+ 
+ # For "make install"
+-INSTALL_LIB = /usr/local/lib
+-INSTALL_INCLUDE = /usr/local/include
++INSTALL_LIB = ${WRKINST}${PREFIX}/lib
++INSTALL_INCLUDE = ${WRKINST}${PREFIX}/include
+ 
+ # Which version of MAKE you are using (default is "make")
+ # MAKE = make
+@@ -119,8 +119,8 @@ INSTALL_INCLUDE = /usr/local/include
+ # naming the BLAS and LAPACK library (*.a or *.so) files.
+ 
+ # This is probably slow ... it might connect to the Standard Reference BLAS:
+-# BLAS = -lblas -lgfortran
+-  LAPACK = -llapack
++  BLAS = -L${LOCALBASE}/lib -lblas -lgfortran
++  LAPACK = -L${LOCALBASE}/lib -llapack
+ 
+ # MKL 
+ # BLAS = -Wl,--start-group $(MKLROOT)/lib/intel64/libmkl_intel_lp64.a $(MKLROOT)/lib/intel64/libmkl_core.a $(MKLROOT)/lib/intel64/libmkl_intel_thread.a -Wl,--end-group -lpthread -lm
+@@ -131,7 +131,7 @@ INSTALL_INCLUDE = /usr/local/include
+ # LAPACK =
+ 
+ # OpenBLAS
+-  BLAS = -lopenblas
++# BLAS = -lopenblas
+ # LAPACK = 
+ 
+ # NOTE: this next option for the "Goto BLAS" has nothing to do with a "goto"

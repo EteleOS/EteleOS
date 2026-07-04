@@ -1,0 +1,18 @@
+Index: ECtools/search/kopano_search/__init__.py
+--- ECtools/search/kopano_search/__init__.py.orig
++++ ECtools/search/kopano_search/__init__.py
+@@ -58,11 +58,11 @@ CONFIG = {
+     # 0x678F: PR_EC_IMAP_BODYSTRUCTURE
+     # 0x001A: PR_MESSAGE_CLASS # XXX add to cfg
+     'index_exclude_properties': Config.integer(multiple=True, base=16, default=[0x007D, 0x0064, 0x0C1E, 0x0075, 0x678E, 0x678F, 0x001A]),
+-    'index_path': Config.string(default='/var/lib/kopano/search/'),
++    'index_path': Config.string(default='/var/db/kopano/search/'),
+     'index_processes': Config.integer(default=1),
+     'limit_results': Config.integer(default=1000),
+-    'run_as_user': Config.string(default="kopano"),
+-    'run_as_group': Config.string(default="kopano"),
++    'run_as_user': Config.string(default="_kopano"),
++    'run_as_group': Config.string(default="_kopano"),
+     'search_engine': Config.string(default='xapian'),
+     'suggestions': Config.boolean(default=True),
+     'index_junk': Config.boolean(default=True),

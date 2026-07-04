@@ -1,0 +1,20 @@
+--- configure.orig	Sun Dec 22 16:39:27 2002
++++ configure	Tue Jan 21 22:18:39 2014
+@@ -7930,7 +7930,7 @@ int
+ main ()
+ {
+ bindtextdomain ("", "");
+-return (int) gettext ("") + _nl_msg_cat_cntr + *_nl_expand_alias (0)
++return * gettext ("") + _nl_msg_cat_cntr + *_nl_expand_alias ()
+   ;
+   return 0;
+ }
+@@ -7976,7 +7976,7 @@ int
+ main ()
+ {
+ bindtextdomain ("", "");
+-return (int) gettext ("") + _nl_msg_cat_cntr + *_nl_expand_alias (0)
++return * gettext ("") + _nl_msg_cat_cntr + *_nl_expand_alias ()
+   ;
+   return 0;
+ }

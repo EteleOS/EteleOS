@@ -1,0 +1,11 @@
+--- platforms/openbsd/apccontrol.in.orig	Thu Jun 25 09:40:52 2015
++++ platforms/openbsd/apccontrol.in	Thu Jun 25 10:36:28 2015
+@@ -93,7 +93,7 @@ case "$1" in
+ 	;;
+ 	doshutdown)
+ 		printf "Beginning Shutdown Sequence" | wall
+-		${SHUTDOWN} -h now "apcupsd initiated shutdown"
++		${SHUTDOWN} -p now "apcupsd initiated shutdown"
+ 	;;
+ 	annoyme)
+ 		printf "Power problems please logoff." | wall

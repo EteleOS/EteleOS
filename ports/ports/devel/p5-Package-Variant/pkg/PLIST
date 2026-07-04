@@ -1,0 +1,3 @@
+${P5SITE}/Package/
+${P5SITE}/Package/Variant.pm
+@man man/man3p/Package::Variant.3p

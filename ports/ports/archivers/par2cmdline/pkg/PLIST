@@ -1,0 +1,7 @@
+@bin bin/par2
+bin/par2create
+bin/par2repair
+bin/par2verify
+@man man/man1/par2.1
+share/doc/par2cmdline/
+share/doc/par2cmdline/README

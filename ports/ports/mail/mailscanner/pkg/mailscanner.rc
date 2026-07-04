@@ -1,0 +1,9 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/check_mailscanner"
+
+. /etc/rc.d/rc.subr
+
+pexp="perl: MailScanner: (master|killing|starting) .*"
+
+rc_cmd $1

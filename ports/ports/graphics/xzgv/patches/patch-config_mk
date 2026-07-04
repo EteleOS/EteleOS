@@ -1,0 +1,27 @@
+--- config.mk.orig	Sun Aug 12 12:14:42 2007
++++ config.mk	Wed Oct 29 14:46:43 2008
+@@ -6,8 +6,8 @@
+ # Set the C compiler to use, and options for it.
+ # This is likely to be what you'll want for most systems:
+ #
+-CC=gcc
+-CFLAGS=-O2 -Wall
++#CC=gcc
++#CFLAGS=-O2 -Wall
+ 
+ # Set the awk interpreter to use for a script used while compiling.
+ # (This should be a `new' awk, such as gawk or mawk.)
+@@ -24,10 +24,10 @@ AWK=awk
+ # MANDIR to directory for man page.
+ # Usually it will be simpler to just set PREFIX.
+ #
+-PREFIX=/usr/local
++#PREFIX=/usr/local
+ BINDIR=$(PREFIX)/bin
+-INFODIR=$(PREFIX)/share/info
+-MANDIR=$(PREFIX)/share/man/man1
++INFODIR=$(PREFIX)/info
++MANDIR=$(PREFIX)/man/man1
+ 
+ # -------------------- Miscellaneous options -----------------------
+ 

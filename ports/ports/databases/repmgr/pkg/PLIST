@@ -1,0 +1,33 @@
+@bin bin/repmgr
+@bin bin/repmgrd
+@so lib/postgresql/repmgr.so
+share/doc/repmgr/
+share/doc/repmgr/README.md
+share/examples/repmgr/
+share/examples/repmgr/repmgr.conf
+@sample ${SYSCONFDIR}/repmgr.conf
+share/postgresql/extension/
+share/postgresql/extension/repmgr--4.0--4.1.sql
+share/postgresql/extension/repmgr--4.0.sql
+share/postgresql/extension/repmgr--4.1--4.2.sql
+share/postgresql/extension/repmgr--4.1.sql
+share/postgresql/extension/repmgr--4.2--4.3.sql
+share/postgresql/extension/repmgr--4.2.sql
+share/postgresql/extension/repmgr--4.3--4.4.sql
+share/postgresql/extension/repmgr--4.3.sql
+share/postgresql/extension/repmgr--4.4--5.0.sql
+share/postgresql/extension/repmgr--4.4.sql
+share/postgresql/extension/repmgr--5.0--5.1.sql
+share/postgresql/extension/repmgr--5.0.sql
+share/postgresql/extension/repmgr--5.1--5.2.sql
+share/postgresql/extension/repmgr--5.1.sql
+share/postgresql/extension/repmgr--5.2--5.3.sql
+share/postgresql/extension/repmgr--5.2.sql
+share/postgresql/extension/repmgr--5.3--5.4.sql
+share/postgresql/extension/repmgr--5.3.sql
+share/postgresql/extension/repmgr--5.4.sql
+share/postgresql/extension/repmgr--unpackaged--4.0.sql
+share/postgresql/extension/repmgr--unpackaged--5.1.sql
+share/postgresql/extension/repmgr--unpackaged--5.2.sql
+share/postgresql/extension/repmgr--unpackaged--5.3.sql
+share/postgresql/extension/repmgr.control

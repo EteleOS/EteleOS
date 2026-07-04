@@ -1,0 +1,6 @@
+bin/coq-tex
+bin/coq_makefile
+bin/coqc
+bin/coqchk
+bin/coqdep
+bin/coqdoc

@@ -1,0 +1,25 @@
+Don't hardcode CXX or optimization flags.
+
+Index: configure
+--- configure.orig
++++ configure
+@@ -13,15 +13,15 @@ exec tclsh "$0" ${1+"$@"}
+ 
+ # Default values for Makefile settings:
+ #
+-set var(BINDIR) /usr/local/bin
+-set var(COMPILE) g++
++set var(BINDIR) ${LOCALBASE}/bin
++set var(COMPILE) ${CXX}
+ set var(DEBUG) {-DNDEBUG}
+ set var(OBJS) {$(SCIDOBJS)}
+ set var(THREADS) {-pthread}
+-set var(OPTIMIZE) {-std=c++20 -O3 -march=native -fno-rtti -fno-exceptions}
++set var(OPTIMIZE) {${CXXFLAGS} -std=c++20 -fno-rtti -fno-exceptions}
+ set var(PROFILE) {}
+ set var(SCIDFLAGS) {}
+-set var(SHAREDIR) /usr/local/share/scid
++set var(SHAREDIR) ${LOCALBASE}/share/scid
+ set var(TCL_VERSION) $tcl_version
+ set var(WARNINGS) -Wall
+ set var(MAKEFILE) Makefile.conf

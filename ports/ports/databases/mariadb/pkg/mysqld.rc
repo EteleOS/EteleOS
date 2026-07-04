@@ -1,0 +1,12 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/mariadbd-safe"
+daemon_timeout=300
+
+. /etc/rc.d/rc.subr
+
+pexp="${TRUEPREFIX}/libexec/mariadbd .*"
+rc_bg=YES
+rc_reload=NO
+
+rc_cmd $1

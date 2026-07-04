@@ -1,0 +1,5 @@
+bin/bulk_mailer
+@man man/man1/bulk_mailer.1
+share/doc/bulk_mailer/
+share/doc/bulk_mailer/bulk_mailer.README
+share/doc/bulk_mailer/bulk_mailer.ps

@@ -1,0 +1,5 @@
+@pkgpath /root/uath-firmware
+@pkgpath sysutils/uath-firmware
+@ask-update uath-firmware-<2.0 Make sure you have a matching kernel
+firmware/uath-ar5523
+firmware/uath-license

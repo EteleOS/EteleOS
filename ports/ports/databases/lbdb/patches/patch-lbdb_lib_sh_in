@@ -1,0 +1,12 @@
+Index: lbdb_lib.sh.in
+--- lbdb_lib.sh.in.orig
++++ lbdb_lib.sh.in
+@@ -53,6 +53,8 @@ lbdb_hostname()
+ 		hn=$MAIL_DOMAIN_NAME
+ 	elif test -f /etc/mailname; then
+ 		hn=$(cat /etc/mailname)
++	elif true; then
++		hn=$(hostname)
+ 	else
+ 		hn=""
+ 		if test -r /etc/resolv.conf ; then

@@ -1,0 +1,17 @@
+Index: src/ripper/ripper.h
+--- src/ripper/ripper.h.orig
++++ src/ripper/ripper.h
+@@ -18,11 +18,11 @@
+ #ifndef SRC_RIPPER_RIPPER_H_
+ #define SRC_RIPPER_RIPPER_H_
+ 
+-#include <cdio/cdio.h>
+-
+ #include <QMutex>
+ #include <QObject>
+ #include <QTimer>
++
++#include <cdio/cdio.h>
+ 
+ #include "core/song.h"
+ #include "core/tagreaderclient.h"

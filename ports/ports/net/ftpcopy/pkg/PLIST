@@ -1,0 +1,6 @@
+@bin bin/ftpcopy
+bin/ftpcp
+@bin bin/ftpls
+@man man/man1/ftpcopy.1
+@man man/man1/ftpcp.1
+@man man/man1/ftpls.1

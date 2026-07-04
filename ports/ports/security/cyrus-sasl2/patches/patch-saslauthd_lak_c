@@ -1,0 +1,20 @@
+64-bit time_t
+
+Index: saslauthd/lak.c
+--- saslauthd/lak.c.orig
++++ saslauthd/lak.c
+@@ -842,12 +842,12 @@ static int lak_connect(
+ 
+ 	rc = ldap_set_option(lak->ld, LDAP_OPT_NETWORK_TIMEOUT, &(lak->conf->timeout));
+ 	if (rc != LDAP_OPT_SUCCESS) {
+-		syslog(LOG_WARNING|LOG_AUTH, "Unable to set LDAP_OPT_NETWORK_TIMEOUT %ld.%ld.", lak->conf->timeout.tv_sec, lak->conf->timeout.tv_usec);
++		syslog(LOG_WARNING|LOG_AUTH, "Unable to set LDAP_OPT_NETWORK_TIMEOUT %lld.%ld.", lak->conf->timeout.tv_sec, lak->conf->timeout.tv_usec);
+ 	}
+ 
+ 	rc = ldap_set_option(lak->ld, LDAP_OPT_TIMEOUT, &(lak->conf->timeout));
+ 	if (rc != LDAP_OPT_SUCCESS) {
+-		syslog(LOG_WARNING|LOG_AUTH, "Unable to set LDAP_OPT_TIMEOUT %ld.%ld.", lak->conf->timeout.tv_sec, lak->conf->timeout.tv_usec);
++		syslog(LOG_WARNING|LOG_AUTH, "Unable to set LDAP_OPT_TIMEOUT %lld.%ld.", lak->conf->timeout.tv_sec, lak->conf->timeout.tv_usec);
+ 	}
+ 
+ 	rc = ldap_set_option(lak->ld, LDAP_OPT_TIMELIMIT, &(lak->conf->time_limit));

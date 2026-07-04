@@ -1,0 +1,42 @@
+Index: nspr/pr/include/md/_openbsd.h
+--- nspr/pr/include/md/_openbsd.h.orig
++++ nspr/pr/include/md/_openbsd.h
+@@ -26,6 +26,12 @@
+ #define _PR_SI_ARCHITECTURE "sparc"
+ #elif defined(__arm__)
+ #define _PR_SI_ARCHITECTURE "arm"
++#elif defined(__hppa__)
++#define _PR_SI_ARCHITECTURE "hppa"
++#elif defined(__mips64__) || defined(__mips64el__)
++#define _PR_SI_ARCHITECTURE "mips64"
++#elif defined(__riscv)
++#define _PR_SI_ARCHITECTURE "riscv64"
+ #endif
+ 
+ #define PR_DLL_SUFFIX       ".so"
+@@ -35,7 +41,11 @@
+ #define _MD_DEFAULT_STACK_SIZE  65536L
+ #define _MD_MMAP_FLAGS          MAP_PRIVATE
+ 
++#if defined(__hppa__)
++#define HAVE_STACK_GROWING_UP
++#else
+ #undef  HAVE_STACK_GROWING_UP
++#endif
+ #define HAVE_DLL
+ #define USE_DLFCN
+ #define _PR_HAVE_SOCKADDR_LEN
+@@ -69,8 +79,12 @@
+ #define JB_SP_INDEX 34
+ #elif defined(__amd64__)
+ #define JB_SP_INDEX 6
+-#elif defined(__arm__)
++#elif defined(__arm__) || defined(__aarch64__)
+ #define JB_SP_INDEX 23
++#elif defined(__mips64__) || defined(__mips64el__)
++#define JB_SP_INDEX 29
++#elif defined(__riscv)
++#define JB_SP_INDEX 1
+ #else
+ #error "Need to define SP index in jmp_buf here"
+ #endif

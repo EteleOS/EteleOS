@@ -1,0 +1,12 @@
+--- mpeg2_video/spu_mixer.h.orig	Mon Oct 20 09:34:33 2003
++++ mpeg2_video/spu_mixer.h	Sun Feb  8 12:15:47 2009
+@@ -25,6 +25,9 @@ void mix_subpicture_init(int pixel_stride,int mode);
+ void mix_subpicture_rgb(char *data, int width, int height);
+ int mix_subpicture_yuv(yuv_image_t *img, yuv_image_t *reserv);
+ 
++extern int subtitle_pos[150];
++extern int subtitle_index;
++
+ int init_spu(void);
+ 
+ void flush_subpicture(int scr_nr);

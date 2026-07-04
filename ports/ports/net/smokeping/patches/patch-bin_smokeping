@@ -1,0 +1,12 @@
+Index: bin/smokeping
+--- bin/smokeping.orig
++++ bin/smokeping
+@@ -10,7 +10,7 @@ use lib "$FindBin::RealBin/../lib";use lib "$FindBin::
+ 
+ use Smokeping;
+  
+-Smokeping::main("$FindBin::RealBin/../etc/config");
++Smokeping::main("${SYSCONFDIR}/config");
+ 
+ =head1 NAME
+ 

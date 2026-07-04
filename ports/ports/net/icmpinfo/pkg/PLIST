@@ -1,0 +1,6 @@
+@mode 4555
+bin/icmpinfo
+@mode
+@man man/man1/icmpinfo.1
+share/doc/icmpinfo/
+share/doc/icmpinfo/README

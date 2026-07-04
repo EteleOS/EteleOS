@@ -1,0 +1,32 @@
+XXX remove HAVE_ALTQ hack after bump to 5.6-current
+--- config.h.orig	Wed Nov  7 07:34:18 2007
++++ config.h	Tue Apr 22 05:05:05 2014
+@@ -74,11 +74,28 @@
+ #define HAVE_PFSYNC_STATE
+ #endif
+ 
++#if OS_LEVEL > 43
++#define HAVE_PFSYNC_KEY
++#define HAVE_NETWORK_ORDER
++#endif
++
++/* #if OS_LEVEL > 46 */
++#undef HAVE_RULE_NATPASS
++/* #endif */
++
++#if OS_LEVEL > 55 || 1
++#undef HAVE_ALTQ
++#endif
++
+ #ifdef HAVE_PFSYNC_STATE
+ typedef struct pfsync_state pf_state_t;
+ typedef struct pfsync_state_host pf_state_host_t;
+ typedef struct pfsync_state_peer pf_state_peer_t;
++#ifdef HAVE_NETWORK_ORDER
++#define COUNTER(c) ((((u_int64_t) ntohl(c[0]))<<32) + ntohl(c[1]))
++#else
+ #define COUNTER(c) ((((u_int64_t) c[0])<<32) + c[1])
++#endif
+ #define pfs_ifname ifname
+ #else
+ typedef struct pf_state pf_state_t;

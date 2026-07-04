@@ -1,0 +1,22 @@
+Add missing .register declarations.
+Initalize __va_alist->anum to 0.
+
+--- vacall/vacall-sparc64.S.orig	Wed Jun  2 12:00:42 2004
++++ vacall/vacall-sparc64.S	Thu Apr  9 19:15:56 2009
+@@ -4,6 +4,8 @@
+ .section	".text"
+ 	.align 4
+ 	.global __vacall
++	.register %g2, #scratch
++	.register %g3, #scratch
+ 	DECLARE_FUNCTION(__vacall)
+ 	.type	 __vacall,$function
+ 	.proc	020
+@@ -57,6 +59,7 @@ __vacall:
+ 	st	%f31, [%fp+1895]
+ 	st	%g0, [%fp+1775]
+ 	stx	%g0, [%fp+1791]
++	st	%g0, [%fp+1831]
+ 	call	%o2, 0
+ 	st	%g0, [%fp+1799]
+ 	ld	[%fp+1799], %o0

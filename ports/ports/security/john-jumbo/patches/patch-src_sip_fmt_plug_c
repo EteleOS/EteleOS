@@ -1,0 +1,14 @@
+from upstream
+
+Index: src/sip_fmt_plug.c
+--- src/sip_fmt_plug.c.orig
++++ src/sip_fmt_plug.c
+@@ -199,6 +199,8 @@ static void *get_salt(char *ciphertext)
+ 	char *saltcopy = saltBuf;
+ 
+ 	memset(&salt, 0, sizeof(salt));
++	memset(&md5_ctx, 0, sizeof(md5_ctx));
++
+ 	strcpy(saltBuf, ciphertext);
+ 	saltcopy += FORMAT_TAG_LEN;	/* skip over "$sip$*" */
+ 	memset(&login, 0, sizeof(login_t));

@@ -1,0 +1,28 @@
+- temporary hack until libtool is fixed.
+- avoid GNU tar-specific option
+
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -10544,11 +10544,7 @@ modules_test_subdirs = \
+ 
+ syslog_ng_syslog_ng_SOURCES = syslog-ng/main.c
+ 
+-# NOTE: we're referring to the syslog-ng lib directly instead of via
+-# libtool, because in mixed mode libtool is not used for the final linking
+-# phase.  See the comment in the configure script for details.
+-syslog_ng_syslog_ng_LDADD = -L${top_builddir}/lib/.libs \
+-					  -lsyslog-ng @SYSLOGNG_DEPS_LIBS@
++syslog_ng_syslog_ng_LDADD = $(top_builddir)/lib/libsyslog-ng.la
+ 
+ syslog_ng_syslog_ng_LINK = @SYSLOGNG_LINK@
+ syslog_ng_syslog_ng_DEPENDENCIES = lib/libsyslog-ng.la
+@@ -29589,7 +29585,7 @@ scl-install-data-local:
+ 		fi; \
+ 	done
+ 	$(mkinstalldirs) $(DESTDIR)/$(scldir)
+-	(cd $(srcdir)/scl; tar cf - $(SCL_SUBDIRS)) | (cd $(DESTDIR)/$(scldir) && tar xf - --no-same-owner)
++	(cd $(srcdir)/scl; tar cf - $(SCL_SUBDIRS)) | (cd $(DESTDIR)/$(scldir) && tar xf -)
+ 	chmod -R u+rwX $(DESTDIR)/$(scldir)
+ 
+ scl-uninstall-local:

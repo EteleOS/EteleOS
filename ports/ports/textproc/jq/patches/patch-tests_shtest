@@ -1,0 +1,17 @@
+Index: tests/shtest
+--- tests/shtest.orig
++++ tests/shtest
+@@ -1,4 +1,4 @@
+-#!/bin/sh -x
++#!/usr/local/bin/bash -x
+ 
+ . "${0%/*}/setup" "$@"
+ 
+@@ -613,6 +613,7 @@ done
+ test_no_color=true
+ $msys  && test_no_color=false
+ $mingw && test_no_color=false
++[ "$(uname -s)" = OpenBSD ] && test_no_color=false
+ if $test_no_color && command -v script >/dev/null 2>&1; then
+   if script -qc echo /dev/null >/dev/null 2>&1; then
+     faketty() { script -qec "$*" /dev/null; }

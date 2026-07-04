@@ -1,0 +1,5 @@
+@info info/Xlibscm.info
+share/scm/keysymdef.scm
+share/scm/x11.scm
+share/scm/xatoms.scm
+share/scm/xevent.scm

@@ -1,0 +1,10 @@
+Universal input method.
+Uim is a multilingual input method library, whose goal is to be a
+flexible development platform and useful user environment for input
+methods of all languages.
+
+Usage requires setting the following in the environment:
+export XMODIFIERS=@im=uim
+
+Several toolkit-bridge packages are available:
+uim-gtk, uim-gtk3

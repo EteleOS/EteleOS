@@ -1,0 +1,24 @@
+--- src/iodine.c.orig	Mon Jun 16 13:28:43 2014
++++ src/iodine.c	Thu Jun 19 15:16:45 2014
+@@ -155,11 +155,10 @@ main(int argc, char **argv)
+ #ifndef WINDOWS32
+ 	pw = NULL;
+ #endif
+-	username = NULL;
++	username = "_iodine";
+ 	memset(password, 0, 33);
+-	srand(time(NULL));
+ 	foreground = 0;
+-	newroot = NULL;
++	newroot = "/var/empty";
+ 	context = NULL;
+ 	device = NULL;
+ 	pidfile = NULL;
+@@ -177,7 +176,6 @@ main(int argc, char **argv)
+ 	WSAStartup(req_version, &wsa_data);
+ #endif
+ 
+-	srand((unsigned) time(NULL));
+ 	client_init();
+ 
+ #if !defined(BSD) && !defined(__GLIBC__)

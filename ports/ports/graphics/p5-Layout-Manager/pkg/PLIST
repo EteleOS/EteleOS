@@ -1,0 +1,16 @@
+${P5SITE}/Layout/
+${P5SITE}/Layout/Manager/
+${P5SITE}/Layout/Manager.pm
+${P5SITE}/Layout/Manager/Absolute.pm
+${P5SITE}/Layout/Manager/Axis.pm
+${P5SITE}/Layout/Manager/Compass.pm
+${P5SITE}/Layout/Manager/Flow.pm
+${P5SITE}/Layout/Manager/Grid.pm
+${P5SITE}/Layout/Manager/Single.pm
+@man man/man3p/Layout::Manager.3p
+@man man/man3p/Layout::Manager::Absolute.3p
+@man man/man3p/Layout::Manager::Axis.3p
+@man man/man3p/Layout::Manager::Compass.3p
+@man man/man3p/Layout::Manager::Flow.3p
+@man man/man3p/Layout::Manager::Grid.3p
+@man man/man3p/Layout::Manager::Single.3p

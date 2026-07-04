@@ -1,0 +1,11 @@
+--- src/Makefile.in.orig	Fri Feb  6 12:36:12 2009
++++ src/Makefile.in	Mon Feb 23 01:18:09 2009
+@@ -273,7 +273,7 @@ libccrtp1_la_SOURCES = rtppkt.cpp rtcppkt.cpp source.c
+ 	outqueue.cpp queue.cpp control.cpp members.cpp socket.cpp duplex.cpp pool.cpp \
+ 	CryptoContext.cxx $(srtp_src_g) $(srtp_src_o)
+ 
+-libccrtp1_la_LDFLAGS = $(RELEASE)
++libccrtp1_la_LDFLAGS = $(LT_VERSION) @GNULIBS@
+ noinst_HEADERS = private.h
+ all: config.h
+ 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

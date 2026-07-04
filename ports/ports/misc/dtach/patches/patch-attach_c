@@ -1,0 +1,11 @@
+--- attach.c.orig	Mon May  9 03:34:34 2016
++++ attach.c	Wed Aug 17 16:00:11 2016
+@@ -62,7 +62,7 @@ connect_socket(char *name)
+ 	if (s < 0)
+ 		return -1;
+ 	sockun.sun_family = AF_UNIX;
+-	strcpy(sockun.sun_path, name);
++	strlcpy(sockun.sun_path, name, sizeof(sockun.sun_path));
+ 	if (connect(s, (struct sockaddr*)&sockun, sizeof(sockun)) < 0)
+ 	{
+ 		close(s);

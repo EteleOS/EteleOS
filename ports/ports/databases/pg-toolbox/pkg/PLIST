@@ -1,0 +1,18 @@
+bin/dbrelationsize
+bin/dbsize
+bin/dbstat
+bin/listdb
+bin/listlock
+bin/pg_file2str
+bin/pgcomment
+bin/pgstat
+bin/xloginfo
+@man man/man1/dbrelationsize.1
+@man man/man1/dbsize.1
+@man man/man1/dbstat.1
+@man man/man1/listdb.1
+@man man/man1/listlock.1
+@man man/man1/pg_file2str.1
+@man man/man1/pgcomment.1
+@man man/man1/pgstat.1
+@man man/man1/xloginfo.1

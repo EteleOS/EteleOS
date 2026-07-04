@@ -1,0 +1,12 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/litecoind"
+daemon_flags="-daemon -conf=${SYSCONFDIR}/litecoin.conf -datadir=${LOCALSTATEDIR}/litecoin"
+daemon_timeout="300"
+daemon_user="_litecoind"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_cmd $1

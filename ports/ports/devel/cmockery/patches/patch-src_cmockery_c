@@ -1,0 +1,12 @@
+Replace the malloc.h header with stdlib.h.
+
+--- src/cmockery.c.orig	Mon Nov  3 23:25:43 2014
++++ src/cmockery.c	Mon Nov  3 23:25:51 2014
+@@ -13,7 +13,6 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
+-#include <malloc.h>
+ #include <setjmp.h>
+ #ifndef _WIN32
+ #include <signal.h>

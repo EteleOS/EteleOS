@@ -1,0 +1,11 @@
+--- doc/Makefile.in.orig	Fri Aug 18 18:20:19 2006
++++ doc/Makefile.in	Wed Mar 24 18:15:42 2010
+@@ -164,7 +164,7 @@ sharedstatedir = @sharedstatedir@
+ sysconfdir = @sysconfdir@
+ target_alias = @target_alias@
+ AUTOMAKE_OPTIONS = foreign no-dependencies
+-docdir = $(datadir)/doc/$(PACKAGE)-$(VERSION)
++docdir = $(datadir)/doc/$(PACKAGE)
+ CLEANFILES = index.html compatibility.html changelog.html license.html Xdialog.1
+ doc_DATA = index.html compatibility.html changelog.html license.html $(srcdir)/*.html $(srcdir)/*.png
+ man_MANS = Xdialog.1

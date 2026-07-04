@@ -1,0 +1,2 @@
+@so lib/rsyslog/ommysql.so
+share/examples/rsyslog/createDB_mysql.sql

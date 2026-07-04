@@ -1,0 +1,2 @@
+${P5SITE}/ExtUtils/InstallPaths.pm
+@man man/man3p/ExtUtils::InstallPaths.3p

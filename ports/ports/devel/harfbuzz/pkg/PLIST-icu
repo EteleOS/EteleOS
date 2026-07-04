@@ -1,0 +1,4 @@
+@conflict harfbuzz-<0.9.18
+include/harfbuzz/hb-icu.h
+@lib lib/libharfbuzz-icu.so.${LIBharfbuzz-icu_VERSION}
+lib/pkgconfig/harfbuzz-icu.pc

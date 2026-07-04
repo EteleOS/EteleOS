@@ -1,0 +1,51 @@
+Index: doc/sample-ngircd.conf.tmpl
+--- doc/sample-ngircd.conf.tmpl.orig
++++ doc/sample-ngircd.conf.tmpl
+@@ -81,14 +81,14 @@
+ 	# Group ID under which the ngIRCd should run; you can use the name
+ 	# of the group or the numerical ID. ATTENTION: For this to work the
+ 	# server must have been started with root privileges!
+-	;ServerGID = 65534
++	;ServerGID = _ngircd
+ 
+ 	# User ID under which the server should run; you can use the name
+ 	# of the user or the numerical ID. ATTENTION: For this to work the
+ 	# server must have been started with root privileges! In addition,
+ 	# the configuration and MOTD files must be readable by this user,
+ 	# otherwise RESTART and REHASH won't work!
+-	;ServerUID = 65534
++	;ServerUID = _ngircd
+ 
+ [Limits]
+ 	# Define some limits and timeouts for this ngIRCd instance. Default
+@@ -159,7 +159,7 @@
+ 	# binary. By default ngIRCd won't use the chroot() feature.
+ 	# ATTENTION: For this to work the server must have been started
+ 	# with root privileges!
+-	;ChrootDir = /var/empty
++	;ChrootDir = /var/ngircd
+ 
+ 	# Set this hostname for every client instead of the real one.
+ 	# Use %x to add the hashed value of the original hostname.
+@@ -282,7 +282,7 @@
+ 	;CRLFile = /etc/ssl/CA/crl.pem
+ 
+ 	# SSL Server Key Certificate
+-	;CertFile = :ETCDIR:/ssl/server-cert.pem
++	;CertFile = :ETCDIR:/server-cert.pem
+ 
+ 	# Select cipher suites allowed for SSL/TLS connections. This defaults
+ 	# to HIGH:!aNULL:@STRENGTH (OpenSSL) or SECURE128 (GnuTLS).
+@@ -294,10 +294,10 @@
+ 	;CipherList = SECURE128:-VERS-SSL3.0
+ 
+ 	# Diffie-Hellman parameters
+-	;DHFile = :ETCDIR:/ssl/dhparams.pem
++	;DHFile = :ETCDIR:/dhparams.pem
+ 
+ 	# SSL Server Key
+-	;KeyFile = :ETCDIR:/ssl/server-key.pem
++	;KeyFile = :ETCDIR:/server-key.pem
+ 
+ 	# password to decrypt SSLKeyFile (OpenSSL only)
+ 	;KeyFilePassword = secret

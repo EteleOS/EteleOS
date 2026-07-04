@@ -1,0 +1,6 @@
+share/fonts/
+@fontdir share/fonts/luciole/
+share/fonts/luciole/Luciole-Bold-Italic.ttf
+share/fonts/luciole/Luciole-Bold.ttf
+share/fonts/luciole/Luciole-Regular-Italic.ttf
+share/fonts/luciole/Luciole-Regular.ttf

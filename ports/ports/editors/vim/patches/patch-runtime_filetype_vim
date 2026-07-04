@@ -1,0 +1,20 @@
+Index: runtime/filetype.vim
+--- runtime/filetype.vim.orig
++++ runtime/filetype.vim
+@@ -376,7 +376,7 @@ au BufNewFile,BufRead dictd*.conf		setf dictdconf
+ au BufNewFile,BufRead */debian/patches/*	call dist#ft#Dep3patch()
+ 
+ " Diff files
+-au BufNewFile,BufRead *.patch
++au BufNewFile,BufRead *.patch,patch-*
+ 	\ if getline(1) =~# '^From [0-9a-f]\{40,\} Mon Sep 17 00:00:00 2001$' |
+ 	\   setf gitsendemail |
+ 	\ else |
+@@ -686,6 +686,7 @@ au BufNewFile,BufRead */etc/mail/aliases,*/etc/aliases
+ " Makefile
+ au BufNewFile,BufRead *[mM]akefile,*.mk,*.mak	call dist#ft#FTmake()
+ au BufNewFile,BufRead Kbuild			setf make
++au BufNewFile,BufRead Makefile.inc,modules.inc,crates.inc setf make
+ 
+ " Man config
+ au BufNewFile,BufRead */etc/man.conf,man.config	setf manconf

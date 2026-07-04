@@ -1,0 +1,11 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/spawn-fcgi"
+daemon_flags="-a 127.0.0.1 -p 9001 -u www -U www -- ${TRUEPREFIX}/bin/fcgi-cgi"
+
+. /etc/rc.d/rc.subr
+
+pexp="${TRUEPREFIX}/bin/fcgi-cgi"
+rc_reload=NO
+
+rc_cmd $1

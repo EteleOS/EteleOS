@@ -1,0 +1,4 @@
+@conflict xscreensaver-<5.07p3
+@conflict xscreensaver-<5.07p3-no_gle
+@bin bin/circuit
+@man man/man6/circuit.6

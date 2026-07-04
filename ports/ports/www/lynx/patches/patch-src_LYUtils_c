@@ -1,0 +1,23 @@
+Use getenv("HOME") to determine the home directory instead of using getpwuid in
+order to avoid a "getpw" promise.  This is the only location not covered by the
+'-DNOUSERS' option in the Makefile.  If HOME is unset, the fallback is /tmp, so
+no breakage is to be expected from this.
+
+Index: src/LYUtils.c
+--- src/LYUtils.c.orig
++++ src/LYUtils.c
+@@ -5177,10 +5177,11 @@ const char *Home_Dir(void)
+ 	    /*
+ 	     * One could use getlogin() and getpwnam() here instead.
+ 	     */
+-	    struct passwd *pw = getpwuid(geteuid());
++	    char *home;
+ 
+-	    if (pw && pw->pw_dir) {
+-		StrAllocCopy(HomeDir, pw->pw_dir);
++	    home = getenv("HOME");
++	    if (home && *home) {
++		StrAllocCopy(HomeDir, home);
+ 	    } else
+ #endif
+ 	    {

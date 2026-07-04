@@ -1,0 +1,15 @@
+Index: sys/share/unixtty.c
+--- sys/share/unixtty.c.orig
++++ sys/share/unixtty.c
+@@ -139,9 +139,9 @@ int has_colors();
+ #ifndef LINT
+ extern /* it is defined in libtermlib (libtermcap) */
+ #endif
+-    short ospeed; /* terminal baudrate; set by gettty */
++    int ospeed; /* terminal baudrate; set by gettty */
+ #else
+-short ospeed = 0; /* gets around "not defined" error message */
++int ospeed = 0; /* gets around "not defined" error message */
+ #endif
+ 
+ #if defined(POSIX_TYPES) && defined(BSD)

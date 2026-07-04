@@ -1,0 +1,14 @@
+--- doc/ctags.man.orig	Tue Oct 21 04:32:26 2003
++++ doc/ctags.man	Mon Apr 17 12:50:13 2017
+@@ -1,8 +1,8 @@
+-.TH CTAGS 1
++.TH ELVCTAGS 1
+ .SH NAME
+-ctags - Generates "tags" and (optionally) "refs" files
++elvctags - Generates "tags" and (optionally) "refs" files
+ .SH SYNOPSIS
+-.B ctags
++.B elvctags
+ .RB [ -D
+ .IR word ]
+ .RB [ -FBNgitvshlpdxra ]

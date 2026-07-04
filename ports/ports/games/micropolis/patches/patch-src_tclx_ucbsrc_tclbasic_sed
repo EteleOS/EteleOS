@@ -1,0 +1,9 @@
+Index: src/tclx/ucbsrc/tclbasic.sed
+--- src/tclx/ucbsrc/tclbasic.sed.orig
++++ src/tclx/ucbsrc/tclbasic.sed
+@@ -1,4 +1,5 @@
+ /(\*cmdPtr->proc)/a\
++#include "tclxtend.h"\
+ \        /*\
+ \         * Signal handling added for Extended Tcl.\
+ \         */\

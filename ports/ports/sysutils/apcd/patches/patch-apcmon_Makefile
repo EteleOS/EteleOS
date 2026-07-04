@@ -1,0 +1,11 @@
+--- apcmon/Makefile.orig	Sun Apr 23 23:23:33 2017
++++ apcmon/Makefile	Sun Apr 23 23:23:42 2017
+@@ -1,7 +1,7 @@
+ PROG=		apcmon
+ SRCS=		apcmon.c
+ 
+-CFLAGS+=	-Wall -Werror -Wstrict-prototypes -pedantic
++CFLAGS+=	-Wall -Wstrict-prototypes -pedantic
+ LDADD+=		-lcurses
+ 
+ PIPE=		-pipe

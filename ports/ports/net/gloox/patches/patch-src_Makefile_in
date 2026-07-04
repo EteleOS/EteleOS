@@ -1,0 +1,29 @@
+Do not use the hardcoded make
+
+Index: src/Makefile.in
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -452,7 +452,7 @@ libgloox_la_SOURCES = jid.cpp parser.cpp connectiontcp
+                         carbons.cpp jinglepluginfactory.cpp jingleiceudp.cpp jinglefiletransfer.cpp \
+                         iodata.cpp
+ 
+-libgloox_la_LDFLAGS = -version-info 17:0:0 -no-undefined -no-allow-shlib-undefined
++libgloox_la_LDFLAGS = -version-info 17:0:0 -no-undefined
+ libgloox_la_LIBADD = 
+ libgloox_la_CFLAGS = $(CPPFLAGS)
+ libglooxincludedir = $(includedir)/gloox
+@@ -1044,12 +1044,12 @@ uninstall-am: uninstall-libLTLIBRARIES \
+               #-Werror
+ 
+ test:
+-	make -C tests test
++	${MAKE_PROGRAM} -C tests test
+ 
+ check: test
+ 
+ leaktest:
+-	make -C tests leaktest
++	${MAKE_PROGRAM} -C tests leaktest
+ 
+ leakcheck: leaktest
+ 

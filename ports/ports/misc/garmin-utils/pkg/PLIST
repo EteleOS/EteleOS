@@ -1,0 +1,4 @@
+@bin bin/gardump
+@bin bin/garload
+@man man/man1/gardump.1
+@man man/man1/garload.1

@@ -1,0 +1,13 @@
+Index: configure.pri
+--- configure.pri.orig
++++ configure.pri
+@@ -130,6 +130,9 @@ defineTest(qtConfTest_detectPlatform) {
+     linux:qtwebengine_isLinuxPlatformSupported() {
+         $${1}.platform = "linux"
+     }
++    openbsd:qtwebengine_isLinuxPlatformSupported() {
++        $${1}.platform = "openbsd"
++    }
+     win32:qtwebengine_isWindowsPlatformSupported() {
+         $${1}.platform = "windows"
+     }

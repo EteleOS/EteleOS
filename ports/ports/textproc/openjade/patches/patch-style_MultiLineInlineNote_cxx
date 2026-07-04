@@ -1,0 +1,10 @@
+--- style/MultiLineInlineNote.cxx.orig	Fri Apr 18 21:54:56 2003
++++ style/MultiLineInlineNote.cxx	Sat Apr 15 22:04:26 2017
+@@ -1,6 +1,6 @@
+ 
+ #include "MultiLineInlineNote.h"
+-#include <iostream.h>
++#include <iostream>
+ 
+ #ifdef DSSSL_NAMESPACE
+ namespace DSSSL_NAMESPACE {

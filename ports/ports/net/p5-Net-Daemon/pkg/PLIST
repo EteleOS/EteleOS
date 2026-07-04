@@ -1,0 +1,8 @@
+${P5SITE}/Net/
+${P5SITE}/Net/Daemon/
+${P5SITE}/Net/Daemon.pm
+${P5SITE}/Net/Daemon/Log.pm
+${P5SITE}/Net/Daemon/Test.pm
+@man man/man3p/Net::Daemon.3p
+@man man/man3p/Net::Daemon::Log.3p
+@man man/man3p/Net::Daemon::Test.3p

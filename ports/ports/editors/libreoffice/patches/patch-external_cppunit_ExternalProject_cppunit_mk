@@ -1,0 +1,11 @@
+Index: external/cppunit/ExternalProject_cppunit.mk
+--- external/cppunit/ExternalProject_cppunit.mk.orig
++++ external/cppunit/ExternalProject_cppunit.mk
+@@ -46,6 +46,7 @@ $(call gb_ExternalProject_get_state_target,cppunit,bui
+ 			--disable-html-docs \
+ 			--disable-latex-docs \
+ 			--disable-werror \
++			CPPFLAGS="-fPIC" \
+ 			$(gb_CONFIGURE_PLATFORMS) \
+ 			$(if $(filter MACOSX,$(OS)),--prefix=/@.__________________________________________________NONE) \
+ 			$(if $(filter WNT,$(OS)),LDFLAGS="-Wl$(COMMA)--enable-runtime-pseudo-reloc-v2") \

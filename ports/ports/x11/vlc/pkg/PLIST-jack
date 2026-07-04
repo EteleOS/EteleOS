@@ -1,0 +1,3 @@
+@pkgpath x11/vlc,-jack,altivec
+@so lib/vlc/plugins/access/libaccess_jack_plugin.so
+@so lib/vlc/plugins/audio_output/libjack_plugin.so

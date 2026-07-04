@@ -1,0 +1,7 @@
+@mode g+s
+@group utmp
+@bin bin/kterm
+@mode
+@group
+lib/X11/app-defaults/KTerm
+@man man/man1/kterm.1

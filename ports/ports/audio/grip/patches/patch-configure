@@ -1,0 +1,25 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -18521,7 +18521,7 @@ return ID3Tag_Link ();
+   return 0;
+ }
+ _ACEOF
+-for ac_lib in '' "id3 -lz -lstdc++"; do
++for ac_lib in '' "id3 -lz"; do
+   if test -z "$ac_lib"; then
+     ac_res="none required"
+   else
+@@ -18556,10 +18556,10 @@ $as_echo "#define HAVE_ID3V2 /**/" >>confdefs.h
+ 
+ 		if test "$enable_shared_id3" = "yes"; then
+ 		  echo "using shared id3lib"
+-		  ID3_LIBS="-lid3 -lz -lstdc++"
++		  ID3_LIBS="-lid3 -lz"
+ 	        else
+ 		  echo "using static id3lib"
+-		  ID3_LIBS="$prefix/lib/libid3.a -lz -lstdc++"
++		  ID3_LIBS="$prefix/lib/libid3.a -lz"
+ 	    fi
+ else
+   id3lib=no

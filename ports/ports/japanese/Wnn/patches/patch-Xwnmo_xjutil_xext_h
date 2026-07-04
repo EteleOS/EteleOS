@@ -1,0 +1,10 @@
+--- Xwnmo/xjutil/xext.h.orig
++++ Xwnmo/xjutil/xext.h
+@@ -219,7 +219,6 @@ extern void send_end_work();
+  */
+ extern int keyin();
+ extern void terminate_handler();
+-extern void main();
+ 
+ /*
+  * jutil.c

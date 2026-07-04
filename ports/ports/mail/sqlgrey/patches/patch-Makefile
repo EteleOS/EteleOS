@@ -1,0 +1,57 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -1,10 +1,10 @@
+ INSTALL = install
+-ETCDIR = $(ROOTDIR)/etc
+-CONFDIR = $(ETCDIR)/sqlgrey
+-SBINDIR = $(ROOTDIR)/usr/sbin
+-BINDIR = $(ROOTDIR)/usr/bin
+-INITDIR = $(ETCDIR)/init.d
+-MANDIR = $(ROOTDIR)/usr/share/man/man1
++ETCDIR = ${PREFIX}/share/sqlgrey
++DOCDIR = ${PREFIX}/share/doc/sqlgrey
++CONFDIR = ${PREFIX}/share/examples/sqlgrey
++SBINDIR = ${PREFIX}/sbin
++BINDIR = ${PREFIX}/bin
++MANDIR = ${PREFIX}/man/man1
+ 
+ VERSION := $(shell cat VERSION)
+ 
+@@ -36,6 +36,7 @@ use_dbi:
+ 
+ manpage:
+ 	perldoc -u sqlgrey | pod2man -n sqlgrey > sqlgrey.1
++	perldoc -u sqlgrey-logstats.pl | pod2man -n sqlgrey-logstats > sqlgrey-logstats.1
+ 
+ clean:
+ 	rm -f sqlgrey.1
+@@ -43,22 +44,25 @@ clean:
+ 
+ install: all
+ 	$(INSTALL) -d -m 755 $(SBINDIR)
+-	$(INSTALL) -d -m 755 $(ETCDIR)
++	$(INSTALL) -d -m 755 $(DOCDIR)
+ 	$(INSTALL) -d -m 755 $(CONFDIR)
+-	$(INSTALL) -d -m 755 $(INITDIR)
+ 	$(INSTALL) -d -m 755 $(MANDIR)
+ 	$(INSTALL) -d -m 755 $(BINDIR)
+ 	$(INSTALL) -m 755 sqlgrey $(SBINDIR)
+ 	$(INSTALL) -m 755 update_sqlgrey_config $(SBINDIR)
+-	$(INSTALL) -m 755 sqlgrey-logstats.pl $(BINDIR)
++	$(INSTALL) -m 755 sqlgrey-logstats.pl $(BINDIR)/sqlgrey-logstats
+ 	$(INSTALL) -m 644 etc/sqlgrey.conf $(CONFDIR)
+ 	$(INSTALL) -m 644 etc/clients_ip_whitelist $(CONFDIR)
+ 	$(INSTALL) -m 644 etc/clients_fqdn_whitelist $(CONFDIR)
+ 	$(INSTALL) -m 644 etc/discrimination.regexp $(CONFDIR)
+ 	$(INSTALL) -m 644 etc/dyn_fqdn.regexp $(CONFDIR)
+ 	$(INSTALL) -m 644 etc/smtp_server.regexp $(CONFDIR)
++	$(INSTALL) -m 644 FAQ $(DOCDIR)
++	$(INSTALL) -m 644 HOWTO $(DOCDIR)
++	$(INSTALL) -m 644 README.* $(DOCDIR)
+ 	$(INSTALL) -m 644 etc/README $(CONFDIR)
+ 	$(INSTALL) -m 644 sqlgrey.1 $(MANDIR)
++	$(INSTALL) -m 644 sqlgrey-logstats.1 $(MANDIR)
+ 
+ rh-install: install
+ 	$(INSTALL) init/sqlgrey $(INITDIR)

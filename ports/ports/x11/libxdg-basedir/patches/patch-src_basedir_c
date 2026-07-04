@@ -1,0 +1,31 @@
+Overflow fix from upstream:
+https://github.com/devnev/libxdg-basedir/commit/14e000f696ef8b83264b0ca4407669bdb365fb23
+Index: src/basedir.c
+--- src/basedir.c.orig
++++ src/basedir.c
+@@ -91,13 +91,12 @@ static void xdgZeroMemory(void* p, int n)
+ static const char
+ 	DefaultRelativeDataHome[] = DIR_SEPARATOR_STR ".local" DIR_SEPARATOR_STR "share",
+ 	DefaultRelativeConfigHome[] = DIR_SEPARATOR_STR ".config",
+-	DefaultDataDirectories1[] = DIR_SEPARATOR_STR "usr" DIR_SEPARATOR_STR "local" DIR_SEPARATOR_STR "share",
+-	DefaultDataDirectories2[] = DIR_SEPARATOR_STR "usr" DIR_SEPARATOR_STR "share",
+-	DefaultConfigDirectories[] = DIR_SEPARATOR_STR "etc" DIR_SEPARATOR_STR "xdg",
++	DefaultDataDirectories[] = "${LOCALBASE}" DIR_SEPARATOR_STR "share",
++	DefaultConfigDirectories[] = "${SYSCONFDIR}" DIR_SEPARATOR_STR "xdg",
+ 	DefaultRelativeCacheHome[] = DIR_SEPARATOR_STR ".cache";
+ 
+ static const char
+-	*DefaultDataDirectoriesList[] = { DefaultDataDirectories1, DefaultDataDirectories2, NULL },
++	*DefaultDataDirectoriesList[] = { DefaultDataDirectories, NULL },
+ 	*DefaultConfigDirectoriesList[] = { DefaultConfigDirectories, NULL };
+ 
+ typedef struct _xdgCachedData
+@@ -574,7 +573,7 @@ static char * xdgGetRelativeHome(const char *envname, 
+ 		unsigned int homelen;
+ 		if (!(home = xdgGetEnv("HOME")))
+ 			return NULL;
+-		if (!(relhome = (char*)malloc((homelen = strlen(home))+fallbacklength))) return NULL;
++		if (!(relhome = (char*)malloc((homelen = strlen(home))+fallbacklength+1))) return NULL;
+ 		memcpy(relhome, home, homelen);
+ 		memcpy(relhome+homelen, relativefallback, fallbacklength+1);
+ 	}

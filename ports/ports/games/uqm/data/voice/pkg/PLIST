@@ -1,0 +1,5 @@
+@pkgpath games/uqm,-voice
+share/uqm/
+share/uqm/content/
+share/uqm/content/addons/
+share/uqm/content/addons/uqm-${V}-voice.uqm

@@ -1,0 +1,12 @@
+Index: xbindkeys.1
+--- xbindkeys.1.orig
++++ xbindkeys.1
+@@ -162,7 +162,7 @@ And xbindkeys --defaults-guile > ~/.xbindkeysrc.scm to
+ xbindkeys reloads the configuration file if modified.
+ Send a HUP signal to force reloading:
+ .LP
+-killall -HUP xbindkeys
++pkill -HUP xbindkeys
+ .LP
+ When a HUP signal is sent to xbindkeys, changes take effect only after
+ moving the mouse.

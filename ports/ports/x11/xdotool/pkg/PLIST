@@ -1,0 +1,5 @@
+@bin bin/xdotool
+include/xdo.h
+@lib lib/libxdo.so.${LIBxdo_VERSION}
+lib/pkgconfig/libxdo.pc
+@man man/man1/xdotool.1

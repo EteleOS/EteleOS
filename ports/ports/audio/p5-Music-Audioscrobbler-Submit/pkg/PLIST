@@ -1,0 +1,4 @@
+${P5SITE}/Music/
+${P5SITE}/Music/Audioscrobbler/
+${P5SITE}/Music/Audioscrobbler/Submit.pm
+@man man/man3p/Music::Audioscrobbler::Submit.3p

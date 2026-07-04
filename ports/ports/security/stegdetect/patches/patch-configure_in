@@ -1,0 +1,15 @@
+Don't build non-PIC i386 assembly code.
+
+Index: configure.in
+--- configure.in.orig
++++ configure.in
+@@ -22,9 +22,6 @@ dnl Checks for libraries.
+ AC_MSG_CHECKING(blowfish object)
+ AC_SUBST(BFOBJ)
+ case "$target" in
+-i386-*-*)
+- AC_MSG_RESULT(bf-586.o)
+- BFOBJ=bf-586.o ;;
+ *)
+  AC_MSG_RESULT(bf_enc.o)
+  BFOBJ=bf_enc.o;;

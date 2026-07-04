@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/spamd -d"
+daemon_flags="-u _spamdaemon -P"
+
+. /etc/rc.d/rc.subr
+
+pexp="perl: spamd"
+
+rc_cmd $1

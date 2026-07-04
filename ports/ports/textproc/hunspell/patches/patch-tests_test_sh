@@ -1,0 +1,9 @@
+Index: tests/test.sh
+--- tests/test.sh.orig
++++ tests/test.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!${LOCALBASE}/bin/bash
+ # ##### BEGIN LICENSE BLOCK #####
+ # Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ #

@@ -1,0 +1,11 @@
+--- scm/Makefile.in.orig	Tue Sep  6 05:51:44 2011
++++ scm/Makefile.in	Fri Jan  9 14:14:12 2015
+@@ -409,7 +409,7 @@ uninstall-am: uninstall-uim_plugin_dataDATA
+ 
+ 
+ install-data-hook:
+-	uim-module-manager --register chewing
++#	uim-module-manager --register chewing
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

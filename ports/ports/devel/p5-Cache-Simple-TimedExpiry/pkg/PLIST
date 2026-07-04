@@ -1,0 +1,4 @@
+${P5SITE}/Cache/
+${P5SITE}/Cache/Simple/
+${P5SITE}/Cache/Simple/TimedExpiry.pm
+@man man/man3p/Cache::Simple::TimedExpiry.3p

@@ -1,0 +1,12 @@
+Index: etc/view.php
+--- etc/view.php.orig
++++ etc/view.php
+@@ -13,7 +13,7 @@ echo "<!-- RTG Version $VERSION -->\n";
+ echo "<head>\n";
+ 
+ /* Connect to RTG MySQL Database */
+-$dbc = @mysqli_connect($host, $user, $pass, $db) or 
++$dbc = @mysqli_connect($host, $user, $pass, $db, $port) or 
+ 	die ("MySQL Connection Failed, Check Configuration.");
+ 
+ # Global variables off by default in newer versions of PHP

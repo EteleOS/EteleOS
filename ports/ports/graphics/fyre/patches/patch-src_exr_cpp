@@ -1,0 +1,16 @@
+Fix build with GLib >=2.68
+
+Index: src/exr.cpp
+--- src/exr.cpp.orig
++++ src/exr.cpp
+@@ -22,8 +22,9 @@
+  *
+  */
+ 
+-extern "C" {
+ #include "histogram-imager.h"
++
++extern "C" {
+ #include "config.h"
+ }
+ 

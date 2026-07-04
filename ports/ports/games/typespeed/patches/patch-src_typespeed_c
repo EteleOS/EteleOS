@@ -1,0 +1,41 @@
+Hunk #1: Fix -fno-common build failure
+Hunk #2: Disable the code opening the systemwide highscore file
+         and dropping privileges, since we're removing the setgid bit
+
+Index: src/typespeed.c
+--- src/typespeed.c.orig
++++ src/typespeed.c
+@@ -146,6 +146,7 @@ char *typorank[12] =
+ 
+ FILE		*netlogfile;
+ struct stats	 best;
++struct stats	 now;
+ int		 hfd;
+ int		 misses;
+ struct stats	 other;
+@@ -155,6 +156,9 @@ char		*usedwordfile;
+ int		 wordcount = 0;
+ int		 wordpos[22];
+ char		 wordstring[22][20];
++struct rules	 rules;
++extern struct rawdata	words;
++extern struct opt	opt;
+ 
+ struct option options[] = {
+ 	{"cheat", no_argument, &opt.cheat, 1},
+@@ -318,6 +318,7 @@ main(int argc, char **argv)
+ 	else
+ 		progname++;
+ 
++#if 0
+ 	/* just open high score file while being setgid games */
+ 	if ((hfd = open(HIGHFILE, O_RDWR, 0)) == -1)
+ 		xerr(1, "main: open: %s", HIGHFILE);
+@@ -351,6 +352,7 @@ main(int argc, char **argv)
+ 	if (hfd == STDIN_FILENO || hfd == STDOUT_FILENO ||
+ 	    hfd == STDERR_FILENO)
+ 		exit(1);
++#endif
+ 	if (!isatty(STDIN_FILENO) || !isatty(STDOUT_FILENO) ||
+ 	    !isatty(STDERR_FILENO))
+ 		xerrx(1, "not fully connected to a terminal");

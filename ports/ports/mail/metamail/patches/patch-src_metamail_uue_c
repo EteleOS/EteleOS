@@ -1,0 +1,52 @@
+Index: src/metamail/uue.c
+--- src/metamail/uue.c.orig
++++ src/metamail/uue.c
+@@ -1,10 +1,13 @@
+ #include <stdio.h>
++#include <string.h>
+ 
+ /*
+  * hack to metamail to decode uuencoded bodyparts
+  * Written by Keith Moore, February 1992
+  */
+ 
++void fromuue(FILE *, FILE *, char **, int *);
++
+ uueget (ptr, outfp, n)
+ char *ptr;
+ FILE *outfp;
+@@ -30,7 +33,7 @@ FILE *outfp;
+ }
+ 
+ 
+-getline (buf, size, fp)
++get_line (buf, size, fp)
+ char *buf;
+ int size;
+ FILE *fp;
+@@ -62,6 +65,7 @@ FILE *fp;
+ }
+ 
+ 
++void
+ fromuue (infp, outfp, boundaries, ctptr)
+ FILE *infp, *outfp;
+ char **boundaries;
+@@ -70,7 +74,7 @@ int *ctptr;
+     char buf[63];
+ 
+     while (1) {
+-	if (getline (buf, sizeof buf, infp) < 0) {
++	if (get_line (buf, sizeof buf, infp) < 0) {
+ 	    fprintf (stderr, "Premature EOF!\n");
+ 	    return;
+ 	}
+@@ -82,7 +86,7 @@ int *ctptr;
+ 	}
+     }	
+     while (1) {
+-	if (getline (buf, sizeof buf, infp) < 0) {
++	if (get_line (buf, sizeof buf, infp) < 0) {
+ 	    fprintf (stderr, "Premature EOF!\n");
+ 	    return;
+ 	}

@@ -1,0 +1,9 @@
+@conflict gmt-*
+@bin bin/psl
+include/libpsl.h
+@static-lib lib/libpsl.a
+lib/libpsl.la
+@lib lib/libpsl.so.${LIBpsl_VERSION}
+lib/pkgconfig/libpsl.pc
+@man man/man1/psl-make-dafsa.1
+@man man/man1/psl.1

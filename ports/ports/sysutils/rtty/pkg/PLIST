@@ -1,0 +1,17 @@
+rtty/
+rtty/README
+rtty/bin/
+rtty/bin/Startup
+rtty/bin/agelog
+rtty/bin/agelogs
+rtty/bin/console
+rtty/bin/locbrok
+rtty/bin/rtty
+rtty/bin/startsrv
+rtty/bin/ttysrv
+rtty/dev/
+rtty/log/
+rtty/opt/
+rtty/out/
+rtty/pid/
+rtty/sock/

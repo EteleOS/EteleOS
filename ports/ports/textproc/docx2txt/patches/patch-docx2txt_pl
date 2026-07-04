@@ -1,0 +1,26 @@
+No need to require an absolute path for unzip.
+--- docx2txt.pl.orig	Tue May 13 18:15:32 2014
++++ docx2txt.pl	Tue Oct  7 12:33:43 2014
+@@ -107,7 +107,7 @@
+ # directory/ user configuration directory/ system configuration directory.
+ #
+ 
+-our $config_unzip = '/usr/bin/unzip';	# Windows path like 'C:/path/to/unzip.exe'
++our $config_unzip = 'unzip';		# Windows path like 'C:/path/to/unzip.exe'
+ our $config_unzip_opts = '-p';		# To extract file on standard output
+ 
+ our $config_newLine = "\n";		# Alternative is "\r\n".
+@@ -299,13 +299,6 @@ if (%config) {
+ }
+ 
+ #
+-# Check for unzip utility, before proceeding further.
+-#
+-
+-die "Failed to locate unzip command '$config_unzip'!\n" if ! -f $config_unzip;
+-
+-
+-#
+ # Handle cases where this script reads docx file from STDIN.
+ #
+ 

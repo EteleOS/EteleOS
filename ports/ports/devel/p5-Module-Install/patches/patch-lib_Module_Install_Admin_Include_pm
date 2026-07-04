@@ -1,0 +1,13 @@
+Fix whatis information.
+Index: lib/Module/Install/Admin/Include.pm
+--- lib/Module/Install/Admin/Include.pm.orig
++++ lib/Module/Install/Admin/Include.pm
+@@ -61,6 +61,8 @@ sub auto_include_deps {
+ 
+ Module::Install::Admin::Include - include methods for Module::Install
+ 
++=head1 DESCRIPTION
++
+ =head2 auto_include_dependent_dists
+ 
+ Grabs everything in this module's build_requires and attempts to

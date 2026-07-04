@@ -1,0 +1,12 @@
+Index: mediatyp.cpp
+--- mediatyp.cpp.orig
++++ mediatyp.cpp
+@@ -29,7 +29,7 @@
+ #include <ctype.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include <iostream.h>
++#include <iostream>
+ #include <mimepp/string.h>
+ #include <mimepp/param.h>
+ #include <mimepp/mediatyp.h>

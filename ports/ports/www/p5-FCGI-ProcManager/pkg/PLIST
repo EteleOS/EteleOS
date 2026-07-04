@@ -1,0 +1,6 @@
+${P5SITE}/FCGI/
+${P5SITE}/FCGI/ProcManager/
+${P5SITE}/FCGI/ProcManager.pm
+${P5SITE}/FCGI/ProcManager/Constrained.pm
+@man man/man3p/FCGI::ProcManager.3p
+@man man/man3p/FCGI::ProcManager::Constrained.3p

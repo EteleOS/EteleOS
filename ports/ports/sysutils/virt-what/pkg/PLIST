@@ -1,0 +1,3 @@
+@bin libexec/virt-what-cpuid-helper
+@man man/man1/virt-what.1
+sbin/virt-what

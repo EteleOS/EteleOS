@@ -1,0 +1,47 @@
+@pkgpath databases/freetds,-msdblib
+@pkgpath databases/freetds,-openssl
+@bin bin/bsqldb
+@bin bin/bsqlodbc
+@bin bin/datacopy
+@bin bin/defncopy
+@bin bin/fisql
+@bin bin/freebcp
+bin/osql
+@bin bin/tdspool
+@bin bin/tsql
+include/bkpublic.h
+include/cspublic.h
+include/cstypes.h
+include/ctpublic.h
+include/odbcss.h
+include/sqldb.h
+include/sqlfront.h
+include/sybdb.h
+include/syberror.h
+include/sybfront.h
+include/tds_sysdep_public.h
+@static-lib lib/libct.a
+lib/libct.la
+@lib lib/libct.so.${LIBct_VERSION}
+@static-lib lib/libsybdb.a
+lib/libsybdb.la
+@lib lib/libsybdb.so.${LIBsybdb_VERSION}
+@static-lib lib/libtdsodbc.a
+lib/libtdsodbc.la
+@lib lib/libtdsodbc.so.${LIBtdsodbc_VERSION}
+@man man/man1/bsqldb.1
+@man man/man1/bsqlodbc.1
+@man man/man1/datacopy.1
+@man man/man1/defncopy.1
+@man man/man1/fisql.1
+@man man/man1/freebcp.1
+@man man/man1/osql.1
+@man man/man1/tsql.1
+@man man/man5/freetds.conf.5
+share/examples/freetds/
+share/examples/freetds/freetds.conf
+@sample ${SYSCONFDIR}/freetds.conf
+share/examples/freetds/locales.conf
+@sample ${SYSCONFDIR}/locales.conf
+share/examples/freetds/pool.conf
+@sample ${SYSCONFDIR}/pool.conf

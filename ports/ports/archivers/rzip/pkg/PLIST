@@ -1,0 +1,2 @@
+@bin bin/rzip
+@man man/man1/rzip.1

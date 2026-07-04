@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/ddclient"
+daemon_user="_ddclient"
+
+. /etc/rc.d/rc.subr
+
+pexp="perl: ddclient - .*"
+
+rc_pre() {
+	install -d -o _ddclient -g _ddclient /var/run/ddclient
+}
+
+rc_cmd $1

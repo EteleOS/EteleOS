@@ -1,0 +1,10 @@
+@conflict tidyp-<=1.04p1v0
+@bin bin/tidy
+include/tidy.h
+include/tidybuffio.h
+include/tidyenum.h
+include/tidyplatform.h
+@static-lib lib/libtidy.a
+@lib lib/libtidy.so.${LIBtidy_VERSION}
+lib/pkgconfig/tidy.pc
+@man man/man1/tidy.1

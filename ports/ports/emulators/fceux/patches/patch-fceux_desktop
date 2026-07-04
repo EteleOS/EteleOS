@@ -1,0 +1,14 @@
+Index: fceux.desktop
+--- fceux.desktop.orig
++++ fceux.desktop
+@@ -5,8 +5,8 @@ Name=Fceux
+ GenericName=NES/Famicom emulator
+ NoDisplay=false
+ Comment=Emulate NES ROMs
+-Exec=/usr/bin/fceux %f
+-Icon=/usr/share/pixmaps/fceux1.png
++Exec=${PREFIX}/bin/fceux %f
++Icon=${PREFIX}/share/pixmaps/fceux1.png
+ Terminal=false
+ MimeType=application/x-nes-rom
+ Categories=Game;Emulator;

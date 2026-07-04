@@ -1,0 +1,36 @@
+--- gconf/default.path.in.orig	Thu Apr 26 03:12:49 2012
++++ gconf/default.path.in	Tue Jan 22 07:03:47 2013
+@@ -6,12 +6,12 @@
+ # See the GConf manual for details
+ 
+ # Look first in systemwide mandatory settings directory
+-xml:readonly:@sysgconfdir@/gconf.xml.mandatory
++xml:readonly:/var/db/gconf/gconf.xml.mandatory
+ 
+ # To read in any mandatory settings that the Sys Admin may have created
+ # prior to a desktop system upgrade. The SysAdmin can stick read-only system
+ # wide sources in this file.
+-include @sysgconfdir@/2/local-mandatory.path
++include /var/db/gconf/2/local-mandatory.path
+ 
+ # Now see where users want us to look - basically the user can stick arbitrary 
+ # sources in a ~/.config/gconf.path file and they're inserted here
+@@ -24,15 +24,15 @@ include "$(HOME)/.gconf.path"
+ xml:readwrite:$(DEFAULTUSERSOURCE)
+ 
+ # Location for system-wide settings that are set by the defaults mechanism
+-xml:readonly:@sysgconfdir@/gconf.xml.system
++xml:readonly:/var/db/gconf/gconf.xml.system
+ 
+ # To read in any defaults settings that the Sys Admin may have created
+ # prior to a desktop system upgrade. The SysAdmin can stick default values
+ # system-wide in this file.
+-include @sysgconfdir@/2/local-defaults.path
++include /var/db/gconf/2/local-defaults.path
+ 
+ # Finally, look at the systemwide defaults
+-xml:readonly:@sysgconfdir@/gconf.xml.defaults
++xml:readonly:/var/db/gconf/gconf.xml.defaults
+ 
+ 
+ 

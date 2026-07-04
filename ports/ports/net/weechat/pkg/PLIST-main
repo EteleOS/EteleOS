@@ -1,0 +1,47 @@
+@bin bin/weechat
+bin/weechat-curses
+@bin bin/weechat-headless
+include/weechat/
+include/weechat/weechat-plugin.h
+lib/pkgconfig/weechat.pc
+lib/weechat/
+lib/weechat/plugins/
+@so lib/weechat/plugins/alias.so
+@so lib/weechat/plugins/buflist.so
+@so lib/weechat/plugins/charset.so
+@so lib/weechat/plugins/exec.so
+@so lib/weechat/plugins/fifo.so
+@so lib/weechat/plugins/fset.so
+@so lib/weechat/plugins/irc.so
+@so lib/weechat/plugins/logger.so
+@so lib/weechat/plugins/perl.so
+@so lib/weechat/plugins/relay.so
+@so lib/weechat/plugins/script.so
+@so lib/weechat/plugins/spell.so
+@so lib/weechat/plugins/trigger.so
+@so lib/weechat/plugins/typing.so
+@so lib/weechat/plugins/xfer.so
+share/applications/weechat.desktop
+share/doc/weechat/
+share/doc/weechat/weechat_dev.en.adoc
+share/doc/weechat/weechat_faq.en.adoc
+share/doc/weechat/weechat_plugin_api.en.adoc
+share/doc/weechat/weechat_quickstart.en.adoc
+share/doc/weechat/weechat_relay_api.en.adoc
+share/doc/weechat/weechat_relay_weechat.en.adoc
+share/doc/weechat/weechat_scripting.en.adoc
+share/doc/weechat/weechat_user.en.adoc
+share/locale/cs/LC_MESSAGES/weechat.mo
+share/locale/de/LC_MESSAGES/weechat.mo
+share/locale/es/LC_MESSAGES/weechat.mo
+share/locale/fr/LC_MESSAGES/weechat.mo
+share/locale/hu/LC_MESSAGES/weechat.mo
+share/locale/it/LC_MESSAGES/weechat.mo
+share/locale/ja/LC_MESSAGES/weechat.mo
+share/locale/pl/LC_MESSAGES/weechat.mo
+share/locale/pt/LC_MESSAGES/weechat.mo
+share/locale/pt_BR/LC_MESSAGES/weechat.mo
+share/locale/ru/LC_MESSAGES/weechat.mo
+share/locale/sr/LC_MESSAGES/weechat.mo
+share/locale/tr/LC_MESSAGES/weechat.mo
+@tag update-desktop-database

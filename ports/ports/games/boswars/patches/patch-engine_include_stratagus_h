@@ -1,0 +1,11 @@
+--- engine/include/stratagus.h.orig	Sun Apr 11 14:12:18 2010
++++ engine/include/stratagus.h	Mon Apr 12 12:49:55 2010
+@@ -133,7 +133,7 @@
+ --  General
+ ----------------------------------------------------------------------------*/
+ #ifndef STRATAGUS_LIB_PATH
+-#define STRATAGUS_LIB_PATH  "."      /// Where to find the data files
++#define STRATAGUS_LIB_PATH  "${PREFIX}/share/boswars"      /// Where to find the data files
+ #endif
+ 
+ #ifndef STRATAGUS_HOME_PATH

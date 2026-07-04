@@ -1,0 +1,31 @@
+Index: src/3rdparty/chromium/chrome/browser/resources/plugin_metadata/plugins_linux.json
+--- src/3rdparty/chromium/chrome/browser/resources/plugin_metadata/plugins_linux.json.orig
++++ src/3rdparty/chromium/chrome/browser/resources/plugin_metadata/plugins_linux.json
+@@ -1,27 +1,5 @@
+ {
+   "x-version": 45,
+-  "adobe-flash-player": {
+-    "mime_types": [
+-      "application/futuresplash",
+-      "application/x-shockwave-flash"
+-    ],
+-    "matching_mime_types": [
+-      "application/futuresplash"
+-    ],
+-    "versions": [
+-      {
+-        "version": "32.0.0.445",
+-        "status": "up_to_date",
+-        "reference": "https://helpx.adobe.com/security/products/flash-player/apsb20-58.html"
+-      }
+-    ],
+-    "lang": "en-US",
+-    "name": "Adobe Flash Player",
+-    "help_url": "https://support.google.com/chrome/?p=plugin_flash",
+-    "url": "https://support.google.com/chrome/answer/6258784",
+-    "displayurl": true,
+-    "group_name_matcher": "*Shockwave Flash*"
+-  },
+   "google-chrome-pdf": {
+     "mime_types": [
+     ],

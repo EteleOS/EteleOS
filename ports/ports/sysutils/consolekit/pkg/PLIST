@@ -1,0 +1,74 @@
+@conflict consolekit-*
+@extra /var/log/ConsoleKit/history
+@bin bin/ck-history
+@bin bin/ck-launch-session
+@bin bin/ck-list-sessions
+include/ConsoleKit/
+include/ConsoleKit/ck-connector/
+include/ConsoleKit/ck-connector/ck-connector.h
+include/ConsoleKit/libconsolekit.h
+include/ConsoleKit/sd-login.h
+lib/ConsoleKit/
+lib/ConsoleKit/run-seat.d/
+lib/ConsoleKit/run-session.d/
+lib/ConsoleKit/scripts/
+lib/ConsoleKit/scripts/ck-system-hibernate
+lib/ConsoleKit/scripts/ck-system-hybridsleep
+lib/ConsoleKit/scripts/ck-system-restart
+lib/ConsoleKit/scripts/ck-system-stop
+lib/ConsoleKit/scripts/ck-system-suspend
+lib/girepository-1.0/libconsolekit-1.0.typelib
+@static-lib lib/libck-connector.a
+lib/libck-connector.la
+@lib lib/libck-connector.so.${LIBck-connector_VERSION}
+@static-lib lib/libconsolekit.a
+lib/libconsolekit.la
+@lib lib/libconsolekit.so.${LIBconsolekit_VERSION}
+lib/pkgconfig/ck-connector.pc
+lib/pkgconfig/libconsolekit.pc
+@bin libexec/ck-collect-session-info
+@bin libexec/ck-get-x11-display-device
+@bin libexec/ck-get-x11-server-pid
+@bin libexec/ck-remove-directory
+@man man/man1/ck-history.1
+@man man/man1/ck-launch-session.1
+@man man/man1/ck-list-sessions.1
+@man man/man1/console-kit-daemon.1m
+@bin sbin/ck-log-system-restart
+@bin sbin/ck-log-system-start
+@bin sbin/ck-log-system-stop
+@bin sbin/console-kit-daemon
+share/dbus-1/interfaces/
+share/dbus-1/interfaces/org.freedesktop.ConsoleKit.Manager.xml
+share/dbus-1/interfaces/org.freedesktop.ConsoleKit.Seat.xml
+share/dbus-1/interfaces/org.freedesktop.ConsoleKit.Session.xml
+share/dbus-1/system-services/org.freedesktop.ConsoleKit.service
+share/doc/ConsoleKit2/
+share/doc/ConsoleKit2/spec/
+share/doc/ConsoleKit2/spec/ConsoleKit.html
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/consolekit/
+share/examples/consolekit/ConsoleKit/
+@sample ${SYSCONFDIR}/ConsoleKit/
+share/examples/consolekit/ConsoleKit/run-seat.d/
+@sample ${SYSCONFDIR}/ConsoleKit/run-seat.d/
+share/examples/consolekit/ConsoleKit/run-session.d/
+@sample ${SYSCONFDIR}/ConsoleKit/run-session.d/
+share/examples/consolekit/ConsoleKit/seats.d/
+@sample ${SYSCONFDIR}/ConsoleKit/seats.d/
+share/examples/consolekit/ConsoleKit/seats.d/00-primary.seat
+@sample ${SYSCONFDIR}/ConsoleKit/seats.d/00-primary.seat
+share/examples/consolekit/dbus-1/
+share/examples/consolekit/dbus-1/ConsoleKit.conf
+@sample ${SYSCONFDIR}/dbus-1/system.d/ConsoleKit.conf
+share/gir-1.0/libconsolekit-1.0.gir
+share/locale/bg/LC_MESSAGES/ConsoleKit2.mo
+share/locale/es/LC_MESSAGES/ConsoleKit2.mo
+share/locale/es_419/
+share/locale/es_419/LC_MESSAGES/
+share/locale/es_419/LC_MESSAGES/ConsoleKit2.mo
+share/locale/fr/LC_MESSAGES/ConsoleKit2.mo
+share/locale/ru/LC_MESSAGES/ConsoleKit2.mo
+share/polkit-1/actions/org.freedesktop.consolekit.policy
+share/polkit-1/rules.d/10-openbsd-consolekit.rules
+@sample /var/log/ConsoleKit/

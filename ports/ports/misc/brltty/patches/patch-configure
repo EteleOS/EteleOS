@@ -1,0 +1,11 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -7790,6 +7790,7 @@ _ACEOF
+       ;;
+    openbsd*)
+       system_object="openbsd"
++      LIBS="-lsndio ${LIBS}"
+       ;;
+    freebsd*)
+       system_object="freebsd"

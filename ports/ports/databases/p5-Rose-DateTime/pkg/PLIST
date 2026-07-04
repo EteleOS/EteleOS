@@ -1,0 +1,8 @@
+${P5SITE}/Rose/
+${P5SITE}/Rose/DateTime/
+${P5SITE}/Rose/DateTime.pm
+${P5SITE}/Rose/DateTime/Parser.pm
+${P5SITE}/Rose/DateTime/Util.pm
+@man man/man3p/Rose::DateTime.3p
+@man man/man3p/Rose::DateTime::Parser.3p
+@man man/man3p/Rose::DateTime::Util.3p

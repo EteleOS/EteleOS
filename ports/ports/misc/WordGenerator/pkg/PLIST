@@ -1,0 +1,5 @@
+bin/WordGenerator
+share/doc/wordgenerator/
+share/doc/wordgenerator/README_CONFIGURATION
+share/examples/wordgenerator/
+share/examples/wordgenerator/SampleConfiguration

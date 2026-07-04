@@ -1,0 +1,27 @@
+Index: src/sim/w_budget.c
+--- src/sim/w_budget.c.orig
++++ src/sim/w_budget.c
+@@ -90,6 +90,7 @@ void InitFundingLevel(void)
+ }
+ 
+ 
++void
+ DoBudget()
+ {
+   DoBudgetNow(0);
+@@ -257,6 +258,7 @@ ReallyDrawBudgetWindow(void)
+ }
+ 
+ 
++void
+ drawCurrPercents(void)
+ {
+   MustDrawCurrPercents = 1;
+@@ -293,6 +295,7 @@ ReallyDrawCurrPercents(void)
+ }
+ 
+ 
++void
+ UpdateBudgetWindow()
+ {
+   if (MustDrawCurrPercents) {

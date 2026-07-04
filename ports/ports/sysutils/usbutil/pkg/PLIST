@@ -1,0 +1,5 @@
+@man man/man8/usbgen.8
+@bin sbin/usbctl
+@bin sbin/usbdebug
+@bin sbin/usbgen
+@bin sbin/usbstats

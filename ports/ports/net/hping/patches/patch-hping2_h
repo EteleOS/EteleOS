@@ -1,0 +1,12 @@
+Index: hping2.h
+--- hping2.h.orig
++++ hping2.h
+@@ -357,7 +357,7 @@ struct delaytable_element {
+ 	int status;
+ };
+ 
+-volatile struct delaytable_element delaytable[TABLESIZE];
++extern volatile struct delaytable_element delaytable[TABLESIZE];
+ 
+ /* protos */
+ void	nop(void);				/* nop */

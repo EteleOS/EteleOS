@@ -1,0 +1,9 @@
+Index: scripts/apertium-translate-to-default-equivalent.in
+--- scripts/apertium-translate-to-default-equivalent.in.orig
++++ scripts/apertium-translate-to-default-equivalent.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!${LOCALBASE}/bin/bash
+ case $# in
+   2)
+     INFILE=$1

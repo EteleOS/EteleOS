@@ -1,0 +1,2 @@
+@bin bin/aspect-crop
+@man man/man1/aspect-crop.1

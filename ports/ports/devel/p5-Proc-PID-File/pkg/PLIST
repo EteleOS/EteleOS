@@ -1,0 +1,4 @@
+${P5SITE}/Proc/
+${P5SITE}/Proc/PID/
+${P5SITE}/Proc/PID/File.pm
+@man man/man3p/Proc::PID::File.3p

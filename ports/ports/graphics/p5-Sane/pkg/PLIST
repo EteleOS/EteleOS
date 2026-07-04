@@ -1,0 +1,9 @@
+${P5ARCH}/
+${P5ARCH}/Sane.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Sane/
+${P5ARCH}/auto/Sane/Sane.so
+@man man/man3p/Sane.3p
+share/examples/p5-Sane/
+share/examples/p5-Sane/scanadf.pl
+share/examples/p5-Sane/scanimage.pl

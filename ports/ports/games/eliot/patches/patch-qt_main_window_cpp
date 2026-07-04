@@ -1,0 +1,13 @@
+Default to where dicts are installed
+Index: qt/main_window.cpp
+--- qt/main_window.cpp.orig
++++ qt/main_window.cpp
+@@ -1216,7 +1216,7 @@ void MainWindow::onSettingsPreferences()
+ void MainWindow::onSettingsChooseDic()
+ {
+     QString fileName =
+-        QFileDialog::getOpenFileName(this, _q("Choose a dictionary"), "", "*.dawg");
++        QFileDialog::getOpenFileName(this, _q("Choose a dictionary"), "${TRUEPREFIX}/share/eliot/", "*.dawg");
+     changeDictionary(fileName);
+ }
+ 

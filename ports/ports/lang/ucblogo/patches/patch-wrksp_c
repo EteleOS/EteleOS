@@ -1,0 +1,14 @@
+Index: wrksp.c
+--- wrksp.c.orig
++++ wrksp.c
+@@ -27,6 +27,10 @@
+ #include <windows.h>
+ #endif
+ 
++#include <sys/types.h>
++#include <sys/wait.h>
++#include <ctype.h>
++
+ #define WANT_EVAL_REGS 1
+ #include "logo.h"
+ #include "globals.h"

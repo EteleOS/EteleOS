@@ -1,0 +1,6 @@
+include/proplist.h
+lib/libPropList.a
+lib/libPropList.la
+@lib lib/libPropList.so.${LIBPropList_VERSION}
+share/doc/libproplist/
+share/doc/libproplist/README

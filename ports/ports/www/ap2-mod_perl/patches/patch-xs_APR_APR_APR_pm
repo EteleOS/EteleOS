@@ -1,0 +1,11 @@
+--- xs/APR/APR/APR.pm.orig	Thu Jun 18 21:13:59 2015
++++ xs/APR/APR/APR.pm	Fri Apr 29 09:10:00 2016
+@@ -24,7 +24,7 @@ our @ISA = qw(DynaLoader);
+ # XXX: see xs/ModPerl/Const/Const.pm for issues of using 0x01
+ use Config ();
+ use constant DL_GLOBAL =>
+-  ( $Config::Config{dlsrc} eq 'dl_dlopen.xs' && $^O ne 'openbsd' ) ? 0x01 : 0x0;
++  ( $Config::Config{dlsrc} eq 'dl_dlopen.xs' ) ? 0x01 : 0x0;
+ sub dl_load_flags { DL_GLOBAL }
+ 
+ unless (defined &APR::XSLoader::BOOTSTRAP) {

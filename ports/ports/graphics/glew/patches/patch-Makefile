@@ -1,0 +1,12 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -81,7 +81,7 @@ else
+ OPT = $(POPT)
+ endif
+ INCLUDE = -Iinclude
+-CFLAGS = $(OPT) $(WARN) $(INCLUDE) $(CFLAGS.EXTRA)
++CFLAGS += $(OPT) $(WARN) $(INCLUDE) $(CFLAGS.EXTRA)
+ 
+ all debug: glew.lib glew.bin
+ 

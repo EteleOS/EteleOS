@@ -1,0 +1,48 @@
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -361,6 +361,8 @@ case $host_cpu in
+     ;;
+ esac
+ 
++# remove nonsense
++PROGRAM_NOPIC=""
+ dnl Apple's darwin works on multiple hosts now, so add a catchall override
+ dnl after processing normal hosts
+ case $host in
+@@ -443,35 +445,6 @@ EOF
+       AC_MSG_RESULT(no)
+     fi
+   fi
+-fi
+-
+-dnl *********************************************************************
+-dnl For x86 and ppc machines check which code model we should use.  This is
+-dnl done with the helper script cpuinfo.sh because the logic to do the job
+-dnl correctly is complex and lengthy (about as long as the entire configure.ac
+-dnl file).
+-
+-if test x$have_x86cpu = xtrue -o x$have_ppccpu = xtrue; then
+-  if test x$host_alias != x; then
+-    dnl This is to allow cross compiling
+-    AC_MSG_CHECKING(sub-architecture settings)
+-    if test x$have_x86cpu = xtrue; then
+-       host_mod_cpu=`echo $host_cpu | tr _ -`
+-       ARCHFLAGS="-march=$host_mod_cpu -mcpu=$host_mod_cpu"
+-    fi
+-  else
+-    if test ! -r $srcdir/cpuinfo.sh; then
+-       AC_MSG_ERROR([cpuinfo.sh script not found - do a cvs update])
+-    fi
+-    AC_MSG_CHECKING(sub-architecture settings)
+-    chmod +x $srcdir/cpuinfo.sh
+-    if test x$have_x86cpu = xtrue; then
+-       ARCHFLAGS=`$srcdir/cpuinfo.sh x86`
+-    elif test x$have_ppccpu = xtrue; then
+-       ARCHFLAGS=`$srcdir/cpuinfo.sh ppc`
+-    fi
+-  fi
+-  AC_MSG_RESULT($ARCHFLAGS)
+ fi
+ 
+ dnl **********************************************************************

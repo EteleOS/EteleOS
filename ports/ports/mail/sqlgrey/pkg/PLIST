@@ -1,0 +1,33 @@
+@newgroup _sqlgrey:647
+@newuser _sqlgrey:647:_sqlgrey::SQLgrey Account:/nonexistent:/sbin/nologin
+bin/sqlgrey-logstats
+libdata/perl5/site_perl/DBIx/
+libdata/perl5/site_perl/DBIx/DBCluster.pm
+@man man/man1/sqlgrey-logstats.1
+@man man/man1/sqlgrey.1
+sbin/sqlgrey
+sbin/update_sqlgrey_config
+share/doc/sqlgrey/
+share/doc/sqlgrey/FAQ
+share/doc/sqlgrey/HOWTO
+share/doc/sqlgrey/README.DBCLUSTER
+share/doc/sqlgrey/README.DISCRIMINATION
+share/doc/sqlgrey/README.OPTINOUT
+share/doc/sqlgrey/README.PERF
+share/examples/sqlgrey/
+@sample ${SYSCONFDIR}/sqlgrey/
+share/examples/sqlgrey/README
+@sample ${SYSCONFDIR}/sqlgrey/README
+share/examples/sqlgrey/clients_fqdn_whitelist
+@sample ${SYSCONFDIR}/sqlgrey/clients_fqdn_whitelist
+share/examples/sqlgrey/clients_ip_whitelist
+@sample ${SYSCONFDIR}/sqlgrey/clients_ip_whitelist
+share/examples/sqlgrey/discrimination.regexp
+@sample ${SYSCONFDIR}/sqlgrey/discrimination.regexp
+share/examples/sqlgrey/dyn_fqdn.regexp
+@sample ${SYSCONFDIR}/sqlgrey/dyn_fqdn.regexp
+share/examples/sqlgrey/smtp_server.regexp
+@sample ${SYSCONFDIR}/sqlgrey/smtp_server.regexp
+share/examples/sqlgrey/sqlgrey.conf
+@sample ${SYSCONFDIR}/sqlgrey/sqlgrey.conf
+@rcscript ${RCDIR}/sqlgrey

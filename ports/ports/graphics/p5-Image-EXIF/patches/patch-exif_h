@@ -1,0 +1,11 @@
+--- exif.h.orig	Fri May 11 19:03:30 2012
++++ exif.h	Sat Jul 12 19:34:34 2014
+@@ -46,6 +46,8 @@
+ 
+ #include <sys/types.h>
+ 
++/* common size for property strings */
++#define PROPSTR_SIZE 32
+ 
+ /*
+  * XXX Only checking for Solaris, HP, & Windows now.  Other platforms will

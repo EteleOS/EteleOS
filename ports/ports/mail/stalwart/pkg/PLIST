@@ -1,0 +1,35 @@
+@conflict stalwart-cli-*
+@conflict stalwart-imap-*
+@conflict stalwart-jmap-*
+@conflict stalwart-smtp-*
+@pkgpath mail/stalwart/cli
+@pkgpath mail/stalwart/imap
+@pkgpath mail/stalwart/jmap
+@pkgpath mail/stalwart/smtp
+@newgroup _stalwart-smtp:567
+@newuser _stalwart-smtp:567:567::SMTP/IMAP/JMAP Daemon:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/stalwart_mail
+@mode 750
+@owner _stalwart-smtp
+@group _stalwart-smtp
+@sample /var/stalwart/
+@sample /var/stalwart/etc/
+@sample /var/stalwart/data/
+@sample /var/stalwart/logs/
+@sample /var/stalwart/queue/
+@sample /var/stalwart/reports/
+@mode
+@owner
+@group
+@bin bin/stalwart
+@bin bin/stalwart-cli
+bin/stalwart-mail
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/login.conf.d/stalwart_mail
+@sample ${SYSCONFDIR}/login.conf.d/stalwart_mail
+share/examples/stalwart/
+share/examples/stalwart/config.toml
+@mode 640
+@owner _stalwart-smtp
+@group _stalwart-smtp
+@sample /var/stalwart/etc/config.toml

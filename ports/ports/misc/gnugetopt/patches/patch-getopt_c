@@ -1,0 +1,21 @@
+--- getopt.c.orig	Sun Dec  7 19:43:10 2014
++++ getopt.c	Sun Dec  7 19:44:48 2014
+@@ -341,15 +341,15 @@ static void __attribute__ ((__noreturn__)) print_help(
+ 	fputs(_(" -l, --longoptions <longopts> Long options to be recognized\n"), stderr);
+ 	fputs(_(" -n, --name <progname>        The name under which errors are reported\n"), stderr);
+ 	fputs(_(" -o, --options <optstring>    Short options to be recognized\n"), stderr);
+-	fputs(_(" -q, --quiet                  Disable error reporting by getopt(3)\n"), stderr);
++	fputs(_(" -q, --quiet                  Disable error reporting by gnugetopt(3)\n"), stderr);
+ 	fputs(_(" -Q, --quiet-output           No normal output\n"), stderr);
+ 	fputs(_(" -s, --shell <shell>          Set shell quoting conventions\n"), stderr);
+-	fputs(_(" -T, --test                   Test for getopt(1) version\n"), stderr);
++	fputs(_(" -T, --test                   Test for gnugetopt(1) version\n"), stderr);
+ 	fputs(_(" -u, --unquoted               Do not quote the output\n"), stderr);
+ 	fputs(USAGE_SEPARATOR, stderr);
+ 	fputs(USAGE_HELP, stderr);
+ 	fputs(USAGE_VERSION, stderr);
+-	fprintf(stderr, USAGE_MAN_TAIL("getopt(1)"));
++	fprintf(stderr, USAGE_MAN_TAIL("gnugetopt(1)"));
+ 	exit(PARAMETER_EXIT_CODE);
+ }
+ 

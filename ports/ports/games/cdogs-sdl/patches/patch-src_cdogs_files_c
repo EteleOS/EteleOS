@@ -1,0 +1,36 @@
+Index: src/cdogs/files.c
+--- src/cdogs/files.c.orig
++++ src/cdogs/files.c
+@@ -75,7 +75,7 @@ static const int bendian = 1;
+ static const int bendian = 0;
+ #endif
+ 
+-void swap32(void *d)
++void lswap32(void *d)
+ {
+ 	if (bendian)
+ 	{
+@@ -94,12 +94,12 @@ size_t f_read32(FILE *f, void *buf, size_t size)
+ 	if (buf)
+ 	{
+ 		ret = f_read(f, buf, size);
+-		swap32((int *)buf);
++		lswap32((int *)buf);
+ 	}
+ 	return ret;
+ }
+ 
+-void swap16(void *d)
++void lswap16(void *d)
+ {
+ 	if (bendian)
+ 	{
+@@ -113,7 +113,7 @@ size_t f_read16(FILE *f, void *buf, size_t size)
+ 	if (buf)
+ 	{
+ 		ret = f_read(f, buf, size);
+-		swap16((int16_t *)buf);
++		lswap16((int16_t *)buf);
+ 	}
+ 	return ret;
+ }

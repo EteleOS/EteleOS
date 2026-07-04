@@ -1,0 +1,14 @@
+Fix -fno-common build failure.
+
+Index: wmclockmon-cal/main.h
+--- wmclockmon-cal/main.h.orig
++++ wmclockmon-cal/main.h
+@@ -9,7 +9,7 @@
+ #include <sys/time.h>
+ 
+ 
+-struct tm *timeinfos;
++extern struct tm *timeinfos;
+ 
+ void quit_app();
+ 

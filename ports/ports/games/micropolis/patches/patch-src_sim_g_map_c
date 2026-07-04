@@ -1,0 +1,148 @@
+Index: src/sim/g_map.c
+--- src/sim/g_map.c.orig
++++ src/sim/g_map.c
+@@ -83,24 +83,22 @@ short valGrayMap[] = { 
+ };
+ 
+ 
+-int (*mapProcs[NMAPS])();
++void (*mapProcs[NMAPS])();
+ 
+-int drawAll(SimView *view);
+-int drawRes(SimView *view);
+-int drawCom(SimView *view);
+-int drawInd(SimView *view);
+-int drawPower(SimView *view);
+-int drawLilTransMap(SimView *view);
+-int drawPopDensity(SimView *view);
+-int drawRateOfGrowth(SimView *view);
+-int drawTrafMap(SimView *view);
+-int drawPolMap(SimView *view);
+-int drawCrimeMap(SimView *view);
+-int drawLandMap(SimView *view);
+-int drawFireRadius(SimView *view);
+-int drawPoliceRadius(SimView *view);
+-int drawDynamic(SimView *view);
++void maybeDrawRect(SimView *view, int val,
++	    int x, int y, int w, int h);
+ 
++void drawPopDensity(SimView *view);
++void drawRateOfGrowth(SimView *view);
++void drawTrafMap(SimView *view);
++void drawPolMap(SimView *view);
++void drawCrimeMap(SimView *view);
++void drawLandMap(SimView *view);
++void drawFireRadius(SimView *view);
++void drawPoliceRadius(SimView *view);
++void ditherMap(SimView *view);
++void drawRect(SimView *view, int pixel, int solid,
++	 int x, int y, int w, int h);
+ 
+ short GetCI(short x)
+ {
+@@ -112,6 +110,7 @@ short GetCI(short x)
+ }
+ 
+ 
++void
+ drawPopDensity(SimView *view)
+ {
+   short x, y;
+@@ -126,6 +125,7 @@ drawPopDensity(SimView *view)
+ }
+ 
+ 
++void
+ drawRateOfGrowth(SimView *view)
+ {
+   short x, y;
+@@ -153,6 +153,7 @@ drawRateOfGrowth(SimView *view)
+ }
+ 
+ 
++void
+ drawTrafMap(SimView *view)
+ {
+   short x;
+@@ -169,6 +170,7 @@ drawTrafMap(SimView *view)
+ }
+ 
+ 
++void
+ drawPolMap(SimView *view)
+ {
+   short x, y;
+@@ -184,6 +186,7 @@ drawPolMap(SimView *view)
+ }
+ 
+ 
++void
+ drawCrimeMap(SimView *view)
+ {
+   short x, y;
+@@ -199,6 +202,7 @@ drawCrimeMap(SimView *view)
+ }
+ 
+ 
++void
+ drawLandMap(SimView *view)
+ {
+   short x, y;
+@@ -213,7 +217,7 @@ drawLandMap(SimView *view)
+   }
+ }
+ 
+-
++void
+ drawFireRadius(SimView *view)
+ {
+   short x, y;
+@@ -227,7 +231,7 @@ drawFireRadius(SimView *view)
+   }
+ }
+ 
+-
++void
+ drawPoliceRadius(SimView *view)
+ {
+   short x, y;
+@@ -242,6 +246,7 @@ drawPoliceRadius(SimView *view)
+ }
+ 
+ 
++void
+ setUpMapProcs(void)
+ {
+   mapProcs[ALMAP] = drawAll;
+@@ -262,6 +267,7 @@ setUpMapProcs(void)
+ }
+ 
+ 
++void
+ MemDrawMap(SimView *view)
+ {
+   (*mapProcs[view->map_state])(view);
+@@ -275,6 +281,7 @@ MemDrawMap(SimView *view)
+ }
+ 
+ 
++void
+ ditherMap(SimView *view)
+ {
+   int i, x, y, width, height;
+@@ -346,6 +353,7 @@ ditherMap(SimView *view)
+ }
+ 
+ 
++void
+ maybeDrawRect(SimView *view, int val,
+ 	    int x, int y, int w, int h)
+ {
+@@ -359,6 +367,7 @@ maybeDrawRect(SimView *view, int val,
+ }
+ 
+ 
++void
+ drawRect(SimView *view, int pixel, int solid,
+ 	 int x, int y, int w, int h)
+ {

@@ -1,0 +1,36 @@
+--- server/Makefile.orig	Wed Feb  1 23:33:24 2017
++++ server/Makefile	Wed Feb  1 23:38:27 2017
+@@ -2,13 +2,13 @@ include ../common.mk
+ 
+ PACKAGE_D ?= gkrellmd
+ 
+-SINSTALLDIR ?= $(INSTALLROOT)/bin
++SINSTALLDIR ?= $(INSTALLROOT)/sbin
+ 
+ CFGDIR ?= $(INSTALLROOT)/etc
+ CFGDIRMODE ?= 755
+ CFGMODE ?= 644
+ 
+-SMANDIR ?= $(INSTALLROOT)/share/man/man1
++SMANDIR ?= $(INSTALLROOT)/man/man1
+ 
+ EXTRAOBJS =
+ 
+@@ -31,7 +31,7 @@ GKRELLMD_INCLUDES = gkrellmd.h $(SHARED_PATH)/log.h
+ PKG_INCLUDE := $(shell $(PKG_CONFIG) --cflags glib-2.0 gmodule-2.0 gthread-2.0)
+ PKG_LIB := $(shell $(PKG_CONFIG) --libs glib-2.0 gmodule-2.0 gthread-2.0)
+ 
+-FLAGS = -O2 $(PKG_INCLUDE)
++FLAGS = $(PKG_INCLUDE)
+ 
+ FLAGS += $(GTOP_INCLUDE) $(PTHREAD_INC) -I.. -I$(SHARED_PATH) -DGKRELLM_SERVER
+ 
+@@ -66,6 +66,8 @@ endif
+ ifeq ($(HAVE_GETADDRINFO),1)
+     FLAGS += -DHAVE_GETADDRINFO
+ endif
++
++CFLAGS += $(FLAGS)
+ 
+ OS_RELEASE=$(shell uname -r)
+ 

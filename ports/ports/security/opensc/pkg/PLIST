@@ -1,0 +1,116 @@
+@bin bin/cardos-tool
+@bin bin/cryptoflex-tool
+@bin bin/dnie-tool
+@bin bin/dtrust-tool
+@bin bin/egk-tool
+@bin bin/eidenv
+@bin bin/gids-tool
+@bin bin/goid-tool
+@bin bin/iasecc-tool
+@bin bin/netkey-tool
+@bin bin/openpgp-tool
+@bin bin/opensc-asn1
+@bin bin/opensc-explorer
+@bin bin/opensc-notify
+@bin bin/opensc-tool
+@bin bin/piv-tool
+@bin bin/pkcs11-register
+@bin bin/pkcs11-tool
+@bin bin/pkcs15-crypt
+@bin bin/pkcs15-init
+@bin bin/pkcs15-tool
+@bin bin/sc-hsm-tool
+@bin bin/westcos-tool
+lib/libopensc.la
+@lib lib/libopensc.so.${LIBopensc_VERSION}
+lib/libsmm-local.la
+@lib lib/libsmm-local.so.${LIBsmm-local_VERSION}
+lib/pkcs11/
+@so lib/pkcs11/opensc-pkcs11.so
+@so lib/pkcs11/pkcs11-spy.so
+lib/pkgconfig/libopensc.pc
+@man man/man1/cardos-tool.1
+@man man/man1/cryptoflex-tool.1
+@man man/man1/dnie-tool.1
+@man man/man1/dtrust-tool.1
+@man man/man1/egk-tool.1
+@man man/man1/eidenv.1
+@man man/man1/gids-tool.1
+@man man/man1/goid-tool.1
+@man man/man1/iasecc-tool.1
+@man man/man1/netkey-tool.1
+@man man/man1/npa-tool.1
+@man man/man1/openpgp-tool.1
+@man man/man1/opensc-asn1.1
+@man man/man1/opensc-explorer.1
+@man man/man1/opensc-notify.1
+@man man/man1/opensc-tool.1
+@man man/man1/piv-tool.1
+@man man/man1/pkcs11-register.1
+@man man/man1/pkcs11-tool.1
+@man man/man1/pkcs15-crypt.1
+@man man/man1/pkcs15-init.1
+@man man/man1/pkcs15-tool.1
+@man man/man1/sc-hsm-tool.1
+@man man/man1/westcos-tool.1
+@man man/man5/opensc.conf.5
+@man man/man5/pkcs15-profile.5
+share/applications/org.opensc.notify.desktop
+share/bash-completion/completions/cardos-tool
+share/bash-completion/completions/cryptoflex-tool
+share/bash-completion/completions/dnie-tool
+share/bash-completion/completions/dtrust-tool
+share/bash-completion/completions/egk-tool
+share/bash-completion/completions/eidenv
+share/bash-completion/completions/gids-tool
+share/bash-completion/completions/goid-tool
+share/bash-completion/completions/iasecc-tool
+share/bash-completion/completions/netkey-tool
+share/bash-completion/completions/npa-tool
+share/bash-completion/completions/openpgp-tool
+share/bash-completion/completions/opensc-asn1
+share/bash-completion/completions/opensc-explorer
+share/bash-completion/completions/opensc-notify
+share/bash-completion/completions/opensc-tool
+share/bash-completion/completions/piv-tool
+share/bash-completion/completions/pkcs11-register
+share/bash-completion/completions/pkcs11-tool
+share/bash-completion/completions/pkcs15-crypt
+share/bash-completion/completions/pkcs15-init
+share/bash-completion/completions/pkcs15-tool
+share/bash-completion/completions/sc-hsm-tool
+share/bash-completion/completions/westcos-tool
+share/examples/opensc/
+share/examples/opensc/opensc.conf
+@mode 644
+@sample ${SYSCONFDIR}/opensc.conf
+@mode
+share/opensc/
+share/opensc/asepcos.profile
+share/opensc/authentic.profile
+share/opensc/cardos.profile
+share/opensc/cyberflex.profile
+share/opensc/entersafe.profile
+share/opensc/epass2003.profile
+share/opensc/flex.profile
+share/opensc/gids.profile
+share/opensc/ias_adele_admin1.profile
+share/opensc/ias_adele_admin2.profile
+share/opensc/ias_adele_common.profile
+share/opensc/iasecc.profile
+share/opensc/iasecc_admin_eid.profile
+share/opensc/iasecc_generic_oberthur.profile
+share/opensc/iasecc_generic_pki.profile
+share/opensc/isoApplet.profile
+share/opensc/muscle.profile
+share/opensc/myeid.profile
+share/opensc/oberthur.profile
+share/opensc/openpgp.profile
+share/opensc/pkcs15.profile
+share/opensc/rutoken.profile
+share/opensc/rutoken_ecp.profile
+share/opensc/rutoken_lite.profile
+share/opensc/sc-hsm.profile
+share/opensc/setcos.profile
+share/opensc/starcos.profile
+@tag update-desktop-database

@@ -1,0 +1,7 @@
+Index: tests/71-callerid-sdmf.test
+--- tests/71-callerid-sdmf.test.orig
++++ tests/71-callerid-sdmf.test
+@@ -1,2 +1,2 @@
+ #!/bin/bash
+-exec ./70-callerid-mdmf.test testdata-callerid-sdmf.bytes
++sh ./70-callerid-mdmf.test testdata-callerid-sdmf.bytes

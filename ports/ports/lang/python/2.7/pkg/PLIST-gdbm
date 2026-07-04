@@ -1,0 +1,4 @@
+@option no-default-conflict
+@option is-branch
+@conflict python-gdbm-${VERSION_SPEC}
+@so lib/python2.7/lib-dynload/gdbm.so

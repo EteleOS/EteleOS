@@ -1,0 +1,49 @@
+Deal with _POSIX_SAVED_IDS when relinquishing privileges
+use MAXHOSTNAMELEN
+
+--- unix/init.c.orig	Thu May 29 08:08:49 2003
++++ unix/init.c	Fri Apr 13 15:54:54 2012
+@@ -49,6 +49,10 @@
+ #if ! HAVE_GETHOSTNAME && HAVE_UNAME
+ #include <sys/utsname.h>
+ #endif
++#if HAVE_GETHOSTNAME
++/* Get a value for MAXHOSTNAMELEN. */
++#include <sys/param.h>
++#endif
+ 
+ /* Use getcwd in preference to getwd; if we have neither, we will be
+    using a getcwd replacement.  */
+@@ -209,7 +213,7 @@ usysdep_initialize (puuconf,iflags)
+   if (iuuconf == UUCONF_NOT_FOUND)
+     {
+ #if HAVE_GETHOSTNAME
+-      char ab[256];
++      char ab[MAXHOSTNAMELEN];
+ 
+       if (gethostname (ab, sizeof ab - 1) < 0)
+ 	ulog (LOG_FATAL, "gethostname: %s", strerror (errno));
+@@ -271,8 +275,10 @@ usysdep_initialize (puuconf,iflags)
+       && geteuid () == 0)
+     {
+       q = getpwnam (OWNER);
+-      if (q != NULL)
++      if (q != NULL) {
++	seteuid (q->pw_uid);
+ 	setuid (q->pw_uid);
++      }
+     }
+ 
+   if ((iflags & INIT_GETCWD) != 0)
+@@ -370,8 +376,10 @@ usysdep_exit (fsuccess)
+ boolean fsysdep_other_config (z)
+      const char *z ATTRIBUTE_UNUSED;
+ {
+-  (void) setuid (getuid ());
++  (void) setegid (getgid ());
+   (void) setgid (getgid ());
++  (void) seteuid (getuid ());
++  (void) setuid (getuid ());
+   return TRUE;
+ }
+ 

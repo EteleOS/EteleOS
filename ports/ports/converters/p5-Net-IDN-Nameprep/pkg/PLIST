@@ -1,0 +1,4 @@
+${P5SITE}/Net/
+${P5SITE}/Net/IDN/
+${P5SITE}/Net/IDN/Nameprep.pm
+@man man/man3p/Net::IDN::Nameprep.3p

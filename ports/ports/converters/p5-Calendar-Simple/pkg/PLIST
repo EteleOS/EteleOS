@@ -1,0 +1,4 @@
+bin/pcal
+${P5SITE}/Calendar/
+${P5SITE}/Calendar/Simple.pm
+@man man/man3p/Calendar::Simple.3p

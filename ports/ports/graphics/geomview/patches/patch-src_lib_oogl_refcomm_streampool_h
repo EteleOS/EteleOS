@@ -1,0 +1,13 @@
+--- src/lib/oogl/refcomm/streampool.h.orig	Sun Mar 11 18:03:06 2007
++++ src/lib/oogl/refcomm/streampool.h	Sun Sep 11 13:35:54 2016
+@@ -29,8 +29,8 @@
+ # include "config.h"
+ #endif
+ 
+-#ifdef AIX
+-# include <sys/select.h>  /* RS-6000 needs this */
++#if defined(AIX) || defined(__OpenBSD__)
++# include <sys/select.h>  /* fd_set */
+ #endif
+ 
+ #include <sys/types.h>

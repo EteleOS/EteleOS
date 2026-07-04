@@ -1,0 +1,13 @@
+Index: toolkit/xre/glxtest/glxtest.cpp
+--- toolkit/xre/glxtest/glxtest.cpp.orig
++++ toolkit/xre/glxtest/glxtest.cpp
+@@ -190,6 +190,9 @@ extern "C" {
+ #define PCI_BASE_CLASS_DISPLAY 0x03
+ 
+ static void get_pci_status() {
++#ifdef __OpenBSD__
++  return;
++#endif
+   log("GLX_TEST: get_pci_status start\n");
+ 
+ #if !defined(XP_FREEBSD) && !defined(XP_NETBSD) && !defined(XP_OPENBSD) && \

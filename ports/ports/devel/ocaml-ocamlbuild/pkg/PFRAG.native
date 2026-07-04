@@ -1,0 +1,12 @@
+@bin bin/ocamlbuild.native
+lib/ocaml/ocamlbuild/ocamlbuild.cmx
+lib/ocaml/ocamlbuild/ocamlbuild.o
+lib/ocaml/ocamlbuild/ocamlbuild_executor.cmx
+lib/ocaml/ocamlbuild/ocamlbuild_executor.o
+lib/ocaml/ocamlbuild/ocamlbuild_pack.cmx
+lib/ocaml/ocamlbuild/ocamlbuild_plugin.cmx
+lib/ocaml/ocamlbuild/ocamlbuild_plugin.o
+lib/ocaml/ocamlbuild/ocamlbuild_unix_plugin.cmx
+lib/ocaml/ocamlbuild/ocamlbuild_unix_plugin.o
+lib/ocaml/ocamlbuild/ocamlbuildlib.a
+lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa

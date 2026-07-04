@@ -1,0 +1,25 @@
+@pkgpath ${BASE_PKGPATH}
+@pkgpath ${BASE_PKGPATH},wrapmark
+@pkgpath ${BASE_PKGPATH},lesstif,wrapmark
+@pkgpath ${BASE_PKGPATH},lesstif
+@bin bin/ncl
+@bin bin/nedit
+lib/X11/app-defaults/NEdit
+@man man/man1/ncl.1
+@man man/man1/nedit.1
+share/doc/nedit/
+share/doc/nedit/nedit.doc
+share/doc/pkg-readmes/${PKGSTEM}
+share/nedit/
+share/nedit/patterns/
+share/nedit/patterns/arm.pats
+share/nedit/patterns/diff.pats
+share/nedit/patterns/erlang.pats
+share/nedit/patterns/forth.pats
+share/nedit/patterns/haskell.pats
+share/nedit/patterns/lua.pats
+share/nedit/patterns/mipsasm.pats
+share/nedit/patterns/postgresql.pats
+share/nedit/patterns/prolog.pats
+share/nedit/patterns/ruby.pats
+share/nedit/patterns/scheme.pats

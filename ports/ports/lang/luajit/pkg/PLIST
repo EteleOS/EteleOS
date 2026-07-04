@@ -1,0 +1,35 @@
+bin/luajit
+@bin bin/luajit-${V}
+bin/luajit${MODLUA_DEP_VERSION}
+include/luajit-2.1/
+include/luajit-2.1/lauxlib.h
+include/luajit-2.1/lua.h
+include/luajit-2.1/lua.hpp
+include/luajit-2.1/luaconf.h
+include/luajit-2.1/luajit.h
+include/luajit-2.1/lualib.h
+@static-lib lib/libluajit-${MODLUA_VERSION}.a
+@comment lib/libluajit-${MODLUA_VERSION}.so
+@lib lib/libluajit-${MODLUA_VERSION}.so.${LIBluajit-${MODLUA_VERSION}_VERSION}
+lib/pkgconfig/luajit.pc
+@man man/man1/luajit.1
+share/lua/${MODLUA_VERSION}/jit/
+share/lua/${MODLUA_VERSION}/jit/bc.lua
+share/lua/${MODLUA_VERSION}/jit/bcsave.lua
+share/lua/${MODLUA_VERSION}/jit/dis_arm.lua
+share/lua/${MODLUA_VERSION}/jit/dis_arm64.lua
+share/lua/${MODLUA_VERSION}/jit/dis_arm64be.lua
+share/lua/${MODLUA_VERSION}/jit/dis_mips.lua
+share/lua/${MODLUA_VERSION}/jit/dis_mips64.lua
+share/lua/${MODLUA_VERSION}/jit/dis_mips64el.lua
+share/lua/${MODLUA_VERSION}/jit/dis_mips64r6.lua
+share/lua/${MODLUA_VERSION}/jit/dis_mips64r6el.lua
+share/lua/${MODLUA_VERSION}/jit/dis_mipsel.lua
+share/lua/${MODLUA_VERSION}/jit/dis_ppc.lua
+share/lua/${MODLUA_VERSION}/jit/dis_x64.lua
+share/lua/${MODLUA_VERSION}/jit/dis_x86.lua
+share/lua/${MODLUA_VERSION}/jit/dump.lua
+share/lua/${MODLUA_VERSION}/jit/p.lua
+share/lua/${MODLUA_VERSION}/jit/v.lua
+share/lua/${MODLUA_VERSION}/jit/vmdef.lua
+share/lua/${MODLUA_VERSION}/jit/zone.lua

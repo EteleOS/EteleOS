@@ -1,0 +1,95 @@
+Index: OpenBSD/PackageManager/DBIModel.pm
+--- OpenBSD/PackageManager/DBIModel.pm.orig
++++ OpenBSD/PackageManager/DBIModel.pm
+@@ -46,11 +46,12 @@ sub init
+ 	$self->{ports} = undef; # key=port id
+ 	$self->{categories} = undef; # key=category id, value=category name
+ 	$self->{installed} = (); # list of installed ids
+-	$self->{installed_repo} = OpenBSD::PackageRepository::Installed->new;
++	$self->{installed_repo} = OpenBSD::PackageRepository::Installed->new(0,0);
+ 	$self->{orphaned} = (); # list of orphaned ids
+ 	$self->{portslist} = undef; # key=category id, value=port id array
+ 	$self->{dbh}->disconnect if defined $self->{dbh};
+-	$self->{dbh} = DBI->connect("dbi:SQLite:/usr/local/share/sqlports-compact");
++	$self->{dbh} = DBI->connect("dbi:SQLite:${LOCALBASE}/share/sqlports",
++	    undef, undef, {ReadOnly => 1});
+ 	$self->get_allports;
+ 	$self->update_installed;
+ }
+@@ -71,7 +72,7 @@ sub get_category_name
+ sub update_categories
+ {
+ 	my $self = shift;
+-	my $rslt = $self->{dbh}->selectall_arrayref("SELECT keyref, value FROM CategoryKeys");
++	my $rslt = $self->{dbh}->selectall_arrayref("SELECT keyref, value FROM _CategoryKeys");
+ 	%{$self->{categories}} = map {$_->[0] => $_->[1]} @$rslt;
+ 	$self->{categories}{0} = "All";
+ 	$self->{categories}{-1} = "Installed";
+@@ -111,7 +112,7 @@ sub get_ports_for_category
+ sub get_ports_matching_keyword
+ {
+ 	my ($self, $req) = @_;
+-	my $sth = $self->{dbh}->prepare("SELECT fullpkgpath FROM Ports WHERE fullpkgname LIKE ? OR comment LIKE ?");
++	my $sth = $self->{dbh}->prepare("SELECT fullpkgpath FROM _Ports WHERE fullpkgname LIKE ? OR comment LIKE ?");
+ 	$sth->bind_param(1, "%$req%");
+ 	$sth->bind_param(2, "%$req%");
+ 	return $self->{dbh}->selectcol_arrayref($sth);
+@@ -120,7 +121,7 @@ sub get_ports_matching_keyword
+ sub update_ports_for_category
+ {
+ 	my ($self, $cat) = @_;
+-	my $sth = $self->{dbh}->prepare("SELECT fullpkgpath FROM Categories WHERE value = ?");
++	my $sth = $self->{dbh}->prepare("SELECT fullpkgpath FROM _Categories WHERE value = ?");
+ 	$sth->bind_param(1, $cat);
+ 	$self->{portslist}{$cat} = $self->{dbh}->selectcol_arrayref($sth);
+ }
+@@ -141,7 +142,7 @@ sub get_pkgname_for_port
+ sub update_allports
+ {
+ 	my $self = shift;
+-	my $rslt = $self->{dbh}->selectall_arrayref("SELECT fullpkgpath, fullpkgname, comment, homepage, maintainer FROM Ports");
++	my $rslt = $self->{dbh}->selectall_arrayref("SELECT fullpkgpath, fullpkgname, comment, homepage, maintainer FROM _Ports");
+ 	%{$self->{allports}} = map {$_->[0], {
+ 		fullpkgname => $_->[1],
+ 		comment => defined $_->[2] ? $_->[2] : "no comment available",
+@@ -149,7 +150,7 @@ sub update_allports
+ 		maintainer => $_->[4],
+ 		}} @$rslt;
+ 	# get real fullpkgpath
+-	$rslt = $self->{dbh}->selectcol_arrayref("SELECT id, fullpkgpath FROM Paths WHERE id IN (SELECT fullpkgpath FROM Ports)", { Columns=>[1,2] });
++	$rslt = $self->{dbh}->selectcol_arrayref("SELECT id, fullpkgpath FROM _Paths WHERE id IN (SELECT fullpkgpath FROM _Ports)", { Columns=>[1,2] });
+ 	my %h = @$rslt;
+ 	$self->{allports}{$_}{fullpkgpath} = $h{$_} foreach (keys %h);
+ }
+@@ -158,18 +159,18 @@ sub update_info_for_port
+ {
+ 	my ($self, $id) = @_;
+ 	my $t;
+-	my $sth = $self->{dbh}->prepare("SELECT value FROM Email WHERE keyref = ?");
++	my $sth = $self->{dbh}->prepare("SELECT value FROM _Email WHERE keyref = ?");
+ 	# previous value was maintainer id
+ 	$sth->bind_param(1, $self->{allports}{$id}{maintainer});
+ 	$self->{allports}{$id}{maintainer} = ($self->{dbh}->selectrow_array($sth))[0];
+-	$sth = $self->{dbh}->prepare("SELECT value FROM Descr WHERE fullpkgpath = ?");
++	$sth = $self->{dbh}->prepare("SELECT value FROM _Descr WHERE fullpkgpath = ?");
+ 	$sth->bind_param(1, $id);
+ 	$self->{allports}{$id}{descr} = ($self->{dbh}->selectrow_array($sth))[0];
+-	$sth = $self->{dbh}->prepare("SELECT fullpkgpath FROM Paths WHERE id IN (SELECT dependspath FROM depends WHERE fullpkgpath = ? and type = 0)");
++	$sth = $self->{dbh}->prepare("SELECT fullpkgpath FROM _Paths WHERE id IN (SELECT dependspath FROM _depends WHERE fullpkgpath = ? and type = 0)");
+ 	$sth->bind_param(1, $id);
+ 	$t = $self->{dbh}->selectcol_arrayref($sth);
+ 	$self->{allports}{$id}{lib_depends} = "@{$t}" if defined @{$t}[0];
+-	$sth = $self->{dbh}->prepare("SELECT fullpkgpath FROM Paths WHERE id IN (SELECT dependspath FROM depends WHERE fullpkgpath = ? and type = 1)");
++	$sth = $self->{dbh}->prepare("SELECT fullpkgpath FROM _Paths WHERE id IN (SELECT dependspath FROM _depends WHERE fullpkgpath = ? and type = 1)");
+ 	$sth->bind_param(1, $id);
+ 	$t = $self->{dbh}->selectcol_arrayref($sth);
+ 	$self->{allports}{$id}{run_depends} = "@{$t}" if defined @{$t}[0];
+@@ -195,7 +196,7 @@ sub update_installed
+ 	undef $self->{orphaned};
+ 	undef $self->{installed};
+ 	# joined query is here to be sure it's a real port, not a previous path which became the basis for a multipackage
+-	my $rslt = $self->{dbh}->selectcol_arrayref("SELECT paths.fullpkgpath,paths.id FROM Paths INNER JOIN Ports ON ports.fullpkgpath=paths.id", { Columns=>[1,2] });
++	my $rslt = $self->{dbh}->selectcol_arrayref("SELECT _paths.fullpkgpath,_paths.id FROM _Paths INNER JOIN _Ports ON _ports.fullpkgpath=_paths.id", { Columns=>[1,2] });
+ 	# make it a temp map{pkgpath}=id
+ 	my %path_to_id = @$rslt;
+ 	my $instpkgname;

@@ -1,0 +1,344 @@
+@conflict bnc-*
+@conflict irc-*
+@conflict ircd-ratbox-*
+@newgroup _ircd-hybrid:616
+@newuser _ircd-hybrid:616:616::IRC Daemon:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/ircd_hybrid
+@owner _ircd-hybrid
+@group _ircd-hybrid
+@sample ${LOCALSTATEDIR}/db/ircd-hybrid/
+@mode 700
+@sample ${LOGDIR}/
+@mode
+@owner
+@group
+@bin bin/ircd
+@bin bin/mkpasswd
+lib/ircd-hybrid/
+lib/ircd-hybrid/modules/
+lib/ircd-hybrid/modules/cap_account_notify.la
+@so lib/ircd-hybrid/modules/cap_account_notify.so
+lib/ircd-hybrid/modules/cap_away_notify.la
+@so lib/ircd-hybrid/modules/cap_away_notify.so
+lib/ircd-hybrid/modules/cap_cap_notify.la
+@so lib/ircd-hybrid/modules/cap_cap_notify.so
+lib/ircd-hybrid/modules/cap_chghost.la
+@so lib/ircd-hybrid/modules/cap_chghost.so
+lib/ircd-hybrid/modules/cap_extended_join.la
+@so lib/ircd-hybrid/modules/cap_extended_join.so
+lib/ircd-hybrid/modules/cap_invite_notify.la
+@so lib/ircd-hybrid/modules/cap_invite_notify.so
+lib/ircd-hybrid/modules/cap_multi_prefix.la
+@so lib/ircd-hybrid/modules/cap_multi_prefix.so
+lib/ircd-hybrid/modules/cap_userhost_in_names.la
+@so lib/ircd-hybrid/modules/cap_userhost_in_names.so
+lib/ircd-hybrid/modules/m_accept.la
+@so lib/ircd-hybrid/modules/m_accept.so
+lib/ircd-hybrid/modules/m_admin.la
+@so lib/ircd-hybrid/modules/m_admin.so
+lib/ircd-hybrid/modules/m_away.la
+@so lib/ircd-hybrid/modules/m_away.so
+lib/ircd-hybrid/modules/m_bmask.la
+@so lib/ircd-hybrid/modules/m_bmask.so
+lib/ircd-hybrid/modules/m_cap.la
+@so lib/ircd-hybrid/modules/m_cap.so
+lib/ircd-hybrid/modules/m_capab.la
+@so lib/ircd-hybrid/modules/m_capab.so
+lib/ircd-hybrid/modules/m_certfp.la
+@so lib/ircd-hybrid/modules/m_certfp.so
+lib/ircd-hybrid/modules/m_close.la
+@so lib/ircd-hybrid/modules/m_close.so
+lib/ircd-hybrid/modules/m_connect.la
+@so lib/ircd-hybrid/modules/m_connect.so
+lib/ircd-hybrid/modules/m_die.la
+@so lib/ircd-hybrid/modules/m_die.so
+lib/ircd-hybrid/modules/m_dline.la
+@so lib/ircd-hybrid/modules/m_dline.so
+lib/ircd-hybrid/modules/m_encap.la
+@so lib/ircd-hybrid/modules/m_encap.so
+lib/ircd-hybrid/modules/m_eob.la
+@so lib/ircd-hybrid/modules/m_eob.so
+lib/ircd-hybrid/modules/m_error.la
+@so lib/ircd-hybrid/modules/m_error.so
+lib/ircd-hybrid/modules/m_etrace.la
+@so lib/ircd-hybrid/modules/m_etrace.so
+lib/ircd-hybrid/modules/m_globops.la
+@so lib/ircd-hybrid/modules/m_globops.so
+lib/ircd-hybrid/modules/m_hash.la
+@so lib/ircd-hybrid/modules/m_hash.so
+lib/ircd-hybrid/modules/m_help.la
+@so lib/ircd-hybrid/modules/m_help.so
+lib/ircd-hybrid/modules/m_info.la
+@so lib/ircd-hybrid/modules/m_info.so
+lib/ircd-hybrid/modules/m_invite.la
+@so lib/ircd-hybrid/modules/m_invite.so
+lib/ircd-hybrid/modules/m_ison.la
+@so lib/ircd-hybrid/modules/m_ison.so
+lib/ircd-hybrid/modules/m_join.la
+@so lib/ircd-hybrid/modules/m_join.so
+lib/ircd-hybrid/modules/m_kick.la
+@so lib/ircd-hybrid/modules/m_kick.so
+lib/ircd-hybrid/modules/m_kill.la
+@so lib/ircd-hybrid/modules/m_kill.so
+lib/ircd-hybrid/modules/m_kline.la
+@so lib/ircd-hybrid/modules/m_kline.so
+lib/ircd-hybrid/modules/m_knock.la
+@so lib/ircd-hybrid/modules/m_knock.so
+lib/ircd-hybrid/modules/m_links.la
+@so lib/ircd-hybrid/modules/m_links.so
+lib/ircd-hybrid/modules/m_list.la
+@so lib/ircd-hybrid/modules/m_list.so
+lib/ircd-hybrid/modules/m_locops.la
+@so lib/ircd-hybrid/modules/m_locops.so
+lib/ircd-hybrid/modules/m_lusers.la
+@so lib/ircd-hybrid/modules/m_lusers.so
+lib/ircd-hybrid/modules/m_map.la
+@so lib/ircd-hybrid/modules/m_map.so
+lib/ircd-hybrid/modules/m_message.la
+@so lib/ircd-hybrid/modules/m_message.so
+lib/ircd-hybrid/modules/m_metadata.la
+@so lib/ircd-hybrid/modules/m_metadata.so
+lib/ircd-hybrid/modules/m_mlock.la
+@so lib/ircd-hybrid/modules/m_mlock.so
+lib/ircd-hybrid/modules/m_mode.la
+@so lib/ircd-hybrid/modules/m_mode.so
+lib/ircd-hybrid/modules/m_module.la
+@so lib/ircd-hybrid/modules/m_module.so
+lib/ircd-hybrid/modules/m_monitor.la
+@so lib/ircd-hybrid/modules/m_monitor.so
+lib/ircd-hybrid/modules/m_motd.la
+@so lib/ircd-hybrid/modules/m_motd.so
+lib/ircd-hybrid/modules/m_names.la
+@so lib/ircd-hybrid/modules/m_names.so
+lib/ircd-hybrid/modules/m_nick.la
+@so lib/ircd-hybrid/modules/m_nick.so
+lib/ircd-hybrid/modules/m_oper.la
+@so lib/ircd-hybrid/modules/m_oper.so
+lib/ircd-hybrid/modules/m_opme.la
+@so lib/ircd-hybrid/modules/m_opme.so
+lib/ircd-hybrid/modules/m_part.la
+@so lib/ircd-hybrid/modules/m_part.so
+lib/ircd-hybrid/modules/m_pass.la
+@so lib/ircd-hybrid/modules/m_pass.so
+lib/ircd-hybrid/modules/m_ping.la
+@so lib/ircd-hybrid/modules/m_ping.so
+lib/ircd-hybrid/modules/m_pong.la
+@so lib/ircd-hybrid/modules/m_pong.so
+lib/ircd-hybrid/modules/m_post.la
+@so lib/ircd-hybrid/modules/m_post.so
+lib/ircd-hybrid/modules/m_quit.la
+@so lib/ircd-hybrid/modules/m_quit.so
+lib/ircd-hybrid/modules/m_rehash.la
+@so lib/ircd-hybrid/modules/m_rehash.so
+lib/ircd-hybrid/modules/m_restart.la
+@so lib/ircd-hybrid/modules/m_restart.so
+lib/ircd-hybrid/modules/m_resv.la
+@so lib/ircd-hybrid/modules/m_resv.so
+lib/ircd-hybrid/modules/m_resync.la
+@so lib/ircd-hybrid/modules/m_resync.so
+lib/ircd-hybrid/modules/m_server.la
+@so lib/ircd-hybrid/modules/m_server.so
+lib/ircd-hybrid/modules/m_set.la
+@so lib/ircd-hybrid/modules/m_set.so
+lib/ircd-hybrid/modules/m_sjoin.la
+@so lib/ircd-hybrid/modules/m_sjoin.so
+lib/ircd-hybrid/modules/m_squit.la
+@so lib/ircd-hybrid/modules/m_squit.so
+lib/ircd-hybrid/modules/m_stats.la
+@so lib/ircd-hybrid/modules/m_stats.so
+lib/ircd-hybrid/modules/m_svinfo.la
+@so lib/ircd-hybrid/modules/m_svinfo.so
+lib/ircd-hybrid/modules/m_svsaccount.la
+@so lib/ircd-hybrid/modules/m_svsaccount.so
+lib/ircd-hybrid/modules/m_svshost.la
+@so lib/ircd-hybrid/modules/m_svshost.so
+lib/ircd-hybrid/modules/m_svsjoin.la
+@so lib/ircd-hybrid/modules/m_svsjoin.so
+lib/ircd-hybrid/modules/m_svskill.la
+@so lib/ircd-hybrid/modules/m_svskill.so
+lib/ircd-hybrid/modules/m_svsmode.la
+@so lib/ircd-hybrid/modules/m_svsmode.so
+lib/ircd-hybrid/modules/m_svsnick.la
+@so lib/ircd-hybrid/modules/m_svsnick.so
+lib/ircd-hybrid/modules/m_svspart.la
+@so lib/ircd-hybrid/modules/m_svspart.so
+lib/ircd-hybrid/modules/m_svstag.la
+@so lib/ircd-hybrid/modules/m_svstag.so
+lib/ircd-hybrid/modules/m_tburst.la
+@so lib/ircd-hybrid/modules/m_tburst.so
+lib/ircd-hybrid/modules/m_time.la
+@so lib/ircd-hybrid/modules/m_time.so
+lib/ircd-hybrid/modules/m_tmode.la
+@so lib/ircd-hybrid/modules/m_tmode.so
+lib/ircd-hybrid/modules/m_topic.la
+@so lib/ircd-hybrid/modules/m_topic.so
+lib/ircd-hybrid/modules/m_trace.la
+@so lib/ircd-hybrid/modules/m_trace.so
+lib/ircd-hybrid/modules/m_undline.la
+@so lib/ircd-hybrid/modules/m_undline.so
+lib/ircd-hybrid/modules/m_unkline.la
+@so lib/ircd-hybrid/modules/m_unkline.so
+lib/ircd-hybrid/modules/m_unresv.la
+@so lib/ircd-hybrid/modules/m_unresv.so
+lib/ircd-hybrid/modules/m_unxline.la
+@so lib/ircd-hybrid/modules/m_unxline.so
+lib/ircd-hybrid/modules/m_user.la
+@so lib/ircd-hybrid/modules/m_user.so
+lib/ircd-hybrid/modules/m_userhost.la
+@so lib/ircd-hybrid/modules/m_userhost.so
+lib/ircd-hybrid/modules/m_version.la
+@so lib/ircd-hybrid/modules/m_version.so
+lib/ircd-hybrid/modules/m_webirc.la
+@so lib/ircd-hybrid/modules/m_webirc.so
+lib/ircd-hybrid/modules/m_who.la
+@so lib/ircd-hybrid/modules/m_who.so
+lib/ircd-hybrid/modules/m_whois.la
+@so lib/ircd-hybrid/modules/m_whois.so
+lib/ircd-hybrid/modules/m_whowas.la
+@so lib/ircd-hybrid/modules/m_whowas.so
+lib/ircd-hybrid/modules/m_xline.la
+@so lib/ircd-hybrid/modules/m_xline.so
+lib/ircd-hybrid/modules/umode_admin.la
+@so lib/ircd-hybrid/modules/umode_admin.so
+lib/ircd-hybrid/modules/umode_bot.la
+@so lib/ircd-hybrid/modules/umode_bot.so
+lib/ircd-hybrid/modules/umode_callerid.la
+@so lib/ircd-hybrid/modules/umode_callerid.so
+lib/ircd-hybrid/modules/umode_cloak.la
+@so lib/ircd-hybrid/modules/umode_cloak.so
+lib/ircd-hybrid/modules/umode_connect.la
+@so lib/ircd-hybrid/modules/umode_connect.so
+lib/ircd-hybrid/modules/umode_deaf.la
+@so lib/ircd-hybrid/modules/umode_deaf.so
+lib/ircd-hybrid/modules/umode_expiration.la
+@so lib/ircd-hybrid/modules/umode_expiration.so
+lib/ircd-hybrid/modules/umode_external.la
+@so lib/ircd-hybrid/modules/umode_external.so
+lib/ircd-hybrid/modules/umode_farconnect.la
+@so lib/ircd-hybrid/modules/umode_farconnect.so
+lib/ircd-hybrid/modules/umode_flood.la
+@so lib/ircd-hybrid/modules/umode_flood.so
+lib/ircd-hybrid/modules/umode_hidden.la
+@so lib/ircd-hybrid/modules/umode_hidden.so
+lib/ircd-hybrid/modules/umode_hidechans.la
+@so lib/ircd-hybrid/modules/umode_hidechans.so
+lib/ircd-hybrid/modules/umode_hideidle.la
+@so lib/ircd-hybrid/modules/umode_hideidle.so
+lib/ircd-hybrid/modules/umode_invisible.la
+@so lib/ircd-hybrid/modules/umode_invisible.so
+lib/ircd-hybrid/modules/umode_locops.la
+@so lib/ircd-hybrid/modules/umode_locops.so
+lib/ircd-hybrid/modules/umode_nickchange.la
+@so lib/ircd-hybrid/modules/umode_nickchange.so
+lib/ircd-hybrid/modules/umode_oper.la
+@so lib/ircd-hybrid/modules/umode_oper.so
+lib/ircd-hybrid/modules/umode_registered.la
+@so lib/ircd-hybrid/modules/umode_registered.so
+lib/ircd-hybrid/modules/umode_regonly.la
+@so lib/ircd-hybrid/modules/umode_regonly.so
+lib/ircd-hybrid/modules/umode_reject.la
+@so lib/ircd-hybrid/modules/umode_reject.so
+lib/ircd-hybrid/modules/umode_secure.la
+@so lib/ircd-hybrid/modules/umode_secure.so
+lib/ircd-hybrid/modules/umode_secureonly.la
+@so lib/ircd-hybrid/modules/umode_secureonly.so
+lib/ircd-hybrid/modules/umode_servnotice.la
+@so lib/ircd-hybrid/modules/umode_servnotice.so
+lib/ircd-hybrid/modules/umode_skill.la
+@so lib/ircd-hybrid/modules/umode_skill.so
+lib/ircd-hybrid/modules/umode_softcallerid.la
+@so lib/ircd-hybrid/modules/umode_softcallerid.so
+lib/ircd-hybrid/modules/umode_spy.la
+@so lib/ircd-hybrid/modules/umode_spy.so
+lib/ircd-hybrid/modules/umode_wallops.la
+@so lib/ircd-hybrid/modules/umode_wallops.so
+lib/ircd-hybrid/modules/umode_webirc.la
+@so lib/ircd-hybrid/modules/umode_webirc.so
+@man man/man8/ircd.8
+share/examples/ircd-hybrid/
+@mode 700
+@owner _ircd-hybrid
+@group _ircd-hybrid
+@sample ${CONFDIR}/
+@mode
+@owner
+@group
+share/examples/ircd-hybrid/reference.ircd.conf
+@mode 600
+@owner _ircd-hybrid
+@group _ircd-hybrid
+@sample ${CONFDIR}/ircd.conf
+@mode
+@owner
+@group
+share/examples/ircd-hybrid/reference.modules.conf
+@mode 644
+@owner _ircd-hybrid
+@group _ircd-hybrid
+@sample ${CONFDIR}/modules.conf
+@mode
+@owner
+@group
+share/ircd-hybrid/
+share/ircd-hybrid/help/
+share/ircd-hybrid/help/accept
+share/ircd-hybrid/help/admin
+share/ircd-hybrid/help/away
+share/ircd-hybrid/help/close
+share/ircd-hybrid/help/cmode
+share/ircd-hybrid/help/connect
+share/ircd-hybrid/help/die
+share/ircd-hybrid/help/dline
+share/ircd-hybrid/help/etrace
+share/ircd-hybrid/help/extban
+share/ircd-hybrid/help/hash
+share/ircd-hybrid/help/help
+share/ircd-hybrid/help/index
+share/ircd-hybrid/help/info
+share/ircd-hybrid/help/invite
+share/ircd-hybrid/help/ison
+share/ircd-hybrid/help/join
+share/ircd-hybrid/help/kick
+share/ircd-hybrid/help/kill
+share/ircd-hybrid/help/kline
+share/ircd-hybrid/help/knock
+share/ircd-hybrid/help/links
+share/ircd-hybrid/help/list
+share/ircd-hybrid/help/locops
+share/ircd-hybrid/help/lusers
+share/ircd-hybrid/help/map
+share/ircd-hybrid/help/module
+share/ircd-hybrid/help/monitor
+share/ircd-hybrid/help/motd
+share/ircd-hybrid/help/names
+share/ircd-hybrid/help/nick
+share/ircd-hybrid/help/notice
+share/ircd-hybrid/help/oper
+share/ircd-hybrid/help/part
+share/ircd-hybrid/help/pass
+share/ircd-hybrid/help/ping
+share/ircd-hybrid/help/pong
+share/ircd-hybrid/help/post
+share/ircd-hybrid/help/privmsg
+share/ircd-hybrid/help/quit
+share/ircd-hybrid/help/rehash
+share/ircd-hybrid/help/restart
+share/ircd-hybrid/help/resv
+share/ircd-hybrid/help/set
+share/ircd-hybrid/help/squit
+share/ircd-hybrid/help/stats
+share/ircd-hybrid/help/time
+share/ircd-hybrid/help/topic
+share/ircd-hybrid/help/trace
+share/ircd-hybrid/help/umode
+share/ircd-hybrid/help/undline
+share/ircd-hybrid/help/unkline
+share/ircd-hybrid/help/unresv
+share/ircd-hybrid/help/unxline
+share/ircd-hybrid/help/user
+share/ircd-hybrid/help/userhost
+share/ircd-hybrid/help/version
+share/ircd-hybrid/help/who
+share/ircd-hybrid/help/whois
+share/ircd-hybrid/help/whowas
+share/ircd-hybrid/help/xline

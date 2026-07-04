@@ -1,0 +1,13 @@
+@bin bin/tpad
+@man man/man1/tpad.1
+share/applications/tpad.desktop
+share/icons/tpad.png
+share/locale/br/LC_MESSAGES/tpad.mo
+share/locale/de/LC_MESSAGES/tpad.mo
+share/locale/en/LC_MESSAGES/tpad.mo
+share/locale/en_GB/LC_MESSAGES/tpad.mo
+share/locale/es/LC_MESSAGES/tpad.mo
+share/locale/fr/LC_MESSAGES/tpad.mo
+share/locale/ko/LC_MESSAGES/tpad.mo
+share/locale/tr/LC_MESSAGES/tpad.mo
+@tag update-desktop-database

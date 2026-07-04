@@ -1,0 +1,3 @@
+${P5SITE}/Regexp/
+${P5SITE}/Regexp/IPv6.pm
+@man man/man3p/Regexp::IPv6.3p

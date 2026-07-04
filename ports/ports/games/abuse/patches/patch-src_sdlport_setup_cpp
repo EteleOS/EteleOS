@@ -1,0 +1,11 @@
+--- src/sdlport/setup.cpp.orig	Tue Mar 13 14:59:10 2012
++++ src/sdlport/setup.cpp	Tue Mar 13 14:59:29 2012
+@@ -100,7 +100,7 @@ void createRCFile( char *rcfile )
+         #else
+         fputs( "; Use DoubleBuffering\ndoublebuf=0\n\n", fd );
+         fputs( "; Use OpenGL\ngl=0\n\n", fd );
+-        fputs( "; Location of the datafiles\ndatadir=", fd );
++        fputs( "; Location of the datafiles\n;datadir=", fd );
+         fputs( ASSETDIR "\n\n", fd );
+         #endif
+         fputs( "; Use mono audio only\nmono=0\n\n", fd );

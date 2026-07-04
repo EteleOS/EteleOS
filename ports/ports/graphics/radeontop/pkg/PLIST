@@ -1,0 +1,13 @@
+@bin bin/radeontop
+@lib lib/libradeontop_xcb.so.${LIBradeontop_xcb_VERSION}
+@man man/man1/radeontop.1
+share/locale/cs/LC_MESSAGES/radeontop.mo
+share/locale/de/LC_MESSAGES/radeontop.mo
+share/locale/el/LC_MESSAGES/radeontop.mo
+share/locale/es/LC_MESSAGES/radeontop.mo
+share/locale/fi/LC_MESSAGES/radeontop.mo
+share/locale/fr/LC_MESSAGES/radeontop.mo
+share/locale/ru/LC_MESSAGES/radeontop.mo
+share/locale/sl/LC_MESSAGES/radeontop.mo
+share/locale/tr/LC_MESSAGES/radeontop.mo
+share/locale/zh_CN/LC_MESSAGES/radeontop.mo

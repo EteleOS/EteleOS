@@ -1,0 +1,11 @@
+Index: vncviewer/XInputTouchHandler.cxx
+--- vncviewer/XInputTouchHandler.cxx.orig
++++ vncviewer/XInputTouchHandler.cxx
+@@ -21,6 +21,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <sys/time.h>
+ #include <assert.h>
+ #include <string.h>
+ 

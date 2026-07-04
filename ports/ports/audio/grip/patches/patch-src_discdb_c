@@ -1,0 +1,40 @@
+overlapping snprintf
+
+Index: src/discdb.c
+--- src/discdb.c.orig
++++ src/discdb.c
+@@ -611,9 +611,11 @@ gboolean DiscDBRead(DiscInfo *disc,DiscDBServer *serve
+ 
+   /* Both disc title and artist have been stuffed in the title field, so the
+      need to be separated */
+-  
+-  DiscDBParseTitle(data->data_title,data->data_title,data->data_artist,"/");
++  inbuffer=strdup(data->data_title);
+ 
++  DiscDBParseTitle(inbuffer,data->data_title,data->data_artist,"/");
++
++  free(inbuffer);
+   free(result);
+ 
+   /* Don't allow the genre to be overwritten */
+@@ -667,6 +669,7 @@ int DiscDBReadDiscData(DiscInfo *disc,DiscData *ddata,
+   FILE *discdb_data=NULL;
+   int index,genre;
+   char root_dir[256],file[256],inbuf[512];
++  char* buf;
+   struct stat st;
+ 
+   g_snprintf(root_dir, 256, "%s/.cddb", g_get_home_dir());
+@@ -724,8 +727,11 @@ int DiscDBReadDiscData(DiscInfo *disc,DiscData *ddata,
+ 
+   /* Both disc title and artist have been stuffed in the title field, so the
+      need to be separated */
++  buf = strdup(ddata->data_title);
+ 
+-  DiscDBParseTitle(ddata->data_title,ddata->data_title,ddata->data_artist,"/");
++  DiscDBParseTitle(buf,ddata->data_title,ddata->data_artist,"/");
++
++  free(buf);
+ 
+   if(!DiscDBUTF8Validate(disc,ddata)) {
+     DiscDBConvertEncoding(disc,ddata,strcasecmp(encoding,"UTF-8")?

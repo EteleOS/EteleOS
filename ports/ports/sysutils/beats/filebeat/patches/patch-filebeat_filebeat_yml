@@ -1,0 +1,43 @@
+add_host_metadata processor not yet implemented for OpenBSD
+
+Index: filebeat/filebeat.yml
+--- filebeat/filebeat.yml.orig
++++ filebeat/filebeat.yml
+@@ -26,7 +26,8 @@ filebeat.inputs:
+   # Paths that should be crawled and fetched. Glob based paths.
+   paths:
+     - /var/log/*.log
+-    #- c:\programdata\elasticsearch\logs\*
++    - /var/log/authlog
++    - /var/log/daemon
+ 
+   # Exclude lines. A list of regular expressions to match. It drops the lines that are
+   # matching any regular expression from the list.
+@@ -94,6 +95,8 @@ filebeat.inputs:
+ # ============================== Filebeat modules ==============================
+ 
+ filebeat.config.modules:
++  # Disable modules by default
++  enabled: false
+   # Glob pattern for configuration loading
+   path: ${path.config}/modules.d/*.yml
+ 
+@@ -201,12 +204,12 @@ output.elasticsearch:
+   #ssl.key: "/etc/pki/client/cert.key"
+ 
+ # ================================= Processors =================================
+-processors:
+-  - add_host_metadata:
+-      when.not.contains.tags: forwarded
+-  - add_cloud_metadata: ~
+-  - add_docker_metadata: ~
+-  - add_kubernetes_metadata: ~
++#processors:
++  #- add_host_metadata:
++  #    when.not.contains.tags: forwarded
++  #- add_cloud_metadata: ~
++  #- add_docker_metadata: ~
++  #- add_kubernetes_metadata: ~
+ 
+ # ================================== Logging ===================================
+ 

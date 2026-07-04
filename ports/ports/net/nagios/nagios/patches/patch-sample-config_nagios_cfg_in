@@ -1,0 +1,30 @@
+Index: sample-config/nagios.cfg.in
+--- sample-config/nagios.cfg.in.orig
++++ sample-config/nagios.cfg.in
+@@ -15,7 +15,7 @@
+ # for historical purposes.  This should be the first option specified
+ # in the config file!!!
+ 
+-log_file=@localstatedir@/nagios.log
++log_file=/var/log/nagios/nagios.log
+ 
+ 
+ 
+@@ -243,7 +243,7 @@ log_rotation_method=d
+ # This is the directory where archived (rotated) log files should be
+ # placed (assuming you've chosen to do log rotation).
+ 
+-log_archive_path=@localstatedir@/archives
++log_archive_path=/var/log/nagios/archives
+ 
+ 
+ 
+@@ -709,7 +709,7 @@ interval_length=60
+ # by Nagios Enterprises from the update check is processed in accordance
+ # with our privacy policy - see https://api.nagios.org for details.
+ 
+-check_for_updates=1
++check_for_updates=0
+ 
+ 
+ 

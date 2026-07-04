@@ -1,0 +1,9 @@
+${P5ARCH}/
+${P5ARCH}/BSD/
+${P5ARCH}/BSD/stat.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/BSD/
+${P5ARCH}/auto/BSD/stat/
+${P5ARCH}/auto/BSD/stat/autosplit.ix
+@so ${P5ARCH}/auto/BSD/stat/stat.so
+@man man/man3p/BSD::stat.3p

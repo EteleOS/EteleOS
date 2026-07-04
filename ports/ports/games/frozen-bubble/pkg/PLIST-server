@@ -1,0 +1,4 @@
+@comment ${P5ARCH}/
+@comment ${P5ARCH}/auto/
+libexec/frozen-bubble/
+@bin libexec/frozen-bubble/fb-server

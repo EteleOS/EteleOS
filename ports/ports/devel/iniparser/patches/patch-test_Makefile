@@ -1,0 +1,11 @@
+--- test/Makefile.orig	Sat Jun 16 11:46:32 2012
++++ test/Makefile	Sat Jun 16 11:46:49 2012
+@@ -2,7 +2,7 @@
+ # iniparser tests Makefile
+ #
+ 
+-CC      = gcc
++CC      ?= gcc
+ CFLAGS  = -g -I../src
+ LFLAGS  = -L.. -liniparser
+ AR	    = ar

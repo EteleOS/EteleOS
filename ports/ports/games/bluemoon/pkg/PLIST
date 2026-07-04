@@ -1,0 +1,6 @@
+@bin bin/bluemoon
+@man man/man6/bluemoon.6
+share/applications/bluemoon.desktop
+share/pixmaps/
+share/pixmaps/bluemoon.png
+@tag update-desktop-database

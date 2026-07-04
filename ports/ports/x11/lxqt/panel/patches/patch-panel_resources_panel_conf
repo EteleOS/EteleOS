@@ -1,0 +1,23 @@
+Index: panel/resources/panel.conf
+--- panel/resources/panel.conf.orig
++++ panel/resources/panel.conf
+@@ -1,7 +1,7 @@
+ panels=panel1
+ 
+ [panel1]
+-plugins=fancymenu,desktopswitch,quicklaunch,taskbar,statusnotifier,tray,mount,volume,worldclock,showdesktop
++plugins=fancymenu,desktopswitch,quicklaunch,taskbar,statusnotifier,tray,mount,worldclock,showdesktop
+ position=Bottom
+ desktop=0
+ 
+@@ -30,10 +30,6 @@ type=mount
+ 
+ [worldclock]
+ type=worldclock
+-
+-[volume]
+-device=0
+-type=volume
+ 
+ [showdesktop]
+ alignment=Right

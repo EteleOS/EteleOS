@@ -1,0 +1,21 @@
+Index: sc.doc
+--- sc.doc.orig
++++ sc.doc
+@@ -113,7 +113,7 @@ often based on other cell values.
+ .LP
+ For an online tutorial, type the command:
+ .IP
+-pname #LIBDIR#/tutorial.pname
++pname #LOCALBASE#/share/sc/tutorial.pname
+ .LP
+ To print a quick reference card, type the command:
+ .IP
+@@ -4441,7 +4441,7 @@ the specified filename.
+ .\" ==========
+ .SH FILES
+ .TP 3in
+-#LIBDIR#/tutorial.pname
++#LOCALBASE#/share/sc/tutorial.pname
+ Tutorial spreadsheet.
+ .TP 3in
+ $HOME/.scrc

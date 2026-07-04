@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/blackbox_exporter"
+daemon_flags="--config.file=${SYSCONFDIR}/blackbox_exporter/blackbox.yml"
+daemon_logger="daemon.info"
+daemon_user="_blackboxexporter"
+
+. /etc/rc.d/rc.subr
+
+pexp="${daemon}.*"
+rc_bg=YES
+rc_reload=NO
+
+rc_cmd $1

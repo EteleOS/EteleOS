@@ -1,0 +1,83 @@
+Index: Wnn/jserver/de.c
+--- Wnn/jserver/de.c.orig
++++ Wnn/jserver/de.c
+@@ -53,6 +53,8 @@
+ */
+ #include <stdio.h>
+ #include <signal.h>
++#include <string.h>
++#include <unistd.h>
+ #include "commonhd.h"
+ #include "config.h"
+ #include "jd_sock.h"
+@@ -61,10 +63,16 @@
+ 
+ #include <ctype.h>
+ #include <errno.h>
+-extern int errno;		/* Pure BSD */
+-
++#include <stdlib.h>
++#include <errno.h>
+ #include <sys/ioctl.h>
++#include <sys/select.h>
++#include <time.h>
++#include <sys/socket.h>
+ 
++#if (defined(__unix__) || defined(unix)) && !defined(USG)
++#include <sys/param.h>
++#endif
+ #ifdef SYSVR2
+ #include <sys/param.h>
+ #ifndef SIGCHLD
+@@ -81,6 +89,7 @@ extern int errno;		/* Pure BSD */
+ #include "msg.h"
+ 
+ #ifdef BSD42
++#undef NOFILE
+ #define NOFILE getdtablesize() 
+ #endif
+ 
+@@ -153,7 +162,7 @@ static	char	rcv_buf[S_BUF_SIZ];	/** 受信バッファ **/
+ #endif /* defined(EAGAIN) */
+ 
+ /*	Client Table	*/
+-int	clientp;	/** cblkの有効なデータの最後を差している **/
++extern int	clientp;	/** cblkの有効なデータの最後を差している **/
+ 
+ int	cur_clp;	/** 現在のクライアントの番号 **/
+ 
+@@ -187,7 +196,7 @@ int get2_cur();
+ char cmd_name[80];
+ 
+ /* No arguments are used. Only options. */
+-void
++int
+ main(argc, argv)
+ int argc;
+ char **argv;
+@@ -264,7 +273,16 @@ char **argv;
+ 	fclose(stdin);
+ 	fclose(stdout);
+ 	if(!noisy){
++#if !(defined(BSD) && (BSD >= 199306)) /* !4.4BSD-Lite by Taoka */
+ 	    fclose(stderr);
++#else /* 4.4BSD-Lite */
++	    int fd = open("/dev/null", O_WRONLY);
++	    if (fd < 0) {
++		xerror("Cannot open /dev/null\n");
++	    }
++	    dup2(fd, 2);
++	    close(fd);
++#endif /* 4.4BSD-Lite */
+ 	}
+ 
+ #if defined(hpux) || defined(SOLARIS)
+@@ -462,7 +480,7 @@ demon_init()	/* initialize Demon */
+ 	    exit(1);
+ 	}
+ #ifdef SRAND48
+-	srand48(time((long *)0));
++	srand48(time(NULL));
+ #else
+ 	srand((int)time((long *)0));
+ #endif

@@ -1,0 +1,655 @@
+@conflict groff-mdoc-*
+@pkgpath textproc/groff.mdoc
+@bin bin/addftinfo
+bin/afmtodit
+bin/chem
+@bin bin/eqn
+bin/eqn2graph
+bin/gdiffmk
+bin/glilypond
+bin/gperl
+bin/gpinyin
+bin/grap2graph
+@bin bin/grn
+@bin bin/grodvi
+@bin bin/groff
+bin/groffer
+bin/grog
+@bin bin/grolbp
+@bin bin/grolj4
+bin/gropdf
+@bin bin/grops
+@bin bin/grotty
+@bin bin/hpftodit
+@bin bin/indxbib
+@bin bin/lkbib
+@bin bin/lookbib
+bin/mmroff
+bin/neqn
+bin/nroff
+bin/pdfmom
+bin/pdfroff
+@bin bin/pfbtops
+@bin bin/pic
+bin/pic2graph
+@bin bin/post-grohtml
+@bin bin/pre-grohtml
+@bin bin/preconv
+@bin bin/refer
+bin/roff2dvi
+bin/roff2html
+bin/roff2pdf
+bin/roff2ps
+bin/roff2text
+bin/roff2x
+@bin bin/soelim
+@bin bin/tbl
+@bin bin/tfmtodit
+@bin bin/troff
+@info info/groff.info
+@comment lib/charset.alias
+lib/groff/
+lib/groff/glilypond/
+lib/groff/glilypond/args.pl
+lib/groff/glilypond/oop_fh.pl
+lib/groff/glilypond/subs.pl
+lib/groff/gpinyin/
+lib/groff/gpinyin/subs.pl
+lib/groff/groff_opts_no_arg.txt
+lib/groff/groff_opts_with_arg.txt
+lib/groff/groffer/
+lib/groff/groffer/main_subs.pl
+lib/groff/groffer/man.pl
+lib/groff/groffer/split_env.sh
+lib/groff/groffer/subs.pl
+lib/groff/groffer/version.sh
+lib/groff/grog/
+lib/groff/grog/subs.pl
+lib/groff/site-tmac/
+@man man/man1/addftinfo.1
+@man man/man1/afmtodit.1
+@man man/man1/chem.1
+@man man/man1/eqn.1
+@man man/man1/eqn2graph.1
+@man man/man1/gdiffmk.1
+@man man/man1/glilypond.1
+@man man/man1/gperl.1
+@man man/man1/gpinyin.1
+@man man/man1/grap2graph.1
+@man man/man1/grn.1
+@man man/man1/grodvi.1
+@man man/man1/groff.1
+@man man/man1/groffer.1
+@man man/man1/grog.1
+@man man/man1/grohtml.1
+@man man/man1/grolbp.1
+@man man/man1/grolj4.1
+@man man/man1/gropdf.1
+@man man/man1/grops.1
+@man man/man1/grotty.1
+@man man/man1/hpftodit.1
+@man man/man1/indxbib.1
+@man man/man1/lkbib.1
+@man man/man1/lookbib.1
+@man man/man1/mmroff.1
+@man man/man1/neqn.1
+@man man/man1/nroff.1
+@man man/man1/pdfmom.1
+@man man/man1/pdfroff.1
+@man man/man1/pfbtops.1
+@man man/man1/pic.1
+@man man/man1/pic2graph.1
+@man man/man1/preconv.1
+@man man/man1/refer.1
+@man man/man1/roff2dvi.1
+@man man/man1/roff2html.1
+@man man/man1/roff2pdf.1
+@man man/man1/roff2ps.1
+@man man/man1/roff2text.1
+@man man/man1/roff2x.1
+@man man/man1/soelim.1
+@man man/man1/tbl.1
+@man man/man1/tfmtodit.1
+@man man/man1/troff.1
+@man man/man5/groff_filenames.5
+@man man/man5/groff_font.5
+@man man/man5/groff_out.5
+@man man/man5/groff_tmac.5
+@man man/man5/lj4_font.5
+@man man/man7/ditroff.7
+@man man/man7/groff.7
+@man man/man7/groff_char.7
+@man man/man7/groff_diff.7
+@man man/man7/groff_hdtbl.7
+@man man/man7/groff_man.7
+@man man/man7/groff_mdoc.7
+@man man/man7/groff_me.7
+@man man/man7/groff_mm.7
+@man man/man7/groff_mmse.7
+@man man/man7/groff_mom.7
+@man man/man7/groff_ms.7
+@man man/man7/groff_trace.7
+@man man/man7/groff_www.7
+@man man/man7/roff.7
+share/doc/groff/
+share/doc/groff/html/
+share/doc/groff/html/mom/
+share/doc/groff/html/mom/appendices.html
+share/doc/groff/html/mom/color.html
+share/doc/groff/html/mom/cover.html
+share/doc/groff/html/mom/definitions.html
+share/doc/groff/html/mom/docelement.html
+share/doc/groff/html/mom/docprocessing.html
+share/doc/groff/html/mom/goodies.html
+share/doc/groff/html/mom/graphical.html
+share/doc/groff/html/mom/headfootpage.html
+share/doc/groff/html/mom/images.html
+share/doc/groff/html/mom/inlines.html
+share/doc/groff/html/mom/intro.html
+share/doc/groff/html/mom/letters.html
+share/doc/groff/html/mom/macrolist.html
+share/doc/groff/html/mom/rectoverso.html
+share/doc/groff/html/mom/refer.html
+share/doc/groff/html/mom/reserved.html
+share/doc/groff/html/mom/stylesheet.css
+share/doc/groff/html/mom/tables-of-contents.html
+share/doc/groff/html/mom/toc.html
+share/doc/groff/html/mom/typesetting.html
+share/doc/groff/html/mom/using.html
+share/doc/groff/html/mom/version-2.html
+share/doc/groff/meintro.me
+share/doc/groff/meintro.ps
+share/doc/groff/meintro_fr.me
+share/doc/groff/meintro_fr.ps
+share/doc/groff/meref.me
+share/doc/groff/meref.ps
+share/doc/groff/pic.ms
+share/doc/groff/pic.ps
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/groff/
+share/examples/groff/chem/
+share/examples/groff/chem/122/
+share/examples/groff/chem/122/README
+share/examples/groff/chem/122/ch2a_ethyl.chem
+share/examples/groff/chem/122/ch2b_benzene.chem
+share/examples/groff/chem/122/ch2c_benzene_right.chem
+share/examples/groff/chem/122/ch4a_stick.chem
+share/examples/groff/chem/122/ch4b_methyl_acetate.chem
+share/examples/groff/chem/122/ch4c_colon.chem
+share/examples/groff/chem/122/ch4d_HCl.H2O.chem
+share/examples/groff/chem/122/ch4e_CaSO4.2H2O.chem
+share/examples/groff/chem/122/ch4f_C.chem
+share/examples/groff/chem/122/ch4g_BP.chem
+share/examples/groff/chem/122/ch4h_methacrylate.chem
+share/examples/groff/chem/122/ch4i_cyclo.chem
+share/examples/groff/chem/122/ch4j_ring4.chem
+share/examples/groff/chem/122/ch4k_ring3.chem
+share/examples/groff/chem/122/ch4l_vertex.chem
+share/examples/groff/chem/122/ch4m_double.chem
+share/examples/groff/chem/122/ch4n_triple.chem
+share/examples/groff/chem/122/ch4o_aromatic.chem
+share/examples/groff/chem/122/ch4p_cholestanol.chem
+share/examples/groff/chem/122/ch4q_rings.chem
+share/examples/groff/chem/122/ch4r_spiro.chem
+share/examples/groff/chem/122/ch4s_heteroatoms.chem
+share/examples/groff/chem/122/ch4t_polycyclic.chem
+share/examples/groff/chem/122/ch4u_nicotine.chem
+share/examples/groff/chem/122/ch4v_histidine.chem
+share/examples/groff/chem/122/ch4w_lsd.chem
+share/examples/groff/chem/122/ch4x_anisole.chem
+share/examples/groff/chem/122/ch4y_reserpine.chem
+share/examples/groff/chem/122/ch4z1_eqn_glutamic.chem
+share/examples/groff/chem/122/ch4z2_text.chem
+share/examples/groff/chem/122/ch5a_size.chem
+share/examples/groff/chem/122/ch6a_pic.chem
+share/examples/groff/chem/122/ch6b_dna.chem
+share/examples/groff/chem/122/chAa_polymer.chem
+share/examples/groff/chem/122/chAb_vinyl_chloro.chem
+share/examples/groff/chem/122/chAc_morphine.chem
+share/examples/groff/chem/122/chAd_chlorophyll.chem
+share/examples/groff/chem/122/chAe_chair.chem
+share/examples/groff/chem/122/chAf_arrow.chem
+share/examples/groff/chem/122/chAg_circle.chem
+share/examples/groff/chem/122/chAh_brackets.chem
+share/examples/groff/chem/122/chAi_poly_vinyl_chloride.chem
+share/examples/groff/chem/122/chBa_jump.chem
+share/examples/groff/chem/122/chBb_bonds.chem
+share/examples/groff/chem/122/chBc_rings.chem
+share/examples/groff/chem/README
+share/examples/groff/chem/atp.chem
+share/examples/groff/chem/cholesterin.chem
+share/examples/groff/chem/ethamivan.chem
+share/examples/groff/chem/lsd.chem
+share/examples/groff/chem/morphine.chem
+share/examples/groff/chem/penicillin.chem
+share/examples/groff/chem/reserpine.chem
+share/examples/groff/gnu.eps
+share/examples/groff/grnexmpl.g
+share/examples/groff/grnexmpl.me
+share/examples/groff/grnexmpl.ps
+share/examples/groff/groff.css
+share/examples/groff/hdtbl/
+share/examples/groff/hdtbl/chess_board.ps
+share/examples/groff/hdtbl/chess_board.roff
+share/examples/groff/hdtbl/col_rowspan_colors.ps
+share/examples/groff/hdtbl/col_rowspan_colors.roff
+share/examples/groff/hdtbl/color_boxes.ps
+share/examples/groff/hdtbl/color_boxes.roff
+share/examples/groff/hdtbl/color_nested_tables.ps
+share/examples/groff/hdtbl/color_nested_tables.roff
+share/examples/groff/hdtbl/color_table_cells.ps
+share/examples/groff/hdtbl/color_table_cells.roff
+share/examples/groff/hdtbl/color_transitions.ps
+share/examples/groff/hdtbl/color_transitions.roff
+share/examples/groff/hdtbl/common.roff
+share/examples/groff/hdtbl/fonts_n.ps
+share/examples/groff/hdtbl/fonts_n.roff
+share/examples/groff/hdtbl/fonts_x.ps
+share/examples/groff/hdtbl/fonts_x.roff
+share/examples/groff/hdtbl/gnu.eps
+share/examples/groff/hdtbl/mixed_pickles.ps
+share/examples/groff/hdtbl/mixed_pickles.roff
+share/examples/groff/hdtbl/rainbow.ps
+share/examples/groff/hdtbl/rainbow.roff
+share/examples/groff/hdtbl/short_reference.ps
+share/examples/groff/hdtbl/short_reference.roff
+share/examples/groff/mm/
+share/examples/groff/mm/letter.mm
+share/examples/groff/mom/
+share/examples/groff/mom/README-fr.txt
+share/examples/groff/mom/README.txt
+share/examples/groff/mom/elvis_syntax
+share/examples/groff/mom/elvis_syntax.new
+share/examples/groff/mom/letter.mom
+share/examples/groff/mom/mom-pdf.mom
+share/examples/groff/mom/mom.vim
+share/examples/groff/mom/mon_premier_doc.mom
+share/examples/groff/mom/penguin.pdf
+share/examples/groff/mom/penguin.ps
+share/examples/groff/mom/sample_docs.mom
+share/examples/groff/mom/slide-demo.mom
+share/examples/groff/mom/typesetting.mom
+share/examples/groff/webpage.ms
+share/examples/groff/webpage.ps
+share/groff/
+share/groff/${VERSION}/
+share/groff/${VERSION}/eign
+share/groff/${VERSION}/font/
+share/groff/${VERSION}/font/devascii/
+share/groff/${VERSION}/font/devascii/B
+share/groff/${VERSION}/font/devascii/BI
+share/groff/${VERSION}/font/devascii/DESC
+share/groff/${VERSION}/font/devascii/I
+share/groff/${VERSION}/font/devascii/R
+share/groff/${VERSION}/font/devcp1047/
+share/groff/${VERSION}/font/devcp1047/B
+share/groff/${VERSION}/font/devcp1047/BI
+share/groff/${VERSION}/font/devcp1047/DESC
+share/groff/${VERSION}/font/devcp1047/I
+share/groff/${VERSION}/font/devcp1047/R
+share/groff/${VERSION}/font/devdvi/
+share/groff/${VERSION}/font/devdvi/CW
+share/groff/${VERSION}/font/devdvi/CWEC
+share/groff/${VERSION}/font/devdvi/CWI
+share/groff/${VERSION}/font/devdvi/CWIEC
+share/groff/${VERSION}/font/devdvi/CWITC
+share/groff/${VERSION}/font/devdvi/CWTC
+share/groff/${VERSION}/font/devdvi/DESC
+share/groff/${VERSION}/font/devdvi/EX
+share/groff/${VERSION}/font/devdvi/HB
+share/groff/${VERSION}/font/devdvi/HBEC
+share/groff/${VERSION}/font/devdvi/HBI
+share/groff/${VERSION}/font/devdvi/HBIEC
+share/groff/${VERSION}/font/devdvi/HBITC
+share/groff/${VERSION}/font/devdvi/HBTC
+share/groff/${VERSION}/font/devdvi/HI
+share/groff/${VERSION}/font/devdvi/HIEC
+share/groff/${VERSION}/font/devdvi/HITC
+share/groff/${VERSION}/font/devdvi/HR
+share/groff/${VERSION}/font/devdvi/HREC
+share/groff/${VERSION}/font/devdvi/HRTC
+share/groff/${VERSION}/font/devdvi/MI
+share/groff/${VERSION}/font/devdvi/S
+share/groff/${VERSION}/font/devdvi/SA
+share/groff/${VERSION}/font/devdvi/SB
+share/groff/${VERSION}/font/devdvi/SC
+share/groff/${VERSION}/font/devdvi/TB
+share/groff/${VERSION}/font/devdvi/TBEC
+share/groff/${VERSION}/font/devdvi/TBI
+share/groff/${VERSION}/font/devdvi/TBIEC
+share/groff/${VERSION}/font/devdvi/TBITC
+share/groff/${VERSION}/font/devdvi/TBTC
+share/groff/${VERSION}/font/devdvi/TI
+share/groff/${VERSION}/font/devdvi/TIEC
+share/groff/${VERSION}/font/devdvi/TITC
+share/groff/${VERSION}/font/devdvi/TR
+share/groff/${VERSION}/font/devdvi/TREC
+share/groff/${VERSION}/font/devdvi/TRTC
+share/groff/${VERSION}/font/devdvi/generate/
+share/groff/${VERSION}/font/devdvi/generate/CompileFonts
+share/groff/${VERSION}/font/devdvi/generate/Makefile
+share/groff/${VERSION}/font/devdvi/generate/ec.map
+share/groff/${VERSION}/font/devdvi/generate/msam.map
+share/groff/${VERSION}/font/devdvi/generate/msbm.map
+share/groff/${VERSION}/font/devdvi/generate/tc.map
+share/groff/${VERSION}/font/devdvi/generate/texb.map
+share/groff/${VERSION}/font/devdvi/generate/texex.map
+share/groff/${VERSION}/font/devdvi/generate/texi.map
+share/groff/${VERSION}/font/devdvi/generate/texmi.map
+share/groff/${VERSION}/font/devdvi/generate/texr.map
+share/groff/${VERSION}/font/devdvi/generate/texsy.map
+share/groff/${VERSION}/font/devdvi/generate/textex.map
+share/groff/${VERSION}/font/devdvi/generate/textt.map
+share/groff/${VERSION}/font/devhtml/
+share/groff/${VERSION}/font/devhtml/B
+share/groff/${VERSION}/font/devhtml/BI
+share/groff/${VERSION}/font/devhtml/CB
+share/groff/${VERSION}/font/devhtml/CBI
+share/groff/${VERSION}/font/devhtml/CI
+share/groff/${VERSION}/font/devhtml/CR
+share/groff/${VERSION}/font/devhtml/DESC
+share/groff/${VERSION}/font/devhtml/I
+share/groff/${VERSION}/font/devhtml/R
+share/groff/${VERSION}/font/devhtml/S
+share/groff/${VERSION}/font/devlatin1/
+share/groff/${VERSION}/font/devlatin1/B
+share/groff/${VERSION}/font/devlatin1/BI
+share/groff/${VERSION}/font/devlatin1/DESC
+share/groff/${VERSION}/font/devlatin1/I
+share/groff/${VERSION}/font/devlatin1/R
+share/groff/${VERSION}/font/devlbp/
+share/groff/${VERSION}/font/devlbp/CB
+share/groff/${VERSION}/font/devlbp/CI
+share/groff/${VERSION}/font/devlbp/CR
+share/groff/${VERSION}/font/devlbp/DESC
+share/groff/${VERSION}/font/devlbp/EB
+share/groff/${VERSION}/font/devlbp/EI
+share/groff/${VERSION}/font/devlbp/ER
+share/groff/${VERSION}/font/devlbp/HB
+share/groff/${VERSION}/font/devlbp/HBI
+share/groff/${VERSION}/font/devlbp/HI
+share/groff/${VERSION}/font/devlbp/HNB
+share/groff/${VERSION}/font/devlbp/HNBI
+share/groff/${VERSION}/font/devlbp/HNI
+share/groff/${VERSION}/font/devlbp/HNR
+share/groff/${VERSION}/font/devlbp/HR
+share/groff/${VERSION}/font/devlbp/TB
+share/groff/${VERSION}/font/devlbp/TBI
+share/groff/${VERSION}/font/devlbp/TI
+share/groff/${VERSION}/font/devlbp/TR
+share/groff/${VERSION}/font/devlj4/
+share/groff/${VERSION}/font/devlj4/AB
+share/groff/${VERSION}/font/devlj4/ABI
+share/groff/${VERSION}/font/devlj4/AI
+share/groff/${VERSION}/font/devlj4/ALBB
+share/groff/${VERSION}/font/devlj4/ALBR
+share/groff/${VERSION}/font/devlj4/AOB
+share/groff/${VERSION}/font/devlj4/AOI
+share/groff/${VERSION}/font/devlj4/AOR
+share/groff/${VERSION}/font/devlj4/AR
+share/groff/${VERSION}/font/devlj4/CB
+share/groff/${VERSION}/font/devlj4/CBI
+share/groff/${VERSION}/font/devlj4/CI
+share/groff/${VERSION}/font/devlj4/CLARENDON
+share/groff/${VERSION}/font/devlj4/CORONET
+share/groff/${VERSION}/font/devlj4/CR
+share/groff/${VERSION}/font/devlj4/DESC
+share/groff/${VERSION}/font/devlj4/GB
+share/groff/${VERSION}/font/devlj4/GBI
+share/groff/${VERSION}/font/devlj4/GI
+share/groff/${VERSION}/font/devlj4/GR
+share/groff/${VERSION}/font/devlj4/LGB
+share/groff/${VERSION}/font/devlj4/LGI
+share/groff/${VERSION}/font/devlj4/LGR
+share/groff/${VERSION}/font/devlj4/MARIGOLD
+share/groff/${VERSION}/font/devlj4/OB
+share/groff/${VERSION}/font/devlj4/OBI
+share/groff/${VERSION}/font/devlj4/OI
+share/groff/${VERSION}/font/devlj4/OR
+share/groff/${VERSION}/font/devlj4/S
+share/groff/${VERSION}/font/devlj4/SYMBOL
+share/groff/${VERSION}/font/devlj4/TB
+share/groff/${VERSION}/font/devlj4/TBI
+share/groff/${VERSION}/font/devlj4/TI
+share/groff/${VERSION}/font/devlj4/TNRB
+share/groff/${VERSION}/font/devlj4/TNRBI
+share/groff/${VERSION}/font/devlj4/TNRI
+share/groff/${VERSION}/font/devlj4/TNRR
+share/groff/${VERSION}/font/devlj4/TR
+share/groff/${VERSION}/font/devlj4/UB
+share/groff/${VERSION}/font/devlj4/UBI
+share/groff/${VERSION}/font/devlj4/UCB
+share/groff/${VERSION}/font/devlj4/UCBI
+share/groff/${VERSION}/font/devlj4/UCI
+share/groff/${VERSION}/font/devlj4/UCR
+share/groff/${VERSION}/font/devlj4/UI
+share/groff/${VERSION}/font/devlj4/UR
+share/groff/${VERSION}/font/devlj4/WINGDINGS
+share/groff/${VERSION}/font/devlj4/generate/
+share/groff/${VERSION}/font/devlj4/generate/Makefile
+share/groff/${VERSION}/font/devlj4/generate/special.awk
+share/groff/${VERSION}/font/devlj4/generate/special.map
+share/groff/${VERSION}/font/devlj4/generate/symbol.map
+share/groff/${VERSION}/font/devlj4/generate/text.map
+share/groff/${VERSION}/font/devlj4/generate/wingdings.map
+share/groff/${VERSION}/font/devpdf/
+share/groff/${VERSION}/font/devpdf/CB
+share/groff/${VERSION}/font/devpdf/CBI
+share/groff/${VERSION}/font/devpdf/CI
+share/groff/${VERSION}/font/devpdf/CR
+share/groff/${VERSION}/font/devpdf/DESC
+share/groff/${VERSION}/font/devpdf/EURO
+share/groff/${VERSION}/font/devpdf/Foundry
+share/groff/${VERSION}/font/devpdf/HB
+share/groff/${VERSION}/font/devpdf/HBI
+share/groff/${VERSION}/font/devpdf/HI
+share/groff/${VERSION}/font/devpdf/HR
+share/groff/${VERSION}/font/devpdf/S
+share/groff/${VERSION}/font/devpdf/TB
+share/groff/${VERSION}/font/devpdf/TBI
+share/groff/${VERSION}/font/devpdf/TI
+share/groff/${VERSION}/font/devpdf/TR
+share/groff/${VERSION}/font/devpdf/ZD
+share/groff/${VERSION}/font/devpdf/download
+share/groff/${VERSION}/font/devpdf/enc/
+share/groff/${VERSION}/font/devpdf/enc/text.enc
+share/groff/${VERSION}/font/devpdf/map/
+share/groff/${VERSION}/font/devpdf/map/dingbats.map
+share/groff/${VERSION}/font/devpdf/map/symbolchars
+share/groff/${VERSION}/font/devpdf/map/symbolmap
+share/groff/${VERSION}/font/devpdf/map/textmap
+share/groff/${VERSION}/font/devps/
+share/groff/${VERSION}/font/devps/AB
+share/groff/${VERSION}/font/devps/ABI
+share/groff/${VERSION}/font/devps/AI
+share/groff/${VERSION}/font/devps/AR
+share/groff/${VERSION}/font/devps/BMB
+share/groff/${VERSION}/font/devps/BMBI
+share/groff/${VERSION}/font/devps/BMI
+share/groff/${VERSION}/font/devps/BMR
+share/groff/${VERSION}/font/devps/CB
+share/groff/${VERSION}/font/devps/CBI
+share/groff/${VERSION}/font/devps/CI
+share/groff/${VERSION}/font/devps/CR
+share/groff/${VERSION}/font/devps/DESC
+share/groff/${VERSION}/font/devps/EURO
+share/groff/${VERSION}/font/devps/HB
+share/groff/${VERSION}/font/devps/HBI
+share/groff/${VERSION}/font/devps/HI
+share/groff/${VERSION}/font/devps/HNB
+share/groff/${VERSION}/font/devps/HNBI
+share/groff/${VERSION}/font/devps/HNI
+share/groff/${VERSION}/font/devps/HNR
+share/groff/${VERSION}/font/devps/HR
+share/groff/${VERSION}/font/devps/NB
+share/groff/${VERSION}/font/devps/NBI
+share/groff/${VERSION}/font/devps/NI
+share/groff/${VERSION}/font/devps/NR
+share/groff/${VERSION}/font/devps/PB
+share/groff/${VERSION}/font/devps/PBI
+share/groff/${VERSION}/font/devps/PI
+share/groff/${VERSION}/font/devps/PR
+share/groff/${VERSION}/font/devps/S
+share/groff/${VERSION}/font/devps/SS
+share/groff/${VERSION}/font/devps/TB
+share/groff/${VERSION}/font/devps/TBI
+share/groff/${VERSION}/font/devps/TI
+share/groff/${VERSION}/font/devps/TR
+share/groff/${VERSION}/font/devps/ZCMI
+share/groff/${VERSION}/font/devps/ZD
+share/groff/${VERSION}/font/devps/ZDR
+share/groff/${VERSION}/font/devps/download
+share/groff/${VERSION}/font/devps/freeeuro.afm
+share/groff/${VERSION}/font/devps/freeeuro.pfa
+share/groff/${VERSION}/font/devps/generate/
+share/groff/${VERSION}/font/devps/generate/Makefile
+share/groff/${VERSION}/font/devps/generate/afmname
+share/groff/${VERSION}/font/devps/generate/dingbats.map
+share/groff/${VERSION}/font/devps/generate/dingbats.rmap
+share/groff/${VERSION}/font/devps/generate/lgreekmap
+share/groff/${VERSION}/font/devps/generate/symbol.sed
+share/groff/${VERSION}/font/devps/generate/symbolchars
+share/groff/${VERSION}/font/devps/generate/symbolsl.afm
+share/groff/${VERSION}/font/devps/generate/textmap
+share/groff/${VERSION}/font/devps/prologue
+share/groff/${VERSION}/font/devps/symbolsl.pfa
+share/groff/${VERSION}/font/devps/text.enc
+share/groff/${VERSION}/font/devps/zapfdr.pfa
+share/groff/${VERSION}/font/devutf8/
+share/groff/${VERSION}/font/devutf8/B
+share/groff/${VERSION}/font/devutf8/BI
+share/groff/${VERSION}/font/devutf8/DESC
+share/groff/${VERSION}/font/devutf8/I
+share/groff/${VERSION}/font/devutf8/R
+share/groff/${VERSION}/oldfont/
+share/groff/${VERSION}/oldfont/devps/
+share/groff/${VERSION}/oldfont/devps/CB
+share/groff/${VERSION}/oldfont/devps/CBI
+share/groff/${VERSION}/oldfont/devps/CI
+share/groff/${VERSION}/oldfont/devps/CR
+share/groff/${VERSION}/oldfont/devps/HB
+share/groff/${VERSION}/oldfont/devps/HBI
+share/groff/${VERSION}/oldfont/devps/HI
+share/groff/${VERSION}/oldfont/devps/HNB
+share/groff/${VERSION}/oldfont/devps/HNBI
+share/groff/${VERSION}/oldfont/devps/HNI
+share/groff/${VERSION}/oldfont/devps/HNR
+share/groff/${VERSION}/oldfont/devps/HR
+share/groff/${VERSION}/oldfont/devps/NB
+share/groff/${VERSION}/oldfont/devps/NBI
+share/groff/${VERSION}/oldfont/devps/NI
+share/groff/${VERSION}/oldfont/devps/NR
+share/groff/${VERSION}/oldfont/devps/PB
+share/groff/${VERSION}/oldfont/devps/PBI
+share/groff/${VERSION}/oldfont/devps/PI
+share/groff/${VERSION}/oldfont/devps/PR
+share/groff/${VERSION}/oldfont/devps/S
+share/groff/${VERSION}/oldfont/devps/SS
+share/groff/${VERSION}/oldfont/devps/TB
+share/groff/${VERSION}/oldfont/devps/TBI
+share/groff/${VERSION}/oldfont/devps/TI
+share/groff/${VERSION}/oldfont/devps/TR
+share/groff/${VERSION}/oldfont/devps/symbol.afm
+share/groff/${VERSION}/oldfont/devps/symbolsl.afm
+share/groff/${VERSION}/oldfont/devps/zapfdr.afm
+share/groff/${VERSION}/oldfont/devps/zapfdr.ps
+share/groff/${VERSION}/pic/
+share/groff/${VERSION}/pic/chem.pic
+share/groff/${VERSION}/tmac/
+share/groff/${VERSION}/tmac/62bit.tmac
+share/groff/${VERSION}/tmac/X.tmac
+share/groff/${VERSION}/tmac/Xps.tmac
+share/groff/${VERSION}/tmac/a4.tmac
+share/groff/${VERSION}/tmac/an-ext.tmac
+share/groff/${VERSION}/tmac/an-old.tmac
+share/groff/${VERSION}/tmac/an.tmac
+share/groff/${VERSION}/tmac/andoc.tmac
+share/groff/${VERSION}/tmac/composite.tmac
+share/groff/${VERSION}/tmac/cp1047.tmac
+share/groff/${VERSION}/tmac/cs.tmac
+share/groff/${VERSION}/tmac/de.tmac
+share/groff/${VERSION}/tmac/den.tmac
+share/groff/${VERSION}/tmac/devtag.tmac
+share/groff/${VERSION}/tmac/doc-old.tmac
+share/groff/${VERSION}/tmac/doc.tmac
+share/groff/${VERSION}/tmac/dvi.tmac
+share/groff/${VERSION}/tmac/e.tmac
+share/groff/${VERSION}/tmac/ec.tmac
+share/groff/${VERSION}/tmac/eqnrc
+share/groff/${VERSION}/tmac/europs.tmac
+share/groff/${VERSION}/tmac/fallbacks.tmac
+share/groff/${VERSION}/tmac/fr.tmac
+share/groff/${VERSION}/tmac/hdmisc.tmac
+share/groff/${VERSION}/tmac/hdtbl.tmac
+share/groff/${VERSION}/tmac/html-end.tmac
+share/groff/${VERSION}/tmac/html.tmac
+share/groff/${VERSION}/tmac/hyphen.cs
+share/groff/${VERSION}/tmac/hyphen.den
+share/groff/${VERSION}/tmac/hyphen.det
+share/groff/${VERSION}/tmac/hyphen.fr
+share/groff/${VERSION}/tmac/hyphen.sv
+share/groff/${VERSION}/tmac/hyphen.us
+share/groff/${VERSION}/tmac/hyphenex.cs
+share/groff/${VERSION}/tmac/hyphenex.us
+share/groff/${VERSION}/tmac/ja.tmac
+share/groff/${VERSION}/tmac/latin1.tmac
+share/groff/${VERSION}/tmac/latin2.tmac
+share/groff/${VERSION}/tmac/latin5.tmac
+share/groff/${VERSION}/tmac/latin9.tmac
+share/groff/${VERSION}/tmac/lbp.tmac
+share/groff/${VERSION}/tmac/lj4.tmac
+share/groff/${VERSION}/tmac/m.tmac
+share/groff/${VERSION}/tmac/man.tmac
+share/groff/${VERSION}/tmac/mandoc.tmac
+share/groff/${VERSION}/tmac/mdoc/
+share/groff/${VERSION}/tmac/mdoc.tmac
+share/groff/${VERSION}/tmac/mdoc/doc-common
+share/groff/${VERSION}/tmac/mdoc/doc-ditroff
+share/groff/${VERSION}/tmac/mdoc/doc-nroff
+share/groff/${VERSION}/tmac/mdoc/doc-syms
+share/groff/${VERSION}/tmac/me.tmac
+share/groff/${VERSION}/tmac/mm/
+share/groff/${VERSION}/tmac/mm.tmac
+share/groff/${VERSION}/tmac/mm/0.MT
+share/groff/${VERSION}/tmac/mm/4.MT
+share/groff/${VERSION}/tmac/mm/5.MT
+share/groff/${VERSION}/tmac/mm/locale
+share/groff/${VERSION}/tmac/mm/ms.cov
+share/groff/${VERSION}/tmac/mm/se_locale
+share/groff/${VERSION}/tmac/mm/se_ms.cov
+share/groff/${VERSION}/tmac/mmse.tmac
+share/groff/${VERSION}/tmac/mom.tmac
+share/groff/${VERSION}/tmac/ms.tmac
+share/groff/${VERSION}/tmac/mse.tmac
+share/groff/${VERSION}/tmac/om.tmac
+share/groff/${VERSION}/tmac/papersize.tmac
+share/groff/${VERSION}/tmac/pdf.tmac
+share/groff/${VERSION}/tmac/pdfmark.tmac
+share/groff/${VERSION}/tmac/pdfpic.tmac
+share/groff/${VERSION}/tmac/pic.tmac
+share/groff/${VERSION}/tmac/ps.tmac
+share/groff/${VERSION}/tmac/psatk.tmac
+share/groff/${VERSION}/tmac/psold.tmac
+share/groff/${VERSION}/tmac/pspic.tmac
+share/groff/${VERSION}/tmac/refer-me.tmac
+share/groff/${VERSION}/tmac/refer-mm.tmac
+share/groff/${VERSION}/tmac/refer-ms.tmac
+share/groff/${VERSION}/tmac/refer.tmac
+share/groff/${VERSION}/tmac/s.tmac
+share/groff/${VERSION}/tmac/safer.tmac
+share/groff/${VERSION}/tmac/spdf.tmac
+share/groff/${VERSION}/tmac/sv.tmac
+share/groff/${VERSION}/tmac/trace.tmac
+share/groff/${VERSION}/tmac/trans.tmac
+share/groff/${VERSION}/tmac/troffrc
+share/groff/${VERSION}/tmac/troffrc-end
+share/groff/${VERSION}/tmac/tty-char.tmac
+share/groff/${VERSION}/tmac/tty.tmac
+share/groff/${VERSION}/tmac/unicode.tmac
+share/groff/${VERSION}/tmac/www.tmac
+share/groff/${VERSION}/tmac/zh.tmac
+share/groff/current
+share/groff/site-font/
+share/groff/site-tmac/
+share/groff/site-tmac/man.local
+share/groff/site-tmac/mdoc.local

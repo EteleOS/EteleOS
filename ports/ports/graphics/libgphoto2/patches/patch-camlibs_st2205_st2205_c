@@ -1,0 +1,15 @@
+st2205/st2205.c21:683:23: warning: implicit declaration of function 'rand_r'
+st2205/st2205.c:505:2: warning: implicit declaration of function 'le32toh'
+<...>
+
+Index: camlibs/st2205/st2205.c
+--- camlibs/st2205/st2205.c.orig
++++ camlibs/st2205/st2205.c
+@@ -22,6 +22,7 @@
+ #define _DARWIN_C_SOURCE
+ #include "config.h"
+ 
++#include <endian.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <errno.h>

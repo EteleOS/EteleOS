@@ -1,0 +1,9 @@
+@conflict p5-Email-Simple-Creator-*
+@pkgpath mail/p5-Email-Simple-Creator
+${P5SITE}/Email/Simple/
+${P5SITE}/Email/Simple.pm
+${P5SITE}/Email/Simple/Creator.pm
+${P5SITE}/Email/Simple/Header.pm
+@man man/man3p/Email::Simple.3p
+@man man/man3p/Email::Simple::Creator.3p
+@man man/man3p/Email::Simple::Header.3p

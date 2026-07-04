@@ -1,0 +1,22 @@
+Doesnt cope with desktop file encoding when in iso
+Index: setup.py
+--- setup.py.orig
++++ setup.py
+@@ -238,7 +238,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.aut
+         print(("Desktop File: %s\n" % desktop_file))
+         move_icon_file(self.root, target_data, self.prefix)
+         remove_appdata_in_file(self.root, target_data)
+-        update_desktop_file(desktop_file, script_path)
++#        update_desktop_file(desktop_file, script_path)
+         remove_empty_data_directory(self.root, target_data)
+ 
+ 
+@@ -253,7 +253,7 @@ DistUtilsExtra.auto.setup(
+                      'and full Unity action support. Suitable for lightweight '
+                      'desktop environments.',
+     url='https://github.com/bluesabre/menulibre',
+-    data_files=[('share/man/man1', ['menulibre.1',
++    data_files=[('man/man1', ['menulibre.1',
+                                     'menulibre-menu-validate.1']),
+                 ('share/metainfo/', ['data/metainfo/menulibre.appdata.xml'])],
+     cmdclass={'install': InstallAndUpdateDataDirectory}

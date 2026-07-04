@@ -1,0 +1,3 @@
+${P5SITE}/Perl/
+${P5SITE}/Perl/Command.pm
+@man man/man3p/Perl::Command.3p

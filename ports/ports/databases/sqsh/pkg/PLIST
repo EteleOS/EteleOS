@@ -1,0 +1,5 @@
+@bin bin/sqsh
+@man man/man1/sqsh.1
+share/examples/sqsh/
+share/examples/sqsh/global.sqshrc
+@sample ${SYSCONFDIR}/sqshrc

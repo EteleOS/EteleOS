@@ -1,0 +1,10 @@
+--- Wnn/etc/server_env.c.orig
++++ Wnn/etc/server_env.c
+@@ -33,6 +33,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include "commonhd.h"
+ #include "config.h"
+ #include "wnn_os.h"

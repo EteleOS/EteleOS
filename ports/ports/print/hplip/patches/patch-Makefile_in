@@ -1,0 +1,152 @@
+https://sources.debian.org/src/hplip/3.18.10+dfsg0-1/debian/patches/0025-Remove-all-ImageProcessor-functionality-which-is-clo.patch/
+
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -113,7 +113,7 @@ DIST_COMMON = $(am__configure_deps) \
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@LIBUSB01_BUILD_TRUE@am__append_5 = io/hpmud/musb_libusb01.c 
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@LIBUSB01_BUILD_TRUE@am__append_6 = -lusb
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@LIBUSB01_BUILD_FALSE@am__append_7 = io/hpmud/musb.c 
+-@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@LIBUSB01_BUILD_FALSE@am__append_8 = -I/usr/include/libusb-1.0
++@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@LIBUSB01_BUILD_FALSE@am__append_8 = -I${LOCALBASE}/include/libusb-1.0
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@LIBUSB01_BUILD_FALSE@am__append_9 = -lusb-1.0
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@NETWORK_BUILD_TRUE@am__append_10 = -Iprotocol/discovery
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@NETWORK_BUILD_TRUE@am__append_11 = -l$(SNMPLIB) -lcrypto
+@@ -122,8 +122,6 @@ DIST_COMMON = $(am__configure_deps) \
+ @HPLIP_BUILD_TRUE@am__append_12 = libhpip.la
+ @FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@am__append_13 = prnt/drv/hpijs.drv.in.template \
+ @FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@	prnt/drv/hpcups.drv.in.template \
+-@FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@	prnt/hpcups/libImageProcessor-x86_64.so \
+-@FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@	prnt/hpcups/libImageProcessor-x86_32.so \
+ @FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@	prnt/ipp-usb/HPLIP.conf
+ @FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@am__append_14 = dat2drv.py install.py  hplip-install init-suse-firewall init-iptables-firewall class_rpm_build.sh hplipclassdriver.spec createPPD.sh Makefile_dat2drv hpijs-drv
+ @FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@am__append_15 = scan/sane/hpaio.desc \
+@@ -142,7 +140,7 @@ DIST_COMMON = $(am__configure_deps) \
+ @FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@am__append_17 = libhpipp.la
+ @FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@NETWORK_BUILD_TRUE@am__append_18 = libhpdiscovery.la
+ @FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@NETWORK_BUILD_TRUE@am__append_19 = -Iprotocol/discovery
+-@FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@LIBUSB01_BUILD_FALSE@am__append_20 = -I/usr/include/libusb-1.0 
++@FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@LIBUSB01_BUILD_FALSE@am__append_20 = -I${LOCALBASE}/include/libusb-1.0 
+ @FULL_BUILD_TRUE@@GUI_BUILD_TRUE@@HPLIP_BUILD_TRUE@@QT3_INSTALL_TRUE@am__append_21 = ui/colorcalform2_base.ui ui/settingsdialog_base.ui ui/aligntype6form1_base.ui \
+ @FULL_BUILD_TRUE@@GUI_BUILD_TRUE@@HPLIP_BUILD_TRUE@@QT3_INSTALL_TRUE@	ui/aboutdlg_base.ui ui/imagepropertiesdlg_base.ui ui/paperedgealignform_base.ui ui/aligntype6form2_base.ui \
+ @FULL_BUILD_TRUE@@GUI_BUILD_TRUE@@HPLIP_BUILD_TRUE@@QT3_INSTALL_TRUE@	ui/nodevicesform_base.ui ui/cleaningform_base.ui ui/colorcalform_base.ui ui/devmgr4_base.ui ui/loadpaperform_base.ui \
+@@ -774,8 +772,6 @@ am__dist_locatedriver_DATA_DIST = locatedriver
+ am__dist_models_DATA_DIST = data/models/models.dat
+ am__dist_noinst_DATA_DIST = prnt/drv/hpijs.drv.in.template \
+ 	prnt/drv/hpcups.drv.in.template \
+-	prnt/hpcups/libImageProcessor-x86_64.so \
+-	prnt/hpcups/libImageProcessor-x86_32.so \
+ 	prnt/ipp-usb/HPLIP.conf scan/sane/hpaio.desc \
+ 	installer/text_install.py data/localization/hplip_de.ts \
+ 	data/localization/hplip_es.ts data/localization/hplip_fr.ts \
+@@ -4940,7 +4936,7 @@ dist_unrel_DATA = 
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@SCAN_BUILD_TRUE@	scan/sane/orblitei.h scan/sane/orblite.h scan/sane/orblite.c \
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@SCAN_BUILD_TRUE@	scan/sane/OrbliteScan/LinuxCommon.h scan/sane/OrbliteScan/MacCommon.h
+ 
+-@DARWIN_BUILD_FALSE@@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@SCAN_BUILD_TRUE@libsane_hpaio_la_LDFLAGS = -version-info 1:0:0
++@DARWIN_BUILD_FALSE@@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@SCAN_BUILD_TRUE@libsane_hpaio_la_LDFLAGS = -module -avoid-version
+ @DARWIN_BUILD_TRUE@@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@SCAN_BUILD_TRUE@libsane_hpaio_la_LDFLAGS = -module -framework CoreFoundation -version-info 1:0:0
+ # The following is a interlibrary dependency that must be compiled first.
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@SCAN_BUILD_TRUE@libsane_hpaio_la_LIBADD = libhpip.la \
+@@ -4948,7 +4944,6 @@ dist_unrel_DATA = 
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@SCAN_BUILD_TRUE@	libhpipp.la \
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@SCAN_BUILD_TRUE@	$(DBUS_LIBS) \
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@SCAN_BUILD_TRUE@	-lcups \
+-@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@SCAN_BUILD_TRUE@	-ldl \
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@SCAN_BUILD_TRUE@	$(am__append_1)
+ #libsane_hpaio_la_CFLAGS = -DWITH_NONAMESPACES -DSOAP_DEBUG
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@@SCAN_BUILD_TRUE@libsane_hpaio_la_CFLAGS = $(DBUS_CFLAGS) \
+@@ -4970,7 +4965,6 @@ dist_unrel_DATA = 
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@libhpmud_la_LDFLAGS =  \
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@	-version-info \
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@	0:6:0 -lpthread \
+-@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@	-ldl \
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@	$(am__append_6) \
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@	$(am__append_9) \
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@	$(am__append_11)
+@@ -5024,7 +5018,7 @@ dist_unrel_DATA = 
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@pstotiff_SCRIPTS = fax/filters/pstotiff
+ 
+ # hplip.state
+-@HPLIP_BUILD_TRUE@hplip_statedir = /var/lib/hp
++@HPLIP_BUILD_TRUE@hplip_statedir = /var/db/hp
+ @HPLIP_BUILD_TRUE@dist_hplip_state_DATA = 
+ @FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@dist_hplip_SCRIPTS = hpssd.py __init__.py hpdio.py
+ @FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@cmddir = $(hplipdir)
+@@ -5222,7 +5216,7 @@ dist_unrel_DATA = 
+ @FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@hppgsz_SOURCES = prnt/hpijs/PrinterProperties.cpp prnt/hpijs/PrinterProperties.h prnt/hpijs/bug.h
+ @FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@hppgsz_CXXFLAGS = $(libapdk_la_CXXFLAGS)
+ @FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@hppgsz_CFLAGS = $(libapdk_la_CFLAGS)
+-@FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@hppgsz_LDADD = libapdk.la -ljpeg -ldl
++@FULL_BUILD_TRUE@@HPLIP_BUILD_TRUE@hppgsz_LDADD = libapdk.la -ljpeg
+ 
+ # hplip.desktop
+ @FULL_BUILD_TRUE@@GUI_BUILD_TRUE@@HPLIP_BUILD_TRUE@hplip_desktopdir = $(icondir)
+@@ -5291,8 +5285,8 @@ libapdk_la_CFLAGS = $(libapdk_la_CXXFLAGS) -Iprnt/hpij
+ 
+ @HPIJS_INSTALL_TRUE@hpijs_CXXFLAGS = $(libapdk_la_CXXFLAGS)
+ @HPIJS_INSTALL_TRUE@hpijs_CFLAGS = $(libapdk_la_CFLAGS)
+-@HPIJS_INSTALL_TRUE@@HPLIP_BUILD_FALSE@hpijs_LDADD = libapdk.la -ljpeg -ldl
+-@HPIJS_INSTALL_TRUE@@HPLIP_BUILD_TRUE@hpijs_LDADD = libapdk.la -ljpeg -ldl libhpip.la libhpmud.la $(DBUS_LIBS)
++@HPIJS_INSTALL_TRUE@@HPLIP_BUILD_FALSE@hpijs_LDADD = libapdk.la -ljpeg
++@HPIJS_INSTALL_TRUE@@HPLIP_BUILD_TRUE@hpijs_LDADD = libapdk.la -ljpeg libhpip.la libhpmud.la $(DBUS_LIBS)
+ 
+ # hpcups
+ #if NEW_HPCUPS
+@@ -5336,7 +5330,7 @@ libapdk_la_CFLAGS = $(libapdk_la_CXXFLAGS) -Iprnt/hpij
+ @HPCUPS_INSTALL_TRUE@	prnt/hpcups/ImageProcessor.h
+ 
+ @HPCUPS_INSTALL_TRUE@hpcups_CXXFLAGS = $(APDK_ENDIAN_FLAG) $(DBUS_CFLAGS)
+-@HPCUPS_INSTALL_TRUE@hpcups_LDADD = -L./prnt/hpcups/ -ljpeg -ldl -lImageProcessor -lcups -lcupsimage -lz $(DBUS_LIBS)
++@HPCUPS_INSTALL_TRUE@hpcups_LDADD = -L./prnt/hpcups/ -ljpeg -lcups -lcupsimage -lz $(DBUS_LIBS)
+ #else
+ #hpcupsdir = $(cupsfilterdir)
+ #hpcups_PROGRAMS = hpcups
+@@ -5344,21 +5338,21 @@ libapdk_la_CFLAGS = $(libapdk_la_CXXFLAGS) -Iprnt/hpij
+ #hpcups_CXXFLAGS = $(libapdk_la_CXXFLAGS)
+ #hpcups_CFLAGS = $(libapdk_la_CFLAGS)
+ #if HPCUPS_ONLY_BUILD
+-#hpcups_LDADD = libapdk.la -ljpeg -ldl -lcups -lcupsimage
++#hpcups_LDADD = libapdk.la -ljpeg -lcups -lcupsimage
+ #else
+-#hpcups_LDADD = libapdk.la -ljpeg -ldl libhpip.la libhpmud.la $(DBUS_LIBS) -lcups -lcupsimage
++#hpcups_LDADD = libapdk.la -ljpeg libhpip.la libhpmud.la $(DBUS_LIBS) -lcups -lcupsimage
+ #endif #HPCUPS_ONLY_BUILD
+ #endif # NEW_HPCUPS
+ 
+ # hpcupsfax
+ @FAX_BUILD_TRUE@@HPCUPS_INSTALL_TRUE@@HPCUPS_ONLY_BUILD_FALSE@@HPLIP_CLASS_DRIVER_FALSE@hpcupsfaxdir = $(cupsfilterdir)
+ @FAX_BUILD_TRUE@@HPCUPS_INSTALL_TRUE@@HPCUPS_ONLY_BUILD_FALSE@@HPLIP_CLASS_DRIVER_FALSE@hpcupsfax_SOURCES = prnt/hpijs/hpcupsfax.cpp prnt/hpijs/hpcupsfax.h common/utils.h common/utils.c
+-@FAX_BUILD_TRUE@@HPCUPS_INSTALL_TRUE@@HPCUPS_ONLY_BUILD_FALSE@@HPLIP_CLASS_DRIVER_FALSE@hpcupsfax_LDADD = libhpip.la -lcups -lcupsimage -ldl
++@FAX_BUILD_TRUE@@HPCUPS_INSTALL_TRUE@@HPCUPS_ONLY_BUILD_FALSE@@HPLIP_CLASS_DRIVER_FALSE@hpcupsfax_LDADD = libhpip.la -lcups -lcupsimage
+ 
+ # hpcdmfax
+ @FAX_BUILD_TRUE@@HPCUPS_INSTALL_TRUE@@HPCUPS_ONLY_BUILD_FALSE@@HPLIP_CLASS_DRIVER_FALSE@hpcdmfaxdir = $(cupsfilterdir)
+ @FAX_BUILD_TRUE@@HPCUPS_INSTALL_TRUE@@HPCUPS_ONLY_BUILD_FALSE@@HPLIP_CLASS_DRIVER_FALSE@hpcdmfax_SOURCES = fax/filters/cdmfax/hpcupscdmfax.cpp fax/filters/cdmfax/hpcupscdmfax.h fax/filters/cdmfax/jetlib.cpp fax/filters/cdmfax/jetlib.h
+-@FAX_BUILD_TRUE@@HPCUPS_INSTALL_TRUE@@HPCUPS_ONLY_BUILD_FALSE@@HPLIP_CLASS_DRIVER_FALSE@hpcdmfax_LDADD = libhpip.la -lcups -lcupsimage -ldl -ljpeg
++@FAX_BUILD_TRUE@@HPCUPS_INSTALL_TRUE@@HPCUPS_ONLY_BUILD_FALSE@@HPLIP_CLASS_DRIVER_FALSE@hpcdmfax_LDADD = libhpip.la -lcups -lcupsimage -ljpeg
+ dat2drvdir = $(hplipdir)
+ dat2drv_SOURCES = Common.h  Dat2drv.cpp  Dat2drv.h Normalize.cpp  Normalize.h
+ @GCC_GE_47_TRUE@dat2drv_CXXFLAGS = -std=c++11
+@@ -10308,19 +10302,9 @@ uninstall-am: uninstall-apparmor_abstractionDATA \
+ 
+ 
+ install-data-hook:
+-@HPLIP_BUILD_TRUE@	if [ \( "$(UNAME)" = "x86_64" -a  -d "$(libdir)/" \) ]; then \
+-@HPLIP_BUILD_TRUE@		cp prnt/hpcups/libImageProcessor-x86_64.so $(libdir)/ ; \
+-@HPLIP_BUILD_TRUE@		chmod 775 $(libdir)/libImageProcessor-x86_64.so ; \
+-@HPLIP_BUILD_TRUE@		ln -sf $(libdir)/libImageProcessor-x86_64.so $(libdir)/libImageProcessor.so ; \
+-@HPLIP_BUILD_TRUE@	fi; \
+-@HPLIP_BUILD_TRUE@	if [ \( \( "$(UNAME)" = "i686" -o "$(UNAME)" = "i386" \) -a -d "$(libdir)/" \) ]; then \
+-@HPLIP_BUILD_TRUE@		cp prnt/hpcups/libImageProcessor-x86_32.so $(libdir)/ ; \
+-@HPLIP_BUILD_TRUE@		chmod 775 $(libdir)/libImageProcessor-x86_32.so ; \
+-@HPLIP_BUILD_TRUE@		ln -sf $(libdir)/libImageProcessor-x86_32.so $(libdir)/libImageProcessor.so ; \
+-@HPLIP_BUILD_TRUE@	fi
+-@HPLIP_BUILD_TRUE@	if [ -d "/usr/share/ipp-usb/quirks/" ]; then \
++@HPLIP_BUILD_TRUE@	if [ -d "${LOCALBASE}/share/ipp-usb/quirks/" ]; then \
+ @HPLIP_BUILD_TRUE@		echo "ipp-usb directory exists"; \
+-@HPLIP_BUILD_TRUE@		cp prnt/ipp-usb/HPLIP.conf /usr/share/ipp-usb/quirks/ ; \
++@HPLIP_BUILD_TRUE@		cp prnt/ipp-usb/HPLIP.conf ${PREFIX}/share/ipp-usb/quirks/ ; \
+ @HPLIP_BUILD_TRUE@	fi
+ #	   If scanner build, add hpaio entry to sane dll.conf.
+ @HPLIP_BUILD_TRUE@@HPLIP_CLASS_DRIVER_FALSE@	if [ "$(scan_build)" = "yes" ]; then \

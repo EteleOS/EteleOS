@@ -1,0 +1,45 @@
+Index: etc/odbc.ini.sample
+--- etc/odbc.ini.sample.orig
++++ etc/odbc.ini.sample
+@@ -1,22 +1,26 @@
+ ;
+ ;  odbc.ini
+ ;
++[ODBC]
++Trace         = 0
++TraceAutoStop = 0
++TraceFile     = sql.log
++
+ [ODBC Data Sources]
+-OpenLink = OpenLink (MT)
++ExampleTDS = example MS server
++ExampleSQLite3 = example SQLite3 db
+ 
+-[OpenLink]
+-Driver          = /home/openlink/lib/oplodbc.so.1
+-Description     = Sample OpenLink MT DSN
+-Host            = localhost
+-ServerType      = Oracle 8
+-FetchBufferSize = 99
+-UserName        = 
+-Password        = 
+-Database        = 
+-ServerOptions   = 
+-ConnectOptions  = 
+-Options         = 
+-ReadOnly        = no
++[ExampleTDS]
++Description = test ODBC for MSSQL
++Driver      = FreeTDS
++Servername  = <name of freetds.conf section>
++TDS_Version = 7.0
++language    = us_english
+ 
++[ExampleSQLite3]
++Description = test ODBC for SQLite3
++Driver = SQLite3
++Database = :memory:
++
+ [Default]
+-Driver = /home/openlink/lib/oplodbc.so.1
++Driver = FreeTDS

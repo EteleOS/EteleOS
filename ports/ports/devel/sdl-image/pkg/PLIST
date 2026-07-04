@@ -1,0 +1,6 @@
+include/SDL/
+include/SDL/SDL_image.h
+lib/libSDL_image.a
+lib/libSDL_image.la
+@lib lib/libSDL_image.so.${LIBSDL_image_VERSION}
+lib/pkgconfig/SDL_image.pc

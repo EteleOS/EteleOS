@@ -1,0 +1,11 @@
+--- Makefile.in.orig	Mon Jan 28 08:15:08 2008
++++ Makefile.in	Thu Mar 13 21:57:46 2008
+@@ -54,7 +54,7 @@ TAT_OBJ = ./src/pimpstat.o ./src/config.o
+ 
+ # Final targets
+ 
+-XYD_BIN = ./bin/in.imapproxyd
++XYD_BIN = ./bin/imapproxyd
+ TAT_BIN = ./bin/pimpstat
+ 
+ # Rules

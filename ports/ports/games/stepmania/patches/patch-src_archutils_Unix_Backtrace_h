@@ -1,0 +1,14 @@
+Index: src/archutils/Unix/Backtrace.h
+--- src/archutils/Unix/Backtrace.h.orig
++++ src/archutils/Unix/Backtrace.h
+@@ -43,8 +43,10 @@ bool GetThreadBacktraceContext( uint64_t ThreadID, Bac
+ /* Set up a BacktraceContext to get a backtrace after receiving a signal, given
+  * a ucontext_t (see sigaction(2)).  (This interface is UNIX-specific.) */
+ #if defined(UNIX) || defined(MACOSX)
++#if !defined(__OpenBSD__)
+ #include <ucontext.h>
+ void GetSignalBacktraceContext( BacktraceContext *ctx, const ucontext_t *uc );
++#endif
+ #endif
+ 
+ #define BACKTRACE_METHOD_NOT_AVAILABLE ((void*) -1)

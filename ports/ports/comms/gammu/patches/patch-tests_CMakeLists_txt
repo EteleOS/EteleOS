@@ -1,0 +1,36 @@
+Index: tests/CMakeLists.txt
+--- tests/CMakeLists.txt.orig
++++ tests/CMakeLists.txt
+@@ -70,10 +70,11 @@ if (HAVE_MYSQL_MYSQL_H OR LIBDBI_FOUND OR HAVE_POSTGRE
+         include_directories (${POSTGRES_INCLUDE_DIR})
+     endif (POSTGRES_FOUND)
+ 
+-    add_executable(sql-parse-date sql-parse-date.c)
+-    add_coverage(sql-parse-date)
+-    target_link_libraries (sql-parse-date gsmsd)
+-    add_test(sql-parse-date "${GAMMU_TEST_PATH}/sql-parse-date${CMAKE_EXECUTABLE_SUFFIX}")
++# Disable SQL tests
++#    add_executable(sql-parse-date sql-parse-date.c)
++#    add_coverage(sql-parse-date)
++#    target_link_libraries (sql-parse-date gsmsd)
++#    add_test(sql-parse-date "${GAMMU_TEST_PATH}/sql-parse-date${CMAKE_EXECUTABLE_SUFFIX}")
+ endif (HAVE_MYSQL_MYSQL_H OR LIBDBI_FOUND OR HAVE_POSTGRESQL_LIBPQ_FE_H)
+ 
+ # Backup comments
+@@ -978,11 +979,12 @@ if (WITH_ATGEN)
+     target_link_libraries(at-charset libGammu ${LIBINTL_LIBRARIES})
+     add_test(at-charset "${GAMMU_TEST_PATH}/at-charset${CMAKE_EXECUTABLE_SUFFIX}")
+ 
++# Disable failing to build test 
+     # AT statemachine
+-    add_executable(at-statemachine at-statemachine.c)
+-    add_coverage(at-statemachine)
+-    target_link_libraries(at-statemachine libGammu ${LIBINTL_LIBRARIES})
+-    add_test(at-statemachine "${GAMMU_TEST_PATH}/at-statemachine${CMAKE_EXECUTABLE_SUFFIX}")
++#    add_executable(at-statemachine at-statemachine.c)
++#    add_coverage(at-statemachine)
++#    target_link_libraries(at-statemachine libGammu ${LIBINTL_LIBRARIES})
++#    add_test(at-statemachine "${GAMMU_TEST_PATH}/at-statemachine${CMAKE_EXECUTABLE_SUFFIX}")
+ endif (WITH_ATGEN)
+ 
+ # Line parser tests

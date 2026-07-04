@@ -1,0 +1,12 @@
+Index: src/menu_keysetup.c
+--- src/menu_keysetup.c.orig
++++ src/menu_keysetup.c
+@@ -4,7 +4,7 @@
+ #include "menu.h"
+ 
+ void KeyDrv_SetDefaultMappings(void);
+-uchar tempbuf[80];
++static uchar tempbuf[80];
+ 
+ uchar *keysetup_menu1[MAXM] = {32,(9*8),  2, keysetup_init, NULL, NULL, NULL,
+ 					"PLAYER 1 SETUP", MNU_SEPERATOR, NULL, 0,

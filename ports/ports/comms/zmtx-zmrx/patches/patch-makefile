@@ -1,0 +1,10 @@
+--- makefile.orig	Mon Apr 24 11:09:16 2017
++++ makefile	Mon Apr 24 11:09:34 2017
+@@ -1,6 +1,6 @@
+ CC=gcc
+ #CFLAGS=-O -DUNITE
+-CFLAGS=-O -DSUNOS4
++CFLAGS += -DSUNOS4
+ 
+ all:	zmtx zmrx
+ 

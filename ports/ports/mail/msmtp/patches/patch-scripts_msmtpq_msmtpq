@@ -1,0 +1,9 @@
+Index: scripts/msmtpq/msmtpq
+--- scripts/msmtpq/msmtpq.orig
++++ scripts/msmtpq/msmtpq
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/sh
+ 
+ ##--------------------------------------------------------------
+ ##

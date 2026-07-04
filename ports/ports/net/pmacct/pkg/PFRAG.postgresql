@@ -1,0 +1,11 @@
+share/pmacct/sql/README.pgsql
+share/pmacct/sql/pmacct-create-db.pgsql
+share/pmacct/sql/pmacct-create-table_bgp_v1.pgsql
+share/pmacct/sql/pmacct-create-table_v1.pgsql
+share/pmacct/sql/pmacct-create-table_v2.pgsql
+share/pmacct/sql/pmacct-create-table_v3.pgsql
+share/pmacct/sql/pmacct-create-table_v4.pgsql
+share/pmacct/sql/pmacct-create-table_v5.pgsql
+share/pmacct/sql/pmacct-create-table_v6.pgsql
+share/pmacct/sql/pmacct-create-table_v7_v8.pgsql
+share/pmacct/sql/pmacct-create-table_v9.pgsql

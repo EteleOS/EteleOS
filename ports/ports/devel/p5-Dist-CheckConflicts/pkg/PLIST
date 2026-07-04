@@ -1,0 +1,3 @@
+${P5SITE}/Dist/
+${P5SITE}/Dist/CheckConflicts.pm
+@man man/man3p/Dist::CheckConflicts.3p

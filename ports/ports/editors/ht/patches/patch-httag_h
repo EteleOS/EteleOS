@@ -1,0 +1,14 @@
+fix arch where char are unsigned by default
+
+Index: httag.h
+--- httag.h.orig
++++ httag.h
+@@ -69,7 +69,7 @@ struct ht_tag_flags {
+ } PACKED;
+ 
+ struct ht_tag_flags_s {
+-	char bitidx;
++	signed char bitidx;
+ 	const char *desc;
+ } PACKED;
+ 

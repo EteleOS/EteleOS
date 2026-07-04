@@ -1,0 +1,9 @@
+Index: ncdump/testpathcvt.sh
+--- ncdump/testpathcvt.sh.orig
++++ ncdump/testpathcvt.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ if test "x$srcdir" = x ; then srcdir=`pwd`; fi
+ . ../test_common.sh

@@ -1,0 +1,15 @@
+--- mirmon.pl.orig	Sat Jul 23 11:45:38 2016
++++ mirmon.pl	Sat Jul 30 22:18:56 2016
+@@ -55,6 +55,12 @@ $opt{v} ||= $opt{d} ;
+ 
+ my $URL = shift ;
+ 
++use POSIX qw(setuid setgid getpwnam);
++print "Dropping privileges to _mirmon ...\n" if Mirmon::debug;
++my (undef, undef, $uid, $gid) = POSIX::getpwnam("_mirmon");
++POSIX::setgid($uid) or die "setgid() to $gid failed, abort\n";
++POSIX::setuid($uid) or die "setuid() to $uid failed, abort\n";
++
+ my $M = Mirmon -> new ( $opt{c} ) ;
+ $M -> conf -> timeout ( $opt{t} ) if $opt{t} ;
+ 

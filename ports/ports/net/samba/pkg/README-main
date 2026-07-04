@@ -1,0 +1,38 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Configuration
+=============
+The configuration file, found at ${SYSCONFDIR}/samba/smb.conf can be used right
+away for simple configurations.  Local users should be added to the
+Samba user database using the pdbedit(1) utility in order to use the
+Samba server.
+
+# pdbedit -a -u <username>
+
+Install the samba-docs package and see documentation files in
+${PREFIX}/share/doc/samba and example config files in
+${PREFIX}/share/examples/samba for more information.
+
+Useful documentation is also available from the Samba wiki at
+
+  https://wiki.samba.org/index.php/Main_Page
+
+Winbind
+=======
+Winbind on OpenBSD does not support local user logins as there
+is no nsswitch support.  Winbind support is included for external
+systems like Dovecot or Squid that are able to use it to authenticate
+users.
+
+AD DC support
+=============
+Support for AD DC mode is explicitely disabled in this port.  The AD DC
+code is broken at runtime on several archs, and would need xattrs/ACLs
+support to be truely usable.
+
+Caveat
+======
+Several VFS Modules provided by Samba, e.g. acl_tdb, are essentially
+broken on OpenBSD.

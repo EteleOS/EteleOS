@@ -1,0 +1,14 @@
+set libzest.so location
+
+Index: src/Plugin/ZynAddSubFX/ZynAddSubFX-UI-Zest.cpp
+--- src/Plugin/ZynAddSubFX/ZynAddSubFX-UI-Zest.cpp.orig
++++ src/Plugin/ZynAddSubFX/ZynAddSubFX-UI-Zest.cpp
+@@ -65,6 +65,8 @@ class ZynAddSubFXUI : public UI (public)
+         handle = dlopen("@loader_path/libzest.dylib", RTLD_NOW | RTLD_LOCAL);
+         if(!handle) // VST
+             handle = dlopen("@loader_path/../Resources/libzest.dylib", RTLD_LAZY);
++#elif defined __OpenBSD__
++        handle = dlopen("/usr/local/share/zynaddsubfx/libzest.so", RTLD_LAZY);
+ #else
+         handle = dlopen("./libzest.so", RTLD_LAZY);
+         if(!handle)

@@ -1,0 +1,11 @@
+Index: libdjvu/DjVuPalette.cpp
+--- libdjvu/DjVuPalette.cpp.orig
++++ libdjvu/DjVuPalette.cpp
+@@ -99,6 +99,7 @@ inline unsigned char 
+ umin(unsigned char a, unsigned char b) 
+ { return (a>b) ? b : a; }
+ 
++#define fmin myfmin
+ inline float 
+ fmin(float a, float b)
+ { return (a>b) ? b : a; }

@@ -1,0 +1,9 @@
+bin/systemshock
+share/doc/pkg-readmes/${PKGSTEM}
+share/shockolate/
+share/shockolate/shaders/
+share/shockolate/shaders/color.frag
+share/shockolate/shaders/main.vert
+share/shockolate/shaders/star.frag
+share/shockolate/shaders/texture.frag
+@bin share/shockolate/systemshock

@@ -1,0 +1,4 @@
+@conflict lighttpd-<1.4.22p0
+@conflict cherokee-<=0.8.1
+@bin bin/spawn-fcgi
+@man man/man1/spawn-fcgi.1

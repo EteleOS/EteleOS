@@ -1,0 +1,20 @@
+--- scmfig.h.orig	Thu Jan 31 02:50:56 2008
++++ scmfig.h	Sat Nov 29 15:26:11 2008
+@@ -118,7 +118,7 @@ rgx.c	init_rgx();	regcomp and regexec. */
+ /* Define CDR_DOUBLES if (sizeof(double)==sizeof(long)), i.e.
+    a `single' is really a double. */
+ #ifdef FLOATS
+-# ifdef __alpha
++# if defined(__LP64__)
+ #  define CDR_DOUBLES
+ # endif
+ 
+@@ -253,7 +253,7 @@ rgx.c	init_rgx();	regcomp and regexec. */
+ #  endif
+ # endif
+ #endif
+-#ifdef __alpha
++#if defined(__LP64__)
+ # define SHORT_INT
+ #endif
+ #ifdef __ia64__

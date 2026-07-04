@@ -1,0 +1,2 @@
+bin/ifstat
+@man man/man1/ifstat.1

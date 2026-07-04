@@ -1,0 +1,11 @@
+@conflict automake-<=1.4-p6p1
+@conflict pkgconfig-<=0.19p0
+bin/aclocal
+bin/autoconf
+bin/autoheader
+bin/autom4te
+bin/automake
+bin/autoreconf
+bin/autoupdate
+share/aclocal/
+share/aclocal/pkg.m4

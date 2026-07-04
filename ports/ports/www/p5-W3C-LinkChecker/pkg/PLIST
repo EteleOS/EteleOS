@@ -1,0 +1,4 @@
+bin/checklink
+${P5SITE}/W3C/
+${P5SITE}/W3C/LinkChecker.pm
+@man man/man1/checklink.1

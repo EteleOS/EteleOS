@@ -1,0 +1,61 @@
+Index: src/buildtools/configure.json
+--- src/buildtools/configure.json.orig
++++ src/buildtools/configure.json
+@@ -386,7 +386,7 @@
+     "features": {
+         "webengine-core-support": {
+             "label": "Support Qt WebEngine Core",
+-            "condition": "(config.linux || config.win32 || config.macos)
++            "condition": "(config.unix || config.win32 || config.macos)
+                          && !config.static
+                          && module.gui
+                          && features.webengine-submodule
+@@ -399,21 +399,21 @@
+                          && features.webengine-python
+                          && features.webengine-nodejs
+                          && (!config.sanitizer || features.webengine-sanitizer)
+-                         && (!config.linux || features.pkg-config)
+-                         && (!config.linux || features.webengine-host-pkg-config)
++                         && (!config.unix || features.pkg-config)
++                         && (!config.unix || features.webengine-host-pkg-config)
+                          && (!config.linux || features.webengine-system-glibc)
+                          && (!config.linux || features.webengine-system-khr)
+-                         && (!config.linux || features.webengine-system-nss)
+-                         && (!config.linux || features.webengine-system-dbus)
+-                         && (!config.linux || features.webengine-system-fontconfig)
+-                         && (!config.linux || !features.pkg-config || !features.xcb || features.webengine-ozone-x11)
++                         && (!config.unix || features.webengine-system-nss)
++                         && (!config.unix || features.webengine-system-dbus)
++                         && (!config.unix || features.webengine-system-fontconfig)
++                         && (!config.unix || !features.pkg-config || !features.xcb || features.webengine-ozone-x11)
+                          && (!config.win32 || features.webengine-win-compiler64)
+                          && (!config.win32 || features.webengine-winversion)",
+             "output": [ "privateFeature" ]
+         },
+         "webengine-qtpdf-support": {
+             "label": "Support Qt Pdf",
+-            "condition": "(config.linux || config.win32 || config.macos || config.ios)
++            "condition": "(config.liunx || config.win32 || config.macos || config.ios)
+                          && module.gui
+                          && features.webengine-submodule
+                          && features.webengine-nowhitespace
+@@ -424,8 +424,8 @@
+                          && features.webengine-flex
+                          && features.webengine-python
+                          && (!config.sanitizer || features.webengine-sanitizer)
+-                         && (!config.linux || features.pkg-config)
+-                         && (!config.linux || features.webengine-host-pkg-config)
++                         && (!config.unix || features.pkg-config)
++                         && (!config.unix || features.webengine-host-pkg-config)
+                          && (!config.win32 || features.webengine-winversion)",
+             "output": [ "privateFeature" ]
+         },
+@@ -730,7 +730,7 @@
+         },
+         "webengine-arm-thumb": {
+             "label": "Thumb instruction set",
+-            "condition": "config.linux && arch.arm && tests.webengine-arm-thumb",
++            "condition": "config.unix && arch.arm && tests.webengine-arm-thumb",
+             "output": [ "privateFeature" ]
+         },
+         "webengine-sanitizer" : {

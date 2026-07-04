@@ -1,0 +1,5 @@
+${P5SITE}/HTTP/Async/
+${P5SITE}/HTTP/Async.pm
+${P5SITE}/HTTP/Async/Polite.pm
+@man man/man3p/HTTP::Async.3p
+@man man/man3p/HTTP::Async::Polite.3p

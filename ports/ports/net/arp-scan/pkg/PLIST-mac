@@ -1,0 +1,20 @@
+@conflict arp-scan-<=1.9p10
+@conflict arpwatch-<=2.1a15p12
+share/arp-scan/
+share/arp-scan/ieee-oui.txt
+share/arp-scan/mac-vendor.txt.dist
+@sample ${SYSCONFDIR}/arp-scan/
+@sample ${SYSCONFDIR}/arp-scan/mac-vendor.txt
+share/examples/arpwatch/
+share/examples/arpwatch/ethercodes.dat
+@sample /var/arpwatch/
+@mode 444
+@sample /var/arpwatch/ethercodes.dat
+@mode
+share/mac-vendor/
+share/mac-vendor/aircrack-oui.txt
+share/mac-vendor/iab.csv
+share/mac-vendor/ma-l.csv
+share/mac-vendor/ma-m.csv
+share/mac-vendor/ma-s.csv
+share/mac-vendor/unofficial.csv

@@ -1,0 +1,11 @@
+--- src/Makefile.in.orig	Tue Nov 15 19:59:39 2011
++++ src/Makefile.in	Tue Nov 15 20:00:48 2011
+@@ -57,7 +57,7 @@ all : librep.la $(DL_OBJS) check-dl rep rep-remote rep
+ 
+ librep.la : $(OBJS) $(LIBOBJS)
+ 	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) \
+-	  -version-info $(libversion) \
++	  ${LIBrep_LTVERSION} \
+ 	  -o $@ $^ -rpath $(libdir) $(LIBS) $(GMP_LIBS)
+ 
+ rep : $(REP_OBJS) $(EXTRA_LIBOBJS) librep.la

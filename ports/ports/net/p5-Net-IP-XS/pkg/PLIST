@@ -1,0 +1,10 @@
+${P5ARCH}/
+${P5ARCH}/Net/
+${P5ARCH}/Net/IP/
+${P5ARCH}/Net/IP/XS.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Net/
+${P5ARCH}/auto/Net/IP/
+${P5ARCH}/auto/Net/IP/XS/
+@so ${P5ARCH}/auto/Net/IP/XS/XS.so
+@man man/man3p/Net::IP::XS.3p

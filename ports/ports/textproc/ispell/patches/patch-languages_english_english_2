@@ -1,0 +1,12 @@
+Index: languages/english/english.2
+--- languages/english/english.2.orig
++++ languages/english/english.2
+@@ -2078,7 +2078,7 @@ auxinically
+ auxotroph
+ auxotrophic
+ auxotrophy
+-avaliable
++available
+ avascular
+ avast
+ avatar

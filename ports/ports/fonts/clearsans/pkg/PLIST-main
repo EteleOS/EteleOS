@@ -1,0 +1,12 @@
+share/doc/clearsans/
+share/doc/clearsans/LICENSE-2.0.txt
+share/fonts/
+@fontdir share/fonts/clearsans/
+share/fonts/clearsans/ClearSans-Bold.ttf
+share/fonts/clearsans/ClearSans-BoldItalic.ttf
+share/fonts/clearsans/ClearSans-Italic.ttf
+share/fonts/clearsans/ClearSans-Light.ttf
+share/fonts/clearsans/ClearSans-Medium.ttf
+share/fonts/clearsans/ClearSans-MediumItalic.ttf
+share/fonts/clearsans/ClearSans-Regular.ttf
+share/fonts/clearsans/ClearSans-Thin.ttf

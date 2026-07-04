@@ -1,0 +1,12 @@
+@bin bin/textsuggest
+@bin bin/textsuggest-server
+libexec/textsuggest/
+@bin libexec/textsuggest/command
+@bin libexec/textsuggest/math_expression
+share/applications/textsuggest-server.desktop
+share/icons/hicolor/scalable/apps/TextSuggest.svg
+share/textsuggest/
+share/textsuggest/dictionaries/
+share/textsuggest/dictionaries/English.txt
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

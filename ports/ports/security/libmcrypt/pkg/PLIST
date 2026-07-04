@@ -1,0 +1,11 @@
+bin/libmcrypt-config
+include/mcrypt.h
+include/mutils/
+include/mutils/mcrypt.h
+lib/libmcrypt/
+lib/libmcrypt.a
+lib/libmcrypt.la
+@lib lib/libmcrypt.so.${LIBmcrypt_VERSION}
+@man man/man3/mcrypt.3
+share/aclocal/
+share/aclocal/libmcrypt.m4

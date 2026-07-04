@@ -1,0 +1,4 @@
+@bin bin/netstrain
+@bin bin/netstraind
+share/doc/netstrain/
+share/doc/netstrain/README

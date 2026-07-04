@@ -1,0 +1,3 @@
+${P5SITE}/Probe/
+${P5SITE}/Probe/Perl.pm
+@man man/man3p/Probe::Perl.3p

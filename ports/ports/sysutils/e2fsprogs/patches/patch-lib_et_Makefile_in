@@ -1,0 +1,14 @@
+Index: lib/et/Makefile.in
+--- lib/et/Makefile.in.orig
++++ lib/et/Makefile.in
+@@ -26,8 +26,8 @@ SHARE_FILES= et_c.awk et_h.awk
+ LIBRARY= libcom_err
+ LIBDIR= et
+ 
+-ELF_VERSION = 2.1
+-ELF_SO_VERSION = 2
++ELF_VERSION = $(LIBcom_err_VERSION)
++ELF_SO_VERSION = $(LIBcom_err_VERSION)
+ ELF_IMAGE = libcom_err
+ ELF_MYDIR = et
+ ELF_INSTALL_DIR = $(root_libdir)

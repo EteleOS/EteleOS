@@ -1,0 +1,7 @@
+@extraunexec rm -rf /var/spool/cucipop/*
+libexec/cucipop
+libexec/makevpopdb
+@man man/man8/cucipop.8
+@man man/man8/makevpopdb.8
+@sample /var/spool/cucipop/
+@sample /var/spool/cucipop/bulletins/

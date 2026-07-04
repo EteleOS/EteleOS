@@ -1,0 +1,25 @@
+Index: src/config.c
+--- src/config.c.orig
++++ src/config.c
+@@ -471,3 +471,21 @@ struct SubnetList *parseSubnetAddress(char *addrstr) {
+ 
+     return tmpSubnet;
+ }
++
++struct vifconfig *
++config_getinterface(const char *ifname)
++{
++	struct vifconfig *vc;
++
++	if (vifconf == NULL)
++		return (NULL);
++
++	for (vc = vifconf; vc; vc = vc->next) {
++		if (strcmp(vc->name, ifname))
++			continue;
++
++		return (vc);
++	}
++
++	return (NULL);
++}

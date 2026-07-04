@@ -1,0 +1,4 @@
+@pkgpath palm/palm-bookmarks
+bin/palm-bookmarks
+share/doc/palm-bookmarks/
+share/doc/palm-bookmarks/README

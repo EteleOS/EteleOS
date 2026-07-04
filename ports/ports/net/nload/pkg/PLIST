@@ -1,0 +1,2 @@
+@bin bin/nload
+@man man/man1/nload.1

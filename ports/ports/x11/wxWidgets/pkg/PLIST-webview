@@ -1,0 +1,11 @@
+@conflict wxWidgets-webkit-*
+@pkgpath x11/wxWidgets,-webkit
+include/wx-3.2/wx/gtk/webview_webkit.h
+include/wx-3.2/wx/gtk/webviewhistoryitem_webkit.h
+include/wx-3.2/wx/webview.h
+include/wx-3.2/wx/webviewarchivehandler.h
+include/wx-3.2/wx/webviewfshandler.h
+@lib lib/libwx_gtk3u_webview-3.2.so.${LIBwx_gtk3u_webview-3.2_VERSION}
+lib/wx/3.2/
+lib/wx/3.2/web-extensions/
+@so lib/wx/3.2/web-extensions/webkit2_extu-3.2.so

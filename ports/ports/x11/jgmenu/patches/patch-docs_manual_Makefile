@@ -1,0 +1,12 @@
+Index: docs/manual/Makefile
+--- docs/manual/Makefile.orig
++++ docs/manual/Makefile
+@@ -4,7 +4,7 @@ man7pages  = jgmenututorial.7 jgmenuunicode.7
+ manpages   = $(man1pages) $(man7pages)
+ 
+ prefix ?= /usr/local
+-mandir ?= $(prefix)/share/man
++mandir ?= $(prefix)/man
+ man1dir = $(mandir)/man1
+ man7dir = $(mandir)/man7
+ 

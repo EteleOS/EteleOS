@@ -1,0 +1,64 @@
+--- Wnn/jutil/wnnstat.c.orig
++++ Wnn/jutil/wnnstat.c
+@@ -49,6 +49,9 @@ static char *rcs_id = "$Id: wnnstat.c,v 1.15 1994/06/2
+ /*	Version 4.0
+  */
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
+ #include "jslib.h"
+ #include "jllib.h"
+ #include "jd_sock.h"
+@@ -69,7 +72,7 @@ struct wnn_ret_buf rb = {0, NULL};
+ #define W_DIC_ALL 5
+ #define W_VERSION 6
+ 
+-#ifdef JAPANSE
++#ifdef JAPANESE
+ extern  int eujis_to_jis8(), eujis_to_sjis();
+ #endif
+ #ifdef CHINESE
+@@ -96,7 +99,7 @@ int com = W_WHO;
+ 
+ struct msg_cat *cd;
+ 
+-void
++int
+ main(argc,argv)
+ int argc;
+ char **argv;
+@@ -129,13 +132,13 @@ char **argv;
+ 	strcpy(lang, WNN_DEFAULT_LANG);
+ 
+ #ifdef JAPANESE
+-    while ((c = getopt(argc,argv,"EewdDfFUSJVL:K")) != EOF) {
++    while ((c = getopt(argc,argv,"weEdDfFUSJVL:")) != EOF) {
+ #endif
+ #ifdef  CHINESE
+-    while ((c = getopt(argc,argv,"EewdDfFUBCVL:K")) != EOF) {
++    while ((c = getopt(argc,argv,"weEdDfFUBCVL:")) != EOF) {
+ #endif
+ # ifdef KOREAN
+-    while ((c = getopt(argc,argv,"EewdDfFUVL:K")) != EOF) {
++    while ((c = getopt(argc,argv,"weEdDfFUKVL:")) != EOF) {
+ #endif
+ 	switch(c){
+ 	case 'w':
+@@ -317,13 +320,13 @@ static void
+ usage()
+ {
+ #ifdef JAPANESE
+-    fprintf(stderr, "wnnstat [-weEdDfFKSUJ] [-L lang_name] [server_name]\n");
++    fprintf(stderr, "wnnstat [-weEdDfFUSJV] [-L lang_name] [server_name]\n");
+ #endif	/* JAPANESE */
+ #ifdef	CHINESE
+-    fprintf(stderr, "wnnstat [-weEdDfFSUJBC] [-L lang_name] [server_name]\n");
++    fprintf(stderr, "wnnstat [-weEdDfFUBCV] [-L lang_name] [server_name]\n");
+ #endif	/* CHINESE */
+ #ifdef KOREAN
+-    fprintf(stderr, "kwnnstat [-weEdDfFKU] [-L lang_name] [server_name]\n");
++    fprintf(stderr, "kwnnstat [-weEdDfFUKV] [-L lang_name] [server_name]\n");
+ #endif	/* KOREAN */
+     exit(-1);
+ }

@@ -1,0 +1,11 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -43,6 +43,7 @@ CPPFLAGS += -DVERSION=\"$(VERSION)\"
+ 
+ # Enable this for multithreading.
+ CFLAGS += -pthread
++LDFLAGS += -pthread
+ CPPFLAGS += -DTHREADS
+ 
+ # Optimizing for speed. Un-comment for testing Linux build

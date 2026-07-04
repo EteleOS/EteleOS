@@ -1,0 +1,11 @@
+Index: scripts/bacula-ctl-sd.in
+--- scripts/bacula-ctl-sd.in.orig
++++ scripts/bacula-ctl-sd.in
+@@ -216,6 +216,7 @@ case "$1" in
+    start)
+       [ -x ${BACSDBIN}/bacula-sd ] && {
+ 	 echo "Starting the $Bacula Storage daemon"
++	 cd ${SUBSYSDIR}
+ 	 OPTIONS=''
+ 	 if [ "${SD_USER}" != '' ]; then
+ 	    OPTIONS="${OPTIONS} -u ${SD_USER}"

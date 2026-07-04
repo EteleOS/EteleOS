@@ -1,0 +1,20 @@
+--- Makefile.in.orig	Tue Jan  4 08:38:18 2000
++++ Makefile.in	Fri Mar 23 21:59:00 2012
+@@ -18,7 +18,7 @@ LIBS            = @LIBS@
+ CC              = @CC@
+ CPP             = @CPP@
+ 
+-CFLAGS          = @CFLAGS@ @DEFS@
++CFLAGS          = @CFLAGS@ @DEFS@ -DPREFIX=\"@prefix@\"
+ 
+ #### End of system configuration section. ####
+ 
+@@ -44,7 +44,7 @@ install:        deco $(libdir)/deco $(libdir)/deco/hel
+ 		cd help; for f in *.general *.edit *.view *.hexview; do\
+ 			$(INSTALL_DATA) $$f $(libdir)/deco/help/$$f; done
+ 		$(INSTALL_DATA) ref.man $(mandir)/man1/deco.1
+-		$(INSTALL_DATA) cyrref.man $(mandir)/man1/deco-r.1
++#		$(INSTALL_DATA) cyrref.man $(mandir)/man1/deco-r.1
+ 
+ $(libdir)/deco:
+ 		mkdir $(libdir)/deco

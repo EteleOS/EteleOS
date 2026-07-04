@@ -1,0 +1,15 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+distccd
+=======
+distcc can run over TCP or SSH. For TCP connections the `distccd`
+daemon has to be running on the remote hosts. Jobs will run by default
+as the unprivileged `_distcc` user. In order to allow incoming
+connections to a "worker", one has to modify distccd flags to
+reflect the address/subnet of originating connections:
+
+# rcctl enable distccd
+# rcctl set distccd flags --allow 192.168.50.0/24
+# rcctl start distccd

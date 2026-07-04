@@ -1,0 +1,13 @@
+--- latexmk.pl.orig	Thu Jan 19 15:52:57 2017
++++ latexmk.pl	Fri Feb 24 10:36:01 2017
+@@ -978,6 +978,10 @@ else {
+         $lpr_pdf  = 'lpr %O %S';
+         $pscmd = "ps -ww -u $ENV{USER}"; 
+     }
++    elsif ( $^O eq "openbsd" ) {
++        $pscmd = "ps -ww -U $ENV{USER}";
++        $pid_position = 0;
++    }
+ }
+ 
+ ## default parameters

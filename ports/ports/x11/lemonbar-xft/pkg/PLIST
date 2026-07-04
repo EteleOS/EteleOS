@@ -1,0 +1,4 @@
+@bin bin/lemonbar-xft
+@man man/man1/lemonbar-xft.1
+share/doc/lemonbar-xft/
+share/doc/lemonbar-xft/LICENSE

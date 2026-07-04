@@ -1,0 +1,119 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -44,7 +44,7 @@ WAV49	= -DWAV49
+ # CCFLAGS 	= -c -O
+ 
+ CC		= gcc -ansi -pedantic
+-CCFLAGS 	= -c -O2 -DNeedFunctionPrototypes=1 -Wall -Wno-comment
++CCFLAGS 	= -c -DNeedFunctionPrototypes=1 -Wall -Wno-comment
+ 
+ LD 		= $(CC)
+ 
+@@ -80,7 +80,7 @@ INSTALL_ROOT	=
+ 
+ GSM_INSTALL_ROOT = $(INSTALL_ROOT)
+ GSM_INSTALL_LIB = $(GSM_INSTALL_ROOT)/lib
+-GSM_INSTALL_INC = $(GSM_INSTALL_ROOT)/inc
++GSM_INSTALL_INC = $(GSM_INSTALL_ROOT)/include
+ GSM_INSTALL_MAN = $(GSM_INSTALL_ROOT)/man/man3
+ 
+ 
+@@ -107,6 +107,8 @@ COMPRESSFLAGS 	= 
+ # RANLIB 	= true
+ RANLIB	 	= ranlib
+ 
++PICFLAG		= -fpic
++
+ #
+ #    You shouldn't have to configure below this line if you're porting.
+ # 
+@@ -136,11 +138,16 @@ CFLAGS	= $(CCFLAGS) $(SASR) $(DEBUG) $(MULHACK) $(FAST
+ LFLAGS	= $(LDFLAGS) $(LDINC)
+ ######### It's $(LD) $(LFLAGS)
+ 
++.SUFFIXES: .o .so
+ 
+ # Targets
+ 
+ LIBGSM	= $(LIB)/libgsm.a
++LIBgsm_VERSION=	1.0
+ 
++LIBGSMSO = $(LIB)/libgsm.so.${LIBgsm_VERSION}
++INSTALLED_LIBGSMSO = $(GSM_INSTALL_LIB)/libgsm.so.${LIBgsm_VERSION}
++
+ TOAST	= $(BIN)/toast
+ UNTOAST	= $(BIN)/untoast
+ TCAT	= $(BIN)/tcat
+@@ -258,6 +265,7 @@ STUFF = 	ChangeLog			\
+ 
+ GSM_INSTALL_TARGETS =	\
+ 		$(GSM_INSTALL_LIB)/libgsm.a		\
++		$(INSTALLED_LIBGSMSO)			\
+ 		$(GSM_INSTALL_INC)/gsm.h		\
+ 		$(GSM_INSTALL_MAN)/gsm.3		\
+ 		$(GSM_INSTALL_MAN)/gsm_explode.3	\
+@@ -277,9 +285,12 @@ TOAST_INSTALL_TARGETS =	\
+ 		$(CC) $(CFLAGS) $?
+ 		@-mv `$(BASENAME) $@` $@ > /dev/null 2>&1
+ 
++.c.so:
++		$(CC) $(CFLAGS) $(PICFLAG) -DPIC $? -o $@
++
+ # Target rules
+ 
+-all:		$(LIBGSM) $(TOAST) $(TCAT) $(UNTOAST)
++all:		$(LIBGSM) $(LIBGSMSO) $(TOAST) $(TCAT) $(UNTOAST)
+ 		@-echo $(ROOT): Done.
+ 
+ tst:		$(TST)/lin2cod $(TST)/cod2lin $(TOAST) $(TST)/test-result
+@@ -299,6 +310,9 @@ install:	toastinstall gsminstall
+ 
+ # The basic API: libgsm
+ 
++$(LIBGSMSO):	$(LIB) $(GSM_OBJECTS:.o=.so)
++		$(CC) -shared $(PICFLAG) -o $@ $(GSM_OBJECTS:.o=.so)
++
+ $(LIBGSM):	$(LIB) $(GSM_OBJECTS)
+ 		-rm $(RMFLAGS) $(LIBGSM)
+ 		$(AR) $(ARFLAGS) $(LIBGSM) $(GSM_OBJECTS)
+@@ -308,7 +322,7 @@ $(LIBGSM):	$(LIB) $(GSM_OBJECTS)
+ # Toast, Untoast and Tcat -- the compress-like frontends to gsm.
+ 
+ $(TOAST):	$(BIN) $(TOAST_OBJECTS) $(LIBGSM)
+-		$(LD) $(LFLAGS) -o $(TOAST) $(TOAST_OBJECTS) $(LIBGSM) $(LDLIB)
++		$(LD) $(LFLAGS) -o $(TOAST) $(TOAST_OBJECTS) -lgsm $(LDLIB)
+ 
+ $(UNTOAST):	$(BIN) $(TOAST)
+ 		-rm $(RMFLAGS) $(UNTOAST)
+@@ -351,9 +365,7 @@ toastuninstall:
+ 		fi
+ 
+ $(TOAST_INSTALL_BIN)/toast:	$(TOAST)
+-		-rm $(RMFLAGS) $@
+-		cp $(TOAST) $@
+-		chmod 755 $@
++		$(BSD_INSTALL_PROGRAM) $(TOAST) $@
+ 
+ $(TOAST_INSTALL_BIN)/untoast:	$(TOAST_INSTALL_BIN)/toast
+ 		-rm $(RMFLAGS) $@
+@@ -398,7 +410,10 @@ $(GSM_INSTALL_LIB)/libgsm.a:	$(LIBGSM)
+ 		cp $? $@
+ 		chmod 444 $@
+ 
++$(INSTALLED_LIBGSMSO):		$(LIBGSMSO)
++		${BSD_INSTALL_DATA} $? $@
+ 
++
+ # Distribution
+ 
+ dist:		gsm-1.0.tar.gz
+@@ -422,7 +437,7 @@ semi-clean:
+ 			$(TST)/gsm2cod 			\
+ 			$(TST)/*.*.*
+ 		-$(FIND) . \( -name core -o -name foo \) \
+-			-print | xargs rm $(RMFLAGS)
++			-delete
+ 
+ clean:	semi-clean
+ 		-rm $(RMFLAGS) $(LIBGSM) $(ADDTST)/add		\

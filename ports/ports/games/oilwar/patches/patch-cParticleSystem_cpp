@@ -1,0 +1,12 @@
+Index: cParticleSystem.cpp
+--- cParticleSystem.cpp.orig
++++ cParticleSystem.cpp
+@@ -132,7 +132,7 @@ cParticleSystem::EmitParticle (tParticle &particle)
+ void 
+ cParticleSystem::RenderParticle (const tParticle &particle, SDL_Surface *pScreen)
+ {
+-	SDL_Rect rect = {int (particle.mX), int (particle.mY), mSize, mSize};
++	SDL_Rect rect = {static_cast<Sint16>(particle.mX), static_cast<Sint16>(particle.mY), mSize, mSize};
+ 	
+ 	float interpolation = 1.0f - float (particle.mEnergy) / float (particle.mMaxEnergy);
+ 	SDL_Color color = mStartColor;

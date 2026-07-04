@@ -1,0 +1,20 @@
+- Add elf_aux_info() support for OpenBSD
+  https://github.com/facebook/rocksdb/pull/12967
+
+https://jira.mariadb.org/browse/MDEV-29875
+
+Index: storage/rocksdb/CMakeLists.txt
+--- storage/rocksdb/CMakeLists.txt.orig
++++ storage/rocksdb/CMakeLists.txt
+@@ -38,6 +38,11 @@ IF(HAVE_AUXV_GETAUXVAL)
+   ADD_DEFINITIONS(-DROCKSDB_AUXV_GETAUXVAL_PRESENT)
+ ENDIF()
+ 
++CHECK_FUNCTION_EXISTS(elf_aux_info  HAVE_AUXV_ELF_AUX_INFO)
++if(HAVE_AUXV_ELF_AUX_INFO)
++  ADD_DEFINITIONS(-DROCKSDB_AUXV_ELF_AUX_INFO_PRESENT)
++endif()
++
+ IF(WITH_VALGRIND)
+   ADD_DEFINITIONS(-DROCKSDB_VALGRIND_RUN=1)
+ ENDIF()

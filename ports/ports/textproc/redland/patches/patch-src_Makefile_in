@@ -1,0 +1,12 @@
+--- src/Makefile.in.orig	Sat Dec 28 17:26:52 2013
++++ src/Makefile.in	Sun Jun  7 11:55:26 2015
+@@ -621,8 +621,7 @@ librdf_la_LIBADD = \
+ @LIBRDF_INTERNAL_LIBS@
+ 
+ librdf_la_DEPENDENCIES = \
+-@DIGEST_OBJS@ @HASH_OBJS@ \
+-@LIBRDF_INTERNAL_DEPS@
++@DIGEST_OBJS@ @HASH_OBJS@
+ 
+ EXTRA_librdf_la_SOURCES = rdf_hash_bdb.c \
+ rdf_digest_md5.c rdf_digest_sha1.c \

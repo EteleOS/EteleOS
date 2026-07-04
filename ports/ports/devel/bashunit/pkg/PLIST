@@ -1,0 +1,6 @@
+bin/bashunit.bash
+share/doc/bashunit/
+share/doc/bashunit/LICENSE
+share/doc/bashunit/README.md
+share/examples/bashunit/
+share/examples/bashunit/test_example

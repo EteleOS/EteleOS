@@ -1,0 +1,3 @@
+${P5SITE}/Catalyst/Plugin/
+${P5SITE}/Catalyst/Plugin/FormValidator.pm
+@man man/man3p/Catalyst::Plugin::FormValidator.3p

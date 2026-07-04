@@ -1,0 +1,3 @@
+${P5SITE}/IO/
+${P5SITE}/IO/Pipely.pm
+@man man/man3p/IO::Pipely.3p

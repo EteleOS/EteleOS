@@ -1,0 +1,4 @@
+bin/cnv
+${P5SITE}/Math/
+${P5SITE}/Math/BaseCnv.pm
+@man man/man3p/Math::BaseCnv.3p

@@ -1,0 +1,12 @@
+Index: backend/vilter-clamd/scan.l
+--- backend/vilter-clamd/scan.l.orig
++++ backend/vilter-clamd/scan.l
+@@ -19,7 +19,7 @@
+ 
+ #include <string.h>
+ 
+-#include "y.tab.h"
++#include "parse.h"
+ 
+ %}
+ 

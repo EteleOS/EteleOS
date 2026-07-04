@@ -1,0 +1,19 @@
+Index: CCache/configure
+--- CCache/configure.orig
++++ CCache/configure
+@@ -4093,15 +4093,7 @@ else $as_nop
+     cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <stdlib.h>
+-int
+-main (void)
+-{
+-
+ void test_fn(void) { qsort(NULL, 0, 0, (__compar_fn_t)NULL); }
+-
+-  ;
+-  return 0;
+-}
+ _ACEOF
+ if ac_fn_c_try_compile "$LINENO"
+ then :

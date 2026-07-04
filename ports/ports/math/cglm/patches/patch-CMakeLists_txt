@@ -1,0 +1,16 @@
+ - drop hardcoded -O3
+
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -45,10 +45,6 @@ if(MSVC)
+   endif()
+ else()
+   add_compile_options(-Wall)
+-
+-  if(NOT CMAKE_BUILD_TYPE MATCHES Debug)
+-    add_compile_options(-O3)
+-  endif()
+ endif()
+ 
+ get_directory_property(hasParent PARENT_DIRECTORY)

@@ -1,0 +1,3 @@
+${P5SITE}/Test/
+${P5SITE}/Test/LongString.pm
+@man man/man3p/Test::LongString.3p

@@ -1,0 +1,10 @@
+--- Mowitz/MwHandle.c.orig	Mon Dec  1 13:20:07 2008
++++ Mowitz/MwHandle.c	Mon Dec  1 13:20:26 2008
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <X11/IntrinsicP.h>
+ #include <X11/StringDefs.h>
+ #include "MwUtils.h"

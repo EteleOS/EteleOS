@@ -1,0 +1,18 @@
+Index: mcs/jay/Makefile
+--- mcs/jay/Makefile.orig
++++ mcs/jay/Makefile
+@@ -22,12 +22,12 @@ ifndef NO_INSTALL
+ install-local: jay
+ 	$(MKINSTALLDIRS) $(DESTDIR)$(prefix)/bin
+ 	$(MKINSTALLDIRS) $(DESTDIR)$(prefix)/share/jay
+-	$(MKINSTALLDIRS) $(DESTDIR)$(prefix)/share/man/man1
++	$(MKINSTALLDIRS) $(DESTDIR)$(prefix)/man/man1
+ 	$(INSTALL_BIN) jay $(DESTDIR)$(prefix)/bin
+ 	for datafile in $(datafiles) ; do \
+ 	   $(INSTALL_DATA) $$datafile $(DESTDIR)$(prefix)/share/jay ; \
+ 	done
+-	$(INSTALL_DATA) jay.1 $(DESTDIR)$(prefix)/share/man/man1
++	$(INSTALL_DATA) jay.1 $(DESTDIR)$(prefix)/man/man1
+ 
+ uninstall-local:
+ 	-rm -f $(DESTDIR)$(prefix)/bin/jay

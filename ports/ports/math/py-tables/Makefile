@@ -1,0 +1,50 @@
+USE_NOBTCFI-aarch64 =	Yes# fortran
+
+COMMENT=	Python package to manage extremely large amounts of data
+
+MODPY_DISTV=	3.10.2
+REVISION=	2
+DISTNAME=	tables-${MODPY_DISTV}
+PKGNAME=	py-${DISTNAME}
+CATEGORIES=	math
+
+HOMEPAGE=	https://www.pytables.org/
+MAINTAINER=	Martin Reindl <martin@catai.org>
+
+# BSD
+PERMIT_PACKAGE=	Yes
+
+COMPILER=	base-clang ports-gcc
+COMPILER_LANGS=	c
+
+MODULES=	lang/python
+MODPY_PYBUILD=	setuptools
+MODPY_PI=	Yes
+
+WANTLIB=	blosc blosc2 bz2 hdf5 lzo2
+
+CFLAGS+=	-I${LOCALBASE}/include
+
+BUILD_DEPENDS=	lang/cython \
+		devel/py-typing-extensions \
+		math/py-numpy \
+		sysutils/py-cpuinfo \
+		sysutils/py-packaging
+
+LIB_DEPENDS=	archivers/lzo2 \
+		archivers/bzip2 \
+		archivers/blosc \
+		archivers/blosc2 \
+		math/hdf5
+
+RUN_DEPENDS+=	math/netcdf \
+		sysutils/py-packaging
+
+TEST_DEPENDS=	math/py-numexpr \
+		math/hdf5
+
+do-test:
+	cd ${WRKDIR} && ${MAKE_ENV} PYTHONPATH=${WRKINST}${MODPY_SITEPKG} \
+		${MODPY_BIN} -c 'import tables ; tables.test()'
+
+.include <bsd.port.mk>

@@ -1,0 +1,23 @@
+Fix sed(1), grep(1) usage (i.e. !GNU).
+
+Index: scripts/xdg-open.in
+--- scripts/xdg-open.in.orig
++++ scripts/xdg-open.in
+@@ -483,7 +483,7 @@ open_generic()
+         check_input_file "$file"
+ 
+         if has_display; then
+-            filetype="$(xdg-mime query filetype "$file" | sed "s/;.*//")"
++            filetype="$(xdg-mime query filetype "$file" | sed "s/[ ;].*//")"
+             # passing a path a url is okay too,
+             # see desktop file specification for '%u'
+             open_generic_xdg_mime "$file" "$filetype" "$1"
+@@ -516,7 +516,7 @@ open_generic()
+     if [ x"$BROWSER" = x"" ]; then
+         BROWSER=www-browser:links2:elinks:links:lynx:w3m
+         if has_display; then
+-            BROWSER=x-www-browser:firefox:iceweasel:seamonkey:mozilla:epiphany:konqueror:chromium:chromium-browser:google-chrome:$BROWSER
++            BROWSER=x-www-browser:firefox:chrome:iceweasel:seamonkey:mozilla:epiphany:midori:konqueror:chromium-browser:google-chrome:$BROWSER
+         fi
+     fi
+ 

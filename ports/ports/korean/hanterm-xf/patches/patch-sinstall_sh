@@ -1,0 +1,12 @@
+Index: sinstall.sh
+--- sinstall.sh.orig
++++ sinstall.sh
+@@ -67,7 +67,7 @@ if test -f "$REF_PROG" ; then
+ 		PROG_GRP=
+ 		;;
+ 	.??????s*)
+-		PROG_MODE=2711
++		PROG_MODE=755
+ 		PROG_USR=
+ 		;;
+ 	esac

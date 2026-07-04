@@ -1,0 +1,4 @@
+${P5SITE}/Template/
+${P5SITE}/Template/Plugin/
+${P5SITE}/Template/Plugin/Markdown.pm
+@man man/man3p/Template::Plugin::Markdown.3p

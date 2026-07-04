@@ -1,0 +1,26 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+To use different compiler versions for, e.g. release(8), point mk.conf(5)
+at this port:
+
+	AR=${TRUEPREFIX}/bin/llvm-ar-${LLVM_MAJOR}
+	AS=${TRUEPREFIX}/bin/llvm-as-${LLVM_MAJOR}
+	CC=${TRUEPREFIX}/bin/clang-${LLVM_MAJOR}
+	CXX=${TRUEPREFIX}/bin/clang++-${LLVM_MAJOR}
+	CPP=${TRUEPREFIX}/bin/clang-cpp-${LLVM_MAJOR}
+	LD=${TRUEPREFIX}/bin/ld.lld-${LLVM_MAJOR}
+
+
+For more information about using scan-build(1) for the static analyser,
+look at:
+	http://clang-analyzer.llvm.org/scan-build.html
+
+For instance, the scanner on the kernel build can be launched with:
+
+	cd /usr/src/sys/arch/`uname -m`/conf && config GENERIC.MP
+	cd /usr/src/sys/arch/`uname -m`/compile/GENERIC.MP
+	make clean && scan-build make
+
+This will generate HTML reports in /tmp/scan-build-(date).

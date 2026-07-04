@@ -1,0 +1,2 @@
+@bin bin/gopass
+@man man/man1/gopass.1

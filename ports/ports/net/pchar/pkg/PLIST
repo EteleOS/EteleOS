@@ -1,0 +1,5 @@
+@man man/man8/pchar.8
+@bin sbin/pchar
+share/doc/pchar/
+share/doc/pchar/FAQ
+share/doc/pchar/README

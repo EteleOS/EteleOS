@@ -1,0 +1,9 @@
+@bin bin/tea
+share/applications/tea.desktop
+share/icons/hicolor/128x128/apps/tea.png
+share/icons/hicolor/32x32/apps/tea.png
+share/icons/hicolor/48x48/apps/tea.png
+share/icons/hicolor/64x64/apps/tea.png
+share/icons/hicolor/scalable/apps/tea.svg
+@tag update-desktop-database
+@tag gtk-update-icon-cache %D/share/icons/hicolor

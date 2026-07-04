@@ -1,0 +1,19 @@
+Index: libao2/audio_out.c
+--- libao2/audio_out.c.orig
++++ libao2/audio_out.c
+@@ -54,6 +54,7 @@ extern const ao_functions_t audio_out_v4l2;
+ extern const ao_functions_t audio_out_mpegpes;
+ extern const ao_functions_t audio_out_pcm;
+ extern const ao_functions_t audio_out_pss;
++extern const ao_functions_t audio_out_rtunes;
+ 
+ const ao_functions_t* const audio_out_drivers[] =
+ {
+@@ -120,6 +121,7 @@ const ao_functions_t* const audio_out_drivers[] =
+         &audio_out_null,
+ // should not be auto-selected:
+         &audio_out_pcm,
++        &audio_out_rtunes,
+         NULL
+ };
+ 

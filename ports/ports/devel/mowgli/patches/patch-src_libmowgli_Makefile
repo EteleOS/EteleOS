@@ -1,0 +1,10 @@
+--- src/libmowgli/Makefile.orig	Tue Sep 27 03:39:19 2011
++++ src/libmowgli/Makefile	Sat Oct  1 18:24:30 2011
+@@ -1,6 +1,6 @@
+ include ../../extra.mk
+ 
+-LIB = ${LIB_PREFIX}mowgli${LIB_SUFFIX}
++LIB = ${LIB_PREFIX}mowgli${LIB_SUFFIX}.${LIBmowgli_VERSION}
+ LIB_MAJOR = 2
+ LIB_MINOR = 0
+ DISTCLEAN = mowgli_config.h

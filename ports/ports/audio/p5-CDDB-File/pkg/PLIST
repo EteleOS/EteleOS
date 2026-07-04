@@ -1,0 +1,3 @@
+${P5SITE}/CDDB/
+${P5SITE}/CDDB/File.pm
+@man man/man3p/CDDB::File.3p

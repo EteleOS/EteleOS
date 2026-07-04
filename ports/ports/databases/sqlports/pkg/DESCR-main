@@ -1,0 +1,12 @@
+SQLite database of every port in the system. This can be queried through
+e.g., sqlitebrowser, or any kind of programming interface.
+
+This schema is mostly optimized for tools, and cumbersome to query by
+hand.
+
+Human users are strongly advised to mostly use views on those tables.
+
+The default flavor only looks in PORTSDIR, use nonstrict to heed
+PORTSDIR_PATH fully.
+
+The database scheme is documented in sqlports(5)

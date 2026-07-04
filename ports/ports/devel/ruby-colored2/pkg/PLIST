@@ -1,0 +1,15 @@
+${GEM_LIB}/cache/${DISTNAME}.gem
+${GEM_LIB}/gems/${DISTNAME}/
+${GEM_LIB}/gems/${DISTNAME}/LICENSE
+${GEM_LIB}/gems/${DISTNAME}/README.md
+${GEM_LIB}/gems/${DISTNAME}/Rakefile
+${GEM_LIB}/gems/${DISTNAME}/lib/
+${GEM_LIB}/gems/${DISTNAME}/lib/colored2/
+${GEM_LIB}/gems/${DISTNAME}/lib/colored2.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/colored2/ascii_decorator.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/colored2/codes.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/colored2/numbers.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/colored2/object.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/colored2/strings.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/colored2/version.rb
+${GEM_LIB}/specifications/${DISTNAME}.gemspec

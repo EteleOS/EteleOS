@@ -1,0 +1,18 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/named"
+daemon_flags="-t ${LOCALSTATEDIR}/named -u _bind"
+
+. /etc/rc.d/rc.subr
+
+rc_pre() {
+	if ! cmp -s ${SYSCONFDIR}/rndc.key ${LOCALSTATEDIR}/named/etc/rndc.key ; then
+		if ${TRUEPREFIX}/sbin/rndc-confgen -a -t ${LOCALSTATEDIR}/named \
+		    >/dev/null 2>&1; then
+			chmod 0640 ${LOCALSTATEDIR}/named/etc/rndc.key \
+			    >/dev/null 2>&1
+		fi
+	fi
+}
+
+rc_cmd $1

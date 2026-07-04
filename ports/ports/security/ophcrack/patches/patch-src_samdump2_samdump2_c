@@ -1,0 +1,11 @@
+--- src/samdump2/samdump2.c.orig	Tue Aug  2 16:41:44 2016
++++ src/samdump2/samdump2.c	Wed Aug  3 08:02:48 2016
+@@ -41,7 +41,7 @@
+ #ifdef BYTE_ORDER
+ #if BYTE_ORDER == LITTLE_ENDIAN
+ #elif BYTE_ORDER == BIG_ENDIAN
+-#include <byteswap.h>
++#include <bswap.h>
+ #else
+ #warning "Doesn't define a standard ENDIAN type"
+ #endif

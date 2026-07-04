@@ -1,0 +1,4 @@
+bin/htmlcopy
+${P5SITE}/HTML/Copy.pm
+@man man/man1/htmlcopy.1
+@man man/man3p/HTML::Copy.3p

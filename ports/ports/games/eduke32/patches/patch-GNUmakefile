@@ -1,0 +1,56 @@
+Index: GNUmakefile
+--- GNUmakefile.orig
++++ GNUmakefile
+@@ -222,7 +222,6 @@ engine_objs := \
+     hightile.cpp \
+     klzw.cpp \
+     kplib.cpp \
+-    lz4.c \
+     md4.cpp \
+     mhk.cpp \
+     miniz.c \
+@@ -387,8 +386,8 @@ ifeq ($(RENDERTYPE),SDL)
+ endif
+ 
+ ifneq (0,$(HAVE_XMP))
+-    audiolib_cflags += -I$(libxmplite_inc)
+-    audiolib_deps += libxmplite
++    audiolib_cflags += `$(PKG_CONFIG) --cflags libxmp`
++    audiolib_deps += 
+ endif
+ 
+ 
+@@ -587,7 +586,7 @@ ifeq ($(SUBPLATFORM),LINUX)
+ endif
+ 
+ ifeq ($(PLATFORM),BSD)
+-    LIBS += -lFLAC -lvorbisfile -lvorbis -logg -lexecinfo
++    LIBS += -lFLAC -lvorbisfile -lvorbis -logg -lexecinfo -llz4 -lxmp
+ endif
+ 
+ ifeq ($(PLATFORM),DARWIN)
+@@ -760,13 +759,14 @@ endif
+ 
+ #### Final setup
+ 
+-COMPILERFLAGS += \
++COMPILERFLAGS := \
+     -I$(engine_inc) \
+     -I$(mact_inc) \
+     -I$(audiolib_inc) \
+     -I$(glad_inc) \
+     -I$(voidwrap_inc) \
+     -MP -MMD \
++    $(COMPILERFLAGS)
+ 
+ ifneq (0,$(USE_PHYSFS))
+     COMPILERFLAGS += -I$(physfs_inc) -DUSE_PHYSFS
+@@ -826,7 +826,7 @@ endif
+ 
+ #### Targets
+ 
+-all: duke3d
++all: duke3d sw
+ 
+ start:
+ 	$(BUILD_STARTED)

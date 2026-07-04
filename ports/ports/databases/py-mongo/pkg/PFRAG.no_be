@@ -1,0 +1,2 @@
+@so lib/python${MODPY_VERSION}/site-packages/bson/_cbson.${MODPY_PYC_MAGIC_TAG}so
+@so lib/python${MODPY_VERSION}/site-packages/pymongo/_cmessage.${MODPY_PYC_MAGIC_TAG}so

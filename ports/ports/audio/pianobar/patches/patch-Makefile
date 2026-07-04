@@ -1,0 +1,79 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -7,21 +7,8 @@ LIBDIR:=${PREFIX}/lib
+ INCDIR:=${PREFIX}/include
+ MANDIR:=${PREFIX}/share/man
+ DYNLINK:=0
+-CFLAGS?=-O2 -DNDEBUG
++CFLAGS+=-std=c99 -fgnu89-inline
+ 
+-ifeq (${CC},cc)
+-	OS := $(shell uname)
+-	ifeq (${OS},Darwin)
+-		CC:=gcc -std=c99
+-	else ifeq (${OS},FreeBSD)
+-		CC:=cc -std=c99
+-	else ifeq (${OS},OpenBSD)
+-		CC:=cc -std=c99
+-	else
+-		CC:=c99
+-	endif
+-endif
+-
+ PIANOBAR_DIR:=src
+ PIANOBAR_SRC:=\
+ 		${PIANOBAR_DIR}/main.c \
+@@ -81,7 +68,7 @@ endif
+ 
+ # build pianobar
+ ifeq (${DYNLINK},1)
+-pianobar: ${PIANOBAR_OBJ} libpiano.so.0
++pianobar: ${PIANOBAR_OBJ} libpiano.so.${LIBpiano_VERSION}
+ 	${SILENTECHO} "  LINK  $@"
+ 	${SILENTCMD}${CC} -o $@ ${PIANOBAR_OBJ} -L. -lpiano ${ALL_LDFLAGS}
+ else
+@@ -91,12 +78,10 @@ pianobar: ${PIANOBAR_OBJ} ${LIBPIANO_OBJ}
+ endif
+ 
+ # build shared and static libpiano
+-libpiano.so.0: ${LIBPIANO_RELOBJ} ${LIBPIANO_OBJ}
++libpiano.so.${LIBpiano_VERSION}: ${LIBPIANO_RELOBJ} ${LIBPIANO_OBJ}
+ 	${SILENTECHO} "  LINK  $@"
+-	${SILENTCMD}${CC} -shared -Wl,-soname,libpiano.so.0 -o libpiano.so.0.0.0 \
++	${SILENTCMD}${CC} -shared -o libpiano.so.${LIBpiano_VERSION} \
+ 			${LIBPIANO_RELOBJ} ${ALL_LDFLAGS}
+-	${SILENTCMD}ln -fs libpiano.so.0.0.0 libpiano.so.0
+-	${SILENTCMD}ln -fs libpiano.so.0 libpiano.so
+ 	${SILENTECHO} "    AR  libpiano.a"
+ 	${SILENTCMD}${AR} rcs libpiano.a ${LIBPIANO_OBJ}
+ 
+@@ -127,19 +112,17 @@ install: pianobar install-libpiano
+ else
+ install: pianobar
+ endif
+-	install -d ${DESTDIR}${BINDIR}/
+-	install -m755 pianobar ${DESTDIR}${BINDIR}/
+-	install -d ${DESTDIR}${MANDIR}/man1/
+-	install -m644 contrib/pianobar.1 ${DESTDIR}${MANDIR}/man1/
++	${INSTALL_DATA_DIR} ${DESTDIR}${BINDIR}
++	${INSTALL_PROGRAM} pianobar ${DESTDIR}${BINDIR}/
++	${INSTALL_DATA_DIR} ${DESTDIR}${MANDIR}/man1
++	${INSTALL_MAN} contrib/pianobar.1 ${DESTDIR}${MANDIR}/man1/
+ 
+ install-libpiano:
+-	install -d ${DESTDIR}${LIBDIR}/
+-	install -m644 libpiano.so.0.0.0 ${DESTDIR}${LIBDIR}/
+-	ln -fs libpiano.so.0.0.0 ${DESTDIR}${LIBDIR}/libpiano.so.0
+-	ln -fs libpiano.so.0 ${DESTDIR}${LIBDIR}/libpiano.so
+-	install -m644 libpiano.a ${DESTDIR}${LIBDIR}/
+-	install -d ${DESTDIR}${INCDIR}/
+-	install -m644 src/libpiano/piano.h ${DESTDIR}${INCDIR}/
++	${INSTALL_DATA_DIR} ${DESTDIR}${LIBDIR}
++	${INSTALL_DATA} libpiano.so.${LIBpiano_VERSION} ${DESTDIR}${LIBDIR}/
++	${INSTALL_DATA} libpiano.a ${DESTDIR}${LIBDIR}/
++	${INSTALL_DATA_DIR} ${DESTDIR}${INCDIR}
++	${INSTALL_DATA} src/libpiano/piano.h ${DESTDIR}${INCDIR}/
+ 
+ uninstall:
+ 	$(RM) ${DESTDIR}/${BINDIR}/pianobar \

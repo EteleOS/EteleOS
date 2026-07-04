@@ -1,0 +1,51 @@
+64bit time_t fix.
+
+--- lib/Timer.hh.orig	Fri Mar 18 10:07:09 2005
++++ lib/Timer.hh	Tue Apr 25 16:42:58 2017
+@@ -31,23 +31,17 @@
+ #include <queue>
+ #include <vector>
+ 
+-// forward declare to avoid the header
+-struct timeval;
++#include <sys/time.h>
+ 
+ namespace bt {
+ 
+   // use a wrapper class to avoid the header as well
+-  struct timeval {
+-    long tv_sec;
+-    long tv_usec;
++  struct timeval : public ::timeval {
+ 
+     inline timeval(void)
+-      : tv_sec(0l), tv_usec(0l)
+-    { }
+-    inline timeval(long s, long u)
+-      : tv_sec(s), tv_usec(u)
+-    { }
+-
++    { tv_sec = 0; tv_usec = 0; }
++    inline timeval(time_t s, long u)
++    { tv_sec = s; tv_usec = u; }
+     bool operator<(const timeval &);
+     timeval operator+(const timeval &);
+     timeval &operator+=(const timeval &tv);
+@@ -57,7 +51,7 @@ namespace bt {
+     // POSIX<->bt conversion
+     timeval(const ::timeval &);
+     timeval &operator=(const ::timeval &);
+-    operator ::timeval() const;
++//    operator ::timeval() const;
+   };
+ 
+   timeval normalizeTimeval(const timeval &tm);
+@@ -106,7 +100,7 @@ namespace bt {
+     inline void recurring(bool b)
+     { recur = b; }
+ 
+-    void setTimeout(long t);
++    void setTimeout(time_t t);
+     void setTimeout(const timeval &t);
+ 
+     void start(void);  // manager acquires timer

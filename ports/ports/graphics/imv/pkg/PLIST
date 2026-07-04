@@ -1,0 +1,4 @@
+@bin bin/imv
+@man man/man1/imv.1
+share/applications/imv.desktop
+@tag update-desktop-database

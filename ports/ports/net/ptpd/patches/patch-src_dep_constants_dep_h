@@ -1,0 +1,44 @@
+Index: src/dep/constants_dep.h
+--- src/dep/constants_dep.h.orig
++++ src/dep/constants_dep.h
+@@ -12,7 +12,8 @@
+ 
+ #include <limits.h>
+ 
+-#if !defined(linux) && !defined(__NetBSD__) && !defined(__FreeBSD__)
++#if !defined(linux) && !defined(__NetBSD__) && !defined(__FreeBSD__) && \
++    !defined(__OpenBSD__)
+ #error Not ported to this architecture, please update.
+ #endif
+ 
+@@ -34,7 +35,7 @@
+ #endif					/* linux */
+ 
+ 
+-#if defined(__NetBSD__) || defined(__FreeBSD__)
++#if defined(__NetBSD__) || defined(__FreeBSD__) || defined(__OpenBSD__)
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+@@ -44,14 +45,20 @@
+ #if defined(__FreeBSD__)
+ #include <net/ethernet.h>
+ #include <sys/uio.h>
+-#else
++#endif
++#if defined(__NetBSD__)
+ #include <net/if_ether.h>
+ #endif
++#if defined(__OpenBSD__)
++#include <netinet/if_ether.h>
++#endif
+ #include <ifaddrs.h>
+ #define IFACE_NAME_LENGTH         IF_NAMESIZE
+ #define NET_ADDRESS_LENGTH        INET_ADDRSTRLEN
+ 
+ #define IFCONF_LENGTH 10
++
++#define BSD_INTERFACE_FUNCTIONS
+ 
+ #define adjtimex ntp_adjtime
+ 

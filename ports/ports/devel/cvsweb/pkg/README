@@ -1,0 +1,107 @@
+# +-----------------------------------------------------------------------
+# | Running ${PKGSTEM} on OpenBSD
+# +-----------------------------------------------------------------------
+#
+# Original author: Jolan Luff <jolan@openbsd.org>
+#
+# In order to make CVSweb operate in a chroot environment, it is
+# necessary to copy all of the relevant tools, libraries, and perl modules
+# that CVSweb employs into /var/www.
+#
+# NOTE: You can run this README directly with sh(1).
+#
+# First, create the basic directory structure:
+
+cd /var/www
+mkdir -p tmp usr dev
+chown www:www tmp	# needs to be writeable for the www user
+
+cd /var/www/usr
+mkdir -p bin lib libdata/perl5 libexec
+
+cd /var/www/usr/libdata/perl5
+mkdir -p File IPC Time warnings `arch -s`-openbsd/auto/{Cwd,Fcntl} unicore
+
+# The "annotate" function requires this empty file:
+#
+# NOTE: You can create an actual null device instead, but that will
+# not work if the filesystem is mounted with the nodev option, and
+# it is not required for cvsweb.
+
+cd /var/www/dev
+touch null
+
+# Now, the required binaries:
+
+cd /var/www/usr/bin
+cp -p /usr/bin/{co,cvs,diff,perl,rcsdiff,rlog,uname} .
+
+# Next, the libraries that the binaries are linked to:
+#
+# NOTE: Wildcards will, of course, copy any old, unused libraries that are
+# lurking around (for example, from an upgrade):
+
+cd /var/www/usr/lib
+cp -p /usr/lib/lib{c,m,perl,pthread,util,z}.so* .
+
+# Now, the run-time link-editor:
+
+cd /var/www/usr/libexec
+cp -p /usr/libexec/ld.so .
+
+# And finally, the perl modules:
+
+cd /var/www/usr/libdata/perl5
+cp -p /usr/libdata/perl5/{Carp,Exporter,Symbol,base,integer,parent}.pm .
+cp -p /usr/libdata/perl5/{strict,warnings,vars,constant,utf8}.pm .
+cp -p /usr/libdata/perl5/utf8_heavy.pl .
+cp -p /usr/libdata/perl5/unicore/Heavy.pl ./unicore/
+cp -p /usr/libdata/perl5/File/Basename.pm ./File/
+cp -p /usr/libdata/perl5/IPC/Open{2,3}.pm ./IPC/
+cp -p /usr/libdata/perl5/Time/Local.pm ./Time/
+cp -p /usr/libdata/perl5/warnings/register.pm ./warnings/
+cp -p /usr/libdata/perl5/XSLoader.pm .
+
+cd /var/www/usr/libdata/perl5/`arch -s`-openbsd
+cp -p /usr/libdata/perl5/`arch -s`-openbsd/Config.pm .
+cp -p /usr/libdata/perl5/`arch -s`-openbsd/Config_{git,heavy}.pl .
+cp -p /usr/libdata/perl5/`arch -s`-openbsd/Cwd.pm .
+cp -p /usr/libdata/perl5/`arch -s`-openbsd/auto/Cwd/Cwd.so ./auto/Cwd/
+cp -p /usr/libdata/perl5/`arch -s`-openbsd/DynaLoader.pm .
+cp -p /usr/libdata/perl5/`arch -s`-openbsd/Fcntl.pm .
+cp -p /usr/libdata/perl5/`arch -s`-openbsd/auto/Fcntl/Fcntl.so ./auto/Fcntl/
+
+# You also need to enable slowcgi(8):
+
+rcctl enable slowcgi
+rcctl start slowcgi
+
+# Editing cvsweb and cvsweb.conf
+# ------------------------------
+# The cvsweb program already assumes that it is running chrooted,
+# and the location of the configuration file is hardcoded to
+# /conf/cvsweb/cvsweb.conf, so usually there is no need to edit
+# the cvsweb program itself.
+
+# By default, /var/www/conf/cvsweb/cvsweb.conf configures one
+# repository to be served: /var/www/cvs/, which should contain
+# the subdirectory CVSROOT and one or more module directories.
+# Additional repositories, each containing their own CVSROOT
+# subdirectory, can be added to the @CVSrepositories array.
+
+# Example httpd.conf(5) for cvsweb
+# --------------------------------
+# server "domain.tld" {
+#      listen on * port 80
+#      #listen on egress tls port 443
+#
+#      #tls {
+#              #certificate "/etc/ssl/domain.tld_fullchain.pem"
+#              #key "/etc/ssl/private/domain.tld_private.pem"
+#      #}
+#
+#      location "/cgi-bin/*" {
+#              fastcgi
+#              root "/"
+#      }
+# }

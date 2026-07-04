@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/BackupPC -d"
+daemon_user="_backuppc"
+
+. /etc/rc.d/rc.subr
+
+pexp="/usr/bin/perl ${daemon}${daemon_flags:+ ${daemon_flags}}"
+
+rc_cmd $1

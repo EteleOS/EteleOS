@@ -1,0 +1,5 @@
+${P5SITE}/namespace/
+${P5SITE}/namespace/clean/
+${P5SITE}/namespace/clean.pm
+${P5SITE}/namespace/clean/_Util.pm
+@man man/man3p/namespace::clean.3p

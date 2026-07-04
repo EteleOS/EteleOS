@@ -1,0 +1,12 @@
+@option no-default-conflict
+@option is-branch
+@conflict ${MODRUBY_PKG_PREFIX}-rspec->=2,<4
+${GEM_LIB}/cache/${DISTNAME}.gem
+${GEM_LIB}/gems/${DISTNAME}/
+${GEM_LIB}/gems/${DISTNAME}/LICENSE.md
+${GEM_LIB}/gems/${DISTNAME}/README.md
+${GEM_LIB}/gems/${DISTNAME}/lib/
+${GEM_LIB}/gems/${DISTNAME}/lib/rspec/
+${GEM_LIB}/gems/${DISTNAME}/lib/rspec.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/rspec/version.rb
+${GEM_LIB}/specifications/${DISTNAME}.gemspec

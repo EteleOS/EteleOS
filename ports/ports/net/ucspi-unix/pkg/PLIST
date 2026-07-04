@@ -1,0 +1,8 @@
+bin/unixcat
+bin/unixclient
+bin/unixserver
+share/doc/ucspi-unix/
+share/doc/ucspi-unix/NEWS
+share/doc/ucspi-unix/PROTOCOL
+share/doc/ucspi-unix/README
+share/doc/ucspi-unix/TODO

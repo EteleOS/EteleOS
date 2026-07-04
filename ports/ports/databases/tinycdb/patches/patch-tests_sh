@@ -1,0 +1,11 @@
+--- tests.sh.orig	Fri May 11 16:16:30 2012
++++ tests.sh	Fri Aug 22 18:39:47 2014
+@@ -14,7 +14,7 @@ esac
+ 
+ do_csum() {
+   echo checksum may fail if no md5sum program
+-  md5sum $1 | sed -e 's|[ 	].*||' -e 'y|[ABCDEF]|[abcdef]|'
++  md5 $1 | sed -e 's|MD5 ('$1') = ||' -e 'y|[ABCDEF]|[abcdef]|'
+ }
+ 
+ rm -f 1.cdb 1a.cdb

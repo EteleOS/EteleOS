@@ -1,0 +1,10 @@
+@bin bin/eltclsh
+@bin bin/elwish
+lib/tcl/eltcl/
+lib/tcl/eltcl/complete.tcl
+lib/tcl/eltcl/init.tcl
+lib/tcl/eltcl/pkgIndex.tcl
+lib/tcl/eltcl/tools.tcl
+lib/tcl/eltcl/version.tcl
+@so lib/tcl/libeltclsh.so
+@man man/man1/eltclsh.1

@@ -1,0 +1,4 @@
+${P5SITE}/Class/
+${P5SITE}/Class/Accessor/
+${P5SITE}/Class/Accessor/Grouped.pm
+@man man/man3p/Class::Accessor::Grouped.3p

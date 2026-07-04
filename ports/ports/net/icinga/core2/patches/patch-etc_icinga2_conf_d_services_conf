@@ -1,0 +1,20 @@
+Index: etc/icinga2/conf.d/services.conf
+--- etc/icinga2/conf.d/services.conf.orig
++++ etc/icinga2/conf.d/services.conf
+@@ -42,14 +42,14 @@ apply Service "ping6" {
+ /*
+  * Apply the `ssh` service to all hosts
+  * with the `address` attribute defined and
+- * the custom variable `os` set to `Linux`.
++ * the custom variable `os` set to `Linux` or `OpenBSD`.
+  */
+ apply Service "ssh" {
+   import "generic-service"
+ 
+   check_command = "ssh"
+ 
+-  assign where (host.address || host.address6) && host.vars.os == "Linux"
++  assign where (host.address || host.address6) && (host.vars.os == "Linux" || host.vars.os == "OpenBSD")
+ }
+ 
+ 

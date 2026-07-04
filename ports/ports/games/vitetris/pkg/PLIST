@@ -1,0 +1,19 @@
+@mode g+s
+@group games
+@bin bin/vitetris
+@mode
+@group
+share/applications/vitetris.desktop
+share/doc/vitetris/
+share/doc/vitetris/README
+share/doc/vitetris/licence.txt
+share/examples/vitetris/
+@mode g+w
+@group games
+share/examples/vitetris/vitetris-hiscores
+@sample /var/games/vitetris-hiscores
+@mode
+@group
+share/pixmaps/
+share/pixmaps/vitetris.xpm
+@tag update-desktop-database

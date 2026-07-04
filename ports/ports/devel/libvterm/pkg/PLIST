@@ -1,0 +1,9 @@
+@bin bin/unterm
+@bin bin/vterm-ctrl
+@bin bin/vterm-dump
+include/vterm.h
+include/vterm_keycodes.h
+@static-lib lib/libvterm.a
+lib/libvterm.la
+@lib lib/libvterm.so.${LIBvterm_VERSION}
+lib/pkgconfig/vterm.pc

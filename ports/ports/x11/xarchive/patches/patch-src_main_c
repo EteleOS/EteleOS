@@ -1,0 +1,21 @@
+Index: src/main.c
+--- src/main.c.orig
++++ src/main.c
+@@ -24,7 +24,7 @@ char *
+ canonicalize_file_name(char *path)
+ {
+   char *name, rzpath[256];
+-  name = realpath(path, rzpath);
++  name = realpath(path, NULL);
+   return name;
+ }
+ #endif
+@@ -63,7 +63,7 @@ setup_exts(WrapperEntry *wrapent)
+   GPtrArray *ext_array = NULL;
+ 
+   /* read extentions into dataline from wrapper */
+-  cmd = g_strdup_printf("%s -i", wrapent->path);
++  cmd = g_strdup_printf("%s -i test", wrapent->path);
+   fdata = popen(cmd, "r");
+   if (getline(&dataline, &maxline, fdata) > 0) 
+   {

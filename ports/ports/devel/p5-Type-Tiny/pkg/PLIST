@@ -1,0 +1,144 @@
+${P5SITE}/Devel/TypeTiny/
+${P5SITE}/Devel/TypeTiny/Perl58Compat.pm
+${P5SITE}/Error/
+${P5SITE}/Error/TypeTiny/
+${P5SITE}/Error/TypeTiny.pm
+${P5SITE}/Error/TypeTiny/Assertion.pm
+${P5SITE}/Error/TypeTiny/Compilation.pm
+${P5SITE}/Error/TypeTiny/WrongNumberOfParameters.pm
+${P5SITE}/Eval/
+${P5SITE}/Eval/TypeTiny/
+${P5SITE}/Eval/TypeTiny.pm
+${P5SITE}/Eval/TypeTiny/CodeAccumulator.pm
+${P5SITE}/Reply/
+${P5SITE}/Reply/Plugin/
+${P5SITE}/Reply/Plugin/TypeTiny.pm
+${P5SITE}/Test/
+${P5SITE}/Test/TypeTiny.pm
+${P5SITE}/Type/
+${P5SITE}/Type/Coercion/
+${P5SITE}/Type/Coercion.pm
+${P5SITE}/Type/Coercion/FromMoose.pm
+${P5SITE}/Type/Coercion/Union.pm
+${P5SITE}/Type/Library.pm
+${P5SITE}/Type/Params/
+${P5SITE}/Type/Params.pm
+${P5SITE}/Type/Params/Alternatives.pm
+${P5SITE}/Type/Params/Parameter.pm
+${P5SITE}/Type/Params/Signature.pm
+${P5SITE}/Type/Parser.pm
+${P5SITE}/Type/Registry.pm
+${P5SITE}/Type/Tie.pm
+${P5SITE}/Type/Tiny/
+${P5SITE}/Type/Tiny.pm
+${P5SITE}/Type/Tiny/Bitfield.pm
+${P5SITE}/Type/Tiny/Class.pm
+${P5SITE}/Type/Tiny/ConstrainedObject.pm
+${P5SITE}/Type/Tiny/Duck.pm
+${P5SITE}/Type/Tiny/Enum.pm
+${P5SITE}/Type/Tiny/Intersection.pm
+${P5SITE}/Type/Tiny/Manual/
+${P5SITE}/Type/Tiny/Manual.pod
+${P5SITE}/Type/Tiny/Manual/AllTypes.pod
+${P5SITE}/Type/Tiny/Manual/Coercions.pod
+${P5SITE}/Type/Tiny/Manual/Contributing.pod
+${P5SITE}/Type/Tiny/Manual/Installation.pod
+${P5SITE}/Type/Tiny/Manual/Libraries.pod
+${P5SITE}/Type/Tiny/Manual/NonOO.pod
+${P5SITE}/Type/Tiny/Manual/Optimization.pod
+${P5SITE}/Type/Tiny/Manual/Params.pod
+${P5SITE}/Type/Tiny/Manual/Policies.pod
+${P5SITE}/Type/Tiny/Manual/UsingWithClassTiny.pod
+${P5SITE}/Type/Tiny/Manual/UsingWithMite.pod
+${P5SITE}/Type/Tiny/Manual/UsingWithMoo.pod
+${P5SITE}/Type/Tiny/Manual/UsingWithMoo2.pod
+${P5SITE}/Type/Tiny/Manual/UsingWithMoo3.pod
+${P5SITE}/Type/Tiny/Manual/UsingWithMoose.pod
+${P5SITE}/Type/Tiny/Manual/UsingWithMouse.pod
+${P5SITE}/Type/Tiny/Manual/UsingWithOther.pod
+${P5SITE}/Type/Tiny/Manual/UsingWithTestMore.pod
+${P5SITE}/Type/Tiny/Role.pm
+${P5SITE}/Type/Tiny/Union.pm
+${P5SITE}/Type/Tiny/_DeclaredType.pm
+${P5SITE}/Type/Tiny/_HalfOp.pm
+${P5SITE}/Type/Utils.pm
+${P5SITE}/Types/
+${P5SITE}/Types/Common/
+${P5SITE}/Types/Common.pm
+${P5SITE}/Types/Common/Numeric.pm
+${P5SITE}/Types/Common/String.pm
+${P5SITE}/Types/Standard/
+${P5SITE}/Types/Standard.pm
+${P5SITE}/Types/Standard/ArrayRef.pm
+${P5SITE}/Types/Standard/CycleTuple.pm
+${P5SITE}/Types/Standard/Dict.pm
+${P5SITE}/Types/Standard/HashRef.pm
+${P5SITE}/Types/Standard/Map.pm
+${P5SITE}/Types/Standard/ScalarRef.pm
+${P5SITE}/Types/Standard/StrMatch.pm
+${P5SITE}/Types/Standard/Tied.pm
+${P5SITE}/Types/Standard/Tuple.pm
+${P5SITE}/Types/TypeTiny.pm
+@man man/man3p/Error::TypeTiny.3p
+@man man/man3p/Error::TypeTiny::Assertion.3p
+@man man/man3p/Error::TypeTiny::Compilation.3p
+@man man/man3p/Error::TypeTiny::WrongNumberOfParameters.3p
+@man man/man3p/Eval::TypeTiny.3p
+@man man/man3p/Eval::TypeTiny::CodeAccumulator.3p
+@man man/man3p/Reply::Plugin::TypeTiny.3p
+@man man/man3p/Test::TypeTiny.3p
+@man man/man3p/Type::Coercion.3p
+@man man/man3p/Type::Coercion::FromMoose.3p
+@man man/man3p/Type::Coercion::Union.3p
+@man man/man3p/Type::Library.3p
+@man man/man3p/Type::Params.3p
+@man man/man3p/Type::Params::Alternatives.3p
+@man man/man3p/Type::Params::Parameter.3p
+@man man/man3p/Type::Params::Signature.3p
+@man man/man3p/Type::Parser.3p
+@man man/man3p/Type::Registry.3p
+@man man/man3p/Type::Tie.3p
+@man man/man3p/Type::Tiny.3p
+@man man/man3p/Type::Tiny::Bitfield.3p
+@man man/man3p/Type::Tiny::Class.3p
+@man man/man3p/Type::Tiny::ConstrainedObject.3p
+@man man/man3p/Type::Tiny::Duck.3p
+@man man/man3p/Type::Tiny::Enum.3p
+@man man/man3p/Type::Tiny::Intersection.3p
+@man man/man3p/Type::Tiny::Manual.3p
+@man man/man3p/Type::Tiny::Manual::AllTypes.3p
+@man man/man3p/Type::Tiny::Manual::Coercions.3p
+@man man/man3p/Type::Tiny::Manual::Contributing.3p
+@man man/man3p/Type::Tiny::Manual::Installation.3p
+@man man/man3p/Type::Tiny::Manual::Libraries.3p
+@man man/man3p/Type::Tiny::Manual::NonOO.3p
+@man man/man3p/Type::Tiny::Manual::Optimization.3p
+@man man/man3p/Type::Tiny::Manual::Params.3p
+@man man/man3p/Type::Tiny::Manual::Policies.3p
+@man man/man3p/Type::Tiny::Manual::UsingWithClassTiny.3p
+@man man/man3p/Type::Tiny::Manual::UsingWithMite.3p
+@man man/man3p/Type::Tiny::Manual::UsingWithMoo.3p
+@man man/man3p/Type::Tiny::Manual::UsingWithMoo2.3p
+@man man/man3p/Type::Tiny::Manual::UsingWithMoo3.3p
+@man man/man3p/Type::Tiny::Manual::UsingWithMoose.3p
+@man man/man3p/Type::Tiny::Manual::UsingWithMouse.3p
+@man man/man3p/Type::Tiny::Manual::UsingWithOther.3p
+@man man/man3p/Type::Tiny::Manual::UsingWithTestMore.3p
+@man man/man3p/Type::Tiny::Role.3p
+@man man/man3p/Type::Tiny::Union.3p
+@man man/man3p/Type::Tiny::_DeclaredType.3p
+@man man/man3p/Type::Tiny::_HalfOp.3p
+@man man/man3p/Type::Utils.3p
+@man man/man3p/Types::Common.3p
+@man man/man3p/Types::Common::Numeric.3p
+@man man/man3p/Types::Common::String.3p
+@man man/man3p/Types::Standard.3p
+@man man/man3p/Types::Standard::ArrayRef.3p
+@man man/man3p/Types::Standard::CycleTuple.3p
+@man man/man3p/Types::Standard::Dict.3p
+@man man/man3p/Types::Standard::HashRef.3p
+@man man/man3p/Types::Standard::Map.3p
+@man man/man3p/Types::Standard::ScalarRef.3p
+@man man/man3p/Types::Standard::StrMatch.3p
+@man man/man3p/Types::Standard::Tuple.3p
+@man man/man3p/Types::TypeTiny.3p

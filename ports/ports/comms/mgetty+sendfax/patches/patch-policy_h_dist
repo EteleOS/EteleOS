@@ -1,0 +1,39 @@
+Index: policy.h-dist
+--- policy.h-dist.orig
++++ policy.h-dist
+@@ -48,7 +48,7 @@
+  * Normally, this is "/bin/login", just a few systems put "login"
+  * elsewhere (e.g. Free/NetBSD in "/usr/bin/login").
+  */
+-#define DEFAULT_LOGIN_PROGRAM "/bin/login"
++#define DEFAULT_LOGIN_PROGRAM "/usr/bin/login"
+ 
+ /* FidoNet mailer support
+  * 
+@@ -94,7 +94,7 @@
+  * ZyXELs use S40.2=1.
+  * If the path doesn't start with "/", it's relative to CONFDIR.
+  */
+-/* #define CNDFILE "dialin.config" */
++#define CNDFILE "dialin.config"
+ 
+ 
+ /* If you want to use /etc/gettydefs to set tty flags, define this
+@@ -123,7 +123,7 @@
+ /* group id that the device is chown()ed to. If not defined, the
+  * primary group of "DEVICE_OWNER" is used.
+  */
+-#define DEVICE_GROUP	"modem"
++#define DEVICE_GROUP	"dialer"
+ 
+ /* access mode for the line while getty has it - it should be accessible
+  * by uucp / uucp, but not by others (imagine someone dialing into your
+@@ -259,7 +259,7 @@
+ # ifdef linux
+ #  define LOCK	"/var/lock/LCK..%s"
+ # endif
+-# if defined(__FreeBSD__) || defined(__NetBSD__)
++# if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__)
+ #  define LOCK "/var/spool/lock/LCK..%s"
+ # endif 
+ #endif

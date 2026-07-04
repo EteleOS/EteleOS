@@ -1,0 +1,12 @@
+Index: src/events.c
+--- src/events.c.orig
++++ src/events.c
+@@ -133,7 +133,7 @@ void init_buttonbindings(void)
+ 
+ 	free(confpath);
+ 
+-	if (!conf && ((conf = fopen("/etc/feh/buttons", "r")) == NULL))
++	if (!conf && ((conf = fopen("${SYSCONFDIR}/feh/buttons", "r")) == NULL))
+ 		return;
+ 
+ 	while (fgets(line, sizeof(line), conf)) {

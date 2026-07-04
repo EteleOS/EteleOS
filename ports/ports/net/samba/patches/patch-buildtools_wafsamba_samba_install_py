@@ -1,0 +1,34 @@
+Make Samba4 WAF respect OpenBSD shared libraries versioning conventions.
+BUG: https://bugzilla.samba.org/show_bug.cgi?id=9774
+
+Index: buildtools/wafsamba/samba_install.py
+--- buildtools/wafsamba/samba_install.py.orig
++++ buildtools/wafsamba/samba_install.py
+@@ -114,11 +114,15 @@ def install_library(self):
+             else:
+                 inst_name    = bld.make_libname(t.target)
+         elif self.vnum:
++            import sys
+             vnum_base    = self.vnum.split('.')[0]
+             install_name = bld.make_libname(target_name, version=self.vnum)
+-            install_link = bld.make_libname(target_name, version=vnum_base)
+-            inst_name    = bld.make_libname(t.target)
+-            if not self.private_library or not t.env.SONAME_ST:
++            if sys.platform.startswith('openbsd'):
++                install_link = install_name
++            else:
++                install_link = bld.make_libname(target_name, version=vnum_base)
++            inst_name    = bld.make_libname(t.target, version=self.vnum)
++            if not sys.platform.startswith("openbsd") and (not self.private_library or not t.env.SONAME_ST):
+                 # only generate the dev link for non-bundled libs
+                 dev_link     = bld.make_libname(target_name)
+         elif getattr(self, 'soname', ''):
+@@ -169,7 +173,7 @@ def apply_vscript(self):
+     '''add version-script arguments to library build'''
+ 
+     if self.env.HAVE_LD_VERSION_SCRIPT and getattr(self, 'version_script', ''):
+-        self.env.append_value('LINKFLAGS', "-Wl,--version-script=%s" %
++        self.env.append_unique('LINKFLAGS', "-Wl,--version-script=%s" %
+             self.version_script)
+         self.version_script = None
+ 

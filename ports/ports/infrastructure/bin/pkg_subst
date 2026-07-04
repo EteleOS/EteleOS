@@ -1,0 +1,127 @@
+#! /usr/bin/perl
+# ex:ts=8 sw=4:
+# $OpenBSD: pkg_subst,v 1.9 2023/05/14 09:01:10 espie Exp $
+#
+# Copyright (c) 2008 Marc Espie <espie@openbsd.org>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+# rather simple script
+
+use v5.36;
+use OpenBSD::Getopt;
+use OpenBSD::Subst;
+use OpenBSD::State;
+use OpenBSD::IdCache;
+
+sub fatal(@parms)
+{
+	say STDERR @parms;
+	exit 1;
+}
+
+my @basedirs;
+
+sub ensure_basedir($file)
+{
+	for my $b (@basedirs) {
+		return if $file =~ m/^\Q$b\E\//;
+	}
+
+	# try harder!
+	require File::Spec;
+
+	$file = File::Spec->canonpath(File::Spec->rel2abs($file));
+
+	for my $b (@basedirs) {
+		return if $file =~ m/^\Q$b\E\//;
+	}
+
+	fatal("must use -m to copy $file which is outside ".
+	    join(" ", @basedirs));
+}
+
+my $subst = OpenBSD::Subst->new;
+
+our ($opt_c, $opt_i);
+my ($fuid, $fgid, $fmode);
+my ($uidc, $gidc);
+
+my $ui = OpenBSD::State->new;
+$ui->usage_is( '[-ci] [-Dvar=value ...] [-B basedir] [-g group] [-m mode] [-o owner] [file ...]');
+$ui->do_options(
+    sub {
+	getopts('B:D:g:m:o:chi',
+	    {'D' =>
+		    sub($opt) {
+			    $subst->parse_option($opt);
+		    },
+	     'o' => sub($owner) {
+			    $uidc //= OpenBSD::UidCache->new;
+			    $fuid = $uidc->lookup($owner, -1);
+			    fatal("$owner is not a valid user") if $fuid == -1;
+		    },
+	     'g' => sub($group) {
+			    $gidc //= OpenBSD::GidCache->new;
+			    $fgid = $gidc->lookup($group, -1);
+			    fatal("$group is not a valid group") if $fgid == -1;
+		    },
+	     'B' => sub($b) {
+			    push(@basedirs, $b);
+		    },
+	     'm' => sub($mode) {
+			    $fmode = oct($mode);
+			    fatal("$mode is not a valid mode") if $fmode == 0;
+		    },
+	     'h' => sub() {	$ui->usage; },
+	    });
+    });
+
+my $bak = $subst->value('BAK');
+if (!defined $bak) {
+	$bak = '.beforesubst';
+}
+
+if (@ARGV == 0) {
+	$subst->copy_fh2(\*STDIN, \*STDOUT);
+}
+
+while (my $src = shift) {
+	my $dest;
+	if ($opt_c) {
+		$dest = shift or die "odd number of files";
+		if (@basedirs > 0 && !defined $fmode) {
+			ensure_basedir($src);
+		}
+	} else {
+		$dest = $src;
+		$src .= $bak;
+		rename($dest, $src) or fatal("Can't rename $dest to $src: $!");
+	}
+	my $fh = $subst->copy($src, $dest);
+	# copy rights, owner, group as well
+	my ($uid, $gid, $mode) = (stat $src)[4, 5, 2];
+	my $r1 = chown $fuid // $uid, $fgid // $gid, $fh;
+	if (defined $fmode) {
+		$mode = $fmode;
+	}
+	my $r2 = chmod $mode & 07777, $fh;
+	if (defined $fuid || defined $fgid || $< == 0) {
+		if ($r1 == 0 && !$opt_i) {
+			fatal("chown on $dest failed");
+		}
+		if ($r2 == 0) {
+			fatal("chmod on $dest failed");
+		}
+	}
+}

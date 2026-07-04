@@ -1,0 +1,11 @@
+Index: src/qmaptool/helpers/CDraw.cpp
+--- src/qmaptool/helpers/CDraw.cpp.orig
++++ src/qmaptool/helpers/CDraw.cpp
+@@ -24,6 +24,7 @@
+ #include <QPainterPath>
+ #include <QPointF>
+ #include <QtMath>
++#include <QPainterPath>
+ 
+ #include "canvas/CCanvas.h"
+ 

@@ -1,0 +1,11 @@
+@bin bin/esic
+@bin bin/icmpsic
+@bin bin/icmpsic6
+@bin bin/isic
+@bin bin/isic6
+@bin bin/multisic
+@bin bin/tcpsic
+@bin bin/tcpsic6
+@bin bin/udpsic
+@bin bin/udpsic6
+@man man/man1/isic.1

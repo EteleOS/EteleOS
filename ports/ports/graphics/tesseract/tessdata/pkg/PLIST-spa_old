@@ -1,0 +1,5 @@
+@conflict tesseract-<3.02.02
+@pkgpath graphics/tesseract,-spa_old
+@pkgpath graphics/tesseract-langs/spa_old
+share/tessdata/
+share/tessdata/spa_old.traineddata

@@ -1,0 +1,32 @@
+upstream changed default config directory in 6.12; put this back to avoid
+users having to make changes
+
+fix nested function in AC_TRY_COMPILE
+
+Index: configure.in
+--- configure.in.orig
++++ configure.in
+@@ -84,7 +84,7 @@ CFLAGS="$CFLAGS $cicapflags"
+ MODULES_LIBADD="$cicaplibs"
+ UTILITIES_LIBADD="$cicapliblibs"
+ UTILITIES_CFLAGS="$cicaplibflags"
+-CONFDIR="$cicapetc"
++CONFDIR="$sysconfdir"
+ MODSDIR="$cicapmods"
+ DATADIR="$cicapdatadir"
+ CICAPVERSION="$cicapversion"
+@@ -123,14 +123,12 @@ AC_TRY_COMPILE(
+       #include <sys/un.h>
+        ],
+       [
+-      int main(int argc, char **argv) {
+              struct msghdr mh;
+              struct cmsghdr cmh;
+              mh.msg_control = NULL;
+              mh.msg_controllen = 0;
+              cmh.cmsg_level = SOL_SOCKET;
+              cmh.cmsg_type = SCM_RIGHTS;
+-      }
+       ],
+ AC_DEFINE(HAVE_FD_PASSING,1,[Define HAVE_FD_PASSING if sending fd through unix socket supported]),
+ AC_MSG_RESULT(yes), 

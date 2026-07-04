@@ -1,0 +1,8 @@
+@newgroup _vnu:818
+@newuser _vnu:818:818::Nu Html Checker:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/vnu
+bin/vnu
+share/doc/vnu/
+share/doc/vnu/README.md
+share/vnu/
+share/vnu/vnu.jar

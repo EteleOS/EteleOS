@@ -1,0 +1,107 @@
+@bin bin/ipe
+@bin bin/ipe6upgrade
+bin/ipecurl
+@bin bin/ipeextract
+@bin bin/ipepresenter
+@bin bin/iperender
+bin/iperender-par
+@bin bin/ipescript
+@bin bin/ipetoipe
+include/ipeattributes.h
+include/ipebase.h
+include/ipebitmap.h
+include/ipecanvas.h
+include/ipecanvas_cocoa.h
+include/ipecanvas_gtk.h
+include/ipecanvas_qt.h
+include/ipecanvas_win.h
+include/ipedoc.h
+include/ipefactory.h
+include/ipegeo.h
+include/ipegroup.h
+include/ipeimage.h
+include/ipeiml.h
+include/ipelatex.h
+include/ipelet.h
+include/ipelib.h
+include/ipeobject.h
+include/ipepage.h
+include/ipepainter.h
+include/ipepath.h
+include/ipepdfparser.h
+include/ipepdfview.h
+include/ipepdfview_cocoa.h
+include/ipepdfview_qt.h
+include/ipepdfview_win.h
+include/ipepdfwriter.h
+include/ipepswriter.h
+include/ipereference.h
+include/iperesources.h
+include/ipeselector_cocoa.h
+include/ipeselector_qt.h
+include/ipeshape.h
+include/ipesnap.h
+include/ipestyle.h
+include/ipetext.h
+include/ipetool.h
+include/ipetoolbase.h
+include/ipeutils.h
+include/ipexml.h
+lib/ipe/
+lib/ipe/${V}/
+lib/ipe/${V}/ipelets/
+lib/ipe/${V}/ipelets/align.lua
+lib/ipe/${V}/ipelets/euclid.lua
+lib/ipe/${V}/ipelets/goodies.lua
+lib/ipe/${V}/ipelets/gridmaker.lua
+lib/ipe/${V}/ipelets/move.lua
+lib/ipe/${V}/ipelets/search-replace.lua
+lib/ipe/${V}/ipelets/selectby.lua
+lib/ipe/${V}/ipelets/symbols.lua
+@lib lib/libipe.so.${LIBipe_VERSION}
+@lib lib/libipecairo.so.${LIBipecairo_VERSION}
+@lib lib/libipecanvas.so.${LIBipecanvas_VERSION}
+@lib lib/libipelua.so.${LIBipelua_VERSION}
+@lib lib/libipeui.so.${LIBipeui_VERSION}
+@man man/man1/ipe.1
+@man man/man1/ipe6upgrade.1
+@man man/man1/ipeextract.1
+@man man/man1/iperender.1
+@man man/man1/ipescript.1
+@man man/man1/ipetoipe.1
+share/ipe/
+share/ipe/${V}/
+share/ipe/${V}/icons/
+share/ipe/${V}/icons/icon_128x128.png
+share/ipe/${V}/icons/icons.ipe
+share/ipe/${V}/icons/ipe_logo.ipe
+share/ipe/${V}/lua/
+share/ipe/${V}/lua/actions.lua
+share/ipe/${V}/lua/editpath.lua
+share/ipe/${V}/lua/main.lua
+share/ipe/${V}/lua/model.lua
+share/ipe/${V}/lua/mouse.lua
+share/ipe/${V}/lua/prefs.lua
+share/ipe/${V}/lua/properties.lua
+share/ipe/${V}/lua/shortcuts.lua
+share/ipe/${V}/lua/tools.lua
+share/ipe/${V}/scripts/
+share/ipe/${V}/scripts/add-style.lua
+share/ipe/${V}/scripts/onepage.lua
+share/ipe/${V}/scripts/page-labels.lua
+share/ipe/${V}/scripts/scratchpad.lua
+share/ipe/${V}/scripts/update-master.lua
+share/ipe/${V}/scripts/update-styles.lua
+share/ipe/${V}/styles/
+share/ipe/${V}/styles/arabic.isy
+share/ipe/${V}/styles/basic.isy
+share/ipe/${V}/styles/beamer.isy
+share/ipe/${V}/styles/colors.isy
+share/ipe/${V}/styles/decorations.isy
+share/ipe/${V}/styles/imperial.isy
+share/ipe/${V}/styles/landscape.isy
+share/ipe/${V}/styles/nocrop.isy
+share/ipe/${V}/styles/note-paper.isy
+share/ipe/${V}/styles/presentation.isy
+share/ipe/${V}/styles/right-to-left.isy
+share/ipe/${V}/styles/tikz-shapes.isy

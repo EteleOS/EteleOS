@@ -1,0 +1,12 @@
+Index: bin/tSmoke
+--- bin/tSmoke.orig
++++ bin/tSmoke
+@@ -64,7 +64,7 @@ use Pod::Usage;
+ use RRDs;
+ 
+ # Point to your Smokeping config file
+-my $cfgfile = (shift @ARGV) || "$FindBin::Bin/../etc/config";
++my $cfgfile = (shift @ARGV) || "${SYSCONFDIR}/config";
+ 
+ # global variables
+ my $cfg;

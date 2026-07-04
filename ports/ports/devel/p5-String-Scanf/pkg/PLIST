@@ -1,0 +1,3 @@
+${P5SITE}/String/
+${P5SITE}/String/Scanf.pm
+@man man/man3p/String::Scanf.3p

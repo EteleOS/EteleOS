@@ -1,0 +1,13 @@
+Fix build with newer wxWidgets.
+
+Index: wxVillaLib/PropDlg.cpp
+--- wxVillaLib/PropDlg.cpp.orig
++++ wxVillaLib/PropDlg.cpp
+@@ -12,7 +12,6 @@
+ #include "utils.h"
+ #include <wx/fontdlg.h>
+ #include <wx/colordlg.h>
+-#include <wx/generic/colrdlgg.h>
+ #include <wx/filedlg.h>
+ #include <wx/dirdlg.h>
+ #include <wx/grid.h>

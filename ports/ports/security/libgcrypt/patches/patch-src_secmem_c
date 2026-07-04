@@ -1,0 +1,42 @@
+Our swap is encrypted by default
+(synced with gnupg/patches/patch-util_secmem_c)
+
+Index: src/secmem.c
+--- src/secmem.c.orig
++++ src/secmem.c
+@@ -36,6 +36,8 @@
+ #include <sys/capability.h>
+ #endif
+ #endif
++#include <sys/sysctl.h>
++#include <uvm/uvm_swap_encrypt.h>
+ 
+ #include "g10lib.h"
+ #include "secmem.h"
+@@ -279,8 +281,24 @@ mb_get_new (pooldesc_t *pool, memblock_t *block, size_
+ static void
+ print_warn (void)
+ {
+-  if (!no_warning)
+-    log_info (_("Warning: using insecure memory!\n"));
++	int    mib[3], swapencrypt = 0;
++	size_t len;
++
++	mib[0] = CTL_VM;
++	mib[1] = VM_SWAPENCRYPT;
++	mib[2] = SWPENC_ENABLE;
++
++	len = sizeof(swapencrypt);
++
++	if (sysctl(mib, 3, &swapencrypt, &len, NULL, 0) == -1)
++		log_info("WARNING: Can't receive vm.swapencrypt.enable sysctl value\n");
++
++	if (!no_warning && !swapencrypt)
++	{
++		log_info("WARNING: Using insecure memory!\n");
++		log_info("Please enable swap encryption via"
++			 " 'sysctl vm.swapencrypt.enable=1'.\n");
++	}
+ }
+ 
+ 

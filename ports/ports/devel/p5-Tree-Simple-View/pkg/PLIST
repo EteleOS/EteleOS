@@ -1,0 +1,11 @@
+${P5SITE}/Tree/Simple/View/
+${P5SITE}/Tree/Simple/View.pm
+${P5SITE}/Tree/Simple/View/ASCII.pm
+${P5SITE}/Tree/Simple/View/DHTML.pm
+${P5SITE}/Tree/Simple/View/Exceptions.pm
+${P5SITE}/Tree/Simple/View/HTML.pm
+@man man/man3p/Tree::Simple::View.3p
+@man man/man3p/Tree::Simple::View::ASCII.3p
+@man man/man3p/Tree::Simple::View::DHTML.3p
+@man man/man3p/Tree::Simple::View::Exceptions.3p
+@man man/man3p/Tree::Simple::View::HTML.3p

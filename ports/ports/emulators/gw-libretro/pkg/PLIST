@@ -1,0 +1,3 @@
+lib/libretro/
+lib/libretro/gw_libretro.so
+share/doc/pkg-readmes/${PKGSTEM}

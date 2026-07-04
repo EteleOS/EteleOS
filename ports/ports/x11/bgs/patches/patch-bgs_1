@@ -1,0 +1,8 @@
+--- bgs.1.orig	Tue May 12 11:09:52 2015
++++ bgs.1	Sat May 23 13:28:31 2015
+@@ -1,4 +1,4 @@
+-.TH BGS 1 bgs\-VERSION
++.TH BGS 1 bgs\-${VERSION}
+ .SH NAME
+ bgs \- background setter
+ .SH SYNOPSIS

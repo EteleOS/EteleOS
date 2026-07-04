@@ -1,0 +1,36 @@
+Index: sysdeputil.c
+--- sysdeputil.c.orig
++++ sysdeputil.c
+@@ -25,6 +25,10 @@
+   #define _LARGEFILE64_SOURCE 1
+ #endif
+ 
++#if defined(__OpenBSD__)
++  #undef VSF_BUILD_PAM
++#endif
++
+ /* For INT_MAX */
+ #include <limits.h>
+ 
+@@ -116,6 +120,12 @@
+   #endif
+ #endif
+ 
++#if defined(__OpenBSD__)
++  #include <stdlib.h>
++  #undef VSF_SYSDEP_HAVE_SHADOW
++  #define VSF_SYSDEP_HAVE_SETPROCTITLE
++#endif
++
+ #ifdef __hpux
+   #include <sys/socket.h>
+   #ifdef SF_DISCONNECT
+@@ -243,7 +253,7 @@ vsf_sysdep_check_auth(struct mystr* p_user_str,
+                       const struct mystr* p_remote_host)
+ {
+   const char* p_crypted;
+-  const struct passwd* p_pwd = getpwnam(str_getbuf(p_user_str));
++  const struct passwd* p_pwd = getpwnam_shadow(str_getbuf(p_user_str));
+   (void) p_remote_host;
+   if (p_pwd == NULL)
+   {

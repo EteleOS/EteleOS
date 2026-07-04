@@ -1,0 +1,3 @@
+@man man/man5/wifind.conf.5
+@man man/man8/wifind.8
+sbin/wifind

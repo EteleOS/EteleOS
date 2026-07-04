@@ -1,0 +1,24 @@
+--- Local.config.orig	Sat Apr 30 23:33:14 2005
++++ Local.config	Tue Oct 15 00:38:55 2013
+@@ -162,6 +162,21 @@ XCOMM CDEBUGFLAGS =
+ 
+ XCOMM This should take care of everything needed for BSD.
+ 
++#if defined(OpenBSDArchitecture)
++ARCH_DEFINES = -DHAVE_PARAM_H
++TIFF_INCLUDE = -I${LOCALBASE}/include
++TIFF_LIB     = -L${LOCALBASE}/lib -ltiff
++JPEG_INCLUDE = -I${LOCALBASE}/include
++JPEG_LIB     = -L${LOCALBASE}/lib -ljpeg
++PNG_INCLUDE  = -I${LOCALBASE}/include
++PNG_LIB      = -L${LOCALBASE}/lib -lpng -lz
++XPM_INCLUDE  = -I${X11BASE}/include/X11
++BINDIR       = ${TRUEPREFIX}/bin
++SHAREDIR     = ${TRUEPREFIX}/share/xpaint
++XAPPLOADDIR  = ${TRUEPREFIX}/lib/X11/app-defaults
++EDITOR       = xterm -fn 9x15 -cr green -ms red -bg lightyellow -fg black -e vi
++#endif
++
+ #if defined(NetBSDArchitecture) || defined(BSD386Architecture)
+ ARCH_DEFINES = -DHAVE_PARAM_H
+ TIFF_INCLUDE = -I/usr/local/include

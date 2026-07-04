@@ -1,0 +1,14 @@
+Index: memcached.h
+--- memcached.h.orig
++++ memcached.h
+@@ -13,7 +13,9 @@
+ #include <sys/socket.h>
+ #include <sys/time.h>
+ #include <netinet/in.h>
+-#include <event.h>
++#include <event2/event.h>
++#include <event2/event_struct.h>
++#include <event2/event_compat.h>
+ #include <netdb.h>
+ #include <pthread.h>
+ #include <unistd.h>

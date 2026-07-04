@@ -1,0 +1,4 @@
+@bin bin/stalonetray
+@man man/man1/stalonetray.1
+share/examples/stalonetray/
+share/examples/stalonetray/stalonetrayrc.sample

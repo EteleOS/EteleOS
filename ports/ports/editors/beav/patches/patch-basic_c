@@ -1,0 +1,10 @@
+--- basic.c.orig	Sat May 22 17:00:32 2010
++++ basic.c	Sat May 22 17:00:40 2010
+@@ -9,7 +9,6 @@
+ 
+ #include    "def.h"
+ 
+-bool move_ptr ();
+ bool forwchar ();
+ bool wind_on_dot ();
+ bool backline ();

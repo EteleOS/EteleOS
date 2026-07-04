@@ -1,0 +1,39 @@
+@conflict hplip-libs-*
+@conflict hplip-<3.13.7p4
+@pkgpath print/hplip,-libs
+@newgroup _cups:541
+@extraunexec rm -rf /var/log/hp/tmp/*
+@extraunexec rm -f /var/log/hp/* 2>/dev/null || true
+@static-lib lib/libhpdiscovery.a
+lib/libhpdiscovery.la
+@lib lib/libhpdiscovery.so.${LIBhpdiscovery_VERSION}
+@static-lib lib/libhpip.a
+lib/libhpip.la
+@lib lib/libhpip.so.${LIBhpip_VERSION}
+@static-lib lib/libhpipp.a
+lib/libhpipp.la
+@lib lib/libhpipp.so.${LIBhpipp_VERSION}
+@static-lib lib/libhpmud.a
+lib/libhpmud.la
+@lib lib/libhpmud.so.${LIBhpmud_VERSION}
+share/cups/drv/
+share/cups/drv/hp/
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/hplip/
+share/examples/hplip/db/
+@sample /var/db/hp/
+share/examples/hplip/db/hplip.state
+@sample /var/db/hp/hplip.state
+share/examples/hplip/hp/
+@sample ${SYSCONFDIR}/hp/
+share/examples/hplip/hp/hplip.conf
+@sample ${SYSCONFDIR}/hp/hplip.conf
+share/hplip/
+share/hplip/data/
+share/hplip/data/models/
+share/hplip/data/models/models.dat
+@mode 0774
+@group _cups
+@sample /var/log/hp/
+@mode 1774
+@sample /var/log/hp/tmp/

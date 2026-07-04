@@ -1,0 +1,7 @@
+include/cgi.h
+lib/libcgiparse.a
+@lib lib/libcgiparse.so.${LIBcgiparse_VERSION}
+lib/libcgiparse_p.a
+@man man/man3/cgiclose.3
+@man man/man3/cgigetvalue.3
+@man man/man3/cginewquerystr.3

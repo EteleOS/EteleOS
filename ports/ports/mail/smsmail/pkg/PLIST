@@ -1,0 +1,8 @@
+@bin bin/smsmail
+@man man/man1/smsmail.1
+@man man/man5/smsmail.conf.5
+share/examples/smsmail/
+share/examples/smsmail/sms.schema
+share/examples/smsmail/smsmail.conf
+@mode u-r
+@sample ${SYSCONFDIR}/smsmail.conf

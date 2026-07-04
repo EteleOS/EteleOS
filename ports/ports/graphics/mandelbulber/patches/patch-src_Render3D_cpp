@@ -1,0 +1,12 @@
+Index: src/Render3D.cpp
+--- src/Render3D.cpp.orig
++++ src/Render3D.cpp
+@@ -1409,7 +1409,7 @@ void DrawKeyframePaths(sParamRender *param, cImage *im
+ 				}
+ 				else
+ 				{
+-					lightActFrame[l] = (CVector3 ) { 0.0, 0.0, -1.0 };
++					lightActFrame[l] = CVector3(0.0, 0.0, -1.0);
+ 				}
+ 			}
+ 

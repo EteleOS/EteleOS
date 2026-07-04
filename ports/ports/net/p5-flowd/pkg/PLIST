@@ -1,0 +1,6 @@
+${P5ARCH}/
+${P5ARCH}/Flowd.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Flowd/
+${P5ARCH}/auto/Flowd/Flowd.so
+@man man/man3p/Flowd.3p

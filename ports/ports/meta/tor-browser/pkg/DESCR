@@ -1,0 +1,11 @@
+Tor Browser (TB) is a modified version of Mozilla's Firefox Extended
+Service Release customized for web browsing over the Tor anonymity
+network. In addition to obscuring the client's IP address, TB also
+mitigates browser fingerprinting attacks and patches the Mozilla code
+in other ways to prevent privacy leaks.
+
+Tor Browser includes the patched version of Firefox ESR and the NoScript
+Firefox add-on, a well-known add-on that allows flexible blocking
+of JS.  The version in the Tor Browser ports is specifically configured
+for use in Tor Browser by the Tor project and is not for use with other
+Mozilla-based browsers.

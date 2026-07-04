@@ -1,0 +1,24 @@
+Index: src/game.h
+--- src/game.h.orig
++++ src/game.h
+@@ -210,9 +210,9 @@ class game (protected)
+ 	void simulate_objects_mt(double delta_t, unsigned idxoff, unsigned idxmod, bool record,
+ 				 double& nearest_contact);
+ 
+-	class simulate_worker : public thread
++	class simulate_worker : public ::thread
+ 	{
+-		mutex mtx;
++		dd::mutex mtx;
+ 		condvar cond;
+ 		condvar condfini;
+ 		game& gm;
+@@ -230,7 +230,7 @@ class game (protected)
+ 		double sync();
+ 	};
+ 
+-	thread::auto_ptr<simulate_worker> myworker;
++	::thread::auto_ptr<simulate_worker> myworker;
+ 
+ 	player_info playerinfo;
+ 

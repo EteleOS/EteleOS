@@ -1,0 +1,48 @@
+move to C99, fix C++
+
+Index: m4/devil-definitions.m4
+--- m4/devil-definitions.m4.orig
++++ m4/devil-definitions.m4
+@@ -6,6 +6,8 @@ dnl          ILU_CFLAGS="$ILU_CFLAGS $1"
+ dnl          ILUT_CFLAGS="$ILUT_CFLAGS $1"])
+ dnl IL_CFLAGS are present everywhere
+ 
++AC_DEFUN([ADD_ONLY_CFLAGS],
++	 [ONLY_CFLAGS="$ONLY_CFLAGS $1"])
+ 
+ dnl
+ dnl Check CPU Extensions
+@@ -244,12 +246,12 @@ AC_DEFUN([SETTLE_MNG],
+ 
+ AC_DEFUN([SETTLE_PNG],
+          [DEVIL_IL_LIB([png.h],
+-                       [png12]) 
+-          AS_IF([test "x$have_png12" = "xno"],
++                       [png]) 
++          AS_IF([test "x$have_png" = "xno"],
+                 [DEVIL_IL_LIB([png.h],
+                               [png]) 
+                  lib_test_result="$have_png"],
+-                [lib_test_result="$have_png12"]) 
++                [lib_test_result="$have_png"]) 
+           AS_IF([test "x$lib_test_result" = "xyes"],
+                 [MAYBE_OPTIONAL_DEPENDENCY([IL],
+                                            [libpng]) ]) ]) 
+@@ -285,14 +287,14 @@ AC_DEFUN([DEVIL_CHECK_RESTRICT],
+ 
+ AC_DEFUN([DEVIL_CHECK_RESTRICT_GNU99],
+          [TMP_CFLAGS="$CFLAGS"
+-          CFLAGS="$CFLAGS -std=gnu99 -fgnu89-inline"
+-          AC_MSG_CHECKING([restrict gnu99 keyword])
++          CFLAGS="$CFLAGS -std=c99 -fgnu89-inline"
++          AC_MSG_CHECKING([restrict c99 keyword])
+           AC_COMPILE_IFELSE([[void foo(void * restrict test){}]],
+ 	                    [AC_DEFINE([RESTRICT_KEYWORD],
+ 	  			       [1],
+ 				       [restric keyword available])
+ 	                     AC_MSG_RESULT([yes])
+ 	                     CFLAGS="$TMP_CFLAGS"
+-                             ADD_CFLAGS(-std=gnu99 -fgnu89-inline)],
++                             ADD_ONLY_CFLAGS(-std=c99 -fgnu89-inline)],
+ 			    [AC_MSG_RESULT([no])
+ 	                     CFLAGS="$TMP_CFLAGS"]) ])

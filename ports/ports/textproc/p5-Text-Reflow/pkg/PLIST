@@ -1,0 +1,10 @@
+bin/reflow
+${P5ARCH}/
+${P5ARCH}/Text/
+${P5ARCH}/Text/Reflow.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Text/
+${P5ARCH}/auto/Text/Reflow/
+${P5ARCH}/auto/Text/Reflow/Reflow.so
+@man man/man1/reflow.1
+@man man/man3p/Text::Reflow.3p

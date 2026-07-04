@@ -1,0 +1,4 @@
+lib/tcl/tkhtml/
+lib/tcl/tkhtml/libTkhtml${VER}.so
+lib/tcl/tkhtml/pkgIndex.tcl
+@man man/mann/tkhtml.n

@@ -1,0 +1,12 @@
+Index: plugins/node.d/postfix_mailstats.in
+--- plugins/node.d/postfix_mailstats.in.orig
++++ plugins/node.d/postfix_mailstats.in
+@@ -60,7 +60,7 @@ my $pos;
+ my $delivered = 0;
+ my %rejects = ();
+ my $LOGDIR  = $ENV{'logdir'}  || '/var/log';
+-my $LOGFILE = $ENV{'logfile'} || 'mail.log';
++my $LOGFILE = $ENV{'logfile'} || 'maillog';
+ 
+ my $logfile = "$LOGDIR/$LOGFILE";
+ 

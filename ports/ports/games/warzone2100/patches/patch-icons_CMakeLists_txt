@@ -1,0 +1,12 @@
+Index: icons/CMakeLists.txt
+--- icons/CMakeLists.txt.orig
++++ icons/CMakeLists.txt
+@@ -53,7 +53,7 @@ if(UNIX AND NOT APPLE AND NOT WIN32)
+ 		COMPONENT Core
+ 	)
+ 	install(FILES warzone2100.png
+-		DESTINATION "${CMAKE_INSTALL_DATADIR}/icons"
++		DESTINATION "${CMAKE_INSTALL_DATADIR}/icons/warzone2100/"
+ 		RENAME "${WZ_APPSTREAM_ID}${WZ_OUTPUT_NAME_SUFFIX}.png"
+ 		COMPONENT Core
+ 	)

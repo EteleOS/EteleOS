@@ -1,0 +1,6 @@
+@bin bin/x265
+include/x265.h
+include/x265_config.h
+@static-lib lib/libx265.a
+@lib lib/libx265.so.${LIBx265_VERSION}
+lib/pkgconfig/x265.pc

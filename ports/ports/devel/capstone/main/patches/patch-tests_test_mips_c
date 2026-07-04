@@ -1,0 +1,31 @@
+The 'mips' symbol is special on MIPS platforms, so rename it to prevent a
+conflict.
+
+Index: tests/test_mips.c
+--- tests/test_mips.c.orig
++++ tests/test_mips.c
+@@ -32,18 +32,18 @@ static void print_string_hex(const char *comment, unsi
+ static void print_insn_detail(cs_insn *ins)
+ {
+ 	int i;
+-	cs_mips *mips;
++	cs_mips *mipsen;
+ 
+ 	// detail can be NULL on "data" instruction if SKIPDATA option is turned ON
+ 	if (ins->detail == NULL)
+ 		return;
+ 
+-	mips = &(ins->detail->mips);
+-	if (mips->op_count)
+-		printf("\top_count: %u\n", mips->op_count);
++	mipsen = &(ins->detail->mipsen);
++	if (mipsen->op_count)
++		printf("\top_count: %u\n", mipsen->op_count);
+ 
+-	for (i = 0; i < mips->op_count; i++) {
+-		cs_mips_op *op = &(mips->operands[i]);
++	for (i = 0; i < mipsen->op_count; i++) {
++		cs_mips_op *op = &(mipsen->operands[i]);
+ 		switch((int)op->type) {
+ 			default:
+ 				break;

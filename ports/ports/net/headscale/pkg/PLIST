@@ -1,0 +1,25 @@
+@newgroup _headscale:869
+@newuser _headscale:869:_headscale::headscale user:${LOCALSTATEDIR}/db/headscale:/sbin/nologin
+@rcscript ${RCDIR}/headscale
+@mode 770
+@group _headscale
+@sample ${SYSCONFDIR}/headscale/
+@owner _headscale
+@sample ${LOCALSTATEDIR}/db/headscale/
+@sample ${LOCALSTATEDIR}/run/headscale/
+@mode
+@owner
+@group
+@bin bin/headscale
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/headscale/
+share/examples/headscale/config-example.yaml
+@mode 640
+@group _headscale
+@sample ${SYSCONFDIR}/headscale/config.yaml
+@mode
+@group
+share/examples/headscale/derp-example.yaml
+@mode 640
+@group _headscale
+@sample ${SYSCONFDIR}/headscale/derp.yaml

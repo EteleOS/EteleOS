@@ -1,0 +1,11 @@
+--- tcptrace.c.orig	Fri Oct  1 23:42:34 2004
++++ tcptrace.c	Wed Jan  7 18:30:33 2009
+@@ -639,7 +639,7 @@ Dump File Names\n\
+ 	char buf[256];		/* plenty large, but checked below with strncpy */
+ 	struct ext_var_op *pvop = &extended_vars[i];
+ 	strncpy(buf,pvop->var_optname,sizeof(buf)-10);
+-	strcat(buf,"=\"STR\"");
++	strncat(buf,"=\"STR\"", sizeof(buf));
+ 	fprintf(stderr,"  --%-20s %s (default: '%s')\n",
+ 		buf,
+ 		pvop->var_descr,

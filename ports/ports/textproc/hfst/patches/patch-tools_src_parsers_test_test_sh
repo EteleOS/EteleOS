@@ -1,0 +1,12 @@
+Index: tools/src/parsers/test/test.sh
+--- tools/src/parsers/test/test.sh.orig
++++ tools/src/parsers/test/test.sh
+@@ -8,7 +8,7 @@ COMPARE="../../hfst-compare --quiet"
+ HFST_FORMAT="../../hfst-format" # optional
+ 
+ # other tools needed
+-DIFF="diff --ignore-blank-lines"
++DIFF="diff"
+ REMOVE="rm -f"
+ GREP="grep"
+ CAT="cat"

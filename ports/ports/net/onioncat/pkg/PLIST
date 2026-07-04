@@ -1,0 +1,5 @@
+@bin bin/ocat
+@man man/man1/ocat.1
+share/doc/onioncat/
+share/doc/onioncat/Garlicat-HOWTO
+share/doc/onioncat/README

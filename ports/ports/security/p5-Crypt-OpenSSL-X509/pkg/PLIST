@@ -1,0 +1,10 @@
+${P5ARCH}/
+${P5ARCH}/Crypt/
+${P5ARCH}/Crypt/OpenSSL/
+${P5ARCH}/Crypt/OpenSSL/X509.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Crypt/
+${P5ARCH}/auto/Crypt/OpenSSL/
+${P5ARCH}/auto/Crypt/OpenSSL/X509/
+@so ${P5ARCH}/auto/Crypt/OpenSSL/X509/X509.so
+@man man/man3p/Crypt::OpenSSL::X509.3p

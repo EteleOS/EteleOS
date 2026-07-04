@@ -1,0 +1,38 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -32,8 +32,8 @@ CFLAGS?=-pipe -O2 $(WARNFLAGS)
+ CFLAGS+=$(CPPFLAGS)
+ CFLAGS+=$(shell sh cflags.sh)
+ 
+-DEFAULT_LIBS=-L/usr/X11R6/lib -L/usr/local/lib -lX11 -lXtst -lXinerama -lxkbcommon
+-DEFAULT_INC=-I/usr/X11R6/include -I/usr/local/include
++DEFAULT_LIBS=-L${X11BASE}/lib -L${PREFIX}/lib -lX11 -lXtst -lXinerama -lxkbcommon
++DEFAULT_INC=-I${X11BASE}/include -I${PREFIX}/include
+ 
+ XDOTOOL_LIBS=$(shell pkg-config --libs x11 2> /dev/null || echo "$(DEFAULT_LIBS)")  $(shell sh platform.sh extralibs)
+ LIBXDO_LIBS=$(shell pkg-config --libs x11 xtst xinerama xkbcommon 2> /dev/null || echo "$(DEFAULT_LIBS)")
+@@ -57,7 +57,7 @@ CMDOBJS= cmd_click.o cmd_mousemove.o cmd_mousemove_rel
+          cmd_sleep.o cmd_get_display_geometry.o
+ 
+ .PHONY: all
+-all: xdotool.1 libxdo.$(LIBSUFFIX) libxdo.$(VERLIBSUFFIX) xdotool
++all: xdotool.1 libxdo.$(VERLIBSUFFIX) xdotool
+ 
+ .PHONY: static
+ static: xdotool.static
+@@ -88,13 +88,12 @@ post-install:
+ .PHONY: installprog
+ installprog: xdotool
+ 	install -d $(DINSTALLBIN)
+-	install -m 755 xdotool $(DINSTALLBIN)/
++	${INSTALL_PROGRAM} xdotool $(DINSTALLBIN)/
+ 
+ .PHONY: installlib
+ installlib: libxdo.$(LIBSUFFIX)
+ 	install -d $(DINSTALLLIB)
+ 	install libxdo.$(LIBSUFFIX) $(DINSTALLLIB)/libxdo.$(VERLIBSUFFIX)
+-	ln -sf libxdo.$(VERLIBSUFFIX) $(DINSTALLLIB)/libxdo.$(LIBSUFFIX)
+ 
+ .PHONY: installheader
+ installheader: xdo.h

@@ -1,0 +1,12 @@
+fix several include errors with ports-gcc
+Index: UtlTrace.cpp
+--- UtlTrace.cpp.orig
++++ UtlTrace.cpp
+@@ -24,6 +24,7 @@ To contact the author: codeworker@free.fr
+ #endif
+ 
+ #include <stdarg.h>
++#include <string.h>
+ #include "ScpStream.h"
+ #include "UtlTrace.h"
+ 

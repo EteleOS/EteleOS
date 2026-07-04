@@ -1,0 +1,10 @@
+include/MathArray/
+include/MathArray/MAValue.h
+include/MathArray/MAValueData.h
+include/MathArray/MaskedException.h
+include/MathArray/MathArray.h
+include/MathArray/MathArrayExtensions.h
+include/MathArray/NSObjectExtra.h
+include/MathArray/array_encoding.h
+include/MathArray/complex.h
+@lib lib/libMathArray.so.${LIBMathArray_VERSION}

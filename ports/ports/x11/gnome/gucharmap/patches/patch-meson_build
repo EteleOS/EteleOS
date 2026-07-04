@@ -1,0 +1,49 @@
+- ERROR: C shared or static library 'dl' not found
+- ERROR: Assert failed: -Wl,-Bsymbolic-functions is required but not supported
+
+Index: meson.build
+--- meson.build.orig
++++ meson.build
+@@ -125,18 +125,6 @@ config_h.set('ENABLE_DEBUG', enable_debug)
+ # FIXME AC_USE_SYSTEM_EXTENSIONS also supported non-gnu systems
+ config_h.set10('_GNU_SOURCE', true)
+ 
+-# Check for functions
+-
+-libdl_dep = cc.find_library('dl')
+-
+-check_dl_functions_required = [
+-  'dlsym',
+-]
+-
+-foreach func: check_dl_functions_required
+-  assert(cc.has_function(func, dependencies: libdl_dep), func + ' not found')
+-endforeach
+-
+ # Asserts must not be disabled
+ 
+ assert(get_option('b_ndebug') == 'false', 'assertions may not be disabled')
+@@ -228,14 +216,16 @@ add_project_arguments(global_cflags, language: 'c',)
+ 
+ # Linker flags
+ 
+-linker_flags = [
+-  '-Wl,-Bsymbolic-functions'
+-]
++if get_option('symbolic_functions')
++  linker_flags = [
++    '-Wl,-Bsymbolic-functions'
++  ]
+ 
+-foreach flag: linker_flags
+-  assert(cc.has_link_argument(flag), flag + ' is required but not supported')
+-  add_project_link_arguments(flag, language: 'c',)
+-endforeach
++  foreach flag: linker_flags
++    assert(cc.has_link_argument(flag), flag + ' is required but not supported')
++    add_project_link_arguments(flag, language: 'c',)
++  endforeach
++endif
+ 
+ # Dependencies
+ 

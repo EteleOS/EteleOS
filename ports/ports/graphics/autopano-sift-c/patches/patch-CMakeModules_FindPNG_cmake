@@ -1,0 +1,10 @@
+--- CMakeModules/FindPNG.cmake.orig	Fri Apr 17 22:44:18 2009
++++ CMakeModules/FindPNG.cmake	Fri Apr 17 22:44:45 2009
+@@ -22,6 +22,7 @@ SET(PNG_FOUND "NO")
+ 
+ IF (ZLIB_FOUND)
+   FIND_PATH(PNG_INCLUDE_DIR png.h
++    ${LOCALBASE}/include
+     /usr/local/include
+     /usr/include
+     ${wxWidgets_ROOT_DIR}/src/png

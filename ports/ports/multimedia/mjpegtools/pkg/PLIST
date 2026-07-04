@@ -1,0 +1,161 @@
+@pkgpath multimedia/mjpegtools,quicktime
+@conflict mplex-*
+bin/anytovcd.sh
+@bin bin/glav
+@bin bin/jpeg2yuv
+bin/lav2avi.sh
+bin/lav2mpeg
+@bin bin/lav2wav
+@bin bin/lav2yuv
+@bin bin/lavaddwav
+@bin bin/lavinfo
+@bin bin/lavpipe
+@bin bin/lavplay
+bin/lavtc.sh
+@bin bin/lavtrans
+@bin bin/matteblend.flt
+@bin bin/mjpeg_simd_helper
+@bin bin/mp2enc
+@bin bin/mpeg2enc
+bin/mpegtranscode
+@bin bin/mplex
+@bin bin/multiblend.flt
+@bin bin/pgmtoy4m
+@bin bin/png2yuv
+@bin bin/pnmtoy4m
+@bin bin/ppmtoy4m
+@bin bin/transist.flt
+@bin bin/y4mblack
+@bin bin/y4mcolorbars
+@bin bin/y4mdenoise
+@bin bin/y4mhist
+@bin bin/y4minterlace
+@bin bin/y4mivtc
+@bin bin/y4mshift
+@bin bin/y4mspatialfilter
+@bin bin/y4mstabilizer
+@bin bin/y4mtopnm
+@bin bin/y4mtoppm
+@bin bin/y4mtoyuv
+@bin bin/y4munsharp
+@bin bin/ypipe
+@bin bin/yuv2lav
+@bin bin/yuv4mpeg
+@bin bin/yuvcorrect
+@bin bin/yuvcorrect_tune
+@bin bin/yuvdeinterlace
+@bin bin/yuvdenoise
+@bin bin/yuvfps
+@bin bin/yuvinactive
+@bin bin/yuvkineco
+@bin bin/yuvmedianfilter
+@bin bin/yuvplay
+@bin bin/yuvscaler
+@bin bin/yuvycsnoise
+@bin bin/yuyvtoy4m
+include/mjpegtools/
+include/mjpegtools/audiolib.h
+include/mjpegtools/avilib.h
+include/mjpegtools/editlist.h
+include/mjpegtools/format_codes.h
+include/mjpegtools/frequencies.h
+include/mjpegtools/jpegutils.h
+include/mjpegtools/lav_io.h
+include/mjpegtools/liblavplay.h
+include/mjpegtools/liblavrec.h
+include/mjpegtools/mjpeg_logging.h
+include/mjpegtools/mjpeg_types.h
+include/mjpegtools/motionsearch.h
+include/mjpegtools/mpeg2enc/
+include/mjpegtools/mpeg2enc/elemstrmwriter.hh
+include/mjpegtools/mpeg2enc/encoderparams.hh
+include/mjpegtools/mpeg2enc/encodertypes.h
+include/mjpegtools/mpeg2enc/imageplanes.hh
+include/mjpegtools/mpeg2enc/macroblock.hh
+include/mjpegtools/mpeg2enc/mpeg2coder.hh
+include/mjpegtools/mpeg2enc/mpeg2encoder.hh
+include/mjpegtools/mpeg2enc/mpeg2encoptions.hh
+include/mjpegtools/mpeg2enc/mpeg2encparams.h
+include/mjpegtools/mpeg2enc/mpeg2syntaxcodes.h
+include/mjpegtools/mpeg2enc/ontheflyratectlpass1.hh
+include/mjpegtools/mpeg2enc/ontheflyratectlpass2.hh
+include/mjpegtools/mpeg2enc/picture.hh
+include/mjpegtools/mpeg2enc/picturereader.hh
+include/mjpegtools/mpeg2enc/predict_ref.h
+include/mjpegtools/mpeg2enc/quantize.hh
+include/mjpegtools/mpeg2enc/quantize_ref.h
+include/mjpegtools/mpeg2enc/ratectl.hh
+include/mjpegtools/mpeg2enc/seqencoder.hh
+include/mjpegtools/mpeg2enc/streamstate.h
+include/mjpegtools/mpeg2enc/synchrolib.h
+include/mjpegtools/mpeg2enc/syntaxconsts.h
+include/mjpegtools/mpegconsts.h
+include/mjpegtools/mpegtimecode.h
+include/mjpegtools/mplex/
+include/mjpegtools/mplex/audiostrm.hpp
+include/mjpegtools/mplex/aunit.hpp
+include/mjpegtools/mplex/aunitbuffer.hpp
+include/mjpegtools/mplex/bits.hpp
+include/mjpegtools/mplex/decodebufmodel.hpp
+include/mjpegtools/mplex/inputstrm.hpp
+include/mjpegtools/mplex/interact.hpp
+include/mjpegtools/mplex/mplexconsts.hpp
+include/mjpegtools/mplex/multiplexor.hpp
+include/mjpegtools/mplex/outputstrm.hpp
+include/mjpegtools/mplex/padstrm.hpp
+include/mjpegtools/mplex/stillsstream.hpp
+include/mjpegtools/mplex/stream_params.hpp
+include/mjpegtools/mplex/systems.hpp
+include/mjpegtools/mplex/videostrm.hpp
+include/mjpegtools/yuv4mpeg.h
+info/mjpeg-howto.info
+lib/liblavfile.a
+lib/liblavfile.la
+@lib lib/liblavfile.so.${LIBlavfile_VERSION}
+lib/liblavjpeg.a
+lib/liblavjpeg.la
+@lib lib/liblavjpeg.so.${LIBlavjpeg_VERSION}
+lib/liblavplay.a
+lib/liblavplay.la
+@lib lib/liblavplay.so.${LIBlavplay_VERSION}
+lib/libmjpegutils.a
+lib/libmjpegutils.la
+@lib lib/libmjpegutils.so.${LIBmjpegutils_VERSION}
+lib/libmpeg2encpp.a
+lib/libmpeg2encpp.la
+@lib lib/libmpeg2encpp.so.${LIBmpeg2encpp_VERSION}
+lib/libmplex2.a
+lib/libmplex2.la
+@lib lib/libmplex2.so.${LIBmplex2_VERSION}
+lib/pkgconfig/mjpegtools.pc
+@man man/man1/jpeg2yuv.1
+@man man/man1/lav2mpeg.1
+@man man/man1/lav2wav.1
+@man man/man1/lav2yuv.1
+@man man/man1/lavpipe.1
+@man man/man1/lavplay.1
+@man man/man1/lavrec.1
+@man man/man1/lavtrans.1
+@man man/man1/mjpegtools.1
+@man man/man1/mp2enc.1
+@man man/man1/mpeg2enc.1
+@man man/man1/mplex.1
+@man man/man1/pgmtoy4m.1
+@man man/man1/png2yuv.1
+@man man/man1/pnmtoy4m.1
+@man man/man1/ppmtoy4m.1
+@man man/man1/y4mcolorbars.1
+@man man/man1/y4mdenoise.1
+@man man/man1/y4mtopnm.1
+@man man/man1/y4mtoppm.1
+@man man/man1/y4munsharp.1
+@man man/man1/yuv2lav.1
+@man man/man1/yuvdenoise.1
+@man man/man1/yuvfps.1
+@man man/man1/yuvinactive.1
+@man man/man1/yuvkineco.1
+@man man/man1/yuvmedianfilter.1
+@man man/man1/yuvplay.1
+@man man/man1/yuvscaler.1
+@man man/man1/yuvycsnoise.1
+@man man/man5/yuv4mpeg.5

@@ -1,0 +1,27 @@
+--- src/Makefile.in.orig	Sun Oct 20 21:34:28 2002
++++ src/Makefile.in	Wed Mar 25 19:28:15 2009
+@@ -2,9 +2,10 @@ CC      = @CC@
+ #DEBUG   = -DKEY_DEBUG 
+ DEBUG   = 
+ EXEC    = ../mudix
+-O_FLAGS = -O -g
++O_FLAGS = @CFLAGS@
+ C_FLAGS = $(O_FLAGS) $(DEBUG) -Wall -I../include
+-L_FLAGS = $(O_FLAGS) $(DEBUG) -lpanel -lncurses
++L_FLAGS = $(O_FLAGS) $(DEBUG)
++LIBS    = -lpanel -lcurses
+ 
+ O_FILES = alias.o \
+           commands.o \
+@@ -23,9 +24,9 @@ O_FILES = alias.o \
+ 
+ $(EXEC): $(O_FILES)
+ 	rm -f $(EXEC) 
+-	$(CC) -o $(EXEC) $(L_FLAGS) $(O_FILES)
++	$(CC) -o $(EXEC) $(L_FLAGS) $(O_FILES) $(LIBS)
+ 
+-.c.o: mudix.h conf.h 
++.c.o:  
+ 	$(CC) -c $(C_FLAGS) $<
+ 
+ clean:

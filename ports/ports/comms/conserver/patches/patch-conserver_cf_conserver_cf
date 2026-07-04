@@ -1,0 +1,32 @@
+Index: conserver.cf/conserver.cf
+--- conserver.cf/conserver.cf.orig
++++ conserver.cf/conserver.cf
+@@ -14,9 +14,18 @@ default cisco	{ type host; portbase 2000; portinc 1; }
+ default xyplex	{ type host; portbase 2000; portinc 100; }
+ default iolan	{ type host; portbase 10000; portinc 1; }
+ 
++# example using ipmitool to connect to IPMI serial-over-lan
++# (conserver also has internal support for freeipmi as a build option)
++# second "exec" avoids keeping the shell around
++default ipmitool {
++        type exec; execsubst %=hs; break 6;
++        exec exec ipmitool -I lanplus -H % -U ADMIN -P ADMIN sol activate;
++}
++
+ ### set up some custom break sequences
+ break 4 { string "+\d+\d+"; delay 300; }
+ break 5 { string "\033c"; }
++break 6 { string "~B"; }
+ 
+ ### set the defaults for all the consoles
+ # these get applied before anything else
+@@ -53,6 +62,9 @@ default ts2.conserver.com { include cisco; host ts2.co
+ 
+ # and the consoles on ts2.conserver.com
+ console ldap1.conserver.com { include ts2.conserver.com; port 7; }
++
++# and an ipmi console, host is passed to ipmitool
++console ipmi1 { include ipmi; host 10.1.1.1; }
+ 
+ ### and now some one-off consoles
+ # we still inherit the '*' default set

@@ -1,0 +1,2 @@
+${P5SITE}/Catalyst/Plugin/StackTrace.pm
+@man man/man3p/Catalyst::Plugin::StackTrace.3p

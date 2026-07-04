@@ -1,0 +1,4 @@
+${P5SITE}/Symbol/
+${P5SITE}/Symbol/Global/
+${P5SITE}/Symbol/Global/Name.pm
+@man man/man3p/Symbol::Global::Name.3p

@@ -1,0 +1,14 @@
+Add missing header for ports-gcc
+
+Index: src/scim_pinyin_phrase.cpp
+--- src/scim_pinyin_phrase.cpp.orig
++++ src/scim_pinyin_phrase.cpp
+@@ -26,6 +26,8 @@
+ #define Uses_SCIM_CONFIG_PATH
+ #define Uses_SCIM_LOOKUP_TABLE
+ 
++#include <string.h>
++
+ #include <scim.h>
+ #include "scim_pinyin_private.h"
+ #include "scim_phrase.h"

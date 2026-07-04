@@ -1,0 +1,8 @@
+# Define JAVA_HOME, M2_HOME and MAVEN_OPTS here.
+#
+
+JAVA_HOME=$(javaPathHelper -h maven)
+
+M2_HOME=${MAVEN_HOME}
+
+#MAVEN_OPTS=

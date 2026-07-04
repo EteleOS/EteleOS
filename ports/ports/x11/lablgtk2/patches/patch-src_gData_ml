@@ -1,0 +1,14 @@
+Fix for "adjustment with non-zero page size" warning messages with
+newer gtk+2
+
+--- src/gData.ml.orig	Thu Sep 18 08:47:06 2014
++++ src/gData.ml	Thu Sep 18 11:24:43 2014
+@@ -50,7 +50,7 @@ class adjustment obj = object (self)
+ end
+ 
+ let adjustment ?(value=0.) ?(lower=0.) ?(upper=100.)
+-    ?(step_incr=1.) ?(page_incr=10.) ?(page_size=10.) () =
++    ?(step_incr=1.) ?(page_incr=10.) ?(page_size=0.) () =
+   let w =
+     Adjustment.create ~value ~lower ~upper ~step_incr ~page_incr ~page_size in
+   new adjustment w

@@ -1,0 +1,3 @@
+@pkgpath devel/${MODCABAL_STEM}
+@bin bin/${MODCABAL_STEM}
+@man man/man1/${MODCABAL_STEM}.1

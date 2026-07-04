@@ -1,0 +1,4 @@
+GNOME-Shell Native styles for Qt5 applications to match common GTK theme
+Adwaita, including -Dark and -HighContrast variants.
+
+The qt6 FLAVOR adds the same styles for Qt6 applications.

@@ -1,0 +1,15 @@
+Index: desktop/Executable_oosplash.mk
+--- desktop/Executable_oosplash.mk.orig
++++ desktop/Executable_oosplash.mk
+@@ -23,6 +23,11 @@ $(eval $(call gb_Executable_add_cobjects,oosplash,\
+     desktop/unx/source/start \
+ ))
+ 
++$(eval $(call gb_Executable_set_include,oosplash,\
++    $$(INCLUDE) \
++    -I/usr/X11R6/include \
++))
++
+ ifneq ($(USING_X11),)
+ $(eval $(call gb_Executable_add_libs,oosplash,\
+     -lXinerama \

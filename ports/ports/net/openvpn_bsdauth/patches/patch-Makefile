@@ -1,0 +1,12 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -13,7 +13,7 @@ MAN=		${PROG}.8
+ 
+ CFLAGS+=	-Wall -Werror -Wstrict-prototypes -Wmissing-prototypes
+ CFLAGS+=	-Wmissing-declarations -Wshadow -Wpointer-arith -Wcast-qual
+-CFLAGS+=	-Wsign-compare -Wbounded -Wformat=2
++CFLAGS+=	-Wsign-compare -Wformat=2
+ 
+ beforeinstall:
+ 	@perl -pi -e 's#!!PREFIX!!#${PREFIX}#g' openvpn_bsdauth.cat8

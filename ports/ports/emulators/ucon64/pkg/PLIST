@@ -1,0 +1,4 @@
+@bin bin/ucon64
+@so lib/libdiscmage.so
+share/doc/ucon64/
+share/doc/ucon64/faq.html

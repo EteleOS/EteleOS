@@ -1,0 +1,5 @@
+${P5SITE}/MooseX/
+${P5SITE}/MooseX/Meta/
+${P5SITE}/MooseX/Meta/TypeConstraint/
+${P5SITE}/MooseX/Meta/TypeConstraint/ForceCoercion.pm
+@man man/man3p/MooseX::Meta::TypeConstraint::ForceCoercion.3p

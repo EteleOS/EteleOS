@@ -1,0 +1,12 @@
+Index: src/findlib/Makefile.in
+--- src/findlib/Makefile.in.orig
++++ src/findlib/Makefile.in
+@@ -62,7 +62,7 @@ libbacfind.a: $(LIBBACFIND_OBJS)
+ 
+ libbacfind.la: Makefile $(LIBBACFIND_LOBJS)
+ 	@echo "Making $@ ..."
+-	$(LIBTOOL_LINK) $(CXX) $(DEFS) $(DEBUG) $(LDFLAGS) -o $@ $(LIBBACFIND_LOBJS) -export-dynamic -rpath $(libdir) -release $(LIBBACFIND_LT_RELEASE)
++	$(LIBTOOL_LINK) $(CXX) $(DEFS) $(DEBUG) $(LDFLAGS) -o $@ $(LIBBACFIND_LOBJS) -export-dynamic -rpath $(libdir)
+ 
+ Makefile: $(srcdir)/Makefile.in $(topdir)/config.status
+ 	cd $(topdir) \

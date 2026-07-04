@@ -1,0 +1,18 @@
+--- avcall/Makefile.in.orig	Sun Jan 25 18:34:21 2004
++++ avcall/Makefile.in	Thu Jul 30 14:59:25 2015
+@@ -120,13 +120,11 @@ avcall-rs6000.lo : $(srcdir)/avcall-rs6000-aix.old.s $
+ 	case "$(OS)" in \
+ 	  aix3*) syntax=aix.old;; \
+ 	  aix*) syntax=aix.new;; \
+-	  linux* | netbsd*) syntax=linux;; \
++	  linux* | netbsd* | openbsd*) syntax=linux;; \
+ 	  macos* | darwin*) syntax=macos;; \
+ 	  *) syntax=sysv4;; \
+ 	esac; \
+-	$(LIBTOOL_COMPILE) $(CC) @GCC_X_NONE@ -c $(srcdir)/avcall-rs6000-$${syntax}.s ; \
+-	cp avcall-rs6000-$${syntax}.lo avcall-rs6000.lo ; rm -f avcall-rs6000-$${syntax}.lo ; \
+-	if test -f avcall-rs6000-$${syntax}.o; then mv avcall-rs6000-$${syntax}.o avcall-rs6000.o; fi
++	$(LIBTOOL_COMPILE) $(CC) @GCC_X_NONE@ -c $(srcdir)/avcall-rs6000-$${syntax}.s -o avcall-rs6000.lo
+ 
+ avcall-m88k.lo : $(srcdir)/avcall-m88k.s
+ 	$(LIBTOOL_COMPILE) $(CC) @GCC_X_NONE@ -c $(srcdir)/avcall-m88k.s

@@ -1,0 +1,5 @@
+bin/starlanes
+@man man/man6/starlanes.6
+share/doc/starlanes/
+share/doc/starlanes/COPYING
+share/doc/starlanes/README

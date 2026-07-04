@@ -1,0 +1,2 @@
+@bin bin/dtach
+@man man/man1/dtach.1

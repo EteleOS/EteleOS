@@ -1,0 +1,13 @@
+Index: plugins/ffap/Makefile.am
+--- plugins/ffap/Makefile.am.orig
++++ plugins/ffap/Makefile.am
+@@ -25,6 +25,9 @@ endif
+ endif
+ 
+ ffap_la_LDFLAGS = -module -avoid-version -lm
++if HAVE_YASM
++ffap_la_LDFLAGS += -Wl,-znotext
++endif
+ 
+ ffap_la_CFLAGS = $(CFLAGS) -fPIC -std=c99 -I@top_srcdir@/include
+ endif

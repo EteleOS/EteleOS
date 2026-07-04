@@ -1,0 +1,15 @@
+--- Makefile.in.orig	Sun Jan 15 11:20:10 2012
++++ Makefile.in	Sat Mar 17 12:35:37 2012
+@@ -293,12 +293,10 @@ EXTRA_DIST = \
+ 
+ @USE_VERSION_RC_FALSE@libSDL_net_la_LDFLAGS = \
+ @USE_VERSION_RC_FALSE@	-no-undefined		\
+-@USE_VERSION_RC_FALSE@	-release $(LT_RELEASE)	\
+ @USE_VERSION_RC_FALSE@	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ 
+ @USE_VERSION_RC_TRUE@libSDL_net_la_LDFLAGS = \
+ @USE_VERSION_RC_TRUE@	-no-undefined		\
+-@USE_VERSION_RC_TRUE@	-release $(LT_RELEASE)	\
+ @USE_VERSION_RC_TRUE@	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) -Wl,version.o
+ 
+ @USE_VERSION_RC_FALSE@libSDL_net_la_LIBADD = @INETLIB@

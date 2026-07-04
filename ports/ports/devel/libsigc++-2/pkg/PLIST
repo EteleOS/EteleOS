@@ -1,0 +1,47 @@
+@conflict libsigc++-docs-*
+@pkgpath devel/libsigc++
+@pkgpath devel/libsigc++-2,-main
+@pkgpath devel/libsigc++-2,-docs
+include/sigc++-${API_V}/
+include/sigc++-${API_V}/sigc++/
+include/sigc++-${API_V}/sigc++/adaptors/
+include/sigc++-${API_V}/sigc++/adaptors/adaptor_trait.h
+include/sigc++-${API_V}/sigc++/adaptors/adaptors.h
+include/sigc++-${API_V}/sigc++/adaptors/bind.h
+include/sigc++-${API_V}/sigc++/adaptors/bind_return.h
+include/sigc++-${API_V}/sigc++/adaptors/bound_argument.h
+include/sigc++-${API_V}/sigc++/adaptors/compose.h
+include/sigc++-${API_V}/sigc++/adaptors/deduce_result_type.h
+include/sigc++-${API_V}/sigc++/adaptors/exception_catch.h
+include/sigc++-${API_V}/sigc++/adaptors/hide.h
+include/sigc++-${API_V}/sigc++/adaptors/lambda/
+include/sigc++-${API_V}/sigc++/adaptors/lambda/base.h
+include/sigc++-${API_V}/sigc++/adaptors/lambda/select.h
+include/sigc++-${API_V}/sigc++/adaptors/retype.h
+include/sigc++-${API_V}/sigc++/adaptors/retype_return.h
+include/sigc++-${API_V}/sigc++/adaptors/track_obj.h
+include/sigc++-${API_V}/sigc++/bind.h
+include/sigc++-${API_V}/sigc++/bind_return.h
+include/sigc++-${API_V}/sigc++/connection.h
+include/sigc++-${API_V}/sigc++/functors/
+include/sigc++-${API_V}/sigc++/functors/functor_trait.h
+include/sigc++-${API_V}/sigc++/functors/functors.h
+include/sigc++-${API_V}/sigc++/functors/mem_fun.h
+include/sigc++-${API_V}/sigc++/functors/ptr_fun.h
+include/sigc++-${API_V}/sigc++/functors/slot.h
+include/sigc++-${API_V}/sigc++/functors/slot_base.h
+include/sigc++-${API_V}/sigc++/limit_reference.h
+include/sigc++-${API_V}/sigc++/reference_wrapper.h
+include/sigc++-${API_V}/sigc++/retype_return.h
+include/sigc++-${API_V}/sigc++/sigc++.h
+include/sigc++-${API_V}/sigc++/signal.h
+include/sigc++-${API_V}/sigc++/signal_base.h
+include/sigc++-${API_V}/sigc++/slot.h
+include/sigc++-${API_V}/sigc++/trackable.h
+include/sigc++-${API_V}/sigc++/type_traits.h
+include/sigc++-${API_V}/sigc++/visit_each.h
+@lib lib/libsigc-${API_V}.so.${LIBsigc-${API_V}_VERSION}
+lib/pkgconfig/sigc++-${API_V}.pc
+lib/sigc++-${API_V}/
+lib/sigc++-${API_V}/include/
+lib/sigc++-${API_V}/include/sigc++config.h

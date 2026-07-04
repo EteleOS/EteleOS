@@ -1,0 +1,12 @@
+Index: themes/default/theme.lua
+--- themes/default/theme.lua.orig
++++ themes/default/theme.lua
+@@ -123,7 +123,7 @@ theme.awesome_icon = theme_assets.awesome_icon(
+ )
+ 
+ -- Define the icon theme for application icons. If not set then the icons
+--- from /usr/share/icons and /usr/share/icons/hicolor will be used.
++-- from ${LOCALBASE}/share/icons and /usr/share/icons/hicolor will be used.
+ theme.icon_theme = nil
+ 
+ return theme

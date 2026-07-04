@@ -1,0 +1,7 @@
+include/GL/
+include/GL/glpng.h
+lib/libglpng.a
+@lib lib/libglpng.so.${LIBglpng_VERSION}
+lib/libglpng_p.a
+share/doc/glpng/
+share/doc/glpng/glpng.html

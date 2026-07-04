@@ -1,0 +1,31 @@
+V =		3.2.3
+COMMENT =	graphical wordcount grapher
+DISTNAME =	novprog-${V}
+EXTRACT_SUFX =	.tar.bz2
+CATEGORIES =	productivity x11
+REVISION =	0
+
+HOMEPAGE =	https://gottcode.org/novprog/
+
+# GPLv3+
+PERMIT_PACKAGE =	Yes
+
+WANTLIB += ${COMPILER_LIBCXX} GL Qt6Core Qt6Gui Qt6Widgets c m
+
+.if ${MACHINE_ARCH:Mhppa}
+WANTLIB += atomic
+.endif
+
+SITES =		https://gottcode.org/novprog/
+
+MODULES =	devel/cmake \
+		x11/qt6
+
+RUN_DEPENDS =	devel/desktop-file-utils \
+		x11/gtk+4,-guic
+
+CONFIGURE_FLAGS =	-DPROJECT_VERSION="${V}"
+
+NO_TEST =	Yes
+
+.include <bsd.port.mk>

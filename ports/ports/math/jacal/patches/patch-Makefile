@@ -1,0 +1,13 @@
+--- Makefile.orig	Sun Feb  3 23:00:03 2008
++++ Makefile	Sat Nov 29 19:19:28 2008
+@@ -77,9 +77,7 @@ install:	pinstall
+ 	echo "(math)"				>> $(DESTDIR)$(jacallibdir)go.scm
+ 	mkdir -p $(DESTDIR)$(bindir)
+ 	echo '#! /bin/sh'			 > $(DESTDIR)$(bindir)jacal
+-	grep -h ^SCHEME_LIBRARY_PATH= `which slib` >> $(DESTDIR)$(bindir)jacal
+-	echo export SCHEME_LIBRARY_PATH		>> $(DESTDIR)$(bindir)jacal
+-	echo JACALDIR=$(DESTDIR)$(jacallibdir)	>> $(DESTDIR)$(bindir)jacal
++	echo JACALDIR=$(jacallibdir)		>> $(DESTDIR)$(bindir)jacal
+ 	echo VERSION=$(VERSION)			>> $(DESTDIR)$(bindir)jacal
+ 	cat jacal.sh				>> $(DESTDIR)$(bindir)jacal
+ 	chmod +x $(DESTDIR)$(bindir)jacal

@@ -1,0 +1,20 @@
+--- install.orig	Mon Nov 10 04:11:59 2014
++++ install	Sat Dec 27 16:22:13 2014
+@@ -66,7 +66,7 @@ for my $d ($ln, $to) {
+ }
+ 
+ chdir($ENV{GL_BINDIR});
+-my $version = `git describe --tags --long --dirty=-dt 2>/dev/null`;
++my $version = "${GH_TAGNAME}";
+ unless ($version =~ /^v\d/) {
+     print STDERR "git describe failed; cannot deduce version number\n";
+     $version = "(unknown)";
+@@ -74,7 +74,7 @@ unless ($version =~ /^v\d/) {
+ 
+ if ($to) {
+     _mkdir($to);
+-    system("cp -RpP * $to");
++    system("umask 022 && pax -rw . $to");
+     _print( "$to/VERSION", $version );
+ } elsif ($ln) {
+     ln_sf( $ENV{GL_BINDIR}, "gitolite", $ln );

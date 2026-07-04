@@ -1,0 +1,6 @@
+${P5SITE}/DBD/
+${P5SITE}/DBD/Chart/
+${P5SITE}/DBD/Chart.pm
+${P5SITE}/DBD/Chart/Plot.pm
+@man man/man3p/DBD::Chart.3p
+@man man/man3p/DBD::Chart::Plot.3p

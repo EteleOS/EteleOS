@@ -1,0 +1,20 @@
+Index: src/index.cxx
+--- src/index.cxx.orig
++++ src/index.cxx
+@@ -56,6 +56,7 @@ Author:		Nassib Nassar, nrn@cnidr.org
+ #include "dictionary.hxx"
+ #include "../doctype/doctype.hxx"
+ #endif
++using std::cerr;
+ 
+ // const INT StopWordSize = 400;
+ const INT StopWordSize = (sizeof(stoplist)/sizeof(stoplist[0]));
+@@ -530,7 +531,7 @@ GPTYPE INDEX::BuildGpList(
+ }
+ 
+ GDT_BOOLEAN INDEX::ValidateInField(const GPTYPE HitGp, const STRING& FieldName,
+-			   const PhraseLength) {
++			   const int PhraseLength) {
+   STRING Fn;
+   Parent->DfdtGetFileName(FieldName, &Fn);
+   PFILE Fp = Parent->ffopen(Fn, "rb");

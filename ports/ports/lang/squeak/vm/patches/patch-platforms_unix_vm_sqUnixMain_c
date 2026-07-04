@@ -1,0 +1,54 @@
+Index: platforms/unix/vm/sqUnixMain.c
+--- platforms/unix/vm/sqUnixMain.c.orig
++++ platforms/unix/vm/sqUnixMain.c
+@@ -53,12 +53,8 @@
+ #include <errno.h>
+ #include <signal.h>
+ #include <fcntl.h>
++#include <ctype.h>
+ 
+-#if defined(__alpha__)
+-# include <sys/sysinfo.h>
+-# include <sys/proc.h>
+-#endif
+-
+ #undef	DEBUG_MODULES
+ 
+ #undef	IMAGE_DUMP				/* define to enable SIGHUP and SIGQUIT handling */
+@@ -698,6 +694,7 @@ static struct moduleDescription moduleDescriptions[]=
+   { &displayModule, "display", "custom" },	/*** NO DEFAULT ***/
+   { &soundModule,   "sound",   "NAS"    },	/*** NO DEFAULT ***/
+   { &soundModule,   "sound",   "OSS"    },
++  { &soundModule,   "sound",   "sndio"  },
+   { &soundModule,   "sound",   "custom" },	/*** NO DEFAULT ***/
+   /* defaults */
+   { &displayModule, "display", "Quartz" },
+@@ -1292,8 +1289,8 @@ void imgInit(void)
+ 			|| defined(POWERPC) || defined(__POWERPC) || defined (__POWERPC__) )
+   void mtfsfi(unsigned long long fpscr)
+   {
+-    __asm__("lfd   f0, %0" :: "m"(fpscr));
+-    __asm__("mtfsf 0xff, f0");
++    __asm__("lfd   0, %0" :: "m"(fpscr));
++    __asm__("mtfsf 0xff, 0");
+   }
+ #else
+ # define mtfsfi(fpscr)
+@@ -1329,17 +1326,6 @@ int main(int argc, char **argv, char **envp)
+     outOfMemory();
+ 
+   signal(SIGSEGV, sigsegv);
+-
+-#if defined(__alpha__)
+-  /* disable printing of unaligned access exceptions */
+-  {
+-    int buf[2]= { SSIN_UACPROC, UAC_NOPRINT };
+-    if (setsysinfo(SSI_NVPAIRS, buf, 1, 0, 0, 0) < 0)
+-      {
+-	perror("setsysinfo(UAC_NOPRINT)");
+-      }
+-  }
+-#endif
+ 
+ #if defined(HAVE_TZSET)
+   tzset();	/* should _not_ be necessary! */

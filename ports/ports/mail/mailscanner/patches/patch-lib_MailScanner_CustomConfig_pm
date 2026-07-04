@@ -1,0 +1,20 @@
+--- lib/MailScanner/CustomConfig.pm.orig	Sun Mar  1 23:13:10 2015
++++ lib/MailScanner/CustomConfig.pm	Sun Mar 15 13:52:19 2015
+@@ -765,7 +765,7 @@ my($hostname);
+ 
+ my $ConfFile = $ARGV[0];
+ $ConfFile = $ARGV[1] if $ConfFile =~ /^-+/i;
+-$ConfFile = '/opt/MailScanner/etc/MailScanner.conf' unless $ConfFile && -f $ConfFile;
++$ConfFile = '%SYSCONFDIR%/MailScanner/MailScanner.conf' unless $ConfFile && -f $ConfFile;
+ 
+ my ($AccessDB, $Refusal, $my_mta); # Generalized here for Multiple MTA support
+ $my_mta = lc(MailScanner::Config::QuickPeek($ConfFile, 'mta')) if $ConfFile &&
+@@ -1675,7 +1675,7 @@ __DATA__
+ #      SO17 1BJ
+ #      United Kingdom
+ #
+-push @INC,"/usr/share/MailScanner","/opt/MailScanner/lib";
++push @INC,"%PREFIX%/lib/MailScanner";
+ use FileHandle;
+ use Fcntl qw(:DEFAULT :flock);
+ use Sys::Syslog;

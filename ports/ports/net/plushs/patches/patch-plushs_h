@@ -1,0 +1,23 @@
+Index: plushs.h
+--- plushs.h.orig
++++ plushs.h
+@@ -62,10 +62,9 @@ struct progvars {
+         int t;
+ };
+ 
+-struct progvars pv;
++extern struct progvars pv;
+ 
+ /* extern variables */
+-extern struct err_code err_code_list[];
+ extern float resolv_count;
+ 
+ /*
+@@ -130,5 +129,6 @@ struct simbols {
+ 	char hostname[HOSTNAME_SIZE+1];	/* hostname */
+ 	char ip[15];			/* ip address */
+ 	int flags;			/* flags for get_vargs() function */
+-} vars;
++};
+ 
++extern struct simbols vars;

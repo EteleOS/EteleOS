@@ -1,0 +1,4 @@
+${P5SITE}/MasonX/
+${P5SITE}/MasonX/Interp/
+${P5SITE}/MasonX/Interp/WithCallbacks.pm
+@man man/man3p/MasonX::Interp::WithCallbacks.3p

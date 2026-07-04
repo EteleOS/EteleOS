@@ -1,0 +1,12 @@
+Index: src/tclx/src/tclxstr.c
+--- src/tclx/src/tclxstr.c.orig
++++ src/tclx/src/tclxstr.c
+@@ -91,7 +91,7 @@ Tcl_ClengthCmd (clientData, interp, argc, argv)
+         return TCL_ERROR;
+     }
+ 
+-    sprintf (interp->result, "%d", strlen (argv[1]));
++    sprintf (interp->result, "%lu", strlen (argv[1]));
+     return TCL_OK;
+ 
+ } /* Tcl_ClengthCmd */

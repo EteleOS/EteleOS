@@ -1,0 +1,12 @@
+Index: sntp/libevent/test/regress_ssl.c
+--- sntp/libevent/test/regress_ssl.c.orig
++++ sntp/libevent/test/regress_ssl.c
+@@ -61,7 +61,7 @@
+ 
+ #include <string.h>
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ #define OpenSSL_version_num SSLeay
+ #endif /* OPENSSL_VERSION_NUMBER */
+ 

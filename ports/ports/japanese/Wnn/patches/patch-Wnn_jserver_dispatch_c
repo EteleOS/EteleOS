@@ -1,0 +1,10 @@
+--- Wnn/jserver/dispatch.c.orig
++++ Wnn/jserver/dispatch.c
+@@ -53,6 +53,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
+ 
+ #include "commonhd.h"
+ #include "demcom.h"

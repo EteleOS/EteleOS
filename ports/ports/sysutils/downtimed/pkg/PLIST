@@ -1,0 +1,8 @@
+@bin bin/downtime
+@bin bin/downtimes
+@man man/man1/downtime.1
+@man man/man1/downtimes.1
+@man man/man8/downtimed.8
+@bin sbin/downtimed
+@rcscript ${RCDIR}/downtimed
+@sample /var/db/downtimed/

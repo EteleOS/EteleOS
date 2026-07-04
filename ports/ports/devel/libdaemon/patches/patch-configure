@@ -1,0 +1,11 @@
+--- configure.orig	Tue Dec 14 15:25:40 2010
++++ configure	Tue Dec 14 15:26:00 2010
+@@ -14383,7 +14383,7 @@ fi
+ 
+ 
+   case $host in
+-                    *-freebsd*) ;;
++                    *-freebsd*|*-openbsd*) ;;
+      *)
+                            	for possible_flags in "-Wl,--no-undefined" "-Wl,-z,defs"; do
+ 

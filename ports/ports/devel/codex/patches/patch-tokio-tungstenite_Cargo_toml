@@ -1,0 +1,13 @@
+Index: tokio-tungstenite/Cargo.toml
+--- tokio-tungstenite/Cargo.toml.orig
++++ tokio-tungstenite/Cargo.toml
+@@ -35,8 +35,7 @@ futures-util = { version = "0.3.28", default-features 
+ tokio = { version = "1.0.0", default-features = false, features = ["io-util"] }
+ 
+ [dependencies.tungstenite]
+-git = "https://github.com/openai-oss-forks/tungstenite-rs"
+-rev = "9200079d3b54a1ff51072e24d81fd354f085156f"
++path = "../tungstenite"
+ default-features = false
+ 
+ [dependencies.native-tls-crate]

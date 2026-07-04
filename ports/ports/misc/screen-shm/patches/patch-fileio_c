@@ -1,0 +1,12 @@
+Index: fileio.c
+--- fileio.c.orig
++++ fileio.c
+@@ -779,7 +779,7 @@ char *cmd;
+ #ifdef SIGPIPE
+       signal(SIGPIPE, SIG_DFL);
+ #endif
+-      execl("/bin/sh", "sh", "-c", cmd, 0);
++      execl("/bin/sh", "sh", "-c", cmd, NULL);
+       Panic(errno, "/bin/sh");
+     default:
+       break;

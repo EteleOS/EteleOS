@@ -1,0 +1,9 @@
+--- Wnn/jd/libwnn.msg.orig	Sat Apr 15 23:39:57 2000
++++ Wnn/jd/libwnn.msg	Sat Apr 15 23:40:07 2000
+@@ -131,5 +131,5 @@
+ 207	file \"%s\"が open できません。
+ 208	ファイル \"%s\" で環境設定中に、エラーが発生したために、設定を中止します。\n
+ 209	を作りました。
+-210	directry
++210	directory
+ ###

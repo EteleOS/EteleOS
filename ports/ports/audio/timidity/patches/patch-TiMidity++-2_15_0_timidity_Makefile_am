@@ -1,0 +1,11 @@
+Index: TiMidity++-2.15.0/timidity/Makefile.am
+--- TiMidity++-2.15.0/timidity/Makefile.am.orig
++++ TiMidity++-2.15.0/timidity/Makefile.am
+@@ -139,6 +139,7 @@ EXTRA_timidity_SOURCES = \
+ 	mfnode.h \
+ 	nas_a.c \
+ 	portaudio_a.c \
++	sndio_a.c \
+ 	npipe_a.c \
+ 	sun_a.c \
+ 	vorbis_a.c \

@@ -1,0 +1,24 @@
+fix explicit declaration of function openpty
+
+--- pty_termios.c.orig	Fri Aug 27 23:51:53 2010
++++ pty_termios.c	Sun Apr 28 17:04:37 2013
+@@ -16,6 +16,8 @@ would appreciate credit if you use this file or parts 
+ 
+ #include "expect_cf.h"
+ 
++extern char * expErrnoMsg(int);
++
+ /*
+    The following functions are linked from the Tcl library.  They
+    don't cause anything else in the library to be dragged in, so it
+@@ -43,6 +45,10 @@ According to Ashley Pittman <ashley@ilo.dec.com>, Digi
+ with openpty which supports 4000 while ptmx supports 60. */
+ #if defined(HAVE_OPENPTY) && defined(HAVE_PTMX)
+ #undef HAVE_PTMX
++#endif
++#if defined(HAVE_OPENPTY) && defined(__OpenBSD__)
++#include <termios.h>
++#include <util.h>
+ #endif
+ 
+ #if defined(HAVE_PTYM) && defined(HAVE_PTMX)

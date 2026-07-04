@@ -1,0 +1,12 @@
+Index: src/modules/ipops/detailed_ip_type.c
+--- src/modules/ipops/detailed_ip_type.c.orig
++++ src/modules/ipops/detailed_ip_type.c
+@@ -24,7 +24,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <arpa/inet.h>
+-#if defined (__OS_freebsd)
++#if defined (__OS_freebsd) || defined(__OpenBSD__)
+ #include <sys/socket.h>
+ #endif
+ #include <string.h>

@@ -1,0 +1,38 @@
+--- doc/example_silcd.conf.in.orig	Mon May  5 01:30:11 2014
++++ doc/example_silcd.conf.in	Wed Jul 16 12:24:55 2014
+@@ -22,7 +22,7 @@
+ # Include global algorithms from the "silcalgs.conf" file.  This file defines
+ # ciphers, hash functions, HMACs and PKCS algorithms that can be used.
+ #
+-Include "@ETCDIR@/silcalgs.conf";
++Include "@ETCDIR@/silcd/silcalgs.conf";
+ 
+ #
+ # General configuration options
+@@ -231,21 +231,21 @@ ServerInfo {
+ 	# Run SILC server as specific user and group.  The server must be
+ 	# initially run as root.
+ 	#
+-	User = "nobody";
+-	Group = "nobody";
++	User = "_silcd";
++	Group = "_silcd";
+ 
+ 	#
+ 	# Public and private keys
+ 	#
+-	PublicKey = "@ETCDIR@/silcd.pub";
+-	PrivateKey = "@ETCDIR@/silcd.prv";
++	PublicKey = "@ETCDIR@/silcd/silcd.pub";
++	PrivateKey = "@ETCDIR@/silcd/silcd.prv";
+ 
+ 	#
+ 	# Motd file
+ 	#
+ 	# Specifies the text file displayed on client connection
+ 	#
+-	#MotdFile = "@ETCDIR@/motd.txt";
++	#MotdFile = "@ETCDIR@/silcd/motd.txt";
+ 
+ 	#
+ 	# Pid file

@@ -1,0 +1,10 @@
+@rcscript ${RCDIR}/mapcache
+@bin bin/mapcache.fcgi
+@bin bin/mapcache_detail
+@bin bin/mapcache_seed
+@lib lib/libmapcache.so.${LIBmapcache_VERSION}
+@cwd ${PREFIX}/share/doc/pkg-readmes
+${PKGSTEM}
+@cwd /var/www
+@bin cgi-bin/mapcache
+conf/mapcache.xml

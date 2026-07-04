@@ -1,0 +1,11 @@
+--- m4/ost_pthread.m4.orig	Fri Jan 16 07:26:48 2009
++++ m4/ost_pthread.m4	Thu Apr  2 04:56:04 2009
+@@ -244,6 +244,8 @@ CXXFLAGS="$ac_save_CXXFLAGS"
+ 		])
+ 	])
+ 
++	AC_CHECK_FUNCS(clock_nanosleep)
++
+ 	AC_CHECK_LIB(rt, mlockall,[
+ 			AC_DEFINE(HAVE_MLOCK, [1], [have mlock])
+ 			AC_DEFINE(HAVE_MLOCKALL, [1], [have memlockall])

@@ -1,0 +1,3 @@
+libcue provides an API for parsing and extracting data from CUE sheets.
+libcue was originally forked from cuetools and then enhanced to add additional
+features.

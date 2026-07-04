@@ -1,0 +1,22 @@
+Silence warnings about base headers, drowning real warnings.
+
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -167,7 +167,6 @@ AX_APPEND_COMPILE_FLAGS([\
+     -Wnull-dereference \
+     -Wold-style-definition \
+     -Wpointer-arith \
+-    -Wredundant-decls \
+     -Wshadow \
+     -Wsign-conversion \
+     -Wshift-overflow=2 \
+@@ -445,7 +444,7 @@ AC_ARG_WITH([rundir],[AS_HELP_STRING([--with-rundir=LO
+   GDNSD_DEFPATH_RUN="${localstatedir}/run/${PACKAGE_NAME}"
+ ])
+ GDNSD_DEFPATH_CONFIG="${sysconfdir}/${PACKAGE_NAME}"
+-GDNSD_DEFPATH_STATE="${localstatedir}/lib/${PACKAGE_NAME}"
++GDNSD_DEFPATH_STATE="${localstatedir}/${PACKAGE_NAME}"
+ GDNSD_DEFPATH_LIB="${libdir}/${PACKAGE_NAME}"
+ GDNSD_DEFPATH_LIBEXEC="${libexecdir}/${PACKAGE_NAME}"
+ AC_SUBST([GDNSD_DEFPATH_RUN])

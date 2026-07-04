@@ -1,0 +1,12 @@
+Index: services/content_filtering/srv_content_filtering.c
+--- services/content_filtering/srv_content_filtering.c.orig
++++ services/content_filtering/srv_content_filtering.c
+@@ -251,7 +251,7 @@ int srv_content_filtering_check_preview_handler(char *
+      srv_content_filtering_data->expectedData = content_len;
+ 
+      if (content_len > srv_content_filtering_data->maxBodyData) {
+-         ci_debug_printf(4, "Srv_Content_Filtering  content-length=%"PRINTF_OFF_T" > %ld will not process\n", (CAST_OFF_T)content_len, srv_content_filtering_data->maxBodyData);
++         ci_debug_printf(4, "Srv_Content_Filtering  content-length=%"PRINTF_OFF_T" > %"PRINTF_OFF_T" will not process\n", (CAST_OFF_T)content_len, srv_content_filtering_data->maxBodyData);
+          return CI_MOD_ALLOW204;
+      }
+ 

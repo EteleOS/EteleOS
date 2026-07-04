@@ -1,0 +1,7 @@
+${P5SITE}/Test/
+${P5SITE}/Test/CPAN/
+${P5SITE}/Test/CPAN/Meta/
+${P5SITE}/Test/CPAN/Meta.pm
+${P5SITE}/Test/CPAN/Meta/Version.pm
+@man man/man3p/Test::CPAN::Meta.3p
+@man man/man3p/Test::CPAN::Meta::Version.3p

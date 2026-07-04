@@ -1,0 +1,8 @@
+bin/libassuan-config
+include/assuan.h
+@info info/assuan.info
+@static-lib lib/libassuan.a
+lib/libassuan.la
+@lib lib/libassuan.so.${LIBassuan_VERSION}
+lib/pkgconfig/libassuan.pc
+share/aclocal/libassuan.m4

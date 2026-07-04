@@ -1,0 +1,20 @@
+--- src/wnb.orig	Tue Sep 11 11:41:42 2007
++++ src/wnb	Tue Sep 11 11:41:47 2007
+@@ -103,7 +103,7 @@ set version "3.0"
+ 
+ if {$tcl_platform(platform) == "unix"} {
+    if {[lsearch -exact [array names env] WNHOME] == -1} {
+-	set resourcedir "/usr/local/WordNet-3.0/lib/wnres"
++	set resourcedir "${LOCALBASE}/share/wordnet/lib/wnres"
+    } else {
+ 	set resourcedir "$env(WNHOME)/lib/wnres"
+    }
+@@ -357,7 +357,7 @@ proc searchanddisplay {searchword senses posnumber sea
+ 	    if {$index != -1 && $schar != 0} {
+ 		set line [string range $i 0 [expr $index - 1]]
+ 		if {[regexp -indices -nocase -- \
+-			 "(\[\.\})>,\] |^|, )($morphedword)\[0-9\]*(#\[0-9\]+)?( \[(\]|,|$\)" \
++			 "(\[\.\})>,\] |^|, )($morphedword)\[0-9\]*(#\[0-9\]+)?( \[(\]|,|$)" \
+ 		    $line dummy dummy indices]} {
+ 		    .results.text tag add overviewhighlight \
+ 			"end - 2 lines linestart + [lindex $indices 0] chars" \

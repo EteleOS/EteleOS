@@ -1,0 +1,3 @@
+${P5SITE}/Getopt/
+${P5SITE}/Getopt/ArgvFile.pm
+@man man/man3p/Getopt::ArgvFile.3p

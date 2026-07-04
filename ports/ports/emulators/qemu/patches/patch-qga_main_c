@@ -1,0 +1,29 @@
+Adapted from https://github.com/aborche/qemu-guest-agent
+
+Index: qga/main.c
+--- qga/main.c.orig
++++ qga/main.c
+@@ -45,7 +45,11 @@
+ #else /* CONFIG_BSD */
+ #define QGA_VIRTIO_PATH_DEFAULT "/dev/virtio-ports/org.qemu.guest_agent.0"
+ #endif /* CONFIG_BSD */
++#ifdef __OpenBSD__
++#define QGA_SERIAL_PATH_DEFAULT "/dev/cua01"
++#else
+ #define QGA_SERIAL_PATH_DEFAULT "/dev/ttyS0"
++#endif
+ #define QGA_STATE_RELATIVE_DIR  "run"
+ #else
+ #define QGA_VIRTIO_PATH_DEFAULT "\\\\.\\Global\\org.qemu.guest_agent.0"
+@@ -1656,7 +1660,11 @@ int main(int argc, char **argv)
+     }
+ 
+     if (config->method == NULL) {
++#ifdef CONFIG_BSD
++        config->method = g_strdup("isa-serial");
++#else
+         config->method = g_strdup("virtio-serial");
++#endif
+     }
+ 
+     socket_activation = check_socket_activation();

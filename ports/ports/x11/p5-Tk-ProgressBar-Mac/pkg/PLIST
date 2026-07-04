@@ -1,0 +1,4 @@
+${P5SITE}/Tk/
+${P5SITE}/Tk/ProgressBar/
+${P5SITE}/Tk/ProgressBar/Mac.pm
+@man man/man3p/Tk::ProgressBar::Mac.3p

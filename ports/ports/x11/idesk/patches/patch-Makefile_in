@@ -1,0 +1,20 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -110,7 +110,7 @@ Makefile: $(srcdir)/Makefile.in  $(top_builddir)/confi
+ 	cd $(top_builddir) \
+ 	  && CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
+ 
+-$(ACLOCAL_M4):  configure.in  acinclude.m4 ./acinclude.m4 ./aclocal.m4
++$(ACLOCAL_M4):  configure.in  acinclude.m4 ./acinclude.m4
+ 	cd $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
+ 
+ config.status: $(srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
+@@ -381,6 +381,7 @@ install-data-local:
+ 	if test -d $(srcdir)/examples; then \
+ 	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir); \
+ 	$(INSTALL_DATA) $(srcdir)/README $(DESTDIR)$(pkgdatadir); \
++	rm -f $(srcdir)/examples/*.orig; \
+ 	  for example in $(srcdir)/examples/*; do \
+ 	    if test -f $$example; then \
+ 	      $(INSTALL_DATA) $$example $(DESTDIR)$(pkgdatadir); \

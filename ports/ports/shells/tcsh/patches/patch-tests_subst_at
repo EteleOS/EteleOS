@@ -1,0 +1,29 @@
+Index: tests/subst.at
+--- tests/subst.at.orig
++++ tests/subst.at
+@@ -64,10 +64,10 @@ foo* ab{c,d} ^fo*
+ 
+ AT_CHECK([
+ case "$(uname -s)" in
+-Darwin)
++Darwin[)]
+     HOME=$(dscl . read "/Users/$USER" NFSHomeDirectory | awk '{ print $NF }')
+     ;;
+-*)
++*[)]
+     HOME=$(getent passwd $(id -un) | awk -F: '{ print $(NF - 1) }')
+     ;;
+ esac;
+@@ -79,10 +79,10 @@ echo 'echo ~; echo "$HOME"' | tcsh -f | uniq | wc -l |
+ 
+ AT_CHECK([
+ case "$(uname -s)" in
+-Darwin)
++Darwin[)]
+     HOME=$(dscl . read "/Users/$USER" NFSHomeDirectory | awk '{ print $NF }')
+     ;;
+-*)
++*[)]
+     HOME=$(getent passwd $(id -un) | awk -F: '{ print $(NF - 1) }')
+     ;;
+ esac;

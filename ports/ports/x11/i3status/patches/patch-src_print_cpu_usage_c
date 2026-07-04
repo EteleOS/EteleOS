@@ -1,0 +1,22 @@
+Index: src/print_cpu_usage.c
+--- src/print_cpu_usage.c.orig
++++ src/print_cpu_usage.c
+@@ -44,15 +44,15 @@ struct cpu_usage {
+     long nice;
+     long system;
+     long idle;
++#if defined(__OpenBSD__)
++    int spin;
++#endif
+     long total;
+ #else
+     int user;
+     int nice;
+     int system;
+     int idle;
+-#if defined(__OpenBSD__)
+-    int spin;
+-#endif
+     int total;
+ #endif
+ };

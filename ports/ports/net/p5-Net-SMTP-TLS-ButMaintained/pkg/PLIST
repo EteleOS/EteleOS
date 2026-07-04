@@ -1,0 +1,5 @@
+${P5SITE}/Net/
+${P5SITE}/Net/SMTP/
+${P5SITE}/Net/SMTP/TLS/
+${P5SITE}/Net/SMTP/TLS/ButMaintained.pm
+@man man/man3p/Net::SMTP::TLS::ButMaintained.3p

@@ -1,0 +1,7 @@
+@man man/man8/apcd.8
+@man man/man8/apcmon.8
+@bin sbin/apcd
+@bin sbin/apcmon
+share/examples/apcd/
+share/examples/apcd/apcd.conf
+@sample ${SYSCONFDIR}/apcd.conf

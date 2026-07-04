@@ -1,0 +1,9 @@
+bin/findorule
+${P5SITE}/File/Find/Object/Rule/
+${P5SITE}/File/Find/Object/Rule.pm
+${P5SITE}/File/Find/Object/Rule/Extending.pod
+${P5SITE}/File/Find/Object/Rule/Procedural.pod
+@man man/man1/findorule.1
+@man man/man3p/File::Find::Object::Rule.3p
+@man man/man3p/File::Find::Object::Rule::Extending.3p
+@man man/man3p/File::Find::Object::Rule::Procedural.3p

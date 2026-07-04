@@ -1,0 +1,14 @@
+--- src/aaxkbd.c.orig	Thu Apr 26 16:37:31 2001
++++ src/aaxkbd.c	Mon Feb  9 00:47:34 2009
+@@ -1,10 +1,10 @@
+-#include <malloc.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdio.h>
+ #include "config.h"
+ #ifdef X11_KBDDRIVER
+ #include <X11/Xlib.h>
++#include <X11/Xutil.h>
+ #include <X11/keysymdef.h>
+ #include <X11/keysym.h>
+ #include "aalib.h"

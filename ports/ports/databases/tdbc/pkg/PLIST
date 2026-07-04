@@ -1,0 +1,17 @@
+include/tdbc/
+include/tdbc/tdbc.h
+include/tdbc/tdbcDecls.h
+include/tdbc/tdbcInt.h
+@lib lib/libtdbc${VER}.so.${LIBtdbc${VER}_VERSION}
+@static-lib lib/libtdbcstub${VER}.a
+lib/tcl/tdbc/
+lib/tcl/tdbc/pkgIndex.tcl
+lib/tcl/tdbc/tdbc.tcl
+lib/tcl/tdbc/tdbcConfig.sh
+@man man/man3/Tdbc_Init.3
+@man man/mann/tdbc.n
+@man man/mann/tdbc_connection.n
+@man man/mann/tdbc_mapSqlState.n
+@man man/mann/tdbc_resultset.n
+@man man/mann/tdbc_statement.n
+@man man/mann/tdbc_tokenize.n

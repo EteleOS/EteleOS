@@ -1,0 +1,14 @@
+Use sndio for audio
+
+--- tools/Makefile.in.orig	Mon Mar 14 23:05:12 2011
++++ tools/Makefile.in	Wed Apr 18 09:13:34 2012
+@@ -236,7 +236,8 @@ noinst_HEADERS = wav_io.h
+ celtenc_SOURCES = celtenc.c wav_io.c skeleton.c
+ celtenc_LDADD = $(top_builddir)/libcelt/libcelt@LIBCELT_SUFFIX@.la $(OGG_LIBS)
+ celtdec_SOURCES = celtdec.c wav_io.c
+-celtdec_LDADD = $(top_builddir)/libcelt/libcelt@LIBCELT_SUFFIX@.la $(OGG_LIBS)
++celtdec_LDADD = $(top_builddir)/libcelt/libcelt@LIBCELT_SUFFIX@.la $(OGG_LIBS) \
++		-lsndio
+ all: all-am
+ 
+ .SUFFIXES:

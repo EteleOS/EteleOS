@@ -1,0 +1,37 @@
+Since we hijacked the OpenBSD PCI vendor ID, this diff should probably
+not be upstreamed.
+
+Index: src/fw/pciinit.c
+--- src/fw/pciinit.c.orig
++++ src/fw/pciinit.c
+@@ -147,6 +147,11 @@ static int mch_pci_slot_get_irq(struct pci_device *pci
+     return pci_irqs[(pin - 1 + pin_addend) & 3];
+ }
+ 
++static int vmm_pci_slot_get_irq(struct pci_device *pci, int pin)
++{
++    return pci_config_readb(pci->bdf, PCI_INTERRUPT_LINE);
++}
++
+ /* PIIX3/PIIX4 PCI to ISA bridge */
+ static void piix_isa_bridge_setup(struct pci_device *pci, void *arg)
+ {
+@@ -510,11 +515,18 @@ static void mch_mem_addr_setup(struct pci_device *dev,
+         pci_io_low_end = acpi_pm_base;
+ }
+ 
++static void vmm_mem_addr_setup(struct pci_device *dev, void *arg)
++{
++    pci_slot_get_irq = vmm_pci_slot_get_irq;
++}
++
+ static const struct pci_device_id pci_platform_tbl[] = {
+     PCI_DEVICE(PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_82441,
+                i440fx_mem_addr_setup),
+     PCI_DEVICE(PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_Q35_MCH,
+                mch_mem_addr_setup),
++    PCI_DEVICE(PCI_VENDOR_ID_OPENBSD, PCI_DEVICE_ID_OPENBSD_PCHB,
++	       vmm_mem_addr_setup),
+     PCI_DEVICE_END
+ };
+ 

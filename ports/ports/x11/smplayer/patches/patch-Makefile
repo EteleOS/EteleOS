@@ -1,0 +1,48 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -5,7 +5,7 @@ PREFIX=/usr/local
+ CONF_PREFIX=$(PREFIX)
+ 
+ DATA_PATH=$(PREFIX)/share/smplayer
+-DOC_PATH=$(PREFIX)/share/doc/packages/smplayer
++DOC_PATH=$(PREFIX)/share/doc/smplayer
+ TRANSLATION_PATH=$(PREFIX)/share/smplayer/translations
+ THEMES_PATH=$(PREFIX)/share/smplayer/themes
+ SHORTCUTS_PATH=$(PREFIX)/share/smplayer/shortcuts
+@@ -14,14 +14,6 @@ ICONS_DIR=$(PREFIX)/share/icons/hicolor/
+ APPLNK_DIR=$(PREFIX)/share/applications/
+ METAINFO_DIR=$(PREFIX)/share/metainfo/
+ 
+-QMAKE=qmake
+-LRELEASE=lrelease
+-
+-DEFS=DATA_PATH=\\\"$(DATA_PATH)\\\" \
+-     TRANSLATION_PATH=\\\"$(TRANSLATION_PATH)\\\" \
+-     DOC_PATH=\\\"$(DOC_PATH)\\\" THEMES_PATH=\\\"$(THEMES_PATH)\\\" \
+-     SHORTCUTS_PATH=\\\"$(SHORTCUTS_PATH)\\\"
+-
+ all: src/smplayer webserver/simple_web_server
+ 
+ src/smplayer:
+@@ -50,7 +42,7 @@ install: all
+ 	install -m 755 webserver/simple_web_server $(DESTDIR)$(PREFIX)/bin/
+ 
+ 	-install -d $(DESTDIR)$(DOC_PATH)
+-	tar -C docs/ --exclude=.svn -c -f - . | tar -C $(DESTDIR)$(DOC_PATH) -x -f -
++	cp -r docs/* $(DESTDIR)$(DOC_PATH)
+ 
+ 	-install -d $(DESTDIR)$(SHORTCUTS_PATH)
+ 	cp src/shortcuts/* $(DESTDIR)$(SHORTCUTS_PATH)
+@@ -83,9 +75,8 @@ install: all
+ 	-install -d $(DESTDIR)$(METAINFO_DIR)
+ 	./install_appdata.sh $(DESTDIR)$(METAINFO_DIR)/smplayer.appdata.xml
+ 
+-	-install -d $(DESTDIR)$(PREFIX)/share/man/man1/
+-	install -m 644 man/smplayer.1 $(DESTDIR)$(PREFIX)/share/man/man1/
+-	gzip -9 -f $(DESTDIR)$(PREFIX)/share/man/man1/smplayer.1
++	-install -d $(DESTDIR)$(PREFIX)/man/man1/
++	install -m 644 man/smplayer.1 $(DESTDIR)$(PREFIX)/man/man1/
+ 
+ uninstall:
+ 	-rm -f $(PREFIX)/bin/smplayer

@@ -1,0 +1,11 @@
+--- Xwnmo/xwnmo/jutil.c.orig
++++ Xwnmo/xwnmo/jutil.c
+@@ -117,7 +117,7 @@ int in;
+     static int k;
+     static char *buf[sizeof(message1) / sizeof(msg_fun)];
+     static WnnClientRec *c_c_sv = 0;
+-    static jutil_step = 0;
++    static int jutil_step = 0;
+     static char *lang;
+ 
+     if (c_c_sv != 0 && c_c != c_c_sv) {

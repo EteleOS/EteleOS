@@ -1,0 +1,95 @@
+Stop using struct ifnet and libkvm for interface stats.
+
+Index: src/libs/zbxsysinfo/openbsd/net.c
+--- src/libs/zbxsysinfo/openbsd/net.c.orig
++++ src/libs/zbxsysinfo/openbsd/net.c
+@@ -31,7 +31,6 @@
+ 
+ static struct nlist kernel_symbols[] =
+ {
+-	{"_ifnet", N_UNDF, 0, 0, 0},
+ 	{"_tcbtable", N_UNDF, 0, 0, 0},
+ 	{NULL, 0, 0, 0, 0}
+ };
+@@ -44,12 +43,8 @@ static int	get_ifdata(const char *if_name,
+ 		zbx_uint64_t *icollisions, char **error)
+ {
+ #define IFNET_ID 0
+-	struct ifnet_head	head;
+-	struct ifnet		*ifp;
++	int	ret = SYSINFO_RET_FAIL;
+ 
+-	kvm_t	*kp;
+-	int	len = 0, ret = SYSINFO_RET_FAIL;
+-
+ 	if (NULL == if_name || '\0' == *if_name)
+ 	{
+ 		*error = zbx_strdup(NULL, "Network interface name cannot be empty.");
+@@ -87,67 +82,7 @@ static int	get_ifdata(const char *if_name,
+ 		*terrors = 0;
+ 	if (icollisions)
+ 		*icollisions = 0;
+-
+-	if (NULL != (kp = kvm_open(NULL, NULL, NULL, O_RDONLY, NULL))) /* requires root privileges */
+ 	{
+-		struct ifnet	v;
+-
+-		if (N_UNDF == kernel_symbols[IFNET_ID].n_type)
+-			if (0 != kvm_nlist(kp, &kernel_symbols[0]))
+-				kernel_symbols[IFNET_ID].n_type = N_UNDF;
+-
+-		if (N_UNDF != kernel_symbols[IFNET_ID].n_type)
+-		{
+-			len = sizeof(struct ifnet_head);
+-
+-			if (kvm_read(kp, kernel_symbols[IFNET_ID].n_value, &head, len) >= len)
+-			{
+-				len = sizeof(struct ifnet);
+-
+-				for (ifp = head.tqh_first; ifp; ifp = v.if_list.tqe_next)
+-				{
+-					if (kvm_read(kp, (u_long)ifp, &v, len) < len)
+-						break;
+-
+-					if (0 == strcmp(if_name, v.if_xname))
+-					{
+-						if (ibytes)
+-							*ibytes += v.if_ibytes;
+-						if (ipackets)
+-							*ipackets += v.if_ipackets;
+-						if (ierrors)
+-							*ierrors += v.if_ierrors;
+-						if (idropped)
+-							*idropped += v.if_iqdrops;
+-						if (obytes)
+-							*obytes += v.if_obytes;
+-						if (opackets)
+-							*opackets += v.if_opackets;
+-						if (oerrors)
+-							*oerrors += v.if_oerrors;
+-						if (tbytes)
+-							*tbytes += v.if_ibytes + v.if_obytes;
+-						if (tpackets)
+-							*tpackets += v.if_ipackets + v.if_opackets;
+-						if (terrors)
+-							*terrors += v.if_ierrors + v.if_oerrors;
+-						if (icollisions)
+-							*icollisions += v.if_collisions;
+-
+-						ret = SYSINFO_RET_OK;
+-					}
+-				}
+-			}
+-		}
+-		kvm_close(kp);
+-
+-		if (SYSINFO_RET_FAIL == ret)
+-			*error = zbx_strdup(NULL, "Cannot find information for this network interface.");
+-	}
+-	else
+-	{
+-		/* fallback to using SIOCGIFDATA */
+-
+ 		int		if_s;
+ 		struct ifreq	ifr;
+ 		struct if_data	v;

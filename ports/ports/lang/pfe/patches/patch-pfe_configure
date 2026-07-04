@@ -1,0 +1,45 @@
+--- pfe/configure.orig	Sat Oct 17 19:50:54 2009
++++ pfe/configure	Fri Jun 19 08:58:08 2015
+@@ -19714,7 +19714,7 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $
+ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+ 
+  ac_save_CFLAGS="$CFLAGS"
+-for ac_arg in "-pedantic  % -Wall"          "-xstrconst % -v"             "-std1      % -verbose -w0 -warnprotos"    "-qlanglvl=ansi % -qsrcmsg -qinfo=all:noppt:noppc:noobs:nocnd"    "-ansi -ansiE % -fullwarn"    "+ESlit     % +w1"            "-Xc        % -pvctl,fullmsg"    "-h conform % -h msglevel 2"    #
++for ac_arg in "-xstrconst % -v"             "-std1      % -verbose -w0 -warnprotos"    "-ansi -ansiE % -fullwarn"    "+ESlit     % +w1"            "-h conform % -h msglevel 2"    #
+ do CFLAGS="$ac_save_CFLAGS "`echo $ac_arg | sed -e 's,%%.*,,' -e 's,%,,'`
+    cat >conftest.$ac_ext <<_ACEOF
+ /* confdefs.h.  */
+@@ -20477,7 +20477,6 @@ test "$with_sbr_threading" = "yes" && uses_sbr_threadi
+ GCC_WARN="" ; OPTIM="" ; DEBUG=""
+ { $as_echo "$as_me:$LINENO: checking optimize level \"$WITHVAL_OPT\" is..." >&5
+ $as_echo_n "checking optimize level \"$WITHVAL_OPT\" is...... " >&6; }
+-CFLAGS=`echo " $CFLAGS " | sed -e 's/ -O[0-9]* / /'`
+ opt_level="$WITHVAL_OPT"
+ if test "$GCC" = "yes" ; then
+    OPTIM="-O$opt_level"
+@@ -20549,16 +20548,6 @@ LIBS=`echo " $LIBS " | sed -e "s/ -lm //g"`
+ 
+ PACKAGE_CFLAGS="$EXTRAS" # PACKAGE_LIBS = -lpfe
+ 
+-if test "$GCC" = "yes" ; then if test "_$libpfe_no_debug" = "_yes" ; then
+-{ $as_echo "$as_me:$LINENO: result: cleaning CFLAGS from -g occurrences" >&5
+-$as_echo "cleaning CFLAGS from -g occurrences" >&6; }
+- CFLAGS=`echo " $CFLAGS " | sed -e "s/ -g //g"`
+-fi fi
+-if test "_$libpfe_no_strip" = "_yes" ; then
+-{ $as_echo "$as_me:$LINENO: result: cleaning LDFLAGS from -Wl" >&5
+-$as_echo "cleaning LDFLAGS from -Wl" >&6; }
+- LDFLAGS=`echo " $LDFLAGS " | sed -e 's/ -Wl,-S //'`
+-fi
+ if test "$enable_shared" = "yes" ; then
+ 
+ cat >>confdefs.h <<\_ACEOF
+@@ -23900,7 +23889,7 @@ sh ./libtool --features
+ 	| sed -e '/^.*undef PFE_WITH_/s,^.*undef ,config     no ,'
+ 
+    echo "using   defs= $PFE_DEFS"
+-   x="$cc_opt_pipe $cc_opt_write_strings $cc_opt_strict_prototypes"
++   x="$cc_opt_write_strings $cc_opt_strict_prototypes"
+    echo "using cflags= $x $GCC_WARN $WITH_CFLAGS $USER_CONFIG"
+    echo "using CFLAGS= $CFLAGS"
+    echo "using LIBS=   $LIBS"

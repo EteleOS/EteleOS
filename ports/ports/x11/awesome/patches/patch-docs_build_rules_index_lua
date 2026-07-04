@@ -1,0 +1,9 @@
+Index: docs/build_rules_index.lua
+--- docs/build_rules_index.lua.orig
++++ docs/build_rules_index.lua
+@@ -1,4 +1,4 @@
+-#! /usr/bin/lua
++#! ${MODLUA_BIN}
+ local args = {...}
+ local parser = require("docs._parser")
+ 

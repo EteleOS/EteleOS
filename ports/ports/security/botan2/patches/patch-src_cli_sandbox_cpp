@@ -1,0 +1,14 @@
+Index: src/cli/sandbox.cpp
+--- src/cli/sandbox.cpp.orig
++++ src/cli/sandbox.cpp
+@@ -46,8 +46,8 @@ bool Sandbox::init()
+    Botan::initialize_allocator();
+ 
+ #if defined(BOTAN_TARGET_OS_HAS_PLEDGE)
+-   const static char *opts = "stdio rpath inet error";
+-   return (::pledge(opts, nullptr) == 0);
++   // Cannot use pledge(2) as Botan library calls mlock(2) and munlock(2).
++   return true;
+ #elif defined(BOTAN_TARGET_OS_HAS_CAP_ENTER)
+    cap_rights_t wt, rd;
+ 

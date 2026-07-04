@@ -1,0 +1,3 @@
+@bin bin/xcolors
+lib/X11/app-defaults/Xcolors
+@man man/man1/xcolors.1

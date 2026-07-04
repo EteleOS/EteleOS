@@ -1,0 +1,4 @@
+@pkgpath games/xscrabble
+lib/X11/app-defaults/XScrabble_en
+lib/X11/xscrabble/OSPD3.gz
+lib/X11/xscrabble/scrabble_rules

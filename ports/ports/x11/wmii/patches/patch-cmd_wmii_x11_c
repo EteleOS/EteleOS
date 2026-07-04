@@ -1,0 +1,15 @@
+fix for -f no-common
+
+Index: cmd/wmii/x11.c
+--- cmd/wmii/x11.c.orig
++++ cmd/wmii/x11.c
+@@ -11,6 +11,9 @@
+ #include <bio.h>
+ #include "fns.h"
+ 
++Display *display;
++Screen scr;
++
+ Point ZP = {0, 0};
+ Rectangle ZR = {{0, 0}, {0, 0}};
+ 

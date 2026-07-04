@@ -1,0 +1,84 @@
+bin/addwords
+@bin bin/canlisp
+@bin bin/cannacheck
+bin/cannakill
+@mode u+s,g+s
+@owner daemon
+@group daemon
+@bin bin/cannaserver
+@mode
+@owner
+@group
+@bin bin/cannastat
+@bin bin/catdic
+bin/cpdic
+@bin bin/crfreq
+@bin bin/crxdic
+@bin bin/crxgram
+@bin bin/cshost
+@bin bin/ctow
+bin/delwords
+@bin bin/dicar
+bin/dpbindic
+@bin bin/dpromdic
+@bin bin/dpxdic
+@bin bin/forcpp
+@bin bin/forsort
+@bin bin/kpdic
+bin/lsdic
+@bin bin/mergeword
+bin/mkbindic
+bin/mkdic
+bin/mkromdic
+bin/mvdic
+bin/rmdic
+@bin bin/splitword
+bin/syncdic
+@bin bin/wtoc
+man/ja/man1/
+@man man/ja/man1/addwords.1
+@man man/ja/man1/cannacheck.1
+@man man/ja/man1/cannakill.1
+@man man/ja/man1/cannaserver.1
+@man man/ja/man1/cannastat.1
+@man man/ja/man1/catdic.1
+@man man/ja/man1/cpdic.1
+@man man/ja/man1/cshost.1
+@man man/ja/man1/ctow.1
+@man man/ja/man1/delwords.1
+@man man/ja/man1/dicar.1
+@man man/ja/man1/dpbindic.1
+@man man/ja/man1/dpromdic.1
+@man man/ja/man1/lsdic.1
+@man man/ja/man1/mkbindic.1
+@man man/ja/man1/mkdic.1
+@man man/ja/man1/mkromdic.1
+@man man/ja/man1/mvdic.1
+@man man/ja/man1/rmdic.1
+@man man/ja/man1/splitword.1
+@man man/ja/man1/wtoc.1
+@man man/man1/addwords.1
+@man man/man1/cannacheck.1
+@man man/man1/cannakill.1
+@man man/man1/cannaserver.1
+@man man/man1/cannastat.1
+@man man/man1/catdic.1
+@man man/man1/cpdic.1
+@man man/man1/cshost.1
+@man man/man1/ctow.1
+@man man/man1/delwords.1
+@man man/man1/dicar.1
+@man man/man1/dpbindic.1
+@man man/man1/dpromdic.1
+@man man/man1/lsdic.1
+@man man/man1/mkbindic.1
+@man man/man1/mkdic.1
+@man man/man1/mkromdic.1
+@man man/man1/mvdic.1
+@man man/man1/rmdic.1
+@man man/man1/splitword.1
+@man man/man1/wtoc.1
+@mode 0775
+@owner daemon
+@group daemon
+@sample /var/spool/canna/

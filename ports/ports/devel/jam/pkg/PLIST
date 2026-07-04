@@ -1,0 +1,7 @@
+@bin bin/jam
+share/doc/jam/
+share/doc/jam/Jam.html
+share/doc/jam/Jambase.html
+share/doc/jam/Jamfile.html
+share/doc/jam/README
+share/doc/jam/RELNOTES

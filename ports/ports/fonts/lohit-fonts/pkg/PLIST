@@ -1,0 +1,16 @@
+share/fonts/
+@fontdir share/fonts/lohit/
+share/fonts/lohit/Lohit-Assamese.ttf
+share/fonts/lohit/Lohit-Bengali.ttf
+share/fonts/lohit/Lohit-Devanagari.ttf
+share/fonts/lohit/Lohit-Gujarati.ttf
+share/fonts/lohit/Lohit-Kannada.ttf
+share/fonts/lohit/Lohit-Malayalam.ttf
+share/fonts/lohit/Lohit-Marathi.ttf
+share/fonts/lohit/Lohit-Nepali.ttf
+share/fonts/lohit/Lohit-Oriya.ttf
+share/fonts/lohit/Lohit-Punjabi.ttf
+share/fonts/lohit/Lohit-Tamil-Classical.ttf
+share/fonts/lohit/Lohit-Tamil.ttf
+share/fonts/lohit/Lohit-Telugu.ttf
+share/fonts/lohit/OFL.txt

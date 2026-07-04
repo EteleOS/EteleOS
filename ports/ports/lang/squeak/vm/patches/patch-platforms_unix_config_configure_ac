@@ -1,0 +1,11 @@
+Index: platforms/unix/config/configure.ac
+--- platforms/unix/config/configure.ac.orig
++++ platforms/unix/config/configure.ac
+@@ -243,7 +243,6 @@ AC_FUNC_ALLOCA
+ AC_GNU_OPT
+ AC_GNU_INTERP
+ AC_MODULE_LIB_PREFIX
+-AC_64BIT_ARCH
+ 
+ CFLAGS="$CFLAGS_32 $CFLAGS"
+ 

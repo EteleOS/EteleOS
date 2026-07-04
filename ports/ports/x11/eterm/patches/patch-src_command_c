@@ -1,0 +1,14 @@
+--- src/command.c.orig
++++ src/command.c
+@@ -1388,9 +1388,9 @@ sco_get_pty(void)
+ #endif
+ 
+ #if defined(HAVE_POSIX_OPENPT) || defined(HAVE_DEV_PTMX)
+-inline int posix_get_pty(void);
++static inline int posix_get_pty(void);
+ 
+-inline int
++static inline int
+ posix_get_pty(void)
+ {
+ 

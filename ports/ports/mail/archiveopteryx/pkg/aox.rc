@@ -1,0 +1,15 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/aox"
+daemon_flags="start"
+
+. /etc/rc.d/rc.subr
+
+pexp="${TRUEPREFIX}/sbin/archiveopteryx -f"
+rc_reload=NO
+
+rc_stop() {
+	${daemon} stop
+}
+
+rc_cmd $1

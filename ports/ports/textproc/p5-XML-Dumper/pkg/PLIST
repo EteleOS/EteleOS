@@ -1,0 +1,3 @@
+${P5SITE}/XML/
+${P5SITE}/XML/Dumper.pm
+@man man/man3p/XML::Dumper.3p

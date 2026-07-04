@@ -1,0 +1,14 @@
+amd64_iopl(2) requires non-zero machdep.allowaperture sysctl(8).
+
+Index: util/ectool/ectool.c
+--- util/ectool/ectool.c.orig
++++ util/ectool/ectool.c
+@@ -130,7 +130,7 @@ int main(int argc, char *argv[])
+ 				"fallback to default.\n");
+ 
+ 	if (iopl(3)) {
+-		printf("You need to be root.\n");
++		printf("You need to be root and machdep.allowaperture must be non-zero, see amd64_iopl(2).\n");
+ 		exit(1);
+ 	}
+ 	if (write_addr >= 0 && write_data >= 0) {

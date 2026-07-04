@@ -1,0 +1,10 @@
+--- src/game.cpp.orig	Sun Aug 17 17:09:59 2003
++++ src/game.cpp	Tue Aug 18 19:41:30 2009
+@@ -38,6 +38,7 @@ using namespace std;
+ #include "explosiveball.h"
+ #include <fstream>
+ #include <iostream>
++#include <time.h>
+ #include "menu.h"
+ #include "killerball.h"
+ #include "magnet.h"

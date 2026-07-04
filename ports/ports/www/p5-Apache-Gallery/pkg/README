@@ -1,0 +1,57 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Installing in a chroot
+======================
+
+In order to make A::G operate in a chrooted environment, it is
+necessary to copy all of the relevant libraries and perl modules
+that it employs into /var/www.
+
+First, create the basic directory structure:
+
+$ cd /var/www
+# mkdir -p tmp usr
+# chown www:www tmp	(needs to be writeable for the www user)
+
+$ cd /var/www/
+# mkdir -p .${LOCALBASE}/lib
+
+$ cd /var/www/usr
+# mkdir -p libdata/perl5 libexec {.,X11R6}/lib
+
+Next, the run-time link-editor:
+
+$ cd /var/www/usr/libexec
+# cp -p /usr/libexec/ld.so .
+
+Next, the required shared libraries:
+
+$ cd /var/www/usr/lib
+# cp -p /usr/lib/lib{c,crypto,m,z,util,perl,ssl,stdc++}.so* .
+
+$ cd /var/www/usr/X11R6/lib
+# cp -p /usr/X11R6/lib/lib{Xext,freetype,X11,Xau,Xdmcp,xcb,pthread-stubs}.so.* .
+
+Next, the Perl base:
+
+$ cd /var/www/usr/libdata
+# cp -pR /usr/libdata/perl5 .
+
+Finally, install p5-Apache-Gallery and all its deps in the chroot
+
+# env PKG_DBDIR=/var/www/var/db/pkg pkg_add -B /var/www p5-Apache-Gallery
+
+Setting up Apache
+=================
+
+To enable gallery you need to edit /var/www/conf/modules.sample/apache-gallery.conf
+to fit your needs then create a symlink like this :
+
+# ln -s ../modules.sample/apache-gallery.conf \
+        /var/www/conf/modules
+# /etc/rc.d/apache2 restart
+
+Finally, create a /var/www/htdocs/gallery directory, put your favourite
+pictures inside it, and browse to your.server.tld/gallery.

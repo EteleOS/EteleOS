@@ -1,0 +1,11 @@
+Index: src/output/stringscmd.h
+--- src/output/stringscmd.h.orig
++++ src/output/stringscmd.h
+@@ -1,7 +1,6 @@
+ #include <regex.h>
+ #include <stdio.h>
+ #include <string.h>
+-#include <bsd/string.h>
+ #include "../cvecheck_common.h"
+ #include "../swstring.h"
+ 

@@ -1,0 +1,16 @@
+--- Makefile.PL.orig	Sun Oct 24 18:08:27 2010
++++ Makefile.PL	Wed Nov 24 16:47:21 2010
+@@ -9,11 +9,13 @@ abstract_from	('lib/App/CLI.pm');
+ license		('perl');
+ version_from	('lib/App/CLI.pm');
+ 
++=pod
+ requires(
+     'Locale::Maketext::Simple' => 0,
+     'Getopt::Long'             => '2.35',
+     'Pod::Simple::Text'        => 0,
+ );
++=cut
+ 
+ auto_install();
+ 

@@ -1,0 +1,13 @@
+Use absolute path to smartctl(8)
+
+--- src/gsc_settings.h.orig
++++ src/gsc_settings.h
+@@ -32,7 +32,7 @@ inline void init_default_settings()
+ 
+ 
+ #ifndef _WIN32
+-	rconfig::set_default_data("system/smartctl_binary", "smartctl");  // must be in PATH or use absolute path.
++	rconfig::set_default_data("system/smartctl_binary", "${LOCALBASE}/sbin/smartctl");  // must be in PATH or use absolute path.
+ 	rconfig::set_default_data("system/tw_cli_binary", "tw_cli");  // must be in PATH or use absolute path.
+ #else
+ 	rconfig::set_default_data("system/smartctl_binary", "smartctl-nc.exe");  // use no-console version by default.

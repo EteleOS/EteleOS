@@ -1,0 +1,42 @@
+first two hunks:
+https://github.com/plougher/squashfs-tools/commit/fa862f08f15f1beadfeb39122cb976057160bf14
+
+last hunk:
+inode->time is a time_t, fix format string accordingly
+
+Index: squashfs-tools/unsquashfs.c
+--- squashfs-tools/unsquashfs.c.orig
++++ squashfs-tools/unsquashfs.c
+@@ -1232,7 +1232,11 @@ int create_inode(char *pathname, struct inode *i)
+ 			break;
+ 		case SQUASHFS_SYMLINK_TYPE:
+ 		case SQUASHFS_LSYMLINK_TYPE: {
++#ifdef __OpenBSD__
++			struct timespec times[2] = {
++#else
+ 			struct timeval times[2] = {
++#endif
+ 				{ i->time, 0 },
+ 				{ i->time, 0 }
+ 			};
+@@ -1251,7 +1255,11 @@ int create_inode(char *pathname, struct inode *i)
+ 				goto failed;
+ 			}
+ 
++#ifdef __OpenBSD__
++			res = utimensat(AT_FDCWD, pathname, times, AT_SYMLINK_NOFOLLOW);
++#else
+ 			res = lutimes(pathname, times);
++#endif
+ 			if(res == -1) {
+ 				EXIT_UNSQUASH_STRICT("create_inode: failed to"
+ 					" set time on %s, because %s\n",
+@@ -3588,7 +3596,7 @@ void pseudo_print(char *pathname, struct inode *inode,
+ 	else if(res >= 12)
+ 		EXIT_UNSQUASH("snprintf returned more than 11 digits in pseudo_print()\n");
+ 
+-	res = dprintf(writer_fd, "%s %c %ld %o %s %s", filename, type, inode->time, inode->mode & ~S_IFMT, userstr, groupstr);
++	res = dprintf(writer_fd, "%s %c %lld %o %s %s", filename, type, inode->time, inode->mode & ~S_IFMT, userstr, groupstr);
+ 	if(res == -1)
+ 		EXIT_UNSQUASH("Failed to write to pseudo output file\n");
+ 

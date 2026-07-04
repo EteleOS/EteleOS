@@ -1,0 +1,10 @@
+@newgroup _snare:850
+@newuser _snare:850:_snare::snare account:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/snare
+@bin bin/snare
+@man man/man1/snare.1
+@man man/man5/snare.conf.5
+@sample ${SYSCONFDIR}/snare/
+share/examples/snare/
+share/examples/snare/snare.conf
+@sample ${SYSCONFDIR}/snare/snare.conf

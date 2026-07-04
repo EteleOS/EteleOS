@@ -1,0 +1,24 @@
+Index: Modules/Pro/effects.c
+--- Modules/Pro/effects.c.orig
++++ Modules/Pro/effects.c
+@@ -207,8 +207,9 @@ LOCAL void do_vibrato(struct channel *ch)
+       /* temporary update of only the step value,
+        * note that we do not change the saved pitch.
+        */
+-   set_temp_pitch(ch, 
+-		ch->pitch + sinusoid_value(&(ch->vib))/256);
++	if (ch->pitch)
++		set_temp_pitch(ch, 
++			ch->pitch + sinusoid_value(&(ch->vib))/256);
+    }
+ 
+ LOCAL void set_vibrato(struct channel *ch, struct event *e)
+@@ -255,7 +256,7 @@ LOCAL void set_arpeggio(struct channel *ch, struct eve
+ 
+       ch->arp[0] = note2pitch(ch->note, ch->finetune);
+       note = ch->note + HI(e->parameters);
+-         ch->arp[1] = note2pitch(ch->note, ch->finetune);
++         ch->arp[1] = note2pitch(note, ch->finetune);
+ 		if (!ch->arp[1])
+          {
+          status("Arpeggio note out of range");

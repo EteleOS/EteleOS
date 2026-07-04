@@ -1,0 +1,7 @@
+bin/w3mfix
+bin/w3mir
+${P5SITE}/htmlop.pm
+${P5SITE}/w3http.pm
+${P5SITE}/w3pdfuri.pm
+@man man/man1/w3mfix.1
+@man man/man1/w3mir.1

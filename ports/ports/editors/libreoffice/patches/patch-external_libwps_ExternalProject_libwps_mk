@@ -1,0 +1,17 @@
+Index: external/libwps/ExternalProject_libwps.mk
+--- external/libwps/ExternalProject_libwps.mk.orig
++++ external/libwps/ExternalProject_libwps.mk
+@@ -21,10 +21,12 @@ $(eval $(call gb_ExternalProject_use_externals,libwps,
+ 
+ libwps_CPPFLAGS+=$(gb_COMPILERDEFS_STDLIB_DEBUG)
+ 
++libwps_CPPFLAGS+=-fPIC
++
+ libwps_CXXFLAGS=$(gb_CXXFLAGS) $(call gb_ExternalProject_get_build_flags,libwps)
+ 
+ libwps_LDFLAGS=$(call gb_ExternalProject_get_link_flags,libwps)
+-ifeq ($(OS),LINUX)
++ifeq ($(OS),OPENBSD)
+ ifeq ($(SYSTEM_REVENGE),)
+ libwps_LDFLAGS+=-Wl,-z,origin -Wl,-rpath,\$$$$ORIGIN
+ endif

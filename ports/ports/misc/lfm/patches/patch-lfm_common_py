@@ -1,0 +1,14 @@
+Change default handler for rar files
+
+Index: lfm/common.py
+--- lfm/common.py.orig
++++ lfm/common.py
+@@ -37,7 +37,7 @@ SYSPROGS = {'tar': 'tar',
+             'gzip': 'gzip',
+             'zip': 'zip',
+             'unzip': 'unzip',
+-            'rar': 'rar',
++            'rar': 'unrar',
+             '7z': '7z',
+             'xz': 'xz',
+             'lzip': 'lzip',

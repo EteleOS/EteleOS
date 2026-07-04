@@ -1,0 +1,23 @@
+@conflict php4-core-*
+@group daemon
+bin/pear
+bin/peardev
+bin/pecl
+share/doc/pear/
+share/doc/pear/Archive_Tar/
+share/doc/pear/Archive_Tar/docs/
+share/doc/pear/Archive_Tar/docs/Archive_Tar.txt
+share/doc/pear/PEAR/
+share/doc/pear/PEAR/INSTALL
+share/doc/pear/PEAR/LICENSE
+share/doc/pear/PEAR/README.rst
+share/doc/pear/Structures_Graph/
+share/doc/pear/Structures_Graph/LICENSE
+share/doc/pear/Structures_Graph/docs/
+share/doc/pear/Structures_Graph/docs/tutorials/
+share/doc/pear/Structures_Graph/docs/tutorials/Structures_Graph/
+share/doc/pear/Structures_Graph/docs/tutorials/Structures_Graph/Structures_Graph.pkg
+share/doc/pear/XML_Util/
+share/doc/pear/XML_Util/examples/
+share/doc/pear/XML_Util/examples/example.php
+share/doc/pear/XML_Util/examples/example2.php

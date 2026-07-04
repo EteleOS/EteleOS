@@ -1,0 +1,12 @@
+grader-tf.c:108: warning: implicit declaration of function 'log'
+
+--- src/grader-tf.c.orig	Fri Nov 21 00:30:10 2008
++++ src/grader-tf.c	Fri Nov 21 00:30:25 2008
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <math.h>
+ #include "libots.h"
+ 
+ /*Grader - using the Term frequency algorithm. Will give each line a score*/

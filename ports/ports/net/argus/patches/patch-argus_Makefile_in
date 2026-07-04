@@ -1,0 +1,29 @@
+Index: argus/Makefile.in
+--- argus/Makefile.in.orig
++++ argus/Makefile.in
+@@ -19,6 +19,7 @@
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+ datarootdir = @datarootdir@
++sysconfdir = @sysconfdir@
+ 
+ # Pathname of directory to install the system binaries
+ SBINDIR = @sbindir@
+@@ -46,7 +47,7 @@ SASLLIBS = @LIB_SASL@
+ CC = @CC@
+ CCOPT = @V_CCOPT@
+ INCLS = -I$(srcdir) @V_INCLS@ -I$(srcdir)/../include 
+-DEFS = @DEFS@
++DEFS = @DEFS@ -DSYSCONFDIR=\"$(sysconfdir)\"
+ #DEFS = -DARGUSPERFMETRICS=1 @DEFS@
+ 
+ 
+@@ -84,7 +85,7 @@ PROG =	@INSTALL_BIN@/argus
+ 
+ OBJ =	$(SRC:.c=.o)
+ 
+-LIB = @LIBS@ @V_THREADS@ $(WRAPLIBS) $(SASLLIBS) $(COMPATLIB) ../lib/argus_common.a -lm
++LIB = ../lib/argus_common.a @LIBS@ @V_THREADS@ $(WRAPLIBS) $(SASLLIBS) $(COMPATLIB) -lm
+ 
+ HDR =	pcap.h pcap-int.h pcap-namedb.h pcap-nit.h pcap-pf.h \
+ 	ethertype.h gencode.h gnuc.h

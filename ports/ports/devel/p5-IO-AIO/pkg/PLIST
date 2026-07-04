@@ -1,0 +1,9 @@
+bin/treescan
+${P5ARCH}/IO/
+${P5ARCH}/IO/AIO.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/IO/
+${P5ARCH}/auto/IO/AIO/
+@so ${P5ARCH}/auto/IO/AIO/AIO.so
+@man man/man1/treescan.1
+@man man/man3p/IO::AIO.3p

@@ -1,0 +1,5 @@
+${P5SITE}/Test/
+${P5SITE}/Test/HTTP/
+${P5SITE}/Test/HTTP/Server/
+${P5SITE}/Test/HTTP/Server/Simple.pm
+@man man/man3p/Test::HTTP::Server::Simple.3p

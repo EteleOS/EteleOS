@@ -1,0 +1,20 @@
+--- src/filesystem/e2_fs.c.orig	Sat Feb 15 01:47:18 2014
++++ src/filesystem/e2_fs.c	Sun Sep 20 09:24:15 2015
+@@ -57,7 +57,7 @@ Not implemented yet.
+ #ifdef E2_VFS
+ #include "e2_plugins.h"
+ #endif
+-#if defined(__linux__) || defined(__FreeBSD__)
++#if defined(__linux__) || defined(__FreeBSD__) || defined(__OpenBSD__)
+ #include "e2_complete.h"
+ #endif
+ 
+@@ -2917,7 +2917,7 @@ gboolean e2_fs_copy_file (VPATH *src, const struct sta
+ 	//		blksize_t buf_size = 1048576;
+ 		//find a buffer up to 16 times dest block
+ 		//(compromise between accesses and multi-tasking latency)
+-		blksize_t buf_size = dest_sb.st_blksize * 16;
++		size_t buf_size = dest_sb.st_blksize * 16;
+ 		size_t src_size = src_sb->st_size * 2;
+ 		while (buf_size > src_size && buf_size > dest_sb.st_blksize)
+ 			buf_size /= 2;

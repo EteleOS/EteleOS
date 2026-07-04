@@ -1,0 +1,11 @@
+Index: pty.c
+--- pty.c.orig
++++ pty.c
+@@ -25,6 +25,7 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <signal.h>
++#include <util.h>
+ 
+ #include "config.h"
+ #include "screen.h"

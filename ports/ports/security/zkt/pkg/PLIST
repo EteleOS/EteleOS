@@ -1,0 +1,9 @@
+@man man/man8/zkt-conf.8
+@man man/man8/zkt-keyman.8
+@man man/man8/zkt-ls.8
+@man man/man8/zkt-signer.8
+@bin sbin/zkt-conf
+@bin sbin/zkt-keyman
+@bin sbin/zkt-ls
+@bin sbin/zkt-signer
+@bin sbin/zkt-soaserial

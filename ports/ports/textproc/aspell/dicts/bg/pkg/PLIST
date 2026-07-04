@@ -1,0 +1,8 @@
+@pkgpath textproc/aspell/dicts/aspell-bg
+lib/aspell/bg.dat
+lib/aspell/bg_affix.dat
+lib/aspell/bg_phonet.dat
+lib/aspell/bulgarian.kbd
+share/aspell/bg.multi
+share/aspell/bg.rws
+share/aspell/bulgarian.alias

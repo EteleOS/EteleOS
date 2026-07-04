@@ -1,0 +1,6 @@
+@pkgpath x11/cantarell-fonts
+share/fonts/
+@fontdir share/fonts/cantarell/
+share/fonts/cantarell/Cantarell-VF.otf
+share/metainfo/
+share/metainfo/org.gnome.cantarell.metainfo.xml

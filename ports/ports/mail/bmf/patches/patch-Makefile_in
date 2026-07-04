@@ -1,0 +1,19 @@
+--- Makefile.in.orig	Sun Oct 20 16:27:56 2002
++++ Makefile.in	Thu Aug 14 13:12:01 2014
+@@ -5,9 +5,8 @@ MANDIR=/usr/share/man
+ 
+ VERSION=0.9.4
+ 
+-CC=@CC@
+-CFLAGS=@CFLAGS@
+-LDFLAGS=@LDFLAGS@
++CFLAGS+=@CFLAGS@
++LDFLAGS+=@LDFLAGS@
+ SYSLIBS=@SYSLIBS@
+ 
+ # For creating rpm packages
+@@ -78,4 +77,3 @@ rpmpkg: checkroot
+ 	 cd $(PWD))
+ 
+ checkroot:
+-	[ "`whoami`" = root ] || (echo Need root; exit 1)

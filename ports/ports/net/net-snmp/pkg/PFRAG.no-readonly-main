@@ -1,0 +1,5 @@
+@bin bin/encode_keychange
+@bin bin/snmpping
+@bin bin/snmpset
+@bin bin/snmpusm
+@bin bin/snmpvacm

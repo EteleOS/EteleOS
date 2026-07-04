@@ -1,0 +1,6 @@
+@bin bin/sigrok-cli
+@man man/man1/sigrok-cli.1
+share/applications/org.sigrok.sigrok-cli.desktop
+share/icons/hicolor/scalable/apps/sigrok-cli.svg
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

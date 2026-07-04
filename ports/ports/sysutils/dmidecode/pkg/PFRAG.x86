@@ -1,0 +1,6 @@
+@man man/man8/biosdecode.8
+@man man/man8/ownership.8
+@man man/man8/vpddecode.8
+@bin sbin/biosdecode
+@bin sbin/ownership
+@bin sbin/vpddecode

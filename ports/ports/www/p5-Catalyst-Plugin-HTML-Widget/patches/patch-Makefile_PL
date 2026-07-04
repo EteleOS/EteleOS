@@ -1,0 +1,13 @@
+--- Makefile.PL.orig	Sun Nov  5 21:28:41 2006
++++ Makefile.PL	Sun Nov  5 21:28:47 2006
+@@ -9,8 +9,8 @@ license('perl');
+ include('ExtUtils::AutoInstall');
+ 
+ requires( 'perl'     => '5.8.1' );
+-requires( 'Catalyst' => '5.5' );
+-requires('HTML::Widget');
++#requires( 'Catalyst' => '5.5' );
++#requires('HTML::Widget');
+ 
+ auto_install();
+ &WriteAll;

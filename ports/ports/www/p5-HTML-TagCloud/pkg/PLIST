@@ -1,0 +1,3 @@
+${P5SITE}/HTML/
+${P5SITE}/HTML/TagCloud.pm
+@man man/man3p/HTML::TagCloud.3p

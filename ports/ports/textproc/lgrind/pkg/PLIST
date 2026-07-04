@@ -1,0 +1,13 @@
+@bin bin/lgrind
+@man man/man1/lgrind.1
+@man man/man5/lgrindef.5
+share/texmf-local/doc/
+share/texmf-local/doc/latex/
+share/texmf-local/doc/latex/lgrind/
+share/texmf-local/doc/latex/lgrind/lgrind.dvi
+share/texmf-local/tex/
+share/texmf-local/tex/latex/
+share/texmf-local/tex/latex/lgrind/
+share/texmf-local/tex/latex/lgrind/lgrind.sty
+share/texmf-local/tex/latex/lgrind/lgrindef
+@tag mktexlsr-local

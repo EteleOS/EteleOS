@@ -1,0 +1,2 @@
+@so lib/lighttpd/mod_authn_ldap.so
+@so lib/lighttpd/mod_vhostdb_ldap.so

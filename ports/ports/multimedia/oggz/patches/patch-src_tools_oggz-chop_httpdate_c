@@ -1,0 +1,11 @@
+--- src/tools/oggz-chop/httpdate.c.orig	Sat Jan 30 06:55:59 2010
++++ src/tools/oggz-chop/httpdate.c	Wed Nov  3 10:07:10 2010
+@@ -60,7 +60,5 @@ httpdate_parse (char * s, int n)
+ 
+   d.tm_year -= 1900;
+ 
+-  d.tm_sec -= timezone;
+-
+-  return mktime (&d);
++  return timegm (&d);
+ }

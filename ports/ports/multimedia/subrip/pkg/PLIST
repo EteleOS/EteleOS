@@ -1,0 +1,6 @@
+bin/srttool
+bin/sub2pgm
+bin/subrip
+@man man/man1/srttool.1
+@man man/man1/sub2pgm.1
+@man man/man1/subrip.1

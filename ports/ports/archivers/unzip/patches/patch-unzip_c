@@ -1,0 +1,21 @@
+Index: unzip.c
+--- unzip.c.orig
++++ unzip.c
+@@ -65,6 +65,7 @@
+ 
+ #define __UNZIP_C       /* identifies this source module */
+ #define UNZIP_INTERNAL
++#include <err.h>
+ #include "unzip.h"      /* includes, typedefs, macros, prototypes, etc. */
+ #include "crypt.h"
+ #include "unzvers.h"
+@@ -716,6 +717,9 @@ int MAIN(argc, argv)   /* return PK-type error code (e
+     char *argv[];
+ {
+     int r;
++
++    if (pledge("stdio rpath wpath cpath fattr tty", NULL) == -1)
++        err(1, "pledge");
+ 
+     CONSTRUCTGLOBALS();
+     r = unzip(__G__ argc, argv);

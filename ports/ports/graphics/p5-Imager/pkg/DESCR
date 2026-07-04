@@ -1,0 +1,4 @@
+Imager is a module for creating and altering images. It can read and
+write various image formats, draw primitive shapes like lines,and
+polygons, blend multiple images together in various ways, scale, crop,
+render text and more.

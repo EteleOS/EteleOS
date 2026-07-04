@@ -1,0 +1,11 @@
+Index: tools/servers/index_server/server.h
+--- tools/servers/index_server/server.h.orig
++++ tools/servers/index_server/server.h
+@@ -21,6 +21,7 @@
+ #define SERVER_H
+ #include <netinet/in.h>
+ #include <stdio.h>
++#include <sys/select.h>
+ 
+ class Client;
+ 

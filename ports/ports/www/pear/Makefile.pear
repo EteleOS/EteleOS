@@ -1,0 +1,13 @@
+# Default Makefile to install a PHP PEAR module
+
+default:
+
+install:
+	cp ${WRKDIR}/package.xml ${.CURDIR}
+	mkdir -p ${PREFIX}/lib/php
+	env PHP_PEAR_METADATA_DIR=/var/www/pear/lib ${LOCALBASE}/bin/pear \
+	      install -f -n -R ${WRKINST} -n ${.CURDIR}/package.xml
+
+# These directories and files are not needed 
+	@cd ${WRKINST}/var/www/pear && rm -rf cache lib/.channels lib/.channels/__uri.reg \
+			lib/.depdb*  lib/.registry/.channel*

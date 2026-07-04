@@ -1,0 +1,13 @@
+Replace the malloc.h header with stdlib.h.
+
+--- stocks/lists.c.orig	Thu Nov 20 01:55:29 2014
++++ stocks/lists.c	Thu Nov 20 01:56:03 2014
+@@ -20,7 +20,7 @@
+ 
+ #define __LISTS_C__
+ 
+-#include <malloc.h>
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
+ 

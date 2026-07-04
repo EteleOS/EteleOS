@@ -1,0 +1,7 @@
+include/ucl/
+include/ucl/ucl.h
+include/ucl/ucl_asm.h
+include/ucl/uclconf.h
+lib/libucl.a
+lib/libucl.la
+@lib lib/libucl.so.${LIBucl_VERSION}

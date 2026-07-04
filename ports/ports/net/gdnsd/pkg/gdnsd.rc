@@ -1,0 +1,18 @@
+#!/bin/ksh
+
+daemon="${PREFIX}/sbin/gdnsd"
+daemon_flags="start"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_restart() {
+	${daemon} restart
+}
+
+rc_stop() {
+	${daemon} stop
+}
+
+rc_cmd $1

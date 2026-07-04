@@ -1,0 +1,31 @@
+--- config.mk.orig	Sat Nov 29 17:18:56 2014
++++ config.mk	Wed Apr 15 22:13:22 2015
+@@ -2,20 +2,20 @@
+ VERSION = 0.3
+ 
+ # paths
+-PREFIX = /usr/local
+-MANPREFIX = ${PREFIX}/share/man
++PREFIX ?= /usr/local
++MANPREFIX = ${PREFIX}/man
+ 
+-X11INC = /usr/X11R6/include
+-X11LIB = /usr/X11R6/lib
++X11INC = ${X11BASE}/include
++X11LIB = ${X11BASE}/lib
+ 
+ # includes and libs
+ INCS = -I${X11INC}
+ LIBS = -L${X11LIB} -lX11
+ 
+ # flags
+-CPPFLAGS = -DVERSION=\"${VERSION}\"
+-CFLAGS   = -ansi -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
+-LDFLAGS  = -s ${LIBS}
++CPPFLAGS += -DVERSION=\"${VERSION}\"
++CFLAGS   += -ansi -pedantic -Wall ${INCS} ${CPPFLAGS}
++LDFLAGS  += ${LIBS}
+ 
+ # compiler and linker
+-CC = cc
++CC ?= cc

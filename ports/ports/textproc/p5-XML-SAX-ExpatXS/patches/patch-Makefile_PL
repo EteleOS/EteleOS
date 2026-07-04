@@ -1,0 +1,11 @@
+--- Makefile.PL.orig	Mon Jul  2 09:59:45 2007
++++ Makefile.PL	Thu Oct  2 17:38:11 2008
+@@ -100,7 +100,7 @@ WriteMakefile(
+ );
+ 
+ 
+-sub MY::install {
++sub dont {
+     package MY;
+     my $script = shift->SUPER::install(@_);
+     if (ExtUtils::MakeMaker::prompt("Do you want to alter ParserDetails.ini?", "Y") =~ /^y/i) {

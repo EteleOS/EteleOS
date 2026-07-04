@@ -1,0 +1,6 @@
+@bin bin/xtermset
+@man man/man1/xtermset.1
+@man man/man5/terms.5
+share/aclocal/
+share/xtermset/
+share/xtermset/terms

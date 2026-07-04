@@ -1,0 +1,11 @@
+--- global.c.orig	Sat Mar 17 16:30:05 2012
++++ global.c	Sat Mar 17 16:30:35 2012
+@@ -1312,7 +1312,7 @@ fgetstr(FILE * f)
+  */
+ 
+ int
+-getline(char *line, int max)
++get_line(char *line, int max)
+ {
+     if (fgets(line, max, stdin) == NULL)
+ 	return 0;

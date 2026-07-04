@@ -1,0 +1,19 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/httpd2"
+
+. /etc/rc.d/rc.subr
+
+# mod_perl resets $0 to argv[0]
+pexp=".*${daemon}.*"
+rc_reload=NO
+
+rc_start() {
+	rc_exec "${TRUEPREFIX}/sbin/apachectl2 graceful ${daemon_flags}"
+}
+
+rc_stop() {
+	${TRUEPREFIX}/sbin/apachectl2 graceful-stop ${daemon_flags}
+}
+
+rc_cmd $1

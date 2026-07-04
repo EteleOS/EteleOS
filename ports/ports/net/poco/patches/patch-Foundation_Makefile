@@ -1,0 +1,15 @@
+http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/dev-libs/poco/files/poco-1.4.4-patch-for-libpcre-8.32.patch
+
+we do not want to mix system pcre with bundled pcre, but we have to,
+as poco uses internal interfaces.
+
+--- Foundation/Makefile.orig	Tue Mar 19 21:02:36 2013
++++ Foundation/Makefile	Tue Mar 19 21:09:05 2013
+@@ -44,6 +44,7 @@ pcre_utf8_objects = pcre_ucd pcre_tables
+ 
+ ifdef POCO_UNBUNDLED
+ 	SYSLIBS += -lpcre -lz
++	objects += $(pcre_utf8_objects) # unicode.cpp uses internal pcre tables
+ else
+ 	objects += $(zlib_objects) $(pcre_objects) $(pcre_utf8_objects)
+ endif

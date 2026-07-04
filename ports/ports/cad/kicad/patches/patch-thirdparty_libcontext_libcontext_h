@@ -1,0 +1,19 @@
+Index: thirdparty/libcontext/libcontext.h
+--- thirdparty/libcontext/libcontext.h.orig
++++ thirdparty/libcontext/libcontext.h
+@@ -22,13 +22,13 @@
+ #include <cstdio>
+ 
+ 
+-#if defined(__GNUC__) || defined(__APPLE__) || defined(__FreeBSD__)
++#if defined(__GNUC__) || defined(__APPLE__) || defined(__FreeBSD__) || defined(__OpenBSD__)
+ 
+     #undef LIBCONTEXT_HAS_OWN_STACK
+ 
+     #define LIBCONTEXT_COMPILER_gcc
+ 
+-    #if defined(__linux__) || defined(__FreeBSD__)
++    #if defined(__linux__) || defined(__FreeBSD__) || defined(__OpenBSD__)
+     #if defined(__x86_64__) || defined(__amd64__)
+         #define LIBCONTEXT_PLATFORM_linux_x86_64
+         #define LIBCONTEXT_CALL_CONVENTION

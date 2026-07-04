@@ -1,0 +1,56 @@
+--- source/signals.c.orig	Fri Jul 22 03:47:42 1994
++++ source/signals.c	Tue Apr 25 17:30:19 2017
+@@ -88,27 +88,9 @@ static int error_sig = -1;
+ static int signal_count = 0;
+ 
+ /*ARGSUSED*/
+-#ifndef USG
+-#ifdef __386BSD__
+-static void signal_handler(sig, code, scp)
+-#else
+-static int signal_handler(sig, code, scp)
+-#endif
+-int sig, code;
+-struct sigcontext *scp;
+-{
+-  int smask;
+-
+-  smask = sigsetmask(0) | (1 << sig);
+-#else
+-#if defined(__TURBOC__) || defined(AMIGA)
+ static void signal_handler(sig)
+-#else
+-static int signal_handler(sig)
+-#endif
+ int sig;
+ {
+-#endif
+ 
+   if(error_sig >= 0)	/* Ignore all second signals. */
+     {
+@@ -136,11 +118,6 @@ int sig;
+ 	      erase_line(0, 0);
+ 	      put_qio();
+ 	      error_sig = -1;
+-#ifdef USG
+-	      (void) signal(sig, signal_handler);/* Have to restore handler. */
+-#else
+-	      (void) sigsetmask(smask);
+-#endif
+ 	      /* in case control-c typed during msg_print */
+ 	      if (wait_for_more)
+ 		put_buffer(" -more-", MSG_LINE, 0);
+@@ -177,13 +154,9 @@ int sig;
+       (void) _save_char(savefile);	/* Quietly save the memory anyway. */
+     }
+   restore_term();
+-#if !defined(MSDOS) && !defined(AMIGA) && !defined(ATARIST_TC)
+   /* always generate a core dump */
+   (void) signal(sig, SIG_DFL);
+   (void) kill(getpid(), sig);
+-  (void) sleep(5);
+-#endif
+-  exit(1);
+ }
+ 
+ #endif /* ATARIST_MWC, ATARIST_TC */

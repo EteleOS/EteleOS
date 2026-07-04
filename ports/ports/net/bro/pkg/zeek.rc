@@ -1,0 +1,20 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/zeekctl"
+daemon_flags="start"
+
+. /etc/rc.d/rc.subr
+
+rc_check() {
+	rc_exec "${daemon} status"
+}
+
+rc_reload() {
+	rc_exec "${daemon} update"
+}
+
+rc_stop() {
+	rc_exec "${daemon} stop"
+}
+
+rc_cmd $1

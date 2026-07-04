@@ -1,0 +1,15 @@
+- Don't hardcode -O3 and respect the CXXFLAGS
+- Don't pass -ldl to the linker
+
+Index: src/CMakeLists.txt
+--- src/CMakeLists.txt.orig
++++ src/CMakeLists.txt
+@@ -264,7 +264,7 @@ if (NOT MSVC)
+     set(CMAKE_CXX_FLAGS                "-Wall -Wextra -std=c++11 ${CMAKE_CXX_FLAGS}")
+     set(CMAKE_CXX_FLAGS_DEBUG          "-g3 ${CMAKE_CXX_FLAGS_DEBUG}")
+     set(CMAKE_CXX_FLAGS_MINSIZEREL     "-Os ${CMAKE_CXX_FLAGS_MINSIZEREL}")
+-    set(CMAKE_CXX_FLAGS_RELEASE        "-O3 ${CMAKE_CXX_FLAGS_RELEASE}")
++    set(CMAKE_CXX_FLAGS_RELEASE        "${CMAKE_CXX_FLAGS_RELEASE} ${CXXFLAGS}")
+     set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g3 ${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+ elseif (MULTI_THREAD)
+     set(CMAKE_CXX_FLAGS_DEBUG          "/MTd ${CMAKE_CXX_FLAGS_DEBUG}")

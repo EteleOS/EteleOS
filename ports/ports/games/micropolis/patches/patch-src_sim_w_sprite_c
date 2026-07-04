@@ -1,0 +1,180 @@
+Index: src/sim/w_sprite.c
+--- src/sim/w_sprite.c.orig
++++ src/sim/w_sprite.c
+@@ -70,6 +70,16 @@ short Cycle;
+ SimSprite *GlobalSprites[OBJN];
+ 
+ SimSprite *NewSprite(char *name, int type, int x, int y);
++void StartFire(int x, int y);
++void DoExplosionSprite(SimSprite *sprite);
++void DoCopterSprite(SimSprite *sprite);
++void DoTrainSprite(SimSprite *sprite);
++void DrawSprite(SimView *view, SimSprite *sprite);
++void Destroy(int ox, int oy);
++void ExplodeSprite(SimSprite *sprite);
++void DoMonsterSprite(SimSprite *sprite);
++void DoShipSprite(SimSprite *sprite);
++void MoveObjects(void);
+ 
+ 
+ #define TRA_GROOVE_X -39
+@@ -381,6 +391,7 @@ InitSprite(SimSprite *sprite, int x, int y)
+ }
+ 
+ 
++void
+ DestroyAllSprites()
+ {
+   SimSprite *sprite;
+@@ -479,6 +490,7 @@ DrawObjects(SimView *view)
+ }
+ 
+ 
++void
+ DrawSprite(SimView *view, SimSprite *sprite)
+ {
+   Pixmap pict, mask;
+@@ -611,6 +623,7 @@ int CheckSpriteCollision(SimSprite *s1, SimSprite *s2)
+ }
+ 
+ 
++void
+ MoveObjects()
+ {
+   SimSprite *sprite;
+@@ -660,6 +673,7 @@ MoveObjects()
+ }
+ 
+ 
++void
+ DoTrainSprite(SimSprite *sprite)
+ {
+   static short Cx[4] = {   0,  16,   0, -16 };
+@@ -710,6 +724,7 @@ DoTrainSprite(SimSprite *sprite)
+ }
+ 
+ 
++void
+ DoCopterSprite(SimSprite *sprite)
+ {
+   static short CDx[9] = { 0,  0,  3,  5,  3,  0, -3, -5, -3 };
+@@ -833,6 +848,7 @@ DoAirplaneSprite(SimSprite *sprite)
+ }
+ 
+ 
++void
+ DoShipSprite(SimSprite *sprite)
+ {
+   static short BDx[9] = { 0,  0,  1,  1,  1,  0, -1, -1, -1 };
+@@ -910,6 +926,7 @@ DoShipSprite(SimSprite *sprite)
+ }
+ 
+ 
++void
+ DoMonsterSprite(SimSprite *sprite)
+ {
+   static short Gx[5] = {  2,  2, -2, -2,  0 };
+@@ -1097,6 +1114,7 @@ DoTornadoSprite(SimSprite *sprite)
+ }
+ 
+ 
++void
+ DoExplosionSprite(SimSprite *sprite)
+ {
+   short x, y;
+@@ -1350,6 +1368,7 @@ CanDriveOn(int x, int y)
+ }
+ 
+ 
++void
+ ExplodeSprite(SimSprite *sprite)
+ {
+   int x, y;
+@@ -1406,6 +1425,7 @@ int checkWet(int x)
+ }
+ 
+ 
++void
+ Destroy(int ox, int oy)
+ {
+   short t, z, x, y;
+@@ -1463,6 +1483,7 @@ OFireZone(int Xloc, int Yloc, int ch)
+ }
+ 
+ 
++void
+ StartFire(int x, int y)
+ {
+   register t, z;
+@@ -1481,6 +1502,7 @@ StartFire(int x, int y)
+ }
+ 
+ 
++void
+ GenerateTrain(int x, int y)
+ {
+   if ((TotalPop > 20) &&
+@@ -1500,6 +1522,7 @@ GenerateBus(int x, int y)
+ }
+ 
+ 
++void
+ GenerateShip(void)
+ {
+   register short x, y;
+@@ -1537,6 +1560,7 @@ MakeShipHere(int x, int y, int z)	
+ }
+ 
+ 
++void
+ MakeMonster(void)
+ {
+   register x, y, z, done = 0;
+@@ -1574,6 +1598,7 @@ MonsterHere(int x, int y)
+ }
+ 
+ 
++void
+ GenerateCopter(int x, int y)
+ {
+   if (GetSprite(COP) != NULL) return;
+@@ -1582,6 +1607,7 @@ GenerateCopter(int x, int y)
+ }
+ 
+ 
++void
+ GeneratePlane(int x, int y)
+ {
+   if (GetSprite(AIR) != NULL) return;
+@@ -1590,6 +1616,7 @@ GeneratePlane(int x, int y)
+ }
+ 
+ 
++void
+ MakeAirCrash(void)
+ {
+ #ifndef NO_AIRCRASH
+@@ -1607,6 +1634,7 @@ MakeAirCrash(void)
+ }
+ 
+ 
++void
+ MakeTornado(void)
+ {
+   short x, y;
+@@ -1625,6 +1653,7 @@ MakeTornado(void)
+ }
+ 
+ 
++void
+ MakeExplosion(int x, int y)
+ {
+   if ((x >= 0) && (x < WORLD_X) &&
+@@ -1634,6 +1663,7 @@ MakeExplosion(int x, int y)
+ }
+ 
+ 
++void
+ MakeExplosionAt(int x, int y)
+ {
+   MakeNewSprite(EXP, x - 40, y - 16);

@@ -1,0 +1,2 @@
+include/alpng.h
+lib/libalpng.a

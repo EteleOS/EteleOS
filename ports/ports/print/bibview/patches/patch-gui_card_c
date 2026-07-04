@@ -1,0 +1,23 @@
+Index: gui_card.c
+--- gui_card.c.orig
++++ gui_card.c
+@@ -370,15 +370,15 @@ CardWinPtr cw;
+ CardWidgetsPtr cwp;
+ Dimension height;
+   
+-   #ifdef ACTION_PROBLEM
++#ifdef ACTION_PROBLEM
+    if (first_in){
+-   #endif
++#endif
+    XtAppAddActions(XtWidgetToApplicationContext(topLevel), actions,
+ 		  XtNumber(actions));
+-   #ifdef ACTION_PROBLEM
++#ifdef ACTION_PROBLEM
+    first_in = 0;
+    }
+-   #endif
++#endif
+    reqback = options.reqColor;
+    auth_ed_back = options.authedColor;
+ 

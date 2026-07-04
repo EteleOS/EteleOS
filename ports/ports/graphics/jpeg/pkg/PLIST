@@ -1,0 +1,40 @@
+@bin bin/cjpeg
+@bin bin/djpeg
+@bin bin/jpegtran
+@bin bin/rdjpgcom
+@bin bin/tjbench
+@bin bin/wrjpgcom
+include/jconfig.h
+include/jerror.h
+include/jmorecfg.h
+include/jpeglib.h
+include/turbojpeg.h
+lib/cmake/
+lib/cmake/libjpeg-turbo/
+lib/cmake/libjpeg-turbo/libjpeg-turboConfig.cmake
+lib/cmake/libjpeg-turbo/libjpeg-turboConfigVersion.cmake
+lib/cmake/libjpeg-turbo/libjpeg-turboTargets${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/libjpeg-turbo/libjpeg-turboTargets.cmake
+@static-lib lib/libjpeg.a
+@lib lib/libjpeg.so.${LIBjpeg_VERSION}
+@static-lib lib/libturbojpeg.a
+@lib lib/libturbojpeg.so.${LIBturbojpeg_VERSION}
+lib/pkgconfig/libjpeg.pc
+lib/pkgconfig/libturbojpeg.pc
+@man man/man1/cjpeg.1
+@man man/man1/djpeg.1
+@man man/man1/jpegtran.1
+@man man/man1/rdjpgcom.1
+@man man/man1/wrjpgcom.1
+share/doc/libjpeg-turbo/
+share/doc/libjpeg-turbo/LICENSE.md
+share/doc/libjpeg-turbo/README.ijg
+share/doc/libjpeg-turbo/README.md
+share/doc/libjpeg-turbo/example.c
+share/doc/libjpeg-turbo/libjpeg.txt
+share/doc/libjpeg-turbo/structure.txt
+share/doc/libjpeg-turbo/tjcomp.c
+share/doc/libjpeg-turbo/tjdecomp.c
+share/doc/libjpeg-turbo/tjtran.c
+share/doc/libjpeg-turbo/usage.txt
+share/doc/libjpeg-turbo/wizard.txt

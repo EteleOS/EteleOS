@@ -1,0 +1,6 @@
+${P5SITE}/Catalyst/Helper/
+${P5SITE}/Catalyst/Helper/Prototype.pm
+${P5SITE}/Catalyst/Plugin/
+${P5SITE}/Catalyst/Plugin/Prototype.pm
+@man man/man3p/Catalyst::Helper::Prototype.3p
+@man man/man3p/Catalyst::Plugin::Prototype.3p

@@ -1,0 +1,21 @@
+Index: src/Makefile.in
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -85,7 +85,7 @@ AUTOCONF = @AUTOCONF@
+ AUTOHEADER = @AUTOHEADER@
+ AUTOMAKE = @AUTOMAKE@
+ AWK = @AWK@
+-CC = gcc
++CC = @CC@
+ CCDEPMODE = @CCDEPMODE@
+ CFLAGS = @CFLAGS@
+ CPP = @CPP@
+@@ -199,7 +199,7 @@ typespeed_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\" -DTV
+         -DHIGHFILE=\"$(highscoredir)/$(HIGHFILE)\" \
+ 	-DWORDDIR=\"$(WORDDIR)\" -DRULEDIR=\"$(RULEDIR)\"
+ 
+-typespeed_LDADD = @LIBINTL@
++typespeed_LDADD = @LTLIBINTL@
+ typespeed_SOURCES = file.c gettext.h menu.c misc.c network.c pathnames.h \
+ 	    typespeed.c typespeed.h
+ 

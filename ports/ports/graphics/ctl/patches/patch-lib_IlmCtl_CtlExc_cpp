@@ -1,0 +1,12 @@
+Index: lib/IlmCtl/CtlExc.cpp
+--- lib/IlmCtl/CtlExc.cpp.orig
++++ lib/IlmCtl/CtlExc.cpp
+@@ -58,7 +58,7 @@
+ #ifdef _WIN32
+ 	#include <malloc.h>
+ #else
+-	#include <alloca.h>
++	#include <stdlib.h>
+ #endif
+ #include <string.h>
+ 

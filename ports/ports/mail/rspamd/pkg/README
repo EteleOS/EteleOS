@@ -1,0 +1,75 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+Configuration
+=============
+
+rspamd is very flexible and as a result configuration can be complex
+if you feel like tweaking - you should certainly read the upstream
+documentation rather than just trying to figure it out from the provided
+configuration files! However the defaults are reasonable and in many
+cases can be used as-is.
+
+Unusually for OpenBSD packages, you should not normally edit the existing
+files under /etc/rspamd. Instead, as directed by the headings at the
+top of each file, files should be created under /etc/rspamd/local.d or
+/etc/rspamd/override.d with your local changes. This will avoid the
+chance of future package updates failing to update the standard system
+configuration files with required changes.
+
+https://rspamd.com/doc/faq.html#what-are-the-locald-and-overrided-directories
+
+Redis
+-----
+The standard rspamd configuration has a certain spam score threshold
+defined in actions.conf above which emails are greylisted. (Non-spammy
+messages make it through without greylist; highly spammy messages are
+blocked; medium-scoring messages are greylisted).
+
+rspamd's greylisting requires a backend to store information about
+attempts in order that senders can be whitelisted and the mail allowed
+through. As some users had problems in the past if they didn't configure
+rspamd to use redis themselves, this OpenBSD package provides
+${SYSCONFDIR}/rspamd/local.d/redis.conf setup to use a redis server on
+the local host by default to provide this store (so you will need
+to have redis running as well as rspamd: "rcctl enable redis rspamd").
+You are free to edit local.d/redis.conf to make changes as necessary
+(i.e. the above warning about editing existing files doesn't apply
+here).
+
+Integration with MTAs and using sockets
+---------------------------------------
+For OpenSMTPd, you can either use the opensmtpd-filter-rspamd package which
+has its own pkg-readme file, or use rspamd as an external mda (mail delivery
+agent) which then hands the message over to another mda to deliver to the
+mailbox.
+
+For most other MTAs, see https://rspamd.com/doc/integration.html for details.
+At least for Sendmail and Postfix, configure rspamd's proxy worker in Milter.
+It's recommended to use unix sockets rather than the default TCP sockets -
+if you use Postfix with chroot you will need to place the proxy socket in
+that chroot - try configuration like this:
+
+- in ${SYSCONFDIR}/rspamd/local.d/worker-controller.inc
+
+    bind_socket = "/var/run/rspamd/controller_socket mode=0600 owner=_rspamd";
+
+- in ${SYSCONFDIR}/rspamd/local.d/worker-normal.inc
+
+    bind_socket = "/var/run/rspamd/normal_socket mode=0600 owner=_rspamd";
+
+- in ${SYSCONFDIR}/rspamd/local.d/worker-proxy.inc
+  (you will also need to mkdir -p /var/spool/postfix/var/run)
+
+    bind_socket = "/var/spool/postfix/var/run/rspamd-milter.sock mode=0600 owner=_postfix";
+    upstream "local" {
+      default = yes;
+      hosts = "/var/run/rspamd/normal_socket";
+    }
+
+- and in ${SYSCONFDIR}/postfix/main.cf use the chroot-relative path:
+
+    smtpd_milters = unix:/var/run/rspamd-milter.sock
+    non_smtpd_milters = unix:/var/run/rspamd-milter.sock
+    milter_default_action = accept

@@ -1,0 +1,13 @@
+Index: src-qt5/OS-detect.pri
+--- src-qt5/OS-detect.pri.orig
++++ src-qt5/OS-detect.pri
+@@ -47,7 +47,8 @@ isEmpty(OS){
+ 
+   }else : openbsd-*{
+     OS = OpenBSD
+-    LIBS += -L/usr/local/lib -L/usr/lib
++    LIBS += -L!!LOCALBASE!!/lib -L/usr/lib
++    isEmpty(L_ETCDIR){ L_ETCDIR=!!SYSCONFDIR!! }
+     #Use the defaults for everything else
+ 
+   }else : netbsd-*{

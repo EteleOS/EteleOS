@@ -1,0 +1,11 @@
+--- lib/pgp/helper/pgpDebug.c.orig	Thu Nov 28 15:37:22 2002
++++ lib/pgp/helper/pgpDebug.c	Thu Nov 28 15:37:41 2002
+@@ -191,7 +191,7 @@ pgpFormatVAStr(
+ 
+                 case 'c':  /* Single character */
+                 {
+-                    char            ch = va_arg(args, char);
++                    char            ch = va_arg(args, int);
+ 
+                     AppendChars(buffer, &bufferIndex, bufferSize,
+                                 canonicalizeNLs, &ch, 1);

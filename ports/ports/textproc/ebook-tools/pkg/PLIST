@@ -1,0 +1,6 @@
+@bin bin/einfo
+bin/lit2epub
+include/epub.h
+include/epub_shared.h
+include/epub_version.h
+@lib lib/libepub.so.${LIBepub_VERSION}

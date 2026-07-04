@@ -1,0 +1,12 @@
+Index: src/editengine.cxx
+--- src/editengine.cxx.orig
++++ src/editengine.cxx
+@@ -218,7 +218,7 @@ rclError EditorEngine::Command(EditorCommandTypes comm
+ 	return LastResult;
+ }
+ 
+-rclError EditorEngine::Command(EditorCommandTypes command, const char *argument)
++rclError EditorEngine::Command(EditorCommandTypes command, char *argument)
+ {
+ 	LastResult = NOERROR;
+ 	switch (command)

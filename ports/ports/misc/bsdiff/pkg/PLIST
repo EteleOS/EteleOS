@@ -1,0 +1,4 @@
+@bin bin/bsdiff
+@bin bin/bspatch
+@man man/man1/bsdiff.1
+@man man/man1/bspatch.1

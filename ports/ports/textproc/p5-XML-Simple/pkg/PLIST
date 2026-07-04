@@ -1,0 +1,5 @@
+${P5SITE}/XML/Simple/
+${P5SITE}/XML/Simple.pm
+${P5SITE}/XML/Simple/FAQ.pod
+@man man/man3p/XML::Simple.3p
+@man man/man3p/XML::Simple::FAQ.3p

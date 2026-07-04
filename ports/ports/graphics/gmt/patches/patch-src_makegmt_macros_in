@@ -1,0 +1,11 @@
+--- src/makegmt.macros.in.orig	Sat Dec 17 05:53:05 2005
++++ src/makegmt.macros.in	Wed Mar 29 21:31:58 2006
+@@ -85,7 +85,7 @@ NETCDF		 = @NETCDFHOME@
+ #	Required path to GMT home (used as $GMTHOME by users)
+ #---------------------------------------------------------------
+ #
+-GMT_DEFAULT_PATH = $(prefix)
++GMT_DEFAULT_PATH = ${prefix}/share/gmt
+ #
+ #-------------------------------------------------------------------------------
+ #	Compiler switches (set a total of one only)

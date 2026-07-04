@@ -1,0 +1,14 @@
+Index: src/tcl/tclparse.c
+--- src/tcl/tclparse.c.orig
++++ src/tcl/tclparse.c
+@@ -1143,8 +1143,8 @@ Tcl_ParseVar(interp, string, termPtr)
+ 	    if (TclParseQuotes(interp, string+1, ')', 0, &end, &pv)
+ 		    != TCL_OK) {
+ 		char msg[100];
+-		sprintf(msg, "\n    (parsing index for array \"%.*s\")",
+-			string-name1, name1);
++		snprintf(msg, 100, "\n    (parsing index for array \"%.*s\")",
++			(int)(string-name1), name1);
+ 		Tcl_AddErrorInfo(interp, msg);
+ 		result = NULL;
+ 		name2 = pv.buffer;

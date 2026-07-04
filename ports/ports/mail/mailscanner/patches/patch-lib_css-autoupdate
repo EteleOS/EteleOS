@@ -1,0 +1,11 @@
+--- lib/css-autoupdate.orig	Thu Dec 11 06:57:18 2008
++++ lib/css-autoupdate	Sat Jan 10 21:16:03 2009
+@@ -2,7 +2,7 @@
+ 
+ use Sys::Syslog;
+ 
+-$CSSDir = shift || "/opt/SYMCScan";
++$CSSDir = shift || "%PREFIX%/SYMCScan";
+ $CSSUpdateCommand="$CSSDir/bin/liveupdate.sh";
+ 
+ $LockFile = shift || "/var/spool/MailScanner/incoming/Locks/cssBusy.lock";

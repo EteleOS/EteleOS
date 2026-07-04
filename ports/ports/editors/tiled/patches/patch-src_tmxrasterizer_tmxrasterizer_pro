@@ -1,0 +1,11 @@
+Index: src/tmxrasterizer/tmxrasterizer.pro
+--- src/tmxrasterizer/tmxrasterizer.pro.orig
++++ src/tmxrasterizer/tmxrasterizer.pro
+@@ -36,6 +36,6 @@ SOURCES += main.cpp \
+ 
+ HEADERS += tmxrasterizer.h
+ 
+-manpage.path = $${PREFIX}/share/man/man1/
++manpage.path = $${PREFIX}/man/man1/
+ manpage.files += ../../man/tmxrasterizer.1
+ INSTALLS += manpage

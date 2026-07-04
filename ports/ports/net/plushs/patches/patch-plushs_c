@@ -1,0 +1,23 @@
+Index: plushs.c
+--- plushs.c.orig
++++ plushs.c
+@@ -57,7 +57,9 @@
+ 
+ #include "plushs.h"
+ 
+-extern FILE *pfildes;
++FILE *pfildes;
++struct progvars pv;
++struct simbols vars;
+ 
+ /*
+  * Misc variables 
+@@ -372,7 +374,7 @@ main(argc, argv)
+ 		
+ 	progname = argv[0];
+ 
+-	while ((opts = getopt(argc, argv, "cho:s:al:Dt:w:x:vmf:TP:")) != EOF) {
++	while ((opts = getopt(argc, argv, "cho:s:al:Dt:w:x:vmf:TP:")) != -1) {
+ 		switch (opts) {
+ 		case 'c':
+ 			pv.cflag = 1;

@@ -1,0 +1,7 @@
+bin/flent-gui
+share/applications/flent.desktop
+share/metainfo/
+share/metainfo/flent.appdata.xml
+share/mime/packages/flent-mime.xml
+@tag update-desktop-database
+@tag update-mime-database

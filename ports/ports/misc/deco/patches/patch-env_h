@@ -1,0 +1,11 @@
+Fix -fno-common build failure.
+
+Index: env.h
+--- env.h.orig
++++ env.h
+@@ -1,4 +1,4 @@
+-char **EnvVector;
++static char **EnvVector;
+ void EnvInit (char **env);
+ char *EnvGet (char *name);
+ void EnvPut (char *name, char *value);

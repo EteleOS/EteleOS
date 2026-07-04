@@ -1,0 +1,12 @@
+Index: manpages/bat.1
+--- manpages/bat.1.orig
++++ manpages/bat.1
+@@ -22,7 +22,7 @@ but it is graphical oriented and more features.
+ bat [\-s] [\-c config_file] [\-d debug_level] [\-t]
+ .TP
+ .B \-c <config>
+-Specify configuration file.  Default is bat.conf.
++Specify configuration file.  Default is /etc/bacula/bat.conf.
+ .TP
+ .B \-d <nn>
+ Set debug level to \fInn\fP.

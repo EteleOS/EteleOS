@@ -1,0 +1,12 @@
+Index: Xwnmo/xwnmo/change.c
+--- Xwnmo/xwnmo/change.c.orig
++++ Xwnmo/xwnmo/change.c
+@@ -42,7 +42,7 @@
+ #include "proto.h"
+ #include "ext.h"
+ 
+-XGCValues xgcv;
++extern XGCValues xgcv;
+ 
+ void
+ reset_preedit(xc)

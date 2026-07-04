@@ -1,0 +1,11 @@
+--- src/ccze-compat.c.orig	Tue May 13 20:09:30 2003
++++ src/ccze-compat.c	Sun May 23 18:14:08 2010
+@@ -275,7 +275,7 @@ ccze_getsubopt (char **optionp, char *const *tokens,
+ 		char **valuep)
+ {
+   int i = getsubopt (optionp, tokens, valuep);
+-#if HAVE_SUBOPTARg
++#if HAVE_SUBOPTARG
+   if (!*valuep && suboptarg)
+     *valuep = strdup (suboptarg);
+ #endif

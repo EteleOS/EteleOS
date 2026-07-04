@@ -1,0 +1,12 @@
+Index: lib/exabgp/application/cli.py
+--- lib/exabgp/application/cli.py.orig
++++ lib/exabgp/application/cli.py
+@@ -130,7 +130,7 @@ def main():
+ 
+     root = root_folder(options, ['/bin/exabgpcli', '/sbin/exabgpcli', '/lib/exabgp/application/cli.py'])
+     prefix = '' if root == '/usr' else root
+-    etc = prefix + '/etc/exabgp'
++    etc = '${SYSCONFDIR}/exabgp'
+     envfile = get_envfile(options, etc)
+     env = get_env(envfile)
+     pipename = env['api']['pipename']

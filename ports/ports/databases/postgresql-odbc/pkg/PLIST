@@ -1,0 +1,6 @@
+lib/psqlodbca.a
+lib/psqlodbca.la
+@so lib/psqlodbca.so
+lib/psqlodbcw.a
+lib/psqlodbcw.la
+@so lib/psqlodbcw.so

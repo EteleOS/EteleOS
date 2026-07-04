@@ -1,0 +1,13 @@
+fix for -fno-common
+
+Index: gas/config/tc-avr32.c
+--- gas/config/tc-avr32.c.orig
++++ gas/config/tc-avr32.c
+@@ -47,7 +47,6 @@
+ 
+ /* Flags given on the command line */
+ static int avr32_pic	= FALSE;
+-int linkrelax	= FALSE;
+ int avr32_iarcompat	= FALSE;
+ 
+ /* This array holds the chars that always start a comment. */

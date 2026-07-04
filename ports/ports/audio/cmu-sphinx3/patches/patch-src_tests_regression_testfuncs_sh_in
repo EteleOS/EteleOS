@@ -1,0 +1,11 @@
+--- src/tests/regression/testfuncs.sh.in.orig	Tue Jun  2 00:28:35 2009
++++ src/tests/regression/testfuncs.sh.in	Tue Jun  2 00:28:23 2009
+@@ -48,7 +48,7 @@ fail() {
+ compare_table() {
+     title="$1"
+     shift
+-    if perl "$sbtests/compare_table.pl" $@ | grep SUCCESS >/dev/null 2>&1; then
++    if perl "compare_table.pl" $@ | grep SUCCESS >/dev/null 2>&1; then
+ 	pass "$title"
+     else
+ 	fail "$title"

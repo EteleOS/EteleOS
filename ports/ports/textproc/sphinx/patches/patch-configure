@@ -1,0 +1,26 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -8342,11 +8342,11 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ #ifdef __cplusplus
+ extern "C"
+ #endif
+-char iconv ();
++char libiconv ();
+ int
+ main ()
+ {
+-return iconv ();
++return libiconv ();
+   ;
+   return 0;
+ }
+@@ -8411,7 +8411,7 @@ main ()
+ {
+ const char * inbuf;
+ 				iconv_t cd;
+-				iconv ( cd, &inbuf, NULL, NULL, NULL );
++				libiconv ( cd, &inbuf, NULL, NULL, NULL );
+ 
+   ;
+   return 0;

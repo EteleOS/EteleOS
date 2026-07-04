@@ -1,0 +1,36 @@
+include/libsigrok/
+include/libsigrok/libsigrok.h
+include/libsigrok/proto.h
+include/libsigrok/version.h
+include/libsigrokcxx/
+include/libsigrokcxx/enums.hpp
+include/libsigrokcxx/libsigrokcxx.hpp
+@static-lib lib/libsigrok.a
+lib/libsigrok.la
+@lib lib/libsigrok.so.${LIBsigrok_VERSION}
+@static-lib lib/libsigrokcxx.a
+lib/libsigrokcxx.la
+@lib lib/libsigrokcxx.so.${LIBsigrokcxx_VERSION}
+lib/pkgconfig/libsigrok.pc
+lib/pkgconfig/libsigrokcxx.pc
+lib/python${MODPY_VERSION}/site-packages/libsigrok-${MODPY_DISTV}-py${MODPY_VERSION}-nspkg.pth
+lib/python${MODPY_VERSION}/site-packages/libsigrok-${MODPY_DISTV}-py${MODPY_VERSION}.egg-info/
+lib/python${MODPY_VERSION}/site-packages/libsigrok-${MODPY_DISTV}-py${MODPY_VERSION}.egg-info/PKG-INFO
+lib/python${MODPY_VERSION}/site-packages/libsigrok-${MODPY_DISTV}-py${MODPY_VERSION}.egg-info/SOURCES.txt
+lib/python${MODPY_VERSION}/site-packages/libsigrok-${MODPY_DISTV}-py${MODPY_VERSION}.egg-info/dependency_links.txt
+lib/python${MODPY_VERSION}/site-packages/libsigrok-${MODPY_DISTV}-py${MODPY_VERSION}.egg-info/namespace_packages.txt
+lib/python${MODPY_VERSION}/site-packages/libsigrok-${MODPY_DISTV}-py${MODPY_VERSION}.egg-info/not-zip-safe
+lib/python${MODPY_VERSION}/site-packages/libsigrok-${MODPY_DISTV}-py${MODPY_VERSION}.egg-info/top_level.txt
+lib/python${MODPY_VERSION}/site-packages/sigrok/
+lib/python${MODPY_VERSION}/site-packages/sigrok/core/
+lib/python${MODPY_VERSION}/site-packages/sigrok/core/__init__.py
+lib/python${MODPY_VERSION}/site-packages/sigrok/core/${MODPY_PYCACHE}/
+lib/python${MODPY_VERSION}/site-packages/sigrok/core/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/sigrok/core/${MODPY_PYCACHE}classes.${MODPY_PYC_MAGIC_TAG}pyc
+@so lib/python${MODPY_VERSION}/site-packages/sigrok/core/_classes.${MODPY_PYC_MAGIC_TAG}so
+lib/python${MODPY_VERSION}/site-packages/sigrok/core/classes.py
+share/icons/hicolor/48x48/mimetypes/libsigrok.png
+share/icons/hicolor/scalable/mimetypes/libsigrok.svg
+share/mime/packages/vnd.sigrok.session.xml
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-mime-database

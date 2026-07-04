@@ -1,0 +1,56 @@
+--- Wnn/jlib/js.c.orig
++++ Wnn/jlib/js.c
+@@ -71,8 +71,7 @@ extern	Variables
+ */
+ 
+ 
+-extern	char	*malloc();
+-
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <ctype.h>
+ #ifdef UX386
+@@ -86,7 +85,6 @@ extern	char	*malloc();
+ #endif
+ #include <sys/stat.h>
+ #include <errno.h>
+-extern int errno;
+ #include <signal.h>
+ #include "jd_sock.h"
+ #include "commonhd.h"
+@@ -104,8 +102,6 @@ extern int errno;
+ #include "../etc/bdic.c"
+ #include "../etc/pwd.c"
+ 
+-char *malloc();
+-
+ #ifdef SYSVR2
+ #define	bzero(adr,n)	memset((adr),0,(n))
+ #endif
+@@ -221,7 +217,7 @@ register char *lang;
+ #endif
+ 	return -1;
+     }
+-    if (connect(sd,(caddr_t)&saddr,strlen(saddr.sun_path)+sizeof(saddr.sun_family)) == ERROR) {
++    if (connect(sd,(void *)&saddr,SUN_LEN(&saddr)) == ERROR) {
+ 
+ #if DEBUG
+ 	xerror("jslib:Can't connect socket.\n");
+@@ -294,7 +290,7 @@ register int timeout;
+ 	signal(SIGALRM, connect_timeout);
+ 	alarm(timeout);
+     }
+-    ret = connect(sd, (caddr_t)&saddr_in, sizeof(saddr_in));
++    ret = connect(sd, (void *)&saddr_in, sizeof(saddr_in));
+     if (timeout != 0 && timeout > 0) {
+ 	alarm(0);
+ 	signal(SIGALRM, SIG_IGN);
+@@ -2547,7 +2543,7 @@ char *lang;
+ int cnt;
+ {
+     FILE *fp;
+-    static char s[6][EXPAND_PATH_LENGTH];
++    static char s[7][EXPAND_PATH_LENGTH];
+     char serv_defs[EXPAND_PATH_LENGTH];
+     char data[1024];
+     int num;

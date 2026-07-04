@@ -1,0 +1,9 @@
+@bin bin/dumb2wav
+@bin bin/dumbout
+@bin bin/dumbplay
+include/aldumb.h
+include/dumb.h
+lib/libaldmb.a
+lib/libaldmd.a
+lib/libdumb.a
+lib/libdumbd.a

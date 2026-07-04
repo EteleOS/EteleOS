@@ -1,0 +1,37 @@
+--- doc/ipguard.8.orig	Mon Jul 12 00:46:52 2010
++++ doc/ipguard.8	Thu Mar 22 11:35:20 2012
+@@ -64,10 +64,10 @@ in local ethernet segment.
+ Ethers file. Format of `ethers' file described in `ethers.sample' and ethers(5). Default `/etc/ethers'.
+ .TP
+ .B \-l " \fIlog\fP"
+-Log file. Default `/var/log/ipguard_<iface>.log'.
++Log file. Default `/var/log/ipguard/ipguard_<iface>.log'.
+ .TP
+ .B \-p " \fIpid\fP"
+-Pid file. Default `/var/run/ipguard_<iface>.pid'.
++Pid file. Default `/var/run/ipguard/ipguard_<iface>.pid'.
+ .TP
+ .B \-m " \fImac\fP"
+ Fake MAC address. Will be sent in ARP reply as MAC of unlisted computer. Default `de:ad:xx:xx:xx:xx', `x' == random hex number.
+@@ -176,10 +176,10 @@ dump new MAC-IP table in ethers(5) format
+ .B /etc/ethers
+ MAC-IP pairs list
+ .TP
+-.B /var/log/ipguard_<iface>.log
++.B /var/log/ipguard/ipguard_<iface>.log
+ log file
+ .TP
+-.B /var/run/ipguard_<iface>.pid
++.B /var/run/ipguard/ipguard_<iface>.pid
+ pid file
+ 
+ .SH SEE ALSO
+@@ -189,8 +189,6 @@ RFC 826, ethers(5), tcpdump(1), pcap(3), libnet
+ .SH BUGS
+ .PP
+ Do not use wildcard IP 0.0.0.0 in `ethers' with -x option. Legal clients will be banned. Discovered by irix.
+-.PP
+-Strange bug with libnet_get_hwaddr() isn't working on OpenBSD 4.0 discovered by irix. Use -j option.
+ .PP
+ ipguard will not prevent changing MAC address along with IP by pirate.
+ .PP

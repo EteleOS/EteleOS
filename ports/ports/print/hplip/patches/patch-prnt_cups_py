@@ -1,0 +1,63 @@
+Index: prnt/cups.py
+--- prnt/cups.py.orig
++++ prnt/cups.py
+@@ -238,8 +238,8 @@ def isfamilydrv(ppds):
+                 
+ def getPPDPath(addtional_paths=None):
+     """
+-        Returns the CUPS ppd path (not the foomatic one under /usr/share/ppd).
+-        Usually this is /usr/share/cups/model.
++        Returns the CUPS ppd path (not the foomatic one under ${LOCALBASE}/share/ppd).
++        Usually this is ${LOCALBASE}/share/cups/model.
+     """
+     if addtional_paths is None:
+         addtional_paths = []
+@@ -271,16 +271,16 @@ def getPPDPath1(addtional_paths=None):
+ 
+ def getAllowableMIMETypes():
+     """
+-        Scan all /etc/cups/*.convs and /usr/share/cups/mime
++        Scan all ${SYSCONFDIR}/cups/*.convs and ${LOCALBASE}/share/cups/mime
+         files for allowable file formats.
+     """
+     paths = []
+     allowable_mime_types = []
+     files = []
+-    if os.path.exists("/etc/cups"):
+-        paths.append("/etc/cups/*.convs")
+-    if os.path.exists("/usr/share/cups/mime"):
+-        paths.append("/usr/share/cups/mime/*.convs")
++    if os.path.exists("${SYSCONFDIR}/cups"):
++        paths.append("${SYSCONFDIR}/cups/*.convs")
++    if os.path.exists("${LOCALBASE}/share/cups/mime"):
++        paths.append("${LOCALBASE}/share/cups/mime/*.convs")
+     for path in paths:
+         files.extend(glob.glob(path))
+     for f in files:
+@@ -341,7 +341,7 @@ def getSystemPPDs():
+         foomatic_ppd_path = sys_conf.get('dirs', 'ppdbase', '/usr/share/ppd')
+  
+         if not foomatic_ppd_path or not os.path.exists(foomatic_ppd_path):
+-            foomatic_ppd_path = '/usr/share/ppd'
++            foomatic_ppd_path = '${LOCALBASE}/share/foomatic/db/source/PPD'
+  
+         log.debug("CUPS PPD base path = %s" % cups_ppd_path)
+         log.debug("Foomatic PPD base path = %s" % foomatic_ppd_path)
+@@ -425,7 +425,7 @@ number_pat = re.compile(r""".*?(\d+)""", re.IGNORECASE
+ STRIP_STRINGS2 = ['foomatic:', 'hp-', 'hp_', 'hp ', '.gz', '.ppd',
+                   'drv:', '-pcl', '-pcl3', '-jetready',
+                  '-zxs', '-zjs', '-ps', '-postscript', '-pdf',
+-                 '-jr', '-lidl', '-lidil', '-ldl', '-hpijs']
++                 '-jr', '-lidl', '-lidil', '-hpijs']
+ 
+ 
+ for p in list(models.TECH_CLASS_PDLS.values()):
+@@ -709,7 +709,7 @@ def getFaxPPDFile(mq, model):
+ 
+ 
+ def getErrorLogLevel():
+-    cups_conf = '/etc/cups/cupsd.conf'
++    cups_conf = '${SYSCONFDIR}/cups/cupsd.conf'
+     try:
+         f = open(cups_conf, 'r')
+     except OSError:

@@ -1,0 +1,14 @@
+Index: data/de.haeckerfelix.gradio.gschema.xml
+--- data/de.haeckerfelix.gradio.gschema.xml.orig
++++ data/de.haeckerfelix.gradio.gschema.xml
+@@ -55,8 +55,8 @@
+       <summary>Resume Playback On Startup</summary>
+     </key>
+ 
+-    <key name="previous-station" type="i">
+-      <default>0</default>
++    <key name="previous-station" type="s">
++      <default>''</default>
+       <summary>The last played station</summary>
+     </key>
+ 

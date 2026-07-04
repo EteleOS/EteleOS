@@ -1,0 +1,3 @@
+${P5SITE}/DateTime/Format/
+${P5SITE}/DateTime/Format/Mail.pm
+@man man/man3p/DateTime::Format::Mail.3p

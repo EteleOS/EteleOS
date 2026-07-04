@@ -1,0 +1,13 @@
+--- contrib/postgreyreport.orig	Fri Mar 21 10:21:11 2008
++++ contrib/postgreyreport	Fri Mar 21 10:21:36 2008
+@@ -23,8 +23,8 @@ select((select(STDOUT), $| = 1)[0]); 	# Unbuffer stand
+ 
+ # default options, override via command line
+ my %opt = ( 	
+-	user 			=> 'postgrey',
+-	dbdir 			=> '/var/spool/postfix/postgrey',
++	user 			=> '_postgrey',
++	dbdir 			=> '/var/db/postgrey',
+ 	delay			=> 300,
+ 	return_string		=> 'Greylisted',	# match on this string
+ 

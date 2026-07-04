@@ -1,0 +1,13 @@
+--- man/man1/gocr.1.orig	Sun Mar 29 17:56:14 2009
++++ man/man1/gocr.1	Fri Aug  7 15:13:59 2009
+@@ -150,8 +150,8 @@ This man page documents \fBgocr\fR, version 0.41.
+ .SH REPORTING BUGS
+ Report bugs to Joerg Schulenburg
+ .SH SEE ALSO
+-More details can be found at /usr/share/doc/gocr-\fBX.XX\fR/gocr.html.
+-Also read /usr/share/doc/gocr-\fBX.XX\fR/README to learn, how to improve
++More details can be found at ${LOCALBASE}/share/doc/gocr/gocr.html.
++Also read ${LOCALBASE}/share/doc/gocr/README to learn, how to improve
+ results.
+ .SH EXAMPLES
+ .TP

@@ -1,0 +1,12 @@
+Index: scan.l
+--- scan.l.orig
++++ scan.l
+@@ -8,7 +8,7 @@
+ #include <stdlib.h>
+ 
+ #include "extern.h"
+-#include "y.tab.h"
++#include "moo.h"
+ 
+ %}
+ 

@@ -1,0 +1,150 @@
+@pkgpath japanese/canna
+include/canna/
+include/canna/RK.h
+include/canna/jrkanji.h
+include/canna/keydef.h
+include/canna/mfdef.h
+lib/default.canna
+lib/dic/
+lib/dic/default.cbp
+lib/dic/english.cbp
+lib/dic/jdaemon.cbp
+lib/dic/just.cbp
+lib/dic/kaisoku.cbp
+lib/dic/kana.cbp
+lib/dic/lan5.cbp
+lib/dic/matsu.cbp
+lib/dic/newjis.cbp
+lib/dic/romaji.cbp
+lib/dic/sokuon.cbp
+lib/dic/tut.cbp
+lib/dic/vje.cbp
+lib/dic/wx2+.cbp
+lib/engine.cf
+lib/libRKC.a
+@lib lib/libRKC.so.${LIBRKC_VERSION}
+lib/libRKC16.a
+@lib lib/libRKC16.so.${LIBRKC16_VERSION}
+lib/libcanna.a
+@lib lib/libcanna.so.${LIBcanna_VERSION}
+lib/libcanna16.a
+@lib lib/libcanna16.so.${LIBcanna16_VERSION}
+lib/sample/
+lib/sample/1.1.canna
+lib/sample/1.2.canna
+lib/sample/default.canna
+lib/sample/fixer.canna
+lib/sample/jdemon.canna
+lib/sample/just.canna
+lib/sample/lan5.canna
+lib/sample/matsu.canna
+lib/sample/modes.canna
+lib/sample/sample.canna
+lib/sample/skk.canna
+lib/sample/src/
+lib/sample/src/Makefile
+lib/sample/src/default.ctd
+lib/sample/src/english.ctd
+lib/sample/src/is.c
+lib/sample/src/jdaemon.ctd
+lib/sample/src/just.ctd
+lib/sample/src/kaisoku.ctd
+lib/sample/src/kana.ctd
+lib/sample/src/lan5.ctd
+lib/sample/src/matsu.ctd
+lib/sample/src/newjis.ctd
+lib/sample/src/romaji.ctd
+lib/sample/src/sokuon.ctd
+lib/sample/src/tut.ctd
+lib/sample/src/vje.ctd
+lib/sample/src/wx2+.ctd
+lib/sample/tut.canna
+lib/sample/unix.canna
+lib/sample/vje.canna
+lib/sample/wx2+.canna
+man/ja/
+man/ja/man3/
+@man man/ja/man3/RkCloseRoma.3
+@man man/ja/man3/RkCvtEuc.3
+@man man/ja/man3/RkCvtHan.3
+@man man/ja/man3/RkCvtHira.3
+@man man/ja/man3/RkCvtKana.3
+@man man/ja/man3/RkCvtRoma.3
+@man man/ja/man3/RkCvtZen.3
+@man man/ja/man3/RkDefineDic.3
+@man man/ja/man3/RkDeleteDic.3
+@man man/ja/man3/RkEndBun.3
+@man man/ja/man3/RkEnlarge.3
+@man man/ja/man3/RkFinalize.3
+@man man/ja/man3/RkGetDicList.3
+@man man/ja/man3/RkGetKanji.3
+@man man/ja/man3/RkGetLex.3
+@man man/ja/man3/RkGetStat.3
+@man man/ja/man3/RkGetYomi.3
+@man man/ja/man3/RkGoto.3
+@man man/ja/man3/RkInitialize.3
+@man man/ja/man3/RkIntro.3
+@man man/ja/man3/RkLeft.3
+@man man/ja/man3/RkMapPhonogram.3
+@man man/ja/man3/RkMapRoma.3
+@man man/ja/man3/RkMountD.3
+@man man/ja/man3/RkNext.3
+@man man/ja/man3/RkNfer.3
+@man man/ja/man3/RkOpenRoma.3
+@man man/ja/man3/RkPrev.3
+@man man/ja/man3/RkRemountDic.3
+@man man/ja/man3/RkResize.3
+@man man/ja/man3/RkRgnBun.3
+@man man/ja/man3/RkRight.3
+@man man/ja/man3/RkShorten.3
+@man man/ja/man3/RkStoreYomi.3
+@man man/ja/man3/RkUnmountDic.3
+@man man/ja/man3/RkXfer.3
+@man man/ja/man3/XKanjiControl.3
+@man man/ja/man3/XLookupKanjiString.3
+@man man/ja/man3/cannalib.3
+@man man/ja/man3/jrKanjiControl.3
+@man man/ja/man3/jrKanjiString.3
+@man man/ja/man3/uilib.3
+@man man/man3/RkCloseRoma.3
+@man man/man3/RkCvtEuc.3
+@man man/man3/RkCvtHan.3
+@man man/man3/RkCvtHira.3
+@man man/man3/RkCvtKana.3
+@man man/man3/RkCvtRoma.3
+@man man/man3/RkCvtZen.3
+@man man/man3/RkDefineDic.3
+@man man/man3/RkDeleteDic.3
+@man man/man3/RkEndBun.3
+@man man/man3/RkEnlarge.3
+@man man/man3/RkFinalize.3
+@man man/man3/RkGetDicList.3
+@man man/man3/RkGetKanji.3
+@man man/man3/RkGetLex.3
+@man man/man3/RkGetStat.3
+@man man/man3/RkGetYomi.3
+@man man/man3/RkGoto.3
+@man man/man3/RkInitialize.3
+@man man/man3/RkIntro.3
+@man man/man3/RkLeft.3
+@man man/man3/RkMapPhonogram.3
+@man man/man3/RkMapRoma.3
+@man man/man3/RkMountD.3
+@man man/man3/RkNext.3
+@man man/man3/RkNfer.3
+@man man/man3/RkOpenRoma.3
+@man man/man3/RkPrev.3
+@man man/man3/RkRemountDic.3
+@man man/man3/RkResize.3
+@man man/man3/RkRgnBun.3
+@man man/man3/RkRight.3
+@man man/man3/RkShorten.3
+@man man/man3/RkStoreYomi.3
+@man man/man3/RkUnmountDic.3
+@man man/man3/RkXfer.3
+@man man/man3/XKanjiControl.3
+@man man/man3/XLookupKanjiString.3
+@man man/man3/cannalib.3
+@man man/man3/jrKanjiControl.3
+@man man/man3/jrKanjiString.3
+@man man/man3/uilib.3

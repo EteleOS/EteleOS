@@ -1,0 +1,6 @@
+@bin bin/schismtracker
+@man man/man1/schismtracker.1
+share/applications/schism.desktop
+share/pixmaps/
+share/pixmaps/schism-icon-128.png
+@tag update-desktop-database

@@ -1,0 +1,11 @@
+evilwm is a minimalist window manager for the X Window System.
+
+Features include:
+
+* Simple thin borders, no title bars, no icons.
+* Multi-monitor support.
+* Configurable keyboard and mouse controls.
+* EWMH support.
+* Virtual desktops.
+* Snap-to-border.
+* Configuration file read on startup, and reread on SIGHUP. 

@@ -1,0 +1,45 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -15,8 +15,7 @@ options:
+ 	@echo "CC       = ${CC}"
+ 
+ .c.o:
+-	@echo CC $<
+-	@${CC} -c ${CFLAGS} $<
++	${CC} -c ${CFLAGS} $<
+ 
+ ${OBJ}: config.h config.mk arg.h util.h
+ 
+@@ -25,8 +24,7 @@ config.h:
+ 	@cp config.def.h $@
+ 
+ slock: ${OBJ}
+-	@echo CC -o $@
+-	@${CC} -o $@ ${OBJ} ${LDFLAGS}
++	${CC} -o $@ ${OBJ} ${LDFLAGS}
+ 
+ clean:
+ 	@echo cleaning
+@@ -42,15 +40,12 @@ dist: clean
+ 	@rm -rf slock-${VERSION}
+ 
+ install: all
+-	@echo installing executable file to ${DESTDIR}${PREFIX}/bin
+-	@mkdir -p ${DESTDIR}${PREFIX}/bin
+-	@cp -f slock ${DESTDIR}${PREFIX}/bin
+-	@chmod 755 ${DESTDIR}${PREFIX}/bin/slock
+-	@chmod u+s ${DESTDIR}${PREFIX}/bin/slock
+-	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man1
+-	@mkdir -p ${DESTDIR}${MANPREFIX}/man1
+-	@sed "s/VERSION/${VERSION}/g" <slock.1 >${DESTDIR}${MANPREFIX}/man1/slock.1
+-	@chmod 644 ${DESTDIR}${MANPREFIX}/man1/slock.1
++	${BSD_INSTALL_PROGRAM_DIR} ${DESTDIR}${PREFIX}/bin
++	${BSD_INSTALL_PROGRAM} slock ${DESTDIR}${PREFIX}/bin
++	${BSD_INSTALL_MAN_DIR} ${DESTDIR}${MANPREFIX}/man1
++	sed "s/VERSION/${VERSION}/g" < slock.1 > slock.1.tmp
++	mv slock.1.tmp slock.1
++	${BSD_INSTALL_MAN} slock.1 ${DESTDIR}${MANPREFIX}/man1
+ 
+ uninstall:
+ 	@echo removing executable file from ${DESTDIR}${PREFIX}/bin

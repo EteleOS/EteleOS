@@ -1,0 +1,10 @@
+--- src/u_deep.c.orig	Thu Apr 20 00:09:49 2017
++++ src/u_deep.c	Thu Apr 20 00:10:32 2017
+@@ -20,6 +20,7 @@
+ INLINE USHORT DecodeChar(void);
+ INLINE USHORT DecodePosition(void);
+ INLINE void update(USHORT c);
++extern void update(USHORT c);
+ static void reconst(void);
+ 
+ 

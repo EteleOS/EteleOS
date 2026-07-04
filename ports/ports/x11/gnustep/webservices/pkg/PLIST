@@ -1,0 +1,16 @@
+include/WebServices/
+include/WebServices/GWSBinding.h
+include/WebServices/GWSCoder.h
+include/WebServices/GWSConstants.h
+include/WebServices/GWSDocument.h
+include/WebServices/GWSElement.h
+include/WebServices/GWSExtensibility.h
+include/WebServices/GWSHash.h
+include/WebServices/GWSMessage.h
+include/WebServices/GWSPort.h
+include/WebServices/GWSPortType.h
+include/WebServices/GWSService.h
+include/WebServices/GWSType.h
+include/WebServices/WSSUsernameToken.h
+include/WebServices/WebServices.h
+@lib lib/libWebServices.so.${LIBWebServices_VERSION}

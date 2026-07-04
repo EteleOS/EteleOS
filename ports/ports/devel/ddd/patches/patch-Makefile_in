@@ -1,0 +1,11 @@
+--- Makefile.in.orig	Wed Feb 11 17:25:55 2009
++++ Makefile.in	Mon Sep 28 09:40:49 2009
+@@ -307,7 +307,7 @@ TEXINFO_DISTFILES = \
+ 
+ 
+ # Shared data installation
+-dddrootdir = $(pkgdatadir)-$(VERSION)
++dddrootdir = $(pkgdatadir)
+ 
+ # -----------------------------------------------------------------------------
+ # Data.

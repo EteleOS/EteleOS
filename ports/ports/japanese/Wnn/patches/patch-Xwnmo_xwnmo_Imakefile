@@ -1,0 +1,39 @@
+Index: Xwnmo/xwnmo/Imakefile
+--- Xwnmo/xwnmo/Imakefile.orig
++++ Xwnmo/xwnmo/Imakefile
+@@ -30,7 +30,7 @@ XCOMM CONNECTION WITH THE USE OR PERFORMANCE OF THIS S
+ XCOMM
+ 
+ LOCAL_INSTFLAGS = $(INSTBINFLAGS) -o $(WNNOWNER)
+-       INCLUDES = $(XWNMOINCLUDES)
++       INCLUDES = $(XWNMOINCLUDES) -I/usr/X11R6/include
+ #ifdef UseInstalled
+         DEPLIBS = $(XWNMOJLIB)
+ #else
+@@ -46,6 +46,7 @@ XCOMM XJUTILNOTFORKFLAGS = -DNOTFORK_XJUTIL
+ XCOMM ALLOCDEBUGFLAGS = -DALLOC_DEBUG
+     XJUTILFLAGS = $(XJUTILBINDIR) $(XJUTILNOTFORKFLAGS)
+        LOCALMAN = man.en
++        JMANDIR = $(MANPATH)/ja/man$(MANSUFFIX)
+ 
+ LINKS = cvtfun.man cvtmt.man ximrc.man xwnmo.man killxw.man \
+ 	ximconf.man cvtxim.man
+@@ -185,11 +186,18 @@ InstallAppDefaults(Xwnmo)
+ InstallManPage(xwnmo,$(MANDIR))
+ InstallManPage(ximrc,$(MANDIR))
+ InstallManPage(ximconf,$(MANDIR))
++InstallJManPageLong(man.ja/xwnmo,$(JMANDIR),xwnmo)
++InstallJManPageLong(man.ja/ximrc,$(JMANDIR),ximrc)
++InstallJManPageLong(man.ja/ximconf,$(JMANDIR),ximconf)
+ #if ExpandManNames
+ InstallManPageLong(cvtfun,$(MANDIR),cvt_fun_tbl)
+ InstallManPageLong(cvtmt,$(MANDIR),cvt_meta_tbl)
+ InstallManPageLong(killxw,$(MANDIR),killxwnmo)
+ InstallManPageLong(cvtxim,$(MANDIR),cvt_xim_tbl)
++InstallJManPageLong(man.ja/cvtfun,$(JMANDIR),cvt_fun_tbl)
++InstallJManPageLong(man.ja/cvtmt,$(JMANDIR),cvt_meta_tbl)
++InstallJManPageLong(man.ja/killxw,$(JMANDIR),killxwnmo)
++InstallJManPageLong(man.ja/cvtxim,$(JMANDIR),cvt_xim_tbl)
+ #else
+ InstallManPage(cvtfun,$(MANDIR))
+ InstallManPage(cvtmt,$(MANDIR))

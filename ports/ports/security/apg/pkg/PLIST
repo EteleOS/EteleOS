@@ -1,0 +1,7 @@
+bin/apg
+bin/apgbfm
+bin/apgcli
+@man man/man1/apg.1
+@man man/man1/apgbfm.1
+@man man/man8/apgd.8
+sbin/apgd

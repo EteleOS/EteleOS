@@ -1,0 +1,6 @@
+@bin bin/sysbench
+share/doc/sysbench/
+share/doc/sysbench/manual.html
+share/examples/sysbench/
+share/examples/sysbench/sb_run.sh
+share/examples/sysbench/sb_test_ps.sh

@@ -1,0 +1,2 @@
+@bin bin/cabextract
+@man man/man1/cabextract.1

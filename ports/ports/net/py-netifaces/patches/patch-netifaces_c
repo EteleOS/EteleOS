@@ -1,0 +1,12 @@
+Index: netifaces.c
+--- netifaces.c.orig
++++ netifaces.c
+@@ -195,8 +195,6 @@ static int af_to_len(int af) 
+ #else
+ #define SS_LEN(sa)      SA_LEN(sa)
+ #endif
+-#else
+-#define SA_LEN(sa)      sa->sa_len
+ #endif /* !HAVE_SOCKADDR_SA_LEN */
+ 
+ #  if HAVE_GETIFADDRS

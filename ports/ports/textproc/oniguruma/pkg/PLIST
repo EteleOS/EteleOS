@@ -1,0 +1,7 @@
+bin/onig-config
+include/oniggnu.h
+include/oniguruma.h
+@static-lib lib/libonig.a
+lib/libonig.la
+@lib lib/libonig.so.${LIBonig_VERSION}
+lib/pkgconfig/oniguruma.pc

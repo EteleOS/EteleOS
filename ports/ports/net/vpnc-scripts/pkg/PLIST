@@ -1,0 +1,8 @@
+share/vpnc-scripts/
+share/vpnc-scripts/COPYING
+share/vpnc-scripts/vpnc-script
+@mode 555
+@sample ${SYSCONFDIR}/vpnc-script
+@mode
+share/vpnc-scripts/vpnc-script-ptrtd
+share/vpnc-scripts/vpnc-script-sshd

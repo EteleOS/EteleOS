@@ -1,0 +1,3 @@
+${P5SITE}/Eval/
+${P5SITE}/Eval/Closure.pm
+@man man/man3p/Eval::Closure.3p

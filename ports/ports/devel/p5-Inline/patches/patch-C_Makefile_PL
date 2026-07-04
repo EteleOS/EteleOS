@@ -1,0 +1,16 @@
+--- C/Makefile.PL.orig	Tue Nov 20 10:35:19 2012
++++ C/Makefile.PL	Wed Mar 27 16:23:35 2013
+@@ -68,12 +68,7 @@ END
+ # '
+ }
+ 
+-my $answer = '';
+-my $default = $found ? "y" : "n";
+-while (1) {
+-    $answer = prompt ('Do you want to install Inline::C?', $default);
+-    last if $answer =~ /^(y|yes|n|no)$/i;
+-}
++my $answer = 'y';
+ 
+ my $prereq_pm = install_base_problem() ? {'ExtUtils::MakeMaker' => 6.62}
+                                        : {};

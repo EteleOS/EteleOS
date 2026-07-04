@@ -1,0 +1,14 @@
+@pkgpath mail/opensmtpd-filters/dkimsign,ed25519
+@newgroup _dkimsign:843
+@newuser _dkimsign:843:843::OpenSMTP DKIM signer:/nonexistent:/sbin/nologin
+libexec/smtpd/
+@bin libexec/smtpd/filter-dkimsign
+@man man/man8/filter-dkimsign.8
+@mode 0770
+@owner _dkimsign
+@group _dkimsign
+@sample ${SYSCONFDIR}/mail/dkim/
+@mode
+@owner
+@group
+share/doc/pkg-readmes/${PKGSTEM}

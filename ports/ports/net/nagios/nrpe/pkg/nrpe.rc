@@ -1,0 +1,11 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/nrpe -d"
+
+. /etc/rc.d/rc.subr
+
+rc_pre() {
+	install -o _nrpe -d /var/run/nrpe
+}
+
+rc_cmd $1

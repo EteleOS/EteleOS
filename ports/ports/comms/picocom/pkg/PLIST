@@ -1,0 +1,2 @@
+@bin bin/picocom
+@man man/man1/picocom.1

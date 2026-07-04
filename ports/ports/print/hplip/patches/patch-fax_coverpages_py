@@ -1,0 +1,11 @@
+--- fax/coverpages.py.orig	Thu Jul  2 17:30:02 2009
++++ fax/coverpages.py	Thu Jul  2 17:31:08 2009
+@@ -73,7 +73,7 @@ def createStandardCoverPage(page_size=PAGE_SIZE_LETTER
+     story = []
+ 
+     #print prop.locale
+-    #TTFSearchPath.append('/usr/share/fonts/truetype/arphic')
++    #TTFSearchPath.append('${LOCALBASE}/share/fonts/truetype/arphic')
+     #pdfmetrics.registerFont(TTFont('UMing', 'uming.ttf'))
+ 
+     ps = ParagraphStyle(name="title",

@@ -1,0 +1,10 @@
+--- examples/recurse.c.orig	Fri May 23 13:28:25 2014
++++ examples/recurse.c	Fri May 23 13:28:35 2014
+@@ -3,6 +3,7 @@
+  */
+ 
+ #include <droplet.h>
++#include <string.h>
+ 
+ dpl_status_t
+ recurse(dpl_ctx_t *ctx,

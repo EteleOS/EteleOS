@@ -1,0 +1,82 @@
+--- io.c.orig	Wed Mar 27 05:41:07 2002
++++ io.c	Sat May 22 22:33:59 2010
+@@ -102,7 +102,7 @@ io_detach_child(struct io_header *hparent, struct io_l
+ 	}
+ 
+ 	if (lparent == NULL)
+-		errx(1, __FUNCTION__": data corrupt");
++		errx(1, "%s: data corrupt", __FUNCTION__);
+ 
+ 	TAILQ_REMOVE(&hchild->ihdr_parent, lparent, il_next);
+ 	free(lparent);
+@@ -121,7 +121,7 @@ io_detach_parent(struct io_list *lparent, struct io_he
+ 	}
+ 
+ 	if (lchild == NULL)
+-		errx(1, __FUNCTION__": data corrupt");
++		errx(1, "%s: data corrupt", __FUNCTION__);
+ 
+ 	TAILQ_REMOVE(&hparent->ihdr_queue, lchild, il_next);
+ 	free(lchild);
+@@ -142,7 +142,7 @@ io_detach_hdr(struct io_header *parent, struct io_head
+ 	}
+ 
+ 	if (lchild == NULL)
+-		errx(1, __FUNCTION__": data corrupt");
++		errx(1, "%s: data corrupt", __FUNCTION__);
+ 	TAILQ_REMOVE(&parent->ihdr_queue, lchild, il_next);
+ 	free(lchild);
+ 
+@@ -152,7 +152,7 @@ io_detach_hdr(struct io_header *parent, struct io_head
+ 	}
+ 
+ 	if (lparent == NULL)
+-		errx(1, __FUNCTION__": data corrupt");
++		errx(1, "%s: data corrupt", __FUNCTION__);
+ 	TAILQ_REMOVE(&child->ihdr_parent, lparent, il_next);
+ 	free(lparent);
+ }
+@@ -311,7 +311,7 @@ io_buffer_extend(struct io_buffer *buf, size_t size)
+ 
+ 	p = realloc(buf->data, buf->off + size);
+ 	if (p == NULL) {
+-		warn(__FUNCTION__": realloc");
++		warn("%s: realloc", __FUNCTION__);
+ 		return (-1);
+ 	}
+ 
+@@ -424,7 +424,7 @@ io_buffer_write(struct io_obj *obj, struct io_buffer *
+ 
+ 	filt = (struct io_filter *)obj;
+ 	if (obj->io_type != IOTYPE_FILTER || filt->io_filter == NULL)
+-		errx(1, __FUNCTION__": data corrupt: %p\n", obj);
++		errx(1, "%s: data corrupt: %p\n", __FUNCTION__, obj);
+ 
+ 	res = filt->io_filter(filt->io_state, filt, buf, 0);
+ 	switch (res) {
+@@ -704,12 +704,12 @@ io_header_init(struct io_header *hdr, int type)
+ 
+ struct io_obj *
+ io_new_obj(int fd, int type,
+-	   int (*method)(int, void *, size_t), size_t blocksize)
++	   ssize_t (*method)(int, void *, size_t), size_t blocksize)
+ {
+ 	struct io_obj *obj;
+ 
+ 	if (type != IOTYPE_SOURCE && type != IOTYPE_SINK) {
+-		warnx(__FUNCTION__": bad type: %d", type);
++		warnx("%s: bad type: %d", type, __FUNCTION__);
+ 		return (NULL);
+ 	}
+ 
+@@ -759,8 +759,8 @@ io_duplex_halffree(struct io_duplex *dplx, struct io_o
+  */
+ 
+ struct io_duplex *
+-io_new_duplex(int fd, int (*mthd_read)(int, void *, size_t),
+-	   int (*mthd_write)(int, const void *, size_t), size_t blocksize)
++io_new_duplex(int fd, ssize_t (*mthd_read)(int, void *, size_t),
++	   ssize_t (*mthd_write)(int, const void *, size_t), size_t blocksize)
+ {
+ 	struct io_duplex *dplx;
+ 

@@ -1,0 +1,18 @@
+Index: src/sim/w_eval.c
+--- src/sim/w_eval.c.orig
++++ src/sim/w_eval.c
+@@ -126,12 +126,14 @@ doScoreCard(void)
+ }
+ 
+ 
++void
+ ChangeEval()
+ {
+   EvalChanged = 1;
+ }
+ 
+ 
++void
+ scoreDoer(void)
+ {
+   if (EvalChanged) {

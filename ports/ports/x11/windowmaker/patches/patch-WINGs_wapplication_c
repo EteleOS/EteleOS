@@ -1,0 +1,12 @@
+Index: WINGs/wapplication.c
+--- WINGs/wapplication.c.orig
++++ WINGs/wapplication.c
+@@ -205,7 +205,7 @@ char *WMPathForResourceOfType(const char *resource, co
+ 	if (path)
+ 		goto out;
+ 
+-	path = checkFile("/usr/GNUstep/System/Applications", appdir, ext, resource); /* falls through */
++	path = checkFile(PREFIX "/GNUstep", appdir, ext, resource); /* falls through */
+ 
+ out:
+ 	if (appdir)

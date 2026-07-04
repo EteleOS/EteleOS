@@ -1,0 +1,18 @@
+@bin bin/speexdec
+@bin bin/speexenc
+include/speex/speex.h
+include/speex/speex_bits.h
+include/speex/speex_callbacks.h
+include/speex/speex_config_types.h
+include/speex/speex_header.h
+include/speex/speex_stereo.h
+include/speex/speex_types.h
+@static-lib lib/libspeex.a
+lib/libspeex.la
+@lib lib/libspeex.so.${LIBspeex_VERSION}
+lib/pkgconfig/speex.pc
+@man man/man1/speexdec.1
+@man man/man1/speexenc.1
+share/aclocal/speex.m4
+share/doc/speex/
+share/doc/speex/manual.pdf

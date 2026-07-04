@@ -1,0 +1,21 @@
+Index: doctype/medline.cxx
+--- doctype/medline.cxx.orig
++++ doctype/medline.cxx
+@@ -117,7 +117,7 @@ Copyright:	Basis Systeme netzwerk, Munich
+ 
+ // TODO: Clean-up Record parser and fix to leave off junk between records
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -182,7 +182,7 @@ void MEDLINE::ParseRecords (const RECORD& FileRecord)
+ 
+   // Search for Medline Seperator
+   enum { LOOK, HUNT, FOUND, START } State = HUNT;
+-  CHR Ch;
++  INT Ch;
+   CHR buf[7];
+   int pos = 0;
+ 

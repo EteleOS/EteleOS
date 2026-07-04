@@ -1,0 +1,21 @@
+Index: xmltest.cpp
+--- xmltest.cpp.orig
++++ xmltest.cpp
+@@ -3,6 +3,8 @@
+ */
+ 
+ 
++#include "tinyxml.h"
++
+ #ifdef TIXML_USE_STL
+ 	#include <iostream>
+ 	#include <sstream>
+@@ -16,8 +18,6 @@
+ 	_CrtMemState startMemState;
+ 	_CrtMemState endMemState;
+ #endif
+-
+-#include "tinyxml.h"
+ 
+ bool XmlTest (const char* testString, const char* expected, const char* found, bool noEcho = false);
+ bool XmlTest( const char* testString, int expected, int found, bool noEcho = false );

@@ -1,0 +1,3 @@
+${P5SITE}/ExtUtils/
+${P5SITE}/ExtUtils/CppGuess.pm
+@man man/man3p/ExtUtils::CppGuess.3p

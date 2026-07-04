@@ -1,0 +1,4 @@
+@so lib/sane/libsane-escl.so
+@man man/man5/sane-escl.5
+share/examples/sane-backends/sane.d/escl.conf
+@sample ${SYSCONFDIR}/sane.d/escl.conf

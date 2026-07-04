@@ -1,0 +1,13 @@
+Index: src/blocker/blocker.c
+--- src/blocker/blocker.c.orig
++++ src/blocker/blocker.c
+@@ -99,7 +99,8 @@ int main(int argc, char *argv[]) {
+ 
+     /* termination signals */
+     signal(SIGTERM, sigfin_handler);
+-    signal(SIGHUP, sigfin_handler);
++    /* Don't install handler for HUP */
++    /* signal(SIGHUP, sigfin_handler); */
+     signal(SIGINT, sigfin_handler);
+     atexit(finishup);
+ 

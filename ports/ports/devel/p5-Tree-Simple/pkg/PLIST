@@ -1,0 +1,6 @@
+${P5SITE}/Tree/
+${P5SITE}/Tree/Simple/
+${P5SITE}/Tree/Simple.pm
+${P5SITE}/Tree/Simple/Visitor.pm
+@man man/man3p/Tree::Simple.3p
+@man man/man3p/Tree::Simple::Visitor.3p

@@ -1,0 +1,11 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/x11vnc"
+daemon_flags="-localhost -logfile /var/log/x11vnc -ncache 0 -forever -loop100 -auth guess"
+
+. /etc/rc.d/rc.subr
+
+rc_bg=YES
+rc_reload=NO
+
+rc_cmd $1

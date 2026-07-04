@@ -1,0 +1,29 @@
+--- VEX/priv/ir_defs.c.orig
++++ VEX/priv/ir_defs.c
+@@ -1364,6 +1364,13 @@
+       case Iop_2xMultU64Add128CarryOut: vex_printf("2xMultU64Add128CarryOut");
+          return;
+ 
++#if defined(VGO_openbsd)
++      case Iop_MovFromSeg8 ... Iop_MovFromSeg64:
++         str = "MovFromSeg"; base = Iop_MovFromSeg8; break;
++      case Iop_MovToSeg8 ... Iop_MovToSeg64:
++         str = "MovToSeg"; base = Iop_MovToSeg8; break;
++#endif
++
+       default: vpanic("ppIROp(1)");
+    }
+ 
+@@ -4156,6 +4163,12 @@
+          QUATERNARY(Ity_I32, Ity_I8, Ity_I8, Ity_I8, Ity_I32);
+       case Iop_Rotx64:
+          QUATERNARY(Ity_I64, Ity_I8, Ity_I8, Ity_I8, Ity_I64);
++
++#if defined(VGO_openbsd)
++      case Iop_MovFromSeg64:
++      case Iop_MovToSeg64:
++         BINARY( Ity_I64, Ity_I64, Ity_I64 );
++#endif
+ 
+       default:
+          ppIROp(op);

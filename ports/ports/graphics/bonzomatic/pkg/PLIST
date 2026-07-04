@@ -1,0 +1,7 @@
+@bin bin/bonzomatic
+share/applications/bonzomatic.desktop
+share/bonzomatic/
+share/bonzomatic/README.md
+share/icons/hicolor/256x256/apps/bonzomatic.png
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

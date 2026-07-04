@@ -1,0 +1,5 @@
+@conflict kdeutils-<4
+share/examples/t8/
+@sample /var/t8/
+share/examples/t8/foo
+@sample /var/t8/foo

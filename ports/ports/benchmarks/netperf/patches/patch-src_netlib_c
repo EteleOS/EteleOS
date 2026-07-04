@@ -1,0 +1,65 @@
+--- src/netlib.c.orig	Sat Apr 25 00:08:33 2015
++++ src/netlib.c	Thu Apr 20 01:39:06 2017
+@@ -4000,7 +4000,7 @@ void demo_stream_setup(uint32_t a, uint32_t b) {
+ #ifdef WIN32
+ __forceinline void demo_interval_display(double actual_interval)
+ #else
+-  inline void demo_interval_display(double actual_interval)
++void demo_interval_display(double actual_interval)
+ #endif
+ {
+   static int count = 0;
+@@ -4010,22 +4010,22 @@ __forceinline void demo_interval_display(double actual
+   switch (netperf_output_mode) {
+   case HUMAN:
+     fprintf(where,
+-	    "Interim result: %7.2f %s/s over %.3f seconds ending at %ld.%.3ld\n",
++	    "Interim result: %7.2f %s/s over %.3f seconds ending at %lld.%.3ld\n",
+ 	    calc_thruput_interval(units_this_tick,
+ 				  actual_interval/1000000.0),
+ 	    format_units(),
+ 	    actual_interval/1000000.0,
+-	    now.tv_sec,
++	    (long long) now.tv_sec,
+ 	    (long) now.tv_usec/1000);
+     break;
+   case CSV:
+     fprintf(where,
+-	    "%7.2f,%s/s,%.3f,%ld.%.3ld\n",
++	    "%7.2f,%s/s,%.3f,%lld.%.3ld\n",
+ 	    calc_thruput_interval(units_this_tick,
+ 				  actual_interval/1000000.0),
+ 	    format_units(),
+ 	    actual_interval/1000000.0,
+-	    now.tv_sec,
++	    (long long) now.tv_sec,
+ 	    (long) now.tv_usec/1000);
+     break;
+   case KEYVAL:
+@@ -4033,7 +4033,7 @@ __forceinline void demo_interval_display(double actual
+ 	    "NETPERF_INTERIM_RESULT[%d]=%.2f\n"
+ 	    "NETPERF_UNITS[%d]=%s/s\n"
+ 	    "NETPERF_INTERVAL[%d]=%.3f\n"
+-	    "NETPERF_ENDING[%d]=%ld.%.3ld\n",
++	    "NETPERF_ENDING[%d]=%lld.%.3ld\n",
+ 	    count,
+ 	    calc_thruput_interval(units_this_tick,
+ 				  actual_interval/1000000.0),
+@@ -4042,7 +4042,7 @@ __forceinline void demo_interval_display(double actual
+ 	    count,
+ 	    actual_interval/1000000.0,
+ 	    count,
+-	    now.tv_sec,
++	    (long long) now.tv_sec,
+ 	    (long) now.tv_usec/1000);
+     count += 1;
+     break;
+@@ -4067,7 +4067,7 @@ __forceinline void demo_interval_display(double actual
+    inline directive has to appear in netlib.h... */
+ void demo_interval_tick(uint32_t units)
+ #else
+-  inline void demo_interval_tick(uint32_t units)
++void demo_interval_tick(uint32_t units)
+ #endif
+ {
+   double actual_interval = 0.0;

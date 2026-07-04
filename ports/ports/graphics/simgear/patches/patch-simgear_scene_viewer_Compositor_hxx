@@ -1,0 +1,11 @@
+Index: simgear/scene/viewer/Compositor.hxx
+--- simgear/scene/viewer/Compositor.hxx.orig
++++ simgear/scene/viewer/Compositor.hxx
+@@ -3,6 +3,7 @@
+ 
+ #pragma once
+ 
++#include <array>
+ #include <unordered_map>
+ #include <vector>
+ #include <array>

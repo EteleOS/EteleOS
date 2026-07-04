@@ -1,0 +1,13 @@
+uses nm options that arent supported by our nm
+
+Index: tools/defcheck.py
+--- tools/defcheck.py.orig
++++ tools/defcheck.py
+@@ -54,6 +54,7 @@ ignore_sorting_errors = [
+ ]
+ 
+ have_errors = 0
++sys.exit (have_errors)
+ 
+ libextension   = ".so"
+ command        = getenv("NM", default="nm") + " --defined-only --extern-only "

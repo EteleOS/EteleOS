@@ -1,0 +1,10 @@
+@pkgpath chinese/kcfonts
+share/fonts/
+@fontdir share/fonts/chinese/
+share/fonts/chinese/fonts.alias-kc
+@comment share/fonts/chinese/fonts.dir
+@comment share/fonts/chinese/fonts.scale
+share/fonts/chinese/kc12x24.pcf.gz
+share/fonts/chinese/kc15f.pcf.gz
+share/fonts/chinese/kc24f.pcf.gz
+share/fonts/chinese/kc8x15.pcf.gz

@@ -1,0 +1,20 @@
+--- lib/Rose/HTML/Object/Message/Localizer.pm.orig	Thu Nov 19 14:21:51 2009
++++ lib/Rose/HTML/Object/Message/Localizer.pm	Sun Jan 10 14:20:58 2010
+@@ -3,7 +3,7 @@ package Rose::HTML::Object::Message::Localizer;
+ use strict;
+ 
+ use Carp;
+-use Clone::PP();
++use Clone();
+ use Scalar::Util();
+ 
+ use Rose::HTML::Object::Errors();
+@@ -116,7 +116,7 @@ sub init_message_class  { 'Rose::HTML::Object::Message
+ sub init_errors_class   { 'Rose::HTML::Object::Errors' }
+ sub init_error_class    { 'Rose::HTML::Object::Error' }
+ 
+-sub clone { Clone::PP::clone(shift) }
++sub clone { Clone::clone(shift) }
+ 
+ sub parent
+ {

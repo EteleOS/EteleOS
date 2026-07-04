@@ -1,0 +1,32 @@
+time_t requires %lld
+
+Index: files.c
+--- files.c.orig
++++ files.c
+@@ -4263,7 +4263,7 @@ static streng *getstatus( tsd_t *TSD, const streng *fi
+             if ( sizeof(off_t) > 4 )
+                sprintf( result->value, "%lld", buffer.st_ctime );
+             else
+-               sprintf( result->value, "%ld", buffer.st_ctime);
++               sprintf( result->value, "%lld", buffer.st_ctime);
+ #endif
+          }
+          break;
+@@ -4281,7 +4281,7 @@ static streng *getstatus( tsd_t *TSD, const streng *fi
+             if ( sizeof(off_t) > 4 )
+                sprintf( result->value, "%lld", buffer.st_mtime );
+             else
+-               sprintf( result->value, "%ld", buffer.st_mtime);
++               sprintf( result->value, "%lld", buffer.st_mtime);
+ #endif
+          }
+          break;
+@@ -4299,7 +4299,7 @@ static streng *getstatus( tsd_t *TSD, const streng *fi
+             if ( sizeof(off_t) > 4 )
+                sprintf( result->value, "%lld", buffer.st_atime );
+             else
+-               sprintf( result->value, "%ld", buffer.st_atime);
++               sprintf( result->value, "%lld", buffer.st_atime);
+ #endif
+          }
+          break;

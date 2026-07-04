@@ -1,0 +1,6 @@
+@pkgpath textproc/aspell/dicts/aspell-pl
+lib/aspell/pl.dat
+lib/aspell/pl_affix.dat
+share/aspell/pl.multi
+share/aspell/pl.rws
+share/aspell/polish.alias

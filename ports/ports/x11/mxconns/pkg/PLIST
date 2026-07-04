@@ -1,0 +1,3 @@
+@pkgpath x11/mxconns,lesstif
+@bin bin/mxconns
+@man man/man1/mxconns.1

@@ -1,0 +1,14 @@
+Replace rand(3)-based computation with arc4random_uniform(3).
+
+Index: playlist.c
+--- playlist.c.orig
++++ playlist.c
+@@ -846,7 +846,7 @@ void plist_shuffle (struct plist *plist)
+ 	int i;
+ 
+ 	for (i = 0; i < plist->num; i += 1)
+-		plist_swap (plist, i, (rand () / (float)RAND_MAX) * (plist->num - 1));
++		plist_swap (plist, i, arc4random_uniform(plist->num));
+ 
+ 	rb_tree_clear (plist->search_tree);
+ 

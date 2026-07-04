@@ -1,0 +1,12 @@
+--- server/tlsthread.cpp.orig	Mon Mar 10 14:44:59 2014
++++ server/tlsthread.cpp	Wed Apr 30 22:56:02 2014
+@@ -105,8 +105,7 @@ void TlsThread::setup()
+ 
+     EString keyFile( Configuration::text( Configuration::TlsCertFile ) );
+     if ( keyFile.isEmpty() ) {
+-        keyFile = Configuration::compiledIn( Configuration::LibDir );
+-        keyFile.append( "/automatic-key.pem" );
++        keyFile = "/etc/ssl/archiveopteryx.pem";
+     }
+     keyFile = File::chrooted( keyFile );
+     if ( !SSL_CTX_use_certificate_chain_file( ctx, keyFile.cstr() ) ||

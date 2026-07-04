@@ -1,0 +1,18 @@
+@pkgpath japanese/intlfonts
+share/fonts/
+@fontdir share/fonts/ja/
+share/fonts/ja/a18rk.pcf.gz
+share/fonts/ja/a18rkb.pcf.gz
+share/fonts/ja/a18rki.pcf.gz
+share/fonts/ja/fonts.alias-gnu
+@comment share/fonts/ja/fonts.dir
+share/fonts/ja/j78-16.pcf.gz
+share/fonts/ja/j83-18.pcf.gz
+share/fonts/ja/j83-18b.pcf.gz
+share/fonts/ja/j83-18i.pcf.gz
+share/fonts/ja/j90-16.pcf.gz
+share/fonts/ja/jiskan32.pcf.gz
+share/fonts/ja/jiskan48.pcf.gz
+share/fonts/ja/jksp16.pcf.gz
+share/fonts/ja/jksp24.pcf.gz
+share/fonts/ja/jksp40.pcf.gz

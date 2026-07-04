@@ -1,0 +1,12 @@
+Index: driver/ptouch-pt.xml
+--- driver/ptouch-pt.xml.orig
++++ driver/ptouch-pt.xml
+@@ -24,7 +24,7 @@ USA
+  <url></url>
+  <execution>
+   <filter />
+-  <prototype>gs -q -dBATCH -dPARANOIDSAFER -dQUIET -dNOPAUSE -sDEVICE=cups %A%Z -sOutputFile=- - | rastertoptch '%B'</prototype>
++  <prototype>gs -q -dBATCH -dPARANOIDSAFER -dQUIET -dNOPAUSE -sDEVICE=cups %A%Z -sOutputFile=- - | ${PREFIX}/libexec/cups/filter/rastertoptch '%B'</prototype>
+   <margins>
+     <general>
+       <left>0</left>

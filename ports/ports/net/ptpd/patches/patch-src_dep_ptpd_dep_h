@@ -1,0 +1,22 @@
+Index: src/dep/ptpd_dep.h
+--- src/dep/ptpd_dep.h.orig
++++ src/dep/ptpd_dep.h
+@@ -20,7 +20,9 @@
+ #include<sys/stat.h>
+ #include<time.h>
+ #include<sys/time.h>
++#if !defined(__OpenBSD__)
+ #include<sys/timex.h>
++#endif
+ #include<sys/socket.h>
+ #include<sys/select.h>
+ #include<sys/ioctl.h>
+@@ -31,7 +33,7 @@
+ 
+ /* system messages */
+ #define ERROR(x, ...)  message(LOG_ERR, x, ##__VA_ARGS__)
+-#define PERROR(x, ...) message(LOG_ERR, x ": %m\n", ##__VA_ARGS__)
++#define PERROR(x, ...) message(LOG_ERR, x ": %s\n", ##__VA_ARGS__, strerror(errno))
+ #define NOTIFY(x, ...) message(LOG_NOTICE, x, ##__VA_ARGS__)
+ #define INFO(x, ...)   message(LOG_INFO, x, ##__VA_ARGS__)
+ 

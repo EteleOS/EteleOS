@@ -1,0 +1,15 @@
+Index: source/test/checkasm-a.asm
+--- source/test/checkasm-a.asm.orig
++++ source/test/checkasm-a.asm
+@@ -202,7 +202,11 @@ cglobal checkasm_call, 1,7
+     mov  r4, edx
+     lea  r1, [error_message]
+     push r1
++%if FORMAT_ELF
++    call puts wrt ..plt
++%else
+     call puts
++%endif
+     add  esp, 4
+     mov  r1, r1m
+     mov  dword [r1], 0

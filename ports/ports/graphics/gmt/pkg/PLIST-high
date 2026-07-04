@@ -1,0 +1,4 @@
+@pkgpath graphics/gmt,high
+share/gmt/share/coast/binned_GSHHS_h.cdf
+share/gmt/share/coast/binned_border_h.cdf
+share/gmt/share/coast/binned_river_h.cdf

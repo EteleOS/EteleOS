@@ -1,0 +1,4 @@
+This module provides a simple mechanism for identifying when the
+contents of one or more files have changed.  It was initially
+intended for programs to detect when their configuration files (or
+the module they rely on) have changed.

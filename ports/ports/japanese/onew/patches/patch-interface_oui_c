@@ -1,0 +1,15 @@
+Index: interface/oui.c
+--- interface/oui.c.orig
++++ interface/oui.c
+@@ -8,9 +8,10 @@ char *getenv();
+ static FILE *ouiFp;
+ static int uin;
+ static int uilev;
++void
+ ouiTrace(prim,fmt,a,b,c,d,e,f,g)
+ 	char *fmt;
+-	FILE *prim;
++	char *prim;
+ {	char *logf;
+ 
+ 	if( ouiFp == NULL ){

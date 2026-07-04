@@ -1,0 +1,10 @@
+share/fonts/
+@fontdir share/fonts/league-fonts/
+share/fonts/league-fonts/LeagueGothic-Condensed.otf
+share/fonts/league-fonts/LeagueGothic-Condensed.ttf
+share/fonts/league-fonts/LeagueGothic-CondensedItalic.otf
+share/fonts/league-fonts/LeagueGothic-CondensedItalic.ttf
+share/fonts/league-fonts/LeagueGothic-Italic.otf
+share/fonts/league-fonts/LeagueGothic-Italic.ttf
+share/fonts/league-fonts/LeagueGothic-Regular.otf
+share/fonts/league-fonts/LeagueGothic-Regular.ttf

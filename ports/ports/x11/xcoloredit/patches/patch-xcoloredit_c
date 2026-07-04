@@ -1,0 +1,34 @@
+Index: xcoloredit.c
+--- xcoloredit.c.orig
++++ xcoloredit.c
+@@ -38,6 +38,7 @@ static char sccsid[] = "@(#)xcoloredit.c	1.2 (UKC) 25/
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <X11/Xatom.h>
+ #include <X11/X.h>
+ #include <X11/Intrinsic.h>
+@@ -181,10 +182,10 @@ static XtResource resources[] = {
+ };
+ #undef offset
+ 
++static int WhichButton(String);
+ 
+-void main(argc, argv)
+-unsigned int argc;
+-char **argv;
++int
++main(int argc, char **argv)
+ {
+ 	Status ok;
+ 	unsigned long plane_masks;
+@@ -350,7 +351,7 @@ char **argv;
+ 	unboxedGC = XtGetGC(mixingForm, GCForeground | GCLineWidth, &values);
+ 
+ 	original_background = values.foreground;
+-	bars_locked = NULL;
++	bars_locked = 0;
+ 
+ 	XtAddCallback(redScroll, XtNjumpProc, Thumbed, (XtPointer)RED);
+ 	XtAddCallback(greenScroll, XtNjumpProc, Thumbed, (XtPointer)GREEN);

@@ -1,0 +1,33 @@
+FreeIPMI provides a library and tools to access IPMI Base Management
+Controllers, either in-band (host) or out-of-band (LAN etc), based on
+the IPMI v1.5/2.0 specification.
+
+In-band requires that kernel ipmi device be enabled. This is present in
+standard kernels but not enabled by default, this can be modified with
+"boot -c" or config(8). (This can be useful when configuring the local
+BMC, e.g. using ipmi-config to adjust or disable network access or
+remove vendor default usernames).
+
+bmc-device	perform advanced BMC commands
+bmc-info	read information about BMC (device ID, version, etc)
+bmc-watchdog	watchdog tool/daemon (in-band only)
+ipmi-chassis	manage/monitor a chassis (power, ID LED, status)
+ipmi-config	configure BMC/IPMI usernames, network, security,
+		power restoration policy, sensor thresholds, etc
+ipmi-dcmi	perform Data Center Manageability Interface (DCMI)
+		IPMI extension commands - supports extensions for
+		asset management and power usage management
+ipmi-fru	read field replaceable unit (FRU) information
+ipmi-locate	probe for an IPMI BMC Device (in-band only)
+ipmi-oem	tool for OEM specific commands
+ipmi-pet	parse and interpret Platform Event Traps (PET)
+ipmi-raw	hex input/output of IPMI commands
+ipmi-sel	read System Event Log (SEL) records
+ipmi-sensors	read sensors and sensor data repository (SDR)
+ipmiconsole	connect to a Serial-over-Lan (SOL) console
+ipmidetect/d	tool and daemon to detect alive IPMI nodes
+ipmiping	IPMI ping tool for debugging
+ipmipower	remotely control power
+ipmiseld	daemon that regularly polls the SEL and stores
+		the events to the local syslog
+rmcpping	RMCP ping tool for debugging

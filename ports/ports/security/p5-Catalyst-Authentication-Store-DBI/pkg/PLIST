@@ -1,0 +1,5 @@
+${P5SITE}/Catalyst/Authentication/Store/DBI/
+${P5SITE}/Catalyst/Authentication/Store/DBI.pm
+${P5SITE}/Catalyst/Authentication/Store/DBI/User.pm
+@man man/man3p/Catalyst::Authentication::Store::DBI.3p
+@man man/man3p/Catalyst::Authentication::Store::DBI::User.3p

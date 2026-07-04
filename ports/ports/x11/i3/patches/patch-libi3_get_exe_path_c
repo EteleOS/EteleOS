@@ -1,0 +1,10 @@
+Index: libi3/get_exe_path.c
+--- libi3/get_exe_path.c.orig
++++ libi3/get_exe_path.c
+@@ -102,5 +102,5 @@ char *get_exe_path(const char *argv0) {
+     free(tmp);
+ 
+     /* Last resort: maybe it’s in /usr/bin? */
+-    return sstrdup("/usr/bin/i3-nagbar");
++    return sstrdup("${TRUEPREFIX}/bin/i3-nagbar");
+ }

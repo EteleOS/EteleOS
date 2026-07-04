@@ -1,0 +1,12 @@
+@bin bin/fzf
+bin/fzf-preview.sh
+bin/fzf-tmux
+@man man/man1/fzf-tmux.1
+@man man/man1/fzf.1
+share/doc/pkg-readmes/${PKGSTEM}
+share/vim/
+share/vim/vimfiles/
+share/vim/vimfiles/doc/
+share/vim/vimfiles/doc/fzf.txt
+share/vim/vimfiles/plugin/
+share/vim/vimfiles/plugin/fzf.vim

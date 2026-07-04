@@ -1,0 +1,11 @@
+Index: mplex/inputstrm.cpp
+--- mplex/inputstrm.cpp.orig
++++ mplex/inputstrm.cpp
+@@ -23,6 +23,7 @@
+ 
+ #include "config.h"
+ #include <assert.h>
++#include <limits.h>
+ 
+ #include "mjpeg_types.h"
+ #include "fastintfns.h"

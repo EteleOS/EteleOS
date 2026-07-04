@@ -1,0 +1,5 @@
+@pkgpath productivity/xquote,lesstif
+bin/xquote
+lib/X11/app-defaults/Xquote.ad
+share/doc/xquote/
+share/doc/xquote/README

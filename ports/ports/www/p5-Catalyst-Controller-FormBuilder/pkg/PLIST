@@ -1,0 +1,10 @@
+${P5SITE}/Catalyst/Controller/
+${P5SITE}/Catalyst/Controller/FormBuilder/
+${P5SITE}/Catalyst/Controller/FormBuilder.pm
+${P5SITE}/Catalyst/Controller/FormBuilder/Action/
+${P5SITE}/Catalyst/Controller/FormBuilder/Action.pm
+${P5SITE}/Catalyst/Controller/FormBuilder/Action/HTML/
+${P5SITE}/Catalyst/Controller/FormBuilder/Action/HTML/Template.pm
+${P5SITE}/Catalyst/Controller/FormBuilder/Action/Mason.pm
+${P5SITE}/Catalyst/Controller/FormBuilder/Action/TT.pm
+@man man/man3p/Catalyst::Controller::FormBuilder.3p

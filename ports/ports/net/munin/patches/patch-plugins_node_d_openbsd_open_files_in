@@ -1,0 +1,17 @@
+--- plugins/node.d.openbsd/open_files.in.orig	Fri Aug 31 19:22:50 2012
++++ plugins/node.d.openbsd/open_files.in	Sun Sep 30 23:19:21 2012
+@@ -18,7 +18,7 @@
+ 
+ if [ "$1" = "autoconf" ]; then
+     if [ -x /sbin/sysctl ]; then
+-        /sbin/sysctl kern.openfiles > /dev/null
++        /sbin/sysctl kern.nfiles > /dev/null
+     	if [ $? = "0" ]; then
+ 	    	echo yes
+     		exit 0
+@@ -51,4 +51,4 @@ fi
+ echo -n 'max.value '
+ /sbin/sysctl -n kern.maxfiles
+ echo -n 'used.value '
+-/sbin/sysctl -n kern.openfiles
++/sbin/sysctl -n kern.nfiles

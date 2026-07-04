@@ -1,0 +1,20 @@
+Index: apertium/apertium_interchunk.cc
+--- apertium/apertium_interchunk.cc.orig
++++ apertium/apertium_interchunk.cc
+@@ -18,9 +18,16 @@
+ #include <lttoolbox/lt_locale.h>
+ #include <lttoolbox/cli.h>
+ #include <lttoolbox/file_utils.h>
++#include <unistd.h>
+ 
+ int main(int argc, char *argv[])
+ {
++  if (pledge("stdio rpath wpath cpath", NULL) == -1)
++  {
++    wcerr << "pledge" << endl;
++    exit(EXIT_FAILURE);
++  }
++
+   LtLocale::tryToSetLocale();
+   CLI cli("process stream with interchunker");
+   cli.add_file_arg("t2x", false);

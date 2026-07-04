@@ -1,0 +1,3 @@
+${P5SITE}/AutoXS/
+${P5SITE}/AutoXS/Header.pm
+@man man/man3p/AutoXS::Header.3p

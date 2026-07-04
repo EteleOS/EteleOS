@@ -1,0 +1,28 @@
+--- etc/perdition/perdition.conf.orig	Wed Sep  1 08:13:30 2010
++++ etc/perdition/perdition.conf	Sat Nov 13 10:09:26 2010
+@@ -132,9 +132,9 @@
+ 
+ # g|group GROUP:
+ # Group to run as. 
+-# (default "nobody")
+-#g nobody
+-#group nobody
++# (default "_perdition")
++#g _perdition
++#group _perdition
+ 
+ # imap_capability STRING:
+ # Capabilities for IMAP4 and IMAP4S
+@@ -296,9 +296,9 @@
+ 
+ # u|username USERNAME:
+ # User to run as.
+-# (default "nobody")
+-#u nobody
+-#username nobody
++# (default "_perdition")
++#u _perdition
++#username _perdition
+ 
+ # U|username_from_database:
+ # Substitute username from popmap lookup.

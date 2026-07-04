@@ -1,0 +1,2 @@
+@bin bin/wcalc
+@man man/man1/wcalc.1

@@ -1,0 +1,3 @@
+${P5SITE}/UNIVERSAL/
+${P5SITE}/UNIVERSAL/exports.pm
+@man man/man3p/UNIVERSAL::exports.3p

@@ -1,0 +1,14 @@
+Index: Wnn/man/2.env/dic/Imakefile
+--- Wnn/man/2.env/dic/Imakefile.orig
++++ Wnn/man/2.env/dic/Imakefile
+@@ -3,6 +3,10 @@ XCOMM $Id: Imakefile,v 1.5 1994/08/17 05:53:05 kuwa Ex
+ XCOMM
+ MANSUFFIX = 5
+ 
++MANDIR = $(MANPATH)/ja/man$(MANSUFFIX)
++#undef InstallManPage
++#define InstallManPage InstallJManPage
++
+ all::
+ 
+ depend::

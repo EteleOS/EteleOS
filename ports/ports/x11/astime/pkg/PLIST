@@ -1,0 +1,7 @@
+bin/astime
+@man man/man1/astime.1
+share/examples/asclock/
+share/examples/asclock/default.astimerc
+share/examples/asclock/modern.astimerc
+share/examples/asclock/sample.astimerc
+share/examples/asclock/thick.astimerc

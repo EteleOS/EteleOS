@@ -1,0 +1,6 @@
+@bin bin/ctfconvert
+@bin bin/ctfdump
+@bin bin/ctfmerge
+@man man/man1/ctfconvert.1
+@man man/man1/ctfdump.1
+@man man/man1/ctfmerge.1

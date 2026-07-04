@@ -1,0 +1,12 @@
+Index: build/top.mk
+--- build/top.mk.orig
++++ build/top.mk
+@@ -90,7 +90,7 @@ LTONLY_MOD = $(LTONLY_$(BUILD_MOD))
+ NT_LTFLAGS_LIB = -no-undefined -avoid-version -rpath $(libdir)
+ NT_LTFLAGS_MOD = -no-undefined -avoid-version -rpath $(moduledir)
+ UNIX_LTFLAGS_LIB = $(LTVERSION) -rpath $(libdir)
+-UNIX_LTFLAGS_MOD = $(LTVERSION) -rpath $(moduledir)
++UNIX_LTFLAGS_MOD = -avoid-version -rpath $(moduledir)
+ 
+ # libtool flags
+ LTFLAGS     = $(@PLAT@_LTFLAGS)

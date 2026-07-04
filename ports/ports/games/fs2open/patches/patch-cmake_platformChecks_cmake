@@ -1,0 +1,12 @@
+Index: cmake/platformChecks.cmake
+--- cmake/platformChecks.cmake.orig
++++ cmake/platformChecks.cmake
+@@ -10,7 +10,7 @@ include(CheckSymbolExists)
+ include(CheckCXXSymbolExists)
+ include(CheckTypeSize)
+ 
+-CHECK_INCLUDE_FILE("execinfo.h" SCP_HAVE_EXECINFO_H)
++#CHECK_INCLUDE_FILE("execinfo.h" SCP_HAVE_EXECINFO_H)
+ CHECK_INCLUDE_FILE_CXX("cxxabi.h" SCP_HAVE_CXXAPI_H)
+ 
+ CHECK_TYPE_SIZE("max_align_t" MAX_ALIGN_T)

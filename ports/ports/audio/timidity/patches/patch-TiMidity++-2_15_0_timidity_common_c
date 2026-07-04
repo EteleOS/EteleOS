@@ -1,0 +1,12 @@
+Index: TiMidity++-2.15.0/timidity/common.c
+--- TiMidity++-2.15.0/timidity/common.c.orig
++++ TiMidity++-2.15.0/timidity/common.c
+@@ -1213,7 +1213,7 @@ int int_rand(int n)
+ 	if(n == -1)
+ 	    srand(time(NULL));
+ 	else
+-	    srand(-n);
++	    srand_deterministic(-n);
+ 	return n;
+     }
+     return (int)(n * (double)rand() * (1.0 / (RAND_MAX + 1.0)));

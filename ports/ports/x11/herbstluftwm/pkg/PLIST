@@ -1,0 +1,58 @@
+@tag update-desktop-database
+@sample ${SYSCONFDIR}/xdg/
+@sample ${SYSCONFDIR}/xdg/herbstluftwm/
+bin/dmenu_run_hlwm
+@bin bin/herbstclient
+@bin bin/herbstluftwm
+@man man/man1/herbstclient.1
+@man man/man1/herbstluftwm.1
+@man man/man7/herbstluftwm-tutorial.7
+share/bash-completion/completions/herbstclient
+share/doc/herbstluftwm/
+share/doc/herbstluftwm/LICENSE
+share/doc/herbstluftwm/NEWS
+share/doc/herbstluftwm/examples/
+share/doc/herbstluftwm/examples/README
+share/doc/herbstluftwm/examples/dmenu.sh
+share/doc/herbstluftwm/examples/dumpbeautify.sh
+share/doc/herbstluftwm/examples/exec_on_tag.sh
+share/doc/herbstluftwm/examples/execwith.sh
+share/doc/herbstluftwm/examples/float-maximize.sh
+share/doc/herbstluftwm/examples/floatmon.sh
+share/doc/herbstluftwm/examples/herbstcommander.sh
+share/doc/herbstluftwm/examples/keychain.sh
+share/doc/herbstluftwm/examples/lasttag.sh
+share/doc/herbstluftwm/examples/layout.sh
+share/doc/herbstluftwm/examples/loadstate.sh
+share/doc/herbstluftwm/examples/maximize.sh
+share/doc/herbstluftwm/examples/perclient_kb_layout.sh
+share/doc/herbstluftwm/examples/q3terminal.sh
+share/doc/herbstluftwm/examples/savestate.sh
+share/doc/herbstluftwm/examples/scratchpad.sh
+share/doc/herbstluftwm/examples/toggledualhead.sh
+share/doc/herbstluftwm/examples/unminimize.sh
+share/doc/herbstluftwm/examples/windowmenu.sh
+share/doc/herbstluftwm/examples/wselect.sh
+share/doc/herbstluftwm/hlwm-doc.json
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/herbstluftwm/
+share/examples/herbstluftwm/autostart
+@mode 755
+@sample ${SYSCONFDIR}/xdg/herbstluftwm/autostart
+@mode
+share/examples/herbstluftwm/panel.sh
+@mode 755
+@sample ${SYSCONFDIR}/xdg/herbstluftwm/panel.sh
+@mode
+share/examples/herbstluftwm/restartpanels.sh
+@mode 755
+@sample ${SYSCONFDIR}/xdg/herbstluftwm/restartpanels.sh
+@mode
+share/fish/
+share/fish/vendor_completions.d/
+share/fish/vendor_completions.d/herbstclient.fish
+share/xsessions/
+share/xsessions/herbstluftwm.desktop
+share/zsh/
+share/zsh/site-functions/
+share/zsh/site-functions/_herbstclient

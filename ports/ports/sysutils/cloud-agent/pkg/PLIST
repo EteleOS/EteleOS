@@ -1,0 +1,2 @@
+@bin libexec/cloud-agent
+@man man/man8/cloud-agent.8

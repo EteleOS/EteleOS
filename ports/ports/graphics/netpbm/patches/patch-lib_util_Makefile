@@ -1,0 +1,26 @@
+Index: lib/util/Makefile
+--- lib/util/Makefile.orig
++++ lib/util/Makefile
+@@ -28,15 +28,20 @@ UTILOBJECTS = \
+   token.o \
+   vasprintf.o \
+ 
++SHUTILOBJECTS = $(patsubst %.o, %.lo, $(UTILOBJECTS))
++
+ MERGE_OBJECTS =
+ 
+ include $(SRCDIR)/common.mk
+ 
+-all: $(UTILOBJECTS)
++all: $(UTILOBJECTS) $(SHUTILOBJECTS)
+ 
+-$(UTILOBJECTS): CFLAGS_TARGET=$(CFLAGS_SHLIB)
++$(SHUTILOBJECTS): CFLAGS_TARGET=$(CFLAGS_SHLIB)
+ 
+ $(UTILOBJECTS):%.o:%.c importinc
++	$(CC) -c $(INCLUDES) $(CFLAGS_ALL) -o $@ $<
++
++$(SHUTILOBJECTS):%.lo:%.c importinc
+ 	$(CC) -c $(INCLUDES) $(CFLAGS_ALL) -o $@ $<
+ 
+ testnstring: test.c nstring.h nstring.o

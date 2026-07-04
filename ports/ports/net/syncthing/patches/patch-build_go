@@ -1,0 +1,14 @@
+Print build commands
+
+Index: build.go
+--- build.go.orig
++++ build.go
+@@ -532,7 +532,7 @@ func appendParameters(args []string, tags []string, pk
+ 
+ 	if !debugBinary {
+ 		// Regular binaries get version tagged and skip some debug symbols
+-		args = append(args, "-trimpath", "-ldflags", ldflags(tags))
++		args = append(args, "-x", "-trimpath", "-ldflags", ldflags(tags))
+ 	} else {
+ 		// -gcflags to disable optimizations and inlining. Skip -ldflags
+ 		// because `Could not launch program: decoding dwarf section info at

@@ -1,0 +1,7 @@
+bin/podtohtml
+${P5SITE}/Pod/
+${P5SITE}/Pod/HTML_Elements.pm
+${P5SITE}/Pod/Links.pm
+@man man/man1/podtohtml.1
+@man man/man3p/Pod::HTML_Elements.3p
+@man man/man3p/Pod::Links.3p

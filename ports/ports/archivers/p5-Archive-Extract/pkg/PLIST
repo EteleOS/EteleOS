@@ -1,0 +1,3 @@
+${P5SITE}/Archive/
+${P5SITE}/Archive/Extract.pm
+@man man/man3p/Archive::Extract.3p

@@ -1,0 +1,15 @@
+Index: src/core/meta-context-main.c
+--- src/core/meta-context-main.c.orig
++++ src/core/meta-context-main.c
+@@ -26,7 +26,11 @@
+ #include <gio/gio.h>
+ 
+ #ifdef HAVE_WAYLAND
++#ifdef __OpenBSD__
++#include <ConsoleKit/sd-login.h>
++#else
+ #include <systemd/sd-login.h>
++#endif
+ #endif
+ 
+ #include "backends/meta-monitor-private.h"

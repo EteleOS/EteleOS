@@ -1,0 +1,2 @@
+@exec ln -sf ${PREFIX}/bin/xsane ${LOCALBASE}/lib/gimp/2.0/plug-ins/
+@unexec rm -f ${LOCALBASE}/lib/gimp/2.0/plug-ins/xsane

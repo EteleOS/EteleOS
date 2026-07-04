@@ -1,0 +1,29 @@
+--- Wnn/jserver/error.c.orig
++++ Wnn/jserver/error.c
+@@ -55,9 +55,10 @@
+ #include "commonhd.h"
+ #include "de_header.h"
+ #include <pwd.h>
++#include <stdlib.h>
++#include <time.h>
++#include <string.h>
+ 
+-extern int errno;
+-
+ static void my_error(), exit_hand();
+ void error1();
+ 
+@@ -91,11 +92,11 @@ static void
+ my_error(x)
+ register char *x;
+ {
+-  long obakenoQ;
++  time_t obakenoQ;
+ /*  struct passed *getpwiuid();  */
+ 
+   if(!noisy)return;
+-  obakenoQ = time((long *)0);
++  obakenoQ = time(NULL);
+   if(c_c){
+ #ifdef SYSVR2
+       fprintf(stderr , "client %s :	%s	%s	 errno =%d\n\n" ,

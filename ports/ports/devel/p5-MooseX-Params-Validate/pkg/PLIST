@@ -1,0 +1,8 @@
+${P5SITE}/MooseX/
+${P5SITE}/MooseX/Params/
+${P5SITE}/MooseX/Params/Validate/
+${P5SITE}/MooseX/Params/Validate.pm
+${P5SITE}/MooseX/Params/Validate/Exception/
+${P5SITE}/MooseX/Params/Validate/Exception/ValidationFailedForTypeConstraint.pm
+@man man/man3p/MooseX::Params::Validate.3p
+@man man/man3p/MooseX::Params::Validate::Exception::ValidationFailedForTypeConstraint.3p

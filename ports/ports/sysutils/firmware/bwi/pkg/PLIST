@@ -1,0 +1,4 @@
+@pkgpath bwi-firmware
+@pkgpath sysutils/bwi-firmware
+firmware/bwi-airforce
+firmware/bwi-info

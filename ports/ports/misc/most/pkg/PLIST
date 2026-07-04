@@ -1,0 +1,9 @@
+@bin bin/most
+@man man/man1/most.1
+share/doc/most/
+share/doc/most/README
+share/doc/most/changes.txt
+share/doc/most/lesskeys.rc
+share/doc/most/most-fun.txt
+share/doc/most/most.rc
+share/doc/most/most.txt

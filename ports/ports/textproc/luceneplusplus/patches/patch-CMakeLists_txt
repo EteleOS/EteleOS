@@ -1,0 +1,14 @@
+disable cotire as it's deprecated and breaks the build with newer libc++
+
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -21,7 +21,7 @@ if(NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_T
+ endif()
+ 
+ set(LIB_DESTINATION
+-  "${CMAKE_INSTALL_FULL_LIBDIR}" CACHE STRING "Define lib output directory name")
++  "lib" CACHE STRING "Define lib output directory name")
+ 
+ 
+ ####################################

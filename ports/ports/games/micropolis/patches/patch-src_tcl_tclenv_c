@@ -1,0 +1,21 @@
+Index: src/tcl/tclenv.c
+--- src/tcl/tclenv.c.orig
++++ src/tcl/tclenv.c
+@@ -58,7 +58,7 @@ static char *		EnvTraceProc _ANSI_ARGS_((ClientData cl
+ static int		FindVariable _ANSI_ARGS_((char *name, int *lengthPtr));
+ 
+ void			setenv_tcl _ANSI_ARGS_((char *name, char *value));
+-int			unsetenv_tcl _ANSI_ARGS_((char *name));
++void			unsetenv_tcl _ANSI_ARGS_((char *name));
+ 
+ 
+ /*
+@@ -277,7 +277,7 @@ setenv_tcl(name, value)
+  *----------------------------------------------------------------------
+  */
+ 
+-int
++void
+ unsetenv_tcl(name)
+     char *name;			/* Name of variable to remove. */
+ {

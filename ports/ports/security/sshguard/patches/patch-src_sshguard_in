@@ -1,0 +1,13 @@
+Index: src/sshguard.in
+--- src/sshguard.in.orig
++++ src/sshguard.in
+@@ -1,6 +1,9 @@
+ #!/bin/sh
+ # sshguard -- protect hosts from brute-force attacks
+ 
++# Ignore HUP
++trap "" HUP
++
+ libexec="@libexecdir@"
+ version="@sshguardversion@"
+ 

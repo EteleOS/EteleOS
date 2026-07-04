@@ -1,0 +1,5 @@
+@bin bin/ImpersonatorToolKit
+lib/GNUstep/Tools/
+lib/GNUstep/Tools/Resources/
+lib/GNUstep/Tools/Resources/ImpersonatorToolKit/
+lib/GNUstep/Tools/Resources/ImpersonatorToolKit/impersonator.css

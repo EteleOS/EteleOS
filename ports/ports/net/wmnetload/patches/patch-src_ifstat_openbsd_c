@@ -1,0 +1,136 @@
+use getifaddrs(3) instead of libkvm.
+
+Index: src/ifstat_openbsd.c
+--- src/ifstat_openbsd.c.orig
++++ src/ifstat_openbsd.c
+@@ -27,10 +27,7 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <net/if.h>
+-#include <fcntl.h>
+-#include <kvm.h>
+-#include <limits.h>
+-#include <nlist.h>
++#include <ifaddrs.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+@@ -38,21 +35,16 @@
+ #include "utils.h"
+ 
+ struct ifstatstate {
+-	void	*ifnet_head;
+-	kvm_t	*kd;
++	int unused;
+ };
+ 
+ /*
+- * Do one-time setup stuff for accessing the interface statistics and store
+- * the gathered information in an interface statistics state structure.
+- * Return the state structure.
++ * Return a dummy state structure.
+  */
+ ifstatstate_t *
+ if_statinit(void)
+ {
+ 	ifstatstate_t	*statep;
+-	struct nlist	ifnet[] = { { "_ifnet" }, { NULL }};
+-	char		errbuf[_POSIX2_LINE_MAX];
+ 
+ 	statep = malloc(sizeof (ifstatstate_t));
+ 	if (statep == NULL) {
+@@ -60,63 +52,44 @@ if_statinit(void)
+ 		return (NULL);
+ 	}
+ 
+-	/*
+-	 * Just for the duration of kmem_openfiles(), get privileges
+-	 * needed to access kmem.
+-	 */
+-	chpriv(PRIV_GAIN);
+-	statep->kd = kvm_openfiles(NULL, NULL, NULL, O_RDONLY, errbuf);
+-	chpriv(PRIV_DROP);
+-	if (statep->kd == NULL) {
+-		warn("cannot access raw kernel memory: %s\n", errbuf);
+-		free(statep);
+-		return (NULL);
+-	}
+-
+-	if (kvm_nlist(statep->kd, ifnet) == -1) {
+-		warn("cannot populate kernel namelist: %s\n",
+-		    kvm_geterr(statep->kd));
+-		goto fail;
+-	}
+-
+-	if (kvm_read(statep->kd, ifnet->n_value, &statep->ifnet_head,
+-	    sizeof (ifnet->n_value)) != sizeof (ifnet->n_value)) {
+-		warn("cannot find ifnet list head: %s\n",
+-		    kvm_geterr(statep->kd));
+-		goto fail;
+-	}
+-
+ 	return (statep);
+-fail:
+-	(void) kvm_close(statep->kd);
+-	free(statep);
+-	return (NULL);
+ }
+ 
+ /*
+- * Optionally using state stored in `statep', retrieve stats on interface
+- * `ifname', and store the statistics in `ifstatsp'.
++ * Retrieve stats on interface `ifname', and store the statistics in `ifstatsp'.
+  */
+ int
+ if_stats(const char *ifname, ifstatstate_t *statep, ifstats_t *ifstatsp)
+ {
+-	void		*ifnet_addr = statep->ifnet_head;
+-	struct ifnet	ifnet;
++	struct ifaddrs	*ifa0, *ifa;
++	int		 ret = 0;
+ 
+-	for (; ifnet_addr != NULL; ifnet_addr = TAILQ_NEXT(&ifnet, if_list)) {
++	(void)statep;
+ 
+-		if (kvm_read(statep->kd, (unsigned long)ifnet_addr, &ifnet,
+-		    sizeof (struct ifnet)) != sizeof (struct ifnet))
+-			return (0);
++	if (getifaddrs(&ifa0) != 0) {
++		warn("failed to get interface addresses");
++		return (0);
++	}
+ 
+-		if (strcmp(ifnet.if_xname, ifname) == 0) {
+-			ifstatsp->rxbytes = ifnet.if_ibytes;
+-			ifstatsp->txbytes = ifnet.if_obytes;
+-			return (1);
++	for (ifa = ifa0; ifa != NULL; ifa = ifa->ifa_next) {
++		if (strcmp(ifname, ifa->ifa_name)) {
++			continue;
+ 		}
++
++		if (ifa->ifa_addr->sa_family == AF_LINK) {
++			struct if_data *ifd = ifa->ifa_data;
++
++			if (ifd != NULL) {
++				ifstatsp->rxbytes = ifd->ifi_ibytes;
++				ifstatsp->txbytes = ifd->ifi_obytes;
++				ret = 1;
++				break;
++			}
++		}
+ 	}
+ 
+-	return (0);
++	freeifaddrs(ifa0);
++	return (ret);
+ }
+ 
+ /*
+@@ -125,6 +98,5 @@ if_stats(const char *ifname, ifstatstate_t *statep, if
+ void
+ if_statfini(ifstatstate_t *statep)
+ {
+-	(void) kvm_close(statep->kd);
+ 	free(statep);
+ }

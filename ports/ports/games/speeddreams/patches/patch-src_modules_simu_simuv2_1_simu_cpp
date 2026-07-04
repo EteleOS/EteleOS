@@ -1,0 +1,18 @@
+Index: src/modules/simu/simuv2.1/simu.cpp
+--- src/modules/simu/simuv2.1/simu.cpp.orig
++++ src/modules/simu/simuv2.1/simu.cpp
+@@ -57,10 +57,10 @@ ctrlCheck(tCar *car)
+ 
+     /* sanity check */
+ #ifndef WIN32
+-    if (isnan(car->ctrl->accelCmd) || isinf(car->ctrl->accelCmd)) car->ctrl->accelCmd = 0;
+-    if (isnan(car->ctrl->brakeCmd) || isinf(car->ctrl->brakeCmd)) car->ctrl->brakeCmd = 0;
+-    if (isnan(car->ctrl->clutchCmd) || isinf(car->ctrl->clutchCmd)) car->ctrl->clutchCmd = 0;
+-    if (isnan(car->ctrl->steer) || isinf(car->ctrl->steer)) car->ctrl->steer = 0;
++    if (std::isnan(car->ctrl->accelCmd) || isinf(car->ctrl->accelCmd)) car->ctrl->accelCmd = 0;
++    if (std::isnan(car->ctrl->brakeCmd) || isinf(car->ctrl->brakeCmd)) car->ctrl->brakeCmd = 0;
++    if (std::isnan(car->ctrl->clutchCmd) || isinf(car->ctrl->clutchCmd)) car->ctrl->clutchCmd = 0;
++    if (std::isnan(car->ctrl->steer) || isinf(car->ctrl->steer)) car->ctrl->steer = 0;
+ #else
+     if (isnan(car->ctrl->accelCmd)) car->ctrl->accelCmd = 0;
+     if (isnan(car->ctrl->brakeCmd)) car->ctrl->brakeCmd = 0;

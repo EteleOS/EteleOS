@@ -1,0 +1,11 @@
+--- sample-config/cgi.cfg.in.orig	Thu Feb 23 21:00:40 2017
++++ sample-config/cgi.cfg.in	Fri Apr 14 13:28:45 2017
+@@ -270,7 +270,7 @@ default_statuswrl_layout=4
+ # OS and distribution, so you may have to tweak this to
+ # work on your system.
+ 
+-ping_syntax=/bin/ping -n -U -c 5 $HOSTADDRESS$
++ping_syntax=/sbin/ping -n -c 5 $HOSTADDRESS$
+ 
+ 
+ 

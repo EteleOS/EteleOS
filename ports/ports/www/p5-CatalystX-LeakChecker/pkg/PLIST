@@ -1,0 +1,3 @@
+${P5SITE}/CatalystX/
+${P5SITE}/CatalystX/LeakChecker.pm
+@man man/man3p/CatalystX::LeakChecker.3p

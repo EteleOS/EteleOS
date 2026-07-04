@@ -1,0 +1,24 @@
+https://savannah.gnu.org/bugs/?58829
+
+Index: src/fault-openbsd-powerpc.h
+--- src/fault-openbsd-powerpc.h.orig
++++ src/fault-openbsd-powerpc.h
+@@ -25,9 +25,16 @@
+ 
+ #else /* 32-bit */
+ 
+-/* See the definition of 'struct sigcontext' and 'struct trapframe' in
+-   openbsd-src/sys/arch/powerpc/include/signal.h.  */
++/* For 32-bit PowerPC, see the definition of 'struct sigcontext' and
++ * 'struct trapframe' in openbsd-src/sys/arch/powerpc/include/signal.h.
++ * For 64-bit PowerPC only 'struct sigcontext' is defined in
++ * openbsd-src/sys/arch/power64/include/signal.h.
++ */
+ 
++#ifdef __powerpc64__
++#define SIGSEGV_FAULT_STACKPOINTER  scp->sc_sp
++#else
+ # define SIGSEGV_FAULT_STACKPOINTER  scp->sc_frame.fixreg[1]
++#endif
+ 
+ #endif

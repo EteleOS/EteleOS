@@ -1,0 +1,9 @@
+--- libparserutils.pc.in.orig	Tue Feb 16 01:49:51 2016
++++ libparserutils.pc.in	Sun Nov 20 19:45:02 2016
+@@ -6,5 +6,5 @@ includedir=${prefix}/INCLUDEDIR
+ Name: libparserutils
+ Description: Utility library for facilitating parser development
+ Version: VERSION
+-Libs: -L${libdir} -lparserutils
++Libs: -L${libdir} -lparserutils -liconv
+ Cflags: -I${includedir}

@@ -1,0 +1,12 @@
+Index: config.php
+--- config.php.orig
++++ config.php
+@@ -17,7 +17,7 @@ define('SABRE_AUTH_REALM', 'grommunio dav');
+ define('DAV_ROOT_URI', '/dav/');
+ 
+ // Location of the sync database (PDO syntax)
+-define('SYNC_DB', 'sqlite:/var/lib/grommunio-dav/syncstate.db');
++define('SYNC_DB', 'sqlite:' . GTOPDIR . '/cache/syncstate.db');
+ 
+ // Number of items to send in one request.
+ define('MAX_SYNC_ITEMS', 1000);

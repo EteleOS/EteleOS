@@ -1,0 +1,3 @@
+${P5SITE}/Catalyst/Plugin/
+${P5SITE}/Catalyst/Plugin/Email.pm
+@man man/man3p/Catalyst::Plugin::Email.3p

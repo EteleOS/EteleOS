@@ -1,0 +1,28 @@
+@newgroup _minidlna:705
+@newuser _minidlna:705:_minidlna::minidlna user:/nonexistent:/sbin/nologin
+@extraunexec rm -rf /var/db/minidlna/*
+@extraunexec rm -rf /var/log/minidlna/*
+@rcscript ${RCDIR}/minidlna
+@man man/man5/minidlna.conf.5
+@man man/man8/minidlnad.8
+@bin sbin/minidlnad
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/minidlna/
+share/examples/minidlna/minidlna.conf
+@sample ${SYSCONFDIR}/minidlna.conf
+share/locale/da/LC_MESSAGES/minidlna.mo
+share/locale/de/LC_MESSAGES/minidlna.mo
+share/locale/es/LC_MESSAGES/minidlna.mo
+share/locale/fr/LC_MESSAGES/minidlna.mo
+share/locale/it/LC_MESSAGES/minidlna.mo
+share/locale/ja/LC_MESSAGES/minidlna.mo
+share/locale/ko/LC_MESSAGES/minidlna.mo
+share/locale/nb/LC_MESSAGES/minidlna.mo
+share/locale/nl/LC_MESSAGES/minidlna.mo
+share/locale/pl/LC_MESSAGES/minidlna.mo
+share/locale/ru/LC_MESSAGES/minidlna.mo
+share/locale/sl/LC_MESSAGES/minidlna.mo
+share/locale/sv/LC_MESSAGES/minidlna.mo
+@owner _minidlna
+@sample /var/db/minidlna/
+@sample /var/log/minidlna/

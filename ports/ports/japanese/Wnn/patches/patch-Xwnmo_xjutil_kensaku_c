@@ -1,0 +1,10 @@
+--- Xwnmo/xjutil/kensaku.c.orig	Fri Apr 21 17:58:51 2000
++++ Xwnmo/xjutil/kensaku.c	Fri Apr 21 17:58:54 2000
+@@ -154,7 +154,6 @@ int flag, tbl;
+     static char message4[2048];
+     int ret;
+     char *table_t[6];
+-    extern int qsort();
+ 
+     if (get_env() == -1) return(NULL);
+ 

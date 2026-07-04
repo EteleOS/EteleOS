@@ -1,0 +1,13 @@
+Index: src/std.c
+--- src/std.c.orig
++++ src/std.c
+@@ -25,9 +25,6 @@
+  * @internal
+  */
+ 
+-/* Needed for gettimeofday(), at least on FreeBSD. */
+-#define _XOPEN_SOURCE 700
+-
+ #include <config.h>
+ #include <string.h>
+ #include <math.h>

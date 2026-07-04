@@ -1,0 +1,234 @@
+Index: OpenBSD.cf
+--- OpenBSD.cf.orig
++++ OpenBSD.cf
+@@ -22,18 +22,20 @@ XCOMM operating system:  OSName (OSMajorVersion./**/OS
+ 
+ #ifdef Ports
+ 
+-#define BinDir			/usr/local/bin
+-#define LibDir			/usr/local/lib/X11
+-#define UsrLibDir		/usr/local/lib
+-#define ManDirectoryRoot	/usr/local/man
+-#define LdPreLib		-L/usr/X11R6/lib -L/usr/local/lib
+-#define XpmLibDir		/usr/X11R6/lib
+-#define XpmIncDir		/usr/X11R6/include
+-#define ConfigDir		/usr/X11R6/lib/X11/config
+-#define IncRoot			/usr/local/include
+-#define TopXInclude		-I/usr/X11R6/include
++#define BinDir			${LOCALBASE}/bin
++#define LibDir			${LOCALBASE}/lib/X11
++#define UsrLibDir		${LOCALBASE}/lib
++#define ManDirectoryRoot	${LOCALBASE}/man
++#define FontDir			${LOCALBASE}/share/fonts
++#define FontEncDir		${LOCALBASE}/share/fonts/encodings
++#define LdPreLib		-L${X11BASE}/lib -L${LOCALBASE}/lib
++#define XpmLibDir		${X11BASE}/lib
++#define XpmIncDir		${X11BASE}/include
++#define ConfigDir		${LOCALBASE}/lib/X11/config
++#define IncRoot			${LOCALBASE}/include
++#define TopXInclude		-I${X11BASE}/include
+ #define ImakeCmd		imake -DPorts
+-#define DocDir			/usr/local/share/doc
++#define DocDir			${LOCALBASE}/share/doc
+ #define BuildHtmlManPages	NO
+ 
+ #endif
+@@ -150,6 +152,7 @@ XCOMM operating system:  OSName (OSMajorVersion./**/OS
+ #define GccUsesGas		YES
+ #define UseGas			YES
+ #define GnuCpp			YES
++#define UseGccMakeDepend	YES
+ 
+ #define UseGnuMalloc		NO
+ 
+@@ -172,6 +175,9 @@ XCOMM operating system:  OSName (OSMajorVersion./**/OS
+ #ifndef CcCmd
+ #define CcCmd 			cc
+ #endif
++#ifndef CplusplusCmd
++#define CplusplusCmd		c++
++#endif
+ #ifndef AsCmd
+ #define AsCmd			cc -c -x assembler
+ #endif
+@@ -244,9 +250,22 @@ XCOMM operating system:  OSName (OSMajorVersion./**/OS
+ /*
+  * Documentation formatting
+  */
+-#define NeqnCmd			neqn -Tlatin1
+-#define NroffCmd		nroff -Tlatin1
+-#define	EqnCmd 			eqn -Tps
++#ifdef UseGroff
++# define NroffCmd		${LOCALBASE}/bin/nroff -Tascii -c
++# define TroffCmd		${LOCALBASE}/bin/nroff -Tps
++# define HTMLroffCmd		${LOCALBASE}/bin/nroff -Thtml
++# define NeqnCmd		${LOCALBASE}/bin/neqn -Tascii
++# define EqnCmd			${LOCALBASE}/bin/eqn -Tps
++# define TblCmd			${LOCALBASE}/bin/tbl
++#else
++# define NroffCmd		mandoc
++# define TroffCmd		mandoc -Tps
++# define HTMLroffCmd		mandoc -Thtml
++# define NeqnCmd		cat
++# define EqnCmd			cat
++# define TblCmd			cat
++#endif
++
+ #define HasGroff		YES
+ 
+ #ifndef HasCookieMaker
+@@ -262,77 +281,15 @@ XCOMM operating system:  OSName (OSMajorVersion./**/OS
+  */
+ #define ManSuffix	1
+ #define FileManSuffix	5
+-#define ManSourcePath	$(MANPATH)/cat
+ 
+-#define InstallManPageLongBase(file,destdir,dest)			@@\
+-all:: file.0								@@\
+-									@@\
+-file.0:: file.$(MANNEWSUFFIX)						@@\
+-	@if [ -f file.$(MANNEWSUFFIX) ]; \				@@\
+-	then \								@@\
+-	cat file.$(MANNEWSUFFIX) | $(NEQN) | $(TBL) | \			@@\
+-		$(NROFF) $(MANMACROS) | $(COL) > file.0; \		@@\
+-	fi 								@@\
+-									@@\
+-install.man::                                                           @@\
+-	MakeDir($(DESTDIR)destdir)					@@\
+-	-@if [ -f file.0 ]; \						@@\
+-	then \								@@\
+-	$(INSTALL) -c $(INSTMANFLAGS) file.0 $(DESTDIR)destdir/dest.0; \@@\
+-	fi								@@\
+-									@@\
+-clean::									@@\
+-	RemoveFile(file.0)
+-
+-#define InstallManPageLong(file,destdir,dest)				@@\
+-BuildInstallHtmlManPage(file,dest,$(MANSUFFIX))				@@\
+-									@@\
+-CppManTarget(file, $(EXTRAMANDEFS))					@@\
+-									@@\
+-InstallManPageLongBase(file,destdir,dest)
+-
+-#define InstallGenManPageLong(file,destdir,dest,suffix)			@@\
+-BuildInstallHtmlManPage(file,dest,suffix)				@@\
+-									@@\
+-CppManTarget(file, $(EXTRAMANDEFS))					@@\
+-									@@\
+-InstallManPageLongBase(file,destdir,dest)
+-
+-#define InstallMultipleMan(list,dest)                                   @@\
+-install.man:: 								@@\
+-	MakeDir($(DESTDIR)dest)						@@\
+-	case '${MFLAGS}' in *[i]*) set +e;; esac; \			@@\
+-	for i in list; do \                                             @@\
+-	  (MNAME=`echo $$i | cut -f1 -d.`; \				@@\
+-	  set -x; \							@@\
+-	  cat $$i | $(NEQN) | $(TBL) | $(NROFF) $(MANMACROS) \		@@\
+-		| $(COL) > $${MNAME}.0; \				@@\
+-	  $(INSTALL) -c $(INSTMANFLAGS) $${MNAME}.0 \			@@\
+-			$(DESTDIR)dest/$${MNAME}.0; \			@@\
+-	  $(RM) $${MNAME}.0); \						@@\
+-	done
+-
+-#define InstallMultipleManSuffix(list,dest,suff)                        @@\
+-install.man:: 								@@\
+-	MakeDir($(DESTDIR)dest)						@@\
+-	case '${MFLAGS}' in *[i]*) set +e;; esac; \			@@\
+-	for i in list; do \                                             @@\
+-	  (set -x; \							@@\
+-	  cat $$i.suff | $(NEQN) | $(TBL) | $(NROFF) $(MANMACROS) \	@@\
+-		| $(COL) > $$i.0; \					@@\
+-	  $(INSTALL) -c $(INSTMANFLAGS) $$i.0	 \			@@\
+-		$(DESTDIR)dest/$$i.0; \					@@\
+-	  $(RM) $$i.0 ); \						@@\
+-	done
+-
+ #define InstallManPageAliasesBase(file,destdir,aliases)			@@\
+-install.man:: 								@@\
+-	@case '${MFLAGS}' in *[i]*) set +e;; esac; \                    @@\
+-	for i in aliases; do \                                          @@\
++install.man::								@@\
++	@SUFFIX=${MANSUFFIX}; \						@@\
++	for i in aliases; do \						@@\
+ 		(set -x; \						@@\
+-		$(RM) $(DESTDIR)destdir/$$i.0;\  			@@\
+-		(cd $(DESTDIR)/destdir; $(LN) file.0 $$i.0);\ 		@@\
+-		); \							@@\
++		$(RM) $(DESTDIR)destdir/$$i.*; \			@@\
++		(cd $(DESTDIR)destdir; $(LN) file.$${SUFFIX} \		@@\
++		$$i.$${SUFFIX})); \					@@\
+ 	done
+ 
+ #define InstallManPageAliases(file,destdir,aliases)			@@\
+@@ -436,8 +393,6 @@ install:: fonts.alias							@@\
+ #ifdef AMD64Architecture
+ 
+ # define HasWeakSymbols		YES
+-# define HasSharedLibraries	YES
+-# define HasDlopen		YES
+ 
+ # define XorgServer		YES
+ 
+@@ -666,51 +621,26 @@ install:: fonts.alias							@@\
+ 
+ 
+ /*
+- * Definitions for the mips architecture (currently arc, pmax)
++ * Definitions for the mips architecture (currently sgi)
+  */
+ #ifdef MipsArchitecture
+ 
+- /*
+-  * Mips ELF shared libs need some special handling.
+-  */
+-# define PositionIndependentCFlags
+-# define SharedLibraryLoadFlags -x -shared --whole-archive -soname `echo $@ | sed 's/\.[0-9]*$$//'`
+-# define SharedXtReqs -L$(BUILDLIBDIR) $(XONLYLIB) $(SMLIB) $(ICELIB)
+-# define SharedXmuReqs $(LDPRELIB) $(XTOOLONLYLIB) $(XLIB)
++# define HasWeakSymbols		YES
+ 
+-#endif /* MipsArchitecture */
++# define XorgServer		YES
+ 
+-
+-/*
+- * Definitions for the arc architecture
+- */
+-#ifdef ArcArchitecture
+-
+-#  define ServerExtraDefines GccGasOption XFree86ServerDefines
+-#  ifndef XFree86ConsoleDefines
+-#    define XFree86ConsoleDefines -DPCCONS_SUPPORT
++# if XorgServer
++#  ifndef DoLoadableServer
++#    define DoLoadableServer	YES
+ #  endif
++#  define XF86CardDrivers	wsfb
++#  define XFree86ConsoleDefines -DWSCONS_SUPPORT
++# endif
+ 
+ # include <xorg.cf>
+ 
+-#endif /* ArcArchitecture */
++#endif /* MipsArchitecture */
+ 
+-
+-/*
+- * Definitions for the pmax architecture
+- */
+-#ifdef PmaxArchitecture
+-
+-# include <xf86.rules>
+-# ifndef BuildServer
+-#  define BuildServer		NO
+-# endif
+-/* For the X11R5 server */
+-# define CompressAllFonts	NO
+-# define InstallFontAliases	InstallFontAliasesNoComment
+-# define UseRgbTxt		NO
+-
+-#endif /* PmaxArchitecture */
+ 
+ /*
+  * Definitions for the PowerPC architecture

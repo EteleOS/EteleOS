@@ -1,0 +1,30 @@
+@pkgpath textproc/py-jaraco-text,python3
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/Lorem ipsum.txt
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/__init__.py
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/${MODPY_PYCACHE}/
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/${MODPY_PYCACHE}layouts.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/${MODPY_PYCACHE}layouts.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/${MODPY_PYCACHE}show-newlines.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/${MODPY_PYCACHE}show-newlines.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/${MODPY_PYCACHE}strip-prefix.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/${MODPY_PYCACHE}strip-prefix.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/${MODPY_PYCACHE}to-dvorak.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/${MODPY_PYCACHE}to-dvorak.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/${MODPY_PYCACHE}to-qwerty.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/${MODPY_PYCACHE}to-qwerty.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/layouts.py
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/py.typed
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/show-newlines.py
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/strip-prefix.py
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/to-dvorak.py
+lib/python${MODPY_VERSION}/site-packages/jaraco/text/to-qwerty.py
+lib/python${MODPY_VERSION}/site-packages/jaraco_text-${MODPY_DISTV}.dist-info/
+lib/python${MODPY_VERSION}/site-packages/jaraco_text-${MODPY_DISTV}.dist-info/METADATA
+lib/python${MODPY_VERSION}/site-packages/jaraco_text-${MODPY_DISTV}.dist-info/RECORD
+lib/python${MODPY_VERSION}/site-packages/jaraco_text-${MODPY_DISTV}.dist-info/WHEEL
+lib/python${MODPY_VERSION}/site-packages/jaraco_text-${MODPY_DISTV}.dist-info/licenses/
+lib/python${MODPY_VERSION}/site-packages/jaraco_text-${MODPY_DISTV}.dist-info/licenses/LICENSE
+lib/python${MODPY_VERSION}/site-packages/jaraco_text-${MODPY_DISTV}.dist-info/top_level.txt

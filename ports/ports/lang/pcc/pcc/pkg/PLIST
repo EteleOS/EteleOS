@@ -1,0 +1,10 @@
+@pkgpath lang/pcc
+@bin bin/pcc
+@bin bin/pcpp
+@bin libexec/ccom
+@bin libexec/cpp
+@man man/man1/ccom.1
+@man man/man1/cpp.1
+@man man/man1/pcc.1
+@man man/man1/pcpp.1
+share/doc/pkg-readmes/${PKGSTEM}

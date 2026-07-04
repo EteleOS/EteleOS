@@ -1,0 +1,4 @@
+lib/gkrellm2/
+lib/gkrellm2/plugins/
+lib/gkrellm2/plugins/gkrellkam2.so
+@man man/man5/gkrellkam.5

@@ -1,0 +1,35 @@
+From 7597cd0b841a0ede22ff4cec6b4b91fb7d26a805 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Robert=20Sch=C3=BCtz?= <mail@dotlambda.de>
+Date: Mon, 27 Feb 2023 23:21:40 -0800
+Subject: [PATCH] PEP 621 compatibility
+
+From 873ff13bb0659a56cfec2e07b464a5f1bf8e722f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=81rni=20Dagur?= <arni@dagur.eu>
+Date: Fri, 3 Mar 2023 00:20:10 +0100
+Subject: [PATCH] Duplicate package information for Poetry
+
+Index: pyproject.toml
+--- pyproject.toml.orig
++++ pyproject.toml
+@@ -1,8 +1,18 @@
+-[tool.poetry]
++[project]
+ name = "adblock"
+-version = "0.0.0"
++version = "0.6.0"
+ description = "Brave's adblocking in Python"
+-authors = ["Árni Dagur <arni@dagur.eu>"]
++requires-python = ">=3.7"
++authors = [
++    {email = "arni@dagur.eu"},
++    {name = "Árni Dagur"}
++]
++classifiers = [
++    "Programming Language :: Python",
++    "Programming Language :: Rust",
++    "License :: OSI Approved :: MIT License",
++    "License :: OSI Approved :: Apache Software License",
++]
+ 
+ [tool.poetry.dependencies]
+ python = "^3.6"

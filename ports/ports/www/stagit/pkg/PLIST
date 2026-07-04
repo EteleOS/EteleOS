@@ -1,0 +1,12 @@
+@bin bin/stagit
+@bin bin/stagit-index
+@man man/man1/stagit-index.1
+@man man/man1/stagit.1
+share/doc/stagit/
+share/doc/stagit/README
+share/doc/stagit/favicon.png
+share/doc/stagit/logo.png
+share/doc/stagit/style.css
+share/examples/stagit/
+share/examples/stagit/example_create.sh
+share/examples/stagit/example_post-receive.sh

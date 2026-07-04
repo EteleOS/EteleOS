@@ -1,0 +1,5 @@
+@bin bin/sngrep
+@man man/man8/sngrep.8
+share/examples/sngrep/
+share/examples/sngrep/sngreprc
+@sample ${SYSCONFDIR}/sngreprc

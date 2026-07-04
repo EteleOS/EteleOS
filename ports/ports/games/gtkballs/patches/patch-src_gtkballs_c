@@ -1,0 +1,12 @@
+Index: src/gtkballs.c
+--- src/gtkballs.c.orig
++++ src/gtkballs.c
+@@ -151,7 +151,7 @@ int main(int argc, char **argv)
+ #ifdef ENABLE_NLS
+    bindtextdomain (PACKAGE, LOCALEDIR);
+    textdomain (PACKAGE);
+-   bind_textdomain_codeset(PACKAGE, "UTF8");
++   bind_textdomain_codeset(PACKAGE, "UTF-8");
+ #endif /* ENABLE_NLS */
+ 
+    /* initialize random seed */

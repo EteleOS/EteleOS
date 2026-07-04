@@ -1,0 +1,13 @@
+@newgroup _ddclient:750
+@newuser _ddclient:750:_ddclient::DynDNS Client:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/ddclient
+bin/ddclient
+share/examples/ddclient/
+@sample ${SYSCONFDIR}/ddclient/
+share/examples/ddclient/ddclient.conf
+@mode 640
+@group _ddclient
+@sample ${SYSCONFDIR}/ddclient/ddclient.conf
+@mode
+@owner _ddclient
+@sample /var/db/ddclient/

@@ -1,0 +1,51 @@
+@bin bin/convertfilestopdf
+@bin bin/convertfilestops
+@bin bin/convertformat
+@bin bin/convertsegfilestopdf
+@bin bin/convertsegfilestops
+@bin bin/converttopdf
+@bin bin/converttops
+@bin bin/fileinfo
+@bin bin/imagetops
+@bin bin/xtractprotos
+include/leptonica/
+include/leptonica/allheaders.h
+include/leptonica/alltypes.h
+include/leptonica/array.h
+include/leptonica/array_internal.h
+include/leptonica/arrayaccess.h
+include/leptonica/bbuffer.h
+include/leptonica/bilateral.h
+include/leptonica/bmf.h
+include/leptonica/bmfdata.h
+include/leptonica/bmp.h
+include/leptonica/ccbord.h
+include/leptonica/ccbord_internal.h
+include/leptonica/colorfill.h
+include/leptonica/dewarp.h
+include/leptonica/endianness.h
+include/leptonica/environ.h
+include/leptonica/gplot.h
+include/leptonica/hashmap.h
+include/leptonica/heap.h
+include/leptonica/imageio.h
+include/leptonica/jbclass.h
+include/leptonica/leptwin.h
+include/leptonica/list.h
+include/leptonica/morph.h
+include/leptonica/pix.h
+include/leptonica/pix_internal.h
+include/leptonica/ptra.h
+include/leptonica/queue.h
+include/leptonica/rbtree.h
+include/leptonica/readbarcode.h
+include/leptonica/recog.h
+include/leptonica/regutils.h
+include/leptonica/stack.h
+include/leptonica/stringcode.h
+include/leptonica/sudoku.h
+include/leptonica/watershed.h
+@static-lib lib/libleptonica.a
+lib/libleptonica.la
+@lib lib/libleptonica.so.${LIBleptonica_VERSION}
+lib/pkgconfig/lept.pc

@@ -1,0 +1,25 @@
+Don't hardcode PREFIX, CC, or CXX.
+
+Index: src/Makefile
+--- src/Makefile.orig
++++ src/Makefile
+@@ -45,7 +45,7 @@ else
+ endif
+ 
+ ### Installation dir definitions
+-PREFIX = /usr/local
++PREFIX ?= /usr/local
+ BINDIR = $(PREFIX)/bin
+ 
+ ### Built-in benchmark for pgo-builds
+@@ -396,8 +396,8 @@ ifeq ($(COMP),)
+ endif
+ 
+ ifeq ($(COMP),gcc)
+-	comp=gcc
+-	CXX=g++
++	comp=${CC}
++	CXX?=g++
+ 	CXXFLAGS += -pedantic -Wextra -Wshadow -Wmissing-declarations
+ 
+ 	ifeq ($(arch),$(filter $(arch),armv7 armv8 riscv64))

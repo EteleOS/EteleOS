@@ -1,0 +1,34 @@
+Index: doc/mkcert.sh
+--- doc/mkcert.sh.orig
++++ doc/mkcert.sh
+@@ -6,19 +6,13 @@
+ umask 077
+ OPENSSL=${OPENSSL-openssl}
+ SSLDIR=${SSLDIR-/etc/ssl}
+-OPENSSLCONFIG=${OPENSSLCONFIG-dovecot-openssl.cnf}
++OPENSSLCONFIG=${OPENSSLCONFIG-${SSLDIR}/dovecot-openssl.cnf}
+ 
+-CERTDIR=$SSLDIR/certs
+ KEYDIR=$SSLDIR/private
+ 
+-CERTFILE=$CERTDIR/dovecot.pem
++CERTFILE=$SSLDIR/dovecotcert.pem
+ KEYFILE=$KEYDIR/dovecot.pem
+ 
+-if [ ! -d $CERTDIR ]; then
+-  echo "$SSLDIR/certs directory doesn't exist"
+-  exit 1
+-fi
+-
+ if [ ! -d $KEYDIR ]; then
+   echo "$SSLDIR/private directory doesn't exist"
+   exit 1
+@@ -34,7 +28,7 @@ if [ -f $KEYFILE ]; then
+   exit 1
+ fi
+ 
+-$OPENSSL req -new -x509 -nodes -config $OPENSSLCONFIG -out $CERTFILE -keyout $KEYFILE -days 365 || exit 2
++$OPENSSL req -new -x509 -nodes -config $OPENSSLCONFIG -out $CERTFILE -keyout $KEYFILE -days 730 || exit 2
+ chmod 0600 $KEYFILE
+ echo 
+ $OPENSSL x509 -subject -fingerprint -noout -in $CERTFILE || exit 2

@@ -1,0 +1,11 @@
+--- src/pgm2asc.c.orig	Mon Jul 27 14:53:43 2009
++++ src/pgm2asc.c	Fri Aug  7 15:13:59 2009
+@@ -1729,7 +1729,7 @@ int glue_broken_chars( pix *pp ){
+   	  }
+         } end_for_each(&(JOB->res.boxlist));
+ 	box4=box5; // next nearest box within the same line
+-      	if (box4) {
++      	if (box2 && box4) {
+ #if 0    /* set this to 1 for debugging of melting bugs */
+           if (JOB->cfg.verbose & 7) {
+             fprintf(stderr,"\n# next two boxes are candidates for melting ");

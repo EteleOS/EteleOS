@@ -1,0 +1,3 @@
+${P5SITE}/String/
+${P5SITE}/String/Truncate.pm
+@man man/man3p/String::Truncate.3p

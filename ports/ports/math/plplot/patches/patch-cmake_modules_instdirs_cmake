@@ -1,0 +1,44 @@
+Index: cmake/modules/instdirs.cmake
+--- cmake/modules/instdirs.cmake.orig
++++ cmake/modules/instdirs.cmake
+@@ -72,14 +72,14 @@ list(APPEND INSTALL_LOCATION_VARIABLES_LIST CMAKE_INST
+ 
+ set(
+   CMAKE_INSTALL_INFODIR
+-  ${CMAKE_INSTALL_DATADIR}/info
++  ${CMAKE_INSTALL_PREFIX}/info
+   CACHE PATH "General install location for info documentation"
+   )
+ list(APPEND INSTALL_LOCATION_VARIABLES_LIST CMAKE_INSTALL_INFODIR)
+ 
+ set(
+   CMAKE_INSTALL_MANDIR
+-  ${CMAKE_INSTALL_DATADIR}/man
++  ${CMAKE_INSTALL_PREFIX}/man
+   CACHE PATH "General install location for man documentation"
+   )
+ list(APPEND INSTALL_LOCATION_VARIABLES_LIST CMAKE_INSTALL_MANDIR)
+@@ -99,11 +99,13 @@ list(APPEND INSTALL_LOCATION_VARIABLES_LIST CMAKE_INST
+ 
+ set(
+   DATA_DIR
+-  ${CMAKE_INSTALL_DATADIR}/${PACKAGE}${PLPLOT_VERSION}
++  ${CMAKE_INSTALL_DATADIR}/${PACKAGE}
+   CACHE PATH "PLplot install location for architecture-independent data"
+   )
+ list(APPEND INSTALL_LOCATION_VARIABLES_LIST DATA_DIR)
+ 
++set(EXAMPLE_DIR ${CMAKE_INSTALL_DATADIR}/examples/${PACKAGE})
++
+ set(
+   LIB_DIR
+   ${CMAKE_INSTALL_LIBDIR}
+@@ -127,7 +129,7 @@ list(APPEND INSTALL_LOCATION_VARIABLES_LIST BIN_DIR)
+ 
+ set(
+   DRV_DIR
+-  ${CMAKE_INSTALL_LIBDIR}/${PACKAGE}${PLPLOT_VERSION}/drivers
++  ${CMAKE_INSTALL_LIBDIR}/${PACKAGE}/drivers
+   CACHE PATH "PLplot install location for dynamically loaded devices"
+   )
+ list(APPEND INSTALL_LOCATION_VARIABLES_LIST DRV_DIR)

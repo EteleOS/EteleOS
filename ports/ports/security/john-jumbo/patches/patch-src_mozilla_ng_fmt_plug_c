@@ -1,0 +1,14 @@
+Index: src/mozilla_ng_fmt_plug.c
+--- src/mozilla_ng_fmt_plug.c.orig
++++ src/mozilla_ng_fmt_plug.c
+@@ -38,6 +38,10 @@ john_register_one(&fmt_mozilla);
+ #include "options.h"
+ #include "sha.h"
+ 
++#ifndef C_Block
++#define C_Block DES_cblock
++#endif
++
+ #define FORMAT_LABEL            "Mozilla"
+ #define FORMAT_NAME             "Mozilla key3.db"
+ #define FORMAT_TAG              "$mozilla$"

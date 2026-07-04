@@ -1,0 +1,18 @@
+Index: Wnn/man/3.libwnn/js_lib/Imakefile
+--- Wnn/man/3.libwnn/js_lib/Imakefile.orig
++++ Wnn/man/3.libwnn/js_lib/Imakefile
+@@ -4,6 +4,14 @@ XCOMM
+ MANDIR = $(LIBMANDIR)
+ MANSUFFIX = $(LIBMANSUFFIX)
+ 
++MANDIR = $(MANPATH)/ja/man$(MANSUFFIX)
++#undef InstallManPage
++#define InstallManPage InstallJManPage
++#undef InstallManPageLong
++#define InstallManPageLong InstallJManPageLong
++#undef InstallManPageAliases
++#define InstallManPageAliases InstallJManPageAliases
++
+ all::
+ 
+ depend::

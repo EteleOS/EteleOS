@@ -1,0 +1,12 @@
+Index: src/examples/pubsub_example.cpp
+--- src/examples/pubsub_example.cpp.orig
++++ src/examples/pubsub_example.cpp
+@@ -35,6 +35,8 @@ using namespace gloox;
+ #include <stdio.h>
+ #include <string>
+ 
++#include <ctime>
++
+ #if defined( WIN32 ) || defined( _WIN32 )
+ # include <windows.h>
+ #endif

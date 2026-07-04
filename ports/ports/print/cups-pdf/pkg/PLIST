@@ -1,0 +1,12 @@
+@extraunexec rm -rf /var/spool/cups-pdf/
+@mode 0700
+@bin libexec/cups/backend/cups-pdf
+@mode
+share/cups/model/CUPS-PDF_noopt.ppd
+share/cups/model/CUPS-PDF_opt.ppd
+share/doc/cups-pdf/
+share/doc/cups-pdf/README
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/cups-pdf/
+share/examples/cups-pdf/cups-pdf.conf
+@sample ${SYSCONFDIR}/cups/cups-pdf.conf

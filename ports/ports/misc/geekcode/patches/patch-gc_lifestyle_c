@@ -1,0 +1,11 @@
+Index: gc_lifestyle.c
+--- gc_lifestyle.c.orig
++++ gc_lifestyle.c
+@@ -20,6 +20,7 @@
+ */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "geekcode.h"
+ 
+ int get_education(void)

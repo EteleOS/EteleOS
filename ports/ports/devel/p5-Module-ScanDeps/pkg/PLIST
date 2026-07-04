@@ -1,0 +1,7 @@
+bin/scandeps.pl
+${P5SITE}/Module/
+${P5SITE}/Module/ScanDeps/
+${P5SITE}/Module/ScanDeps.pm
+${P5SITE}/Module/ScanDeps/Cache.pm
+@man man/man1/scandeps.pl.1
+@man man/man3p/Module::ScanDeps.3p

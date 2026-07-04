@@ -1,0 +1,12 @@
+Index: params.h
+--- params.h.orig
++++ params.h
+@@ -13,7 +13,7 @@
+  * used for any other purpose (that is, don't use "nobody" here).  You can
+  * #undef this to let scanlogd run as root, but this is not recommended.
+  */
+-#define SCANLOGD_USER			"scanlogd"
++#define SCANLOGD_USER			"_scanlogd"
+ 
+ /*
+  * An empty root-owned directory to chroot to.  THE DIRECTORY AND ITS PARENT

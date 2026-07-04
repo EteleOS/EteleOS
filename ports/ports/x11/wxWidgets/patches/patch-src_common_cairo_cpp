@@ -1,0 +1,23 @@
+Don't hardcode shared lib versions.
+
+Index: src/common/cairo.cpp
+--- src/common/cairo.cpp.orig
++++ src/common/cairo.cpp
+@@ -332,7 +332,7 @@ wxCairo::wxCairo()
+ #elif defined(__WXOSX__)
+     wxString cairoDllStr("libcairo.2.dylib");
+ #else
+-    wxString cairoDllStr("libcairo.so.2");
++    wxString cairoDllStr("libcairo.so");
+ #endif
+     m_libCairo.Load(cairoDllStr);
+     m_ok = m_libCairo.IsLoaded();
+@@ -340,7 +340,7 @@ wxCairo::wxCairo()
+         return;
+ 
+ #if wxUSE_PANGO
+-    m_libPangoCairo.Load("libpangocairo-1.0.so.0");
++    m_libPangoCairo.Load("libpangocairo-1.0.so");
+     m_ok = m_libPangoCairo.IsLoaded();
+     if ( !m_ok )
+     {

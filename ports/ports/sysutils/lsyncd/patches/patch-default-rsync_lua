@@ -1,0 +1,12 @@
+Index: default-rsync.lua
+--- default-rsync.lua.orig
++++ default-rsync.lua
+@@ -671,7 +671,7 @@ rsync.exitcodes  = default.rsyncExitCodes
+ rsync.rsync =
+ {
+ 	-- The rsync binary to be called.
+-	binary        = '/usr/bin/rsync',
++	binary        = '${LOCALBASE}/bin/rsync',
+ 	links         = true,
+ 	times         = true,
+ 	protect_args  = true

@@ -1,0 +1,27 @@
+@conflict ruby34-hiera-eyaml-gpg-*
+@pkgpath databases/ruby-hiera-eyaml-gpg,ruby34
+${GEM_LIB}/cache/${DISTNAME}.gem
+${GEM_LIB}/gems/${DISTNAME}/
+${GEM_LIB}/gems/${DISTNAME}/.gitignore
+${GEM_LIB}/gems/${DISTNAME}/.rubocop.yml
+${GEM_LIB}/gems/${DISTNAME}/.travis.yml
+${GEM_LIB}/gems/${DISTNAME}/CHANGELOG.md
+${GEM_LIB}/gems/${DISTNAME}/Gemfile
+${GEM_LIB}/gems/${DISTNAME}/HISTORY.md
+${GEM_LIB}/gems/${DISTNAME}/LICENSE
+${GEM_LIB}/gems/${DISTNAME}/README.md
+${GEM_LIB}/gems/${DISTNAME}/Rakefile
+${GEM_LIB}/gems/${DISTNAME}/hiera-eyaml-gpg.gemspec
+${GEM_LIB}/gems/${DISTNAME}/lib/
+${GEM_LIB}/gems/${DISTNAME}/lib/hiera/
+${GEM_LIB}/gems/${DISTNAME}/lib/hiera/backend/
+${GEM_LIB}/gems/${DISTNAME}/lib/hiera/backend/eyaml/
+${GEM_LIB}/gems/${DISTNAME}/lib/hiera/backend/eyaml/encryptors/
+${GEM_LIB}/gems/${DISTNAME}/lib/hiera/backend/eyaml/encryptors/gpg/
+${GEM_LIB}/gems/${DISTNAME}/lib/hiera/backend/eyaml/encryptors/gpg.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/hiera/backend/eyaml/encryptors/gpg/eyaml_init.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/hiera/backend/eyaml/encryptors/gpg/puppet_gpg.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/hiera/backend/eyaml/encryptors/gpg/version.rb
+${GEM_LIB}/gems/${DISTNAME}/tools/
+${GEM_LIB}/gems/${DISTNAME}/tools/regem.sh
+${GEM_LIB}/specifications/${DISTNAME}.gemspec

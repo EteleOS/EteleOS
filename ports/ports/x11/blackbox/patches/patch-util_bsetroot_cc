@@ -1,0 +1,12 @@
+Index: util/bsetroot.cc
+--- util/bsetroot.cc.orig
++++ util/bsetroot.cc
+@@ -31,6 +31,8 @@
+ 
+ #include <X11/Xatom.h>
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ 
+ // ignore all X errors

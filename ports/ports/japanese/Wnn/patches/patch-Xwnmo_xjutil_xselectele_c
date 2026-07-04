@@ -1,0 +1,13 @@
+--- Xwnmo/xjutil/xselectele.c.orig
++++ Xwnmo/xjutil/xselectele.c
+@@ -104,8 +104,8 @@
+ 
+ static int cc; /* ima no gamen */
+ static int kosuu; /* kosuu of elements */
+-extern hilited_item;
+-extern max_line;
++extern int hilited_item;
++extern int max_line;
+ 
+ int
+ xw_select_one_element_call(c,kosuu1,init,title)

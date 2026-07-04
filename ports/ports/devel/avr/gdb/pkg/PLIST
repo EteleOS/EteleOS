@@ -1,0 +1,5 @@
+@bin bin/avr-gdb
+@bin bin/avr-gdbtui
+@comment lib/libiberty.a
+@man man/man1/avr-gdb.1
+@man man/man1/avr-gdbtui.1

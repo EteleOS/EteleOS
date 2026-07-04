@@ -1,0 +1,139 @@
+.Dd August 27, 2007
+.Dt GAMBATTE 6
+.Os
+.Sh NAME
+.Nm gambatte
+.Nd Nintendo Game Boy Color emulator
+.Sh SYNOPSIS
+.Nm gambatte
+.Op Fl f
+.Op Fl i Ar keys
+.Op Fl -list-keys
+.Op Fl r Ar freq
+.Op Fl s Ar scale
+.Op Fl v Ar filter
+.Op Fl y
+.Ar romfile
+.Sh DESCRIPTION
+.Nm
+emulates a Game Boy (Color) with
+.Ar romfile
+loaded as a Game Boy cartridge.
+.Pp
+The options are as follows:
+.Bl -tag -width Ds
+.It Fl -controls
+Show keyboard controls.
+.It Fl -force-dmg
+Force DMG mode.
+.It Fl f , Fl -full-screen
+Start in full screen mode.
+.It Fl -gba-cgb
+Emulate the Game Boy Advance\(cqs CGB mode.
+.It Fl -multicart-compat
+Support certain multicart ROM images by not strictly respecting the MBC type
+in the ROM header.
+.It Fl i Ar keys , Fl -input Ar keys
+Use the 8 given input
+.Ar keys
+for respectively
+.br
+START SELECT A B UP DOWN LEFT RIGHT
+.It Fl l Ar n , Fl -latency Ar n
+Use audio buffer latency of
+.Ar n
+ms.
+.br
+16 \(<=
+.Ar n
+\(<= 5000, default: 133
+.It Fl -list-keys
+List valid input
+.Ar keys .
+.It Fl p Ar n , Fl -periods Ar n
+Use
+.Ar n
+audio buffer periods.
+.br
+1 \(<=
+.Ar n
+\(<= 32, default: 4
+.It Fl -resampler Ar n
+Use audio resampler number
+.Ar n.
+.Bl -inset -compact
+.It 0
+fast
+.It 1
+High quality
+.Pq polyphase FIR
+.Bq default
+.It 2
+Very high quality
+.Pq polyphase FIR
+.It 3
+Highest quality
+.Pq polyphase FIR
+.El
+.It Fl r Ar n , Fl -sample-rate Ar n
+Use sound sample rate of
+.Ar n
+Hz.
+.br
+32000 \(<=
+.Ar n
+\(<= 192000, default: 48000
+.It Fl s Ar n , Fl -scale Ar n
+Scale video output by an integer factor of
+.Ar n .
+.It Fl v Ar n , Fl -video-filter Ar n
+Use video filter number
+.Ar n :
+.Bl -inset -compact
+.It 0
+None
+.It 1
+Bicubic Catmull\(hyRom spline 2\(mu
+.It 2
+Bicubic Catmull\(hyRom spline 3\(mu
+.It 3
+Kreed\(cqs 2xSal
+.It 4
+MaxSt\(cqs hq2x
+.It 5
+MaxSt\(cqs hq3x
+.El
+.It Fl y , Fl -yuv-overlay
+Use YUV overlay for
+.Pq usually faster
+scaling.
+.El
+.Sh INTERACTIVE KEYBOARD CONTROLS
+.Bl -hang -width "<Return>" -compact
+.It Aq Cm Tab
+fast\(hyforward
+.It Aq Cm Ctrl Ns + Ns Cm f
+toggle full screen
+.It Aq Cm Ctrl Ns + Ns Cm r
+reset
+.It Aq Cm F5
+save state
+.It Aq Cm F6
+choose previous state slot
+.It Aq Cm F7
+choose next state slot
+.It Aq Cm F8
+load state
+.It Cm 0\(en9
+choose state slot 0 to 9
+.It Aq Cm Return
+Start
+.It Aq Cm Shift
+Select
+.It Cm d
+A
+.It Cm c
+B
+.El
+.Sh AUTHORS
+.An Sindre Aam\(oas Aq Mt aamas@stud.ntnu.no

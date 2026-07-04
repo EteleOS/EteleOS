@@ -1,0 +1,4 @@
+${P5SITE}/Apache/Session/Memcached.pm
+${P5SITE}/Apache/Session/Store/Memcached.pm
+@man man/man3p/Apache::Session::Memcached.3p
+@man man/man3p/Apache::Session::Store::Memcached.3p

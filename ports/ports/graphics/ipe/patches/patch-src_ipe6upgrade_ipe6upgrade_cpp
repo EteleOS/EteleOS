@@ -1,0 +1,11 @@
+Index: src/ipe6upgrade/ipe6upgrade.cpp
+--- src/ipe6upgrade/ipe6upgrade.cpp.orig
++++ src/ipe6upgrade/ipe6upgrade.cpp
+@@ -32,6 +32,7 @@
+ #include "ipeattributes.h"
+ #include <cstdlib>
+ 
++using std::exit;
+ using namespace ipe;
+ 
+ // --------------------------------------------------------------------

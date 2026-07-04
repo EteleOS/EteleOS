@@ -1,0 +1,33 @@
+@conflict faad-<2.6.1
+@bin bin/mp4art
+@bin bin/mp4chaps
+@bin bin/mp4extract
+@bin bin/mp4file
+@bin bin/mp4info
+@bin bin/mp4subtitle
+@bin bin/mp4tags
+@bin bin/mp4track
+@bin bin/mp4trackdump
+include/mp4v2/
+include/mp4v2/chapter.h
+include/mp4v2/file.h
+include/mp4v2/file_prop.h
+include/mp4v2/general.h
+include/mp4v2/isma.h
+include/mp4v2/itmf_generic.h
+include/mp4v2/itmf_tags.h
+include/mp4v2/meta.h
+include/mp4v2/mp4v2.h
+include/mp4v2/platform.h
+include/mp4v2/project.h
+include/mp4v2/sample.h
+include/mp4v2/streaming.h
+include/mp4v2/track.h
+include/mp4v2/track_prop.h
+lib/libmp4v2.a
+lib/libmp4v2.la
+@lib lib/libmp4v2.so.${LIBmp4v2_VERSION}
+@man man/man1/mp4art.1
+@man man/man1/mp4file.1
+@man man/man1/mp4subtitle.1
+@man man/man1/mp4track.1

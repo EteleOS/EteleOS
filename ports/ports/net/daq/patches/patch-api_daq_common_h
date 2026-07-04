@@ -1,0 +1,25 @@
+--- api/daq_common.h.orig	Tue Sep  9 15:57:29 2014
++++ api/daq_common.h	Fri Apr 29 10:54:35 2016
+@@ -26,6 +26,10 @@
+ #include <netinet/in.h>
+ #ifndef WIN32
+ #include <sys/time.h>
++#if defined(__OpenBSD__)
++/* for struct bpf_timeval */
++#include <net/bpf.h>
++#endif
+ #else
+ /* for struct timeavl */
+ #include <winsock2.h>
+@@ -98,7 +102,11 @@
+ #define DAQ_PKTHDR_FLOOD    -2  /* Egress is flooding */
+ typedef struct _daq_pkthdr
+ {
++#if defined(__OpenBSD__)
++    struct bpf_timeval ts;      /* Timestamp */
++#else
+     struct timeval ts;      /* Timestamp */
++#endif
+     uint32_t caplen;        /* Length of the portion present */
+     uint32_t pktlen;        /* Length of this packet (off wire) */
+     int32_t ingress_index;  /* Index of the inbound interface. */

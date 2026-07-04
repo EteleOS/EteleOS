@@ -1,0 +1,9 @@
+@comment lib/uim/plugin/libuim-chewing.la
+lib/uim/plugin/libuim-chewing.so
+share/uim/chewing-custom.scm
+share/uim/chewing-key-custom.scm
+share/uim/chewing.scm
+share/uim/pixmaps/chewing.png
+share/uim/pixmaps/chewing_dark_background.png
+@exec %D/bin/uim-module-manager --register chewing
+@unexec %D/bin/uim-module-manager --unregister chewing

@@ -1,0 +1,23 @@
+Index: shared_app.pri
+--- shared_app.pri.orig
++++ shared_app.pri
+@@ -19,7 +19,7 @@ LIBS += \
+ !r_no_opennurbs {
+     LIBS += \
+         -lopennurbs \
+-        -lzlib
++        -lz
+ }
+ 
+ win32 {
+@@ -45,6 +45,10 @@ linux-g++ {
+ 
+ freebsd-* {
+     LIBS += -lGLU -lexecinfo
++}
++
++openbsd {
++    LIBS += -lexecinfo
+ }
+ 
+ macx {

@@ -1,0 +1,17 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -298,6 +298,13 @@ ifdef ENABLE_NLS
+ endif
+ endif
+ 
++ifeq (openbsd,$(D2U_OS))
++ifdef ENABLE_NLS
++	CFLAGS_OS     = -I${LOCALBASE}/include
++	LDFLAGS_EXTRA = -lintl -L${LOCALBASE}/lib
++endif
++endif
++
+ ifeq (darwin,$(D2U_OS))
+ ifdef ENABLE_NLS
+         CFLAGS_OS     = -I/usr/local/include

@@ -1,0 +1,54 @@
+Index: xantfarm.c
+--- xantfarm.c.orig
++++ xantfarm.c
+@@ -25,13 +25,11 @@
+ */
+ 
+ #include <stdio.h>
+-#ifdef SYSV
++#include <stdlib.h>
+ #include <string.h>
+-#include <sys/termio.h>
+-#else /*SYSV*/
+-#include <strings.h>
+-#endif /*SYSV*/
+ #include <pwd.h>
++#include <fcntl.h>
++#include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/ioctl.h>
+ #include <sys/time.h>
+@@ -116,15 +114,6 @@ typedef struct falling_sand_struct {
+ 
+ 
+ 
+-/* Externals. */
+-
+-extern char* getenv();
+-extern char* malloc();
+-extern long random();
+-extern char* realloc();
+-extern long time();
+-
+-
+ /* Forward routines. */
+ 
+ static void x_init();
+@@ -340,7 +329,7 @@ static falling_sand* falling_sands;
+ 
+ /* Routines. */
+ 
+-void
++int
+ main( argc, argv )
+     int argc;
+     char* argv[];
+@@ -1539,7 +1528,7 @@ read_world( cf )
+     char* cf;
+     {
+     FILE* cfP;
+-    char* buf[500];
++    char buf[500];
+     int w, h, x, y, c;
+ 
+     cfP = fopen( cf, "r" );

@@ -1,0 +1,11 @@
+@bin libexec/jesred
+share/doc/jesred/
+share/doc/jesred/README
+share/examples/jesred/
+@sample ${SYSCONFDIR}/jesred/
+share/examples/jesred/jesred.conf.sample
+@sample ${SYSCONFDIR}/jesred/jesred.conf
+share/examples/jesred/redirect.acl.sample
+@sample ${SYSCONFDIR}/jesred/redirect.acl
+share/examples/jesred/redirect.rules.sample
+@sample ${SYSCONFDIR}/jesred/redirect.rules

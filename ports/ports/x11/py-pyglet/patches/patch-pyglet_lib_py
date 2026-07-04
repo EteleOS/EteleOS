@@ -1,0 +1,32 @@
+Expose libraries loaded via ctypes() globally.
+
+Index: pyglet/lib.py
+--- pyglet/lib.py.orig
++++ pyglet/lib.py
+@@ -145,7 +145,7 @@ class LibraryLoader(object):
+         platform_names.extend(names)
+         for name in platform_names:
+             try:
+-                lib = ctypes.cdll.LoadLibrary(name)
++                lib = ctypes.CDLL(name, ctypes.RTLD_GLOBAL)
+                 if _debug_lib:
+                     print(name)
+                 if _debug_trace:
+@@ -155,7 +155,7 @@ class LibraryLoader(object):
+                 path = self.find_library(name)
+                 if path:
+                     try:
+-                        lib = ctypes.cdll.LoadLibrary(path)
++                        lib = ctypes.CDLL(path, ctypes.RTLD_GLOBAL)
+                         if _debug_lib:
+                             print(path)
+                         if _debug_trace:
+@@ -274,7 +274,7 @@ class MachOLibraryLoader(LibraryLoader):
+     def load_framework(self, path):
+         realpath = self.find_framework(path)
+         if realpath:
+-            lib = ctypes.cdll.LoadLibrary(realpath)
++            lib = ctypes.CDLL(realpath, ctypes.RTLD_GLOBAL)
+             if _debug_lib:
+                 print(realpath)
+             if _debug_trace:

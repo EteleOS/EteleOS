@@ -1,0 +1,9 @@
+# gdm-launch-environment settings for pam(3)
+
+auth		required	pam_permit.so
+
+account		required	pam_permit.so
+
+password	required	pam_permit.so
+
+session		include		system

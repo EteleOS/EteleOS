@@ -1,0 +1,11 @@
+--- send.c.orig	Fri Aug  1 15:53:08 2003
++++ send.c	Tue Apr  2 15:44:57 2013
+@@ -41,7 +41,7 @@ static void select_next_random_dest(void)
+ 	unsigned char ra[4];
+ 	char a[4], b[4], c[4], d[4];
+ 
+-	if (sscanf(targetname, "%4[^.].%4[^.].%4[^.].%4[^.]", a, b, c, d) != 4)
++	if (sscanf(targetname, "%3[^.].%3[^.].%3[^.].%3[^.]", a, b, c, d) != 4)
+ 	{
+ 		fprintf(stderr,
+ 			"wrong --rand-dest target host, correct examples:\n"

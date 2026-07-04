@@ -1,0 +1,60 @@
+${P5SITE}/SVG/Graph/
+${P5SITE}/SVG/Graph.pm
+${P5SITE}/SVG/Graph/Data/
+${P5SITE}/SVG/Graph/Data.pm
+${P5SITE}/SVG/Graph/Data/Datum.pm
+${P5SITE}/SVG/Graph/Data/Node.pm
+${P5SITE}/SVG/Graph/Data/Tree.pm
+${P5SITE}/SVG/Graph/File.pm
+${P5SITE}/SVG/Graph/Frame.pm
+${P5SITE}/SVG/Graph/Glyph/
+${P5SITE}/SVG/Graph/Glyph.pm
+${P5SITE}/SVG/Graph/Glyph/axis.pm
+${P5SITE}/SVG/Graph/Glyph/bar.pm
+${P5SITE}/SVG/Graph/Glyph/barflex.pm
+${P5SITE}/SVG/Graph/Glyph/bezier.pm
+${P5SITE}/SVG/Graph/Glyph/bubble.pm
+${P5SITE}/SVG/Graph/Glyph/heatmap.pm
+${P5SITE}/SVG/Graph/Glyph/line.pm
+${P5SITE}/SVG/Graph/Glyph/pictogram.pm
+${P5SITE}/SVG/Graph/Glyph/scatter.pm
+${P5SITE}/SVG/Graph/Glyph/tree.pm
+${P5SITE}/SVG/Graph/Glyph/wedge.pm
+@man man/man3p/SVG::Graph.3p
+@man man/man3p/SVG::Graph::Data.3p
+@man man/man3p/SVG::Graph::Data::Datum.3p
+@man man/man3p/SVG::Graph::Data::Node.3p
+@man man/man3p/SVG::Graph::Data::Tree.3p
+@man man/man3p/SVG::Graph::File.3p
+@man man/man3p/SVG::Graph::Frame.3p
+@man man/man3p/SVG::Graph::Glyph.3p
+@man man/man3p/SVG::Graph::Glyph::axis.3p
+@man man/man3p/SVG::Graph::Glyph::bar.3p
+@man man/man3p/SVG::Graph::Glyph::barflex.3p
+@man man/man3p/SVG::Graph::Glyph::bezier.3p
+@man man/man3p/SVG::Graph::Glyph::bubble.3p
+@man man/man3p/SVG::Graph::Glyph::heatmap.3p
+@man man/man3p/SVG::Graph::Glyph::line.3p
+@man man/man3p/SVG::Graph::Glyph::pictogram.3p
+@man man/man3p/SVG::Graph::Glyph::scatter.3p
+@man man/man3p/SVG::Graph::Glyph::tree.3p
+@man man/man3p/SVG::Graph::Glyph::wedge.3p
+share/examples/p5-SVG-Graph/
+share/examples/p5-SVG-Graph/bar.pl
+share/examples/p5-SVG-Graph/bar_test.pl
+share/examples/p5-SVG-Graph/barstack.pl
+share/examples/p5-SVG-Graph/bezier.pl
+share/examples/p5-SVG-Graph/bubble.pl
+share/examples/p5-SVG-Graph/data/
+share/examples/p5-SVG-Graph/data/organsystems.dchip.txt
+share/examples/p5-SVG-Graph/frequency.pl
+share/examples/p5-SVG-Graph/heatmap.pl
+share/examples/p5-SVG-Graph/heatmap2.pl
+share/examples/p5-SVG-Graph/histo.pl
+share/examples/p5-SVG-Graph/line.pl
+share/examples/p5-SVG-Graph/newick_tree.pl
+share/examples/p5-SVG-Graph/pictogram.pl
+share/examples/p5-SVG-Graph/scatter.pl
+share/examples/p5-SVG-Graph/tree.pl
+share/examples/p5-SVG-Graph/tree_of_life.pl
+share/examples/p5-SVG-Graph/wedge.pl

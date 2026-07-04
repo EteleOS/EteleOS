@@ -1,0 +1,21 @@
+Index: defs.h
+--- defs.h.orig
++++ defs.h
+@@ -31,7 +31,7 @@ typedef enum	{Ace, Deuce, Three, Four, Five, Six, Seve
+ 
+ typedef enum	{Faceup, Facedown, Joker}	Type;
+ 
+-#else DEBUG
++#else
+ 
+ typedef	char	Suit;
+ typedef	char	Rank;
+@@ -60,7 +60,7 @@ typedef	char	Type;
+ #define	Facedown	1
+ #define	Joker		2
+ 
+-#endif DEBUG
++#endif /* DEBUG */
+ 
+ #define	NUM_DECKS	2
+ #define	NUM_PILES	8

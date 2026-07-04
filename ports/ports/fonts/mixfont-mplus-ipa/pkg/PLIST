@@ -1,0 +1,15 @@
+@pkgpath japanese/mplus-ttf
+@pkgpath fonts/ja-mplus-ttf
+share/fonts/
+@fontdir share/fonts/mixfont-mplus-ipa/
+share/fonts/mixfont-mplus-ipa/M+1P+IPAG-circle.ttf
+share/fonts/mixfont-mplus-ipa/M+1P+IPAG.ttf
+share/fonts/mixfont-mplus-ipa/M+1VM+IPAG-circle.ttf
+share/fonts/mixfont-mplus-ipa/M+2P+IPAG-circle.ttf
+share/fonts/mixfont-mplus-ipa/M+2P+IPAG.ttf
+share/fonts/mixfont-mplus-ipa/M+2VM+IPAG-circle.ttf
+share/fonts/mixfont-mplus-ipa/ipag.ttf
+share/fonts/mixfont-mplus-ipa/ipagp.ttf
+share/fonts/mixfont-mplus-ipa/ipagui.ttf
+share/fonts/mixfont-mplus-ipa/ipam.ttf
+share/fonts/mixfont-mplus-ipa/ipamp.ttf

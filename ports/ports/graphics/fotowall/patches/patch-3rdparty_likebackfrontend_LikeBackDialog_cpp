@@ -1,0 +1,11 @@
+Index: 3rdparty/likebackfrontend/LikeBackDialog.cpp
+--- 3rdparty/likebackfrontend/LikeBackDialog.cpp.orig
++++ 3rdparty/likebackfrontend/LikeBackDialog.cpp
+@@ -37,6 +37,7 @@
+ #include "LikeBackDialog.h"
+ 
+ #include <QApplication>
++#include <QButtonGroup>
+ #include <QLocale>
+ #include <QMessageBox>
+ #include <QNetworkAccessManager>

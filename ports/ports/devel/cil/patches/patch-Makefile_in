@@ -1,0 +1,12 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -45,7 +45,7 @@ ifdef EMUL
+ 	 # is broken on MacOS X)
+    MACHDEPCC=$(CC) $(CFLAGS) -static -D_GNUCC
+ else
+-   MACHDEPCC=gcc -D_GNUCC
++   MACHDEPCC=$(CC) -D_GNUCC
+ endif
+ 
+ # We have to use _build because of OCaml's bug #0004502

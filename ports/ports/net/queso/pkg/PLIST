@@ -1,0 +1,7 @@
+lib/queso/
+lib/queso/queso.conf.sample
+@sample ${SYSCONFDIR}/queso.conf
+@man man/man1/queso.1
+sbin/queso
+share/doc/queso/
+share/doc/queso/Documentation.txt

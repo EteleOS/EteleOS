@@ -1,0 +1,39 @@
+@conflict cups-<1.6.0
+@newgroup _cups:541
+@newuser _cups:541:541::CUPS printer spooler daemon:/nonexistent:/sbin/nologin
+bin/cups-config
+include/cups/
+include/cups/adminutil.h
+include/cups/array.h
+include/cups/backend.h
+include/cups/cups.h
+include/cups/dir.h
+include/cups/file.h
+include/cups/http.h
+include/cups/ipp.h
+include/cups/language.h
+include/cups/ppd.h
+include/cups/pwg.h
+include/cups/raster.h
+include/cups/sidechannel.h
+include/cups/transcode.h
+include/cups/versioning.h
+@static-lib lib/libcups.a
+@lib lib/libcups.so.${LIBcups_VERSION}
+@static-lib lib/libcupsimage.a
+@lib lib/libcupsimage.so.${LIBcupsimage_VERSION}
+lib/pkgconfig/cups.pc
+libexec/cups/
+libexec/cups/backend/
+libexec/cups/driver/
+libexec/cups/filter/
+@man man/man1/cups-config.1
+share/cups/
+share/cups/banners/
+share/cups/data/
+share/cups/drv/
+share/cups/mime/
+share/cups/model/
+share/cups/ppdc/
+@group _cups
+@sample ${SYSCONFDIR}/cups/

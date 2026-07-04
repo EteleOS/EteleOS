@@ -1,0 +1,15 @@
+missing header
+
+Index: src/Core/OldSchoolPropertyListWriting.m
+--- src/Core/OldSchoolPropertyListWriting.m.orig
++++ src/Core/OldSchoolPropertyListWriting.m
+@@ -20,6 +20,9 @@
+ 
+ #import "OldSchoolPropertyListWriting.h"
+ 
++#include <assert.h>
++
++
+ 
+ static BOOL IsFloatingPoint(NSNumber *number);
+ static void AppendNewLineAndIndent(NSMutableString *ioString, unsigned indentDepth);

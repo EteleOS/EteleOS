@@ -1,0 +1,11 @@
+Index: es-app/src/views/gamelist/ISimpleGameListView.h
+--- es-app/src/views/gamelist/ISimpleGameListView.h.orig
++++ es-app/src/views/gamelist/ISimpleGameListView.h
+@@ -1,5 +1,7 @@
+ #pragma once
+ 
++#include <stack>
++
+ #include "views/gamelist/IGameListView.h"
+ 
+ #include "components/TextComponent.h"

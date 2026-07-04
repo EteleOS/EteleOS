@@ -1,0 +1,11 @@
+--- src/conf.c.orig	Thu Jun 23 16:40:28 2016
++++ src/conf.c	Thu Jun 23 16:40:38 2016
+@@ -38,7 +38,7 @@
+ // Global config, read-only
+ const cfg_t* gcfg = NULL;
+ 
+-static const char DEF_USERNAME[] = PACKAGE_NAME;
++static const char DEF_USERNAME[] = "_gdnsd";
+ 
+ // just needs 16-bit rdlen followed by TXT strings with length byte prefixes...
+ static const uint8_t chaos_prefix[] = "\xC0\x0C\x00\x10\x00\x03\x00\x00\x00\x00";

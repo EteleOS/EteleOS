@@ -1,0 +1,5 @@
+${P5SITE}/Test/Most/
+${P5SITE}/Test/Most.pm
+${P5SITE}/Test/Most/Exception.pm
+@man man/man3p/Test::Most.3p
+@man man/man3p/Test::Most::Exception.3p

@@ -1,0 +1,12 @@
+--- lib/Makefile.in.orig	Mon Feb 19 07:32:37 2007
++++ lib/Makefile.in	Wed May 27 01:50:14 2009
+@@ -227,8 +227,7 @@ libmcrypt_la_SOURCES = mcrypt_extra.c mcrypt.c bzero.c
+ 	mcrypt_symb.c 
+ 
+ libmcrypt_la_LDFLAGS = \
+-	  -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
+-	  -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
++	  ${librealmcrypt_la_LDFLAGS} \
+ 	  -export-symbols libmcrypt.sym @LIBLTDL@ 
+ 
+ libmcrypt_la_LIBADD = @EXTRA_OBJECTS@

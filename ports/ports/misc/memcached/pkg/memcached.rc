@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/memcached -d"
+daemon_flags="-u _memcached -l 127.0.0.1 -l ::1"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_pre() {
+	/usr/bin/install -d -o _memcached -g _memcached -m 0750 /var/run/memcached
+}
+
+rc_cmd $1

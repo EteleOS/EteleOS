@@ -1,0 +1,3 @@
+${P5SITE}/Shell/
+${P5SITE}/Shell/Guess.pm
+@man man/man3p/Shell::Guess.3p

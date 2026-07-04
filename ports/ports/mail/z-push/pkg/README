@@ -1,0 +1,17 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Z-push is installed under
+    ${INSTDIR}
+
+Some non defaults PHP settings are required on the ${INSTDIR}
+directory. For Apache you can configure this as follows:
+    # ln -s ${PREFIX}/conf/modules.sample/z-push.conf \
+        /var/www/conf/modules
+
+z-push will be available from "http://<hostname>/z-push".
+
+Setting up a mobile device
+==========================
+See ${INSTDIR}/INSTALL

@@ -1,0 +1,11 @@
+Index: lib/exceptionhandler/exceptionhandler.cpp
+--- lib/exceptionhandler/exceptionhandler.cpp.orig
++++ lib/exceptionhandler/exceptionhandler.cpp
+@@ -47,7 +47,6 @@
+ # include <stdint.h>
+ # include <signal.h>
+ # include <string.h>
+-# include <errno.h>
+ 
+ // POSIX headers:
+ # include <unistd.h>

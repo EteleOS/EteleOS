@@ -1,0 +1,6 @@
+bin/httprecorder
+${P5SITE}/HTTP/Recorder/
+${P5SITE}/HTTP/Recorder.pm
+${P5SITE}/HTTP/Recorder/Logger.pm
+@man man/man1/httprecorder.1
+@man man/man3p/HTTP::Recorder.3p

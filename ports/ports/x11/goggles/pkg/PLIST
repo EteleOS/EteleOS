@@ -1,0 +1,4 @@
+bin/goggles
+@bin libexec/goggles
+share/doc/goggles/
+share/doc/goggles/goggles_manual.pdf

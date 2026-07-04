@@ -1,0 +1,375 @@
+#! /usr/bin/perl
+
+# ex:ts=8 sw=4:
+# $OpenBSD: dpb,v 1.149 2023/08/14 14:01:41 espie Exp $
+#
+# Copyright (c) 2010-2013 Marc Espie <espie@openbsd.org>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+use v5.36;
+my $ports1;
+use FindBin;
+BEGIN {
+	$ports1 = $ENV{PORTSDIR} || '/usr/ports';
+}
+
+use lib ("$ports1/infrastructure/lib", "$FindBin::Bin/../lib");
+
+package main;
+
+use DPB::State;
+use DPB::PkgPath;
+use DPB::Core;
+use DPB::Core::Init;
+use DPB::HostProperties;
+use DPB::Shell;
+use DPB::Host;
+use DPB::Vars;
+use DPB::PortInfo;
+use DPB::Engine;
+use DPB::PortBuilder;
+use OpenBSD::Error;
+use DPB::Job;
+use DPB::Grabber;
+use DPB::Trace;
+use File::Basename;
+use Time::HiRes;
+use DPB::Util;
+
+my $keep_going = 1;
+
+sub show_days($days)
+{
+	if ($days == 0) {
+		return "";
+	} elsif ($days == 1) {
+		return "1 day ";
+	} else {
+		return "$days days ";
+	}
+}
+
+sub show_duration($e)
+{
+	my $secs = int($e);
+
+	my $mn = int($secs/60);
+	my $hours = int($mn/60);
+	my $days= int($hours/24);
+	$secs %= 60;
+	$mn %= 60;
+	$hours %= 24;
+
+	return show_days($days).sprintf("%02d:%02d:%02d", $hours, $mn, $secs);
+}
+
+sub report_tty($self, $state)
+{
+	$state->{socket_location} //= basename($state->{external}{path});
+	my $t = CORE::time();
+	return DPB::Util->time2string($t)." [$$] ".$state->{socket_location}.
+		($keep_going ? "" : " STOPPED!").
+		" elapsed: ".show_duration($t-$state->{starttime})."\n";
+}
+
+sub affinityclass()
+{
+	if (DPB::Core::Init->hostcount > 1 || 
+	    DPB::HostProperties->has_mem) {
+		require DPB::Affinity;
+		return "DPB::Affinity";
+	} else {
+		require DPB::AffinityStub;
+		return "DPB::AffinityStub";
+	}
+}
+
+my $subdirlist = {};
+
+my $state = DPB::State->new;
+
+my $cleanup = 
+    sub($sig = 'INT') {
+	if ($$ == $state->{master_pid}) {
+		$> = 0;
+		DPB::Core->cleanup($sig, 0);
+	}
+	eval { $state->{external}->cleanup; };
+    };
+
+for my $sig (qw(INT HUP TERM QUIT)) {
+	$SIG{$sig} = sub {
+	    &$cleanup($sig);
+	    $SIG{$sig} = 'DEFAULT';
+	    kill $sig => $$;
+	};
+}
+
+my $trace = DPB::Trace->new($cleanup);
+
+$state->handle_options;
+$state->{reporter}->add_producers("main", "DPB::Core");
+$trace->set_reporter($state->{reporter});
+
+$state->{all} = 1;
+
+my $default_handling =
+    sub($p, $weight) {
+	if (defined $weight) {
+		$state->heuristics->set_weight($p);
+	}
+	$p->add_to_subdirlist($subdirlist);
+	$state->{all} = 0;
+};
+
+$state->interpret_paths(@{$state->{paths}}, @ARGV,
+    sub($p, $weight = undef) {
+	&$default_handling($p, $weight);
+    });
+$state->interpret_paths(@{$state->{ipaths}},
+    sub($p, $weight = undef) {
+	&$default_handling($p, $weight);
+	$p->{wantinstall} = 1;
+    });
+$state->interpret_paths(@{$state->{cpaths}},
+    sub($p, $weight = undef) {
+	$state->{dontclean}{$p->pkgpath} = 1;
+    });
+
+$state->interpret_paths(@{$state->{xpaths}},
+    sub($p, $weight = undef) {
+	$p->{dontjunk} = 1;
+    });
+
+if ($state->{bad_paths}) {
+	$state->usage("Bad package path #1",
+	    join(" ", @{$state->{bad_paths}}));
+}
+	
+if ($state->opt('a')) {
+	$state->{all} = 1;
+}
+$state->{build_once} //= $state->{all};
+
+DPB::Core->reap;
+$state->handle_build_files;
+
+$state->{builder} = DPB::PortBuilder->new($state);
+
+$state->{affinity} = affinityclass()->new($state, join("/", $state->logdir, "affinity"));
+
+$state->{engine} = DPB::Engine->new($state);
+$state->{reporter}->add_producers($state->engine);
+$state->{grabber} = DPB::Grabber->new($state, \&handle_non_waiting_jobs);
+
+print "Waiting for hosts to finish STARTUP...";
+while (!DPB::Core->avail($state->{listing_host})) {
+	DPB::Core->reap;
+	sleep 1;
+}
+
+# XXX placeholder
+sub reread_config()
+{
+}
+
+my $core = DPB::Core->get($state->{listing_host});
+print "ready on ", $core->hostname, "\n";
+
+if (!$state->{fetch_only} && !$state->{scan_only} &&
+    DPB::Core::Init->hostcount == 1 && $core->prop->{jobs} == 1) {
+	$core->clone->mark_ready;
+	$state->{opt}{e} = 1;
+}
+
+my $dump = DPB::Util->make_hot($state->logger->append('dump'));
+my $debug = DPB::Util->make_hot($state->logger->append('debug'));
+$trace->set_logger($debug);
+
+# this shouldn't happen too often
+sub show_spinning($name)
+{
+	my $q = $state->engine->{$name}{queue};
+	my $ts = DPB::Util->ts2string(Time::HiRes::time());
+	print $debug "$$ $ts: SPINNING ON $name\n";
+	while (my ($k, $v) = each %{$q->{o}}) {
+		print $debug $k, "=>", $v->logname, "\n";
+	}
+}
+
+# this is the usual event loop
+sub handle_non_waiting_jobs()
+{
+	my $force_report = 0;
+	DPB::Core->reap;
+	$state->{external}->receive_commands;
+	$keep_going = !-e $state->logdir."/stop";
+	if ($keep_going) {
+		if (DPB::Core->avail > 1) {
+			$state->engine->recheck_errors;
+		}
+		if (DPB::Core->avail || DPB::Core::Fetcher->avail) {
+			$state->engine->check_buildable;
+		}
+
+		while (DPB::Core->avail && $state->engine->can_build) {
+			$force_report = 1;
+			next if $state->engine->start_new_job;
+			show_spinning('tobuild');
+			last;
+		}
+		while (DPB::Core::Fetcher->avail) {
+			if ($state->engine->can_fetch) {
+				$force_report = 1;
+				next if $state->engine->start_new_fetch;
+				show_spinning('tofetch');
+			}
+			if ($state->engine->can_roach) {
+				$force_report = 1;
+				next if $state->engine->start_new_roach;
+				show_spinning('toroach');
+			}
+
+			last;
+		}
+	}
+	DPB::Core->log_concurrency(CORE::time(), $state->{concurrent});
+	DPB::Core->wake_jobs;
+	$state->{reporter}->report($force_report);
+}
+
+sub main_loop()
+{
+	while (1) {
+		while (1) {
+			handle_non_waiting_jobs();
+			if (!DPB::Core->running) {
+				last if !$keep_going;
+				if (!$state->engine->can_build) {
+					$state->engine->check_buildable(1);
+					if (!$state->engine->can_build) {
+						last;
+					}
+				}
+			}
+			if ($state->{fetch_only}) {
+				if (!DPB::Core::Fetcher->running) {
+					last if !$keep_going;
+					if (!$state->engine->can_fetch) {
+						$state->engine->check_buildable;
+						if (!$state->engine->can_fetch) {
+							last;
+						}
+					}
+
+				}
+			}
+			if (DPB::Core->running) {
+				DPB::Core->reap_wait;
+			}
+		}
+		if (!$state->opt('q') || !$state->engine->recheck_errors) {
+			last;
+		} else {
+			sleep 1; # avoid gobbling cpu in busy-waiting
+		}
+	}
+}
+
+my $skip = undef;
+
+if (keys %$subdirlist > 0) {
+	$state->grabber->grab_subdirs($core, $subdirlist, $skip);
+}
+
+if ($state->{all} && !$state->{random} && !$state->defines("NO_QUICK_SCAN")) {
+	# when restarting interrupted dpb,
+	# find the most important paths first
+	my $list = $state->engine->find_best($state->{dependencies_log}, 25);
+	# if we have them, list them before the full ports tree walk.
+	if (@$list > 0) {
+		$skip = {};
+		for my $name (@$list) {
+			DPB::PkgPath->new($name)->add_to_subdirlist($skip);
+		}
+		$state->grabber->grab_subdirs($core, $skip, undef, 1);
+	}
+}
+
+$state->grabber->complete_subdirs($core, $skip, 0);
+
+if ($state->{all}) {
+	$state->grabber->grab_subdirs($core, undef, $skip);
+}
+
+
+$state->grabber->complete_subdirs($core, undef, 1);
+# give back "our" core to the pool.
+
+my $occupied = 0;
+
+$state->grabber->forget_cache;
+
+if ($state->{all}) {
+	$state->engine->dump_dependencies;
+	if (!$state->defines('NO_HISTORY')) {
+		if ($state->grabber->expire_old_distfiles($core, 
+		    $state->opt('e'))) {
+			$occupied  = 1;
+		}
+	}
+}
+
+if (!$state->opt('e') && !$occupied) {
+	$core->mark_ready;
+}
+
+DPB::PkgPath->sanity_check($state);
+$state->engine->check_buildable;
+
+if ($state->{scan_only}) {
+	# very shortened loop
+	$state->{reporter}->report;
+	if (DPB::Core->running) {
+		DPB::Core->reap_wait;
+	}
+} else {
+	# and let's wait for all jobs now.
+	DPB::Core->start_clock($state->{reporter});
+	main_loop();
+	my @later = $state->grabber->later;
+	if (@later != 0) {
+		my $core = DPB::Core->get;
+		my $subdirlist = {};
+		for my $w (@later) {
+			if ($state->{engine}{built_packages}) {
+				$state->grabber->clean_packages($core, 
+				    $w->fullpkgpath);
+			}
+			$w->add_to_subdirlist($subdirlist);
+		}
+		$state->grabber->grab_subdirs($core, $subdirlist, undef);
+		$state->engine->check_buildable;
+		$core->mark_ready;
+		main_loop();
+	}
+}
+
+$state->{reporter}->reset;
+DPB::Core->cleanup;
+$state->{external}->cleanup;
+print "Elapsed time=", show_duration(CORE::time()-$state->{starttime}),"\n";
+print $state->engine->report_tty($state);
+$state->engine->end_dump($state->logger->append('dump'));
+$state->engine->smart_dump($state->logger->append('summary'));

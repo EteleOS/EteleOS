@@ -1,0 +1,23 @@
+Index: interfac/main.cc
+--- interfac/main.cc.orig
++++ interfac/main.cc
+@@ -10,6 +10,7 @@
+ #include "interfac.h"
+ 
+ #include <locale.h>
++#include <unistd.h>
+ 
+ Interface *ui = 0;
+ const chtype *ColorArray = 0;
+@@ -79,6 +80,11 @@ int main(int argc, char **argv)
+     int ARGC = argc;
+ 
+     setlocale(LC_ALL, "");
++
++    if (pledge("stdio tty cpath rpath wpath fattr proc exec", NULL) == -1) {
++        perror("pledge");
++        exit(EXIT_FAILURE);
++    }
+ 
+     while ((ARGC > 2) && ('-' == ARGV[1][0])) {
+         char *resName = ARGV[1] + 1;

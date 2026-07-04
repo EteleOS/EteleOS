@@ -1,0 +1,28 @@
+--- arc.c.orig	Sat Aug  7 15:06:42 2010
++++ arc.c	Mon May 30 11:55:37 2011
+@@ -129,6 +129,7 @@ main(num, arg)			/* system entry point */
+ #if	UNIX
+ 	struct	stat	sbuf;
+ #endif
++	int		fd;
+ 
+ 	if (num < 3) {
+ 		printf("ARC - Archive utility, Version 5.21p, created on 08/07/2010\n");
+@@ -228,7 +229,7 @@ main(num, arg)			/* system entry point */
+ #if	!MSDOS
+ 	{
+ 		strcat(arctemp, "AXXXXXX");
+-		int fd = mkstemp(arctemp);
++		fd = mkstemp(arctemp);
+ 		if (fd == -1)
+ 		{
+ 			fprintf(stderr, "Unable to create temporary files: %s\n", strerror(errno));
+@@ -298,7 +299,7 @@ main(num, arg)			/* system entry point */
+ 			keepbak = 1;
+ 
+ 		else if (*a == 'W')	/* suppress warnings */
+-			warn = 0;
++			arcwarn = 0;
+ #if	!DOS
+ 		else if (*a == 'I')	/* image mode, no ASCII/EBCDIC x-late */
+ 			image = !image;

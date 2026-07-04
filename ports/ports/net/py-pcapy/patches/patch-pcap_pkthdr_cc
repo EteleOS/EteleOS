@@ -1,0 +1,12 @@
+Index: pcap_pkthdr.cc
+--- pcap_pkthdr.cc.orig
++++ pcap_pkthdr.cc
+@@ -25,7 +25,7 @@
+ // internal pcapobject
+ typedef struct {
+ 	PyObject_HEAD
+-	struct timeval ts;
++	struct bpf_timeval ts;
+ 	bpf_u_int32 caplen;
+ 	bpf_u_int32 len;
+ } pkthdr;

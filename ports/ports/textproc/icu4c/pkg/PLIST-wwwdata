@@ -1,0 +1,4 @@
+share/
+share/icu/
+share/icu/${VERSION}/
+share/icu/${VERSION}/${ENDIAN_DATA}.dat

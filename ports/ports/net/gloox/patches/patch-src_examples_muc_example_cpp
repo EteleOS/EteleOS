@@ -1,0 +1,11 @@
+Index: src/examples/muc_example.cpp
+--- src/examples/muc_example.cpp.orig
++++ src/examples/muc_example.cpp
+@@ -29,6 +29,7 @@ using namespace gloox;
+ #include <string>
+ 
+ #include <cstdio> // [s]print[f]
++#include <ctime>
+ 
+ #ifdef WIN32
+ #include <windows.h>

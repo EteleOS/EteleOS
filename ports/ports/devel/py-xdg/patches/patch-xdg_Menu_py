@@ -1,0 +1,12 @@
+Index: xdg/Menu.py
+--- xdg/Menu.py.orig
++++ xdg/Menu.py
+@@ -626,7 +626,7 @@ class XMLMenuBuilder(object):
+             candidate = os.environ.get('XDG_MENU_PREFIX', '') + "applications.menu"
+             filename = _get_menu_file_path(candidate)
+         if not filename:
+-            raise ParsingError('File not found', "/etc/xdg/menus/%s" % candidate)
++            raise ParsingError('File not found', "${SYSCONFDIR}/xdg/menus/%s" % candidate)
+         # check if it is a .menu file
+         if not filename.endswith(".menu"):
+             raise ParsingError('Not a .menu file', filename)

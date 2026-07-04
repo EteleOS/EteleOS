@@ -1,0 +1,3 @@
+${P5SITE}/Hash/
+${P5SITE}/Hash/Flatten.pm
+@man man/man3p/Hash::Flatten.3p

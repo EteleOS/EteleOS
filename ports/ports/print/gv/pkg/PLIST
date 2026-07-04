@@ -1,0 +1,10 @@
+@bin bin/gv
+bin/gv-update-userconfig
+@info info/gv.info
+lib/X11/app-defaults/GV
+@man man/man1/gv-update-userconfig.1
+@man man/man1/gv.1
+share/gv/
+@comment no checksum
+share/gv/gv_system.ad
+share/gv/safe-gs-workdir/

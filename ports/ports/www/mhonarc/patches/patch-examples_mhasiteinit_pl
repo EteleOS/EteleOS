@@ -1,0 +1,6 @@
+--- examples/mhasiteinit.pl.orig	Mon Jan  3 06:42:39 2011
++++ examples/mhasiteinit.pl	Thu Mar  2 09:36:34 2017
+@@ -1,2 +1,2 @@
+-##---------------------------------------------------------------------------##
++#!/usr/bin/perl
+ ##  File:

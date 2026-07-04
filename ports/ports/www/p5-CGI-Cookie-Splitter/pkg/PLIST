@@ -1,0 +1,3 @@
+${P5SITE}/CGI/Cookie/
+${P5SITE}/CGI/Cookie/Splitter.pm
+@man man/man3p/CGI::Cookie::Splitter.3p

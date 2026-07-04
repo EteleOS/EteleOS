@@ -1,0 +1,10 @@
+@bin bin/kawa
+bin/qexo
+@info info/kawa.info
+@man man/man1/kawa.1
+@man man/man1/qexo.1
+share/kawa/
+share/kawa/bin/
+share/kawa/bin/kawa
+share/kawa/lib/
+share/kawa/lib/kawa.jar

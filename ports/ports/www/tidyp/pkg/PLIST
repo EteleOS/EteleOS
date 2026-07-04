@@ -1,0 +1,10 @@
+@bin bin/tidyp
+include/tidyp/
+include/tidyp/buffio.h
+include/tidyp/platform.h
+include/tidyp/tidyp.h
+include/tidyp/tidypenum.h
+@lib lib/libtidyp-1.04.so.${LIBtidyp-1.04_VERSION}
+lib/libtidyp.a
+lib/libtidyp.la
+@lib lib/libtidyp.so.${LIBtidyp_VERSION}

@@ -1,0 +1,22 @@
+@option no-default-conflict
+@option is-branch
+@pkgpath net/libnet
+@conflict libnet-1.0->=1.0
+@conflict libnet-1.0->=1.0v0
+@conflict libnet-<1.1
+bin/libnet-config-1.0
+include/libnet-1.0/
+include/libnet-1.0/libnet/
+include/libnet-1.0/libnet.h
+include/libnet-1.0/libnet/libnet-asn1.h
+include/libnet-1.0/libnet/libnet-functions.h
+include/libnet-1.0/libnet/libnet-headers.h
+include/libnet-1.0/libnet/libnet-macros.h
+include/libnet-1.0/libnet/libnet-ospf.h
+include/libnet-1.0/libnet/libnet-structures.h
+lib/libnet-1.0/
+lib/libnet-1.0/libnet.a
+@lib lib/libnet-1.0/libnet.so.${LIBnet_VERSION}
+lib/libnet-1.0/libpwrite.a
+@lib lib/libnet.so.${LIBnet_VERSION}
+@man man/man3/libnet.3

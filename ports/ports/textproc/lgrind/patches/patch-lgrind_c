@@ -1,0 +1,41 @@
+Don't use malloc.h header on OpenBSD.
+
+Index: lgrind.c
+--- lgrind.c.orig
++++ lgrind.c
+@@ -94,7 +94,6 @@ static char rcsid[] =
+ #include <stdlib.h>
+ #include <ctype.h>
+ #include <string.h>
+-#include <malloc.h>
+ #include <time.h>
+ /* One of the following two (depending on your system) */
+ #include <unistd.h>
+@@ -516,7 +515,8 @@ int main(int argc, char **argv)
+ 		 printf("\\File{");
+ 		 putstr(fname);
+ 		 printf("}{%d}{%d}{%d}{%d:%02d}{%ld}\n", modtime.tm_year+1900, modtime.tm_mon+1,
+-				 modtime.tm_mday, modtime.tm_hour, modtime.tm_min, stbuf.st_size);
++				 modtime.tm_mday, modtime.tm_hour, modtime.tm_min,
++				 (long)stbuf.st_size);
+       }
+ 
+       code = FALSE;
+@@ -1383,7 +1383,7 @@ boolean putKcp(char *start, char *end, boolean nix)
+       /*
+        * First split off numbers.  We have a rather ad hoc
+        * definition:  A number is a digit followed by any number
+-       * of digits or letters, and periods.
++       * of hex digits, and periods.
+        * (Additionally a number can start with %|$|% (e.g. hex numbers).)
+        * This produces meaningless parses --- %$.2$% is parsed as %|.|%
+        * followed by the number %|2|% --- but should produce decent
+@@ -1413,7 +1413,7 @@ boolean putKcp(char *start, char *end, boolean nix)
+ 		       else
+ 				  outchar(c);
+ 		       c = *start++;
+-		    } while (isalnum(c) || (c == '.' && *start != '.'));
++		    } while (isxdigit(c) || (c == '.' && *start != '.'));
+ 		    putchar('}');
+ 		    start--;
+ 		    continue;

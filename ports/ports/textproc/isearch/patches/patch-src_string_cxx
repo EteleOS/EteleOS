@@ -1,0 +1,20 @@
+--- src/string.cxx.orig	Wed Dec  4 22:02:10 1996
++++ src/string.cxx	Sat May 22 12:55:04 2010
+@@ -453,7 +453,7 @@ INT STRING::CaseEquals(const CHR* CString) const {
+ }
+ 
+ void STRING::Print() const {
+-  cout.write(Buffer, Length);
++  cout.write((char *)Buffer, Length);
+ }
+ 
+ void STRING::Print(PFILE FilePointer) const {
+@@ -464,7 +464,7 @@ void STRING::Print(PFILE FilePointer) const {
+ 
+ // can this be const STRING& ?
+ ostream& operator<<(ostream& os, const STRING& str) {
+-	os.write(str.Buffer, str.Length);
++	os.write((char *)str.Buffer, str.Length);
+ 	return os;
+ }
+ 

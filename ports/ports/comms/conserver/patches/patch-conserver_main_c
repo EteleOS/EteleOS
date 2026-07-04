@@ -1,0 +1,14 @@
+- enable "setproctitle" option by default, for more information in ps listings
+
+Index: conserver/main.c
+--- conserver/main.c.orig
++++ conserver/main.c
+@@ -70,7 +70,7 @@ CONFIG defConfig =
+     DEFPORT,
+     FLAGTRUE, FLAGTRUE, 0, DEFBASEPORT, (char *)0, 0
+ #if HAVE_SETPROCTITLE
+-	, FLAGFALSE
++	, FLAGTRUE
+ #endif
+ #if HAVE_OPENSSL
+ 	, (char *)0, FLAGTRUE, FLAGFALSE, (char *)0

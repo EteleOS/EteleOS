@@ -1,0 +1,11 @@
+--- Levels.h.orig	Thu Oct 15 08:59:14 2009
++++ Levels.h	Thu Oct 15 09:00:25 2009
+@@ -24,7 +24,7 @@
+ class Levels
+ {
+  public:
+-  Levels( int numDirs=0, const char** dirs=NULL );
++  explicit Levels( int numDirs=0, const char** dirs=NULL );
+   bool addPath( const char* path );
+   bool addLevel( const std::string& file, int rank=-1, int index=-1 );
+   int  numLevels();

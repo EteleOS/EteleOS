@@ -1,0 +1,35 @@
+--- codecs.conf.orig	Sat Mar  7 18:39:37 2009
++++ codecs.conf	Sat Apr 27 11:35:23 2013
+@@ -5,12 +5,12 @@
+ # encoders: faac, ffmpeg
+ # decoders: faad, ffmpeg, mplayer
+ #
+-AAC = faac,faad
++AAC = ffmpeg,ffmpeg
+ 
+ # encoders: flac, ffmpeg
+ # decoders: flac, ffmpeg, mplayer
+ #
+-FLAC = flac,flac
++FLAC = ffmpeg,ffmpeg
+ 
+ # encoders: flac, flake
+ # decoders: flac, mplayer
+@@ -21,8 +21,8 @@ FLA = flac,flac
+ # encoders: faac, ffmpeg
+ # decoders: faad, ffmpeg, mplayer
+ #
+-M4A = faac,faad
+-MP4 = faac,faad
++M4A = ffmpeg,ffmpeg
++MP4 = ffmpeg,ffmpeg
+ 
+ # encoders: lame, bladeenc, gogo, toolame, ffmpeg, sox
+ # decoders: lame, ffmpeg, mplayer, sox
+@@ -42,5 +42,5 @@ TTA = ttaenc,ttaenc
+ # encoders: wavpack
+ # decoders: wvunpack, ffmpeg, mplayer
+ #
+-WV = wavpack,wvunpack
++WV = wavpack,ffmpeg
+ 

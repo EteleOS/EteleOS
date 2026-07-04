@@ -1,0 +1,12 @@
+include/oop-adns.h
+include/oop-glib.h
+include/oop-read.h
+include/oop-rl.h
+include/oop-tcl.h
+include/oop-www.h
+include/oop.h
+lib/liboop.a
+lib/liboop.la
+@lib lib/liboop.so.${LIBoop_VERSION}
+lib/pkgconfig/liboop-glib2.pc
+lib/pkgconfig/liboop.pc

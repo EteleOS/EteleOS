@@ -1,0 +1,46 @@
+@bin bin/fbpanel
+lib/fbpanel/
+@so lib/fbpanel/libbatterytext.so
+@so lib/fbpanel/libdclock.so
+@so lib/fbpanel/libdeskno.so
+@so lib/fbpanel/libdeskno2.so
+@so lib/fbpanel/libgenmon.so
+@so lib/fbpanel/libicons.so
+@so lib/fbpanel/libimage.so
+@so lib/fbpanel/liblaunchbar.so
+@so lib/fbpanel/libmem.so
+@so lib/fbpanel/libmem2.so
+@so lib/fbpanel/libmenu.so
+@so lib/fbpanel/libmeter.so
+@so lib/fbpanel/libnet.so
+@so lib/fbpanel/libpager.so
+@so lib/fbpanel/libseparator.so
+@so lib/fbpanel/libspace.so
+@so lib/fbpanel/libtaskbar.so
+@so lib/fbpanel/libtclock.so
+@so lib/fbpanel/libtray.so
+@so lib/fbpanel/libuser.so
+@so lib/fbpanel/libwincmd.so
+libexec/fbpanel/
+libexec/fbpanel/make_profile
+libexec/fbpanel/xlogout
+@man man/man1/fbpanel.1
+share/doc/fbpanel/
+share/doc/fbpanel/CHANGELOG.md
+share/doc/fbpanel/COPYING
+share/doc/fbpanel/CREDITS
+share/doc/fbpanel/INSTALL.md
+share/doc/fbpanel/README.md
+share/fbpanel/
+share/fbpanel/config/
+share/fbpanel/config/default
+share/fbpanel/config/pager
+share/fbpanel/images/
+share/fbpanel/images/dclock_glyphs.png
+share/fbpanel/images/default.xpm
+share/fbpanel/images/gnome-session-halt.png
+share/fbpanel/images/gnome-session-reboot.png
+share/fbpanel/images/logo.png
+share/locale/fr/LC_MESSAGES/fbpanel.mo
+share/locale/it/LC_MESSAGES/fbpanel.mo
+share/locale/ru/LC_MESSAGES/fbpanel.mo

@@ -1,0 +1,15 @@
+Don't reconstruct the ps file from the PDF, this makes ghostscript shit itself:
+GPL Ghostscript 9.04: Error: Font Renderer Plugin ( FreeType ) return code = -1
+
+Index: doc/makefile.in
+--- doc/makefile.in.orig
++++ doc/makefile.in
+@@ -99,7 +99,7 @@ core-pre:
+ 
+ core-post:
+ 
+-doc: info pdf html txt ps
++doc: info pdf html txt
+ 
+ info: gambit.info
+ 

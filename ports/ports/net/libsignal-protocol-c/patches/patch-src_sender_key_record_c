@@ -1,0 +1,12 @@
+Index: src/sender_key_record.c
+--- src/sender_key_record.c.orig
++++ src/sender_key_record.c
+@@ -4,7 +4,7 @@
+ 
+ #include "sender_key_state.h"
+ #include "sender_key.h"
+-#include "utlist.h"
++#include "utlist_local.h"
+ #include "LocalStorageProtocol.pb-c.h"
+ #include "signal_protocol_internal.h"
+ 

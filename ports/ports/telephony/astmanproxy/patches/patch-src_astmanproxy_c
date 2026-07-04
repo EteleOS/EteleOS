@@ -1,0 +1,12 @@
+Index: src/astmanproxy.c
+--- src/astmanproxy.c.orig
++++ src/astmanproxy.c
+@@ -687,7 +687,7 @@ int main(int argc, char *argv[])
+ 	struct linger lingerstruct;	/* for socket reuse */
+ 	int flag;				/* for socket reuse */
+ 	pid_t pid;
+-	char i;
++	int i;
+ 
+ 	/* Figure out if we are in debug mode, handle other switches */
+ 	while (( i = getopt( argc, argv, "dhv" ) ) != EOF )

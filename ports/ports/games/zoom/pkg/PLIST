@@ -1,0 +1,7 @@
+@bin bin/zoom
+share/doc/zoom/
+share/doc/zoom/README
+share/examples/zoom/
+share/examples/zoom/dot.zoomrc
+share/zoom/
+share/zoom/zoomrc

@@ -1,0 +1,12 @@
+${P5SITE}/OpenBSD/
+${P5SITE}/OpenBSD/PackageManager/
+${P5SITE}/OpenBSD/PackageManager/Controller.pm
+${P5SITE}/OpenBSD/PackageManager/CursesView.pm
+${P5SITE}/OpenBSD/PackageManager/DBIModel.pm
+${P5SITE}/OpenBSD/PackageManager/Pkg/
+${P5SITE}/OpenBSD/PackageManager/Pkg.pm
+${P5SITE}/OpenBSD/PackageManager/Pkg/Add.pm
+${P5SITE}/OpenBSD/PackageManager/Pkg/Delete.pm
+${P5SITE}/OpenBSD/PackageManager/State.pm
+@man man/man1/pkg_mgr.1
+sbin/pkg_mgr

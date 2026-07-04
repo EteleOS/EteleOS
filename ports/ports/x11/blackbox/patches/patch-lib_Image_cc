@@ -1,0 +1,11 @@
+Index: lib/Image.cc
+--- lib/Image.cc.orig
++++ lib/Image.cc
+@@ -44,6 +44,7 @@
+ #include <math.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ // #define COLORTABLE_DEBUG
+ // #define MITSHM_DEBUG

@@ -1,0 +1,5 @@
+@bin bin/gnugo
+@info info/gnugo.info
+@man man/man6/gnugo.6
+share/gnugo/
+share/gnugo/gnugo.el

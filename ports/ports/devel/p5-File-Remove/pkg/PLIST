@@ -1,0 +1,3 @@
+${P5SITE}/File/
+${P5SITE}/File/Remove.pm
+@man man/man3p/File::Remove.3p

@@ -1,0 +1,6 @@
+@bin bin/dmtxquery
+@bin bin/dmtxread
+@bin bin/dmtxwrite
+@man man/man1/dmtxquery.1
+@man man/man1/dmtxread.1
+@man man/man1/dmtxwrite.1

@@ -1,0 +1,12 @@
+Index: Makefile.PL
+--- Makefile.PL.orig
++++ Makefile.PL
+@@ -46,7 +46,7 @@ my %WriteMakefileArgs = (
+ 
+ %WriteMakefileArgs = (
+     %WriteMakefileArgs,
+-    LIBS => [ '-llzo2' ],
++    LIBS => [ '-L${LOCALBASE}/lib -llzo2' ],
+ );
+ 
+ my %FallbackPrereqs = (

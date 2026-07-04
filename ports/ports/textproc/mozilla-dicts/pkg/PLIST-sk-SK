@@ -1,0 +1,6 @@
+@pkgpath textproc/mozilla-dicts,-${L}
+share/mozilla-dicts/
+share/mozilla-dicts/sk-SK-ascii.aff
+share/mozilla-dicts/sk-SK-ascii.dic
+share/mozilla-dicts/sk-SK.aff
+share/mozilla-dicts/sk-SK.dic

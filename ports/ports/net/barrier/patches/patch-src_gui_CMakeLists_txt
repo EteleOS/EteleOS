@@ -1,0 +1,12 @@
+Index: src/gui/CMakeLists.txt
+--- src/gui/CMakeLists.txt.orig
++++ src/gui/CMakeLists.txt
+@@ -41,7 +41,7 @@ else()
+ endif()
+ 
+ if (HAVE_X11)
+-    target_link_libraries (barrier X11)
++    target_link_libraries (barrier X11 pthread)
+ endif()
+ 
+ target_link_libraries (barrier common)

@@ -1,0 +1,50 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Getting Started
+===============
+
+The main documentation for Nagios is provided online at
+http://nagios.sourceforge.net/docs/nagioscore/4/en/.
+
+The included sample configuration carries out some simple checks
+on the local machine; these should work as-is.
+
+You may check your configuration file format before starting Nagios:
+
+   # su -m _nagios -c "${TRUEPREFIX}/sbin/nagios -v ${SYSCONFDIR}/nagios/nagios.cfg"
+
+This will parse all configuration files and warn about any problems
+which have been identified.
+
+Enable automatic startup on boot for nagios:
+
+   # rcctl enable nagios
+
+To start nagios, reboot or start it manually:
+
+   # rcctl start nagios
+
+
+Web User-Interface
+==================
+
+If using Apache2, you can enable nagios-web by linking the provided
+http2.conf snippet (you may wish to modify this file):
+
+      # ln -s /var/www/conf/modules.sample/nagios.conf \
+         /var/www/conf/modules
+
+By default it uses HTTP basic authentication; you can create the
+password file as follows (default is nagiosadmin):
+
+      # touch ${SYSCONFDIR}/nagios/htpasswd.users
+      # htpasswd ${SYSCONFDIR}/nagios/htpasswd.users <username>
+
+When done, restart the web server:
+
+      # rcctl restart apache2
+
+You should then be able to access the web interface at
+http://localhost/nagios/

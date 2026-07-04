@@ -1,0 +1,2 @@
+@bin bin/pstree
+@man man/man1/pstree.1

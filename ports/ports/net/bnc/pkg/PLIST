@@ -1,0 +1,8 @@
+bin/bnc
+bin/bncchk
+bin/bncsetup
+bin/mkpasswd
+share/doc/bnc/
+share/doc/bnc/README
+share/examples/bnc/
+share/examples/bnc/bnc.conf.sample

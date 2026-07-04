@@ -1,0 +1,51 @@
+Use pledge.
+
+Index: src/main.c
+--- src/main.c.orig
++++ src/main.c
+@@ -14,6 +14,8 @@
+ # include <sys/prctl.h>
+ #endif
+ 
++int needs_proc_exec = 0;
++
+ static void ATTR_NORETURN
+ version( void )
+ {
+@@ -560,6 +562,36 @@ main( int argc, char **argv )
+ 
+ 	if (load_config( config ))
+ 		return 1;
++
++	if (mvars->list) {
++		if (needs_proc_exec) {
++			if (pledge("stdio rpath inet flock dns getpw tty"
++			    " proc exec prot_exec", NULL) == -1) {
++				sys_error("pledge\n");
++				exit(1);
++			}
++		} else {
++			if (pledge("stdio rpath inet flock dns getpw tty"
++			    " prot_exec", NULL) == -1) {
++				sys_error("pledge\n");
++				exit(1);
++			}
++		}
++	} else {
++		if (needs_proc_exec) {
++			if (pledge("stdio rpath wpath cpath inet fattr flock"
++			    " dns getpw tty proc exec prot_exec", NULL) == -1) {
++				sys_error("pledge\n");
++				exit(1);
++			}
++		} else {
++			if (pledge("stdio rpath wpath cpath inet fattr flock"
++			    " dns getpw tty prot_exec", NULL) == -1) {
++				sys_error("pledge\n");
++				exit(1);
++			}
++		}
++	}
+ 
+ 	signal( SIGPIPE, SIG_IGN );
+ 

@@ -1,0 +1,3 @@
+${P5SITE}/Devel/
+${P5SITE}/Devel/GlobalDestruction.pm
+@man man/man3p/Devel::GlobalDestruction.3p

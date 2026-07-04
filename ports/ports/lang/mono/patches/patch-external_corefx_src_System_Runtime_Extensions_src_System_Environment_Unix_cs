@@ -1,0 +1,14 @@
+Index: external/corefx/src/System.Runtime.Extensions/src/System/Environment.Unix.cs
+--- external/corefx/src/System.Runtime.Extensions/src/System/Environment.Unix.cs.orig
++++ external/corefx/src/System.Runtime.Extensions/src/System/Environment.Unix.cs
+@@ -98,8 +98,8 @@ namespace System
+             // https://www.freedesktop.org/software/systemd/man/file-hierarchy.html
+             switch (folder)
+             {
+-                case SpecialFolder.CommonApplicationData: return "/usr/share";
+-                case SpecialFolder.CommonTemplates: return "/usr/share/templates";
++                case SpecialFolder.CommonApplicationData: return "/usr/local/share";
++                case SpecialFolder.CommonTemplates: return "/usr/local/share/templates";
+             }
+             if (IsMac)
+             {

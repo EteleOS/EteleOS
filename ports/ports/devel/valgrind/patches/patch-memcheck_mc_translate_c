@@ -1,0 +1,15 @@
+--- memcheck/mc_translate.c.orig
++++ memcheck/mc_translate.c
+@@ -5021,6 +5021,12 @@
+          return mkUifUV128(mce, narrowed, rmPCasted);
+       }
+ 
++#if defined(VGO_openbsd)
++      case Iop_MovFromSeg64:
++      case Iop_MovToSeg64:
++         return assignNew('V', mce, Ity_I64, binop(op, atom1, atom2));
++#endif
++
+       default:
+          ppIROp(op);
+          VG_(tool_panic)("memcheck:expr2vbits_Binop");

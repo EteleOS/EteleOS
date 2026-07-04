@@ -1,0 +1,12 @@
+Index: prnt/hpcups/genJPEGStrips.cpp
+--- prnt/hpcups/genJPEGStrips.cpp.orig
++++ prnt/hpcups/genJPEGStrips.cpp
+@@ -28,7 +28,7 @@ extern "C"
+ 
+ #include <setjmp.h>
+ 
+-#include <malloc.h>
++#include <stdlib.h>
+ #include <memory.h>
+ 
+ 

@@ -1,0 +1,10 @@
+The purpose of this Nagios addon is to allow you to send service check
+results to a central monitoring server running Nagios in a secure manner.
+
+nsca	- This program runs as a daemon on the central server that
+	  runs Nagios. It listens for host and service check results
+	  from remote machines (sent using the send_nsca program).
+
+Please note: this package is only provided for compatibility with existing
+NSCA setups and is NOT RECOMMENDED for new installations which should use
+the NSCA-ng software/protocol instead.

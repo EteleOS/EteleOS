@@ -1,0 +1,9 @@
+Index: torev
+--- torev.orig
++++ torev
+@@ -2,3 +2,4 @@
+ sed -e s/pname/$name/g -e s/PNAME/$NAME/g \
+ 	-e "s%#LIBDIR#%$LIBDIR%g" \
+-	-e "s/#REVISION#/$REVISION/" $1
++	-e "s/#REVISION#/$REVISION/" \
++	-e "s@#LOCALBASE#@${LOCALBASE}@g" $1

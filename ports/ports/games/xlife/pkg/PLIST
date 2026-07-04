@@ -1,0 +1,36 @@
+@bin bin/gen-multirules
+bin/lifeconv
+bin/table2r
+@bin bin/xlife
+@man man/man6/lifeconv.6
+@man man/man6/xlife.6
+share/xlife/
+share/xlife/patterns/
+share/xlife/patterns/boundedgrid/
+share/xlife/patterns/boundedgrid/14-2-t.l
+share/xlife/patterns/boundedgrid/beginning-plain.l
+share/xlife/patterns/boundedgrid/beginning-torus.l
+share/xlife/patterns/boundedgrid/glider-torus.l
+share/xlife/patterns/boundedgrid/ice-nine-24.l
+share/xlife/patterns/boundedgrid/snowflakes.l
+share/xlife/patterns/formats/
+share/xlife/patterns/formats/123p271_105.lif
+share/xlife/patterns/formats/13enginecordership.rle
+share/xlife/patterns/formats/17c45reaction.cells
+share/xlife/patterns/formats/agar-p3.rle
+share/xlife/patterns/formats/glider5.mcl
+share/xlife/patterns/langton/
+share/xlife/patterns/langton/Langtons-Ant.colors
+share/xlife/patterns/langton/Langtons-Loops.colors
+share/xlife/patterns/langton/ant.l
+share/xlife/patterns/langton/golly-ants.l
+share/xlife/patterns/langton/langton-ant.r
+share/xlife/patterns/langton/langton-loop.r
+share/xlife/patterns/langton/loop.l
+share/xlife/patterns/life-like/
+share/xlife/patterns/life-like/osc-b3-s23-g32.l
+share/xlife/patterns/pd/
+share/xlife/patterns/pd/lloyd-torus.l
+share/xlife/patterns/pd/lloyd.l
+share/xlife/patterns/pd/lloyd2.l
+share/xlife/patterns/pd/osc-3.l

@@ -1,0 +1,9 @@
+${P5ARCH}/
+${P5ARCH}/Crypt/
+${P5ARCH}/Crypt/IDEA.pm
+${P5ARCH}/Crypt/IDEA.pod
+${P5ARCH}/auto/
+${P5ARCH}/auto/Crypt/
+${P5ARCH}/auto/Crypt/IDEA/
+${P5ARCH}/auto/Crypt/IDEA/IDEA.so
+@man man/man3p/Crypt::IDEA.3p

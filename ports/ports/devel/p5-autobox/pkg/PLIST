@@ -1,0 +1,9 @@
+${P5ARCH}/
+${P5ARCH}/auto/
+${P5ARCH}/auto/autobox/
+@so ${P5ARCH}/auto/autobox/autobox.so
+${P5ARCH}/autobox/
+${P5ARCH}/autobox.pm
+${P5ARCH}/autobox.pod
+${P5ARCH}/autobox/universal.pm
+@man man/man3p/autobox.3p

@@ -1,0 +1,12 @@
+Index: cstool/cstool_mips.c
+--- cstool/cstool_mips.c.orig
++++ cstool/cstool_mips.c
+@@ -16,7 +16,7 @@ void print_insn_detail_mips(csh handle, cs_insn *ins)
+ 	if (ins->detail == NULL)
+ 		return;
+ 
+-	mips = &(ins->detail->mips);
++	mips = &(ins->detail->mipsen);
+ 	if (mips->op_count)
+ 		printf("\top_count: %u\n", mips->op_count);
+ 

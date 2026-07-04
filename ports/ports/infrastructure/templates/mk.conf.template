@@ -1,0 +1,78 @@
+# $OpenBSD: mk.conf.template,v 1.41 2025/10/24 14:25:34 rsadowski Exp $
+
+# This file contains some mk.conf entries suitable for ports work.
+#
+# It may be copy-and-pasted, or included directly from /etc/mk.conf:
+# .include "/usr/ports/infrastructure/templates/mk.conf.template"
+#
+# Anything present in uncommented form is generally safe to use;
+# there are also some commented-out entries with additional settings
+# you might want to use.
+
+#SUDO=/usr/bin/doas
+
+# Set additional warning flags when compiling:
+#WARNINGS=Yes
+#CDIAGFLAGS=-Wall
+
+# Common(ish) misspellings:
+.poison BUILD_DEPEDNS
+.poison BUILD_DEPEMDS
+.poison BUILD_DEPEND
+.poison COMPILERS
+.poison DIST_TUPLES
+.poison DISTFLIES
+.poison EXTRACT_SUFFIX
+.poison GH_COMMENT
+.poison GH_TAG
+.poison LIB_DEPEDNS
+.poison LIB_DEPEMDS
+.poison LIB_DEPEND
+.poison MODGCC4_ARCHES
+.poison MODGNOME_DESKTOP_FILE
+.poison MODGNOME_ICON_CACHE
+.poison MODGNOME_MIME_FILE
+.poison MODPY_ADJFILES
+.poison MODPY_BUILD
+.poison MODPY_BUILDEP
+.poison MODPY_BUILD_DEP
+.poison MODPY_PYPI
+.poison MODPY_PYTEST_LINK_SO
+.poison MODPY_RUN_DEP
+.poison MODPY_TEST
+.poison NOT_FOR_ARCH
+.poison NOT_FOR_ARCHES
+.poison NO_TESTS
+.poison NTLIB
+.poison ONLY_FOR_ARCH
+.poison ONLY_FOR_ARCHES
+.poison REVISON
+.poison REVSION
+.poison RUN_DEPEDNS
+.poison RUN_DEPEMDS
+.poison RUN_DEPEND
+.poison SEPERATE_BUILD
+.poison SITE_SOURCEFORGET
+.poison SUBIDR
+.poison WABTLIB
+.poison WATNLIB
+.poison WKRBUILD
+.poison WKRCONF
+.poison WKRDIST
+.poison WKRINST
+.poison WKRSRC
+
+# used to exist, but now retired
+.poison CONFIGURE_SHARED
+.poison MASTER_SITES
+.poison MODGETTEXT_LIB_DEPENDS
+.poison MODGETTEXT_RUN_DEPENDS
+.poison MODGETTEXT_WANTLIB
+.poison MODPY_EGG_VERSION
+.poison MODPY_FLAVOR
+.poison NO_SYSTRACE
+.poison SHARED_ONLY
+.poison USE_SYSTRACE
+.poison VMEM_WARNING
+.poison WANT_CXX
+.poison _SYSTRACE_CMD

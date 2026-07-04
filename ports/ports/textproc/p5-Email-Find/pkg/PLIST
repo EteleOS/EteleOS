@@ -1,0 +1,5 @@
+${P5SITE}/Email/Find/
+${P5SITE}/Email/Find.pm
+${P5SITE}/Email/Find/addrspec.pm
+@man man/man3p/Email::Find.3p
+@man man/man3p/Email::Find::addrspec.3p

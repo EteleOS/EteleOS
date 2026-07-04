@@ -1,0 +1,11 @@
+Index: src/examples/vcard_example.cpp
+--- src/examples/vcard_example.cpp.orig
++++ src/examples/vcard_example.cpp
+@@ -26,6 +26,7 @@ using namespace gloox;
+ #include <string>
+ 
+ #include <cstdio> // [s]print[f]
++#include <ctime>
+ 
+ class VCardTest : public ConnectionListener, LogHandler, VCardHandler
+ {

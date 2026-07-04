@@ -1,0 +1,40 @@
+Prevent document corruption when including nested EPS files.
+Index: presentps
+--- presentps.orig
++++ presentps
+@@ -453,8 +453,18 @@ foreach (@pre){
+ while (<>) {
+     $pageln = $nextln;
+     @page = ();
++    my $embedded = 0;
+     while (<>) {
+-	if (/^EEND /) {
++	if (/^%%BeginDocument:/) {
++	    # prevent processing of included document
++	    $embedded++;
++	    push @page, $_;
++	} elsif ($embedded) {
++	    if (/^%%EndDocument/) {
++		$embedded--;
++	    }
++	    push @page, $_;
++	} elsif (/^EEND /) {
+ 	    push @page, "EEND\n";
+ 	    s/^EEND //;
+ 	    redo;
+@@ -476,15 +486,6 @@ while (<>) {
+ 	    s/ EP$//;
+ 	    push @page, $_;
+ 	    push @page, "EP\n";
+-	} elsif (/^%%BeginDocument:/) {
+-	    # prevent processing of included document
+-	    push @page, $_;
+-	    while (<>) {
+-		push @page, $_;
+-		if (/^%%EndDocument$/) {
+-		    last;
+-		}
+-	    }
+ 	} elsif (/^%%Trailer$/) {
+ 	    $lastpage = 1;
+ 	    $nextln = $_;

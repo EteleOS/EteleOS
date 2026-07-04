@@ -1,0 +1,12 @@
+Index: doctype/maildigest.cxx
+--- doctype/maildigest.cxx.orig
++++ doctype/maildigest.cxx
+@@ -113,7 +113,7 @@ Description:	Class MAILDIGEST - Internet Mail Digest D
+ Author:		Edward C. Zimmermann, edz@bsn.com
+ @@@-*/
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

@@ -1,0 +1,18 @@
+Index: installer/linux/spooler.cfg
+--- installer/linux/spooler.cfg.orig
++++ installer/linux/spooler.cfg
+@@ -18,7 +18,7 @@
+ #log_timestamp = yes
+ 
+ # Dump raw messages into specified directory before sending via SMTP.
+-#log_raw_message_path = /var/lib/kopano
++#log_raw_message_path = /var/db/kopano
+ #log_raw_message_stage1 = no
+ 
+ # Maximum number of threads used to send outgoing messages
+@@ -27,4 +27,4 @@
+ # spooler Python plugin framework. Disables threading.
+ #plugin_enabled = no
+ # Path to the activated spooler plugins.
+-#plugin_path = /var/lib/kopano/spooler/plugins
++#plugin_path = /var/db/kopano/spooler/plugins

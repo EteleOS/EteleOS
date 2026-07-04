@@ -1,0 +1,14 @@
+Index: lib/pkcs11.cpp
+--- lib/pkcs11.cpp.orig
++++ lib/pkcs11.cpp
+@@ -28,6 +28,10 @@
+ #include "ui_SelectToken.h"
+ #include <QPushButton>
+ 
++#ifdef OPENSSL_NO_ENGINE
++#undef EVP_PKEY_ED25519
++#endif
++
+ void waitcursor(int start, int line)
+ {
+ 	qDebug() << "Waitcursor" << (start ? "start" : "end") << line;

@@ -1,0 +1,2 @@
+@bin bin/pod2mdoc
+@man man/man1/pod2mdoc.1

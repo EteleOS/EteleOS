@@ -1,0 +1,15 @@
+#1: probably a strict alignment fix
+
+Index: test/rtp_decoder.c
+--- test/rtp_decoder.c.orig
++++ test/rtp_decoder.c
+@@ -743,7 +743,8 @@ void rtp_decoder_handle_pkt(u_char *arg,
+     dcdr->frame_nr++;
+ 
+     if ((dcdr->start_tv.tv_sec == 0) && (dcdr->start_tv.tv_usec == 0)) {
+-        dcdr->start_tv = hdr->ts;
++        dcdr->start_tv.tv_sec = hdr->ts.tv_sec;
++        dcdr->start_tv.tv_usec = hdr->ts.tv_usec;
+     }
+ 
+     if (hdr->caplen < dcdr->rtp_offset) {

@@ -1,0 +1,33 @@
+Adjust for OpenBSD struct wsdisplay_font.
+
+Index: tools/psf2bsd.c
+--- tools/psf2bsd.c.orig
++++ tools/psf2bsd.c
+@@ -110,7 +110,7 @@ void dumpbyte(FILE *fp, psf_byte value)
+ 
+ 	for (mask = 0x80; mask != 0; mask = mask >> 1)
+ 	{
+-		fprintf(fp, "%c", (value & mask) ? '#' : '-');
++		fprintf(fp, "%c", (value & mask) ? '*' : '.');
+ 	}
+ }
+ 
+@@ -151,8 +151,9 @@ char *cnv_execute(FILE *infile, FILE *outfile)
+ 
+ 	stride = (psf.psf_width + 7) / 8;
+ 	fprintf(outfile, "static u_char %s_data[];\n\n", fontname);
+-	fprintf(outfile, "static struct wsdisplay_font %s = {\n", fontname);
++	fprintf(outfile, "struct wsdisplay_font %s = {\n", fontname);
+ 	fprintf(outfile, "\t\"%s\",\t\t\t\t/* typeface name */\n", typename);
++	fprintf(outfile, "\t%d,\t\t\t\t/* index */\n", 0);
+ 	fprintf(outfile, "\t%d,\t\t\t\t/* firstchar */\n", first);
+ 	fprintf(outfile, "\t%d,\t\t\t\t/* numchars */\n", last - first + 1);
+ 	fprintf(outfile, "\t%s,\t\t/* encoding */\n", codepage);
+@@ -161,6 +162,7 @@ char *cnv_execute(FILE *infile, FILE *outfile)
+ 	fprintf(outfile, "\t%d,\t\t\t\t/* stride */\n", stride);
+ 	fprintf(outfile, "\tWSDISPLAY_FONTORDER_L2R,\t/* bit order */\n");
+ 	fprintf(outfile, "\tWSDISPLAY_FONTORDER_L2R,\t/* byte order */\n");
++	fprintf(outfile, "\tNULL,\t\t\t\t/* cookie */\n");
+ 	fprintf(outfile, "\t%s_data\t\t\t/* data */\n", fontname);
+ 	fprintf(outfile, "};\n\n");
+ 

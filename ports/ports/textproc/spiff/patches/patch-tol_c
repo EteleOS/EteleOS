@@ -1,0 +1,10 @@
+--- tol.c.orig	Fri Jun 24 19:03:05 2011
++++ tol.c	Fri Jun 24 19:03:18 2011
+@@ -11,6 +11,7 @@
+ static char rcsid[]= "$Header: /cvs/ports/textproc/spiff/patches/patch-tol_c,v 1.3 2024/12/21 11:39:06 sthen Exp $";
+ #endif
+ 
++#include <stdio.h>
+ #include "misc.h"
+ #include "float.h"
+ #include "tol.h"

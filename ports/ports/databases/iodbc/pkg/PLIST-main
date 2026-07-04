@@ -1,0 +1,35 @@
+@pkgpath databases/iodbc
+@extraunexec rm -rf ${SYSCONFDIR}/iodbc/ODBCDataSources/*
+bin/iodbc-config
+@bin bin/iodbctest
+@bin bin/iodbctestw
+include/iodbcext.h
+include/iodbcinst.h
+include/iodbcunix.h
+include/isql.h
+include/isqlext.h
+include/isqltypes.h
+include/odbcinst.h
+include/sql.h
+include/sqlext.h
+include/sqltypes.h
+include/sqlucode.h
+@static-lib lib/libiodbc.a
+lib/libiodbc.la
+@lib lib/libiodbc.so.${LIBiodbc_VERSION}
+@static-lib lib/libiodbcinst.a
+lib/libiodbcinst.la
+@lib lib/libiodbcinst.so.${LIBiodbcinst_VERSION}
+lib/pkgconfig/libiodbc.pc
+@man man/man1/iodbc-config.1
+@man man/man1/iodbctest.1
+@man man/man1/iodbctestw.1
+share/examples/iodbc/
+@sample ${SYSCONFDIR}/iodbc/
+@sample ${SYSCONFDIR}/iodbc/ODBCDataSources/
+share/examples/iodbc/Makefile
+share/examples/iodbc/iodbctest.c
+share/examples/iodbc/odbc.ini.sample
+@sample ${SYSCONFDIR}/iodbc/odbc.ini
+share/examples/iodbc/odbcinst.ini.sample
+@sample ${SYSCONFDIR}/iodbc/odbcinst.ini

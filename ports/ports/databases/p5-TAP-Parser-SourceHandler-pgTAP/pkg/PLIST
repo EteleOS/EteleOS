@@ -1,0 +1,9 @@
+bin/pg_prove
+bin/pg_tapgen
+${P5SITE}/TAP/
+${P5SITE}/TAP/Parser/
+${P5SITE}/TAP/Parser/SourceHandler/
+${P5SITE}/TAP/Parser/SourceHandler/pgTAP.pm
+@man man/man1/pg_prove.1
+@man man/man1/pg_tapgen.1
+@man man/man3p/TAP::Parser::SourceHandler::pgTAP.3p

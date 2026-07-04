@@ -1,0 +1,20 @@
+Index: autoconf/aclocal.m4
+--- autoconf/aclocal.m4.orig
++++ autoconf/aclocal.m4
+@@ -604,13 +604,13 @@ fi
+ 
+ dnl #Some defaults
+ ELFLIB="lib\$(THIS_LIB).so"
+-ELFLIB_MAJOR="\$(ELFLIB).\$(ELF_MAJOR_VERSION)"
+-ELFLIB_MAJOR_MINOR="\$(ELFLIB_MAJOR).\$(ELF_MINOR_VERSION)"
++ELFLIB_MAJOR="\$(ELFLIB).\$(LIBslang_MAJOR)"
++ELFLIB_MAJOR_MINOR="\$(ELFLIB).\$(LIBslang_MAJOR).\$(LIBslang_MINOR)"
+ ELFLIB_MAJOR_MINOR_MICRO="\$(ELFLIB_MAJOR_MINOR).\$(ELF_MICRO_VERSION)"
+ 
+ dnl# This specifies the target to use in the makefile to install the shared library
+ INSTALL_ELFLIB_TARGET="install-elf-and-links"
+-ELFLIB_BUILD_NAME="\$(ELFLIB_MAJOR_MINOR_MICRO)"
++ELFLIB_BUILD_NAME="\$(ELFLIB_MAJOR_MINOR)"
+ INSTALL_MODULE="\$(INSTALL)"
+ SLANG_DLL_CFLAGS=""
+ M_LIB="-lm"

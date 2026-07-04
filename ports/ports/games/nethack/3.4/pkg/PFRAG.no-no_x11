@@ -1,0 +1,4 @@
+${GAMEDIR}/pet_mark.xbm
+${GAMEDIR}/rip.xpm
+${GAMEDIR}/x11tiles
+lib/X11/app-defaults/NetHack-${V}

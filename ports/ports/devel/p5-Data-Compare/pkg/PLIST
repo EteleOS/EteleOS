@@ -1,0 +1,10 @@
+${P5SITE}/Data/
+${P5SITE}/Data/Compare/
+${P5SITE}/Data/Compare.pm
+${P5SITE}/Data/Compare/Plugins/
+${P5SITE}/Data/Compare/Plugins.pod
+${P5SITE}/Data/Compare/Plugins/Scalar/
+${P5SITE}/Data/Compare/Plugins/Scalar/Properties.pm
+@man man/man3p/Data::Compare.3p
+@man man/man3p/Data::Compare::Plugins.3p
+@man man/man3p/Data::Compare::Plugins::Scalar::Properties.3p

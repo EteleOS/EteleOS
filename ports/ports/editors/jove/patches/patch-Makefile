@@ -1,0 +1,91 @@
+--- Makefile.orig	Wed May 26 06:46:38 2010
++++ Makefile	Fri Nov 11 20:59:04 2011
+@@ -21,9 +21,9 @@ SHELL = /bin/sh
+ # If they don't exist, this makefile will try to create the directories
+ # LIBDIR and SHAREDIR.  All others must already exist.
+ 
+-JOVEHOME = /usr/local
+-SHAREDIR = $(JOVEHOME)/lib/jove
+-LIBDIR = $(JOVEHOME)/lib/jove
++JOVEHOME = ${PREFIX}
++SHAREDIR = $(JOVEHOME)/share/jove
++LIBDIR = $(JOVEHOME)/libexec/jove
+ BINDIR = $(JOVEHOME)/bin
+ XEXT=
+ MANDIR = $(JOVEHOME)/man/man$(MANEXT)
+@@ -56,14 +56,16 @@ DFLTSHELL = /bin/csh
+ INSTALLFLAGS = # -g bin -o root
+ 
+ # to install executable files
+-XINSTALL=cp
++#XINSTALL=cp
+ #XINSTALL=/usr/ucb/install $(INSTALLFLAGS) -c -m 755 # -s
+ #CYGWIN32: XINSTALL=install $(INSTALLFLAGS) -c -m 755
++XINSTALL=${BSD_INSTALL_PROGRAM}
+ 
+ # to install text files
+-TINSTALL=cp
++#TINSTALL=cp
+ #TINSTALL=/usr/ucb/install $(INSTALLFLAGS) -c -m 644
+ #CYGWIN32: TINSTALL=install $(INSTALLFLAGS) -c -m 644
++TINSTALL=${BSD_INSTALL_DATA}
+ 
+ # These should all just be right if the above ones are.
+ # You will confuse JOVE if you move anything from LIBDIR or SHAREDIR.
+@@ -138,6 +140,7 @@ JOVETOOLM = $(MANDIR)/jovetool.$(MANEXT)
+ # to exit using exit(), instead of _exit()).
+ 
+ SYSDEFS = -DBSDPOSIX_STDC
++#SYSDEFS = -DBSDPOSIX
+ 
+ # Select optimization level (flags passed to compiling and linking steps).
+ # On most systems: -g for debugging, -O for optimization.
+@@ -146,7 +149,7 @@ SYSDEFS = -DBSDPOSIX_STDC
+ # On DEC OSF/1 and Digital UNIX VV4.0, add -std1 to enable ANSI C features
+ # and perhaps -g3 for more debugging info with optimization.
+ 
+-OPTFLAGS = -O
++#OPTFLAGS = -O
+ 
+ # For making dependencies under BSD systems
+ DEPENDFLAG = -M
+@@ -181,13 +184,13 @@ EXTRALIBS =
+ #	PDP-11 with separate I&D: -i
+ #	PDP-11 without separate I&D: -n
+ 
+-LDFLAGS =
++#LDFLAGS =
+ 
+ # for SCO Xenix, set
+ #	MEMFLAGS = -Mle
+ #	CFLAGS = -LARGE -O -F 3000 -K -Mle  (say -Mle2 for an 80286)
+ 
+-CFLAGS = $(OPTFLAGS) $(SYSDEFS)
++CFLAGS += $(SYSDEFS)
+ 
+ # For SYSVR4 (/usr/ucb/cc will NOT work because of setjmp.h):
+ #	CC = /usr/bin/cc
+@@ -236,7 +239,7 @@ NROFF = nroff
+ TROFF = troff -Tpost
+ TROFFPOST = | /usr/lib/lp/postscript/dpost -
+ 
+-MANUALS = $(JOVEM) $(TEACHJOVEM) $(XJOVEM) $(JOVETOOLM)
++MANUALS = $(JOVEM) $(TEACHJOVEM) # $(XJOVEM) $(JOVETOOLM)
+ 
+ C_SRC = commands.c commands.tab abbrev.c argcount.c ask.c buf.c c.c case.c jctype.c \
+ 	delete.c disp.c extend.c fp.c fmt.c insert.c io.c iproc.c \
+@@ -362,8 +365,12 @@ install: $(LIBDIR) $(SHAREDIR) \
+ 	 $(TEACH-JOVE) $(CMDS.DOC) $(TERMSDIR)docs \
+ 	 $(PORTSRVINST) $(RECOVER) $(JOVE) $(TEACHJOVE) $(MANUALS)
+ 	$(TINSTALL) doc/jove.rc $(JOVERC)
+-	@echo See the README about changes to /etc/rc or /etc/rc.local
+-	@echo so that the system recovers jove files on reboot after a crash
++	$(TINSTALL) README $(SHAREDIR)
++	@echo ""
++	@echo "*** See $(SHAREDIR)/README about changes to /etc/rc or"
++	@echo "*** /etc/rc.local so that the system recovers jove files"
++	@echo "*** on reboot after a system crash"
++	@echo ""
+ 
+ $(LIBDIR)::
+ 	test -d $(LIBDIR) || mkdir -p $(LIBDIR)

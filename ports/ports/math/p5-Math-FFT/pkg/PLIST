@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Math/
+${P5ARCH}/Math/FFT.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Math/
+${P5ARCH}/auto/Math/FFT/
+@so ${P5ARCH}/auto/Math/FFT/FFT.so
+@man man/man3p/Math::FFT.3p

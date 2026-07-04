@@ -1,0 +1,13 @@
+@bin bin/ytnef
+@bin bin/ytnefprint
+bin/ytnefprocess
+include/mapi.h
+include/mapidefs.h
+include/mapitags.h
+include/tnef-errors.h
+include/tnef-types.h
+include/ytnef.h
+@static-lib lib/libytnef.a
+lib/libytnef.la
+@lib lib/libytnef.so.${LIBytnef_VERSION}
+lib/pkgconfig/libytnef.pc

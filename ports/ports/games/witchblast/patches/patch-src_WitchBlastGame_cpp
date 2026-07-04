@@ -1,0 +1,35 @@
+fix save location for death certificates (rip_...)
+
+Index: src/WitchBlastGame.cpp
+--- src/WitchBlastGame.cpp.orig
++++ src/WitchBlastGame.cpp
+@@ -2816,7 +2816,7 @@ void WitchBlastGame::renderMessages()
+ void WitchBlastGame::saveDeathScreen()
+ {
+   std::stringstream ss;
+-  ss << "rip_";
++  ss << BASE_DATA_DIR << "data/rip_";
+   time_t t = time(0);   // get time now
+   struct tm * now = localtime( & t );
+ 
+@@ -3109,6 +3109,11 @@ void WitchBlastGame::updateMenu()
+         return;
+       }
+ 
++      // Ignore buttons that get released
++      if (event.type == sf::Event::JoystickButtonReleased) {
++	return;
++      }
++
+       // button pressed ?
+       for (int i = 0; !found && i < nbButtons; i++)
+       {
+@@ -3124,7 +3129,7 @@ void WitchBlastGame::updateMenu()
+       if (!found)
+       {
+         // axis ?
+-        for (int i = sf::Joystick::X; i <= sf::Joystick::PovY; i++)
++        for (int i = sf::Joystick::PovX; i <= sf::Joystick::PovY; i++)
+         {
+           if (sf::Joystick::hasAxis(0, (sf::Joystick::Axis)i))
+           {

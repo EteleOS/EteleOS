@@ -1,0 +1,3 @@
+@pkgpath sysutils/terraform/terraform
+@bin bin/terraform
+share/doc/pkg-readmes/${PKGSTEM}

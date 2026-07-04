@@ -1,0 +1,8 @@
+--- lua/lua2json.lua.orig	Tue Nov 20 19:44:13 2012
++++ lua/lua2json.lua	Tue Nov 20 19:44:20 2012
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env lua
++#!${MODLUA_BIN}
+ 
+ -- usage: lua2json.lua [lua_file]
+ --

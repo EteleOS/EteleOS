@@ -1,0 +1,26 @@
+Index: sched.c
+--- sched.c.orig
++++ sched.c
+@@ -110,6 +110,10 @@ calctimo()
+   return min;
+ }
+ 
++#ifdef IPC_EXPORT_IMAGE
++ extern struct window *windows;
++#endif
++
+ void
+ sched()
+ {
+@@ -121,6 +125,11 @@ sched()
+ 
+   for (;;)
+     {
++#ifdef IPC_EXPORT_IMAGE
++      /* export image from last used window which is on top of the list */
++      CopyWinImage( windows, shm );
++#endif
++
+       if (calctimeout)
+ 	timeoutev = calctimo();
+       if (timeoutev)

@@ -1,0 +1,21 @@
+@extraunexec rm -rf /var/spool/incron/
+@mode 1730
+@rcscript ${RCDIR}/incrond
+@mode 2555
+@group crontab
+@bin bin/incrontab
+@mode
+@group
+@man man/man1/incrontab.1
+@man man/man5/incron.conf.5
+@man man/man5/incrontab.5
+@man man/man8/incrond.8
+@bin sbin/incrond
+share/examples/incron/
+@sample ${SYSCONFDIR}/incron.d/
+share/examples/incron/incron.conf.example
+@sample ${SYSCONFDIR}/incron.conf
+@mode 1730
+@owner root
+@group crontab
+@sample /var/spool/incron/

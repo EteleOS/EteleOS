@@ -1,0 +1,32 @@
+@bin bin/calfjackhost
+lib/ladspa/
+lib/ladspa/calf.so
+@man man/man1/calfjackhost.1
+@man man/man7/calf.7
+share/applications/calf.desktop
+share/calf/
+share/calf/calf.glade
+share/calf/gui-compressor.xml
+share/calf/gui-filter.xml
+share/calf/gui-filterclavier.xml
+share/calf/gui-flanger.xml
+share/calf/gui-monosynth.xml
+share/calf/gui-multichorus.xml
+share/calf/gui-organ.xml
+share/calf/gui-phaser.xml
+share/calf/gui-reverb.xml
+share/calf/gui-rotaryspeaker.xml
+share/calf/gui-sidechaingate.xml
+share/calf/gui-vintagedelay.xml
+share/calf/knob.png
+share/calf/presets.xml
+share/icons/hicolor/16x16/apps/calf.png
+share/icons/hicolor/24x24/apps/calf.png
+share/icons/hicolor/32x32/apps/calf.png
+share/icons/hicolor/48x48/apps/calf.png
+@comment share/icons/hicolor/icon-theme.cache
+share/ladspa/
+share/ladspa/rdf/
+share/ladspa/rdf/calf.rdf
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

@@ -1,0 +1,8 @@
+${P5SITE}/TOML/
+${P5SITE}/TOML/Parser/
+${P5SITE}/TOML/Parser.pm
+${P5SITE}/TOML/Parser/Tokenizer/
+${P5SITE}/TOML/Parser/Tokenizer.pm
+${P5SITE}/TOML/Parser/Tokenizer/Strict.pm
+${P5SITE}/TOML/Parser/Util.pm
+@man man/man3p/TOML::Parser.3p

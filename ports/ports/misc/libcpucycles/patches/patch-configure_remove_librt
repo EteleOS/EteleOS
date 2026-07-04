@@ -1,0 +1,14 @@
+OpenBSD neither provides nor requires librt.
+
+Index: configure
+--- configure.orig
++++ configure
+@@ -103,7 +103,7 @@
+ so = 'dylib' if darwin else 'so'
+ so1 = soversion
+ soname = 'install_name' if darwin else 'soname'
+-syslibs = '-lm' if darwin else '-lm -lrt'
++syslibs = '-lm'
+ 
+ # ----- compilers
+ 

@@ -1,0 +1,32 @@
+--- src/Makefile.orig	Thu Aug 21 12:01:46 2008
++++ src/Makefile	Tue Jun  2 16:01:42 2009
+@@ -38,18 +38,15 @@
+ # ENABLE_DLOPEN defined as -DHAVE_DLOPEN.
+ # Otherwise, tcpwrapper support is disabled.
+ 
+-OOP_BASE = /usr/local/oop
++OOP_BASE = ${PREFIX}
+ OOP_INC  = $(OOP_BASE)/include
+ OOP_LIB  = $(OOP_BASE)/lib
+ 
+ ENABLE_DLOPEN = -DHAVE_DLOPEN
+ 
+-CC      = gcc
+-WARN    = -Wall
+ REENT   = -D_REENTRANT
+ #DEBUG   = -DNEPIM_DEBUG_KEEPALIVE -DNEPIM_DEBUG_FIXME
+-CFLAGS  = $(WARN) $(REENT) $(DEBUG) -g -ggdb -I$(OOP_INC) $(ENABLE_DLOPEN) \
+-	 -DHAVE_IPV6_MREQ
++CFLAGS  += -Wall $(REENT) -I$(OOP_INC) -DHAVE_IPV6_MREQ $(ENABLE_DLOPEN)
+ LDFLAGS += -L$(OOP_LIB) -loop
+ 
+ PLATFORM=$(shell uname)
+@@ -79,7 +76,7 @@ CFLAGS += -DHAVE_INTTYPES -DHAVE_UCHAR_MCAST_TTL -DHAV
+ endif
+ 
+ ifeq ($(PLATFORM),OpenBSD)
+-CFLAGS += -DHAVE_INTTYPES -DHAVE_UCHAR_MCAST_TTL -DHAVE_INET6_U6_ADDR
++CFLAGS += -DHAVE_INTTYPES -DHAVE_UCHAR_MCAST_TTL -DHAVE_INET6_U6_ADDR -DHAVE_IP_MREQ -DHAVE_IP_MREQN
+ endif
+ 
+ ifeq ($(PLATFORM),FreeBSD)

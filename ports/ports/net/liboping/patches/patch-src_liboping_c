@@ -1,0 +1,94 @@
+#1:
+
+From b5c5091d0214dd2c6cc504c02e2f78907abdee00 Mon Sep 17 00:00:00 2001
+From: Gert Doering <gert@greenie.muc.de>
+Date: Fri, 29 May 2020 12:40:17 +0200
+Subject: [PATCH] Handle BSD specific error case (EHOSTDOWN) in ping_sendto()
+
+Others:
+
+https://github.com/tfheen/liboping/commit/a88c51f38dafa1fba9118045176754bec05d3c94.patch
+
+Index: src/liboping.c
+--- src/liboping.c.orig
++++ src/liboping.c
+@@ -668,6 +668,11 @@ static ssize_t ping_sendto (pingobj_t *obj, pinghost_t
+ 		if (errno == ENETUNREACH)
+ 			return (0);
+ #endif
++		/* BSDs return EHOSTDOWN on ARP/ND failure */
++#if defined(EHOSTDOWN)
++		if (errno == EHOSTDOWN)
++			return (0);
++#endif
+ 		ping_set_errno (obj, errno);
+ 	}
+ 
+@@ -1344,43 +1349,12 @@ int ping_send (pingobj_t *obj)
+ 	struct timeval nowtime;
+ 	struct timeval timeout;
+ 
+-	_Bool need_ipv4_socket = 0;
+-	_Bool need_ipv6_socket = 0;
+-
+ 	for (ptr = obj->head; ptr != NULL; ptr = ptr->next)
+ 	{
+ 		ptr->latency  = -1.0;
+ 		ptr->recv_ttl = -1;
+-
+-		if (ptr->addrfamily == AF_INET)
+-			need_ipv4_socket = 1;
+-		else if (ptr->addrfamily == AF_INET6)
+-			need_ipv6_socket = 1;
+ 	}
+ 
+-	if (!need_ipv4_socket && !need_ipv6_socket)
+-	{
+-		ping_set_error (obj, "ping_send", "No hosts to ping");
+-		return (-1);
+-	}
+-
+-	if (need_ipv4_socket && obj->fd4 == -1)
+-	{
+-		obj->fd4 = ping_open_socket(obj, AF_INET);
+-		if (obj->fd4 == -1)
+-			return (-1);
+-		ping_set_ttl (obj, obj->ttl);
+-		ping_set_qos (obj, obj->qos);
+-	}
+-	if (need_ipv6_socket && obj->fd6 == -1)
+-	{
+-		obj->fd6 = ping_open_socket(obj, AF_INET6);
+-		if (obj->fd6 == -1)
+-			return (-1);
+-		ping_set_ttl (obj, obj->ttl);
+-		ping_set_qos (obj, obj->qos);
+-	}
+-
+ 	if (gettimeofday (&nowtime, NULL) == -1)
+ 	{
+ 		ping_set_errno (obj, errno);
+@@ -1699,6 +1673,23 @@ int ping_host_add (pingobj_t *obj, const char *host)
+ 
+ 	ph->table_next = obj->table[ph->ident % PING_TABLE_LEN];
+ 	obj->table[ph->ident % PING_TABLE_LEN] = ph;
++
++	if (ph->addrfamily == AF_INET && obj->fd4 == -1)
++	{
++		obj->fd4 = ping_open_socket(obj, AF_INET);
++		if (obj->fd4 == -1)
++			return (-1);
++		ping_set_ttl (obj, obj->ttl);
++		ping_set_qos (obj, obj->qos);
++	}
++	if (ph->addrfamily == AF_INET6 && obj->fd6 == -1)
++	{
++		obj->fd6 = ping_open_socket(obj, AF_INET6);
++		if (obj->fd6 == -1)
++			return (-1);
++		ping_set_ttl (obj, obj->ttl);
++		ping_set_qos (obj, obj->qos);
++	}
+ 
+ 	return (0);
+ } /* int ping_host_add */

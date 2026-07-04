@@ -1,0 +1,11 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/amavis-mc"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+pexp="/usr/bin/perl -T ${daemon}${daemon_flags:+ ${daemon_flags}}"
+
+rc_cmd $1

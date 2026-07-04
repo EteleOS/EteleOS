@@ -1,0 +1,40 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -18,14 +18,12 @@ config.h:
+ 	cp config.def.h config.h
+ 
+ .c.o:
+-	@echo CC $<
+-	@${CC} -c ${CFLAGS} $<
++	${CC} -c ${CFLAGS} $<
+ 
+ ${OBJ}: config.h config.mk
+ 
+ sent: ${OBJ}
+-	@echo CC -o $@
+-	@${CC} -o $@ ${OBJ} ${LDFLAGS}
++	${CC} -o $@ ${OBJ} ${LDFLAGS}
+ 
+ cscope: ${SRC} config.h
+ 	@echo cScope
+@@ -44,14 +42,11 @@ dist: clean
+ 	@rm -rf sent-${VERSION}
+ 
+ install: all
+-	@echo installing executable file to ${DESTDIR}${PREFIX}/bin
+-	@mkdir -p ${DESTDIR}${PREFIX}/bin
+-	@cp -f sent ${DESTDIR}${PREFIX}/bin
+-	@chmod 755 ${DESTDIR}${PREFIX}/bin/sent
+-	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man1
+-	@mkdir -p ${DESTDIR}${MANPREFIX}/man1
+-	@cp sent.1 ${DESTDIR}${MANPREFIX}/man1/sent.1
+-	@chmod 644 ${DESTDIR}${MANPREFIX}/man1/sent.1
++	${BSD_INSTALL_PROGRAM_DIR} ${DESTDIR}${PREFIX}/bin
++	${BSD_INSTALL_PROGRAM} sent ${DESTDIR}${PREFIX}/bin
++	${BSD_INSTALL_DATA_DIR} ${DESTDIR}${PREFIX}/share/examples/sent
++	${BSD_INSTALL_DATA} example nyan.png transparent_test.ff \
++		${DESTDIR}${PREFIX}/share/examples/sent
+ 
+ uninstall:
+ 	@echo removing executable file from ${DESTDIR}${PREFIX}/bin

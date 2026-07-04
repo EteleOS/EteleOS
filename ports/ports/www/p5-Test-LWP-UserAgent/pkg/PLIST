@@ -1,0 +1,4 @@
+${P5SITE}/Test/
+${P5SITE}/Test/LWP/
+${P5SITE}/Test/LWP/UserAgent.pm
+@man man/man3p/Test::LWP::UserAgent.3p

@@ -1,0 +1,26 @@
+--- xboard.conf.orig	Wed Oct 22 17:37:26 2014
++++ xboard.conf	Mon Nov 10 09:33:04 2014
+@@ -41,7 +41,7 @@
+ -pieceMenu false
+ -showTargetSquares true
+ -seekGraph true
+--soundProgram "aplay -q"
++-soundProgram "play -q"
+ -soundDirectory "~~/sounds"
+ -soundTell phone.wav
+ -soundChallenge gong.wav
+@@ -73,11 +73,11 @@
+ ;
+ ; Engines & adjudicatons in engine-engine games
+ ;
+--firstChessProgram fairymax
+--firstChessProgramNames {fairymax
++-firstChessProgram gnuchess
++-firstChessProgramNames {"GNU Chess" -fcp gnuchess
++"Fairy-Max" -fcp fairymax
+ "Fruit 2.1" -fcp fruit -fUCI
+ "Crafty" -fcp crafty
+-"GNU Chess" -fcp gnuchess
+ }
+ -niceEngines 0
+ -polyglotDir ""

@@ -1,0 +1,10 @@
+--- Makefile.in.orig	Mon Aug 22 18:52:09 2011
++++ Makefile.in	Tue Nov 15 20:06:47 2011
+@@ -46,7 +46,6 @@ install : all installdirs
+ 	done
+ 	$(INSTALL_DATA) doc-strings $(DESTDIR)$(repexecdir)
+ 	$(INSTALL_SCRIPT) emulate-gnu-tar $(DESTDIR)$(repexecdir)
+-	$(INSTALL_SCRIPT) libtool $(DESTDIR)$(repcommonexecdir)
+ 	$(INSTALL_DATA) rules.mk $(DESTDIR)$(repcommonexecdir)
+ 	$(INSTALL_SCRIPT) install-aliases $(DESTDIR)$(repcommonexecdir)
+ 	$(INSTALL_DATA) rep-debugger.el $(DESTDIR)$(emacssitelispdir)

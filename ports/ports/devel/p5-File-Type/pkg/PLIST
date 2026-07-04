@@ -1,0 +1,6 @@
+${P5SITE}/File/
+${P5SITE}/File/Type/
+${P5SITE}/File/Type.pm
+${P5SITE}/File/Type/Builder.pm
+@man man/man3p/File::Type.3p
+@man man/man3p/File::Type::Builder.3p

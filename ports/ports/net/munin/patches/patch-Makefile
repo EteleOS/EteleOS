@@ -1,0 +1,56 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -98,7 +98,6 @@ install-pre: $(MAKEFILES)
+ 	mkdir -p $(STATEDIR)
+ 	mkdir -p $(SPOOLDIR)
+ 	mkdir -p $(CONFDIR)
+-	$(CHOWN) $(USER) $(LOGDIR) $(STATEDIR) $(SPOOLDIR)
+ 
+ install-master-prime: $(INFILES_MASTER) install-pre install-master
+ 	mkdir -p $(CONFDIR)/templates
+@@ -110,15 +109,15 @@ install-master-prime: $(INFILES_MASTER) install-pre in
+ 	mkdir -p $(PERLLIB)
+ 	mkdir -p $(PERLLIB)/Munin/Master
+ 	mkdir -p $(HTMLDIR)
+-	mkdir -p $(DBDIR)
+-	mkdir -p $(DBDIR)/cgi-tmp
++#	mkdir -p $(DBDIR)
++#	mkdir -p $(DBDIR)/cgi-tmp
+ 	mkdir -p $(CGIDIR)
+ 
+-	$(CHOWN) $(USER) $(HTMLDIR) $(DBDIR)
+-	$(CHMOD) 0755 $(DBDIR)
++#	$(CHOWN) $(USER) $(HTMLDIR) $(DBDIR)
++#	$(CHMOD) 0755 $(DBDIR)
+ 
+-	$(CHOWN) $(CGIUSER) $(DBDIR)/cgi-tmp
+-	$(CHMOD) 0755 $(DBDIR)/cgi-tmp
++#	$(CHOWN) $(CGIUSER) $(DBDIR)/cgi-tmp
++#	$(CHMOD) 0755 $(DBDIR)/cgi-tmp
+ 
+ 	for p in master/www/*.tmpl ;  do \
+ 		$(INSTALL) -m 0644 "$$p" $(CONFDIR)/templates/ ; \
+@@ -157,10 +156,10 @@ install-plugins-prime: install-plugins build $(PLUGINS
+ 	mkdir -p $(CONFDIR)/plugins
+ 	mkdir -p $(CONFDIR)/plugin-conf.d
+ 	mkdir -p $(LIBDIR)/plugins
+-	mkdir -p $(PLUGSTATE)
++#	mkdir -p $(PLUGSTATE)
+ 
+-	$(CHOWN) root:root $(PLUGSTATE)
+-	$(CHMOD) 0755 $(PLUGSTATE)
++#	$(CHOWN) root:root $(PLUGSTATE)
++#	$(CHMOD) 0755 $(PLUGSTATE)
+ 	$(CHMOD) 0755 $(CONFDIR)/plugin-conf.d
+ 
+ 	@# Process the OS specific plugins at the end. Otherwise they would be overridden by the
+@@ -534,7 +533,7 @@ install-%: %/Build
+ 		--install_path script=$(BINDIR) \
+ 		--install_path sbin=$(SBINDIR) \
+ 		--install_path bindoc=$(MANDIR)/man1 \
+-		--install_path libdoc=$(MANDIR)/man3
++		--install_path libdoc=$(MANDIR)/man3p
+ 
+ test-%: %/Build
+ 	cd $* && $(PERL) Build test --verbose=0

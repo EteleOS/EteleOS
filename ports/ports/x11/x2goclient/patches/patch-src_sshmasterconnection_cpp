@@ -1,0 +1,15 @@
+Increase the thread stack size to the default size on Linux, fixes
+a crash.
+
+Index: src/sshmasterconnection.cpp
+--- src/sshmasterconnection.cpp.orig
++++ src/sshmasterconnection.cpp
+@@ -152,7 +152,7 @@ SshMasterConnection::SshMasterConnection (QObject* par
+         QString proxylogin, QString proxypassword, QString proxykey,
+         bool proxyautologin, bool proxyKrbLogin ) : QThread ( parent )
+ {
+-#if defined ( Q_OS_DARWIN )
++#if defined ( Q_OS_DARWIN ) || defined(__OpenBSD__)
+     // Mac OS X provides only 512KB stack space for secondary threads.
+     // As we put a 512KB buffer on the stack later on, we need a bigger stack space.
+     setStackSize (sizeof (char) * 1024 * 1024 * 2);

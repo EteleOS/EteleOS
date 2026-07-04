@@ -1,0 +1,31 @@
+sync with ports/graphics/argyll/patches/patch-Jambase
+
+--- Jambase.orig	Wed Apr 23 05:45:49 2003
++++ Jambase	Sat Jan 25 13:09:14 2014
+@@ -516,7 +516,7 @@ else if $(UNIX)
+ 	LEX		?= lex ;
+ 	LINKFLAGS	?= $(CCFLAGS) ;
+ 	LINKLIBS	?= ;
+-	OPTIM		?= -O ;
++	OPTIM		?= ;
+ 	RANLIB		?= ranlib ;
+ 	YACC		?= yacc ;
+ 	YACCGEN		?= .c ;
+@@ -541,7 +541,7 @@ else if $(UNIX)
+ 	CRELIB		?= ;
+ 	DOT		?= . ;
+ 	DOTDOT		?= .. ;
+-	EXEMODE		?= 711 ;
++	EXEMODE		?= 755 ;
+ 	FILEMODE	?= 644 ;
+ 	FORTRAN		?= f77 ;
+ 	FORTRANFLAGS	?= ;
+@@ -1129,7 +1129,7 @@ rule RmTemps
+ 
+ rule Setuid
+ {
+-	MODE on [ FAppendSuffix $(<) : $(SUFEXE) ] = 4711 ;
++	MODE on [ FAppendSuffix $(<) : $(SUFEXE) ] = 4755 ;
+ }
+ 
+ rule Shell

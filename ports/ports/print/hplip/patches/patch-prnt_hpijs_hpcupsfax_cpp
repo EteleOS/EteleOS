@@ -1,0 +1,21 @@
+Fix build with cups>=2.2.0
+
+--- prnt/hpijs/hpcupsfax.cpp.orig	Fri Aug 26 12:03:15 2016
++++ prnt/hpijs/hpcupsfax.cpp	Sun Sep 18 19:30:46 2016
+@@ -43,6 +43,7 @@
+ #include <arpa/inet.h>
+ #include <math.h>
+ #include <cups/cups.h>
++#include <cups/ppd.h>
+ #include <cups/raster.h>
+ #include <string>
+ #ifdef FALSE
+@@ -94,7 +95,7 @@ static void GetLogLevel ()
+     FILE    *fp;
+     char    str[258];
+     char    *p;
+-    fp = fopen ("/etc/cups/cupsd.conf", "r");
++    fp = fopen ("${SYSCONFDIR}/cups/cupsd.conf", "r");
+     if (fp == NULL)
+         return;
+     while (!feof (fp))

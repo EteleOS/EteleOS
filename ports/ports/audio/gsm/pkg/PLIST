@@ -1,0 +1,13 @@
+@bin bin/tcat
+@bin bin/toast
+@bin bin/untoast
+include/gsm.h
+@static-lib lib/libgsm.a
+@lib lib/libgsm.so.${LIBgsm_VERSION}
+@man man/man1/tcat.1
+@man man/man1/toast.1
+@man man/man1/untoast.1
+@man man/man3/gsm.3
+@man man/man3/gsm_explode.3
+@man man/man3/gsm_option.3
+@man man/man3/gsm_print.3

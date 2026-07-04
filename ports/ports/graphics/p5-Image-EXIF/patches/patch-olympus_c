@@ -1,0 +1,23 @@
+--- olympus.c.orig	Fri May 11 19:03:30 2012
++++ olympus.c	Sat Jul 12 19:34:34 2014
+@@ -144,16 +144,16 @@ olympus_prop(struct exifprop *prop, struct exiftags *t
+ 		b = exif4byte(t->mkrmd.btiff + prop->value + 4, t->mkrmd.order);
+ 
+ 		if (a == b)
+-			snprintf(prop->str, 31, "None");
++			snprintf(prop->str, PROPSTR_SIZE, "None");
+ 		else
+-			snprintf(prop->str, 31, "x%.1f", (float)a / (float)b);
++			snprintf(prop->str, PROPSTR_SIZE, "x%.1f", (float)a / (float)b);
+ 		break;
+ 
+ 	/* Image number. */
+ 
+ 	case 0x0008:
+-		exifstralloc(&prop->str, 32);
+-		snprintf(prop->str, 31, "%03d-%04d", prop->value / 10000,
++		exifstralloc(&prop->str, PROPSTR_SIZE);
++		snprintf(prop->str, PROPSTR_SIZE, "%03d-%04d", prop->value / 10000,
+ 		    prop->value % 10000);
+ 		break;
+ 	}

@@ -1,0 +1,33 @@
+From Debian:
+  "Fix a bug in the ) vi command that could cause a segmentation
+  fault (patch from elvis-almost-2.2.1)"
+
+Also fix a very likely typo.
+
+--- move.c.orig	Tue Oct 21 04:32:25 2003
++++ move.c	Tue Aug 16 19:51:36 2016
+@@ -1620,6 +1620,7 @@ RESULT m_fsentence(win, vinf)
+ 	long	para;
+ 	long	offset;
+ 	long	count;
++	MARKBUF	tmp;
+ 
+ 	DEFAULT(1);
+ 
+@@ -1651,6 +1652,7 @@ RESULT m_fsentence(win, vinf)
+ 	else
+ 	{
+ 		para = 0;
++		scanseek(&cp, marktmp(tmp, markbuffer(win->state->cursor), 0L));
+ 	}
+ 	marksetoffset(win->state->cursor, offset);
+ 	if (para == offset)
+@@ -1892,7 +1894,7 @@ RESULT m_bsentence(win, vinf)
+ 			{
+ 				scannext(&cp);
+ 			}
+-			if (&cp)
++			if (cp)
+ 				marksetoffset(win->state->cursor, markoffset(scanmark(&cp)));
+ 			else
+ 			{

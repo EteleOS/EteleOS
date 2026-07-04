@@ -1,0 +1,15 @@
+Index: rutil/ssl/OpenSSLInit.cxx
+--- rutil/ssl/OpenSSLInit.cxx.orig
++++ rutil/ssl/OpenSSLInit.cxx
+@@ -51,10 +51,7 @@ OpenSSLInit::OpenSSLInit()
+ /* The OpenSSL memory leak checking has been deprecated since
+    OpenSSL v3.0.  OpenSSL developers recommend that we rely
+    on modern compilers to provide the same functionality. */
+-#if defined(LIBRESSL_VERSION_NUMBER)
+-	CRYPTO_malloc_debug_init();
+-	CRYPTO_set_mem_debug_options(V_CRYPTO_MDEBUG_ALL);
+-#elif (OPENSSL_VERSION_NUMBER < 0x30000000L)
++#if !defined LIBRESSL_VERSION_NUMBER && (OPENSSL_VERSION_NUMBER < 0x30000000L)
+ 	CRYPTO_set_mem_debug(1);
+ #endif
+ 

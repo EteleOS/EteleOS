@@ -1,0 +1,28 @@
+@mode g+s
+@group games
+@bin bin/toppler
+@mode
+@group
+@man man/man6/toppler.6
+share/applications/toppler.desktop
+share/examples/toppler/
+share/examples/toppler/toppler.hsc
+@mode g+w
+@group games
+@sample /var/games/toppler.hsc
+@mode
+@group
+share/locale/cs/LC_MESSAGES/toppler.mo
+share/locale/de/LC_MESSAGES/toppler.mo
+share/locale/eu/LC_MESSAGES/toppler.mo
+share/locale/fi/LC_MESSAGES/toppler.mo
+share/locale/fr/LC_MESSAGES/toppler.mo
+share/locale/pt/LC_MESSAGES/toppler.mo
+share/locale/ro/LC_MESSAGES/toppler.mo
+share/locale/sv/LC_MESSAGES/toppler.mo
+share/pixmaps/
+share/pixmaps/toppler.xpm
+share/toppler/
+share/toppler/toppler.dat
+share/toppler/toppler.ogg
+@tag update-desktop-database

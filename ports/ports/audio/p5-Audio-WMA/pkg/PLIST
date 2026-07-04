@@ -1,0 +1,3 @@
+${P5SITE}/Audio/
+${P5SITE}/Audio/WMA.pm
+@man man/man3p/Audio::WMA.3p

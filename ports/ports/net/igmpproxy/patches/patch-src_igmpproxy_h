@@ -1,0 +1,28 @@
+Index: src/igmpproxy.h
+--- src/igmpproxy.h.orig
++++ src/igmpproxy.h
+@@ -36,7 +36,6 @@
+ */
+ 
+ #include "config.h"
+-#include "os.h"
+ 
+ #include <errno.h>
+ #include <stdarg.h>
+@@ -63,6 +62,8 @@
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+ 
++#include "os.h"
++
+ /*
+  * Limit on length of route data
+  */
+@@ -224,6 +225,7 @@ int getVifIx( struct IfDesc *IfDp );
+ int loadConfig(char *configFile);
+ void configureVifs(void);
+ struct Config *getCommonConfig(void);
++struct vifconfig *config_getinterface(const char *ifname);
+ 
+ /* igmp.c
+ */

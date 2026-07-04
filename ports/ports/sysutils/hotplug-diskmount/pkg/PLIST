@@ -1,0 +1,3 @@
+@bin libexec/hotplug-diskmount
+@man man/man8/hotplug-diskmount.8
+share/doc/pkg-readmes/${PKGSTEM}

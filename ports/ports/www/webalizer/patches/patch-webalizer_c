@@ -1,0 +1,41 @@
+Index: webalizer.c
+--- webalizer.c.orig
++++ webalizer.c
+@@ -302,6 +302,10 @@ char    pie_color4[]  = "#ffc080";            /* pie a
+ char    warpbuf[32][32];
+ int     wb_index = -1;
+ 
++struct response_url * respnotfound;
++struct responsetmp_url * respnotfoundtmp;
++u_long resp_counter;
++
+ /*********************************************/
+ /* MAIN - start here                         */
+ /*********************************************/
+@@ -771,7 +775,7 @@ int main(int argc, char *argv[])
+       }
+ 
+       /* got a record... */
+-      strcpy(tmp_buf, buffer);            /* save buffer in case of error */
++      strlcpy(tmp_buf, buffer, sizeof tmp_buf);            /* save buffer in case of error */
+       if (parse_record(buffer))           /* parse the record             */
+       {
+          /*********************************************/
+@@ -1190,7 +1194,7 @@ int main(int argc, char *argv[])
+                {
+                   /* Invalid hostname found! */
+                   if (strcmp(log_rec.hostname, host_buf))
+-                     strcpy(log_rec.hostname, host_buf);
++                     strlcpy(log_rec.hostname, host_buf, sizeof(log_rec.hostname));
+                   else strncpy(log_rec.hostname,"Invalid",8);
+                   break;
+                }
+@@ -1204,7 +1208,7 @@ int main(int argc, char *argv[])
+ 
+          /* Catch blank hostnames here */
+          if (log_rec.hostname[0]=='\0')
+-            strncpy(log_rec.hostname,"Unknown",8);
++            strlcpy(log_rec.hostname,"Unknown",sizeof log_rec.hostname);
+ 
+          /* Ignore/Include check */
+          if ( (isinlist(include_sites,log_rec.hostname)==NULL) &&

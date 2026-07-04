@@ -1,0 +1,10 @@
+--- delay.c.orig	Sun May 23 18:07:16 2010
++++ delay.c	Sun May 23 18:07:26 2010
+@@ -21,6 +21,7 @@
+ #include <sys/time.h>
+ #include <unistd.h>
+ #include <string.h>
++#include <stdlib.h>
+ #include "parsetime.h"
+ 
+ #ifdef HAVE_CURSES_H

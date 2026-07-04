@@ -1,0 +1,12 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -364,7 +364,7 @@ EOF
+   echo >>$tmpmake "CTOOL_NAME           := linktest"
+   echo >>$tmpmake "linktest_C_FILES := dummytool.c"
+   echo >>$tmpmake "ifeq (\$(findstring openbsd, \$(GNUSTEP_HOST_OS)), openbsd)"
+-  echo >>$tmpmake "linktest_TOOL_LIBS  += $LIBS -liconv"
++  echo >>$tmpmake "linktest_TOOL_LIBS  += $LIBS -liconv -lcrypto"
+   echo >>$tmpmake "else"
+   echo >>$tmpmake "linktest_TOOL_LIBS  += $LIBS"
+   echo >>$tmpmake "endif"

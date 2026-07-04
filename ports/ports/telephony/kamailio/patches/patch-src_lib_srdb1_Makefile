@@ -1,0 +1,10 @@
+--- src/lib/srdb1/Makefile.orig	Mon May 15 23:09:10 2017
++++ src/lib/srdb1/Makefile	Mon May 15 23:09:29 2017
+@@ -4,6 +4,7 @@ NAME:=srdb1
+ MAJOR_VER=1
+ MINOR_VER=0
+ BUGFIX_VER=0
++OBSD_VER=$(LIBsrdb1_VERSION)
+ LIBS=
+ 
+ include ../../Makefile.libs

@@ -1,0 +1,22 @@
+don't exec git
+
+Index: dist/nimble/src/nimblepkg/options.nim
+--- dist/nimble/src/nimblepkg/options.nim.orig
++++ dist/nimble/src/nimblepkg/options.nim
+@@ -300,15 +300,7 @@ const
+   ## sources outside the git tree of Nimble:
+   git_revision_override* {.strdefine.} = ""
+ 
+-  gitRevision* = when git_revision_override.len == 0:
+-    const execResult = gorgeEx("git rev-parse HEAD")
+-    when execResult[0].len > 0 and execResult[1] == QuitSuccess:
+-      execResult[0]
+-    else:
+-      {.warning: "Couldn't determine GIT hash: " & execResult[0].}
+-      "couldn't determine git hash"
+-  else:
+-    git_revision_override
++  gitRevision* = "couldn't determine git hash"
+ 
+ proc writeVersion*() =
+   echo("nimble v$# compiled at $# $#" %

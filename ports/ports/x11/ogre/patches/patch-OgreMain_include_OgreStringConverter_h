@@ -1,0 +1,11 @@
+--- OgreMain/include/OgreStringConverter.h.orig	Sun Dec  1 18:28:12 2013
++++ OgreMain/include/OgreStringConverter.h	Sun Mar 23 13:32:58 2014
+@@ -102,7 +102,7 @@ namespace Ogre {
+         static String toString(int val, unsigned short width = 0, 
+             char fill = ' ', 
+             std::ios::fmtflags flags = std::ios::fmtflags(0));
+-#if OGRE_PLATFORM != OGRE_PLATFORM_NACL &&  ( OGRE_ARCH_TYPE == OGRE_ARCHITECTURE_64 || OGRE_PLATFORM == OGRE_PLATFORM_APPLE || OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS )
++#if OGRE_PLATFORM != OGRE_PLATFORM_NACL &&  ( OGRE_ARCH_TYPE == OGRE_ARCHITECTURE_64 || OGRE_PLATFORM == OGRE_PLATFORM_APPLE || OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS || defined(__OpenBSD__) )
+         /** Converts an unsigned int to a String. */
+         static String toString(unsigned int val, 
+             unsigned short width = 0, char fill = ' ', 

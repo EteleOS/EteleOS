@@ -1,0 +1,24 @@
+do not hardcode the make
+
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -929,15 +929,15 @@ apidox:
+ check: test
+ 
+ test:
+-	make -C src test
++	${MAKE_PROGRAM} -C src test
+ 
+ leakcheck: leaktest
+ 
+ leaktest:
+-	make -C src leaktest
++	${MAKE_PROGRAM} -C src leaktest
+ 
+ includetest:
+-	make -C src includetest
++	${MAKE_PROGRAM} -C src includetest
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

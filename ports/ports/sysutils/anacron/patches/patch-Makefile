@@ -1,0 +1,30 @@
+--- Makefile.orig	Fri Jan 11 19:32:03 2008
++++ Makefile	Tue Jun  4 12:39:15 2013
+@@ -19,16 +19,14 @@
+ #   `COPYING' that comes with the Anacron source distribution.
+ 
+ 
+-PREFIX = 
+-BINDIR = $(PREFIX)/usr/sbin
+-MANDIR = $(PREFIX)/usr/man
+-CFLAGS = -Wall -pedantic -O2
++BINDIR = $(PREFIX)/sbin
++MANDIR = $(PREFIX)/man
++CFLAGS += -Wall -pedantic -I.
+ #CFLAGS = -Wall -O2 -g -DDEBUG
+ 
+ # If you change these, please update the man-pages too
+ # Only absolute paths here, please
+ SPOOLDIR = /var/spool/anacron
+-ANACRONTAB = /etc/anacrontab
+ 
+ RELEASE = 2.4.3
+ package_name = anacron-$(RELEASE)
+@@ -72,7 +70,6 @@ install: installdirs
+ 	$(INSTALL_PROGRAM) anacron $(BINDIR)/anacron
+ 	$(INSTALL_DATA) anacrontab.5 $(MANDIR)/man5/anacrontab.5
+ 	$(INSTALL_DATA) anacron.8 $(MANDIR)/man8/anacron.8
+-	$(INSTALL_DATA) anacrontab $(ANACRONTAB)
+ 
+ .PHONY: clean
+ clean:

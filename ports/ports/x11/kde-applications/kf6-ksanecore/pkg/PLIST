@@ -1,0 +1,19 @@
+@conflict ksanecore-*
+@pkgpath x11/kde-applications/ksanecore
+include/KSaneCore6/
+include/KSaneCore6/KSaneCore/
+include/KSaneCore6/KSaneCore/DeviceInformation
+include/KSaneCore6/KSaneCore/Interface
+include/KSaneCore6/KSaneCore/Option
+include/KSaneCore6/ksanecore/
+include/KSaneCore6/ksanecore/deviceinformation.h
+include/KSaneCore6/ksanecore/interface.h
+include/KSaneCore6/ksanecore/option.h
+include/KSaneCore6/ksanecore_export.h
+include/KSaneCore6/ksanecore_version.h
+lib/cmake/KSaneCore6/
+lib/cmake/KSaneCore6/KSaneCore6Config.cmake
+lib/cmake/KSaneCore6/KSaneCore6ConfigVersion.cmake
+lib/cmake/KSaneCore6/KSaneCore6Targets${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/KSaneCore6/KSaneCore6Targets.cmake
+@lib lib/libKSaneCore6.so.${LIBKSaneCore6_VERSION}

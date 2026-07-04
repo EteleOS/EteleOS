@@ -1,0 +1,10 @@
+@bin bin/datalog
+include/datalog.h
+@info info/datalog.info
+lib/libdatalog.a
+lib/libdatalog.la
+@lib lib/libdatalog.so.${LIBdatalog_VERSION}
+@man man/man1/datalog.1
+share/datalog/
+share/datalog/datalog.html
+share/datalog/datalog.lua

@@ -1,0 +1,21 @@
+Index: bin/9c
+--- bin/9c.orig
++++ bin/9c
+@@ -3,7 +3,7 @@
+ test -f $PLAN9/config && . $PLAN9/config
+ usegcc()
+ {
+-	cc=${CC9:-gcc}
++	cc=${CC9:-${CC}}
+ 	cflags=" \
+ 		-O2 \
+ 		-c \
+@@ -60,7 +60,7 @@ quiet()
+ 
+ useclang()
+ {
+-	cc=${CC9:-clang}
++	cc=${CC9:-${CC}}
+ 	cflags=" \
+ 		-O2 \
+ 		-c \

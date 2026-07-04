@@ -1,0 +1,30 @@
+--- unix/unix.c.orig	Fri Dec 12 23:07:25 2008
++++ unix/unix.c	Fri Dec 12 23:08:04 2008
+@@ -344,7 +344,7 @@ ulg filetime(f, a, n, t)
+   z_stat s;         /* results of stat() */
+   /* converted to pointer from using FNMAX - 11/8/04 EG */
+   char *name;
+-  int len = strlen(f);
++  size_t len = strlen(f);
+ 
+   if (f == label) {
+     if (a != NULL)
+@@ -570,7 +570,7 @@ int set_extra_field(z, z_utim)
+ {
+   z_stat s;
+   char *name;
+-  int len = strlen(z->name);
++  size_t len = strlen(z->name);
+ 
+   /* For the full sized UT local field including the UID/GID fields, we
+    * have to stat the file again. */
+@@ -695,7 +695,8 @@ char *d;                /* directory to delete */
+ {
+ # ifdef NO_RMDIR
+     /* code from Greg Roelofs, who horked it from Mark Edwards (unzip) */
+-    int r, len;
++    size_t len;
++    int r;
+     char *s;              /* malloc'd string for system command */
+ 
+     len = strlen(d);

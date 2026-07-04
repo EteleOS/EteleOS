@@ -1,0 +1,31 @@
+remove hardcoded O3
+
+Index: configure
+--- configure.orig
++++ configure
+@@ -541,25 +541,6 @@ fi
+ rm -f _testprog _testprog.error _testprog.stdout
+ 
+ 
+-#  -O optimization for non-debug builds. Try -O and -O3.
+-if [ ! z"$DEBUG" = zYES ]; then
+-	printf "checking whether -O3 or -O can be used (non-DEBUG build)... "
+-	$CC $CFLAGS -O _testprog.c -o _testprog 2> /dev/null
+-	if [ -x _testprog ]; then
+-		rm -f _testprog
+-		$CC $CFLAGS -O3 _testprog.c -o _testprog 2> /dev/null
+-		if [ -x _testprog ]; then
+-			CFLAGS="-O3 $CFLAGS"
+-			printf "yes, -O3\n"
+-		else
+-			CFLAGS="-O $CFLAGS"
+-			printf "yes, -O\n"
+-		fi
+-	else
+-		printf "no\n"
+-	fi
+-fi
+-rm -f _testprog
+ 
+ 
+ #  -fpeephole

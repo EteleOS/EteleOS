@@ -1,0 +1,16 @@
+Index: src/modes/daemon/daemonConfiguration.cpp
+--- src/modes/daemon/daemonConfiguration.cpp.orig
++++ src/modes/daemon/daemonConfiguration.cpp
+@@ -9,8 +9,11 @@
+ DaemonConfiguration::DaemonConfiguration()
+ {
+     mConfiguration->setCurrentGroup(QStringLiteral("DaemonLogMode"));
+-
++#if defined(__OpenBSD__)
++    const QStringList defaultDaemonPaths{QStringLiteral("/var/log/daemon")};
++#else
+     const QStringList defaultDaemonPaths{QStringLiteral("/var/log/daemon.log")};
++#endif
+     mConfiguration->addItemStringList(QStringLiteral("LogFilesPaths"), mDaemonPaths, defaultDaemonPaths, QStringLiteral("LogFilesPaths"));
+ }
+ 

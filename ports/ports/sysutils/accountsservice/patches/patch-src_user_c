@@ -1,0 +1,142 @@
+Index: src/user.c
+--- src/user.c.orig
++++ src/user.c
+@@ -407,9 +407,14 @@ user_update_from_template (User *user)
+ }
+ 
+ void
++#ifdef HAVE_SHADOW_H
+ user_update_from_pwent (User          *user,
+                         struct passwd *pwent,
+                         struct spwd   *spent)
++#else
++user_update_from_pwent (User          *user,
++                        struct passwd *pwent)  
++#endif  
+ {
+         g_autofree gchar *real_name = NULL;
+         gboolean is_system_account;
+@@ -468,10 +473,24 @@ user_update_from_pwent (User          *user,
+         accounts_user_set_shell (ACCOUNTS_USER (user), pwent->pw_shell);
+ 
+         passwd = NULL;
++#ifdef HAVE_SHADOW_H
+         if (spent)
+                 passwd = spent->sp_pwdp;
++#endif
+ 
++#ifdef __OpenBSD__
++        struct passwd *pw = getpwnam_shadow (pwent->pw_name);
++        if (pw)
++                passwd = pw->pw_passwd;
++        if (g_strcmp0(passwd, "skey") == 0)
++                passwd = NULL;
++#endif
++
++#ifdef __OpenBSD__
++        if (passwd && passwd[0] == '*') {
++#else
+         if (passwd && passwd[0] == '!') {
++#endif
+                 locked = TRUE;
+         } else {
+                 locked = FALSE;
+@@ -485,6 +504,7 @@ user_update_from_pwent (User          *user,
+                 mode = PASSWORD_MODE_NONE;
+         }
+ 
++#ifdef HAVE_SHADOW_H
+         if (spent) {
+                 if (spent->sp_lstchg == 0) {
+                         mode = PASSWORD_MODE_SET_AT_LOGIN;
+@@ -504,6 +524,9 @@ user_update_from_pwent (User          *user,
+                 user->days_after_expiration_until_lock = spent->sp_inact;
+                 user->account_expiration_policy_known = TRUE;
+         }
++#else
++        user->user_expiration_time = g_date_time_new_from_unix_utc(pwent->pw_expire);
++#endif
+ 
+         accounts_user_set_password_mode (ACCOUNTS_USER (user), mode);
+         is_system_account = !user_classify_is_human (accounts_user_get_uid (ACCOUNTS_USER (user)),
+@@ -1764,10 +1787,10 @@ user_set_password_expiration_policy (AccountsUser     
+                 action_id = "org.freedesktop.accounts.user-administration";
+ 
+         pwd_expiration = g_new (PasswordExpirationPolicy, 1);
+-        pwd_expiration->min_days_between_changes = g_strdup_printf ("%ld", min_days_between_changes);
+-        pwd_expiration->max_days_between_changes = g_strdup_printf ("%ld", max_days_between_changes);
+-        pwd_expiration->days_to_warn = g_strdup_printf ("%ld", days_to_warn);
+-        pwd_expiration->days_after_expiration_until_lock = g_strdup_printf ("%ld", days_after_expiration_until_lock);
++        pwd_expiration->min_days_between_changes = g_strdup_printf ("%lld", min_days_between_changes);
++        pwd_expiration->max_days_between_changes = g_strdup_printf ("%lld", max_days_between_changes);
++        pwd_expiration->days_to_warn = g_strdup_printf ("%lld", days_to_warn);
++        pwd_expiration->days_after_expiration_until_lock = g_strdup_printf ("%lld", days_after_expiration_until_lock);
+ 
+         daemon_local_check_auth (user->daemon,
+                                  user,
+@@ -2202,7 +2225,11 @@ user_change_locked_authorized_cb (Daemon              
+                          accounts_user_get_user_name (ACCOUNTS_USER (user)),
+                          accounts_user_get_uid (ACCOUNTS_USER (user)));
+                 argv[0] = "/usr/sbin/usermod";
++#ifdef __OpenBSD__
++                argv[1] = locked ? "-Z" : "-U";
++#else
+                 argv[1] = locked ? "-L" : "-U";
++#endif
+                 argv[2] = "--";
+                 argv[3] = accounts_user_get_user_name (ACCOUNTS_USER (user));
+                 argv[4] = NULL;
+@@ -2281,7 +2308,12 @@ user_change_account_type_authorized_cb (Daemon        
+         gsize n_extra_admin_groups_gids = 0;
+         gid_t admin_gid;
+         gint i;
++#ifndef __OpenBSD__
+         const gchar *argv[6];
++#else
++        const gchar *argv[8];
++        gchar *class = "\0";
++#endif
+ 
+         if (((AccountType) accounts_user_get_account_type (ACCOUNTS_USER (user))) != account_type) {
+                 sys_log (context,
+@@ -2313,11 +2345,18 @@ user_change_account_type_authorized_cb (Daemon        
+                 }
+                 switch (account_type) {
+                 case ACCOUNT_TYPE_ADMINISTRATOR:
++#ifdef __OpenBSD__
++                        class = "staff";
++#endif
+                         for (i = 0; i < n_extra_admin_groups_gids; i++) {
+                                 g_string_append_printf (str, "%d,", extra_admin_groups_gids[i]);
+                         }
+ 
++#ifdef __OpenBSD__
++                        g_string_append_printf (str, "%s", ADMIN_GROUP);
++#else
+                         g_string_append_printf (str, "%d", admin_gid);
++#endif
+                         break;
+                 case ACCOUNT_TYPE_STANDARD:
+                 default:
+@@ -2329,11 +2368,21 @@ user_change_account_type_authorized_cb (Daemon        
+                 g_free (groups);
+ 
+                 argv[0] = "/usr/sbin/usermod";
++#ifdef __OpenBSD__
++                argv[1] = "-S";
++                argv[2] = str->str;
++                argv[3] = "-L";
++                argv[4] = class;
++                argv[5] = "--";
++                argv[4] = accounts_user_get_user_name (ACCOUNTS_USER (user));
++                argv[7] = NULL;
++#else
+                 argv[1] = "-G";
+                 argv[2] = str->str;
+                 argv[3] = "--";
+                 argv[4] = accounts_user_get_user_name (ACCOUNTS_USER (user));
+                 argv[5] = NULL;
++#endif
+ 
+                 if (!spawn_sync (argv, &error)) {
+                         throw_error (context, ERROR_FAILED, "running '%s' failed: %s", argv[0], error->message);

@@ -1,0 +1,9 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+You may need to increase the default maximum number of available memory
+in /etc/login.conf for your class (staff in most cases) to be able to
+process big images and for batch processing:
+
+        :datasize-cur=3072M: \

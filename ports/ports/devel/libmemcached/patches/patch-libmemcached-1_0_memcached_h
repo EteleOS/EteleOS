@@ -1,0 +1,17 @@
+our cinttypes is in tr1/cinttypes.
+
+--- libmemcached-1.0/memcached.h.orig	Sun Feb  9 12:52:42 2014
++++ libmemcached-1.0/memcached.h	Fri Apr 28 00:44:43 2017
+@@ -43,7 +43,11 @@
+ #endif
+ 
+ #ifdef __cplusplus
+-#  include <cinttypes>
++#  ifdef __clang__
++#   include <cinttypes>
++#  else
++#   include <tr1/cinttypes>
++#endif
+ #  include <cstddef>
+ #  include <cstdlib>
+ #else

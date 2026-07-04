@@ -1,0 +1,5 @@
+${P5ARCH}/
+${P5ARCH}/common/
+${P5ARCH}/common/sense.pm
+${P5ARCH}/common/sense.pod
+@man man/man3p/common::sense.3p

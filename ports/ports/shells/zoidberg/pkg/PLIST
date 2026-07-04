@@ -1,0 +1,64 @@
+@shell bin/zoid
+${P5SITE}/Bundle/
+${P5SITE}/Bundle/Zoidberg.pm
+${P5SITE}/Zoidberg/
+${P5SITE}/Zoidberg.pm
+${P5SITE}/Zoidberg/Contractor.pm
+${P5SITE}/Zoidberg/DispatchTable.pm
+${P5SITE}/Zoidberg/Fish/
+${P5SITE}/Zoidberg/Fish.pm
+${P5SITE}/Zoidberg/Fish/Commands.pm
+${P5SITE}/Zoidberg/Fish/Intel.pm
+${P5SITE}/Zoidberg/Fish/Log.pm
+${P5SITE}/Zoidberg/Fish/ReadLine.pm
+${P5SITE}/Zoidberg/PluginHash.pm
+${P5SITE}/Zoidberg/Shell.pm
+${P5SITE}/Zoidberg/StringParser.pm
+${P5SITE}/Zoidberg/Utils/
+${P5SITE}/Zoidberg/Utils.pm
+${P5SITE}/Zoidberg/Utils/Error.pm
+${P5SITE}/Zoidberg/Utils/FileSystem.pm
+${P5SITE}/Zoidberg/Utils/GetOpt.pm
+${P5SITE}/Zoidberg/Utils/Output.pm
+${P5SITE}/auto/share/
+${P5SITE}/auto/share/dist/
+${P5SITE}/auto/share/dist/Zoidberg/
+${P5SITE}/auto/share/dist/Zoidberg/pixmaps/
+${P5SITE}/auto/share/dist/Zoidberg/pixmaps/zoid16.png
+${P5SITE}/auto/share/dist/Zoidberg/pixmaps/zoid32.png
+${P5SITE}/auto/share/dist/Zoidberg/pixmaps/zoid64.png
+${P5SITE}/auto/share/dist/Zoidberg/pixmaps/zoid70.png
+${P5SITE}/auto/share/dist/Zoidberg/plugins/
+${P5SITE}/auto/share/dist/Zoidberg/plugins/CPAN.pm
+${P5SITE}/auto/share/dist/Zoidberg/plugins/Commands.pl
+${P5SITE}/auto/share/dist/Zoidberg/plugins/Intel.pl
+${P5SITE}/auto/share/dist/Zoidberg/plugins/Log.pl
+${P5SITE}/auto/share/dist/Zoidberg/plugins/ReadLine.pl
+${P5SITE}/auto/share/dist/Zoidberg/zoidrc.example
+@man man/man1/zoid.1
+@man man/man1/zoidbuiltins.1
+@man man/man1/zoiddevel.1
+@man man/man1/zoidfaq.1
+@man man/man1/zoiduser.1
+@man man/man3p/Bundle::Zoidberg.3p
+@man man/man3p/Zoidberg.3p
+@man man/man3p/Zoidberg::Contractor.3p
+@man man/man3p/Zoidberg::DispatchTable.3p
+@man man/man3p/Zoidberg::Fish.3p
+@man man/man3p/Zoidberg::Fish::Commands.3p
+@man man/man3p/Zoidberg::Fish::Intel.3p
+@man man/man3p/Zoidberg::Fish::Log.3p
+@man man/man3p/Zoidberg::Fish::ReadLine.3p
+@man man/man3p/Zoidberg::PluginHash.3p
+@man man/man3p/Zoidberg::Shell.3p
+@man man/man3p/Zoidberg::StringParser.3p
+@man man/man3p/Zoidberg::Utils.3p
+@man man/man3p/Zoidberg::Utils::Error.3p
+@man man/man3p/Zoidberg::Utils::FileSystem.3p
+@man man/man3p/Zoidberg::Utils::GetOpt.3p
+@man man/man3p/Zoidberg::Utils::Output.3p
+share/doc/zoid/
+share/doc/zoid/Changes
+share/doc/zoid/README
+share/doc/zoid/zoidrc.sample
+@sample ${SYSCONFDIR}/zoidrc

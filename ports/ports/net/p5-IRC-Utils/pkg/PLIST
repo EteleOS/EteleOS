@@ -1,0 +1,3 @@
+${P5SITE}/IRC/
+${P5SITE}/IRC/Utils.pm
+@man man/man3p/IRC::Utils.3p

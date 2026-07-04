@@ -1,0 +1,11 @@
+--- Makefile.in.orig	Tue Aug  7 22:01:15 2012
++++ Makefile.in	Tue Aug  7 22:01:33 2012
+@@ -74,7 +74,7 @@ RANLIB = @RANLIB@
+ STRIP = @STRIP@
+ VERSION = @VERSION@
+ 
+-SUBDIRS = src doc examples man ms-visual-c swig
++SUBDIRS = src doc man ms-visual-c swig
+ 
+ EXTRA_DIST =    .cvsignore   gle.spec
+ 

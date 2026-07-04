@@ -1,0 +1,12 @@
+Index: interface/README.md
+--- interface/README.md.orig
++++ interface/README.md
+@@ -16,7 +16,7 @@ Basically this can be done by providing the following 
+ 
+ ~~~ucl
+ options {
+- dynamic_conf = "/var/lib/rspamd/rspamd_dynamic";
++ dynamic_conf = "${LOCALSTATEDIR}/rspamd/rspamd_dynamic";
+ }
+ ~~~
+ 

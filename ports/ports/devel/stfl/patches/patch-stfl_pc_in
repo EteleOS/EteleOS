@@ -1,0 +1,10 @@
+--- stfl.pc.in.orig	Sun Dec 30 10:31:46 2012
++++ stfl.pc.in	Sun Dec 30 10:31:59 2012
+@@ -8,6 +8,6 @@ includedir=${prefix}/include
+ Name: STFL
+ Description: Structured Terminal Forms Language/Library
+ Version: @VERSION@
+-Libs: -L${libdir} -lstfl
++Libs: -Wl,-R${libdir} -L${libdir} -lstfl
+ Libs.private: -lncursesw
+ Cflags: -I${includedir}

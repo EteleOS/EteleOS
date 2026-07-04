@@ -1,0 +1,4 @@
+bin/tcpdump2xplot
+@bin bin/xplot
+@man man/man1/tcpdump2xplot.1
+@man man/man1/xplot.1

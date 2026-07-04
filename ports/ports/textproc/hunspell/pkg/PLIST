@@ -1,0 +1,33 @@
+bin/affixcompress
+@bin bin/analyze
+@bin bin/chmorph
+@bin bin/hunspell
+@bin bin/hunzip
+@bin bin/hzip
+bin/ispellaff2myspell
+bin/makealias
+@bin bin/munch
+@bin bin/unmunch
+bin/wordforms
+bin/wordlist2hunspell
+include/hunspell/
+include/hunspell/atypes.hxx
+include/hunspell/hunspell.h
+include/hunspell/hunspell.hxx
+include/hunspell/hunvisapi.h
+include/hunspell/w_char.hxx
+@static-lib lib/libhunspell-1.7.a
+lib/libhunspell-1.7.la
+@lib lib/libhunspell-1.7.so.${LIBhunspell-1.7_VERSION}
+lib/pkgconfig/hunspell.pc
+man/hu/
+man/hu/man1/
+@man man/hu/man1/hunspell.1
+@man man/man1/hunspell.1
+@man man/man1/hunzip.1
+@man man/man1/hzip.1
+@man man/man3/hunspell.3
+@man man/man5/hunspell.5
+share/hunspell/
+share/hunspell/default.aff
+share/hunspell/default.dic

@@ -1,0 +1,41 @@
+Hunk 1: OpenBSD support for socket peer credentials
+Hunk 2: avoid logging errors for non-existing devices
+
+Index: seatd/client.c
+--- seatd/client.c.orig
++++ seatd/client.c
+@@ -55,6 +55,23 @@ static int get_peer(int fd, pid_t *pid, uid_t *uid, gi
+ 	*uid = cred.unp_euid;
+ 	*gid = cred.unp_egid;
+ 	return 0;
++#elif defined(__OpenBSD__)
++	struct sockpeercred peercred;
++	socklen_t len = sizeof(peercred);
++	if (getsockopt(fd, SOL_SOCKET, SO_PEERCRED, &peercred, &len) == -1) {
++		// assume builtin backend
++		if (errno == EINVAL) {
++			*pid = getpid();
++			*uid = getuid();
++			*gid = getgid();
++			return 0;
++		}
++		return -1;
++	}
++	*pid = peercred.pid;
++	*uid = peercred.uid;
++	*gid = peercred.gid;
++	return 0;
+ #elif defined(__FreeBSD__)
+ 	struct xucred cred;
+ 	socklen_t len = sizeof cred;
+@@ -226,7 +243,9 @@ static int handle_open_device(struct client *client, c
+ 
+ 	struct seat_device *device = seat_open_device(client, path);
+ 	if (device == NULL) {
+-		log_errorf("Could not open device: %s", strerror(errno));
++		if (errno != ENXIO) {
++			log_errorf("Could not open device: %s", strerror(errno));
++		}
+ 		return client_send_error(client, errno);
+ 	}
+ 

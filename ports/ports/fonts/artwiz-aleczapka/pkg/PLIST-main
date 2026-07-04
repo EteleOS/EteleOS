@@ -1,0 +1,21 @@
+@pkgpath x11/artwiz-aleczapka
+share/fonts/
+@fontdir share/fonts/artwiz-aleczapka/
+share/fonts/artwiz-aleczapka/anorexia.pcf
+share/fonts/artwiz-aleczapka/aqui.pcf
+share/fonts/artwiz-aleczapka/cure.pcf
+share/fonts/artwiz-aleczapka/cursor.pcf
+share/fonts/artwiz-aleczapka/drift.pcf
+share/fonts/artwiz-aleczapka/edges.pcf
+share/fonts/artwiz-aleczapka/fkp.pcf
+share/fonts/artwiz-aleczapka/fonts.alias-artwiz
+share/fonts/artwiz-aleczapka/gelly.pcf
+share/fonts/artwiz-aleczapka/glisp-bold.pcf
+share/fonts/artwiz-aleczapka/glisp.pcf
+share/fonts/artwiz-aleczapka/kates.pcf
+share/fonts/artwiz-aleczapka/lime.pcf
+share/fonts/artwiz-aleczapka/mints-mild.pcf
+share/fonts/artwiz-aleczapka/mints-strong.pcf
+share/fonts/artwiz-aleczapka/nu.pcf
+share/fonts/artwiz-aleczapka/smoothansi.pcf
+share/fonts/artwiz-aleczapka/snap.pcf

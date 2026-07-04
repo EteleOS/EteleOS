@@ -1,0 +1,24 @@
+Index: gtk/makefile
+--- gtk/makefile.orig
++++ gtk/makefile
+@@ -68,7 +68,7 @@ else
+ DEL = rm -f
+ endif
+ COMPLIB=$(basedir)/bin/scintilla.a
+-COMPONENT=$(basedir)/bin/libscintilla.$(SHAREDEXTENSION)
++COMPONENT=$(basedir)/bin/libscintilla.$(SHAREDEXTENSION).${LIBscintilla_VERSION}
+ 
+ vpath %.h $(srcdir) $(basedir)/src $(basedir)/include
+ vpath %.c $(srcdir)
+@@ -97,6 +97,11 @@ all: $(COMPLIB) $(COMPONENT)
+ static: $(COMPLIB)
+ 
+ shared: $(COMPONENT)
++
++install:
++	mkdir -p ${PREFIX}/include/scintilla
++	install -m 444 ../include/*.h ${PREFIX}/include/scintilla
++	install -m 444 ${COMPONENT} ${PREFIX}/lib
+ 
+ clean:
+ 	$(DEL) *.o $(call normalize,$(COMPLIB)) $(call normalize,$(COMPONENT)) *.plist

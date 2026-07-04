@@ -1,0 +1,29 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+To use igmpproxy on OpenBSD, you will need to configure it by
+editing ${SYSCONFDIR}/igmpproxy.conf, and configure the OS for
+multicast forwarding:
+
+# echo multicast=YES >> /etc/rc.conf.local
+# echo net.inet.ip.mforwarding=1 >> /etc/sysctl.conf
+
+and restart. Note that client machines using OpenBSD should
+also be configured with multicast=YES.
+
+Start igmpproxy at boot time in the usual way:
+
+# rcctl enable igmpproxy; rcctl start igmpproxy
+
+PF must be configured so that control packets (proto igmp) and
+data packets (destination address within 224.0.0.0/4) are passed.
+
+Running igmpproxy in chroot
+---------------------------
+igmpproxy can run as an unprivileged user inside chroot when the
+chroot and user options are used. To chroot igmpproxy, use the
+following as part of your configuration file:
+
+  chroot /var/empty
+  user _igmpproxy

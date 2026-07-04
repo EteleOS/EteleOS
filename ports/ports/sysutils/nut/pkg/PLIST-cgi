@@ -1,0 +1,18 @@
+cgi-bin/nut/
+@bin cgi-bin/nut/upsimage.cgi
+@bin cgi-bin/nut/upsset.cgi
+@bin cgi-bin/nut/upsstats.cgi
+conf/nut/
+conf/nut/hosts.conf.sample
+@sample conf/nut/hosts.conf
+conf/nut/upsset.conf.sample
+@sample conf/nut/upsset.conf
+conf/nut/upsstats-single.html.sample
+@sample conf/nut/upsstats-single.html
+conf/nut/upsstats.html.sample
+@sample conf/nut/upsstats.html
+nut/
+nut/bottom.html
+nut/header.html
+nut/index.html
+nut/nut-banner.png

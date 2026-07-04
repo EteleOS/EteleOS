@@ -1,0 +1,14 @@
+Adjust the pkg-config file path since the port puts the shared libs in a sub directory.
+
+Index: support-files/CMakeLists.txt
+--- support-files/CMakeLists.txt.orig
++++ support-files/CMakeLists.txt
+@@ -108,7 +108,7 @@ IF(UNIX AND NOT WITHOUT_SERVER)
+   ENDIF()
+ 
+   CONFIGURE_FILE(mariadb.pc.in ${CMAKE_CURRENT_BINARY_DIR}/mariadb.pc @ONLY)
+-  INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/mariadb.pc DESTINATION ${INSTALL_LIBDIR}/pkgconfig COMPONENT Development)
++  INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/mariadb.pc DESTINATION ${INSTALL_LIBDIR}/../pkgconfig COMPONENT Development)
+ 
+   INSTALL(FILES mysql.m4 DESTINATION ${INSTALL_SHAREDIR}/aclocal COMPONENT Development)
+   

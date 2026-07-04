@@ -1,0 +1,13 @@
+@conflict unicon-*
+@pkgpath lang/icon/interp
+bin/icont
+@bin bin/iconx
+lib/icon/
+@bin lib/icon/icont
+lib/libcfunc.so
+@man man/man1/icont.1
+@man man/man1/iconx.1
+share/ipl/
+share/ipl/ucode/
+share/ipl/ucode/cfunc.u1
+share/ipl/ucode/cfunc.u2

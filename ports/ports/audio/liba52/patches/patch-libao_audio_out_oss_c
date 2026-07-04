@@ -1,0 +1,11 @@
+--- libao/audio_out_oss.c.orig	Sun Nov 30 19:24:58 2003
++++ libao/audio_out_oss.c	Tue May 15 02:24:59 2012
+@@ -48,7 +48,7 @@
+ #include <sys/soundcard.h>
+ #endif
+ 
+-#if defined(__NetBSD__)
++#if defined(__NetBSD__) || defined(__OpenBSD__)
+ #define OSS_DEVICE "/dev/audio"
+ #else
+ #define OSS_DEVICE "/dev/dsp"

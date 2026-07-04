@@ -1,0 +1,9 @@
+Index: test/test_examples.sh.in
+--- test/test_examples.sh.in.orig
++++ test/test_examples.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/bin/ksh
+ 
+ unset ERR
+ 

@@ -1,0 +1,86 @@
+Index: jlint.cc
+--- jlint.cc.orig
++++ jlint.cc
+@@ -41,7 +41,7 @@ bool  source_path_redefined = false;
+ int   reported_message_mask = cat_all;
+ FILE* history;
+ string_pool stringPool;
+-field_desc* is_const;
++field_desc* my_is_const;
+ 
+ message_descriptor msg_table[] = 
+   {
+@@ -138,7 +138,7 @@ int get_type(utf_string const& str) 
+ 
+ void format_message(int code, utf_string const& file, int line, __VALIST ap)
+ {
+-  static int loop_id;
++  static long loop_id;
+   static message_node *first, *last;
+   static char* compound_message;
+   const void* parameter[MAX_MSG_PARAMETERS];
+@@ -151,7 +151,7 @@ void format_message(int code, utf_string const& file, 
+     if (compound_message != NULL
+         && ((loop_id != 0 
+              && ((code != msg_loop && code != msg_sync_loop)
+-                 || (int)(long)parameter[2] != loop_id))
++                 || (long)parameter[2] != loop_id))
+             || (loop_id == 0 && code != msg_wait_path)))
+       {
+         if (!message_node::find(compound_message)) { 
+@@ -226,7 +226,7 @@ void format_message(int code, utf_string const& file, 
+                            name.as_asciz()); 
+             break;
+           case 'd': // integer
+-            dst += sprintf(dst, "%d", (int)(long)parameter[index]);  
++            dst += sprintf(dst, "%ld", (long)parameter[index]);
+             break;
+           default:
+             assert(false/*bad message parameter format*/);
+@@ -262,7 +262,7 @@ void format_message(int code, utf_string const& file, 
+               compound_message = strdup(his_buf);
+               first = last = new message_node(msg_buf);
+               if (code != msg_wait) { 
+-                loop_id = (int)(long)parameter[2];
++                loop_id = (long)parameter[2];
+               }
+             } else if (!message_node::find(his_buf)) { 
+               fprintf(stdout, "%s\n", msg_buf);
+@@ -401,8 +401,8 @@ bool parse_class_file(byte* fp)
+   is_this->equals = is_this;
+   is_this->cls = this_class;
+ 
+-  // init. is_const
+-  field_desc* is_const = new field_desc(utf_string("<const>"), NULL, NULL);
++  // init. my_is_const
++  field_desc* my_is_const = new field_desc(utf_string("<const>"), NULL, NULL);
+ 
+   this_class->attr = access_flags;
+   if (super_class_name == 0) { // Object class
+@@ -627,7 +627,7 @@ bool parse_class_file(byte* fp)
+   delete[] constant_pool;
+   delete is_this->name_and_type;
+   //delete is_this;
+-  delete is_const;
++  delete my_is_const;
+ 
+   monitor_stack::const_iterator it;
+   for (it = this_class->usedLocks.begin();
+@@ -662,7 +662,7 @@ inline int stricmp(const char* p, const char* q) 
+   return 0;
+ }
+ 
+-void proceed_file(char* file_name, bool recursive = false)
++void proceed_file(char* file_name, int recursive = 0)
+ {
+ #ifdef _WIN32
+   HANDLE dir;
+@@ -1041,7 +1041,7 @@ int main(int argc, char* argv[])
+         if (verbose) { 
+           fprintf(stderr, 
+                   "Jlint - program correctness verifier for Java, "
+-                  "version %s ("__DATE__").\n", VERSION);
++                  "version %s (" __DATE__ ").\n", VERSION);
+         }
+         continue;
+       }

@@ -1,0 +1,5 @@
+@bin bin/spectool_curses
+@bin bin/spectool_net
+@bin bin/spectool_raw
+share/doc/spectrum-tools/
+share/doc/spectrum-tools/README

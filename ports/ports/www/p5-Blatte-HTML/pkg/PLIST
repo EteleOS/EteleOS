@@ -1,0 +1,4 @@
+bin/blatte-html
+${P5SITE}/Blatte/HTML.pm
+@man man/man1/blatte-html.1
+@man man/man3p/Blatte::HTML.3p

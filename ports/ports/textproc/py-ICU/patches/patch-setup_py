@@ -1,0 +1,77 @@
+XXX push upstream
+
+Index: setup.py
+--- setup.py.orig
++++ setup.py
+@@ -64,12 +64,15 @@ if platform.startswith(('linux', 'gnu')):
+     platform = 'linux'
+ elif platform.startswith('freebsd'):
+     platform = 'freebsd'
++elif platform.startswith('openbsd'):
++    platform = 'openbsd'
+ 
+ 
+ CONFIGURE_WITH_ICU_CONFIG = {
+     'darwin': False,
+     'linux': True,
+     'freebsd': False, # not tested
++    'openbsd': True,
+     'win32': False,   # no icu-config
+     'sunos5': False,  # not tested
+     'cygwin': False,  # not tested
+@@ -79,6 +82,7 @@ CONFIGURE_WITH_PKG_CONFIG = {
+     'darwin': False,  # no pkg-config ?
+     'linux': True,
+     'freebsd': False, # not tested
++    'openbsd': True,
+     'win32': False,   # no pkg-config ?
+     'sunos5': False,  # not tested
+     'cygwin': False,  # not tested
+@@ -111,6 +115,7 @@ INCLUDES = {
+     'darwin': [],
+     'linux': [],
+     'freebsd': ['/usr/local/include'],
++    'openbsd': ['/usr/local/include'],
+     'win32': ['c:/icu/include'],
+     'sunos5': [],
+     'cygwin': [],
+@@ -129,6 +134,7 @@ PEDANTIC_FLAGS = {
+     'darwin': ['-pedantic'],
+     'linux': ['-pedantic', '-Wno-variadic-macros'],
+     'freebsd': ['-pedantic'],
++    'openbsd': ['-pedantic'],
+     'win32': [],
+     'sunos5': [],
+     'cygwin': ['-pedantic'],
+@@ -137,6 +143,7 @@ PEDANTIC_FLAGS = {
+ CFLAGS = {
+     'darwin': ['-std=c++17'],
+     'linux': ['-std=c++17'],
++    'openbsd': ['-std=c++17'],
+     'freebsd': ['-std=c++17'],
+     'win32': ['/Zc:wchar_t', '/EHsc'],
+     'sunos5': ['-std=c++17'],
+@@ -148,6 +155,7 @@ DEBUG_CFLAGS = {
+     'darwin': ['-O0', '-g', '-DDEBUG'],
+     'linux': ['-O0', '-g', '-DDEBUG'],
+     'freebsd': ['-O0', '-g', '-DDEBUG'],
++    'openbsd': ['-O0', '-g', '-DDEBUG'],
+     'win32': ['/Od', '/DDEBUG'],
+     'sunos5': ['-DDEBUG'],
+     'cygwin': ['-Og', '-g', '-DDEBUG'],
+@@ -157,6 +165,7 @@ LFLAGS = {
+     'darwin': [],
+     'linux': [],
+     'freebsd': ['-L/usr/local/lib'],
++    'openbsd': ['-L/usr/local/lib'],
+     'win32': ['/LIBPATH:c:/icu/lib'],
+     'sunos5': [],
+     'cygwin': [],
+@@ -166,6 +175,7 @@ LIBRARIES = {
+     'darwin': [],
+     'linux': [],
+     'freebsd': ['icui18n', 'icuuc', 'icudata'],
++    'openbsd': [],
+     'win32': ['icuin', 'icuuc', 'icudt'],
+     'sunos5': ['icui18n', 'icuuc', 'icudata'],
+     'cygwin': ['icui18n', 'icuuc', 'icudata'],

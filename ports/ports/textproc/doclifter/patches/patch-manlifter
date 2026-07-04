@@ -1,0 +1,11 @@
+--- manlifter.orig.port	Thu Feb 15 17:27:47 2024
++++ manlifter	Thu Jul 25 11:12:19 2024
+@@ -96,7 +96,7 @@
+     if os.path.exists(patch):
+         stem = os.path.basename(localcopy)
+         patch = getoutput(
+-            "patch -d%s --version-control=never <%s"
++            "patch -d%s <%s"
+             % (
+                 outdir,
+                 patch,

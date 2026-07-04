@@ -1,0 +1,2 @@
+${P5SITE}/Catalyst/Plugin/SubRequest.pm
+@man man/man3p/Catalyst::Plugin::SubRequest.3p

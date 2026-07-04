@@ -1,0 +1,2 @@
+@bin bin/lsx-proc
+lib/pkgconfig/apertium-separable.pc

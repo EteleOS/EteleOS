@@ -1,0 +1,8 @@
+${P5SITE}/Class/InsideOut/
+${P5SITE}/Class/InsideOut.pm
+${P5SITE}/Class/InsideOut/Manual/
+${P5SITE}/Class/InsideOut/Manual/About.pod
+${P5SITE}/Class/InsideOut/Manual/Advanced.pod
+@man man/man3p/Class::InsideOut.3p
+@man man/man3p/Class::InsideOut::Manual::About.3p
+@man man/man3p/Class::InsideOut::Manual::Advanced.3p

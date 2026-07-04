@@ -1,0 +1,9 @@
+Index: scripts/buildtests.in
+--- scripts/buildtests.in.orig
++++ scripts/buildtests.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/bin/sh
+ 
+ if [[ $# != 1 || $1 == *help ]]
+ then

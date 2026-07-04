@@ -1,0 +1,20 @@
+--- src/vncpcap2john.c.orig	Fri Sep 19 17:40:51 2014
++++ src/vncpcap2john.c	Fri Jan 16 15:08:20 2015
+@@ -36,13 +36,13 @@
+ /* on a legacy build, we do not KNOW if pcap is installed.  We just run, and make will fail if it is not there */
+ #define HAVE_SYS_SOCKET_H 1
+ #define HAVE_ARPA_INET_H 1
+-#define HAVE_SYS_TYPES_H 0
+-#define HAVE_NET_IF_ARP_H 0
++#define HAVE_SYS_TYPES_H 1
++#define HAVE_NET_IF_ARP_H 1
+ #define HAVE_NET_IF_H 1
+ #define HAVE_NETINET_IF_ETHER_H 1
+ #define HAVE_NETINET_IN_H 1
+-#define HAVE_NET_ETHERNET_H 1
+-#define HAVE_NETINET_IN_SYSTM_H 0
++#define HAVE_NET_ETHERNET_H 0
++#define HAVE_NETINET_IN_SYSTM_H 1
+ #define HAVE_NETINET_IP_H 1
+ #define HAVE_PCAP_H 1
+ #define HAVE_PCAP_PCAP_H 0

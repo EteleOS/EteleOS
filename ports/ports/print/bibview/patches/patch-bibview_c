@@ -1,0 +1,23 @@
+Index: bibview.c
+--- bibview.c.orig
++++ bibview.c
+@@ -20,6 +20,7 @@
+ /*********************************************************************/
+ 
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <sys/param.h>
+@@ -170,9 +171,9 @@ int max_bibtex_types;
+ /* fallback resources */
+ static char *fallback_resources[] = {
+ #ifdef GERMAN
+-   #include "fb_ger.h"
++#include "fb_ger.h"
+ #else
+-   #include "fb_res.h"
++#include "fb_res.h"
+ #endif
+    NULL
+ };

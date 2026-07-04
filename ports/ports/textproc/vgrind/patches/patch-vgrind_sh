@@ -1,0 +1,13 @@
+--- vgrind.sh.orig     Sat Oct 23 20:30:20 2010
++++ vgrind.sh  Mon May 30 11:10:15 2011
+@@ -40,8 +40,8 @@ else
+ 	set troff = "groff"
+ endif
+ 
+-set vf=/usr/libexec/vfontedpr
+-set tm=/usr/share/tmac
++set vf=${PREFIX}/libexec/vfontedpr
++set tm=${PREFIX}/share/groff/site-tmac
+ 
+ set voptions=
+ set options=

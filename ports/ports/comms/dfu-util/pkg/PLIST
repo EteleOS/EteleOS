@@ -1,0 +1,6 @@
+@bin bin/dfu-prefix
+@bin bin/dfu-suffix
+@bin bin/dfu-util
+@man man/man1/dfu-prefix.1
+@man man/man1/dfu-suffix.1
+@man man/man1/dfu-util.1

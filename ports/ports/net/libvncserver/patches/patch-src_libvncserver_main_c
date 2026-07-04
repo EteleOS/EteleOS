@@ -1,0 +1,12 @@
+Index: src/libvncserver/main.c
+--- src/libvncserver/main.c.orig
++++ src/libvncserver/main.c
+@@ -20,6 +20,8 @@
+ #include <stdarg.h>
+ #include <errno.h>
+ 
++#include <sys/socket.h>
++
+ #ifndef false
+ #define false 0
+ #define true -1

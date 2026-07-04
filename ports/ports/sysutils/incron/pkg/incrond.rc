@@ -1,0 +1,15 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/incrond"
+
+. /etc/rc.d/rc.subr
+
+rc_stop=NO
+
+# sending SIGTERM is not enough, incrond is stuck on poll()
+# waiting for an event - and only exits after it
+#rc_stop() {
+#	${daemon} -k
+#}
+
+rc_cmd $1

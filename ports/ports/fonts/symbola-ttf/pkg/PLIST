@@ -1,0 +1,4 @@
+share/fonts/
+@fontdir share/fonts/symbola/
+share/fonts/symbola/Symbola.ttf
+share/fonts/symbola/Symbola_hint.ttf

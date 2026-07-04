@@ -1,0 +1,15 @@
+@bin bin/ninja
+share/bash-completion/
+share/bash-completion/completions/
+share/bash-completion/completions/ninja
+share/doc/ninja/
+share/doc/ninja/manual.asciidoc
+share/ninja/
+share/ninja/measure.py
+share/ninja/ninja-mode.el
+share/ninja/ninja.vim
+share/ninja/ninja_syntax.py
+share/ninja/write_fake_manifests.py
+share/zsh/
+share/zsh/site-functions/
+share/zsh/site-functions/_ninja

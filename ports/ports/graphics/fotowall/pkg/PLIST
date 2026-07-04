@@ -1,0 +1,6 @@
+@bin bin/fotowall
+@man man/man1/fotowall.1
+share/applications/fotowall.desktop
+share/pixmaps/
+share/pixmaps/fotowall.png
+@tag update-desktop-database

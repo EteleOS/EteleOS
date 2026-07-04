@@ -1,0 +1,4 @@
+@bin bin/mspdebug
+lib/mspdebug/
+lib/mspdebug/ti_3410.fw.ihex
+@man man/man1/mspdebug.1

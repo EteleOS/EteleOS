@@ -1,0 +1,22 @@
+Index: make/hash_source.sh
+--- make/hash_source.sh.orig
++++ make/hash_source.sh
+@@ -96,14 +96,16 @@ if [ ! -e "$buildDataTxt" ]; then
+   if [ "$verbose" = "0" ]; then
+     cp -p "$tmpBuildDataTxt" "$buildDataTxt"
+   else
+-    cp -p -v "$tmpBuildDataTxt" "$buildDataTxt"
++    echo cp -p "$tmpBuildDataTxt" "$buildDataTxt"
++    cp -p "$tmpBuildDataTxt" "$buildDataTxt"
+   fi
+ elif [ -n "$(diff -I "^const char build_date\[\].*\$" "$tmpBuildDataTxt" "$buildDataTxt" | sed 's/"/\\"/g')" ]; then
+   echo "[UPDATE] $buildDataTxt"
+   if [ "$verbose" = "0" ]; then
+     cp -p "$tmpBuildDataTxt" "$buildDataTxt"
+   else
+-    cp -p -v "$tmpBuildDataTxt" "$buildDataTxt"
++    echo cp -p "$tmpBuildDataTxt" "$buildDataTxt"
++    cp -p "$tmpBuildDataTxt" "$buildDataTxt"
+   fi
+ fi
+ rm -f "$tmpBuildDataTxt"

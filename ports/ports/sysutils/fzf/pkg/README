@@ -1,0 +1,55 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+Shell Integration
+=================
+
+For fzf version 0.48.0 and above, shell integration scripts are now embedded in
+the fzf binary.
+
+shells/zsh
+----------
+
+To enable all support, add this to your ~/.zshrc:
+
+```
+eval "$(fzf --zsh)"
+```
+
+Key bindings causes zsh to use fzf for things like CTRL+r and CTRL+t, whereas
+completion makes zsh use fzf for **<tab> completion.
+
+shells/bash
+-----------
+
+To enable all support, add this to your ~/.bashrc:
+
+```
+eval "$(fzf --bash)"
+```
+
+These integrations have the same roles as their zsh counterparts.
+
+shells/fish
+-----------
+
+Although the function used to set up fzf is auto-loaded, it can't be used in
+the shell config, so we have to source it anyway. Put the following in
+~/.config/fish/config.fish:
+
+```
+fzf --fish | source
+```
+
+There is no **<tab> completion support for fish.
+
+VIM Integration
+===============
+
+The fzf.vim plugin and documentation are installed at
+${VIMFILES}.  That is part of `runtimepath` by default
+and will be loaded automatically.
+
+It should be noted that https://github.com/junegunn/fzf.vim are not the
+same files, but is built on top of the files installed by this package.

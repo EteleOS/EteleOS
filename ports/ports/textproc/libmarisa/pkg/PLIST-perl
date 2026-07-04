@@ -1,0 +1,7 @@
+${P5ARCH}/
+${P5ARCH}/auto/
+${P5ARCH}/auto/marisa/
+@so ${P5ARCH}/auto/marisa/marisa.so
+@comment ${P5ARCH}/benchmark.pl
+${P5ARCH}/marisa.pm
+@comment ${P5ARCH}/sample.pl

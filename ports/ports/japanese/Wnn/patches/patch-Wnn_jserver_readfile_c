@@ -1,0 +1,18 @@
+--- Wnn/jserver/readfile.c.orig
++++ Wnn/jserver/readfile.c
+@@ -53,6 +53,7 @@
+ */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include "commonhd.h"
+ #include "de_header.h"
+ #include "jdata.h"
+@@ -423,6 +424,7 @@ struct JT *jt2;
+ 
+     jt2 = (struct JT *)malloc(sizeof(struct JT));
+     *jt2 = *jt1;
++    jt2->node = 0;
+ 
+     if(alloc_dict(jt2) == -1){
+ 	free(jt2);

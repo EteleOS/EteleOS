@@ -1,0 +1,4 @@
+portroach-cli queries a portroach(1) instance for outdated ports.
+
+It can filter results and prints them on standard output similar to portroach's
+web interface.

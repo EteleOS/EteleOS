@@ -1,0 +1,9 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+LuaJIT Support
+==============
+
+Some Neovim plugins now require LuaJIT. Those plugins won't work on
+architectures that have no LuaJIT support.

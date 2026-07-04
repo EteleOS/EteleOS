@@ -1,0 +1,14 @@
+Fix with libdockapp>=0.7
+
+Index: wmmenu.c
+--- wmmenu.c.orig
++++ wmmenu.c
+@@ -1,7 +1,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+-#include <dockapp.h>
++#include <libdockapp/dockapp.h>
+ 
+ #include "options.h"
+ #include "menu.h"

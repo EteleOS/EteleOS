@@ -1,0 +1,54 @@
+--- Overlay.cpp.orig	Wed Dec  5 15:53:11 2012
++++ Overlay.cpp	Thu Dec  6 10:33:22 2012
+@@ -36,6 +36,10 @@ class OverlayBase : public Overlay (public)
+     : m_game(game),
+       m_x(x), m_y(y),
+       m_canvas(NULL),
++      m_orgx(0),
++      m_orgy(0),
++      m_prevx(0),
++      m_prevy(0),
+       m_dragging(false),
+       m_dragging_allowed(dragging_allowed),
+       m_buttonDown(false)
+@@ -549,6 +553,7 @@ class NextLevelOverlay : public UiOverlay (public)
+ 			  FULLSCREEN_RECT.centroid().y-120,
+ 			  FULLSCREEN_RECT.centroid().x+200,
+ 			  FULLSCREEN_RECT.centroid().y+80 ) ),
++      m_selectedLevel(0),
+       m_levelIcon(-2),
+       m_worker(NULL)
+   {
+@@ -740,11 +745,11 @@ class NextLevelOverlay : public UiOverlay (public)
+ 
+ class EditOverlay : public IconOverlay
+ {
+-  int m_saving, m_sending;
++  int m_saving;
+ public:
+   EditOverlay( GameControl& game )
+     : IconOverlay(game,"edit.png"),
+-      m_saving(0), m_sending(0)
++      m_saving(0)
+       
+   {
+     for ( int i=0; i<18; i++ ) {
+@@ -780,9 +785,8 @@ class EditOverlay : public IconOverlay (public)
+     if ( m_game.m_strokeFixed ) outline( screen, 12, 0 );
+     if ( m_game.m_strokeSleep ) outline( screen, 13, 0 );
+     if ( m_game.m_strokeDecor ) outline( screen, 14, 0 );
+-    if ( m_sending ) outline( screen, 16, screen.makeColour((m_sending--)<<9) );
+     if ( m_saving )  outline( screen, 17, screen.makeColour((m_saving--)<<9) );
+-    if ( m_saving || m_sending ) dirty();
++    if ( m_saving ) dirty();
+   }
+   virtual bool onHotSpot( int i )
+   {
+@@ -790,7 +794,6 @@ class EditOverlay : public IconOverlay (public)
+     case 12: m_game.m_strokeFixed = ! m_game.m_strokeFixed; break;
+     case 13: m_game.m_strokeSleep = ! m_game.m_strokeSleep; break;
+     case 14: m_game.m_strokeDecor = ! m_game.m_strokeDecor; break;
+-    case 16: if ( m_game.send() ) m_sending=10; break;
+     case 17: if ( m_game.save() ) m_saving=10; break;
+     default: if (i<NUM_BRUSHES) m_game.m_colour = i; else return false;
+     }

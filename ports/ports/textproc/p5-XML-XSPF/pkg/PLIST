@@ -1,0 +1,5 @@
+${P5SITE}/XML/XSPF/
+${P5SITE}/XML/XSPF.pm
+${P5SITE}/XML/XSPF/Base.pm
+${P5SITE}/XML/XSPF/Track.pm
+@man man/man3p/XML::XSPF.3p

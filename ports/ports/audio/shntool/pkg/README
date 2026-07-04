@@ -1,0 +1,16 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Format Modules
+==============
+shntool supports .wav files by default, but has support for reading and
+writing other losslessly-compressed formats by using helper programs.
+To support these extra formats, install the following packages:
+
+- sox (.aiff)
+- shorten (.shn)
+- flac (.flac)
+- mac (.ape)
+- wavpack (.wv)
+- bonk (.bonk)

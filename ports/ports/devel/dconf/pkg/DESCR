@@ -1,0 +1,4 @@
+dconf is a simple key/value storage system that is heavily optimised for
+reading.  This makes it an ideal system for storing user preferences
+(which are read 1000s of times for each time the user changes one).  It
+was created with this usecase in mind.

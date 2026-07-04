@@ -1,0 +1,12 @@
+Index: lib/Smokeping/probes/Curl.pm
+--- lib/Smokeping/probes/Curl.pm.orig
++++ lib/Smokeping/probes/Curl.pm
+@@ -18,7 +18,7 @@ use strict;
+ use base qw(Smokeping::probes::basefork);
+ use Carp;
+ 
+-my $DEFAULTBIN = "/usr/bin/curl";
++my $DEFAULTBIN = "/usr/local/bin/curl";
+ 
+ sub pod_hash {
+     return {

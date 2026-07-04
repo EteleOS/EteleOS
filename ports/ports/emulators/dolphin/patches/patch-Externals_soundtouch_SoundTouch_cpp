@@ -1,0 +1,12 @@
+Index: Externals/soundtouch/SoundTouch.cpp
+--- Externals/soundtouch/SoundTouch.cpp.orig
++++ Externals/soundtouch/SoundTouch.cpp
+@@ -68,7 +68,7 @@
+ #include <math.h>
+ #include <stdio.h>
+ 
+-#include "SoundTouch.h"
++#include "ExtSoundTouch.h"
+ #include "TDStretch.h"
+ #include "RateTransposer.h"
+ #include "cpu_detect.h"

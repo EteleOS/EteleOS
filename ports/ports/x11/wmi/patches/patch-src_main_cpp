@@ -1,0 +1,11 @@
+Index: src/main.cpp
+--- src/main.cpp.orig
++++ src/main.cpp
+@@ -10,6 +10,7 @@ extern "C" {
+ #include <assert.h>
+ #include <unistd.h> // getopt stuff
+ #include <stdlib.h> // getenv stuff
++#include <string.h> // strlen stuff
+ #include <X11/Xlib.h>
+ }
+ 

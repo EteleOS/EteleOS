@@ -1,0 +1,6 @@
+@bin bin/ccomp
+@static-lib lib/libcompcert.a
+@man man/man1/ccomp.1
+share/compcert/
+share/compcert/LICENSE
+share/compcert/compcert.ini

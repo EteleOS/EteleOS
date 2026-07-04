@@ -1,0 +1,2 @@
+@bin bin/dstat
+@man man/man1/dstat.1

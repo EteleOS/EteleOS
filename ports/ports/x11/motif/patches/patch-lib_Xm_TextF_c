@@ -1,0 +1,11 @@
+--- lib/Xm/TextF.c.orig	Sat Jun 11 01:53:16 2016
++++ lib/Xm/TextF.c	Tue Aug  2 20:37:12 2016
+@@ -82,7 +82,7 @@ static char rcsid[] = "$TOG: TextF.c /main/65 1999/09/
+ #define FIX_1409
+ 
+ #if (defined(__FreeBSD__) && (__FreeBSD__ < 4)) || \
+-    (defined(__APPLE__) || defined(__NetBSD__) || defined(__OpenBSD__))
++    (defined(__APPLE__) || defined(__NetBSD__))
+ /*
+  * Modification by Integrated Computer Solutions, Inc.  May 2000
+  *

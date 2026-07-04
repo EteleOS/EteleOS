@@ -1,0 +1,17 @@
+Avoid printf "%s" NULL
+
+merged upstream:
+https://github.com/astrand/xclip/commit/26c84990d9b2b2447a4d0b55be53b715f7ddda30
+
+Index: xcprint.c
+--- xcprint.c.orig
++++ xcprint.c
+@@ -86,7 +86,7 @@ errxdisplay(char *display)
+     if (display == NULL)
+ 	display = getenv("DISPLAY");
+ 
+-    fprintf(stderr, "Error: Can't open display: %s\n", display);
++    fprintf(stderr, "Error: Can't open display: %s\n", display ? display : "(null)");
+     exit(EXIT_FAILURE);
+ }
+ 

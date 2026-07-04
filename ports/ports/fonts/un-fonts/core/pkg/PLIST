@@ -1,0 +1,15 @@
+@pkgpath x11/un-fonts/core
+share/fonts/
+@fontdir share/fonts/korean/
+share/fonts/korean/UnBatang.ttf
+share/fonts/korean/UnBatangBold.ttf
+share/fonts/korean/UnDinaru.ttf
+share/fonts/korean/UnDinaruBold.ttf
+share/fonts/korean/UnDinaruLight.ttf
+share/fonts/korean/UnDotum.ttf
+share/fonts/korean/UnDotumBold.ttf
+share/fonts/korean/UnGraphic.ttf
+share/fonts/korean/UnGraphicBold.ttf
+share/fonts/korean/UnGungseo.ttf
+share/fonts/korean/UnPilgi.ttf
+share/fonts/korean/UnPilgiBold.ttf

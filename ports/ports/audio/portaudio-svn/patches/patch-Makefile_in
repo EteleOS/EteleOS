@@ -1,0 +1,23 @@
+Add support for sndio (#878)
+45c12e8d18ae4434000ed1521e49d9b5ef91dedf
+
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -147,6 +147,7 @@ SRC_DIRS = \
+ 	src/hostapi/jack \
+ 	src/hostapi/oss \
+ 	src/hostapi/skeleton \
++	src/hostapi/sndio \
+ 	src/hostapi/wasapi \
+ 	src/hostapi/wdmks \
+ 	src/hostapi/wmme \
+@@ -156,7 +157,7 @@ SRC_DIRS = \
+ SUBDIRS =
+ @ENABLE_CXX_TRUE@SUBDIRS += bindings/cpp
+ 
+-all: lib/$(PALIB) all-recursive tests examples selftests
++all: lib/$(PALIB) all-recursive
+ 
+ tests: bin-stamp $(TESTS)
+ 

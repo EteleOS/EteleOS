@@ -1,0 +1,3 @@
+@so lib/dovecot/auth/libdriver_mysql.so
+@so lib/dovecot/dict/libdriver_mysql.so
+@so lib/dovecot/libdriver_mysql.so

@@ -1,0 +1,2 @@
+lib/libqrupdate.a
+@lib lib/libqrupdate.so.${LIBqrupdate_VERSION}

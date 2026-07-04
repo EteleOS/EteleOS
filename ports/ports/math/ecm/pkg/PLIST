@@ -1,0 +1,7 @@
+@conflict cmdpack-*
+@bin bin/ecm
+include/ecm.h
+lib/libecm.a
+lib/libecm.la
+@lib lib/libecm.so.${LIBecm_VERSION}
+@man man/man1/ecm.1

@@ -1,0 +1,2 @@
+@bin bin/ipcalc
+@man man/man1/ipcalc.1

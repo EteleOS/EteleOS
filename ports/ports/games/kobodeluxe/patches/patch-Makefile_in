@@ -1,0 +1,11 @@
+--- Makefile.in.orig	Tue Dec 18 02:03:35 2007
++++ Makefile.in	Sun Oct 24 15:34:21 2010
+@@ -737,7 +737,7 @@ install-data: install-data-recursive
+ uninstall: uninstall-recursive
+ 
+ install-am: all-am
+-	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
++	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am
+ 
+ installcheck: installcheck-recursive
+ install-strip:

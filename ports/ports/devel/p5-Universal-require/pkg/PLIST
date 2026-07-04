@@ -1,0 +1,4 @@
+@conflict p5-Universal-exports-<=0.03
+${P5SITE}/UNIVERSAL/
+${P5SITE}/UNIVERSAL/require.pm
+@man man/man3p/UNIVERSAL::require.3p

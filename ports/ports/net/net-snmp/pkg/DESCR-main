@@ -1,0 +1,27 @@
+Simple Network Management Protocol (SNMP) is a widely used protocol for
+monitoring health and statistics of many types of equipment (e.g. routers,
+computers, printers, power systems, environmental monitors, etc).
+Net-SNMP provides a library, daemons and utilities:
+
+- snmpd responds to SNMP queries. It has built-in support for a wide
+range of information, and can be extended. Not to be confused with the
+SNMP daemon in the OpenBSD base OS which is recommended in most cases.
+Manuals are netsnmp-snmpd(8) and netsnmp-snmpd.conf(5) to avoid conflict.
+
+- snmptrapd receives notifications from devices (TRAP and INFORM).
+It can log, run external handlers, or forward over the network.
+
+- tools for standard queries (snmpget*, snmpwalk, snmpbulk*), writes
+(snmpset), and sending notifications (snmpinform, snmptrap).
+
+- tools with special output types; snmpdelta displays differences over
+time, snmptable collates information from SNMP tables (e.g. ifTable),
+and there are single-purpose tools like snmpstatus, snmpdf, snmpps,
+snmptop, snmpnetstat. checkbandwidth provides a Nagios-compatible
+checker (and requires p5-JSON and p5-Mail-Sender to be installed).
+
+- snmptranslate converts between numerical and textual forms of MIB OIDs,
+and displays MIB content and structure.
+
+Flavor:
+	readonly - removes all SET support from the code.

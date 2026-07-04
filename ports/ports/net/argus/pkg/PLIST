@@ -1,0 +1,39 @@
+@newgroup _argus:603
+@newuser _argus:603:_argus::Argus Daemon:/nonexistent:/sbin/nologin
+bin/argus-extip
+bin/argusbug
+@man man/man5/argus.conf.5
+@man man/man8/argus.8
+@bin sbin/argus
+share/doc/argus/
+share/doc/argus/README
+share/examples/argus/
+share/examples/argus/Archive/
+share/examples/argus/Archive/README.argusarchive
+share/examples/argus/Archive/argusarchive
+share/examples/argus/Config/
+share/examples/argus/Config/argus.conf
+@sample ${SYSCONFDIR}/argus.conf
+share/examples/argus/Deployment/
+share/examples/argus/Deployment/sample
+share/examples/argus/README
+share/examples/argus/Startup/
+share/examples/argus/Startup/README
+share/examples/argus/Startup/argus
+share/examples/argus/Startup/argus.service
+share/examples/argus/Startup/com.qosient.argus.plist
+share/examples/argus/System/
+share/examples/argus/System/crontab
+share/examples/argus/System/magic
+share/examples/argus/events/
+share/examples/argus/events/argus-lsof
+share/examples/argus/events/argus-snmp
+share/examples/argus/events/argus-vmstat
+@mode 770
+@owner _argus
+@group _argus
+@sample /var/argus/
+@mode
+@owner
+@group
+@rcscript ${RCDIR}/argus

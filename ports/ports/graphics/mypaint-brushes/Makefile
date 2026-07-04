@@ -1,0 +1,18 @@
+COMMENT =	brushes used by software using libmypaint
+
+# at least as of gimp-2.10.18, mypaint-brushes-2.x are not yet supported
+V =		1.3.1
+DISTNAME =	mypaint-brushes-$V
+EXTRACT_SUFX =	.tar.xz
+
+CATEGORIES =	graphics
+
+# GPLv2+
+PERMIT_PACKAGE = Yes
+
+SITES =	https://github.com/mypaint/mypaint-brushes/releases/download/v$V/
+
+CONFIGURE_STYLE =	gnu
+USE_GMAKE =		Yes
+
+.include <bsd.port.mk>

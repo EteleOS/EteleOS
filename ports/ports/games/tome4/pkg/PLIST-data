@@ -1,0 +1,7 @@
+share/tome4/
+share/tome4/game/
+share/tome4/game/modules/
+share/tome4/game/modules/boot-te4-${V}.team
+share/tome4/game/modules/tome-${V}-gfx.team
+share/tome4/game/modules/tome-${V}-music.team
+share/tome4/game/modules/tome-${V}.team

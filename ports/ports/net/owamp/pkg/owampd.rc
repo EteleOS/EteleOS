@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/owampd"
+daemon_flags="-c ${SYSCONFDIR}/owampd -d /var/db/owampd -U _owampd -G _owampd -R /var/run"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_pre() {
+	install -d -o _owampd /var/run/owampd
+}
+
+rc_cmd $1

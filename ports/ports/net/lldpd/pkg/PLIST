@@ -1,0 +1,32 @@
+@rcscript ${RCDIR}/elldpd
+include/lldp-const.h
+include/lldpctl.h
+include/lldpctl.hpp
+@static-lib lib/liblldpctl.a
+lib/liblldpctl.la
+@lib lib/liblldpctl.so.${LIBlldpctl_VERSION}
+lib/pkgconfig/lldpctl.pc
+@man man/man8/lldpcli.8
+@man man/man8/lldpctl.8
+@man man/man8/lldpd.8
+@bin sbin/lldpcli
+sbin/lldpctl
+@bin sbin/lldpd
+share/bash-completion/
+share/bash-completion/completions/
+share/bash-completion/completions/lldpcli
+@sample ${SYSCONFDIR}/bash_completion.d/
+@sample ${SYSCONFDIR}/bash_completion.d/lldpcli
+share/doc/lldpd/
+@sample ${SYSCONFDIR}/lldpd.d/
+share/doc/lldpd/CONTRIBUTE.md
+share/doc/lldpd/ChangeLog
+share/doc/lldpd/LICENSE
+share/doc/lldpd/NEWS
+share/doc/lldpd/README.md
+@comment share/examples/lldpd/
+@comment share/examples/lldpd/lldpd.d/
+@comment share/examples/lldpd/lldpd.d/README.conf
+share/zsh/
+share/zsh/site-functions/
+share/zsh/site-functions/_lldpcli

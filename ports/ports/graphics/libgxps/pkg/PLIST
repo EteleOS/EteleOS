@@ -1,0 +1,21 @@
+@bin bin/xpstojpeg
+@bin bin/xpstopdf
+@bin bin/xpstopng
+@bin bin/xpstops
+@bin bin/xpstosvg
+include/libgxps/
+include/libgxps/gxps-core-properties.h
+include/libgxps/gxps-document-structure.h
+include/libgxps/gxps-document.h
+include/libgxps/gxps-error.h
+include/libgxps/gxps-file.h
+include/libgxps/gxps-links.h
+include/libgxps/gxps-page.h
+include/libgxps/gxps-version.h
+include/libgxps/gxps.h
+lib/girepository-1.0/
+lib/girepository-1.0/GXPS-0.1.typelib
+@lib lib/libgxps.so.${LIBgxps_VERSION}
+lib/pkgconfig/libgxps.pc
+share/gir-1.0/
+share/gir-1.0/GXPS-0.1.gir

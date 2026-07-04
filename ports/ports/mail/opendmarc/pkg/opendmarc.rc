@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/opendmarc"
+daemon_flags="-c ${SYSCONFDIR}/opendmarc.conf -u _opendmarc"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_cmd $1

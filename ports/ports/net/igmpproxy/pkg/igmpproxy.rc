@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/igmpproxy"
+daemon_flags="${SYSCONFDIR}/igmpproxy.conf"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_cmd $1

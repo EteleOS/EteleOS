@@ -1,0 +1,22 @@
+--- Makefile.PL.orig	Sat Jan  1 01:56:12 2011
++++ Makefile.PL	Sun Jan  9 17:25:05 2011
+@@ -21,8 +21,8 @@ foreach (@ARGV) {
+ }
+ my $opt_prefix  = defined($vars{'PREFIX'}) ?
+ 			"-prefix $vars{'PREFIX'}" : "";
+-my $opt_binpath = defined($vars{'INSTALLSCRIPT'}) ?
+-			"-binpath $vars{'INSTALLSCRIPT'}" : "";
++my $opt_binpath = defined($vars{'INSTALLBIN'}) ?
++			"-binpath $vars{'INSTALLBIN'}" : "";
+ my $opt_libpath = defined($vars{'LIB'}) ?
+ 			"-libpath $vars{'LIB'}" :
+ 		  defined($vars{'INSTALLSITELIB'}) ?
+@@ -64,7 +64,7 @@ default: _FORCE
+ 	\$(CHMOD) -R a+r,a+X .
+ 
+ install: _FORCE
+-	\$(PERL) \$(INSTALLPRG) -batch $instme_args
++	\$(PERL) \$(INSTALLPRG) -batch $instme_args -docpath $vars{'PREFIX'}/share/doc/mhonarc
+ 
+ install-ask: _FORCE
+ 	\$(PERL) \$(INSTALLPRG) $instme_args

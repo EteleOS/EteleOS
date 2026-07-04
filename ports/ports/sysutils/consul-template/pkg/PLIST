@@ -1,0 +1,25 @@
+@newgroup _consul-template:781
+@newuser _consul-template:781:_consul-template::Consul Template user:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/consul_template
+@bin bin/consul-template
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/consul-template/
+share/examples/consul-template/apache.md
+share/examples/consul-template/default.conf
+@owner _consul-template
+@group _consul-template
+@sample ${SYSCONFDIR}/consul-template.d/
+@sample ${SYSCONFDIR}/consul-template.d/default.conf
+@owner
+@group
+share/examples/consul-template/haproxy-connect-proxy.md
+share/examples/consul-template/haproxy.md
+share/examples/consul-template/join.md
+share/examples/consul-template/nginx-connect-proxy/
+share/examples/consul-template/nginx-connect-proxy.md
+share/examples/consul-template/nginx-connect-proxy/run-nginx-connect-proxy
+share/examples/consul-template/nginx.md
+share/examples/consul-template/services.md
+share/examples/consul-template/varnish.md
+share/examples/consul-template/vault-pki.md
+share/examples/consul-template/vault-transit.md

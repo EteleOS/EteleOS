@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Locale/
+${P5ARCH}/Locale/gettext.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Locale/
+${P5ARCH}/auto/Locale/gettext/
+${P5ARCH}/auto/Locale/gettext/gettext.so
+@man man/man3p/Locale::gettext.3p

@@ -1,0 +1,34 @@
+Index: src/sim/w_stubs.c
+--- src/sim/w_stubs.c.orig
++++ src/sim/w_stubs.c
+@@ -82,12 +82,14 @@ short EvalChanged;
+ short flagBlink;
+ 
+ 
++void
+ Spend(int dollars)
+ {
+   SetFunds(TotalFunds - dollars);
+ }
+ 
+ 
++void
+ SetFunds(int dollars)
+ {
+   TotalFunds = dollars;
+@@ -117,6 +119,7 @@ int size;
+ 
+ /* w_hlhandlers.c */
+ 
++void
+ GameStarted()
+ {
+   InvalidateMaps();
+@@ -177,6 +180,7 @@ DoStartScenario(int scenario)
+ }
+ 
+ 
++void
+ DropFireBombs()
+ {
+   Eval("DropFireBombs");

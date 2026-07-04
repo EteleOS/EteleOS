@@ -1,0 +1,5 @@
+# Defaults to make Munin plugins work by default with various packages 
+# can be added here (setting uid, etc).
+
+#[postfix_mailqueue]
+#user _postfix

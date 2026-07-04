@@ -1,0 +1,23 @@
+Index: src/tools/wast2json.cc
+--- src/tools/wast2json.cc.orig
++++ src/tools/wast2json.cc
+@@ -21,6 +21,9 @@
+ #include <cstdlib>
+ #include <string>
+ 
++#include <err.h>
++#include <unistd.h>
++
+ #include "wabt/config.h"
+ 
+ #include "wabt/binary-writer-spec.h"
+@@ -102,6 +105,9 @@ int ProgramMain(int argc, char** argv) {
+ 
+   ParseOptions(argc, argv);
+ 
++  if (pledge("stdio rpath wpath cpath", NULL) != 0)
++    err(1, "pledge");
++  
+   std::vector<uint8_t> file_data;
+   Result result = ReadFile(s_infile, &file_data);
+   Errors errors;

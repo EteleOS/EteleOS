@@ -1,0 +1,45 @@
+Index: decode.c
+--- decode.c.orig
++++ decode.c
+@@ -25,17 +25,20 @@
+  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+  * SOFTWARE.  */
+ 
++#include <err.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <ctype.h>
++#include <stdlib.h>
++#include <md5.h>
+ #include "xmalloc.h"
+ #include "common.h"
+ #include "part.h"
+-#include "md5.h"
+ 
+ extern char *os_idtodir(char *id);
+ extern FILE *os_newtypedfile(char *fname, char *contentType, int flags, params contentParams);
+ extern FILE *os_createnewfile(char *fname);
++extern FILE *os_resetfile(char *fname);
+ extern char *md5contextTo64(MD5_CTX *context);
+ 
+ /* The possible content transfer encodings */
+@@ -545,8 +548,8 @@ getDispositionFilename(char *disposition)
+ 	SkipWhitespace(&disposition);
+ 	if (!disposition) return 0;
+ 
+-	/* If we're looking at a ";", we found what we're looking for */
+-	if (*disposition++ == ';') break;
++	/* If we're looking at an "=", we found what we're looking for */
++	if (*disposition++ == '=') break;
+     }
+ 
+     SkipWhitespace(&disposition);
+@@ -632,7 +635,7 @@ int handlePartial(struct part *inpart, char *headers, 
+ 	}
+ 	/* Store number of parts in reassembly directory */
+ 	sprintf(buf, "%sCT", dir);
+-	partfile = os_createnewfile(buf);
++	partfile = os_resetfile(buf);
+ 	if (!partfile) {
+ 	    os_perror(buf);
+ 	    goto ignore;

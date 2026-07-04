@@ -1,0 +1,24 @@
+Index: src/Makefile
+--- src/Makefile.orig
++++ src/Makefile
+@@ -10,7 +10,7 @@
+ include ../config.mk
+ 
+ CFLAGS+=`pkg-config --cflags gtk+-2.0` `pkg-config --cflags gdk-pixbuf-2.0`
+-LDFLAGS+=`pkg-config --libs gtk+-2.0` `pkg-config --libs gdk-pixbuf-2.0`
++LDFLAGS+=`pkg-config --libs gtk+-2.0` `pkg-config --libs gdk-pixbuf-2.0` -lm
+ 
+ all: xzgv
+ 
+@@ -28,9 +28,8 @@ xzgv: $(OBJS)
+ installdirs:
+ 	/bin/sh ../mkinstalldirs $(BINDIR)
+ 
+-install: xzgv installdirs
+-	install xzgv $(BINDIR)
+-	chmod 755 $(BINDIR)/xzgv
++install: xzgv
++	$(BSD_INSTALL_PROGRAM) xzgv $(BINDIR)
+ 
+ uninstall:
+ 	$(RM) $(BINDIR)/xzgv

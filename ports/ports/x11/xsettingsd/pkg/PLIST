@@ -1,0 +1,7 @@
+@bin bin/dump_xsettings
+@bin bin/xsettingsd
+@comment lib/systemd/
+@comment lib/systemd/user/
+@comment lib/systemd/user/xsettingsd.service
+@man man/man1/dump_xsettings.1
+@man man/man1/xsettingsd.1

@@ -1,0 +1,15 @@
+@conflict dbusmenu-qt-*
+@pkgpath x11/dbusmenu-qt,qt5
+include/dbusmenu-qt5/
+include/dbusmenu-qt5/dbusmenu_export.h
+include/dbusmenu-qt5/dbusmenu_version.h
+include/dbusmenu-qt5/dbusmenuexporter.h
+include/dbusmenu-qt5/dbusmenuimporter.h
+lib/cmake/
+lib/cmake/dbusmenu-qt5/
+lib/cmake/dbusmenu-qt5/dbusmenu-qt5-config-version.cmake
+lib/cmake/dbusmenu-qt5/dbusmenu-qt5-config.cmake
+lib/cmake/dbusmenu-qt5/dbusmenu-qt5-targets${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/dbusmenu-qt5/dbusmenu-qt5-targets.cmake
+@lib lib/libdbusmenu-qt5.so.${LIBdbusmenu-qt5_VERSION}
+lib/pkgconfig/dbusmenu-qt5.pc

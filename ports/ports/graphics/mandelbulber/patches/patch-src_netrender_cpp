@@ -1,0 +1,14 @@
+Correctly qualify bind
+
+Index: src/netrender.cpp
+--- src/netrender.cpp.orig
++++ src/netrender.cpp
+@@ -92,7 +92,7 @@ bool CNetRender::SetServer(char *portNo, char *statusO
+               sizeof(timeout)) < 0)
+   	std::cout << "socket options error " << strerror(errno);
+ 
+-  status = bind(socketfd, host_info_list->ai_addr, host_info_list->ai_addrlen);
++  status = ::bind(socketfd, host_info_list->ai_addr, host_info_list->ai_addrlen);
+   if (status == -1)
+   {
+   	std::cout << "bind error" << std::endl ;

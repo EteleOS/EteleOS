@@ -1,0 +1,12 @@
+@pkgpath chinese/taipeifonts
+share/fonts/
+@fontdir share/fonts/chinese/
+share/fonts/chinese/fonts.alias-taipei
+@comment share/fonts/chinese/fonts.dir
+@comment share/fonts/chinese/fonts.scale
+share/fonts/chinese/taipei16.pcf.gz
+share/fonts/chinese/taipei24.pcf.gz
+share/fonts/chinese/taipeik20.pcf.gz
+share/fonts/chinese/taipeik24.pcf.gz
+share/fonts/chinese/taipeim20.pcf.gz
+share/fonts/chinese/taipeim24.pcf.gz

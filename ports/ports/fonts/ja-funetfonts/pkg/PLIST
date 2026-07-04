@@ -1,0 +1,18 @@
+@pkgpath japanese/funetfonts
+share/fonts/
+@fontdir share/fonts/ja/
+share/fonts/ja/7x14maru.pcf.gz
+share/fonts/ja/7x14rkmaru.pcf.gz
+share/fonts/ja/a16.pcf.gz
+share/fonts/ja/a16rk.pcf.gz
+share/fonts/ja/a18.pcf.gz
+share/fonts/ja/fonts.alias-funet
+@comment share/fonts/ja/fonts.dir
+@comment share/fonts/ja/fonts.scale
+share/fonts/ja/kanji16.pcf.gz
+share/fonts/ja/kanji18.pcf.gz
+share/fonts/ja/kanji24.pcf.gz
+share/fonts/ja/kanji26.pcf.gz
+share/fonts/ja/maru14.pcf.gz
+share/fonts/ja/maru16.pcf.gz
+share/fonts/ja/maru18.pcf.gz

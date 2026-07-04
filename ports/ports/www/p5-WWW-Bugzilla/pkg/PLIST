@@ -1,0 +1,5 @@
+${P5SITE}/WWW/Bugzilla/
+${P5SITE}/WWW/Bugzilla.pm
+${P5SITE}/WWW/Bugzilla/Search.pm
+@man man/man3p/WWW::Bugzilla.3p
+@man man/man3p/WWW::Bugzilla::Search.3p

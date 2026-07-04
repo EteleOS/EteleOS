@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/spampd"
+daemon_flags="--a --p=/var/spampd/spampd.pid"
+
+. /etc/rc.d/rc.subr
+
+pexp="/usr/bin/perl -T ${daemon}${daemon_flags:+ ${daemon_flags}}"
+
+rc_cmd $1

@@ -1,0 +1,11 @@
+--- src/gmtk.pc.in.orig	Mon Nov 25 20:44:49 2013
++++ src/gmtk.pc.in	Mon Jan 13 11:29:57 2014
+@@ -11,7 +11,7 @@ backend=@BACKEND@
+ Name: gmtk
+ Description: Gnome Media Player Toolkit
+ Version: @VERSION@
+-Requires.private: gmlib >= @VERSION@
++Requires.private: gmlib
+ Requires: 
+ Libs: -L${libdir} -lgmtk
+ Cflags: -I${includedir}

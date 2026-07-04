@@ -1,0 +1,3 @@
+${P5SITE}/DBICx/
+${P5SITE}/DBICx/Sugar.pm
+@man man/man3p/DBICx::Sugar.3p

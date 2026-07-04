@@ -1,0 +1,11 @@
+--- Crypto/samples/genrsakey/Makefile.orig	Tue Mar 19 20:25:40 2013
++++ Crypto/samples/genrsakey/Makefile	Tue Mar 19 20:25:43 2013
+@@ -8,7 +8,7 @@
+ 
+ include $(POCO_BASE)/build/rules/global
+ 
+-SYSLIBS += -lssl -lcrypto -lz -ldl
++SYSLIBS += -lssl -lcrypto -lz
+ 
+ objects = genrsakey
+ 

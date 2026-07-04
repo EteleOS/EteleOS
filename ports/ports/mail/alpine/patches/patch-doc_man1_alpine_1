@@ -1,0 +1,21 @@
+Index: doc/man1/alpine.1
+--- doc/man1/alpine.1.orig
++++ doc/man1/alpine.1
+@@ -318,7 +318,7 @@ uses the following environment variables: 
+ .if n .ta 2.8i
+ .if t .ta 2.1i
+ 
+-/usr/spool/mail/xxxx	Default folder for incoming mail.
++/var/mail	Default folder for incoming mail.
+ .br
+ ~/mail	Default directory for mail folders.
+ .br
+@@ -354,7 +354,7 @@ uses the following environment variables: 
+ .br
+ ~/.alpine-smime/public	Directory that contains public key(s).
+ .br
+-/tmp/.\\usr\\spool\\mail\\xxxx	Per-folder mailbox lock files.
++/tmp/.\\var\\mail\\xxxx	Per-folder mailbox lock files.
+ .br
+ ~/.pine-interrupted-mail	Message which was interrupted.
+ .br

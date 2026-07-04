@@ -1,0 +1,11 @@
+Index: ng/CMakeLists.txt
+--- ng/CMakeLists.txt.orig
++++ ng/CMakeLists.txt
+@@ -28,6 +28,7 @@ if(USE_GUI)
+     if(APPLE)
+         set_target_properties(netgen PROPERTIES OUTPUT_NAME netgen)
+     endif(APPLE)
++    set_target_properties(netgen PROPERTIES OUTPUT_NAME netgen-mesher)
+     target_link_libraries( netgen ${Python3_LIBRARIES} ${TCL_LIBRARY} ${TK_LIBRARY})
+     endif(NOT BUILD_FOR_CONDA)
+ 

@@ -1,0 +1,15 @@
+--- fax/filters/pstotiff.orig	Thu Jan 29 13:20:35 2015
++++ fax/filters/pstotiff	Thu Feb  5 14:28:00 2015
+@@ -18,10 +18,10 @@ if (len(sys.argv) > 6):
+ 
+ temp_out_handle, temp_out_fname = tempfile.mkstemp()
+ 
+-font = "-I/usr/share/cups/fonts"
++font = "-I${LOCALBASE}/share/cups/fonts"
+ device = "-sDEVICE=tiffg4 -dMaxStripSize=0 -r204x196 -dNOPAUSE -dBATCH -dSAFER -dPARANOIDSAFER -dSHORTERRORS -dWRITESYSTEMDICT -dGHOSTSCRIPT -sstdout=%stderr -sOutputFile=" + temp_out_fname + " " + temp_in_file
+ 
+-gs_command = "/usr/bin/gs" + " " + font + " " + device
++gs_command = "${LOCALBASE}/bin/gs" + " " + font + " " + device
+ 
+ exit_code = os.system(gs_command)
+ 

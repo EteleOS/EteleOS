@@ -1,0 +1,12 @@
+Index: src/rip.c
+--- src/rip.c.orig
++++ src/rip.c
+@@ -27,7 +27,7 @@
+ #elif defined (HAVE_SYS_VFS_H)
+ #include <sys/vfs.h>
+ #endif
+-#if defined(__FreeBSD__) || defined(__NetBSD__)
++#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__)
+ #include <sys/param.h>
+ #include <sys/mount.h>
+ #endif

@@ -1,0 +1,47 @@
+--- machdep/nbsd-44.c.orig	Mon Apr  8 03:35:21 2002
++++ machdep/nbsd-44.c	Wed Jul  9 11:42:01 2014
+@@ -36,6 +36,7 @@ static char rcsid[] = "$Id: nbsd-44.c,v 1.6 2002/04/05
+ #include <signal.h>
+ #include <stdlib.h>
+ #include <ctype.h>
++#include <errno.h>
+ 
+ #include <sys/resource.h>
+ 
+@@ -172,6 +173,7 @@ REAL_REGEX_FUNCS
+  * Now, set up everything we need to write a GetProc() routine.
+  */
+ 
++#include <sys/proc.h>
+ #include <sys/user.h>
+ #include <sys/sysctl.h>
+ 
+@@ -210,6 +212,28 @@ static	int	pidmapsiz = sizeof(pidmap) / sizeof(pidmap[
+ #define	_PROC_UID(p)	(p)->ki_uid
+ #endif
+ #endif	/* __FreeBSD__ */
++
++#if defined(__OpenBSD__)
++#define	_SYSCTL_ARG	KERN_PROC
++#define	_SYSCTL_NMIB	6
++#define	_SYSCTL_PROC	kinfo_proc
++#define	_SYSCTL_MIBINIT(m)			\
++	m[0] = CTL_KERN;			\
++	m[1] = KERN_PROC;			\
++	m[2] = KERN_PROC_ALL;			\
++	m[3] = 0;				\
++	m[4] = sizeof(struct _SYSCTL_PROC);	\
++	m[5] = 0
++#define	_SYSCTL_MIBPROC(m,sz)			\
++	m[5] = (sz) / sizeof(struct _SYSCTL_PROC)
++
++#define	_PROC_COMM(p)	(p)->p_comm
++#define	_PROC_FLAG(p)	(p)->p_flag
++#define	_PROC_PID(p)	(p)->p_pid
++#define	_PROC_STAT(p)	(p)->p_stat
++#define	_PROC_TDEV(p)	(p)->p_tdev
++#define	_PROC_UID(p)	(p)->p_uid
++#endif
+ 
+ #if defined(__NetBSD_Version__) && defined(KERN_PROC2)
+ #define	_SYSCTL_ARG	KERN_PROC2

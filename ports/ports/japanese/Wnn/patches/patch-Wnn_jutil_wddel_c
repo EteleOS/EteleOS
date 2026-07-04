@@ -1,0 +1,29 @@
+--- Wnn/jutil/wddel.c.orig
++++ Wnn/jutil/wddel.c
+@@ -53,6 +53,8 @@ static char *rcs_id = "$Id: wddel.c,v 1.5 1992/11/30 0
+ */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
+ #include "commonhd.h"
+ #include "config.h"
+ #include "jllib.h"
+@@ -97,7 +99,7 @@ err()
+     exit(1);
+ }
+ 
+-void
++int
+ main(argc, argv)
+ int argc;
+ char **argv;
+@@ -199,7 +201,7 @@ char **argv;
+ 	fprintf(stderr, "The specified dictionary isn't registable\n");
+ 	exit(1);
+     }
+-    while(gets(s)){
++    while(fgets(s, sizeof s, stdin)){
+ 	char com[LENGTHYOMI];
+ 	char Com[LENGTHYOMI];
+ 	int ima, hindo;

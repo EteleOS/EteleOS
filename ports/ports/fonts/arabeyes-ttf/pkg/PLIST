@@ -1,0 +1,43 @@
+@conflict arabeyes-*
+@pkgpath x11/arabeyes-ttf
+share/fonts/
+@fontdir share/fonts/arabeyes/
+share/fonts/arabeyes/ae_AlArabiya.ttf
+share/fonts/arabeyes/ae_AlBattar.ttf
+share/fonts/arabeyes/ae_AlHor.ttf
+share/fonts/arabeyes/ae_AlManzomah.ttf
+share/fonts/arabeyes/ae_AlMateen-Bold.ttf
+share/fonts/arabeyes/ae_AlMohanad.ttf
+share/fonts/arabeyes/ae_AlMothnna-Bold.ttf
+share/fonts/arabeyes/ae_AlYarmook.ttf
+share/fonts/arabeyes/ae_Arab.ttf
+share/fonts/arabeyes/ae_Cortoba.ttf
+share/fonts/arabeyes/ae_Dimnah.ttf
+share/fonts/arabeyes/ae_Electron.ttf
+share/fonts/arabeyes/ae_Furat.ttf
+share/fonts/arabeyes/ae_Granada.ttf
+share/fonts/arabeyes/ae_Graph.ttf
+share/fonts/arabeyes/ae_Hani.ttf
+share/fonts/arabeyes/ae_Haramain.ttf
+share/fonts/arabeyes/ae_Hor.ttf
+share/fonts/arabeyes/ae_Japan.ttf
+share/fonts/arabeyes/ae_Jet.ttf
+share/fonts/arabeyes/ae_Kayrawan.ttf
+share/fonts/arabeyes/ae_Khalid.ttf
+share/fonts/arabeyes/ae_Mashq-Bold.ttf
+share/fonts/arabeyes/ae_Mashq.ttf
+share/fonts/arabeyes/ae_Metal.ttf
+share/fonts/arabeyes/ae_Nada.ttf
+share/fonts/arabeyes/ae_Nagham.ttf
+share/fonts/arabeyes/ae_Nice.ttf
+share/fonts/arabeyes/ae_Ostorah.ttf
+share/fonts/arabeyes/ae_Ouhod-Bold.ttf
+share/fonts/arabeyes/ae_Petra.ttf
+share/fonts/arabeyes/ae_Rasheeq-Bold.ttf
+share/fonts/arabeyes/ae_Rehan.ttf
+share/fonts/arabeyes/ae_Salem.ttf
+share/fonts/arabeyes/ae_Shado.ttf
+share/fonts/arabeyes/ae_Sharjah.ttf
+share/fonts/arabeyes/ae_Sindbad.ttf
+share/fonts/arabeyes/ae_Tarablus.ttf
+share/fonts/arabeyes/ae_Tholoth.ttf

@@ -1,0 +1,14 @@
+Some compilers don't have -Wvla.
+
+Index: lib/libzstd.mk
+--- lib/libzstd.mk.orig
++++ lib/libzstd.mk
+@@ -113,7 +113,7 @@ endif
+ DEBUGFLAGS= -Wall -Wextra -Wcast-qual -Wcast-align -Wshadow \
+             -Wstrict-aliasing=1 -Wswitch-enum -Wdeclaration-after-statement \
+             -Wstrict-prototypes -Wundef -Wpointer-arith \
+-            -Wvla -Wformat=2 -Winit-self -Wfloat-equal -Wwrite-strings \
++            -Wformat=2 -Winit-self -Wfloat-equal -Wwrite-strings \
+             -Wredundant-decls -Wmissing-prototypes -Wc++-compat
+ CFLAGS   += $(DEBUGFLAGS) $(MOREFLAGS)
+ ASFLAGS  += $(DEBUGFLAGS) $(MOREFLAGS) $(CFLAGS)

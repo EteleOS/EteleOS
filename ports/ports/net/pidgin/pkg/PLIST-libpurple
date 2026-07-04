@@ -1,0 +1,130 @@
+@conflict pidgin-<2.5.6p3
+@pkgpath net/pidgin
+@pkgpath net/pidgin,-libpurple,gtkspell
+@pkgpath net/pidgin,-libpurple,audio,gtkspell
+@bin bin/purple-client-example
+bin/purple-remote
+bin/purple-send
+bin/purple-send-async
+bin/purple-url-handler
+include/libpurple/
+include/libpurple/account.h
+include/libpurple/accountopt.h
+include/libpurple/blist.h
+include/libpurple/buddyicon.h
+include/libpurple/certificate.h
+include/libpurple/cipher.h
+include/libpurple/circbuffer.h
+include/libpurple/cmds.h
+include/libpurple/connection.h
+include/libpurple/conversation.h
+include/libpurple/core.h
+include/libpurple/dbus-bindings.h
+include/libpurple/dbus-define-api.h
+include/libpurple/dbus-maybe.h
+include/libpurple/dbus-purple.h
+include/libpurple/dbus-server.h
+include/libpurple/dbus-types.h
+include/libpurple/dbus-useful.h
+include/libpurple/debug.h
+include/libpurple/desktopitem.h
+include/libpurple/dnsquery.h
+include/libpurple/dnssrv.h
+include/libpurple/eventloop.h
+include/libpurple/ft.h
+include/libpurple/gaim-compat.h
+include/libpurple/glibcompat.h
+include/libpurple/idle.h
+include/libpurple/imgstore.h
+include/libpurple/log.h
+include/libpurple/marshallers.h
+include/libpurple/media/
+include/libpurple/media-gst.h
+include/libpurple/media.h
+include/libpurple/media/backend-iface.h
+include/libpurple/media/candidate.h
+include/libpurple/media/codec.h
+include/libpurple/media/enum-types.h
+include/libpurple/mediamanager.h
+include/libpurple/mime.h
+include/libpurple/nat-pmp.h
+include/libpurple/network.h
+include/libpurple/notify.h
+include/libpurple/ntlm.h
+include/libpurple/plugin.h
+include/libpurple/pluginpref.h
+include/libpurple/pounce.h
+include/libpurple/prefs.h
+include/libpurple/privacy.h
+include/libpurple/proxy.h
+include/libpurple/prpl.h
+include/libpurple/purple.h
+include/libpurple/request.h
+include/libpurple/roomlist.h
+include/libpurple/savedstatuses.h
+include/libpurple/server.h
+include/libpurple/signals.h
+include/libpurple/smiley.h
+include/libpurple/sound-theme-loader.h
+include/libpurple/sound-theme.h
+include/libpurple/sound.h
+include/libpurple/sslconn.h
+include/libpurple/status.h
+include/libpurple/stringref.h
+include/libpurple/stun.h
+include/libpurple/theme-loader.h
+include/libpurple/theme-manager.h
+include/libpurple/theme.h
+include/libpurple/upnp.h
+include/libpurple/util.h
+include/libpurple/value.h
+include/libpurple/version.h
+include/libpurple/whiteboard.h
+include/libpurple/xmlnode.h
+@static-lib lib/libpurple-client.a
+lib/libpurple-client.la
+@lib lib/libpurple-client.so.${LIBpurple-client_VERSION}
+@static-lib lib/libpurple.a
+lib/libpurple.la
+@lib lib/libpurple.so.${LIBpurple_VERSION}
+lib/pkgconfig/purple.pc
+lib/purple-2/
+@so lib/purple-2/autoaccept.so
+@so lib/purple-2/buddynote.so
+@so lib/purple-2/dbus-example.so
+@so lib/purple-2/idle.so
+@so lib/purple-2/joinpart.so
+@so lib/purple-2/libgg.so
+@so lib/purple-2/libirc.so
+@lib lib/purple-2/libjabber.so.${LIBjabber_VERSION}
+@so lib/purple-2/libnovell.so
+@so lib/purple-2/libsametime.so
+@so lib/purple-2/libsilcpurple.so
+@so lib/purple-2/libsimple.so
+@so lib/purple-2/libxmpp.so
+@so lib/purple-2/libzephyr.so
+@so lib/purple-2/log_reader.so
+@so lib/purple-2/newline.so
+@so lib/purple-2/offlinemsg.so
+@so lib/purple-2/psychic.so
+@so lib/purple-2/ssl-openssl.so
+@so lib/purple-2/ssl.so
+@so lib/purple-2/statenotify.so
+share/aclocal/purple.m4
+share/dbus-1/services/purple.service
+share/purple/
+share/purple/ca-certs/
+share/purple/ca-certs/CAcert_Class3.pem
+share/purple/ca-certs/CAcert_Root.pem
+share/purple/ca-certs/mozilla.pem
+@unexec GCONF_CONFIG_SOURCE=`%D/bin/gconftool-2 --get-default-source` %D/bin/gconftool-2 --makefile-uninstall-rule %D/${SCHEMAS_INSTDIR}/*.schemas >/dev/null 2>&1
+${SCHEMAS_INSTDIR}/
+${SCHEMAS_INSTDIR}/purple.schemas
+@exec GCONF_CONFIG_SOURCE=`%D/bin/gconftool-2 --get-default-source` %D/bin/gconftool-2 --makefile-install-rule %D/${SCHEMAS_INSTDIR}/*.schemas >/dev/null 2>&1
+share/sounds/
+share/sounds/purple/
+share/sounds/purple/alert.wav
+share/sounds/purple/login.wav
+share/sounds/purple/logout.wav
+share/sounds/purple/receive.wav
+share/sounds/purple/send.wav

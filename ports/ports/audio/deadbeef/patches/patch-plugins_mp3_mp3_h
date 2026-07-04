@@ -1,0 +1,28 @@
+Index: plugins/mp3/mp3.h
+--- plugins/mp3/mp3.h.orig
++++ plugins/mp3/mp3.h
+@@ -69,24 +69,18 @@ typedef struct {
+ 
+     char input[READBUFFER]; // input buffer, for MPEG data
+ 
+-    union {
+ #ifdef USE_LIBMAD
+-        struct {
+             struct mad_stream mad_stream;
+             struct mad_frame mad_frame;
+             struct mad_synth mad_synth;
+             long input_remaining_bytes;
+-        };
+ #endif
+ #ifdef USE_LIBMPG123
+-        struct {
+             mpg123_handle *mpg123_handle;
+             int mpg123_status;
+             unsigned char *mpg123_audio;
+             int total_decoded_samples;
+-        };
+ #endif
+-    };
+ 
+     int want_16bit;
+     int raw_signal;

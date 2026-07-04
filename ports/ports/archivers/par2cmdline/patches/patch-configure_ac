@@ -1,0 +1,11 @@
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -60,6 +60,7 @@ dnl Checks for library functions.
+ AC_FUNC_MEMCMP
+ AC_CHECK_FUNCS([stricmp] [strcasecmp])
+ AC_CHECK_FUNCS([strchr] [memcpy])
++AC_CHECK_FUNCS([pledge])
+ 
+ AC_CHECK_FUNCS([getopt] [getopt_long])
+ 

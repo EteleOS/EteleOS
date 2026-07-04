@@ -1,0 +1,7 @@
+@so lib/kamailio/modules/snmpstats.so
+share/doc/kamailio/modules/README.snmpstats
+share/snmp/mibs/KAMAILIO-MIB
+share/snmp/mibs/KAMAILIO-REG-MIB
+share/snmp/mibs/KAMAILIO-SIP-COMMON-MIB
+share/snmp/mibs/KAMAILIO-SIP-SERVER-MIB
+share/snmp/mibs/KAMAILIO-TC

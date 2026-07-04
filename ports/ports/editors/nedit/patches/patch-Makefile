@@ -1,0 +1,11 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -32,7 +32,6 @@ all:
+ 	(cd Xlt;    $(MAKE) -f Makefile.$@ libXlt.a)
+ 	(cd Microline/XmL;    $(MAKE) -f Makefile.$@ libXmL.a)
+ 	(cd source; $(MAKE) -f Makefile.$@ nedit nc)
+-	@source/nedit -V
+ 
+ # This should not be in the default build, as users may not have Perl
+ # installed.  This is only interesting to developers.

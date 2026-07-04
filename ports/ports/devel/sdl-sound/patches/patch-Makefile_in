@@ -1,0 +1,10 @@
+--- Makefile.in.orig	Sun Apr 20 16:33:52 2008
++++ Makefile.in	Fri Jul  9 18:19:28 2010
+@@ -251,7 +251,6 @@ libSDL_sound_la_SOURCES = \
+ @USE_MPGLIB_FALSE@MPGLIB_LIB = 
+ @USE_MPGLIB_TRUE@MPGLIB_LIB = decoders/mpglib/libmpglib.la
+ libSDL_sound_la_LDFLAGS = \
+-	-release $(LT_RELEASE)	\
+ 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ 
+ libSDL_sound_la_LIBADD = \

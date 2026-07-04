@@ -1,0 +1,12 @@
+Index: bchunk.1
+--- bchunk.1.orig
++++ bchunk.1
+@@ -80,7 +80,7 @@ format for that matter) using sox ('sox track.cdr trac
+ Audio tracks in WAV format.
+ .SH "SEE ALSO"
+ .BR cdrecord (1),
+-.BR mkisofs (8),
++.BR mkhybrid (8),
+ .BR sox (1),
+ .BR cdrdao (1)
+ .SH AUTHORS

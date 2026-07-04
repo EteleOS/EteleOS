@@ -1,0 +1,9 @@
+@pkgpath textproc/aspell/dicts/aspell-ru
+lib/aspell/ru.dat
+lib/aspell/ru_affix.dat
+share/aspell/ru-ye.multi
+share/aspell/ru-ye.rws
+share/aspell/ru-yeyo.multi
+share/aspell/ru-yo.multi
+share/aspell/ru-yo.rws
+share/aspell/ru.multi

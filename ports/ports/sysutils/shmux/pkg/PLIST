@@ -1,0 +1,4 @@
+@bin bin/shmux
+@man man/man1/shmux.1
+share/doc/shmux/
+share/doc/shmux/mcmd.sh

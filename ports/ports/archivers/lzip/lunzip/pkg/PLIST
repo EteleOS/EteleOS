@@ -1,0 +1,2 @@
+@bin bin/lunzip
+@man man/man1/lunzip.1

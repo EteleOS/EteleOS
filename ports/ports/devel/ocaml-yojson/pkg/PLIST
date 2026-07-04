@@ -1,0 +1,16 @@
+%%native%%
+@bin bin/ydump
+lib/ocaml/yojson/
+lib/ocaml/yojson/META
+lib/ocaml/yojson/dune-package
+lib/ocaml/yojson/opam
+lib/ocaml/yojson/yojson.cma
+lib/ocaml/yojson/yojson.cmi
+lib/ocaml/yojson/yojson.cmt
+lib/ocaml/yojson/yojson.cmti
+lib/ocaml/yojson/yojson.ml
+lib/ocaml/yojson/yojson.mli
+share/doc/ocaml-yojson/
+share/doc/ocaml-yojson/CHANGES.md
+share/doc/ocaml-yojson/LICENSE.md
+share/doc/ocaml-yojson/README.md

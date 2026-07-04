@@ -1,0 +1,11 @@
+Index: src/tclx/config/linux
+--- src/tclx/config/linux.orig
++++ src/tclx/config/linux
+@@ -5,6 +5,6 @@
+ #------------------------------------------------------------------------------
+ #
+-SYS_DEP_FLAGS=-DTCL_HAVE_SETLINEBUF -DTCL_32_BIT_RANDOM -DTCL_POSIX_SIG -DTCL_TM_GMTOFF
++SYS_DEP_FLAGS=-DTCL_HAVE_SETLINEBUF -DTCL_32_BIT_RANDOM -DTCL_POSIX_SIG -DTCL_TM_GMTOFF -DTCL_IEEE_FP_MATH
+ LIBS=-lm
+ RANLIB_CMD=ranlib
+ MCS_CMD=true

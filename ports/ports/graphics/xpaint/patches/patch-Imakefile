@@ -1,0 +1,30 @@
+--- Imakefile.orig	Fri Jun  3 06:26:03 2005
++++ Imakefile	Thu Jun 23 08:12:39 2011
+@@ -97,12 +97,12 @@ XAWDEPENDS = \
+ 	brushOp.o chroma.o fileName.o fontSelect.o graphic.o help.o \
+ 	iprocess.o main.o menu.o misc.o operation.o pattern.o print.o size.o
+ 
+-#ifdef SGIArchitecture
++#if defined(SGIArchitecture) && !defined(OpenBSDArchitecture)
+ SGI_LIB = -limage
+ #endif
+ 
+ DEPLIBS = always xpaint.man XPaint.ad
+-LOCAL_LIBRARIES = -Lrw -lrw $(XPM_LIB) $(TIFF_LIB) $(SGI_LIB) $(JPEG_LIB) $(PNG_LIB) -ldl -rdynamic
++LOCAL_LIBRARIES = -Lrw -lrw $(XPM_LIB) $(TIFF_LIB) $(SGI_LIB) $(JPEG_LIB) $(PNG_LIB)
+ 
+ SUBDIRS = rw
+ 
+@@ -136,8 +136,10 @@ install::
+ 	chmod -R a+r $(DESTDIR)$(SHAREDIR)/
+ 
+ xaw::
+-	-$(RM) $(XAWDEPENDS)
+-	./configure xaw ; make		
++	-$(RM) $(XAWDEPENDS) ; ln -sf ${X11BASE}/include/X11/Xaw xaw_incdir
++	echo "XAWLIB_DEFINES = -DXAWPLAIN" > Local.xawdefs
++	echo "SYS_LIBRARIES = XawClientLibs -lm" >> Local.xawdefs
++	xmkmf -DPorts ; (cd rw ; xmkmf -DPorts) ; make
+ 	@echo ""
+ 	@echo "'xpaint' compiled with Xaw widgets (old and ugly)"
+ 	@echo "You should rather use Xaw3d, neXtaw or Xaw95 !!"	

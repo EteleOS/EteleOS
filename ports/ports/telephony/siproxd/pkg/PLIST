@@ -1,0 +1,32 @@
+@newgroup _siproxd:574
+@newuser _siproxd:574:574::SIP proxy:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/siproxd
+lib/siproxd/
+@so lib/siproxd/plugin_blacklist.so
+@so lib/siproxd/plugin_codecfilter.so
+@so lib/siproxd/plugin_defaulttarget.so
+@so lib/siproxd/plugin_demo.so
+@so lib/siproxd/plugin_fix_DTAG.so
+@so lib/siproxd/plugin_fix_bogus_via.so
+@so lib/siproxd/plugin_fix_fbox_anoncall.so
+@so lib/siproxd/plugin_logcall.so
+@so lib/siproxd/plugin_prefix.so
+@so lib/siproxd/plugin_regex.so
+@so lib/siproxd/plugin_shortdial.so
+@so lib/siproxd/plugin_siptrunk.so
+@so lib/siproxd/plugin_stats.so
+@so lib/siproxd/plugin_stripheader.so
+@so lib/siproxd/plugin_stun.so
+@bin sbin/siproxd
+share/doc/siproxd/
+share/doc/siproxd/FAQ
+share/doc/siproxd/KNOWN_BUGS
+share/examples/siproxd/
+share/examples/siproxd/siproxd.conf.example
+@sample ${SYSCONFDIR}/siproxd.conf
+share/examples/siproxd/siproxd_passwd.cfg
+@sample ${SYSCONFDIR}/siproxd_passwd.cfg
+@mode 0770
+@owner root
+@group _siproxd
+@sample /var/siproxd/

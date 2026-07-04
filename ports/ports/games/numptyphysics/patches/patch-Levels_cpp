@@ -1,0 +1,20 @@
+--- Levels.cpp.orig	Wed Dec  5 15:53:11 2012
++++ Levels.cpp	Thu Dec  6 14:06:04 2012
+@@ -88,8 +88,7 @@ bool Levels::addPath( const char* path )
+   int len = strlen( path );
+   if ( strcasecmp( path+len-4, ".npz" )==0 ) {
+     scanCollection( string(path), rankFromPath(path) );
+-  } else if ( strcasecmp( path+len-4, ".nph" )==0 
+-	      || strcasecmp( path+len-4, ".npd" )==0) {
++  } else if ( strcasecmp( path+len-4, ".nph" )==0) {
+     addLevel( path, rankFromPath(path) );
+   } else {
+     DIR *dir = opendir( path );
+@@ -125,6 +124,7 @@ bool Levels::addLevel( Collection* collection,
+     if ( collection->levels[i]->file == file
+ 	 && collection->levels[i]->index == index ) {
+       //printf("addLevel %s already present!\n",file.c_str());
++      delete e;
+       return false;
+     } else if ( collection->levels[i]->rank > rank ) {
+       //printf("insert level %s+%d at %d\n",file.c_str(),index,i);

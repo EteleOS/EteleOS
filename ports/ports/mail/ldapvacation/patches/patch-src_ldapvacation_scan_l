@@ -1,0 +1,12 @@
+Index: src/ldapvacation/scan.l
+--- src/ldapvacation/scan.l.orig
++++ src/ldapvacation/scan.l
+@@ -19,7 +19,7 @@
+ 
+ #include <string.h>
+ 
+-#include "y.tab.h"
++#include "parse.h"
+ 
+ %}
+ 

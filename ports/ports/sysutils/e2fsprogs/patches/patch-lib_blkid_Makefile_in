@@ -1,0 +1,14 @@
+Index: lib/blkid/Makefile.in
+--- lib/blkid/Makefile.in.orig
++++ lib/blkid/Makefile.in
+@@ -32,8 +32,8 @@ HFILES_IN=	blkid.h blkid_types.h
+ LIBRARY= libblkid
+ LIBDIR= blkid
+ 
+-ELF_VERSION = 1.0
+-ELF_SO_VERSION = 1
++ELF_VERSION = $(LIBblkid_VERSION)
++ELF_SO_VERSION = $(LIBblkid_VERSION)
+ ELF_IMAGE = libblkid
+ ELF_MYDIR = blkid
+ ELF_INSTALL_DIR = $(root_libdir)

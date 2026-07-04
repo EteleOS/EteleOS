@@ -1,0 +1,21 @@
+COMMENT =		curses-like terminal wrapper
+
+MODPY_DISTV =		0.4.3
+DISTNAME =		curtsies-${MODPY_DISTV}
+PKGNAME =		py-${DISTNAME}
+CATEGORIES =		devel
+REVISION =		0
+
+# MIT
+PERMIT_PACKAGE =	Yes
+
+MODULES =		lang/python
+MODPY_PYBUILD =		setuptools
+MODPY_PI =		Yes
+
+RUN_DEPENDS =		sysutils/py-blessed \
+			devel/py-cwcwidth
+
+TEST_DEPENDS =		devel/py-pyte
+
+.include <bsd.port.mk>

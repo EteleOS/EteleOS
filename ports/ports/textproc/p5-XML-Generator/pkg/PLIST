@@ -1,0 +1,5 @@
+${P5SITE}/XML/Generator/
+${P5SITE}/XML/Generator.pm
+${P5SITE}/XML/Generator/DOM.pm
+@man man/man3p/XML::Generator.3p
+@man man/man3p/XML::Generator::DOM.3p

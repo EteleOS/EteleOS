@@ -1,0 +1,23 @@
+--- doc/xzgv.1.orig	Sun Sep  9 20:27:30 2007
++++ doc/xzgv.1	Wed Oct 29 14:38:21 2008
+@@ -2119,9 +2119,9 @@ configuration file.
+ .SH "CONFIG FILES"
+ A configuration file lets you alter aspects of xzgv's behaviour. xzgv
+ supports two possible config files --- a system-wide one,
+-\fI/etc/xzgv.conf\fR; and one for each user in their home directory,
++\fI${SYSCONFDIR}/xzgv.conf\fR; and one for each user in their home directory,
+ \fI$HOME/.xzgvrc\fR. Both are optional. If \fI$HOME/.xzgvrc\fR exists,
+-it is used \fIinstead of\fR \fI/etc/xzgv.conf\fR.
++it is used \fIinstead of\fR \fI${SYSCONFDIR}/xzgv.conf\fR.
+ .PP
+ Before describing the format of config files, it may help to give an
+ example file:
+@@ -2444,7 +2444,7 @@ The versions of GTK+ and Imlib you are using. `\fBxzgv
+ reports the GTK+ version being used by xzgv, but Imlib is a little more
+ tricky --- `\fBimlib-config --version\fR' should work if you have a full
+ Imlib installation, but failing that, try `\fBls -l
+-/usr/lib/libImlib*\fR' or `\fBls -l /usr/X11R6/lib/libImlib*\fR'.
++${LOCALBASE}/lib/libImlib*\fR'.
+ .PP
+ \fBo\fR 
+ The bitdepth your X server is running in (common depths are 8-bit (256

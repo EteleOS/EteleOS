@@ -1,0 +1,11 @@
+Index: hirev.c
+--- hirev.c.orig
++++ hirev.c
+@@ -1,6 +1,7 @@
+ /* the hirev part of inst */
+ 
+ #include <stdio.h>	/*stderr*/
++#include <stdlib.h>	/*exit*/
+ #include <string.h>	/*(memset)*/
+ 
+ #include "defs.h"	/*->hirev.h (u8,u15x,...)*/

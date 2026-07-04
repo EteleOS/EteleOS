@@ -1,0 +1,65 @@
+Index: Makefile.am
+--- Makefile.am.orig
++++ Makefile.am
+@@ -221,7 +221,7 @@ kopano_dagent_LDADD = \
+ #
+ kopano_dbadm_SOURCES = ECtools/dbadm.cpp
+ kopano_dbadm_CPPFLAGS = ${AM_CPPFLAGS}
+-kopano_dbadm_LDADD = libkcutil.la libkcserver.la ${MYSQL_LIBS}
++kopano_dbadm_LDADD = libkcutil.la libkcserver.la ${MYSQL_LIBS} ${PROG_LIBS}
+ 
+ 
+ #
+@@ -328,7 +328,7 @@ kopano_server_SOURCES = \
+ 	provider/server/ECSoapServerConnection.cpp provider/server/ECSoapServerConnection.h \
+ 	provider/server/ECThreadManager.cpp provider/server/ECThreadManager.h
+ kopano_server_LDADD = \
+-	libkcutil.la libkcserver.la libkcsoap.la ${GSOAP_LIBS} \
++	libkcutil.la libkcserver.la libkcsoap.la ${GSOAP_LIBS} ${PROG_LIBS} \
+ 	${clock_LIBS} ${CRYPTO_LIBS} ${DL_LIBS} ${libHX_LIBS} ${icu_uc_LIBS} \
+ 	${icu_i18n_LIBS} \
+ 	${MYSQL_LIBS} ${SSL_LIBS} ${PAM_LIBS} ${KRB5_LIBS} ${kcoidc_LIBS} ${kustomer_LIBS} \
+@@ -659,6 +659,7 @@ libkcutil_la_LIBADD = \
+ 	${idn_LIBS} ${icu_i18n_LIBS} ${icu_uc_LIBS} ${INTL_LIBS} \
+ 	${jsoncpp_LIBS} ${libHX_LIBS} \
+ 	${SSL_LIBS} ${UUID_LIBS}
++libkcutil_la_LIBADD += -lkvm
+ libkcutil_la_SYFLAGS = -Wl,--version-script=common/libkcutil.sym
+ libkcutil_la_LDFLAGS = ${AM_LDFLAGS} -no-undefined \
+ 	${libkcutil_la_SYFLAGS${NO_VSYM}}
+@@ -765,11 +766,11 @@ mapitime_LDADD = ${clock_LIBS} libmapi.la libkcutil.la
+ tests_ablookup_SOURCES = tests/ablookup.cpp
+ tests_ablookup_LDADD = libmapi.la libkcutil.la
+ tests_htmltext_SOURCES = tests/htmltext.cpp
+-tests_htmltext_LDADD = libkcutil.la
++tests_htmltext_LDADD = libkcutil.la ${INTL_LIBS}
+ tests_chtmltotextparsertest_SOURCES = tests/chtmltotextparsertest.cpp
+-tests_chtmltotextparsertest_LDADD = libkcutil.la
++tests_chtmltotextparsertest_LDADD = libkcutil.la ${INTL_LIBS}
+ tests_rtfhtmltest_SOURCES = tests/rtfhtmltest.cpp
+-tests_rtfhtmltest_LDADD = libkcutil.la
++tests_rtfhtmltest_LDADD = libkcutil.la ${INTL_LIBS}
+ tests_kc_335_SOURCES = tests/kc-335.cpp tests/tbi.hpp
+ tests_kc_335_LDADD = libmapi.la libkcutil.la
+ tests_kc_1759_SOURCES = tests/kc-1759.cpp
+@@ -781,9 +782,9 @@ tests_mapisuite_LDADD = libmapi.la ${cppunit_LIBS}
+ tests_readflag_SOURCES = tests/readflag.cpp tests/tbi.hpp
+ tests_readflag_LDADD = libmapi.la libkcutil.la
+ tests_ustring_SOURCES = tests/ustring.cpp
+-tests_ustring_LDADD = libkcutil.la ${icu_uc_LIBS}
++tests_ustring_LDADD = libkcutil.la ${icu_uc_LIBS} ${INTL_LIBS}
+ tests_zcpmd5_SOURCES = tests/zcpmd5.cpp
+-tests_zcpmd5_LDADD = ${CRYPTO_LIBS} libkcutil.la
++tests_zcpmd5_LDADD = ${CRYPTO_LIBS} libkcutil.la ${INTL_LIBS}
+ 
+ 
+ #
+@@ -936,7 +937,7 @@ AM_DISTCHECK_CONFIGURE_FLAGS = --with-dcprefix='$${pre
+ 
+ .PHONY: source-moved-check
+ source-moved-check:
+-	@${top_srcdir}/pwdcheck.sh "${abs_top_builddir}"
++	@${top_srcdir}/pwdcheck.sh "${abs_top_builddir}" || true
+ 
+ .version:
+ 	echo "${PACKAGE_VERSION}" >$@

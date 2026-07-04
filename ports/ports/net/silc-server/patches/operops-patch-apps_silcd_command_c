@@ -1,0 +1,33 @@
+--- apps/silcd/command.c.orig	Tue May  6 06:28:30 2014
++++ apps/silcd/command.c	Wed Jul 16 12:25:33 2014
+@@ -3531,6 +3531,8 @@ SILC_SERVER_CMD_FUNC(cumode)
+ 						  TRUE, NULL);
+ 
+   if (target_client != client &&
++      !(client->mode & SILC_UMODE_SERVER_OPERATOR) &&
++      !(client->mode & SILC_UMODE_ROUTER_OPERATOR) &&
+       !(sender_mask & SILC_CHANNEL_UMODE_CHANFO) &&
+       !(sender_mask & SILC_CHANNEL_UMODE_CHANOP)) {
+     tmp_ch_id = silc_argument_get_arg_type(cmd->args, 1, &tmp_ch_len);
+@@ -3654,7 +3656,9 @@ SILC_SERVER_CMD_FUNC(cumode)
+     /* Promote to operator */
+     if (!(chl->mode & SILC_CHANNEL_UMODE_CHANOP)) {
+       if (!(sender_mask & SILC_CHANNEL_UMODE_CHANOP) &&
+-          !(sender_mask & SILC_CHANNEL_UMODE_CHANFO)) {
++          !(sender_mask & SILC_CHANNEL_UMODE_CHANFO) &&
++          !(client->mode & SILC_UMODE_SERVER_OPERATOR) &&
++          !(client->mode & SILC_UMODE_ROUTER_OPERATOR)) {
+ 	tmp_ch_id = silc_argument_get_arg_type(cmd->args, 1, &tmp_ch_len);
+         silc_server_command_send_status_data(cmd, SILC_COMMAND_CUMODE,
+ 					     SILC_STATUS_ERR_NO_CHANNEL_PRIV,
+@@ -3668,7 +3672,9 @@ SILC_SERVER_CMD_FUNC(cumode)
+   } else {
+     if (chl->mode & SILC_CHANNEL_UMODE_CHANOP) {
+       if (!(sender_mask & SILC_CHANNEL_UMODE_CHANOP) &&
+-          !(sender_mask & SILC_CHANNEL_UMODE_CHANFO)) {
++          !(sender_mask & SILC_CHANNEL_UMODE_CHANFO) &&
++          !(client->mode & SILC_UMODE_SERVER_OPERATOR) &&
++          !(client->mode & SILC_UMODE_ROUTER_OPERATOR)) {
+ 	tmp_ch_id = silc_argument_get_arg_type(cmd->args, 1, &tmp_ch_len);
+         silc_server_command_send_status_data(cmd, SILC_COMMAND_CUMODE,
+ 					     SILC_STATUS_ERR_NO_CHANNEL_PRIV,

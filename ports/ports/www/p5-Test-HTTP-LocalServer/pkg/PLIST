@@ -1,0 +1,7 @@
+${P5SITE}/Test/
+${P5SITE}/Test/HTTP/
+${P5SITE}/Test/HTTP/LocalServer.pm
+${P5SITE}/Test/HTTP/cookie-server
+${P5SITE}/Test/HTTP/gzip-streamed.psgi
+${P5SITE}/Test/HTTP/log-server
+@man man/man3p/Test::HTTP::LocalServer.3p

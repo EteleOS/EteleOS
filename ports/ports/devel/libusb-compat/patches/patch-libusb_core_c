@@ -1,0 +1,13 @@
+--- libusb/core.c.orig	Sun May  5 18:43:46 2013
++++ libusb/core.c	Fri Jul 12 09:53:08 2013
+@@ -30,6 +30,10 @@
+ #include "usb.h"
+ #include "usbi.h"
+ 
++#if !defined(ENODATA) && defined(ENOENT)
++#define ENODATA ENOENT
++#endif
++
+ static libusb_context *ctx = NULL;
+ static int usb_debug = 0;
+ 

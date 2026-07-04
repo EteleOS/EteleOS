@@ -1,0 +1,11 @@
+--- exifutil.c.orig	Fri May 11 19:03:30 2012
++++ exifutil.c	Sat Jul 12 19:34:34 2014
+@@ -219,7 +219,7 @@ finddescr(struct descrip *table, u_int16_t val)
+ 	for (i = 0; table[i].val != -1 && table[i].val != val; i++);
+ 	if (!(c = (char *)malloc(strlen(table[i].descr) + 1)))
+ 		exifdie((const char *)strerror(errno));
+-	strcpy(c, table[i].descr);
++	strlcpy(c, table[i].descr, (strlen(table[i].descr) + 1));
+ 	return (c);
+ }
+ 

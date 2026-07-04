@@ -1,0 +1,14 @@
+Index: man/de/srcpd.conf.5
+--- man/de/srcpd.conf.5.orig
++++ man/de/srcpd.conf.5
+@@ -52,8 +52,8 @@ vorkonfigurierten Bus.  Sie hat den folgenden Aufbau:
+     <server>
+       <tcp-port>4303</tcp-port>
+       <pid-file>/var/run/srcpd.pid</pid-file>
+-      <username>nobody</username>
+-      <groupname>nogroup</groupname>
++      <username>_srcpd</username>
++      <groupname>_srcpd</groupname>
+     </server>
+     <verbosity>5</verbosity>
+   </bus>

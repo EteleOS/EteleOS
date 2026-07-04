@@ -1,0 +1,13 @@
+Index: correct.c
+--- correct.c.orig
++++ correct.c
+@@ -218,6 +218,9 @@ static char Rcs_Id[] =
+  *
+  */
+ 
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
+ #include <ctype.h>
+ #include <fcntl.h>
+ #include "config.h"

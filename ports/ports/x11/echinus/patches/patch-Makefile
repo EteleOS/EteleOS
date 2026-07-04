@@ -1,0 +1,27 @@
+--- Makefile.orig	Fri Aug 19 18:19:22 2011
++++ Makefile	Thu Sep  1 22:57:19 2011
+@@ -19,13 +19,13 @@ options:
+ 
+ .c.o:
+ 	@echo CC $<
+-	@${CC} -c ${CFLAGS} $<
++	${CC} -c ${CFLAGS} $<
+ 
+ ${OBJ}: config.mk ${HEADERS}
+ 
+ echinus: ${OBJ} ${SRC} ${HEADERS}
+ 	@echo CC -o $@
+-	@${CC} -o $@ ${OBJ} ${LDFLAGS}
++	${CC} -o $@ ${OBJ} ${LDFLAGS}
+ 
+ clean:
+ 	@echo cleaning
+@@ -51,7 +51,7 @@ install: all
+ 	@cp ${PIXMAPS} ${DESTDIR}${CONFPREFIX}/echinus
+ 	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man1
+ 	@mkdir -p ${DESTDIR}${MANPREFIX}/man1
+-	@sed "s/VERSION/${VERSION}/g;s|CONFDIR|${DESTDIR}${CONF}|g" < echinus.1 > ${DESTDIR}${MANPREFIX}/man1/echinus.1
++	@sed "s/VERSION/${VERSION}/g;s|CONFDIR|${CONF}|g" < echinus.1 > ${DESTDIR}${MANPREFIX}/man1/echinus.1
+ 	@echo installing README to ${DESTDIR}${DOCPREFIX}/echinus
+ 	@mkdir -p ${DESTDIR}${DOCPREFIX}/echinus
+ 	@sed "s|CONFDIR|${CONF}|" < README > ${DESTDIR}${DOCPREFIX}/echinus/README

@@ -1,0 +1,13 @@
+This was not updated in 2.10.1 - 2.10.5. Reported upstream.
+
+--- source/irc.c.orig	Mon Mar 31 09:57:22 2014
++++ source/irc.c	Wed Jul 30 22:22:02 2014
+@@ -47,7 +47,7 @@ const char useful_info[] = "epic4 2 10 5";
+  * internal_version is what $V returns, its the integer-id for the
+  * version, and corresponds to the date of release, YYYYMMDD.
+  */ 
+-const char internal_version[] = "20080904";
++const char internal_version[] = "20140331";
+ 
+ /*
+  * In theory, this number is incremented for every commit.

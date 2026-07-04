@@ -1,0 +1,88 @@
+Index: config/logstash.yml
+--- config/logstash.yml.orig
++++ config/logstash.yml
+@@ -25,7 +25,7 @@
+ # Which directory should be used by logstash and its plugins
+ # for any persistent needs. Defaults to LOGSTASH_HOME/data
+ #
+-# path.data:
++path.data: ${LOCALSTATEDIR}/logstash/data
+ #
+ # ------------ Pipeline Settings --------------
+ #
+@@ -290,7 +290,7 @@
+ # log.format: plain
+ # log.format.json.fix_duplicate_message_fields: true
+ #
+-# path.logs:
++path.logs: ${LOCALSTATEDIR}/log/logstash
+ #
+ # ------------ Other Settings --------------
+ #
+@@ -307,66 +307,3 @@
+ # Determine where to allocate memory buffers, for plugins that leverage them.
+ # Defaults to heap,but can be switched to direct if you prefer using direct memory space instead.
+ # pipeline.buffer.type: heap
+-#
+-# ------------ X-Pack Settings (not applicable for OSS build)--------------
+-#
+-# X-Pack Monitoring
+-# https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html
+-# Flag to allow the legacy internal monitoring (default: false)
+-#xpack.monitoring.allow_legacy_collection: false
+-#xpack.monitoring.enabled: false
+-#xpack.monitoring.elasticsearch.username: logstash_system
+-#xpack.monitoring.elasticsearch.password: password
+-#xpack.monitoring.elasticsearch.proxy: ["http://proxy:port"]
+-#xpack.monitoring.elasticsearch.hosts: ["https://es1:9200", "https://es2:9200"]
+-# an alternative to hosts + username/password settings is to use cloud_id/cloud_auth
+-#xpack.monitoring.elasticsearch.cloud_id: monitoring_cluster_id:xxxxxxxxxx
+-#xpack.monitoring.elasticsearch.cloud_auth: logstash_system:password
+-# another authentication alternative is to use an Elasticsearch API key
+-#xpack.monitoring.elasticsearch.api_key: "id:api_key"
+-#xpack.monitoring.elasticsearch.ssl.certificate_authority: "/path/to/ca.crt"
+-#xpack.monitoring.elasticsearch.ssl.ca_trusted_fingerprint: xxxxxxxxxx
+-#xpack.monitoring.elasticsearch.ssl.truststore.path: path/to/file
+-#xpack.monitoring.elasticsearch.ssl.truststore.password: password
+-# use either keystore.path/keystore.password or certificate/key configurations
+-#xpack.monitoring.elasticsearch.ssl.keystore.path: /path/to/file
+-#xpack.monitoring.elasticsearch.ssl.keystore.password: password
+-#xpack.monitoring.elasticsearch.ssl.certificate: /path/to/file
+-#xpack.monitoring.elasticsearch.ssl.key: /path/to/key
+-#xpack.monitoring.elasticsearch.ssl.verification_mode: full
+-#xpack.monitoring.elasticsearch.ssl.cipher_suites: []
+-#xpack.monitoring.elasticsearch.sniffing: false
+-#xpack.monitoring.collection.interval: 10s
+-#xpack.monitoring.collection.pipeline.details.enabled: true
+-#
+-# X-Pack Management
+-# https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html
+-#xpack.management.enabled: false
+-#xpack.management.pipeline.id: ["main", "apache_logs"]
+-#xpack.management.elasticsearch.username: logstash_admin_user
+-#xpack.management.elasticsearch.password: password
+-#xpack.management.elasticsearch.proxy: ["http://proxy:port"]
+-#xpack.management.elasticsearch.hosts: ["https://es1:9200", "https://es2:9200"]
+-# an alternative to hosts + username/password settings is to use cloud_id/cloud_auth
+-#xpack.management.elasticsearch.cloud_id: management_cluster_id:xxxxxxxxxx
+-#xpack.management.elasticsearch.cloud_auth: logstash_admin_user:password
+-# another authentication alternative is to use an Elasticsearch API key
+-#xpack.management.elasticsearch.api_key: "id:api_key"
+-#xpack.management.elasticsearch.ssl.ca_trusted_fingerprint: xxxxxxxxxx
+-#xpack.management.elasticsearch.ssl.certificate_authority: "/path/to/ca.crt"
+-#xpack.management.elasticsearch.ssl.truststore.path: /path/to/file
+-#xpack.management.elasticsearch.ssl.truststore.password: password
+-# use either keystore.path/keystore.password or certificate/key configurations
+-#xpack.management.elasticsearch.ssl.keystore.path: /path/to/file
+-#xpack.management.elasticsearch.ssl.keystore.password: password
+-#xpack.management.elasticsearch.ssl.certificate: /path/to/file
+-#xpack.management.elasticsearch.ssl.key: /path/to/certificate_key_file
+-#xpack.management.elasticsearch.ssl.cipher_suites: []
+-#xpack.management.elasticsearch.ssl.verification_mode: full
+-#xpack.management.elasticsearch.sniffing: false
+-#xpack.management.logstash.poll_interval: 5s
+-
+-# X-Pack GeoIP Database Management
+-# https://www.elastic.co/guide/en/logstash/current/plugins-filters-geoip.html#plugins-filters-geoip-manage_update
+-#xpack.geoip.downloader.enabled: true
+-#xpack.geoip.downloader.endpoint: "https://geoip.elastic.co/v1/database"

@@ -1,0 +1,8 @@
+@bin bin/playmus
+@bin bin/playwave
+include/SDL/
+include/SDL/SDL_mixer.h
+lib/libSDL_mixer.a
+lib/libSDL_mixer.la
+@lib lib/libSDL_mixer.so.${LIBSDL_mixer_VERSION}
+lib/pkgconfig/SDL_mixer.pc

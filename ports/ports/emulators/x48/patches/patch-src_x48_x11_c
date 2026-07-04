@@ -1,0 +1,12 @@
+Index: src/x48_x11.c
+--- src/x48_x11.c.orig
++++ src/x48_x11.c
+@@ -3833,7 +3833,7 @@ int first_key = 0;
+ 
+ int last_button = -1;
+ 
+-extern char *get_stack(void);
++extern void get_stack(void);
+ 
+ int
+ #ifdef __FunctionProto__

@@ -1,0 +1,8 @@
+--- nsdejavu/nsdejavu.1.in.orig	Sat May  9 23:04:56 2015
++++ nsdejavu/nsdejavu.1.in	Sat May  9 23:05:01 2015
+@@ -1,4 +1,4 @@
+-.\" t
++'\" t
+ .\" -*- nroff -*-
+ .\"
+ .\" Copyright (c) 2001 Leon Bottou, Yann Le Cun, Patrick Haffner,

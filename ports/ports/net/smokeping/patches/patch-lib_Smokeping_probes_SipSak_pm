@@ -1,0 +1,12 @@
+Index: lib/Smokeping/probes/SipSak.pm
+--- lib/Smokeping/probes/SipSak.pm.orig
++++ lib/Smokeping/probes/SipSak.pm
+@@ -108,7 +108,7 @@ sub probevars {
+     return $class->_makevars($h, {
+         binary => {
+             _doc => "The location of your echoping binary.",
+-            _default => '/usr/bin/sipsak',
++            _default => '/usr/local/bin/sipsak',
+             _sub => sub {
+                 my $val = shift;
+                 -x $val or return "ERROR: binary '$val' is not executable";

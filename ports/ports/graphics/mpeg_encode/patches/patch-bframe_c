@@ -1,0 +1,12 @@
+--- bframe.c.orig	Sun Jun 10 01:34:25 2001
++++ bframe.c	Sun Jun 10 01:35:03 2001
+@@ -543,7 +543,9 @@ GenBFrame(bb, curr, prev, next)
+ 	    BlockToData(curr->decoded_cr, dec[5], y>>1, x>>1);
+ 	  }
+ 	} else if (dct_data[y][x].useMotion == SKIP) {
++#ifdef BUGGY_CODE
+ 	skip_block:
++#endif
+ 	  numSkipped++;
+ 	  mbAddrInc++;
+ 	      

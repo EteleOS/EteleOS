@@ -1,0 +1,55 @@
+Index: mobile/god.h
+--- mobile/god.h.orig
++++ mobile/god.h
+@@ -76,39 +76,39 @@ class NodeStatus { (public)
+ 
+ // Cut and Paste from setdest.h   -- Chalermek 12/1/99
+ 
+-class vector {
++class tdvector {
+ public:
+-	vector(double x = 0.0, double y = 0.0, double z = 0.0) {
++	tdvector(double x = 0.0, double y = 0.0, double z = 0.0) {
+ 		X = x; Y = y; Z = z;
+ 	}
+ 	double length() {
+ 		return sqrt(X*X + Y*Y + Z*Z);
+ 	}
+ 
+-	inline void operator=(const vector a) {
++	inline void operator=(const tdvector& a) {
+ 		X = a.X;
+ 		Y = a.Y;
+ 		Z = a.Z;
+ 	}
+-	inline void operator+=(const vector a) {
++	inline void operator+=(const tdvector& a) {
+ 		X += a.X;
+ 		Y += a.Y;
+ 		Z += a.Z;
+ 	}
+-	inline int operator==(const vector a) {
++	inline int operator==(const tdvector& a) {
+ 		return (X == a.X && Y == a.Y && Z == a.Z);
+ 	}
+-	inline int operator!=(const vector a) {
++	inline int operator!=(const tdvector& a) {
+ 		return (X != a.X || Y != a.Y || Z != a.Z);
+ 	}
+-	inline vector operator-(const vector a) {
+-		return vector(X-a.X, Y-a.Y, Z-a.Z);
++	inline tdvector operator-(const tdvector& a) {
++		return tdvector(X-a.X, Y-a.Y, Z-a.Z);
+ 	}
+-	friend inline vector operator*(const double a, const vector b) {
+-		return vector(a*b.X, a*b.Y, a*b.Z);
++	friend inline tdvector operator*(const double a, const tdvector& b) {
++		return tdvector(a*b.X, a*b.Y, a*b.Z);
+ 	}
+-	friend inline vector operator/(const vector a, const double b) {
+-		return vector(a.X/b, a.Y/b, a.Z/b);
++	friend inline tdvector operator/(const tdvector& a, const double b) {
++		return tdvector(a.X/b, a.Y/b, a.Z/b);
+ 	}
+ 
+ 	double X;

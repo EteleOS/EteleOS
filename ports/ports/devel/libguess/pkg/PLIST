@@ -1,0 +1,4 @@
+include/libguess/
+include/libguess/libguess.h
+@lib lib/libguess.so.${LIBguess_VERSION}
+lib/pkgconfig/libguess.pc

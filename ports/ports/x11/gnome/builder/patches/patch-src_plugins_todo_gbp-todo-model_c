@@ -1,0 +1,17 @@
+XXX rework and push upstream
+
+Index: src/plugins/todo/gbp-todo-model.c
+--- src/plugins/todo/gbp-todo-model.c.orig
++++ src/plugins/todo/gbp-todo-model.c
+@@ -418,8 +418,10 @@ gbp_todo_model_mine_worker (IdeTask      *task,
+     }
+   else
+     {
+-#ifdef __FreeBSD__
++#if defined (__FreeBSD__)
+       ide_subprocess_launcher_push_argv (launcher, "bsdgrep");
++#elif defined (__OpenBSD__)
++      ide_subprocess_launcher_push_argv (launcher, "ggrep");
+ #else
+       ide_subprocess_launcher_push_argv (launcher, "grep");
+ #endif

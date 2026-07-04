@@ -1,0 +1,14 @@
+Index: config.h
+--- config.h.orig
++++ config.h
+@@ -16,6 +16,10 @@
+ /// \file config.h
+ /// \brief Library configuration file
+ 
++#if defined(__i386__)
++#define CRYPTOPP_DISABLE_ASM
++#endif
++
+ #ifndef CRYPTOPP_CONFIG_H
+ #define CRYPTOPP_CONFIG_H
+ 

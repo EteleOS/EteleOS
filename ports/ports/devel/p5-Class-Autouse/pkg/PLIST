@@ -1,0 +1,5 @@
+${P5SITE}/Class/
+${P5SITE}/Class/Autouse/
+${P5SITE}/Class/Autouse.pm
+${P5SITE}/Class/Autouse/Parent.pm
+@man man/man3p/Class::Autouse.3p

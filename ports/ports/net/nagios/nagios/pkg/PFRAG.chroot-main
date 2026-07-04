@@ -1,0 +1,6 @@
+@unexec rm ${SYSCONFDIR}/nagios
+@unexec rm /var/log/nagios
+@unexec rm /var/nagios
+@exec ln -s ${CHROOT}${SYSCONFDIR}/nagios ${SYSCONFDIR}
+@exec ln -s ${CHROOT}/var/log/nagios /var/log
+@exec ln -s ${CHROOT}/var/nagios /var

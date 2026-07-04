@@ -1,0 +1,10 @@
+--- Wnn/uum/kensaku.c.orig
++++ Wnn/uum/kensaku.c
+@@ -49,6 +49,7 @@
+ /*	Version 4.0
+  */
+ #include <stdio.h>
++#include <string.h>
+ #include "jllib.h"
+ #include "commonhd.h"
+ #include "sdefine.h"

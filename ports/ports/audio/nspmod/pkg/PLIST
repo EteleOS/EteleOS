@@ -1,0 +1,2 @@
+@bin bin/nspmod
+@man man/man1/nspmod.1

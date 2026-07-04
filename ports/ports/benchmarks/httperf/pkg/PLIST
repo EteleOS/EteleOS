@@ -1,0 +1,4 @@
+@bin bin/httperf
+@bin bin/idleconn
+@man man/man1/httperf.1
+@man man/man1/idleconn.1

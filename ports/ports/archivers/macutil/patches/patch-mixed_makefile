@@ -1,0 +1,8 @@
+--- mixed/makefile.orig	Fri Oct 25 17:29:52 2002
++++ mixed/makefile	Fri Oct 25 17:29:58 2002
+@@ -1,4 +1,4 @@
+-CFLAGS = -O $(CF)
++CFLAGS = $(CF)
+ 
+ SRCS1 =	macsave.c \
+ 	globals.c \

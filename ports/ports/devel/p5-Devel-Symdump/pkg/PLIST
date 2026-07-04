@@ -1,0 +1,5 @@
+${P5SITE}/Devel/
+${P5SITE}/Devel/Symdump/
+${P5SITE}/Devel/Symdump.pm
+${P5SITE}/Devel/Symdump/Export.pm
+@man man/man3p/Devel::Symdump.3p

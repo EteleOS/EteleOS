@@ -1,0 +1,14 @@
+--- util.c.orig	Tue Dec  1 19:36:13 2015
++++ util.c	Wed Apr  6 20:28:44 2016
+@@ -64,7 +64,11 @@ void
+ usage(void)
+ {
+ 	(void)fprintf(stderr,
++#ifdef COLORLS
++	    "usage: %s [-1AaCcdFfGgHhikLlmnopqRrSsTtux] [file ...]\n",
++#else
+ 	    "usage: %s [-1AaCcdFfgHhikLlmnopqRrSsTtux] [file ...]\n",
++#endif
+ 	    __progname);
+ 	exit(1);
+ }

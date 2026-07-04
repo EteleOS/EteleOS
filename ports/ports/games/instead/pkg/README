@@ -1,0 +1,8 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Download games from http://instead-games.sourceforge.net
+and put them into ~/.instead/games directory.
+
+Have fun!

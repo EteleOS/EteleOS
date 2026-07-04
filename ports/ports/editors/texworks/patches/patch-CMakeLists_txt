@@ -1,0 +1,14 @@
+Find the right version of Lua.
+
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -342,7 +342,7 @@ SET(TeXworks_LIBS
+ # -------------------------------
+ 
+ IF ( WITH_LUA )
+-  FIND_PACKAGE(Lua)
++  FIND_PACKAGE(Lua "${MODLUA_VERSION}" EXACT REQUIRED)
+ ENDIF()
+ 
+ IF ( WITH_PYTHON )

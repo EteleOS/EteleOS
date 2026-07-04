@@ -1,0 +1,4 @@
+@bin bin/cabal
+@comment share/doc/${DISTNAME}/
+@comment share/doc/${DISTNAME}/LICENSE
+@man man/man1/cabal.1

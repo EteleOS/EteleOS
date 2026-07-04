@@ -1,0 +1,85 @@
+@pkgpath sysutils/u-boot,
+@pkgpath sysutils/u-boot,arm
+share/u-boot/
+share/u-boot/am335x_evm/
+share/u-boot/am335x_evm/MLO
+@comment share/u-boot/am335x_evm/u-boot
+@comment share/u-boot/am335x_evm/u-boot-spl.bin
+@comment share/u-boot/am335x_evm/u-boot.bin
+share/u-boot/am335x_evm/u-boot.img
+share/u-boot/clearfog/
+@comment share/u-boot/clearfog/u-boot
+@comment share/u-boot/clearfog/u-boot-spl.bin
+share/u-boot/clearfog/u-boot-spl.kwb
+@comment share/u-boot/clearfog/u-boot.bin
+@comment share/u-boot/clearfog/u-boot.img
+share/u-boot/cm_fx6/
+share/u-boot/cm_fx6/SPL
+@comment share/u-boot/cm_fx6/u-boot
+@comment share/u-boot/cm_fx6/u-boot-spl.bin
+@comment share/u-boot/cm_fx6/u-boot.bin
+share/u-boot/cm_fx6/u-boot.img
+share/u-boot/mx6cuboxi/
+share/u-boot/mx6cuboxi/SPL
+@comment share/u-boot/mx6cuboxi/u-boot
+@comment share/u-boot/mx6cuboxi/u-boot-spl.bin
+@comment share/u-boot/mx6cuboxi/u-boot.bin
+share/u-boot/mx6cuboxi/u-boot.img
+share/u-boot/mx6qsabrelite/
+@comment share/u-boot/mx6qsabrelite/u-boot
+share/u-boot/mx6qsabrelite/u-boot-dtb.imx
+@comment share/u-boot/mx6qsabrelite/u-boot.bin
+share/u-boot/nitrogen6q/
+@comment share/u-boot/nitrogen6q/u-boot
+share/u-boot/nitrogen6q/u-boot-dtb.imx
+@comment share/u-boot/nitrogen6q/u-boot.bin
+share/u-boot/novena/
+share/u-boot/novena/SPL
+@comment share/u-boot/novena/u-boot
+@comment share/u-boot/novena/u-boot-spl.bin
+@comment share/u-boot/novena/u-boot.bin
+share/u-boot/novena/u-boot.img
+share/u-boot/omap4_panda/
+share/u-boot/omap4_panda/MLO
+@comment share/u-boot/omap4_panda/u-boot
+@comment share/u-boot/omap4_panda/u-boot-spl.bin
+@comment share/u-boot/omap4_panda/u-boot.bin
+share/u-boot/omap4_panda/u-boot.img
+share/u-boot/qemu_arm/
+share/u-boot/qemu_arm/u-boot
+share/u-boot/qemu_arm/u-boot.bin
+share/u-boot/rpi_2/
+@comment share/u-boot/rpi_2/u-boot
+share/u-boot/rpi_2/u-boot.bin
+share/u-boot/rpi_3_32b/
+@comment share/u-boot/rpi_3_32b/u-boot
+share/u-boot/rpi_3_32b/u-boot.bin
+share/u-boot/tinker-rk3288/
+share/u-boot/tinker-rk3288/idbloader.img
+@comment share/u-boot/tinker-rk3288/u-boot
+@comment share/u-boot/tinker-rk3288/u-boot-rockchip.bin
+@comment share/u-boot/tinker-rk3288/u-boot-spl.bin
+@comment share/u-boot/tinker-rk3288/u-boot.bin
+share/u-boot/tinker-rk3288/u-boot.img
+share/u-boot/turris_omnia/
+@comment share/u-boot/turris_omnia/u-boot
+@comment share/u-boot/turris_omnia/u-boot-spl.bin
+share/u-boot/turris_omnia/u-boot-spl.kwb
+@comment share/u-boot/turris_omnia/u-boot.bin
+@comment share/u-boot/turris_omnia/u-boot.img
+share/u-boot/udoo/
+share/u-boot/udoo/SPL
+@comment share/u-boot/udoo/u-boot
+@comment share/u-boot/udoo/u-boot-spl.bin
+@comment share/u-boot/udoo/u-boot.bin
+share/u-boot/udoo/u-boot.img
+share/u-boot/usbarmory/
+share/u-boot/usbarmory/u-boot
+@comment share/u-boot/usbarmory/u-boot-dtb.imx
+share/u-boot/usbarmory/u-boot.bin
+share/u-boot/wandboard/
+share/u-boot/wandboard/SPL
+@comment share/u-boot/wandboard/u-boot
+@comment share/u-boot/wandboard/u-boot-spl.bin
+@comment share/u-boot/wandboard/u-boot.bin
+share/u-boot/wandboard/u-boot.img

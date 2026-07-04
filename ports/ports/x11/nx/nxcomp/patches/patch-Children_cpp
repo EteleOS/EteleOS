@@ -1,0 +1,11 @@
+--- Children.cpp.orig	Mon Mar  1 18:18:59 2010
++++ Children.cpp	Wed Feb 23 12:28:35 2011
+@@ -1021,7 +1021,7 @@ int UnsetEnv(const char *name)
+ 
+   #else
+ 
+-  #ifdef __APPLE__
++  #if defined(__APPLE__) || defined(__OpenBSD__)
+ 
+   unsetenv(name);
+   result = 0;

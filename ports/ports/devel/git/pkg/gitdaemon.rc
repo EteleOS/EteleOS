@@ -1,0 +1,12 @@
+#!/bin/ksh
+#
+
+daemon="${TRUEPREFIX}/bin/git daemon --detach"
+daemon_user="_gitdaemon"
+
+. /etc/rc.d/rc.subr
+
+pexp="${TRUEPREFIX}/libexec/git/git-daemon --detach${daemon_flags:+ ${daemon_flags}}"
+rc_reload=NO
+
+rc_cmd $1

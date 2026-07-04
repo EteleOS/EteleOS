@@ -1,0 +1,11 @@
+--- Makefile.in.orig	Sat Dec 30 13:24:13 2006
++++ Makefile.in	Sat Dec 30 13:24:50 2006
+@@ -161,7 +161,7 @@ sbindir = @sbindir@
+ sharedstatedir = @sharedstatedir@
+ sysconfdir = @sysconfdir@
+ target_alias = @target_alias@
+-SUBDIRS = doc examples man modelgen src
++SUBDIRS = examples modelgen src
+ EXTRA_DIST = autogen.sh Makefile.template configure.old
+ all: config.h
+ 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

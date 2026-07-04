@@ -1,0 +1,42 @@
+# ring-v0.17 does not support this arch
+NOT_FOR_ARCHS = sparc64
+
+# aws-lc-sys has constants in .text
+# https://github.com/awslabs/s2n-bignum/pull/242
+.if ${MACHINE_ARCH} == "amd64"
+USE_NOEXECONLY =	Yes
+.endif
+
+COMMENT =	RPKI Certification Authority and Publication Server
+
+GH_ACCOUNT =	NLnetLabs
+GH_PROJECT =	krill
+GH_TAGNAME =	v0.16.0
+REVISION =	0
+
+HOMEPAGE =	https://nlnetlabs.nl/projects/routing/krill/
+CATEGORIES =	net
+
+# MPL 2.0
+PERMIT_PACKAGE =	Yes
+
+WANTLIB =	${MODCARGO_WANTLIB} crypto m ssl
+
+MODULES =	devel/cargo
+
+# disable hsm feature to sidestep cryptoki dep
+MODCARGO_NO_DEFAULT_FEATURES = Yes
+MODCARGO_FEATURES =	multi-user
+
+CONFIGURE_STYLE =	cargo
+SEPARATE_BUILD =	Yes
+
+post-install:
+	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/krill
+	${INSTALL_DATA} ${WRKSRC}/defaults/* \
+		${PREFIX}/share/examples/krill/
+	${INSTALL_DATA} ${WRKSRC}/doc/*.1.gz ${PREFIX}/man/man1/
+	cd ${PREFIX}/man/man1; gunzip *.gz
+
+.include "crates.inc"
+.include <bsd.port.mk>

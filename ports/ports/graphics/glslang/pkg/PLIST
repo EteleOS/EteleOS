@@ -1,0 +1,30 @@
+@bin bin/glslang
+bin/glslangValidator
+include/glslang/
+include/glslang/Include/
+include/glslang/Include/ResourceLimits.h
+include/glslang/Include/glslang_c_interface.h
+include/glslang/Include/glslang_c_shader_types.h
+include/glslang/Include/visibility.h
+include/glslang/MachineIndependent/
+include/glslang/MachineIndependent/Versions.h
+include/glslang/Public/
+include/glslang/Public/ResourceLimits.h
+include/glslang/Public/ShaderLang.h
+include/glslang/Public/resource_limits_c.h
+include/glslang/SPIRV/
+include/glslang/SPIRV/GlslangToSpv.h
+include/glslang/SPIRV/Logger.h
+include/glslang/SPIRV/SpvTools.h
+include/glslang/SPIRV/disassemble.h
+include/glslang/SPIRV/spirv.hpp11
+include/glslang/build_info.h
+lib/cmake/
+lib/cmake/glslang/
+lib/cmake/glslang/glslang-config-version.cmake
+lib/cmake/glslang/glslang-config.cmake
+lib/cmake/glslang/glslang-targets${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/glslang/glslang-targets.cmake
+@lib lib/libSPIRV.so.${LIBSPIRV_VERSION}
+@lib lib/libglslang-default-resource-limits.so.${LIBglslang-default-resource-limits_VERSION}
+@lib lib/libglslang.so.${LIBglslang_VERSION}

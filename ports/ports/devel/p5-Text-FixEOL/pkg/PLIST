@@ -1,0 +1,4 @@
+${P5SITE}/Text/
+${P5SITE}/Text/FixEOL.pm
+${P5SITE}/Text/FixEOL.pod
+@man man/man3p/Text::FixEOL.3p

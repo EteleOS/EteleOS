@@ -1,0 +1,12 @@
+Index: pwcheck/pwcheck_getpwnam.c
+--- pwcheck/pwcheck_getpwnam.c.orig
++++ pwcheck/pwcheck_getpwnam.c
+@@ -53,7 +53,7 @@ char *password;
+     char* crpt_passwd;
+     struct passwd *pwd;
+ 
+-    pwd = getpwnam(userid);
++    pwd = getpwnam_shadow(userid);
+     if (!pwd) {
+ 	r = "Userid not found";
+     }

@@ -1,0 +1,4 @@
+bin/fff
+@man man/man1/fff.1
+share/doc/fff/
+share/doc/fff/README.md

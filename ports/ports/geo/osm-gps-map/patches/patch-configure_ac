@@ -1,0 +1,20 @@
+revert https://github.com/nzjrs/osm-gps-map/commit/b3f5c1f7cc74677d8b71aaafa68f8034cdbc93d7
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -4,15 +4,11 @@ AC_INIT([osm-gps-map],
+         [http://github.com/nzjrs/osm-gps-map/issues],
+         [osm-gps-map])
+ 
+-AX_IS_RELEASE([git-directory])
+-
+ AM_INIT_AUTOMAKE([1.11 foreign subdir-objects parallel-tests])
+ 
+ AC_CONFIG_HEADERS([config.h])
+ AC_CONFIG_SRCDIR([src/osm-gps-map.h])
+ AC_CONFIG_MACRO_DIR([m4])
+-
+-AX_REQUIRE_DEFINED([GTK_DOC_CHECK])
+ 
+ AM_PROG_CC_C_O
+ 

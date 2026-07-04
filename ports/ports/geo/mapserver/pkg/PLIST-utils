@@ -1,0 +1,102 @@
+@bin bin/coshp
+@bin bin/legend
+@bin bin/map2img
+@bin bin/msencrypt
+@bin bin/scalebar
+@bin bin/shptree
+@bin bin/shptreetst
+@bin bin/shptreevis
+@bin bin/sortshp
+@bin bin/tile4ms
+include/mapserver/
+include/mapserver/cgiutil.h
+include/mapserver/dejavu-sans-condensed.h
+include/mapserver/dxfcolor.h
+include/mapserver/fontcache.h
+include/mapserver/hittest.h
+include/mapserver/mapagg.h
+include/mapserver/mapaxisorder.h
+include/mapserver/mapcopy.h
+include/mapserver/mapentities.h
+include/mapserver/maperror.h
+include/mapserver/mapfile.h
+include/mapserver/mapflatgeobuf.h
+include/mapserver/mapgml.h
+include/mapserver/mapgraph.h
+include/mapserver/maphash.h
+include/mapserver/maphttp.h
+include/mapserver/mapiconv.h
+include/mapserver/mapio.h
+include/mapserver/mapkmlrenderer.h
+include/mapserver/maplibxml2.h
+include/mapserver/mapogcapi.h
+include/mapserver/mapogcfilter.h
+include/mapserver/mapogcsld.h
+include/mapserver/mapoglcontext.h
+include/mapserver/mapoglrenderer.h
+include/mapserver/mapows.h
+include/mapserver/mapowscommon.h
+include/mapserver/mapparser.h
+include/mapserver/mappostgis.h
+include/mapserver/mapprimitive.h
+include/mapserver/mapproject.h
+include/mapserver/mapraster.h
+include/mapserver/mapregex.h
+include/mapserver/mapresample.h
+include/mapserver/mapserv-config.h
+include/mapserver/mapserv-index.h
+include/mapserver/mapserv.h
+include/mapserver/mapserver-api.h
+include/mapserver/mapserver-config.h
+include/mapserver/mapserver-version.h
+include/mapserver/mapserver.h
+include/mapserver/mapshape.h
+include/mapserver/mapsymbol.h
+include/mapserver/maptemplate.h
+include/mapserver/mapthread.h
+include/mapserver/maptile.h
+include/mapserver/maptime.h
+include/mapserver/maptree.h
+include/mapserver/maputfgrid.h
+include/mapserver/mapwcs.h
+include/mapserver/uthash.h
+share/examples/mapserver/
+share/examples/mapserver/perl/
+share/examples/mapserver/perl/RFC24.pl
+share/examples/mapserver/perl/buffer.pl
+share/examples/mapserver/perl/distanceToPoint.pl
+share/examples/mapserver/perl/distanceToShape.pl
+share/examples/mapserver/perl/dump.pl
+share/examples/mapserver/perl/shapeprops.pl
+share/examples/mapserver/perl/shpPoint2GPX.pl
+share/examples/mapserver/perl/shp_in_shp.pl
+share/examples/mapserver/perl/shpinfo.pl
+share/examples/mapserver/perl/thin.pl
+share/examples/mapserver/perl/wxs.pl
+share/mapserver/
+share/mapserver/cmake/
+share/mapserver/cmake/mapserver-config-version.cmake
+share/mapserver/cmake/mapserver-config.cmake
+share/mapserver/cmake/mapserverTargets${MODCMAKE_BUILD_SUFFIX}
+share/mapserver/cmake/mapserverTargets.cmake
+share/mapserver/ogcapi/templates/html-bootstrap/
+share/mapserver/ogcapi/templates/html-bootstrap/collection-item.html
+share/mapserver/ogcapi/templates/html-bootstrap/collection-items.html
+share/mapserver/ogcapi/templates/html-bootstrap/collection.html
+share/mapserver/ogcapi/templates/html-bootstrap/collections.html
+share/mapserver/ogcapi/templates/html-bootstrap/conformance.html
+share/mapserver/ogcapi/templates/html-bootstrap/debug.html
+share/mapserver/ogcapi/templates/html-bootstrap/footer.html
+share/mapserver/ogcapi/templates/html-bootstrap/header.html
+share/mapserver/ogcapi/templates/html-bootstrap/landing.html
+share/mapserver/ogcapi/templates/html-bootstrap/openapi.html
+share/mapserver/ogcapi/templates/html-index-bootstrap/
+share/mapserver/ogcapi/templates/html-index-bootstrap/footer.html
+share/mapserver/ogcapi/templates/html-index-bootstrap/header.html
+share/mapserver/ogcapi/templates/html-index-bootstrap/landing.html
+share/mapserver/ogcapi/templates/html-index-bootstrap/map.html
+share/mapserver/ogcapi/templates/html-index-plain/
+share/mapserver/ogcapi/templates/html-index-plain/footer.html
+share/mapserver/ogcapi/templates/html-index-plain/header.html
+share/mapserver/ogcapi/templates/html-index-plain/landing.html
+share/mapserver/ogcapi/templates/html-index-plain/map.html

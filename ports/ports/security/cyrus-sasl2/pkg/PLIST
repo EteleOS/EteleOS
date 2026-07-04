@@ -1,0 +1,94 @@
+@conflict cyrus-sasl-*
+@extraunexec rm -rf /var/sasl2/*
+@rcscript ${RCDIR}/saslauthd
+include/sasl/
+include/sasl/hmac-md5.h
+include/sasl/md5.h
+include/sasl/md5global.h
+include/sasl/prop.h
+include/sasl/sasl.h
+include/sasl/saslplug.h
+include/sasl/saslutil.h
+@static-lib lib/libsasl2.a
+lib/libsasl2.la
+@lib lib/libsasl2.so.${LIBsasl2_VERSION}
+lib/pkgconfig/libsasl2.pc
+lib/sasl2/
+lib/sasl2/libanonymous.la
+@lib lib/sasl2/libanonymous.so.${LIBanonymous_VERSION}
+lib/sasl2/libcrammd5.la
+@lib lib/sasl2/libcrammd5.so.${LIBcrammd5_VERSION}
+lib/sasl2/libdigestmd5.la
+@lib lib/sasl2/libdigestmd5.so.${LIBdigestmd5_VERSION}
+lib/sasl2/liblogin.la
+@lib lib/sasl2/liblogin.so.${LIBlogin_VERSION}
+lib/sasl2/libntlm.la
+@lib lib/sasl2/libntlm.so.${LIBntlm_VERSION}
+lib/sasl2/libotp.la
+@lib lib/sasl2/libotp.so.${LIBotp_VERSION}
+lib/sasl2/libplain.la
+@lib lib/sasl2/libplain.so.${LIBplain_VERSION}
+lib/sasl2/libsasldb.la
+@lib lib/sasl2/libsasldb.so.${LIBsasldb_VERSION}
+lib/sasl2/libscram.la
+@lib lib/sasl2/libscram.so.${LIBscram_VERSION}
+@man man/man3/sasl.3
+@man man/man3/sasl_authorize_t.3
+@man man/man3/sasl_auxprop.3
+@man man/man3/sasl_auxprop_getctx.3
+@man man/man3/sasl_auxprop_request.3
+@man man/man3/sasl_callbacks.3
+@man man/man3/sasl_canon_user_t.3
+@man man/man3/sasl_chalprompt_t.3
+@man man/man3/sasl_checkapop.3
+@man man/man3/sasl_checkpass.3
+@man man/man3/sasl_client_init.3
+@man man/man3/sasl_client_new.3
+@man man/man3/sasl_client_start.3
+@man man/man3/sasl_client_step.3
+@man man/man3/sasl_decode.3
+@man man/man3/sasl_dispose.3
+@man man/man3/sasl_done.3
+@man man/man3/sasl_encode.3
+@man man/man3/sasl_encodev.3
+@man man/man3/sasl_errdetail.3
+@man man/man3/sasl_errors.3
+@man man/man3/sasl_errstring.3
+@man man/man3/sasl_getconfpath_t.3
+@man man/man3/sasl_getopt_t.3
+@man man/man3/sasl_getpath_t.3
+@man man/man3/sasl_getprop.3
+@man man/man3/sasl_getrealm_t.3
+@man man/man3/sasl_getsecret_t.3
+@man man/man3/sasl_getsimple_t.3
+@man man/man3/sasl_global_listmech.3
+@man man/man3/sasl_idle.3
+@man man/man3/sasl_listmech.3
+@man man/man3/sasl_log_t.3
+@man man/man3/sasl_server_init.3
+@man man/man3/sasl_server_new.3
+@man man/man3/sasl_server_start.3
+@man man/man3/sasl_server_step.3
+@man man/man3/sasl_server_userdb_checkpass_t.3
+@man man/man3/sasl_server_userdb_setpass_t.3
+@man man/man3/sasl_setpass.3
+@man man/man3/sasl_setprop.3
+@man man/man3/sasl_user_exists.3
+@man man/man3/sasl_verifyfile_t.3
+@man man/man8/pluginviewer.8
+@man man/man8/saslauthd.8
+@man man/man8/sasldblistusers2.8
+@man man/man8/saslpasswd2.8
+@man man/man8/testsaslauthd.8
+@bin sbin/pluginviewer
+@bin sbin/saslauthd
+@bin sbin/sasldblistusers2
+@bin sbin/saslpasswd2
+@bin sbin/testsaslauthd
+share/doc/cyrus-sasl/
+share/examples/cyrus-sasl/
+@sample ${SYSCONFDIR}/sasl2/
+@sample /var/sasl2/
+%%gssapi%%
+%%ldap%%
+%%sql%%

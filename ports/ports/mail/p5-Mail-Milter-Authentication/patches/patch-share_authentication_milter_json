@@ -1,0 +1,14 @@
+Index: share/authentication_milter.json
+--- share/authentication_milter.json.orig
++++ share/authentication_milter.json
+@@ -6,8 +6,8 @@
+ 
+     "connection"             : "inet:12345@localhost",
+     "umask"                  : "0000",
+-    "runas"                  : "nobody",
+-    "rungroup"               : "nogroup",
++    "runas"                  : "_milter-auth",
++    "rungroup"               : "_milter-auth",
+     "chroot"                 : "",
+ 
+     "listen_backlog"         : 20,

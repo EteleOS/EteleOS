@@ -1,0 +1,4 @@
+${P5SITE}/Module/
+${P5SITE}/Module/Install/
+${P5SITE}/Module/Install/Repository.pm
+@man man/man3p/Module::Install::Repository.3p

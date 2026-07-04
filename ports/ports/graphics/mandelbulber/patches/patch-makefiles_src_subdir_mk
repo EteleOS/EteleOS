@@ -1,0 +1,12 @@
+Index: makefiles/src/subdir.mk
+--- makefiles/src/subdir.mk.orig
++++ makefiles/src/subdir.mk
+@@ -71,7 +71,7 @@ CPP_DEPS += \
+ src/%.o: ../src/%.cpp
+ 	@echo 'Building file: $<'
+ 	@echo 'Invoking: GCC C++ Compiler'
+-	g++ -O3 -ffast-math -Wall -c -fmessage-length=0 `pkg-config --cflags gtk+-2.0 gthread-2.0;` -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" $(CXXFLAGS) $(CPPFLAGS) -o"$@" "$<"
++	${CXX} -Wall -c -fmessage-length=0 `pkg-config --cflags gtk+-2.0 gthread-2.0;` -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" $(CXXFLAGS) $(CPPFLAGS) -o"$@" "$<"
+ 	@echo 'Finished building: $<'
+ 	@echo ' '
+ 

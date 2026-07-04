@@ -1,0 +1,3 @@
+${P5SITE}/Path/
+${P5SITE}/Path/Tiny.pm
+@man man/man3p/Path::Tiny.3p

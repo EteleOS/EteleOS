@@ -1,0 +1,19 @@
+Index: src/sim/g_setup.c
+--- src/sim/g_setup.c.orig
++++ src/sim/g_setup.c
+@@ -239,6 +239,7 @@ GetObjectXpms(XDisplay *xd, int id, int frames)
+ }
+ 
+ 
++void
+ GetPixmaps(XDisplay *xd)
+ {
+   if (xd->gray25_stipple == None) {
+@@ -286,6 +287,7 @@ GetPixmaps(XDisplay *xd)
+ }
+ 
+ 
++void
+ GetViewTiles(SimView *view)
+ {
+   char name[256];

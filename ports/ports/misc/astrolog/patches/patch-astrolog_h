@@ -1,0 +1,16 @@
+Index: astrolog.h
+--- astrolog.h.orig
++++ astrolog.h
+@@ -159,10 +159,12 @@
+ ** specified within the default settings file or in the program itself.
+ */
+ 
++#ifndef DEFAULT_DIR
+ #ifndef PC
+ #define DEFAULT_DIR "~/astrolog"
+ #else
+ #define DEFAULT_DIR "C:\\Astrolog"
++#endif
+ #endif
+   // Change this string to directory path program should look in for the
+   // astrolog.as default file, if one is not in the current directory or

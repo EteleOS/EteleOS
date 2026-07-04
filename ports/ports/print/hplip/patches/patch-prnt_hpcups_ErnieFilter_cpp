@@ -1,0 +1,12 @@
+Index: prnt/hpcups/ErnieFilter.cpp
+--- prnt/hpcups/ErnieFilter.cpp.orig
++++ prnt/hpcups/ErnieFilter.cpp
+@@ -34,7 +34,7 @@
+ #include "ErnieFilter.h"
+ 
+ 
+-#if defined(__APPLE__) || defined(__linux) || defined(__GLIBC__) || defined(__NetBSD__)
++#if defined(__APPLE__) || defined(__linux) || defined(__GLIBC__) || defined(__NetBSD__) || defined(__OpenBSD__)
+ #include <math.h>
+ #endif
+ 

@@ -1,0 +1,22 @@
+comment-out this block, it uses an installed version of XML::SAX to write out
+an ini file. this is provided by ${FILESDIR}/ParserDetails.ini instead.
+
+Index: Makefile.PL
+--- Makefile.PL.orig
++++ Makefile.PL
+@@ -31,6 +31,7 @@ sub MY::install {
+ 
+     my $write_ini_ok = 0;
+ 
++=pod
+     eval { require XML::SAX };
+     if ($@) {
+         $write_ini_ok = 1;
+@@ -48,6 +49,7 @@ sub MY::install {
+         }
+     }
+     
++=cut
+     if ($write_ini_ok) {
+         $script =~ s/install :: (.*)$/install :: $1 install_sax_pureperl/m;
+         $script .= <<"INSTALL";

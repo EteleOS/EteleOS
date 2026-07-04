@@ -1,0 +1,41 @@
+@newgroup _pure-ftpd:642
+@newuser _pure-ftpd:642:_pure-ftpd::pure-ftpd user:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/pure_ftpd
+@bin bin/pure-pw
+@bin bin/pure-pwconvert
+@bin bin/pure-statsdecode
+@man man/man8/pure-authd.8
+@man man/man8/pure-certd.8
+@man man/man8/pure-ftpd.8
+@man man/man8/pure-ftpwho.8
+@man man/man8/pure-mrtginfo.8
+@man man/man8/pure-pw.8
+@man man/man8/pure-pwconvert.8
+@man man/man8/pure-quotacheck.8
+@man man/man8/pure-statsdecode.8
+@man man/man8/pure-uploadscript.8
+@bin sbin/pure-authd
+@bin sbin/pure-certd
+@bin sbin/pure-ftpd
+@bin sbin/pure-ftpwho
+@bin sbin/pure-mrtginfo
+@bin sbin/pure-quotacheck
+@bin sbin/pure-uploadscript
+share/doc/pure-ftpd/
+share/doc/pure-ftpd/FAQ
+share/doc/pure-ftpd/README
+share/doc/pure-ftpd/README.Authentication-Modules
+share/doc/pure-ftpd/README.Configuration-File
+share/doc/pure-ftpd/README.MacOS-X
+share/doc/pure-ftpd/README.TLS
+share/doc/pure-ftpd/README.Virtual-Users
+share/doc/pure-ftpd/pure-ftpd.conf
+share/doc/pure-ftpd/pure-ftpd.png
+share/doc/pure-ftpd/pureftpd-ldap.conf
+share/doc/pure-ftpd/pureftpd-mysql.conf
+share/doc/pure-ftpd/pureftpd-pgsql.conf
+share/examples/pure-ftpd/
+share/examples/pure-ftpd/pure-ftpd.conf.sample
+%%ldap%%
+%%mysql%%
+%%postgresql%%

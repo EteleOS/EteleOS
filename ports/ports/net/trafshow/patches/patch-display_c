@@ -1,0 +1,13 @@
+--- display.c.orig	Mon Aug 24 05:51:48 1998
++++ display.c	Tue Apr  5 22:44:25 2016
+@@ -389,8 +389,8 @@ truncated-udp: wrong ip hdrlen");
+ 				te.sport = ntohs(((struct udphdr *)cp)->uh_sport);
+ 				te.dport = ntohs(((struct udphdr *)cp)->uh_dport);
+ 			} else if (ip->ip_p == IPPROTO_ICMP) {
+-				if (cp + sizeof(struct icmp) > snapend ||
+-				    iplen - hlen < sizeof(struct icmp)) {
++				if (cp + 4 > snapend ||
++				    iplen - hlen < 4) {
+ 					mvprintw(LINES-1, err_pos, "\
+ truncated-icmp: wrong ip hdrlen");
+ 					clrtoeol();

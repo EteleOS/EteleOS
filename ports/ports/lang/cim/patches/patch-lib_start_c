@@ -1,0 +1,14 @@
+Avoid multiple redefinition of __init.
+
+Index: lib/start.c
+--- lib/start.c.orig
++++ lib/start.c
+@@ -132,7 +132,7 @@ void __rstart (int argc, char *argv[])
+ 
+   __roptions (argc, argv[1]);
+ 
+-  __init ();
++  ___init ();
+ 
+ /* SYSIN  :- new infile("...");   
+  * SYSOUT :- new printfile("...");

@@ -1,0 +1,13 @@
+Index: contrib/ods-sequencer/ods-sequencer-submit.sh
+--- contrib/ods-sequencer/ods-sequencer-submit.sh.orig
++++ contrib/ods-sequencer/ods-sequencer-submit.sh
+@@ -1,6 +1,6 @@
+-#!/bin/bash
++#!/bin/sh
+ 
+-now=`../../../sbin/ods-enforcer queue 2>&1 | sed -e 's/^It is now.*(\([0-9][0-9]*\)[^)]*).*$/\1/p' -e 'd'`
+-cat > ../../../var/opendnssec/sequences/$now-dssubmit
++now=`${PREFIX}/sbin/ods-enforcer queue 2>&1 | sed -e 's/^It is now.*(\([0-9][0-9]*\)[^)]*).*$/\1/p' -e 'd'`
++cat > ${LOCALSTATEDIR}/opendnssec/sequences/$now-dssubmit
+ 
+ exit 0

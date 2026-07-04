@@ -1,0 +1,21 @@
+Use standard optimisations.
+
+Index: hw_utils/hwrcon/Makefile
+--- hw_utils/hwrcon/Makefile.orig
++++ hw_utils/hwrcon/Makefile
+@@ -48,15 +48,6 @@ endif
+ CPUFLAGS=$(CPU_X86)
+ 
+ CFLAGS += -Wall
+-CFLAGS += $(CPUFLAGS)
+-ifndef DEBUG
+-CFLAGS += -O2 -DNDEBUG=1
+-else
+-CFLAGS += -g
+-endif
+-
+-CPPFLAGS=
+-LDFLAGS =
+ 
+ # compiler includes
+ INCLUDES= -I. -I$(UHEXEN2_SHARED)

@@ -1,0 +1,6 @@
+@option always-update
+@pkgpath databases/pkglocatedb,src
+bin/pkg_locate
+bin/pkglocate
+@man man/man1/pkg_locate.1
+share/pkglocatedb

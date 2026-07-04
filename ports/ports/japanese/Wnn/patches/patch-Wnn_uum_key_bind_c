@@ -1,0 +1,28 @@
+--- Wnn/uum/key_bind.c.orig
++++ Wnn/uum/key_bind.c
+@@ -62,6 +62,8 @@
+ */    
+ 
+ #include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
+ #include "commonhd.h"
+ #include "config.h"
+ #include "sdefine.h"
+@@ -265,11 +267,11 @@ init_key_table()
+ 
+    /* uumrcファイルから。*/
+  if (uumkey_name_in_uumrc[0] != '\0') {
+-   strcpy(file_name, uumkey_name_in_uumrc);
+- }else if(strcpy(file_name, LIBDIR),
+-	  strcat(file_name, "/"),
+-	  strcat(file_name, lang_dir),
+-	  strcat(file_name, CPFILE),
++   strlcpy(file_name, uumkey_name_in_uumrc, sizeof file_name);
++ }else if(strlcpy(file_name, LIBDIR, sizeof file_name),
++	  strlcat(file_name, "/", sizeof file_name),
++	  strlcat(file_name, lang_dir, sizeof file_name),
++	  strlcat(file_name, CPFILE, sizeof file_name),
+ 	  (fp = fopen(file_name , "r")) != NULL){
+    /* default */
+    fclose(fp);

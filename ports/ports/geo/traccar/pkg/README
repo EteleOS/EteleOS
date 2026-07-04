@@ -1,0 +1,81 @@
+
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Web Interface
+=============
+
+The default configuration makes traccar UI listen on localhost only.
+The recommended way to access the service from the outside world is to use a
+reverse proxy with SSL enabled.
+
+The following is an example using nginx as an SSL reverse proxy:
+
+server {
+	add_header Cache-Control no-cache;
+	add_header x-frame-options SAMEORIGIN;
+	add_header X-Content-Type-Options nosniff;
+	add_header X-XSS-Protection "1; mode=block";
+
+	listen	443;
+	listen	[::]:443;
+
+	expires 31d;
+	ssl On;
+	ssl_certificate fullcert_nokey.pem;
+	ssl_certificate_key privkey.pem;
+
+	location / {
+		proxy_pass http://127.0.0.1:8082/;
+		proxy_set_header Host $host;
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+		proxy_buffering     off;
+		proxy_connect_timeout 1d;
+		proxy_send_timeout    1d;
+		proxy_read_timeout    1d;
+		proxy_redirect off;
+		proxy_set_header Proxy "";
+		proxy_cookie_path /api "/api; secure; HttpOnly";
+	}
+}
+
+Open Network Ports
+==================
+
+By default, traccar will listen on many network ports. Each tracker protocol
+requires its own open port, which requires a large number of file descriptors
+and may conflict with other software.
+
+There used to be a default.xml file, but there is no more. Although it will
+still work if you still have it. But now, you need to put all your
+configuration in ${SYSCONFDIR}/traccar/traccar.xml.
+
+For example, to allow only teltonika and osmand protocols, add this:
+
+ <entry key='protocols.enable'>teltonika,osmand</entry>
+
+To avoid sending positions to a network-based reverse geocoder service:
+
+  <entry key='geocoder.enable'>false</entry>
+
+Statistics
+==========
+
+To avoid sending "anonymous" reports to traccar.org, you can set this variable
+  <entry key='server.statistics'>""</entry>
+
+Configuration migration to >=6.2
+================================
+
+If updating from traccar 6.1 or older, note that 6.2 has removed the
+separate default.xml file. Previous versions of the OpenBSD package have
+modified some of the defaults from upstream - you will need to merge
+the log path change into traccar.xml, and you may want to merge the
+other changes:
+
+  <entry key='logger.file'>/var/log/traccar/tracker-server.log</entry>
+  <entry key='web.address'>127.0.0.1</entry>
+  <entry key='server.statistics'>""</entry>

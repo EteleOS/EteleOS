@@ -1,0 +1,29 @@
+--- config/bsd/Makedefs.orig	Thu May 30 19:13:45 2013
++++ config/bsd/Makedefs	Sun Nov  3 12:01:30 2013
+@@ -1,6 +1,7 @@
+ #  locations of X11 found in different BSD distributions
+ X=/usr/X11R6
+ L=/usr/local
++OPTIMIZE=-O2
+ 
+ #  CC       C compiler
+ #  CFLAGS   flags for building C files
+@@ -13,11 +14,13 @@ L=/usr/local
+ #  GDIR     directory of graphics helper library
+ 
+ CC = cc
+-CFLAGS = -O -I$X/include -I$L/include
++XINCLUDE=-I$X/include
++CFLAGS = $(OPTIMIZE) $(XINCLUDE)
+ CFDYN = -fPIC
+-RLINK = -Wl,-E
++RLINK = 
+ RLIBS = -lm
+ TLIBS = -lpthread
+-XLIBS = -Wl,-R$X/lib -Wl,-R$L/lib -L$X/lib -L$L/lib -lX11
+-XPMDEFS = -DZPIPE
+-GDIR = xpm
++XLIBS = -L$X/lib -lXpm -lX11
++XPMDEFS = -DZPIPE $(XINCLUDE)
++# we cheat, so that Xpm is not rebuilt
++GDIR = identify.o

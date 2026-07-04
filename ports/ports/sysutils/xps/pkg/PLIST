@@ -1,0 +1,8 @@
+@pkgpath sysutils/xps,lesstif
+@group kmem
+@mode 2555
+bin/xps
+@mode
+@group
+lib/X11/app-defaults/Xps
+@man man/man1/xps.1

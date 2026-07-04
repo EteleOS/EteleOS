@@ -1,0 +1,30 @@
+Index: onew.c
+--- onew.c.orig
++++ onew.c
+@@ -26,7 +26,8 @@ History:
+ #include <signal.h>
+ #include <ctype.h>
+ #include <stdio.h>
+-extern char *getenv();
++#include <stdlib.h>
++#include <string.h>
+ #include "onew.h"
+ 
+ int on_via;
+@@ -35,7 +36,7 @@ int onew_client_version = 1;
+ #define VER1	(onew_client_version == 1)
+ #define VER2	(onew_client_version == 2)
+ 
+-int ONEW_THRUSYMS_ON;
++extern int ONEW_THRUSYMS_ON;
+ 
+ static Linebuff onew_buf;
+ static Mssgbuff onew_out;
+@@ -492,6 +493,7 @@ ONEW_BEEP(nsec){
+ 	fflush(stdout);
+ }
+ static int prev_modef;
++void
+ ONEW_DISP_ROMKANMODE(cmode,chelp,modef)
+ 	char *cmode,*chelp;
+ {

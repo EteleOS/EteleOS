@@ -1,0 +1,6 @@
+lib/sope-4.9/dbadaptors/MySQL.gdladaptor/
+@bin lib/sope-4.9/dbadaptors/MySQL.gdladaptor/MySQL
+lib/sope-4.9/dbadaptors/MySQL.gdladaptor/Resources/
+lib/sope-4.9/dbadaptors/MySQL.gdladaptor/Resources/Info-gnustep.plist
+lib/sope-4.9/dbadaptors/MySQL.gdladaptor/Resources/Version
+lib/sope-4.9/dbadaptors/MySQL.gdladaptor/stamp.make

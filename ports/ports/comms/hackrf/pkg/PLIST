@@ -1,0 +1,14 @@
+@bin bin/hackrf_biast
+@bin bin/hackrf_clock
+@bin bin/hackrf_cpldjtag
+@bin bin/hackrf_debug
+@bin bin/hackrf_info
+@bin bin/hackrf_operacake
+@bin bin/hackrf_spiflash
+@bin bin/hackrf_sweep
+@bin bin/hackrf_transfer
+include/libhackrf/
+include/libhackrf/hackrf.h
+@static-lib lib/libhackrf.a
+@lib lib/libhackrf.so.${LIBhackrf_VERSION}
+lib/pkgconfig/libhackrf.pc

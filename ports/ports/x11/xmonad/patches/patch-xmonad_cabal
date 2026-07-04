@@ -1,0 +1,15 @@
+I don't like the idea of yet another port with nothing than a binding
+for setlocale(3), and I don't know which part of xmonad would benefit
+from it.
+
+Index: xmonad.cabal
+--- xmonad.cabal.orig
++++ xmonad.cabal
+@@ -73,7 +73,6 @@ library
+                  , filepath
+                  , mtl
+                  , process
+-                 , setlocale
+                  , time
+                  , transformers          >= 0.3
+                  , unix

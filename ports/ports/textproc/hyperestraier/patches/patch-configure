@@ -1,0 +1,20 @@
+--- configure.orig	Tue Dec 25 02:47:49 2007
++++ configure	Tue Jan 27 10:03:06 2009
+@@ -2395,7 +2395,7 @@ then
+   fi
+   if uname | egrep -i 'BSD' > /dev/null 2>&1
+   then
+-    MYCFLAGS="-Wall -fPIC -fsigned-char -O1"
++    MYCFLAGS="-Wall -fPIC -fsigned-char"
+   fi
+   if gcc --version | egrep -i '^2\.(8|9)' > /dev/null 2>&1
+   then
+@@ -3019,7 +3019,7 @@ fi
+ echo "$as_me:$LINENO: result: $ac_cv_lib_pthread_main" >&5
+ echo "${ECHO_T}$ac_cv_lib_pthread_main" >&6
+ if test $ac_cv_lib_pthread_main = yes; then
+-  MYMTLIBS="-lpthread $MYMTLIBS"
++  MYMTLIBS="-pthread $MYMTLIBS"
+ fi
+ 
+ 

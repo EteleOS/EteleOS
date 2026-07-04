@@ -1,0 +1,12 @@
+Index: src/Makefile.in
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -609,7 +609,7 @@ libpstoedit_la_SOURCES = \
+ 	psfront.h				\
+ 	genericints.h
+ 
+-libpstoedit_la_LIBADD = ${CXX_STD_LIB} ${CXX_RUNTIME_LIB} -ldl -lm
++libpstoedit_la_LIBADD = ${CXX_STD_LIB} ${CXX_RUNTIME_LIB} -lm
+ libpstoedit_la_LDFLAGS = -no-undefined
+ pstoedit_SOURCES = cmdmain.cpp
+ pstoedit_LDADD = libpstoedit.la ${LIBLD_LDFLAGS}

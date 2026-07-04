@@ -1,0 +1,27 @@
+Index: doc/icewm.adoc
+--- doc/icewm.adoc.orig
++++ doc/icewm.adoc
+@@ -404,10 +404,10 @@ $ICEWM_PRIVCFG; $XDG_CONFIG_HOME/icewm; $HOME/.icewm
+ The first of these which is defined and existent is used to search
+ for the user's personal customization.
+ 
+-/etc/icewm
++${SYSCONFDIR}/icewm
+ the system-wide defaults directory
+ 
+-/usr/share/icewm OR /usr/local/share/icewm
++${PREFIX}/share/icewm
+ the compiled-in default directory with default files
+ 
+ The directories are searched in the above order, so any file located
+@@ -416,8 +416,8 @@ creating the same directory hierarchy under `$HOME/.ic
+ 
+ To customize icewm yourself, you could create the `$HOME/.icewm`
+ directory and copy the files that you wish to modify, like
+-`preferences`, `keys` or `winoptions`, from `/etc/icewm`,
+-`/usr/share/icewm` or `/usr/local/share/icewm` and then modify as
++`preferences`, `keys` or `winoptions`, from `${SYSCONFDIR}/icewm`,
++or `${PREFIX}/share/icewm` and then modify as
+ you like.
+ 
+ To customize the default themes, create the `$HOME/.icewm/themes`

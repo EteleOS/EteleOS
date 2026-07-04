@@ -1,0 +1,12 @@
+remove hardcoded -O2
+
+Index: lib/mongoose/Makefile.am
+--- lib/mongoose/Makefile.am.orig
++++ lib/mongoose/Makefile.am
+@@ -1,5 +1,5 @@
+ # D_ variants are defaults and should always be used
+-AM_CFLAGS = @D_CFLAGS@ -std=c99 -O2
++AM_CFLAGS = @D_CFLAGS@ -std=c99
+ AM_LDFLAGS = @D_LDFLAGS@
+ 
+ noinst_LIBRARIES = libmongoose.a

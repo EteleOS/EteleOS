@@ -1,0 +1,13 @@
+Index: svtools/Executable_langsupport.mk
+--- svtools/Executable_langsupport.mk.orig
++++ svtools/Executable_langsupport.mk
+@@ -36,4 +36,9 @@ $(eval $(call gb_Executable_add_exception_objects,lang
+     svtools/langsupport/langsupport \
+ ))
+ 
++$(eval $(call gb_Executable_add_libs,langsupport,\
++    -lharfbuzz \
++    -lharfbuzz-icu \
++))
++
+ # vim: set noet sw=4 ts=4:

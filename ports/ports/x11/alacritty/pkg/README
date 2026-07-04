@@ -1,0 +1,15 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+Configuration
+=============
+
+Alacritty looks for a configuration file in the following paths:
+
+1. `$XDG_CONFIG_HOME/alacritty/alacritty.toml`
+2. `$XDG_CONFIG_HOME/alacritty.toml`
+3. `$HOME/.config/alacritty/alacritty.toml`
+4. `$HOME/.alacritty.toml`
+
+If none of these paths exist, Alacritty will run with its default configuration.

@@ -1,0 +1,38 @@
+Index: Modules/FindTclsh.cmake
+--- Modules/FindTclsh.cmake.orig
++++ Modules/FindTclsh.cmake
+@@ -75,18 +75,30 @@ See Also
+ * The :module:`FindTclStub` module to find the Tcl Stubs Library.
+ #]=======================================================================]
+ 
++set(MODTCL_VERSION $ENV{MODTCL_VERSION})
++set(MODTK_VERSION $ENV{MODTK_VERSION})
++
+ get_filename_component(TK_WISH_PATH "${TK_WISH}" PATH)
+ get_filename_component(TK_WISH_PATH_PARENT "${TK_WISH_PATH}" PATH)
+-string(REGEX REPLACE
+-  "^.*wish([0-9]\\.*[0-9]).*$" "\\1" TK_WISH_VERSION "${TK_WISH}")
++if(MODTK_VERSION)
++  set(TK_WISH_VERSION "${MODTK_VERSION}")
++else(MODTK_VERSION)
++  string(REGEX REPLACE
++    "^.*wish([0-9]\\.*[0-9]).*$" "\\1" TK_WISH_VERSION "${TK_WISH}")
++endif(MODTK_VERSION)
+ 
+ get_filename_component(TCL_INCLUDE_PATH_PARENT "${TCL_INCLUDE_PATH}" PATH)
+ get_filename_component(TK_INCLUDE_PATH_PARENT "${TK_INCLUDE_PATH}" PATH)
+ 
+ get_filename_component(TCL_LIBRARY_PATH "${TCL_LIBRARY}" PATH)
+ get_filename_component(TCL_LIBRARY_PATH_PARENT "${TCL_LIBRARY_PATH}" PATH)
+-string(REGEX REPLACE
+-  "^.*tcl([0-9]\\.*[0-9]).*$" "\\1" TCL_LIBRARY_VERSION "${TCL_LIBRARY}")
++
++if(MODTCL_VERSION)
++  set(TCL_LIBRARY_VERSION "${MODTCL_VERSION}")
++else(MODTCL_VERSION)
++  string(REGEX REPLACE
++    "^.*tcl([0-9]\\.*[0-9]).*$" "\\1" TCL_LIBRARY_VERSION "${TCL_LIBRARY}")
++endif(MODTCL_VERSION)
+ 
+ get_filename_component(TK_LIBRARY_PATH "${TK_LIBRARY}" PATH)
+ get_filename_component(TK_LIBRARY_PATH_PARENT "${TK_LIBRARY_PATH}" PATH)

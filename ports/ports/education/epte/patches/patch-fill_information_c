@@ -1,0 +1,11 @@
+--- fill_information.c.orig	Mon Aug 23 07:45:28 2010
++++ fill_information.c	Mon Aug 23 07:45:44 2010
+@@ -290,6 +290,8 @@ modification follow.
+ 
+ */
+ 
++#include <string.h>
++
+ #include "periodic.h"
+ #include "info.h"
+ #include "text.h"

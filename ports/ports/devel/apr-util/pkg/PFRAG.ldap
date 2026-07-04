@@ -1,0 +1,4 @@
+lib/apr-util-1/apr_ldap-1.so
+lib/apr-util-1/apr_ldap.a
+lib/apr-util-1/apr_ldap.la
+lib/apr-util-1/apr_ldap.so

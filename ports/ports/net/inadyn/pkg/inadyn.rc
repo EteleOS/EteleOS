@@ -1,0 +1,12 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/inadyn -b"
+daemon_flags="-F ${SYSCONFDIR}/inadyn.conf -s -d _inadyn:_inadyn"
+
+. /etc/rc.d/rc.subr
+
+rc_pre() {
+	/usr/bin/install -d -o _inadyn /var/run/inadyn
+}
+
+rc_cmd $1

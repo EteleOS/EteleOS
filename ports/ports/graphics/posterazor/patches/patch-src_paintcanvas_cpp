@@ -1,0 +1,11 @@
+Index: src/paintcanvas.cpp
+--- src/paintcanvas.cpp.orig
++++ src/paintcanvas.cpp
+@@ -25,6 +25,7 @@
+ #include <QImage>
+ #include <QPainter>
+ #include <QVariant>
++#include <QPainterPath>
+ 
+ PaintCanvas::PaintCanvas(QWidget *parent)
+     : QWidget(parent)

@@ -1,0 +1,2 @@
+@bin bin/sqtop
+@man man/man1/sqtop.1

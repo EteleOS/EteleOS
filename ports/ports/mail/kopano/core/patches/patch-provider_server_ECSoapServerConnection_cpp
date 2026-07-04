@@ -1,0 +1,13 @@
+Index: provider/server/ECSoapServerConnection.cpp
+--- provider/server/ECSoapServerConnection.cpp.orig
++++ provider/server/ECSoapServerConnection.cpp
+@@ -15,6 +15,9 @@
+ #include <kopano/memory.hpp>
+ #include <sys/stat.h>
+ #include <sys/un.h>
++#ifdef OPENBSD
++#include <signal.h>
++#endif
+ #include "ECSoapServerConnection.h"
+ #include "ECServerEntrypoint.h"
+ #include "SSLUtil.h"

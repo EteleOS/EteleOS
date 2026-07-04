@@ -1,0 +1,28 @@
+--- src/Makefile.orig	Tue Jan 19 12:32:35 2010
++++ src/Makefile	Fri Jun 18 19:25:14 2010
+@@ -47,7 +47,7 @@ solib: ../libqrupdate$(SOEXT)
+ 	ar -cr $@ $(OBJS)
+ 
+ ../libqrupdate.so: $(OBJS)
+-	$(FC) $(FFLAGS) -shared -o $@ -Wl,-soname=libqrupdate.so.$(MAJOR) $(OBJS) \
++	$(FC) $(FFLAGS) -shared -o $@ -Wl,-soname=libqrupdate.so.$(VERSION) $(OBJS) \
+ 		$(BLAS) $(LAPACK)
+ 
+ ../libqrupdate.dylib: $(OBJS)
+@@ -65,9 +65,7 @@ install: install-shlib install-staticlib
+ install-shlib: ../libqrupdate$(SOEXT) install-lib$(SOEXT)
+ 
+ install-lib.so:
+-	install -D -m644 ../libqrupdate.so $(DESTDIR)$(PREFIX)/$(LIBDIR)/libqrupdate.so.$(VERSION)
+-	ln -s libqrupdate.so.$(VERSION) $(DESTDIR)$(PREFIX)/$(LIBDIR)/libqrupdate.so.$(MAJOR)
+-	ln -s libqrupdate.so.$(VERSION) $(DESTDIR)$(PREFIX)/$(LIBDIR)/libqrupdate.so
++	install -m 644 ../libqrupdate.so $(PREFIX)/$(LIBDIR)/libqrupdate.so.$(VERSION)
+ 
+ install-lib.dylib:
+ 	install -D -m644 ../libqrupdate.dylib $(DESTDIR)$(PREFIX)/$(LIBDIR)/libqrupdate.$(VERSION).dylib
+@@ -75,4 +73,4 @@ install-lib.dylib:
+ 	ln -s libqrupdate.$(VERSION).dylib $(DESTDIR)$(PREFIX)/$(LIBDIR)/libqrupdate.dylib
+ 
+ install-staticlib: ../libqrupdate.a
+-	install -D -m644 ../libqrupdate.a $(DESTDIR)$(PREFIX)/$(LIBDIR)/libqrupdate.a
++	install -m 644 ../libqrupdate.a $(PREFIX)/$(LIBDIR)/libqrupdate.a

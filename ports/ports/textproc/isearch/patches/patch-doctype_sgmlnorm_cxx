@@ -1,0 +1,11 @@
+--- doctype/sgmlnorm.cxx.orig	Wed Dec  4 22:02:08 1996
++++ doctype/sgmlnorm.cxx	Sat May 22 12:55:04 2010
+@@ -528,7 +528,7 @@ PCHR *SGMLNORM::parse_tags (PCHR b, GPTYPE len) const
+ #ifndef TAG_GROW_SIZE
+ #define TAG_GROW_SIZE 128
+ #endif
+-  const grow_size = TAG_GROW_SIZE;
++  const int grow_size = TAG_GROW_SIZE;
+ #undef TAG_GROW_SIZE
+ 
+   // You should allocate character pointers (to tags) as you need them.

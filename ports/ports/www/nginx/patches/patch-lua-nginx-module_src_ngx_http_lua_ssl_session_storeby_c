@@ -1,0 +1,24 @@
+Index: lua-nginx-module/src/ngx_http_lua_ssl_session_storeby.c
+--- lua-nginx-module/src/ngx_http_lua_ssl_session_storeby.c.orig
++++ lua-nginx-module/src/ngx_http_lua_ssl_session_storeby.c
+@@ -173,6 +173,8 @@ ngx_http_lua_ssl_sess_store_handler(ngx_ssl_conn_t *ss
+     ngx_ssl_session_t *sess)
+ {
+     lua_State                       *L;
++    const unsigned char             *session_id;
++    unsigned int                     session_id_length;
+     ngx_int_t                        rc;
+     ngx_connection_t                *c, *fc = NULL;
+     ngx_http_request_t              *r = NULL;
+@@ -250,8 +252,9 @@ ngx_http_lua_ssl_sess_store_handler(ngx_ssl_conn_t *ss
+     cctx->connection = c;
+     cctx->request = r;
+     cctx->session = sess;
+-    cctx->session_id.data = sess->session_id;
+-    cctx->session_id.len = sess->session_id_length;
++    session_id = SSL_SESSION_get_id(sess, &session_id_length);
++    cctx->session_id.data = (char *)session_id;
++    cctx->session_id.len = session_id_length;
+     cctx->done = 0;
+ 
+     dd("setting cctx");

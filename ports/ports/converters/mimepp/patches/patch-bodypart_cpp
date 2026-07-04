@@ -1,0 +1,12 @@
+Index: bodypart.cpp
+--- bodypart.cpp.orig
++++ bodypart.cpp
+@@ -30,7 +30,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <stdlib.h>
+-#include <iostream.h>
++#include <iostream>
+ #include <mimepp/string.h>
+ #include <mimepp/headers.h>
+ #include <mimepp/bodypart.h>

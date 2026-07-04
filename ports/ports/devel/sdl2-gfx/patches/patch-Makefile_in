@@ -1,0 +1,14 @@
+We don't need a version number in the library name itself, on top of the SO
+number.
+
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -306,7 +306,6 @@ EXTRA_DIST = \
+ 
+ libSDL2_gfx_la_LDFLAGS = \
+ 	-no-undefined		\
+-	-release $(LT_RELEASE)	\
+ 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ 
+ pkgconfigdir = $(libdir)/pkgconfig

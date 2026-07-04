@@ -1,0 +1,8 @@
+The MJPEG-tools are a basic set of utilities for editing, playing back,
+filtering and encoding video under UNIX-like operating systems.
+
+Flavors:
+
+  optimized - Builds the package with SSE instructions. Packages built
+              with this FLAVOR might not run on systems that are not SSE
+	      capable.

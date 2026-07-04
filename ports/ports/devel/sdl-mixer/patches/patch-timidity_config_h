@@ -1,0 +1,14 @@
+--- timidity/config.h.orig	Sun Jan 15 17:01:05 2012
++++ timidity/config.h	Sat Mar 17 12:22:06 2012
+@@ -166,10 +166,7 @@ typedef char int8;
+ #if defined(__WIN32__) || defined(__OS2__)
+ #define DEFAULT_PATH	"C:\\TIMIDITY"
+ #else
+-#define DEFAULT_PATH	"/etc/timidity"
+-#define DEFAULT_PATH1	"/usr/share/timidity"
+-#define DEFAULT_PATH2	"/usr/local/share/timidity"
+-#define DEFAULT_PATH3	"/usr/local/lib/timidity"
++#define DEFAULT_PATH	"${SYSCONFDIR}"
+ #endif
+ 
+ /* These affect general volume */

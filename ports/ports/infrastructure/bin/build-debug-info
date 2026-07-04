@@ -1,0 +1,293 @@
+#! /usr/bin/perl
+# $OpenBSD: build-debug-info,v 1.49 2023/05/09 17:41:10 espie Exp $
+# Copyright (c) 2019 Marc Espie <espie@openbsd.org>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+use v5.36;
+
+my $ports1;
+BEGIN {
+	$ports1 = $ENV{PORTSDIR} || '/usr/ports';
+}
+
+use lib "$ports1/infrastructure/lib";
+use OpenBSD::BaseFS;
+use OpenBSD::BasePlistReader;
+
+package PlistFactory;
+our @ISA = qw(OpenBSD::BasePlistFactory);
+
+# note that contrary to update-plist, we never build the "new" plist, but
+# write it on the fly (should we use nlist as well here ?)
+sub stateclass($)
+{
+	return 'PlistReader::State';
+}
+
+sub command_name($)
+{
+	return 'build-debug-info';
+}
+
+sub process_next_subpackage($class, $o)
+{
+	my $r = $class->SUPER::process_next_subpackage($o);
+	if ($r->{state}{bad} != 0) {
+		$o->{state}{exitcode} = 1;
+	}
+}
+
+package PlistReader::State;
+our @ISA = qw(OpenBSD::BasePlistReader::State);
+
+sub substclass($)
+{
+	return 'OpenBSD::Subst';
+}
+
+sub handle_options($s)
+{
+	$s->SUPER::handle_options;
+}
+
+# Most of the heavy lifting is done by visitor methods, as always
+
+package OpenBSD::PackingElement;
+# $self->write_debug_info($base, $fh, $o):
+#	write debug info (duh) for packing element $self relative to
+#	fake dir $base to filehandle $fh perusing debug object 
+#	$o for storing useful info
+sub write_debug_info($, $, $, $)
+{
+}
+
+package OpenBSD::PackingElement::PkgPath;
+sub write_debug_info($self, $, $fh, $)
+{
+	print $fh "\@", $self->keyword, " debug/", $self->name, "\n";
+}
+
+package OpenBSD::PackingElement::Cwd;
+# so the reader stuffs a default cwd in the packing-list, which is VERY
+# useful for absolute names, BUT we don't want to copy the first one.
+
+# copy the later ones, even if there is nothing to emit afterwards (this
+# is cheap)
+sub write_debug_info($self, $, $fh, $o)
+{
+	if ($o->{first_cwd}) {
+		$o->{first_cwd} = 0;
+	} else {
+		$self->write($fh);
+	}
+}
+
+package OpenBSD::PackingElement::FileWithDebugInfo;
+use File::Basename;
+sub write_debug_info($self, $base, $fh, $o)
+{
+	return if $self->{nodebug};
+	my $s = $self->name;
+	my $dbg = $self->mogrify($s);
+	my $dir = $dbg;
+	$dir =~ s/(\/\.debug\/)[^\/]+/$1/;
+	my $path = $base.$self->fullname;
+	my $dbgpath = $base.$self->mogrify($self->fullname);
+	if (-l $path) {
+		# turns out we don't need to do anything, egdb follows symlinks
+		return;
+	}
+	if (-f $path) {
+		my $k = join('/', (stat $path)[0,1]);
+		my $l = $o->{linkstash}{$k};
+		if (!defined $l) {
+			$self->write_debug_entry($fh, $dir, $dbg, $o);
+			$o->{linkstash}{$k} = $dbg;
+			$self->write_rule($o, $fh, $s, $path, $dbgpath, 
+			    "OBJCOPY_RULE");
+			return;
+		}
+		my $ldir = dirname($l)."/";
+		if ($ldir eq $dir) {
+			# if both mogrified dirs are the same
+			# the debug-info link will do the right thing
+			return;
+		}
+		# so we need to create a link in our dir but that link 
+		# must have the right name
+		my $n = $dir.basename($l);
+		# that link may already exist! don't emit it again
+		# TODO missing checks to be certain there's no ambiguity, just 
+		# need to write an actual example and verify I can detect it.
+		return if exists $o->{ostash}{$n};
+		$self->write_debug_entry($fh, $dir, $n, $o);
+		$self->write_rule($o, $fh, $l, $path, $dbgpath, "LINK_RULE");
+	} else {
+		$o->{state}->fatal("Error: #1 does not exist", $path);
+	}
+}
+
+sub write_debug_entry($self, $fh, $dir, $dbg, $o)
+{
+	print $fh $dbg, "\n";
+	if (!exists $o->{dirstash}{$dir}) {
+		print $fh $dir, "\n";
+		$o->{dirstash}{$dir} = 1;
+	}
+	$o->{ostash}{$dbg} = 1;
+	delete $o->{empty};
+}
+
+sub write_rule($self, $o, $fh, $s, $p1, $p2, $what)
+{
+	my $mk = $o->{mk};
+	print $mk "all: $p2\n";
+	print $mk "$p2: $p1\n";
+	print $mk "\t\@\$\{$what\}\n\n";
+}
+
+sub mogrify($self, $s)
+{
+	$s =~ s,([^\/]+)$,.debug/$1.dbg,;
+	return $s;
+}
+
+package OpenBSD::PackingElement::StaticLib;
+sub write_debug_info($, $, $, $)
+{
+	# don't do anything
+}
+
+package OpenBSD::PackingElement::NoDefaultConflict;
+sub write_debug_info($self, $, $fh, $)
+{
+	$self->write($fh);
+}
+
+package OpenBSD::PackingElement::IsBranch;
+sub write_debug_info($self, $, $fh, $)
+{
+	$self->write($fh);
+}
+
+package OpenBSD::PackingElement::Conflict;
+sub write_debug_info($self, $, $fh, $)
+{
+	my $m = join('|', map {"debug-$_"} split(/\|/, $self->name));
+	print $fh "\@", $self->keyword, " $m\n";
+}
+
+# This is the BuildDebugInfo main code proper
+package BuildDebugInfo::State;
+our @ISA = qw(OpenBSD::AddCreateDelete::State);
+sub handle_options($state)
+{
+	$state->SUPER::handle_options('vqFP:', 
+	    '[-Fmnqvx]',
+	    '-P pkgdir',
+	    '-- pkg_create_args ...');
+    	$state->{pkgdir} = $state->opt('P');
+	if (!defined $state->{pkgdir}) {
+		$state->fatal("-P pkgdir is mandatory");
+	}
+	$state->{verbose} = $state->opt('v');
+	$state->{quiet} = $state->opt('q');
+}
+
+sub openfile($self, $name)
+{
+	open my $fh, ">", $name or 
+	    $self->fatal("Can't write to #1: #2", $name, $!);
+	$self->say("Writing #1", $name) unless $self->{quiet};
+	return $fh;
+}
+
+package BuildDebugInfo;
+our @ISA = qw(OpenBSD::BaseFS);
+use File::Basename;
+use File::Compare;
+
+sub new($class)
+{
+	return $class->SUPER::new(undef, BuildDebugInfo::State->new);
+}
+
+my $self = BuildDebugInfo->new;
+my $state = $self->{state};
+$state->{exitcode} = 0;
+my $base = PlistFactory->parse_args($self);
+use File::Basename;
+$self->{mk} = $state->openfile($state->{pkgdir}."/Makefile.new");
+print {$self->{mk}} << 'EOPREAMBLE';
+# Makefile generated by build-debug-info $OpenBSD: build-debug-info,v 1.49 2023/05/09 17:41:10 espie Exp $
+# No serviceable parts
+# Intended to run under the stage area after cd ${WRKINST}
+
+OBJCOPY_RULE = ${INSTALL_DATA_DIR} ${@D} && \
+    perm=`stat -f "%p" $?` && chmod u+rw $? && \
+    echo "> Extracting debug info from $?" && \
+    if readelf 2>/dev/null -wi $?|cmp -s /dev/null -; then \
+    	echo "Warning: no debug-info in $?"; \
+    fi && \
+    llvm-objcopy --only-keep-debug $? $@ && \
+    ${DWZ} $@ && \
+    strip -d -o $?.stripped $? && cp $?.stripped $? && rm $?.stripped && \
+    llvm-objcopy --add-gnu-debuglink=$@ $? $?.debuglink && cp $?.debuglink $? && rm $?.debuglink && \
+    chmod $$perm $? && \
+    touch $@
+
+LINK_RULE = ${INSTALL_DATA_DIR} ${@D} && \
+    echo "> Link debug info from $? to $@" && ln $? $@
+
+all:
+.PHONY: all
+
+EOPREAMBLE
+
+# XXX even though links may end up in different subpackages, the
+# logic has to be global, as this is used by the generated makefile
+# to extract debug info. pkg_create/pkg_add may then create copies,
+# but they will contain the right information
+$self->{linkstash} = {};
+$self->{ostash} = {};
+for my $l (@{$self->{lists}}) {
+	$self->{empty} = 1;
+	$self->{dirstash} = {};
+	$self->{prefix} = $base."/".$l->{state}{prefix};
+	my $name = pop @{$l->{base_plists}};
+	$name = $state->{pkgdir}."/".(basename $name);
+	my $fh = $state->openfile($name);
+	$self->{first_cwd} = 1;
+	$l->olist->write_debug_info($base, $fh, $self);
+	close($fh) or $state->fatal("Can't write plist: #1", $!);
+	$self->warn_if_empty($state, $l);
+}
+
+close($self->{mk}) or $state->fatal("Can't close Makefile.new: #1", $!);
+
+sub warn_if_empty
+{
+	my ($self, $state, $l) = @_;
+	return unless $self->{empty};
+	$state->errsay("Warning: no debug-info in #1", $l->olist->pkgname);
+	return if @{$self->{lists}} == 1;
+	$state->errsay("Set DEBUG_PACKAGES manually ?");
+}
+
+if (!$state->{exitcode}) {
+	my $f = $state->{pkgdir}."/Makefile";
+	$state->say("Renaming #1 to #2", "$f.new", "Makefile") unless $state->{quiet};
+	rename("$f.new", $f) or $state->fatal("Can't create Makefile: #1", $!);
+}
+exit($state->{exitcode});

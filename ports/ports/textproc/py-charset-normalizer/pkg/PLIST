@@ -1,0 +1,54 @@
+@pkgpath textproc/py-charset-normalizer,python3
+bin/normalizer
+@so lib/python${MODPY_VERSION}/site-packages/81d243bd2c585b0f4821__mypyc.${MODPY_PYC_MAGIC_TAG}so
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer-${MODPY_DISTV}.dist-info/
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer-${MODPY_DISTV}.dist-info/METADATA
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer-${MODPY_DISTV}.dist-info/RECORD
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer-${MODPY_DISTV}.dist-info/WHEEL
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer-${MODPY_DISTV}.dist-info/entry_points.txt
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer-${MODPY_DISTV}.dist-info/licenses/
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer-${MODPY_DISTV}.dist-info/licenses/LICENSE
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer-${MODPY_DISTV}.dist-info/top_level.txt
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/__init__.py
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/__main__.py
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}/
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}__main__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}__main__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}api.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}api.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}cd.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}cd.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}constant.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}constant.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}legacy.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}legacy.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}md.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}md.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}models.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}models.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}utils.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}utils.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}version.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/${MODPY_PYCACHE}version.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/api.py
+@so lib/python${MODPY_VERSION}/site-packages/charset_normalizer/cd.${MODPY_PYC_MAGIC_TAG}so
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/cd.py
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/cli/
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/cli/__init__.py
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/cli/__main__.py
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/cli/${MODPY_PYCACHE}/
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/cli/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/cli/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/cli/${MODPY_PYCACHE}__main__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/cli/${MODPY_PYCACHE}__main__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/constant.py
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/legacy.py
+@so lib/python${MODPY_VERSION}/site-packages/charset_normalizer/md.${MODPY_PYC_MAGIC_TAG}so
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/md.py
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/models.py
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/py.typed
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/utils.py
+lib/python${MODPY_VERSION}/site-packages/charset_normalizer/version.py

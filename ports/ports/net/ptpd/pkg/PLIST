@@ -1,0 +1,16 @@
+@man man/man8/ptpd.8
+@bin sbin/ptpd
+share/doc/ptpd/
+share/doc/ptpd/clock_servo.svg
+share/doc/ptpd/data_paths.svg
+share/doc/ptpd/doc.html
+share/doc/ptpd/filter.svg
+share/doc/ptpd/filter_response.m
+share/doc/ptpd/index.html
+share/doc/ptpd/offset_stats.m
+share/doc/ptpd/organization.svg
+share/doc/ptpd/ptp_plot.py
+share/doc/ptpd/ptpd_2005_1588_conference_paper.pdf
+share/doc/ptpd/quality_correlate.py
+share/doc/ptpd/stylesheet.css
+@rcscript ${RCDIR}/ptpd

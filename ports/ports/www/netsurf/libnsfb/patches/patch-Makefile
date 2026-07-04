@@ -1,0 +1,16 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -43,10 +43,10 @@ endif
+ NSFB_XCB_PKG_NAMES := xcb xcb-icccm xcb-image xcb-keysyms xcb-atom
+ 
+ # determine which surface handlers can be compiled based upon avalable library
+-$(eval $(call pkg_config_package_available,NSFB_VNC_AVAILABLE,libvncserver))
++## $(eval $(call pkg_config_package_available,NSFB_VNC_AVAILABLE,libvncserver))
+ $(eval $(call pkg_config_package_available,NSFB_SDL_AVAILABLE,sdl))
+ $(eval $(call pkg_config_package_available,NSFB_XCB_AVAILABLE,$(NSFB_XCB_PKG_NAMES)))
+-$(eval $(call pkg_config_package_available,NSFB_WLD_AVAILABLE,wayland-client))
++## $(eval $(call pkg_config_package_available,NSFB_WLD_AVAILABLE,wayland-client))
+ 
+ # Flags and setup for each support library
+ ifeq ($(NSFB_SDL_AVAILABLE),yes)

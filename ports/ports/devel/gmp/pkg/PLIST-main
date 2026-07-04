@@ -1,0 +1,7 @@
+@pkgpath devel/gmp
+include/gmp.h
+@info info/gmp.info
+@static-lib lib/libgmp.a
+lib/libgmp.la
+@lib lib/libgmp.so.${LIBgmp_VERSION}
+lib/pkgconfig/gmp.pc

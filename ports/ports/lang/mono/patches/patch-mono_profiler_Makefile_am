@@ -1,0 +1,14 @@
+adapt to the coop-by-default syntax in our port
+
+Index: mono/profiler/Makefile.am
+--- mono/profiler/Makefile.am.orig
++++ mono/profiler/Makefile.am
+@@ -42,7 +42,7 @@ suppression_DATA = mono-profiler-coverage.suppression
+ # sampling infrastructure depends on signals being available.
+ #
+ # See: https://bugzilla.xamarin.com/show_bug.cgi?id=57011
+-if !ENABLE_COOP_SUSPEND
++if DISABLE_COOP_SUSPEND
+ check_targets = run-test
+ endif
+ 

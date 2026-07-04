@@ -1,0 +1,60 @@
+Index: src/ngircd/ngircd.c
+--- src/ngircd/ngircd.c.orig
++++ src/ngircd/ngircd.c
+@@ -30,6 +30,7 @@
+ #include <fcntl.h>
+ #include <pwd.h>
+ #include <grp.h>
++#include <err.h>
+ 
+ #if defined(DEBUG) && defined(HAVE_MTRACE)
+ #include <mcheck.h>
+@@ -265,6 +266,16 @@ main(int argc, const char *argv[])
+ 			exit(1);
+ 		}
+ 
++		/* XXX using a PID file needs cpath to unlink() later */
++		if(Conf_PidFile[0]) {
++			if ( pledge("stdio inet dns rpath proc getpw cpath", NULL) == -1)
++				err(1, "pledge");
++		}
++		else {
++			if ( pledge("stdio inet dns rpath proc getpw", NULL) == -1)
++				err(1, "pledge");
++		}
++
+ 		if (!io_library_init(CONNECTION_POOL)) {
+ 			Log(LOG_ALERT,
+ 			    "Fatal: Could not initialize IO routines: %s",
+@@ -564,7 +575,7 @@ Setup_FDStreams(int fd)
+ #if !defined(SINGLE_USER_OS)
+ 
+ /**
+- * Get user and group ID of unprivileged "nobody" user.
++ * Get user and group ID of unprivileged "_ngircd" user.
+  *
+  * @param uid	User ID
+  * @param gid	Group ID
+@@ -588,7 +599,7 @@ NGIRCd_getNobodyID(uid_t *uid, gid_t *gid )
+ 	}
+ #endif
+ 
+-	pwd = getpwnam("nobody");
++	pwd = getpwnam("_ngircd");
+ 	if (!pwd)
+ 		return false;
+ 
+@@ -704,11 +715,11 @@ NGIRCd_Init(bool NGIRCd_NoDaemon)
+ 	if (Conf_UID == 0) {
+ 		pwd = getpwuid(0);
+ 		Log(LOG_INFO,
+-		    "ServerUID must not be %s(0), using \"nobody\" instead.",
++		    "ServerUID must not be %s(0), using \"_ngircd\" instead.",
+ 		    pwd ? pwd->pw_name : "?");
+ 		if (!NGIRCd_getNobodyID(&Conf_UID, &Conf_GID)) {
+ 			Log(LOG_WARNING,
+-			    "Could not get user/group ID of user \"nobody\": %s",
++			    "Could not get user/group ID of user \"_ngircd\": %s",
+ 			    errno ? strerror(errno) : "not found" );
+ 			goto out;
+ 		}

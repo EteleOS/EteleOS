@@ -1,0 +1,22 @@
+64bit time_t fix.
+
+--- src/Toolbar.cc.orig	Tue Apr 12 00:38:00 2005
++++ src/Toolbar.cc	Sat Aug 17 22:47:24 2013
+@@ -40,12 +40,14 @@
+ #include <assert.h>
+ 
+ 
+-long nextTimeout(int resolution)
++time_t nextTimeout(int resolution)
+ {
+   timeval now;
+   gettimeofday(&now, 0);
+-  return (std::max(1000l, ((((resolution - (now.tv_sec % resolution)) * 1000l))
+-                           - (now.tv_usec / 1000l))));
++  time_t	t;
++  t = (resolution - (now.tv_sec % resolution)) * 1000l;
++  t -= now.tv_usec / 1000l;
++  return std::max(t, (time_t)1000);
+ }
+ 
+ 

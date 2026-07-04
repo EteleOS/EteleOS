@@ -1,0 +1,2 @@
+${P5SITE}/Catalyst/Plugin/Session/Store/File.pm
+@man man/man3p/Catalyst::Plugin::Session::Store::File.3p

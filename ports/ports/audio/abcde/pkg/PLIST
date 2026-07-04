@@ -1,0 +1,9 @@
+@pkgpath audio/abcde,lame
+bin/abcde
+bin/abcde-musicbrainz-tool
+bin/cddb-tool
+@man man/man1/abcde.1
+@man man/man1/cddb-tool.1
+share/examples/abcde/
+share/examples/abcde/abcde.conf
+@sample ${SYSCONFDIR}/abcde.conf

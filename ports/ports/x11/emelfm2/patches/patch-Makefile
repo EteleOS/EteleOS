@@ -1,0 +1,38 @@
+--- Makefile.orig	Fri Jan 24 22:07:36 2014
++++ Makefile	Sun Sep 20 10:02:41 2015
+@@ -163,7 +163,7 @@ LIBS_XOBJECTS = $(LIBS_XSOURCES:%.c=$(OBJECTS_DIR)/%.s
+ LIBS_XDEP_FILES = $(LIBS_XSOURCES:%.c=$(OBJECTS_DIR)/%.deps)
+ 
+ # set up flags
+-lCFLAGS = $(CFLAGS)
++lCFLAGS ?= $(CFLAGS)
+ #ifeq ($(WITH_LATEST), 1)
+ #these are redundant now
+ #lCFLAGS += -DGTK_DISABLE_DEPRECATED
+@@ -292,7 +292,7 @@ else
+  lLIBS += $(shell pkg-config --libs gmodule-2.0)
+ endif
+ # -lrt needed for clock_gettime(), explicit -lm, -ldl needed for some arch-linux distros
+-lLIBS += -lrt -lm -ldl
++lLIBS += -lm
+ ifeq ($(USE_GAMIN), 1)
+ #gamin code is a superset of FAM code, so gamin needs fam as well
+ lLIBS += -lfam
+@@ -329,7 +329,7 @@ all: $(OBJECTS_DIR) $(BUILD_FILE) $(TARGET) $(LIBS) $(
+ 
+ plugins: $(OBJECTS_DIR)/$(LIBS) $(LIBS_OBJECTS) $(LIBS_XOBJECTS)
+ 
+-install: all install_plugins
++install: all install_i18n install_plugins
+ 	@echo "installing $(TARGET) to prefix '$(PREFIX)'"
+ 	@install -d -m 755 $(BIN_DIR)
+ 	@install -m 755 $(TARGET) $(BIN_DIR)
+@@ -356,7 +356,7 @@ endif
+ 
+ 	@if [ "`grep "#define E2_XDG" $(BUILD_FILE)`" = "#define E2_XDG" ]; then \
+ 		install -d $(XDG_DESKTOP_DIR); \
+-		install -m 644 -T $(DOCS)/desktop_environment/$(TARGET).desktop $(XDG_DESKTOP_DIR)/$(TARGET).desktop; \
++		install -m 644 $(DOCS)/desktop_environment/$(TARGET).desktop $(XDG_DESKTOP_DIR)/$(TARGET).desktop; \
+ 	fi
+ 
+ # no i18n install unless specific target used

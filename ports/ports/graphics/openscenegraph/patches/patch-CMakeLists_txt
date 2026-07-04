@@ -1,0 +1,39 @@
+Fix build with OpenEXR>=3
+
+Don't pick-up LibVNCServer.
+
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -742,7 +742,21 @@ ELSE()
+     FIND_PACKAGE(ilmbase)
+     FIND_PACKAGE(Inventor)
+     FIND_PACKAGE(Jasper)
+-    FIND_PACKAGE(OpenEXR)
++	FIND_PACKAGE(Imath CONFIG)
++	IF(TARGET Imath::Imath)
++        FIND_PACKAGE(OpenEXR REQUIRED CONFIG)
++	    set(OPENEXR_LIBRARIES OpenEXR::OpenEXR Imath::Imath)
++	    set(OPENEXR_LIBRARIES_VARS "${OPENEXR_LIBRARIES}")
++		get_target_property(OPENEXR_INCLUDE_DIR
++		    OpenEXR::OpenEXRConfig INTERFACE_INCLUDE_DIRECTORIES)
++		get_target_property(IMATH_INCLUDE_DIR
++			Imath::ImathConfig INTERFACE_INCLUDE_DIRECTORIES)
++		list(APPEND OPENEXR_INCLUDE_DIR ${IMATH_INCLUDE_DIR})
++		message(STATUS "OpenEXR/Imath libraries: " ${OPENEXR_LIBRARIES})
++		set(OPENEXR_FOUND TRUE)
++	ELSE()
++        FIND_PACKAGE(OpenEXR)
++	ENDIF()
+     FIND_PACKAGE(OpenCascade)
+     FIND_PACKAGE(COLLADA)
+     FIND_PACKAGE(FBX)
+@@ -750,7 +764,7 @@ ELSE()
+     FIND_PACKAGE(GDAL)
+     FIND_PACKAGE(GTA)
+     FIND_PACKAGE(CURL)
+-    FIND_PACKAGE(LibVNCServer)
++#    FIND_PACKAGE(LibVNCServer)
+     FIND_PACKAGE(DCMTK)
+     FIND_PACKAGE(FFmpeg)
+     FIND_PACKAGE(GStreamer COMPONENTS app pbutils)

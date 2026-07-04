@@ -1,0 +1,25 @@
+Fix for:
+Use of uninitialized value in numeric lt (<) at
+/usr/local/libdata/perl5/site_perl/WWW/Search/Ebay.pm line 672.
+
+Index: lib/WWW/Search/Ebay.pm
+--- lib/WWW/Search/Ebay.pm.orig	Mon Sep 16 04:04:33 2019
++++ lib/WWW/Search/Ebay.pm	Tue Feb 11 15:14:04 2020
+@@ -647,7 +647,7 @@
+   my $sEndedColor = 'green';
+   my $sEndedWord = 'ends';
+   print STDERR " DDD compare end_date ==$dateEnd== to now\n" if (DEBUG_DATES || (1 < $self->{_debug}));
+-  if (Date_Cmp($dateEnd, 'now') < 0)
++  if ((Date_Cmp($dateEnd, 'now') || 0) < 0)
+     {
+     $sEndedColor = 'red';
+     $sEndedWord = 'ended';
+@@ -1024,7 +1024,7 @@
+         &&
+         (0 < $iBids) # Item got any bids
+         &&
+-        (Date_Cmp($enddate, 'now') < 0) # Item is ended
++        ((Date_Cmp($enddate, 'now') || 0) < 0) # Item is ended
+        )
+       {
+       # Item must have been sold!?!

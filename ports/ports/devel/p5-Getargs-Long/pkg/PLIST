@@ -1,0 +1,3 @@
+${P5SITE}/Getargs/
+${P5SITE}/Getargs/Long.pm
+@man man/man3p/Getargs::Long.3p

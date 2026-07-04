@@ -1,0 +1,12 @@
+Index: lynx.cfg
+--- lynx.cfg.orig
++++ lynx.cfg
+@@ -105,7 +105,7 @@
+ #
+ # Normally we expect you will connect to a remote site, e.g., the Lynx starting
+ # site:
+-STARTFILE:https://lynx.invisible-island.net/
++STARTFILE:https://www.openbsd.org/
+ #
+ # As an alternative, you may want to use a local URL.  A good choice for this is
+ # the user's home directory:

@@ -1,0 +1,15 @@
+@bin bin/imapfilter
+@man man/man1/imapfilter.1
+@man man/man5/imapfilter_config.5
+share/examples/imapfilter/
+share/examples/imapfilter/config.lua
+share/examples/imapfilter/extend.lua
+share/imapfilter/
+share/imapfilter/account.lua
+share/imapfilter/auxiliary.lua
+share/imapfilter/common.lua
+share/imapfilter/mailbox.lua
+share/imapfilter/message.lua
+share/imapfilter/options.lua
+share/imapfilter/regex.lua
+share/imapfilter/set.lua

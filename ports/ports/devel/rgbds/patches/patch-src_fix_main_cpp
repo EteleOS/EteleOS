@@ -1,0 +1,23 @@
+Index: src/fix/main.cpp
+--- src/fix/main.cpp.orig
++++ src/fix/main.cpp
+@@ -11,6 +11,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ #include "cli.hpp"
+ #include "diagnostics.hpp"
+@@ -346,6 +347,11 @@ static void initLogo() {
+ }
+ 
+ int main(int argc, char *argv[]) {
++	if (pledge("stdio rpath wpath cpath", NULL) == -1) {
++		fputs("pledge", stderr);
++		return 1;
++	}
++
+ 	cli_ParseArgs(argc, argv, optstring, longopts, parseArg, usage);
+ 
+ 	if ((options.cartridgeType & 0xFF00) == TPP1 && !options.japanese) {

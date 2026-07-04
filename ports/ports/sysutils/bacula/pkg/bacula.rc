@@ -1,0 +1,22 @@
+#!/bin/ksh
+
+# "meta" script running the following rc.d(8) scripts with the given argument;
+# note that "daemon_*" variables are not passed to the child scripts.
+
+if [[ $1 == restart ]]; then
+	$0 stop && $0 start
+	exit
+fi
+
+if [[ $1 == stop ]]; then
+	# stop the FD first so that SD will fail jobs and update catalog
+	_pkg_scripts="bacula_fd bacula_sd bacula_dir"
+else
+	_pkg_scripts="bacula_sd bacula_fd bacula_dir"
+fi
+
+for _i in ${_pkg_scripts}; do
+	if [[ -x ${RCDIR}/${_i} ]]; then
+		${RCDIR}/${_i} $@ || exit $?
+	fi
+done

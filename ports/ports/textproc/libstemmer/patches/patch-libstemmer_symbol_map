@@ -1,0 +1,12 @@
+Build dynamic library, from archlinux.
+
+Index: libstemmer/symbol.map
+--- libstemmer/symbol.map.orig
++++ libstemmer/symbol.map
+@@ -0,0 +1,6 @@
++SB_STEMMER_0 {
++    global:
++        sb_stemmer_*;
++    local:
++        *;
++};

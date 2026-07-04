@@ -1,0 +1,11 @@
+Index: src/sync.c
+--- src/sync.c.orig
++++ src/sync.c
+@@ -39,6 +39,7 @@
+ #ifndef _WIN32
+ #include <sys/select.h>
+ #endif
++#include <string.h>
+ #include <fcntl.h>
+ 
+ static enum mpd_async_event

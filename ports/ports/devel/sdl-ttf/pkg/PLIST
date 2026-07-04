@@ -1,0 +1,6 @@
+include/SDL/
+include/SDL/SDL_ttf.h
+lib/libSDL_ttf.a
+lib/libSDL_ttf.la
+@lib lib/libSDL_ttf.so.${LIBSDL_ttf_VERSION}
+lib/pkgconfig/SDL_ttf.pc

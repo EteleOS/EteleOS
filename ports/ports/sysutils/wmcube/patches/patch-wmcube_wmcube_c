@@ -1,0 +1,102 @@
+Index: wmcube/wmcube.c
+--- wmcube/wmcube.c.orig
++++ wmcube/wmcube.c
+@@ -407,7 +407,7 @@ void set_plugin()
+ {
+ 	strcpy(obj_filename,plugin);
+ 	if (access (obj_filename, R_OK) == -1) {
+-		strcpy(obj_filename,"/usr/share/wmcube/");
++		strcpy(obj_filename,"${LOCALBASE}/share/wmcube/");
+ 		strcat(obj_filename,plugin);
+ 	}
+ }
+@@ -939,6 +939,10 @@ void print_help() {
+ 	printf("  -n   : exclude \"nice\" processes (default OFF).\n");
+ #endif
+ 
++#ifdef OPENBSD
++	printf("  -n  : exclude \"nice\" processes. (default OFF)\n");
++#endif
++
+ 	printf("  -b   : draw the cube in a brighter color (default OFF).\n");
+ 	printf("  -i   : invert cube speed (default OFF).\n");
+ 	printf("  -p   : do not display the CPU load (default OFF).\n");
+@@ -997,7 +1001,7 @@ int loadobj(char *filename) {
+ 		exit(0);
+ 	}
+ 
+-	if (fscanf(fp,"%s",tmp) < 1)
++	if (fscanf(fp,"%63s",tmp) < 1)
+ 		printf("WARNING: Could not read first line of object-file (%s).\n",filename);
+ 	
+ 	if (strcmp(tmp,"WMCUBE_COORDINATES") != 0) {
+@@ -1006,7 +1010,7 @@ int loadobj(char *filename) {
+ 		exit(0);
+ 	}
+ 
+-	if (fscanf(fp,"%s",tmp) < 1)
++	if (fscanf(fp,"%63s",tmp) < 1)
+ 		printf("WARNING: Could not read second line of object-file (%s).\n",filename);
+ 
+ 	while ((strcmp(tmp,"WMCUBE_LINES") != 0) && (strcmp(tmp,"WMCUBE_PLANES") != 0)) {		
+@@ -1024,7 +1028,7 @@ int loadobj(char *filename) {
+ 			fclose(fp);
+ 			exit(0);
+ 		}
+-		if (fscanf(fp,"%s",tmp) < 1)
++		if (fscanf(fp,"%63s",tmp) < 1)
+ 			printf("WARNING: Could not read next line of object-file (%s).\n",filename);
+ 
+ 		if (feof(fp)) {
+@@ -1371,18 +1375,46 @@ int calc_cpu_total() {
+ 
+ #elif defined OPENBSD
+ 
++#include <sys/param.h>
++#include <sys/sysctl.h>
++#include <sys/sched.h>
++
+ int init_calc_cpu()
+ {
+ 	return 0;
+ }
+ 
+-int calc_cpu_total() {
+-        double avenrun[3];
++int calc_cpu_total()
++{
++	int total, used, t=0;
++	static int previous_total = 0, previous_used = 0;
++	int cpu,nice,system,idle;
++	unsigned long int cpu_time[CPUSTATES];
+ 
+-        (void) getloadavg(avenrun, sizeof(avenrun) / sizeof(avenrun[0]));
+-        return(((5.0*avenrun[0] + 0.5) > 50) ? 50 : (5.0*avenrun[0] + 0.5))*2;
+-}
++	int mib[2];
++	size_t size;
+ 
++	mib[0] = CTL_KERN;
++	mib[1] = KERN_CPTIME;
++	size = sizeof (cpu_time);
++
++	if (sysctl(mib, 2, &cpu_time, &size, NULL, 0) < 0)
++		return 0;
++
++	cpu = cpu_time[CP_USER];
++	nice = cpu_time[CP_NICE];
++	system = cpu_time[CP_SYS];
++	idle = cpu_time[CP_IDLE];
++
++	used = cpu + system + use_nice*nice;
++	total = used + idle + (1-use_nice)*nice;
++
++	t = 100 * (double)(used - previous_used) / (double)(total - previous_total);
++	previous_total = total;
++	previous_used = used;
++
++	return t;
++}
+ 
+ #elif defined NETBSD /* END OPENBSD */
+ #include <sys/sched.h>

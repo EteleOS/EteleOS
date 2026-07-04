@@ -1,0 +1,12 @@
+Index: go/kbfs/libkbfs/disk_limits_unix.go
+--- go/kbfs/libkbfs/disk_limits_unix.go.orig
++++ go/kbfs/libkbfs/disk_limits_unix.go
+@@ -2,7 +2,7 @@
+ // Use of this source code is governed by a BSD
+ // license that can be found in the LICENSE file.
+ 
+-// +build !windows
++// +build !windows,!openbsd
+ 
+ package libkbfs
+ 

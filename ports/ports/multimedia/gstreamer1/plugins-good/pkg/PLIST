@@ -1,0 +1,124 @@
+@conflict gstreamer1-plugins-bad-<1.14.0
+@conflict gstreamer1-plugins-good-*
+@conflict gstreamer1-plugins-pulse-*
+@conflict gstreamer1-plugins-ugly-<1.22.0
+@pkgpath multimedia/gstreamer1/plugins-good,-main
+@pkgpath multimedia/gstreamer1/plugins-good,-pulse
+@so lib/gstreamer-${API}/libgstadaptivedemux2.so
+@so lib/gstreamer-${API}/libgstalaw.so
+@so lib/gstreamer-${API}/libgstalpha.so
+@so lib/gstreamer-${API}/libgstalphacolor.so
+@so lib/gstreamer-${API}/libgstamrnb.so
+@so lib/gstreamer-${API}/libgstamrwbdec.so
+@so lib/gstreamer-${API}/libgstapetag.so
+@so lib/gstreamer-${API}/libgstaudiofx.so
+@so lib/gstreamer-${API}/libgstaudioparsers.so
+@so lib/gstreamer-${API}/libgstauparse.so
+@so lib/gstreamer-${API}/libgstautodetect.so
+@so lib/gstreamer-${API}/libgstavi.so
+@so lib/gstreamer-${API}/libgstcairo.so
+@so lib/gstreamer-${API}/libgstcutter.so
+@so lib/gstreamer-${API}/libgstdebug.so
+@so lib/gstreamer-${API}/libgstdeinterlace.so
+@so lib/gstreamer-${API}/libgstdtmf.so
+@so lib/gstreamer-${API}/libgsteffectv.so
+@so lib/gstreamer-${API}/libgstequalizer.so
+@so lib/gstreamer-${API}/libgstflac.so
+@so lib/gstreamer-${API}/libgstflv.so
+@so lib/gstreamer-${API}/libgstflxdec.so
+@so lib/gstreamer-${API}/libgstgdkpixbuf.so
+@so lib/gstreamer-${API}/libgstgoom.so
+@so lib/gstreamer-${API}/libgstgoom2k1.so
+@so lib/gstreamer-${API}/libgstgtk.so
+@so lib/gstreamer-${API}/libgsticydemux.so
+@so lib/gstreamer-${API}/libgstid3demux.so
+@so lib/gstreamer-${API}/libgstimagefreeze.so
+@so lib/gstreamer-${API}/libgstinterleave.so
+@so lib/gstreamer-${API}/libgstisomp4.so
+@so lib/gstreamer-${API}/libgstjpeg.so
+@so lib/gstreamer-${API}/libgstlame.so
+@so lib/gstreamer-${API}/libgstlevel.so
+@so lib/gstreamer-${API}/libgstmatroska.so
+@so lib/gstreamer-${API}/libgstmonoscope.so
+@so lib/gstreamer-${API}/libgstmulaw.so
+@so lib/gstreamer-${API}/libgstmultifile.so
+@so lib/gstreamer-${API}/libgstmultipart.so
+@so lib/gstreamer-${API}/libgstnavigationtest.so
+@so lib/gstreamer-${API}/libgstpng.so
+@so lib/gstreamer-${API}/libgstreplaygain.so
+@so lib/gstreamer-${API}/libgstrtp.so
+@so lib/gstreamer-${API}/libgstrtpmanager.so
+@so lib/gstreamer-${API}/libgstrtsp.so
+@so lib/gstreamer-${API}/libgstshapewipe.so
+@so lib/gstreamer-${API}/libgstshout2.so
+@so lib/gstreamer-${API}/libgstsmpte.so
+@so lib/gstreamer-${API}/libgstsoup.so
+@so lib/gstreamer-${API}/libgstspectrum.so
+@so lib/gstreamer-${API}/libgstspeex.so
+@so lib/gstreamer-${API}/libgsttaglib.so
+@so lib/gstreamer-${API}/libgsttwolame.so
+@so lib/gstreamer-${API}/libgstudp.so
+@so lib/gstreamer-${API}/libgstvideo4linux2.so
+@so lib/gstreamer-${API}/libgstvideobox.so
+@so lib/gstreamer-${API}/libgstvideocrop.so
+@so lib/gstreamer-${API}/libgstvideofilter.so
+@so lib/gstreamer-${API}/libgstvideomixer.so
+@so lib/gstreamer-${API}/libgstvpx.so
+@so lib/gstreamer-${API}/libgstwavenc.so
+@so lib/gstreamer-${API}/libgstwavpack.so
+@so lib/gstreamer-${API}/libgstwavparse.so
+@so lib/gstreamer-${API}/libgstximagesrc.so
+@so lib/gstreamer-${API}/libgstxingmux.so
+@so lib/gstreamer-${API}/libgsty4m.so
+share/gstreamer-${API}/presets/
+share/gstreamer-${API}/presets/GstAmrnbEnc.prs
+share/gstreamer-${API}/presets/GstIirEqualizer10Bands.prs
+share/gstreamer-${API}/presets/GstIirEqualizer3Bands.prs
+share/gstreamer-${API}/presets/GstQTMux.prs
+share/gstreamer-${API}/presets/GstVP8Enc.prs
+share/locale/af/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/ar/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/az/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/bg/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/ca/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/cs/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/da/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/de/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/el/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/en_GB/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/eo/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/es/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/eu/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/fi/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/fr/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/fur/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/gl/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/hr/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/hu/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/id/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/it/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/ja/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/ka/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/kk/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/ky/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/lt/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/lv/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/mt/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/nb/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/nl/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/or/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/pl/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/pt_BR/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/ro/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/ru/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/sk/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/sl/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/sq/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/sr/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/sv/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/tr/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/uk/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/vi/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/zh_CN/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/zh_HK/LC_MESSAGES/gst-plugins-good-${API}.mo
+share/locale/zh_TW/LC_MESSAGES/gst-plugins-good-${API}.mo

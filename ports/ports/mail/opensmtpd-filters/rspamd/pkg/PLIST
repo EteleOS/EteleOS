@@ -1,0 +1,4 @@
+@pkgpath mail/opensmtpd-filter-rspamd
+libexec/smtpd/
+@bin libexec/smtpd/filter-rspamd
+share/doc/pkg-readmes/${PKGSTEM}

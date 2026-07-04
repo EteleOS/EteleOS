@@ -1,0 +1,3 @@
+${P5SITE}/Catalyst/Plugin/Authorization/
+${P5SITE}/Catalyst/Plugin/Authorization/Roles.pm
+@man man/man3p/Catalyst::Plugin::Authorization::Roles.3p

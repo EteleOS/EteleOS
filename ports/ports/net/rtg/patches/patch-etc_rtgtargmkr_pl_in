@@ -1,0 +1,33 @@
+Index: etc/rtgtargmkr.pl.in
+--- etc/rtgtargmkr.pl.in.orig
++++ etc/rtgtargmkr.pl.in
+@@ -78,7 +78,7 @@ $catalyst = [
+ );
+ 
+ # Default locations to find RTG configuration file
+-@configs = ("rtg.conf", "/usr/local/rtg/etc/rtg.conf", "/etc/rtg.conf");
++@configs = ("/etc/rtg/rtg.conf");
+ foreach $conf (@configs) {
+   if (open CONF, "<$conf") {
+     print "Reading [$conf].\n" if $DEBUG;
+@@ -88,6 +88,8 @@ foreach $conf (@configs) {
+         $db_host=$cVals[1];
+       } elsif ($cVals[0] =~ /DB_User/) {
+         $db_user=$cVals[1];
++      } elsif ($cVals[0] =~ /DB_Port/) {
++        $db_port=$cVals[1];
+       } elsif ($cVals[0] =~ /DB_Pass/) {
+         $db_pass=$cVals[1];
+       } elsif ($cVals[0] =~ /DB_Database/) {
+@@ -283,9 +285,9 @@ sub main {
+ 
+     # SQL Database Handle
+     if ( !$DBOFF ) {
+-       $dbh = DBI->connect("DBI:mysql:$db_db:host=$db_host",$db_user,$db_pass);
++       $dbh = DBI->connect("DBI:mysql:$db_db:host=$db_host:port=$db_port",$db_user,$db_pass);
+        if (!$dbh) {
+-          print "Could not connect to database ($db_db) on $db_host.\n";
++          print "Could not connect to database ($db_db) on $db_host:$db_port.\n";
+           print "Check configuration.\n";
+           exit(-1);
+        }

@@ -1,0 +1,11 @@
+@bin bin/zopfli
+@bin bin/zopflipng
+include/zopfli.h
+include/zopflipng_lib.h
+lib/cmake/
+lib/cmake/Zopfli/
+lib/cmake/Zopfli/ZopfliConfig${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/Zopfli/ZopfliConfig.cmake
+lib/cmake/Zopfli/ZopfliConfigVersion.cmake
+@lib lib/libzopfli.so.${LIBzopfli_VERSION}
+@lib lib/libzopflipng.so.${LIBzopflipng_VERSION}

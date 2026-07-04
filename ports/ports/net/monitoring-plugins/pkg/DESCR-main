@@ -1,0 +1,5 @@
+Monitoring-plugins provides host and service checks suitable for use with
+Nagios, Icinga and compatible programs, using a simple interface based on exit
+codes and simple text output.
+
+This package contains the base plugins.

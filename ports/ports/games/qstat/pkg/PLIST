@@ -1,0 +1,7 @@
+@bin bin/qstat
+share/doc/qstat/
+share/doc/qstat/CHANGES.txt
+share/doc/qstat/qstatdoc.html
+share/examples/qstat/
+share/examples/qstat/qstat.cfg
+@sample ${SYSCONFDIR}/qstat.cfg

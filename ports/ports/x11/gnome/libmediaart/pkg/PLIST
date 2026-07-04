@@ -1,0 +1,15 @@
+include/libmediaart-2.0/
+include/libmediaart-2.0/libmediaart/
+include/libmediaart-2.0/libmediaart/cache.h
+include/libmediaart-2.0/libmediaart/extract.h
+include/libmediaart-2.0/libmediaart/extractgeneric.h
+include/libmediaart-2.0/libmediaart/mediaart-macros.h
+include/libmediaart-2.0/libmediaart/mediaart.h
+lib/girepository-1.0/MediaArt-2.0.typelib
+@lib lib/libmediaart-2.0.so.${LIBmediaart-2.0_VERSION}
+lib/pkgconfig/libmediaart-2.0.pc
+share/gir-1.0/MediaArt-2.0.gir
+share/vala/
+share/vala/vapi/
+share/vala/vapi/libmediaart-2.0.deps
+share/vala/vapi/libmediaart-2.0.vapi

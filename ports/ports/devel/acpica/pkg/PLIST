@@ -1,0 +1,8 @@
+@bin bin/acpibin
+@comment @bin bin/acpidump
+@bin bin/acpiexamples
+@bin bin/acpiexec
+@bin bin/acpihelp
+@bin bin/acpisrc
+@bin bin/acpixtract
+@bin bin/iasl

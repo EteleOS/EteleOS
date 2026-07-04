@@ -1,0 +1,3 @@
+${P5SITE}/MRO/
+${P5SITE}/MRO/Compat.pm
+@man man/man3p/MRO::Compat.3p

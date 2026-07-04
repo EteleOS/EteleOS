@@ -1,0 +1,42 @@
+Emit code for the secure PLT, where r30 must point to the global
+offset table.
+
+Set SASG so string literals don't go missing.
+
+Index: arch/powerpc/local.c
+--- arch/powerpc/local.c.orig
++++ arch/powerpc/local.c
+@@ -133,7 +133,7 @@ picext(NODE *p)
+ 
+ #if defined(ELFABI)
+ 
+-	sp = picsymtab("", name, "@got(31)");
++	sp = picsymtab("", name, "@got(30)");
+ 	q = xbcon(0, sp, PTR+VOID);
+ 	q = block(UMUL, q, 0, PTR+VOID, 0, 0);
+ 
+@@ -193,11 +193,13 @@ picstatic(NODE *p)
+ 
+ 	if (p->n_sp->slevel > 0) {
+ 		char buf[64];
++		if ((p->n_sp->sflags & SMASK) == SSTRING)
++			p->n_sp->sflags |= SASG;
+ 		snprintf(buf, 64, LABFMT, (int)p->n_sp->soffset);
+-		sp = picsymtab("", buf, "@got(31)");
++		sp = picsymtab("", buf, "@got(30)");
+ 	} else  {
+ 		n = getexname(p->n_sp);
+-		sp = picsymtab("", n, "@got(31)");
++		sp = picsymtab("", n, "@got(30)");
+ 	}
+ 	sp->sclass = STATIC;
+ 	sp->stype = p->n_sp->stype;
+@@ -658,7 +660,7 @@ fixnames(NODE *p, void *arg)
+ #if defined(ELFABI)
+ 			
+ 			if ((ap2 = attr_find(sp->sap, ATTR_SONAME)) == NULL ||
+-				(c = strstr(ap2->sarg(0), "@got(31)")) == NULL)
++				(c = strstr(ap2->sarg(0), "@got(30)")) == NULL)
+ 							cerror("fixnames2");
+ 			if (isu) {
+ 				memcpy(c, "@plt", sizeof("@plt"));

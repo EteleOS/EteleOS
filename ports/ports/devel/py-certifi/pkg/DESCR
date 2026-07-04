@@ -1,0 +1,3 @@
+The "Certifi" Python module normally contains its own CA Bundle derived from
+Mozilla's CA root store. For the OpenBSD package, it has been modified to point
+to OpenBSD's standard root store in /etc/ssl/cert.pem instead.

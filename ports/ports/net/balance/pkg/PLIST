@@ -1,0 +1,6 @@
+@bin bin/balance
+@man man/man1/balance.1
+share/doc/balance/
+share/doc/balance/balance.pdf
+@mode 0711
+@sample /var/balance/

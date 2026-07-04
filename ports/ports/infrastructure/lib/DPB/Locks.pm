@@ -1,0 +1,384 @@
+# ex:ts=8 sw=4:
+# $OpenBSD: Locks.pm,v 1.57 2023/10/16 12:42:17 espie Exp $
+#
+# Copyright (c) 2010-2013 Marc Espie <espie@openbsd.org>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+use v5.36;
+use DPB::User;
+
+package DPB::Lock;
+sub new($class, $fh)
+{
+	bless {fh => $fh}, $class;
+}
+
+my $field = {
+	map {($_, 1)}
+	(qw(dpb pid mem start end error status todo host tag parent locked path
+	    wanted needed nojunk cleaned))};
+
+sub write($self, $key, $value = undef)
+{
+	if (!defined $field->{$key}) {
+		DPB::Util->die("Field $key does not exist");
+	}
+	if (defined $value) {
+		print {$self->{fh}} "$key=$value\n";
+	} else {
+		print {$self->{fh}}  "$key\n";
+	}
+}
+
+sub close($self)
+{
+	close($self->{fh});
+	undef $self->{fh};
+}
+
+package DPB::LockInfo;
+sub new($class, $filename, $logger, $error = undef)
+{
+	my $o = bless { filename => $filename, logger => $logger }, $class;
+	if (defined $error) {
+		$o->{error} = $error;
+	}
+	return $o;
+}
+
+sub fullpkgpath($self)
+{
+	return $self->{locked};
+}
+
+sub is_host($self)
+{
+	if ($self->{filename} =~ m,/host:[^/]+$,) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
+sub is_dist($self)
+{
+	if ($self->{filename} =~ m,\.dist$,) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
+sub is_pkgpath($self)
+{
+	return !($self->is_dist || $self->is_host);
+}
+
+sub is_bad($) { 0 }
+
+sub set_field($i, $k, $v)
+{
+	if (exists $i->{$k}) {
+		$i->set_bad("duplicate $k field");
+	} else {
+		$i->{$k} = $v;
+	}
+}
+
+sub set_bad($i, $error)
+{
+	bless $i, 'DPB::LockInfo::Bad';
+	$i->{parseerror} = $error;
+	print {$i->{logger}->append($i->{logger}->logfile("debug"))}
+	    "Problem in lock $i->{filename}: $i->{parseerror}\n";
+}
+
+sub parse_file($i, $locker, $fh)
+{
+	while(<$fh>) {
+		chomp;
+		if (m/^dpb\=(\d+)\s+on\s+(\S+)$/) {
+			if (defined $i->{dpb_pid}) {
+				$i->set_bad("duplicate dpb field");
+				next;
+			}
+			($i->{dpb_pid}, $i->{dpb_host}) = ($1, $2);
+			if ($i->{dpb_host} eq $locker->{dpb_host}) {
+				$i->{same_host} = 1;
+				if ($i->{dpb_pid} == $locker->{dpb_pid}) {
+					$i->{same_pid} = 1;
+			    	}
+			}
+		} elsif (m/^(pid|mem)\=(\d+)$/) {
+			$i->set_field($1, $2);
+		} elsif (m/^(start|end)\=(\d+)\s/) {
+			$i->set_field($1, $2);
+		} elsif (m/^(error|status|todo)\=(.*)$/) {
+			$i->set_field($1, $2);
+			$i->{errored} = 1;
+		} elsif (m/^(host|tag|parent|locked|path)\=(.+)$/) {
+			$i->set_field($1, $2);
+		} elsif (m/^(wanted|needed)\=(.*)$/) {
+			$i->set_field($1, [split(/\s+/, $2)]);
+		} elsif (m/^(nojunk|cleaned)$/) {
+			$i->set_field($1, 1);
+		} else {
+			$i->set_bad("Parse error on $_ at line $.");
+		}
+	}
+	$i->{host} //= DPB::Core::Local->hostname;
+}
+
+package DPB::LockInfo::Bad;
+our @ISA = qw(DPB::LockInfo);
+sub is_bad($self) { $self->{parseerror} || $self->{error} || 1 }
+
+package DPB::Locks;
+our @ISA = (qw(DPB::UserProxy));
+
+use File::Path;
+use Fcntl;
+
+# Fcntl doesn't export this
+use constant O_CLOEXEC => 0x10000;
+
+sub new($class, $state)
+{
+	my $lockdir = $state->{lockdir};
+	my $o = bless {lockdir => $lockdir, 
+		dpb_pid => $$, 
+		logger => $state->logger,
+		user => $state->{log_user},
+		dpb_host => DPB::Core::Local->hostname}, $class;
+	$o->make_path($lockdir);
+	$o->run_as(
+	    sub() {
+		if (!$state->defines("DONT_CLEAN_LOCKS")) {
+			$o->{stalelocks} = $o->clean_old_locks($state);
+		}
+	    });
+	return $o;
+}
+
+sub get_info_from_fh($self, $fh, $filename)
+{
+	my $i = DPB::LockInfo->new($filename, $self->{logger});
+	$i->parse_file($self, $fh);
+	return $i;
+}
+
+sub get_info_from_file($self, $f)
+{
+	my $fh = $self->open('<', $f);
+	if (defined $fh) {
+		return $self->get_info_from_fh($fh, $f);
+	} else {
+		return DPB::LockInfo::Bad->new($f, $self->{logger}, $!);
+	}
+}
+
+sub get_info($self, $v)
+{
+	return $self->get_info_from_file($self->lockname($v));
+}
+
+sub scan_lockdir($self, $code)
+{
+	my $dir = $self->opendir($self->{lockdir});
+	while (my $e = readdir($dir)) {
+		next if $e eq '..' or $e eq '.';
+		# and zap vim temp files as well!
+		next if $e =~ m/\.swp$/;
+		&$code($self->get_info_from_file("$self->{lockdir}/$e"));
+	}
+}
+
+sub wipehost($self, $h)
+{
+	my @wipe;
+	$self->scan_lockdir(
+	    sub($i) {
+		push(@wipe, $i->{filename}) if $i->{host} eq $h;
+	    });
+	for my $f (@wipe) {
+		$self->unlink($f);
+	}
+}
+
+sub clean_old_locks($self, $state)
+{
+	my $hostpaths = {};
+	START:
+	my @problems = ();
+	my $locks = {};
+
+	# first we get all live locks that pertain to us a a dpb host
+	$self->scan_lockdir(
+	    sub($i) {
+	    	my $e = $i->is_bad;
+		if ($e) {
+			push(@problems, "$i->{filename} ($e)");
+			return;
+		}
+		if (!$i->{same_host} || defined $i->{errored}) {
+			return;
+		}
+		# on the way, let's retaint cores
+		if (defined $i->{tag}) {
+			DPB::Core::Init->taint($i->{host}, $i->{tag}, 
+			    $i->fullpkgpath);
+		}
+		push(@{$locks->{$i->{dpb_pid}}}, $i);
+	    });
+
+	if (keys %$locks != 0) {
+		# use ps to check for live dpb (and kill their lists)
+		open(my $ps, "-|", "ps", "-axww", "-o", "pid args");
+		my $junk = <$ps>;
+		while (<$ps>) {
+			if (m/^(\d+)\s+(.*)$/) {
+				my ($pid, $cmd) = ($1, $2);
+				if ($locks->{$pid} && $cmd =~ m/\bdpb\b/) {
+					delete $locks->{$pid};
+				}
+			}
+		}
+		# so what's left are stalelocks: remove them, and get a list
+		# to unlock them manually
+		for my $list (values %$locks) {
+			for my $i (@$list) {
+				# there might be stale host locks in there
+				# make sure to clean them as well
+				push(@{$hostpaths->{$i->{host}}}, 
+				    $i->fullpkgpath) if defined $i->fullpkgpath;
+				$self->unlink($i->{filename});
+			}
+		}
+	}
+	# just in case there are weird locks in there
+	if (@problems) {
+		$state->say("Problematic lockfiles I can't parse:\n\t#1\n".
+		    "Waiting for ten seconds",
+		    join(' ', @problems));
+		sleep 10;
+		goto START;
+	}
+	return $hostpaths;
+}
+
+sub build_lockname($self, $f)
+{
+	$f =~ tr|/|.|;
+	return "$self->{lockdir}/$f.lock";
+}
+
+sub lockname($self, $v)
+{
+	return $self->build_lockname($v->lockname);
+}
+
+sub dolock($self, $name, $v)
+{
+	$self->run_as(
+	    sub() {
+		if (sysopen my $fh, $name, 
+		    O_CREAT|O_EXCL|O_WRONLY|O_CLOEXEC, 0666) {
+			DPB::Util->make_hot($fh);
+			my $lock = DPB::Lock->new($fh);
+			$lock->write("locked", $v->logname);
+			$lock->write("dpb", 
+			    $self->{dpb_pid}." on ".$self->{dpb_host});
+			$v->write_parent($lock); 
+			return $lock;
+		} else {
+			return 0;
+		}
+	    });
+}
+
+sub lock_has_other_owner($self, $v)
+{
+	my $info = $self->get_info($v);
+	if (!$info->is_bad && !$info->{same_pid}) {
+		return "$info->{dpb_pid} on $info->{dpb_host}";
+	}
+	return undef;
+}
+
+sub lock($self, $v)
+{
+	my $lock = $self->lockname($v);
+	my $fh = $self->dolock($lock, $v);
+	if ($fh) {
+		return $fh;
+	}
+	return undef;
+}
+
+sub unlock($self, $v)
+{
+	$self->unlink($self->lockname($v));
+}
+
+sub locked($self, $v)
+{
+	return $self->run_as(
+	    sub() {
+	    	return -e $self->lockname($v);
+	    });
+}
+
+sub find_dependencies($self, $hostname)
+{
+	my $h = {};
+	my $nojunk;
+	$self->scan_lockdir(
+	    sub($i) {
+		return if $i->is_bad;
+		return if defined $i->{cleaned};
+		return unless defined $i->{host} && $i->{host} eq $hostname;
+		return unless $i->is_pkgpath;
+		for my $k (qw(wanted needed)) {
+			if (defined $i->{$k}) {
+				for my $v (@{$i->{$k}}) {
+					$h->{$v} = 1;
+				}
+			}
+		}
+		# XXX we don't need to do anything more
+		$nojunk = $i->fullpkgpath if $i->{nojunk};
+	    });
+	return ($nojunk, $h);
+}
+
+sub find_tag($self, $hostname)
+{
+	my ($tag, $tagowner);
+	$self->scan_lockdir(
+	    sub($i) {
+		return if $i->is_bad;
+		return if $i->{cleaned};
+		if (defined $i->{host} && $i->{host} eq $hostname) {
+			$tag //= $i->{tag};
+			$tagowner //= $i->fullpkgpath;
+		}
+	    });
+	if (wantarray) {
+		return ($tag, $tagowner);
+	} else {
+		return $tag;
+	}
+}
+
+1;

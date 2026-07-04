@@ -1,0 +1,3 @@
+${P5SITE}/Hash/
+${P5SITE}/Hash/AutoHash.pm
+@man man/man3p/Hash::AutoHash.3p

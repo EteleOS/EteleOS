@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/lldpd"
+
+. /etc/rc.d/rc.subr
+
+pexp="lldpd: monitor."
+rc_reload=NO
+
+rc_pre() {
+	install -d -o _lldpd /var/run/lldpd
+}
+
+rc_cmd $1

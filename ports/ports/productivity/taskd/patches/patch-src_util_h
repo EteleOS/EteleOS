@@ -1,0 +1,11 @@
+--- src/util.h.orig	Tue Nov 10 15:46:30 2015
++++ src/util.h	Tue Nov 10 15:45:58 2015
+@@ -29,7 +29,7 @@
+ 
+ #include <string>
+ #include <vector>
+-#ifdef FREEBSD
++#if defined(FREEBSD) || defined(OPENBSD)
+ #include <uuid.h>
+ #else
+ #include <uuid/uuid.h>

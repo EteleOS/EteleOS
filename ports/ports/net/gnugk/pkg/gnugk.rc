@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/gnugk"
+daemon_flags="-t -c ${SYSCONFDIR}/gatekeeper.ini -u _gnugk -o /var/log/gnugk/gnugk.log"
+
+. /etc/rc.d/rc.subr
+
+rc_bg=YES
+
+rc_cmd $1

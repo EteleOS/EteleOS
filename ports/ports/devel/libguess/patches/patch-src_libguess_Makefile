@@ -1,0 +1,11 @@
+--- src/libguess/Makefile.orig	Sat Dec  4 18:20:35 2010
++++ src/libguess/Makefile	Sat Dec  4 18:20:45 2010
+@@ -1,6 +1,6 @@
+ LIB = ${LIB_PREFIX}guess${LIB_SUFFIX}
+-LIB_MAJOR = 1
+-LIB_MINOR = 0
++LIB_MAJOR ?= 1
++LIB_MINOR ?= 0
+ DISTCLEAN = autoconf.h
+ 
+ SRCS = guess.c		\

@@ -1,0 +1,5 @@
+${P5SITE}/Finance/
+${P5SITE}/Finance/Currency/
+${P5SITE}/Finance/Currency/Convert/
+${P5SITE}/Finance/Currency/Convert/XE.pm
+@man man/man3p/Finance::Currency::Convert::XE.3p

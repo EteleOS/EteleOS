@@ -1,0 +1,11 @@
+--- Makefile.in.orig	Mon Aug 27 18:16:05 2007
++++ Makefile.in	Mon Aug 24 00:46:46 2009
+@@ -196,7 +196,7 @@ MKSRCS = latex.mk.in latex.subdir.mk.in lgrind.mk.in m
+ BMKFILES = ${MKSRCS:.mk.in=.mk}
+ GMKFILES = ${MKSRCS:.mk.in=.gmk}
+ PSFILES = dated_draft.ps
+-pkgdata_DATA = ${BMKFILES} ${GMKFILES} ${PSFILES}
++pkgdata_DATA = ${BMKFILES} ${GMKFILES}
+ bin_SCRIPTS = latex-mk ieee-copyout
+ DISTCLEANFILES = \
+ 	configure.lineno \

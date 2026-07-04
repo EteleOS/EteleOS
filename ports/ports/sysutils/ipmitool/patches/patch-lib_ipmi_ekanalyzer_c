@@ -1,0 +1,16 @@
+Index: lib/ipmi_ekanalyzer.c
+--- lib/ipmi_ekanalyzer.c.orig
++++ lib/ipmi_ekanalyzer.c
+@@ -2585,10 +2585,10 @@ ipmi_ek_display_fru_header_detail(char *filename)
+ 		}
+ 
+ 		ts = ipmi_fru2time_t(mfg_date);
+-		printf("Board Mfg Date: %ld, %s\n",
++		printf("Board Mfg Date: %lld, %s\n",
+ 		       (IPMI_TIME_UNSPECIFIED == ts)
+ 		       ? FRU_BOARD_DATE_UNSPEC
+-		       : ts,
++		       : (long long)ts,
+ 		       ipmi_timestamp_numeric(ts));
+ 		board_length -= SIZE_MFG_DATE;
+ 

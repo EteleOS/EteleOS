@@ -1,0 +1,5 @@
+@conflict league-fonts-<=0.1p2
+share/fonts/
+@fontdir share/fonts/league-fonts/
+share/fonts/league-fonts/LindenHill-Italic.otf
+share/fonts/league-fonts/LindenHill.otf

@@ -1,0 +1,9 @@
+@comment bin/package-stash-conflicts
+${P5SITE}/Package/
+${P5SITE}/Package/Stash/
+${P5SITE}/Package/Stash.pm
+@comment ${P5SITE}/Package/Stash/Conflicts.pm
+${P5SITE}/Package/Stash/PP.pm
+@comment @man man/man1/package-stash-conflicts.1
+@man man/man3p/Package::Stash.3p
+@man man/man3p/Package::Stash::PP.3p

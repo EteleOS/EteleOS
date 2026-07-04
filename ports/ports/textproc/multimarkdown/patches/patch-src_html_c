@@ -1,0 +1,31 @@
+Use srand_deterministic(3) if available.
+Index: src/html.c
+--- src/html.c.orig
++++ src/html.c
+@@ -834,7 +834,7 @@ void mmd_export_token_html(DString * out, const char *
+ 					temp_short = scratch->footnote_being_printed;
+ 
+ 					if (scratch->extensions & EXT_RANDOM_FOOT) {
+-						srand(scratch->random_seed_base + temp_short);
++						srand_deterministic(scratch->random_seed_base + temp_short);
+ 						temp_short = rand() % 32000 + 1;
+ 					}
+ 
+@@ -1611,7 +1611,7 @@ parse_citation:
+ 					// This is a re-use of a previously used note
+ 
+ 					if (scratch->extensions & EXT_RANDOM_FOOT) {
+-						srand(scratch->random_seed_base + temp_short);
++						srand_deterministic(scratch->random_seed_base + temp_short);
+ 						temp_short3 = rand() % 32000 + 1;
+ 					} else {
+ 						temp_short3 = temp_short;
+@@ -1623,7 +1623,7 @@ parse_citation:
+ 					// This is the first time this note was used
+ 
+ 					if (scratch->extensions & EXT_RANDOM_FOOT) {
+-						srand(scratch->random_seed_base + temp_short);
++						srand_deterministic(scratch->random_seed_base + temp_short);
+ 						temp_short3 = rand() % 32000 + 1;
+ 					} else {
+ 						temp_short3 = temp_short;

@@ -1,0 +1,7 @@
+@bin bin/adnsheloex
+@bin bin/adnshost
+@bin bin/adnslogres
+@bin bin/adnsresfilter
+include/adns.h
+@static-lib lib/libadns.a
+@lib lib/libadns.so.${LIBadns_VERSION}

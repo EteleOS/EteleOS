@@ -1,0 +1,4 @@
+${P5SITE}/CPAN/
+${P5SITE}/CPAN/Meta/
+${P5SITE}/CPAN/Meta/Check.pm
+@man man/man3p/CPAN::Meta::Check.3p

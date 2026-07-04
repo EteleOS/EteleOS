@@ -1,0 +1,20 @@
+--- doc/sample.wgetrc.orig	Sun Dec 21 06:35:04 2014
++++ doc/sample.wgetrc	Thu Mar 19 10:52:38 2015
+@@ -10,7 +10,7 @@
+ ## Or online here:
+ ##   https://www.gnu.org/software/wget/manual/wget.html#Startup-File
+ ##
+-## Wget initialization file can reside in /usr/local/etc/wgetrc
++## Wget initialization file can reside in ${SYSCONFDIR}/wgetrc
+ ## (global, for all users) or $HOME/.wgetrc (for a single user).
+ ##
+ ## To use the settings in this file, you will have to uncomment them,
+@@ -22,7 +22,7 @@
+ 
+ 
+ ##
+-## Global settings (useful for setting up in /usr/local/etc/wgetrc).
++## Global settings (useful for setting up in ${SYSCONFDIR}/wgetrc).
+ ## Think well before you change them, since they may reduce wget's
+ ## functionality, and make it behave contrary to the documentation:
+ ##

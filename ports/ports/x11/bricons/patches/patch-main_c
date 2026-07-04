@@ -1,0 +1,29 @@
+Index: main.c
+--- main.c.orig
++++ main.c
+@@ -32,7 +32,14 @@ static char* sccs_main_c = "%W%%G%"; 
+ #include "gen.h"
+ #include "widgets.h"
+ 
++/*  Globals  */
+ 
++Widget		toplevel, box, action[MAXBUTTONS + 1], popup_shell,
++		popup_layout, sub_action[10];
++
++ChildInfo	ci_ptr[MAXPROCS];
++XpmIcon		c_pix;
++
+ /*  Forward  references  */
+ 
+ extern	void	GetPath PROTO((char *));
+@@ -105,9 +112,7 @@ XrmOptionDescRec options[] = {
+ XtAppContext    app_context;
+ 
+ int 
+-main(argc,argv)
+-unsigned int argc;
+-char **argv;
++main(int argc, char **argv)
+ {
+ 	int		string_len = 0;
+ 	char		bm_dirs[MAXPATHLEN];

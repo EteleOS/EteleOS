@@ -1,0 +1,30 @@
+Index: Source/cmFileCommand.cxx
+--- Source/cmFileCommand.cxx.orig
++++ Source/cmFileCommand.cxx
+@@ -1885,6 +1885,13 @@ bool HandleDownloadCommand(std::vector<std::string> co
+   ++i;
+   std::string file;
+ 
++  std::string openbsd_build;
++  if ((cmSystemTools::GetEnv("MODCMAKE_PORT_BUILD", openbsd_build) &&
++     openbsd_build == std::string("yes")) && !cmHasPrefix(url, "file:///")) {
++    status.SetError("DOWNLOAD not supported in OpenBSD ports builds.");
++    return false;
++  }
++
+   long timeout = 0;
+   long inactivity_timeout = 0;
+   std::string logVar;
+@@ -2371,6 +2378,12 @@ bool HandleUploadCommand(std::vector<std::string> cons
+                          cmExecutionStatus& status)
+ {
+ #if !defined(CMAKE_BOOTSTRAP)
++  std::string openbsd_build;
++  if ((cmSystemTools::GetEnv("MODCMAKE_PORT_BUILD", openbsd_build) &&
++     openbsd_build == std::string("yes"))) {
++    status.SetError("UPLOAD not supported in OpenBSD ports builds.");
++    return false;
++  }
+   if (args.size() < 3) {
+     status.SetError("UPLOAD must be called with at least three arguments.");
+     return false;

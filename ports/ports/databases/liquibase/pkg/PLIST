@@ -1,0 +1,7 @@
+bin/liquibase
+@man man/man1/liquibase.1
+share/doc/pkg-readmes/${PKGSTEM}
+share/java/
+share/java/classes/
+share/java/classes/liquibase/
+share/java/classes/liquibase/liquibase.jar

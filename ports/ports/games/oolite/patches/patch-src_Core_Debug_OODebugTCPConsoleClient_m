@@ -1,0 +1,11 @@
+--- src/Core/Debug/OODebugTCPConsoleClient.m.orig	Sun Aug 30 05:40:23 2009
++++ src/Core/Debug/OODebugTCPConsoleClient.m	Mon Aug 18 18:28:09 2014
+@@ -157,7 +157,7 @@ OOINLINE BOOL StatusIsSendable(OOTCPClientConnectionSt
+ 			// Attempt to connect
+ 			parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+ 							[NSNumber numberWithUnsignedInt:kOOTCPProtocolVersion_1_1_0], kOOTCPProtocolVersion,
+-							[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"], kOOTCPOoliteVersion,
++							[[[NSBundle bundleWithPath: BUNDLE_PATH] infoDictionary] objectForKey:@"CFBundleVersion"], kOOTCPOoliteVersion,
+ 							nil];
+ 			[self sendPacket:kOOTCPPacket_RequestConnection
+ 			   withParameters:parameters];

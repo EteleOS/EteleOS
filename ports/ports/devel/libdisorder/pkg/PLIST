@@ -1,0 +1,5 @@
+@bin bin/ropy
+include/disorder.h
+lib/libdisorder.a
+@lib lib/libdisorder.so.${LIBdisorder_VERSION}
+lib/libdisorder_p.a

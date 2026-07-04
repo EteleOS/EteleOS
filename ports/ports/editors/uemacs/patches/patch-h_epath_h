@@ -1,0 +1,11 @@
+--- h/epath.h.orig	2004-01-06 04:20:22.000000000 +0100
++++ h/epath.h	2004-01-06 04:20:22.000000000 +0100
+@@ -64,7 +64,7 @@ NOSHARE CONST char *pathname[] =
+ };
+ #endif
+ 
+-#if	V7 | BSD | FREEBSD | USG | AIX | SMOS | HPUX8 | HPUX9 | XENIX | SUN | AVIION
++#if	V7 || BSD || FREEBSD || USG || AIX || SMOS || HPUX8 || HPUX9 || XENIX || SUN || AVIION || OPENBSD
+ {
+ 	".emacsrc",
+ 	"emacs.hlp",

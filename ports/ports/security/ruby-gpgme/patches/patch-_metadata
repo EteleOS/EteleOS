@@ -1,0 +1,15 @@
+Switch mini-portile2 to a development depedency, it is only needed for
+building, and not even needed there when using --use-system-libraries.
+
+Index: .metadata
+--- .metadata.orig
++++ .metadata
+@@ -18,7 +18,7 @@ dependencies:
+     - - "~>"
+       - !ruby/object:Gem::Version
+         version: '2.7'
+-  type: :runtime
++  type: :development
+   prerelease: false
+   version_requirements: !ruby/object:Gem::Requirement
+     requirements:

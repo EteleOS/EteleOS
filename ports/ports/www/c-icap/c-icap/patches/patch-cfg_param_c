@@ -1,0 +1,13 @@
+--- cfg_param.c.orig	Mon Mar 13 11:05:50 2017
++++ cfg_param.c	Tue Mar 28 14:28:18 2017
+@@ -53,8 +53,8 @@ struct ci_server_conf CI_CONF = {
+ #else
+     "/var/tmp/", /*TMPDIR*/ "/var/run/c-icap/c-icap.pid", /*PIDFILE*/ "/var/run/c-icap/c-icap.ctl",   /*COMMANDS_SOCKET; */
+ #endif
+-    NULL,                      /* RUN_USER */
+-    NULL,                      /* RUN_GROUP */
++    "_c-icap",                 /* RUN_USER */
++    "_c-icap",                 /* RUN_GROUP */
+ #ifdef _WIN32
+     CONFDIR "\\c-icap.conf",   /*cfg_file */
+     CONFDIR "\\c-icap.magic",  /*magics_file */

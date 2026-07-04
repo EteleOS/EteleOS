@@ -1,0 +1,17 @@
+Index: nspr/configure.in
+--- nspr/configure.in.orig
++++ nspr/configure.in
+@@ -1743,10 +1743,12 @@ tools are selected during the Xcode/Developer Tools in
+     AC_DEFINE(OPENBSD)
+     AC_DEFINE(HAVE_BSD_FLOCK)
+     AC_DEFINE(HAVE_SOCKLEN_T)
++    AC_DEFINE(_PR_HAVE_GETPROTO_R)
++    AC_DEFINE(_PR_HAVE_GETPROTO_R_INT)
+     AC_DEFINE(HAVE_POINTER_LOCALTIME_R)
+     CFLAGS="$CFLAGS -ansi -Wall"
+     CXXFLAGS="$CXXFLAGS -ansi -Wall"
+-    DLL_SUFFIX=so.1.0
++    DLL_SUFFIX="so.${SO_VERSION}"
+     DSO_CFLAGS=-fPIC
+     MDCPUCFG_H=_openbsd.cfg
+     PR_MD_CSRCS=openbsd.c

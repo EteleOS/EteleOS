@@ -1,0 +1,23 @@
+Index: src/asm/main.cpp
+--- src/asm/main.cpp.orig
++++ src/asm/main.cpp
+@@ -17,6 +17,7 @@
+ #include <unordered_map>
+ #include <utility>
+ #include <vector>
++#include <unistd.h>
+ 
+ #include "backtrace.hpp"
+ #include "cli.hpp"
+@@ -498,6 +499,11 @@ static void verboseOutputConfig() {
+ // LCOV_EXCL_STOP
+ 
+ int main(int argc, char *argv[]) {
++	if (pledge("stdio rpath wpath cpath", NULL) == -1) {
++		fputs("pledge", stderr);
++		return 1;
++	}
++
+ 	// Support SOURCE_DATE_EPOCH for reproducible builds
+ 	// https://reproducible-builds.org/docs/source-date-epoch/
+ 	time_t now = time(nullptr);

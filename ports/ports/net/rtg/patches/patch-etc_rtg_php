@@ -1,0 +1,12 @@
+Index: etc/rtg.php
+--- etc/rtg.php.orig
++++ etc/rtg.php
+@@ -6,7 +6,7 @@ echo "<!-- RTG Version $VERSION -->\n";
+ echo "<head>\n";
+ 
+ /* Connect to RTG MySQL Database */
+-$dbc = @mysqli_connect($host, $user, $pass, $db) or 
++$dbc = @mysqli_connect($host, $user, $pass, $db, $port) or 
+ 	die ("MySQL Connection Failed, Check Configuration.");
+ 
+ if (!isset($PHP_SELF) || $PHP_SELF == "")

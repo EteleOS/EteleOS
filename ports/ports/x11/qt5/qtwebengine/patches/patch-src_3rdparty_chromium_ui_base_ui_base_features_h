@@ -1,0 +1,12 @@
+Index: src/3rdparty/chromium/ui/base/ui_base_features.h
+--- src/3rdparty/chromium/ui/base/ui_base_features.h.orig
++++ src/3rdparty/chromium/ui/base/ui_base_features.h
+@@ -61,7 +61,7 @@ COMPONENT_EXPORT(UI_BASE_FEATURES) bool IsUsingWMPoint
+ #endif  // defined(OS_WIN)
+ 
+ #if defined(OS_WIN) || defined(OS_APPLE) || defined(OS_LINUX) || \
+-    defined(OS_CHROMEOS)
++    defined(OS_CHROMEOS) || defined(OS_BSD)
+ COMPONENT_EXPORT(UI_BASE_FEATURES)
+ extern const base::Feature kDirectManipulationStylus;
+ #endif  // defined(OS_WIN) || defined(OS_APPLE) || defined(OS_LINUX) ||

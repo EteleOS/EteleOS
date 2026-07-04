@@ -1,0 +1,19 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -6,13 +6,13 @@ SRCS=		tabled.c pickup.c imsg.c buffer.c pftable.c soc
+ 
+ SUBDIR=		tablec
+ 
+-CFLAGS+= 	-Wall -I{.CURDIR}
++CFLAGS+= 	-Wall -I${.CURDIR}
+ 
+ YFLAGS=		-d
+ LFLAGS=		-olex.yy.c
+ LINTFLAGS+=	-u
+ 
+-CLEANFILES+=	y.tab.h rt-dynamic
++CLEANFILES+=	rt-dynamic
+ 
+ MAN=		tabled.8 tabled.conf.5
+ MANDIR=		/usr/local/man/cat

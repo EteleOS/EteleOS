@@ -1,0 +1,7 @@
+bin/musicmpdscrobble
+${P5SITE}/Music/Audioscrobbler/MPD.pm
+@man man/man1/musicmpdscrobble.1
+@man man/man3p/Music::Audioscrobbler::MPD.3p
+share/examples/p5-Music-Audioscrobbler-MPD/
+share/examples/p5-Music-Audioscrobbler-MPD/gentoo_init_script
+share/examples/p5-Music-Audioscrobbler-MPD/musicmpdscrobble_example.conf

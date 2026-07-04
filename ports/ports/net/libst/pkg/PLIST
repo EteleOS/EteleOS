@@ -1,0 +1,17 @@
+include/st.h
+lib/libst.a
+@lib lib/libst.so.${LIBst_VERSION}
+share/doc/libst/
+share/doc/libst/fig.gif
+share/doc/libst/notes.html
+share/doc/libst/reference.html
+share/doc/libst/st.html
+share/doc/libst/timeout_heap.txt
+share/examples/libst/
+share/examples/libst/Makefile
+share/examples/libst/README
+share/examples/libst/error.c
+share/examples/libst/lookupdns.c
+share/examples/libst/proxy.c
+share/examples/libst/res.c
+share/examples/libst/server.c

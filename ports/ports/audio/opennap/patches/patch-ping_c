@@ -1,0 +1,32 @@
+--- ping.c.orig	Tue Mar  6 00:49:53 2001
++++ ping.c	Wed Oct 17 13:19:27 2001
+@@ -39,11 +39,29 @@ HANDLER (ping)
+ 	return;
+     }
+ 
++    if (gBlockWinMX > 0 && user != orig)
++    {
++	if (tag == MSG_CLIENT_PING)
++	    user->wantPong++;
++	else if (orig->wantPong == 0)
++	{
++	    if (orig->level < LEVEL_MODERATOR)
++	    {
++		discipline_user (orig);
++		return;
++	    }
++	}
++	else
++	    orig->wantPong--;
++    }
++
+     if (ISUSER (user->con))
+     {
+ 	if (!is_ignoring (user->con->uopt->ignore, orig->nick))
++	{
+ 	    send_cmd (user->con, tag, "%s%s%s", orig->nick, pkt ? " " : "",
+ 		      NONULL (pkt));
++	}
+ 	else
+ 	    send_user (orig, MSG_SERVER_NOSUCH, "%s is ignoring you",
+ 		       user->nick);

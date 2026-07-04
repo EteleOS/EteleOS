@@ -1,0 +1,19 @@
+Use standard optimisations.
+
+Index: h2patch/Makefile
+--- h2patch/Makefile.orig
++++ h2patch/Makefile
+@@ -19,13 +19,6 @@ LINKER = $(CC)
+ 
+ CPUFLAGS=
+ CFLAGS  = -Wall
+-CFLAGS += $(CPUFLAGS)
+-ifndef DEBUG
+-CFLAGS += -O2 -DNDEBUG=1
+-else
+-CFLAGS += -g
+-endif
+-LDFLAGS =
+ 
+ XDELTA_DIR:= $(LIBS_DIR)/xdelta3
+ XDFLAGS:= -DXD3_DEBUG=0

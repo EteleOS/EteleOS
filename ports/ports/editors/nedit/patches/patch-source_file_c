@@ -1,0 +1,35 @@
+Index: source/file.c
+--- source/file.c.orig
++++ source/file.c
+@@ -1376,7 +1376,12 @@ void PrintWindow(WindowInfo *window, int selectedOnly)
+ */
+ void PrintString(const char *string, int length, Widget parent, const char *jobName)
+ {
++#ifdef HAVE_MKSTEMP
++    static char template[] = "/var/tmp/nedit-XXXXXXXXXX";
++    char tmpFileName[sizeof(template)];
++#else
+     char tmpFileName[L_tmpnam];    /* L_tmpnam defined in stdio.h */
++#endif
+     FILE *fp;
+     int fd;
+ 
+@@ -1387,6 +1392,10 @@ void PrintString(const char *string, int length, Widge
+ 	    1. Create a filename
+ 	    2. Open the file with the O_CREAT|O_EXCL flags
+ 	So all an attacker can do is a DoS on the print function. */
++#ifdef HAVE_MKSTEMP
++    strcpy(tmpFileName, template);
++    if ((fd = mkstemp(tmpFileName)) < 0 || (fp = fdopen(fd, "w")) == NULL)
++#else
+     tmpnam(tmpFileName);
+ 
+     /* open the temporary file */
+@@ -1395,6 +1404,7 @@ void PrintString(const char *string, int length, Widge
+ #else
+     if ((fd = open(tmpFileName, O_CREAT|O_EXCL|O_WRONLY, S_IRUSR | S_IWUSR)) < 0 || (fp = fdopen(fd, "w")) == NULL)
+ #endif /* VMS */
++#endif /* HAVE_MKSTEMP */
+     {
+         DialogF(DF_WARN, parent, 1, "Error while Printing",
+                 "Unable to write file for printing:\n%s", "OK",

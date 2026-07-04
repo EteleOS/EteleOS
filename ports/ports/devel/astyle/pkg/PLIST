@@ -1,0 +1,8 @@
+@bin bin/astyle
+share/doc/astyle/
+share/doc/astyle/html/
+share/doc/astyle/html/astyle.html
+share/doc/astyle/html/install.html
+share/doc/astyle/html/news.html
+share/doc/astyle/html/notes.html
+share/doc/astyle/html/styles.css

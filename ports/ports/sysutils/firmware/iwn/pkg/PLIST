@@ -1,0 +1,17 @@
+@pkgpath /root/iwn-firmware
+@pkgpath sysutils/iwn-firmware
+@ask-update iwn-firmware-<5.6 Make sure you have a matching kernel
+firmware/iwn-100
+firmware/iwn-1000
+firmware/iwn-105
+firmware/iwn-135
+firmware/iwn-2000
+firmware/iwn-2030
+firmware/iwn-4965
+firmware/iwn-5000
+firmware/iwn-5150
+firmware/iwn-6000
+firmware/iwn-6005
+firmware/iwn-6030
+firmware/iwn-6050
+firmware/iwn-license

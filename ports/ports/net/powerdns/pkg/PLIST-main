@@ -1,0 +1,73 @@
+@conflict powerdns-sqlite-*
+@conflict powerdns-sqlite3-*
+@pkgpath net/powerdns,-sqlite
+@pkgpath net/powerdns,-sqlite3
+@newgroup _powerdns:609
+@newuser _powerdns:609:_powerdns::PowerDNS Server:/nonexistent:/sbin/nologin
+@sample ${SYSCONFDIR}/
+@rcscript ${RCDIR}/pdns_server
+@bin bin/calidns
+@bin bin/dnsbulktest
+@bin bin/dnsgram
+@bin bin/dnspcap2calidns
+@bin bin/dnspcap2protobuf
+@bin bin/dnsreplay
+@bin bin/dnsscan
+@bin bin/dnsscope
+@bin bin/dnstcpbench
+@bin bin/dnswasher
+@bin bin/dumresp
+@bin bin/ixfrdist
+@bin bin/ixplore
+@bin bin/nproxy
+@bin bin/nsec3dig
+@bin bin/pdns_control
+@bin bin/pdns_notify
+@bin bin/pdnsutil
+@bin bin/saxfr
+@bin bin/sdig
+@bin bin/stubquery
+@bin bin/zone2json
+@bin bin/zone2sql
+lib/pdns/
+@so lib/pdns/libgsqlite3backend.so
+@man man/man1/calidns.1
+@man man/man1/dnsbulktest.1
+@man man/man1/dnsgram.1
+@man man/man1/dnspcap2calidns.1
+@man man/man1/dnspcap2protobuf.1
+@man man/man1/dnsreplay.1
+@man man/man1/dnsscan.1
+@man man/man1/dnsscope.1
+@man man/man1/dnstcpbench.1
+@man man/man1/dnswasher.1
+@man man/man1/dumresp.1
+@man man/man1/ixfrdist.1
+@man man/man1/ixplore.1
+@man man/man1/nproxy.1
+@man man/man1/nsec3dig.1
+@man man/man1/pdns_control.1
+@man man/man1/pdns_notify.1
+@man man/man1/pdns_server.1
+@man man/man1/pdnsutil.1
+@man man/man1/saxfr.1
+@man man/man1/sdig.1
+@man man/man1/zone2json.1
+@man man/man1/zone2sql.1
+@man man/man5/ixfrdist.yml.5
+@bin sbin/pdns_server
+share/doc/pdns/
+share/doc/pdns/3.4.0_to_4.0.0_schema.sqlite3.sql
+share/doc/pdns/4.0.0_to_4.2.0_schema.sqlite3.sql
+share/doc/pdns/4.2.0_to_4.3.0_schema.sqlite3.sql
+share/doc/pdns/4.3.0_to_4.3.1_schema.sqlite3.sql
+share/doc/pdns/4.3.1_to_4.7.0_schema.sqlite3.sql
+share/doc/pdns/bind-dnssec.4.2.0_to_4.3.0_schema.sqlite3.sql
+share/doc/pdns/bind-dnssec.schema.sqlite3.sql
+share/doc/pdns/dnssec-3.x_to_3.4.0_schema.sqlite3.sql
+share/doc/pdns/enable-foreign-keys.mysql.sql
+share/doc/pdns/nodnssec-3.x_to_3.4.0_schema.sqlite3.sql
+share/doc/pdns/schema.sqlite3.sql
+share/examples/pdns/
+share/examples/pdns/pdns.conf
+@sample ${SYSCONFDIR}/pdns.conf

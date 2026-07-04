@@ -1,0 +1,23 @@
+If you are upgrading from ${PKGSTEM}-<1.7.0, update _gitea user's shell and
+home directory:
+
+  # usermod -s /bin/sh _gitea
+  # usermod -d /var/gitea _gitea
+
+If you are upgrading from ${PKGSTEM}-<1.7.1, please note the following changes:
+
+* Configuration file location has changed from ${SYSCONFDIR}/${PKGSTEM}/conf/app.ini
+  to ${SYSCONFDIR}/${PKGSTEM}/app.ini
+
+* GITEA_CUSTOM directory location has changed from ${SYSCONFDIR}/${PKGSTEM}
+  to ${LOCALSTATEDIR}/${PKGSTEM}/custom
+
+* Default ROOT_PATH for logs has changed from ${LOCALSTATEDIR}/${PKGSTEM}/log
+  to ${LOCALSTATEDIR}/log/${PKGSTEM}
+
+If you are upgrading from ${PKGSTEM}-<1.21.0 and serve static assets
+via httpd(8), make sure that httpd.conf(5) configuration reflects changes
+in static files location, see pkg README for example configuration.
+
+Default ISSUE_INDEXER_TYPE was changed from bleve to db in gitea-1.21.1p0
+due to high CPU usage, please adjust ${SYSCONFDIR}/${PKGSTEM}/app.ini accordingly.

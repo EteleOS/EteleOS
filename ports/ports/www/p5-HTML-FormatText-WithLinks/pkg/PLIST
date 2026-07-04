@@ -1,0 +1,3 @@
+${P5SITE}/HTML/FormatText/
+${P5SITE}/HTML/FormatText/WithLinks.pm
+@man man/man3p/HTML::FormatText::WithLinks.3p

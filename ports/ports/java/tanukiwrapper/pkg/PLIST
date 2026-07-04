@@ -1,0 +1,6 @@
+lib/tanukiwrapper/
+@so lib/tanukiwrapper/libwrapper.so
+@bin sbin/tanukiwrapper
+share/java/
+share/java/classes/
+share/java/classes/tanukiwrapper.jar

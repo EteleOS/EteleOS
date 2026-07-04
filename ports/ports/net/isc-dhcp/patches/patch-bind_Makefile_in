@@ -1,0 +1,49 @@
+Index: bind/Makefile.in
+--- bind/Makefile.in.orig
++++ bind/Makefile.in
+@@ -24,7 +24,7 @@ exec_prefix = @exec_prefix@
+ bindconfig = --without-openssl --without-libxml2 --without-libjson \
+ 	--without-gssapi --disable-threads --without-lmdb \
+ 	--includedir=@includedir@ --libdir=@libdir@  --without-python\
+-	@BINDLT@ @BINDIOMUX@ @BINDCONFIG@ --enable-full-report
++	@BINDLT@ @BINDIOMUX@ @BINDCONFIG@ --enable-full-report --disable-backtrace
+ 
+ @BIND_ATF_FALSE@cleandirs = ./lib ./include
+ @BIND_ATF_TRUE@cleandirs = ./lib ./include ./atf
+@@ -56,7 +56,7 @@ bind1:
+ 		echo Configuring BIND libraries for DHCP. ;             \
+ 		rm -rf ${cleandirs} ${cleanfiles} ;                     \
+ 		(cd ${bindsrcdir} &&                                    \
+-                 ./configure ${bindconfig} > ${binddir}/configure.log); \
++                 ./configure ${bindconfig} 2>&1 | tee ${binddir}/configure.log); \
+ 	fi
+ 
+ atf: bind1
+@@ -66,7 +66,7 @@ atf: bind1
+ 	else                                          \
+ 		echo Building ATF support ;           \
+ 		(cd ${bindsrcdir}/unit;               \
+-		 $(MAKE) atf > ${binddir}/build.log ; \
++		 $(MAKE) atf 2>&1 | tee ${binddir}/build.log ; \
+ 		 cp -rp atf ${binddir}) ;             \
+ 	fi
+ 
+@@ -81,15 +81,15 @@ bind2: bind1
+ 		for libdir in ${bindlibs} ; do                            \
+ 		 (cd ${bindsrcdir}/lib/$$libdir ;                         \
+ 		  echo Building $$libdir library in `pwd` ;               \
+-		  $(MAKE) all >> ${binddir}/build.log) ;                      \
++		  $(MAKE) all 2>&1 | tee ${binddir}/build.log) ;          \
+ 		done ;                                                    \
+ 		                                                          \
+ 		echo Installing BIND libraries to ${binddir}. ;           \
+ 		for libdir in ${bindlibs} ; do                            \
+ 		 (cd ${bindsrcdir}/lib/$$libdir ;                         \
+ 		  MAKEDEFS="${installdirs}"; export MAKEDEFS;             \
+-		  $(MAKE) ${installdirs} LIBTOOL_MODE_INSTALL= install >> \
+-		   ${binddir}/install.log) ;                              \
++		  $(MAKE) ${installdirs} LIBTOOL_MODE_INSTALL= install    \
++		   2>&1 | tee ${binddir}/install.log) ;                   \
+ 		done ;                                                    \
+ 	fi
+ 

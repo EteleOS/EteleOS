@@ -1,0 +1,2 @@
+@bin bin/stan
+@man man/man1/stan.1

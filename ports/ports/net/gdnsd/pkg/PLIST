@@ -1,0 +1,67 @@
+@newgroup _gdnsd:743
+@newuser _gdnsd:743:_gdnsd::gdns user:/var/empty:/sbin/nologin
+@extraunexec rm -f ${SYSCONFDIR}/gdnsd/* ${SYSCONFDIR}/gdnsd/zones/*
+@sample ${SYSCONFDIR}/gdnsd/
+@sample ${SYSCONFDIR}/gdnsd/zones/
+@rcscript ${RCDIR}/gdnsd
+@bin bin/gdnsd_geoip_test
+include/gdnsd/
+include/gdnsd/alloc.h
+include/gdnsd/bopts.h
+include/gdnsd/compiler.h
+include/gdnsd/dmn.h
+include/gdnsd/dname.h
+include/gdnsd/file.h
+include/gdnsd/log.h
+include/gdnsd/misc.h
+include/gdnsd/mon.h
+include/gdnsd/net.h
+include/gdnsd/paths.h
+include/gdnsd/plugapi.h
+include/gdnsd/plugin.h
+include/gdnsd/prcu.h
+include/gdnsd/stats.h
+include/gdnsd/vscf.h
+lib/gdnsd/
+lib/gdnsd/libgdnsd.so
+lib/gdnsd/plugin_extfile.so
+lib/gdnsd/plugin_extmon.so
+lib/gdnsd/plugin_geoip.so
+lib/gdnsd/plugin_http_status.so
+lib/gdnsd/plugin_metafo.so
+lib/gdnsd/plugin_multifo.so
+lib/gdnsd/plugin_null.so
+lib/gdnsd/plugin_reflect.so
+lib/gdnsd/plugin_simplefo.so
+lib/gdnsd/plugin_static.so
+lib/gdnsd/plugin_tcp_connect.so
+lib/gdnsd/plugin_weighted.so
+libexec/gdnsd/
+@bin libexec/gdnsd/gdnsd_extmon_helper
+@man man/man1/gdnsd_geoip_test.1
+@man man/man3/gdnsd-plugin-api.3
+@man man/man5/gdnsd.config.5
+@man man/man5/gdnsd.djbdns.5
+@man man/man5/gdnsd.zonefile.5
+@man man/man8/gdnsd-plugin-extfile.8
+@man man/man8/gdnsd-plugin-extmon.8
+@man man/man8/gdnsd-plugin-geoip.8
+@man man/man8/gdnsd-plugin-http_status.8
+@man man/man8/gdnsd-plugin-metafo.8
+@man man/man8/gdnsd-plugin-multifo.8
+@man man/man8/gdnsd-plugin-null.8
+@man man/man8/gdnsd-plugin-reflect.8
+@man man/man8/gdnsd-plugin-simplefo.8
+@man man/man8/gdnsd-plugin-static.8
+@man man/man8/gdnsd-plugin-tcp_connect.8
+@man man/man8/gdnsd-plugin-weighted.8
+@man man/man8/gdnsd.8
+@bin sbin/gdnsd
+share/doc/gdnsd/
+share/doc/gdnsd/AUTHORS
+share/doc/gdnsd/COPYING
+share/doc/gdnsd/INSTALL
+share/doc/gdnsd/NEWS
+share/doc/gdnsd/README.md
+share/doc/gdnsd/gdnsd_manual.txt
+@sample ${LOCALSTATEDIR}/gdnsd/

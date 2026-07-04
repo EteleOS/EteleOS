@@ -1,0 +1,8 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+To get all upower(1) functionalities, apmd(8) and the system-wide D-Bus
+daemon needs to be running.
+
+# rcctl enable apmd messagebus

@@ -1,0 +1,12 @@
+Index: src/waffle/gbm/wgbm_platform.c
+--- src/waffle/gbm/wgbm_platform.c.orig
++++ src/waffle/gbm/wgbm_platform.c
+@@ -40,7 +40,7 @@
+ #include "wgbm_platform.h"
+ #include "wgbm_window.h"
+ 
+-static const char *libgbm_filename = "libgbm.so.1";
++static const char *libgbm_filename = "libgbm.so";
+ 
+ static const struct wcore_platform_vtbl wgbm_platform_vtbl;
+ 

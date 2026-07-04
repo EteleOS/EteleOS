@@ -1,0 +1,24 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+In order to complete your rt installations you will first need to
+initialize the database by following these steps.
+
+Edit ${SYSCONFDIR}/rt/RT_SiteConfig.pm and make the appropriate
+adjustments for your database environment and then run
+
+# rt-setup-database --dba <yourdbauser> --action init \
+	--prompt-for-dba-password
+
+Once the database has been initialized you will need to configure
+httpd. Instructions for configuring httpd can be found in
+${PREFIX}/share/doc/rt/README
+
+If you are upgrading your installation, don't forget to run:
+# rt-setup-database --dba <yourdbauser> --prompt-for-dba-password \
+	--action upgrade
+
+It is also recommended to clear the mason cache on every package update
+by simply removing the whole cache directory:
+# rm -rf /var/www/rt/mason_data/obj/*

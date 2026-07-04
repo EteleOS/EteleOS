@@ -1,0 +1,53 @@
+--- Makefile.in.orig	Mon Apr 16 03:10:27 2007
++++ Makefile.in	Wed Oct  8 09:26:23 2008
+@@ -35,7 +35,7 @@ NORMAL_UNINSTALL = :
+ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ EXTRA_PROGRAMS =
+-sbin_PROGRAMS = pptpd$(EXEEXT) pptpctrl$(EXEEXT) bcrelay$(EXEEXT)
++sbin_PROGRAMS = pptpd$(EXEEXT) pptpctrl$(EXEEXT)
+ subdir = .
+ DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
+ 	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
+@@ -75,8 +75,8 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES
+ 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ CCLD = $(CC)
+ LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+-SOURCES = $(bcrelay_SOURCES) $(pptpctrl_SOURCES) $(pptpd_SOURCES)
+-DIST_SOURCES = $(bcrelay_SOURCES) $(pptpctrl_SOURCES) $(pptpd_SOURCES)
++SOURCES = $(pptpctrl_SOURCES) $(pptpd_SOURCES)
++DIST_SOURCES = $(pptpctrl_SOURCES) $(pptpd_SOURCES)
+ man5dir = $(mandir)/man5
+ man8dir = $(mandir)/man8
+ NROFF = nroff
+@@ -104,7 +104,7 @@ AUTOMAKE = @AUTOMAKE@
+ AWK = @AWK@
+ CC = @CC@
+ CCDEPMODE = @CCDEPMODE@
+-CFLAGS = -O2 -fno-builtin -Wall -DSBINDIR='"$(sbindir)"'
++CFLAGS = @CFLAGS@ -fno-builtin -Wall -DSBINDIR='"$(sbindir)"'
+ CPP = @CPP@
+ CPPFLAGS = @CPPFLAGS@
+ CYGPATH_W = @CYGPATH_W@
+@@ -167,11 +167,11 @@ libdir = @libdir@
+ libexecdir = @libexecdir@
+ localedir = @localedir@
+ localstatedir = @localstatedir@
+-mandir = @mandir@
++mandir = ${PREFIX}/man
+ mkdir_p = @mkdir_p@
+ oldincludedir = @oldincludedir@
+ pdfdir = @pdfdir@
+-prefix = @prefix@
++prefix = ${PREFIX}
+ program_transform_name = @program_transform_name@
+ psdir = @psdir@
+ sbindir = @sbindir@
+@@ -213,7 +213,6 @@ pptpctrl_SOURCES = \
+ pptpd_LDADD = $(XTRALIBS_MGR)
+ pptpctrl_LDADD = $(XTRALIBS_CTRL)
+ bcrelay_SOURCES = bcrelay.c defaults.h our_syslog.h our_getopt.h
+-subdirs = plugins
+ all: config.h
+ 	$(MAKE) $(AM_MAKEFLAGS) all-am
+ 

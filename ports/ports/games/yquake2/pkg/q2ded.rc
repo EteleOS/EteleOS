@@ -1,0 +1,13 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/share/yquake2/q2ded"
+daemon_flags="+set busywait 0 +set dedicated 1"
+daemon_user="_yquake2"
+
+. /etc/rc.d/rc.subr
+
+pexp="${daemon}.*"
+rc_bg=YES
+rc_reload=NO
+
+rc_cmd $1

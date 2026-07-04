@@ -1,0 +1,14 @@
+Index: csokoban/Makefile.in
+--- csokoban/Makefile.in.orig
++++ csokoban/Makefile.in
+@@ -34,8 +34,8 @@ install: csokoban
+ 	install -c ./csokoban $(bindir)/csokoban
+ 	install -d $(mandir)/man6
+ 	install -c ./csokoban.6 $(mandir)/man6/csokoban.6
+-	install -d -g games $(datadir)
+-	install -c ./series/* $(datadir)/
++	install -d -g bin $(datadir)/csokoban
++	install -c ./series/* $(datadir)/csokoban/
+ 
+ movelist.o: movelist.c gen.h movelist.h
+ dirio.o   : dirio.c gen.h dirio.h

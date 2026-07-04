@@ -1,0 +1,12 @@
+@bin bin/avrdude
+include/libavrdude.h
+@static-lib lib/libavrdude.a
+lib/libavrdude.la
+@lib lib/libavrdude.so.${LIBavrdude_VERSION}
+@man man/man1/avrdude.1
+share/doc/avrdude/
+share/doc/avrdude/avrdude-doc-${V}.pdf
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/avrdude/
+share/examples/avrdude/avrdude.conf
+@sample ${SYSCONFDIR}/avrdude.conf

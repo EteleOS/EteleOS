@@ -1,0 +1,75 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -4787,17 +4787,9 @@ printf "%s\n" "$ac_cv_prog_cc_g" >&6; }
+ if test $ac_test_CFLAGS; then
+   CFLAGS=$ac_save_CFLAGS
+ elif test $ac_cv_prog_cc_g = yes; then
+-  if test "$GCC" = yes; then
+-    CFLAGS="-g -O2"
+-  else
+     CFLAGS="-g"
+-  fi
+ else
+-  if test "$GCC" = yes; then
+-    CFLAGS="-O2"
+-  else
+     CFLAGS=
+-  fi
+ fi
+ ac_prog_cc_stdc=no
+ if test x$ac_prog_cc_stdc = xno
+@@ -5910,17 +5902,9 @@ printf "%s\n" "$ac_cv_prog_cc_g" >&6; }
+ if test $ac_test_CFLAGS; then
+   CFLAGS=$ac_save_CFLAGS
+ elif test $ac_cv_prog_cc_g = yes; then
+-  if test "$GCC" = yes; then
+-    CFLAGS="-g -O2"
+-  else
+     CFLAGS="-g"
+-  fi
+ else
+-  if test "$GCC" = yes; then
+-    CFLAGS="-O2"
+-  else
+     CFLAGS=
+-  fi
+ fi
+ ac_prog_cc_stdc=no
+ if test x$ac_prog_cc_stdc = xno
+@@ -6521,17 +6505,9 @@ printf "%s\n" "$ac_cv_prog_cxx_g" >&6; }
+ if test $ac_test_CXXFLAGS; then
+   CXXFLAGS=$ac_save_CXXFLAGS
+ elif test $ac_cv_prog_cxx_g = yes; then
+-  if test "$GXX" = yes; then
+-    CXXFLAGS="-g -O2"
+-  else
+     CXXFLAGS="-g"
+-  fi
+ else
+-  if test "$GXX" = yes; then
+-    CXXFLAGS="-O2"
+-  else
+     CXXFLAGS=
+-  fi
+ fi
+ ac_prog_cxx_stdcxx=no
+ if test x$ac_prog_cxx_stdcxx = xno
+@@ -6768,7 +6744,7 @@ if test "x$remember_set_CFLAGS" = "x"
+ then
+   if test "$CFLAGS" = "-g -O2"
+   then
+-    CFLAGS="-O2"
++    CFLAGS=""
+   elif test "$CFLAGS" = "-g"
+   then
+     CFLAGS=""
+@@ -6779,7 +6755,7 @@ if test "x$remember_set_CXXFLAGS" = "x"
+ then
+   if test "$CXXFLAGS" = "-g -O2"
+   then
+-    CXXFLAGS="-O2"
++    CXXFLAGS=""
+   elif test "$CXXFLAGS" = "-g"
+   then
+     CXXFLAGS=""

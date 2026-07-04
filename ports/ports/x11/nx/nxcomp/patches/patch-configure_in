@@ -1,0 +1,79 @@
+--- configure.in.orig	Mon Mar  1 18:18:59 2010
++++ configure.in	Wed Feb 23 12:29:15 2011
+@@ -7,9 +7,6 @@ AC_PREREQ(2.13)
+ 
+ dnl Set our default compilation flags.
+ 
+-CXXFLAGS="-O3 -fno-rtti -fno-exceptions"
+-CFLAGS="-O3"
+-
+ dnl Reset default linking directives.
+ 
+ LIBSTATIC=""
+@@ -68,6 +65,7 @@ case "${gcc_version}" in
+         ;;
+ esac
+ 
++if false; then
+ AC_MSG_CHECKING([whether compiler accepts -Wmissing-declarations])
+ gcc_version=`${CC} --version | grep 'gcc (GCC) [[3-4]].' | head -n 1`
+ case "${gcc_version}" in
+@@ -80,6 +78,7 @@ case "${gcc_version}" in
+         CXXFLAGS="$CXXFLAGS -Wmissing-declarations"
+         ;;
+ esac
++fi
+ 
+ dnl Check for BSD compatible install.
+ 
+@@ -157,6 +156,17 @@ FreeBSD=
+ test "$nxconf_cv_freebsd" = yes && FreeBSD=yes])
+ nxconf_FreeBSD
+ 
++dnl Check to see if we're running under OpenBSD.
++
++AC_DEFUN(nxconf_OpenBSD,
++[AC_CACHE_CHECK(for OpenBSD environment, nxconf_cv_openbsd,
++[AC_TRY_COMPILE(,[return __OpenBSD__;],
++nxconf_cv_openbsd=yes, nxconf_cv_openbsd=no)
++rm -f conftest*])
++OpenBSD=
++test "$nxconf_cv_openbsd" = yes && OpenBSD=yes])
++nxconf_OpenBSD
++
+ dnl Build PIC libraries.
+ 
+ if test "$CYGWIN32" != yes -a "$DARWIN" != yes; then
+@@ -182,6 +192,14 @@ if test "$FreeBSD" = yes; then
+   CFLAGS="$CFLAGS -I/usr/local/include"
+ fi
+ 
++dnl On OpenBSD search libraries and includes under /usr/local.
++
++if test "$OpenBSD" = yes; then
++  LIBS="$LIBS -L/usr/local/lib"
++  CXXFLAGS="$CXXFLAGS -Wno-deprecated -I/usr/local/include"
++  CFLAGS="$CFLAGS -I/usr/local/include"
++fi
++
+ dnl Under Darwin we don't have support for -soname option and
+ dnl we need the -bundle flag. Under Solaris, instead, we need
+ dnl the options -G -h.
+@@ -228,7 +246,7 @@ else
+ fi
+ echo -e "compiling version ${VERSION}"
+ 
+-LIBVERSION=`echo ${VERSION} | cut -d '.' -f 1`
++LIBVERSION=${LIBXcomp_VERSION}
+ 
+ CXXFLAGS="$CXXFLAGS -DVERSION=\\\"${VERSION}\\\""
+ CFLAGS="$CFLAGS -DVERSION=\\\"${VERSION}\\\""
+@@ -387,7 +405,7 @@ if test "$CYGWIN32" = yes; then
+     ALL="\$(LIBCYGARCHIVE) \$(LIBCYGSHARED) \$(LIBARCHIVE)"
+     LIBS="-lstdc++ -lpng -ljpeg -lz"
+ else
+-    ALL="\$(LIBFULL) \$(LIBLOAD) \$(LIBSHARED) \$(LIBARCHIVE)"
++    ALL="\$(LIBSHARED) \$(LIBARCHIVE)"
+ fi
+ 
+ AC_OUTPUT(Makefile)

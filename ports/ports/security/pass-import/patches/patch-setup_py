@@ -1,0 +1,21 @@
+Index: setup.py
+--- setup.py.orig
++++ setup.py
+@@ -12,7 +12,7 @@ from setuptools import setup
+ 
+ share = Path(sys.prefix, 'share')
+ base = '/usr'
+-if os.uname().sysname == 'Darwin':
++if os.uname().sysname == 'Darwin' or os.uname().sysname == 'OpenBSD':
+     base = '/usr/local'
+ lib = Path(base, 'lib', 'password-store', 'extensions')
+ 
+@@ -28,7 +28,7 @@ if '--user' in sys.argv:
+ 
+ setup(
+     data_files=[
+-        (str(share / 'man' / 'man1'), [
++        (str(Path(sys.prefix) / 'man' / 'man1'), [
+             'share/man/man1/pass-import.1',
+             'share/man/man1/pimport.1',
+         ]),

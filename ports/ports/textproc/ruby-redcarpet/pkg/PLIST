@@ -1,0 +1,21 @@
+${GEM_BIN}/redcarpet${GEM_BIN_SUFFIX}
+${GEM_LIB}/cache/${DISTNAME}.gem
+${GEM_LIB}/gems/${DISTNAME}/
+${GEM_LIB}/gems/${DISTNAME}/CHANGELOG.md
+${GEM_LIB}/gems/${DISTNAME}/CONTRIBUTING.md
+${GEM_LIB}/gems/${DISTNAME}/COPYING
+${GEM_LIB}/gems/${DISTNAME}/Gemfile
+${GEM_LIB}/gems/${DISTNAME}/README.markdown
+${GEM_LIB}/gems/${DISTNAME}/Rakefile
+${GEM_LIB}/gems/${DISTNAME}/bin/
+${GEM_LIB}/gems/${DISTNAME}/bin/redcarpet
+${GEM_LIB}/gems/${DISTNAME}/lib/
+${GEM_LIB}/gems/${DISTNAME}/lib/redcarpet/
+${GEM_LIB}/gems/${DISTNAME}/lib/redcarpet.rb
+@so ${GEM_LIB}/gems/${DISTNAME}/lib/redcarpet.so
+${GEM_LIB}/gems/${DISTNAME}/lib/redcarpet/cli.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/redcarpet/compat.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/redcarpet/render_man.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/redcarpet/render_strip.rb
+${GEM_LIB}/gems/${DISTNAME}/redcarpet.gemspec
+${GEM_LIB}/specifications/${DISTNAME}.gemspec

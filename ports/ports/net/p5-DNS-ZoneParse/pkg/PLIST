@@ -1,0 +1,3 @@
+${P5SITE}/DNS/
+${P5SITE}/DNS/ZoneParse.pm
+@man man/man3p/DNS::ZoneParse.3p

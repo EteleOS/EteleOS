@@ -1,0 +1,14 @@
+Remove hardcoded CFLAGS.
+
+Index: configure
+--- configure.orig
++++ configure
+@@ -20238,7 +20238,7 @@ else $as_nop
+ printf "%s\n" "yes" >&6; }
+ fi
+ 
+-AM_CFLAGS="$AM_CFLAGS -g -O3"
++AM_CFLAGS="$AM_CFLAGS -g"
+ if test x"$GCC" = "xyes"; then
+     AM_CFLAGS="$AM_CFLAGS -ffast-math"
+ fi

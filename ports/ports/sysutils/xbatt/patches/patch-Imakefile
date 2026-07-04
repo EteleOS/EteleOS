@@ -1,0 +1,8 @@
+--- Imakefile.orig	Fri Mar  7 07:54:29 1997
++++ Imakefile	Sat Oct 27 01:47:34 2007
+@@ -13,4 +13,4 @@ INSTALLFLAGS=-c -g operator -m 2755
+ INSTALLFLAGS=-c -m 2755
+ #endif
+ 
+-ComplexProgramTarget(xbatt)
++ComplexProgramTargetNoMan(xbatt)

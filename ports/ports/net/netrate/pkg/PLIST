@@ -1,0 +1,5 @@
+@bin bin/netblast
+@bin bin/netreceive
+@bin bin/netsend
+share/doc/netrate/
+share/doc/netrate/README

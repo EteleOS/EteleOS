@@ -1,0 +1,7 @@
+SmokePing is a latency logging and interactive graphing system, for
+ICMP pings and many other protocols (DNS, SSH, SIP, HTTP and more).
+The main daemon process organizes latency measurements, records them
+in an RRDtool database, and optionally sends email alerts based on
+various criteria. The CGI/FastCGI program presents the graphs and
+optionally allows remote control via a master/slave protocol (allowing
+aggregation of data from multiple test locations in a single server).

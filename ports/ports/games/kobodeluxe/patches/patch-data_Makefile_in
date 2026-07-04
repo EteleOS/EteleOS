@@ -1,0 +1,11 @@
+--- data/Makefile.in.orig	Wed Dec  5 11:24:57 2007
++++ data/Makefile.in	Wed Dec  5 11:28:12 2007
+@@ -467,7 +467,7 @@ info: info-recursive
+ 
+ info-am:
+ 
+-install-data-am: install-koboscoreDATA
++install-data-am:
+ 
+ install-exec-am:
+ 

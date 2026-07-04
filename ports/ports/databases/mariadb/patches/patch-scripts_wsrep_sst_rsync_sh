@@ -1,0 +1,22 @@
+Index: scripts/wsrep_sst_rsync.sh
+--- scripts/wsrep_sst_rsync.sh.orig
++++ scripts/wsrep_sst_rsync.sh
+@@ -129,9 +129,15 @@ check_pid_and_port()
+             fi
+             final='$'
+         else
+-            port_info=$($socket_utility $lsof_opts -i ":$port" 2>/dev/null | \
+-                grep -w -F '(LISTEN)' || :)
+-            final='[[:space:]]'
++            if [ $fstat_available -ne 0 ]; then
++                port_info=$($socket_utility $fstat_opts 2>/dev/null | \
++                    grep -E "[[:space:]](\\*|\\[?::\\]?):$port\$")
++                final=''
++            else
++                port_info=$($socket_utility $lsof_opts -i ":$port" 2>/dev/null | \
++                    grep -w -F '(LISTEN)' || :)
++                final='[[:space:]]'
++            fi
+         fi
+ 
+         local busy=0

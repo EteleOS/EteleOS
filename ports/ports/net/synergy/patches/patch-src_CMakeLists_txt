@@ -1,0 +1,10 @@
+--- src/CMakeLists.txt.orig	Fri Aug  7 18:56:23 2015
++++ src/CMakeLists.txt	Thu Oct 15 17:57:00 2015
+@@ -17,7 +17,3 @@
+ add_subdirectory(lib)
+ add_subdirectory(cmd)
+ add_subdirectory(micro)
+-
+-if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "IRIX")
+-	add_subdirectory(test)
+-endif()

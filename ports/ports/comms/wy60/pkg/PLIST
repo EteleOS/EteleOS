@@ -1,0 +1,5 @@
+@bin bin/wy60
+@man man/man1/wy60.1
+share/examples/wy60/
+share/examples/wy60/wy60.rc
+@sample ${SYSCONFDIR}/wy60.rc

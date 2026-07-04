@@ -1,0 +1,11 @@
+--- data/sfx/Makefile.in.orig	Sun Dec 23 20:12:44 2007
++++ data/sfx/Makefile.in	Sun Oct 24 15:37:55 2010
+@@ -179,7 +179,7 @@ target_cpu = @target_cpu@
+ target_os = @target_os@
+ target_vendor = @target_vendor@
+ KOBOSFX_OBJECTS = *.agw *.mid *.h
+-@BUILD_MACOSX_BUNDLE_FALSE@@BUILD_SIMPLE_BUNDLE_FALSE@kobosfxdir = $(datadir)/kobo-deluxe/sfx
++@BUILD_MACOSX_BUNDLE_FALSE@@BUILD_SIMPLE_BUNDLE_FALSE@kobosfxdir = $(datadir)/kobodeluxe/sfx
+ @BUILD_MACOSX_BUNDLE_FALSE@@BUILD_SIMPLE_BUNDLE_TRUE@kobosfxdir = $(srcdir)/../@PACKAGE@/sfx
+ @BUILD_MACOSX_BUNDLE_TRUE@kobosfxdir = $(srcdir)/../@PACKAGE@.app/Contents/Resources/sfx
+ kobosfx_DATA = $(KOBOSFX_OBJECTS)

@@ -1,0 +1,12 @@
+--- src/archutils/Unix/SignalHandler.h.orig	Sat Sep 14 17:18:22 2013
++++ src/archutils/Unix/SignalHandler.h	Sat Sep 14 17:19:12 2013
+@@ -2,7 +2,9 @@
+ #define SIGNAL_HANDLER_H
+ 
+ #include <csignal>
++#if !defined(__OpenBSD__)
+ #include <ucontext.h>
++#endif
+        
+ class SaveSignals
+ {

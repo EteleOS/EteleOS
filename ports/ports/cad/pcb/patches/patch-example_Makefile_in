@@ -1,0 +1,12 @@
+Index: example/Makefile.in
+--- example/Makefile.in.orig
++++ example/Makefile.in
+@@ -471,7 +471,7 @@ target_alias = @target_alias@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-examplesdir = @docdir@/examples
++examplesdir = ${datadir}/examples/pcb/
+ examples_DATA = ${EXAMPLES}
+ SUBDIRS = libraries
+ EXTRA_DIST = ${EXAMPLES}

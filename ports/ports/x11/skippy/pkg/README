@@ -1,0 +1,11 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Copy the sample ${TRUEPREFIX}/share/examples/skippy/skippyrc-default to
+your home directory as .skippyrc before running it.
+
+If you encounter any BadAccess errors change the keysym value
+(default F11) in .skippyrc to something else.
+
+For a list of tested window-managers refer to the skippy homepage.

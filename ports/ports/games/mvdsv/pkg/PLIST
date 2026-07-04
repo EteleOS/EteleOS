@@ -1,0 +1,5 @@
+@bin bin/mvdsv
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/mvdsv/
+share/examples/mvdsv/qwprogs.dat
+share/examples/mvdsv/server.cfg

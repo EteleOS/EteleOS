@@ -1,0 +1,39 @@
+--- configure.ac.orig	Sun Nov 23 23:11:33 2014
++++ configure.ac	Fri Jun 26 16:25:57 2015
+@@ -618,26 +618,26 @@ if test "X$libgcrypt_config" != "Xno" ; then
+   fi
+ fi
+ 
+-AC_CHECK_HEADERS(gcrypt.h)
+-
+-AC_MSG_CHECKING(for gcrypt)
+ GCRYPT_VERSION=`$LIBGCRYPT_CONFIG --version 2>/dev/null`
+-if test "X$GCRYPT_VERSION" = X; then
+-  have_digest_gcrypt=no
+-elif test "$ac_cv_header_gcrypt_h" = "yes"; then
++if test "X$GCRYPT_VERSION" != X; then
+   oCPPFLAGS="$CPPFLAGS"
+   oLIBS="$LIBS"
+   CPPFLAGS="$CPPFLAGS `$LIBGCRYPT_CONFIG --cflags`"
+   LIBS="$LIBS `$LIBGCRYPT_CONFIG --libs`"
+ 
+-  AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+-  #include <gcrypt.h>]], [[ gcry_md_hd_t hash; gcry_md_open(hash, GCRY_MD_MD5, 0); ]])],[have_digest_gcrypt=yes],[have_digest_gcrypt=no])
++  AC_CHECK_HEADERS(gcrypt.h)
++  if test "$ac_cv_header_gcrypt_h" = "yes"; then
++    AC_TRY_LINK([
++    #include <gcrypt.h>],
++    [ gcry_md_hd_t hash; gcry_md_open(hash, GCRY_MD_MD5, 0); ],
++      have_digest_gcrypt=yes,
++      have_digest_gcrypt=no)
++  fi
+ 
+   CPPFLAGS="$oCPPFLAGS"
+   LIBS="$oLIBS"
+-else
+-  have_digest_gcrypt=no
+ fi
++AC_MSG_CHECKING(for gcrypt)
+ AC_MSG_RESULT($have_digest_gcrypt)
+ 
+ 

@@ -1,0 +1,28 @@
+Index: automake.in
+--- automake.in.orig
++++ automake.in
+@@ -4156,7 +4156,7 @@ sub substitute_ac_subst_variables_worker($)
+ sub substitute_ac_subst_variables ($)
+ {
+   my ($text) = @_;
+-  $text =~ s/\${([^ \t=:+{}]+)}/&substitute_ac_subst_variables_worker ($1)/ge;
++  $text =~ s/\$[{]([^ \t=:+{}]+)}/&substitute_ac_subst_variables_worker ($1)/ge;
+   return $text;
+ }
+ 
+@@ -5337,6 +5337,7 @@ sub scan_autoconf_traces ($)
+ 		_LT_AC_TAGCONFIG => 0,
+ 		m4_include => 1,
+ 		m4_sinclude => 1,
++		include => 1,
+ 		sinclude => 1,
+ 	      );
+ 
+@@ -5360,6 +5361,7 @@ sub scan_autoconf_traces ($)
+       my ($here, $depth, @args) = split (/::/);
+       $where = new Automake::Location $here;
+       my $macro = $args[0];
++      next if ($macro eq "include");
+ 
+       prog_error ("unrequested trace `$macro'")
+ 	unless exists $traced{$macro};

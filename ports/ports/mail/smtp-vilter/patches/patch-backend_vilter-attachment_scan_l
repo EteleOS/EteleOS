@@ -1,0 +1,12 @@
+Index: backend/vilter-attachment/scan.l
+--- backend/vilter-attachment/scan.l.orig
++++ backend/vilter-attachment/scan.l
+@@ -19,7 +19,7 @@
+ 
+ #include <string.h>
+ 
+-#include "y.tab.h"
++#include "parse.h"
+ 
+ %}
+ 

@@ -1,0 +1,11 @@
+--- plugins/gmail/Makefile.in.orig	Sun Dec  6 10:04:26 2009
++++ plugins/gmail/Makefile.in	Thu Dec 31 11:12:41 2009
+@@ -293,7 +293,7 @@ libcsv_gmail_la_LTLIBRARIES = libcsvgmail.la
+ 
+ # Plugin sources
+ libcsvgmail_la_SOURCES = gmail_csv.c	gmail_csv.h
+-libcsvgmail_la_LDFLAGS = -version-info $(LIBCSV_GMAIL_CURRENT_VERSION):$(LIBCSV_GMAIL_REVISION_VERSION):$(LIBCSV_GMAIL_COMPAT_VERSION)
++libcsvgmail_la_LDFLAGS = -module -avoid-version
+ libcsv_gmail_LTLDFLAGS = -module -rpath./
+ 
+ # Include paths

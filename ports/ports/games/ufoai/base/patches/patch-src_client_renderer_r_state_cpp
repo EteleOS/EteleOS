@@ -1,0 +1,26 @@
+shut up clang errors
+upstream commit 8df1e514b0cef80f521ab5175288f82d640f40f0
+
+Index: src/client/renderer/r_state.cpp
+--- src/client/renderer/r_state.cpp.orig
++++ src/client/renderer/r_state.cpp
+@@ -147,7 +147,8 @@ void R_UseMaterial (const material_t* material)
+ 
+ void R_BindArray (GLenum target, GLenum type, const void* array)
+ {
+-	switch (target) {
++	const int v = static_cast<int>(target);
++	switch (v) {
+ 	case GL_VERTEX_ARRAY:
+ 		glVertexPointer(COMPONENTS_VERTEX_ARRAY3D, type, 0, array);
+ 		break;
+@@ -180,7 +181,8 @@ void R_BindArray (GLenum target, GLenum type, const vo
+  */
+ void R_BindDefaultArray (GLenum target)
+ {
+-	switch (target) {
++	const int v = static_cast<int>(target);
++	switch (v) {
+ 	case GL_VERTEX_ARRAY:
+ 		R_BindArray(target, GL_FLOAT, r_state.vertex_array_3d);
+ 		break;

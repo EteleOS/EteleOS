@@ -1,0 +1,12 @@
+Index: etc/rancid.conf.sample.in
+--- etc/rancid.conf.sample.in.orig
++++ etc/rancid.conf.sample.in
+@@ -26,7 +26,7 @@ TMPDIR=/tmp; export TMPDIR
+ # Be careful changing this, it affects CVSROOT below.  It should be a FQPN, not
+ # relative.
+ BASEDIR=@localstatedir@; export BASEDIR
+-PATH=@bindir@:@ENV_PATH@; export PATH
++PATH=/usr/bin:/bin:@prefix@/bin; export PATH
+ #
+ # Check that the effective UID is not root, which could lead to permissions
+ # problems for user who is supposed to be running rancid.  If you know what

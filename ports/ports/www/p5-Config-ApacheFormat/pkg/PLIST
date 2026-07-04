@@ -1,0 +1,3 @@
+${P5SITE}/Config/
+${P5SITE}/Config/ApacheFormat.pm
+@man man/man3p/Config::ApacheFormat.3p

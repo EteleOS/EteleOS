@@ -1,0 +1,14 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -1645,6 +1645,10 @@ else $as_nop
+ #include <limits.h>
+ #undef $2
+ 
++#ifdef __OpenBSD__
++#define iconv_open libiconv_open
++#endif
++
+ /* Override any GCC internal prototype to avoid an error.
+    Use char because int might match the return type of a GCC
+    builtin and then its argument prototype would still apply.  */

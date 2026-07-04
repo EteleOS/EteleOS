@@ -1,0 +1,16 @@
+avoid format/type mismatch on ILP32 archs (time_t is always 64 bit on OpenBSD)
+
+Index: libraries/libldap/os-local.c
+--- libraries/libldap/os-local.c.orig
++++ libraries/libldap/os-local.c
+@@ -164,8 +164,8 @@ ldap_pvt_connect(LDAP *ld, ber_socket_t s, struct sock
+ 	}
+ 
+ 	Debug3(LDAP_DEBUG_TRACE,
+-		"ldap_connect_timeout: fd: %d tm: %ld async: %d\n",
+-		s, opt_tv ? tv.tv_sec : -1L, async);
++		"ldap_connect_timeout: fd: %d tm: %lld async: %d\n",
++		s, opt_tv ? (long long)tv.tv_sec : -1LL, async);
+ 
+ 	if ( ldap_pvt_ndelay_on(ld, s) == -1 ) return -1;
+ 

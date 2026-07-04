@@ -1,0 +1,4 @@
+sbin/ods-convert_mysql_to_sqlite
+sbin/ods-migrate-sqlite3
+share/opendnssec/migration/migrate-sqlite.sql
+share/opendnssec/schema.sqlite

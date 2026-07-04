@@ -1,0 +1,4 @@
+${P5SITE}/BER.pm
+${P5SITE}/SNMP_Session.pm
+@comment ${P5SITE}/SNMP_Session.pm.orig
+${P5SITE}/SNMP_util.pm

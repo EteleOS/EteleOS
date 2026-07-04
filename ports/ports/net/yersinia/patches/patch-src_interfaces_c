@@ -1,0 +1,40 @@
+Index: src/interfaces.c
+--- src/interfaces.c.orig
++++ src/interfaces.c
+@@ -102,9 +102,9 @@
+ 
+ #include "interfaces.h"
+ 
++list_t *interfaces;
+ 
+ 
+-
+ ////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+ 
+@@ -218,13 +218,12 @@ interfaces_init_data_libnet( struct interface_data *in
+     if ( ( libnet_hnd = libnet_init( LIBNET_LINK, interface->ifname, errbuflibnet ) ) )
+     {
+         etheraddr = libnet_get_hwaddr( libnet_hnd );
++        libnet_destroy( libnet_hnd );
+ 
+         if ( etheraddr && memcmp( (void *)etheraddr, "\x0\x0\x0\x0\x0\x0", 6 ) )
+         {
+             memcpy( (void *)interface->etheraddr, (void *)etheraddr, ETHER_ADDR_LEN );
+         }
+-        
+-        libnet_destroy( libnet_hnd );
+ 
+         write_log( 0," %s MAC = %02x%02x.%02x%02x.%02x%02x\n", interface->ifname, 
+                    etheraddr->ether_addr_octet[0], etheraddr->ether_addr_octet[1],
+@@ -283,7 +282,9 @@ interfaces_init( THREAD *pcap_th )
+     
+     while( index )
+     {
+-        if ( ( strncmp( index->name, "any", strlen( index->name ) ) ) && ( index->flags != PCAP_IF_LOOPBACK ) )
++        if ( ( strncmp( index->name, "any", strlen( index->name ) ) ) &&
++		(strstr(index->name,"pflog") == NULL) && 
++		( index->flags != PCAP_IF_LOOPBACK ) )
+         {
+             if ( ( iface_data = (struct interface_data *)calloc( 1, sizeof( struct interface_data ) ) ) ) 
+             {

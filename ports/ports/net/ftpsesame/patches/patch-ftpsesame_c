@@ -1,0 +1,32 @@
+--- ftpsesame.c.orig	Tue Oct  5 13:07:24 2004
++++ ftpsesame.c	Wed Apr 12 22:47:32 2017
+@@ -19,10 +19,10 @@
+ #include <sys/ioctl.h>
+ 
+ #include <net/if.h>
+-#include <net/pfvar.h>
+ #include <net/ppp_defs.h>
+-#include <netinet/if_ether.h>
+ #include <netinet/in.h>
++#include <net/pfvar.h>
++#include <netinet/if_ether.h>
+ #include <netinet/in_systm.h>
+ #include <netinet/ip.h>
+ #include <netinet/tcp.h>
+@@ -34,6 +34,7 @@
+ #include <errno.h>
+ #include <pcap.h>
+ #include <pwd.h>
++#include <signal.h>
+ #include <stdarg.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -45,7 +46,7 @@
+ #include "filter.h"
+ #include "state.h"
+ 
+-#define NOPRIV_USER	"proxy"
++#define NOPRIV_USER	"_ftpsesame"
+ #define CHROOT_DIR	"/var/empty"
+ 
+ #define PCAP_TO_MS	500

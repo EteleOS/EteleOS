@@ -1,0 +1,10 @@
+--- examples/idtest.c.orig	Fri May 23 13:29:21 2014
++++ examples/idtest.c	Fri May 23 13:29:28 2014
+@@ -5,6 +5,7 @@
+  */
+ 
+ #include <droplet.h>
++#include <string.h>
+ 
+ int
+ main(int argc,

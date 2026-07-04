@@ -1,0 +1,14 @@
+Index: src/gpg_fmt_plug.c
+--- src/gpg_fmt_plug.c.orig
++++ src/gpg_fmt_plug.c
+@@ -50,6 +50,10 @@ john_register_one(&fmt_gpg);
+ #include "sha2.h"
+ #include "gpg_common.h"
+ 
++#ifndef C_Block
++#define C_Block DES_cblock
++#endif
++
+ #define FORMAT_LABEL        "gpg"
+ #define FORMAT_NAME         "OpenPGP / GnuPG Secret Key"
+ #define ALGORITHM_NAME      "32/" ARCH_BITS_STR

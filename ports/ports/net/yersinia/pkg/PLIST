@@ -1,0 +1,5 @@
+@bin bin/yersinia
+@man man/man8/yersinia.8
+share/doc/yersinia/
+share/doc/yersinia/FAQ
+share/doc/yersinia/README

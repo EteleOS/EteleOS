@@ -1,0 +1,17 @@
+@conflict icinga2-<2.2.4v0
+@lib lib/icinga2/libpgsql_shim.so.${LIBpgsql_shim_VERSION}
+share/examples/icinga2/features-available/ido-pgsql.conf
+@sample ${SYSCONFDIR}/icinga2/features-available/ido-pgsql.conf
+share/icinga2-ido-pgsql/
+share/icinga2-ido-pgsql/schema/
+share/icinga2-ido-pgsql/schema/pgsql.sql
+share/icinga2-ido-pgsql/schema/upgrade/
+share/icinga2-ido-pgsql/schema/upgrade/2.0.2.sql
+share/icinga2-ido-pgsql/schema/upgrade/2.1.0.sql
+share/icinga2-ido-pgsql/schema/upgrade/2.2.0.sql
+share/icinga2-ido-pgsql/schema/upgrade/2.3.0.sql
+share/icinga2-ido-pgsql/schema/upgrade/2.4.0.sql
+share/icinga2-ido-pgsql/schema/upgrade/2.5.0.sql
+share/icinga2-ido-pgsql/schema/upgrade/2.6.0.sql
+share/icinga2-ido-pgsql/schema/upgrade/2.8.0.sql
+share/icinga2-ido-pgsql/schema/upgrade/2.8.1.sql

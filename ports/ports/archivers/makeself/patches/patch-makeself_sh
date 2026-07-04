@@ -1,0 +1,14 @@
+Our utility is called sha256.
+
+Index: makeself.sh
+--- makeself.sh.orig
++++ makeself.sh
+@@ -678,7 +678,7 @@ if test "$SHA256" = y; then
+ 	if test -x "$SHA_PATH"; then
+ 		shasum=`eval "$SHA_PATH -a 256" < "$tmpfile" | cut -b-64`
+ 	else
+-		SHA_PATH=`exec <&- 2>&-; which sha256sum || command -v sha256sum || type sha256sum`
++		SHA_PATH=`exec <&- 2>&-; which sha256 || command -v sha256 || type sha256`
+ 		shasum=`eval "$SHA_PATH" < "$tmpfile" | cut -b-64`
+ 	fi
+ 	if test "$QUIET" = "n"; then

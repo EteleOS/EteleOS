@@ -1,0 +1,12 @@
+Samples are shared modules, not shared libraries
+
+--- Samples/CMakeLists.txt.orig	Sun Dec  1 18:28:12 2013
++++ Samples/CMakeLists.txt	Sun Mar 23 13:37:32 2014
+@@ -1,5 +1,7 @@
+ # Configure Samples build
+ 
++set(OGRE_LIB_TYPE MODULE)
++
+ if (OGRE_BUILD_SAMPLES AND NOT OIS_FOUND AND NOT ((OGRE_BUILD_PLATFORM_WINRT OR OGRE_BUILD_PLATFORM_WINDOWS_PHONE) AND OIS_INCLUDE_DIRS))
+   message(STATUS "Could not find dependency: OIS")
+   message(STATUS "Skipping samples build")

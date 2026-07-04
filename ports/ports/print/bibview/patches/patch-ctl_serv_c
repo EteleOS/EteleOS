@@ -1,0 +1,26 @@
+Index: ctl_serv.c
+--- ctl_serv.c.orig
++++ ctl_serv.c
+@@ -20,6 +20,8 @@
+ /*                                                                   */
+ /*********************************************************************/
+ 
++#include <stdlib.h>
++#include <unistd.h>
+ #include <stdio.h>
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+@@ -307,11 +309,11 @@ char *tempName;
+       bp->macrofile = (char *)XtMalloc(strlen(tempName)+1);
+       strcpy(bp->macrofile,tempName);
+ #else
+-      bp->macrofile = (char *)tempnam(NULL, NULL);
++      bp->macrofile = strdup("/tmp/aa.XXXXXXXX");
+ #endif
+       if (bp->macrofile == NULL)
+ 	 return(ERR_NOMALLOC);
+-      if ((fh = creat(bp->macrofile, 0700)) == -1)
++      if ((fh = mkstemp(bp->macrofile)) == -1)
+ 	 return(ERR_NO_OPEN_TMP);
+       close(fh);
+    }

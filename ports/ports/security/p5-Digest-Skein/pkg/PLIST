@@ -1,0 +1,11 @@
+${P5ARCH}/
+${P5ARCH}/Digest/
+${P5ARCH}/Digest/Skein.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Digest/
+${P5ARCH}/auto/Digest/Skein/
+${P5ARCH}/auto/Digest/Skein/Skein.so
+${P5ARCH}/auto/libskein/
+${P5ARCH}/auto/libskein/extralibs.ld
+${P5ARCH}/auto/libskein/libskein.a
+@man man/man3p/Digest::Skein.3p

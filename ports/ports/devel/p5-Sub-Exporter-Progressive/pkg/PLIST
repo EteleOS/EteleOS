@@ -1,0 +1,4 @@
+${P5SITE}/Sub/
+${P5SITE}/Sub/Exporter/
+${P5SITE}/Sub/Exporter/Progressive.pm
+@man man/man3p/Sub::Exporter::Progressive.3p

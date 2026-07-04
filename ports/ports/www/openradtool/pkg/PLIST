@@ -1,0 +1,84 @@
+@conflict kwebapp-*
+@pkgpath www/kwebapp
+@bin bin/ort
+@bin bin/ort-audit
+@bin bin/ort-audit-json
+@bin bin/ort-c-header
+@bin bin/ort-c-manpage
+@bin bin/ort-c-source
+@bin bin/ort-diff
+@bin bin/ort-javascript
+@bin bin/ort-json
+@bin bin/ort-nodejs
+@bin bin/ort-rust
+@bin bin/ort-sql
+@bin bin/ort-sqldiff
+@bin bin/ort-xliff
+include/ort-lang-javascript.h
+include/ort-lang-json.h
+include/ort-lang-nodejs.h
+include/ort-lang-rust.h
+include/ort-lang-sql.h
+include/ort-version.h
+include/ort.h
+@static-lib lib/libort-lang-c.a
+@static-lib lib/libort-lang-javascript.a
+@static-lib lib/libort-lang-json.a
+@static-lib lib/libort-lang-nodejs.a
+@static-lib lib/libort-lang-rust.a
+@static-lib lib/libort-lang-sql.a
+@static-lib lib/libort-lang-xliff.a
+@static-lib lib/libort.a
+lib/pkgconfig/ort-lang-javascript.pc
+lib/pkgconfig/ort-lang-json.pc
+lib/pkgconfig/ort-lang-nodejs.pc
+lib/pkgconfig/ort-lang-sql.pc
+lib/pkgconfig/ort.pc
+@man man/man1/ort-audit-json.1
+@man man/man1/ort-audit.1
+@man man/man1/ort-c-header.1
+@man man/man1/ort-c-manpage.1
+@man man/man1/ort-c-source.1
+@man man/man1/ort-diff.1
+@man man/man1/ort-javascript.1
+@man man/man1/ort-json.1
+@man man/man1/ort-nodejs.1
+@man man/man1/ort-rust.1
+@man man/man1/ort-sql.1
+@man man/man1/ort-sqldiff.1
+@man man/man1/ort-xliff.1
+@man man/man1/ort.1
+@man man/man3/ort.3
+@man man/man3/ort_audit.3
+@man man/man3/ort_auditq_free.3
+@man man/man3/ort_config_alloc.3
+@man man/man3/ort_config_free.3
+@man man/man3/ort_diff.3
+@man man/man3/ort_diffq_free.3
+@man man/man3/ort_lang_c_header.3
+@man man/man3/ort_lang_c_manpage.3
+@man man/man3/ort_lang_c_source.3
+@man man/man3/ort_lang_javascript.3
+@man man/man3/ort_lang_json.3
+@man man/man3/ort_lang_nodejs.3
+@man man/man3/ort_lang_sql.3
+@man man/man3/ort_lang_xliff_extract.3
+@man man/man3/ort_lang_xliff_join.3
+@man man/man3/ort_lang_xliff_update.3
+@man man/man3/ort_msg.3
+@man man/man3/ort_msgq_free.3
+@man man/man3/ort_parse_close.3
+@man man/man3/ort_parse_file.3
+@man man/man3/ort_write_diff_file.3
+@man man/man3/ort_write_file.3
+@man man/man3/ort_write_msg_file.3
+@man man/man5/ort.5
+share/openradtool/
+share/openradtool/audit.css
+share/openradtool/audit.html
+share/openradtool/audit.js
+share/openradtool/b64_ntop.c
+share/openradtool/gensalt.c
+share/openradtool/jsmn.c
+share/openradtool/ort-json.ts
+share/openradtool/ortPrivate.ts

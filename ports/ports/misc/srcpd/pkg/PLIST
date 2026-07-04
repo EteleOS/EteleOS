@@ -1,0 +1,14 @@
+@newgroup _srcpd:660
+@newuser _srcpd:660:_srcpd::srcpd user:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/srcpd
+man/de/
+man/de/man5/
+@man man/de/man5/srcpd.conf.5
+man/de/man8/
+@man man/de/man8/srcpd.8
+@man man/man5/srcpd.conf.5
+@man man/man8/srcpd.8
+@bin sbin/srcpd
+share/examples/srcpd/
+share/examples/srcpd/srcpd.conf
+@sample ${SYSCONFDIR}/srcpd.conf

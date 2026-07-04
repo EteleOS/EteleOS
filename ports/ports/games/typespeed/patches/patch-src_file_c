@@ -1,0 +1,58 @@
+Hunk #1: Fix -fno-common build failure.
+Hunk #2: Don't check if the userconf exists, inconditionally create
+         the userdir in ~/.typespeed and the user scorefile.
+
+Index: src/file.c
+--- src/file.c.orig
++++ src/file.c
+@@ -142,6 +142,9 @@ extern int	 hfd;
+ extern char	*rankki[11];
+ extern char	*typorank[12];
+ extern char	*usedwordfile;
++extern struct rules	rules;
++struct rawdata	words;
++struct opt	opt;
+ 
+ char ruledir[MAXPATHLEN];
+ char worddir[MAXPATHLEN];
+@@ -1125,7 +1125,7 @@ void
+ readconfig(void)
+ {
+ 	char *envhome;
+-	char userhigh[MAXPATHLEN], userconf[MAXPATHLEN];
++	char userhigh[MAXPATHLEN], userconf[MAXPATHLEN], userdir[MAXPATHLEN];
+ 	struct stat sb;
+ 
+ 	if (xsnprintf(ruledir, sizeof(ruledir), "%s", RULEDIR)) {
+@@ -1146,8 +1146,10 @@ readconfig(void)
+ 	    envhome))
+ 		return;
+ 
++#if 0
+ 	if (stat(userconf, &sb) || (sb.st_mode & S_IFMT) != S_IFREG)
+ 		return;
++#endif
+ 
+ 	if (xsnprintf(userhigh, sizeof(userhigh), "%s/.typespeed/score",
+ 	    envhome))
+@@ -1159,9 +1161,19 @@ readconfig(void)
+ 	 * file. Protect system-wide high score file with group
+ 	 * write permissions: privileged gid already dropped.
+ 	 */
++#if 0
+ 	if (close(hfd) == -1)
+ 		xerr(1, "readconfig: close");
+-	if ((hfd = open(userhigh, O_RDWR, 0)) == -1)
++#endif
++
++	if (xsnprintf(userdir, sizeof(userdir), "%s/.typespeed/",
++	    envhome))
++		return;
++
++	if (mkdir(userdir,S_IRWXU|S_IRGRP|S_IXGRP|S_IROTH|S_IXOTH) == -1 && errno != EEXIST)
++		xerr(1, "readconfig: mkdir: %s, error: %s"
++		    , userdir, strerror(errno));
++	if ((hfd = open(userhigh, O_RDWR|O_CREAT, S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH)) == -1)
+ 		xerr(1, "readconfig: open: %s", userhigh);
+ 
+ 	readfile(userconf, 1);

@@ -1,0 +1,12 @@
+Index: iodbcinst/SQLManageDataSource.c
+--- iodbcinst/SQLManageDataSource.c.orig
++++ iodbcinst/SQLManageDataSource.c
+@@ -139,7 +139,7 @@ ManageDataSources (HWND hwndParent)
+ # endif
+ #else
+ 
+-  CALL_ADMIN_DIALBOX ("libiodbcadm.so.2");
++  CALL_ADMIN_DIALBOX ("libiodbcadm.so");
+ #endif
+ 
+   return retcode;

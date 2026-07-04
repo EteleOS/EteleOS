@@ -1,0 +1,47 @@
+
+last chunk: MERGE_QT_TRANSLATIONS only in 6.9 ?
+https://doc.qt.io/qt-6/qtlinguist-cmake-qt-add-translations.html#merging-qt-provided-translations
+simplify translation handling (only cs is done anyway...)
+
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -180,32 +180,18 @@ if(NOT PDF4QT_BUILD_ONLY_CORE_LIBRARY)
+     add_subdirectory(WixInstaller)
+ endif()
+ 
+-qt_collect_translation_source_targets(i18n_targets)
+-message("CMAKE_TRANSLATION_TARGETS = " ${i18n_targets})
+-
+-set(PDF4QT_TRANSLATION_TS_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/translations)
+-set(PDF4QT_TRANSLATION_QM_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PDF4QT_INSTALL_BIN_DIR}/translations)
+-
+-message("PDF4QT_TRANSLATION_TS_OUTPUT_DIRECTORY" ${PDF4QT_TRANSLATION_TS_OUTPUT_DIRECTORY})
+-message("PDF4QT_TRANSLATION_QM_OUTPUT_DIRECTORY" ${PDF4QT_TRANSLATION_QM_OUTPUT_DIRECTORY})
+-
+ qt_add_translations(TARGETS Pdf4QtEditor Pdf4QtViewer Pdf4QtPageMaster Pdf4QtDiff PdfTool
+-                    SOURCE_TARGETS ${i18n_targets}
+-                    MERGE_QT_TRANSLATIONS
+-                    TS_OUTPUT_DIRECTORY ${PDF4QT_TRANSLATION_TS_OUTPUT_DIRECTORY}
+-                    QM_OUTPUT_DIRECTORY ${PDF4QT_TRANSLATION_QM_OUTPUT_DIRECTORY}
++                    TS_FILES translations/PDF4QT_cs.ts
++                             translations/PDF4QT_de.ts
++                             translations/PDF4QT_en.ts
++                             translations/PDF4QT_es.ts
++                             translations/PDF4QT_ko.ts
+                     QM_FILES_OUTPUT_VARIABLE pdf4qt_qm_files)
+ 
+-message("CMAKE_PREFIX_PATH = " ${CMAKE_PREFIX_PATH})
+-message("CMAKE_TOOLCHAIN_FILE = " ${CMAKE_TOOLCHAIN_FILE})
+-
+ configure_file(version.txt.in version.txt)
+ 
+ if(NOT PDF4QT_BUILD_ONLY_CORE_LIBRARY)
+-    install(DIRECTORY ${PDF4QT_TRANSLATION_QM_OUTPUT_DIRECTORY}
+-            RUNTIME DESTINATION ${PDF4QT_INSTALL_BIN_DIR}
+-            FILES_MATCHING
+-            PATTERN *.qm)
++    install(FILES ${pdf4qt_qm_files} DESTINATION share/pdf4qt/translations)
+ 
+     if(WIN32)
+         install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Desktop/44x44/

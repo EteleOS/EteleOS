@@ -1,0 +1,9 @@
+--- src/aamoureg.c.orig	Thu Apr 26 16:37:31 2001
++++ src/aamoureg.c	Mon Feb  9 00:50:35 2009
+@@ -1,4 +1,5 @@
+-#include <malloc.h>
++#include <stdlib.h>
++#include <string.h>
+ #include "config.h"
+ #include "aalib.h"
+ #include "aaint.h"

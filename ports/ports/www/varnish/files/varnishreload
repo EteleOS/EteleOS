@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# Reload active VCL.
+set -Cefu
+
+if [ $# -ge 2 ] || getopts '' _
+then
+	printf 'usage:\t%s [file]\n' "${0##*/}" 1>&2
+	exit 1
+fi
+
+FILE=${1:-${SYSCONFDIR}/varnish/default.vcl}
+NAME=${FILE##*/}
+NAME=${NAME%%.*}_$(date -u +%Y%m%d%H%M%S)
+
+${TRUEPREFIX}/bin/varnishadm -T ${MGTSOCK} -S ${MGTSEC} -- vcl.load "$NAME" "$FILE"
+${TRUEPREFIX}/bin/varnishadm -T ${MGTSOCK} -S ${MGTSEC} -- vcl.use "$NAME"

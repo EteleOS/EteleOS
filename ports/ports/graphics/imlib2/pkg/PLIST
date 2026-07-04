@@ -1,0 +1,75 @@
+@conflict imlib2-heic-*
+@pkgpath graphics/imlib2-heic
+@bin bin/imlib2_bumpmap
+@bin bin/imlib2_colorspace
+@bin bin/imlib2_conv
+@bin bin/imlib2_grab
+@bin bin/imlib2_load
+@bin bin/imlib2_poly
+@bin bin/imlib2_show
+@bin bin/imlib2_test
+@bin bin/imlib2_view
+include/Imlib2.h
+include/Imlib2_Loader.h
+lib/imlib2/
+lib/imlib2/filters/
+@so lib/imlib2/filters/bumpmap.so
+@so lib/imlib2/filters/colormod.so
+@so lib/imlib2/filters/testfilter.so
+lib/imlib2/loaders/
+@so lib/imlib2/loaders/ani.so
+@so lib/imlib2/loaders/argb.so
+@so lib/imlib2/loaders/bmp.so
+@so lib/imlib2/loaders/bz2.so
+@so lib/imlib2/loaders/ff.so
+@so lib/imlib2/loaders/gif.so
+@so lib/imlib2/loaders/heif.so
+@so lib/imlib2/loaders/ico.so
+@so lib/imlib2/loaders/id3.so
+@so lib/imlib2/loaders/j2k.so
+@so lib/imlib2/loaders/jpeg.so
+@so lib/imlib2/loaders/jxl.so
+@so lib/imlib2/loaders/lbm.so
+@so lib/imlib2/loaders/lzma.so
+@so lib/imlib2/loaders/png.so
+@so lib/imlib2/loaders/pnm.so
+@so lib/imlib2/loaders/qoi.so
+@so lib/imlib2/loaders/raw.so
+${COMMENT_SVG}@so lib/imlib2/loaders/svg.so
+@so lib/imlib2/loaders/tga.so
+@so lib/imlib2/loaders/tiff.so
+@so lib/imlib2/loaders/webp.so
+@so lib/imlib2/loaders/xbm.so
+@so lib/imlib2/loaders/xpm.so
+@so lib/imlib2/loaders/zlib.so
+@static-lib lib/libImlib2.a
+lib/libImlib2.la
+@lib lib/libImlib2.so.${LIBImlib2_VERSION}
+lib/pkgconfig/imlib2.pc
+share/imlib2/
+share/imlib2/data/
+share/imlib2/data/fonts/
+share/imlib2/data/fonts/cinema.ttf
+share/imlib2/data/fonts/grunge.ttf
+share/imlib2/data/fonts/morpheus.ttf
+share/imlib2/data/fonts/notepad.ttf
+share/imlib2/data/images/
+share/imlib2/data/images/audio.png
+share/imlib2/data/images/bg.png
+share/imlib2/data/images/bulb.png
+share/imlib2/data/images/cal.png
+share/imlib2/data/images/calc.png
+share/imlib2/data/images/folder.png
+share/imlib2/data/images/globe.png
+share/imlib2/data/images/imlib2.png
+share/imlib2/data/images/lock.png
+share/imlib2/data/images/mail.png
+share/imlib2/data/images/menu.png
+share/imlib2/data/images/mush.png
+share/imlib2/data/images/paper.png
+share/imlib2/data/images/sh1.png
+share/imlib2/data/images/sh2.png
+share/imlib2/data/images/sh3.png
+share/imlib2/data/images/stop.png
+share/imlib2/data/images/tnt.png
+share/imlib2/rgb.txt

@@ -1,0 +1,2 @@
+@bin bin/grepcidr
+@man man/man1/grepcidr.1

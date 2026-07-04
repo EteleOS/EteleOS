@@ -1,0 +1,12 @@
+Index: src/blame.c
+--- src/blame.c.orig
++++ src/blame.c
+@@ -38,7 +38,7 @@
+ /*
+  * Program name for errors.
+  */
+-const char *program_name;
++extern const char *program_name;
+ 
+ /*
+  * Package name/bug address for argp

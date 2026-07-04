@@ -1,0 +1,12 @@
+Index: src/Makefile.in
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -603,7 +603,7 @@ include_HEADERS = rrd.h rrd_format.h rrd_client.h
+ rrdcgi_SOURCES = rrd_cgi.c
+ rrdcgi_LDADD = librrd.la librrdupd.la
+ rrdupdate_SOURCES = rrdupdate.c
+-rrdupdate_LDADD = librrdupd.la
++rrdupdate_LDADD = librrdupd.la -lpthread
+ rrdtool_SOURCES = rrd_tool.c
+ rrdtool_DEPENDENCIES = librrd.la
+ rrdtool_LDADD = librrd.la

@@ -1,0 +1,20 @@
+Index: src/protocols.h
+--- src/protocols.h.orig
++++ src/protocols.h
+@@ -24,6 +24,7 @@
+ #define __PROTOCOLS_H__
+ 
+ #include <pcap.h>
++#include <sys/socket.h>
+ #include <net/if.h>
+ 
+ #ifdef SOLARIS
+@@ -207,7 +208,7 @@ struct protocol_def {
+        end_t end;
+ };
+ 
+-struct protocol_def protocols[MAX_PROTOCOLS];
++extern struct protocol_def protocols[MAX_PROTOCOLS];
+ 
+ void   protocol_init(void);
+ int8_t protocol_register(u_int8_t, const char *, const char *, const char *,

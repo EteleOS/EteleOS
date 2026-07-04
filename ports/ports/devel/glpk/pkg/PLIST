@@ -1,0 +1,22 @@
+@bin bin/glpsol
+include/glpk.h
+@static-lib lib/libglpk.a
+lib/libglpk.la
+@lib lib/libglpk.so.${LIBglpk_VERSION}
+share/doc/glpk/
+share/doc/glpk/cnfsat.pdf
+share/doc/glpk/glpk.pdf
+share/doc/glpk/gmpl.pdf
+share/doc/glpk/gmpl_es.pdf
+share/doc/glpk/gmpl_pt-BR.pdf
+share/doc/glpk/graphs.pdf
+share/doc/glpk/miplib2.txt
+share/doc/glpk/miplib3.txt
+share/doc/glpk/netlib.txt
+share/doc/glpk/notes/
+share/doc/glpk/notes/gomory.pdf
+share/doc/glpk/notes/keller.pdf
+share/doc/glpk/notes/scf.pdf
+share/doc/glpk/notes/simplex1.pdf
+share/doc/glpk/notes/simplex2.pdf
+share/doc/glpk/npp.txt

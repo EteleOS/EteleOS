@@ -1,0 +1,11 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -54,6 +54,7 @@ CFLAGS = @CFLAGS@ $(CCOPT) $(DEFS) $(INCLS)
+ LDFLAGS = @LDFLAGS@
+ 
+ # Standard LIBS
++LDFLAGS= @LDFLAGS@
+ LIBS = @LIBS@
+ 
+ INSTALL = @INSTALL@

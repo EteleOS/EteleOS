@@ -1,0 +1,8 @@
+@bin bin/ldapvacation
+@man man/man1/ldapvacation.1
+@man man/man5/ldapvacation.conf.5
+share/examples/ldapvacation/
+share/examples/ldapvacation/ldapvacation.conf
+@mode 0640
+@sample ${SYSCONFDIR}/ldapvacation.conf
+@mode

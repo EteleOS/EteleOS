@@ -1,0 +1,4 @@
+${P5SITE}/JSON/
+${P5SITE}/JSON/XS/
+${P5SITE}/JSON/XS/VersionOneAndTwo.pm
+@man man/man3p/JSON::XS::VersionOneAndTwo.3p

@@ -1,0 +1,17 @@
+share/doc/${FULLPKGNAME}/
+share/doc/${FULLPKGNAME}/README.md
+share/doc/${FULLPKGNAME}/gettime.md
+share/doc/${FULLPKGNAME}/index.md
+share/doc/${FULLPKGNAME}/links.md
+share/doc/${FULLPKGNAME}/parse.md
+share/doc/${FULLPKGNAME}/timetable.md
+share/doc/${FULLPKGNAME}/tzinfo.md
+share/lua/${MODLUA_VERSION}/luatz/
+share/lua/${MODLUA_VERSION}/luatz/gettime.lua
+share/lua/${MODLUA_VERSION}/luatz/init.lua
+share/lua/${MODLUA_VERSION}/luatz/parse.lua
+share/lua/${MODLUA_VERSION}/luatz/strftime.lua
+share/lua/${MODLUA_VERSION}/luatz/timetable.lua
+share/lua/${MODLUA_VERSION}/luatz/tzcache.lua
+share/lua/${MODLUA_VERSION}/luatz/tzfile.lua
+share/lua/${MODLUA_VERSION}/luatz/tzinfo.lua

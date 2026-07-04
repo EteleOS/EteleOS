@@ -1,0 +1,70 @@
+@bin bin/gwaei
+@bin bin/waei
+include/libwaei/
+include/libwaei/dict.h
+include/libwaei/dictinfo.h
+include/libwaei/dictinfolist.h
+include/libwaei/dictinst.h
+include/libwaei/dictinstlist.h
+include/libwaei/engine-data.h
+include/libwaei/engine.h
+include/libwaei/history.h
+include/libwaei/io.h
+include/libwaei/libwaei.h
+include/libwaei/preferences.h
+include/libwaei/queryline.h
+include/libwaei/regex.h
+include/libwaei/resultline.h
+include/libwaei/searchitem.h
+include/libwaei/utilities.h
+@static-lib lib/libwaei.a
+lib/libwaei.la
+@lib lib/libwaei.so.${LIBwaei_VERSION}
+libexec/gwaei/
+@bin libexec/gwaei/kpengine
+@man man/man1/gwaei.1
+@man man/man1/waei.1
+share/applications/gwaei.desktop
+share/doc/gwaei/
+share/doc/gwaei/COPYING
+share/doc/gwaei/ChangeLog
+share/doc/gwaei/NEWS
+share/glib-2.0/schemas/org.gnome.gwaei.gschema.xml
+share/gwaei/
+share/gwaei/book_green.png
+share/gwaei/dictionaryinstallwindow.ui
+share/gwaei/goo.png
+share/gwaei/google.png
+share/gwaei/installprogresswindow.ui
+share/gwaei/jdata.dat
+share/gwaei/kanjipadwindow.ui
+share/gwaei/logo.png
+share/gwaei/radicalswindow.ui
+share/gwaei/searchwindow.ui
+share/gwaei/settingswindow.ui
+share/gwaei/wikipedia.png
+share/icons/hicolor/16x16/actions/non-word-boundary.png
+share/icons/hicolor/16x16/actions/unknown-character.png
+share/icons/hicolor/16x16/actions/word-boundary.png
+share/icons/hicolor/16x16/apps/gwaei.png
+share/icons/hicolor/22x22/actions/non-word-boundary.png
+share/icons/hicolor/22x22/actions/unknown-character.png
+share/icons/hicolor/22x22/actions/word-boundary.png
+share/icons/hicolor/24x24/actions/non-word-boundary.png
+share/icons/hicolor/24x24/actions/unknown-character.png
+share/icons/hicolor/24x24/actions/word-boundary.png
+share/icons/hicolor/24x24/apps/gwaei.png
+share/icons/hicolor/32x32/apps/gwaei.png
+share/icons/hicolor/48x48/apps/gwaei.png
+share/icons/hicolor/scalable/apps/gwaei.svg
+share/locale/cs/LC_MESSAGES/gwaei.mo
+share/locale/de/LC_MESSAGES/gwaei.mo
+share/locale/es/LC_MESSAGES/gwaei.mo
+share/locale/fr/LC_MESSAGES/gwaei.mo
+share/locale/it/LC_MESSAGES/gwaei.mo
+share/locale/ja/LC_MESSAGES/gwaei.mo
+share/locale/tr/LC_MESSAGES/gwaei.mo
+share/locale/vi/LC_MESSAGES/gwaei.mo
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database
+@tag glib-compile-schemas

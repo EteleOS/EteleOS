@@ -1,0 +1,21 @@
+Index: src/core/window-props.c
+--- src/core/window-props.c.orig
++++ src/core/window-props.c
+@@ -54,7 +54,7 @@
+ #include <sys/types.h>
+ #include <pwd.h>
+ 
+-#ifdef HAVE_GTOP
++#if defined(HAVE_GTOP) && !defined(__OpenBSD__)
+ #include <glibtop/procuid.h>
+ #include <errno.h>
+ #include <pwd.h>
+@@ -443,7 +443,7 @@ reload_net_wm_user_time_window (MetaWindow    *window,
+ static gboolean
+ owner_of_process (pid_t process, uid_t *result)
+ {
+-#ifdef HAVE_GTOP
++#if defined(HAVE_GTOP) && !defined(__OpenBSD__)
+   glibtop_proc_uid process_details;
+ 
+   glibtop_get_proc_uid (&process_details, process);

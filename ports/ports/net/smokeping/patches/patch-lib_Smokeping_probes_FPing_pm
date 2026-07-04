@@ -1,0 +1,12 @@
+Index: lib/Smokeping/probes/FPing.pm
+--- lib/Smokeping/probes/FPing.pm.orig
++++ lib/Smokeping/probes/FPing.pm
+@@ -123,7 +123,7 @@ sub ping ($){
+     # pinging nothing is pointless
+     return unless @{$self->addresses};
+     my @params = () ;
+-    push @params, "-$self->{properties}{protocol}" if $self->{properties}{protocol} and $self->{enable}{proto};
++    push @params, "-$self->{properties}{protocol}" if $self->{properties}{protocol} and $self->{enable}{proto} and not $self->binary =~ /fping6/;
+     push @params, "-b$self->{properties}{packetsize}" if $self->{properties}{packetsize};
+     push @params, "-t" . int(1000 * $self->{properties}{timeout}) if $self->{properties}{timeout};
+     push @params, "-i" . int(1000 * $self->{properties}{mininterval});

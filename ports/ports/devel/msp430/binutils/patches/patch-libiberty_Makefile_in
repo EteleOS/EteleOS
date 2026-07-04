@@ -1,0 +1,12 @@
+--- libiberty/Makefile.in.orig	Tue Nov  2 16:20:46 2010
++++ libiberty/Makefile.in	Mon Apr 25 21:47:07 2011
+@@ -340,7 +340,8 @@ libiberty.html : $(srcdir)/libiberty.texi $(TEXISRC)
+ @MAINT@	echo stamp > stamp-functions
+ 
+ INSTALL_DEST = @INSTALL_DEST@
+-install: install_to_$(INSTALL_DEST) install-subdir
++#install: install_to_$(INSTALL_DEST) install-subdir
++install:
+ 
+ # This is tricky.  Even though CC in the Makefile contains
+ # multilib-specific flags, it's overridden by FLAGS_TO_PASS from the

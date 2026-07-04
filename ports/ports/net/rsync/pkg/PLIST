@@ -1,0 +1,14 @@
+@newgroup _rsync:669
+@newuser _rsync:669:_rsync::rsync Daemon:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/rsyncd
+bin/rrsync
+@bin bin/rsync
+bin/rsync-ssl
+@man man/man1/rrsync.1
+@man man/man1/rsync-ssl.1
+@man man/man1/rsync.1
+@man man/man5/rsyncd.conf.5
+share/doc/rsync/
+share/doc/rsync/tech_report.tex
+@extra ${SYSCONFDIR}/rsyncd.conf
+!%%minimal%%

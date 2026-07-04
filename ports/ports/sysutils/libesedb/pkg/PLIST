@@ -1,0 +1,19 @@
+@bin bin/esedbexport
+@bin bin/esedbinfo
+include/libesedb/
+include/libesedb.h
+include/libesedb/codepage.h
+include/libesedb/definitions.h
+include/libesedb/error.h
+include/libesedb/extern.h
+include/libesedb/features.h
+include/libesedb/types.h
+@static-lib lib/libesedb.a
+lib/libesedb.la
+@lib lib/libesedb.so.${LIBesedb_VERSION}
+lib/pkgconfig/libesedb.pc
+lib/python${MODPY_VERSION}/site-packages/pyesedb.a
+lib/python${MODPY_VERSION}/site-packages/pyesedb.la
+@so lib/python${MODPY_VERSION}/site-packages/pyesedb.so
+@man man/man1/esedbinfo.1
+@man man/man3/libesedb.3

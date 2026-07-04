@@ -1,0 +1,11 @@
+--- Scene.h.orig	Wed Dec  5 17:38:08 2012
++++ Scene.h	Wed Dec  5 17:38:32 2012
+@@ -138,7 +138,7 @@ class Transform (public)
+     }
+   }
+ private:
+-  Transform() {}
++  Transform() : m_bypass(false) {}
+   bool m_bypass;
+   b2Mat22 m_rot;
+   b2Mat22 m_invrot;

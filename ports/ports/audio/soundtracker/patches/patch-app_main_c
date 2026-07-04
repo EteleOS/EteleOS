@@ -1,0 +1,45 @@
+Index: app/main.c
+--- app/main.c.orig
++++ app/main.c
+@@ -47,7 +47,7 @@
+ XM* xm = NULL;
+ int pipea[2], pipeb[2];
+ 
+-#ifndef DEBUG
++#if 0
+ static void
+ sigsegv_handler(int parameter)
+ {
+@@ -82,6 +82,9 @@ int main(int argc,
+ #ifdef DRIVER_SUN
+         driver_out_sun, driver_in_sun,
+ #endif
++#ifdef DRIVER_SNDIO
++	driver_out_sndio, driver_in_sndio,
++#endif
+ #ifdef DRIVER_SDL
+         driver_out_sdl,
+ #endif
+@@ -182,6 +185,13 @@ int main(int argc,
+         &driver_in_sun);
+ #endif
+ 
++#ifdef DRIVER_SNDIO
++    drivers[DRIVER_OUTPUT] = g_list_append(drivers[DRIVER_OUTPUT],
++					   &driver_out_sndio);
++    drivers[DRIVER_INPUT] = g_list_append(drivers[DRIVER_INPUT],
++					   &driver_in_sndio);
++#endif
++
+ #ifdef _WIN32
+     drivers[DRIVER_OUTPUT] = g_list_append(drivers[DRIVER_OUTPUT],
+         &driver_out_dsound);
+@@ -226,7 +236,7 @@ int main(int argc,
+         midi_load_config();
+         midi_init();
+ #endif
+-#ifndef DEBUG
++#if 0
+         signal(SIGSEGV, sigsegv_handler);
+ #endif
+         gtk_main();

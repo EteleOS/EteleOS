@@ -1,0 +1,12 @@
+Index: docs/hypermail.html
+--- docs/hypermail.html.orig
++++ docs/hypermail.html
+@@ -600,7 +600,7 @@ Hypermail development is currently being fostered by
+ <BLOCKQUOTE> 
+ <STRONG>hypermail(1)</STRONG>,
+ &nbsp; 
+-<STRONG>hmrc(4)</STRONG>,
++<STRONG>hmrc(5)</STRONG>,
+ &nbsp; 
+ <STRONG><A HREF="hmrc.html">Hypermail List Configuration File</A></STRONG>.
+ &nbsp; 

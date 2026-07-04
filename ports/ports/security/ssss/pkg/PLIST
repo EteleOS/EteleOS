@@ -1,0 +1,5 @@
+@bin bin/ssss-combine
+@bin bin/ssss-split
+@man man/man1/ssss-combine.1
+@man man/man1/ssss-split.1
+@man man/man1/ssss.1

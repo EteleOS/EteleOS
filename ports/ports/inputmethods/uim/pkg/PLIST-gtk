@@ -1,0 +1,10 @@
+@bin bin/uim-im-switcher-gtk
+@bin bin/uim-input-pad-ja
+@bin bin/uim-pref-gtk
+@bin bin/uim-toolbar-gtk
+@bin bin/uim-toolbar-gtk-systray
+@so lib/gtk-2.0/2.10.0/immodules/im-uim.so
+@bin libexec/uim-candwin-gtk
+@bin libexec/uim-candwin-horizontal-gtk
+@bin libexec/uim-candwin-tbl-gtk
+@tag gtk-query-immodules-2.0

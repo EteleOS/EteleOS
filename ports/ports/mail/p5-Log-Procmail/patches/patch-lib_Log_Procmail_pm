@@ -1,0 +1,21 @@
+Index: lib/Log/Procmail.pm
+--- lib/Log/Procmail.pm.orig
++++ lib/Log/Procmail.pm
+@@ -59,7 +59,7 @@ sub next {
+             };
+ 
+             # assert: $read == 2;
+-            /^ Subject: (.*)/i && do {
++            /^ Subject:\s*(.*)/i && do {
+                 push @{$log->{buffer}}, Log::Procmail::Abstract->new()
+                     unless @{$log->{buffer}};
+                 $log->{buffer}[0]->subject($1);
+@@ -69,7 +69,7 @@ sub next {
+             # procmail tabulates with tabs and spaces... :-(
+             # assert: $read == 3;
+             # Folder means the end of this record
+-            /^  Folder: (.*?)\s+(\d+)$/ && do {
++            /^  Folder:\s*(.*?)\s+(\d+)$/ && do {
+                 push @{$log->{buffer}}, Log::Procmail::Abstract->new()
+                   unless @{$log->{buffer}};
+ 

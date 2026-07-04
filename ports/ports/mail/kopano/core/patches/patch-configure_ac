@@ -1,0 +1,100 @@
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -87,7 +87,7 @@ AM_PROG_CC_C_O
+ AC_PROG_CXX
+ AC_PROG_INSTALL
+ dnl Needed, at the very least, for `make dist` (hence outside enable_base)
+-AX_PKG_SWIG_MAX(3, [], [ AC_MSG_ERROR([SWIG 3 is required to build..]) ])
++AC_PATH_PROG([SWIG_EXEC], [swig])
+ 
+ # configure may rerun as part of git-checking out a different version,
+ # so remove stale version
+@@ -103,11 +103,13 @@ AS_CASE([$host_os],
+ 		BUILDOS="openbsd"
+ 		ZCPPFLAGS="$ZCPPFLAGS -DOPENBSD"
+ 		LN_TFSV="ln -fs"
++		TINFO_LIB=""
+ 	],
+ 	[linux*], [
+ 		BUILDOS="linux"
+ 		ZCPPFLAGS="$ZCPPFLAGS -DLINUX"
+ 		LN_TFSV="ln -Tfsv"
++		TINFO_LIB="-ltinfo"
+ 	],
+ 	[*], [
+ 		LN_TFSV="ln -fs"
+@@ -257,7 +259,7 @@ AC_DEFUN([LIBNCURSES_WITH_CONFIG],[
+ 		[
+ 			dnl just pick the lowest common denominator
+ 			NCURSES_FLAGS=""
+-			NCURSES_LIBS="-lncurses -ltinfo"
++			NCURSES_LIBS="-lncurses ${TINFO_LIB}"
+ 		]
+ 	)
+ 	AC_CHECK_HEADERS([ncurses.h])
+@@ -290,6 +292,7 @@ AS_IF([test "$with_php" != "no"], [
+ 	AS_CASE([$PHP_VERSION],
+ 		[5.*], [AC_MSG_ERROR([php5 is not supported])],
+ 		[7.*], [with_php=7]
++		[8.*], [with_php=7]
+ 	)
+ ])
+ PKG_CHECK_MODULES([libHX], [libHX >= 1.10])
+@@ -408,7 +411,7 @@ PKG_CHECK_MODULES([TCMALLOC], [libtcmalloc_minimal], [
+ CPPFLAGS="$CPPFLAGS $TCMALLOC_CFLAGS"
+ AC_CHECK_HEADERS([gperftools/malloc_extension.h google/malloc_extension.h])
+ CPPFLAGS="$CPPFLAGS_system"
+-PKG_CHECK_MODULES([VMIME], [vmime >= 0.9.2k1])
++PKG_CHECK_MODULES([VMIME], [vmime >= 0.9.2])
+ PKG_CHECK_MODULES([jsoncpp], [jsoncpp >= 1.4.0], [], [
+ 	PKG_CHECK_MODULES([jsoncpp], [jsoncpp >= 0.8 jsoncpp < 1])
+ ])
+@@ -423,7 +426,7 @@ LDAP_FLAGS=""
+ LDAP_LIBS=""
+ AC_CHECK_HEADERS([ldap.h], [
+ 	LDAP_FLAGS="-DLDAP_DEPRECATED=1"
+-	LDAP_LIBS="-lldap_r"
++	LDAP_LIBS="-L/usr/local/lib -lldap"
+ 	want_ldap=yes
+ ])
+ AC_SUBST(LDAP_LIBS)
+@@ -448,7 +451,7 @@ iconv_t i; i = iconv_open("", "");
+ 	[ AC_MSG_RESULT([yes]) ],
+ 	[ AC_MSG_RESULT([no])
+ 	  AC_MSG_CHECKING([for iconv in -liconv])
+-	  LIBS="$LIBS -liconv"
++	  LIBS="$LIBS -L/usr/local/lib -liconv"
+ 	  AC_LINK_IFELSE([ AC_LANG_SOURCE([
+ #include <stdlib.h>
+ #include <iconv.h>
+@@ -467,7 +470,7 @@ AC_SEARCH_LIBS([crypt_r], [crypt], [
+ ])
+ LIBS="$LIBS_system"
+ AC_SEARCH_LIBS([clock_gettime], [rt], [
+-	AS_IF([test "$LIBS" = "$LIBS_system"], [clock_LIBS=""], [clock_LIBS="-lrt"])
++	AS_IF([test "$LIBS" = "$LIBS_system"], [clock_LIBS=""], [clock_LIBS=""])
+ ])
+ LIBS="$LIBS_system"
+ AC_SUBST([CRYPT_LIBS])
+@@ -585,9 +588,9 @@ AC_LINK_IFELSE([LIBINTLTEST], [
+ ], [
+ 	AC_MSG_RESULT([no])
+ 	AC_MSG_CHECKING([dcgettext in -lintl])
+-	LIBS="-lintl"
++	LIBS="-L/usr/local/lib -lintl"
+ 	AC_LINK_IFELSE([LIBINTLTEST], [
+-		INTL_LIBS="-lintl"
++		INTL_LIBS="-L/usr/local/lib -lintl"
+ 		AC_MSG_RESULT([yes])
+ 	], [
+ 		AC_MSG_RESULT([no])
+@@ -696,7 +699,7 @@ AM_CONDITIONAL([WITH_EPOLL], [test "$want_epoll" = "ye
+ AM_CONDITIONAL([WITH_KRB5], [test -n "$KRB5_LIBS"])
+ AM_CONDITIONAL([WITH_LDAP], [test "$want_ldap" = yes])
+ AM_CONDITIONAL([WITH_PAM], [test -n "$PAM_LIBS"])
+-AM_CONDITIONAL([WITH_PHP7], [test "$with_php" = 7])
++AM_CONDITIONAL([WITH_PHP7], [test "$with_php" = 7 -o "$with_php" = 8])
+ AM_CONDITIONAL([WITH_UNIX], [test "$want_unix" = yes])
+ AS_IF([test -n "$PYTHON_LIBS" || test -n "$PYTHON"], [AM_PATH_PYTHON([2.5])])
+ 

@@ -1,0 +1,38 @@
+Index: Makefile.PL
+--- Makefile.PL.orig
++++ Makefile.PL
+@@ -3,6 +3,7 @@
+ use strict;
+ use warnings;
+ use Config;
++BEGIN { push @INC, '.'; }
+ use inc::Module::Install;
+ 
+ # Automatically select XS or PP version in case neither argument is given
+@@ -34,7 +35,9 @@ if ($do_xs) {
+   if ($^O =~ /win32/i) {
+     cc_lib_links('FLAC_static');
+   } else {
+-    cc_lib_links('FLAC');
++    cc_inc_paths($ENV{'INCPATH'});
++    cc_lib_paths($ENV{'LIBPATH'});
++    cc_lib_links('FLAC', 'ogg');
+     cc_optimize_flags('-Wall') if $Config::Config{'archname'} =~ /gnu/i;
+   }
+ 
+@@ -57,12 +60,12 @@ sub search_lib {
+   my $libbase = 'lib' . substr($lib, 2) . $Config{lib_ext};
+   my $libbase_so = 'lib' . substr($lib, 2) . "." . $Config{so};
+ 
+-  for my $path (split(' ', $Config{libpth})) {
+-    if (-f $path . '/' . $libbase) {
++  for my $path (split(' ', $ENV{'LIBPATH'})) {
++    if (-f $path . '/' . $libbase_so) {
+       print "$path/$libbase\n";
+       print "Found '$path/$libbase'.\n";
+       return $lib;
+-    } elsif (-f $path . '/' . $libbase_so) {
++    } elsif (-f $path . '/' . $libbase) {
+       print "$path/$libbase_so\n";
+       print "Found `$_/$libbase_so'.\n";
+       return $lib;

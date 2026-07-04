@@ -1,0 +1,10 @@
+--- t/03podspelling.t.orig	Tue Oct  1 12:19:39 2013
++++ t/03podspelling.t	Tue Oct  1 12:19:24 2013
+@@ -13,6 +13,7 @@ add_stopwords(<DATA>);
+ all_pod_files_spelling_ok();
+ 
+ __DATA__
++behaviour
+ merchantability
+ Doran
+ FIXME

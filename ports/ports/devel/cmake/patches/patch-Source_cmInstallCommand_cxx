@@ -1,0 +1,26 @@
+Index: Source/cmInstallCommand.cxx
+--- Source/cmInstallCommand.cxx.orig
++++ Source/cmInstallCommand.cxx
+@@ -677,6 +677,9 @@ bool HandleTargetsMode(std::vector<std::string> const&
+   }
+ 
+   // Select the mode for installing symlinks to versioned shared libraries.
++  // Do not install symlinks to versioned shared libraries on OpenBSD.
++  // Use NamelinkModeSkip unconditionally.
++#if !defined(__OpenBSD__)
+   cmInstallTargetGenerator::NamelinkModeType namelinkMode =
+     cmInstallTargetGenerator::NamelinkModeNone;
+   if (libraryArgs.GetNamelinkOnly()) {
+@@ -692,6 +695,12 @@ bool HandleTargetsMode(std::vector<std::string> const&
+   } else if (archiveArgs.GetNamelinkSkip()) {
+     importlinkMode = cmInstallTargetGenerator::NamelinkModeSkip;
+   }
++#else
++  cmInstallTargetGenerator::NamelinkModeType namelinkMode =
++    cmInstallTargetGenerator::NamelinkModeSkip;
++  cmInstallTargetGenerator::NamelinkModeType importlinkMode =
++    cmInstallTargetGenerator::NamelinkModeSkip;
++#endif
+ 
+   // Check if there is something to do.
+   if (targetList.empty()) {

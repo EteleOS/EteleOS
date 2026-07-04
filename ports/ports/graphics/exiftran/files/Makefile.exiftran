@@ -1,0 +1,18 @@
+.PATH: ${.CURDIR}/../..
+PROG=	exiftran
+SRCS=	exiftran.c genthumbnail.c jpegtools.c filter.c op.c readers.c
+
+.PATH: ${.CURDIR}/../../jpeg/62
+SRCS+=	transupp.c
+
+.PATH: ${.CURDIR}/../../rd
+SRCS+=	read-jpeg.c
+
+LDADD=	-L${PREFIX}/lib -ljpeg -lexif -lm $$(pkg-config --libs pixman-1)
+
+CFLAGS+= -I${PREFIX}/include -I${.CURDIR}/../../jpeg/62 \
+	-I${.CURDIR}/../.. $$(pkg-config --cflags pixman-1) -DHAVE_NEW_EXIF
+
+MAN=
+
+.include <bsd.prog.mk>

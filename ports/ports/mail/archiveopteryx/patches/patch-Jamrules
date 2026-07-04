@@ -1,0 +1,26 @@
+--- Jamrules.orig	Mon Mar 10 14:44:59 2014
++++ Jamrules	Mon Feb 27 17:16:24 2017
+@@ -34,12 +34,9 @@ else if $(CLANG) {
+     LINKFLAGS += -lstdc++ ;
+ }
+ else {
+-    C++ = g++ ;
+-    C++FLAGS += -W -Wall -Wno-unused-result ;
++    C++ = c++ ;
++    C++FLAGS += -W -Wall ;
+     BUILD = build/gcc ;
+-    if $(OPTIM) {
+-        BUILD = build/gcc$(OPTIM) ;
+-    }
+ 
+     if $(COV) {
+         C++FLAGS += -fprofile-arcs -ftest-coverage ;
+@@ -47,7 +44,7 @@ else {
+     }
+ 
+     if $(CCACHE) {
+-        C++ = ccache g++ ;
++        C++ = ccache c++ ;
+     }
+ }
+ 

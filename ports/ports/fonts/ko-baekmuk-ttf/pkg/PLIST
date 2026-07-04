@@ -1,0 +1,7 @@
+@pkgpath korean/baekmuk-ttf
+share/fonts/
+@fontdir share/fonts/korean/
+share/fonts/korean/batang.ttf
+share/fonts/korean/dotum.ttf
+share/fonts/korean/gulim.ttf
+share/fonts/korean/hline.ttf

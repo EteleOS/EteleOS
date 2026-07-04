@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/PerlIO/
+${P5ARCH}/PerlIO/gzip.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/PerlIO/
+${P5ARCH}/auto/PerlIO/gzip/
+${P5ARCH}/auto/PerlIO/gzip/gzip.so
+@man man/man3p/PerlIO::gzip.3p

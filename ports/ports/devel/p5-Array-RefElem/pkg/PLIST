@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Array/
+${P5ARCH}/Array/RefElem.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Array/
+${P5ARCH}/auto/Array/RefElem/
+${P5ARCH}/auto/Array/RefElem/RefElem.so
+@man man/man3p/Array::RefElem.3p

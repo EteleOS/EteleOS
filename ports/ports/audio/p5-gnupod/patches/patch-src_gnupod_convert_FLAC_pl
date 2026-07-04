@@ -1,0 +1,11 @@
+--- src/gnupod_convert_FLAC.pl.orig	Mon May 30 12:05:46 2011
++++ src/gnupod_convert_FLAC.pl	Mon May 30 12:06:44 2011
+@@ -122,7 +122,7 @@ else {
+ # Check if ffmpeg knows how to encode 'alac'
+ sub check_ffmpeg_alac {
+ 	my @alac_support = grep(/\s+DEA\s+alac/,split(/\n/,
+-		`ffmpeg -formats 2> /dev/null`));
++		`ffmpeg -codecs 2> /dev/null`));
+ 	return (defined(@alac_support));
+ }
+ 

@@ -1,0 +1,3 @@
+${P5SITE}/Parse/
+${P5SITE}/Parse/RecDescent.pm
+@man man/man3p/Parse::RecDescent.3p

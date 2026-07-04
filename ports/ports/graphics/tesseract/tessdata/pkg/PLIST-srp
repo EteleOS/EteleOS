@@ -1,0 +1,5 @@
+@conflict tesseract-<3.02.02
+@pkgpath graphics/tesseract,-srp
+@pkgpath graphics/tesseract-langs/srp
+share/tessdata/
+share/tessdata/srp.traineddata

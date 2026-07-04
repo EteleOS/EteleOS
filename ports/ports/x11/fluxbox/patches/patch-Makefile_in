@@ -1,0 +1,23 @@
+--- Makefile.in.orig	Sun Feb  8 04:44:52 2015
++++ Makefile.in	Mon Feb  9 04:26:49 2015
+@@ -5275,7 +5275,6 @@ src/defaults.hh:
+ 
+ src/defaults.cc: force
+ 	@( \
+-		GITDIR=$(top_srcdir)/.git; \
+ 		echo '// This file is generated from Makefile. Do not edit!'; \
+ 		echo '#include "defaults.hh"'; \
+ 		echo ''; \
+@@ -5284,11 +5283,7 @@ src/defaults.cc: force
+ 		echo '}'; \
+ 		echo ''; \
+ 		echo 'const char* gitrevision() {'; \
+-		if test -r $$GITDIR/HEAD; then \
+-			echo '  return "'`cd $$GITDIR && git rev-parse HEAD`'";'; \
+-		else \
+-			echo '  return "unknown";'; \
+-		fi; \
++		echo '  return "unknown";'; \
+ 		echo '}' ) > $(top_builddir)/src/defaults_tmp.cc
+ 	@if ! cmp $(top_builddir)/src/defaults_tmp.cc $(top_builddir)/src/defaults.cc ; then cp $(top_builddir)/src/defaults_tmp.cc $(top_builddir)/src/defaults.cc; fi
+ 	@rm $(top_builddir)/src/defaults_tmp.cc

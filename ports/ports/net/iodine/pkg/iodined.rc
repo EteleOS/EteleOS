@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/iodined"
+
+. /etc/rc.d/rc.subr
+
+pexp="${daemon} .*"
+rc_reload=NO
+
+rc_cmd $1

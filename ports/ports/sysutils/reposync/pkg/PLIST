@@ -1,0 +1,5 @@
+bin/reposync
+@man man/man1/reposync.1
+share/doc/pkg-readmes/${PKGSTEM}
+share/reposync/
+share/reposync/ssh_known_hosts

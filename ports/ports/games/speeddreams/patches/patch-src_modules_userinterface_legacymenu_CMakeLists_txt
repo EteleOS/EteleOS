@@ -1,0 +1,14 @@
+Index: src/modules/userinterface/legacymenu/CMakeLists.txt
+--- src/modules/userinterface/legacymenu/CMakeLists.txt.orig
++++ src/modules/userinterface/legacymenu/CMakeLists.txt
+@@ -78,6 +78,10 @@ ADD_SDL2_INCLUDEDIR()
+ 
+ ADD_ENET_INCLUDEDIR()
+ 
++IF(UNIX)
++    INCLUDE_DIRECTORIES(${X11_INCLUDE_DIR})
++ENDIF(UNIX)
++
+ IF(WIN32)
+     # DLL export stuff under Windows (to avoid .def file)
+     ADD_DEFINITIONS(-DLEGACYMENU_DLL)

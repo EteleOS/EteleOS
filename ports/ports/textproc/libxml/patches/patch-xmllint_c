@@ -1,0 +1,12 @@
+Index: xmllint.c
+--- xmllint.c.orig
++++ xmllint.c
+@@ -2446,7 +2446,7 @@ static void usage(FILE *f, const char *name) {
+ #ifdef LIBXML_CATALOG_ENABLED
+     fprintf(f, "\t--catalogs : use SGML catalogs from $SGML_CATALOG_FILES\n");
+     fprintf(f, "\t             otherwise XML Catalogs starting from \n");
+-    fprintf(f, "\t         file://" XML_SYSCONFDIR "/xml/catalog "
++    fprintf(f, "\t         file:///var/db/xmlcatalog "
+             "are activated by default\n");
+     fprintf(f, "\t--nocatalogs: deactivate all catalogs\n");
+ #endif

@@ -1,0 +1,13 @@
+Index: FileNom.h
+--- FileNom.h.orig
++++ FileNom.h
+@@ -52,7 +52,9 @@
+ 
+ #define XtNselectCallback "selectCallback"
+ #define XtNselectMenu "selectMenu"
++#ifndef XtNcancelCallback
+ #define XtNcancelCallback "cancelCallback"
++#endif
+ #define XtNmargin "margin"
+ #define XtNnumberRows "numberRows"
+ #define XtNshowDotFiles "showDotFiles"

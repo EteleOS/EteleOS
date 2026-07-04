@@ -1,0 +1,10 @@
+--- src/condvar.h.orig
++++ src/condvar.h
+@@ -29,6 +29,7 @@
+ ///@note Condition variables work toger with class mutex.
+ class condvar
+ {
++	typedef dd::mutex mutex;
+  protected:
+ 	struct SDL_cond* cdv;
+  private:

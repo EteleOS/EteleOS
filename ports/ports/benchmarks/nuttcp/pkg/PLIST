@@ -1,0 +1,5 @@
+@bin bin/nuttcp
+@man man/man8/nuttcp.8
+share/doc/nuttcp/
+share/doc/nuttcp/README
+share/doc/nuttcp/examples.txt

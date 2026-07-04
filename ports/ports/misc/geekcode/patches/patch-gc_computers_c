@@ -1,0 +1,11 @@
+Index: gc_computers.c
+--- gc_computers.c.orig
++++ gc_computers.c
+@@ -20,6 +20,7 @@
+ */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "geekcode.h"
+ 
+ int get_computers(void)

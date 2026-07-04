@@ -1,0 +1,179 @@
+--- mapivi.orig	Thu Feb 21 20:53:44 2008
++++ mapivi	Sun Jul 14 12:07:09 2013
+@@ -148,12 +148,12 @@ if (($EvilOS) and (defined $ENV{APPDATA}) and ($maprog
+ # for windows we use this path
+ $maprogsdir     = $ENV{APPDATA}."/maprogs" if defined $ENV{APPDATA};
+ my $configdir   = "$maprogsdir/mapivi";   # the configuration dir
+-my $icon_path   = "$configdir/icons";     # the icon dir
++my $icon_path   = "${PREFIX}/share/mapivi/icons";     # the icon dir
+ 
+ my $splashAvail = (eval "require Tk::Splash")  ? 1 : 0 ;
+ my $splash;
+-my $logo = "$configdir/logo.jpg";
+-if ($splashAvail and -f $logo) {
++my $logo = "${PREFIX}/share/mapivi/pics/logo.jpg";
++if ($splashAvail and -f $logo and -d $configdir) {
+   # Splash->Show parameters: $image, $width, $height, $title, $overrideredirect
+   $splash = Tk::Splash->Show($logo, 844, 259, "", 1);
+ }
+@@ -360,7 +360,7 @@ my $nrToConvert     = 0;
+ my $maxCommentLength = 2**16 - 3; # a comment block may have max 64kB
+ 
+ my $trashdir        = "$configdir/trash";     # the trashcan
+-my $plugindir       = "$configdir/PlugIns";   # the mapivi plugin dir
++my $plugindir       = "${PREFIX}/share/mapivi/PlugIns";   # the mapivi plugin dir
+ my $iptcdir         = "$configdir/IPTC_templates";  # the IPTC templates folder
+ my $configFile      = "$configdir/mapivirc";  # the configuration file
+ my $file_Entry_values = "$configdir/Entry_values";
+@@ -445,7 +445,7 @@ my %new_keywords;
+ my %ignore_keywords;
+ 
+ # external programs used by mapivi
+-my %exprogs = qw/convert 0 composite 0 jhead 0 jpegtran 0 jpegpixi 0 mogrify 0 gimp-remote 0 gimp-win-remote 0 montage 0 xwd 0 identify 0 thunderbird 0 mozilla-thunderbird 0 exiftool 0/;
++my %exprogs = qw/convert 0 composite 0 jhead 0 jpegtran 0 jpegpixi 0 mogrify 0 gimp 0 montage 0 identify 0 exiftool 0/;
+ # short comment about the usage of the external programs
+ my %exprogscom = (
+ 		   "convert"        => "build thumbnails",
+@@ -455,12 +455,9 @@ my %exprogscom = (
+ 		   "jpegpixi"       => "do nearly lossless interpolation (remove dead pixels)",
+ 		   "mogrify"        => "change the size/quality of pictures",
+ 		   "montage"        => "combine pictures to e.g. index prints",
+-		   "gimp-remote"    => "edit pictures with The GIMP (only UNIX)",
+-		   "gimp-win-remote"=> "edit pictures with The GIMP (only windows)",
+-		   "xwd"            => "make a screenshot of a window or desktop",
++		   "gimp"   	    => "edit pictures with The GIMP (only UNIX)",
+ 		   "identify"       => "describe the format and characteristics of a picture",
+ 		   "thunderbird"    => "send pictures via email",
+-		   "mozilla-thunderbird" => "send pictures via email",
+ 		   "exiftool"       => "Read/write meta information in image files",
+ 		  );
+ # where to find the external programs (resources)
+@@ -472,11 +469,9 @@ my %exprogsres = (
+ 		   "jpegpixi"       => "http://www.zero-based.org/software/jpegpixi/",
+ 		   "mogrify"        => "Image Magick http://www.imagemagick.org",
+ 		   "montage"        => "Image Magick http://www.imagemagick.org",
+-		   "gimp-remote"    => "The GIMP http://www.gimp.org",
+-		   "gimp-win-remote"=> "gimp-win-remote http://sourceforge.net/projects/gimp-win-remote/",
++		   "gimp"           => "The GIMP http://www.gimp.org",
+ 		   "identify"       => "Image Magick http://www.imagemagick.org",
+ 		   "thunderbird"    => "http://www.mozilla.org/projects/thunderbird/",
+-		   "mozilla-thunderbird" => "http://www.mozilla.org/projects/thunderbird/",
+ 		   "exiftool"       => "http://owl.phy.queensu.ca/~phil/exiftool/",	
+ 		  );
+ 
+@@ -544,7 +539,7 @@ my %config = (
+ 			  "ColorThumbBG"    => "azure3",
+ 			  "ColorProgress"   => "#106dba",
+ 			  "ColorPicker"     => "#efefef", # last color selected with color picker
+-			  "DefaultThumb"    => "$configdir/EmptyThumb.jpg",
++		          "DefaultThumb"    => "${PREFIX}/share/mapivi/pics/EmptyThumb.jpg",
+ 			  "Copyright"       => "copyright (c) $copyright_year Herrmann",
+ 			  "Comment"         => "This picture was taken in south africa ...",
+ 			  "MaxProcs"        => 1,
+@@ -739,7 +734,6 @@ my %config = (
+ 			  "LineLength"      => 30,  # length of one line in the thumbnail table e.g. for comments
+ 			  "ExtViewer"       => 'display', # name of external picture viewer
+ 			  "ExtViewerMulti"  => 0,   # bool
+-			  "ExtBGApp"        => "wmsetbg -a", # name of external app to set desktop background (with options) 
+ 			  "ConvertUmlaut"   => 1,   # convert german umlaute (e.g. ä -> ae etc.)
+ 			  "DeadPixelStr"    => "1300,846,3 85,411,3 7,365,3 1529,185,3 1593,201,3 1387,1003,3 1957,1057,3 50,1043,2 615,935,3", # info about the dead pixels of your camera see: http://www.zero-based.org/software/jpegpixi/
+ 			  "DeadPixelMethod" => "linear",
+@@ -795,7 +789,7 @@ my %config = (
+ 			  "MailPicNoChange" => 0,
+ 			  "MailPicMaxLength"=> 800,
+ 			  "MailPicQuality"  => 75,
+-              "MailTool"        => 'mozilla-thunderbird',
++              "MailTool"        => 'thunderbird',
+ 			  "winDirRequesterAskAgain" => 1,
+ 			  "FuzzyBorderWidth"=> 10,
+ 			  "FuzzyBorderBlur" => 10,
+@@ -1083,7 +1077,7 @@ ENIIJZtY4oUFGKCwQgw13KBDDz8UcUQTPlBc0cUSAhEEwAANVLBBCC
+ dKyyLnF00kjQlkTSR9GqxBKzyS6bEbY0EestAAEBADs=
+ EOF
+ my $mapiviicon = $top->Photo(-data => $icon_data);
+-my $mapiviiconfile = "$configdir/MapiviIcon.gif";
++my $mapiviiconfile = "$icon_path/MapiviIcon.gif";
+ $mapiviiconfile    = "$configdir/MapiviIcon32.gif" if $EvilOS;
+ #my $mapiviicon = $top->Photo(-file => $mapiviiconfile) if (-f $mapiviiconfile);
+ $top->idletasks if $EvilOS; # this line is crucial (at least on windows)
+@@ -10153,11 +10147,11 @@ sub decorationDialog {
+   my $pf = $pfa->Frame(-bd => $config{Borderwidth}, -relief => 'groove')->pack(-side => "left");
+   my $pfn = $pf->Frame()->pack();
+   my $pfs = $pf->Frame()->pack();
+-  foreach my $gravity qw(NorthWest North NorthEast) {
++  foreach my $gravity (qw(NorthWest North NorthEast)) {
+ 	my $but = $pfn->Radiobutton(-text => "", -variable => \$config{CopyPosition}, -value => $gravity)->pack(-side => 'left');
+ 	$balloon->attach($but, -msg => "Align the copyright text or logo in $gravity position");
+   }
+-  foreach my $gravity qw(SouthWest South SouthEast) {
++  foreach my $gravity (qw(SouthWest South SouthEast)) {
+ 	my $but = $pfs->Radiobutton(-text => "", -variable => \$config{CopyPosition}, -value => $gravity)->pack(-side => 'left');
+ 	$balloon->attach($but, -msg => "Align the copyright text or logo in $gravity position");
+   }
+@@ -13567,8 +13561,6 @@ sub createMenubar {
+ 						}
+ 						slideshow();
+ 					  }, -accelerator => "<s>");
+-  $view_menu->command(-label => "use actual picture as desktop background",
+-					  -command => \&setBackground);
+  
+   $view_menu->separator;
+   my $layout_menu = $view_menu->cascade(-label => "Window layout ...");
+@@ -13719,7 +13711,7 @@ sub addPicProcessing {
+     $border_menu->command(-image => compound_menu($top, 'add relative border (lossless) ...', ''), -command => sub { losslessBorder(RELATIVE); } );
+     $border_menu->command(-image => compound_menu($top, 'add border or copyright (lossy) ...', ''), -command => \&addDecoration);
+ 
+-    $menu->command(-image => compound_menu($top, 'edit in GIMP', 'applications-graphics.png'), -command => \&GIMPedit, -accelerator => "<Ctrl-e>") unless ($exprogs{"gimp-remote"} or $exprogs{"gimp-win-remote"});
++    $menu->command(-image => compound_menu($top, 'edit in GIMP', 'applications-graphics.png'), -command => \&GIMPedit, -accelerator => "<Ctrl-e>") unless ($exprogs{"gimp"} or $exprogs{"gimp-win-remote"});
+ }
+ 
+ ##############################################################
+@@ -16381,7 +16373,7 @@ sub makeButton {
+ 	my $picName      = shift;
+ 	my $func         = shift;
+ 
+-	my $pic   = "$configdir/$picName";
++	my $pic   = "${PREFIX}/share/mapivi/$picName";
+ 	my $image = $parentWidget->Photo(-file => $pic) if -f $pic;
+ 
+ 	if ($image) {
+@@ -20002,7 +19994,7 @@ sub plusMinusEntry {
+ ##############################################################
+ sub normalizeCoords {
+   my $canvas = shift;
+-  foreach my $coord qw(m_x1 m_x2 m_y1 m_y2) {
++  foreach my $coord (qw(m_x1 m_x2 m_y1 m_y2)) {
+ 	# assign it to the step width
+ 	$canvas->{$coord} = sprintf "%.0f", ($canvas->{$coord}/$canvas->{m_step});
+ 	$canvas->{$coord} *= $canvas->{m_step};
+@@ -20011,10 +20003,10 @@ sub normalizeCoords {
+   }
+ 
+   # check upper bound
+-  foreach my $coord qw(m_x1 m_x2) {
++  foreach my $coord (qw(m_x1 m_x2)) {
+ 	$canvas->{$coord} = $canvas->{m_wo} if ($canvas->{$coord} > $canvas->{m_wo});
+   }
+-  foreach my $coord qw(m_y1 m_y2) {
++  foreach my $coord (qw(m_y1 m_y2)) {
+ 	$canvas->{$coord} = $canvas->{m_ho} if ($canvas->{$coord} > $canvas->{m_ho});
+   }
+ }
+@@ -25675,7 +25667,7 @@ sub GIMPedit {
+ 	return if (!checkExternProgs("GIMPedit", "gimp-win-remote"));
+   }
+   else {
+-	  if (!checkExternProgs("GIMPedit", "gimp-remote")){
++	  if (!checkExternProgs("GIMPedit", "gimp")){
+ 		  $dpic  = $sellist[0];
+ 		  $pic   = basename($dpic);
+ 		  my $rc = $top->messageBox(-icon    => "question",
+@@ -25698,7 +25690,7 @@ sub GIMPedit {
+ 	# check if file is a link and get the real target
+ 	next if (!getRealFile(\$dpic));
+ 
+-	my $command = "gimp-remote -n      \"$dpic\" ";
++	my $command = "gimp \"$dpic\" ";
+ 	#$command    = "gimp-win-remote \"$dpic\" " if $EvilOS;   # GIMP <= 2.0
+ 	$command    = "gimp-win-remote gimp-2.2.exe \"$dpic\" " if $EvilOS; # GIMP > 2.0
+ 	$command .= "2>&1 1>/dev/null &" if (!$EvilOS);

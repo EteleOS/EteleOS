@@ -1,0 +1,9 @@
+--- Makefile.in.orig	Wed Jan 26 05:15:06 2005
++++ Makefile.in	Wed Mar  2 20:57:29 2005
+@@ -1,5 +1,5 @@
+ LIBS=@LIBS@
+-CFLAGS=-O3 -Wall -include config.h
++CFLAGS=@CFLAGS@
+ CC=@CC@
+ 
+ ALL: bnc mkpasswd

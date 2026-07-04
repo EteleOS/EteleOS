@@ -1,0 +1,26 @@
+@pkgpath devel/libplist,-python
+@bin bin/plistutil
+include/plist/
+include/plist/Array.h
+include/plist/Boolean.h
+include/plist/Data.h
+include/plist/Date.h
+include/plist/Dictionary.h
+include/plist/Integer.h
+include/plist/Key.h
+include/plist/Node.h
+include/plist/Real.h
+include/plist/String.h
+include/plist/Structure.h
+include/plist/Uid.h
+include/plist/plist++.h
+include/plist/plist.h
+@static-lib lib/libplist++-2.0.a
+lib/libplist++-2.0.la
+@lib lib/libplist++-2.0.so.${LIBplist++-2.0_VERSION}
+@static-lib lib/libplist-2.0.a
+lib/libplist-2.0.la
+@lib lib/libplist-2.0.so.${LIBplist-2.0_VERSION}
+lib/pkgconfig/libplist++-2.0.pc
+lib/pkgconfig/libplist-2.0.pc
+@man man/man1/plistutil.1

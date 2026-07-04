@@ -1,0 +1,25 @@
+Index: scheduler/Makefile
+--- scheduler/Makefile.orig
++++ scheduler/Makefile
+@@ -149,21 +149,6 @@ install-data:
+ 		echo Creating $(SERVERROOT)/ssl...; \
+ 		$(INSTALL_DIR) -m 700 -g $(CUPS_GROUP) $(SERVERROOT)/ssl; \
+ 	fi
+-	if test "$(STATEDIR)" != "$(SERVERROOT)"; then \
+-		echo Creating $(STATEDIR)...; \
+-		$(INSTALL_DIR) -m 755 $(STATEDIR); \
+-	fi
+-	echo Creating $(STATEDIR)/certs...
+-	$(INSTALL_DIR) -m 511 -o $(CUPS_USER) -g $(CUPS_PRIMARY_SYSTEM_GROUP) \
+-		$(STATEDIR)/certs
+-	echo Creating $(LOGDIR)...
+-	$(INSTALL_DIR) -m 755 $(LOGDIR)
+-	echo Creating $(REQUESTS)...
+-	$(INSTALL_DIR) -m 710 -g $(CUPS_GROUP) $(REQUESTS)
+-	echo Creating $(REQUESTS)/tmp...
+-	$(INSTALL_DIR) -m 1770 -g $(CUPS_GROUP) $(REQUESTS)/tmp
+-	echo Creating $(CACHEDIR)...
+-	$(INSTALL_DIR) -m 770 -g $(CUPS_GROUP) $(CACHEDIR)
+ 	if test "x$(INITDIR)" != x; then \
+ 		echo Installing init scripts...; \
+ 		$(INSTALL_DIR) -m 755 $(BUILDROOT)$(INITDIR)/init.d; \

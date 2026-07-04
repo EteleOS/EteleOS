@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/libexec/bacula/bacula-ctl-dir"
+daemon_flags="start"
+
+. /etc/rc.d/rc.subr
+
+rc_stop() {
+	${daemon} stop
+}
+
+pexp="${TRUEPREFIX}/sbin/bacula-dir .*"
+
+rc_cmd $1

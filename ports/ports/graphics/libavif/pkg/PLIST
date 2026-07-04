@@ -1,0 +1,12 @@
+@bin bin/avifdec
+@bin bin/avifenc
+@bin bin/avifgainmaputil
+include/avif/
+include/avif/avif.h
+include/avif/avif_cxx.h
+lib/cmake/libavif/
+lib/cmake/libavif/libavif-config${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/libavif/libavif-config-version.cmake
+lib/cmake/libavif/libavif-config.cmake
+@lib lib/libavif.so.${LIBavif_VERSION}
+lib/pkgconfig/libavif.pc

@@ -1,0 +1,12 @@
+Index: gyptest.py
+--- gyptest.py.orig
++++ gyptest.py
+@@ -99,6 +99,8 @@ def main(argv=None):
+       'freebsd7': ['make'],
+       'freebsd8': ['make'],
+       'openbsd5': ['make'],
++      'openbsd6': ['ninja'],
++      'openbsd7': ['ninja'],
+       'cygwin':   ['msvs'],
+       'win32':    ['msvs', 'ninja'],
+       'linux':    ['make', 'ninja'],

@@ -1,0 +1,8 @@
+${P5SITE}/Test/
+${P5SITE}/Test/Base/
+${P5SITE}/Test/Base.pm
+${P5SITE}/Test/Base.pod
+${P5SITE}/Test/Base/Filter.pm
+${P5SITE}/Test/Base/Filter.pod
+@man man/man3p/Test::Base.3p
+@man man/man3p/Test::Base::Filter.3p

@@ -1,0 +1,4 @@
+@man man/man8/sysclean.8
+sbin/sysclean
+share/examples/sysclean/
+share/examples/sysclean/sysclean.ignore

@@ -1,0 +1,14 @@
+The underlying mutex is actually guaranteed to be unlocked when we
+reach this point.  Do not try to unlock it again.
+
+Index: ogg123/ogg123.c
+--- ogg123/ogg123.c.orig
++++ ogg123/ogg123.c
+@@ -752,7 +752,6 @@ int play (const char *source_string)
+ 
+   format->cleanup(decoder);
+   transport->close(source);
+-  status_reset_output_lock();  /* In case we were killed mid-output */
+ 
+   status_message(1, _("Done."));
+ 

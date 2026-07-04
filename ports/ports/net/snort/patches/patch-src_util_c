@@ -1,0 +1,29 @@
+Index: src/util.c
+--- src/util.c.orig
++++ src/util.c
+@@ -227,12 +227,13 @@ int DisplayBanner(void)
+  * Returns: void function
+  *
+  ****************************************************************************/
+-void ts_print(register const struct timeval *tvp, char *timebuf)
++void ts_print(register const struct sf_timeval32 *tvp, char *timebuf)
+ {
+     register int s;
+     int    localzone;
+     time_t Time;
+     struct timeval tv;
++    struct sf_timeval32 tvnow;
+     struct timezone tz;
+     struct tm *lt;    /* place to stick the adjusted clock data */
+ 
+@@ -242,7 +243,9 @@ void ts_print(register const struct timeval *tvp, char
+         /* manual page (for linux) says tz is never used, so.. */
+         memset((char *) &tz, 0, sizeof(tz));
+         gettimeofday(&tv, &tz);
+-        tvp = &tv;
++        tvnow.tv_sec = tv.tv_sec;
++        tvnow.tv_usec = tv.tv_usec;
++        tvp = &tvnow;
+     }
+ 
+     localzone = snort_conf->thiszone;

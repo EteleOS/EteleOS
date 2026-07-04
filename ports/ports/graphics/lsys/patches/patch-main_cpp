@@ -1,0 +1,25 @@
+const char* for ""
+
+Index: main.cpp
+--- main.cpp.orig
++++ main.cpp
+@@ -66,7 +66,7 @@ int verbose = 0;
+ int main(int argc, char *argv[])
+ try
+ {
+-  char c;
++  int c;
+   int option_index = 0;
+   
+   gfx_int *iface = 0;
+@@ -74,8 +74,8 @@ try
+   ostream *ofile = 0;
+   
+   char *outfile_str = 0;
+-  char *interpreter_str = "turtle";
+-  char *interface_str = "gl";
++  const char *interpreter_str = "turtle";
++  const char *interface_str = "gl";
+   char *module_str = 0;
+   double min, max, step;
+   int show_depth = 0;

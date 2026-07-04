@@ -1,0 +1,7 @@
+lib/lua/
+lib/lua/${MODLUA_VERSION}/
+lib/lua/${MODLUA_VERSION}/dbd/
+@so lib/lua/${MODLUA_VERSION}/dbd/sqlite3.so
+share/lua/
+share/lua/${MODLUA_VERSION}/
+share/lua/${MODLUA_VERSION}/DBI.lua

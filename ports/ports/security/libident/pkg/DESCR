@@ -1,0 +1,5 @@
+This is a library which provides a simple interface to the Ident
+protocol on the client side. It is meant to be used by daemons to try
+to authenticate users using the Ident protocol. For this to work,
+users need to have an Ident server running on the system from which
+they are connected.

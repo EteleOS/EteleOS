@@ -1,0 +1,14 @@
+On OpenBSD, time_t is long long.
+
+Index: WPrefs.app/Appearance.c
+--- WPrefs.app/Appearance.c.orig
++++ WPrefs.app/Appearance.c
+@@ -932,7 +932,7 @@ static char *makeFileName(const char *prefix)
+ 		char buf[30];
+ 
+ 		wfree(fname);
+-		sprintf(buf, "%08lx.cache", time(NULL));
++		sprintf(buf, "%08llx.cache", (long long)time(NULL));
+ 		fname = wstrconcat(prefix, buf);
+ 	}
+ 

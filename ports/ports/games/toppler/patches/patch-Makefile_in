@@ -1,0 +1,15 @@
+--- Makefile.in.orig	Wed Oct 22 21:19:04 2014
++++ Makefile.in	Wed Oct 22 21:19:48 2014
+@@ -1143,10 +1143,9 @@ info: info-recursive
+ info-am:
+ 
+ install-data-am: install-applicationsDATA install-dist_pixmapsDATA \
+-	install-dist_pkgdataDATA install-dist_pkgdocDATA \
+-	install-dist_pkglocalstateDATA install-man
++	install-dist_pkgdataDATA install-man
+ 	@$(NORMAL_INSTALL)
+-	$(MAKE) $(AM_MAKEFLAGS) install-data-hook
++	$(MAKE) $(AM_MAKEFLAGS)
+ install-dvi: install-dvi-recursive
+ 
+ install-dvi-am:

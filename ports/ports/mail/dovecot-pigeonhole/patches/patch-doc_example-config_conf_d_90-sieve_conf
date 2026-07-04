@@ -1,0 +1,12 @@
+Index: doc/example-config/conf.d/90-sieve.conf
+--- doc/example-config/conf.d/90-sieve.conf.orig
++++ doc/example-config/conf.d/90-sieve.conf
+@@ -44,7 +44,7 @@ plugin {
+   # sievec command line tool if the binary is not stored in a global location.
+   # --> See sieve_before for executing scripts before the user's personal
+   #     script.
+-  #sieve_default = /var/lib/dovecot/sieve/default.sieve
++  #sieve_default = /var/dovecot/sieve/default.sieve
+ 
+   # The name by which the default Sieve script (as configured by the 
+   # sieve_default setting) is visible to the user through ManageSieve. 

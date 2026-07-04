@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/mrtg --daemon"
+daemon_flags="--user _mrtg --group _mrtg --confcache-file /tmp/mrtg.ok --lock-file /tmp/mrtg_lock --pid-file /var/run/mrtg.pid"
+
+. /etc/rc.d/rc.subr
+
+pexp="/usr/bin/perl -w ${daemon}${daemon_flags:+ ${daemon_flags}}"
+
+rc_cmd $1

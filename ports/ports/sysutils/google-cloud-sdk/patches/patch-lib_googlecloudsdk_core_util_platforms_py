@@ -1,0 +1,32 @@
+Index: lib/googlecloudsdk/core/util/platforms.py
+--- lib/googlecloudsdk/core/util/platforms.py.orig
++++ lib/googlecloudsdk/core/util/platforms.py
+@@ -154,7 +154,8 @@ class OperatingSystem(object):
+   LINUX = _OS('LINUX', 'Linux', 'linux')
+   CYGWIN = _OS('CYGWIN', 'Cygwin', 'cygwin')
+   MSYS = _OS('MSYS', 'Msys', 'msys')
+-  _ALL = [WINDOWS, MACOSX, LINUX, CYGWIN, MSYS]
++  OPENBSD = _OS('OPENBSD', 'OpenBSD', 'openbsd')
++  _ALL = [WINDOWS, MACOSX, LINUX, CYGWIN, MSYS, OPENBSD]
+ 
+   @staticmethod
+   def AllValues():
+@@ -207,6 +208,8 @@ class OperatingSystem(object):
+       return OperatingSystem.MACOSX
+     elif 'cygwin' in sys.platform:
+       return OperatingSystem.CYGWIN
++    elif 'openbsd' in sys.platform:
++      return OperatingSystem.OPENBSD
+     return None
+ 
+   @staticmethod
+@@ -393,6 +396,9 @@ class Platform(object):
+       return format_string.format(
+           name=arch_string,
+           version=self.operating_system.version)
++    elif self.operating_system == OperatingSystem.OPENBSD:
++      return '({name} {version})'.format(
++          name=self.operating_system.name, version=platform.release())
+     else:
+       return '()'
+ 

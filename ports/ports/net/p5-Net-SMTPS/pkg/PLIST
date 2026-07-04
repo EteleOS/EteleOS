@@ -1,0 +1,3 @@
+${P5SITE}/Net/
+${P5SITE}/Net/SMTPS.pm
+@man man/man3p/Net::SMTPS.3p

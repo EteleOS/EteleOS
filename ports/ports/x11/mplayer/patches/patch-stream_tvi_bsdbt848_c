@@ -1,0 +1,282 @@
+Index: stream/tvi_bsdbt848.c
+--- stream/tvi_bsdbt848.c.orig
++++ stream/tvi_bsdbt848.c
+@@ -53,9 +53,10 @@
+ #include <signal.h>
+ #include <string.h>
+ #include <errno.h>
++#include <sys/ioctl.h>
+ 
+ #include <sys/param.h>
+-#ifdef CONFIG_SUN_AUDIO
++#if defined(CONFIG_SUN_AUDIO) && !defined(CONFIG_SNDIO_AUDIO)
+ #include <sys/audioio.h>
+ #endif
+ 
+@@ -67,11 +68,15 @@
+ #include IOCTL_BT848_H_NAME
+ #endif
+ 
++#if defined(CONFIG_SNDIO_AUDIO)
++#include <sndio.h>
++#else
+ #ifdef HAVE_SYS_SOUNDCARD_H
+ #include <sys/soundcard.h>
+ #else
+ #include <machine/soundcard.h>
+ #endif
++#endif
+ 
+ #include "libaf/af_format.h"
+ #include "libmpcodecs/img_format.h"
+@@ -101,7 +106,13 @@ typedef struct priv {
+ /* Audio */
+     char *dspdev;
+     int dspready;
++#if defined(CONFIG_SNDIO_AUDIO)
++    struct sio_hdl *hdl;
++    struct sio_par par;
++    int round, appbufsz; /* sizes in bytes */
++#else
+     int dspfd;
++#endif
+     int dspsamplesize;
+     int dspstereo;
+     int dspspeed;
+@@ -109,6 +120,9 @@ typedef struct priv {
+     int dspframesize;
+     int dsprate;
+     long long dspbytesread;
++#if defined(CONFIG_SNDIO_AUDIO)
++    long long realpos;
++#endif
+ 
+ /* Video */
+     char *btdev;
+@@ -158,6 +172,15 @@ static priv_t *G_private=NULL;
+ 
+ static int getinput(int innumber);
+ 
++#if defined(CONFIG_SNDIO_AUDIO)
++void movecb(void *addr, int delta)
++{
++    priv_t *priv = addr;
++
++    priv->realpos += delta * priv->dspsamplesize/8 * (priv->dspstereo+1);
++}
++#endif
++
+ static void processframe(int signal)
+ {
+ struct timeval curtime;
+@@ -218,7 +241,9 @@ static tvi_handle_t *tvi_init_bsdbt848(tv_param_t* tv_
+ 
+     /* set audio device name */
+     if (!tv_param->adevice)
+-#ifdef CONFIG_SUN_AUDIO
++#if defined(CONFIG_SNDIO_AUDIO)
++        priv->dspdev = NULL;
++#elif defined(CONFIG_SUN_AUDIO)
+         priv->dspdev = strdup("/dev/sound");
+ #else
+         priv->dspdev = strdup("/dev/dsp");
+@@ -327,12 +352,39 @@ static int control(priv_t *priv, int cmd, void *arg)
+         {
+         int dspspeed = *(int *)arg;
+ 
++#if defined(CONFIG_SNDIO_AUDIO)
++        if (!sio_stop(priv->hdl))
++            {
++            mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848InvalidAudioRate, "sio_stop failed");
++            return TVI_CONTROL_FALSE;
++            }
++        sio_initpar(&priv->par);
++        priv->par.rate = dspspeed;
++        priv->par.round = 4096 / (priv->dspsamplesize/8 * (priv->dspstereo + 1));
++        if(!sio_setpar(priv->hdl, &priv->par) || !sio_getpar(priv->hdl, &priv->par))
++            {
++            mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848InvalidAudioRate, "sio_[s|g]etpar failed");
++            return TVI_CONTROL_FALSE;
++            }
++        priv->round = priv->par.round * priv->par.bps * priv->par.rchan;
++        priv->appbufsz = priv->par.appbufsz * priv->par.bps * priv->par.rchan;
++        if(priv->par.rate != dspspeed)
++            {
++            mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848InvalidAudioRate, "returned rate != requested rate");
++            return TVI_CONTROL_FALSE;
++            }
++        if (!sio_start(priv->hdl))
++            {
++            mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848InvalidAudioRate, "sio_start failed");
++            return TVI_CONTROL_FALSE;
++            }
++#else
+            if(ioctl(priv->dspfd, SNDCTL_DSP_SPEED, &dspspeed) == -1)
+             {
+             mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848InvalidAudioRate, strerror(errno));
+             return TVI_CONTROL_FALSE;
+             }
+-
++#endif
+         priv->dspspeed = dspspeed;
+ 
+         priv->dspframesize = priv->dspspeed*priv->dspsamplesize/8/
+@@ -641,12 +693,76 @@ priv->dspready = 1;
+ priv->dspsamplesize = 16;
+ priv->dspstereo = 1;
+ priv->dspspeed = 44100;
++#if !defined(CONFIG_SNDIO_AUDIO)
+ priv->dspfmt = AFMT_S16_LE;
++#endif
+ priv->dspbytesread = 0;
+ priv->dsprate = priv->dspspeed * priv->dspsamplesize/8*(priv->dspstereo+1);
+ priv->dspframesize = priv->dspspeed*priv->dspsamplesize/8/priv->fps *
+                      (priv->dspstereo+1);
+ 
++#if defined(CONFIG_SNDIO_AUDIO)
++
++if((priv->hdl = sio_open(priv->dspdev, SIO_REC, 0)) == NULL)
++    {
++    mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848ErrorOpeningDspDev, "sio_open failed");
++    priv->dspready = FALSE;
++    }
++
++sio_initpar(&priv->par);
++priv->par.rchan = priv->dspstereo + 1;
++priv->par.rate = priv->dspspeed;
++priv->par.bits = priv->dspsamplesize;
++priv->par.sig = 1;
++//priv->par.round = FRAGSIZE / (priv->dspsamplesize/8 * (priv->dspstereo + 1));
++priv->par.round = priv->dspspeed / 100; /* 10 ms */
++priv->par.appbufsz = priv->dspspeed / 4; /* 250 ms */
++
++if(priv->dspready && (!sio_setpar(priv->hdl, &priv->par) || !sio_getpar(priv->hdl, &priv->par)))
++    {
++    mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848ErrorConfiguringDsp, "sio_[s|g]etpar failed");
++    priv->dspready = FALSE;
++    }
++
++priv->round = priv->par.round * priv->par.bps * priv->par.rchan;
++priv->appbufsz = priv->par.appbufsz * priv->par.bps * priv->par.rchan;
++
++if(priv->par.rchan != priv->dspstereo + 1)
++    {
++    mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848ErrorConfiguringDsp, "returned channels != requested channels");
++    priv->dspready = FALSE;
++    }
++if (priv->par.bits != priv->dspsamplesize || priv->par.sig != 1 || priv->par.le != SIO_LE_NATIVE)
++    {
++    mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848ErrorConfiguringDsp, "returned format != requested format");
++    priv->dspready = FALSE;
++    }
++if(priv->par.rate != priv->dspspeed)
++    {
++    mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848ErrorConfiguringDsp, "returned rate != requested rate");
++    // this may be overridden later with command line options, so it's not necessarily a problem
++    //priv->dspready = FALSE;
++    }
++
++priv->realpos = 0;
++
++if(priv->dspready == TRUE)
++    {
++    sio_onmove(priv->hdl, movecb, priv);
++    if(!sio_start(priv->hdl))
++        {
++        mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848ErrorConfiguringDsp, "sio_start failed");
++        priv->dspready = FALSE;
++        }
++    }
++
++if(priv->dspready == FALSE)
++    {
++    sio_close(priv->hdl);
++    }
++
++#else
++
+ if((priv->dspfd = open (priv->dspdev, O_RDONLY, 0)) < 0)
+     {
+     mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848ErrorOpeningDspDev, strerror(errno));
+@@ -672,6 +788,8 @@ if(priv->dspready &&
+     priv->dspready = 0;
+     }
+ 
++#endif
++
+ return 1;
+ }
+ 
+@@ -695,7 +813,9 @@ if(ioctl(priv->btfd, METEORSSIGNAL, &marg) < 0)
+     return 0;
+     }
+ 
++#if !defined(CONFIG_SNDIO_AUDIO)
+ read(priv->dspfd, &tmp, 2);
++#endif
+ 
+ gettimeofday(&curtime, NULL);
+ 
+@@ -734,10 +854,15 @@ if(ioctl(priv->btfd, METEORCAPTUR, &marg) < 0 )
+     return 0;
+     }
+ 
+-close(priv->btfd);
++#if defined(CONFIG_SNDIO_AUDIO)
++sio_close(priv->hdl);
++priv->hdl = NULL;
++#else
+ close(priv->dspfd);
+-
+ priv->dspfd = -1;
++#endif
++
++close(priv->btfd);
+ priv->btfd = -1;
+ 
+ priv->dspready = priv->videoready = 0;
+@@ -817,13 +942,21 @@ gettimeofday(&curtime, NULL);
+ 
+ /* Get exactly one frame of audio, which forces video sync to audio.. */
+ 
++#if defined(CONFIG_SNDIO_AUDIO)
++bytesread=sio_read(priv->hdl, buffer, len);
++#else
+ bytesread=read(priv->dspfd, buffer, len);
++#endif
+ 
+ while(bytesread < len)
+     {
++#if defined(CONFIG_SNDIO_AUDIO)
++    ret=sio_read(priv->hdl, &buffer[bytesread], len-bytesread);
++    if(ret == 0)
++#else
+     ret=read(priv->dspfd, &buffer[bytesread], len-bytesread);
+-
+     if(ret == -1)
++#endif
+         {
+         mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848ErrorReadingAudio, strerror(errno));
+         return 0;
+@@ -856,13 +989,19 @@ return priv->dspbytesread * 1.0 / priv->dsprate;
+ static int get_audio_framesize(priv_t *priv)
+ {
+ int bytesavail;
+-#ifdef CONFIG_SUN_AUDIO
++#if defined(CONFIG_SUN_AUDIO) && !defined(CONFIG_SNDIO_AUDIO)
+ struct audio_info auinf;
+ #endif
+ 
+ if(!priv->dspready) return 0;
+ 
+-#ifdef CONFIG_SUN_AUDIO
++#if defined(CONFIG_SNDIO_AUDIO)
++bytesavail = priv->realpos - priv->dspbytesread;
++if(bytesavail > priv->appbufsz)
++    bytesavail = priv->appbufsz;
++if(bytesavail < priv->round)
++    bytesavail = priv->round;
++#elif defined(CONFIG_SUN_AUDIO)
+ if(ioctl(priv->dspfd, AUDIO_GETINFO, &auinf) < 0)
+     {
+     mp_msg(MSGT_TV, MSGL_ERR, MSGTR_TV_Bt848IoctlFailed, "AUDIO_GETINFO", strerror(errno));

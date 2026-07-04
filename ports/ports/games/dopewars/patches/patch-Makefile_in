@@ -1,0 +1,12 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -823,7 +823,7 @@ info: info-recursive
+ 
+ info-am:
+ 
+-install-data-am: install-data-local
++install-data-am:
+ 
+ install-dvi: install-dvi-recursive
+ 

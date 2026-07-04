@@ -1,0 +1,11 @@
+Index: msgcmp.cpp
+--- msgcmp.cpp.orig
++++ msgcmp.cpp
+@@ -28,6 +28,7 @@
+ #include <mimepp/debug.h>
+ #include <stdlib.h>
+ #include <mimepp/msgcmp.h>
++using std::cerr;
+ 
+ #define kMagicNumber ((DwUint32) 0x22222222L)
+ 

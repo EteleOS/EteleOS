@@ -1,0 +1,30 @@
+!%%gtk%%
+%%gtk%%
+@bin bin/fuse
+@man man/man1/fuse.1
+share/fuse/
+share/fuse/128-0.rom
+share/fuse/128-1.rom
+share/fuse/48.rom
+share/fuse/cassette.bmp
+share/fuse/disciple.rom
+share/fuse/keyboard.scr
+share/fuse/microdrive.bmp
+share/fuse/plus2-0.rom
+share/fuse/plus2-1.rom
+share/fuse/plus3-0.rom
+share/fuse/plus3-1.rom
+share/fuse/plus3-2.rom
+share/fuse/plus3-3.rom
+share/fuse/plus3disk.bmp
+share/fuse/plus3e-0.rom
+share/fuse/plus3e-1.rom
+share/fuse/plus3e-2.rom
+share/fuse/plus3e-3.rom
+share/fuse/plusd.rom
+share/fuse/se-0.rom
+share/fuse/se-1.rom
+share/fuse/speccyboot-1.4.rom
+share/fuse/tc2048.rom
+share/fuse/tc2068-0.rom
+share/fuse/tc2068-1.rom

@@ -1,0 +1,8 @@
+@bin bin/kasumi
+@man man/man1/kasumi.1
+share/applications/kasumi.desktop
+share/locale/it/LC_MESSAGES/kasumi.mo
+share/locale/ja/LC_MESSAGES/kasumi.mo
+share/pixmaps/
+share/pixmaps/kasumi.png
+@tag update-desktop-database

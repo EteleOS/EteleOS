@@ -1,0 +1,13 @@
+Add missing include.
+
+Index: Common/print_command.c
+--- Common/print_command.c.orig
++++ Common/print_command.c
+@@ -34,6 +34,7 @@
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <assert.h>
++#include <sys/wait.h>
+ 
+ #include "popups.h"
+ #include "print_command.h"

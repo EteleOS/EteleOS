@@ -1,0 +1,4 @@
+@bin bin/armips
+share/doc/armips/
+share/doc/armips/LICENSE.txt
+share/doc/armips/Readme.md

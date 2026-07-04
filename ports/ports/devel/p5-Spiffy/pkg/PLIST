@@ -1,0 +1,5 @@
+${P5SITE}/Spiffy/
+${P5SITE}/Spiffy.pm
+${P5SITE}/Spiffy.pod
+${P5SITE}/Spiffy/mixin.pm
+@man man/man3p/Spiffy.3p

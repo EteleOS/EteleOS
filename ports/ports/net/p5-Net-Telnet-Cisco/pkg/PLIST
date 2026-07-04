@@ -1,0 +1,8 @@
+${P5SITE}/Net/Telnet/
+${P5SITE}/Net/Telnet/Cisco.pm
+${P5SITE}/auto/
+${P5SITE}/auto/Net/
+${P5SITE}/auto/Net/Telnet/
+${P5SITE}/auto/Net/Telnet/Cisco/
+${P5SITE}/auto/Net/Telnet/Cisco/autosplit.ix
+@man man/man3p/Net::Telnet::Cisco.3p

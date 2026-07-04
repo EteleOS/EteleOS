@@ -1,0 +1,4 @@
+@bin bin/stegbreak
+@bin bin/stegdetect
+@man man/man1/stegbreak.1
+@man man/man1/stegdetect.1

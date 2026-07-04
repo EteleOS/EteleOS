@@ -1,0 +1,34 @@
+add OpenBSD includes
+
+Index: dll/common_includes.h
+--- dll/common_includes.h.orig
++++ dll/common_includes.h
+@@ -104,7 +104,7 @@ inline void reset_LastError()
+     SetLastError(0);
+ }
+ 
+-#elif defined(__LINUX__)
++#elif defined(__LINUX__) || defined(__OpenBSD__)
+     #include <arpa/inet.h>
+ 
+     #include <sys/types.h>
+@@ -118,7 +118,11 @@ inline void reset_LastError()
+ 
+     #include <netinet/in.h>
+     #include <netinet/tcp.h>
+-    #include <linux/netdevice.h>
++    #if defined(__LINUX__)
++        #include <linux/netdevice.h>
++    #elif defined(__OpenBSD__)
++    	#include <net/if.h>
++    #endif
+ 
+     #include <fcntl.h>
+     #include <unistd.h>
+@@ -205,4 +209,4 @@ inline std::string ascii_to_lowercase(std::string data
+ 
+ #define LOBBY_CONNECT_APPID ((uint32)-2)
+ 
+-#endif//__INCLUDED_COMMON_INCLUDES__
+\ No newline at end of file
++#endif//__INCLUDED_COMMON_INCLUDES__

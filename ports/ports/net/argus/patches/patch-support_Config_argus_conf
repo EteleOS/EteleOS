@@ -1,0 +1,60 @@
+--- support/Config/argus.conf.orig	Fri Jul 25 18:57:28 2014
++++ support/Config/argus.conf	Mon Sep 29 23:43:46 2014
+@@ -78,6 +78,7 @@ ARGUS_FLOW_KEY="CLASSIC_5_TUPLE"
+ #
+ 
+ #ARGUS_DAEMON=no
++ARGUS_DAEMON=yes
+ 
+ 
+ # Argus Monitor Data is uniquely identifiable based on the source
+@@ -216,12 +217,13 @@ ARGUS_FLOW_KEY="CLASSIC_5_TUPLE"
+ # an HTTP service or DNS service, you'll want to turn 
+ # promiscuous mode off.
+ #
+-# The default value is goes into prmiscuous mode.
++# The default value is goes into promiscuous mode.
+ #
+ # Commandline equivalent   -p
+ #
+  
+ #ARGUS_GO_PROMISCUOUS=yes
++ARGUS_GO_PROMISCUOUS=no
+ 
+ 
+ # Argus supports chroot(2) in order to control the file system that
+@@ -248,7 +250,7 @@ ARGUS_FLOW_KEY="CLASSIC_5_TUPLE"
+ # Commandline equivalent   -u
+ #
+ 
+-#ARGUS_SETUSER_ID=user
++ARGUS_SETUSER_ID=_argus
+ 
+ 
+ # Argus can be directed to change its group id using the setgid() system
+@@ -261,7 +263,7 @@ ARGUS_FLOW_KEY="CLASSIC_5_TUPLE"
+ # Commandline equivalent   -g
+ #
+ 
+-#ARGUS_SETGROUP_ID=group
++ARGUS_SETGROUP_ID=_argus
+  
+ 
+ # Argus can write its output to one or a number of files.
+@@ -280,7 +282,7 @@ ARGUS_FLOW_KEY="CLASSIC_5_TUPLE"
+ # Commandline equivalent   -w
+ #
+ 
+-#ARGUS_OUTPUT_FILE=/var/log/argus/argus.out
++ARGUS_OUTPUT_FILE=/var/argus/argus.out
+ 
+ 
+ # Argus can push its output to one or a number of remote hosts.
+@@ -327,6 +329,7 @@ ARGUS_FLOW_KEY="CLASSIC_5_TUPLE"
+ #
+ 
+ #ARGUS_SET_PID=yes
++ARGUS_SET_PID=no
+ #ARGUS_PID_PATH="/var/run"
+ 
+ 

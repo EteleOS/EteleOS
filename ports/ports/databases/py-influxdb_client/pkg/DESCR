@@ -1,0 +1,2 @@
+Python client library for use with InfluxDB 2.x and Flux. To connect
+to InfluxDB 1.x instances, install py3-influxdb.

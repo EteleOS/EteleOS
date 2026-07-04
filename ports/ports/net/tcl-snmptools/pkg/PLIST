@@ -1,0 +1,4 @@
+lib/tcl/snmptools/
+lib/tcl/snmptools/libsnmptools${VER}.so
+lib/tcl/snmptools/pkgIndex.tcl
+@man man/mann/tcl-snmptools.n

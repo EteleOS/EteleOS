@@ -1,0 +1,86 @@
+--- Wnn/conv/cvt_read.c.orig
++++ Wnn/conv/cvt_read.c
+@@ -59,19 +59,11 @@
+ #include <stdio.h>
+ #include <ctype.h>
+ #include "cvt_head.h"
+-
+-#ifdef BSD42
+-#include <strings.h>
+-#endif
+-
+-#ifdef SYSVR2
+ #include <string.h>
+-#include <fcntl.h>
+-#ifdef TERMINFO
++
+ #include <curses.h>
+-#endif /* TERMINFO */
+ #include <term.h>
+-#endif
++#include <fcntl.h>
+ 
+ #define ENTRY_LEN 10 /* ¥³¥ó¥Ğ¡¼¥ÈÉ½¤Î¥¨¥ó¥È¥êÌ¾¤ÎºÇÂçÄ¹ */
+ 
+@@ -437,6 +429,40 @@ int	flg; /* verbose¥â¡¼¥É¤Çµ¯¤³¤¹¤«¤Î¥Õ¥é¥°¡Êº£¤Î½ê¤½¤
+ 	keydef_key[i++] = stradd(&tdataptr, key_f29);
+ 	keydef_key[i++] = stradd(&tdataptr, key_f30);
+ 	keydef_key[i++] = stradd(&tdataptr, key_f31);
++#ifndef uniosu
++	keydef_key[i++] = stradd(&tdataptr, key_f32);
++	keydef_key[i++] = stradd(&tdataptr, key_f33);
++	keydef_key[i++] = stradd(&tdataptr, key_f34);
++	keydef_key[i++] = stradd(&tdataptr, key_f35);
++	keydef_key[i++] = stradd(&tdataptr, key_f36);
++	keydef_key[i++] = stradd(&tdataptr, key_f37);
++	keydef_key[i++] = stradd(&tdataptr, key_f38);
++	keydef_key[i++] = stradd(&tdataptr, key_f39);
++	keydef_key[i++] = stradd(&tdataptr, key_f40);
++	keydef_key[i++] = stradd(&tdataptr, key_f41);
++	keydef_key[i++] = stradd(&tdataptr, key_f42);
++	keydef_key[i++] = stradd(&tdataptr, key_f43);
++	keydef_key[i++] = stradd(&tdataptr, key_f44);
++	keydef_key[i++] = stradd(&tdataptr, key_f45);
++	keydef_key[i++] = stradd(&tdataptr, key_f46);
++	keydef_key[i++] = stradd(&tdataptr, key_f47);
++	keydef_key[i++] = stradd(&tdataptr, key_f48);
++	keydef_key[i++] = stradd(&tdataptr, key_f49);
++	keydef_key[i++] = stradd(&tdataptr, key_f50);
++	keydef_key[i++] = stradd(&tdataptr, key_f51);
++	keydef_key[i++] = stradd(&tdataptr, key_f52);
++	keydef_key[i++] = stradd(&tdataptr, key_f53);
++	keydef_key[i++] = stradd(&tdataptr, key_f54);
++	keydef_key[i++] = stradd(&tdataptr, key_f55);
++	keydef_key[i++] = stradd(&tdataptr, key_f56);
++	keydef_key[i++] = stradd(&tdataptr, key_f57);
++	keydef_key[i++] = stradd(&tdataptr, key_f58);
++	keydef_key[i++] = stradd(&tdataptr, key_f59);
++	keydef_key[i++] = stradd(&tdataptr, key_f60);
++	keydef_key[i++] = stradd(&tdataptr, key_f61);
++	keydef_key[i++] = stradd(&tdataptr, key_f62);
++	keydef_key[i++] = stradd(&tdataptr, key_f63);
++#endif
+ #endif /* SUPPORT_TWODIGIT_FUNCTIONS */
+ /* °Ê²¼½ç¤Ë
+ 	"kcuu1", "kcuf1", "kcub1", "kcud1", "khome",
+@@ -505,14 +531,18 @@ int	flg;
+ 			termname);
+ 	fd = open("/dev/null", O_WRONLY, 0);
+ 	setupterm(termname, fd, &rsl);
+-	close(fd);
++#ifndef __OpenBSD__
++	close(fd); 
++#endif
+ 	if(rsl != 1){
+ 		errdsp2("Can't get terminfo entry", termname);
+ 		 /* ¤³¤Î¤È¤­resetterm()¤ÏÉ¬Í×¤«¡© */
+ 		return(1);
+ 	}
+ 	convert_getstrs(flg);
+-	resetterm();
++#ifndef __OpenBSD__
++	resetterm(); 
++#endif
+ 	return(0);
+ }
+ #endif

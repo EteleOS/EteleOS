@@ -1,0 +1,5 @@
+@bin bin/veracrypt
+share/applications/veracrypt.desktop
+share/pixmaps/
+share/pixmaps/veracrypt.xpm
+@tag update-desktop-database

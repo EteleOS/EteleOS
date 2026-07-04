@@ -1,0 +1,11 @@
+@conflict gortr-*
+@pkgpath net/gortr
+@newgroup _stayrtr:505
+@newuser _stayrtr:505:505::StayRTR Account:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/stayrtr
+@bin bin/rtrdump
+@bin bin/rtrmon
+@bin bin/stayrtr
+share/doc/pkg-readmes/${PKGSTEM}
+share/doc/stayrtr/
+share/doc/stayrtr/README.md

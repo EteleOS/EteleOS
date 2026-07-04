@@ -1,0 +1,12 @@
+Index: lib/Smokeping/probes/EchoPing.pm
+--- lib/Smokeping/probes/EchoPing.pm.orig
++++ lib/Smokeping/probes/EchoPing.pm
+@@ -18,7 +18,7 @@ use strict;
+ use base qw(Smokeping::probes::basefork);
+ use Carp;
+ 
+-my $DEFAULTBIN = "/usr/bin/echoping";
++my $DEFAULTBIN = "/usr/local/bin/echoping";
+ 
+ sub pod_hash {
+ 	return {

@@ -1,0 +1,39 @@
+Allow building bytecode-only on native archs.
+
+Index: src/Makefile
+--- src/Makefile.orig
++++ src/Makefile
+@@ -33,13 +33,17 @@ COBJS=bng.$(O) nat_stubs.$(O)
+ 
+ all:: libnums.$(A) nums.cma
+ 
++ifeq "$(NATIVE)" "true"
+ ifneq "$(ARCH)" "none"
+ all:: nums.cmxa
+ endif
++endif
+ 
++ifeq "$(NATIVE)" "true"
+ ifeq "$(NATDYNLINK)" "true"
+ all:: nums.cmxs
+ endif
++endif
+ 
+ libnums.$(A): $(COBJS)
+ 	$(OCAMLMKLIB) -oc nums $(COBJS)
+@@ -71,11 +75,15 @@ nat_stubs.$(O): bng.h nat.h
+ # is installed via findlib
+ 
+ TOINSTALL=nums.cma libnums.$(A) $(CMIS) $(CMIS:.cmi=.mli) $(CMIS:.cmi=.cmti)
++ifeq "$(NATIVE)" "true"
+ ifneq "$(ARCH)" "none"
+ TOINSTALL+=nums.cmxa nums.$(A) $(CMXS)
+ endif
++endif
++ifeq "$(NATIVE)" "true"
+ ifeq "$(NATDYNLINK)" "true"
+ TOINSTALL+=nums.cmxs
++endif
+ endif
+ ifeq "$(SUPPORTS_SHARED_LIBRARIES)" "true"
+ TOINSTALL_STUBS=dllnums$(EXT_DLL)

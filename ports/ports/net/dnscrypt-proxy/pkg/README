@@ -1,0 +1,68 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+dnscrypt-proxy listens for DNS queries on a local address and forwards
+them to a DNSCrypt resolver over an encrypted channel.
+
+To use this package, several things are required.
+
+Customizing dnscrypt-proxy.toml
+===============================
+
+Ensure that ${SYSCONFDIR}/dnscrypt-proxy.toml fits your needs.
+
+Resolvers
+---------
+Uncomment 'server_names' to have a smaller set of public resolvers to be used
+for load balancing. If this line is commented, all registered servers matching
+the require_* filters will be used for load balancing. Refer to
+${LOCALSTATEDIR}/dnscrypt-proxy/public-resolvers.md for a list of all public
+resolvers.
+
+Load balancing strategy
+-----------------------
+Note the load balancing strategy, controlled by 'lb_strategy'. It can be
+set to one of the following values:
+  - 'wp2' (default): Weighted Power of Two - selects the better
+    performing server from two random candidates based on real-time RTT
+    and success rates.
+  - 'p2': Randomly choose 1 of the fastest 2 servers by latency.
+  - 'ph': Randomly choose from fastest half of servers.
+  - 'p<n>': Randomly choose from fastest n servers (e.g., 'p3' for fastest 3).
+  - 'first': Always use the fastest server.
+  - 'random': Randomly choose from all servers.
+
+For more information, see
+https://github.com/jedisct1/dnscrypt-proxy/wiki/Load-Balancing-Options
+
+Logging
+-------
+Logging is disabled by default.
+
+To log to ${LOCALSTATEDIR}/log/messages:
+log_level = 2
+use_syslog = true
+
+To log to a custom file:
+log_level = 2
+log_file = '${LOCALSTATEDIR}/log/dnscrypt-proxy.log'
+
+Daemon
+======
+
+Start the daemon:
+
+# rcctl enable dnscrypt_proxy
+# rcctl start dnscrypt_proxy
+
+resolv.conf
+===========
+
+Managed by resolvd(8). One way is to disable it and force
+${SYSCONFDIR}/resolv.conf to perform queries from dnscrypt-proxy:
+
+nameserver 127.0.0.1
+lookup file bind
+
+For more information, see https://dnscrypt.info/

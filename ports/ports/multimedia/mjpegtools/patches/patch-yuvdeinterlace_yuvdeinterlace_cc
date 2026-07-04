@@ -1,0 +1,12 @@
+Index: yuvdeinterlace/yuvdeinterlace.cc
+--- yuvdeinterlace/yuvdeinterlace.cc.orig
++++ yuvdeinterlace/yuvdeinterlace.cc
+@@ -923,7 +923,7 @@ main (int argc, char *argv[])
+ 
+   deinterlacer YUVdeint;
+ 
+-  char c;
++  int c;
+ 
+   YUVdeint.field_order = -1;
+ 

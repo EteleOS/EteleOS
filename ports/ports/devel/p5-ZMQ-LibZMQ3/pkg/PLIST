@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/ZMQ/
+${P5ARCH}/ZMQ/LibZMQ3.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/ZMQ/
+${P5ARCH}/auto/ZMQ/LibZMQ3/
+${P5ARCH}/auto/ZMQ/LibZMQ3/LibZMQ3.so
+@man man/man3p/ZMQ::LibZMQ3.3p

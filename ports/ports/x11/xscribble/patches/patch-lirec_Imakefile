@@ -1,0 +1,11 @@
+--- lirec/Imakefile.orig
++++ lirec/Imakefile
+@@ -8,6 +8,8 @@ OBJS = li_recognizer.o sc.o util.o matrix.o bitvector.
+ 
+ INCLUDES = -I../recman
+ 
++DEFINES = XkbClientDefines -Dunix=1
++
+ #include <Library.tmpl>
+ 
+ DependTarget()

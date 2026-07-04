@@ -1,0 +1,20 @@
+Index: common/tkAppInit.cc
+--- common/tkAppInit.cc.orig
++++ common/tkAppInit.cc
+@@ -62,7 +62,7 @@ extern int		Tktest_Init _ANSI_ARGS_((Tcl_Interp *inter
+ void loadbitmaps(Tcl_Interp* tcl)
+ {
+ 	Tk_DefineBitmap(tcl, Tk_GetUid("play"),
+-			play_bits, play_width, play_height);
++			(char *)play_bits, play_width, play_height);
+ 	Tk_DefineBitmap(tcl, Tk_GetUid("stop"),
+ 			stop_bits, stop_width, stop_height);
+ 
+@@ -293,7 +293,6 @@ int
+ Tcl_AppInit(Tcl_Interp *interp)
+ {
+ #ifdef MEMDEBUG_SIMULATIONS
+-        extern MemTrace *globalMemTrace;
+         globalMemTrace = new MemTrace;
+ #endif
+ 

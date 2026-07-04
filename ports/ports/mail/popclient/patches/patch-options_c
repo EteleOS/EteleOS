@@ -1,0 +1,11 @@
+--- options.c.orig	Mon Aug 14 20:36:39 1995
++++ options.c	Mon Jun  5 02:15:41 2000
+@@ -233,7 +233,7 @@ struct optrec *options;
+       case LA_PASSWORD:
+         strncpy(options->password,optarg,sizeof(options->password)-1);
+ 	for (i = strlen(options->password)-1;  i >= 0;  i--) 
+-          argv[optind-1][i] = '*';
++          argv[optind-1][i] = '\0';
+         break;
+       case 'o':
+       case LA_LOCALFILE:

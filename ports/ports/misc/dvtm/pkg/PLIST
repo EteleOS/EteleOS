@@ -1,0 +1,7 @@
+@bin bin/dvtm
+bin/dvtm-status
+@man man/man1/dvtm.1
+share/terminfo/
+share/terminfo/d/
+share/terminfo/d/dvtm
+share/terminfo/d/dvtm-256color

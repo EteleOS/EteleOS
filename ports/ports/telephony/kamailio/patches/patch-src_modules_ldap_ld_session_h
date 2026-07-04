@@ -1,0 +1,11 @@
+Index: src/modules/ldap/ld_session.h
+--- src/modules/ldap/ld_session.h.orig
++++ src/modules/ldap/ld_session.h
+@@ -30,6 +30,7 @@
+ 
+ #include <sys/time.h>
+ #include <ldap.h>
++#include <sys/select.h> /* timeval */
+ 
+ #include "iniparser.h"
+ 

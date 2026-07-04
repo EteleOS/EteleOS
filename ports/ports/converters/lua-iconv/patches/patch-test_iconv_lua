@@ -1,0 +1,17 @@
+Fix encoding names and remove test for unsupported encoding
+
+Index: test_iconv.lua
+--- test_iconv.lua.orig
++++ test_iconv.lua
+@@ -105,9 +105,8 @@ local function check_one(to, from, text)
+ end
+ 
+ check_one(termcs, "iso-8859-1", iso88591)
+-check_one(termcs, "utf8", utf8)
+-check_one(termcs, "utf16", utf16)
+-check_one(termcs, "EBCDIC-CP-ES", ebcdic)
++check_one(termcs, "utf-8", utf8)
++check_one(termcs, "utf-16", utf16)
+ 
+ 
+ -- The library must never crash the interpreter, even if the user tweaks

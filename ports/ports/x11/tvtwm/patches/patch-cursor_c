@@ -1,0 +1,12 @@
+Index: cursor.c
+--- cursor.c.orig
++++ cursor.c
+@@ -208,7 +208,7 @@ Pixmap *shape_mask;
+     return bm;
+ }
+ 
+-NewBitmapCursor(cp, source, mask)
++void NewBitmapCursor(cp, source, mask)
+ Cursor *cp;
+ char *source, *mask;
+ {

@@ -1,0 +1,7 @@
+include/libisoburn/
+include/libisoburn/libisoburn.h
+include/libisoburn/xorriso.h
+@static-lib lib/libisoburn.a
+lib/libisoburn.la
+@lib lib/libisoburn.so.${LIBisoburn_VERSION}
+lib/pkgconfig/libisoburn-1.pc

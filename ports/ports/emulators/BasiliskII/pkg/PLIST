@@ -1,0 +1,8 @@
+@bin bin/BasiliskII
+@man man/man1/BasiliskII.1
+share/BasiliskII/
+share/BasiliskII/fbdevices
+share/BasiliskII/keycodes
+share/BasiliskII/tunconfig
+share/doc/BasiliskII/
+share/doc/BasiliskII/README

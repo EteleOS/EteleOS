@@ -1,0 +1,13 @@
+--- example/sockd-basic.conf.orig	Tue Aug  4 19:22:21 2009
++++ example/sockd-basic.conf	Thu Nov 14 13:58:04 2013
+@@ -4,8 +4,8 @@
+ #external: fxp1
+ #socksmethod: username none
+ #user.privileged: root
+-#user.unprivileged: sockd
+-#logoutput: stderr
++#user.unprivileged: _sockd
++#logoutput: syslog/user
+ 
+ ## client access rules
+ 

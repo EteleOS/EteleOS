@@ -1,0 +1,15 @@
+Index: include/ipmitool/ipmi_intf.h
+--- include/ipmitool/ipmi_intf.h.orig
++++ include/ipmitool/ipmi_intf.h
+@@ -265,6 +265,11 @@ void ipmi_intf_session_set_retry(struct ipmi_intf * in
+ void ipmi_intf_session_cleanup(struct ipmi_intf *intf);
+ void ipmi_cleanup(struct ipmi_intf * intf);
+ 
++void ipmi_intf_set_max_request_data_size(struct ipmi_intf *, uint16_t);
++void ipmi_intf_set_max_response_data_size(struct ipmi_intf *, uint16_t);
++uint16_t ipmi_intf_get_max_request_data_size(struct ipmi_intf *);
++uint16_t ipmi_intf_get_max_response_data_size(struct ipmi_intf *);
++
+ #if defined(IPMI_INTF_LAN) || defined (IPMI_INTF_LANPLUS)
+ int  ipmi_intf_socket_connect(struct ipmi_intf * intf);
+ #endif

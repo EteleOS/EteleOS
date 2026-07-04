@@ -1,0 +1,11 @@
+@bin bin/dnsperf
+bin/queryparse
+@bin bin/resperf
+bin/resperf-report
+@man man/man1/dnsperf.1
+@man man/man1/queryparse.1
+@man man/man1/resperf.1
+share/doc/dnsperf/
+share/doc/dnsperf/CHANGES
+share/doc/dnsperf/LICENSE
+share/doc/dnsperf/README.md

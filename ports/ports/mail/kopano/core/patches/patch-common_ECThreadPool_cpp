@@ -1,0 +1,13 @@
+Index: common/ECThreadPool.cpp
+--- common/ECThreadPool.cpp.orig
++++ common/ECThreadPool.cpp
+@@ -18,6 +18,9 @@
+ #ifdef LINUX
+ #	include <sys/syscall.h>
+ #endif
++#ifdef OPENBSD
++#	include <signal.h>
++#endif
+ #include <kopano/platform.h>
+ #include <kopano/ECConfig.h>
+ #include <kopano/ECLogger.h>

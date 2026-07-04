@@ -1,0 +1,10 @@
+share/lwjgl/
+share/lwjgl/AppleJavaExtensions.jar
+share/lwjgl/asm-debug-all.jar
+share/lwjgl/jinput.jar
+@so share/lwjgl/liblwjgl${M_ARCH}.so
+share/lwjgl/lwjgl.jar
+share/lwjgl/lwjgl_test.jar
+share/lwjgl/lwjgl_util.jar
+share/lwjgl/lwjgl_util_applet.jar
+share/lwjgl/lzma.jar

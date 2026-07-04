@@ -1,0 +1,12 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -18,7 +18,7 @@ TTY_Q_SZ = 0
+ CPPFLAGS += -DTTY_Q_SZ=$(TTY_Q_SZ)
+ 
+ ## Comment this out to disable high-baudrate support
+-CPPFLAGS += -DHIGH_BAUD
++#CPPFLAGS += -DHIGH_BAUD
+ 
+ ## Normally you should NOT enable both: UUCP-style and flock(2)
+ ## locking.

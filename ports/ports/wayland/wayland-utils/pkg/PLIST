@@ -1,0 +1,2 @@
+@bin bin/wayland-info
+@man man/man1/wayland-info.1

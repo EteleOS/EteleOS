@@ -1,0 +1,14 @@
+--- read.c.orig	Sat Jul  4 11:29:02 2009
++++ read.c	Mon Aug 15 19:47:23 2016
+@@ -526,9 +526,9 @@ extern char *readLine (vString *const vLine, FILE *con
+ 				vStringSetLength (vLine);
+ 				/* canonicalize new line */
+ 				eol = vStringValue (vLine) + vStringLength (vLine) - 1;
+-				if (*eol == '\r')
++				if (vStringLength (vLine) > 0 && *eol == '\r')
+ 					*eol = '\n';
+-				else if (*(eol - 1) == '\r'  &&  *eol == '\n')
++				else if (vStringLength (vLine) > 1 && *(eol - 1) == '\r'  &&  *eol == '\n')
+ 				{
+ 					*(eol - 1) = '\n';
+ 					*eol = '\0';

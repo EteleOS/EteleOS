@@ -1,0 +1,21 @@
+--- Makefile.am.orig	Thu Dec  6 10:30:36 2012
++++ Makefile.am	Thu Dec  6 10:31:02 2012
+@@ -20,17 +20,13 @@ numptyphysics_SOURCES = \
+ 	Script.cpp \
+ 	App.cpp \
+ 	Config.cpp \
+-	Http.cpp \
+ 	Os.cpp \
+ 	Ui.cpp \
+ 	Dialogs.cpp \
+ 	Event.cpp \
+ 	Worker.cpp \
+-	happyhttp.cpp \
+ 	zoomer.cpp \
+-	OsHildon.cpp \
+-	OsFreeDesktop.cpp \
+-	OsWin32.cpp
++	OsFreeDesktop.cpp
+ 
+ numptyphysics_CPPFLAGS = -IXX $(SDL_CFLAGS) $(HILDON_CFLAGS)
+ numptyphysics_LDADD = libbox2d.a $(SDL_LIBS) $(HILDON_LIBS)

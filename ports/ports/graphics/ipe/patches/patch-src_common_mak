@@ -1,0 +1,19 @@
+Index: src/common.mak
+--- src/common.mak.orig
++++ src/common.mak
+@@ -220,11 +220,10 @@ else	
+   CXXFLAGS	 += -g -O2
+   DLL_LDFLAGS	 += -shared 
+   PLUGIN_LDFLAGS += -shared
+-  soname         = -Wl,-soname,lib$1.so.$(IPEVERS)
+-  dll_target     = $(buildlib)/lib$1.so.$(IPEVERS)
+-  dll_symlinks   = ln -sf lib$1.so.$(IPEVERS) $(buildlib)/lib$1.so
+-  install_symlinks = ln -sf lib$1.so.$(IPEVERS) \
+-		$(INSTALL_ROOT)$(IPELIBDIR)/lib$1.so
++  soname         = -Wl,-soname,lib$1.so.${SHLIB_VERSION}
++  dll_target     = $(buildlib)/lib$1.so.${SHLIB_VERSION}
++  dll_symlinks   = true
++  install_symlinks = true
+   buildlib	 = $(BUILDDIR)/lib
+   buildbin       = $(BUILDDIR)/bin
+   buildipelets   = $(BUILDDIR)/ipelets

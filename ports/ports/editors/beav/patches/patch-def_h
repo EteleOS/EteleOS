@@ -1,0 +1,11 @@
+--- def.h.orig	Wed Dec 11 17:22:35 2013
++++ def.h	Wed Dec 11 17:23:14 2013
+@@ -13,6 +13,8 @@
+ #define DEF_DEF
+ #define LINT_ARGS   1		/* enable lint type checking */
+ #include        <stdio.h>
++#include        <stdlib.h>
++#include        <string.h>
+ 
+ #ifdef UNIX
+ #include        <sys/types.h>

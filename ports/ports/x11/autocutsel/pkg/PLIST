@@ -1,0 +1,4 @@
+@bin bin/autocutsel
+@bin bin/cutsel
+share/doc/autocutsel/
+share/doc/autocutsel/README

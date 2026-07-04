@@ -1,0 +1,22 @@
+Fix .so versioning.
+
+Index: src/include/defaults.mk
+--- src/include/defaults.mk.orig
++++ src/include/defaults.mk
+@@ -56,7 +56,6 @@ override LDFLAGS = $(CFLAGS) -L. $(_LDFLAGS) $(_CCLDFL
+ 		   -Wl,-z,now \
+ 		   -Wl,-z,muldefs \
+ 		   -Wl,-z,relro \
+-		   -Wl,--fatal-warnings \
+ 		   $(call family,LDFLAGS) $(call family,CCLDFLAGS) \
+ 		   $(call pkg-config-ccldflags)
+ override CCLDFLAGS = $(LDFLAGS)
+@@ -65,7 +64,7 @@ SOFLAGS_CLANG =
+ SOFLAGS ?=
+ override _SOFLAGS := $(SOFLAGS)
+ override SOFLAGS = $(_SOFLAGS) \
+-		   -shared -Wl,-soname,$@.1 \
++		   -shared -Wl,-soname,$@.$(LIB$(subst lib,,$(@:%.so=%))_VERSION) \
+ 		   -Wl,--version-script=$(MAP) \
+ 		   $(call family,SOFLAGS)
+ 

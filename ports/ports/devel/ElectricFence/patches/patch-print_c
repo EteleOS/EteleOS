@@ -1,0 +1,11 @@
+--- print.c.orig	Tue Nov 12 09:45:58 2002
++++ print.c	Tue Nov 12 09:02:04 2002
+@@ -99,7 +99,7 @@ vprint(const char * pattern, va_list arg
+ 				break;
+ 			case 'c':
+ 				{
+-					char	c = va_arg(args, char);
++					char	c = va_arg(args, int);
+ 					
+ 					(void) write(2, &c, 1);
+ 				}

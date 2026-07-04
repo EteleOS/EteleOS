@@ -1,0 +1,27 @@
+Index: conf.c
+--- conf.c.orig
++++ conf.c
+@@ -7,6 +7,7 @@ History:
+ 	931120	extracted from onewlib.c
+ ///////////////////////////////////////////////////////////////////////*/
+ #include <stdio.h>
++#include <string.h>
+ #include "onew.h"
+ 
+ typedef struct {
+@@ -119,6 +120,7 @@ static char *next_romkan(){
+ 			}
+ 	return name;
+ }
++void
+ switch_rkserv(){
+ 	char help[128];
+ 	char *romkan;
+@@ -137,6 +139,7 @@ switch_rkserv(){
+ 		Onew_putmsg_retain(1,"%s %s",Onew_RK_smode(),help);
+ 	}
+ }
++void
+ switch_kkserv(){
+ 	char mode[64],help[128],*kanakan;
+ 

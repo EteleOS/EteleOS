@@ -1,0 +1,53 @@
+@bin bin/sarg
+@man man/man1/sarg.1
+share/examples/sarg/
+@sample ${SYSCONFDIR}/sarg/
+share/examples/sarg/css.tpl
+@sample ${SYSCONFDIR}/sarg/css.tpl
+share/examples/sarg/exclude_codes
+@sample ${SYSCONFDIR}/sarg/exclude_codes
+share/examples/sarg/fonts/
+@sample ${SYSCONFDIR}/sarg/fonts/
+share/examples/sarg/fonts/DejaVuSans.ttf
+@sample ${SYSCONFDIR}/sarg/fonts/DejaVuSans.ttf
+share/examples/sarg/fonts/FreeSans.ttf
+@sample ${SYSCONFDIR}/sarg/fonts/FreeSans.ttf
+share/examples/sarg/images/
+@sample ${SYSCONFDIR}/sarg/images/
+share/examples/sarg/images/datetime.png
+@sample ${SYSCONFDIR}/sarg/images/datetime.png
+share/examples/sarg/images/graph.png
+@sample ${SYSCONFDIR}/sarg/images/graph.png
+share/examples/sarg/images/sarg-squidguard-block.png
+@sample ${SYSCONFDIR}/sarg/images/sarg-squidguard-block.png
+share/examples/sarg/images/sarg.png
+@sample ${SYSCONFDIR}/sarg/images/sarg.png
+share/examples/sarg/sarg-php/
+share/examples/sarg/sarg-php/locale/
+share/examples/sarg/sarg-php/locale/en_EN/
+share/examples/sarg/sarg-php/locale/en_EN/LC_MESSAGES/
+share/examples/sarg/sarg-php/locale/en_EN/LC_MESSAGES/messages.mo
+share/examples/sarg/sarg-php/locale/en_EN/LC_MESSAGES/messages.po
+share/examples/sarg/sarg-php/locale/es/
+share/examples/sarg/sarg-php/locale/es/LC_MESSAGES/
+share/examples/sarg/sarg-php/locale/es/LC_MESSAGES/messages.mo
+share/examples/sarg/sarg-php/locale/es/LC_MESSAGES/messages.po
+share/examples/sarg/sarg-php/locale/fr/
+share/examples/sarg/sarg-php/locale/fr/LC_MESSAGES/
+share/examples/sarg/sarg-php/locale/fr/LC_MESSAGES/messages.mo
+share/examples/sarg/sarg-php/locale/fr/LC_MESSAGES/messages.po
+share/examples/sarg/sarg-php/locale/pt_BR/
+share/examples/sarg/sarg-php/locale/pt_BR/LC_MESSAGES/
+share/examples/sarg/sarg-php/locale/pt_BR/LC_MESSAGES/messages.mo
+share/examples/sarg/sarg-php/locale/pt_BR/LC_MESSAGES/messages.po
+share/examples/sarg/sarg-php/locale/ru/
+share/examples/sarg/sarg-php/locale/ru/LC_MESSAGES/
+share/examples/sarg/sarg-php/locale/ru/LC_MESSAGES/messages.mo
+share/examples/sarg/sarg-php/locale/ru/LC_MESSAGES/messages.po
+share/examples/sarg/sarg-php/sarg-block-it.php
+share/examples/sarg/sarg-php/sarg-realtime.php
+share/examples/sarg/sarg-php/sarg-squidguard-block.php
+share/examples/sarg/sarg-php/sarg-squidguard-block2.php
+share/examples/sarg/sarg-php/style.php
+share/examples/sarg/sarg.conf
+@sample ${SYSCONFDIR}/sarg/sarg.conf

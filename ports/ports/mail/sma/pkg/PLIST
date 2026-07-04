@@ -1,0 +1,7 @@
+@bin bin/sma
+@man man/man8/sma.8
+share/doc/sma/
+share/doc/sma/README
+share/examples/sma/
+share/examples/sma/sma.conf
+@sample ${SYSCONFDIR}/sma.conf

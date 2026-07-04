@@ -1,0 +1,15 @@
+@bin bin/paper
+@bin bin/paperconf
+include/paper.h
+@static-lib lib/libpaper.a
+lib/libpaper.la
+@lib lib/libpaper.so.${LIBpaper_VERSION}
+@man man/man1/paper.1
+@man man/man5/paperspecs.5
+share/doc/libpaper/
+share/doc/libpaper/README.md
+share/examples/libpaper/
+share/examples/libpaper/papersize
+@sample ${SYSCONFDIR}/papersize
+share/examples/libpaper/paperspecs
+@sample ${SYSCONFDIR}/paperspecs

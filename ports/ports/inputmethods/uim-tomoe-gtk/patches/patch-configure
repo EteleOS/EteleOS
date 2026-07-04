@@ -1,0 +1,11 @@
+--- configure.orig	Fri Jan  9 15:19:07 2015
++++ configure	Fri Jan  9 15:19:14 2015
+@@ -25860,7 +25860,7 @@ done
+         sed -e "/POTFILES =/r po/POTFILES" po/Makefile.in > po/Makefile
+       esac ;;
+     "modify-itlocaledir":C)
+-sed \
++gsed \
+   -i'' \
+   -e "s/^itlocaledir = /itlocaledir = \$(datadir)\/locale\n#itlocaledir = /" \
+   po/Makefile

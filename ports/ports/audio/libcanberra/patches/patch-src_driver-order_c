@@ -1,0 +1,26 @@
+--- src/driver-order.c.orig	Sat Feb 20 00:39:40 2010
++++ src/driver-order.c	Thu Apr 22 18:18:02 2010
+@@ -30,17 +30,20 @@
+ #include "driver-order.h"
+ 
+ const char* const ca_driver_order[] = {
++#ifdef HAVE_SNDIO
++        "sndio",
++#endif
+ #ifdef HAVE_PULSE
+         "pulse",
+ #endif
+ #ifdef HAVE_ALSA
+         "alsa",
+ #endif
+-#ifdef HAVE_OSS
+-        "oss",
+-#endif
+ #ifdef HAVE_GSTREAMER
+         "gstreamer",
++#endif
++#ifdef HAVE_OSS
++        "oss",
+ #endif
+         /* ... */
+         NULL

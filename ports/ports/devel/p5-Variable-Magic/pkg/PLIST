@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Variable/
+${P5ARCH}/Variable/Magic.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Variable/
+${P5ARCH}/auto/Variable/Magic/
+@so ${P5ARCH}/auto/Variable/Magic/Magic.so
+@man man/man3p/Variable::Magic.3p

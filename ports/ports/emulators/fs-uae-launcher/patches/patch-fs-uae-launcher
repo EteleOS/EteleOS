@@ -1,0 +1,23 @@
+Since we install the Python modules in a custom location, we have to update the
+PYTHONPATH so they can be found.
+
+Index: fs-uae-launcher
+--- fs-uae-launcher.orig
++++ fs-uae-launcher
+@@ -1,11 +1,13 @@
+ #!/usr/bin/env python3
+ 
++import os
++import sys
++
++sys.path.insert(0, "${FS_PYTHONPATH}")
++
+ from fsboot import init
+ 
+ init()
+-
+-import os
+-import sys
+ 
+ if sys.version_info[0] < 3 or sys.version_info[1] < 2:
+     print("You need at least Python 3.2 to run FS-UAE Launcher")

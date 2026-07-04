@@ -1,0 +1,10 @@
+bin/reed-alert
+share/doc/reed-alert/
+share/doc/reed-alert/README
+share/examples/reed-alert/
+share/examples/reed-alert/example-full.lisp
+share/examples/reed-alert/example-simple.lisp
+share/reed-alert/
+share/reed-alert/functions.lisp
+share/reed-alert/output2html.sh
+share/reed-alert/probes.lisp

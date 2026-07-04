@@ -1,0 +1,37 @@
+@bin bin/regina
+bin/regina-config
+@bin bin/rexx
+@bin bin/rxqueue
+@bin bin/rxstack
+include/rexxsaa.h
+@static-lib lib/libregina.a
+@lib lib/libregina.so.${LIBregina_VERSION}
+lib/pkgconfig/libregina.pc
+lib/regina-rexx/
+lib/regina-rexx/addons/
+@so lib/regina-rexx/addons/libregutil.so
+@so lib/regina-rexx/addons/librxtest1.so
+@so lib/regina-rexx/addons/librxtest2.so
+@man man/man1/regina-config.1
+@man man/man1/regina.1
+@man man/man1/rexx.1
+@man man/man1/rxqueue.1
+@man man/man1/rxstack.1
+share/regina-rexx/
+share/regina-rexx/de.mtb
+share/regina-rexx/en.mtb
+share/regina-rexx/es.mtb
+share/regina-rexx/examples/
+share/regina-rexx/examples/animal.rexx
+share/regina-rexx/examples/block.rexx
+share/regina-rexx/examples/dateconv.rexx
+share/regina-rexx/examples/dynfunc.rexx
+share/regina-rexx/examples/newstr.rexx
+share/regina-rexx/examples/regutil.rexx
+share/regina-rexx/examples/rexxcps.rexx
+share/regina-rexx/examples/timeconv.rexx
+share/regina-rexx/no.mtb
+share/regina-rexx/pl.mtb
+share/regina-rexx/pt.mtb
+share/regina-rexx/sv.mtb
+share/regina-rexx/tr.mtb

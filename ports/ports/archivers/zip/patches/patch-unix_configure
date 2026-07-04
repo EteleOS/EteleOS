@@ -1,0 +1,27 @@
+--- unix/configure.orig	Fri Dec 12 22:58:30 2008
++++ unix/configure	Fri Dec 12 22:59:38 2008
+@@ -98,7 +98,6 @@ int main()
+ _EOF_
+       $CC $CFLAGS -c conftest.c > /dev/null 2>/dev/null
+       if test $? -eq 0; then
+-        CFLAGS_OPT='-O3'
+         echo "  GNU C ($CFLAGS_OPT)"
+         # Special Mac OS X shared library "ld" option?
+         if test ` uname -s 2> /dev/null ` = 'Darwin'; then
+@@ -110,7 +109,6 @@ _EOF_
+           rm -f conftest
+         fi
+       else
+-        CFLAGS_OPT='-O'
+         echo "  Other-unknown C ($CFLAGS_OPT)"
+       fi
+     fi
+@@ -244,7 +242,7 @@ if eval "$CPP match.S > _match.s 2>/dev/null"; then
+     echo "int foo() { return 0;}" > conftest.c
+     $CC -c conftest.c >/dev/null 2>/dev/null
+     echo Check if compiler generates underlines
+-    nm conftest.o | grep "(^|[^_])foo" >/dev/null 2>/dev/null
++    nm conftest.o | egrep "(^|[^_])foo" >/dev/null 2>/dev/null
+     [ $? -eq 0 ] && CPP="${CPP} -DNO_UNDERLINE"
+     if eval "$CPP crc_i386.S > _crc_i386.s 2>/dev/null"; then
+       if eval "$CC -c _crc_i386.s >/dev/null 2>/dev/null" && [ -f _crc_i386.o ]

@@ -1,0 +1,3 @@
+${P5SITE}/UNIVERSAL/
+${P5SITE}/UNIVERSAL/can.pm
+@man man/man3p/UNIVERSAL::can.3p

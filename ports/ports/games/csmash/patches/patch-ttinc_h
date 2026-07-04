@@ -1,0 +1,28 @@
+--- ttinc.h.orig	Sun Aug 10 11:55:00 2003
++++ ttinc.h	Fri Dec  6 21:04:59 2013
+@@ -174,7 +174,6 @@ enum mode  {GAME_5PTS, GAME_11PTS, GAME_21PTS};
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <sys/types.h>
+-#include <sys/timeb.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <string.h>
+@@ -216,6 +215,17 @@ typedef int socklen_t;		/* mimic Penguin's socklen typ
+ #define  gettext_noop(String)  (String)
+ #define _(String) gettext (String)
+ #define N_(String) gettext_noop (String)
++
++#ifdef WIN32
++#include <sys/timeb.h>
++#else
++struct timeb {
++	time_t	time;			/* seconds since the Epoch */
++	unsigned short millitm;		/* + milliseconds since the Epoch */
++	short	timezone;		/* minutes west of UTC */
++	short	dstflag;		/* DST == non-zero */
++};
++#endif
+ 
+ #endif /* MKDEP_IGN_SYSINC */
+ 

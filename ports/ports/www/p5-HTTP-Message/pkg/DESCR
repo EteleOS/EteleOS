@@ -1,0 +1,1 @@
+An "HTTP::Message" object contains some headers and a content body.

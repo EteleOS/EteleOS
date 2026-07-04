@@ -1,0 +1,8 @@
+@bin bin/vms-empire
+@man man/man6/vms-empire.6
+share/appdata/
+share/appdata/vms-empire.xml
+share/applications/vms-empire.desktop
+share/icons/hicolor/48x48/apps/vms-empire.png
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

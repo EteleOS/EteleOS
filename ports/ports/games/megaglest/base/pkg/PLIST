@@ -1,0 +1,11 @@
+@bin bin/megaglest
+@bin bin/megaglest_editor
+@bin bin/megaglest_g3dviewer
+@man man/man6/megaglest.6
+share/megaglest/editor.ico
+share/megaglest/g3dviewer.ico
+share/megaglest/glest.ini
+share/megaglest/glestkeys.ini
+share/megaglest/megaglest.ico
+share/megaglest/servers.ini
+share/megaglest/start_megaglest_gameserver

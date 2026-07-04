@@ -1,0 +1,21 @@
+Index: geo/drgeo_figure.cc
+--- geo/drgeo_figure.cc.orig
++++ geo/drgeo_figure.cc
+@@ -48,7 +48,7 @@
+ #include "drgeo_dialog.h"
+ #include "traite.h"
+ 
+-extern struct
++extern struct fooclang
+ {
+   drgeoPoint mouse;
+   drgeoFigure *figure;
+@@ -1044,7 +1044,7 @@ drgeoFigure::getKeyFromValueOnHash (gpointer value)
+     return NULL;
+   else
+     // data.key is a * gchar get it content as a gpointer
+-    return GINT_TO_POINTER (strtol ((gchar *) data.key, NULL, 16));
++    return GUINT_TO_POINTER (strtoul ((gchar *) data.key, NULL, 16));
+ }
+ 
+ void

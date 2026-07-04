@@ -1,0 +1,47 @@
+- permit build on OpenBSD
+- RPATH isn't need (all paths are standard)
+- fix the build with libdockapp>=0.7
+
+Index: configure
+--- configure.orig
++++ configure
+@@ -3052,6 +3052,9 @@ case $host_os in
+ 	OS=freebsd
+ 	LIBRARY_RPATH="$LIBRARY_RPATH:/usr/X11R6/lib"
+ 	;;
++*openbsd*)
++	OS=openbsd
++	;;
+ *)
+ 	echo ""
+ 	echo "Sorry, $host_os is not supported yet."
+@@ -4270,10 +4273,10 @@ else
+ 	RPATH=
+ 	echo "WARNING: do not know how to set RPATH with this compiler"
+ fi
++RPATH=
+ 
+ 
+ 
+-
+ X_LIBRARY_PATH=$x_libraries
+ XCFLAGS="$X_CFLAGS"
+ XLFLAGS="$X_LIBS"
+@@ -4713,7 +4716,7 @@ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+ $ac_includes_default
+-#include <dockapp.h>
++#include <libdockapp/dockapp.h>
+ _ACEOF
+ rm -f conftest.$ac_objext
+ if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+@@ -4748,7 +4751,7 @@ _ACEOF
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-#include <dockapp.h>
++#include <libdockapp/dockapp.h>
+ _ACEOF
+ if { (eval echo "$as_me:$LINENO: \"$ac_cpp conftest.$ac_ext\"") >&5
+   (eval $ac_cpp conftest.$ac_ext) 2>conftest.er1

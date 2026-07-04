@@ -1,0 +1,3 @@
+${P5SITE}/Dancer2/Plugin/
+${P5SITE}/Dancer2/Plugin/Database.pm
+@man man/man3p/Dancer2::Plugin::Database.3p

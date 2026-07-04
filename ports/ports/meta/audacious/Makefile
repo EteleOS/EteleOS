@@ -1,0 +1,11 @@
+COMMENT =	audacious meta-package
+
+VERSION =	4.5.1
+PKGNAME =	audacious-${VERSION}
+
+MAINTAINER =	Bjorn Ketelaars <bket@openbsd.org>
+
+RUN_DEPENDS =	audio/audacious/player>=${VERSION} \
+		audio/audacious/plugins>=${VERSION}
+
+.include <bsd.port.mk>

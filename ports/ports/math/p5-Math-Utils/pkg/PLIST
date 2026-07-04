@@ -1,0 +1,3 @@
+${P5SITE}/Math/
+${P5SITE}/Math/Utils.pm
+@man man/man3p/Math::Utils.3p

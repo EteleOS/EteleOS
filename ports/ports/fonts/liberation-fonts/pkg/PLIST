@@ -1,0 +1,21 @@
+@pkgpath x11/liberation-fonts
+share/doc/liberation-fonts/
+share/doc/liberation-fonts/AUTHORS
+share/doc/liberation-fonts/ChangeLog
+share/doc/liberation-fonts/LICENSE
+share/doc/liberation-fonts/README
+share/doc/liberation-fonts/TODO
+share/fonts/
+@fontdir share/fonts/Liberation/
+share/fonts/Liberation/LiberationMono-Bold.ttf
+share/fonts/Liberation/LiberationMono-BoldItalic.ttf
+share/fonts/Liberation/LiberationMono-Italic.ttf
+share/fonts/Liberation/LiberationMono-Regular.ttf
+share/fonts/Liberation/LiberationSans-Bold.ttf
+share/fonts/Liberation/LiberationSans-BoldItalic.ttf
+share/fonts/Liberation/LiberationSans-Italic.ttf
+share/fonts/Liberation/LiberationSans-Regular.ttf
+share/fonts/Liberation/LiberationSerif-Bold.ttf
+share/fonts/Liberation/LiberationSerif-BoldItalic.ttf
+share/fonts/Liberation/LiberationSerif-Italic.ttf
+share/fonts/Liberation/LiberationSerif-Regular.ttf

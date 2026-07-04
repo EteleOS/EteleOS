@@ -1,0 +1,97 @@
+The 'mips' symbol is special on MIPS platforms, so rename it to prevent a
+conflict.
+
+Index: arch/Mips/MipsInstPrinter.c
+--- arch/Mips/MipsInstPrinter.c.orig
++++ arch/Mips/MipsInstPrinter.c
+@@ -93,12 +93,12 @@ static void set_mem_access(MCInst *MI, bool status)
+ 		return;
+ 
+ 	if (status) {
+-		MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].type = MIPS_OP_MEM;
+-		MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].mem.base = MIPS_REG_INVALID;
+-		MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].mem.disp = 0;
++		MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].type = MIPS_OP_MEM;
++		MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].mem.base = MIPS_REG_INVALID;
++		MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].mem.disp = 0;
+ 	} else {
+ 		// done, create the next operand slot
+-		MI->flat_insn->detail->mips.op_count++;
++		MI->flat_insn->detail->mipsen.op_count++;
+ 	}
+ }
+ 
+@@ -195,11 +195,11 @@ static void printOperand(MCInst *MI, unsigned OpNo, SS
+ 		reg = Mips_map_register(reg);
+ 		if (MI->csh->detail) {
+ 			if (MI->csh->doing_mem) {
+-				MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].mem.base = reg;
++				MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].mem.base = reg;
+ 			} else {
+-				MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].type = MIPS_OP_REG;
+-				MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].reg = reg;
+-				MI->flat_insn->detail->mips.op_count++;
++				MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].type = MIPS_OP_REG;
++				MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].reg = reg;
++				MI->flat_insn->detail->mipsen.op_count++;
+ 			}
+ 		}
+ 	} else if (MCOperand_isImm(Op)) {
+@@ -209,14 +209,14 @@ static void printOperand(MCInst *MI, unsigned OpNo, SS
+ 				printInt64(O, imm);
+ 			}
+ 			if (MI->csh->detail)
+-				MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].mem.disp = imm;
++				MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].mem.disp = imm;
+ 		} else {
+ 			printInt64(O, imm);
+ 
+ 			if (MI->csh->detail) {
+-				MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].type = MIPS_OP_IMM;
+-				MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].imm = imm;
+-				MI->flat_insn->detail->mips.op_count++;
++				MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].type = MIPS_OP_IMM;
++				MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].imm = imm;
++				MI->flat_insn->detail->mipsen.op_count++;
+ 			}
+ 		}
+ 	}
+@@ -230,9 +230,9 @@ static void printUnsignedImm(MCInst *MI, int opNum, SS
+ 		printInt64(O, imm);
+ 
+ 		if (MI->csh->detail) {
+-			MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].type = MIPS_OP_IMM;
+-			MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].imm = (unsigned short int)imm;
+-			MI->flat_insn->detail->mips.op_count++;
++			MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].type = MIPS_OP_IMM;
++			MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].imm = (unsigned short int)imm;
++			MI->flat_insn->detail->mipsen.op_count++;
+ 		}
+ 	} else
+ 		printOperand(MI, opNum, O);
+@@ -248,9 +248,9 @@ static void printUnsignedImm8(MCInst *MI, int opNum, S
+ 		else
+ 			SStream_concat(O, "%u", imm);
+ 		if (MI->csh->detail) {
+-			MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].type = MIPS_OP_IMM;
+-			MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].imm = imm;
+-			MI->flat_insn->detail->mips.op_count++;
++			MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].type = MIPS_OP_IMM;
++			MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].imm = imm;
++			MI->flat_insn->detail->mipsen.op_count++;
+ 		}
+ 	} else
+ 		printOperand(MI, opNum, O);
+@@ -411,9 +411,9 @@ static void printRegisterList(MCInst *MI, int opNum, S
+ 		reg = MCOperand_getReg(MCInst_getOperand(MI, i));
+ 		printRegName(O, reg);
+ 		if (MI->csh->detail) {
+-			MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].type = MIPS_OP_REG;
+-			MI->flat_insn->detail->mips.operands[MI->flat_insn->detail->mips.op_count].reg = reg;
+-			MI->flat_insn->detail->mips.op_count++;
++			MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].type = MIPS_OP_REG;
++			MI->flat_insn->detail->mipsen.operands[MI->flat_insn->detail->mipsen.op_count].reg = reg;
++			MI->flat_insn->detail->mipsen.op_count++;
+ 		}
+ 	}
+ }

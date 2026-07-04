@@ -1,0 +1,10 @@
+--- xcd.in.orig	Sun Nov  1 19:01:47 1998
++++ xcd.in	Sun Oct 30 11:26:44 2011
+@@ -1,4 +1,6 @@
+-#!/usr/local/bin/wish8.0 -f
++#! /bin/sh
++# the next line restarts with wish \
++exec wish "$0" ${1+"$@"}
+ # -*- tcl -*-
+ 
+ #  Copyright (C) 1998 by Jean-Marc Zucconi (jmz@FreeBSD.ORG)

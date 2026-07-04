@@ -1,0 +1,17 @@
+lib/qt5/examples/
+lib/qt5/examples/virtualkeyboard/
+lib/qt5/examples/virtualkeyboard/basic/
+lib/qt5/examples/virtualkeyboard/basic/Basic.qml
+lib/qt5/examples/virtualkeyboard/basic/basic-b2qt.qml
+lib/qt5/examples/virtualkeyboard/basic/basic.pro
+lib/qt5/examples/virtualkeyboard/basic/content/
+lib/qt5/examples/virtualkeyboard/basic/content/AutoScroller.qml
+lib/qt5/examples/virtualkeyboard/basic/content/FloatingButton_Active.svg
+lib/qt5/examples/virtualkeyboard/basic/content/FloatingButton_Available.svg
+lib/qt5/examples/virtualkeyboard/basic/content/FloatingButton_Unavailable.svg
+lib/qt5/examples/virtualkeyboard/basic/content/HandwritingModeButton.qml
+lib/qt5/examples/virtualkeyboard/basic/content/TextArea.qml
+lib/qt5/examples/virtualkeyboard/basic/content/TextField.qml
+lib/qt5/examples/virtualkeyboard/basic/demo.qrc
+lib/qt5/examples/virtualkeyboard/basic/main.cpp
+lib/qt5/examples/virtualkeyboard/virtualkeyboard.pro

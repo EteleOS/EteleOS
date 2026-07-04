@@ -1,0 +1,10 @@
+@bin bin/gpsk31
+@man man/man1/gpsk31.1
+share/applications/gpsk31.desktop
+share/gpsk31/
+share/gpsk31/README
+share/gpsk31/gpsk.conf
+share/gpsk31/psk31.cod
+share/pixmaps/
+share/pixmaps/gpsk31.png
+@tag update-desktop-database

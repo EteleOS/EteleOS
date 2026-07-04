@@ -1,0 +1,266 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -71,7 +71,7 @@ else
+               GPERF:=/usr/bin/gperf
+             else
+               OS:=linux
+-              GPERF:=/usr/bin/gperf
++              GPERF:=${LOCALBASE}/bin/gperf
+             endif
+           endif
+         endif
+@@ -198,7 +198,7 @@ os2_ARCH_CFLAGS:=
+ macos_ARCH_CFLAGS:=-isysroot $(SDKROOT) -I$(SDKROOT)/usr/include -I$(HOSTROOT)/include -mmacosx-version-min=$(MINVER) -arch $(subst $() $(), -arch ,$(ARCHS)) -w -headerpad_max_install_names -DHAVE_STRCASESTR
+ ios_ARCH_CFLAGS:=-isysroot $(SDKROOT) -I$(SDKROOT)/usr/include -I$(HOSTROOT)/include $(MINVEROPT) -arch $(subst $() $(), -arch ,$(ARCHS)) -w -fPIC -DHAVE_STRCASESTR -DUNLINK_ONLY
+ beos_ARCH_CFLAGS:=
+-linux_ARCH_CFLAGS:=
++#linux_ARCH_CFLAGS:=
+ netbsd_ARCH_CFLAGS:=-DHAVE_STRCASESTR
+ ARCH_CFLAGS:=$($(OS)_ARCH_CFLAGS)
+ 
+@@ -216,10 +216,9 @@ LDFLAGS:=$(ARCH_LDFLAGS)
+ ifeq ($(OS), os2)
+   PAPER_LIB:=$(call linktest,,-lpaper_dll,)
+ else
+-  PAPER_LIB:=$(call linktest,,-lpaper,)
++  PAPER_LIB:=-lpaper
+ endif
+-PNG:=$(call linktest,libpng,-lpng,)
+-PNG:=$(if $(PNG),$(PNG),$(call linktest,,-lpng12,))
++PNG:=$(shell $(PKG_CONFIG) --libs libpng)
+ 
+ FRIBIDI_LIB:=$(shell $(PKG_CONFIG) --libs fribidi)
+ FRIBIDI_CFLAGS:=$(shell $(PKG_CONFIG) --cflags fribidi)
+@@ -252,7 +251,7 @@ macos_PREFIX:=Resources
+ ios_PREFIX:=.
+ linux_PREFIX:=/usr/local
+ netbsd_PREFIX:=/usr/local
+-PREFIX:=$($(OS)_PREFIX)
++PREFIX:=${TRUEPREFIX}
+ 
+ # Root directory to place files when creating packages.
+ # PKG_ROOT is the old name for this, and should be undefined.
+@@ -288,18 +287,18 @@ INCLUDE_PREFIX:=$(DESTDIR)$(PREFIX)/include
+ MAGIC_PREFIX:=$(DESTDIR)$(LIBDIR)/lib$(LIBDIRSUFFIX)/tuxpaint/plugins
+ 
+ # Docs and man page:
+-DOC_PREFIX:=$(DESTDIR)$(PREFIX)/share/doc/tuxpaint-$(VER_VERSION)
+-MAN_PREFIX:=$(DESTDIR)$(PREFIX)/share/man
+-DEVMAN_PREFIX:=$(DESTDIR)$(PREFIX)/share/man
++DOC_PREFIX:=$(DESTDIR)$(PREFIX)/share/doc/tuxpaint
++MAN_PREFIX:=$(DESTDIR)$(PREFIX)/man
++DEVMAN_PREFIX:=$(DESTDIR)$(PREFIX)/man
+ 
+ # BASH tab-completion file:
+-COMPLETIONDIR:=$(DESTDIR)/etc/bash_completion.d
++COMPLETIONDIR:=$(DESTDIR)$(PREFIX)/share/bash-completion/completions
+ 
+ # 'System-wide' Config file:
+ ifeq ($(PREFIX),/usr)
+   CONFDIR:=$(DESTDIR)/etc/tuxpaint
+ else
+-  CONFDIR:=$(DESTDIR)$(PREFIX)/etc/tuxpaint
++  CONFDIR:=${SYSCONFDIR}/tuxpaint
+ endif
+ 
+ ifeq ($(SYSNAME),Haiku)
+@@ -836,9 +835,8 @@ uninstall:	uninstall-i18n
+ install-default-config:
+ 	@echo
+ 	@echo "...Installing default config file..."
+-	@install -d $(CONFDIR)
+-	@cp src/tuxpaint.conf $(CONFDIR)
+-	@chmod 644 $(CONFDIR)/tuxpaint.conf
++	${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(PREFIX)/share/examples/tuxpaint
++	${BSD_INSTALL_DATA} src/tuxpaint.conf $(DESTDIR)$(PREFIX)/share/examples/tuxpaint
+ 
+ # Install BASH completion file:
+ # (Per https://sourceforge.net/p/tuxpaint/bugs/290/ naming
+@@ -850,9 +848,8 @@ install-default-config:
+ install-bash-completion:
+ 	@echo
+ 	@echo "...Installing BASH completion file..."
+-	@install -d $(COMPLETIONDIR)
+-	@cp src/tuxpaint-completion.bash $(COMPLETIONDIR)/010_tuxpaint-completion.bash
+-	@chmod 644 $(COMPLETIONDIR)/010_tuxpaint-completion.bash
++	${BSD_INSTALL_DATA_DIR} $(COMPLETIONDIR)
++	${BSD_INSTALL_DATA} src/tuxpaint-completion.bash $(COMPLETIONDIR)/tuxpaint
+ 
+ 
+ # Install example stamps
+@@ -860,7 +857,7 @@ install-bash-completion:
+ install-example-stamps:
+ 	@echo
+ 	@echo "...Installing example stamps..."
+-	@install -d $(DATA_PREFIX)/stamps
++	${BSD_INSTALL_DATA_DIR} $(DATA_PREFIX)/stamps
+ 	@cp -R stamps/* $(DATA_PREFIX)/stamps
+ 	@chmod -R a+rX,g-w,o-w $(DATA_PREFIX)/stamps
+ 
+@@ -910,7 +907,10 @@ $(THUMB_STARTERS):
+ 	fi
+ 
+ $(INSTALLED_THUMB_STARTERS): $(DATA_PREFIX)/%: % install-example-starters-dirs
+-	@install -D -m 644 $< $@ || ( echo "NO THUMB $<" )
++	@cd starters ; \
++		${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(PREFIX)/share/tuxpaint/starters ; \
++		for i in `ls *.*` ; do \
++		${BSD_INSTALL_DATA} $$i $(DESTDIR)$(PREFIX)/share/tuxpaint/starters ; done
+ 
+ .PHONY: echo-thumb-starters
+ echo-thumb-starters:
+@@ -1034,38 +1034,23 @@ install-pkgxdg: src/tuxpaint.desktop src/tuxpaint-full
+ install-xdg: src/tuxpaint.desktop src/tuxpaint-fullscreen.desktop src/org.tuxpaint.Tuxpaint.appdata.xml
+ 	@echo ""
+ 	@echo "...Installing launcher icon into desktop environment..."
+-	@if [ "x$(shell which xdg-icon-resource)" != "x" ]; then \
+-	  xdg-icon-resource install --size 192 data/images/icon192x192.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 128 data/images/icon128x128.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 96 data/images/icon96x96.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 64 data/images/icon64x64.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 48 data/images/icon48x48.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 32 data/images/icon32x32.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 22 data/images/icon22x22.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 16 data/images/icon16x16.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 192 data/images/icon192x192.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 128 data/images/icon128x128.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 96 data/images/icon96x96.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 64 data/images/icon64x64.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 48 data/images/icon48x48.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 32 data/images/icon32x32.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 22 data/images/icon22x22.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 16 data/images/icon16x16.png tux4kids-tuxpaint-fullscreen ; \
+-	fi
+-	@if [ "x$(shell which xdg-desktop-menu)" != "x" ]; then \
+-	  cp src/tuxpaint.desktop ./tux4kids-tuxpaint.desktop ; \
+-	  xdg-desktop-menu install tux4kids-tuxpaint.desktop ; \
+-	  rm ./tux4kids-tuxpaint.desktop ; \
+-	  cp src/tuxpaint-fullscreen.desktop ./tux4kids-tuxpaint-fullscreen.desktop ; \
+-	  xdg-desktop-menu install tux4kids-tuxpaint-fullscreen.desktop ; \
+-	  rm ./tux4kids-tuxpaint-fullscreen.desktop ; \
+-	fi
+-	@if [ "x$(shell which update-desktop-database)" != "x" ]; then \
+-	  update-desktop-database ; \
+-	fi
+-	mkdir -p $(METAINFO_PREFIX)
+-	cp -a src/org.tuxpaint.Tuxpaint.appdata.xml $(METAINFO_PREFIX)
+-	# ^ Instead of: install --mode=0644 -Dt $(METAINFO_PREFIX) src/org.tuxpaint.Tuxpaint.appdata.xml
++	${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(PREFIX)/share/icons/hicolor/192x192/apps
++	${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(PREFIX)/share/icons/hicolor/128x128/apps
++	${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(PREFIX)/share/icons/hicolor/96x96/apps
++	${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(PREFIX)/share/icons/hicolor/64x64/apps
++	${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(PREFIX)/share/icons/hicolor/48x48/apps
++	${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(PREFIX)/share/icons/hicolor/32x32/apps
++	${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(PREFIX)/share/icons/hicolor/22x22/apps
++	${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(PREFIX)/share/icons/hicolor/16x16/apps
++	${BSD_INSTALL_DATA} data/images/icon192x192.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/192x192/apps/tux4kids-tuxpaint.png
++	${BSD_INSTALL_DATA} data/images/icon128x128.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/128x128/apps/tux4kids-tuxpaint.png
++	${BSD_INSTALL_DATA} data/images/icon96x96.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/96x96/apps/tux4kids-tuxpaint.png
++	${BSD_INSTALL_DATA} data/images/icon64x64.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/64x64/apps/tux4kids-tuxpaint.png
++	${BSD_INSTALL_DATA} data/images/icon48x48.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/48x48/apps/tux4kids-tuxpaint.png
++	${BSD_INSTALL_DATA} data/images/icon32x32.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/32x32/apps/tux4kids-tuxpaint.png
++	${BSD_INSTALL_DATA} data/images/icon22x22.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/22x22/apps/tux4kids-tuxpaint.png
++	${BSD_INSTALL_DATA} data/images/icon16x16.png $(DESTDIR)$(PREFIX)/share/icons/hicolor/16x16/apps/tux4kids-tuxpaint.png
++	install -m0644 -D src/org.tuxpaint.Tuxpaint.appdata.xml $(METAINFO_PREFIX)/org.tuxpaint.Tuxpaint.appdata.xml
+ #do package path related stuff, ie use destdir
+ 
+ # Install the PNG icon (for KDE desktop, etc.)
+@@ -1076,12 +1061,9 @@ install-icon:
+ 	@if [ "x$(PACKAGE_ONLY)" != "xyes" ]; then \
+ 	  echo; \
+ 	  echo "...Installing launcher icon graphics..."; \
+-	  install -d $(ICON_PREFIX); \
+-	  cp data/images/icon.png $(ICON_PREFIX)/tuxpaint.png; \
+-	  chmod 644 $(ICON_PREFIX)/tuxpaint.png; \
+-	  install -d $(X11_ICON_PREFIX); \
+-	  cp data/images/icon32x32.xpm $(X11_ICON_PREFIX)/tuxpaint.xpm; \
+-	  chmod 644 $(X11_ICON_PREFIX)/tuxpaint.xpm; \
++	  ${BSD_INSTALL_DATA_DIR} $(ICON_PREFIX) $(X11_ICON_PREFIX); \
++	  ${BSD_INSTALL_DATA} data/images/icon.png $(ICON_PREFIX)/tuxpaint.png; \
++	  ${BSD_INSTALL_DATA} data/images/icon32x32.xpm $(X11_ICON_PREFIX)/tuxpaint.xpm; \
+ 	fi
+ 
+ 
+@@ -1090,9 +1072,8 @@ install-icon:
+ install-bin:
+ 	@echo
+ 	@echo "...Installing program itself..."
+-	@install -d $(BIN_PREFIX)
+-	@cp tuxpaint$(EXE_EXT) $(BIN_PREFIX)
+-	@chmod a+rx,g-w,o-w $(BIN_PREFIX)/tuxpaint$(EXE_EXT)
++	${BSD_INSTALL_DATA_DIR} $(BIN_PREFIX)
++	${BSD_INSTALL_PROGRAM} tuxpaint $(BIN_PREFIX)
+ 
+ # Install tuxpaint-config and required Windows DLLs into the 'bdist' directory
+ .PHONY: install-dlls
+@@ -1124,8 +1105,7 @@ install-haiku:
+ install-importscript: install-bin
+ 	@echo
+ 	@echo "...Installing 'tuxpaint-import' script..."
+-	@cp src/tuxpaint-import.sh $(BIN_PREFIX)/tuxpaint-import
+-	@chmod a+rx,g-w,o-w $(BIN_PREFIX)/tuxpaint-import
++	${BSD_INSTALL_SCRIPT} src/tuxpaint-import.sh $(BIN_PREFIX)/tuxpaint-import
+ 
+ 
+ # Install the data (sound, graphics, fonts):
+@@ -1133,12 +1113,14 @@ install-importscript: install-bin
+ install-data:
+ 	@echo
+ 	@echo "...Installing data files..."
+-	@install -d $(DATA_PREFIX)
++	${BSD_INSTALL_DATA_DIR} $(DATA_PREFIX)
+ 	@cp -R data/* $(DATA_PREFIX)
+ 	@chmod -R a+rX,g-w,o-w $(DATA_PREFIX)
++	${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(PREFIX)/share/applications
++	${BSD_INSTALL_DATA} src/tuxpaint.desktop $(DESTDIR)$(PREFIX)/share/applications
+ 	@echo
+ 	@echo "...Installing fonts..."
+-	@install -d $(DATA_PREFIX)/fonts/locale
++	${BSD_INSTALL_DATA_DIR} $(DATA_PREFIX)/fonts/locale
+ 	@cp -R fonts/locale/* $(DATA_PREFIX)/fonts/locale
+ 	@chmod -R a+rX,g-w,o-w $(DATA_PREFIX)/fonts/locale
+ 
+@@ -1158,7 +1140,7 @@ install-osk:
+ install-doc:
+ 	@echo
+ 	@echo "...Installing documentation..."
+-	@install -d $(DOC_PREFIX)
++	${BSD_INSTALL_DATA_DIR} $(DOC_PREFIX)
+ 	@cp -R docs/* $(DOC_PREFIX)
+ 	@rm $(DOC_PREFIX)/Makefile # Used to generate TXT from HTML
+ 	@rm $(DOC_PREFIX)/RELEASE.txt # Not useful to end users
+@@ -1183,27 +1165,19 @@ install-man:
+ 	@echo
+ 	@echo "...Installing English man pages..."
+ 	@# man1 directory...
+-	@install -d $(MAN_PREFIX)/man1
++	${BSD_INSTALL_MAN_DIR} $(MAN_PREFIX)/man1
+ 	@# tuxpaint.1
+-	@cp man/en/tuxpaint.1 $(MAN_PREFIX)/man1/
+-	@gzip -f $(MAN_PREFIX)/man1/tuxpaint.1
+-	@chmod a+rx,g-w,o-w $(MAN_PREFIX)/man1/tuxpaint.1.gz
++	${BSD_INSTALL_MAN} man/en/tuxpaint.1 $(MAN_PREFIX)/man1/
+ 	@# tuxpaint-import.1
+-	@cp man/en/tuxpaint-import.1 $(MAN_PREFIX)/man1/
+-	@gzip -f $(MAN_PREFIX)/man1/tuxpaint-import.1
+-	@chmod a+rx,g-w,o-w $(MAN_PREFIX)/man1/tuxpaint-import.1.gz
++	${BSD_INSTALL_MAN} man/en/tuxpaint-import.1 $(MAN_PREFIX)/man1/
+ 	@# tp-magic-config.1
+-	@cp man/en/tp-magic-config.1 $(MAN_PREFIX)/man1/
+-	@gzip -f $(MAN_PREFIX)/man1/tp-magic-config.1
+-	@chmod a+rx,g-w,o-w $(MAN_PREFIX)/man1/tp-magic-config.1.gz
++	${BSD_INSTALL_MAN} man/en/tp-magic-config.1 $(MAN_PREFIX)/man1/
+ 	@echo
+ 	for l in `ls -d man/*.UTF-8 | cut -d '/' -f 2`; do \
+ 		DEST=$(MAN_PREFIX)/$$l/man1 ; \
+ 		echo "...Installing $$l man pages into $$DEST..." ; \
+-		install -d $$DEST ; \
+-		cp man/$$l/tuxpaint.1 $$DEST ; \
+-		gzip -f $$DEST/tuxpaint.1 ; \
+-		chmod a+rx,g-w,o-w $$DEST/tuxpaint.1.gz ; \
++		${BSD_INSTALL_MAN_DIR} $$DEST ; \
++		${BSD_INSTALL_MAN} man/$$l/tuxpaint.1 $$DEST ; \
+ 	done
+ 	@# FIXME: The other man pages aren't localizable yet -bjk 2021.08.14
+ 

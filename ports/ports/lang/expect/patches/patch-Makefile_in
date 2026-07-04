@@ -1,0 +1,27 @@
+--- Makefile.in.orig	Thu Sep 30 19:14:07 2010
++++ Makefile.in	Tue May 14 14:46:31 2013
+@@ -239,7 +239,7 @@ install-libraries: libraries $(SCRIPTS)
+ 	@mkdir -p $(DESTDIR)$(prefix)/bin
+ 	-for i in $(SCRIPT_LIST) ; do \
+ 	  if [ -f $$i ] ; then \
+-	    $(INSTALL_PROGRAM) $$i $(DESTDIR)$(prefix)/bin/$$i ; \
++	    $(INSTALL_SCRIPT) $$i $(DESTDIR)$(prefix)/bin/$$i ; \
+ 	    rm -f $$i ; \
+ 	  else true; fi ; \
+ 	done
+@@ -395,6 +395,7 @@ expect:	exp_main_exp.o $(PKG_LIB_FILE)
+ 		@EXP_BUILD_LIB_SPEC@ \
+ 		@TCL_LIB_SPEC@ \
+ 		@TCL_DL_LIBS@ @PKG_LIBS@ @MATH_LIBS@ \
++		@PTYLIB@ \
+ 		@TCL_CC_SEARCH_FLAGS@ \
+ 		@EXP_CC_SEARCH_FLAGS@
+ 	$(SETUID) expect
+@@ -530,6 +531,7 @@ install-lib-binaries:
+ 	    echo " $(INSTALL_PROGRAM) $$p $(DESTDIR)$(pkglibdir)/$$p"; \
+ 	    $(INSTALL_PROGRAM) $$p $(DESTDIR)$(pkglibdir)/$$p; \
+ 	    stub=`echo $$p|sed -e "s/.*\(stub\).*/\1/"`; \
++	    cd $(DESTDIR)$(pkglibdir)/../../; ln -s $(pkglibdir)/$$p $$p; \
+ 	    if test "x$$stub" = "xstub"; then \
+ 		echo " $(RANLIB_STUB) $(DESTDIR)$(pkglibdir)/$$p"; \
+ 		$(RANLIB_STUB) $(DESTDIR)$(pkglibdir)/$$p; \

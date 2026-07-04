@@ -1,0 +1,5 @@
+bin/sudoku
+@man man/man6/sudoku.6
+share/sudoku/
+share/sudoku/sudoku.html
+share/sudoku/template

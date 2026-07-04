@@ -1,0 +1,8 @@
+${P5ARCH}/Alien/
+${P5ARCH}/Alien/wxWidgets/
+${P5ARCH}/Alien/wxWidgets.pm
+${P5ARCH}/Alien/wxWidgets/Config/
+${P5ARCH}/Alien/wxWidgets/Config/gtk_uni_gcc.pm
+${P5ARCH}/Alien/wxWidgets/Utility.pm
+@man man/man3p/Alien::wxWidgets.3p
+@man man/man3p/Alien::wxWidgets::Utility.3p

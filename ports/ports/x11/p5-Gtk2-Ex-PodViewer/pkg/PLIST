@@ -1,0 +1,9 @@
+bin/podviewer
+${P5SITE}/Gtk2/
+${P5SITE}/Gtk2/Ex/
+${P5SITE}/Gtk2/Ex/PodViewer/
+${P5SITE}/Gtk2/Ex/PodViewer.pm
+${P5SITE}/Gtk2/Ex/PodViewer/Parser.pm
+@man man/man1/podviewer.1
+@man man/man3p/Gtk2::Ex::PodViewer.3p
+@man man/man3p/Gtk2::Ex::PodViewer::Parser.3p

@@ -1,0 +1,3 @@
+${P5SITE}/HTTP/
+${P5SITE}/HTTP/Lite.pm
+@man man/man3p/HTTP::Lite.3p

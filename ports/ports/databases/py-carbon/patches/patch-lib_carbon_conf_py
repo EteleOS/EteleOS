@@ -1,0 +1,21 @@
+Index: lib/carbon/conf.py
+--- lib/carbon/conf.py.orig
++++ lib/carbon/conf.py
+@@ -600,7 +600,7 @@ def read_config(program, options, **kwargs):
+     for name, value in kwargs.items():
+         settings.setdefault(name, value)
+ 
+-    graphite_root = kwargs.get("ROOT_DIR")
++    graphite_root = '/var/graphite/'
+     if graphite_root is None:
+         graphite_root = os.environ.get('GRAPHITE_ROOT')
+     if graphite_root is None:
+@@ -611,7 +611,7 @@ def read_config(program, options, **kwargs):
+     # 'GRAPHITE_CONF_DIR' environment variable.
+     settings.setdefault("CONF_DIR",
+                         os.environ.get("GRAPHITE_CONF_DIR",
+-                                       join(graphite_root, "conf")))
++                                       join("${SYSCONFDIR}", "graphite")))
+     if options["config"] is None:
+         options["config"] = join(settings["CONF_DIR"], "carbon.conf")
+     else:

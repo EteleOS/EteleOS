@@ -1,0 +1,9 @@
+${P5SITE}/Mail/
+${P5SITE}/Mail/Sender/
+${P5SITE}/Mail/Sender.pm
+${P5SITE}/Mail/Sender/CType/
+${P5SITE}/Mail/Sender/CType/Ext.pm
+${P5SITE}/Mail/Sender/CType/Win32.pm
+@man man/man3p/Mail::Sender.3p
+@man man/man3p/Mail::Sender::CType::Ext.3p
+@man man/man3p/Mail::Sender::CType::Win32.3p

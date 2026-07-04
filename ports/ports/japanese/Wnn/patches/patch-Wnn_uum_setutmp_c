@@ -1,0 +1,13 @@
+--- Wnn/uum/setutmp.c.orig
++++ Wnn/uum/setutmp.c
+@@ -49,6 +49,10 @@
+ /*	Version 4.0
+  */
+ #include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <time.h>
+ #include <sys/types.h>
+ #include <utmp.h>
+ #include <pwd.h>

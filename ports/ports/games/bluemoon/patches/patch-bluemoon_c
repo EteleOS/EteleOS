@@ -1,0 +1,11 @@
+--- bluemoon.c.orig.port	Fri Jan 23 09:49:18 2026
++++ bluemoon.c	Sat Mar 14 08:27:05 2026
+@@ -413,7 +413,7 @@
+ 	if (argc == 2) {
+ 		srand(seed = atoi(argv[1]));
+ 	} else {
+-		srand(seed = (int)time(NULL));
++		srand(seed = (int)time((time_t *)0));
+ 	}
+ 	init_vars();
+ 

@@ -1,0 +1,10 @@
+The NEWS file was generated from xterm.log.html, which serves as the changelog
+for xterm.
+--------------------------------------------------------------------------------
+                            Patch #406 - 2025/12/21
+
+     * add   option   -emoji_width   and   resource  emojiWidth  to  allow
+       enabling/disabling  VS15/VS16  feature  introduced  in  patch  #404
+       (Debian #1123509). Also, work around display issues by changing the
+       filler character for VS16.
+

@@ -1,0 +1,4 @@
+bin/fpdns
+${P5SITE}/Net/DNS/Fingerprint.pm
+@comment ${P5SITE}/Net/DNS/REPLACE
+@man man/man1/fpdns.1

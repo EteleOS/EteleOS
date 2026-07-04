@@ -1,0 +1,34 @@
+Fix library and include paths.
+Remove hardcoded optimization flags/levels.
+
+Index: premake4.lua
+--- premake4.lua.orig
++++ premake4.lua
+@@ -44,10 +44,13 @@ end
+ 
+ configuration "bsd"
+ 	libdirs {
+-		"/usr/local/lib",
++		"${LOCALBASE}/lib",
++		"${X11BASE}/lib",
+ 	}
+ 	includedirs {
+-		"/usr/local/include",
++		"${LOCALBASE}/include",
++		"${LOCALBASE}/include/SDL2",
++		"${X11BASE}/include/",
+ 	}
+ 
+ if _OPTIONS.wincross then
+@@ -107,8 +110,9 @@ configuration "Debug"
+ 
+ configuration "Release"
+ 	defines { "NDEBUG=1" }
+-	flags { "Optimize", "NoFramePointer" }
+-	buildoptions { "-O2" }
++       flags { "Symbols" }
++--	flags { "Optimize", "NoFramePointer" }
++--	buildoptions { "-O2" }
+ 	targetdir "bin/Release"
+ 
+ 

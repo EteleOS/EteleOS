@@ -1,0 +1,6 @@
+@pkgpath net/pfstat
+@bin bin/pfstat
+@man man/man8/pfstat.8
+share/examples/pfstat/
+share/examples/pfstat/pfstat.conf
+@sample ${SYSCONFDIR}/pfstat.conf

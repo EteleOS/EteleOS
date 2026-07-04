@@ -1,0 +1,12 @@
+Index: src/send_nsca.c
+--- src/send_nsca.c.orig
++++ src/send_nsca.c
+@@ -26,7 +26,7 @@ int server_port=DEFAULT_SERVER_PORT;
+ char server_name[MAX_HOST_ADDRESS_LENGTH];
+ char password[MAX_INPUT_BUFFER]="";
+ int legacy_2_7_mode=FALSE;
+-char config_file[MAX_INPUT_BUFFER]="send_nsca.cfg";
++char config_file[MAX_INPUT_BUFFER]="/etc/send_nsca.cfg";
+ char delimiter[2]="\t";
+ char block_delimiter[2]=BLOCK_DELIMITER;
+ 

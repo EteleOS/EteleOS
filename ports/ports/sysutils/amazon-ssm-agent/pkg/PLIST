@@ -1,0 +1,20 @@
+@extraunexec rm -rf /var/db/amazon /var/log/amazon
+@rcscript ${RCDIR}/amazon_ssm_agent
+@bin bin/amazon-ssm-agent
+@bin bin/ssm-agent-worker
+@bin bin/ssm-cli
+@bin bin/ssm-document-worker
+@bin bin/ssm-session-logger
+@bin bin/ssm-session-worker
+@bin bin/ssm-setup-cli
+share/doc/amazon-ssm-agent/
+share/doc/amazon-ssm-agent/LICENSE
+share/examples/amazon-ssm-agent/
+share/examples/amazon-ssm-agent/amazon/
+@sample ${SYSCONFDIR}/amazon/
+share/examples/amazon-ssm-agent/amazon/ssm/
+@sample ${SYSCONFDIR}/amazon/ssm/
+share/examples/amazon-ssm-agent/amazon/ssm/amazon-ssm-agent.json.template
+@sample ${SYSCONFDIR}/amazon/ssm/amazon-ssm-agent.json
+share/examples/amazon-ssm-agent/amazon/ssm/seelog_unix.xml
+@sample ${SYSCONFDIR}/amazon/ssm/seelog.xml

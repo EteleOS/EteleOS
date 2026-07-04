@@ -1,0 +1,15 @@
+Define EM_AVR, since it isn't included in our sys/exec_elf.h.
+
+Index: fileio.c
+--- fileio.c.orig
++++ fileio.c
+@@ -34,6 +34,9 @@
+ #elif defined(HAVE_LIBELF_LIBELF_H)
+ #include <libelf/libelf.h>
+ #endif
++#ifndef EM_AVR
++#define EM_AVR 83
++#endif
+ #define EM_AVR32 0x18ad         /* inofficial */
+ #endif
+ 

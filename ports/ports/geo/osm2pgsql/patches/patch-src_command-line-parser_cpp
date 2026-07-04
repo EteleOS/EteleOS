@@ -1,0 +1,12 @@
+Index: src/command-line-parser.cpp
+--- src/command-line-parser.cpp.orig
++++ src/command-line-parser.cpp
+@@ -493,7 +493,7 @@ options_t parse_command_line(int argc, char *argv[])
+ 
+     // --cache
+     app.add_option("-C,--cache", options.cache)
+-        ->description("Use up to SIZE MB for caching nodes (default: 800).")
++        ->description("Use up to SIZE MB for caching nodes (default: 100).")
+         ->type_name("SIZE")
+         ->group("Middle options");
+ 

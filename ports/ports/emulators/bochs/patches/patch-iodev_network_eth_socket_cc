@@ -1,0 +1,11 @@
+Index: iodev/network/eth_socket.cc
+--- iodev/network/eth_socket.cc.orig
++++ iodev/network/eth_socket.cc
+@@ -93,7 +93,6 @@ extern "C" {
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
+ #include <netinet/in.h>
+-#include <net/ethernet.h>
+ #include <net/if.h>
+ #ifdef __linux__
+ #include <linux/types.h>

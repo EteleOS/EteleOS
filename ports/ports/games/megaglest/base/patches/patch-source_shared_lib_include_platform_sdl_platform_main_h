@@ -1,0 +1,21 @@
+Fix for i386 PIE (ebx is reserved).
+
+--- source/shared_lib/include/platform/sdl/platform_main.h.orig	Sun Jan 24 14:00:38 2016
++++ source/shared_lib/include/platform/sdl/platform_main.h	Mon Nov 28 13:30:11 2016
+@@ -601,9 +601,16 @@ int mainSetup(int argc, char **argv) {
+ 
+ #define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
+ 
++#if defined(__i386__) && defined(__PIE__)
+ #define cpuid(func,ax,bx,cx,dx)\
++	__asm__ __volatile__ (\
++	"xchg %%ebx, %%esi; cpuid; xchg %%ebx, %%esi":\
++	"=a" (ax), "=S" (bx), "=c" (cx), "=d" (dx) : "a" (func));
++#else
++#define cpuid(func,ax,bx,cx,dx)\
+ 	__asm__ __volatile__ ("cpuid":\
+ 	"=a" (ax), "=b" (bx), "=c" (cx), "=d" (dx) : "a" (func));
++#endif
+ 
+ 	int ax=0,bx=0,cx=0,dx=0;
+ 	cpuid(0x0000001,ax,bx,cx,dx)

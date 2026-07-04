@@ -1,0 +1,3 @@
+bin/help2man
+@info info/help2man.info
+@man man/man1/help2man.1

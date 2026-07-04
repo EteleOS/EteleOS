@@ -1,0 +1,4 @@
+@comment ${P5SITE}/MIME/test1.pl
+${P5SITE}/MIME/
+${P5SITE}/MIME/Base32.pm
+@man man/man3p/MIME::Base32.3p

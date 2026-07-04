@@ -1,0 +1,12 @@
+Index: src/Makefile.in
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -47,7 +47,7 @@ exec_prefix = @exec_prefix@
+ install_lib_dir = @libdir@
+ install_bin_dir = @bindir@
+ install_include_dir = @includedir@
+-install_doc_dir = $(prefix)/share/doc/slang/v@slang_major_version@
++install_doc_dir = $(prefix)/share/doc/slang/
+ DOC_FILES = ../changes.txt ../COPY* ../doc/slangdoc.html ../doc/text/*.txt
+ MODULE_INSTALL_DIR = @libdir@/slang/v@slang_major_version@/modules
+ #---------------------------------------------------------------------------

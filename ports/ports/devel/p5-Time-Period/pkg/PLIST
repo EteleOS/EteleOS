@@ -1,0 +1,3 @@
+${P5SITE}/Time/
+${P5SITE}/Time/Period.pm
+@man man/man3p/Time::Period.3p

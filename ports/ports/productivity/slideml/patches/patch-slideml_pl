@@ -1,0 +1,12 @@
+--- slideml.pl.orig     Thu Jan 26 02:58:59 2012
++++ slideml.pl  Thu Jan 26 02:59:11 2012
+@@ -48,7 +48,7 @@ $tblborder = "solid";
+ $tblcolour = "#666666";
+
+ # Get path to script
+-$path = dirname(__FILENAME__);
++$path = "${TRUEPREFIX}/share/slideml";
+
+ while (<>) {
+
+

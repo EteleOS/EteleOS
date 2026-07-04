@@ -1,0 +1,20 @@
+Fix totalmem computation, see
+https://rt.cpan.org/Public/Bug/Display.html?id=130740
+
+Index: Makefile.PL
+--- Makefile.PL.orig
++++ Makefile.PL
+@@ -38,12 +38,7 @@ for ($^O) {
+     }
+   } elsif (/bsd/) {
+     copy ('arch/bsd.xs', 'MemInfo.xs');
+-    if (/netbsd/) {
+-      $define = '-DNETBSD';
+-      print "Sys::MemInfo for NetBSD\n";
+-    } else {
+-      print "Sys::MemInfo for *BSD\n";
+-    }
++    print "Sys::MemInfo for *BSD\n";
+   } elsif (/hpux/) {
+     copy ('arch/hpux.xs', 'MemInfo.xs');
+     $define ='-D_XOPEN_SOURCE_EXTENDED';

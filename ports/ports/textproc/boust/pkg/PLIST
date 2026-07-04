@@ -1,0 +1,10 @@
+bin/boust
+@man man/man1/boust.1
+share/doc/boust/
+share/doc/boust/README
+share/doc/pkg-readmes/${PKGSTEM}
+share/fonts/
+@fontdir share/fonts/boust/
+share/fonts/boust/10x20bw.pcf.gz
+share/fonts/boust/10x20fw.pcf.gz
+share/fonts/boust/10x20ud.pcf.gz

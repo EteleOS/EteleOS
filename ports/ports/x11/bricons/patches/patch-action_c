@@ -1,0 +1,22 @@
+Index: action.c
+--- action.c.orig
++++ action.c
+@@ -178,7 +178,7 @@ catch_child()
+ {
+         int     	pid;
+ 	int		i = 0;
+-        union wait      status;
++        int		status;
+ 
+ 
+         /*
+@@ -192,7 +192,8 @@ catch_child()
+ 				i++;
+ 		if(ci_ptr[i].child_id == pid)
+ 		{
+-			XtAppAddTimeOut(app_context,50,ResetButton,pid);
++			XtAppAddTimeOut(app_context,50,ResetButton,
++				(XtPointer)pid);
+ 		}
+ 	}
+         return;

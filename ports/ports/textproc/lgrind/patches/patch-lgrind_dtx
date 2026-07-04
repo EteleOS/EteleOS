@@ -1,0 +1,32 @@
+Fix incorrectly nested dtx.
+
+https://tex.stackexchange.com/questions/550540/lgrind-dtx-no-longer-compiles-as-of-tex-live-2020-potential-problem-with-new-la
+
+Index: lgrind.dtx
+--- lgrind.dtx.orig
++++ lgrind.dtx
+@@ -30,6 +30,7 @@
+ \documentclass{ltxdoc}
+ \CodelineIndex
+ \RecordChanges
++\begin{document}
+ \DocInput{lgrind.dtx}
+ \end{document}
+ %</driver>
+@@ -40,7 +41,6 @@
+ % \frenchspacing
+ % 
+ % \GetFileInfo{lgrind.dtx}
+-% \begin{document}
+ % \title{The \LG{} package\thanks{This file
+ %         has version number \fileversion, last
+ %         revised \filedate.}}
+@@ -537,7 +537,7 @@
+ % The meta-symbols and their meanings are:
+ % \begin{description}
+ % \item[\$] The end of a line
+-% \item[\^] The beginning of a line
++% \item[\^{}] The beginning of a line
+ % \item[$\backslash$d] A delimiter (space, tab, newline, start of line)
+ % \item[$\backslash$a] Matches any string of symbols (like `.*' in lex)
+ % \item[$\backslash$p] Matches any identifier. In a procedure definition

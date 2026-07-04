@@ -1,0 +1,13 @@
+Index: include/common.h
+--- include/common.h.orig
++++ include/common.h
+@@ -414,6 +414,9 @@ void syslogbit_set(void);
+ /* Return the default path for the directory containing configuration files */
+ const char * confpath(void);
+ 
++/* return a config path for the CGIs so they can be kept seperate */
++const char * cgiconfpath(void);
++
+ /* Return the default path for the directory containing state files */
+ const char * dflt_statepath(void);
+ 

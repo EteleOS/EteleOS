@@ -1,0 +1,14 @@
+Index: src/enet/Makefile
+--- src/enet/Makefile.orig
++++ src/enet/Makefile
+@@ -4,8 +4,8 @@ ENET_TARGET	:= libenet.a
+ ENET_SRCLST	:= host.c list.c memory.c packet.c peer.c protocol.c unix.c
+ ENET_OBJLST	:= $(ENET_SRCLST:.c=.o)
+ 
+-CC      := gcc
+-OPT     := -Os
++CC      ?= gcc
++OPT     := $(CFLAGS)
+ INC     := -Iinclude
+ CFLAGS  := $(OPT) $(INC)
+ 

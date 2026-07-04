@@ -1,0 +1,10 @@
+Index: help.c
+--- help.c.orig
++++ help.c
+@@ -6,5 +6,6 @@
+  */
+ 
++#include <stdlib.h>
+ #ifdef QREF
+ #include <stdio.h>
+ char	*header = " Quick Reference";

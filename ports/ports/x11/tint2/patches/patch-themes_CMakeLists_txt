@@ -1,0 +1,8 @@
+Index: themes/CMakeLists.txt
+--- themes/CMakeLists.txt.orig
++++ themes/CMakeLists.txt
+@@ -1,2 +1,2 @@
+-file( GLOB EXTRATHEMEFILES *.tint2rc )
+-install( FILES ${EXTRATHEMEFILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/tint2 )
++file( GLOB EXTRATHEMEFILES tint2rc *.tint2rc )
++install( FILES ${EXTRATHEMEFILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/examples/tint2 )

@@ -1,0 +1,15 @@
+Add sndio support
+
+Index: src/core/include/hydrogen/Preferences.h
+--- src/core/include/hydrogen/Preferences.h.orig
++++ src/core/include/hydrogen/Preferences.h
+@@ -262,6 +262,9 @@ class Preferences : public H2Core::Object (public)
+ 	//	OSS driver properties ___
+ 	QString				m_sOSSDevice;		///< Device used for output
+ 
++	//	SNDIO driver properties ___
++	QString				m_sSndioDevice;		///< Device used for output
++
+ 	//	MIDI Driver properties
+ 	/**
+ 	 * MIDI driver

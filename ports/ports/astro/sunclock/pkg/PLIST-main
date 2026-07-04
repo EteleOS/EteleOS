@@ -1,0 +1,26 @@
+@pkgpath astro/sunclock
+@pkgpath astro/sunclock,no_maps
+@bin bin/sunclock
+@man man/man1/sunclock.1
+share/sunclock/
+share/sunclock/Sunclockrc
+share/sunclock/earthmaps/
+share/sunclock/earthmaps/vmf/
+share/sunclock/earthmaps/vmf/countries.vmf
+share/sunclock/earthmaps/vmf/landwater.vmf
+share/sunclock/earthmaps/vmf/timezones.vmf
+share/sunclock/i18n/
+share/sunclock/i18n/Sunclock.de
+share/sunclock/i18n/Sunclock.en
+share/sunclock/i18n/Sunclock.es
+share/sunclock/i18n/Sunclock.fr
+share/sunclock/i18n/Sunclock.it
+share/sunclock/i18n/Sunclock.nl
+share/sunclock/i18n/Sunclock.no
+share/sunclock/i18n/Sunclock.pl
+share/sunclock/i18n/Sunclock.sv
+share/sunclock/wm_icons/
+share/sunclock/wm_icons/mini-sunclock-16x14.xpm
+share/sunclock/wm_icons/mini-sunclock-16x16.xpm
+share/sunclock/wm_icons/sunclock.xpm
+share/sunclock/wm_icons/sunclock2.xpm

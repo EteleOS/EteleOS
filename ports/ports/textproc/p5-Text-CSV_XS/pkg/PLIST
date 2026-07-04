@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Text/
+${P5ARCH}/Text/CSV_XS.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Text/
+${P5ARCH}/auto/Text/CSV_XS/
+@so ${P5ARCH}/auto/Text/CSV_XS/CSV_XS.so
+@man man/man3p/Text::CSV_XS.3p

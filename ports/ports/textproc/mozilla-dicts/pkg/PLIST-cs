@@ -1,0 +1,6 @@
+@pkgpath textproc/mozilla-dicts,-${L}
+share/mozilla-dicts/
+share/mozilla-dicts/Cestina.aff
+share/mozilla-dicts/Cestina.dic
+share/mozilla-dicts/cs.aff
+share/mozilla-dicts/cs.dic

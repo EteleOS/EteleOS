@@ -1,0 +1,12 @@
+Index: tests/test-plugin+app.c
+--- tests/test-plugin+app.c.orig
++++ tests/test-plugin+app.c
+@@ -179,7 +179,7 @@ void  test_setup_plugin_aria2 (void)
+ 			"C:\\Program Files\\uGet\\bin\\aria2c.exe");
+ #endif
+ 	uget_plugin_global_set(pinfo, UGET_PLUGIN_ARIA2_GLOBAL_ARGUMENT,
+-			"--enable-rpc=true -D --check-certificate=false");
++			"--enable-rpc=true -D");
+ 	uget_plugin_global_set(pinfo, UGET_PLUGIN_ARIA2_GLOBAL_LAUNCH, (void*) TRUE);
+ 	uget_plugin_global_set(pinfo, UGET_PLUGIN_ARIA2_GLOBAL_SHUTDOWN, (void*) TRUE);
+ 	ug_sleep (1000);

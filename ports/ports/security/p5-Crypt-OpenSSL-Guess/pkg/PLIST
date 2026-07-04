@@ -1,0 +1,4 @@
+${P5SITE}/Crypt/
+${P5SITE}/Crypt/OpenSSL/
+${P5SITE}/Crypt/OpenSSL/Guess.pm
+@man man/man3p/Crypt::OpenSSL::Guess.3p

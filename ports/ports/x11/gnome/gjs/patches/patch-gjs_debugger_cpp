@@ -1,0 +1,32 @@
+XXX:
+Moving the HAVE_READLINE_READLINE_H block until after the Mozilla
+includes suddenly toggles symbol visiblity on gjs_context_setup_debugger_console()
+which unhides it?
+
+Index: gjs/debugger.cpp
+--- gjs/debugger.cpp.orig
++++ gjs/debugger.cpp
+@@ -7,11 +7,6 @@
+ #include <stdint.h>
+ #include <stdio.h>  // for feof, fflush, fgets, stdin, stdout
+ 
+-#ifdef HAVE_READLINE_READLINE_H
+-#    include <readline/history.h>
+-#    include <readline/readline.h>
+-#endif
+-
+ #include <glib.h>
+ 
+ #include <js/CallArgs.h>
+@@ -35,6 +30,11 @@
+ #include "gjs/jsapi-util.h"
+ #include "gjs/macros.h"
+ #include "gjs/module.h"
++
++#ifdef HAVE_READLINE_READLINE_H
++#    include <readline/history.h>
++#    include <readline/readline.h>
++#endif
+ 
+ #include "util/console.h"
+ 

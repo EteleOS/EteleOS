@@ -1,0 +1,19 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -85,13 +85,13 @@ uninstall: uninstall-links uninstall-html uninstall-do
+ # --- Links --- #
+ 
+ install-links: uninstall-links
+-	if test $(LINKS_DIR) != none; then \
++	if test $(LINKS_DIR) != $(DESTDIR)none; then \
+ 	   ./mkinstalldirs $(LINKS_DIR); \
+ 	   (cd $(LINKS_DIR) ; $(LN_S) $(INSTALL_DIR)/bin/* .); \
+ 	fi
+ 
+ uninstall-links:
+-	-if test $(LINKS_DIR) != none; then \
++	-if test $(LINKS_DIR) != $(DESTDIR)none; then \
+ 	   (cd $(LINKS_DIR) 2>/dev/null && rm -f $(BIN_FILES)); \
+ 	   rmdir $(LINKS_DIR) 2>/dev/null; \
+ 	fi || exit 0;

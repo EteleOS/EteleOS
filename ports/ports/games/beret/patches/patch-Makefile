@@ -1,0 +1,19 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -1,6 +1,6 @@
+ CC= gcc
+ CFLAGS= -Wall -g
+-LFLAGS= -lSDLmain -lSDL -lSDL_image -lSDL_ttf -lSDL_mixer
++LFLAGS= -lSDLmain -lSDL -lSDL_image -lSDL_ttf -lSDL_mixer -lm
+ 
+ default: beret
+ 
+@@ -8,6 +8,6 @@ clean:
+ 	rm beret *.o
+ 
+ beret: game.o thing.o physics.o
+-	$(CC) $(LFLAGS) -o $@ game.o thing.o physics.o
++	$(CC) ${LDFLAGS} $(LFLAGS) -o $@ game.o thing.o physics.o
+ 
+ %.o: %.c %.h

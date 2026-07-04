@@ -1,0 +1,49 @@
+--- Makefile.in.orig	Thu Mar  4 21:33:56 2004
++++ Makefile.in	Wed Jan  7 18:30:33 2009
+@@ -14,7 +14,7 @@ DEFINES += -DGUNZIP="\"gunzip\""
+ # 2) Otherwise, if your system supports standard Unix "uncompress",
+ #    then uncomment the following line to support on-the-fly
+ #    decompression of ".Z" files...
+-#DEFINES += -DUNCOMPRESS="\"uncompress\""
++DEFINES += -DUNCOMPRESS="\"uncompress\""
+ # 3) Also, we assume most systems have the "bunzip2" utility installed,
+ #    if yours doesn't, you'll want to comment out the next line.
+ DEFINES += -DBUNZIP2="\"bunzip2\""
+@@ -34,8 +34,8 @@ DEFINES += -DBUNZIP2="\"bunzip2\""
+ # 
+ ################################################################## 
+ PCAP_LDLIBS = @V_PCAP_LDLIBS@
+-PCAP_INCS    = -I/usr/local/include -I. -I../pcap -I/usr/include/pcap
+-PCAP_LDFLAGS = -L/usr/local/lib -Llib -Lpcap -L../pcap -L./cygwin-libs
++PCAP_INCS    =
++PCAP_LDFLAGS =
+ 
+ 
+ 
+@@ -151,7 +151,7 @@ INCLS = -I. @V_INCLS@ ${PCAP_INCS}
+ # Probably want full optimization
+ # FreeBSD needs	-Ae
+ # HP needs	-Ae
+-CFLAGS = $(CCOPT) $(DEFINES) @DEFS@ @V_DEFINES@ $(INCLS)
++CFLAGS += $(DEFINES) @DEFS@ @V_DEFINES@ $(INCLS)
+ 
+ # Standard LIBS
+ LDLIBS = @LIBS@ ${PCAP_LDLIBS}
+@@ -211,7 +211,7 @@ LEX_VAL=@LEX@
+ 
+ filt_parser.c: filt_parser.y filter.h
+ 	if test "${YACC_VAL}" = "bison -y" ; then \
+-		@YACC@ -vd -p filtyy -o filt_parser.c $(srcdir)/filt_parser.y ;\
++		@YACC@ -vd -p filtyy -o filt_parser.c filt_parser.y ;\
+ 		cp filt_parser.c flex_bison ;\
+ 		cp filt_parser.h flex_bison ;\
+ 	else \
+@@ -223,7 +223,7 @@ filt_parser.c: filt_parser.y filter.h
+ 
+ filt_scanner.c: filt_scanner.l filter.h filt_parser.h
+ 	if test ${LEX_VAL} = "flex" ; then \
+-		@LEX@ -t -Pfiltyy $(srcdir)/filt_scanner.l > filt_scanner.c ;\
++		@LEX@ -t -Pfiltyy filt_scanner.l > filt_scanner.c ;\
+ 		cp filt_scanner.c flex_bison ;\
+ 	else \
+ 		echo "Could not find FLEX on this system" ;\

@@ -1,0 +1,42 @@
+Unveil the required directory with .desktop files and where the cache file needs
+to be written out to.
+
+Index: src/update-desktop-database.c
+--- src/update-desktop-database.c.orig
++++ src/update-desktop-database.c
+@@ -456,7 +456,7 @@ main (int    argc,
+    };
+ 
+ #ifdef HAVE_PLEDGE
+-  if (pledge ("stdio rpath wpath cpath fattr", NULL) == -1) {
++  if (pledge ("stdio rpath wpath cpath fattr unveil", NULL) == -1) {
+     g_printerr ("pledge\n");
+     return 1;
+   }
+@@ -487,9 +487,15 @@ main (int    argc,
+ 
+   print_desktop_dirs (desktop_dirs);
+ 
++  if (unveil ("${LOCALBASE}/share/locale/locale.alias", "r") == -1) {
++    g_printerr ("Can't unveil '${LOCALBASE}/share/locale/locale.alias': %s\n", g_strerror(errno));
++  }
+   found_processable_dir = FALSE;
+   for (i = 0; desktop_dirs[i] != NULL; i++)
+     {
++      if (unveil (desktop_dirs[i], "rwc") == -1) {
++        g_printerr ("Can't unveil '%s' directory: %s\n", desktop_dirs[i], g_strerror(errno));
++      }
+       error = NULL;
+       update_database (desktop_dirs[i], &error);
+ 
+@@ -504,6 +510,10 @@ main (int    argc,
+         found_processable_dir = TRUE;
+     }
+   g_option_context_free (context);
++
++  if (unveil (NULL, NULL) == -1) {
++    g_printerr ("unveil\n");
++  }
+ 
+   if (!found_processable_dir)
+     {

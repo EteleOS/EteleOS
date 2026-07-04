@@ -1,0 +1,11 @@
+--- gnushogi/Makefile.in.orig	Mon Feb 17 21:26:59 2014
++++ gnushogi/Makefile.in	Mon Sep 21 16:11:12 2015
+@@ -51,7 +51,7 @@ BINDIR  =   $(prefix)/bin
+ 
+ # Where the language description, the book, and the 
+ # persistent hashtable live.
+-LIBDIR  =   $(prefix)/lib/$(PROGNAME)
++LIBDIR  =   $(prefix)/share/$(PROGNAME)
+ 
+ # Where the man page goes.
+ MANDIR  = $(prefix)/man/man6

@@ -1,0 +1,11 @@
+--- Makefile.orig	Sun Mar 27 19:10:21 2005
++++ Makefile	Sun Jan 18 16:21:02 2015
+@@ -11,7 +11,7 @@ CFLAGS+= -Wsign-compare -g
+ all: ipfreely
+ 
+ ipfreely: ipfreely.c
+-	cc $(CFLAGS) ipfreely.c -o ipfreely
++	${CC} $(CFLAGS) ipfreely.c -o ipfreely
+ 
+ man: ipfreely.8
+ 	nroff -Tascii -mandoc ipfreely.8 > ipfreely.cat8

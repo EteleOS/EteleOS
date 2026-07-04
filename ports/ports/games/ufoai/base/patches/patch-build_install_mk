@@ -1,0 +1,28 @@
+--- build/install.mk.orig	Thu Jun  5 08:18:39 2014
++++ build/install.mk	Tue Jul  1 19:44:03 2014
+@@ -58,7 +58,7 @@ sourcearchive:
+ 	$(Q)git archive --format=tar --prefix=ufoai-$(UFOAI_VERSION)-source/ HEAD | bzip2 -9 > ufoai-$(UFOAI_VERSION)-source.tar.bz2
+ 
+ .PHONY: install-pre
+-install-pre: pk3 lang
++install-pre: lang
+ 	@echo "Binaries:  $(PKGBINDIR)"
+ 	@echo "Data:      $(PKGDATADIR)"
+ 	@echo "Libraries: $(PKGLIBDIR)"
+@@ -74,7 +74,7 @@ install-pre: pk3 lang
+ 	@echo "#!/bin/sh" > ufo.sh
+ 	@echo "cd $(PKGDATADIR); ./ufo \$$*; exit \$$?" >> ufo.sh
+ 	$(Q)$(INSTALL_DIR) $(DESTDIR)$(PKGBINDIR)
+-	$(Q)$(INSTALL_SCRIPT) ufo.sh -D $(DESTDIR)$(PKGBINDIR)/ufo
++	$(Q)$(INSTALL_SCRIPT) ufo.sh $(DESTDIR)$(PKGBINDIR)/ufoai
+ 	@echo "#!/bin/sh" > ufoded.sh
+ 	@echo "cd $(PKGDATADIR); ./ufoded \$$*; exit \$$?" >> ufoded.sh
+ 	$(Q)$(INSTALL_SCRIPT) ufoded.sh $(DESTDIR)$(PKGBINDIR)/ufoded
+@@ -82,5 +82,5 @@ install-pre: pk3 lang
+ 	@echo "cd $(PKGDATADIR)/radiant; ./uforadiant \$$*; exit \$$?" >> uforadiant.sh
+ 	$(Q)$(INSTALL_SCRIPT) uforadiant.sh $(DESTDIR)$(PKGBINDIR)/uforadiant
+ 	$(Q)rm ufoded.sh ufo.sh uforadiant.sh
+-	@echo "Install pk3s"
+-	$(Q)$(INSTALL_DATA) base/*.pk3 $(DESTDIR)$(PKGDATADIR)/base
++#	@echo "Install pk3s"
++#	$(Q)$(INSTALL_DATA) base/*.pk3 $(DESTDIR)$(PKGDATADIR)/base

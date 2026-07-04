@@ -1,0 +1,25 @@
+bin/caca-config
+@bin bin/cacaclock
+@bin bin/cacademo
+@bin bin/cacafire
+@bin bin/cacaplay
+@bin bin/cacaserver
+@bin bin/cacaview
+@bin bin/img2txt
+include/caca.h
+include/caca0.h
+include/caca_conio.h
+include/caca_types.h
+@static-lib lib/libcaca.a
+lib/libcaca.la
+@lib lib/libcaca.so.${LIBcaca_VERSION}
+lib/pkgconfig/caca.pc
+@man man/man1/caca-config.1
+@man man/man1/cacademo.1
+@man man/man1/cacafire.1
+@man man/man1/cacaplay.1
+@man man/man1/cacaserver.1
+@man man/man1/cacaview.1
+@man man/man1/img2txt.1
+share/libcaca/
+share/libcaca/caca.txt

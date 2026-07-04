@@ -1,0 +1,62 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+selfoss is installed under:
+    ${INSTDIR}
+
+It can be accessed by pointing you browser to:
+    http://<hostname>/selfoss/
+
+
+Post-installation instructions
+==============================
+To use selfoss with nginx, see configuration examples at:
+	${INSTDIR}/.nginx.conf
+	https://github.com/SSilence/selfoss/wiki/nginx-configuration
+
+With Apache, AllowOverride settings on the ${INSTDIR} directory and
+the rewrite_module are required.
+
+You can configure this as follows:
+    # ln -sf ${PREFIX}/conf/modules.sample/selfoss.conf \
+        ${PREFIX}/conf/modules
+
+"allow_url_fopen" needs to be enabled in PHP using _one_ of the
+following methods:
+    1. ${SYSCONFDIR}/php-${MODPHP_VERSION}.ini
+    allow_url_fopen = On
+
+    2. ${PREFIX}/conf/httpd.conf (main server or VirtualHost)
+    php_admin_value allow_url_fopen 1
+
+    3. ${PREFIX}/conf/modules.sample/selfoss.conf
+    php_admin_value allow_url_fopen 1
+
+    4. ${SYSCONFDIR}/nginx/nginx.conf
+    fastcgi_param PHP_VALUE "allow_url_fopen=on";
+
+
+Activate user/password login
+============================
+
+1. To ensure proper salting of passwords generate a reasonable
+   complex saltvalue and set 'salt=' in the configuration file
+   ${PREFIX}/selfoss/config.ini. You can use this command:
+
+       tr -cd '#_[:alnum:]' < /dev/urandom | fold -w 60 | head -1
+
+2. Use the http://<hostname>/selfoss/password page to generate the
+   password hash.
+
+3. Set a 'username=' and use the hash for 'password=' in the
+   ${PREFIX}/selfoss/config.ini configuration file.
+
+
+Update feeds
+============
+You need to choose an update method for the feeds as explained in
+the installation part of the documentation on http://selfoss.aditu.de/.
+
+You can run the update process from a cronjob as user www:
+*/5	*	*	*	*	${LOCALBASE}/bin/php-${MODPHP_VERSION} ${PREFIX}/selfoss/cliupdate.php

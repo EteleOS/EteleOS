@@ -1,0 +1,10 @@
+--- imap/src/tmail/tmail.c.orig	Mon Feb  6 01:06:22 2017
++++ imap/src/tmail/tmail.c	Tue Apr 25 11:10:11 2017
+@@ -225,7 +225,6 @@ int main (int argc,char *argv[])
+       while ((c = getchar ()) != EOF) putc (c,f);
+     }
+     else {
+-      mm_log ("tmail called with LF-only newlines",WARN);
+       if ((tmp[0] != 'F') || (tmp[1] != 'r') || (tmp[2] != 'o') ||
+ 	  (tmp[3] != 'm') || (tmp[4] != ' ')) {
+ 	*s++ = '\015';		/* overwrite NL with CRLF */

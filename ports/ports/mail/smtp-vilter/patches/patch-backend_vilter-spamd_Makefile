@@ -1,0 +1,20 @@
+Index: backend/vilter-spamd/Makefile
+--- backend/vilter-spamd/Makefile.orig
++++ backend/vilter-spamd/Makefile
+@@ -5,7 +5,6 @@ SRCS=		vilter-spamd.c parse.y scan.l
+ 
+ YFLAGS=		-d -p spamd
+ LFLAGS=		-Pspamd -olex.yy.c
+-CLEANFILES+=	y.tab.h parse.c scan.c
+ 
+ LIBDIR= 	/usr/local/lib/smtp-vilter
+ NOMAN= 		1
+@@ -14,7 +13,7 @@ NOPROFILE= 	1
+ CFLAGS+= 	-Wall -fPIC -I${.CURDIR} -I${.CURDIR}/../../include \
+ 		-I/usr/src/gnu/usr.sbin/sendmail/include
+ 
+-LDADD+=		-nostdlib
++LDADD+=		-nodefaultlibs
+ 
+ install:
+ 	-test ! -d ${DESTDIR}${LIBDIR} && mkdir ${DESTDIR}${LIBDIR}

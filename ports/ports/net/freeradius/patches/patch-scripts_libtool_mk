@@ -1,0 +1,20 @@
+Don't hide command lines.
+
+Index: scripts/libtool.mk
+--- scripts/libtool.mk.orig
++++ scripts/libtool.mk
+@@ -65,11 +65,11 @@ clean: .libs_clean
+ # Re-define compilers and linkers
+ #
+ OBJ_EXT = lo
+-COMPILE.c = ${LIBTOOL} --silent --mode=compile ${CC}
++COMPILE.c = ${LIBTOOL} --mode=compile ${CC}
+ COMPILE.cxx = ${LIBTOOL} --mode=compile ${CXX}
+-LINK.c = ${LIBTOOL} --silent --mode=link ${CC}
++LINK.c = ${LIBTOOL} --mode=link ${CC}
+ LINK.cxx = ${LIBTOOL} --mode=link ${CXX}
+-PROGRAM_INSTALL = ${LIBTOOL} --silent --mode=install ${INSTALL}
++PROGRAM_INSTALL = ${LIBTOOL} --mode=install ${INSTALL}
+ 
+ 
+ # LIBTOOL_ENDINGS - Given a library ending in ".a" or ".so", replace that

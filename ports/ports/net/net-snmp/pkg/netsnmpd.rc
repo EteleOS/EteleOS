@@ -1,0 +1,11 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/snmpd"
+
+daemon_flags="-u _netsnmp -r"
+
+. /etc/rc.d/rc.subr
+
+pexp="${daemon}.*"
+
+rc_cmd $1

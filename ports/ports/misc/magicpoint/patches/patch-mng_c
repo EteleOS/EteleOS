@@ -1,0 +1,12 @@
+Index: mng.c
+--- mng.c.orig
++++ mng.c
+@@ -45,6 +45,8 @@ typedef struct {
+ 
+ void mng_window_setup __P((mngstuff *mymng, int x, int y, int width, int height));
+ 
++void mng_window_setup(mngstuff *, int, int, int, int);
++
+ /* callbacks for the mng decoder */
+ 
+ /* memory allocation; data must be zeroed */

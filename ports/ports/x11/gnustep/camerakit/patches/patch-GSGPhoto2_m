@@ -1,0 +1,10 @@
+--- GSGPhoto2.m.orig	Sun Oct  6 17:31:31 2013
++++ GSGPhoto2.m	Sun Oct  6 17:31:43 2013
+@@ -1,6 +1,6 @@
+ #include "GSGPhoto2.h"
+ 
+-#include <gphoto2.h>
++#include <gphoto2/gphoto2.h>
+ 
+ @implementation GSGPhoto2
+ 

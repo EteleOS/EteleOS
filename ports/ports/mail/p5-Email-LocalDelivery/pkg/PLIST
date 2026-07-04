@@ -1,0 +1,7 @@
+${P5SITE}/Email/LocalDelivery/
+${P5SITE}/Email/LocalDelivery.pm
+${P5SITE}/Email/LocalDelivery/Maildir.pm
+${P5SITE}/Email/LocalDelivery/Mbox.pm
+@man man/man3p/Email::LocalDelivery.3p
+@man man/man3p/Email::LocalDelivery::Maildir.3p
+@man man/man3p/Email::LocalDelivery::Mbox.3p

@@ -1,0 +1,11 @@
+--- netblast/netblast.c.orig	Fri Sep  4 16:39:29 2015
++++ netblast/netblast.c	Fri Sep  4 16:47:35 2015
+@@ -40,6 +40,8 @@
+ #include <string.h>
+ #include <unistd.h>			/* close */
+ 
++#include "../netrate_be32.h"
++
+ static void
+ usage(void)
+ {

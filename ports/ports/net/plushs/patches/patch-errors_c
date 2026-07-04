@@ -1,0 +1,16 @@
+--- errors.c.orig	Wed Jul  3 05:54:12 2002
++++ errors.c	Thu Mar 17 20:32:27 2016
+@@ -29,12 +29,11 @@
+  * errors.c
+  *
+  */
++#include <errno.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+ #include "plushs.h"
+-
+-extern int errno;
+ 
+ struct err_code {
+ 	int type;

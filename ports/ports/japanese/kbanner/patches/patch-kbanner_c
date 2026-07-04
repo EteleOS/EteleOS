@@ -1,0 +1,68 @@
+--- kbanner.c.orig	Fri Oct 15 09:43:31 1993
++++ kbanner.c	Sun May 23 03:06:13 2010
+@@ -1,8 +1,12 @@
+ /* Kanji Banner Version 2.1 by Koichi Yasuoka, October 15, 1993 */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+-extern char *malloc();
++void	kbanner __P((FILE *));
++int	kgetchar __P((FILE *));
++void	kputchar __P((unsigned int));
++
+ extern unsigned short
+          font21[],font22[],font23[],font24[],font25[],font26[],font27[],
+ font28[],
+@@ -82,6 +86,7 @@ int b_encoding[]={
+   exit(1);\
+ }
+ 
++int
+ main(argc,argv)
+ int argc;
+ char *argv[];
+@@ -130,7 +135,7 @@ char *argv[];
+     exit(0);
+   }
+   while(argc){
+-    if(src=fopen(*argv,"r")){
++    if((src=fopen(*argv,"r"))){
+       kbanner(src);
+       fclose(src);
+     }
+@@ -142,6 +147,7 @@ char *argv[];
+   exit(0);
+ }
+ 
++void
+ kbanner(fp)
+ FILE *fp;
+ {
+@@ -199,6 +205,7 @@ FILE *fp;
+   kputchar(-1);
+ }
+ 
++void
+ kputchar(c)
+ unsigned int c;
+ {
+@@ -275,10 +282,11 @@ unsigned int c;
+   col++;
+ }
+ 
++int
+ kgetchar(fp)
+ FILE *fp;
+ {
+-  int i,j,k,l;
++  int i,j;
+   if(mime==0)
+     return(fgetc(fp));
+   if(bufindex<buflength)
+@@ -351,4 +359,5 @@ FILE *fp;
+     bufindex=0;
+     return(((buf[4]&63)<<2)|((buf[5]&48)>>4));
+   }
++  return(0);
+ }

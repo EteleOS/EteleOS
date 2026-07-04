@@ -1,0 +1,3 @@
+View your GPU utilization, both for the total activity percent and individual
+blocks. The total GPU utilization is also valid for OpenCL loads. The other
+blocks are only useful in GL loads. It works with R600 and up.

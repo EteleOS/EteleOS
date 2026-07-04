@@ -1,0 +1,12 @@
+Index: cmake/mysql_version.cmake
+--- cmake/mysql_version.cmake.orig
++++ cmake/mysql_version.cmake
+@@ -17,7 +17,7 @@
+ # Global constants, only to be changed between major releases.
+ #
+ 
+-SET(SHARED_LIB_MAJOR_VERSION "19")
++SET(SHARED_LIB_MAJOR_VERSION "${LIB_VERSION}")
+ SET(PROTOCOL_VERSION "10")
+ SET(DOT_FRM_VERSION "6")
+ 

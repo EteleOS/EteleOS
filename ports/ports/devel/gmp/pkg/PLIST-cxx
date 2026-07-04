@@ -1,0 +1,6 @@
+@conflict gmp-<6.1.2p2
+include/gmpxx.h
+@static-lib lib/libgmpxx.a
+lib/libgmpxx.la
+@lib lib/libgmpxx.so.${LIBgmpxx_VERSION}
+lib/pkgconfig/gmpxx.pc

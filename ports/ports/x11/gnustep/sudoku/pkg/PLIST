@@ -1,0 +1,9 @@
+@conflict sudoku-<=0.7.4p5
+bin/Sudoku
+libexec/GNUstep/Sudoku.app/
+libexec/GNUstep/Sudoku.app/Resources/
+libexec/GNUstep/Sudoku.app/Resources/Info-gnustep.plist
+libexec/GNUstep/Sudoku.app/Resources/Sudoku.desktop
+libexec/GNUstep/Sudoku.app/Resources/Sudoku.tiff
+@bin libexec/GNUstep/Sudoku.app/Sudoku
+libexec/GNUstep/Sudoku.app/stamp.make

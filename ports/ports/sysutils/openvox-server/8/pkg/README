@@ -1,0 +1,39 @@
+Puppetserver on OpenBSD
+-----------------------
+
+Usually on other operating systems, Puppetserver is bundled
+together with the Puppet agent, including an independent Ruby interpreter.
+Due to incompatibilities between the JRuby bundled with Puppetserver,
+and a few Ruby gems relying on the system Ruby, the
+dependencies usually bundled with Puppetserver have to be installed
+manually into Puppetserver:
+
+To install these Ruby gems into Puppetserver:
+# puppetserver gem install --no-document openvox hiera-eyaml \
+	hiera ipaddress msgpack openfact
+
+You may not need hiera-eyaml, or ipaddress gem, on the
+other hand, your Puppet modules might rely on other gems.
+
+If you're using PuppetDB, you have to copy over the PuppetDB termini
+into Puppetservers Puppet lib directory:
+
+cp -r ${LOCALBASE}/share/puppetlabs/puppet/puppet/ \
+	${LOCALSTATEDIR}/puppetlabs/puppetserver/data/jruby-gems/gems/openvox-8*/lib/
+
+
+Serialization Formats
+=====================
+
+This port defaults to Ruby 3.4. At the time of release, the standard
+JSON format may fail during metadata sync (e.g., file_metadatas/plugins).
+It is highly recommended to use msgpack for improved performance and to
+avoid Ruby 3.4 JSON generator state conflicts.
+
+Ensure puppet.conf, agent and server side, contains:
+
+[main]
+preferred_serialization_format = msgpack
+
+The 'msgpack' gem is provided by this port's dependencies; no further gem
+installation is required.

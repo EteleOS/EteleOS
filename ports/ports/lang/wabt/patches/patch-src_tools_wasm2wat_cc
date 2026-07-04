@@ -1,0 +1,27 @@
+Index: src/tools/wasm2wat.cc
+--- src/tools/wasm2wat.cc.orig
++++ src/tools/wasm2wat.cc
+@@ -19,6 +19,9 @@
+ #include <cstdio>
+ #include <cstdlib>
+ 
++#include <err.h>
++#include <unistd.h>
++
+ #include "wabt/apply-names.h"
+ #include "wabt/binary-reader-ir.h"
+ #include "wabt/binary-reader.h"
+@@ -105,6 +108,13 @@ int ProgramMain(int argc, char** argv) {
+   InitStdio();
+   ParseOptions(argc, argv);
+ 
++  if (unveil(s_infile.c_str(), "r") != 0)
++    err(1, "unveil: %s", s_infile.c_str());
++  if (!s_outfile.empty() && unveil(s_outfile.c_str(), "wc") != 0)
++    err(1, "unveil: %s", s_outfile.c_str());
++  if (pledge("stdio rpath wpath cpath", NULL) != 0)
++    err(1, "pledge");
++  
+   std::vector<uint8_t> file_data;
+   result = ReadFile(s_infile.c_str(), &file_data);
+   if (Succeeded(result)) {

@@ -1,0 +1,11 @@
+--- src/common/common/DefinesScorched.cpp.orig	Fri Aug  1 20:47:31 2014
++++ src/common/common/DefinesScorched.cpp	Sat Sep  5 18:01:41 2015
+@@ -62,7 +62,7 @@ void S3D::showURL(const std::string &url)
+ 	std::string buffer = S3D::formatStringBuffer("open %s", url.c_str());
+ 	system(buffer.c_str());
+ #else
+-	std::string buffer = S3D::formatStringBuffer("firefox %s", url.c_str());
++	std::string buffer = S3D::formatStringBuffer("xdg-open %s", url.c_str());
+ 	system(buffer.c_str());
+ #endif // __DARWIN__
+ #endif // _WIN32

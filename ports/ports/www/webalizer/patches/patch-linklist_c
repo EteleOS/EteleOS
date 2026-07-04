@@ -1,0 +1,22 @@
+--- linklist.c.orig	Mon Oct  4 19:30:36 2010
++++ linklist.c	Mon Jan  3 11:30:14 2011
+@@ -109,7 +109,7 @@ NLISTPTR new_nlist(char *str)
+     fprintf(stderr,"[new_nlist] %s\n",msg_big_one);
+    }
+    if (( newptr = malloc(sizeof(struct nlist))) != NULL)
+-    {strncpy(newptr->string, str, sizeof(newptr->string));newptr->next=NULL;}
++    {strlcpy(newptr->string, str, sizeof(newptr->string));newptr->next=NULL;}
+    return newptr;
+ }
+ 
+@@ -167,8 +167,8 @@ GLISTPTR new_glist(char *str, char *name)
+    }
+    if (( newptr = malloc(sizeof(struct glist))) != NULL)
+      {
+-       strncpy(newptr->string, str, sizeof(newptr->string));
+-       strncpy(newptr->name, name, sizeof(newptr->name));
++       strlcpy(newptr->string, str, sizeof(newptr->string));
++       strlcpy(newptr->name, name, sizeof(newptr->name));
+        newptr->next=NULL;
+      }
+    return newptr;

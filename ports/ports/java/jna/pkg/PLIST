@@ -1,0 +1,7 @@
+share/java/
+share/java/classes/
+share/java/classes/jna-jpms.jar
+share/java/classes/jna-min.jar
+share/java/classes/jna-platform-jpms.jar
+share/java/classes/jna-platform.jar
+share/java/classes/jna.jar

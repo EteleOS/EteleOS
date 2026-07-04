@@ -1,0 +1,10 @@
+Index: installer/linux/createuser.dotforward
+--- installer/linux/createuser.dotforward.orig
++++ installer/linux/createuser.dotforward
+@@ -10,5 +10,5 @@
+ 
+ HOMEDIR=`getent passwd $KOPANO_USER | cut -d: -f6`
+ 
+-echo "\"| /usr/sbin/kopano-dagent $KOPANO_USER\"" > $HOMEDIR/.forward
++echo "\"| /usr/local/bin/kopano-dagent $KOPANO_USER\"" > $HOMEDIR/.forward
+ chown $KOPANO_USER.$KOPANO_USER $HOMEDIR/.forward

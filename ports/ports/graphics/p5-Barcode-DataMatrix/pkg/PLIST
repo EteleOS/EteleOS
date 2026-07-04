@@ -1,0 +1,12 @@
+${P5SITE}/Barcode/
+${P5SITE}/Barcode/DataMatrix/
+${P5SITE}/Barcode/DataMatrix.pm
+${P5SITE}/Barcode/DataMatrix/CharDataFiller.pm
+${P5SITE}/Barcode/DataMatrix/Constants.pm
+${P5SITE}/Barcode/DataMatrix/Engine.pm
+${P5SITE}/Barcode/DataMatrix/Reed.pm
+@man man/man3p/Barcode::DataMatrix.3p
+@man man/man3p/Barcode::DataMatrix::CharDataFiller.3p
+@man man/man3p/Barcode::DataMatrix::Constants.3p
+@man man/man3p/Barcode::DataMatrix::Engine.3p
+@man man/man3p/Barcode::DataMatrix::Reed.3p

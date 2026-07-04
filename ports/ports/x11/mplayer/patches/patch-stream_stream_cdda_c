@@ -1,0 +1,15 @@
+Index: stream/stream_cdda.c
+--- stream/stream_cdda.c.orig
++++ stream/stream_cdda.c
+@@ -451,9 +451,11 @@ static int open_cdda(stream_t *st,int m, void* opts, i
+   else if(p->search_overlap == 0)
+     mode &= ~PARANOIA_MODE_OVERLAP;
+ #ifndef CONFIG_LIBCDIO
++#if 0
+   // HACK against libcdparanoia's stupid caching model that
+   // queues up a huge number of requests leading to stuttering
+   paranoia_cachemodel_size(priv->cdp, 24);
++#endif
+   // For some incomprehensible reason cdparanoia breaks the
+   // track->sector lookup of calling paranoia_modeset with
+   // PARANOIA_MODE_DISABLE

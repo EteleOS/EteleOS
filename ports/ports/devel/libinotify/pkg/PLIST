@@ -1,0 +1,16 @@
+include/inotify/
+include/inotify/sys/
+include/inotify/sys/inotify.h
+lib/inotify/
+@static-lib lib/inotify/libinotify.a
+lib/inotify/libinotify.la
+@lib lib/inotify/libinotify.so.${LIBinotify_VERSION}
+lib/pkgconfig/libinotify.pc
+@man man/man3/inotify_add_watch.3
+@man man/man3/inotify_event.3
+@man man/man3/inotify_init.3
+@man man/man3/inotify_init1.3
+@man man/man3/inotify_rm_watch.3
+@man man/man3/libinotify.3
+@man man/man3/libinotify_set_param.3
+share/doc/pkg-readmes/${PKGSTEM}

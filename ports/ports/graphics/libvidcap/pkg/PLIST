@@ -1,0 +1,7 @@
+include/vidcap/
+include/vidcap/converters.h
+include/vidcap/vidcap.h
+lib/libvidcap.a
+lib/libvidcap.la
+@lib lib/libvidcap.so.${LIBvidcap_VERSION}
+lib/pkgconfig/vidcap.pc

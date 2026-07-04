@@ -1,0 +1,24 @@
+Index: apertium/apertium-prelatex.l
+--- apertium/apertium-prelatex.l.orig
++++ apertium/apertium-prelatex.l
+@@ -12,6 +12,7 @@
+ #include <apertium/latex_accentsmap.h>
+ #include <lttoolbox/string_utils.h>
+ #include <apertium/string_to_wostream.h>
++#include <unistd.h>
+ 
+ extern "C" {
+ #if !defined(__STDC__)
+@@ -416,6 +417,12 @@ void usage(string const &progname)
+ 
+ int main(int argc, char *argv[])
+ {
++  if (pledge("stdio rpath wpath cpath", NULL) == -1)
++  {
++    wcerr << "pledge" << endl;
++    exit(EXIT_FAILURE);
++  }
++
+   LtLocale::tryToSetLocale();
+   size_t base = 0;
+ 

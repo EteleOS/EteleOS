@@ -1,0 +1,361 @@
+@newgroup _gromox:889
+@newuser _gromox:889:_gromox::Gromox Account:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/gromox
+@rcscript ${RCDIR}/gromox_delivery
+@rcscript ${RCDIR}/gromox_delivery_queue
+@rcscript ${RCDIR}/gromox_event
+@rcscript ${RCDIR}/gromox_http
+@rcscript ${RCDIR}/gromox_imap
+@rcscript ${RCDIR}/gromox_midb
+@rcscript ${RCDIR}/gromox_pop3
+@rcscript ${RCDIR}/gromox_timer
+@rcscript ${RCDIR}/gromox_zcore
+@extraunexec rm -rf /var/db/gromox/*
+@extraunexec rm -rf /var/log/gromox/*
+@static-lib lib/libgromox_abtree.a
+lib/libgromox_abtree.la
+@lib lib/libgromox_abtree.so.${LIBgromox_abtree_VERSION}
+@static-lib lib/libgromox_auth.a
+lib/libgromox_auth.la
+@lib lib/libgromox_auth.so.${LIBgromox_auth_VERSION}
+@static-lib lib/libgromox_authz.a
+lib/libgromox_authz.la
+@lib lib/libgromox_authz.so.${LIBgromox_authz_VERSION}
+@static-lib lib/libgromox_common.a
+lib/libgromox_common.la
+@lib lib/libgromox_common.so.${LIBgromox_common_VERSION}
+@static-lib lib/libgromox_dbop.a
+lib/libgromox_dbop.la
+@lib lib/libgromox_dbop.so.${LIBgromox_dbop_VERSION}
+@static-lib lib/libgromox_emsmdb.a
+lib/libgromox_emsmdb.la
+@lib lib/libgromox_emsmdb.so.${LIBgromox_emsmdb_VERSION}
+@static-lib lib/libgromox_ews.a
+lib/libgromox_ews.la
+@lib lib/libgromox_ews.so.${LIBgromox_ews_VERSION}
+@static-lib lib/libgromox_exrpc.a
+lib/libgromox_exrpc.la
+@lib lib/libgromox_exrpc.so.${LIBgromox_exrpc_VERSION}
+@static-lib lib/libgromox_mapi.a
+lib/libgromox_mapi.la
+@lib lib/libgromox_mapi.so.${LIBgromox_mapi_VERSION}
+@static-lib lib/libgromox_mh_emsmdb.a
+lib/libgromox_mh_emsmdb.la
+@lib lib/libgromox_mh_emsmdb.so.${LIBgromox_mh_emsmdb_VERSION}
+@static-lib lib/libgromox_mh_nsp.a
+lib/libgromox_mh_nsp.la
+@lib lib/libgromox_mh_nsp.so.${LIBgromox_mh_nsp_VERSION}
+@static-lib lib/libgromox_ndr.a
+lib/libgromox_ndr.la
+@lib lib/libgromox_ndr.so.${LIBgromox_ndr_VERSION}
+@static-lib lib/libgromox_nsp.a
+lib/libgromox_nsp.la
+@lib lib/libgromox_nsp.so.${LIBgromox_nsp_VERSION}
+@static-lib lib/libgromox_oab.a
+lib/libgromox_oab.la
+@lib lib/libgromox_oab.so.${LIBgromox_oab_VERSION}
+@static-lib lib/libgromox_oxdisco.a
+lib/libgromox_oxdisco.la
+@lib lib/libgromox_oxdisco.so.${LIBgromox_oxdisco_VERSION}
+@static-lib lib/libgromox_rfr.a
+lib/libgromox_rfr.la
+@lib lib/libgromox_rfr.so.${LIBgromox_rfr_VERSION}
+@static-lib lib/libgxm_alias_resolve.a
+lib/libgxm_alias_resolve.la
+@lib lib/libgxm_alias_resolve.so.${LIBgxm_alias_resolve_VERSION}
+@static-lib lib/libgxm_exmdb_local.a
+lib/libgxm_exmdb_local.la
+@lib lib/libgxm_exmdb_local.so.${LIBgxm_exmdb_local_VERSION}
+@static-lib lib/libgxs_event_proxy.a
+lib/libgxs_event_proxy.la
+@lib lib/libgxs_event_proxy.so.${LIBgxs_event_proxy_VERSION}
+@static-lib lib/libgxs_event_stub.a
+lib/libgxs_event_stub.la
+@lib lib/libgxs_event_stub.so.${LIBgxs_event_stub_VERSION}
+@static-lib lib/libgxs_exmdb_provider.a
+lib/libgxs_exmdb_provider.la
+@lib lib/libgxs_exmdb_provider.so.${LIBgxs_exmdb_provider_VERSION}
+@static-lib lib/libgxs_midb_agent.a
+lib/libgxs_midb_agent.la
+@lib lib/libgxs_midb_agent.so.${LIBgxs_midb_agent_VERSION}
+@static-lib lib/libgxs_mysql_adaptor.a
+lib/libgxs_mysql_adaptor.la
+@lib lib/libgxs_mysql_adaptor.so.${LIBgxs_mysql_adaptor_VERSION}
+@static-lib lib/libgxs_ruleproc.a
+lib/libgxs_ruleproc.la
+@lib lib/libgxs_ruleproc.so.${LIBgxs_ruleproc_VERSION}
+@static-lib lib/libgxs_timer_agent.a
+lib/libgxs_timer_agent.la
+@lib lib/libgxs_timer_agent.so.${LIBgxs_timer_agent_VERSION}
+lib/systemd/
+lib/systemd/system/
+lib/systemd/system/gromox-cleaner.service
+lib/systemd/system/gromox-cleaner.timer
+lib/systemd/system/gromox-delivery-queue.service
+lib/systemd/system/gromox-delivery.service
+lib/systemd/system/gromox-event.service
+lib/systemd/system/gromox-http.service
+lib/systemd/system/gromox-imap.service
+lib/systemd/system/gromox-istore.service
+lib/systemd/system/gromox-midb.service
+lib/systemd/system/gromox-pop3.service
+lib/systemd/system/gromox-snapshot.service
+lib/systemd/system/gromox-snapshot.timer
+lib/systemd/system/gromox-timer.service
+lib/systemd/system/gromox-zcore.service
+lib/sysusers.d/
+lib/sysusers.d/sysusers-gromox.conf
+lib/tmpfiles.d/
+lib/tmpfiles.d/tmpfiles-gromox.conf
+libexec/gromox/
+@bin libexec/gromox/authtry
+@bin libexec/gromox/ddbg
+@bin libexec/gromox/delivery
+@bin libexec/gromox/delivery-queue
+@bin libexec/gromox/event
+@bin libexec/gromox/gromox-snapshot
+@bin libexec/gromox/http
+@bin libexec/gromox/imap
+@bin libexec/gromox/istore
+libexec/gromox/kdb-uidextract
+libexec/gromox/kdb-uidextract-limited
+@bin libexec/gromox/lda
+@bin libexec/gromox/midb
+@bin libexec/gromox/oab
+@bin libexec/gromox/oxdisco
+@bin libexec/gromox/pop3
+@bin libexec/gromox/textmapquery
+@bin libexec/gromox/timer
+@bin libexec/gromox/zcore
+man/man1/ddbg.1gx
+man/man4/alias_resolve.4gx
+man/man4/authmgr.4gx
+man/man4/autodiscover.4gx
+man/man4/dnsbl_filter.4gx
+man/man4/event_proxy.4gx
+man/man4/event_stub.4gx
+man/man4/ews.4gx
+man/man4/exchange_emsmdb.4gx
+man/man4/exchange_nsp.4gx
+man/man4/exchange_rfr.4gx
+man/man4/exmdb_local.4gx
+man/man4/exmdb_provider.4gx
+man/man4/ldap_adaptor.4gx
+man/man4/mapi.4gx
+man/man4/mh_emsmdb.4gx
+man/man4/mh_nsp.4gx
+man/man4/midb_agent.4gx
+man/man4/mod_cache.4gx
+man/man4/mod_fastcgi.4gx
+man/man4/mod_rewrite.4gx
+man/man4/mysql_adaptor.4gx
+man/man4/oab.4gx
+man/man4/pam_gromox.4gx
+man/man4/timer_agent.4gx
+man/man4/user_filter.4gx
+@man man/man5/gromox-selinux.5
+@man man/man5/gromox.cfg.5
+@man man/man7/autoconfig.7
+@man man/man7/autodiscover.7
+@man man/man7/gromox.7
+man/man7/mapi.7gx
+man/man8/authtry.8gx
+man/man8/cgkrepair.8gx
+man/man8/delivery-queue.8gx
+man/man8/delivery.8gx
+man/man8/event.8gx
+@man man/man8/gromox-abktconv.8
+@man man/man8/gromox-abktpull.8
+@man man/man8/gromox-cleaner.service.8
+@man man/man8/gromox-compress.8
+@man man/man8/gromox-dbop.8
+@man man/man8/gromox-dscli.8
+@man man/man8/gromox-e2ghelper.8
+@man man/man8/gromox-edb2mt.8
+@man man/man8/gromox-eml2mbox.8
+@man man/man8/gromox-eml2mt.8
+@man man/man8/gromox-exm2eml.8
+@man man/man8/gromox-exm2ical.8
+@man man/man8/gromox-exm2mt.8
+@man man/man8/gromox-exm2tnef.8
+@man man/man8/gromox-exm2vcf.8
+@man man/man8/gromox-export.8
+@man man/man8/gromox-ical2mt.8
+@man man/man8/gromox-import.8
+@man man/man8/gromox-kdb2mt.8
+@man man/man8/gromox-mailq.8
+@man man/man8/gromox-mbck.8
+@man man/man8/gromox-mbop.8
+@man man/man8/gromox-mbox2mt.8
+@man man/man8/gromox-mbsize.8
+@man man/man8/gromox-mkmidb.8
+@man man/man8/gromox-mkprivate.8
+@man man/man8/gromox-mkpublic.8
+@man man/man8/gromox-mt2exm.8
+@man man/man8/gromox-oxm2mt.8
+@man man/man8/gromox-pff2mt.8
+@man man/man8/gromox-snapshot.8
+@man man/man8/gromox-tnef2mt.8
+@man man/man8/gromox-vcf2mt.8
+man/man8/http.8gx
+man/man8/imap.8gx
+man/man8/istore.8gx
+@man man/man8/kdb-uidextract-limited.8
+@man man/man8/kdb-uidextract.8
+man/man8/midb.8gx
+man/man8/pop3.8gx
+man/man8/timer.8gx
+man/man8/zcore.8gx
+@bin sbin/gromox-abktconv
+sbin/gromox-abktpull
+@bin sbin/gromox-compress
+@bin sbin/gromox-dbop
+@bin sbin/gromox-dscli
+@bin sbin/gromox-e2ghelper
+@bin sbin/gromox-eml2mbox
+@bin sbin/gromox-eml2mt
+sbin/gromox-exm2eml
+sbin/gromox-exm2ical
+sbin/gromox-exm2mt
+sbin/gromox-exm2tnef
+sbin/gromox-exm2vcf
+@bin sbin/gromox-export
+sbin/gromox-ical2mt
+@bin sbin/gromox-import
+@bin sbin/gromox-kdb2mt
+@bin sbin/gromox-mailq
+@bin sbin/gromox-mbck
+@bin sbin/gromox-mbop
+sbin/gromox-mbox2mt
+@bin sbin/gromox-mbsize
+@bin sbin/gromox-mkmidb
+@bin sbin/gromox-mkprivate
+@bin sbin/gromox-mkpublic
+sbin/gromox-mt2exm
+sbin/gromox-tnef2mt
+sbin/gromox-vcf2mt
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/gromox/
+@sample ${SYSCONFDIR}/gromox/
+share/examples/gromox/http.cfg
+@sample ${SYSCONFDIR}/gromox/http.cfg
+share/examples/gromox/mime.types
+@sample ${SYSCONFDIR}/gromox/mime.types
+share/examples/gromox/mysql_adaptor.cfg
+@sample ${SYSCONFDIR}/gromox/mysql_adaptor.cfg
+share/examples/gromox/smtp.cfg
+@sample ${SYSCONFDIR}/gromox/smtp.cfg
+share/examples/gromox/zcore.cfg
+@sample ${SYSCONFDIR}/gromox/zcore.cfg
+share/gromox/
+share/gromox/Messages.xsd
+share/gromox/Services.wsdl
+share/gromox/Types.xsd
+share/gromox/abkt.pak
+share/gromox/conf.php
+share/gromox/cpid.txt
+share/gromox/db.php
+share/gromox/exmdb_list.txt
+share/gromox/folder_names.txt
+share/gromox/fpm-gromox.conf.sample
+share/gromox/gdbinit
+share/gromox/gromox.ldif
+share/gromox/http/
+share/gromox/http/php/
+share/gromox/lang_charset.txt
+share/gromox/lcid.txt
+share/gromox/local_bounce/
+share/gromox/local_bounce/ascii/
+share/gromox/local_bounce/ascii/BOUNCE_MAILBOX_FULL
+share/gromox/local_bounce/ascii/BOUNCE_MAIL_DELIVERED
+share/gromox/local_bounce/ascii/BOUNCE_NO_USER
+share/gromox/local_bounce/ascii/BOUNCE_OPERATION_ERROR
+share/gromox/local_bounce/big5/
+share/gromox/local_bounce/big5/BOUNCE_MAILBOX_FULL
+share/gromox/local_bounce/big5/BOUNCE_MAIL_DELIVERED
+share/gromox/local_bounce/big5/BOUNCE_NO_USER
+share/gromox/local_bounce/big5/BOUNCE_OPERATION_ERROR
+share/gromox/local_bounce/euc-jp/
+share/gromox/local_bounce/euc-jp/BOUNCE_MAILBOX_FULL
+share/gromox/local_bounce/euc-jp/BOUNCE_MAIL_DELIVERED
+share/gromox/local_bounce/euc-jp/BOUNCE_NO_USER
+share/gromox/local_bounce/euc-jp/BOUNCE_OPERATION_ERROR
+share/gromox/local_bounce/gb2312/
+share/gromox/local_bounce/gb2312/BOUNCE_MAILBOX_FULL
+share/gromox/local_bounce/gb2312/BOUNCE_MAIL_DELIVERED
+share/gromox/local_bounce/gb2312/BOUNCE_NO_USER
+share/gromox/local_bounce/gb2312/BOUNCE_OPERATION_ERROR
+share/gromox/local_bounce/gbk/
+share/gromox/local_bounce/gbk/BOUNCE_MAILBOX_FULL
+share/gromox/local_bounce/gbk/BOUNCE_MAIL_DELIVERED
+share/gromox/local_bounce/gbk/BOUNCE_NO_USER
+share/gromox/local_bounce/gbk/BOUNCE_OPERATION_ERROR
+share/gromox/local_bounce/shift-jis/
+share/gromox/local_bounce/shift-jis/BOUNCE_MAILBOX_FULL
+share/gromox/local_bounce/shift-jis/BOUNCE_MAIL_DELIVERED
+share/gromox/local_bounce/shift-jis/BOUNCE_NO_USER
+share/gromox/local_bounce/shift-jis/BOUNCE_OPERATION_ERROR
+share/gromox/mail_bounce/
+share/gromox/mail_bounce/ascii/
+share/gromox/mail_bounce/ascii/BOUNCE_AUTO_RESPONSE
+share/gromox/mail_bounce/ascii/BOUNCE_CANNOT_DISPLAY
+share/gromox/mail_bounce/ascii/BOUNCE_GENERIC_ERROR
+share/gromox/mail_bounce/ascii/BOUNCE_MAIL_TOO_LARGE
+share/gromox/mail_bounce/big5/
+share/gromox/mail_bounce/big5/BOUNCE_AUTO_RESPONSE
+share/gromox/mail_bounce/big5/BOUNCE_CANNOT_DISPLAY
+share/gromox/mail_bounce/big5/BOUNCE_GENERIC_ERROR
+share/gromox/mail_bounce/big5/BOUNCE_MAIL_TOO_LARGE
+share/gromox/mail_bounce/gb2312/
+share/gromox/mail_bounce/gb2312/BOUNCE_AUTO_RESPONSE
+share/gromox/mail_bounce/gb2312/BOUNCE_CANNOT_DISPLAY
+share/gromox/mail_bounce/gb2312/BOUNCE_GENERIC_ERROR
+share/gromox/mail_bounce/gb2312/BOUNCE_MAIL_TOO_LARGE
+share/gromox/mail_bounce/gbk/
+share/gromox/mail_bounce/gbk/BOUNCE_AUTO_RESPONSE
+share/gromox/mail_bounce/gbk/BOUNCE_GENERIC_ERROR
+share/gromox/mail_bounce/gbk/BOUNCE_MAIL_CANNOT_DISPLAY
+share/gromox/mail_bounce/gbk/BOUNCE_MAIL_TOO_LARGE
+share/gromox/mime_extension.txt
+share/gromox/mlist_bounce/
+share/gromox/mlist_bounce/ascii/
+share/gromox/mlist_bounce/ascii/BOUNCE_MLIST_DOMAIN
+share/gromox/mlist_bounce/ascii/BOUNCE_MLIST_INTERNAL
+share/gromox/mlist_bounce/ascii/BOUNCE_MLIST_SPECIFIED
+share/gromox/mlist_bounce/big5/
+share/gromox/mlist_bounce/big5/BOUNCE_MLIST_DOMAIN
+share/gromox/mlist_bounce/big5/BOUNCE_MLIST_INTERNAL
+share/gromox/mlist_bounce/big5/BOUNCE_MLIST_SPECIFIED
+share/gromox/mlist_bounce/euc-jp/
+share/gromox/mlist_bounce/euc-jp/BOUNCE_MLIST_DOMAIN
+share/gromox/mlist_bounce/euc-jp/BOUNCE_MLIST_INTERNAL
+share/gromox/mlist_bounce/euc-jp/BOUNCE_MLIST_SPECIFIED
+share/gromox/mlist_bounce/gb2312/
+share/gromox/mlist_bounce/gb2312/BOUNCE_MLIST_DOMAIN
+share/gromox/mlist_bounce/gb2312/BOUNCE_MLIST_INTERNAL
+share/gromox/mlist_bounce/gb2312/BOUNCE_MLIST_SPECIFIED
+share/gromox/mlist_bounce/gbk/
+share/gromox/mlist_bounce/gbk/BOUNCE_MLIST_DOMAIN
+share/gromox/mlist_bounce/gbk/BOUNCE_MLIST_INTERNAL
+share/gromox/mlist_bounce/gbk/BOUNCE_MLIST_SPECIFIED
+share/gromox/mlist_bounce/shift-jis/
+share/gromox/mlist_bounce/shift-jis/BOUNCE_MLIST_DOMAIN
+share/gromox/mlist_bounce/shift-jis/BOUNCE_MLIST_INTERNAL
+share/gromox/mlist_bounce/shift-jis/BOUNCE_MLIST_SPECIFIED
+share/gromox/notify_bounce/
+share/gromox/notify_bounce/ascii/
+share/gromox/notify_bounce/ascii/BOUNCE_NOTIFY_NON_READ
+share/gromox/notify_bounce/ascii/BOUNCE_NOTIFY_READ
+share/gromox/notify_bounce/big5/
+share/gromox/notify_bounce/big5/BOUNCE_NOTIFY_NON_READ
+share/gromox/notify_bounce/big5/BOUNCE_NOTIFY_READ
+share/gromox/notify_bounce/gb2312/
+share/gromox/notify_bounce/gb2312/BOUNCE_NOTIFY_NON_READ
+share/gromox/notify_bounce/gb2312/BOUNCE_NOTIFY_READ
+share/gromox/notify_bounce/gbk/
+share/gromox/notify_bounce/gbk/BOUNCE_NOTIFY_NON_READ
+share/gromox/notify_bounce/gbk/BOUNCE_NOTIFY_READ
+share/gromox/propnames.txt
+share/gromox/sqliterc
+share/gromox/submit.php
+share/gromox/timezone.pak

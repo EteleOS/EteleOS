@@ -1,0 +1,11 @@
+--- Blowfish.xs.orig	Tue Jul 23 17:42:11 2013
++++ Blowfish.xs	Wed Mar 19 00:10:56 2014
+@@ -33,7 +33,7 @@ blowfish_init(key)
+ 		char ks[8192];
+ 
+ 		key = (unsigned char *) SvPV(ST(0), key_len);
+-		if (key_len < 8 || key_len > 56)
++		if (key_len > 56)
+ 			croak("Invalid length key");
+ 
+ 		if (blowfish_make_bfkey(key, key_len, ks))

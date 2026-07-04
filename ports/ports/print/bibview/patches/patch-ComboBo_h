@@ -1,0 +1,13 @@
+Index: ComboBo.h
+--- ComboBo.h.orig
++++ ComboBo.h
+@@ -23,7 +23,9 @@
+ 
+ #define XtNselectCallback "selectCallback"
+ #define XtNselectMenu "selectMenu"
++#ifndef XtNcancelCallback
+ #define XtNcancelCallback "cancelCallback"
++#endif
+ #define XtNmargin "margin"
+ #define XtNnumberRows "numberRows"
+ #define XtNshowDotFiles "showDotFiles"

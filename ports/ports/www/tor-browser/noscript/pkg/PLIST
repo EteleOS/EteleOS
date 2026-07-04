@@ -1,0 +1,2 @@
+${EXTDIR_ROOT}/distribution/extensions/
+${EXTDIR_ROOT}/distribution/extensions/${GUID}.xpi

@@ -1,0 +1,12 @@
+Index: src/main_screen.C
+--- src/main_screen.C.orig
++++ src/main_screen.C
+@@ -178,7 +178,7 @@ setup_screen ()
+   gtk_container_add (GTK_CONTAINER (main_screen.window), box);
+   gtk_container_set_border_width (GTK_CONTAINER (main_screen.window), 1);
+   gtk_window_set_title (GTK_WINDOW (main_screen.window),
+-			"GPSK31 - Version "VERSION); 
++			"GPSK31 - Version " VERSION); 
+   gtk_widget_set_usize (GTK_WIDGET (main_screen.window), 0, 450);
+ 
+   init_menu ();			// create the menu widget

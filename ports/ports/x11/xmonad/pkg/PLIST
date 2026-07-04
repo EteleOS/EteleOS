@@ -1,0 +1,10 @@
+@pkgpath x11/xmonad
+@pkgpath x11/xmonad,-lib
+@bin bin/${MODCABAL_STEM}
+@man man/man1/${MODCABAL_STEM}.1
+share/doc/${PKGNAME}/
+share/doc/${PKGNAME}/TUTORIAL.md
+share/examples/${PKGNAME}/
+share/examples/${PKGNAME}/build
+share/examples/${PKGNAME}/${MODCABAL_STEM}-config.cabal
+share/examples/${PKGNAME}/${MODCABAL_STEM}.hs

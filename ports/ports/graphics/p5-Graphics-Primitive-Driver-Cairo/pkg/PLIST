@@ -1,0 +1,5 @@
+${P5SITE}/Graphics/Primitive/Driver/Cairo/
+${P5SITE}/Graphics/Primitive/Driver/Cairo.pm
+${P5SITE}/Graphics/Primitive/Driver/Cairo/TextLayout.pm
+@man man/man3p/Graphics::Primitive::Driver::Cairo.3p
+@man man/man3p/Graphics::Primitive::Driver::Cairo::TextLayout.3p

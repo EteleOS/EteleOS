@@ -1,0 +1,7 @@
+--- modules.lst.orig	Tue Jan 12 02:04:39 2010
++++ modules.lst	Tue Jan 12 02:04:54 2010
+@@ -10,3 +10,4 @@ alleg-sgialdigi.so
+ alleg-alsadigi.so
+ alleg-alsamidi.so
+ alleg-jackdigi.so
++alleg-sndiodigi.so

@@ -1,0 +1,41 @@
+Use doas(1) so that normal users can use sshfs(1).
+
+On OpenBSD sshfs(1) does not seem to support the "-o password_stdin" option.
+Workaround suggested in FreeBSD:
+https://svnweb.freebsd.org/ports/head/deskutils/kdeconnect-kde/files/patch-plugins_sftp_mounter.cpp?view=markup
+
+Cope with diffie-hellman-group14-sha1 removal in OpenSSH 8.2:
+https://git.archlinux.org/svntogit/packages.git/plain/trunk/kdeconnect-openssh-8.2.patch?h=packages/kdeconnect
+
+Index: plugins/sftp/mounter.cpp
+--- plugins/sftp/mounter.cpp.orig
++++ plugins/sftp/mounter.cpp
+@@ -69,7 +69,7 @@ void Mounter::onPacketReceived(const NetworkPacket &np
+ 
+     QDir().mkpath(m_mountPoint);
+ 
+-    const QString program = QStringLiteral("sshfs");
++    const QString program = QStringLiteral("/usr/bin/doas");
+ 
+     QString path;
+     if (np.has(QStringLiteral("multiPaths"))) {
+@@ -91,7 +91,7 @@ void Mounter::onPacketReceived(const NetworkPacket &np
+ 
+     // clang-format off
+     const QStringList arguments =
+-        QStringList() << QStringLiteral("%1@%2:%3").arg(np.get<QString>(QStringLiteral("user")), ip, path)
++        QStringList() << QStringLiteral("${LOCALBASE}/bin/sshfs") << QStringLiteral("%1@%2:%3").arg(np.get<QString>(QStringLiteral("user")), ip, path)
+                       << m_mountPoint << QStringLiteral("-p") << np.get<QString>(QStringLiteral("port"))
+                       << QStringLiteral("-s") // This fixes a bug where file chunks are sent out of order and get corrupted on reception
+                       << QStringLiteral("-f") << QStringLiteral("-F") << QStringLiteral("/dev/null") // Do not use ~/.ssh/config
+@@ -111,8 +111,8 @@ void Mounter::onPacketReceived(const NetworkPacket &np
+     m_proc->start();
+ 
+     // qCDebug(KDECONNECT_PLUGIN_SFTP) << "Passing password: " << np.get<QString>("password").toLatin1();
+-    m_proc->write(np.get<QString>(QStringLiteral("password")).toLatin1());
+-    m_proc->write("\n");
++    //m_proc->write(np.get<QString>(QStringLiteral("password")).toLatin1());
++    //m_proc->write("\n");
+ }
+ 
+ void Mounter::onStarted()

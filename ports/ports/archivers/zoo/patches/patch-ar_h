@@ -1,0 +1,16 @@
+--- ar.h.orig	Sat May  1 06:04:22 1993
++++ ar.h	Thu Apr 13 01:06:24 2017
+@@ -15,11 +15,11 @@ Adapted from "ar" archiver written by Haruhiko Okumura
+ /* uchar should be 8 bits or more */
+ /* typedef unsigned char  uchar;   -- already in zoo.h */
+ 
++#ifndef _SYS_TYPES_H_
+ typedef unsigned int   uint;    /* 16 bits or more */
+-#if !defined(__386BSD__) || !defined(_TYPES_H_)
+ typedef unsigned short ushort;  /* 16 bits or more */
+-#endif
+ typedef unsigned long  ulong;   /* 32 bits or more */
++#endif
+ 
+ /* T_UINT16 must be #defined in options.h to be 
+ a 16-bit unsigned integer type */

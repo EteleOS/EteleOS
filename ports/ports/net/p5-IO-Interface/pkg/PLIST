@@ -1,0 +1,11 @@
+${P5ARCH}/
+${P5ARCH}/IO/
+${P5ARCH}/IO/Interface/
+${P5ARCH}/IO/Interface.pm
+${P5ARCH}/IO/Interface/Simple.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/IO/
+${P5ARCH}/auto/IO/Interface/
+${P5ARCH}/auto/IO/Interface/Interface.so
+@man man/man3p/IO::Interface.3p
+@man man/man3p/IO::Interface::Simple.3p

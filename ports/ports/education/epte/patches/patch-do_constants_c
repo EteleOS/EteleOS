@@ -1,0 +1,10 @@
+--- do_constants.c.orig	Mon Aug 23 07:47:28 2010
++++ do_constants.c	Mon Aug 23 07:47:40 2010
+@@ -290,6 +290,7 @@ modification follow.
+ 
+ */
+ 
++#include <string.h>
+ 
+ #include "periodic.h"
+ 

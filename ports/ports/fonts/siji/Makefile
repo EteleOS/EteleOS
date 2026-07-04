@@ -1,0 +1,27 @@
+COMMENT =	iconic bitmap font based on Stlarch with additional glyphs
+DISTNAME =	${GH_PROJECT}-0.0.0.20190218
+CATEGORIES =	fonts
+REVISION =	0
+
+# No releases... use GH_COMMIT
+GH_ACCOUNT =	stark
+GH_PROJECT =	siji
+GH_COMMIT =	c691f200c1c66e76daa2afc9cbbd1aa39045c906
+
+# GPLv2 only
+PERMIT_PACKAGE =	Yes
+
+NO_TEST =	Yes
+
+PKG_ARCH =	*
+
+FONTDIR =	${PREFIX}/share/fonts/siji
+
+do-build:
+	${GZIP_CMD} ${WRKSRC}/pcf/siji.pcf
+
+do-install:
+	${INSTALL_DATA_DIR} ${FONTDIR}
+	${INSTALL_DATA} ${WRKSRC}/pcf/siji.pcf.gz ${FONTDIR}
+
+.include <bsd.port.mk>

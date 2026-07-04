@@ -1,0 +1,12 @@
+Index: bin/9l
+--- bin/9l.orig
++++ bin/9l
+@@ -14,7 +14,7 @@ extralibs="-lm"
+ tag="${SYSNAME:-`uname`}"
+ case "$tag" in
+ *DragonFly*|*BSD*)
+-	ld="${CC9:-gcc} $CC9FLAGS"
++	ld="${CC9:-${CC}} $CC9FLAGS"
+ 	userpath=true
+ 	extralibs="$extralibs -lutil"
+ 	;;

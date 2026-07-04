@@ -1,0 +1,3 @@
+${P5SITE}/Lingua/EN/Inflect/
+${P5SITE}/Lingua/EN/Inflect/Number.pm
+@man man/man3p/Lingua::EN::Inflect::Number.3p

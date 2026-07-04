@@ -1,0 +1,31 @@
+Index: spooler/Spooler.cpp
+--- spooler/Spooler.cpp.orig
++++ spooler/Spooler.cpp
+@@ -919,8 +919,8 @@ static int main2(int argc, char **argv)
+ 		{ "smtp_server","localhost", CONFIGSETTING_RELOADABLE },
+ 		{ "smtp_port","25", CONFIGSETTING_RELOADABLE },
+ 		{ "server_socket", "default:" },
+-		{ "run_as_user", "kopano" },
+-		{ "run_as_group", "kopano" },
++		{ "run_as_user", "_kopano" },
++		{ "run_as_group", "_kopano" },
+ 		{"pid_file", "", CONFIGSETTING_OBSOLETE},
+ 		{"coredump_enabled", "systemdefault"},
+ 		{"log_method", "auto", CONFIGSETTING_NONEMPTY},
+@@ -944,13 +944,13 @@ static int main2(int argc, char **argv)
+ 		{ "archive_on_send", "no", CONFIGSETTING_RELOADABLE },
+ 		{ "enable_dsn", "yes", CONFIGSETTING_RELOADABLE },
+ 		{"plugin_enabled", "no"},
+-        { "plugin_path", "/var/lib/kopano/spooler/plugins" },
+-        { "plugin_manager_path", "/usr/share/kopano-spooler/python" },
++        { "plugin_path", "/var/db/kopano/spooler/plugins" },
++        { "plugin_manager_path", "/usr/local/share/kopano-spooler/python" },
+ 		{"statsclient_url", "unix:/var/run/kopano/statsd.sock", CONFIGSETTING_RELOADABLE},
+ 		{"statsclient_interval", "0", CONFIGSETTING_RELOADABLE},
+ 		{"statsclient_ssl_verify", "yes", CONFIGSETTING_RELOADABLE},
+ 		{ "tmp_path", "/tmp" },
+-		{"log_raw_message_path", "/var/lib/kopano", CONFIGSETTING_RELOADABLE},
++		{"log_raw_message_path", "/var/db/kopano", CONFIGSETTING_RELOADABLE},
+ 		{"log_raw_message_stage1", "no", CONFIGSETTING_RELOADABLE},
+ 		{"process_model", "thread", CONFIGSETTING_NONEMPTY},
+ 		{ NULL, NULL },

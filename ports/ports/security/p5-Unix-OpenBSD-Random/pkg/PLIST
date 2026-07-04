@@ -1,0 +1,10 @@
+${P5ARCH}/
+${P5ARCH}/Unix/
+${P5ARCH}/Unix/OpenBSD/
+${P5ARCH}/Unix/OpenBSD/Random.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Unix/
+${P5ARCH}/auto/Unix/OpenBSD/
+${P5ARCH}/auto/Unix/OpenBSD/Random/
+@so ${P5ARCH}/auto/Unix/OpenBSD/Random/Random.so
+@man man/man3p/Unix::OpenBSD::Random.3p

@@ -1,0 +1,12 @@
+Don't use malloc.h header on OpenBSD.
+
+--- src/analogue.cpp.orig	Mon Nov  3 22:52:40 2014
++++ src/analogue.cpp	Mon Nov  3 22:52:50 2014
+@@ -24,7 +24,6 @@
+ 
+ /*****************************************************************************/
+ 
+-#include <malloc.h>
+ #include <math.h>
+ #include <stdlib.h>
+ #include "cmt.h"

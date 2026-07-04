@@ -1,0 +1,3 @@
+This is a monitoring plugin to check the hardware state of VMware ESXi
+servers. It can be used with Icinga, Nagios and similar programs, or as a
+standalone script to check the hardware.

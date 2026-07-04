@@ -1,0 +1,6 @@
+@conflict lpeg-*
+@so lib/lua/${MODLUA_VERSION}/lpeg.so
+share/doc/${FULLPKGNAME}/
+share/doc/${FULLPKGNAME}/lpeg.html
+share/doc/${FULLPKGNAME}/re.html
+share/lua/${MODLUA_VERSION}/re.lua

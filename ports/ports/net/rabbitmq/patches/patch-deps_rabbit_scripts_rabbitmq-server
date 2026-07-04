@@ -1,0 +1,12 @@
+Index: deps/rabbit/scripts/rabbitmq-server
+--- deps/rabbit/scripts/rabbitmq-server.orig
++++ deps/rabbit/scripts/rabbitmq-server
+@@ -78,7 +78,7 @@ start_rabbitmq_server() {
+ 
+     check_start_params
+ 
+-    exec erl \
++    exec ${MODERL_ERL} \
+         -pa "$RABBITMQ_SERVER_CODE_PATH" \
+         ${RABBITMQ_START_RABBIT} \
+         -boot "${SASL_BOOT_FILE}" \

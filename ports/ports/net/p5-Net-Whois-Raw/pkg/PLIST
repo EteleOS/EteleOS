@@ -1,0 +1,10 @@
+bin/pwhois
+${P5SITE}/Net/Whois/
+${P5SITE}/Net/Whois/Raw/
+${P5SITE}/Net/Whois/Raw.pm
+${P5SITE}/Net/Whois/Raw/Common.pm
+${P5SITE}/Net/Whois/Raw/Data.pm
+@man man/man1/pwhois.1
+@man man/man3p/Net::Whois::Raw.3p
+@man man/man3p/Net::Whois::Raw::Common.3p
+@man man/man3p/Net::Whois::Raw::Data.3p

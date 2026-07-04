@@ -1,0 +1,12 @@
+--- lib/parser_inst.m4.orig	Thu Oct 14 09:26:20 1999
++++ lib/parser_inst.m4	Mon May  6 15:50:18 2013
+@@ -164,9 +164,7 @@ __instantiate(Vector<NamedResourceTable<Entity> >)
+ __instantiate(Vector<ContentModelAmbiguity>)
+ __instantiate(Vector<Transition>)
+ __instantiate(Vector<LeafContentToken*>)
+-#if 0
+ __instantiate(Vector<size_t>)
+-#endif
+ __instantiate(Vector<unsigned int>)
+ 
+ __instantiate(NamedTable<Id>)

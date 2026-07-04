@@ -1,0 +1,15 @@
+missing header
+
+Index: src/Core/OXPVerifier/OOOXPVerifierStage.m
+--- src/Core/OXPVerifier/OOOXPVerifierStage.m.orig
++++ src/Core/OXPVerifier/OOOXPVerifierStage.m
+@@ -48,6 +48,9 @@ SOFTWARE.
+ 
+ #import "OOOXPVerifierStageInternal.h"
+ 
++#include <assert.h>
++
++
+ #if OO_OXP_VERIFIER_ENABLED
+ 
+ @interface OOOXPVerifierStage (OOPrivate)

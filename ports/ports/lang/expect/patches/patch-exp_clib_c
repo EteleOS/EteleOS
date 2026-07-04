@@ -1,0 +1,22 @@
+Get rid of implicit declaration of function warnings
+
+--- exp_clib.c.orig	Wed Sep  1 00:20:27 2010
++++ exp_clib.c	Sun Apr 28 16:41:29 2013
+@@ -14,7 +14,9 @@ would appreciate credit if this program or parts of it
+ #  include <inttypes.h>
+ #endif
+ #include <sys/types.h>
++#include <sys/wait.h>
+ #include <sys/ioctl.h>
++#include <unistd.h>
+ 
+ #ifdef TIME_WITH_SYS_TIME
+ # include <sys/time.h>
+@@ -117,6 +119,7 @@ extern unsigned long	strtoul _ANSI_ARGS_((CONST char *
+ #include <tcl.h>
+ #include "expect.h"
+ #define TclRegError exp_TclRegError
++extern void             exp_init_tty (void);
+ 
+ /*
+  * regexp code - from tcl8.0.4/generic/regexp.c

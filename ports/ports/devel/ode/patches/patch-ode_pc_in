@@ -1,0 +1,10 @@
+Index: ode.pc.in
+--- ode.pc.in.orig
++++ ode.pc.in
+@@ -8,5 +8,5 @@ Name: ode
+ Description: Open Dynamics Engine
+ Version: @ODE_VERSION@
+ Libs: -L${libdir} -lode
+-Libs.private: -lstdc++ -lm
++Libs.private: -lm
+ Cflags: -I${includedir}

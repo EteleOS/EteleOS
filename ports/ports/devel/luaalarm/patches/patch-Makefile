@@ -1,0 +1,31 @@
+--- Makefile.orig	Wed Oct 11 16:13:03 2006
++++ Makefile	Sun Jul  8 19:12:08 2012
+@@ -1,23 +1,23 @@
+ # makefile for alarm library for Lua
+ 
+ # change these to reflect your Lua installation
+-LUA= /tmp/lhf/lua-5.0
+-LUAINC= $(LUA)/include
++LUA= $(LOCALBASE)
++LUAINC= ${MODLUA_INCL_DIR}
+ LUALIB= $(LUA)/lib
+ LUABIN= $(LUA)/bin
+ 
+ # no need to change anything below here
+-CFLAGS= $(INCS) $(WARN) -O2 $G
++CFLAGS+= $(INCS) -fPIC -DPIC $G
+ WARN= -pedantic -Wall
+ INCS= -I$(LUAINC)
+ 
+ MYNAME= alarm
+ MYLIB= l$(MYNAME)
+-T= $(MYLIB).so
++T= alarm.so
+ OBJS= $(MYLIB).o
+ TEST= test.lua
+ 
+-all:	test
++all:	so
+ 
+ test:	$T
+ 	$(LUABIN)/lua -l$(MYNAME) $(TEST)

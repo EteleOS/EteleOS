@@ -1,0 +1,24 @@
+Fix build with png-1.5.
+
+--- src/ImageData.cpp.orig	Wed Dec 12 22:07:21 2007
++++ src/ImageData.cpp	Sun Oct 23 11:33:36 2011
+@@ -371,6 +371,7 @@ bool ImageData::pngLoadPNGLib (const string& filename)
+ 
+   char         sig[8];           /* PNG signature array */
+ 
++  unsigned int  w, h;
+   int           bit_depth;
+   int           color_type;
+ 
+@@ -455,8 +456,10 @@ bool ImageData::pngLoadPNGLib (const string& filename)
+   // read all the info up to the image data
+   png_read_info(png_ptr, info_ptr);
+ 
+-  png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth,
++  png_get_IHDR(png_ptr, info_ptr, &w, &h, &bit_depth,
+                &color_type, NULL, NULL, NULL);
++  width = w;
++  height = h;
+ 
+   // Set up some transforms.
+   if (color_type & PNG_COLOR_MASK_ALPHA)

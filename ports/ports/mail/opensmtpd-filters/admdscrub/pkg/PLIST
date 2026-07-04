@@ -1,0 +1,3 @@
+libexec/smtpd/
+@bin libexec/smtpd/filter-admdscrub
+@man man/man8/filter-admdscrub.8

@@ -1,0 +1,3 @@
+@bin bin/chessx
+share/applications/chessx.desktop
+@tag update-desktop-database

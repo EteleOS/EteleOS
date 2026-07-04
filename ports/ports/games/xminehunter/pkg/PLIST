@@ -1,0 +1,4 @@
+@pkgpath games/xminehunter,lesstif
+bin/xminehunter
+@mode 666
+lib/X11/xminehunter/

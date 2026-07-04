@@ -1,0 +1,11 @@
+--- obt/xml.c.orig	Mon Aug 12 03:33:24 2013
++++ obt/xml.c	Mon Oct  7 18:29:46 2013
+@@ -146,6 +146,8 @@ static gboolean load_file(ObtXmlInst *i,
+ 
+         if (!domain && !filename) /* given a full path to the file */
+             path = g_strdup(it->data);
++        else if (stat(filename, &s) == 0)
++            path = g_strdup(filename);
+         else
+             path = g_build_filename(it->data, domain, filename, NULL);
+ 

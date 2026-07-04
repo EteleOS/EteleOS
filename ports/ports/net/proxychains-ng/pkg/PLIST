@@ -1,0 +1,7 @@
+@bin bin/proxychains4
+@bin bin/proxychains4-daemon
+@so lib/libproxychains4.so
+share/examples/proxychains/
+share/examples/proxychains/README
+share/examples/proxychains/proxychains.conf
+@sample ${SYSCONFDIR}/proxychains.conf

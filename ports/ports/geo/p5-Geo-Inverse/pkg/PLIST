@@ -1,0 +1,3 @@
+${P5SITE}/Geo/
+${P5SITE}/Geo/Inverse.pm
+@man man/man3p/Geo::Inverse.3p

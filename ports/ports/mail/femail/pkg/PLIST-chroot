@@ -1,0 +1,8 @@
+usr/
+usr/sbin/
+@bin bin/femail
+@mode 0555
+@sample usr/sbin/sendmail
+@mode
+@cwd ${LOCALBASE}/share/doc/pkg-readmes
+${PKGSTEM}

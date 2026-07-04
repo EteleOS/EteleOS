@@ -1,0 +1,25 @@
+Index: lib/ipmi_hpmfwupg.c
+--- lib/ipmi_hpmfwupg.c.orig
++++ lib/ipmi_hpmfwupg.c
+@@ -206,8 +206,8 @@ HpmDisplayUpgrade(int skip, unsigned int totalSent,
+ 	if (totalSent == displayFWLength) {
+ 		/* Display the time taken to complete the upgrade */
+ 		printf(
+-"\n|    |Upload Time: %02ld:%02ld             | Image Size: %7d bytes              |\n",
+-			timeElapsed / 60, timeElapsed % 60, totalSent);
++"\n|    |Upload Time: %02lld:%02lld             | Image Size: %7d bytes              |\n",
++			(long long) timeElapsed / 60, (long long) timeElapsed % 60, totalSent);
+ 		old_percent = -1;
+ 	}
+ }
+@@ -1296,8 +1296,8 @@ HpmFwupgActionUploadFirmware(struct HpmfwupgComponentB
+ 								imageOffset,blockLength);
+ 					}
+ 					if (displayFWLength == totalSent) {
+-						printf("\n Time Taken %02ld:%02ld",
+-								(end-start)/60, (end-start)%60);
++						printf("\n Time Taken %02lld:%02lld",
++								(long long)(end-start)/60, (long long)(end-start)%60);
+ 						printf("\n\n");
+ 					}
+ 				} else {

@@ -1,0 +1,11 @@
+--- lirec/util.h.orig
++++ lirec/util.h
+@@ -53,7 +53,7 @@ char	*tempstring();	/* returns a pointer to space that
+ #	define GRAPHICS		/* only GDEV on unix machines */
+ #endif
+ 
+-#ifndef unix
++#if 0
+ 
+ /* various BSD to lattice C name changes */
+ 

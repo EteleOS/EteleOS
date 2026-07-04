@@ -1,0 +1,22 @@
+--- lib/MailScanner/ConfigDefs.pl.orig	Wed Mar  4 08:09:15 2015
++++ lib/MailScanner/ConfigDefs.pl	Sun Mar 15 13:51:04 2015
+@@ -360,8 +360,8 @@ qmailintdhashnumber		1
+ # filename containing a list of directories.
+ [Simple,Other]
+ cachetiming		1800,300,10800,172800,600
+-ClamWatchFiles		/usr/local/share/clamav/*.cvd
+-CustomFunctionsDir	/usr/share/MailScanner/MailScanner/CustomFunctions
++ClamWatchFiles		%PREFIX%/share/clamav/*.cvd
++CustomFunctionsDir	%PREFIX%/lib/MailScanner/MailScanner/CustomFunctions
+ FileCommand		/usr/bin/file
+ FirstCheck		mcp
+ getipfromheader		0
+@@ -385,7 +385,7 @@ QuarantinePerms		0600
+ RunAsUser		0
+ RunAsGroup		0
+ SACache			/var/spool/MailScanner/incoming/SpamAssassin.cache.db
+-SAVIWatchFiles		/usr/local/Sophos/ide/*.zip
++SAVIWatchFiles		%PREFIX%/Sophos/ide/*.zip
+ SophosAllowedErrors	
+ sophoside		
+ sophoslib		

@@ -1,0 +1,3 @@
+@bin bin/d1x-rebirth
+@bin bin/d2x-rebirth
+share/doc/pkg-readmes/${PKGSTEM}

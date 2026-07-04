@@ -1,0 +1,8 @@
+--- src/djview.1.orig	Sat May  9 23:04:37 2015
++++ src/djview.1	Sat May  9 23:04:45 2015
+@@ -1,4 +1,4 @@
+-.\" t
++'\" t
+ .\"
+ .\" Copyright (c) 2007- Leon Bottou
+ .\"

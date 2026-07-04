@@ -1,0 +1,6 @@
+@bin bin/nono
+@bin bin/nono-cli
+share/doc/nono/
+share/doc/nono/manual.html
+share/doc/pkg-readmes/${PKGSTEM}
+share/locale/ja/LC_MESSAGES/nono.mo

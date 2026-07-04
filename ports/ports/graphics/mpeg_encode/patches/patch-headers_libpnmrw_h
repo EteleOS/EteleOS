@@ -1,0 +1,15 @@
+--- headers/libpnmrw.h.orig	Wed Aug  9 17:17:41 1995
++++ headers/libpnmrw.h	Sat May 22 16:16:24 2010
+@@ -19,10 +19,8 @@
+ ** malloc.h at all.  A sad situation.  If you have compilation problems
+ ** that point here, feel free to tweak or remove these declarations.
+ */
+-#include <malloc.h>
+-#if !defined(sco)  &&  !defined(sgi) && !defined(IRIX)
+-extern char* malloc();
+-#endif
++#include <stdlib.h>
++
+ /* End of configurable definitions. */
+ 
+ 

@@ -1,0 +1,11 @@
+--- libgiggle-git/Makefile.in.orig	Thu Nov  1 06:29:20 2012
++++ libgiggle-git/Makefile.in	Fri Dec 19 22:19:17 2014
+@@ -405,7 +405,7 @@ libgiggle_git_la_LIBADD = \
+ libgiggle_git_la_LDFLAGS = \
+ 	$(AM_LDFLAGS) \
+ 	-version-info $(LIBGIGGLE_GIT_ABI) \
+-	-Wl,--as-needed -Wl,--no-undefined \
++	-Wl,--as-needed \
+ 	$(NULL)
+ 
+ BUILT_SOURCES = \

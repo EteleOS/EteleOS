@@ -1,0 +1,29 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -2,11 +2,11 @@ all::
+ 
+ CGIT_VERSION = v1.2.1
+ CGIT_SCRIPT_NAME = cgit.cgi
+-CGIT_SCRIPT_PATH = /var/www/htdocs/cgit
+-CGIT_DATA_PATH = $(CGIT_SCRIPT_PATH)
+-CGIT_CONFIG = /etc/cgitrc
+-CACHE_ROOT = /var/cache/cgit
+-prefix = /usr/local
++CGIT_SCRIPT_PATH = /var/www/cgi-bin
++CGIT_DATA_PATH = /var/www/htdocs
++CGIT_CONFIG = /conf/cgitrc
++CACHE_ROOT = /tmp/cgit
++prefix = ${PREFIX}
+ libdir = $(prefix)/lib
+ filterdir = $(libdir)/cgit/filters
+ docdir = $(prefix)/share/doc/cgit
+@@ -90,8 +90,6 @@ install: all
+ 	$(INSTALL) -m 0644 cgit.png $(DESTDIR)$(CGIT_DATA_PATH)/cgit.png
+ 	$(INSTALL) -m 0644 favicon.ico $(DESTDIR)$(CGIT_DATA_PATH)/favicon.ico
+ 	$(INSTALL) -m 0644 robots.txt $(DESTDIR)$(CGIT_DATA_PATH)/robots.txt
+-	$(INSTALL) -m 0755 -d $(DESTDIR)$(filterdir)
+-	$(COPYTREE) filters/* $(DESTDIR)$(filterdir)
+ 
+ install-doc: install-man install-html install-pdf
+ 

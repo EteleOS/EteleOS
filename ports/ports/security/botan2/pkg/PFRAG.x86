@@ -1,0 +1,2 @@
+include/botan-2/botan/processor_rng.h
+include/botan-2/botan/rdrand_rng.h

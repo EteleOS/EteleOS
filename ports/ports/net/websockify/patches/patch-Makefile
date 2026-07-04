@@ -1,0 +1,11 @@
+--- Makefile.orig	Tue Dec 22 14:35:28 2015
++++ Makefile	Tue Dec 22 14:35:44 2015
+@@ -4,7 +4,7 @@ CFLAGS += -fPIC
+ all: $(TARGETS)
+ 
+ rebind.so: rebind.o
+-	$(CC) $(LDFLAGS) $^ -shared -fPIC -ldl -o $@
++	$(CC) $(LDFLAGS) $? -shared -fPIC -o $@
+ 
+ clean:
+ 	rm -f rebind.o rebind.so

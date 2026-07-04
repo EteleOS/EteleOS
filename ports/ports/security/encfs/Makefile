@@ -1,0 +1,46 @@
+COMMENT =		fuse-based cryptographic filesystem
+
+V =			1.9.5
+DISTNAME =		encfs-$V
+REVISION =		6
+
+CATEGORIES =		security
+
+HOMEPAGE =		https://github.com/vgough/encfs
+
+# GPLv3+
+PERMIT_PACKAGE =	Yes
+
+WANTLIB += ${COMPILER_LIBCXX} c crypto fuse intl m ssl tinyxml2
+
+SITES =			https://github.com/vgough/encfs/releases/download/v$V/
+
+COMPILER =		base-clang ports-gcc
+
+MODULES =		devel/cmake
+
+BUILD_DEPENDS =		devel/gettext,-tools
+LIB_DEPENDS =		devel/gettext,-runtime \
+			textproc/tinyxml2
+
+CONFIGURE_ARGS =	-DUSE_INTERNAL_TINYXML=Off \
+			-DCMAKE_DISABLE_FIND_PACKAGE_Git=On \
+			-DBUILD_UNIT_TESTS=Off
+
+MODCMAKE_POLICY_VERSION_OVERRIDE = Yes
+
+CXXFLAGS+=		-DHAVE_UTIMENSAT -D_DIRENT_HAVE_D_TYPE
+
+# XXX: Python2
+# TEST_TARGET =		unittests test/test
+NO_TEST =		Yes
+
+.include <bsd.port.mk>
+
+.if ${CHOSEN_COMPILER} == "ports-gcc"
+WANTLIB += atomic
+
+
+MODCMAKE_POLICY_VERSION_OVERRIDE = Yes
+
+.endif

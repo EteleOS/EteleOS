@@ -1,0 +1,10 @@
+--- src/modelmeasure.cpp.orig
++++ src/modelmeasure.cpp
+@@ -42,6 +42,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
+ #include "primitives.h"
+ 
+ using namespace std;
++using dd::mutex;
+ 
+ /*
+   - measure cross section (graphical)

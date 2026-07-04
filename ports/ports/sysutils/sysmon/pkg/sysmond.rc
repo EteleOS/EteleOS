@@ -1,0 +1,13 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/sysmond"
+daemon_flags="-f ${SYSCONFDIR}/sysmon.conf"
+daemon_timeout="60"
+
+. /etc/rc.d/rc.subr
+
+rc_configtest() {
+	${daemon} ${daemon_flags} -t
+}
+
+rc_cmd $1

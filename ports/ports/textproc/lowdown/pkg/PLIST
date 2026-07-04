@@ -1,0 +1,53 @@
+@bin bin/lowdown
+@bin bin/lowdown-diff
+include/lowdown.h
+@static-lib lib/liblowdown.a
+@lib lib/liblowdown.so.${LIBlowdown_VERSION}
+lib/pkgconfig/lowdown.pc
+@man man/man1/lowdown-diff.1
+@man man/man1/lowdown.1
+@man man/man3/lowdown.3
+@man man/man3/lowdown_buf.3
+@man man/man3/lowdown_buf_diff.3
+@man man/man3/lowdown_buf_free.3
+@man man/man3/lowdown_buf_new.3
+@man man/man3/lowdown_diff.3
+@man man/man3/lowdown_doc_free.3
+@man man/man3/lowdown_doc_new.3
+@man man/man3/lowdown_doc_parse.3
+@man man/man3/lowdown_file.3
+@man man/man3/lowdown_file_diff.3
+@man man/man3/lowdown_gemini_free.3
+@man man/man3/lowdown_gemini_new.3
+@man man/man3/lowdown_gemini_rndr.3
+@man man/man3/lowdown_html_free.3
+@man man/man3/lowdown_html_new.3
+@man man/man3/lowdown_html_rndr.3
+@man man/man3/lowdown_latex_free.3
+@man man/man3/lowdown_latex_new.3
+@man man/man3/lowdown_latex_rndr.3
+@man man/man3/lowdown_metaq_free.3
+@man man/man3/lowdown_node_free.3
+@man man/man3/lowdown_odt_free.3
+@man man/man3/lowdown_odt_new.3
+@man man/man3/lowdown_odt_rndr.3
+@man man/man3/lowdown_roff_free.3
+@man man/man3/lowdown_roff_new.3
+@man man/man3/lowdown_roff_rndr.3
+@man man/man3/lowdown_term_free.3
+@man man/man3/lowdown_term_new.3
+@man man/man3/lowdown_term_rndr.3
+@man man/man3/lowdown_tree_rndr.3
+@man man/man5/lowdown.5
+share/lowdown/
+share/lowdown/html/
+share/lowdown/html/default.html
+share/lowdown/html/sblg.xml
+share/lowdown/latex/
+share/lowdown/latex/default.latex
+share/lowdown/man/
+share/lowdown/man/default.man
+share/lowdown/ms/
+share/lowdown/ms/default.ms
+share/lowdown/odt/
+share/lowdown/odt/styles.xml

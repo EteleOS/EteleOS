@@ -1,0 +1,5 @@
+lib/libperditiondb_postgresql.a
+lib/libperditiondb_postgresql.la
+@lib lib/libperditiondb_postgresql.so.${LIBperditiondb_postgresql_VERSION}
+@man man/man8/perditiondb_postgresql_makedb.8
+sbin/perditiondb_postgresql_makedb

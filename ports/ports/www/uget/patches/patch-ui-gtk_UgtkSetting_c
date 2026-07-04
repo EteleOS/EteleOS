@@ -1,0 +1,14 @@
+Index: ui-gtk/UgtkSetting.c
+--- ui-gtk/UgtkSetting.c.orig
++++ ui-gtk/UgtkSetting.c
+@@ -49,9 +49,7 @@
+ 
+ #define UGTK_ARIA2_PATH    "aria2c"
+ 
+-#define UGTK_ARIA2_ARGS    "--enable-rpc=true -D " \
+-                           "--disable-ipv6 "       \
+-                           "--check-certificate=false"
++#define UGTK_ARIA2_ARGS    "--enable-rpc=true -D "
+ 
+ #define UGTK_ARIA2_URI     "http://localhost:6800/jsonrpc"
+ 

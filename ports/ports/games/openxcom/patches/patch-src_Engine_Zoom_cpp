@@ -1,0 +1,11 @@
+--- src/Engine/Zoom.cpp.orig	Sat Jun 14 05:35:59 2014
++++ src/Engine/Zoom.cpp	Sat Sep 13 17:45:37 2014
+@@ -612,7 +612,7 @@ static int zoomSurface2X_SSE2(SDL_Surface *src, SDL_Su
+  */
+ bool Zoom::haveSSE2()
+ {
+-#ifdef __GNUC__
++#if defined(__GNUC__) && (defined(__i386__) || defined(__x86_64__))
+ 	unsigned int CPUInfo[4];
+ 	__get_cpuid(1, CPUInfo, CPUInfo+1, CPUInfo+2, CPUInfo+3);
+ #elif _WIN32

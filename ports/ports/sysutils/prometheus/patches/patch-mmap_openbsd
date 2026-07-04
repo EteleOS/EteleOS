@@ -1,0 +1,1056 @@
+Diff from https://github.com/cjeker/prometheus/tree/mmap_openbsd_v351
+Based on work from https://github.com/prometheus/prometheus/issues/8799
+and https://github.com/prometheus/prometheus/pull/9085
+to make tsdb only use mmap and work around missing UBC support.
+
+diff --git go.mod go.mod
+index 00bc50070..5dec05223 100644
+--- go.mod
++++ go.mod
+@@ -17,7 +17,6 @@ require (
+ 	github.com/dennwc/varint v1.0.0
+ 	github.com/digitalocean/godo v1.152.0
+ 	github.com/docker/docker v28.5.2+incompatible
+-	github.com/edsrzf/mmap-go v1.2.0
+ 	github.com/envoyproxy/go-control-plane/envoy v1.36.0
+ 	github.com/envoyproxy/protoc-gen-validate v1.3.0
+ 	github.com/facette/natsort v0.0.0-20181210072756-2cd4dd1e2dcb
+diff --git go.sum go.sum
+index 301c10c76..c986e6e90 100644
+--- go.sum
++++ go.sum
+@@ -122,8 +122,6 @@ github.com/docker/go-connections v0.4.0 h1:El9xVISelRB7BuFusrZozjnkIM5YnzCViNKoh
+ github.com/docker/go-connections v0.4.0/go.mod h1:Gbd7IOopHjR8Iph03tsViu4nIes5XhDvyHbTtUxmeec=
+ github.com/docker/go-units v0.5.0 h1:69rxXcBk27SvSaaxTtLh/8llcHD8vYHT7WSdRZ/jvr4=
+ github.com/docker/go-units v0.5.0/go.mod h1:fgPhTUdO+D/Jk86RDLlptpiXQzgHJF7gydDDbaIK4Dk=
+-github.com/edsrzf/mmap-go v1.2.0 h1:hXLYlkbaPzt1SaQk+anYwKSRNhufIDCchSPkUD6dD84=
+-github.com/edsrzf/mmap-go v1.2.0/go.mod h1:19H/e8pUPLicwkyNgOykDXkJ9F0MHE+Z52B8EIth78Q=
+ github.com/emicklei/go-restful/v3 v3.11.0 h1:rAQeMHw1c7zTmncogyy8VvRZwtkmkZ4FxERmMY4rD+g=
+ github.com/emicklei/go-restful/v3 v3.11.0/go.mod h1:6n3XBCmQQb25CM2LCACGz8ukIrRry+4bhvbpWn3mrbc=
+ github.com/envoyproxy/go-control-plane/envoy v1.36.0 h1:yg/JjO5E7ubRyKX3m07GF3reDNEnfOboJ0QySbH736g=
+diff --git promql/query_logger.go promql/query_logger.go
+index c0a70b66d..8aac517e2 100644
+--- promql/query_logger.go
++++ promql/query_logger.go
+@@ -26,11 +26,11 @@ import (
+ 	"time"
+ 	"unicode/utf8"
+ 
+-	"github.com/edsrzf/mmap-go"
++	"github.com/prometheus/prometheus/tsdb/fileutil"
+ )
+ 
+ type ActiveQueryTracker struct {
+-	mmappedFile   []byte
++	mw            *fileutil.MmapWriter
+ 	getNextIndex  chan int
+ 	logger        *slog.Logger
+ 	closer        io.Closer
+@@ -87,12 +87,12 @@ func logUnfinishedQueries(filename string, filesize int, logger *slog.Logger) {
+ }
+ 
+ type mmappedFile struct {
+-	f io.Closer
+-	m mmap.MMap
++	f  io.Closer
++	mw *fileutil.MmapWriter
+ }
+ 
+ func (f *mmappedFile) Close() error {
+-	err := f.m.Unmap()
++	err := f.mw.Close()
+ 	if err != nil {
+ 		err = fmt.Errorf("mmappedFile: unmapping: %w", err)
+ 	}
+@@ -103,7 +103,7 @@ func (f *mmappedFile) Close() error {
+ 	return err
+ }
+ 
+-func getMMappedFile(filename string, filesize int, logger *slog.Logger) ([]byte, io.Closer, error) {
++func getMMappedFile(filename string, filesize int, logger *slog.Logger) (*fileutil.MmapWriter, io.Closer, error) {
+ 	file, err := os.OpenFile(filename, os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0o666)
+ 	if err != nil {
+ 		absPath, pathErr := filepath.Abs(filename)
+@@ -114,21 +114,14 @@ func getMMappedFile(filename string, filesize int, logger *slog.Logger) ([]byte,
+ 		return nil, nil, err
+ 	}
+ 
+-	err = file.Truncate(int64(filesize))
+-	if err != nil {
+-		file.Close()
+-		logger.Error("Error setting filesize.", "filesize", filesize, "err", err)
+-		return nil, nil, err
+-	}
+-
+-	fileAsBytes, err := mmap.Map(file, mmap.RDWR, 0)
++	mw, err := fileutil.NewMmapWriterWithSize(file, filesize)
+ 	if err != nil {
+ 		file.Close()
+ 		logger.Error("Failed to mmap", "file", filename, "Attempted size", filesize, "err", err)
+ 		return nil, nil, err
+ 	}
+ 
+-	return fileAsBytes, &mmappedFile{f: file, m: fileAsBytes}, err
++	return mw, &mmappedFile{f: file, mw: mw}, err
+ }
+ 
+ func NewActiveQueryTracker(localStoragePath string, maxConcurrent int, logger *slog.Logger) *ActiveQueryTracker {
+@@ -140,15 +133,18 @@ func NewActiveQueryTracker(localStoragePath string, maxConcurrent int, logger *s
+ 	filename, filesize := filepath.Join(localStoragePath, "queries.active"), 1+maxConcurrent*entrySize
+ 	logUnfinishedQueries(filename, filesize, logger)
+ 
+-	fileAsBytes, closer, err := getMMappedFile(filename, filesize, logger)
++	mw, closer, err := getMMappedFile(filename, filesize, logger)
+ 	if err != nil {
+ 		panic("Unable to create mmap-ed active query log")
+ 	}
+ 
+-	copy(fileAsBytes, "[")
++	_, err = mw.Write([]byte("["))
++	if err != nil {
++		panic("Unable to write mmap-ed active query log")
++	}
+ 	activeQueryTracker := ActiveQueryTracker{
+-		mmappedFile:   fileAsBytes,
+ 		closer:        closer,
++		mw:            mw,
+ 		getNextIndex:  make(chan int, maxConcurrent),
+ 		logger:        logger,
+ 		maxConcurrent: maxConcurrent,
+@@ -205,19 +201,29 @@ func (tracker ActiveQueryTracker) GetMaxConcurrent() int {
+ }
+ 
+ func (tracker ActiveQueryTracker) Delete(insertIndex int) {
+-	copy(tracker.mmappedFile[insertIndex:], strings.Repeat("\x00", entrySize))
++	buf := tracker.mw.Bytes()
++	copy(buf[insertIndex:], strings.Repeat("\x00", entrySize))
++	_, err := tracker.mw.WriteAt([]byte(strings.Repeat("\x00", entrySize)), int64(insertIndex))
++	if err != nil {
++		panic("Unable to write mmap-ed active query log")
++	}
+ 	tracker.getNextIndex <- insertIndex
+ }
+ 
+ func (tracker ActiveQueryTracker) Insert(ctx context.Context, query string) (int, error) {
+ 	select {
+ 	case i := <-tracker.getNextIndex:
+-		fileBytes := tracker.mmappedFile
+ 		entry := newJSONEntry(query, tracker.logger)
+ 		start, end := i, i+entrySize
+ 
+-		copy(fileBytes[start:], entry)
+-		copy(fileBytes[end-1:], ",")
++		_, err := tracker.mw.WriteAt(entry, int64(start))
++		if err != nil {
++			return 0, err
++		}
++		_, err = tracker.mw.WriteAt([]byte(","), int64(end-1))
++		if err != nil {
++			return 0, err
++		}
+ 		return i, nil
+ 	case <-ctx.Done():
+ 		return 0, ctx.Err()
+diff --git promql/query_logger_test.go promql/query_logger_test.go
+index eb06e513e..ef2f85cfd 100644
+--- promql/query_logger_test.go
++++ promql/query_logger_test.go
+@@ -21,12 +21,22 @@ import (
+ 
+ 	"github.com/grafana/regexp"
+ 	"github.com/stretchr/testify/require"
++
++	"github.com/prometheus/prometheus/tsdb/fileutil"
+ )
+ 
+ func TestQueryLogging(t *testing.T) {
+-	fileAsBytes := make([]byte, 4096)
++	file, err := os.CreateTemp("", "mmapedFile")
++	require.NoError(t, err)
++
++	filename := file.Name()
++	defer os.Remove(filename)
++
++	mw, err := fileutil.NewMmapWriterWithSize(file, 4096)
++	require.NoError(t, err)
++
+ 	queryLogger := ActiveQueryTracker{
+-		mmappedFile:  fileAsBytes,
++		mw:           mw,
+ 		logger:       nil,
+ 		getNextIndex: make(chan int, 4),
+ 	}
+@@ -46,6 +56,7 @@ func TestQueryLogging(t *testing.T) {
+ 		`^{"query":"","timestamp_sec":\d+}\x00*,$`,
+ 		`^{"query":"SpecialCharQuery{host=\\"2132132\\", id=123123}","timestamp_sec":\d+}\x00*,$`,
+ 	}
++	fileAsBytes := mw.Bytes()
+ 
+ 	// Check for inserts of queries.
+ 	for i := 0; i < 4; i++ {
+@@ -68,9 +79,17 @@ func TestQueryLogging(t *testing.T) {
+ }
+ 
+ func TestIndexReuse(t *testing.T) {
+-	queryBytes := make([]byte, 1+3*entrySize)
++	file, err := os.CreateTemp("", "mmapedFile")
++	require.NoError(t, err)
++
++	filename := file.Name()
++	defer os.Remove(filename)
++
++	mw, err := fileutil.NewMmapWriterWithSize(file, 1+3*entrySize)
++	require.NoError(t, err)
++
+ 	queryLogger := ActiveQueryTracker{
+-		mmappedFile:  queryBytes,
++		mw:           mw,
+ 		logger:       nil,
+ 		getNextIndex: make(chan int, 3),
+ 	}
+@@ -92,6 +111,7 @@ func TestIndexReuse(t *testing.T) {
+ 		`^{"query":"ThisShouldBeInsertedAtIndex2","timestamp_sec":\d+}\x00*,$`,
+ 		`^{"query":"TestQuery3","timestamp_sec":\d+}\x00*,$`,
+ 	}
++	queryBytes := mw.Bytes()
+ 
+ 	// Check all bytes and verify new query was inserted at index 2
+ 	for i := 0; i < 3; i++ {
+@@ -109,9 +129,10 @@ func TestMMapFile(t *testing.T) {
+ 	fpath := filepath.Join(dir, "mmappedFile")
+ 	const data = "ab"
+ 
+-	fileAsBytes, closer, err := getMMappedFile(fpath, 2, nil)
++	mw, closer, err := getMMappedFile(fpath, 2, nil)
+ 	require.NoError(t, err)
+-	copy(fileAsBytes, data)
++	buf := mw.Bytes()
++	copy(buf, data)
+ 	require.NoError(t, closer.Close())
+ 
+ 	f, err := os.Open(fpath)
+diff --git tsdb/chunks/chunks.go tsdb/chunks/chunks.go
+index 034106238..7e9366d2b 100644
+--- tsdb/chunks/chunks.go
++++ tsdb/chunks/chunks.go
+@@ -280,7 +280,7 @@ func checkCRC32(data, sum []byte) error {
+ type Writer struct {
+ 	dirFile *os.File
+ 	files   []*os.File
+-	wbuf    fileutil.BufWriter
++	wbuf    fileutil.MmapBufWriter
+ 	n       int64
+ 	crc32   hash.Hash
+ 	buf     [binary.MaxVarintLen32]byte
+@@ -361,19 +361,18 @@ func (w *Writer) finalizeTail() error {
+ 		return nil
+ 	}
+ 
++	off := int64(SegmentHeaderSize)
++
+ 	if w.wbuf != nil {
+-		if err := w.wbuf.Flush(); err != nil {
++		// As the file was pre-allocated, we truncate any superfluous zero bytes.
++		off = w.wbuf.Offset()
++		if err := w.wbuf.Close(); err != nil {
+ 			return err
+ 		}
+ 	}
+ 	if err := tf.Sync(); err != nil {
+ 		return err
+ 	}
+-	// As the file was pre-allocated, we truncate any superfluous zero bytes.
+-	off, err := tf.Seek(0, io.SeekCurrent)
+-	if err != nil {
+-		return err
+-	}
+ 	if err := tf.Truncate(off); err != nil {
+ 		return err
+ 	}
+@@ -387,7 +386,7 @@ func (w *Writer) cut() error {
+ 		return err
+ 	}
+ 
+-	n, f, _, err := cutSegmentFile(w.dirFile, MagicChunks, chunksFormatV1, w.segmentSize)
++	n, f, mw, _, err := cutSegmentFile(w.dirFile, MagicChunks, chunksFormatV1, w.segmentSize)
+ 	if err != nil {
+ 		return err
+ 	}
+@@ -395,21 +394,11 @@ func (w *Writer) cut() error {
+ 
+ 	w.files = append(w.files, f)
+ 	if w.wbuf != nil {
+-		if err := w.wbuf.Reset(f); err != nil {
++		if err := w.wbuf.Reset(mw); err != nil {
+ 			return err
+ 		}
+ 	} else {
+-		var (
+-			wbuf fileutil.BufWriter
+-			err  error
+-		)
+-		size := 8 * 1024 * 1024
+-		if w.useUncachedIO {
+-			// Uncached IO is implemented using direct I/O for now.
+-			wbuf, err = fileutil.NewDirectIOWriter(f, size)
+-		} else {
+-			wbuf, err = fileutil.NewBufioWriterWithSeek(f, size)
+-		}
++		wbuf, err := fileutil.NewBufioMmapWriter(mw)
+ 		if err != nil {
+ 			return err
+ 		}
+@@ -419,20 +408,22 @@ func (w *Writer) cut() error {
+ 	return nil
+ }
+ 
+-func cutSegmentFile(dirFile *os.File, magicNumber uint32, chunksFormat byte, allocSize int64) (headerSize int, newFile *os.File, seq int, returnErr error) {
++func cutSegmentFile(dirFile *os.File, magicNumber uint32, chunksFormat byte, allocSize int64) (headerSize int, newFile *os.File, newMw *fileutil.MmapWriter, seq int, returnErr error) {
+ 	p, seq, err := nextSequenceFile(dirFile.Name())
+ 	if err != nil {
+-		return 0, nil, 0, fmt.Errorf("next sequence file: %w", err)
++		return 0, nil, nil, 0, fmt.Errorf("next sequence file: %w", err)
+ 	}
+ 	ptmp := p + ".tmp"
+-	f, err := os.OpenFile(ptmp, os.O_WRONLY|os.O_CREATE, 0o666)
++	f, err := os.OpenFile(ptmp, os.O_RDWR|os.O_CREATE, 0o666)
+ 	if err != nil {
+-		return 0, nil, 0, fmt.Errorf("open temp file: %w", err)
++		return 0, nil, nil, 0, fmt.Errorf("open temp file: %w", err)
+ 	}
++	mw := fileutil.NewMmapWriter(f)
+ 	defer func() {
+ 		if returnErr != nil {
+ 			errs := tsdb_errors.NewMulti(returnErr)
+ 			if f != nil {
++				mw.Close()
+ 				errs.Add(f.Close())
+ 			}
+ 			// Calling RemoveAll on a non-existent file does not return error.
+@@ -442,11 +433,11 @@ func cutSegmentFile(dirFile *os.File, magicNumber uint32, chunksFormat byte, all
+ 	}()
+ 	if allocSize > 0 {
+ 		if err = fileutil.Preallocate(f, allocSize, true); err != nil {
+-			return 0, nil, 0, fmt.Errorf("preallocate: %w", err)
++			return 0, nil, nil, 0, fmt.Errorf("preallocate: %w", err)
+ 		}
+ 	}
+ 	if err = dirFile.Sync(); err != nil {
+-		return 0, nil, 0, fmt.Errorf("sync directory: %w", err)
++		return 0, nil, nil, 0, fmt.Errorf("sync directory: %w", err)
+ 	}
+ 
+ 	// Write header metadata for new file.
+@@ -454,29 +445,38 @@ func cutSegmentFile(dirFile *os.File, magicNumber uint32, chunksFormat byte, all
+ 	binary.BigEndian.PutUint32(metab[:MagicChunksSize], magicNumber)
+ 	metab[4] = chunksFormat
+ 
+-	n, err := f.Write(metab)
++	n, err := mw.Write(metab)
+ 	if err != nil {
+-		return 0, nil, 0, fmt.Errorf("write header: %w", err)
++		return 0, nil, nil, 0, fmt.Errorf("write header: %w", err)
+ 	}
++	if err := mw.Close(); err != nil {
++		return 0, nil, nil, 0, fmt.Errorf("close temp mmap: %w", err)
++	}
++	mw = nil
+ 	if err := f.Close(); err != nil {
+-		return 0, nil, 0, fmt.Errorf("close temp file: %w", err)
++		return 0, nil, nil, 0, fmt.Errorf("close temp file: %w", err)
+ 	}
+ 	f = nil
+ 
+ 	if err := fileutil.Rename(ptmp, p); err != nil {
+-		return 0, nil, 0, fmt.Errorf("replace file: %w", err)
++		return 0, nil, nil, 0, fmt.Errorf("replace file: %w", err)
+ 	}
+ 
+-	f, err = os.OpenFile(p, os.O_WRONLY, 0o666)
++	f, err = os.OpenFile(p, os.O_RDWR, 0o666)
++	if err != nil {
++		return 0, nil, nil, 0, fmt.Errorf("open final file: %w", err)
++	}
++	mw, err = fileutil.NewMmapWriterWithSize(f, int(allocSize))
+ 	if err != nil {
+-		return 0, nil, 0, fmt.Errorf("open final file: %w", err)
++		return 0, nil, nil, 0, fmt.Errorf("new writer for final file: %w", err)
+ 	}
++
+ 	// Skip header for further writes.
+ 	offset := int64(n)
+-	if _, err := f.Seek(offset, 0); err != nil {
+-		return 0, nil, 0, fmt.Errorf("seek to %d in final file: %w", offset, err)
++	if _, err := mw.Seek(offset, 0); err != nil {
++		return 0, nil, nil, 0, fmt.Errorf("seek to %d in final file: %w", offset, err)
+ 	}
+-	return n, f, seq, nil
++	return n, f, mw, seq, nil
+ }
+ 
+ func (w *Writer) write(b []byte) error {
+diff --git tsdb/chunks/head_chunks.go tsdb/chunks/head_chunks.go
+index 876b42cb2..14fc84af3 100644
+--- tsdb/chunks/head_chunks.go
++++ tsdb/chunks/head_chunks.go
+@@ -61,6 +61,7 @@ const (
+ 	// MaxHeadChunkMetaSize is the max size of an mmapped chunks minus the chunks data.
+ 	// Max because the uvarint size can be smaller.
+ 	MaxHeadChunkMetaSize = SeriesRefSize + 2*MintMaxtSize + ChunkEncodingSize + MaxChunkLengthFieldSize + CRCSize
++	MinHeadChunkMetaSize = SeriesRefSize + 2*MintMaxtSize + ChunkEncodingSize + 1 + CRCSize
+ 	// MinWriteBufferSize is the minimum write buffer size allowed.
+ 	MinWriteBufferSize = 64 * 1024 // 64KB.
+ 	// MaxWriteBufferSize is the maximum write buffer size allowed.
+@@ -191,14 +192,16 @@ func (f *chunkPos) bytesToWriteForChunk(chkLen uint64) uint64 {
+ // ChunkDiskMapper is for writing the Head block chunks to disk
+ // and access chunks via mmapped files.
+ type ChunkDiskMapper struct {
++	// needs to be correctly aligned
++	curFileOffset atomic.Uint64 // Bytes written in current open file.
+ 	// Writer.
+ 	dir             *os.File
+ 	writeBufferSize int
+ 
+-	curFile         *os.File      // File being written to.
+-	curFileSequence int           // Index of current open file being appended to. 0 if no file is active.
+-	curFileOffset   atomic.Uint64 // Bytes written in current open file.
+-	curFileMaxt     int64         // Used for the size retention.
++	curFile         *os.File // File being written to.
++	curMw           *fileutil.MmapWriter
++	curFileSequence int   // Index of current open file being appended to. 0 if no file is active.
++	curFileMaxt     int64 // Used for the size retention.
+ 
+ 	// The values in evtlPos represent the file position which will eventually be
+ 	// reached once the content of the write queue has been fully processed.
+@@ -604,7 +607,7 @@ func (cdm *ChunkDiskMapper) cut() (seq, offset int, returnErr error) {
+ 		return 0, 0, err
+ 	}
+ 
+-	offset, newFile, seq, err := cutSegmentFile(cdm.dir, MagicHeadChunks, headChunksFormatV1, HeadChunkFilePreallocationSize)
++	offset, newFile, newMw, seq, err := cutSegmentFile(cdm.dir, MagicHeadChunks, headChunksFormatV1, HeadChunkFilePreallocationSize)
+ 	if err != nil {
+ 		return 0, 0, err
+ 	}
+@@ -613,6 +616,7 @@ func (cdm *ChunkDiskMapper) cut() (seq, offset int, returnErr error) {
+ 		// The file should not be closed if there is no error,
+ 		// its kept open in the ChunkDiskMapper.
+ 		if returnErr != nil {
++			returnErr = tsdb_errors.NewMulti(returnErr, newMw.Close()).Err()
+ 			returnErr = tsdb_errors.NewMulti(returnErr, newFile.Close()).Err()
+ 		}
+ 	}()
+@@ -633,10 +637,11 @@ func (cdm *ChunkDiskMapper) cut() (seq, offset int, returnErr error) {
+ 	cdm.readPathMtx.Lock()
+ 	cdm.curFileSequence = seq
+ 	cdm.curFile = newFile
++	cdm.curMw = newMw
+ 	if cdm.chkWriter != nil {
+-		cdm.chkWriter.Reset(newFile)
++		cdm.chkWriter.Reset(cdm.curMw)
+ 	} else {
+-		cdm.chkWriter = bufio.NewWriterSize(newFile, cdm.writeBufferSize)
++		cdm.chkWriter = bufio.NewWriterSize(cdm.curMw, cdm.writeBufferSize)
+ 	}
+ 
+ 	cdm.closers[cdm.curFileSequence] = mmapFile
+@@ -659,10 +664,9 @@ func (cdm *ChunkDiskMapper) finalizeCurFile() error {
+ 		return err
+ 	}
+ 
+-	if err := cdm.curFile.Sync(); err != nil {
++	if err := cdm.curMw.Close(); err != nil {
+ 		return err
+ 	}
+-
+ 	return cdm.curFile.Close()
+ }
+ 
+@@ -774,7 +778,7 @@ func (cdm *ChunkDiskMapper) Chunk(ref ChunkDiskMapperRef) (chunkenc.Chunk, error
+ 		return nil, &CorruptionErr{
+ 			Dir:       cdm.dir.Name(),
+ 			FileIndex: sgmIndex,
+-			Err:       fmt.Errorf("head chunk file doesn't include enough bytes to read the chunk - required:%v, available:%v", chkDataEnd, mmapFile.byteSlice.Len()),
++			Err:       fmt.Errorf("head chunk file doesn't Include enough bytes to read the chunk - required:%v, available:%v", chkDataEnd, mmapFile.byteSlice.Len()),
+ 		}
+ 	}
+ 
+@@ -834,7 +838,7 @@ func (cdm *ChunkDiskMapper) IterateAllChunks(f func(seriesRef HeadSeriesRef, chu
+ 		}
+ 		idx := HeadChunkFileHeaderSize
+ 		for idx < fileEnd {
+-			if fileEnd-idx < MaxHeadChunkMetaSize {
++			if fileEnd-idx < MinHeadChunkMetaSize {
+ 				// Check for all 0s which marks the end of the file.
+ 				allZeros := true
+ 				for _, b := range mmapFile.byteSlice.Range(idx, fileEnd) {
+@@ -851,7 +855,7 @@ func (cdm *ChunkDiskMapper) IterateAllChunks(f func(seriesRef HeadSeriesRef, chu
+ 					Dir:       cdm.dir.Name(),
+ 					FileIndex: segID,
+ 					Err: fmt.Errorf("head chunk file has some unread data, but doesn't include enough bytes to read the chunk header"+
+-						" - required:%v, available:%v, file:%d", idx+MaxHeadChunkMetaSize, fileEnd, segID),
++						" - required:%v, available:%v, file:%d cur %d", idx+MinHeadChunkMetaSize, fileEnd, segID, cdm.curFileSequence),
+ 				}
+ 			}
+ 			chunkRef := newChunkDiskMapperRef(uint64(segID), uint64(idx))
+@@ -886,7 +890,7 @@ func (cdm *ChunkDiskMapper) IterateAllChunks(f func(seriesRef HeadSeriesRef, chu
+ 				return &CorruptionErr{
+ 					Dir:       cdm.dir.Name(),
+ 					FileIndex: segID,
+-					Err:       fmt.Errorf("head chunk file doesn't include enough bytes to read the chunk header - required:%v, available:%v, file:%d", idx+CRCSize, fileEnd, segID),
++					Err:       fmt.Errorf("head chunk file doesn't include enough bytes to read the crc32 sum - required:%v, available:%v, hcf: %v, srs: %v, mms: %v, ces: %v, n: %v dataLen: %v, numSamples: %v, file:%d cur:%d", idx+CRCSize, fileEnd, HeadChunkFileHeaderSize, SeriesRefSize, MintMaxtSize, ChunkEncodingSize, n, dataLen, numSamples, segID, cdm.curFileSequence),
+ 				}
+ 			}
+ 
+diff --git tsdb/chunks/head_chunks_openbsd.go tsdb/chunks/head_chunks_openbsd.go
+new file mode 100644
+index 000000000..05e308427
+--- /dev/null
++++ tsdb/chunks/head_chunks_openbsd.go
+@@ -0,0 +1,18 @@
++// Copyright 2020 The Prometheus Authors
++// Licensed under the Apache License, Version 2.0 (the "License");
++// you may not use this file except in compliance with the License.
++// You may obtain a copy of the License at
++//
++// http://www.apache.org/licenses/LICENSE-2.0
++//
++// Unless required by applicable law or agreed to in writing, software
++// distributed under the License is distributed on an "AS IS" BASIS,
++// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++// See the License for the specific language governing permissions and
++// limitations under the License.
++
++package chunks
++
++// HeadChunkFilePreallocationSize is the size to which the m-map file should be preallocated when a new file is cut.
++// For OpenBSD use the MaxHeadChunkFileSize for performance reasons
++var HeadChunkFilePreallocationSize int64 = MaxHeadChunkFileSize
+diff --git tsdb/chunks/head_chunks_other.go tsdb/chunks/head_chunks_other.go
+index f30c5e55e..6e82d73f4 100644
+--- tsdb/chunks/head_chunks_other.go
++++ tsdb/chunks/head_chunks_other.go
+@@ -11,7 +11,7 @@
+ // See the License for the specific language governing permissions and
+ // limitations under the License.
+ 
+-//go:build !windows
++//go:build !windows && !openbsd
+ 
+ package chunks
+ 
+diff --git tsdb/chunks/head_chunks_test.go tsdb/chunks/head_chunks_test.go
+index 68742471e..a3dda8b0e 100644
+--- tsdb/chunks/head_chunks_test.go
++++ tsdb/chunks/head_chunks_test.go
+@@ -26,6 +26,7 @@ import (
+ 	"github.com/stretchr/testify/require"
+ 
+ 	"github.com/prometheus/prometheus/tsdb/chunkenc"
++	"github.com/prometheus/prometheus/tsdb/fileutil"
+ )
+ 
+ var writeQueueSize int
+@@ -131,7 +132,7 @@ func TestChunkDiskMapper_WriteChunk_Chunk_IterateChunks(t *testing.T) {
+ 	require.Len(t, hrw.mmappedChunkFiles, 3, "expected 3 mmapped files, got %d", len(hrw.mmappedChunkFiles))
+ 	require.Len(t, hrw.closers, len(hrw.mmappedChunkFiles))
+ 
+-	actualBytes, err := os.ReadFile(firstFileName)
++	actualBytes, err := mmapReadFile(firstFileName)
+ 	require.NoError(t, err)
+ 
+ 	// Check header of the segment file.
+@@ -581,3 +582,15 @@ func createChunk(t *testing.T, idx int, hrw *ChunkDiskMapper) (seriesRef HeadSer
+ 	<-awaitCb
+ 	return
+ }
++
++func mmapReadFile(path string) ([]byte, error) {
++	var b []byte
++	m, err := fileutil.OpenMmapFile(path)
++	if err != nil {
++		return nil, err
++	}
++	bb := m.Bytes()
++	b = append(b, bb...)
++	m.Close()
++	return b, nil
++}
+diff --git tsdb/fileutil/mmap.go tsdb/fileutil/mmap.go
+index 782ff27ec..15590e2e3 100644
+--- tsdb/fileutil/mmap.go
++++ tsdb/fileutil/mmap.go
+@@ -19,8 +19,31 @@ import (
+ )
+ 
+ type MmapFile struct {
+-	f *os.File
+-	b []byte
++	f         *os.File
++	b         []byte
++	rw        bool
++	closeFile bool
++}
++
++func OpenRwMmapFromFile(f *os.File, size int) (mf *MmapFile, retErr error) {
++	defer func() {
++		if retErr != nil {
++			f.Close()
++		}
++	}()
++	if size <= 0 {
++		info, err := f.Stat()
++		if err != nil {
++			return nil, fmt.Errorf("stat: %w", err)
++		}
++		size = int(info.Size())
++	}
++
++	b, err := mmapRw(f, size)
++	if err != nil {
++		return nil, fmt.Errorf("mmap, size %d: %w", size, err)
++	}
++	return &MmapFile{f: f, b: b, rw: true}, nil
+ }
+ 
+ func OpenMmapFile(path string) (*MmapFile, error) {
+@@ -45,22 +68,49 @@ func OpenMmapFileWithSize(path string, size int) (mf *MmapFile, retErr error) {
+ 		size = int(info.Size())
+ 	}
+ 
+-	b, err := mmap(f, size)
++	b, err := mmapRo(f, size)
+ 	if err != nil {
+ 		return nil, fmt.Errorf("mmap, size %d: %w", size, err)
+ 	}
++	return &MmapFile{f: f, b: b, closeFile: true}, nil
++}
+ 
+-	return &MmapFile{f: f, b: b}, nil
++func (f *MmapFile) resize(size int) error {
++	err := munmap(f.b)
++	if err != nil {
++		return fmt.Errorf("resize munmap: %w", err)
++	}
++	var b []byte
++	if f.rw {
++		b, err = mmapRw(f.f, size)
++	} else {
++		b, err = mmapRo(f.f, size)
++	}
++	if err != nil {
++		return fmt.Errorf("resize mmap: %w", err)
++	}
++	f.b = b
++	return nil
+ }
+ 
+ func (f *MmapFile) Close() error {
+-	err0 := munmap(f.b)
+-	err1 := f.f.Close()
++	err0 := f.Sync()
++	err1 := munmap(f.b)
++	var err2 error
++	if f.closeFile {
++		err2 = f.f.Close()
++	}
+ 
+ 	if err0 != nil {
+-		return err0
++		return fmt.Errorf("close sync: %w", err0)
++	}
++	if err1 != nil {
++		return fmt.Errorf("close munmap: %w", err1)
++	}
++	if err2 != nil {
++		return fmt.Errorf("close file: %w", err2)
+ 	}
+-	return err1
++	return nil
+ }
+ 
+ func (f *MmapFile) File() *os.File {
+diff --git tsdb/fileutil/mmap_openbsd.go tsdb/fileutil/mmap_openbsd.go
+new file mode 100644
+index 000000000..39b590ee5
+--- /dev/null
++++ tsdb/fileutil/mmap_openbsd.go
+@@ -0,0 +1,25 @@
++// Copyright 2021 The Prometheus Authors
++// Licensed under the Apache License, Version 2.0 (the "License");
++// you may not use this file except in compliance with the License.
++// You may obtain a copy of the License at
++//
++// http://www.apache.org/licenses/LICENSE-2.0
++//
++// Unless required by applicable law or agreed to in writing, software
++// distributed under the License is distributed on an "AS IS" BASIS,
++// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++// See the License for the specific language governing permissions and
++// limitations under the License.
++
++//go:build openbsd
++// +build openbsd
++
++package fileutil
++
++import (
++	"golang.org/x/sys/unix"
++)
++
++func (f *MmapFile) Sync() error {
++	return unix.Msync(f.b, unix.MS_SYNC)
++}
+diff --git tsdb/fileutil/mmap_sync.go tsdb/fileutil/mmap_sync.go
+new file mode 100644
+index 000000000..31fd98e6d
+--- /dev/null
++++ tsdb/fileutil/mmap_sync.go
+@@ -0,0 +1,21 @@
++// Copyright 2021 The Prometheus Authors
++// Licensed under the Apache License, Version 2.0 (the "License");
++// you may not use this file except in compliance with the License.
++// You may obtain a copy of the License at
++//
++// http://www.apache.org/licenses/LICENSE-2.0
++//
++// Unless required by applicable law or agreed to in writing, software
++// distributed under the License is distributed on an "AS IS" BASIS,
++// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++// See the License for the specific language governing permissions and
++// limitations under the License.
++
++//go:build !openbsd
++// +build !openbsd
++
++package fileutil
++
++func (f *MmapFile) Sync() error {
++	return nil
++}
+diff --git tsdb/fileutil/mmap_unix.go tsdb/fileutil/mmap_unix.go
+index 3d15e1a8c..9a7c62816 100644
+--- tsdb/fileutil/mmap_unix.go
++++ tsdb/fileutil/mmap_unix.go
+@@ -21,10 +21,14 @@ import (
+ 	"golang.org/x/sys/unix"
+ )
+ 
+-func mmap(f *os.File, length int) ([]byte, error) {
++func mmapRo(f *os.File, length int) ([]byte, error) {
+ 	return unix.Mmap(int(f.Fd()), 0, length, unix.PROT_READ, unix.MAP_SHARED)
+ }
+ 
++func mmapRw(f *os.File, length int) ([]byte, error) {
++	return unix.Mmap(int(f.Fd()), 0, length, unix.PROT_READ|unix.PROT_WRITE, unix.MAP_SHARED)
++}
++
+ func munmap(b []byte) (err error) {
+ 	return unix.Munmap(b)
+ }
+diff --git tsdb/fileutil/mmap_windows.go tsdb/fileutil/mmap_windows.go
+index b94226412..9caf36622 100644
+--- tsdb/fileutil/mmap_windows.go
++++ tsdb/fileutil/mmap_windows.go
+@@ -19,7 +19,26 @@ import (
+ 	"unsafe"
+ )
+ 
+-func mmap(f *os.File, size int) ([]byte, error) {
++func mmapRw(f *os.File, size int) ([]byte, error) {
++	low, high := uint32(size), uint32(size>>32)
++	h, errno := syscall.CreateFileMapping(syscall.Handle(f.Fd()), nil, syscall.PAGE_READWRITE, high, low, nil)
++	if h == 0 {
++		return nil, os.NewSyscallError("CreateFileMapping", errno)
++	}
++
++	addr, errno := syscall.MapViewOfFile(h, syscall.FILE_MAP_READ|syscall.FILE_MAP_WRITE, 0, 0, uintptr(size))
++	if addr == 0 {
++		return nil, os.NewSyscallError("MapViewOfFile", errno)
++	}
++
++	if err := syscall.CloseHandle(syscall.Handle(h)); err != nil {
++		return nil, os.NewSyscallError("CloseHandle", err)
++	}
++
++	return (*[maxMapSize]byte)(unsafe.Pointer(addr))[:size], nil
++}
++
++func mmapRo(f *os.File, size int) ([]byte, error) {
+ 	low, high := uint32(size), uint32(size>>32)
+ 	h, errno := syscall.CreateFileMapping(syscall.Handle(f.Fd()), nil, syscall.PAGE_READONLY, high, low, nil)
+ 	if h == 0 {
+diff --git tsdb/fileutil/writer.go tsdb/fileutil/writer.go
+new file mode 100644
+index 000000000..f50a2fa84
+--- /dev/null
++++ tsdb/fileutil/writer.go
+@@ -0,0 +1,203 @@
++// Copyright 2021 The Prometheus Authors
++// Licensed under the Apache License, Version 2.0 (the "License");
++// you may not use this file except in compliance with the License.
++// You may obtain a copy of the License at
++//
++// http://www.apache.org/licenses/LICENSE-2.0
++//
++// Unless required by applicable law or agreed to in writing, software
++// distributed under the License is distributed on an "AS IS" BASIS,
++// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++// See the License for the specific language governing permissions and
++// limitations under the License.
++
++package fileutil
++
++import (
++	"errors"
++	"io"
++	"os"
++	"sync"
++)
++
++type MmapWriter struct {
++	sync.Mutex
++	f    *os.File
++	mf   *MmapFile
++	buf  []byte
++	wpos int
++	rpos int
++}
++
++type MmapBufWriter interface {
++	Write([]byte) (int, error)
++	Close() error
++	Offset() int64
++	Reset(mw *MmapWriter) error
++}
++
++type mmapBufioWriter struct {
++	mw *MmapWriter
++}
++
++func (m *mmapBufioWriter) Write(b []byte) (int, error) {
++	return m.mw.Write(b)
++}
++
++func (m *mmapBufioWriter) Close() error {
++	return m.mw.Close()
++}
++
++func (m *mmapBufioWriter) Offset() int64 {
++	off, _ := m.mw.Seek(0, io.SeekCurrent)
++	return off
++}
++
++func (m *mmapBufioWriter) Reset(mw *MmapWriter) error {
++	if err := m.mw.Close(); err != nil {
++		return err
++	}
++	m.mw = mw
++	return nil
++}
++
++func NewBufioMmapWriter(mw *MmapWriter) (MmapBufWriter, error) {
++	if mw.mf == nil {
++		mf, err := OpenRwMmapFromFile(mw.f, 0)
++		if err != nil {
++			return nil, err
++		}
++		mw.mf = mf
++		mw.buf = mf.Bytes()
++	}
++	return &mmapBufioWriter{mw}, nil
++}
++
++func NewMmapWriter(f *os.File) *MmapWriter {
++	return &MmapWriter{f: f}
++}
++
++func NewMmapWriterWithSize(f *os.File, size int) (*MmapWriter, error) {
++	mw := NewMmapWriter(f)
++	err := mw.mmap(size)
++	return mw, err
++}
++
++func (mw *MmapWriter) Bytes() []byte {
++	return mw.buf
++}
++
++func (mw *MmapWriter) Sync() error {
++	if mw.mf != nil {
++		return mw.mf.Sync()
++	}
++	return nil
++}
++
++func (mw *MmapWriter) Close() error {
++	mw.buf = nil
++	if mw.mf != nil {
++		err := mw.mf.Close()
++		mw.mf = nil
++		return err
++	}
++	return nil
++}
++
++func (mw *MmapWriter) mmap(size int) error {
++	err := mw.f.Truncate(int64(size))
++	if err != nil {
++		return err
++	}
++	mf, err := OpenRwMmapFromFile(mw.f, size)
++	if err != nil {
++		return err
++	}
++	mw.mf = mf
++	mw.buf = mf.Bytes()
++	return nil
++}
++
++func (mw *MmapWriter) resize(size int) error {
++	err := mw.f.Truncate(int64(size))
++	if err != nil {
++		return err
++	}
++	err = mw.mf.resize(size)
++	if err != nil {
++		return err
++	}
++	mw.buf = mw.mf.Bytes()
++	return nil
++}
++
++func (mw *MmapWriter) Seek(offset int64, whence int) (ret int64, err error) {
++	var abs int64
++	mw.Lock()
++	defer mw.Unlock()
++	switch whence {
++	case io.SeekStart:
++		abs = offset
++	case io.SeekCurrent:
++		abs = int64(mw.wpos) + offset
++	default:
++		return 0, errors.New("invalid whence")
++	}
++	if abs < 0 {
++		return 0, errors.New("negative position")
++	}
++	mw.wpos = int(abs)
++	mw.rpos = int(abs)
++	return abs, nil
++}
++
++func (mw *MmapWriter) Read(p []byte) (n int, err error) {
++	mw.Lock()
++	defer mw.Unlock()
++	if mw.rpos >= len(mw.buf) {
++		return 0, io.EOF
++	}
++	n = copy(p, mw.buf[mw.rpos:])
++	mw.rpos += n
++	return
++}
++
++func (mw *MmapWriter) Write(p []byte) (n int, err error) {
++	mw.Lock()
++	defer mw.Unlock()
++	if mw.mf == nil {
++		err = mw.mmap(mw.wpos + len(p))
++		if err != nil {
++			return
++		}
++	}
++	if mw.wpos+len(p) > len(mw.buf) {
++		err = mw.resize(mw.wpos + len(p))
++		if err != nil {
++			return
++		}
++	}
++
++	n = copy(mw.buf[mw.wpos:], p)
++	mw.wpos += n
++	return
++}
++
++func (mw *MmapWriter) WriteAt(p []byte, pos int64) (n int, err error) {
++	mw.Lock()
++	defer mw.Unlock()
++	if mw.mf == nil {
++		err = mw.mmap(len(p) + int(pos))
++		if err != nil {
++			return
++		}
++	}
++	if len(p)+int(pos) > len(mw.buf) {
++		err = mw.resize(len(p) + int(pos))
++		if err != nil {
++			return
++		}
++	}
++	n = copy(mw.buf[pos:], p)
++	return
++}
+diff --git tsdb/index/index.go tsdb/index/index.go
+index edcb92a71..36ba9d291 100644
+--- tsdb/index/index.go
++++ tsdb/index/index.go
+@@ -272,6 +272,7 @@ func (w *Writer) addPadding(size int) error {
+ type FileWriter struct {
+ 	f    *os.File
+ 	fbuf *bufio.Writer
++	mw   *fileutil.MmapWriter
+ 	pos  uint64
+ 	name string
+ }
+@@ -281,14 +282,20 @@ func NewFileWriter(name string) (*FileWriter, error) {
+ 	if err != nil {
+ 		return nil, err
+ 	}
++	mw := fileutil.NewMmapWriter(f)
+ 	return &FileWriter{
+ 		f:    f,
+-		fbuf: bufio.NewWriterSize(f, 1<<22),
++		fbuf: bufio.NewWriterSize(mw, 1<<22),
++		mw:   mw,
+ 		pos:  0,
+ 		name: name,
+ 	}, nil
+ }
+ 
++func (fw *FileWriter) Bytes() []byte {
++	return fw.mw.Bytes()
++}
++
+ func (fw *FileWriter) Pos() uint64 {
+ 	return fw.pos
+ }
+@@ -319,7 +326,7 @@ func (fw *FileWriter) WriteAt(buf []byte, pos uint64) error {
+ 	if err := fw.Flush(); err != nil {
+ 		return err
+ 	}
+-	_, err := fw.f.WriteAt(buf, int64(pos))
++	_, err := fw.mw.WriteAt(buf, int64(pos))
+ 	return err
+ }
+ 
+@@ -341,7 +348,7 @@ func (fw *FileWriter) Close() error {
+ 	if err := fw.Flush(); err != nil {
+ 		return err
+ 	}
+-	if err := fw.f.Sync(); err != nil {
++	if err := fw.mw.Close(); err != nil {
+ 		return err
+ 	}
+ 	return fw.f.Close()
+@@ -1026,11 +1033,11 @@ func (w *Writer) writePostings() error {
+ 	if err := w.fP.Flush(); err != nil {
+ 		return err
+ 	}
+-	if _, err := w.fP.f.Seek(0, 0); err != nil {
++	if _, err := w.fP.mw.Seek(0, 0); err != nil {
+ 		return err
+ 	}
+ 	// Don't need to calculate a checksum, so can copy directly.
+-	n, err := io.CopyBuffer(w.f.fbuf, w.fP.f, make([]byte, 1<<20))
++	n, err := io.CopyBuffer(w.f.fbuf, w.fP.mw, make([]byte, 1<<20))
+ 	if err != nil {
+ 		return err
+ 	}

@@ -1,0 +1,12 @@
+#!/bin/ksh
+
+egress_if=$( ifconfig egress 2>/dev/null | head -1 | cut -d : -f 1 )
+
+daemon="${TRUEPREFIX}/sbin/darkstat"
+daemon_flags="-i $egress_if -b localhost --syslog"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_cmd $1

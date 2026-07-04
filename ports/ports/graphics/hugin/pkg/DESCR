@@ -1,0 +1,8 @@
+Hugin is a panoramic imaging toolchain and easy-to-use GUI frontend,
+based on the Panorama Tools library. It allows you to assemble a mosaic
+of photographs into a complete immersive panorama, stitch any series
+of overlapping pictures, correct for various lens characteristics,
+work with high dynamic range images, automatically identify control
+points for image matching, and much more.
+
+Tutorials: http://hugin.sourceforge.net/tutorials/

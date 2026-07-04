@@ -1,0 +1,8 @@
+sysclean is a script designed to help remove obsolete files between OpenBSD
+upgrades.
+
+sysclean compares a reference root directory against the currently installed
+files, taking files from both the base system and packages into account.
+
+sysclean does not remove any files on the system. It only reports obsolete
+filenames or packages using out-of-date libraries.

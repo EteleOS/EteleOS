@@ -1,0 +1,5 @@
+bin/icontool-map
+bin/icontool-render
+share/icontool/
+share/icontool/legacy-icon-mapping.dtd
+share/icontool/legacy-icon-mapping.xml

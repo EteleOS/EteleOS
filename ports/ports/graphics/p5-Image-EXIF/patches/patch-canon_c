@@ -1,0 +1,82 @@
+--- canon.c.orig	Fri May 11 19:03:30 2012
++++ canon.c	Sat Jul 12 19:43:53 2014
+@@ -943,14 +943,14 @@ canon_prop01(struct exifprop *aprop, struct exifprop *
+ 	switch (aprop->tag) {
+ 	case 2:
+ 		aprop->lvl = v ? ED_IMG : ED_VRB;
+-		exifstralloc(&aprop->str, 32);
+-		snprintf(aprop->str, 31, "%d sec", v / 10);
++		exifstralloc(&aprop->str, PROPSTR_SIZE);
++		snprintf(aprop->str, PROPSTR_SIZE, "%d sec", v / 10);
+ 		break;
+ 	case 5:
+ 		/* Change "Single" to "Timed" if #2 > 0. */
+ 
+ 		if (!v && exif2byte(off + 2 * 2, t->mkrmd.order))
+-			strcpy(aprop->str, "Timed");
++			strlcpy(aprop->str, "Timed", PROPSTR_SIZE);
+ 		break;
+ 	case 12:
+ 		aprop->lvl = v ? ED_IMG : ED_VRB;
+@@ -961,8 +961,8 @@ canon_prop01(struct exifprop *aprop, struct exifprop *
+ 		 */
+ 
+ 		if (v == 3 && prop->count >= 37) {
+-			exifstralloc(&aprop->str, 32);
+-			snprintf(aprop->str, 31, "x%.1f", 2 *
++			exifstralloc(&aprop->str, PROPSTR_SIZE);
++			snprintf(aprop->str, PROPSTR_SIZE, "x%.1f", 2 *
+ 			    (float)exif2byte(off + 37 * 2, t->mkrmd.order) /
+ 			    (float)exif2byte(off + 36 * 2, t->mkrmd.order));
+ 		} else
+@@ -1010,8 +1010,8 @@ canon_prop04(struct exifprop *aprop, struct exifprop *
+ 	switch (aprop->tag) {
+ 	case 6:
+ 		/* Calculate sensor speed (ISO units). */
+-		exifstralloc(&aprop->str, 32);
+-		snprintf(aprop->str, 31, "%d", (int)(exp(calcev(NULL, 0, v) *
++		exifstralloc(&aprop->str, PROPSTR_SIZE);
++		snprintf(aprop->str, PROPSTR_SIZE, "%d", (int)(exp(calcev(NULL, 0, v) *
+ 		    log(2)) * 100.0 / 32.0 + 0.5));
+ 		break;
+ 		
+@@ -1087,8 +1087,8 @@ canon_propA0(struct exifprop *aprop, struct exifprop *
+ 
+ 	switch (aprop->tag) {
+ 	case 9:
+-		exifstralloc(&aprop->str, 32);
+-		snprintf(aprop->str, 31, "%d K", aprop->value);
++		exifstralloc(&aprop->str, PROPSTR_SIZE);
++		snprintf(aprop->str, PROPSTR_SIZE, "%d K", aprop->value);
+ 		break;
+ 	default:
+ 		return (FALSE);
+@@ -1147,8 +1147,8 @@ canon_subval(struct exifprop *prop, struct exiftags *t
+ 		if (valfun && !valfun(aprop, prop, off, t)) {
+ 			if (aprop->lvl != ED_UNK)
+ 				continue;
+-			exifstralloc(&aprop->str, 32);
+-			snprintf(aprop->str, 31, "num %02d, val 0x%04X", i, v);
++			exifstralloc(&aprop->str, PROPSTR_SIZE);
++			snprintf(aprop->str, PROPSTR_SIZE, "num %02d, val 0x%04X", i, v);
+ 		}
+ 	}
+ 
+@@ -1271,14 +1271,14 @@ canon_prop(struct exifprop *prop, struct exiftags *t)
+ 			tmpprop = childprop(prop);
+ 			tmpprop->name = "CanonLensSz";
+ 			tmpprop->descr = "Lens Size";
+-			exifstralloc(&tmpprop->str, 32);
++			exifstralloc(&tmpprop->str, PROPSTR_SIZE);
+ 
+ 			if (flmin == flmax) {
+-				snprintf(tmpprop->str, 31, "%.2f mm",
++				snprintf(tmpprop->str, PROPSTR_SIZE, "%.2f mm",
+ 			    	(float)flmax / (float)flunit);
+ 				tmpprop->lvl = ED_VRB;
+ 			} else {
+-				snprintf(tmpprop->str, 31, "%.2f - %.2f mm",
++				snprintf(tmpprop->str, PROPSTR_SIZE, "%.2f - %.2f mm",
+ 				    (float)flmin / (float)flunit,
+ 				    (float)flmax / (float)flunit);
+ 				tmpprop->lvl = ED_PAS;

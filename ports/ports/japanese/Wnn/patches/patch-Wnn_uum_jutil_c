@@ -1,0 +1,11 @@
+--- Wnn/uum/jutil.c.orig
++++ Wnn/uum/jutil.c
+@@ -52,6 +52,8 @@
+ /*	活辞書とはカレントユーザ辞書のことだよ	*/
+ 
+ #include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
+ #include "commonhd.h"
+ #include "jslib.h"
+ #include "jllib.h"

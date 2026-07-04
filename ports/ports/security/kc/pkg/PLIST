@@ -1,0 +1,4 @@
+@bin bin/kc
+@man man/man1/kc.1
+share/doc/kc/
+share/doc/kc/Changelog.md

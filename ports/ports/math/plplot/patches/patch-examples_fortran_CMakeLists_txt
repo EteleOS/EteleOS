@@ -1,0 +1,32 @@
+Index: examples/fortran/CMakeLists.txt
+--- examples/fortran/CMakeLists.txt.orig
++++ examples/fortran/CMakeLists.txt
+@@ -123,7 +123,7 @@ if(CORE_BUILD)
+     PROPERTIES GENERATED ON)
+ 
+   install(FILES ${fortran_SRCS} README_precision
+-    DESTINATION ${DATA_DIR}/examples/fortran
++    DESTINATION ${EXAMPLE_DIR}/fortran
+     )
+ 
+   set(FC "${CMAKE_Fortran_COMPILER} ${CMAKE_Fortran_COMPILER_ARG1} ${CMAKE_Fortran_FLAGS}")
+@@ -133,16 +133,16 @@ if(CORE_BUILD)
+     )
+ 
+   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/Makefile.examples
+-    DESTINATION ${DATA_DIR}/examples/fortran
++    DESTINATION ${EXAMPLE_DIR}/fortran
+     RENAME Makefile
+     )
+ 
+   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/plfortrandemos.inc
+-    DESTINATION ${DATA_DIR}/examples/fortran
++    DESTINATION ${EXAMPLE_DIR}/fortran
+     )
+ 
+   install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt
+-    DESTINATION ${DATA_DIR}/examples/fortran
++    DESTINATION ${EXAMPLE_DIR}/fortran
+     )
+ endif(CORE_BUILD)
+ 

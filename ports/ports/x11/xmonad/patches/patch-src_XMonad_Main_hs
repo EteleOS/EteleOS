@@ -1,0 +1,24 @@
+I don't like the idea of yet another port with nothing than a binding
+for setlocale(3), and I don't know which part of xmonad would benefit
+from it.
+
+Index: src/XMonad/Main.hs
+--- src/XMonad/Main.hs.orig
++++ src/XMonad/Main.hs
+@@ -17,7 +17,6 @@
+ 
+ module XMonad.Main (xmonad, launch) where
+ 
+-import System.Locale.SetLocale
+ import qualified Control.Exception as E
+ import Data.Bits
+ import Data.List ((\\))
+@@ -173,8 +172,6 @@ sendReplace = do
+ -- your custom binary with the resume flag set to @True@.
+ launch :: (LayoutClass l Window, Read (l Window)) => XConfig l -> Directories -> IO ()
+ launch initxmc drs = do
+-    -- setup locale information from environment
+-    setLocale LC_ALL (Just "")
+     -- ignore SIGPIPE and SIGCHLD
+     installSignalHandlers
+     -- First, wrap the layout in an existential, to keep things pretty:

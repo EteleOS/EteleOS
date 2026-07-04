@@ -1,0 +1,7 @@
+Firmware required to boot Raspberry Pi systems.
+
+With u-boot rpi_3 target, config.txt should contain:
+
+arm_64bit=1
+enable_uart=1
+kernel=u-boot.bin

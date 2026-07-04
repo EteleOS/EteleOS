@@ -1,0 +1,9 @@
+Index: scripts/msmtpqueue/msmtp-runqueue.sh
+--- scripts/msmtpqueue/msmtp-runqueue.sh.orig
++++ scripts/msmtpqueue/msmtp-runqueue.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env sh
++#!/bin/sh
+ 
+ QUEUEDIR="$HOME/.msmtpqueue"
+ LOCKFILE="$QUEUEDIR/.lock"

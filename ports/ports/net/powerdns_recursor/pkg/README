@@ -1,0 +1,22 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+Previous version of rec_control(1) would write to file from within
+the chroot powerdns_recursor(8) is running in. As of version 4.5.0,
+the file are created by the rec_control command, using the credentials
+and current working directory of the process running rec_control.
+It is also possible to write to stdout by specifying `-' as file.
+
+See https://docs.powerdns.com/recursor/upgrade.html for more details.
+
+On OpenBSD it is recommended to set (using YAML syntax)
+
+incoming:
+  reuseport: false
+  pdns_distributes_queries: true
+
+or, when using old-style syntax:
+
+reuseport=no
+pdns-distributes-queries=yes

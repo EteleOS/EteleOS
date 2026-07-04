@@ -1,0 +1,16 @@
+Index: xmalloc.c
+--- xmalloc.c.orig
++++ xmalloc.c
+@@ -4,11 +4,9 @@
+  */
+ 
+ #include <curses.h>
++#include <stdlib.h>
+ #include "sc.h"
+ 
+-extern char	*malloc();
+-extern char	*realloc();
+-extern void	free();
+ void		fatal();
+ 
+ #ifdef SYSV3

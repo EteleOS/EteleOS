@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Sub/
+${P5ARCH}/Sub/Name.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Sub/
+${P5ARCH}/auto/Sub/Name/
+@so ${P5ARCH}/auto/Sub/Name/Name.so
+@man man/man3p/Sub::Name.3p

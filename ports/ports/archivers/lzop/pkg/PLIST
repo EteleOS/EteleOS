@@ -1,0 +1,14 @@
+@bin bin/lzop
+@man man/man1/lzop.1
+share/doc/lzop/
+share/doc/lzop/AUTHORS
+share/doc/lzop/COPYING
+share/doc/lzop/NEWS
+share/doc/lzop/README
+share/doc/lzop/THANKS
+share/doc/lzop/lzop.html
+share/doc/lzop/lzop.man
+share/doc/lzop/lzop.pod
+share/doc/lzop/lzop.ps
+share/doc/lzop/lzop.tex
+share/doc/lzop/lzop.txt

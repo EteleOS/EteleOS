@@ -1,0 +1,21 @@
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -3,7 +3,7 @@ project(umurmurd C)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH true)
+-set(UMURMUR_BINARY_DIR "${CMAKE_BINARY_DIR}/bin")
++set(UMURMUR_BINARY_DIR "${CMAKE_BINARY_DIR}/sbin")
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${UMURMUR_BINARY_DIR}")
+ 
+ if(NOT CMAKE_BUILD_TYPE)
+@@ -27,7 +27,7 @@ add_subdirectory(src)
+ 
+ install(
+   FILES "umurmur.conf.example"
+-  DESTINATION "${CMAKE_INSTALL_FULL_SYSCONFDIR}/"
++  DESTINATION "share/examples/umurmur"
+   PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ
+   RENAME "umurmur.conf"
+ )

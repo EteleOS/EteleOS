@@ -1,0 +1,40 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -4,7 +4,7 @@
+ # GNU Make required
+ #
+ COMPILE_PLATFORM=$(shell uname | sed -e 's/_.*//' | tr '[:upper:]' '[:lower:]' | sed -e 's/\//_/g')
+-COMPILE_ARCH=$(shell uname -m | sed -e 's/i.86/x86/' | sed -e 's/^arm.*/arm/')
++COMPILE_ARCH=$(shell uname -m | sed -e 's/i.86/x86/' | sed -e 's/macppc/ppc/' | sed -e 's/^arm.*/arm/')
+
+ ifeq ($(COMPILE_PLATFORM),sunos)
+   # Solaris uname and GNU uname differ
+@@ -769,16 +769,16 @@ ifeq ($(PLATFORM),openbsd)
+     -pipe -DUSE_ICON -DMAP_ANONYMOUS=MAP_ANON
+   CLIENT_CFLAGS += $(SDL_CFLAGS)
+ 
+-  OPTIMIZEVM = -O3
++  OPTIMIZEVM = 
+   OPTIMIZE = $(OPTIMIZEVM) -ffast-math
+ 
+   ifeq ($(ARCH),x86_64)
+-    OPTIMIZEVM = -O3
++    OPTIMIZEVM = 
+     OPTIMIZE = $(OPTIMIZEVM) -ffast-math
+     HAVE_VM_COMPILED = true
+   else
+   ifeq ($(ARCH),x86)
+-    OPTIMIZEVM = -O3 -march=i586
++    OPTIMIZEVM = -march=i586
+     OPTIMIZE = $(OPTIMIZEVM) -ffast-math
+     HAVE_VM_COMPILED=true
+   else
+@@ -1562,7 +1562,6 @@ Q3CPPOBJ = \
+   $(B)/tools/cpp/eval.o \
+   $(B)/tools/cpp/include.o \
+   $(B)/tools/cpp/hideset.o \
+-  $(B)/tools/cpp/getopt.o \
+   $(B)/tools/cpp/unix.o
+ 
+ $(B)/tools/cpp/%.o: $(Q3CPPDIR)/%.c

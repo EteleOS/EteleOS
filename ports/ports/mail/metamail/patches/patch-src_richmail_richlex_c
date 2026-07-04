@@ -1,0 +1,10 @@
+--- src/richmail/richlex.c.orig	Thu Feb  3 02:29:37 1994
++++ src/richmail/richlex.c	Sat Mar 17 10:51:52 2012
+@@ -43,6 +43,7 @@
+ 
+ #include <stdio.h>
+ #include <ctype.h>
++#include <string.h>
+ #include "richlex.h"
+ #include "richset.h"
+ 

@@ -1,0 +1,4 @@
+share/nginx/naxsi_core.rules
+@sample ${SYSCONFDIR}/nginx/naxsi_core.rules
+@cwd ${NGINX_DIR}/modules
+@so ngx_http_naxsi_module.so

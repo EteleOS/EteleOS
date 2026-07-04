@@ -1,0 +1,23 @@
+Fix with libnotify>=0.7
+(notify_notification_new has lost its widget argument)
+
+--- src/pidgin-libnotify.c.orig	Sun Dec 14 18:45:51 2008
++++ src/pidgin-libnotify.c	Tue Apr 19 15:02:48 2011
+@@ -268,7 +268,7 @@ notify (const gchar *title,
+ 	contact = purple_buddy_get_contact (buddy);
+ 
+ 	if (body)
+-		tr_body = truncate_escape_string (body, 60);
++		tr_body = truncate_escape_string (body, 300);
+ 	else
+ 		tr_body = NULL;
+ 
+@@ -286,7 +286,7 @@ notify (const gchar *title,
+ 		g_free (tr_body);
+ 		return;
+ 	}
+-	notification = notify_notification_new (title, tr_body, NULL, NULL);
++	notification = notify_notification_new (title, tr_body, NULL);
+ 	purple_debug_info (PLUGIN_ID, "notify(), new: "
+ 					 "title: '%s', body: '%s', buddy: '%s'\n",
+ 					 title, tr_body, best_name (buddy));

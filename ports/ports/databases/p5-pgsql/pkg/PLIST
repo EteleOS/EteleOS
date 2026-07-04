@@ -1,0 +1,7 @@
+${P5ARCH}/
+${P5ARCH}/Pg.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Pg/
+${P5ARCH}/auto/Pg/Pg.so
+${P5ARCH}/auto/Pg/autosplit.ix
+@man man/man3p/Pg.3p

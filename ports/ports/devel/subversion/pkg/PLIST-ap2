@@ -1,0 +1,6 @@
+@pkgpath devel/subversion,-ap2,gnome_keyring
+include/subversion-1/mod_authz_svn.h
+include/subversion-1/mod_dav_svn.h
+@so lib/apache2/mod_authz_svn.so
+@so lib/apache2/mod_dav_svn.so
+@so lib/apache2/mod_dontdothat.so

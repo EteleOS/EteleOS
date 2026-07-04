@@ -1,0 +1,23 @@
+Index: cmake/config.h.in
+--- cmake/config.h.in.orig
++++ cmake/config.h.in
+@@ -19,6 +19,10 @@
+ #define _GNU_SOURCE 1
+ 
+ // The later definition of _XOPEN_SOURCE and _POSIX_C_SOURCE disables certain
++// features on OpenBSD, so we need _BSD_SOURCE to re-enable them.
++#define _BSD_SOURCE 1
++
++// The later definition of _XOPEN_SOURCE and _POSIX_C_SOURCE disables certain
+ // features on NetBSD, so we need _NETBSD_SOURCE to re-enable them.
+ #define _NETBSD_SOURCE 1
+ 
+@@ -39,7 +43,7 @@
+ 
+ #if defined(__SunOS_5_8) || defined(__SunOS_5_9) || defined(__SunOS_5_10)
+ #  define _XOPEN_SOURCE 500
+-#elif defined(__FreeBSD__)
++#elif defined(__FreeBSD__) || defined(__OpenBSD__)
+ #  define _XOPEN_SOURCE 700
+ #elif defined(__ibmxl__) && defined(__clang__) // Compiler xlclang
+ #  define _XOPEN_SOURCE 600

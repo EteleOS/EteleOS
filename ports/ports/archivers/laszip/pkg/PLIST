@@ -1,0 +1,5 @@
+include/laszip/
+include/laszip/laszip_api.h
+include/laszip/laszip_api_version.h
+@lib lib/liblaszip.so.${LIBlaszip_VERSION}
+@lib lib/liblaszip_api.so.${LIBlaszip_api_VERSION}

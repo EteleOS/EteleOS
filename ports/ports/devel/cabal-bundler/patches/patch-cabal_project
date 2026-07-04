@@ -1,0 +1,38 @@
+Avoid building the parts we don't use that drag in extra dependencies.
+
+Index: cabal.project
+--- cabal.project.orig
++++ cabal.project
+@@ -1,21 +1,9 @@
+-with-compiler: ghc-9.8.4
++with-compiler: ghc
+ index-state: 2024-07-03T13:49:27Z
+ tests: True
+ 
+ packages: cabal-bundler
+-packages: cabal-core-inspection
+-packages: cabal-deps
+-packages: cabal-diff
+-packages: cabal-docspec
+-packages: cabal-env
+-packages: cabal-haddock-server
+-packages: cabal-hasklint
+-packages: cabal-hie
+-packages: cabal-iface-query
+ 
+-packages: cabal-store-check
+-packages: cabal-store-gc
+-
+ packages: peura
+ 
+ -- compatibility with new directory
+@@ -47,8 +35,7 @@ constraints: transformers  installed
+ --   tag: 66ef795dd4d13d54aa5be5e13a07e9f495950e5e
+ 
+ -- For local dev these can be used:
+-packages: extras/gentle-introduction-*.tar.gz
+-packages: extras/hooglite-*.tar.gz
++packages: gentle-introduction-2024.4.1
+ 
+ -- Always use ghc-lib-parser.
+ constraints: ghc-lib-parser-ex -no-ghc-lib -auto

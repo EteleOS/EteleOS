@@ -1,0 +1,6 @@
+xlrd is a library for reading data and formatting information from
+Excel files in the historical .xls format.
+
+This library will no longer read anything other than .xls files.
+For alternatives that read newer file formats, please see
+https://www.python-excel.org/.

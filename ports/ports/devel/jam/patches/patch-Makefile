@@ -1,0 +1,12 @@
+--- Makefile.orig	Fri Apr 21 17:14:32 2006
++++ Makefile	Fri Apr 21 17:14:57 2006
+@@ -1,7 +1,7 @@
+ # Makefile for jam
+ 
+-CC = cc
+-CFLAGS =
++#CC = cc
++#CFLAGS =
+ EXENAME = ./jam0
+ TARGET = -o $(EXENAME)
+ 

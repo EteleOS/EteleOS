@@ -1,0 +1,85 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -4934,7 +4934,7 @@ $as_echo "no" >&6; }
+ fi
+ 
+ 
+-if test ! -e $CXX; then
++if test ! -e `which $CXX`; then
+    as_fn_error $? "Unable to find C++ compiler" "$LINENO" 5
+ fi
+ 
+@@ -16932,7 +16932,7 @@ if test x$use_libtool != xno; then
+    LIBTOOL_INSTALL_TARGET="libtool-install"
+    LIBTOOL_UNINSTALL_TARGET="libtool-uninstall"
+    LIBTOOL_CLEAN_TARGET="libtool-clean"
+-   QMAKE_LIBTOOL="${BUILD_DIR}/libtool"
++   QMAKE_LIBTOOL="${LIBTOOL}"
+    FD_PLUGIN_DIR="src/plugins/fd"
+    DIR_PLUGIN_DIR="src/plugins/dir"
+    DLIB="-rpath \$(libdir)"
+@@ -22612,7 +22612,7 @@ if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
+ 
+ $as_echo "#define HAVE_READLINE 1" >>confdefs.h
+ 
+-		    CONS_LIBS="-lreadline -lhistory ${TERM_LIB}"
++		    CONS_LIBS="-lreadline ${TERM_LIB}"
+ 		    got_readline="yes"
+ 
+ else
+@@ -22651,7 +22651,7 @@ $as_echo "#define HAVE_READLINE 1" >>confdefs.h
+ 
+ 			got_readline="yes"
+ 			CONS_INC="-I${TOP_DIR}/depkgs/readline"
+-			CONS_LIBS="-lreadline -lhistory ${TERM_LIB}"
++			CONS_LIBS="-lreadline ${TERM_LIB}"
+ 			CONS_LDFLAGS="-L${TOP_DIR}/depkgs/readline"
+ 			PRTREADLINE_SRC="${TOP_DIR}/depkgs/readline"
+ 
+@@ -30612,13 +30612,19 @@ if test "${with_lzo+set}" = set; then :
+ 	     ;;
+ 	  yes|*)
+ 	     if test -f ${with_lzo}/include/lzo/lzoconf.h; then
+-		LZO_INC="-I${with_lzo}/include"
++		LZO_INC="-I${with_lzo}/include/"
+ 		LZO_LDFLAGS="-L${with_lzo}/lib"
+ 		with_lzo="${with_lzo}/include"
+ 	     else
+ 		with_lzo="/usr/include"
+ 	     fi
+ 
++             saved_CPPFLAGS="${CPPFLAGS}"
++             saved_LDFLAGS="${LDFLAGS}"
++             CPPFLAGS="${CPPFLAGS} ${LZO_INC}"
++             LDFLAGS="${LDLAGS} ${LZO_LDFLAGS}"
++
++		echo ${with_lzo}/lzo/lzoconf.h
+ 	     as_ac_Header=`$as_echo "ac_cv_header_${with_lzo}/lzo/lzoconf.h" | $as_tr_sh`
+ ac_fn_c_check_header_mongrel "$LINENO" "${with_lzo}/lzo/lzoconf.h" "$as_ac_Header" "$ac_includes_default"
+ if eval test \"x\$"$as_ac_Header"\" = x"yes"; then :
+@@ -30638,6 +30644,8 @@ else
+ 
+ fi
+ 
++             CPPFLAGS="${saved_CPPFLAGS}"
++             LDFLAGS="${saved_LDFLAGS}"
+ 
+ 	     ;;
+ 	  esac
+@@ -32454,6 +32462,7 @@ netbsd)
+    DISTVER=`uname -a |awk '{print $3}'`
+    lld="qd"
+    llu="qu"
++   COMPRESS_MANPAGES=
+    TAPEDRIVE="/dev/nrst0"
+    PSCMD="ps -ax -o pid,command"
+    PTHREAD_LIB="-pthread"
+@@ -32472,6 +32481,7 @@ openbsd)
+        platforms/openbsd/bacula-fd \
+        platforms/openbsd/bacula-sd \
+        platforms/openbsd/bacula-dir"
++   largefile_support="yes"
+   ;;
+ redhat)
+    if test -f /etc/whitebox-release ; then

@@ -1,0 +1,24 @@
+--- testcode/testreader.cpp.orig	Sun Jan 17 03:58:21 2016
++++ testcode/testreader.cpp	Fri May 27 17:53:20 2016
+@@ -128,7 +128,9 @@ HRESULT CTestReader::Test2()
+         Chk(TestFixedReadSizes(chunksize));
+     }
+ 
++#ifndef HAVE_ARC4RANDOM
+     srand(888);
++#endif
+     for (size_t i = 0; i < 200; i++)
+     {
+         Chk(TestFixedReadSizes(0));
+@@ -156,7 +158,11 @@ HRESULT CTestReader::TestFixedReadSizes(size_t chunksi
+         
+         if (fRandomChunkSizing)
+         {
++#ifdef HAVE_ARC4RANDOM
++            chunksize = arc4random_uniform(17) + 1;
++#else
+             chunksize = (rand() % 17) + 1;
++#endif
+         }
+         
+         remaining = msgSize - bytesread;

@@ -1,0 +1,10 @@
+Replace the malloc.h header with stdlib.h.
+
+--- src/repair.c.orig	Thu Nov 20 01:46:09 2014
++++ src/repair.c	Thu Nov 20 01:46:21 2014
+@@ -1,4 +1,4 @@
+-#include <malloc.h>
++#include <stdlib.h>
+ #include <assert.h>
+ 
+ #include "repair.h"

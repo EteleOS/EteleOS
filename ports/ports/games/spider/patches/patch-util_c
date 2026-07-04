@@ -1,0 +1,11 @@
+Index: util.c
+--- util.c.orig
++++ util.c
+@@ -24,6 +24,7 @@
+ #endif /* XAW */
+ #include	<ctype.h>
+ #include	<string.h>
++#include	<stdlib.h>
+ #include	<pwd.h>
+ 
+ #define	NUM_RETRIES	5

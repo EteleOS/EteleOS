@@ -1,0 +1,6 @@
+Start sabnzbd by using the rc.d(8) script or by running
+${PREFIX}/bin/sabnzbd and do the initial configuration via
+http://localhost:8080/
+
+If you have an existing configuration, it can be copied to _sabnzbd's
+home directory (${LOCALSTATEDIR}/sabnzbd/)

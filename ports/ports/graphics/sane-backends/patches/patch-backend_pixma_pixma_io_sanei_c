@@ -1,0 +1,16 @@
+Issue reported upstream:
+https://gitlab.com/sane-project/backends/-/issues/412
+
+Index: backend/pixma/pixma_io_sanei.c
+--- backend/pixma/pixma_io_sanei.c.orig
++++ backend/pixma/pixma_io_sanei.c
+@@ -529,8 +529,7 @@ pixma_wait_interrupt (pixma_io_t * io, void *buf, unsi
+ #endif
+       error = map_error (sanei_usb_read_int (io->dev, buf, &count));
+     }
+-  if (error == PIXMA_EIO ||
+-      (io->interface == INT_BJNP && error == PIXMA_EOF))     /* EOF is a bjnp timeout error! */
++  if (error == PIXMA_EIO || error == PIXMA_EOF)
+     error = PIXMA_ETIMEDOUT;	/* FIXME: SANE doesn't have ETIMEDOUT!! */
+   if (error == 0)
+     error = count;

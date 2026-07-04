@@ -1,0 +1,8 @@
+--- sample/call.orig	Thu Jul 12 22:04:55 2001
++++ sample/call	Thu Jul 12 22:05:19 2001
+@@ -17,4 +17,4 @@
+ # to connect to the remote system.
+ 
+ # The format is just system-name login-name password.
+-uunet Uairs foobar
++#uunet Uairs foobar

@@ -1,0 +1,22 @@
+Index: apertium/adapt_docx.cc
+--- apertium/adapt_docx.cc.orig
++++ apertium/adapt_docx.cc
+@@ -24,6 +24,7 @@
+ #include <libxml/tree.h>
+ #include <stack>
+ #include <vector>
++#include <unistd.h>
+ 
+ #ifdef _MSC_VER
+ #include <io.h>
+@@ -427,6 +428,10 @@ void process(string fileName, bool outputsName, bool p
+ 
+ int main(int argc, char *argv[])
+ {
++	if (pledge("stdio rpath wpath cpath", NULL) == -1) {
++		cerr << "pledge" << endl;
++		exit(EXIT_FAILURE);
++	}
+ 
+ 	bool outputsName = false;
+ 	bool pretty = false;

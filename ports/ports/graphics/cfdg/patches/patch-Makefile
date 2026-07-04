@@ -1,0 +1,54 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -19,7 +19,6 @@ vpath %.cpp $(SRC_DIRS)
+ vpath %.cfdg input
+ 
+ INC_DIRS = $(COMMON_DIR) $(UNIX_DIR) $(DERIVED_DIR) $(COMMON_DIR)/agg-extras
+-INC_DIRS += /usr/local/include
+ 
+ #
+ # Installation directories
+@@ -34,7 +33,7 @@ MAN_DIR = $(DESTDIR)$(prefix)/share/man
+ # Library directories for FFmpeg and libpng
+ #
+ 
+-LIB_DIRS = /usr/local/lib
++LIB_DIRS = $(LOCALBASE)/lib
+ 
+ #
+ # Sources and Objects
+@@ -75,7 +74,11 @@ LIBS = png m
+ ifeq ($(shell uname -s), Darwin)
+   LIBS += c++ icucore
+ else
+-  LIBS += stdc++ atomic icui18n icuuc icudata
++  ifeq ($(shell uname -s), OpenBSD)
++    LIBS += $(LIBCXX) icui18n icuuc icudata
++  else
++    LIBS += stdc++ atomic icui18n icuuc icudata
++  endif
+ endif
+ 
+ #
+@@ -107,6 +110,11 @@ INC_DIRS += $(AGG_DIR) $(AGG_DIR)/agg2
+ #
+ #LIBS += agg
+ 
++#
++# Additional include directories.  Bundled include directories should
++# come before.
++#
++INC_DIRS += $(LOCALBASE)/include
+ 
+ OBJS = $(patsubst %.cpp,$(OBJ_DIR)/%.o,$(SRCS))
+ DEPS = $(patsubst %.o,%.d,$(OBJS))
+@@ -196,7 +204,7 @@ check: cfdg
+ #
+ 
+ CXXFLAGS += $(patsubst %,-I%,$(INC_DIRS))
+-CXXFLAGS += -O2 -Wall -Wextra -Wno-parentheses -std=c++17
++CXXFLAGS += -Wall -Wextra -Wno-parentheses -std=c++17
+ CXXFLAGS += -g -D_GLIBCXX_USE_C99_MATH=1
+ CPPFLAGS += -DNDEBUG
+ 

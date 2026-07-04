@@ -1,0 +1,3 @@
+${P5SITE}/HTML/
+${P5SITE}/HTML/Tagset.pm
+@man man/man3p/HTML::Tagset.3p

@@ -1,0 +1,265 @@
+@conflict suricata-update-*
+@pkgpath security/suricata-update
+@newgroup _suricata:800
+@newuser _suricata:800:_suricata::Suricata Account:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/suricata
+@bin bin/suricata
+bin/suricata-update
+bin/suricatactl
+bin/suricatasc
+include/htp/
+include/htp/bstr.h
+include/htp/bstr_builder.h
+include/htp/htp.h
+include/htp/htp_base64.h
+include/htp/htp_config.h
+include/htp/htp_connection_parser.h
+include/htp/htp_core.h
+include/htp/htp_decompressors.h
+include/htp/htp_hooks.h
+include/htp/htp_list.h
+include/htp/htp_multipart.h
+include/htp/htp_table.h
+include/htp/htp_transaction.h
+include/htp/htp_urlencoded.h
+include/htp/htp_utf8_decoder.h
+include/htp/htp_version.h
+include/htp/lzma/
+include/htp/lzma/7zTypes.h
+include/htp/lzma/LzmaDec.h
+@static-lib lib/libhtp.a
+lib/libhtp.la
+@lib lib/libhtp.so.${LIBhtp_VERSION}
+lib/pkgconfig/htp.pc
+lib/suricata/
+lib/suricata/python/
+lib/suricata/python/suricata/
+lib/suricata/python/suricata/__init__.py
+lib/suricata/python/suricata/${MODPY_PYCACHE}/
+lib/suricata/python/suricata/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/config/
+lib/suricata/python/suricata/config/__init__.py
+lib/suricata/python/suricata/config/${MODPY_PYCACHE}/
+lib/suricata/python/suricata/config/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/config/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/config/${MODPY_PYCACHE}defaults.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/config/${MODPY_PYCACHE}defaults.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/config/defaults.py
+lib/suricata/python/suricata/ctl/
+lib/suricata/python/suricata/ctl/__init__.py
+lib/suricata/python/suricata/ctl/${MODPY_PYCACHE}/
+lib/suricata/python/suricata/ctl/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/ctl/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/ctl/${MODPY_PYCACHE}filestore.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/ctl/${MODPY_PYCACHE}filestore.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/ctl/${MODPY_PYCACHE}loghandler.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/ctl/${MODPY_PYCACHE}loghandler.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/ctl/${MODPY_PYCACHE}main.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/ctl/${MODPY_PYCACHE}main.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/ctl/${MODPY_PYCACHE}test_filestore.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/ctl/${MODPY_PYCACHE}test_filestore.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/ctl/filestore.py
+lib/suricata/python/suricata/ctl/loghandler.py
+lib/suricata/python/suricata/ctl/main.py
+lib/suricata/python/suricata/ctl/test_filestore.py
+lib/suricata/python/suricata/sc/
+lib/suricata/python/suricata/sc/__init__.py
+lib/suricata/python/suricata/sc/${MODPY_PYCACHE}/
+lib/suricata/python/suricata/sc/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/sc/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/sc/${MODPY_PYCACHE}specs.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/sc/${MODPY_PYCACHE}specs.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/sc/${MODPY_PYCACHE}suricatasc.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/sc/${MODPY_PYCACHE}suricatasc.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/sc/specs.py
+lib/suricata/python/suricata/sc/suricatasc.py
+lib/suricata/python/suricata/update/
+lib/suricata/python/suricata/update/__init__.py
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}/
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}config.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}config.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}engine.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}engine.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}exceptions.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}exceptions.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}extract.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}extract.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}loghandler.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}loghandler.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}main.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}main.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}maps.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}maps.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}matchers.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}matchers.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}net.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}net.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}notes.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}notes.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}osinfo.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}osinfo.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}parsers.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}parsers.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}rule.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}rule.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}sources.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}sources.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}util.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}util.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}version.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/${MODPY_PYCACHE}version.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/commands/
+lib/suricata/python/suricata/update/commands/__init__.py
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}/
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}addsource.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}addsource.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}checkversions.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}checkversions.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}disablesource.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}disablesource.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}enablesource.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}enablesource.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}listsources.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}listsources.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}removesource.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}removesource.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}updatesources.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/commands/${MODPY_PYCACHE}updatesources.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/commands/addsource.py
+lib/suricata/python/suricata/update/commands/checkversions.py
+lib/suricata/python/suricata/update/commands/disablesource.py
+lib/suricata/python/suricata/update/commands/enablesource.py
+lib/suricata/python/suricata/update/commands/listsources.py
+lib/suricata/python/suricata/update/commands/removesource.py
+lib/suricata/python/suricata/update/commands/updatesources.py
+lib/suricata/python/suricata/update/compat/
+lib/suricata/python/suricata/update/compat/__init__.py
+lib/suricata/python/suricata/update/compat/${MODPY_PYCACHE}/
+lib/suricata/python/suricata/update/compat/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/compat/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/compat/${MODPY_PYCACHE}ordereddict.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/compat/${MODPY_PYCACHE}ordereddict.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/compat/argparse/
+lib/suricata/python/suricata/update/compat/argparse/__init__.py
+lib/suricata/python/suricata/update/compat/argparse/${MODPY_PYCACHE}/
+lib/suricata/python/suricata/update/compat/argparse/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/compat/argparse/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/compat/argparse/${MODPY_PYCACHE}argparse.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/compat/argparse/${MODPY_PYCACHE}argparse.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/compat/argparse/argparse.py
+lib/suricata/python/suricata/update/compat/ordereddict.py
+lib/suricata/python/suricata/update/config.py
+lib/suricata/python/suricata/update/configs/
+lib/suricata/python/suricata/update/configs/__init__.py
+lib/suricata/python/suricata/update/configs/${MODPY_PYCACHE}/
+lib/suricata/python/suricata/update/configs/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/configs/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/configs/disable.conf
+lib/suricata/python/suricata/update/configs/drop.conf
+lib/suricata/python/suricata/update/configs/enable.conf
+lib/suricata/python/suricata/update/configs/modify.conf
+lib/suricata/python/suricata/update/configs/threshold.in
+lib/suricata/python/suricata/update/configs/update.yaml
+lib/suricata/python/suricata/update/data/
+lib/suricata/python/suricata/update/data/__init__.py
+lib/suricata/python/suricata/update/data/${MODPY_PYCACHE}/
+lib/suricata/python/suricata/update/data/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/data/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/data/${MODPY_PYCACHE}index.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/data/${MODPY_PYCACHE}index.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/data/${MODPY_PYCACHE}update.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricata/update/data/${MODPY_PYCACHE}update.${MODPY_PYC_MAGIC_TAG}pyc
+lib/suricata/python/suricata/update/data/index.py
+lib/suricata/python/suricata/update/data/update.py
+lib/suricata/python/suricata/update/engine.py
+lib/suricata/python/suricata/update/exceptions.py
+lib/suricata/python/suricata/update/extract.py
+lib/suricata/python/suricata/update/loghandler.py
+lib/suricata/python/suricata/update/main.py
+lib/suricata/python/suricata/update/maps.py
+lib/suricata/python/suricata/update/matchers.py
+lib/suricata/python/suricata/update/net.py
+lib/suricata/python/suricata/update/notes.py
+lib/suricata/python/suricata/update/osinfo.py
+lib/suricata/python/suricata/update/parsers.py
+lib/suricata/python/suricata/update/rule.py
+lib/suricata/python/suricata/update/sources.py
+lib/suricata/python/suricata/update/util.py
+lib/suricata/python/suricata/update/version.py
+lib/suricata/python/suricatasc/
+lib/suricata/python/suricatasc/__init__.py
+lib/suricata/python/suricatasc/${MODPY_PYCACHE}/
+lib/suricata/python/suricatasc/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/suricata/python/suricatasc/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+@man man/man1/suricata.1
+@man man/man1/suricatactl-filestore.1
+@man man/man1/suricatactl.1
+@man man/man1/suricatasc.1
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/suricata/
+@sample ${SYSCONFDIR}/suricata/
+share/examples/suricata/suricata.yaml
+@sample ${SYSCONFDIR}/suricata/suricata.yaml
+share/examples/suricata/threshold.config
+@sample ${SYSCONFDIR}/suricata/threshold.config
+share/suricata/
+share/suricata/classification.config
+@sample ${SYSCONFDIR}/suricata/classification.config
+share/suricata/reference.config
+@sample ${SYSCONFDIR}/suricata/reference.config
+share/suricata/rules/
+@sample ${SYSCONFDIR}/suricata/rules/
+share/suricata/rules/app-layer-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/app-layer-events.rules
+share/suricata/rules/decoder-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/decoder-events.rules
+share/suricata/rules/dhcp-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/dhcp-events.rules
+share/suricata/rules/dnp3-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/dnp3-events.rules
+share/suricata/rules/dns-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/dns-events.rules
+share/suricata/rules/files.rules
+@sample ${SYSCONFDIR}/suricata/rules/files.rules
+share/suricata/rules/ftp-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/ftp-events.rules
+share/suricata/rules/http-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/http-events.rules
+share/suricata/rules/http2-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/http2-events.rules
+share/suricata/rules/ipsec-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/ipsec-events.rules
+share/suricata/rules/kerberos-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/kerberos-events.rules
+share/suricata/rules/modbus-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/modbus-events.rules
+share/suricata/rules/mqtt-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/mqtt-events.rules
+share/suricata/rules/nfs-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/nfs-events.rules
+share/suricata/rules/ntp-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/ntp-events.rules
+share/suricata/rules/quic-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/quic-events.rules
+share/suricata/rules/rfb-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/rfb-events.rules
+share/suricata/rules/smb-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/smb-events.rules
+share/suricata/rules/smtp-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/smtp-events.rules
+share/suricata/rules/ssh-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/ssh-events.rules
+share/suricata/rules/stream-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/stream-events.rules
+share/suricata/rules/tls-events.rules
+@sample ${SYSCONFDIR}/suricata/rules/tls-events.rules
+@owner _suricata
+@group _suricata
+@sample ${LOCALSTATEDIR}/suricata/
+@sample ${LOCALSTATEDIR}/log/suricata/
+@sample ${LOCALSTATEDIR}/run/suricata/

@@ -1,0 +1,11 @@
+--- xmcd_d/Imakefile.orig	Sat Feb  5 08:26:29 2000
++++ xmcd_d/Imakefile	Mon Nov  6 13:00:49 2000
+@@ -43,7 +43,7 @@
+  * #include "Motif.tmpl"
+  * #include "Motif.rules"
+  */
+-LOCAL_LIBRARIES= XmClientLibs
++LOCAL_LIBRARIES= $(MOTIFLIB) -lm XawClientLibs
+ 
+ #if defined(FreeBSDArchitecture)
+ .if exists(/usr/include/camlib.h)

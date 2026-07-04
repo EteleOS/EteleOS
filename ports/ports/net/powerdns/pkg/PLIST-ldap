@@ -1,0 +1,5 @@
+@bin bin/zone2ldap
+@so lib/pdns/libldapbackend.so
+@man man/man1/zone2ldap.1
+share/doc/pdns/dnsdomain2.schema
+share/doc/pdns/pdns-domaininfo.schema

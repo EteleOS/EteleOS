@@ -1,0 +1,4 @@
+include/librcps.h
+lib/librcps.a
+lib/librcps.la
+@lib lib/librcps.so.${LIBrcps_VERSION}

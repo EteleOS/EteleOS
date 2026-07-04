@@ -1,0 +1,26 @@
+fix jar location and jcpuid is x86 only
+
+Index: core/c/build.sh
+--- core/c/build.sh.orig
++++ core/c/build.sh
+@@ -1,14 +1,16 @@
+-#!/bin/sh
++#!/bin/sh -e
+ 
+ (cd jcpuid ; sh build.sh ; cd ..)
+ (cd jbigi ; sh build.sh ; cd ..)
+ 
+-mkdir -p t/freenet/support/CPUInformation/
+-cp jcpuid/lib/freenet/support/CPUInformation/*jcpuid* t/freenet/support/CPUInformation/
++if [ "${MACHINE_ARCH}" == "i386" -o "${MACHINE_ARCH}" == "amd64" ] ; then
++  mkdir -p t/freenet/support/CPUInformation/
++  cp jcpuid/lib/freenet/support/CPUInformation/*jcpuid* t/freenet/support/CPUInformation/
++fi
+ 
+ mkdir -p t/net/i2p/util/
+ cp jbigi/lib/*jbigi* t/
+ 
+-(cd t ; jar cf ../jbigi.jar . ; cd ..)
++(cd t ; ${JAVA_HOME}/bin/jar cf ../jbigi.jar . ; cd ..)
+ 
+ echo "Native code built into jbigi.jar"

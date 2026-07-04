@@ -1,0 +1,11 @@
+--- apcd/Makefile.orig	Sun Apr 23 23:23:33 2017
++++ apcd/Makefile	Sun Apr 23 23:23:38 2017
+@@ -1,7 +1,7 @@
+ PROG=		apcd
+ SRCS=		apcd.c
+ 
+-CFLAGS+=	-Wall -Werror -Wstrict-prototypes -pedantic
++CFLAGS+=	-Wall -Wstrict-prototypes -pedantic
+ LDADD+=		-L../libmy -lmy
+ 
+ PIPE=		-pipe

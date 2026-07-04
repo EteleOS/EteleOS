@@ -1,0 +1,77 @@
+@pkgpath sysutils/apcupsd,snmp
+@group bin
+@man man/man5/apcupsd.conf.5
+@man man/man8/apcaccess.8
+@man man/man8/apccontrol.8
+@man man/man8/apctest.8
+@man man/man8/apcupsd.8
+@bin sbin/apcaccess
+@owner root
+@mode 700
+@bin sbin/apctest
+@bin sbin/apcupsd
+@mode
+@owner
+sbin/apcupsctl
+@comment share/applications/
+@group
+share/doc/apcupsd/
+share/doc/apcupsd/COPYING
+share/doc/apcupsd/COPYRIGHT
+share/doc/apcupsd/DISCLAIMER
+share/doc/apcupsd/README.openbsd
+share/examples/apcupsd/
+share/examples/apcupsd/etc/
+@sample ${SYSCONFDIR}/
+share/examples/apcupsd/etc/apccontrol
+@mode 750
+@sample ${SYSCONFDIR}/apccontrol
+@mode
+@mode 444
+share/examples/apcupsd/etc/apcupsd.conf
+@mode
+@sample ${SYSCONFDIR}/apcupsd.conf
+@mode 700
+share/examples/apcupsd/etc/changeme
+@sample ${SYSCONFDIR}/changeme
+share/examples/apcupsd/etc/commfailure
+@sample ${SYSCONFDIR}/commfailure
+share/examples/apcupsd/etc/commok
+@sample ${SYSCONFDIR}/commok
+share/examples/apcupsd/etc/offbattery
+@sample ${SYSCONFDIR}/offbattery
+share/examples/apcupsd/etc/onbattery
+@sample ${SYSCONFDIR}/onbattery
+@mode
+share/examples/apcupsd/rpt/
+share/examples/apcupsd/rpt/Back-UPS-350-USB.rpt
+share/examples/apcupsd/rpt/Back-UPS-350ES.rpt
+share/examples/apcupsd/rpt/Back-UPS-500-USB.rpt
+share/examples/apcupsd/rpt/Back-UPS-500ES.rpt
+share/examples/apcupsd/rpt/Back-UPS-BR-800.rpt
+share/examples/apcupsd/rpt/Back-UPS-CS-650.rpt
+share/examples/apcupsd/rpt/Back-UPS-ES-550.rpt
+share/examples/apcupsd/rpt/Back-UPS-XS-1300-LCD.rpt
+share/examples/apcupsd/rpt/BackUPS.rpt
+share/examples/apcupsd/rpt/Smart-UPS-1500.rpt
+share/examples/apcupsd/rpt/SmartUPS-USB.rpt
+share/examples/apcupsd/rpt/SmartUPS.rpt
+share/examples/apcupsd/rpt/hid-ups.rpt
+share/examples/apcupsd/status/
+share/examples/apcupsd/status/Back-UPS-BX-1500.status
+share/examples/apcupsd/status/Back-UPS-Pro-1000.status
+share/examples/apcupsd/status/BackUPS-USB.status
+share/examples/apcupsd/status/JapaneseUPS.status
+share/examples/apcupsd/status/PowerStack450.status
+share/examples/apcupsd/status/SmartUPS-vs-650.status
+share/examples/apcupsd/status/SmartUPS1000.status
+share/examples/apcupsd/status/SmartUPS1400.status
+share/examples/apcupsd/status/SmartUPS3000.status
+share/examples/apcupsd/status/SmartUPS5000.status
+share/examples/apcupsd/status/SmartUPS600.status
+share/examples/apcupsd/status/SmartUPS700-2.status
+share/examples/apcupsd/status/SmartUPS700.status
+share/examples/apcupsd/status/newbackupspro1.status
+share/examples/apcupsd/status/newbackupspro2.status
+share/doc/pkg-readmes/${PKGSTEM}
+@rcscript ${RCDIR}/apcupsd

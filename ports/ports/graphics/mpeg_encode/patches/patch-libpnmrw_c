@@ -1,0 +1,30 @@
+--- libpnmrw.c.orig	Thu Aug 17 00:24:26 1995
++++ libpnmrw.c	Wed Mar 16 21:10:23 2016
+@@ -27,6 +27,7 @@
+ /* #define MSDOS */
+ #endif
+ 
++#include <errno.h>
+ #include <stdio.h>
+ #include "libpnmrw.h"
+ 
+@@ -126,8 +127,9 @@ static void
+   pm_perror( reason )
+ char* reason;
+ {
++#if !defined(__FreeBSD__) && !defined(__OpenBSD__)
+   extern char* sys_errlist[];
+-  extern int errno;
++#endif
+   char* e;
+ 
+   e = sys_errlist[errno];
+@@ -361,7 +363,7 @@ bit* bitrow;
+ int cols, format;
+ {
+   register int col, bitshift, b;
+-  register int item;
++  register int item = 0;
+   register bit* bP;
+ 
+   switch ( format )

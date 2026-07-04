@@ -1,0 +1,10 @@
+--- Wnn/jserver/sisheng.c.orig
++++ Wnn/jserver/sisheng.c
+@@ -59,6 +59,7 @@
+ #ifdef CHINESE
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include "commonhd.h"
+ #include "cplib.h"
+ #include "de_header.h"

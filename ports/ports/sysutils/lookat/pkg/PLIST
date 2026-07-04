@@ -1,0 +1,13 @@
+@bin bin/bekijk
+@bin bin/lookat
+@man man/man1/bekijk.1
+@man man/man1/lookat.1
+share/doc/lookat/
+share/doc/lookat/LEESMIJ
+share/doc/lookat/README
+share/examples/lookat/
+share/examples/lookat/blue_and_black.cfg
+share/examples/lookat/cyan_and_blue.cfg
+share/examples/lookat/lookat.conf
+share/examples/lookat/lookat.conf.default
+@sample ${SYSCONFDIR}/lookat.conf

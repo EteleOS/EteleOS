@@ -1,0 +1,5 @@
+@bin bin/streamanalyze
+@bin bin/streamdvd
+share/doc/streamdvd/
+share/doc/streamdvd/README.streamanalyze
+share/doc/streamdvd/README.streamdvd

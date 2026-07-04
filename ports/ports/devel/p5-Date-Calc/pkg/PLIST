@@ -1,0 +1,21 @@
+${P5SITE}/Date/
+${P5SITE}/Date/Calc/
+${P5SITE}/Date/Calc.pm
+${P5SITE}/Date/Calc.pod
+${P5SITE}/Date/Calc/Object.pm
+${P5SITE}/Date/Calc/Object.pod
+${P5SITE}/Date/Calc/PP.pm
+${P5SITE}/Date/Calc/PP.pod
+${P5SITE}/Date/Calendar/
+${P5SITE}/Date/Calendar.pm
+${P5SITE}/Date/Calendar.pod
+${P5SITE}/Date/Calendar/Profiles.pm
+${P5SITE}/Date/Calendar/Profiles.pod
+${P5SITE}/Date/Calendar/Year.pm
+${P5SITE}/Date/Calendar/Year.pod
+@man man/man3p/Date::Calc.3p
+@man man/man3p/Date::Calc::Object.3p
+@man man/man3p/Date::Calc::PP.3p
+@man man/man3p/Date::Calendar.3p
+@man man/man3p/Date::Calendar::Profiles.3p
+@man man/man3p/Date::Calendar::Year.3p

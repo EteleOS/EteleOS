@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/String/
+${P5ARCH}/String/Similarity.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/String/
+${P5ARCH}/auto/String/Similarity/
+${P5ARCH}/auto/String/Similarity/Similarity.so
+@man man/man3p/String::Similarity.3p

@@ -1,0 +1,4 @@
+SHA256 (msp430/gdb-7.2a.tar.bz2) = PCTd4zLjO/4tWYDHJtdiJOv4MEJ4ESoHv3AfjSFF2bw=
+SHA256 (msp430/msp430-gdb-7.2a-20111205.patch) = twtU314A0ko6W3RFRah85la9yIVGCBxv+r77xNbEKVY=
+SIZE (msp430/gdb-7.2a.tar.bz2) = 18943981
+SIZE (msp430/msp430-gdb-7.2a-20111205.patch) = 382048

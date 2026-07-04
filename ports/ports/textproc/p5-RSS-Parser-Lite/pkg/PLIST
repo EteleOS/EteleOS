@@ -1,0 +1,4 @@
+${P5SITE}/XML/RSS/
+${P5SITE}/XML/RSS/Parser/
+${P5SITE}/XML/RSS/Parser/Lite.pm
+@man man/man3p/XML::RSS::Parser::Lite.3p

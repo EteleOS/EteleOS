@@ -1,0 +1,3 @@
+@conflict p5-POE-<1.266
+${P5SITE}/POE/Loop/Event.pm
+@man man/man3p/POE::Loop::Event.3p

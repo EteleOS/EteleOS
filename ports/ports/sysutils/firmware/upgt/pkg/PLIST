@@ -1,0 +1,4 @@
+@pkgpath upgt-firmware
+@pkgpath sysutils/upgt-firmware
+firmware/upgt-gw3887
+firmware/upgt-info

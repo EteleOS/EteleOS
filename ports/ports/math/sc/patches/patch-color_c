@@ -1,0 +1,11 @@
+Index: color.c
+--- color.c.orig
++++ color.c
+@@ -19,6 +19,7 @@
+ 
+ #include <curses.h>
+ #include <ctype.h>
++#include <unistd.h>
+ #include "sc.h"
+ 
+ /* a linked list of free [struct ent]'s, uses .next as the pointer */

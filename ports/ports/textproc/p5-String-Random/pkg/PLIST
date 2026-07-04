@@ -1,0 +1,3 @@
+${P5SITE}/String/
+${P5SITE}/String/Random.pm
+@man man/man3p/String::Random.3p

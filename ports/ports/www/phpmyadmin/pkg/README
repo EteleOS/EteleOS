@@ -1,0 +1,31 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+phpMyAdmin has been installed into ${INSTDIR}.
+
+If using Apache, you can make this accessible to clients by enabling
+mod_rewrite in ${SYSCONFDIR}/apache2/httpd2.conf, the mysql php module,
+and the configuration file:
+
+    # ln -s ../modules.sample/phpmyadmin.conf /var/www/conf/modules/
+    # ln -s ${SYSCONFDIR}/php-${MODPHP_VERSION}.sample/mysqli.ini \
+${SYSCONFDIR}/php-${MODPHP_VERSION}/
+    # rcctl restart apache2
+
+By default, this sets an alias for /phpMyAdmin and restricts access
+to connections coming from localhost.
+It also restricts access from search engine bots.
+
+If you need to allow wider access, after considering security
+implications, edit ${VARBASE}/www/conf/modules.sample/phpmyadmin.conf
+and restart Apache.
+
+You can check that you have a working installation by accessing:
+http://localhost/phpMyAdmin/index.php
+
+SECURITY WARNING
+================
+Be aware that phpMyAdmin is a frequently attacked target due to a
+history of security problems.  You are advised to restrict access to
+trusted workstations or access it on localhost via an SSH tunnel.

@@ -1,0 +1,16 @@
+fix for -fno-common
+
+Index: cmd/util.c
+--- cmd/util.c.orig
++++ cmd/util.c
+@@ -9,6 +9,10 @@
+ #include <util.h>
+ #include <fmt.h>
+ 
++char *argv0;
++void *__p;
++int __i;
++
+ typedef struct VFmt VFmt;
+ struct VFmt {
+ 	const char *fmt;

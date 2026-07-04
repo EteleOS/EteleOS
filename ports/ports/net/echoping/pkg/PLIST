@@ -1,0 +1,15 @@
+@bin bin/echoping
+include/echoping/
+include/echoping/compilation.h
+include/echoping/echoping.h
+lib/echoping/
+lib/echoping/dns.la
+lib/echoping/dns.so.0.0
+lib/echoping/random.la
+lib/echoping/random.so.0.0
+lib/echoping/whois.la
+lib/echoping/whois.so.0.0
+@man man/man1/echoping.1
+@man man/man1/echoping_dns.1
+@man man/man1/echoping_random.1
+@man man/man1/echoping_whois.1

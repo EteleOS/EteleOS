@@ -1,0 +1,16 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/mon"
+daemon_flags="-c ${SYSCONFDIR}/mon/mon.cf -f -P /var/run/mon/mon.pid"
+daemon_user="_mon"
+
+. /etc/rc.d/rc.subr
+
+pexp="/usr/bin/perl ${daemon}${daemon_flags:+ ${daemon_flags}}"
+rc_reload=NO
+
+rc_pre() {
+	/usr/bin/install -d -o _mon /var/run/mon 
+}
+
+rc_cmd $1

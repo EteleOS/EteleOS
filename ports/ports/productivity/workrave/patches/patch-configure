@@ -1,0 +1,14 @@
+Fix bashism.
+
+Index: configure
+--- configure.orig
++++ configure
+@@ -22713,7 +22713,7 @@ then
+ 
+     loop=${enable_monitors},
+ 
+-    while echo $loop | grep \, &> /dev/null
++    while echo $loop | grep -q \,
+     do
+         monitor=${loop%%\,*}
+         loop=${loop#*\,}

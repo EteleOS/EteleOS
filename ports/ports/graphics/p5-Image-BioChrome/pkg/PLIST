@@ -1,0 +1,10 @@
+@comment ${P5SITE}/Apache/
+@comment ${P5SITE}/Apache/BioChrome.pm
+${P5SITE}/Image/
+${P5SITE}/Image/BioChrome.pm
+${P5SITE}/Template/
+${P5SITE}/Template/Plugin/
+${P5SITE}/Template/Plugin/BioChrome.pm
+@comment @man man/man3p/Apache::BioChrome.3p
+@man man/man3p/Image::BioChrome.3p
+@man man/man3p/Template::Plugin::BioChrome.3p

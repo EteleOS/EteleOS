@@ -1,0 +1,40 @@
+Disable internal timidity. Use standard optimisations.
+
+Index: engine/hexenworld/client/Makefile
+--- engine/hexenworld/client/Makefile.orig
++++ engine/hexenworld/client/Makefile
+@@ -129,7 +129,7 @@ USE_CODEC_XMP=no
+ USE_CODEC_UMX=no
+ # either timidity (preferred) or wildmidi (both possible
+ # but not needed nor meaningful)
+-USE_CODEC_TIMIDITY=yes
++USE_CODEC_TIMIDITY=no
+ USE_CODEC_WILDMIDI=no
+ # which library to use for mp3 decoding: mad or mpg123
+ MP3LIB=mad
+@@ -157,15 +157,6 @@ endif
+ CPUFLAGS=$(CPU_X86)
+ 
+ CFLAGS += -Wall
+-CFLAGS += $(CPUFLAGS)
+-ifdef DEBUG
+-CFLAGS += -g
+-else
+-# optimization flags
+-CFLAGS += -O2 -DNDEBUG=1 -ffast-math
+-# NOTE: -fomit-frame-pointer is broken with ancient gcc versions!!
+-CFLAGS += -fomit-frame-pointer
+-endif
+ 
+ CPPFLAGS=
+ LDFLAGS =
+@@ -366,6 +357,9 @@ ifeq ($(TARGET_OS),unix)
+ # common unix:
+ 
+ NASMFLAGS=-f elf -d_NO_PREFIX
++ifeq ($(USE_X86_ASM),yes)
++LDFLAGS += -Wl,-znotext
++endif
+ 
+ ifneq ($(X11BASE),)
+ INCLUDES+= -I$(X11BASE)/include

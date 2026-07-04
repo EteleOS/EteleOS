@@ -1,0 +1,12 @@
+Index: backend/vilter-spamd/scan.l
+--- backend/vilter-spamd/scan.l.orig
++++ backend/vilter-spamd/scan.l
+@@ -19,7 +19,7 @@
+ 
+ #include <string.h>
+ 
+-#include "y.tab.h"
++#include "parse.h"
+ 
+ %}
+ 

@@ -1,0 +1,16 @@
+@pkgpath devel/ruby-rack-test
+${GEM_LIB}/cache/${DISTNAME}.gem
+${GEM_LIB}/gems/${DISTNAME}/
+${GEM_LIB}/gems/${DISTNAME}/History.md
+${GEM_LIB}/gems/${DISTNAME}/MIT-LICENSE.txt
+${GEM_LIB}/gems/${DISTNAME}/README.md
+${GEM_LIB}/gems/${DISTNAME}/lib/
+${GEM_LIB}/gems/${DISTNAME}/lib/rack/
+${GEM_LIB}/gems/${DISTNAME}/lib/rack/test/
+${GEM_LIB}/gems/${DISTNAME}/lib/rack/test.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/rack/test/cookie_jar.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/rack/test/methods.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/rack/test/uploaded_file.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/rack/test/utils.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/rack/test/version.rb
+${GEM_LIB}/specifications/${DISTNAME}.gemspec

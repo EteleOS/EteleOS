@@ -1,0 +1,12 @@
+links privately to lib/pulseaudio/libpulse{common,core}-X.Y.so
+
+--- libpulse.pc.in.orig	Wed Sep 26 13:27:01 2012
++++ libpulse.pc.in	Tue Jan  1 11:56:50 2013
+@@ -7,6 +7,6 @@ modlibexecdir=@modlibexecdir@
+ Name: libpulse
+ Description: PulseAudio Client Interface
+ Version: @PACKAGE_VERSION@
+-Libs: -L${libdir} -lpulse @PTHREAD_LIBS@
++Libs: -L${libdir} -lpulse @PTHREAD_LIBS@ -Wl,-rpath,${libdir}/pulseaudio
+ Libs.private: -L${libdir}/pulseaudio -lpulsecommon-@PA_MAJORMINOR@
+ Cflags: -I${includedir} -D_REENTRANT

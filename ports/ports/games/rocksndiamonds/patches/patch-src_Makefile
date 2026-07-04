@@ -1,0 +1,12 @@
+Index: src/Makefile
+--- src/Makefile.orig
++++ src/Makefile
+@@ -153,7 +153,7 @@ SYS_LDFLAGS := $(shell echo $(SYS_LDFLAGS) |	\
+ OPTIONS = -O2 -Wall
+ endif
+ 
+-CFLAGS = $(OPTIONS) $(ANALYZE) $(SYS_CFLAGS)  $(EXTRA_CFLAGS) $(CONFIG)
++CFLAGS = $(ANALYZE) $(SYS_CFLAGS)  $(EXTRA_CFLAGS) $(CONFIG)
+ LDFLAGS =           $(ANALYZE) $(SYS_LDFLAGS) $(EXTRA_LDFLAGS)
+ 
+ 

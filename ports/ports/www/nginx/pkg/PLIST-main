@@ -1,0 +1,38 @@
+@pkgpath www/nginx/stable
+@pkgpath www/nginx/devel
+@pkgpath www/nginx
+@rcscript ${RCDIR}/nginx
+@man man/man8/nginx.8
+@bin sbin/nginx
+@mode 700
+@owner www
+@group www
+@sample ${NGINX_DIR}/tmp/
+@mode
+@owner
+@group
+share/doc/pkg-readmes/${PKGSTEM}
+share/nginx/
+@sample ${SYSCONFDIR}/nginx/
+share/nginx/fastcgi_params
+@sample ${SYSCONFDIR}/nginx/fastcgi_params
+share/nginx/html/
+@sample ${NGINX_DIR}/html/
+share/nginx/html/50x.html
+@sample ${NGINX_DIR}/html/50x.html
+share/nginx/html/index.html
+@sample ${NGINX_DIR}/html/index.html
+share/nginx/koi-utf
+@sample ${SYSCONFDIR}/nginx/koi-utf
+share/nginx/koi-win
+@sample ${SYSCONFDIR}/nginx/koi-win
+share/nginx/mime.types
+@sample ${SYSCONFDIR}/nginx/mime.types
+share/nginx/nginx.conf
+@sample ${SYSCONFDIR}/nginx/nginx.conf
+share/nginx/scgi_params
+@sample ${SYSCONFDIR}/nginx/scgi_params
+share/nginx/uwsgi_params
+@sample ${SYSCONFDIR}/nginx/uwsgi_params
+share/nginx/win-utf
+@sample ${SYSCONFDIR}/nginx/win-utf

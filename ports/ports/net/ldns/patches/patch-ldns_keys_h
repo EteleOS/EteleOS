@@ -1,0 +1,19 @@
+hack to workaround opendnssec trying to use these constants for a
+non-ldns-related purpose
+
+Index: ldns/keys.h
+--- ldns/keys.h.orig
++++ ldns/keys.h
+@@ -94,10 +94,10 @@ enum ldns_enum_signing_algorithm
+ 	LDNS_SIGN_ECC_GOST       = LDNS_ECC_GOST,
+         LDNS_SIGN_ECDSAP256SHA256 = LDNS_ECDSAP256SHA256,
+         LDNS_SIGN_ECDSAP384SHA384 = LDNS_ECDSAP384SHA384,
+-#if LDNS_BUILD_CONFIG_USE_ED25519
++#if LDNS_BUILD_CONFIG_USE_ED25519 || USE_ED25519
+ 	LDNS_SIGN_ED25519	 = LDNS_ED25519,
+ #endif /* LDNS_BUILD_CONFIG_USE_ED25519 */
+-#if LDNS_BUILD_CONFIG_USE_ED448
++#if LDNS_BUILD_CONFIG_USE_ED448 || USE_ED448
+ 	LDNS_SIGN_ED448		 = LDNS_ED448,
+ #endif /* LDNS_BUILD_CONFIG_USE_ED448 */
+ 	LDNS_SIGN_HMACMD5	 = 157,	/* not official! This type is for TSIG, not DNSSEC */

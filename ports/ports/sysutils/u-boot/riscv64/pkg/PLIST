@@ -1,0 +1,11 @@
+@pkgpath sysutils/u-boot,riscv64
+share/u-boot/
+share/u-boot/qemu-riscv64_smode/
+share/u-boot/qemu-riscv64_smode/u-boot
+share/u-boot/qemu-riscv64_smode/u-boot.bin
+share/u-boot/sifive_unmatched/
+@comment share/u-boot/sifive_unmatched/u-boot
+share/u-boot/sifive_unmatched/u-boot-spl.bin
+@comment share/u-boot/sifive_unmatched/u-boot.bin
+@comment share/u-boot/sifive_unmatched/u-boot.img
+share/u-boot/sifive_unmatched/u-boot.itb

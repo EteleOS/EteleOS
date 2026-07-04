@@ -1,0 +1,20 @@
+--- Makefile.PL.orig	Fri Sep 18 19:06:07 2015
++++ Makefile.PL	Wed Nov 18 14:05:03 2015
+@@ -11,7 +11,7 @@ my $libs = '';
+ 
+ unless (conftest("char *x = gettext(\"foo\");", "gettext", 0)) {
+ 	# try with -lintl
+-	$libs = "-lintl";
++	$libs = "-L${LOCALBASE}/lib -lintl -I${LOCALBASE}/include";
+ 	unless (conftest("char *x = gettext(\"foo\");", "gettext", 0)) {
+ 		unlink("conftest.c");
+ 		unlink("conftest");
+@@ -33,7 +33,7 @@ unlink("conftest");
+ 
+ WriteMakefile(
+     NAME => "Locale::gettext",
+-    LIBS => ($libs eq '') ? [] : [$libs],
++    LIBS => ($libs eq '') ? [] : ["-L${LOCALBASE}/lib -lintl"],
+     VERSION_FROM => 'gettext.pm', 
+     META_MERGE => {
+         resources => {

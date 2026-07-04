@@ -1,0 +1,35 @@
+Index: src/default.h
+--- src/default.h.orig
++++ src/default.h
+@@ -37,7 +37,7 @@ XIV(bool, showTaskBar,                          true)
+ XIV(bool, taskBarAtTop,                         false)
+ XIV(bool, taskBarKeepBelow,                     false)
+ XIV(bool, taskBarShowClock,                     true)
+-XIV(bool, taskBarShowApm,                       false)
++XIV(bool, taskBarShowApm,                       true)
+ XIV(bool, taskBarShowApmAuto,                   true)
+ XIV(bool, taskBarShowApmTime,                   true)
+ XIV(bool, taskBarShowApmGraph,                  true)
+@@ -177,10 +177,10 @@ XIV(int, netWorkAreaBehaviour,                  0)
+ 
+ XSV(const char *, acpiIgnoreBatteries,          0)
+ XSV(const char *, mailBoxPath,                  0)
+-XSV(const char *, mailCommand,                  TERM " -name mutt -e mutt")
+-XSV(const char *, mailClassHint,                "mutt.XTerm")
++XSV(const char *, mailCommand,                  TERM " -name mail -title MAIL -e mail")
++XSV(const char *, mailClassHint,                "mail.XTerm")
+ XSV(const char *, newMailCommand,               0)
+-XSV(const char *, lockCommand,                  0)
++XSV(const char *, lockCommand,                  "xlock -name icewm -mode random")
+ XSV(const char *, clockCommand,                 "xclock -name icewm -title Clock")
+ XSV(const char *, clockClassHint,               "icewm.XClock")
+ XSV(const char *, runDlgCommand,                0)
+@@ -216,7 +216,7 @@ XIV(bool, cpuCombine,                           true)
+ XSV(const char *, netCommand,                   TERM " -name 'ss' -title 'Socket Statistics' -hold -e sh -c 'which ss > /dev/null && watch -t ss -putswl || netstat -c'")
+ XSV(const char *, netClassHint,                 "ss.XTerm")
+ #else
+-XSV(const char *, netCommand,                   TERM " -name netstat -title 'Network Status' -hold -e netstat -c")
++XSV(const char *, netCommand,                   TERM " -name netstat -title 'Network Status' -hold -e netstat -w 1")
+ XSV(const char *, netClassHint,                 "netstat.XTerm")
+ #endif
+ 

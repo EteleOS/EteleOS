@@ -1,0 +1,22 @@
+- respect CXX/CXXFLAGS
+- don't rely on inter-libraries deps
+- oh, and error out in case of problems
+
+Index: compile_linux_kissfft.sh
+--- compile_linux_kissfft.sh.orig
++++ compile_linux_kissfft.sh
+@@ -1,11 +1,12 @@
+ outfile=paulstretch
++set -e
+ rm -f $outfile
+ 
+ fluid -c GUI.fl 
+ fluid -c FreeEditUI.fl
+ 
+ 
+-g++ -ggdb -DKISSFFT -I./contrib GUI.cxx FreeEditUI.cxx *.cpp Input/*.cpp Output/*.cpp contrib/*.c `fltk-config --cflags` \
+- `fltk-config --ldflags`  -laudiofile  -lvorbisenc -lvorbisfile -lportaudio -lpthread -lmad -lmxml -o $outfile
++${CXX} ${CXXFLAGS} -DKISSFFT -I./contrib GUI.cxx FreeEditUI.cxx *.cpp Input/*.cpp Output/*.cpp contrib/*.c `fltk-config --cflags` \
++ `fltk-config --ldflags`  -laudiofile  -lvorbisenc -lvorbisfile -lvorbis -logg -lportaudio -lpthread -lmad -lmxml -lz -o $outfile
+ 
+ rm -f GUI.h GUI.cxx FreeEditUI.h FreeEditUI.cxx

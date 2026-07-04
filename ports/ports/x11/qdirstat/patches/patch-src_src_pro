@@ -1,0 +1,12 @@
+Index: src/src.pro
+--- src/src.pro.orig
++++ src/src.pro
+@@ -295,7 +295,7 @@ desktop.files	= *.desktop
+ desktop.path	= $$INSTALL_PREFIX/share/applications
+ 
+ icons.files	= icons/qdirstat.svg
+-icons.path	= $$INSTALL_PREFIX/share/icons/hicolor/scalable/apps
++icons.path	= $$INSTALL_PREFIX/share/icons/hicolor/32x32/apps
+ 
+ 
+ mac:ICON	= icons/qdirstat.icns

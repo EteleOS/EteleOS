@@ -1,0 +1,14 @@
+XXX fix+push upstream
+
+Index: meson.build
+--- meson.build.orig
++++ meson.build
+@@ -47,7 +47,7 @@ prefix = get_option('prefix')
+ datadir = prefix / get_option('datadir')
+ libexecdir = prefix / get_option('libexecdir')
+ 
+-liblocaledir = get_option('prefix') / 'lib/locale'
++liblocaledir = join_paths('/usr', 'share', 'locale')
+ localedir = datadir / 'locale'
+ test_metadir = datadir / 'installed-tests' / meson.project_name()
+ test_execdir = libexecdir / 'installed-tests' / meson.project_name()

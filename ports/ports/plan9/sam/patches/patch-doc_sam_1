@@ -1,0 +1,16 @@
+Index: doc/sam.1
+--- doc/sam.1.orig
++++ doc/sam.1
+@@ -2,7 +2,11 @@
+ .Dt SAM 1
+ .Os
+ .Sh NAME
+-.Nm sam
++.Nm sam ,
++.Nm B ,
++.Nm samterm ,
++.Nm rsam ,
++.Nm sam.save
+ .Nd screen editor with structural regular expressions
+ .Sh SYNOPSIS
+ .Nm

@@ -1,0 +1,11 @@
+--- src/foreign/CMakeLists.txt.orig	Fri Jul 17 19:43:58 2015
++++ src/foreign/CMakeLists.txt	Sat Oct 10 13:48:35 2015
+@@ -1,5 +1,8 @@
+ 
+ add_subdirectory(levmar)
++IF(NOT FLANN_FOUND)
++add_subdirectory(flann)
++ENDIF(NOT FLANN_FOUND)
+ 
+ IF (WIN32 AND NOT MINGW)
+   add_subdirectory(getopt)

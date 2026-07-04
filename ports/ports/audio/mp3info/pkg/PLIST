@@ -1,0 +1,3 @@
+@bin bin/mp3info
+@man man/man1/mp3info.1
+!%%no_x11%%

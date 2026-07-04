@@ -1,0 +1,5 @@
+[earth]
+"Earth"
+shade=100
+marker_color=white
+marker_file=%%LOCALBASE%%/share/markers/OpenBSD

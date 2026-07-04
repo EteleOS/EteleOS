@@ -1,0 +1,14 @@
+--- lib/parser.c.orig	Thu Apr  2 19:19:26 2015
++++ lib/parser.c	Sun Jun 14 09:37:36 2015
+@@ -147,6 +147,11 @@ static char*		_errorMessage;	/* last error-message */
+ static ut_encoding	_encoding;	/* encoding of string to be parsed */
+ static int		_restartScanner;/* restart scanner? */
+ static int		_isTime;        /* product_exp is time? */
++extern int             utlex(void);
++extern ut_status utGetPrefixByName(ut_system* const, const const char*,
++       const double*, const size_t* const);
++extern ut_status utGetPrefixBySymbol( ut_system* const, const char* const,
++       double* const, size_t* const);
+ 
+ 
+ /*

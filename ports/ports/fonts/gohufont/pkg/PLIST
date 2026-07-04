@@ -1,0 +1,14 @@
+share/doc/gohufont/
+share/doc/gohufont/COPYING-LICENSE
+share/doc/gohufont/README.md
+share/fonts/
+@fontdir share/fonts/gohufont/
+share/fonts/gohufont/fonts.alias-gohufont
+share/fonts/gohufont/gohufont-11.pcf.gz
+share/fonts/gohufont/gohufont-11b.pcf.gz
+share/fonts/gohufont/gohufont-14.pcf.gz
+share/fonts/gohufont/gohufont-14b.pcf.gz
+share/fonts/gohufont/gohufont-uni-11.pcf.gz
+share/fonts/gohufont/gohufont-uni-11b.pcf.gz
+share/fonts/gohufont/gohufont-uni-14.pcf.gz
+share/fonts/gohufont/gohufont-uni-14b.pcf.gz

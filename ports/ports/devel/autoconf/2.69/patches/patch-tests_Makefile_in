@@ -1,0 +1,13 @@
+--- tests/Makefile.in.orig	Tue Apr 24 22:40:26 2012
++++ tests/Makefile.in	Thu May 24 23:31:45 2012
+@@ -577,9 +577,7 @@ $(wrappers): wrapper.in
+ 	mv -f $@.tmp $@
+ $(TESTSUITE): package.m4 \
+ 	      local.at \
+-	      $(TESTSUITE_AT) \
+-	      $(autotest_m4f_dependencies)
+-	cd $(top_builddir)/lib/autotest && $(MAKE) $(AM_MAKEFLAGS) autotest.m4f
++	      $(TESTSUITE_AT)
+ 	$(AUTOTEST) -I . -I $(srcdir) suite.at -o $@.tmp
+ 	mv $@.tmp $@
+ 

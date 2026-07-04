@@ -1,0 +1,27 @@
+Index: src/sim/w_update.c
+--- src/sim/w_update.c.orig
++++ src/sim/w_update.c
+@@ -75,6 +75,7 @@ char *dateStr[12] = {
+   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+ };
+ 
++void ReallyUpdateFunds(void);
+ 
+ void DoUpdateHeads()
+ {
+@@ -117,6 +118,7 @@ void UpdateHeads()
+   DoUpdateHeads();
+ }
+ 
++void
+ UpdateFunds(void)
+ {
+   MustUpdateFunds = 1;
+@@ -124,6 +126,7 @@ UpdateFunds(void)
+ }
+ 
+ 
++void
+ ReallyUpdateFunds(void)
+ {
+   char localStr[256], dollarStr[256], buf[256];

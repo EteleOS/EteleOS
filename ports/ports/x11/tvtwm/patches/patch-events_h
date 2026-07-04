@@ -1,0 +1,14 @@
+Index: events.h
+--- events.h.orig
++++ events.h
+@@ -67,6 +67,10 @@ extern void HandleKeyPress();
+ extern void HandleColormapNotify();
+ extern void HandleVisibilityNotify();
+ extern void HandleUnknown();
++extern int Transient();
++extern void InstallRootColormap();
++extern void InstallWindowColormaps();
++extern void UninstallRootColormap();
+ 
+ extern event_proc EventHandler[];
+ extern Window DragWindow;

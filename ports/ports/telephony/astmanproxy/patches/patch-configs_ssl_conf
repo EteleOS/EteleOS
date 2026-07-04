@@ -1,0 +1,12 @@
+Index: configs/ssl.conf
+--- configs/ssl.conf.orig
++++ configs/ssl.conf
+@@ -9,7 +9,7 @@
+ # other options under the root_ca_distinguished_name section.
+ 
+ HOME                    = .
+-RANDFILE                = $ENV::HOME/.rnd
++RANDFILE                = /dev/urandom
+ 
+ [ ca ]
+ default_ca      = MyAsteriskCA

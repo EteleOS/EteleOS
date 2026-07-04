@@ -1,0 +1,7 @@
+@pkgpath security/yubikey-personalization-gui
+@bin bin/yubikey-personalization-gui
+@man man/man1/yubikey-personalization-gui.1
+share/applications/yubikey-personalization-gui.desktop
+share/pixmaps/
+share/pixmaps/yubikey-personalization-gui.png
+@tag update-desktop-database

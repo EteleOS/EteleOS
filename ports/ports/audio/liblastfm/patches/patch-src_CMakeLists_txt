@@ -1,0 +1,17 @@
+Index: src/CMakeLists.txt
+--- src/CMakeLists.txt.orig
++++ src/CMakeLists.txt
+@@ -1,9 +1,13 @@
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/global.h.in ${CMAKE_CURRENT_BINARY_DIR}/global.h)
+ 
+ 
++find_package(Threads REQUIRED)
++
+ add_definitions(${QT_DEFINITIONS})
+ include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
+ set(liblastfm_LIBRARIES
++    c
++    ${CMAKE_THREAD_LIBS_INIT}
+     ${QT_QTCORE_LIBRARY}
+     ${QT_QTNETWORK_LIBRARY}
+     ${QT_QTXML_LIBRARY}

@@ -1,0 +1,12 @@
+Index: src/modules/seas/ha.c
+--- src/modules/seas/ha.c.orig
++++ src/modules/seas/ha.c
+@@ -21,7 +21,7 @@
+ 
+ 
+ #include <stdlib.h>/*atoi*/
+-#include <time.h>/*gettimeofday*/
++#include <sys/time.h>/*gettimeofday*/
+ #include <poll.h>/*poll*/
+ #include "ha.h"
+ #include "seas.h"

@@ -1,0 +1,12 @@
+Index: kats/test.sh
+--- kats/test.sh.orig
++++ kats/test.sh
+@@ -9,7 +9,7 @@ do
+     printf "Force OPTTEST=1\n"
+   fi
+ 
+-  make genkat $opttest > /dev/null
++  ${MAKE:-make} genkat $opttest > /dev/null
+   if [ $? -ne 0 ]
+   then
+     exit $?

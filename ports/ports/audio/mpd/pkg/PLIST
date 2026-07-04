@@ -1,0 +1,24 @@
+@pkgpath audio/mpd,tremor
+@newgroup _mpd:560
+@newuser _mpd:560:560::Music Player Daemon:/var/spool/mpd:/sbin/nologin
+@extraunexec rm -rf /var/log/mpd/*
+@extraunexec find /var/spool/mpd \! -name playlists -mindepth 1 -exec rm -rf "{}" \;
+@rcscript ${RCDIR}/mpd
+@bin bin/mpd
+@man man/man1/mpd.1
+@man man/man5/mpd.conf.5
+share/doc/mpd/
+share/doc/mpd/AUTHORS
+share/doc/mpd/COPYING
+share/doc/mpd/NEWS
+share/doc/mpd/README.md
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/mpd/
+share/examples/mpd/mpd.conf
+@sample ${SYSCONFDIR}/mpd.conf
+@mode 750
+@owner _mpd
+@group _mpd
+@sample /var/log/mpd/
+@sample /var/spool/mpd/
+@sample /var/spool/mpd/playlists/

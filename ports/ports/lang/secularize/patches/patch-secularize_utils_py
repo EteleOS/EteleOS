@@ -1,0 +1,12 @@
+Index: secularize/utils.py
+--- secularize/utils.py.orig
++++ secularize/utils.py
+@@ -2,7 +2,7 @@ from json import load
+ 
+ 
+ def populate_ast(phase, ast_type, **kwargs):
+-    with open(f'config/{ast_type}_ast.json') as ast_file:
++    with open(f'${PREFIX}/share/secularize/config/{ast_type}_ast.json') as ast_file:
+         ast_json = load(ast_file)
+     for keypath, value in kwargs.items():
+         keys = keypath.split('.')

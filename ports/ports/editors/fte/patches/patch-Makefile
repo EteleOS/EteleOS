@@ -1,0 +1,11 @@
+--- Makefile.orig	Sun Jan 18 17:55:27 2009
++++ Makefile	Sun Jan 18 18:26:39 2009
+@@ -1,7 +1,7 @@
+ PREFIX?=/usr/local
+ 
+ BINDIR=$(PREFIX)/bin
+-LIBDIR=$(PREFIX)/lib/fte
++LIBDIR=$(PREFIX)/share/fte
+ CONFIGDIR=$(LIBDIR)/config
+ 
+ .PHONY: all install

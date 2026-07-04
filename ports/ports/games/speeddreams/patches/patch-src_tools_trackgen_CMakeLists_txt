@@ -1,0 +1,11 @@
+Index: src/tools/trackgen/CMakeLists.txt
+--- src/tools/trackgen/CMakeLists.txt.orig
++++ src/tools/trackgen/CMakeLists.txt
+@@ -52,6 +52,7 @@ ENDIF(MINGW)
+ 
+ IF(UNIX)
+     SD_INSTALL_FILES(MAN man6 PREFIX ${SOURCE_DIR}/doc/man FILES ${_TARGET_NAME}.6)
++    INCLUDE_DIRECTORIES(${X11_INCLUDE_DIR})
+ ENDIF(UNIX)
+ 
+ SD_INSTALL_FILES(BIN TARGETS ${_TARGET_NAME})

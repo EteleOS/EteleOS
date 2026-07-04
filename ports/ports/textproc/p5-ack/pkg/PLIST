@@ -1,0 +1,24 @@
+bin/ack
+${P5SITE}/App/
+${P5SITE}/App/Ack/
+${P5SITE}/App/Ack.pm
+${P5SITE}/App/Ack/ConfigDefault.pm
+${P5SITE}/App/Ack/ConfigFinder.pm
+${P5SITE}/App/Ack/ConfigLoader.pm
+${P5SITE}/App/Ack/File.pm
+${P5SITE}/App/Ack/Files.pm
+${P5SITE}/App/Ack/Filter/
+${P5SITE}/App/Ack/Filter.pm
+${P5SITE}/App/Ack/Filter/Collection.pm
+${P5SITE}/App/Ack/Filter/Default.pm
+${P5SITE}/App/Ack/Filter/Extension.pm
+${P5SITE}/App/Ack/Filter/ExtensionGroup.pm
+${P5SITE}/App/Ack/Filter/FirstLineMatch.pm
+${P5SITE}/App/Ack/Filter/Inverse.pm
+${P5SITE}/App/Ack/Filter/Is.pm
+${P5SITE}/App/Ack/Filter/IsGroup.pm
+${P5SITE}/App/Ack/Filter/IsPath.pm
+${P5SITE}/App/Ack/Filter/IsPathGroup.pm
+${P5SITE}/App/Ack/Filter/Match.pm
+${P5SITE}/App/Ack/Filter/MatchGroup.pm
+@man man/man1/ack.1

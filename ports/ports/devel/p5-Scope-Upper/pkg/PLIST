@@ -1,0 +1,12 @@
+${P5ARCH}/
+${P5ARCH}/Scope/
+${P5ARCH}/Scope/Upper.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Scope/
+${P5ARCH}/auto/Scope/Upper/
+@so ${P5ARCH}/auto/Scope/Upper/Upper.so
+@man man/man3p/Scope::Upper.3p
+share/examples/p5-Scope-Upper/
+share/examples/p5-Scope-Upper/bench_uplevel.pl
+share/examples/p5-Scope-Upper/tag.pl
+share/examples/p5-Scope-Upper/try.pl

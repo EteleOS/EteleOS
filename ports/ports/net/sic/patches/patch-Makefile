@@ -1,0 +1,33 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -4,8 +4,8 @@ NAME = sic
+ VERSION = 1.3
+ 
+ # paths
+-PREFIX = /usr/local
+-MANPREFIX = ${PREFIX}/share/man
++PREFIX ?= /usr/local                                                                                      
++MANPREFIX = ${PREFIX}/man
+ 
+ # use system flags.
+ SIC_CFLAGS = ${CFLAGS}
+@@ -44,12 +44,12 @@ dist:
+ 	rm -rf "${NAME}-${VERSION}"
+ 
+ install: all
+-	mkdir -p ${DESTDIR}${PREFIX}/bin
+-	cp -f ${BIN} "${DESTDIR}${PREFIX}/bin"
+-	chmod 755 "${DESTDIR}${PREFIX}/bin/${BIN}"
+-	mkdir -p "${DESTDIR}${MANPREFIX}/man1"
+-	sed "s/VERSION/${VERSION}/g" < ${MAN1} > "${DESTDIR}${MANPREFIX}/man1/${MAN1}"
+-	chmod 644 "${DESTDIR}${MANPREFIX}/man1/${MAN1}"
++	${BSD_INSTALL_PROGRAM_DIR} ${DESTDIR}${PREFIX}/bin
++	${BSD_INSTALL_PROGRAM} ${BIN} ${DESTDIR}${PREFIX}/bin
++	${BSD_INSTALL_MAN_DIR} ${DESTDIR}${MANPREFIX}/man1
++	sed "s/VERSION/${VERSION}/g" < ${MAN1} > ${MAN1}.tmp
++	mv ${MAN1}.tmp ${MAN1}
++	${BSD_INSTALL_MAN} ${MAN1} ${DESTDIR}${MANPREFIX}/man1
+ 
+ uninstall:
+ 	rm -f \

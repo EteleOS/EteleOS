@@ -1,0 +1,19 @@
+Index: config/config_perl.pl
+--- config/config_perl.pl.orig
++++ config/config_perl.pl
+@@ -11,14 +11,5 @@ if ($ARGV[0] eq "PERL_INCLUDES") {
+ 	print "-I$archlib/CORE";
+ }
+ if ($ARGV[0] eq "PERL_INSTALL_DIR") {
+-
+-	my $d;
+-
+-	foreach $d (qw(installvendorarch vendorarch installsitearch sitearch)) {
+-		if (exists($Config{$d}) and defined($Config{$d}) and
+-			($Config{$d} ne '') ) {
+-			print "$Config{$d}";
+-			last;
+-		}
+-	}
++	print "$Config{installsitearch}";
+ }

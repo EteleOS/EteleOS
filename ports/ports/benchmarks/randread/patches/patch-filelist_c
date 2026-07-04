@@ -1,0 +1,14 @@
+Index: filelist.c
+--- filelist.c.orig
++++ filelist.c
+@@ -7,8 +7,10 @@
+ 
+ #include <errno.h>
+ #include <fcntl.h>
++#include <limits.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <strings.h>
+ #include <unistd.h>
+ 

@@ -1,0 +1,24 @@
+Index: agent/platform/platform_unix.go
+--- agent/platform/platform_unix.go.orig
++++ agent/platform/platform_unix.go
+@@ -230,6 +230,20 @@ func getPlatformDetails(log log.T) (name string, versi
+ 		if len(data) >= 2 {
+ 			version = strings.TrimSpace(data[1])
+ 		}
++	} else if runtime.GOOS == "openbsd" {
++		log.Debugf(fetchingDetailsMessage, unameCommand)
++
++		if contentsBytes, err = exec.Command(unameCommand, "-sr").Output(); err != nil {
++			log.Debugf(fetchingDetailsMessage, unameCommand, err)
++			return
++		}
++		log.Debugf(commandOutputMessage, contentsBytes)
++
++		data := strings.Split(string(contentsBytes), " ")
++		name = strings.TrimSpace(data[0])
++		if len(data) >= 2 {
++			version = strings.TrimSpace(data[1])
++		}
+ 	} else {
+ 		log.Debugf(fetchingDetailsMessage, lsbReleaseCommand)
+ 

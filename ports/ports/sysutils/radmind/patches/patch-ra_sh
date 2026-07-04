@@ -1,0 +1,23 @@
+--- ra.sh.orig	Sun Nov 28 21:37:44 2010
++++ ra.sh	Sun Mar 17 23:52:25 2013
+@@ -31,7 +31,7 @@ EDITOR=${EDITOR:-vi}
+ PAGER=${PAGER:-cat}
+ USER=${SUDO_USER:-$USER}
+ TMPDIR="${TMPDIR:=/tmp}"
+-DEFAULTS="/etc/defaults/radmind"
++DEFAULTS="SYSCONFDIR/defaults/radmind"
+ FSDIFFROOT="."
+ DEFAULTWORKDIR="/"
+ FLAG="_RADMIND_DIR/client/.RadmindRunning"
+@@ -64,9 +64,9 @@ FTMP="${RASHTMP}/fsdiff.out"
+ 
+ # different systems use different default dirs
+ if [ ! -f "${DEFAULTS}" ]; then
+-    DEFAULTS="/etc/default/radmind"
++    DEFAULTS="SYSCONFDIR/default/radmind"
+     if [ ! -f "${DEFAULTS}" ]; then
+-	DEFAULTS="/etc/radmind.defaults"
++	DEFAULTS="SYSCONFDIR/radmind.defaults"
+     fi
+ fi
+ 

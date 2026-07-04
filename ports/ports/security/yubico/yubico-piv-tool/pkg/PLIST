@@ -1,0 +1,11 @@
+@bin bin/yubico-piv-tool
+include/ykpiv/
+include/ykpiv/ykpiv-config.h
+include/ykpiv/ykpiv.h
+@static-lib lib/libykcs11.a
+@lib lib/libykcs11.so.${LIBykcs11_VERSION}
+@static-lib lib/libykpiv.a
+@lib lib/libykpiv.so.${LIBykpiv_VERSION}
+lib/pkgconfig/ykcs11.pc
+lib/pkgconfig/ykpiv.pc
+@man man/man1/yubico-piv-tool.1

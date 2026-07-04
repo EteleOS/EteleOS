@@ -1,0 +1,13 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+To run yquake2 on OpenBSD, you need the original Quake II data files
+and the 3.20 patch.
+
+Follow the steps outlined on:
+
+https://github.com/yquake2/yquake2/blob/master/README.md
+
+when done copy the baseq2 directory to ${TRUEPREFIX}/share/yquake2/baseq2/
+or ~/.yq2/baseq2/ and start up yquake2.

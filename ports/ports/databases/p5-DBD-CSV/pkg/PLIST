@@ -1,0 +1,9 @@
+${P5SITE}/Bundle/DBD/
+${P5SITE}/Bundle/DBD/CSV.pm
+${P5SITE}/DBD/
+${P5SITE}/DBD/CSV/
+${P5SITE}/DBD/CSV.pm
+${P5SITE}/DBD/CSV/GetInfo.pm
+${P5SITE}/DBD/CSV/TypeInfo.pm
+@man man/man3p/Bundle::DBD::CSV.3p
+@man man/man3p/DBD::CSV.3p

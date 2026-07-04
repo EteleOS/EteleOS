@@ -1,0 +1,29 @@
+@bin bin/gerbv
+@comment lib/charset.alias
+include/gerbv-2.7.0/
+include/gerbv-2.7.0/gerbv.h
+@static-lib lib/libgerbv.a
+lib/libgerbv.la
+@lib lib/libgerbv.so.${LIBgerbv_VERSION}
+lib/pkgconfig/libgerbv.pc
+@man man/man1/gerbv.1
+share/applications/gerbv.desktop
+@comment share/applications/mimeinfo.cache
+share/gerbv/
+share/gerbv/gerbv_icon.ico
+share/gerbv/scheme/
+share/gerbv/scheme/gerb-debug.scm
+share/gerbv/scheme/gerb-ps.scm
+share/gerbv/scheme/init.scm
+share/glib-2.0/schemas/org.geda-user.gerbv.gschema.xml
+share/icons/hicolor/16x16/apps/gerbv-16.png
+share/icons/hicolor/22x22/apps/gerbv-22.png
+share/icons/hicolor/24x24/apps/gerbv-24.png
+share/icons/hicolor/32x32/apps/gerbv-32.png
+share/icons/hicolor/48x48/apps/gerbv-48.png
+share/icons/hicolor/scalable/apps/gerbv.svg
+@comment share/locale/locale.alias
+share/locale/ru/LC_MESSAGES/gerbv.mo
+@tag update-desktop-database
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag glib-compile-schemas

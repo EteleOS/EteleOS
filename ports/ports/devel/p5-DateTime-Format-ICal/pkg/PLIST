@@ -1,0 +1,3 @@
+${P5SITE}/DateTime/Format/
+${P5SITE}/DateTime/Format/ICal.pm
+@man man/man3p/DateTime::Format::ICal.3p

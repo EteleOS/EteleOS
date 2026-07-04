@@ -1,0 +1,4 @@
+share/fonts/
+@fontdir share/fonts/hack/
+share/fonts/hack/ibm.pcf.gz
+share/fonts/hack/nh10.pcf.gz

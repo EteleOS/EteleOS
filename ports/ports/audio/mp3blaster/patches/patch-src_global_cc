@@ -1,0 +1,13 @@
+Index: src/global.cc
+--- src/global.cc.orig
++++ src/global.cc
+@@ -396,6 +396,9 @@ is_httpstream(const char *filename)
+ int
+ is_audiofile(const char *filename)
+ {
++	if (filename == NULL)
++		return 0;
++
+ 	if (globalopts.extensions)
+ 	{
+ 		int i = 0;

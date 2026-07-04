@@ -1,0 +1,8 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/repro"
+daemon_flags="${SYSCONFDIR}/repro/repro.config"
+
+. /etc/rc.d/rc.subr
+
+rc_cmd $1

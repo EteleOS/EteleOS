@@ -1,0 +1,3 @@
+${P5SITE}/MooX/
+${P5SITE}/MooX/late.pm
+@man man/man3p/MooX::late.3p

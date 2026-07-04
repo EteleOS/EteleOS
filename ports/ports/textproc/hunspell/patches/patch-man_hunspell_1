@@ -1,0 +1,15 @@
+--- man/hunspell.1.orig	Sat Mar 25 22:20:45 2017
++++ man/hunspell.1	Sat Apr  8 19:13:44 2017
+@@ -394,10 +394,10 @@ following environment variables are searched: LC_ALL,
+ LC_MESSAGES, and LANG. If none are set then the following
+ fallbacks are used:
+ 
+-.BI /usr/share/myspell/default.aff
++.BI ${PREFIX}/share/myspell/default.aff
+ Path of default affix file. See hunspell(5).
+ .PP
+-.BI /usr/share/myspell/default.dic
++.BI ${PREFIX}/share/myspell/default.dic
+ Path of default dictionary file.
+ See hunspell(5).
+ .PP

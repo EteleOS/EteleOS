@@ -1,0 +1,16 @@
+--- src/init.cpp.orig
++++ src/init.cpp
+@@ -499,9 +499,11 @@ void cleanup()
+ 	if (SDL_NumJoysticks() > 0)
+ 	{
+ 		SDL_JoystickEventState(SDL_DISABLE);
+-		for (int i = 0 ; i < SDL_NumJoysticks() ; i++)
++		// Blobwars tries to open only the first joystick,
++		// so test only the first here as well.
++		if (SDL_JoystickGetAttached(config.sdlJoystick))
+ 		{
+-			debug(("Closing Joystick #%d\n", i));
++			debug(("Closing Joystick #%d\n", 0));
+ 			SDL_JoystickClose(config.sdlJoystick);
+ 		}
+ 	}

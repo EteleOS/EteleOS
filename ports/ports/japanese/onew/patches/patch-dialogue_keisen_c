@@ -1,0 +1,11 @@
+Index: dialogue/keisen.c
+--- dialogue/keisen.c.orig
++++ dialogue/keisen.c
+@@ -39,6 +39,7 @@ static keisen_toggle_sw(ch)
+ 	}
+ 	return 0;
+ }
++void
+ keisen_init(){
+ 	ONEW_KEISEN_ON = getenv("ONEW_KEISENMODE");
+ 	if( ONEW_KEISEN_ON == 0 )

@@ -1,0 +1,5 @@
+${P5SITE}/Module/
+${P5SITE}/Module/Manifest.pm
+@man man/man3p/Module::Manifest.3p
+share/examples/p5-Module-Manifest/
+share/examples/p5-Module-Manifest/difference.pl

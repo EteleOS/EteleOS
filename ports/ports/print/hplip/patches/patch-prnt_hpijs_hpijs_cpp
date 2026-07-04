@@ -1,0 +1,11 @@
+--- prnt/hpijs/hpijs.cpp.orig	Fri Oct 11 11:35:57 2013
++++ prnt/hpijs/hpijs.cpp	Tue Oct 15 15:42:07 2013
+@@ -77,7 +77,7 @@ void setLogLevel(UXServices *pSS, char*user_name)
+     FILE    *fp;
+     char    str[258];
+     char    *p;
+-    fp = fopen ("/etc/cups/cupsd.conf", "r");
++    fp = fopen ("${SYSCONFDIR}/cups/cupsd.conf", "r");
+     if (fp == NULL)
+         return;
+     while (!feof (fp))

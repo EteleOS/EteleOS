@@ -1,0 +1,4 @@
+
+daemon=t22
+
+. /etc/rc.d/rc.subr

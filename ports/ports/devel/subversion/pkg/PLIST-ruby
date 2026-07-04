@@ -1,0 +1,47 @@
+@pkgpath devel/subversion,-ruby,gnome_keyring
+@static-lib lib/libsvn_swig_ruby${MODRUBY_BINREV}-1.a
+lib/libsvn_swig_ruby${MODRUBY_BINREV}-1.la
+@lib lib/libsvn_swig_ruby${MODRUBY_BINREV}-1.so.${LIBsvn_swig_ruby${MODRUBY_BINREV}-1_VERSION}
+@comment lib/ruby/
+@comment lib/ruby/site_ruby/
+@comment ${MODRUBY_SITEDIR}/
+${MODRUBY_SITEDIR}/svn/
+${MODRUBY_SITEDIR}/svn/client.rb
+${MODRUBY_SITEDIR}/svn/commit-mailer.rb
+${MODRUBY_SITEDIR}/svn/core.rb
+${MODRUBY_SITEDIR}/svn/delta.rb
+${MODRUBY_SITEDIR}/svn/error.rb
+${MODRUBY_SITEDIR}/svn/fs.rb
+${MODRUBY_SITEDIR}/svn/info.rb
+${MODRUBY_SITEDIR}/svn/ra.rb
+${MODRUBY_SITEDIR}/svn/repos.rb
+${MODRUBY_SITEDIR}/svn/synchronizer.rb
+${MODRUBY_SITEDIR}/svn/util.rb
+${MODRUBY_SITEDIR}/svn/wc.rb
+@comment ${MODRUBY_SITEARCHDIR}/
+${MODRUBY_SITEARCHDIR}/svn/
+${MODRUBY_SITEARCHDIR}/svn/ext/
+${MODRUBY_SITEARCHDIR}/svn/ext/client.a
+${MODRUBY_SITEARCHDIR}/svn/ext/client.la
+@so ${MODRUBY_SITEARCHDIR}/svn/ext/client.so
+${MODRUBY_SITEARCHDIR}/svn/ext/core.a
+${MODRUBY_SITEARCHDIR}/svn/ext/core.la
+@so ${MODRUBY_SITEARCHDIR}/svn/ext/core.so
+${MODRUBY_SITEARCHDIR}/svn/ext/delta.a
+${MODRUBY_SITEARCHDIR}/svn/ext/delta.la
+@so ${MODRUBY_SITEARCHDIR}/svn/ext/delta.so
+${MODRUBY_SITEARCHDIR}/svn/ext/diff.a
+${MODRUBY_SITEARCHDIR}/svn/ext/diff.la
+@so ${MODRUBY_SITEARCHDIR}/svn/ext/diff.so
+${MODRUBY_SITEARCHDIR}/svn/ext/fs.a
+${MODRUBY_SITEARCHDIR}/svn/ext/fs.la
+@so ${MODRUBY_SITEARCHDIR}/svn/ext/fs.so
+${MODRUBY_SITEARCHDIR}/svn/ext/ra.a
+${MODRUBY_SITEARCHDIR}/svn/ext/ra.la
+@so ${MODRUBY_SITEARCHDIR}/svn/ext/ra.so
+${MODRUBY_SITEARCHDIR}/svn/ext/repos.a
+${MODRUBY_SITEARCHDIR}/svn/ext/repos.la
+@so ${MODRUBY_SITEARCHDIR}/svn/ext/repos.so
+${MODRUBY_SITEARCHDIR}/svn/ext/wc.a
+${MODRUBY_SITEARCHDIR}/svn/ext/wc.la
+@so ${MODRUBY_SITEARCHDIR}/svn/ext/wc.so

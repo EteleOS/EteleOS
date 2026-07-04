@@ -1,0 +1,8 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/icecast"
+daemon_flags="-b -c /var/icecast/icecast.xml"
+
+. /etc/rc.d/rc.subr
+
+rc_cmd $1

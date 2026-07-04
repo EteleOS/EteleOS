@@ -1,0 +1,13 @@
+${P5ARCH}/
+${P5ARCH}/Crypt/
+${P5ARCH}/Crypt/OpenSSL/
+${P5ARCH}/Crypt/OpenSSL/Bignum/
+${P5ARCH}/Crypt/OpenSSL/Bignum.pm
+${P5ARCH}/Crypt/OpenSSL/Bignum/CTX.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Crypt/
+${P5ARCH}/auto/Crypt/OpenSSL/
+${P5ARCH}/auto/Crypt/OpenSSL/Bignum/
+@so ${P5ARCH}/auto/Crypt/OpenSSL/Bignum/Bignum.so
+@man man/man3p/Crypt::OpenSSL::Bignum.3p
+@man man/man3p/Crypt::OpenSSL::Bignum::CTX.3p

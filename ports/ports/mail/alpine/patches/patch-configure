@@ -1,0 +1,19 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -14878,6 +14878,7 @@ fi
+   fi
+ 
+ 
++LIBICONV="$LTLIBICONV"
+ 
+ 
+ 
+@@ -16023,6 +16024,7 @@ $as_echo "$ac_res" >&6; }
+           INCINTL=
+         fi
+ 
++LIBINTL="$LTLIBINTL"
+ 
+ 
+     if test -n "$INTL_MACOSX_LIBS"; then

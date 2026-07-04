@@ -1,0 +1,27 @@
+@newgroup _ocserv:749
+@newuser _ocserv:749:_ocserv::ocserv user:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/ocserv
+@bin bin/occtl
+@bin bin/ocpasswd
+@man man/man8/occtl.8
+@man man/man8/ocpasswd.8
+@man man/man8/ocserv.8
+@bin sbin/ocserv
+@bin sbin/ocserv-worker
+share/examples/ocserv/
+share/examples/ocserv/ocserv-fw
+share/examples/ocserv/profile.xml
+share/examples/ocserv/sample.config
+@mode 750
+@owner root
+@group _ocserv
+@sample ${SYSCONFDIR}/ocserv/
+@mode
+@owner
+@group
+@sample ${SYSCONFDIR}/ocserv/ocserv.conf
+share/examples/ocserv/sample.passwd
+@mode 640
+@owner root
+@group _ocserv
+@sample ${SYSCONFDIR}/ocserv/ocpasswd

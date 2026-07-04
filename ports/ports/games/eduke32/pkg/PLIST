@@ -1,0 +1,27 @@
+@bin bin/eduke32
+@bin bin/mapster32
+@bin bin/voidsw
+share/doc/eduke32/
+share/doc/eduke32/buildlic.txt
+share/doc/eduke32/gpl-2.0.txt
+share/doc/pkg-readmes/${PKGSTEM}
+share/duke3d/SEHELP.HLP
+share/duke3d/STHELP.HLP
+share/duke3d/m32help.hlp
+share/duke3d/names.h
+share/duke3d/tiles.cfg
+share/examples/eduke32/
+share/examples/eduke32/_clipshape0.map
+share/examples/eduke32/a.m32
+share/examples/eduke32/aspect.map
+share/examples/eduke32/dump_used_assets.m32
+share/examples/eduke32/m32script_ex.map
+share/examples/eduke32/r_usenewshading.map
+share/examples/eduke32/ror.map
+share/examples/eduke32/splitscr.con
+share/examples/eduke32/spriteclip.txt
+share/examples/eduke32/startpos.m32
+share/examples/eduke32/test_tileoffsets.map
+share/examples/eduke32/tests.m32
+share/examples/eduke32/trueror1.map
+share/examples/eduke32/weapons.sample.con

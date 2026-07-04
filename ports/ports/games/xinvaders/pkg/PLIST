@@ -1,0 +1,14 @@
+@mode g+s
+@group games
+@bin bin/xinvaders
+@mode
+@group
+@man man/man6/xinvaders.6
+share/examples/xinvaders/
+@mode 660
+@group games
+share/examples/xinvaders/xinvaders.scores
+@sample /var/games/xinvaders.scores
+@mode
+@group
+share/locale/es/LC_MESSAGES/xinvaders.mo

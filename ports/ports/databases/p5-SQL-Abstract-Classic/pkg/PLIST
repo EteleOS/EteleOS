@@ -1,0 +1,4 @@
+${P5SITE}/SQL/Abstract/Classic.pm
+${P5SITE}/SQL/Abstract/Util.pm
+@man man/man3p/SQL::Abstract::Classic.3p
+@man man/man3p/SQL::Abstract::Util.3p

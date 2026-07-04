@@ -1,0 +1,22 @@
+Disable Rust backtraces for tests
+
+Index: tests/testsuite/preprocessor.rs
+--- tests/testsuite/preprocessor.rs.orig
++++ tests/testsuite/preprocessor.rs
+@@ -6,6 +6,7 @@ use anyhow::Result;
+ use mdbook_core::book::{Book, BookItem, Chapter};
+ use mdbook_driver::builtin_preprocessors::CmdPreprocessor;
+ use mdbook_preprocessor::{Preprocessor, PreprocessorContext};
++use std::env;
+ use snapbox::IntoData;
+ use std::sync::{Arc, Mutex};
+ 
+@@ -74,6 +75,8 @@ fn nop_preprocessor() {
+ // Failing preprocessor generates an error.
+ #[test]
+ fn failing_preprocessor() {
++    unsafe { env::set_var("RUST_BACKTRACE", "0"); }
++
+     BookTest::from_dir("preprocessor/failing_preprocessor").run("build", |cmd| {
+         cmd.expect_failure()
+             .expect_stdout(str![[""]])

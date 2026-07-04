@@ -1,0 +1,14 @@
+Disable NOTZ_TIMEZONE, it breaks in Europe/London during winter time.
+
+Index: lib/Class/Date.pm
+--- lib/Class/Date.pm.orig
++++ lib/Class/Date.pm
+@@ -47,7 +47,7 @@ $DATE_FORMAT="%Y-%m-%d %H:%M:%S";
+ 
+ sub _set_tz { my ($tz) = @_;
+     my $lasttz = $ENV{TZ};
+-    if (!defined $tz || $tz eq $NOTZ_TIMEZONE) {
++    if (!defined $tz) {
+         # warn "_set_tz: deleting TZ\n";
+         delete $ENV{TZ};
+         Env::C::unsetenv('TZ') if exists $INC{"Env/C.pm"};

@@ -1,0 +1,13 @@
+Index: src/Makefile
+--- src/Makefile.orig
++++ src/Makefile
+@@ -61,7 +61,8 @@ all: $(ALL)
+ dasm: $(OBJS)
+ 	$(CC) $(OBJS) -o dasm $(LDFLAGS)
+ 
+-ftohex: ftohex.o
++ftohex:
++	$(CC) ftohex.c -o ftohex $(LDFLAGS)
+ 
+ obj: $(OBJS)
+ 

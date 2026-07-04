@@ -1,0 +1,24 @@
+@bin bin/construct_mohawk
+@bin bin/create_sjisfnt
+@bin bin/decine
+@bin bin/degob
+@bin bin/dekyra
+@bin bin/deprince
+@bin bin/descumm
+@bin bin/desword2
+@bin bin/detwine
+@bin bin/extract_gob_cdi
+@bin bin/extract_hadesch
+@bin bin/extract_lokalizator
+@bin bin/extract_mohawk
+@bin bin/extract_ngi
+@bin bin/gob_loadcalc
+@bin bin/msn_convert_mod
+@bin bin/scummvm-tools
+@bin bin/scummvm-tools-cli
+share/doc/scummvm-tools/
+share/doc/scummvm-tools/README
+share/scummvm-tools/
+share/scummvm-tools/detaillogo.jpg
+share/scummvm-tools/logo.jpg
+share/scummvm-tools/tile.gif

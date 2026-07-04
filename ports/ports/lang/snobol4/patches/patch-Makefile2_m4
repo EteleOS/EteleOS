@@ -1,0 +1,16 @@
+Index: Makefile2.m4
+--- Makefile2.m4.orig
++++ Makefile2.m4
+@@ -748,9 +748,9 @@ install_notiming: build_all
+ 	$(INSTALL) sdb $(BINDIR)/sdb-$(VERS)
+ 	$(INSTALL) snopea $(BINDIR)/snopea-$(VERS)
+ 	rm -f $(BINDIR)/snobol4 $(BINDIR)/sdb $(BINDIR)/snopea
+-	cd $(BINDIR) && ln -s snobol4-$(VERS) snobol4
+-	cd $(BINDIR) && ln -s sdb-$(VERS) sdb
+-	cd $(BINDIR) && ln -s snopea-$(VERS) snopea
++	$(INSTALL) $(INSTALL_BIN_FLAGS) snobol4 $(BINDIR)/snobol4
++	$(INSTALL) sdb $(BINDIR)/sdb
++	$(INSTALL) snopea $(BINDIR)/snopea
+ 	$(INSTALL) -d $(MAN1DIR)
+ 	INSTALL_MAN_PAGES(.,1)
+ 	INSTALL_MAN_PAGES(doc,1)

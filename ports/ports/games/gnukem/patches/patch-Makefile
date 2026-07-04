@@ -1,0 +1,55 @@
+Fix up Makefile.
+
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -22,20 +22,20 @@ VERSION  = v$(V_NUM) - $(V_DATE)
+ 
+ # paths
+ PREFIX   = /usr/local
+-DATA_DIR = $(PREFIX)/share/games/$(BIN)/# the trailing slash is required for paths in the source
++DATA_DIR = $(PREFIX)/share/$(BIN)/# the trailing slash is required for paths in the source
+ 
+ LIBS    = `sdl2-config --libs` -lSDL2_mixer
+ LDFLAGS = $(LIBS)
+ 
+ CPPFLAGS = -DDATA_DIR=\"$(DATA_DIR)\" -DVERSION=\"'$(VERSION)'\"
+ 
+-CXX = g++
++CXX ?= g++
+ 
+ OBJ = $(shell find src -iname '*.cpp' -type f | sed 's/\.cpp$$/.o/')
+ 
+ # debug
+ #CXXFLAGS = -ggdb -DDEBUG -std=c++14 -Wall `sdl2-config --cflags` $(CPPFLAGS)
+-CXXFLAGS = -O2 -std=c++14 -Wall `sdl2-config --cflags` $(CPPFLAGS)
++CXXFLAGS += $(FLAGS) -std=c++14 -Wall `sdl2-config --cflags` $(CPPFLAGS)
+ 
+ all: options davegnukem
+ 
+@@ -64,9 +64,9 @@ dist: clean
+ 
+ install: 
+ 	# binary
+-	mkdir -p $(DESTDIR)$(PREFIX)/games
+-	cp -f $(BIN) $(DESTDIR)$(PREFIX)/games
+-	chmod 755 $(DESTDIR)$(PREFIX)/games/$(BIN)
++	mkdir -p $(DESTDIR)$(PREFIX)/bin
++	cp -f $(BIN) $(DESTDIR)$(PREFIX)/bin
++	chmod 755 $(DESTDIR)$(PREFIX)/bin/$(BIN)
+ 	# data
+ 	mkdir -p $(DESTDIR)$(DATA_DIR)
+ 	cp -fR data/* $(DESTDIR)$(DATA_DIR)
+@@ -91,9 +91,9 @@ install: 
+ 	cp -f debian/icons/hicolor/32x32/apps/$(BIN).png $(DESTDIR)$(PREFIX)/share/icons/hicolor/32x32/apps
+ 	chmod 644 $(DESTDIR)$(PREFIX)/share/icons/hicolor/32x32/apps/$(BIN).png
+ 	# manual page
+-	mkdir -p $(DESTDIR)$(PREFIX)/share/man/man6
+-	sed 's/VERSION/$(VERSION)/' < debian/$(BIN).6 > $(DESTDIR)$(PREFIX)/share/man/man6/$(BIN).6
+-	chmod 644 $(DESTDIR)$(PREFIX)/share/man/man6/$(BIN).6
++	mkdir -p $(DESTDIR)$(PREFIX)/man/man6
++	sed 's/VERSION/$(VERSION)/' < debian/$(BIN).6 > $(DESTDIR)$(PREFIX)/man/man6/$(BIN).6
++	chmod 644 $(DESTDIR)$(PREFIX)/man/man6/$(BIN).6
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(PREFIX)/games/$(BIN) 

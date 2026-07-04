@@ -1,0 +1,5 @@
+Cntlm is an NTLM, NTLM2SR, and NTLMv2 authenticating HTTP proxy.
+It stands between user's applications and the corporate proxy,
+adding NTLM authentication on-the-fly. Cntlm supports multiple
+parent proxies and all authenticated connections are cached and
+reused to achieve high efficiency.

@@ -1,0 +1,11 @@
++-----------------------------------------------------------------------
+| Running ${FULLPKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+In order to play the game you need original data from
+"UFO: Enemy Unknown" / "X-Com: UFO Defense".
+For a system wide installation you can copy them to:
+    ${PREFIX}/share/openxcom/data/
+
+For a user specific installation you can copy them under:
+    ~/.local/share/openxcom/data/

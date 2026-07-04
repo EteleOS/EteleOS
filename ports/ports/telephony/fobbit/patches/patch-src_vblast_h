@@ -1,0 +1,60 @@
+Index: src/vblast.h
+--- src/vblast.h.orig
++++ src/vblast.h
+@@ -20,7 +20,7 @@
+ #endif
+ #endif
+ 
+-#ifdef __NetBSD__
++#if defined(__NetBSD__) || defined(__OpenBSD__)
+ # define VB_IS_UNIX    1
+ # define USE_SIN_LEN   1
+ # define USE_UGEN      1
+@@ -46,12 +46,9 @@
+ # include <sys/types.h>
+ # include <errno.h>
+ # include <string.h>
+-#ifdef __FreeBSD__
++# include <limits.h>
+ # include <stdlib.h>
+-# include <machine/limits.h>
+-#else
+-# include <malloc.h>
+-#endif
++# include <unistd.h>
+ # include <sys/select.h>
+ # include <sys/socket.h>
+ # include <netinet/in.h>
+@@ -334,16 +331,16 @@ typedef struct
+ // for <main.c>
+ extern SOCKET create_socket(int type, int port, unsigned long net_address);
+ // Crypto
+-unsigned char mykey[20],chksum[20],chksumasc[41];
+-unsigned char tempBN[128];
+-unsigned char myXhex[262];
+-int use_crypt;
++extern unsigned char mykey[20],chksum[20],chksumasc[41];
++extern unsigned char tempBN[128];
++extern unsigned char myXhex[262];
++extern int use_crypt;
+ typedef unsigned short *Bignum;
+ 
+ // Diffie-Hellman vars
+-Bignum myE;
+-Bignum peerE;
+-Bignum ourK;
++extern Bignum myE;
++extern Bignum peerE;
++extern Bignum ourK;
+ 
+ // for <util.c>
+ extern char *Show_Error(void);
+@@ -503,7 +500,7 @@ Bignum biggcd(Bignum av, Bignum bv);
+ Bignum modinv(Bignum number, Bignum modulus);
+ char *bignum_decimal(Bignum x);
+ 
+-Bignum One;
++extern Bignum One;
+ int ssh1_bignum_length(Bignum bn);
+ int ssh1_write_bignum(void *data, Bignum bn);
+ int ssh1_read_bignum(unsigned char *data, Bignum * result);

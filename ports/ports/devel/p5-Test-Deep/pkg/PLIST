@@ -1,0 +1,89 @@
+${P5SITE}/Test/
+${P5SITE}/Test/Deep/
+${P5SITE}/Test/Deep.pm
+${P5SITE}/Test/Deep/All.pm
+${P5SITE}/Test/Deep/Any.pm
+${P5SITE}/Test/Deep/Array.pm
+${P5SITE}/Test/Deep/ArrayEach.pm
+${P5SITE}/Test/Deep/ArrayElementsOnly.pm
+${P5SITE}/Test/Deep/ArrayLength.pm
+${P5SITE}/Test/Deep/ArrayLengthOnly.pm
+${P5SITE}/Test/Deep/Blessed.pm
+${P5SITE}/Test/Deep/Boolean.pm
+${P5SITE}/Test/Deep/Cache/
+${P5SITE}/Test/Deep/Cache.pm
+${P5SITE}/Test/Deep/Cache/Simple.pm
+${P5SITE}/Test/Deep/Class.pm
+${P5SITE}/Test/Deep/Cmp.pm
+${P5SITE}/Test/Deep/Code.pm
+${P5SITE}/Test/Deep/Hash.pm
+${P5SITE}/Test/Deep/HashEach.pm
+${P5SITE}/Test/Deep/HashElements.pm
+${P5SITE}/Test/Deep/HashKeys.pm
+${P5SITE}/Test/Deep/HashKeysOnly.pm
+${P5SITE}/Test/Deep/Ignore.pm
+${P5SITE}/Test/Deep/Isa.pm
+${P5SITE}/Test/Deep/ListMethods.pm
+${P5SITE}/Test/Deep/MM.pm
+${P5SITE}/Test/Deep/Methods.pm
+${P5SITE}/Test/Deep/NoTest.pm
+${P5SITE}/Test/Deep/None.pm
+${P5SITE}/Test/Deep/Number.pm
+${P5SITE}/Test/Deep/Obj.pm
+${P5SITE}/Test/Deep/Ref.pm
+${P5SITE}/Test/Deep/RefType.pm
+${P5SITE}/Test/Deep/Regexp.pm
+${P5SITE}/Test/Deep/RegexpMatches.pm
+${P5SITE}/Test/Deep/RegexpOnly.pm
+${P5SITE}/Test/Deep/RegexpRef.pm
+${P5SITE}/Test/Deep/RegexpRefOnly.pm
+${P5SITE}/Test/Deep/RegexpVersion.pm
+${P5SITE}/Test/Deep/ScalarRef.pm
+${P5SITE}/Test/Deep/ScalarRefOnly.pm
+${P5SITE}/Test/Deep/Set.pm
+${P5SITE}/Test/Deep/Shallow.pm
+${P5SITE}/Test/Deep/Stack.pm
+${P5SITE}/Test/Deep/String.pm
+@man man/man3p/Test::Deep.3p
+@man man/man3p/Test::Deep::All.3p
+@man man/man3p/Test::Deep::Any.3p
+@man man/man3p/Test::Deep::Array.3p
+@man man/man3p/Test::Deep::ArrayEach.3p
+@man man/man3p/Test::Deep::ArrayElementsOnly.3p
+@man man/man3p/Test::Deep::ArrayLength.3p
+@man man/man3p/Test::Deep::ArrayLengthOnly.3p
+@man man/man3p/Test::Deep::Blessed.3p
+@man man/man3p/Test::Deep::Boolean.3p
+@man man/man3p/Test::Deep::Cache.3p
+@man man/man3p/Test::Deep::Cache::Simple.3p
+@man man/man3p/Test::Deep::Class.3p
+@man man/man3p/Test::Deep::Cmp.3p
+@man man/man3p/Test::Deep::Code.3p
+@man man/man3p/Test::Deep::Hash.3p
+@man man/man3p/Test::Deep::HashEach.3p
+@man man/man3p/Test::Deep::HashElements.3p
+@man man/man3p/Test::Deep::HashKeys.3p
+@man man/man3p/Test::Deep::HashKeysOnly.3p
+@man man/man3p/Test::Deep::Ignore.3p
+@man man/man3p/Test::Deep::Isa.3p
+@man man/man3p/Test::Deep::ListMethods.3p
+@man man/man3p/Test::Deep::MM.3p
+@man man/man3p/Test::Deep::Methods.3p
+@man man/man3p/Test::Deep::NoTest.3p
+@man man/man3p/Test::Deep::None.3p
+@man man/man3p/Test::Deep::Number.3p
+@man man/man3p/Test::Deep::Obj.3p
+@man man/man3p/Test::Deep::Ref.3p
+@man man/man3p/Test::Deep::RefType.3p
+@man man/man3p/Test::Deep::Regexp.3p
+@man man/man3p/Test::Deep::RegexpMatches.3p
+@man man/man3p/Test::Deep::RegexpOnly.3p
+@man man/man3p/Test::Deep::RegexpRef.3p
+@man man/man3p/Test::Deep::RegexpRefOnly.3p
+@man man/man3p/Test::Deep::RegexpVersion.3p
+@man man/man3p/Test::Deep::ScalarRef.3p
+@man man/man3p/Test::Deep::ScalarRefOnly.3p
+@man man/man3p/Test::Deep::Set.3p
+@man man/man3p/Test::Deep::Shallow.3p
+@man man/man3p/Test::Deep::Stack.3p
+@man man/man3p/Test::Deep::String.3p

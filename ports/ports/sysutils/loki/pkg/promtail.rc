@@ -1,0 +1,12 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/promtail"
+daemon_user="_loki"
+daemon_flags="-config.file ${SYSCONFDIR}/promtail/promtail-config.yaml"
+
+. /etc/rc.d/rc.subr
+
+rc_bg=YES
+rc_reload=NO
+
+rc_cmd $1

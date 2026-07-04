@@ -1,0 +1,15 @@
+--- BSDmakefile.orig	Mon Oct  6 00:56:25 2008
++++ BSDmakefile	Tue Jul  5 00:24:59 2011
+@@ -39,10 +39,10 @@ SRCS= announce.c bencode.c buf.c ctl_server.c network.
+ OBJS= ${SRCS:N*.h:N*.sh:R:S/$/.o/g}
+ MAN= unworkable.1
+ 
+-all: ${PROG} unworkable.cat1
++all: ${PROG} ${MAN}
+ 
+ ${PROG}: libunworkable.a main.o
+-	${CC} -o ${.TARGET} ${LDFLAGS} -levent -lcrypto main.o -lunworkable
++	${CC} -o ${.TARGET} main.o ${LDFLAGS} -levent -lcrypto -lunworkable
+ 
+ libunworkable.a: ${OBJS}
+ 	ar rcs libunworkable.a ${OBJS}

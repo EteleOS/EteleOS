@@ -1,0 +1,7 @@
+include/serf-1/
+include/serf-1/serf.h
+include/serf-1/serf_bucket_types.h
+include/serf-1/serf_bucket_util.h
+@static-lib lib/libserf-1.a
+@lib lib/libserf-1.so.${LIBserf-1_VERSION}
+lib/pkgconfig/serf-1.pc

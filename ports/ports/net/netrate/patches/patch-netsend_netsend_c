@@ -1,0 +1,11 @@
+--- netsend/netsend.c.orig	Fri Sep  4 16:45:56 2015
++++ netsend/netsend.c	Fri Sep  4 16:47:14 2015
+@@ -43,6 +43,8 @@
+ 
+ #include <netdb.h>
+ 
++#include "../netrate_be32.h"
++
+ /* program arguments */
+ struct _a {
+ 	int s;

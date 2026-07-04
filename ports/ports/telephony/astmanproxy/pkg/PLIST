@@ -1,0 +1,26 @@
+@newgroup _astmanproxy:640
+@newuser _astmanproxy:640:_astmanproxy::asterisk management proxy user:/nonexistent:/sbin/nologin
+lib/astmanproxy/
+lib/astmanproxy/modules/
+@so lib/astmanproxy/modules/csv.so
+@so lib/astmanproxy/modules/http.so
+@so lib/astmanproxy/modules/standard.so
+@so lib/astmanproxy/modules/xml.so
+@bin sbin/astmanproxy
+share/doc/astmanproxy/
+share/doc/astmanproxy/README
+share/doc/astmanproxy/README.csv
+share/doc/astmanproxy/README.http
+share/doc/astmanproxy/README.standard
+share/doc/astmanproxy/README.xml
+share/examples/astmanproxy/
+@sample ${SYSCONFDIR}/astmanproxy/
+share/examples/astmanproxy/astmanproxy.conf
+@sample ${SYSCONFDIR}/astmanproxy/astmanproxy.conf
+share/examples/astmanproxy/astmanproxy.users
+@sample ${SYSCONFDIR}/astmanproxy/astmanproxy.users
+share/examples/astmanproxy/proxy-ssl.conf
+@sample ${SYSCONFDIR}/astmanproxy/proxy-ssl.conf
+@owner _astmanproxy
+@group _astmanproxy
+@sample /var/log/astmanproxy/

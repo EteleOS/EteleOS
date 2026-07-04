@@ -1,0 +1,23 @@
+Allow compilation without libtirpc-devel (disables XDR and V3D support).
+https://github.com/vectorgraphics/asymptote/commit/3e1e10f75af1d549c40320c57763690c08b22c62
+
+Index: fileio.cc
+--- fileio.cc.orig
++++ fileio.cc
+@@ -425,6 +425,8 @@ void iofile::writeline()
+   if(errorstream::interrupt) throw interrupted();
+ }
+ 
++#if HAVE_LIBTIRPC
++
+ void igzxfile::open()
+ {
+   name=locatefile(inpath(name));
+@@ -451,5 +453,7 @@ void igzxfile::closeFile()
+     processData().ixfile.remove(index);
+   }
+ }
++
++#endif
+ 
+ } // namespace camp

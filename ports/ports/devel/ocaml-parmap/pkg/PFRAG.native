@@ -1,0 +1,8 @@
+%%dynlink%%
+lib/ocaml/parmap/bytearray.cmx
+lib/ocaml/parmap/myocamlbuild.cmx
+lib/ocaml/parmap/parmap.a
+lib/ocaml/parmap/parmap.cmx
+lib/ocaml/parmap/parmap.cmxa
+lib/ocaml/parmap/parmap_utils.cmx
+lib/ocaml/parmap/setcore.cmx

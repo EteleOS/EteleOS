@@ -1,0 +1,8 @@
+@bin bin/cgflookup
+@bin bin/flookup
+@bin bin/foma
+include/fomalib.h
+include/fomalibconf.h
+@static-lib lib/libfoma.a
+@lib lib/libfoma.so.${LIBfoma_VERSION}
+lib/pkgconfig/libfoma.pc

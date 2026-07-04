@@ -1,0 +1,12 @@
+Index: src/tk/tkerror.c
+--- src/tk/tkerror.c.orig
++++ src/tk/tkerror.c
+@@ -23,7 +23,7 @@ static char rcsid[] = "$Header: /user6/ouster/wish/RCS
+ #include "tkconfig.h"
+ #include "tkint.h"
+ 
+-static initialized = 0;
++static int initialized = 0;
+ 
+ /*
+  * Forward references to procedures declared later in this file:

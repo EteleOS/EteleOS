@@ -1,0 +1,14 @@
+--- setup.py.orig	Fri Jul  9 09:26:38 2021
++++ setup.py	Fri Jul  9 09:28:08 2021
+@@ -30,7 +30,10 @@
+     url="http://www.schwarzvogel.de/software-pymetar.shtml",
+     packages=setuptools.find_packages(),
+     py_modules=["pymetar"],
+-    scripts=["bin/pymetar"],
++    scripts=["bin/pymet"],
++    data_files=[("share/doc/py-metar",
++                ['README.md', 'COPYING', 'THANKS']),
++                ("man/man1", ['pymetar.1'])],
+     classifiers=(
+     "Programming Language :: Python :: 3",
+     "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)", 

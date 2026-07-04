@@ -1,0 +1,21 @@
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -141,6 +141,8 @@ if(LINKER_SUPPORTS_WLASNEEDED)
+         SET(EXTRA_LINKER_FLAGS "-Wl,--as-needed")
+ endif()
+ 
++SET(EXTRA_LINKER_FLAGS "-L/usr/lib")
++
+ set(CMAKE_REQUIRED_FLAGS)
+ 
+ # Check if we have some standard functions.
+@@ -345,7 +347,7 @@ file (GLOB_RECURSE all_headers ${CMAKE_CURRENT_LIST_DI
+ add_custom_target (all_placeholder SOURCES ${all_headers})
+ 
+ if (POD2MAN)
+-  set (MAN_DESTINATION "share/man/man1")
++  set (MAN_DESTINATION "man/man1")
+   if (${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
+     set (MAN_DESTINATION "man/man1")
+   endif()

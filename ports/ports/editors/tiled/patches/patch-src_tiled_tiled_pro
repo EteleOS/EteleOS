@@ -1,0 +1,12 @@
+Index: src/tiled/tiled.pro
+--- src/tiled/tiled.pro.orig
++++ src/tiled/tiled.pro
+@@ -599,7 +599,7 @@ appdatafile.path = $${PREFIX}/share/metainfo/
+ appdatafile.files += ../../org.mapeditor.Tiled.appdata.xml
+ INSTALLS += appdatafile
+ 
+-manpage.path = $${PREFIX}/share/man/man1/
++manpage.path = $${PREFIX}/man/man1/
+ manpage.files += ../../man/tiled.1
+ INSTALLS += manpage
+ 

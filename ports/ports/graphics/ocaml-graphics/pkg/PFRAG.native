@@ -1,0 +1,5 @@
+lib/ocaml/graphics/graphics.a
+lib/ocaml/graphics/graphics.cmx
+lib/ocaml/graphics/graphics.cmxa
+lib/ocaml/graphics/graphics.cmxs
+lib/ocaml/graphics/graphicsX11.cmx

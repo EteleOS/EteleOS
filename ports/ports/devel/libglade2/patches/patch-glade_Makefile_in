@@ -1,0 +1,11 @@
+--- glade/Makefile.in.orig	Tue Mar 17 15:25:37 2009
++++ glade/Makefile.in	Tue Mar 17 16:55:36 2009
+@@ -261,7 +261,7 @@ libglade_2_0_la_SOURCES = \
+   glade-private.h
+ 
+ libglade_2_0_la_LIBADD = $(LIBGLADE_LIBS)
+-libglade_2_0_la_LDFLAGS = -version-info $(LTVERSION) $(export_symbols) -no-undefined
++libglade_2_0_la_LDFLAGS = $(LIBglade-2.0_LTVERSION) $(export_symbols) -no-undefined
+ EXTRA_DIST = $(gladeinclude_HEADERS) \
+ 	glade.def
+ 

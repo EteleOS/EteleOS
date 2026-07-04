@@ -1,0 +1,4 @@
+${P5SITE}/Net/
+${P5SITE}/Net/IP/
+${P5SITE}/Net/IP/Minimal.pm
+@man man/man3p/Net::IP::Minimal.3p

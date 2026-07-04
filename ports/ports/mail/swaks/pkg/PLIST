@@ -1,0 +1,5 @@
+bin/swaks
+@man man/man1/swaks.1
+share/doc/swak/
+share/doc/swak/recipes.txt
+share/doc/swak/ref.txt

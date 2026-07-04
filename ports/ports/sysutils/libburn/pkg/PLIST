@@ -1,0 +1,8 @@
+@bin bin/cdrskin
+include/libburn/
+include/libburn/libburn.h
+@static-lib lib/libburn.a
+lib/libburn.la
+@lib lib/libburn.so.${LIBburn_VERSION}
+lib/pkgconfig/libburn-1.pc
+@man man/man1/cdrskin.1

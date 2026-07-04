@@ -1,0 +1,12 @@
+@bin bin/t1ascii
+@bin bin/t1asm
+@bin bin/t1binary
+@bin bin/t1disasm
+@bin bin/t1mac
+@bin bin/t1unmac
+@man man/man1/t1ascii.1
+@man man/man1/t1asm.1
+@man man/man1/t1binary.1
+@man man/man1/t1disasm.1
+@man man/man1/t1mac.1
+@man man/man1/t1unmac.1

@@ -1,0 +1,29 @@
+--- Makefile.in.orig	Tue Jul 12 02:35:20 2011
++++ Makefile.in	Fri Jul 15 11:17:52 2011
+@@ -793,12 +793,12 @@
+ 	mkdir -p $(DESTDIR)@sysconfdir@/xdg/surfraw
+ 	cp surfraw.conf $(DESTDIR)@sysconfdir@/xdg/surfraw/conf
+ 	cp $(top_srcdir)/surfraw.bookmarks $(DESTDIR)@sysconfdir@/xdg/surfraw/bookmarks
+-	while read target link ;\
+-	do \
+-		ln -sf $$target  $(DESTDIR)/$$link ;\
+-	done < links
++#	while read target link ;\
++#	do \
++#		ln -sf $$target  $(DESTDIR)/$$link ;\
++#	done < links
+ @INSTALLSR_TRUE@	ln -sf surfraw $(DESTDIR)/@bindir@/sr
+-@INSTALLSR_TRUE@	ln -sf surfraw.1.gz $(DESTDIR)/@mandir@/man1/sr.1.gz
++# @INSTALLSR_TRUE@	ln -sf surfraw.1.gz $(DESTDIR)/@mandir@/man1/sr.1.gz
+ 
+ uninstall-local: links
+ 	-rm -f $(DESTDIR)@sysconfdir@/xdg/surfraw/conf
+@@ -816,7 +816,7 @@
+ 	mail -s add LSM@qqx.org < $?
+ 
+ test: all surfraw.conf
+-	make -C test test
++	${MAKE} -C test test
+ 
+ .PHONY: test
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.

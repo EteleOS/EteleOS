@@ -1,0 +1,13 @@
+RenderSystems are shared modules, not shared libraries
+
+--- RenderSystems/CMakeLists.txt.orig	Sun Dec  1 18:28:12 2013
++++ RenderSystems/CMakeLists.txt	Sun Mar 23 13:31:15 2014
+@@ -9,6 +9,8 @@
+ 
+ # Configure RenderSystem build
+ 
++set(OGRE_LIB_TYPE MODULE)
++
+ if (OGRE_BUILD_RENDERSYSTEM_D3D9)
+   if (NOT DirectX9_FOUND)
+     MESSAGE(STATUS "Could not find dependency: DirectX")

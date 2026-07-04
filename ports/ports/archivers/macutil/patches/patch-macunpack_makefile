@@ -1,0 +1,8 @@
+--- macunpack/makefile.orig	Fri Oct 25 17:28:47 2002
++++ macunpack/makefile	Fri Oct 25 17:29:12 2002
+@@ -1,4 +1,4 @@
+-CFLAGS = -O $(CF)
++CFLAGS = $(CF)
+ 
+ SRCS =	macunpack.c \
+ 	globals.c \

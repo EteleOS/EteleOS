@@ -1,0 +1,13 @@
+Index: src/ou/malloc.cpp
+--- src/ou/malloc.cpp.orig
++++ src/ou/malloc.cpp
+@@ -29,7 +29,8 @@
+ #include <ou/customization.h>
+ #include <ou/macros.h>
+ 
+-#if _OU_TARGET_OS == _OU_TARGET_OS_MAC || _OU_TARGET_OS == _OU_TARGET_OS_IOS
++#if _OU_TARGET_OS == _OU_TARGET_OS_MAC || _OU_TARGET_OS == _OU_TARGET_OS_IOS \
++	|| defined(__OpenBSD__)
+ 
+ #include <stdlib.h>
+ 

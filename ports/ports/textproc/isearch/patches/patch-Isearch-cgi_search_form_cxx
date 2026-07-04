@@ -1,0 +1,12 @@
+Index: Isearch-cgi/search_form.cxx
+--- Isearch-cgi/search_form.cxx.orig
++++ Isearch-cgi/search_form.cxx
+@@ -40,7 +40,7 @@ Description:    CGI app that builds a search html form
+ Author:         Kevin Gamiel, kgamiel@cnidr.org
+ @@@*/
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include "gdt.h"
+ #include <stdio.h>
+ #include <sys/types.h>

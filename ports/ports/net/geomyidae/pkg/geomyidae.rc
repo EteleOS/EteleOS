@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/geomyidae"
+daemon_flags="-l /var/log/geomyidae.log -u _geomyidae -g _geomyidae"
+
+. /etc/rc.d/rc.subr
+
+pexp="${daemon} .*"
+
+rc_cmd $1

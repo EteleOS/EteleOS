@@ -1,0 +1,11 @@
+Don't install demo script that needs additional files to be installed.
+
+--- Makefile.PL.orig	Wed Dec 14 15:16:58 2011
++++ Makefile.PL	Wed Dec 14 15:17:02 2011
+@@ -4,6 +4,5 @@ use ExtUtils::MakeMaker;
+ WriteMakefile(
+     'NAME'	=> 'PostScript::MailLabels',
+     'VERSION_FROM' => "lib/PostScript/MailLabels.pm", 
+-	EXE_FILES => [qw(demo/print_addrs)],
+     'LICENSE'		=> 'perl',
+ );

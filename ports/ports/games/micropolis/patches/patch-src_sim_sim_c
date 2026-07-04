@@ -1,0 +1,81 @@
+Index: src/sim/sim.c
+--- src/sim/sim.c.orig
++++ src/sim/sim.c
+@@ -96,7 +96,13 @@ char *Displays = NULL;
+ char *FirstDisplay = NULL;
+ int ExitReturn = 0;
+ 
++void sim_update_evaluations(void);
++void sim_update_budgets(void);
++void sim_update_maps(void);
++void sim_update_graphs(void);
++void signal_init(void);
+ 
++void
+ sim_exit(int val)
+ {
+   tkMustExit = 1;
+@@ -104,6 +110,7 @@ sim_exit(int val)
+ }
+ 
+ 
++void
+ sim_really_exit(int val)
+ {
+   DoStopMicropolis();
+@@ -236,6 +243,7 @@ SignalExitHandler()
+ }
+ 
+ 
++void
+ signal_init()
+ {
+   signal(SIGHUP, (void (*)())SignalExitHandler);
+@@ -267,6 +275,7 @@ sim_update()
+ }
+ 
+ 
++void
+ sim_update_editors(void)
+ {
+   SimView *view;
+@@ -285,6 +294,7 @@ sim_update_editors(void)
+ }
+ 
+ 
++void
+ sim_update_maps(void)
+ {
+   SimView *view;
+@@ -319,13 +329,14 @@ sim_update_maps(void)
+ }
+ 
+ 
++void
+ sim_update_graphs(void)
+ {
+   graphDoer();
+ }
+ 
+ 
+-sim_update_budgets(void)
++void sim_update_budgets(void)
+ {
+   if ((sim_skips != 0) &&
+       (sim_skip != 0)) {
+@@ -336,6 +347,7 @@ sim_update_budgets(void)
+ }
+ 
+ 
++void
+ sim_update_evaluations(void)
+ {
+   if ((sim_skips != 0) &&
+@@ -557,6 +569,7 @@ sim_timeout_loop(short doSim)
+ }
+ 
+ 
++void
+ sim_loop(int doSim)
+ {
+ #ifdef CAM

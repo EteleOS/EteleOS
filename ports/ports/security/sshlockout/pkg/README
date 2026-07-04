@@ -1,0 +1,21 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+syslogd(8) children run under the _syslogd user, but sshlockout(8)
+should be run as root in order to modify its pf(4) table.  doas(1) can
+be used to gain back root privileges:
+
+  permit nopass _syslogd as root cmd ${TRUEPREFIX}/sbin/sshlockout
+
+
+When using doas, the following line is required in /etc/syslog.conf:
+
+  auth.info;authpriv.info | exec /usr/bin/doas -n ${TRUEPREFIX}/sbin/sshlockout -pf lockout
+
+
+A rule must be added to /etc/pf.conf in order to block addresses within the
+default lockout table:
+
+  table <lockout> persist
+  block in quick on egress proto tcp from <lockout> to port ssh

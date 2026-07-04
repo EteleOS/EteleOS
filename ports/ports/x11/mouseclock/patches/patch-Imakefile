@@ -1,0 +1,13 @@
+--- Imakefile.orig	Wed May 17 18:05:42 2000
++++ Imakefile	Wed May 17 18:05:50 2000
+@@ -4,8 +4,8 @@
+ 
+         DEPLIBS = $(DEPXLIB)
+ LOCAL_LIBRARIES = $(XLIB)
+-	CDEBUGFLAGS =
+-	CCOPTIONS = -O3 -s -pipe -Wall
++CDEBUGFLAGS =
++CCOPTIONS = -O3 -s -pipe -Wall
+ 
+ AllTarget(mouseclock)
+ 

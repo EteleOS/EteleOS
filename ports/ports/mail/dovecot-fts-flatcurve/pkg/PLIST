@@ -1,0 +1,4 @@
+include/dovecot-fts-flatcurve/
+include/dovecot-fts-flatcurve/fts-flatcurve-config.h
+@so lib/dovecot/doveadm/lib21_doveadm_fts_flatcurve_plugin.so
+@so lib/dovecot/lib21_fts_flatcurve_plugin.so

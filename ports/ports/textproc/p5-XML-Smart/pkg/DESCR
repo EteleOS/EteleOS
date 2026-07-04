@@ -1,0 +1,5 @@
+This module provides an easy way to access/create XML data. It's based
+on a HASH tree created from the XML data, and enables dynamic access to
+it through the standard Perl syntax for Hash and Array, without
+necessarily caring about which you are working with. In other words,
+each point in the tree works as a Hash and an Array at the same time!

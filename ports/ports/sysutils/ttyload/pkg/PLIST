@@ -1,0 +1,2 @@
+@bin bin/ttyload
+@man man/man1/ttyload.1

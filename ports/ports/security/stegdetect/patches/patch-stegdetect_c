@@ -1,0 +1,12 @@
+Index: stegdetect.c
+--- stegdetect.c.orig
++++ stegdetect.c
+@@ -1046,7 +1046,7 @@ detect_print(void)
+ 		}
+ 	}
+  done:
+-	fprintf(stdout, " %s(%d)<[%s][", what,
++	fprintf(stdout, " %s(%zu)<[%s][", what,
+ 	    buflen, is_random(buf, buflen) ? "random" : "nonrandom");
+ 	noprint = 0;
+ 	/* Prints to stdout */

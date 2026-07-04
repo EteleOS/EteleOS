@@ -1,0 +1,50 @@
+--- src/Makefile.in.orig	Mon Dec 14 03:12:55 2009
++++ src/Makefile.in	Sun Sep 12 11:46:15 2010
+@@ -227,10 +227,11 @@ distclean: clean
+ install_data_directories:
+ 	$(MKINSDIR) $(DEST_MAN_DIR)
+ 	$(MKINSDIR) $(DEST_JED_ROOT)
+-	$(MKINSDIR) $(DEST_JED_ROOT)/doc
+-	$(MKINSDIR) $(DEST_JED_ROOT)/doc/txt
+-	$(MKINSDIR) $(DEST_JED_ROOT)/doc/hlp
+-	$(MKINSDIR) $(DEST_JED_ROOT)/doc/manual
++	$(MKINSDIR) $(DEST_JED_ROOT)/bin
++	$(MKINSDIR) $(DESTDIR)${prefix}/share/doc/jed
++	$(MKINSDIR) $(DESTDIR)${prefix}/share/doc/jed/txt
++	$(MKINSDIR) $(DESTDIR)${prefix}/share/doc/jed/hlp
++	$(MKINSDIR) $(DESTDIR)${prefix}/share/doc/jed/manual
+ 	$(MKINSDIR) $(DEST_JED_ROOT)/lib
+ 	$(MKINSDIR) $(DEST_JED_ROOT)/lib/colors
+ 	$(MKINSDIR) $(DEST_JED_ROOT)/lib/colors/Xjed
+@@ -279,23 +280,23 @@ install_data: install_data_directories
+ 	done
+ 	@for i in $(JED_DOC_FILES); \
+ 	do \
+-		$(INSTALL_DATA) $$i $(DEST_JED_ROOT)/doc/; \
+-		echo $(INSTALL_DATA) $$i $(DEST_JED_ROOT)/doc/; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(prefix)/share/doc/jed; \
++		echo $(INSTALL_DATA) $$i $(DESTDIR)$(prefix)/share/doc/jed; \
+ 	done
+ 	@for i in $(JED_DOC_TXT_FILES); \
+ 	do \
+-		$(INSTALL_DATA) $$i $(DEST_JED_ROOT)/doc/txt; \
+-		echo $(INSTALL_DATA) $$i $(DEST_JED_ROOT)/doc/txt; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(prefix)/share/doc/jed/txt; \
++		echo $(INSTALL_DATA) $$i $(DESTDIR)$(prefix)/share/doc/jed/txt; \
+ 	done
+ 	@for i in $(JED_DOC_HLP_FILES); \
+ 	do \
+-		$(INSTALL_DATA) $$i $(DEST_JED_ROOT)/doc/hlp; \
+-		echo $(INSTALL_DATA) $$i $(DEST_JED_ROOT)/doc/hlp; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(prefix)/share/doc/jed/hlp; \
++		echo $(INSTALL_DATA) $$i $(DESTDIR)$(prefix)/share/doc/jed/hlp; \
+ 	done
+ 	@for i in $(JED_DOC_MAN_FILES); \
+ 	do \
+-		$(INSTALL_DATA) $$i $(DEST_JED_ROOT)/doc/manual; \
+-		echo $(INSTALL_DATA) $$i $(DEST_JED_ROOT)/doc/manual; \
++		$(INSTALL_DATA) $$i $(DESTDIR)$(prefix)/share/doc/jed/manual; \
++		echo $(INSTALL_DATA) $$i $(DESTDIR)$(prefix)/share/doc/jed/manual; \
+ 	done
+ #	@for i in $(JED_INFO_FILES); \
+ #	do \

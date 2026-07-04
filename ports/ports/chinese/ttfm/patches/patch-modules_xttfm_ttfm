@@ -1,0 +1,23 @@
+--- modules/xttfm.ttfm.orig	Tue Nov  4 00:08:32 2003
++++ modules/xttfm.ttfm	Mon Mar 30 16:36:08 2015
+@@ -28,7 +28,7 @@ export VERSION; VERSION=0.9.3
+ export PREFIX; PREFIX=/usr/local
+ export X11BASE; X11BASE=/usr/X11R6
+ export PATH; PATH=/bin:/sbin:/usr/bin:/usr/sbin:$PREFIX/bin:$PREFIX/sbin:$X11BASE/bin
+-export TEMPFILE; TEMPFILE="`mktemp /tmp/ttfm.tmpXXX`"
++export TEMPFILE; TEMPFILE="`mktemp /tmp/ttfm.tmp.XXXXXXXXXX`"
+ export DefaultFontPath; DefaultFontPath=$PREFIX/share/fonts/TrueType
+ export XTTFFONTPATH; XTTFFONTPATH="${X11BASE}/lib/X11/fonts/TrueType"
+ export TTFINFOPATH; TTFINFOPATH="${PREFIX}/bin/ttfinfo"
+@@ -108,11 +108,6 @@ remove_fonts()
+         sed -e "/$ALIASPATTERN/d" $XTTFFONTPATH/fonts.alias > $TEMPFILE
+         mv -f $TEMPFILE $XTTFFONTPATH/fonts.alias
+ 
+-        # Remove font files.
+-        # We only remove those fonts in $DefaultFontPath which are symbolic.
+-        filetype=`file "$DefaultFontPath/$targetname" |grep -e "^$DefaultFontPath/$targetname: symbolic link to"`
+-        [ ! "X$filetype" = "X" ] && rm -f "$DefaultFontPath/$targetname"
+-        rm -f "$XTTFFONTPATH/$targetname"
+     done
+ }
+ 

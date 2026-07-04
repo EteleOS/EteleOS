@@ -1,0 +1,11 @@
+--- configure.orig	Thu Oct  9 05:40:11 2014
++++ configure	Thu Oct  9 05:40:23 2014
+@@ -7173,7 +7173,7 @@ fi
+ 		    CC_SEARCH_FLAGS='-Wl,-rpath,${LIB_RUNTIME_DIR}'
+ fi
+ 		LD_SEARCH_FLAGS=${CC_SEARCH_FLAGS}
+-		SHARED_LIB_SUFFIX='${TCL_TRIM_DOTS}.so.${SHLIB_VERSION}'
++		SHARED_LIB_SUFFIX='.so'
+ 		LDFLAGS="-Wl,-export-dynamic"
+ 		;;
+ 	    esac

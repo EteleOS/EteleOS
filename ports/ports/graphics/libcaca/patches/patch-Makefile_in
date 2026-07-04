@@ -1,0 +1,12 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -427,7 +427,7 @@ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/caca -I$(top_builddir)/caca
+ SUBDIRS = kernel caca src examples tools \
+-          cxx caca-sharp python ruby java doc
++          cxx doc
+ 
+ DIST_SUBDIRS = $(SUBDIRS) build
+ EXTRA_DIST = NOTES COPYING.GPL COPYING.ISC COPYING.LGPL bootstrap caca-config.in libcaca.spec libcaca.sln

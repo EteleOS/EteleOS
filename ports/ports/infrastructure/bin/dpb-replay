@@ -1,0 +1,115 @@
+#! /usr/bin/perl
+# ex:ts=8 sw=4:
+# $OpenBSD: dpb-replay,v 1.8 2023/07/06 10:54:18 espie Exp $
+#
+# Copyright (c) 2013 Marc Espie <espie@openbsd.org>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+use v5.36;
+use FindBin;
+
+
+my $ports1;
+BEGIN {
+	$ports1 = $ENV{PORTSDIR} || '/usr/ports';
+}
+use lib ("$ports1/infrastructure/lib", "$FindBin::Bin/../lib");
+use DPB::MiniCurses;
+use OpenBSD::State;
+
+package DPBReplay::State;
+our @ISA = (qw(OpenBSD::State));
+
+sub handle_options($state)
+{
+	$state->SUPER::handle_options('Ccs:e:t:', '[-c] [-s speedup] [-e regexp] [-t ts] file');
+	if ($state->opt('c') || $state->opt('C')) {
+		$state->{color} = 1;
+	}
+	if ($state->opt('e')) {
+		my $e = $state->opt('e');
+		$state->{regexp} = qr{$e};
+	}
+	if ($state->opt('t')) {
+		$state->{ts} = $state->opt('t');
+		if ($state->{ts} !~ m/^\d+$/) {
+			require DPB::ISO8601;
+			$state->{ts} = DPB::ISO8601->string2time($state->{ts}, 
+			    $state);
+		}
+	}
+}
+
+package Term;
+our @ISA = qw(DPB::MiniCurses);
+
+sub new($class, $state)
+{
+	my $self = bless {state => $state}, $class;
+	$self->create_terminal;
+	return $self;
+}
+
+package main;
+use Time::HiRes (qw(time sleep));
+
+my $state = DPBReplay::State->new;
+$state->handle_options;
+
+if (@ARGV == 0) {
+	$state->usage("Missing term-report file");
+}
+
+my $file = shift;
+my $speedup = $state->opt('s') // 10;
+$speedup += 0.0;
+my $term = Term->new($state);
+
+open(my $fh, '<', $file);
+
+my $start_ts;
+my $start_time = time();
+my $msg = '';
+my $display = (defined $state->{regexp} || defined $state->{ts}) ? 0 : 1;
+while(<$fh>) {
+	if (m/^\@\@\@(\d+)$/) {
+		chomp;
+		my $ts = int($1);
+		if (!$display) {
+			if (defined $state->{regexp} && 
+			    $msg =~ m/$state->{regexp}/) {
+				$display = 1;
+			} elsif (defined $state->{ts} &&
+				$ts >= $state->{ts}) {
+				$display = 1;
+		    	}
+		}
+		if ($display) {
+			$start_ts //= $ts;
+
+			my $now = time();
+			my $sleep = ($ts-$start_ts)/$speedup - 
+			    ($now - $start_time);
+			if ($sleep > 0) {
+				sleep($sleep);
+			}
+			my $method = $term->{write};
+			$term->$method($msg);
+			$term->{msg} = $msg;
+		}
+		$msg = '';
+	} else {
+		$msg .= $_;
+	}
+}
+close($fh);

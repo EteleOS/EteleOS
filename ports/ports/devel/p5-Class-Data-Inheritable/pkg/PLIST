@@ -1,0 +1,4 @@
+${P5SITE}/Class/
+${P5SITE}/Class/Data/
+${P5SITE}/Class/Data/Inheritable.pm
+@man man/man3p/Class::Data::Inheritable.3p

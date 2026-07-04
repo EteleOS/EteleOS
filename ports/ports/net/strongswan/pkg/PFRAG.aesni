@@ -1,0 +1,4 @@
+@so lib/ipsec/plugins/libstrongswan-aesni.so
+share/examples/strongswan/strongswan.d/charon/aesni.conf
+share/strongswan/templates/config/plugins/aesni.conf
+@sample ${SYSCONFDIR}/strongswan.d/charon/aesni.conf

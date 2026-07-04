@@ -1,0 +1,3 @@
+@extra ${SYSCONFDIR}/flipit.conf
+@bin bin/flipit
+@man man/man1/flipit.1

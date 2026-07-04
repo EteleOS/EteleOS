@@ -1,0 +1,32 @@
+Index: support/apachectl.in
+--- support/apachectl.in.orig
++++ support/apachectl.in
+@@ -52,7 +52,7 @@ fi
+ # a command that outputs a formatted text version of the HTML at the
+ # url given on the command line.  Designed for lynx, however other
+ # programs may work.  
+-LYNX="@LYNX_PATH@ -dump"
++LYNX="dump_html"
+ #
+ # the URL to your server's mod_status status page.  If you do not
+ # have one, then status and fullstatus will not work.
+@@ -66,6 +66,10 @@ ULIMIT_MAX_FILES="@APACHECTL_ULIMIT@"
+ # --------------------                              --------------------
+ # ||||||||||||||||||||   END CONFIGURATION SECTION  ||||||||||||||||||||
+ 
++dump_html() {
++	ftp -Vo- "$1" | sed 's,<[^>]*>,,g'
++}
++
+ # Set the maximum number of file descriptors allowed per child process.
+ if [ "x$ULIMIT_MAX_FILES" != "x" ] ; then
+     $ULIMIT_MAX_FILES
+@@ -83,7 +87,7 @@ start|stop|restart|graceful|graceful-stop)
+     ;;
+ startssl|sslstart|start-SSL)
+     echo The startssl option is no longer supported.
+-    echo Please edit httpd.conf to include the SSL configuration settings
++    echo Please edit httpd2.conf to include the SSL configuration settings
+     echo and then use "apachectl start".
+     ERROR=2
+     ;;

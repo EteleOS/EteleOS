@@ -1,0 +1,19 @@
+share/texmf-local/
+share/texmf-local/doc/
+share/texmf-local/doc/latex/
+share/texmf-local/doc/latex/foiltex/
+share/texmf-local/doc/latex/foiltex/foiltex.dtx
+share/texmf-local/doc/latex/foiltex/foiltex.dvi
+share/texmf-local/doc/latex/foiltex/sampfoil.tex
+share/texmf-local/tex/
+share/texmf-local/tex/latex/
+share/texmf-local/tex/latex/foiltex/
+share/texmf-local/tex/latex/foiltex/fltfonts.def
+share/texmf-local/tex/latex/foiltex/foil17.clo
+share/texmf-local/tex/latex/foiltex/foil20.clo
+share/texmf-local/tex/latex/foiltex/foil25.clo
+share/texmf-local/tex/latex/foiltex/foil30.clo
+share/texmf-local/tex/latex/foiltex/foils.cls
+share/texmf-local/tex/latex/foiltex/foils.sty
+share/texmf-local/tex/latex/foiltex/foilshrt.clo
+@tag mktexlsr-local

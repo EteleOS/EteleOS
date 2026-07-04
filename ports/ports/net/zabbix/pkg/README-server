@@ -1,0 +1,96 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+NOTE for users updating from version <1.8.6 using a node-based
+distributed setup, see
+    http://www.zabbix.com/rn1.8.6.php
+for improving performance of configuration syncing.
+
+The original documentation is available as a PDF file at
+    ${HOMEPAGE}
+
+A manual is available at:
+    http://www.zabbix.com/documentation/${MAJV}/complete
+
+On OpenBSD, Zabbix is packaged in three parts:
+
+- the agent (in the zabbix-agent package) for installing onto a
+monitored machine. To simplify installation from ports on client
+machines, only this part is built by default.
+
+- the server and proxy (in the database-dependent zabbix-server
+package); this has heavier dependencies and is built by selecting
+the FLAVOR for the database you use (currently mysql, pgsql or sqlite3).
+
+- the web interface to run with the server (in the zabbix-web package).
+
+Before doing anything, you have to adapt the configuration files under
+    ${SYSCONFDIR}/zabbix/
+(make sure your webserver can resolve hostnames; otherwise use IP
+addresses in the configuration files).
+
+On OpenBSD, the default shared memory value is too low for the Zabbix
+Server and Proxy to work properly. You should set kern.shminfo.shmall
+according to your needs ("32768" is a good value for starter) -- see
+sysctl(8) and sysctl.conf(5).
+
+Next you must create the database following the relevant set of
+instructions below. When this is done you can proceed to configure
+through the web interface at http://<hostname>/zabbix/setup.php.
+(default user is 'Admin' with password 'zabbix')
+
+MariaDB (InnoDB)
+================
+
+Connect to MariaDB, and create a user and database for Zabbix;
+
+    $ mysql -u root -p
+    MariaDB [(none)]> create user zabbix@localhost identified by 'password';
+    MariaDB [(none)]> create database zabbix character set utf8mb4 collate utf8mb4_bin;
+    MariaDB [(none)]> grant all privileges on zabbix.* to zabbix@localhost;
+    MariaDB [(none)]> quit
+
+Then initialize the database from the files installed in
+${TRUEPREFIX}/share/examples/zabbix:
+
+    $ cd ${TRUEPREFIX}/share/zabbix-server/schema/mysql
+    $ mysql -uzabbix -p[password] zabbix < schema.sql
+The following steps are not required for setting up a Zabbix Proxy.
+    $ mysql -uzabbix -p[password] zabbix < images.sql
+    $ mysql -uzabbix -p[password] zabbix < data.sql
+
+PostgreSQL
+==========
+
+Assuming you have an administrative account named `postgres',
+you can create the 'zabbix' user and database like this:
+
+    $ createuser -U postgres --pwprompt --no-superuser \
+      --createdb --no-createrole zabbix
+    $ createdb -U zabbix zabbix
+
+And initialize the database:
+
+    $ cd ${TRUEPREFIX}/share/zabbix-server/schema/postgresql
+    $ cat schema.sql | psql -U zabbix zabbix
+The following steps are not required for setting up a Zabbix Proxy.
+    $ cat images.sql | psql -U zabbix zabbix
+    $ cat data.sql | psql -U zabbix zabbix
+
+When using PostgreSQL at least the following sysctl limits need to be set:
+
+    kern.seminfo.semmni=30
+    kern.seminfo.semmns=120
+    kern.shminfo.shmall=524288
+
+SQLite3
+=======
+
+The following steps are optional on a Zabbix Proxy, the database will be
+automatically created and initialized if it does not exist. Note that
+for obvious performance reasons, it is NOT encouraged to use the SQLite
+backend for a server.
+
+    # cd ${TRUEPREFIX}/share/zabbix-proxy/schema/sqlite3
+    # su -m _zabbix -c "sqlite3 /var/db/zabbix/zabbix.db < schema.sql"

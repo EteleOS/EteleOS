@@ -1,0 +1,5 @@
+bin/text2html
+@comment ${P5SITE}/HTML/
+${P5SITE}/HTML/FromText.pm
+@man man/man1/text2html.1
+@man man/man3p/HTML::FromText.3p

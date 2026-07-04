@@ -1,0 +1,11 @@
+Index: src/cvecheck_common.h
+--- src/cvecheck_common.h.orig
++++ src/cvecheck_common.h
+@@ -1,7 +1,6 @@
+ #include <stdio.h>
+ #include <libconfig.h>
+ #include <string.h>
+-#include <bsd/string.h>
+ 
+ #ifdef _USE_SQLITE3
+ #include <sqlite3.h>

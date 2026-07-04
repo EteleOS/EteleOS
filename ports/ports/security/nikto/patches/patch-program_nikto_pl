@@ -1,0 +1,12 @@
+Index: program/nikto.pl
+--- program/nikto.pl.orig
++++ program/nikto.pl
+@@ -364,7 +364,7 @@ sub setup_dirs {
+         $CONFIGFILE{'TEMPLATEDIR'} = "$CONFIGFILE{'EXECDIR'}/templates";
+     }
+     unless (defined $CONFIGFILE{'DOCDIR'}) {
+-        $CONFIGFILE{'DOCDIR'} = "$CONFIGFILE{'EXECDIR'}/docs";
++        $CONFIGFILE{'DOCDIR'} = "$CONFIGFILE{'DOCDIR'}/docs";
+     }
+     unless (defined $CONFIGFILE{'DBDIR'}) {
+         $CONFIGFILE{'DBDIR'} = "$CONFIGFILE{'EXECDIR'}/databases";

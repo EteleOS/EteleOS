@@ -1,0 +1,17 @@
+Index: edit.c
+--- edit.c.orig
++++ edit.c
+@@ -1,4 +1,5 @@
+ #include <stdio.h>
++#include <stdlib.h> /* exit */
+ 
+ #include "constant.h"
+   
+@@ -23,6 +24,7 @@
+   bases, and towns as desired.
+ ******************************************************************************/
+ 
++void
+ edit_board ()
+ {
+   XEvent event;

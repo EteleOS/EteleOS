@@ -1,0 +1,21 @@
+@conflict bacula-server-<7.0.4p2
+@conflict bacula-pgsql-*
+@conflict bacula-mysql-*
+lib/libbaccats-sqlite3.la
+@lib lib/libbaccats-sqlite3.so.${LIBbaccats-sqlite3_VERSION}
+@comment no checksum
+@lib lib/libbaccats.so.${LIBbaccats_VERSION}
+libexec/bacula/
+libexec/bacula/create_sqlite3_database
+libexec/bacula/drop_sqlite3_database
+libexec/bacula/drop_sqlite3_tables
+libexec/bacula/grant_sqlite3_privileges
+libexec/bacula/make_sqlite3_tables
+libexec/bacula/update_sqlite3_tables
+libexec/bacula/updatedb/
+libexec/bacula/updatedb/update_sqlite3_tables
+libexec/bacula/updatedb/update_sqlite3_tables_10_to_11
+libexec/bacula/updatedb/update_sqlite3_tables_11_to_12
+libexec/bacula/updatedb/update_sqlite3_tables_8_to_9
+libexec/bacula/updatedb/update_sqlite3_tables_9_to_10
+@exec cp %D/lib/libbaccats-sqlite3.so.${LIBbaccats-sqlite3_VERSION} %D/lib/libbaccats.so.${LIBbaccats_VERSION}

@@ -1,0 +1,6 @@
+@conflict uim-<1.8.8
+include/gcroots.h
+@static-lib lib/libgcroots.a
+lib/libgcroots.la
+@lib lib/libgcroots.so.${LIBgcroots_VERSION}
+lib/pkgconfig/gcroots.pc

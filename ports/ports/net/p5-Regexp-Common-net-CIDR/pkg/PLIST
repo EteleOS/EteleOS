@@ -1,0 +1,5 @@
+${P5SITE}/Regexp/
+${P5SITE}/Regexp/Common/
+${P5SITE}/Regexp/Common/net/
+${P5SITE}/Regexp/Common/net/CIDR.pm
+@man man/man3p/Regexp::Common::net::CIDR.3p

@@ -1,0 +1,5 @@
+bin/mad
+bin/mcp
+bin/mln
+bin/mmv
+@man man/man1/mmv.1

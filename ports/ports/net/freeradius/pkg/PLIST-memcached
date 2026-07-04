@@ -1,0 +1,2 @@
+@pkgpath net/freeradius3,-memcached
+@so lib/freeradius/rlm_cache_memcached.so

@@ -1,0 +1,3 @@
+include/FreeImage.h
+@static-lib lib/libfreeimage.a
+@lib lib/libfreeimage.so.${LIBfreeimage_VERSION}

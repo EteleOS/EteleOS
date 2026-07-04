@@ -1,0 +1,4 @@
+libexec/smtpd/
+@bin libexec/smtpd/filter-spamassassin
+@man man/man1/filter-spamassassin.1
+share/doc/pkg-readmes/${PKGSTEM}

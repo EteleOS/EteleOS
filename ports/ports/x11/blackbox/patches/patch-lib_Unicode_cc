@@ -1,0 +1,25 @@
+Fixes "skip over" invalid character sequence code inside #else part of
+#ifdef HAVE_GNU_LIBICONV. Looks like a typo.
+
+Append "//TRANSLIT" to iconv conversion, so best effort replacement
+characters will be used when no direct character representation exist.
+
+--- lib/Unicode.cc.orig	Mon Jan  3 01:42:53 2005
++++ lib/Unicode.cc	Tue Jul  9 12:08:50 2013
+@@ -125,7 +125,7 @@ namespace bt {
+             // POSIX compliant iconv(3)
+             inp =
+               reinterpret_cast<char *>
+-              (const_cast<typename _Source::value_type *>(in.data()));
++              (const_cast<typename _Source::value_type *>(in.data())) + off;
+ #endif
+             in_bytes = in_size - off;
+             break;
+@@ -168,6 +168,7 @@ bool bt::hasUnicode() {
+ 
+ #ifdef HAVE_NL_LANGINFO
+   codeset = nl_langinfo(CODESET);
++  codeset += "//TRANSLIT";
+ #else
+   std::string locale = setlocale(LC_CTYPE, 0);
+   std::string::const_iterator it = locale.begin();

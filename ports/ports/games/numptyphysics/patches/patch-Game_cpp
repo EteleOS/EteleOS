@@ -1,0 +1,63 @@
+--- Game.cpp.orig	Wed Dec  5 15:53:11 2012
++++ Game.cpp	Thu Dec  6 11:11:27 2012
+@@ -22,7 +22,6 @@
+ #include "Canvas.h"
+ #include "Font.h"
+ #include "Levels.h"
+-#include "Http.h"
+ #include "Os.h"
+ #include "Scene.h"
+ #include "Script.h"
+@@ -33,11 +32,11 @@
+ #include <SDL/SDL_image.h>
+ 
+ #include <cstdio>
++#include <cerrno>
+ #include <iostream>
+ #include <sstream>
+ #include <fstream>
+ #include <memory.h>
+-#include <errno.h>
+ #include <sys/stat.h>
+ 
+ using namespace std;
+@@ -58,9 +57,9 @@ class Game : public GameControl, public Container
+   Widget           *m_pauseLabel;
+   Widget           *m_editLabel;
+   Widget           *m_completedDialog;
++  bool              m_isCompleted;
+   Widget           *m_options;
+   Os               *m_os;
+-  bool              m_isCompleted;
+   Path              m_jointCandidates;
+   Path              m_jointInd;
+ public:
+@@ -148,28 +147,6 @@ class Game : public GameControl, public Container
+     return false;
+   }
+ 
+-
+-  bool send()
+-  {
+-    if ( save( SEND_TEMP_FILE ) ) {
+-      Http h;
+-      if ( h.post( (Config::planetRoot()+"/upload").c_str(),
+-		   "data", SEND_TEMP_FILE, "type=1" ) ) {
+-	std::string id = h.getHeader("NP-Upload-Id");
+-	if ( id.length() > 0 ) {
+-	  printf("uploaded as id %s\n",id.c_str());
+-	  if ( !m_os->openBrowser((Config::planetRoot()+"/editlevel?id="+id).c_str()) ) {
+-	    showMessage("Unable to launch browser");
+-	  }
+-	} else {
+-	  showMessage("UploadFailed: unknown error");
+-	}
+-      } else {
+-	showMessage(std::string("UploadFailed: ")+h.errorMessage());
+-      }
+-    }
+-    return false;
+-  }
+ 
+   void saveDemo()
+   {

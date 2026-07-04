@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/libexec/pop3d-ssl.rc"
+daemon_flags="start"
+
+. /etc/rc.d/rc.subr
+
+pexp="${LOCALBASE}/sbin/courierlogger .* -start -name=pop3d-ssl .*"
+
+rc_stop() {
+	${daemon} stop
+}
+
+rc_cmd $1

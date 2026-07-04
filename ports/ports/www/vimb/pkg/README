@@ -1,0 +1,8 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+For a full multimedia experience, such as playing MP3 audio or MPEG
+videos, install the "gst-libav" package:
+
+# pkg_add gst-libav

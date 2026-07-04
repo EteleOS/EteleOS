@@ -1,0 +1,26 @@
+@pkgpath devel/py-testpath,python3
+lib/python${MODPY_VERSION}/site-packages/testpath/
+lib/python${MODPY_VERSION}/site-packages/testpath-${MODPY_DISTV}.dist-info/
+lib/python${MODPY_VERSION}/site-packages/testpath-${MODPY_DISTV}.dist-info/METADATA
+lib/python${MODPY_VERSION}/site-packages/testpath-${MODPY_DISTV}.dist-info/RECORD
+lib/python${MODPY_VERSION}/site-packages/testpath-${MODPY_DISTV}.dist-info/WHEEL
+lib/python${MODPY_VERSION}/site-packages/testpath-${MODPY_DISTV}.dist-info/licenses/
+lib/python${MODPY_VERSION}/site-packages/testpath-${MODPY_DISTV}.dist-info/licenses/LICENSE
+lib/python${MODPY_VERSION}/site-packages/testpath/__init__.py
+lib/python${MODPY_VERSION}/site-packages/testpath/${MODPY_PYCACHE}/
+lib/python${MODPY_VERSION}/site-packages/testpath/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/testpath/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/testpath/${MODPY_PYCACHE}asserts.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/testpath/${MODPY_PYCACHE}asserts.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/testpath/${MODPY_PYCACHE}commands.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/testpath/${MODPY_PYCACHE}commands.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/testpath/${MODPY_PYCACHE}env.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/testpath/${MODPY_PYCACHE}env.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/testpath/${MODPY_PYCACHE}tempdir.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/testpath/${MODPY_PYCACHE}tempdir.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/testpath/asserts.py
+@comment lib/python${MODPY_VERSION}/site-packages/testpath/cli-32.exe
+@comment lib/python${MODPY_VERSION}/site-packages/testpath/cli-64.exe
+lib/python${MODPY_VERSION}/site-packages/testpath/commands.py
+lib/python${MODPY_VERSION}/site-packages/testpath/env.py
+lib/python${MODPY_VERSION}/site-packages/testpath/tempdir.py

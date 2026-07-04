@@ -1,0 +1,8 @@
+#!/bin/sh
+
+VTCL_HOME=${LOCALBASE}/lib/vtcl
+PATH_TO_WISH=${MODTK_BIN}
+
+export PATH_TO_WISH VTCL_HOME
+
+exec ${PATH_TO_WISH} ${VTCL_HOME}/vtcl.tcl $*

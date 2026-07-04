@@ -1,0 +1,12 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -44,7 +44,7 @@ DEFS += -D_FORTIFY_SOURCE=2
+ # Should only be enabled during debugging and not in any real release.
+ # DEFS += -DMTRACE=1
+ CXXFLAGS = @CXXFLAGS@ $(DBGFLAGS) $(CCOPT)
+-CPPFLAGS = @CPPFLAGS@ $(DEFS)
++CPPFLAGS = -I./libdnet-stripped/include @CPPFLAGS@ $(DEFS)
+ CFLAGS = @CFLAGS@ $(DBGFLAGS) $(CCOPT)
+ STATIC =
+ LDFLAGS = @LDFLAGS@ $(DBGFLAGS) $(STATIC)

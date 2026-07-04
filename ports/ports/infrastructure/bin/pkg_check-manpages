@@ -1,0 +1,77 @@
+#! /usr/bin/perl
+# $OpenBSD: pkg_check-manpages,v 1.3 2023/06/18 09:17:01 espie Exp $
+#
+# Copyright (c) 2004 Marc Espie <espie@openbsd.org>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+#
+# check all manpages in existing packages
+
+use OpenBSD::AddCreateDelete;
+use OpenBSD::PackageInfo;
+use OpenBSD::PackingList;
+use OpenBSD::Ustar;
+use OpenBSD::Paths;
+use File::Temp;
+
+my $state = OpenBSD::AddCreateDelete::State->new;
+$state->{signature_style} = 'unsigned';
+$state->handle_options('p', '[-mnpx]');
+
+$state->progress->set_header("Scanning packages");
+
+if (@ARGV==0) {
+	@ARGV=(<*.tgz>);
+}
+
+my $extract_dir = File::Temp::tempdir("manpages.XXXXXXXXXXXX", DIR => '.');
+$state->say("Extracting all documentation into #1", $extract_dir);
+
+my %mandirs=();
+$state->progress->for_list("Scanning packages", \@ARGV,
+    sub {
+    	my $pkgname = shift;
+	my $true_package = $state->repo->find($pkgname);
+	return unless $true_package;
+	my $dir = $true_package->info;
+	my $plist = OpenBSD::PackingList->fromfile($dir.CONTENTS);
+	my $h = {};
+	for my $item (@{$plist->{items}}) {
+		next unless $item->IsFile;
+		my $n = $item->fullname;
+		if ($n =~ m,/man/(?:man.*?|cat.*?)/,) {
+			$h->{$item->{name}} = $item;
+		}
+	}
+	while (my $file = $true_package->next) {
+		my $item = $h->{$file->{name}};
+		if (defined $item) {
+			my $n = $item->fullname;
+			$file->{name} = $n;
+			$n =~ m,^(.*/man)/(?:man.*?|cat.?)/,;
+			$mandirs{"$extract_dir$1"} = 1;
+			$file->{cwd} = $item->cwd;
+			$file->{destdir} = $extract_dir;
+			eval { $file->create; };
+		}
+	}
+	$true_package->close;
+	$true_package->wipe_info;
+    });
+
+$state->errsay("Running makewhatis in #1", join(' ', keys(%mandirs)));
+my @p = OpenBSD::Paths->makewhatis;
+if ($state->opt('p')) {
+	push(@p, '-p');
+}
+$state->system(@p, keys(%mandirs));

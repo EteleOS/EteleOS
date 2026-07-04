@@ -1,0 +1,5 @@
+@bin bin/mpeg_encode
+@man man/man1/mpeg_encode.1
+share/doc/mpeg_encode/
+share/doc/mpeg_encode/template.param
+share/doc/mpeg_encode/users-guide.ps

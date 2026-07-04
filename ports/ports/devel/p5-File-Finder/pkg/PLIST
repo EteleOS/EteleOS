@@ -1,0 +1,6 @@
+${P5SITE}/File/
+${P5SITE}/File/Finder/
+${P5SITE}/File/Finder.pm
+${P5SITE}/File/Finder/Steps.pm
+@man man/man3p/File::Finder.3p
+@man man/man3p/File::Finder::Steps.3p

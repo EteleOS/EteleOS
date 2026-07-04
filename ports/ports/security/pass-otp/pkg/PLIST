@@ -1,0 +1,3 @@
+lib/password-store/extensions/otp.bash
+@man man/man1/pass-otp.1
+share/bash-completion/completions/pass-otp

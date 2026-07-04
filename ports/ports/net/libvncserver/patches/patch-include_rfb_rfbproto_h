@@ -1,0 +1,12 @@
+Index: include/rfb/rfbproto.h
+--- include/rfb/rfbproto.h.orig
++++ include/rfb/rfbproto.h
+@@ -79,7 +79,7 @@ typedef int8_t rfbBool;
+ 
+ #if LIBVNCSERVER_HAVE_ENDIAN_H
+ # include <endian.h>
+-# if __BYTE_ORDER == __BIG_ENDIAN
++# if BYTE_ORDER == BIG_ENDIAN
+ #  define LIBVNCSERVER_WORDS_BIGENDIAN 1
+ # endif
+ #endif

@@ -1,0 +1,11 @@
+@bin bin/gmic
+include/CImg.h
+include/gmic.h
+lib/cmake/gmic/
+lib/cmake/gmic/GmicConfig.cmake
+lib/cmake/gmic/GmicTargets${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/gmic/GmicTargets.cmake
+@static-lib lib/libgmic.a
+@lib lib/libgmic.so.${LIBgmic_VERSION}
+@man man/man1/gmic.1
+share/bash-completion/completions/gmic

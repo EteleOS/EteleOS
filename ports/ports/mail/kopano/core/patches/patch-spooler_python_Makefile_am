@@ -1,0 +1,12 @@
+Index: spooler/python/Makefile.am
+--- spooler/python/Makefile.am.orig
++++ spooler/python/Makefile.am
+@@ -12,8 +12,6 @@ kopano_spoolerdir = ${datadir}/kopano-spooler/python
+ kopano_spooler_DATA = mapiplugin.py pluginmanager.py plugintemplates.py wraplogger.py zconfig.py
+ 
+ install-data-hook:
+-	mkdir -p ${DESTDIR}/${localstatedir}/lib/kopano/dagent/plugins/
+-	mkdir -p ${DESTDIR}/${localstatedir}/lib/kopano/spooler/plugins/
+ 
+ .PHONY: test
+ test:

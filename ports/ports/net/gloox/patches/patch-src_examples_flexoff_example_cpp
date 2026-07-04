@@ -1,0 +1,11 @@
+Index: src/examples/flexoff_example.cpp
+--- src/examples/flexoff_example.cpp.orig
++++ src/examples/flexoff_example.cpp
+@@ -28,6 +28,7 @@ using namespace gloox;
+ #include <string>
+ 
+ #include <cstdio> // [s]print[f]
++#include <ctime>
+ 
+ class FlexOffTest : public MessageHandler, ConnectionListener, FlexibleOfflineHandler,
+                            LogHandler

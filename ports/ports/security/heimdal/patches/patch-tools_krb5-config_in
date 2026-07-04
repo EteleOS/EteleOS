@@ -1,0 +1,35 @@
+Search /usr/local/{include,lib} for libcom_err.
+
+Index: tools/krb5-config.in
+--- tools/krb5-config.in.orig
++++ tools/krb5-config.in
+@@ -193,9 +193,9 @@ alpha*-dec-osf*)
+   rpath_flag='-Wl,+b,';;
+ *-*-irix* | mips-*-netbsd*)
+   rpath_flag='-Wl,-rpath -Wl,';;
+-*-*-netbsd* | *-*-openbsd* | *-*-solaris*)
++*-*-netbsd* | *-*-solaris*)
+   rpath_flag='-R';;
+-*-*-linux* | *-*-gnu* | *-*-k*bsd*-gnu | *-*-freebsd*)
++*-*-linux* | *-*-gnu* | *-*-k*bsd*-gnu | *-*-freebsd* | *-*-openbsd*)
+   rpath_flag='-Wl,--enable-new-dtags -Wl,-rpath -Wl,';;
+ *-*-aix*)
+   rpath_flag='-Wl,-blibpath:';;
+@@ -238,7 +238,7 @@ if test "$do_libs" = "yes"; then
+     if test "$lib_krb5" = yes; then
+ 	lib_flags="$lib_flags -lkrb5"
+     fi
+-    deplibs="$deplibs @LIB_pkinit@ -lcom_err"
++    deplibs="$deplibs @LIB_pkinit@ -L${LOCALBASE}/lib -lcom_err"
+     deplibs="$deplibs @LIB_hcrypto_appl@ -lasn1 -lwind -lheimbase -lroken"
+     deplibs="$deplibs @LIB_crypt@ @PTHREAD_LIBADD@ @LIB_dlopen@"
+     deplibs="$deplibs @LIB_door_create@ @LIBS@"
+@@ -257,7 +257,7 @@ fi
+ if test "$do_cflags" = "yes"; then
+     cflags=""
+     if test X"${includedir}" != X/usr/include; then
+-	cflags="-I${includedir} $cflags"
++	cflags="-I${includedir} -I${LOCALBASE}/include $cflags"
+     fi
+     echo $cflags
+ fi

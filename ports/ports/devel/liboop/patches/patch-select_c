@@ -1,0 +1,10 @@
+--- select.c.orig	Sat Nov 22 00:29:11 2008
++++ select.c	Sat Nov 22 00:29:29 2008
+@@ -7,6 +7,7 @@
+ #include "oop.h"
+ 
+ #include <assert.h>
++#include <string.h>
+ 
+ struct select_set {
+ 	fd_set rfd,wfd,xfd;

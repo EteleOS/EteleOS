@@ -1,0 +1,31 @@
+--- Makefile.bsd.orig	Fri Jun  5 09:38:01 2015
++++ Makefile.bsd	Fri Jun  5 09:39:20 2015
+@@ -1,6 +1,6 @@
+-OS ?= FreeBSD
++#OS ?= FreeBSD
+ #OS ?= NetBSD
+-#OS ?= OpenBSD
++OS ?= OpenBSD
+ 
+ CFLAGS ?= -O2 -Wall
+ CC ?= gcc
+@@ -9,13 +9,13 @@ CC ?= gcc
+ CFLAGS += -DUSE_LIBUSB
+ LIBS =  -lusb
+ .elif $(OS) == "NetBSD" || $(OS) == "OpenBSD"
+-CFLAGS += -DUSE_UHID
+-LIBS =
++CFLAGS += -DUSE_LIBUSB -I${LOCALBASE}/include
++LIBS = -L${LOCALBASE}/lib -lusb
+ .endif
+ 
++all: teensyloader
++teensyloader: teensy_loader_cli.c
++	$(CC) $(CFLAGS) -s -o teensyloader teensy_loader_cli.c $(LIBS)
+ 
+-teensy_loader_cli: teensy_loader_cli.c
+-	$(CC) $(CFLAGS) -s -o teensy_loader_cli teensy_loader_cli.c $(LIBS)
+-
+ clean:
+-	rm -f teensy_loader_cli
++	rm -f teensyloader

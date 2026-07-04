@@ -1,0 +1,27 @@
+add pledge(2) to "mutool clean"
+
+Index: source/tools/pdfclean.c
+--- source/tools/pdfclean.c.orig
++++ source/tools/pdfclean.c
+@@ -34,6 +34,8 @@
+ #include "mupdf/fitz.h"
+ #include "mupdf/pdf.h"
+ 
++#include <unistd.h>
++#include <errno.h>
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+@@ -273,6 +275,12 @@ int pdfclean_main(int argc, char **argv)
+ 		(strstr(argv[fz_optind], ".pdf") || strstr(argv[fz_optind], ".PDF")))
+ 	{
+ 		outfile = fz_optpath(argv[fz_optind++]);
++	}
++
++	if (pledge("stdio rpath wpath cpath", NULL) == -1)
++	{
++		fprintf(stderr, "pledge: %s\n", strerror(errno));
++		exit(1);
+ 	}
+ 
+ 	ctx = fz_new_context(NULL, NULL, FZ_STORE_UNLIMITED);

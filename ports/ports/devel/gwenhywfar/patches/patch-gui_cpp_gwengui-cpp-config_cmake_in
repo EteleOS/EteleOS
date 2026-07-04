@@ -1,0 +1,12 @@
+Index: gui/cpp/gwengui-cpp-config.cmake.in
+--- gui/cpp/gwengui-cpp-config.cmake.in.orig
++++ gui/cpp/gwengui-cpp-config.cmake.in
+@@ -30,7 +30,7 @@ if(WIN32)
+ elseif(APPLE)
+     set_and_check(GWENGUI_CPP_LIBRARIES "@libdir@/libgwengui-cpp.dylib")
+ else()
+-    set_and_check(GWENGUI_CPP_LIBRARIES "@libdir@/libgwengui-cpp.so")
++    set_and_check(GWENGUI_CPP_LIBRARIES "@libdir@/libgwengui-cpp.so.${LIBgwengui-cpp_VERSION}")
+ endif()
+ set(GWENGUI_CPP_FOUND true)
+ 

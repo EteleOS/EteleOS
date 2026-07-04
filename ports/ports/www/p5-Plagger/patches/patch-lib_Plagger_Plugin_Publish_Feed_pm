@@ -1,0 +1,18 @@
+Fix Plagger runtime with p5-XML-Feed>=0.55
+Index: lib/Plagger/Plugin/Publish/Feed.pm
+--- lib/Plagger/Plugin/Publish/Feed.pm.orig
++++ lib/Plagger/Plugin/Publish/Feed.pm
+@@ -5,11 +5,11 @@ use base qw( Plagger::Plugin );
+ 
+ use XML::Feed;
+ use XML::Feed::Entry;
+-use XML::Feed::RSS; # load explicitly to force LibXML
++use XML::Feed::Format::RSS; # load explicitly to force LibXML
+ use XML::RSS::LibXML;
+ use File::Spec;
+ 
+-$XML::Feed::RSS::PREFERRED_PARSER = "XML::RSS::LibXML";
++$XML::Feed::Format::RSS::PREFERRED_PARSER = "XML::RSS::LibXML";
+ 
+ sub register {
+     my($self, $context) = @_;

@@ -1,0 +1,12 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -11,7 +11,7 @@ isrc = interfac
+ ifeq ($(DEBUG),Y)
+ 	OPTS = -g -Wall -pedantic
+ else
+-	OPTS = -O2 -Wall -pedantic
++	OPTS = $(CXXFLAGS) -Wall -pedantic
+ 	POST = strip mm$(E)
+ endif
+ 

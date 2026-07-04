@@ -1,0 +1,45 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+XXX c/p from x11/gtk+3, does it still work?
+
+Themes
+======
+
+Default
+-------
+The default GTK+ theme engine can be modified by editing:
+    ~/.config/gtk-4.0/settings.ini
+and appending a line similar to:
+gtk-theme-name = oxygen-gtk
+
+Extras
+------
+Some themes are available as packages ("gtk4-*-engine").
+
+Printing
+========
+
+Preview
+-------
+By default, GTK+ uses the "papers-previewer" command from the papers package to
+display a "Print Preview". This can be modified by editing:
+    ~/.config/gtk-4.0/settings.ini
+and appending the following line:
+gtk-print-preview-command = xpdf3 %f
+
+(xpdf3 can be replaced by any other PDF viewer command)
+
+Note that by default, "papers-previewer" will remove the temporary PDF preview
+file (/tmp/previewXXXXXX.pdf) when done, that might not be the case with
+other PDF viewers.
+
+Input Method
+============
+
+By default, GTK4 relies on the Wayland text protocol for input method support.
+For compositors without that protocol, you can manually set
+    GTK_IM_MODULE=simple
+to get back support for X11-style compose sequences and dead keys.
+Note that some Desktop environments might already override GTK4 defaults.

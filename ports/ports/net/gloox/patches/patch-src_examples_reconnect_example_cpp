@@ -1,0 +1,11 @@
+Index: src/examples/reconnect_example.cpp
+--- src/examples/reconnect_example.cpp.orig
++++ src/examples/reconnect_example.cpp
+@@ -39,6 +39,7 @@ using namespace gloox;
+ #include <string>
+ 
+ #include <cstdio> // [s]print[f]
++#include <ctime>
+ 
+ #if defined( WIN32 ) || defined( _WIN32 )
+ # include <windows.h>

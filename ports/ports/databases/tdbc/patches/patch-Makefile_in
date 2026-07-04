@@ -1,0 +1,14 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -448,8 +448,8 @@ install-lib-binaries: binaries
+ 	@$(INSTALL_DATA_DIR) "$(DESTDIR)$(pkglibdir)"
+ 	@list='$(lib_BINARIES)'; for p in $$list; do \
+ 	  if test -f $$p; then \
+-	    echo " $(INSTALL_LIBRARY) $$p $(DESTDIR)$(pkglibdir)/$$p"; \
+-	    $(INSTALL_LIBRARY) $$p "$(DESTDIR)$(pkglibdir)/$$p"; \
++	    echo " $(INSTALL_LIBRARY) $$p $(DESTDIR)$(libdir)/$$p"; \
++	    $(INSTALL_LIBRARY) $$p "$(DESTDIR)$(libdir)/$$p"; \
+ 	    ext=`echo $$p|sed -e "s/.*\.//"`; \
+ 	    if test "x$$ext" = "xdll"; then \
+ 		lib=`basename $$p|sed -e 's/.[^.]*$$//'`.lib; \

@@ -1,0 +1,14 @@
+Fix undefined symbols for plugins.
+
+Index: src/CMakeLists.txt
+--- src/CMakeLists.txt.orig
++++ src/CMakeLists.txt
+@@ -280,6 +280,8 @@ if (UNIX AND NOT APPLE)
+ endif ()
+ 
+ 
++SET_TARGET_PROPERTIES(${EXE_NAME} PROPERTIES LINK_FLAGS -rdynamic)
++
+ # For OS X, generate `Info.plist` and add it to the `.app` bundle.
+ IF (APPLE)
+   SET(VER ${TeXworks_VERSION})

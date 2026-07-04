@@ -1,0 +1,4 @@
+${P5SITE}/File/
+${P5SITE}/File/Scan/
+${P5SITE}/File/Scan/ClamAV.pm
+@man man/man3p/File::Scan::ClamAV.3p

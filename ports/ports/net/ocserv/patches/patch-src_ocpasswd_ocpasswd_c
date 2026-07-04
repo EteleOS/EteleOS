@@ -1,0 +1,75 @@
+Generate blowfish crypts, using the simple crypt_newhash API. OpenBSD doesn't
+support SHA2 ($5$ hashes) and has removed support for MD5 ($1$).
+
+Index: src/ocpasswd/ocpasswd.c
+--- src/ocpasswd/ocpasswd.c.orig
++++ src/ocpasswd/ocpasswd.c
+@@ -23,6 +23,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <stdint.h>
++#include <pwd.h>
+ #include <unistd.h>
+ #include <gnutls/gnutls.h>
+ #include <gnutls/crypto.h> /* for random */
+@@ -38,18 +39,12 @@
+ 
+ #define DEFAULT_OCPASSWD "/etc/ocserv/ocpasswd"
+ 
+-static const char alphabet[] =
+-	"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ./";
+-
+-#define SALT_SIZE 16
+ static void crypt_int(const char *fpasswd, const char *username,
+ 		      const char *groupname, const char *passwd)
+ {
+-	uint8_t _salt[SALT_SIZE];
+-	char salt[SALT_SIZE + 16];
+-	char *p, *cr_passwd;
++	char cr_passwd[_PASSWORD_LEN];
++	char *p;
+ 	char *tmp_passwd;
+-	unsigned int i;
+ 	unsigned int fpasswd_len = strlen(fpasswd);
+ 	unsigned int tmp_passwd_len;
+ 	unsigned int username_len = strlen(username);
+@@ -63,36 +58,9 @@ static void crypt_int(const char *fpasswd, const char 
+ 	setlocale(LC_CTYPE, "C");
+ 	setlocale(LC_COLLATE, "C");
+ 
+-	ret = gnutls_rnd(GNUTLS_RND_NONCE, _salt, sizeof(_salt));
+-	if (ret < 0) {
+-		fprintf(stderr, "Error generating nonce: %s\n",
+-			gnutls_strerror(ret));
+-		exit(EXIT_FAILURE);
+-	}
+-
+-#ifdef TRY_SHA2_CRYPT
+-	strcpy(salt, "$5$");
+-#else
+-	strcpy(salt, "$1$");
+-#endif
+-	p = salt + 3;
+-
+-	for (i = 0; i < sizeof(_salt); i++) {
+-		*p = alphabet[_salt[i] % (sizeof(alphabet) - 1)];
+-		p++;
+-	}
+-	*p = '$';
+-	p++;
+-	*p = 0;
+-	p++;
+-
+-	cr_passwd = crypt(passwd, salt);
+-	if (cr_passwd == NULL) { /* try MD5 */
+-		salt[1] = '1';
+-		cr_passwd = crypt(passwd, salt);
+-	}
+-	if (cr_passwd == NULL) {
+-		fprintf(stderr, "Error in crypt().\n");
++	if (crypt_newhash(passwd, "blowfish,a", cr_passwd,
++			  sizeof(cr_passwd)) != 0) {
++		fprintf(stderr, "Error in crypt_newhash().\n");
+ 		exit(EXIT_FAILURE);
+ 	}
+ 

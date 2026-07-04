@@ -1,0 +1,8 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/mosquitto -d"
+daemon_flags="-c ${SYSCONFDIR}/mosquitto/mosquitto.conf"
+
+. /etc/rc.d/rc.subr
+
+rc_cmd $1

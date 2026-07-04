@@ -1,0 +1,15 @@
+- remove flags that make no sense for us
+- fix CMake boo-boo (pr#364 on the gmic repo)
+
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -102,7 +102,7 @@ if(APPLE)
+ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+     list(APPEND GMIC_CXX_COMPILE_FLAGS -Wno-error=c++11-narrowing -fpermissive)
+ else()
+-    list(APPEND GMIC_CXX_COMPILE_FLAGS -Wno-error=narrowing -fno-ipa-sra -fpermissive)
++    list(APPEND GMIC_CXX_COMPILE_FLAGS -Wno-error=narrowing -fpermissive)
+ endif()
+ 
+ if(NOT "${PRERELEASE_TAG}" STREQUAL "")

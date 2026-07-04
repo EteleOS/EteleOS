@@ -1,0 +1,13 @@
+@bin bin/barrier-gui
+@bin bin/barrierc
+@bin bin/barriers
+@man man/man1/barrierc.1
+@man man/man1/barriers.1
+share/applications/barrier.desktop
+share/examples/barrier/
+share/examples/barrier/barrier.conf.example
+share/examples/barrier/barrier.conf.example-advanced
+share/examples/barrier/barrier.conf.example-basic
+@tag update-desktop-database
+share/icons/hicolor/scalable/apps/barrier.svg
+@tag gtk-update-icon-cache %D/share/icons/hicolor

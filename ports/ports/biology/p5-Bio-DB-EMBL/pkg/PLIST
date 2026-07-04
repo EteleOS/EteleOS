@@ -1,0 +1,3 @@
+@conflict bioperl-<1.7
+${P5SITE}/Bio/DB/EMBL.pm
+@man man/man3p/Bio::DB::EMBL.3p

@@ -1,0 +1,3 @@
+${P5SITE}/File/
+${P5SITE}/File/LoadLines.pm
+@man man/man3p/File::LoadLines.3p

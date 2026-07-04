@@ -1,0 +1,9 @@
+bin/podspell
+${P5SITE}/Pod/
+${P5SITE}/Pod/Spell.pm
+${P5SITE}/Pod/Wordlist.pm
+${P5SITE}/auto/share/dist/Pod-Spell/
+${P5SITE}/auto/share/dist/Pod-Spell/wordlist
+@man man/man1/podspell.1
+@man man/man3p/Pod::Spell.3p
+@man man/man3p/Pod::Wordlist.3p

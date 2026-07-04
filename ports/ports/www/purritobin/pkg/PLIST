@@ -1,0 +1,20 @@
+@newgroup _purritobin:858
+@newuser _purritobin:858:858::PurritoBin Daemon:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/purritobin
+@bin bin/purrito
+@man man/man1/purrito.1
+share/doc/pkg-readmes/${PKGSTEM}
+@owner _purritobin
+@group _purritobin
+@sample /var/db/purritobin/
+@sample /var/www/purritobin/
+@owner
+@group
+share/PurritoBin/
+share/PurritoBin/POSIX_shell_client.sh
+share/PurritoBin/about.html
+@sample /var/www/purritobin/about.html
+share/PurritoBin/index.html
+@sample /var/www/purritobin/index.html
+share/PurritoBin/paste.html
+@sample /var/www/purritobin/paste.html

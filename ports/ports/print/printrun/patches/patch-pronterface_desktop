@@ -1,0 +1,14 @@
+Index: pronterface.desktop
+--- pronterface.desktop.orig
++++ pronterface.desktop
+@@ -4,8 +4,8 @@ Name=Pronterface
+ GenericName=Printer Interface
+ Comment=Controls your 3D printer
+ Icon=pronterface
+-Exec=/usr/bin/pronterface.py %f
+-Path=/usr/share/pronterface/
++Exec=${PREFIX}/bin/pronterface %f
++Path=${PREFIX}/share/pronterface/
+ StartupNotify=true
+ Terminal=false
+ Categories=GNOME;GTK;Utility;Graphics;3DGraphics;

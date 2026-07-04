@@ -1,0 +1,18 @@
+Index: fax/faxspool.in
+--- fax/faxspool.in.orig
++++ fax/faxspool.in
+@@ -432,11 +432,11 @@ fs_cvt_pdf()
+ 
+ # user name (for fax header only! auth is done by faxq-helper via getuid())
+ ##########
+-if user=`logname 2>/dev/null`
+-then :
++if [ `id -u` = 0 ]; then
++    user=root
+ else
+     id=`id`
+-    user=`expr "$id" : "[^( ]*(\([^)]*\)"`
++    user=`logname`
+ fi
+ test -z "$user" && user=$LOGNAME
+ test -z "$user" && user=$USER

@@ -1,0 +1,15 @@
+The qm files that are supposed to be generated from the locale directory are
+never generated. They're not mandatory so let's just skip them for now...
+
+Index: share/CMakeLists.txt
+--- share/CMakeLists.txt.orig
++++ share/CMakeLists.txt
+@@ -17,7 +17,7 @@
+ #  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ #=============================================================================
+ 
+-subdirs(templates wallpaper locale styles sound manual
++subdirs(templates wallpaper styles sound manual
+    workspaces instruments tours)
+ 
+ install (DIRECTORY

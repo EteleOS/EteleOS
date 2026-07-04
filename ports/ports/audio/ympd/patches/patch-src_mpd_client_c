@@ -1,0 +1,15 @@
+fix for -fno-common
+https://svnweb.freebsd.org/changeset/ports/546834
+
+Index: src/mpd_client.c
+--- src/mpd_client.c.orig
++++ src/mpd_client.c
+@@ -27,6 +27,8 @@
+ #include "config.h"
+ #include "json_encode.h"
+ 
++struct t_mpd mpd;
++
+ /* forward declaration */
+ static int mpd_notify_callback(struct mg_connection *c, enum mg_event ev);
+ 

@@ -1,0 +1,13 @@
+include/libspectre/
+include/libspectre/spectre-document.h
+include/libspectre/spectre-exporter.h
+include/libspectre/spectre-macros.h
+include/libspectre/spectre-page.h
+include/libspectre/spectre-render-context.h
+include/libspectre/spectre-status.h
+include/libspectre/spectre-version.h
+include/libspectre/spectre.h
+@static-lib lib/libspectre.a
+lib/libspectre.la
+@lib lib/libspectre.so.${LIBspectre_VERSION}
+lib/pkgconfig/libspectre.pc

@@ -1,0 +1,9 @@
+${P5SITE}/WML/
+${P5SITE}/WML/Card/
+${P5SITE}/WML/Card.pm
+${P5SITE}/WML/Card/7110.pm
+${P5SITE}/WML/Card/Palm.pm
+${P5SITE}/WML/Card/UP.pm
+${P5SITE}/WML/Deck.pm
+@man man/man3p/WML::Card.3p
+@man man/man3p/WML::Deck.3p

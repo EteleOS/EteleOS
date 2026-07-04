@@ -1,0 +1,46 @@
+Index: c-icap.conf.in
+--- c-icap.conf.in.orig
++++ c-icap.conf.in
+@@ -602,8 +602,8 @@ RemoteProxyUserHeaderEncoded on
+ #	store debugging information, errors and other
+ #	information about the c-icap server.
+ # Default:
+-#	ServerLog @prefix@/var/log/server.log
+-ServerLog @prefix@/var/log/server.log
++#	ServerLog /var/log/server.log
++ServerLog /var/log/c-icap/server.log
+ 
+ # TAG: AccessLog
+ # Format: AccessLog LogFile [LogFormat] [[!]acl1] [[!]acl2] [...]
+@@ -615,10 +615,10 @@ ServerLog @prefix@/var/log/server.log
+ #	This directive can be used more than once to specify more than
+ #	one access log files
+ # Default:
+-#	AccessLog @prefix@/var/log/access.log
++#	AccessLog /var/log/access.log
+ # Example:
+-#	AccessLog @prefix@/var/log/access.log MyFormat all
+-AccessLog @prefix@/var/log/access.log
++#	AccessLog /var/log/access.log MyFormat all
++#AccessLog /var/log/c-icap/access.log
+ 
+ # TAG: Logger
+ # Format: Logger LoggerName
+@@ -627,8 +627,7 @@ AccessLog @prefix@/var/log/access.log
+ #	uses files for access and server logging.
+ # Default:
+ #	Logger file_logger
+-# Example:
+-#	Logger sys_logger
++Logger sys_logger
+ 
+ # TAG: Module
+ # Format: Module Type ModuleFile [forceUnload=off]
+@@ -718,6 +717,7 @@ Service echo srv_echo.so
+ # Example:
+ #	Module logger sys_logger.so
+ #	Logger sys_logger
++Module logger sys_logger.so
+ 
+ 
+ # TAG: sys_logger.Prefix

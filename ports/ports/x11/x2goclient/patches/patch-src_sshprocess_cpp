@@ -1,0 +1,21 @@
+Index: src/sshprocess.cpp
+--- src/sshprocess.cpp.orig
++++ src/sshprocess.cpp
+@@ -23,6 +23,8 @@
+ #include <QUuid>
+ 
+ #include <QProcess>
++#include <sys/types.h>
++#include <sys/socket.h>
+ #ifndef Q_OS_WIN
+ #include <arpa/inet.h>
+ #include <netinet/tcp.h>
+@@ -140,7 +142,7 @@ void SshProcess::tunnelLoop()
+     address.sin_family=AF_INET;
+     address.sin_addr.s_addr=htonl(INADDR_LOOPBACK);
+     address.sin_port=htons(localPort);
+-    if (bind(serverSocket,(struct sockaddr*) &address,sizeof(address))!=0)
++    if (::bind(serverSocket,(struct sockaddr*) &address,sizeof(address))!=0)
+     {
+         QString err=tr("Error binding ")+localHost+":"+QString::number(localPort);
+         x2goDebug<<err<<endl;

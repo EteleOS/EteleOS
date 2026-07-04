@@ -1,0 +1,41 @@
+Index: src/cdpar.c
+--- src/cdpar.c.orig
++++ src/cdpar.c
+@@ -57,10 +57,12 @@ static inline int bigendianp(void){
+   return(1);
+ }
+ 
++#if !defined(__OpenBSD__)
+ static inline size16 swap16(size16 x){
+   return((((unsigned size16)x & 0x00ffU) <<  8) | 
+          (((unsigned size16)x & 0xff00U) >>  8));
+ }
++#endif
+ 
+ /* Ugly hack because we can't pass user data to the callback */
+ int *global_rip_smile_level;
+@@ -87,12 +89,12 @@ static void PutNum(long num,int f,int endianness,int b
+   }
+ }
+ 
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wunused-result"
+ static void WriteWav(int f,long bytes)
+ {
+   /* quick and dirty - ignore compiler warnings*/
+ 
+-#pragma GCC diagnostic push
+-#pragma GCC diagnostic ignored "-Wunused-result"
+ 
+   write(f,"RIFF",4);               /*  0-3 */
+   PutNum(bytes+44-8,f,0,4);        /*  4-7 */
+@@ -106,8 +108,8 @@ static void WriteWav(int f,long bytes)
+   PutNum(16,f,0,2);                /* 34-35 */
+   write(f,"data",4);               /* 36-39 */
+   PutNum(bytes,f,0,4);             /* 40-43 */
+-#pragma GCC diagnostic pop
+ }
++#pragma GCC diagnostic pop
+ 
+ static void CDPCallback(long inpos,int function)
+ {

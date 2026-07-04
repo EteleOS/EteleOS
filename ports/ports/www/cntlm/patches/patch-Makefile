@@ -1,0 +1,43 @@
+--- Makefile.orig	Fri Apr 20 02:28:07 2012
++++ Makefile	Mon Feb 27 11:03:47 2017
+@@ -13,7 +13,7 @@ MANDIR     	:= $(DESTDIR)/usr/share/man
+ # _ALL_SOURCE is for AIX 5.3 LOG_PERROR constant
+ #
+ NAME		:= cntlm
+-CC		:= gcc
++CC		?= gcc
+ VER		:= $(shell cat VERSION)
+ OS		:= $(shell uname -s)
+ OSLDFLAGS	:= $(shell [ $(OS) = "SunOS" ] && echo "-lrt -lsocket -lnsl")
+@@ -23,7 +23,7 @@ CYGWIN_REQS	:= cygwin1.dll cyggcc_s-1.dll cygstdc++-6.
+ ifeq ($(DEBUG),1)
+ 	CFLAGS	+= -g  -std=c99 -Wall -pedantic -D__BSD_VISIBLE -D_ALL_SOURCE -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=200112 -D_ISOC99_SOURCE -D_REENTRANT -D_BSD_SOURCE -DVERSION=\"'$(VER)'\"
+ else
+-	CFLAGS	+= -O3 -std=c99 -D__BSD_VISIBLE -D_ALL_SOURCE -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=200112 -D_ISOC99_SOURCE -D_REENTRANT -D_BSD_SOURCE -DVERSION=\"'$(VER)'\"
++	CFLAGS	+= -std=c99 -D__BSD_VISIBLE -D_ALL_SOURCE -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=200112 -D_ISOC99_SOURCE -D_REENTRANT -D_BSD_SOURCE -DVERSION=\"'$(VER)'\"
+ endif
+ 
+ ifneq ($(findstring CYGWIN,$(OS)),)
+@@ -34,19 +34,20 @@ endif
+ 
+ $(NAME): configure-stamp $(OBJS)
+ 	@echo "Linking $@"
+-	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS)
++	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS)
+ 
+ main.o: main.c
+ 	@echo "Compiling $<"
+ 	@if [ -z "$(SYSCONFDIR)" ]; then \
+ 		$(CC) $(CFLAGS) -c main.c -o $@; \
+ 	else \
++		echo $(CC) $(CFLAGS) -DSYSCONFDIR=\"$(SYSCONFDIR)\" -c main.c -o $@; \
+ 		$(CC) $(CFLAGS) -DSYSCONFDIR=\"$(SYSCONFDIR)\" -c main.c -o $@; \
+ 	fi
+ 
+ %.o: %.c
+ 	@echo "Compiling $<"
+-	@$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) -c -o $@ $<
+ 
+ configure-stamp:
+ 	./configure

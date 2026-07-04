@@ -1,0 +1,22 @@
+${P5ARCH}/
+${P5ARCH}/Text/
+${P5ARCH}/Text/Tmpl.pm
+${P5ARCH}/Text/libtmpl.pod
+${P5ARCH}/Text/template_extend.pod
+${P5ARCH}/Text/template_syntax.pod
+${P5ARCH}/auto/
+${P5ARCH}/auto/Text/
+${P5ARCH}/auto/Text/Tmpl/
+${P5ARCH}/auto/Text/Tmpl/Tmpl.so
+${P5ARCH}/auto/Text/Tmpl/autosplit.ix
+@man man/man3p/Text::Tmpl.3
+@man man/man3p/libtmpl.3
+@man man/man3p/template_extend.3
+@man man/man3p/template_syntax.3
+share/examples/p5-Text-Tmpl/
+share/examples/p5-Text-Tmpl/Makefile
+share/examples/p5-Text-Tmpl/README
+share/examples/p5-Text-Tmpl/tmpl-eg-perl
+share/examples/p5-Text-Tmpl/tmpl-eg.c
+share/examples/p5-Text-Tmpl/tmpl-eg.cc
+share/examples/p5-Text-Tmpl/tmpl-eg.tmpl

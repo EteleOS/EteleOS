@@ -1,0 +1,7 @@
+@bin bin/dhewm3
+lib/dhewm3/
+@so lib/dhewm3/base.so
+@so lib/dhewm3/d3xp.so
+share/dhewm3/
+share/dhewm3/base/
+share/doc/pkg-readmes/${PKGSTEM}

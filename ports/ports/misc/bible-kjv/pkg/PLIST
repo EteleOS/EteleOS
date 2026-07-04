@@ -1,0 +1,6 @@
+@bin bin/bible
+@bin bin/randverse
+lib/bible.data
+lib/bible.data.conc
+@man man/man1/bible.1
+@man man/man1/randverse.1

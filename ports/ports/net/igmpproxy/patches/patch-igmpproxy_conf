@@ -1,0 +1,13 @@
+Index: igmpproxy.conf
+--- igmpproxy.conf.orig
++++ igmpproxy.conf
+@@ -18,6 +18,9 @@
+ #
+ ########################################################
+ 
++chroot /var/empty
++user _igmpproxy
++
+ ##------------------------------------------------------
+ ## Enable Quickleave mode (Sends Leave instantly)
+ ##------------------------------------------------------

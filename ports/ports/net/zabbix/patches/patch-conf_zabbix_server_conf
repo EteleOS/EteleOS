@@ -1,0 +1,44 @@
+Index: conf/zabbix_server.conf
+--- conf/zabbix_server.conf.orig
++++ conf/zabbix_server.conf
+@@ -35,7 +35,7 @@
+ # Default:
+ # LogFile=
+ 
+-LogFile=/tmp/zabbix_server.log
++LogFile=/var/log/zabbix/server.log
+ 
+ ### Option: LogFileSize
+ #	Maximum size of log file in MB.
+@@ -130,6 +130,7 @@ DBUser=zabbix
+ # Mandatory: no
+ # Default:
+ # DBSocket=
++DBSocket=/var/www/var/run/mysql/mysql.sock
+ 
+ ### Option: DBPort
+ #	Database port when not using local socket.
+@@ -594,6 +595,7 @@ Timeout=4
+ # Mandatory: no
+ # Default:
+ # AlertScriptsPath=${datadir}/zabbix/alertscripts
++AlertScriptsPath=${SYSCONFDIR}/zabbix/alertscripts/
+ 
+ ### Option: ExternalScripts
+ #	Full path to location of external scripts.
+@@ -611,6 +613,7 @@ Timeout=4
+ # Mandatory: no
+ # Default:
+ # FpingLocation=/usr/sbin/fping
++FpingLocation=${LOCALBASE}/sbin/fping
+ 
+ ### Option: Fping6Location
+ #	Location of fping6.
+@@ -620,6 +623,7 @@ Timeout=4
+ # Mandatory: no
+ # Default:
+ # Fping6Location=/usr/sbin/fping6
++Fping6Location=${LOCALBASE}/sbin/fping6
+ 
+ ### Option: SSHKeyLocation
+ #	Location of public and private keys for SSH checks and actions.

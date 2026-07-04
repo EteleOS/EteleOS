@@ -1,0 +1,211 @@
+@newgroup _smokeping:562
+@newuser _smokeping:562:562::Smokeping account:/var/empty:/sbin/nologin
+bin/smokeinfo
+bin/smokeping
+bin/smokeping_cgi
+bin/tSmoke
+@comment lib/BER.pm
+@comment lib/SNMP_Session.pm
+@comment lib/SNMP_util.pm
+lib/Smokeping/
+lib/Smokeping.pm
+lib/Smokeping/Colorspace.pm
+lib/Smokeping/Config.pm
+lib/Smokeping/Examples.pm
+lib/Smokeping/Graphs.pm
+lib/Smokeping/Info.pm
+lib/Smokeping/Master.pm
+lib/Smokeping/RRDhelpers.pm
+lib/Smokeping/RRDtools.pm
+lib/Smokeping/Slave.pm
+lib/Smokeping/ciscoRttMonMIB.pm
+lib/Smokeping/matchers/
+lib/Smokeping/matchers/Avgratio.pm
+lib/Smokeping/matchers/CheckLatency.pm
+lib/Smokeping/matchers/CheckLoss.pm
+lib/Smokeping/matchers/ConsecutiveLoss.pm
+lib/Smokeping/matchers/ExpLoss.pm
+lib/Smokeping/matchers/Median.pm
+lib/Smokeping/matchers/Medratio.pm
+lib/Smokeping/matchers/base.pm
+lib/Smokeping/pingMIB.pm
+lib/Smokeping/probes/
+lib/Smokeping/probes/AnotherCurl.pm
+lib/Smokeping/probes/AnotherDNS.pm
+lib/Smokeping/probes/AnotherSSH.pm
+lib/Smokeping/probes/CiscoRTTMonDNS.pm
+lib/Smokeping/probes/CiscoRTTMonEchoICMP.pm
+lib/Smokeping/probes/CiscoRTTMonTcpConnect.pm
+lib/Smokeping/probes/Curl.pm
+lib/Smokeping/probes/DNS.pm
+lib/Smokeping/probes/DismanPing.pm
+lib/Smokeping/probes/EchoPing.pm
+lib/Smokeping/probes/EchoPingChargen.pm
+lib/Smokeping/probes/EchoPingDNS.pm
+lib/Smokeping/probes/EchoPingDiscard.pm
+lib/Smokeping/probes/EchoPingHttp.pm
+lib/Smokeping/probes/EchoPingHttps.pm
+lib/Smokeping/probes/EchoPingIcp.pm
+lib/Smokeping/probes/EchoPingLDAP.pm
+lib/Smokeping/probes/EchoPingPlugin.pm
+lib/Smokeping/probes/EchoPingSmtp.pm
+lib/Smokeping/probes/EchoPingWhois.pm
+lib/Smokeping/probes/FPing.pm
+lib/Smokeping/probes/FPing6.pm
+lib/Smokeping/probes/FPingContinuous.pm
+lib/Smokeping/probes/FTPtransfer.pm
+lib/Smokeping/probes/IOSPing.pm
+lib/Smokeping/probes/IRTT.pm
+lib/Smokeping/probes/LDAP.pm
+lib/Smokeping/probes/NFSping.pm
+lib/Smokeping/probes/OpenSSHEOSPing.pm
+lib/Smokeping/probes/OpenSSHJunOSPing.pm
+lib/Smokeping/probes/Qstat.pm
+lib/Smokeping/probes/Radius.pm
+lib/Smokeping/probes/RemoteFPing.pm
+lib/Smokeping/probes/SSH.pm
+lib/Smokeping/probes/SendEmail.pm
+lib/Smokeping/probes/SipSak.pm
+lib/Smokeping/probes/TCPPing.pm
+lib/Smokeping/probes/TacacsPlus.pm
+lib/Smokeping/probes/TelnetIOSPing.pm
+lib/Smokeping/probes/TelnetJunOSPing.pm
+lib/Smokeping/probes/TraceroutePing.pm
+lib/Smokeping/probes/WebProxyFilter.pm
+lib/Smokeping/probes/base.pm
+lib/Smokeping/probes/basefork.pm
+lib/Smokeping/probes/basevars.pm
+lib/Smokeping/probes/passwordchecker.pm
+lib/Smokeping/probes/skel.pm
+lib/Smokeping/sorters/
+lib/Smokeping/sorters/Loss.pm
+lib/Smokeping/sorters/Max.pm
+lib/Smokeping/sorters/Median.pm
+lib/Smokeping/sorters/StdDev.pm
+lib/Smokeping/sorters/base.pm
+@man man/man1/smokeinfo.1
+@man man/man1/smokeping.1
+@man man/man1/smokeping_cgi.1
+@man man/man1/tSmoke.1
+@man man/man3/Smokeping_matchers_Avgratio.3
+@man man/man3/Smokeping_matchers_CheckLatency.3
+@man man/man3/Smokeping_matchers_CheckLoss.3
+@man man/man3/Smokeping_matchers_ConsecutiveLoss.3
+@man man/man3/Smokeping_matchers_ExpLoss.3
+@man man/man3/Smokeping_matchers_Median.3
+@man man/man3/Smokeping_matchers_Medratio.3
+@man man/man3/Smokeping_matchers_base.3
+@man man/man3/Smokeping_probes_AnotherCurl.3
+@man man/man3/Smokeping_probes_AnotherDNS.3
+@man man/man3/Smokeping_probes_AnotherSSH.3
+@man man/man3/Smokeping_probes_CiscoRTTMonDNS.3
+@man man/man3/Smokeping_probes_CiscoRTTMonEchoICMP.3
+@man man/man3/Smokeping_probes_CiscoRTTMonTcpConnect.3
+@man man/man3/Smokeping_probes_Curl.3
+@man man/man3/Smokeping_probes_DNS.3
+@man man/man3/Smokeping_probes_DismanPing.3
+@man man/man3/Smokeping_probes_EchoPing.3
+@man man/man3/Smokeping_probes_EchoPingChargen.3
+@man man/man3/Smokeping_probes_EchoPingDNS.3
+@man man/man3/Smokeping_probes_EchoPingDiscard.3
+@man man/man3/Smokeping_probes_EchoPingHttp.3
+@man man/man3/Smokeping_probes_EchoPingHttps.3
+@man man/man3/Smokeping_probes_EchoPingIcp.3
+@man man/man3/Smokeping_probes_EchoPingLDAP.3
+@man man/man3/Smokeping_probes_EchoPingPlugin.3
+@man man/man3/Smokeping_probes_EchoPingSmtp.3
+@man man/man3/Smokeping_probes_EchoPingWhois.3
+@man man/man3/Smokeping_probes_FPing.3
+@man man/man3/Smokeping_probes_FPing6.3
+@man man/man3/Smokeping_probes_FPingContinuous.3
+@man man/man3/Smokeping_probes_FTPtransfer.3
+@man man/man3/Smokeping_probes_IOSPing.3
+@man man/man3/Smokeping_probes_IRTT.3
+@man man/man3/Smokeping_probes_LDAP.3
+@man man/man3/Smokeping_probes_NFSping.3
+@man man/man3/Smokeping_probes_OpenSSHEOSPing.3
+@man man/man3/Smokeping_probes_OpenSSHJunOSPing.3
+@man man/man3/Smokeping_probes_Qstat.3
+@man man/man3/Smokeping_probes_Radius.3
+@man man/man3/Smokeping_probes_RemoteFPing.3
+@man man/man3/Smokeping_probes_SSH.3
+@man man/man3/Smokeping_probes_SendEmail.3
+@man man/man3/Smokeping_probes_SipSak.3
+@man man/man3/Smokeping_probes_TCPPing.3
+@man man/man3/Smokeping_probes_TacacsPlus.3
+@man man/man3/Smokeping_probes_TelnetIOSPing.3
+@man man/man3/Smokeping_probes_TelnetJunOSPing.3
+@man man/man3/Smokeping_probes_TraceroutePing.3
+@man man/man3/Smokeping_probes_WebProxyFilter.3
+@man man/man3/Smokeping_probes_base.3
+@man man/man3/Smokeping_probes_basefork.3
+@man man/man3/Smokeping_probes_basevars.3
+@man man/man3/Smokeping_probes_passwordchecker.3
+@man man/man3/Smokeping_probes_skel.3
+@man man/man3/Smokeping_sorters_Loss.3
+@man man/man3/Smokeping_sorters_Max.3
+@man man/man3/Smokeping_sorters_Median.3
+@man man/man3/Smokeping_sorters_StdDev.3
+@man man/man3/Smokeping_sorters_base.3
+@man man/man5/smokeping_config.5
+@man man/man5/smokeping_examples.5
+@man man/man7/smokeping_extend.7
+@man man/man7/smokeping_install.7
+@man man/man7/smokeping_master_slave.7
+@man man/man7/smokeping_upgrade.7
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/smokeping/
+@sample ${SYSCONFDIR}/
+share/examples/smokeping/basepage.html.dist
+@sample ${SYSCONFDIR}/basepage.html
+share/examples/smokeping/config.dist
+@sample ${SYSCONFDIR}/config
+share/examples/smokeping/config.echoping
+share/examples/smokeping/config.fping-instances
+share/examples/smokeping/config.multiple-probes
+share/examples/smokeping/config.simple
+share/examples/smokeping/config.targetvars-with-Curl
+share/examples/smokeping/config.template
+share/examples/smokeping/httpd.conf
+@sample /var/www/conf/modules.sample/
+@sample /var/www/conf/modules.sample/smokeping.conf
+share/examples/smokeping/smokemail.dist
+@sample ${SYSCONFDIR}/smokemail
+share/examples/smokeping/smokeping_secrets.dist
+@mode 640
+@sample ${SYSCONFDIR}/smokeping_secrets
+@mode
+share/examples/smokeping/tmail.dist
+@sample ${SYSCONFDIR}/tmail
+@cwd /var/www
+@rcscript ${RCDIR}/smokeping
+@rcscript ${RCDIR}/smokeping_fcgi
+htdocs/smokeping/
+@mode 755
+@owner _smokeping
+@sample /var/db/smokeping/
+@mode
+@owner
+htdocs/smokeping/css/
+htdocs/smokeping/css/smokeping-print.css
+htdocs/smokeping/css/smokeping-screen.css
+htdocs/smokeping/js/
+htdocs/smokeping/js/cropper/
+htdocs/smokeping/js/cropper/cropper.css
+htdocs/smokeping/js/cropper/cropper.js
+htdocs/smokeping/js/cropper/cropper.uncompressed.js
+htdocs/smokeping/js/cropper/licence.txt
+htdocs/smokeping/js/cropper/marqueeHoriz.gif
+htdocs/smokeping/js/cropper/marqueeVert.gif
+htdocs/smokeping/js/prototype.js
+htdocs/smokeping/js/scriptaculous/
+htdocs/smokeping/js/scriptaculous/builder.js
+htdocs/smokeping/js/scriptaculous/controls.js
+htdocs/smokeping/js/scriptaculous/dragdrop.js
+htdocs/smokeping/js/scriptaculous/effects.js
+htdocs/smokeping/js/scriptaculous/scriptaculous.js
+htdocs/smokeping/js/scriptaculous/slider.js
+htdocs/smokeping/js/scriptaculous/sound.js
+htdocs/smokeping/js/scriptaculous/unittest.js
+htdocs/smokeping/js/smokeping.js
+htdocs/smokeping/smokeping.fcgi

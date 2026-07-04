@@ -1,0 +1,48 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Kickstart ROM
+==============
+
+You will need a Kickstart ROM for the system you wish to emulate.
+Kickstart is the name given to the chip in a real Amiga that contains
+the bootloader and other stuff. The Kickstart ROM can either be dumped
+from a real Amiga using a tool like Amiga Explorer for Windows.
+Alternatively you can buy the Kickstart ROM from AmigaForever. More
+details here:
+
+http://www.amigakickstart.com/
+
+The Kickstart ROMs are copyrighted. You should obtain them legally.
+
+Launcher
+========
+
+The majority of emulator configuration, including the import of Kickstarts,
+can now be done via the launcher. This is now an external package
+(emulators/fs-uae-launcher).
+
+Useful Keyboard Shortcuts
+=========================
+
+The keyboard shortcuts you absolutely need to know are:
+
+F12:		                Show menu.
+Alt + Enter:	            Toggle fullscreen.
+Middle click/Alt + G/F12:	Release mouse from FS-UAE.
+
+If you have no real joystick configured, you can use the keyboard:
+
+cursor keys:            directions.
+right ctrl/right alt:   fire.
+
+FS-UAE is Slow?
+===============
+
+Play with 'video_sync' and 'accuracy' in the config file.
+
+Documentation
+=============
+
+https://fs-uae.net/docs

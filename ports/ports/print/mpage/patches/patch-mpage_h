@@ -1,0 +1,32 @@
+Index: mpage.h
+--- mpage.h.orig
++++ mpage.h
+@@ -211,6 +211,13 @@ struct pagebox {
+ 	int thick;/* line thickness */
+ };
+ 
++    
++/*
++ * some basic PS parameters
++ */
++extern int ps_width;	/* number of points in the X direction (8.5 inches) */
++extern int ps_height;	/* number of points in the Y direction (11 inches) */
++extern char * media;	/* name of output page media */
+ 
+ /*
+  * Structure to describe a physical piece of paper, e.g. A4 or Letter
+@@ -220,14 +227,6 @@ struct page_desc {
+     int width;
+     int height;
+ };
+-    
+-/*
+- * some basic PS parameters
+- */
+-extern int ps_width;	/* number of points in the X direction (8.5 inches) */
+-extern int ps_height;	/* number of points in the Y direction (11 inches) */
+-extern char * media;	/* name of output page media */
+-
+ 
+ extern struct page_desc paper[];
+ 

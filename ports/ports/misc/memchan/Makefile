@@ -1,0 +1,38 @@
+COMMENT =		in-memory channels for Tcl
+
+DISTNAME =		Memchan2.3
+PKGNAME =		memchan-2.3
+REVISION =		2
+SHARED_LIBS =		Memchan23 0.0
+CATEGORIES =		misc
+HOMEPAGE =		https://memchan.sourceforge.net/
+MAINTAINER =		Sebastian Reitenbach <sebastia@openbsd.org>
+
+# BSD
+PERMIT_PACKAGE =	Yes
+
+WANTLIB += c
+
+SITES =			${SITE_SOURCEFORGE:=memchan/}
+MODULES =		lang/tcl
+
+BUILD_DEPENDS =		${MODTCL_BUILD_DEPENDS} \
+			devel/tcllib
+
+RUN_DEPENDS =		${MODTCL_RUN_DEPENDS}
+
+FAKE_FLAGS =		PKG_DIR=memchan \
+			INSTALL_PROGRAM='${INSTALL_DATA}'
+
+SEPARATE_BUILD =	Yes
+CONFIGURE_STYLE =	gnu
+
+CONFIGURE_ARGS +=	--with-tcl=${MODTCL_LIBDIR} \
+			--libdir=${MODTCL_TCLDIR} \
+			--includedir=${PREFIX}/include/memchan \
+			SHLIB_VERSION=${LIBMemchan23_VERSION}
+
+TEST_TARGET =	test
+WRKDIST =		${WRKDIR}/Memchan2.3
+
+.include <bsd.port.mk>

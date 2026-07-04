@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${PREFIX}/sbin/Orthanc"
+daemon_flags="--logdir=/var/log/orthanc ${SYSCONFDIR}/orthanc/"
+daemon_user="_orthanc"
+
+. /etc/rc.d/rc.subr
+
+rc_bg=YES
+rc_cmd $1

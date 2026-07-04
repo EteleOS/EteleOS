@@ -1,0 +1,21 @@
+@bin bin/sigscan
+include/libsigscan/
+include/libsigscan.h
+include/libsigscan/codepage.h
+include/libsigscan/definitions.h
+include/libsigscan/error.h
+include/libsigscan/extern.h
+include/libsigscan/features.h
+include/libsigscan/types.h
+@static-lib lib/libsigscan.a
+lib/libsigscan.la
+@lib lib/libsigscan.so.${LIBsigscan_VERSION}
+lib/pkgconfig/libsigscan.pc
+lib/python${MODPY_VERSION}/site-packages/pysigscan.a
+lib/python${MODPY_VERSION}/site-packages/pysigscan.la
+@so lib/python${MODPY_VERSION}/site-packages/pysigscan.so
+@man man/man1/sigscan.1
+@man man/man3/libsigscan.3
+share/examples/libsigscan/
+share/examples/libsigscan/sigscan.conf
+@sample ${SYSCONFDIR}/sigscan.conf

@@ -1,0 +1,20 @@
+Fix bug not respecting ruby version you pass to configure.
+
+Use gdiff since our diff doesn't implement --strip-trailing-cr.
+
+--- test/runtests.in.orig	Mon Oct 13 20:00:59 2014
++++ test/runtests.in	Sat May  9 16:56:59 2015
+@@ -119,11 +119,11 @@ function run_test()
+ 		
+ 		exec_cmd=./$binary
+ 		[ $lang = java ] && exec_cmd="java ${root}"
+-		[ $lang = ruby ] && exec_cmd="ruby ${code_src}"
++		[ $lang = ruby ] && exec_cmd="${ruby_engine} ${code_src}"
+ 		[ $lang = csharp ] && [ "$csharp_compiler" = gmcs ] && exec_cmd="mono ${exec_cmd}"
+ 
+ 		$exec_cmd 2>&1 > $output;
+-		if diff --strip-trailing-cr $expected_out $output > /dev/null; then
++		if gdiff --strip-trailing-cr $expected_out $output > /dev/null; then
+ 			echo "passed";
+ 		else
+ 			echo "FAILED";

@@ -1,0 +1,13 @@
+Index: eval.scm
+--- eval.scm.orig
++++ eval.scm
+@@ -1131,8 +1131,7 @@
+ 	 (if uses-soname?
+ 	     (string-append
+ 	      load-library-extension
+-	      "." 
+-	      (number->string binary-version))
++	      ".${LIBchicken_VERSION}")
+ 	     load-library-extension)))
+     (define complete
+       (cut ##sys#string-append <> ext))

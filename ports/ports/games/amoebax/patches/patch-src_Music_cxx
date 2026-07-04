@@ -1,0 +1,11 @@
+Index: src/Music.cxx
+--- src/Music.cxx.orig
++++ src/Music.cxx
+@@ -24,6 +24,7 @@
+ #include <stdexcept>
+ #include "Music.h"
+ #include "System.h"
++#include <string>
+ 
+ using namespace Amoebax;
+ 

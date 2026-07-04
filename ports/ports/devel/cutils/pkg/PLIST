@@ -1,0 +1,15 @@
+@bin bin/cdecl
+@bin bin/chilight
+@bin bin/cobfusc
+@bin bin/cundecl
+@bin bin/cunloop
+@bin bin/yyextract
+@bin bin/yyref
+@info info/cutils.info
+@man man/man1/cdecl.1
+@man man/man1/chilight.1
+@man man/man1/cobfusc.1
+@man man/man1/cundecl.1
+@man man/man1/cunloop.1
+@man man/man1/yyextract.1
+@man man/man1/yyref.1

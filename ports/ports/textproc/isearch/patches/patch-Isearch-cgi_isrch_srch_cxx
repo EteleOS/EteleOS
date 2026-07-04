@@ -1,0 +1,12 @@
+Index: Isearch-cgi/isrch_srch.cxx
+--- Isearch-cgi/isrch_srch.cxx.orig
++++ Isearch-cgi/isrch_srch.cxx
+@@ -41,7 +41,7 @@ Authors:        Kevin Gamiel, kgamiel@cnidr.org
+ 		Tim Gemma, stone@k12.cnidr.org
+ @@@*/
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include "gdt.h"
+ #include <stdio.h>
+ #include <sys/types.h>

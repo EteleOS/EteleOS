@@ -1,0 +1,20 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -3973,7 +3973,7 @@ done
+ IFS=$ac_save_IFS
+ 
+ 
+-for ac_func in ftime \
++for ac_func in gettimeofday \
+                getaddrinfo \
+                getnameinfo \
+                gethostname \
+@@ -4980,7 +4980,6 @@ for ac_header in string.h \
+                  netinet/in.h \
+                  sys/socket.h \
+                  sys/time.h \
+-                 sys/timeb.h \
+                  wchar.h \
+                  cups/cups.h \
+ 		 cups/backend.h \

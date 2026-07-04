@@ -1,0 +1,5 @@
+bin/shell-quote
+${P5SITE}/String/
+${P5SITE}/String/ShellQuote.pm
+@man man/man1/shell-quote.1
+@man man/man3p/String::ShellQuote.3p

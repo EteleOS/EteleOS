@@ -1,0 +1,33 @@
+Index: havp/helper.cpp
+--- havp/helper.cpp.orig
++++ havp/helper.cpp
+@@ -341,6 +341,16 @@ bool ChangeUserAndGroup( string usr, string grp )
+         return false;
+     }
+ 
++    /*
++     * Set the GID before initgroups(), since on some platforms
++     * setgid() is known to zap the group list.
++     */
++    if ( setgid( my_group->gr_gid ) < 0 )
++    {
++        cout << "Could not change group to: " << grp << endl;
++        return false;
++    }
++
+ #ifdef HAVE_INITGROUPS
+     if ( initgroups( usr.c_str(), user->pw_gid ) )
+     {
+@@ -356,12 +366,6 @@ bool ChangeUserAndGroup( string usr, string grp )
+     }
+ #endif
+ #endif
+-
+-    if ( setgid( my_group->gr_gid ) < 0 )
+-    {
+-        cout << "Could not change group to: " << grp << endl;
+-        return false;
+-    }
+ 
+     if ( setuid( user->pw_uid ) < 0 )
+     {

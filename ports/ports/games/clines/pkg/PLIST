@@ -1,0 +1,14 @@
+@extraunexec rm -fr /var/games/clines/*
+@mode g+s
+@group games
+@bin bin/clines
+@mode
+@group
+@man man/man6/clines.6
+share/doc/clines/
+@mode g+w
+@group games
+@sample /var/games/clines/
+@mode
+@group
+share/doc/clines/README

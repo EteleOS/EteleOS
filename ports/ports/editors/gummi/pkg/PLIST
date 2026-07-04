@@ -1,0 +1,21 @@
+@bin bin/gummi
+lib/gummi/
+lib/gummi/latex_dvi.sh
+@man man/man1/gummi.1
+share/applications/gummi.desktop
+share/gummi/
+share/gummi/icons/
+share/gummi/icons/gummi.png
+share/gummi/icons/icon.png
+share/gummi/misc/
+share/gummi/misc/default.tex
+share/gummi/snippets/
+share/gummi/snippets/snippets.cfg
+share/gummi/snippets/snippets.lang
+share/gummi/ui/
+share/gummi/ui/gummi.glade
+share/gummi/ui/prefs.glade
+share/gummi/ui/snippets.glade
+share/pixmaps/
+share/pixmaps/gummi.png
+@tag update-desktop-database

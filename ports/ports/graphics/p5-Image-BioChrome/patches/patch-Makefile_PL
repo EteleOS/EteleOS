@@ -1,0 +1,20 @@
+--- Makefile.PL.orig	Mon Nov 13 12:29:21 2006
++++ Makefile.PL	Mon Nov 13 12:29:40 2006
+@@ -6,17 +6,6 @@
+ use strict;
+ use ExtUtils::MakeMaker;
+ 
+-eval "use File::MMagic";
+-
+-if ($@ || $File::MMagic::VERSION < 1.21) {
+-	die(<<EOF);
+-
+-Image::BioChrome requires at least version 1.21 of File::MMagic
+-
+-EOF
+-}
+-
+-
+ 
+ 
+ 

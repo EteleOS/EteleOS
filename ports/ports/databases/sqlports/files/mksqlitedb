@@ -1,0 +1,261 @@
+#! /usr/bin/perl
+# $OpenBSD: mksqlitedb,v 1.68 2023/11/26 18:05:09 espie Exp $
+#
+# Copyright (c) 2006-2010 Marc Espie <espie@openbsd.org>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+# example script that shows how to store all variable values into a
+# database, using SQLite for that purpose.
+#
+
+use v5.36;
+use FindBin;
+use lib $FindBin::Bin;
+use Getopt::Std;
+use Var;
+use Inserter;
+use DBI;
+use PkgPath;
+use Info;
+use TreeWalker;
+use Trace;
+
+
+package MyTreeWalker;
+our @ISA = (qw(TreeWalker));
+
+sub new($class, $inserter, @r)
+{
+	my $o =  $class->SUPER::new(@r);
+	$o->{inserter} = $inserter;
+	return $o;
+}
+
+sub inserter($self)
+{
+	return $self->{inserter};
+}
+
+sub handle_value($self, $o, $var, $value, $arch)
+{
+	$o->{info} //= Info->new($o);
+	$o->{info}->create($var, $value, $arch, $o);
+}
+
+sub parse_dump($self, $fd, $subdirs)
+{
+	$self->SUPER::parse_dump($fd, $subdirs);
+	$self->inserter->commit_to_db;
+}
+
+sub create_missing_vars($self, $o)
+{
+	for my $name (qw(SHARED_LIBS TARGETS)) {
+		if (!defined $o->{info}->{vars}{$name}) {
+			$o->{info}->create($name, '', undef, $o);
+		}
+	}
+}
+
+sub handle_path($self, $pkgpath, $equivs, $todo)
+{
+	$self->create_missing_vars($pkgpath);
+	my $key = $pkgpath->fullpkgpath;
+	delete $todo->{$key};
+	while (defined $equivs->{$key}) {
+		$key = $equivs->{$key};
+		delete $todo->{$key};
+	}
+	if ($pkgpath->{info}{done}) {
+		say "--- $key (already done)";
+		return;
+	}
+	say $self->errored ? "!!! " : "+++ ", $key;
+	eval {
+		$self->inserter->set_newkey($key);
+		for my $var ($pkgpath->{info}->variables) {
+			$self->inserter->add_var($var);
+		}
+		$pkgpath->{info}->reclaim;
+		$pkgpath->{info}{done} = 1;
+		$pkgpath->{done} = 1;
+		$self->inserter->finish_port;
+	};
+	if ($@) {
+		$self->break($pkgpath, $@);
+	}
+}
+
+package main;
+use Digest::SHA;
+use MIME::Base64;
+
+=pod
+
+=head1 NAME
+
+mksqlitedb - rebuild sqlports database
+
+=head1 SYNOPSIS
+
+mksqlitedb [-ksv] [-C sqlcache] [-S startdir] [-V version] [-W views] [dbname]
+
+=head1 USAGE
+
+Rebuilds the sqlports database as F<dbname>.
+
+Options are as follows:
+
+=over 4
+
+=item -C inst
+
+write the sql used to generate PortsQ into F<inst>.
+
+=item -k
+
+keep going after errors.
+
+=item -s
+
+be "strict", reset PORTSDIRPATH (do not look at F<wip>).
+
+=item -S startdir
+
+start from directory F<startdir>, to be used for debugging.
+
+=item -t pkgpath
+
+only run on F<pkgpath>, for testing.
+
+=item -v
+
+show sql commands used for the database schema.
+
+=item -V version
+
+embed version number in the database.
+
+=item -W views
+
+dump all views into F<views>.
+
+=back
+
+=cut
+
+sub usage()
+{
+	say STDERR "Usage: mksqlitedb [-ksv] [-C sqlcache] [-S startdir] [-V version] [-W views] [dbname]";
+	exit(1);
+}
+
+sub digest($filename)
+{
+	my $d = Digest::SHA->new(256);
+	$d->addfile($filename);
+	return encode_base64($d->digest, '');
+}
+
+our ($opt_C, $opt_k, $opt_s, $opt_S, $opt_t, $opt_v, $opt_V, $opt_w);
+
+Trace->setup(\%SIG);
+getopts('C:ksS:t:vV:w:') || usage();
+my $dbname;
+if (@ARGV == 1) {
+	$dbname = shift;
+} elsif (@ARGV == 0) {
+	$dbname = 'sqlports';
+} else {
+	exit 1;
+}
+
+my $db = DBI->connect("dbi:SQLite:dbname=$dbname", '', '', {AutoCommit => 0});
+my $inserter = Inserter->new($db, 1000, $opt_v, 1);
+
+
+$inserter->create_tables($Info::vars);
+
+if ($opt_k) {
+	$ENV{'REPORT_PROBLEM'}= ':';
+}
+
+my $walker = MyTreeWalker->new($inserter, $opt_s, $opt_S, $opt_k);
+if (defined $opt_C) {
+	open(my $f, '>', $opt_C) or die "Can't write ", $opt_C, ": ", $!;
+	my $cache = "PortsQ";
+	say $f "DROP TABLE if exists $cache;";
+	say $f Sql::Create->find('ports')->cache($cache), ";";
+	say $f "INSERT INTO $cache select * from Ports;";
+	say $f "ANALYZE;";
+	close $f;
+}
+
+if (defined $opt_w) {
+	open(my $f, '>', $opt_w) or die "Can't write ", $opt_w, ": ", $!;
+	for my $v (Sql::Create->all_views) {
+		say $f $v->drop, ";";
+		say $f $v->stringize, ";";
+	}
+	close $f;
+}
+
+use Baseline;
+
+BaselineMixin->prime(Baseline->get);
+
+my $endcode =  sub() {
+	while (my ($k, $v) = each %$Info::unknown) {
+		say STDERR "Unknown variable $k in ", $v->fullpkgpath;
+	}
+
+	$walker->dump_errors;
+};
+
+my $h = sub { # SIGHANDLER
+	my $sig = shift;
+	&$endcode();
+	$SIG{$sig} = 'DEFAULT';
+	kill $sig, $$;
+};
+
+for my $s (qw(INT QUIT TERM HUP)) {
+	$SIG{$s} = $h;
+}
+
+if ($opt_t) {
+	$walker->dump_dir($opt_t);
+} else {
+	$walker->dump_all_dirs;
+}
+
+# Create aliases, we have to sort the keys so that they are
+# created in the right pkgpath order
+for my $p (sort keys %{$walker->{equivs}}) {
+	my $a = $p;
+	while (defined $walker->{equivs}{$a}) {
+		$a = $walker->{equivs}{$a};
+	}
+	$walker->inserter->add_path($p, $a);
+}
+
+$walker->inserter->commit_to_db;
+$walker->inserter->insert("Meta", $opt_V, digest($dbname));
+$walker->inserter->commit_to_db;
+$db->disconnect;
+
+&$endcode();
+if ($walker->errored) {
+	exit(1);
+}

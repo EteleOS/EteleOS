@@ -1,0 +1,6 @@
+${P5SITE}/MooX/
+${P5SITE}/MooX/TypeTiny/
+${P5SITE}/MooX/TypeTiny.pm
+${P5SITE}/MooX/TypeTiny/Role/
+${P5SITE}/MooX/TypeTiny/Role/GenerateAccessor.pm
+@man man/man3p/MooX::TypeTiny.3p

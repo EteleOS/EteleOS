@@ -1,0 +1,14 @@
+Fix build with opaque RSA in LibreSSL 3.5.
+
+Index: lib/mega.c
+--- lib/mega.c.orig
++++ lib/mega.c
+@@ -787,7 +787,7 @@ static gboolean rsa_key_gen(struct rsa_key *k)
+ 		return FALSE;
+ 	}
+ 
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+ 	const BIGNUM *p, *q, *d, *u, *m, *_e;
+ 	RSA_get0_key(key, &m, &_e, &d);
+ 	RSA_get0_factors(key, &q, &p);

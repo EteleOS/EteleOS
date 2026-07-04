@@ -1,0 +1,13 @@
+Index: log.h
+--- log.h.orig
++++ log.h
+@@ -15,6 +15,9 @@
+ #ifndef SSH_LOG_H
+ #define SSH_LOG_H
+ 
++#include <stdarg.h>
++#include <stdio.h>
++
+ /* Supported syslog facilities and levels. */
+ typedef enum {
+ 	SYSLOG_FACILITY_DAEMON,

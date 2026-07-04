@@ -1,0 +1,22 @@
+--- cfg.c.orig	Wed Dec 12 23:40:45 2001
++++ cfg.c	Sat May 22 16:42:06 2010
+@@ -182,7 +182,8 @@ conf_set_now (char *section, char *tag, char *value, i
+ 
+ 	node = calloc (1, sizeof *node);
+ 	if (!node) {
+-		warn("conf_set: calloc (1, %d) failed", sizeof *node);
++		warn("conf_set: calloc (1, %lu) failed",
++		     (unsigned long)sizeof *node);
+ 		return (1);
+ 	}
+ 	node->section = strdup (section);
+@@ -612,7 +613,8 @@ conf_trans_node (int transaction, enum conf_op op)
+ 
+ 	node = calloc (1, sizeof *node);
+ 	if (!node) {
+-		warn("conf_trans_node: calloc (1, %d) failed", sizeof *node);
++		warn("conf_trans_node: calloc (1, %lu) failed",
++		     (unsigned long)sizeof *node);
+ 		return (0);
+ 	}
+ 	node->trans = transaction;

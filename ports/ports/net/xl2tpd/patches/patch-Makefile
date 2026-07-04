@@ -1,0 +1,43 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -56,8 +56,8 @@ DFLAGS?= -DDEBUG_PPPD -DTRUST_PPPD_TO_DIE
+ # but we use a local copy if we don't find it.
+ #
+ #KERNELSRC=/lib/modules/`uname -r`/build/
+-KERNELSRC?=./linux
+-OSFLAGS?= -DLINUX -I$(KERNELSRC)/include/
++#KERNELSRC?=./linux
++#OSFLAGS?= -DLINUX -I$(KERNELSRC)/include/
+ #
+ # Uncomment the following to use the kernel interface under Linux
+ # This requires the pppol2tp-linux-2.4.27.patch patch from contrib
+@@ -65,7 +65,7 @@ OSFLAGS?= -DLINUX -I$(KERNELSRC)/include/
+ # are packages seperately (eg kernel-headers on Fedora)
+ # Note: 2.6.23+ support still needs some changes in the xl2tpd source
+ #
+-OSFLAGS+= -DUSE_KERNEL
++#OSFLAGS+= -DUSE_KERNEL
+ #
+ #
+ # Uncomment the next line for FreeBSD
+@@ -90,8 +90,8 @@ OSFLAGS+= -DUSE_KERNEL
+ 
+ # Uncomment the next two lines for OpenBSD
+ #
+-#OSFLAGS?= -DOPENBSD
+-#LDLIBS?= -lutil
++OSFLAGS?= -DOPENBSD
++LDLIBS?= -lutil
+ 
+ # Feature flags
+ #
+@@ -100,7 +100,7 @@ OSFLAGS+= -DUSE_KERNEL
+ 
+ IPFLAGS?= -DIP_ALLOCATION
+ 
+-CFLAGS+= $(DFLAGS) -Os -Wall -Wextra -DSANITY $(OSFLAGS) $(IPFLAGS)
++CFLAGS+= $(DFLAGS) -Wall -Wextra -DSANITY $(OSFLAGS) $(IPFLAGS)
+ HDRS=l2tp.h avp.h misc.h control.h call.h scheduler.h file.h aaa.h md5.h
+ OBJS=xl2tpd.o pty.o misc.o control.o avp.o call.o network.o avpsend.o scheduler.o file.o aaa.o md5.o
+ SRCS=${OBJS:.o=.c} ${HDRS}

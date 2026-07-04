@@ -1,0 +1,5 @@
+share/lua/${MODLUA_VERSION}/lustache/
+share/lua/${MODLUA_VERSION}/lustache.lua
+share/lua/${MODLUA_VERSION}/lustache/context.lua
+share/lua/${MODLUA_VERSION}/lustache/renderer.lua
+share/lua/${MODLUA_VERSION}/lustache/scanner.lua

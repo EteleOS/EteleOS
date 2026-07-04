@@ -1,0 +1,24 @@
+Index: etc/odbcinst.ini.sample
+--- etc/odbcinst.ini.sample.orig
++++ etc/odbcinst.ini.sample
+@@ -1,6 +1,16 @@
+ [ODBC Drivers]
+-OpenLink (MT) = Installed
++PostgreSQL = Installed
++FreeTDS = Installed
++SQLite3 = Installed
+ 
+-[OpenLink (MT)]
+-Driver = /home/openlink/lib/oplodbc.so.1
+-Setup  = /home/openlink/lib/oplodbc.so.1
++[PostgreSQL]
++Description = ODBC driver for PostgreSQL
++Driver      = ${LOCALBASE}/lib/psqlodbcw.so
++
++[FreeTDS]
++Description = FreeTDS ODBC driver for MSSQL
++Driver      = ${LOCALBASE}/lib/libtdsodbc.so
++
++[SQLite3]
++Description = ODBC driver for SQLite3
++Driver      = ${LOCALBASE}/lib/libsqlite3odbc.so

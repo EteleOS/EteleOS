@@ -1,0 +1,4 @@
+${P5SITE}/Email/
+${P5SITE}/Email/Address/
+${P5SITE}/Email/Address/List.pm
+@man man/man3p/Email::Address::List.3p

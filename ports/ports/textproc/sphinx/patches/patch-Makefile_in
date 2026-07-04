@@ -1,0 +1,22 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -304,15 +304,15 @@ sphinx-min.conf.dist: $(top_builddir)/config.status $(
+ 	cd $(top_builddir) && $(SHELL) ./config.status $@
+ install-sysconfDATA: $(sysconf_DATA)
+ 	@$(NORMAL_INSTALL)
+-	test -z "$(sysconfdir)" || $(MKDIR_P) "$(DESTDIR)$(sysconfdir)"
++	test -z "$(datadir)/examples/sphinx" || $(MKDIR_P) "$(DESTDIR)$(datadir)/examples/sphinx"
+ 	@list='$(sysconf_DATA)'; test -n "$(sysconfdir)" || list=; \
+ 	for p in $$list; do \
+ 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+ 	  echo "$$d$$p"; \
+ 	done | $(am__base_list) | \
+ 	while read files; do \
+-	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(sysconfdir)'"; \
+-	  $(INSTALL_DATA) $$files "$(DESTDIR)$(sysconfdir)" || exit $$?; \
++	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(datadir)/examples/sphinx/'"; \
++	  $(INSTALL_DATA) $$files "$(DESTDIR)$(datadir)/examples/sphinx/" || exit $$?; \
+ 	done
+ 
+ uninstall-sysconfDATA:

@@ -1,0 +1,28 @@
+Index: Xwnmo/xjutil/Imakefile
+--- Xwnmo/xjutil/Imakefile.orig
++++ Xwnmo/xjutil/Imakefile
+@@ -30,7 +30,7 @@ XCOMM CONNECTION WITH THE USE OR PERFORMANCE OF THIS S
+ XCOMM
+ 
+ LOCAL_INSTFLAGS = $(INSTBINFLAGS) -o $(WNNOWNER)
+-       INCLUDES = -I. $(XWNMOINCLUDES) -I$(XWNMOSRC)
++       INCLUDES = -I. $(XWNMOINCLUDES) -I$(XWNMOSRC) -I/usr/X11R6/include
+ #ifdef UseInstalled
+         DEPLIBS = $(XWNMOJLIB)
+ #else
+@@ -40,6 +40,7 @@ LOCAL_INSTFLAGS = $(INSTBINFLAGS) -o $(WNNOWNER)
+         DEFINES = $(WNNDEFINE) $(ALLLANGDEF) $(LOCAL_DEFINES) $(XWNMODEF)
+ LOCAL_LIBRARIES = $(XWNMOJLIB) $(XLIB)
+        LOCALMAN = man.en
++        JMANDIR = $(MANPATH)/ja/man$(MANSUFFIX)
+ 
+ LINKS = xjutil.man
+ 
+@@ -133,6 +134,7 @@ LinkSourceFile(xjutil.man,$(LOCALMAN))
+ 
+ InstallProgramWithFlags(xjutil,$(BINDIR),$(LOCAL_INSTFLAGS))
+ InstallManPage(xjutil,$(MANDIR))
++InstallJManPageLong(man.ja/xjutil,$(JMANDIR),xjutil)
+ 
+ WnnSpecialObjectRule($(OBJ2),$(SRC2),$(XWNMOSRC),)
+ WnnSpecialObjectRule($(OBJ3),$(SRC3),$(XWNMOSRC),)

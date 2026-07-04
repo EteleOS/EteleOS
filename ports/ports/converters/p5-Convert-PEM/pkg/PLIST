@@ -1,0 +1,5 @@
+${P5SITE}/Convert/PEM/
+${P5SITE}/Convert/PEM.pm
+${P5SITE}/Convert/PEM/CBC.pm
+@man man/man3p/Convert::PEM.3p
+@man man/man3p/Convert::PEM::CBC.3p

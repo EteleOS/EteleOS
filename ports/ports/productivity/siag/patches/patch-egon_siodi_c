@@ -1,0 +1,10 @@
+--- egon/siodi.c.orig	Mon Dec  1 13:36:31 2008
++++ egon/siodi.c	Mon Dec  1 13:36:42 2008
+@@ -24,6 +24,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <ctype.h>
+ 
+ #include "egon.h"

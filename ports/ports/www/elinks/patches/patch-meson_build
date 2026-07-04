@@ -1,0 +1,12 @@
+Index: meson.build
+--- meson.build.orig
++++ meson.build
+@@ -716,7 +716,7 @@ else
+ endif
+ 
+ if conf_data.get('CONFIG_TERMINFO')
+-    terminfodeps = dependency('ncursesw', static: st)
++    terminfodeps = compiler.find_library('ncursesw', static: st, dirs: [get_option('prefix')+'/lib','/usr/local/lib','/usr/lib'])
+     deps += terminfodeps
+ endif
+ 

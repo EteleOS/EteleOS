@@ -1,0 +1,10 @@
+@extraunexec rm -rf ${LOCALSTATEDIR}/db/ietf-mirrors/*
+bin/ietf
+share/doc/ietf/
+share/doc/ietf/README
+share/examples/ietf/
+share/examples/ietf/ietf.config
+@sample ${SYSCONFDIR}/ietf.config
+@mode 775
+@group wheel
+@sample ${LOCALSTATEDIR}/db/ietf-mirrors/

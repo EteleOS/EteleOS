@@ -1,0 +1,13 @@
+Index: etc/kamailio.cfg
+--- etc/kamailio.cfg.orig
++++ etc/kamailio.cfg
+@@ -177,6 +177,9 @@ log_prefix="{$mt $hdr(CSeq) $ci} "
+  * - value inherited by tcp_children and sctp_children when not set explicitely */
+ children=8
+ 
++user="_kamailio"
++group="_kamailio"
++
+ /* uncomment the next line to disable TCP (default on) */
+ # disable_tcp=yes
+ 

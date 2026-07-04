@@ -1,0 +1,24 @@
+@newgroup _arpwatch:820
+@newuser _arpwatch:820:_arpwatch::arpwatch user:/nonexistent:/sbin/nologin
+@man man/man8/arpsnmp.8
+@man man/man8/arpwatch.8
+@bin sbin/arpsnmp
+@bin sbin/arpwatch
+@owner _arpwatch
+@sample ${LOCALSTATEDIR}/arpwatch/
+@owner
+share/examples/arpwatch/
+share/examples/arpwatch/arp.dat
+@mode 644
+@owner _arpwatch
+@sample ${LOCALSTATEDIR}/arpwatch/arp.dat
+@mode
+@owner
+share/examples/arpwatch/arp2ethers
+share/examples/arpwatch/d.awk
+share/examples/arpwatch/duplicates.awk
+share/examples/arpwatch/e.awk
+share/examples/arpwatch/euppertolower.awk
+share/examples/arpwatch/massagevendor
+share/examples/arpwatch/p.awk
+@rcscript ${RCDIR}/arpwatch

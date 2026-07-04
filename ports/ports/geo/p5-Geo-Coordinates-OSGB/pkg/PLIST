@@ -1,0 +1,28 @@
+${P5SITE}/Geo/
+${P5SITE}/Geo/Coordinates/
+${P5SITE}/Geo/Coordinates/OSGB/
+${P5SITE}/Geo/Coordinates/OSGB.pm
+${P5SITE}/Geo/Coordinates/OSGB/Background.pod
+${P5SITE}/Geo/Coordinates/OSGB/Grid.pm
+${P5SITE}/Geo/Coordinates/OSGB/Maps.pm
+${P5SITE}/auto/
+${P5SITE}/auto/share/
+${P5SITE}/auto/share/dist/
+${P5SITE}/auto/share/dist/Geo-Coordinates-OSGB/
+${P5SITE}/auto/share/dist/Geo-Coordinates-OSGB/ostn_east_shift_82140
+${P5SITE}/auto/share/dist/Geo-Coordinates-OSGB/ostn_north_shift_-84180
+@man man/man3p/Geo::Coordinates::OSGB.3p
+@man man/man3p/Geo::Coordinates::OSGB::Background.3p
+@man man/man3p/Geo::Coordinates::OSGB::Grid.3p
+@man man/man3p/Geo::Coordinates::OSGB::Maps.3p
+share/examples/p5-Geo-Coordinates-OSGB/
+share/examples/p5-Geo-Coordinates-OSGB/Index_for_map_series_A.pdf
+share/examples/p5-Geo-Coordinates-OSGB/Index_for_map_series_B.pdf
+share/examples/p5-Geo-Coordinates-OSGB/Index_for_map_series_C.pdf
+share/examples/p5-Geo-Coordinates-OSGB/National_grid.pdf
+share/examples/p5-Geo-Coordinates-OSGB/bngl.pl
+share/examples/p5-Geo-Coordinates-OSGB/gb-coastline.shapes
+share/examples/p5-Geo-Coordinates-OSGB/ostn-boundary-polygons.wkt
+share/examples/p5-Geo-Coordinates-OSGB/plot_maps.pl
+share/examples/p5-Geo-Coordinates-OSGB/what_map.pl
+share/examples/p5-Geo-Coordinates-OSGB/zero-points.pl

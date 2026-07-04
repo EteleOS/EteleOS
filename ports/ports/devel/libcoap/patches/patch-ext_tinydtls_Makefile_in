@@ -1,0 +1,32 @@
+Index: ext/tinydtls/Makefile.in
+--- ext/tinydtls/Makefile.in.orig
++++ ext/tinydtls/Makefile.in
+@@ -32,8 +32,8 @@ exec_prefix = @exec_prefix@
+ abs_builddir = @abs_builddir@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-libdir = @libdir@
+-includedir = @includedir@/@PACKAGE_NAME@
++libdir = $(PREFIX)/lib
++includedir = $(PREFIX)/include/@PACKAGE_NAME@
+ package = @PACKAGE_TARNAME@-@PACKAGE_VERSION@
+ 
+ install := cp
+@@ -58,7 +58,7 @@ FILES:=Makefile.in configure configure.ac dtls_config.
+ LIB:=libtinydtls
+ LIBS:=$(LIB).a
+ ifeq ("@ENABLE_SHARED@", "1")
+-LIBS:=$(LIBS) $(LIB).so
++LIBS:=$(LIBS) $(LIB).so.${LIBtinydtls_VERSION}
+ endif
+ LDFLAGS:=@LDFLAGS@ @LIBS@
+ ARFLAGS:=cru
+@@ -90,7 +90,7 @@ dtls_prng.o::	$(wildcard platform-specific/dtls_prng_*
+ $(SUB_OBJECTS)::
+ 	$(MAKE) -C $(@D) $(@F)
+ 
+-$(LIB).so: $(OBJECTS)
++$(LIB).so.${LIBtinydtls_VERSION}: $(OBJECTS)
+ 	$(LINK.c) $(LDFLAGS) -shared $^ -o $@
+ 
+ $(LIB).a: $(OBJECTS)

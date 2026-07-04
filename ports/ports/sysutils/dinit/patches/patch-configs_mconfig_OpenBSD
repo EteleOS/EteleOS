@@ -1,0 +1,12 @@
+Index: configs/mconfig.OpenBSD
+--- configs/mconfig.OpenBSD.orig
++++ configs/mconfig.OpenBSD
+@@ -11,7 +11,7 @@ SYSCONTROLSOCKET=/var/run/dinitctl
+ 
+ # OpenBSD, tested with GCC 4.9.3 / Clang++ 4/5 and gmake:
+ CXX=clang++
+-CXXFLAGS=-std=c++11 -Os -Wall -fno-rtti
++override CXXFLAGS+=-std=c++11 -Wall -fno-rtti
+ CPPFLAGS=
+ LDFLAGS_BASE=
+ LDFLAGS=$(LDFLAGS_BASE)

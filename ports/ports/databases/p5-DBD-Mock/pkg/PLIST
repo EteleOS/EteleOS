@@ -1,0 +1,14 @@
+${P5SITE}/DBD/
+${P5SITE}/DBD/Mock/
+${P5SITE}/DBD/Mock.pm
+${P5SITE}/DBD/Mock/Pool/
+${P5SITE}/DBD/Mock/Pool.pm
+${P5SITE}/DBD/Mock/Pool/db.pm
+${P5SITE}/DBD/Mock/Session.pm
+${P5SITE}/DBD/Mock/StatementTrack/
+${P5SITE}/DBD/Mock/StatementTrack.pm
+${P5SITE}/DBD/Mock/StatementTrack/Iterator.pm
+${P5SITE}/DBD/Mock/db.pm
+${P5SITE}/DBD/Mock/dr.pm
+${P5SITE}/DBD/Mock/st.pm
+@man man/man3p/DBD::Mock.3p

@@ -1,0 +1,24 @@
+scan/sane/hpaio.c:555:8: error: void function 'sane_hpaio_cancel' should not return a value [-Wreturn-type]
+       return orblite_cancel(handle)
+
+Index: scan/sane/hpaio.c
+--- scan/sane/hpaio.c.orig
++++ scan/sane/hpaio.c
+@@ -427,7 +427,7 @@ extern void sane_hpaio_close(SANE_Handle handle)
+     if (strcmp(*((char **)handle), "ESCL") == 0)
+        return escl_close(handle);
+     if (strcmp(*((char **)handle), "ORBLITE") == 0)
+-       return orblite_close(handle);
++       orblite_close(handle);
+ }  /* sane_hpaio_close() */
+ 
+ extern const SANE_Option_Descriptor * sane_hpaio_get_option_descriptor(SANE_Handle handle, SANE_Int option)
+@@ -560,7 +560,7 @@ extern void sane_hpaio_cancel( SANE_Handle handle )
+     if (strcmp(*((char **)handle), "ESCL") == 0)
+        return escl_cancel(handle);
+     if (strcmp(*((char **)handle), "ORBLITE") == 0)
+-       return orblite_cancel(handle);
++       orblite_cancel(handle);
+ }  /* sane_hpaio_cancel() */
+ 
+ extern SANE_Status sane_hpaio_set_io_mode(SANE_Handle handle, SANE_Bool nonBlocking)

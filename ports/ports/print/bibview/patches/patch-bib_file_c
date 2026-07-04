@@ -1,0 +1,22 @@
+Index: bib_file.c
+--- bib_file.c.orig
++++ bib_file.c
+@@ -1,3 +1,4 @@
++#include <stdlib.h>
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <X11/Intrinsic.h>
+@@ -466,10 +467,10 @@ Errcode bifFileRead(BibPtr bp)
+   bp->macrofile = (char *)XtMalloc(strlen(tempName)+1);
+   strcpy(bp->macrofile,tempName);
+ #else
+-  bp->tempfile = (char *)tempnam(NULL, NULL);
+-  bp->macrofile = (char *)tempnam(NULL, NULL);
++  bp->tempfile = strdup("/tmp/ax.XXXXXXXX"); close(mkstemp(bp->tempfile));
++  bp->macrofile = strdup("/tmp/ww.XXXXXXXX");
+ #endif
+-  tempDatei = fopen(bp->macrofile, "w" );
++  tempDatei = fdopen(mkstemp(bp->macrofile), "w" );
+ 
+   if ((erg = SetInputFile(bp->filepath)) == BIF_ENOTEXISTS){
+      glbbp = bp;

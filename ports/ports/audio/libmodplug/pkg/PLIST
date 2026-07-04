@@ -1,0 +1,9 @@
+include/libmodplug/
+include/libmodplug/it_defs.h
+include/libmodplug/modplug.h
+include/libmodplug/sndfile.h
+include/libmodplug/stdafx.h
+lib/libmodplug.a
+lib/libmodplug.la
+@lib lib/libmodplug.so.${LIBmodplug_VERSION}
+lib/pkgconfig/libmodplug.pc

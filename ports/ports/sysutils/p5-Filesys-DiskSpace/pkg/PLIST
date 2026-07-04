@@ -1,0 +1,3 @@
+${P5SITE}/Filesys/
+${P5SITE}/Filesys/DiskSpace.pm
+@man man/man3p/Filesys::DiskSpace.3p

@@ -1,0 +1,13 @@
+@pkgpath x11/farsifonts-ttf
+share/fonts/
+@fontdir share/fonts/farsifonts/
+share/fonts/farsifonts/elham.ttf
+share/fonts/farsifonts/homa.ttf
+share/fonts/farsifonts/koodak.ttf
+share/fonts/farsifonts/nazli.ttf
+share/fonts/farsifonts/nazlib.ttf
+share/fonts/farsifonts/roya.ttf
+share/fonts/farsifonts/royab.ttf
+share/fonts/farsifonts/terafik.ttf
+share/fonts/farsifonts/terafikb.ttf
+share/fonts/farsifonts/titr.ttf

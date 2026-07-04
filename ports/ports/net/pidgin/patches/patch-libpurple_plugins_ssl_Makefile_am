@@ -1,0 +1,47 @@
+--- libpurple/plugins/ssl/Makefile.am.orig	Sun Nov 23 11:41:25 2014
++++ libpurple/plugins/ssl/Makefile.am	Wed Nov 26 04:19:11 2014
+@@ -4,6 +4,7 @@ EXTRA_DIST = \
+ plugindir = $(libdir)/purple-$(PURPLE_MAJOR_VERSION)
+ 
+ ssl_la_LDFLAGS        = -module -avoid-version
++ssl_openssl_la_LDFLAGS = -module -avoid-version
+ ssl_gnutls_la_LDFLAGS = -module -avoid-version
+ ssl_nss_la_LDFLAGS    = -module -avoid-version
+ nss_prefs_la_LDFLAGS  = -module -avoid-version
+@@ -14,6 +15,11 @@ if PLUGINS
+ #   if USE_GNUTLS && USE_NSS
+ # but only support testing a single variable. Hence:
+ 
++if USE_OPENSSL
++plugin_LTLIBRARIES = \
++	ssl.la           \
++	ssl-openssl.la
++else
+ if USE_GNUTLS
+ if USE_NSS
+ plugin_LTLIBRARIES = \
+@@ -37,13 +43,16 @@ plugin_LTLIBRARIES = \
+ 	ssl.la
+ endif
+ endif
++endif
+ 
+ ssl_la_SOURCES        = ssl.c
++ssl_openssl_la_SOURCES = ssl-openssl.c
+ ssl_gnutls_la_SOURCES = ssl-gnutls.c
+ ssl_nss_la_SOURCES    = ssl-nss.c
+ nss_prefs_la_SOURCES  = nss-prefs.c
+ 
+ ssl_la_LIBADD        = $(GLIB_LIBS)
++ssl_openssl_la_LIBADD = $(GLIB_LIBS) $(OPENSSL_LIBS)
+ ssl_gnutls_la_LIBADD = $(GLIB_LIBS) $(GNUTLS_LIBS)
+ ssl_nss_la_LIBADD    = $(GLIB_LIBS) $(NSS_LIBS)
+ nss_prefs_la_LIBADD  = $(GLIB_LIBS) $(NSS_LIBS)
+@@ -59,6 +68,7 @@ AM_CPPFLAGS = \
+ 	$(GLIB_CFLAGS) \
+ 	$(PLUGIN_CFLAGS)
+ 
++ssl_openssl_la_CFLAGS = $(AM_CPPFLAGS) $(OPENSSL_CFLAGS)
+ ssl_gnutls_la_CFLAGS = $(AM_CPPFLAGS) $(GNUTLS_CFLAGS)
+ ssl_nss_la_CFLAGS = $(AM_CPPFLAGS) $(NSS_CFLAGS)
+ nss_prefs_la_CFLAGS = $(AM_CPPFLAGS) $(NSS_CFLAGS)

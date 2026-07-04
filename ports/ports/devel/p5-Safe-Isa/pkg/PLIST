@@ -1,0 +1,3 @@
+${P5SITE}/Safe/
+${P5SITE}/Safe/Isa.pm
+@man man/man3p/Safe::Isa.3p

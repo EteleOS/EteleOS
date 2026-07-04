@@ -1,0 +1,34 @@
+--- config.mk.orig	Mon Nov  5 15:36:22 2007
++++ config.mk	Tue Mar 10 23:02:26 2009
+@@ -11,9 +11,9 @@ RUBYINC = -I/usr/local/lib/ruby/1.8/i386-freebsd6
+ TASKINC = -I${HOME}/libtask
+ 
+ # paths
+-PREFIX = /usr/local
++#PREFIX = /usr/local
+ BIN = ${PREFIX}/bin
+-MAN = ${PREFIX}/share/man
++MAN = ${PREFIX}/man
+ ETC = ${PREFIX}/etc
+ LIBDIR = ${PREFIX}/lib
+ INCLUDE = ${PREFIX}/include
+@@ -24,15 +24,15 @@ LIBS = -L/usr/lib -lc
+ 
+ # Flags
+ include ${ROOT}/mk/gcc.mk
+-CFLAGS = -g -Wall ${INCS} -DVERSION=\"${VERSION}\"
++CFLAGS = !!CFLAGS!! -g -Wall ${INCS} -DVERSION=\"${VERSION}\"
+ LDFLAGS = -g ${LIBS}
+ 
+ # Compiler
+-CC = cc -c
++CC = !!CC!! -c
+ # Linker (Under normal circumstances, this should *not* be 'ld')
+-LD = cc
++LD = !!CC!!
+ # Other
+-AR = ar crs
++AR = ar cr
+ #AR = sh -c 'ar cr "$$@" && ranlib "$$@"'
+ 
+ # Solaris

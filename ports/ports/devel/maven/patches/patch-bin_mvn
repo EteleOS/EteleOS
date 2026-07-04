@@ -1,0 +1,14 @@
+Index: bin/mvn
+--- bin/mvn.orig
++++ bin/mvn
+@@ -34,8 +34,8 @@ if [ -z "$MAVEN_SKIP_RC" ] ; then
+     . /usr/local/etc/mavenrc
+   fi
+ 
+-  if [ -f /etc/mavenrc ] ; then
+-    . /etc/mavenrc
++  if [ -f ${SYSCONFDIR}/maven/maven.rc ] ; then
++    . ${SYSCONFDIR}/maven/maven.rc
+   fi
+ 
+   if [ -f "$HOME/.mavenrc" ] ; then

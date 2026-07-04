@@ -1,0 +1,8 @@
+@bin bin/sketch
+share/examples/sketch/
+share/examples/sketch/2tori.sk
+share/examples/sketch/buggy.sk
+share/examples/sketch/bunny.sk
+share/examples/sketch/cone.sk
+share/examples/sketch/hand.sk
+share/examples/sketch/test.sk

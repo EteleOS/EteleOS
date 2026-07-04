@@ -1,0 +1,11 @@
+Index: src/ccrtp/sources.h
+--- src/ccrtp/sources.h.orig
++++ src/ccrtp/sources.h
+@@ -44,6 +44,7 @@
+ #ifndef	CCXX_RTP_SOURCES_H_
+ #define CCXX_RTP_SOURCES_H_
+ 
++#include <cstddef>
+ #include <string>
+ #include <ccrtp/rtcppkt.h>
+ 

@@ -1,0 +1,11 @@
+--- conf/Makefile.am.orig	Tue Aug  7 00:21:59 2012
++++ conf/Makefile.am	Wed Apr 15 11:13:57 2015
+@@ -2,5 +2,7 @@
+ 
+ AUTOMAKE_OPTIONS = foreign
+ 
+-dist_pkgdata_DATA = ices-oss.xml ices-alsa.xml ices-playlist.xml ices-roar.xml
++pkgdatadir = $(datadir)/examples/@PACKAGE@2
++
++dist_pkgdata_DATA = ices-sndio.xml ices-playlist.xml
+ 

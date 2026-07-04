@@ -1,0 +1,5 @@
+@bin bin/openarena-client
+share/doc/openarena/
+share/doc/openarena/CHANGES
+share/doc/openarena/COPYING
+share/doc/openarena/README

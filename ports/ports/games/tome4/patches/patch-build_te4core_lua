@@ -1,0 +1,14 @@
+Remove hardcoded optimization level.
+
+Index: build/te4core.lua
+--- build/te4core.lua.orig
++++ build/te4core.lua
+@@ -41,7 +41,7 @@ project "TEngine"
+ 	if _OPTIONS.discord then defines { "DISCORD_TE4" } end
+ 	defines { "_DEFAULT_VIDEOMODE_FLAGS_='SDL_HWSURFACE|SDL_DOUBLEBUF'" }
+ 	defines { [[TENGINE_HOME_PATH='".t-engine"']], "TE4CORE_VERSION="..TE4CORE_VERSION }
+-	buildoptions { "-O3" }
++	--buildoptions { "-O3" }
+ 
+ 	if _OPTIONS.relpath=="32" then linkoptions{"-Wl,-rpath -Wl,\\\$\$ORIGIN/lib "} end
+ 	if _OPTIONS.relpath=="64" then linkoptions{"-Wl,-rpath -Wl,\\\$\$ORIGIN/lib64 "} end

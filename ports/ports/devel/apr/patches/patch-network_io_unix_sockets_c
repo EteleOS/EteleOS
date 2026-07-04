@@ -1,0 +1,12 @@
+Index: network_io/unix/sockets.c
+--- network_io/unix/sockets.c.orig
++++ network_io/unix/sockets.c
+@@ -338,7 +338,7 @@ apr_status_t apr_socket_accept(apr_socket_t **new, apr
+         apr_set_option(*new, APR_TCP_NODELAY, 1);
+     }
+ #endif /* TCP_NODELAY_INHERITED */
+-#if APR_O_NONBLOCK_INHERITED
++#if APR_O_NONBLOCK_INHERITED && !defined(HAVE_ACCEPT4)
+     if (apr_is_option_set(sock, APR_SO_NONBLOCK) == 1) {
+         apr_set_option(*new, APR_SO_NONBLOCK, 1);
+     }

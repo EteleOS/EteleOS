@@ -1,0 +1,13 @@
+1. -Wno-unused-private-field -Wno-unknown-warning-option don't exist on gcc 4.8
+2. Respect CXXFLAGS
+Index: src/CMakeLists.txt
+--- src/CMakeLists.txt.orig
++++ src/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Woverloaded-virtual -Wall -Wno-sign-compare -Wno-deprecated-declarations -Wno-unused-local-typedefs -Wno-maybe-uninitialized")
++set(CMAKE_CXX_FLAGS "-Woverloaded-virtual -Wall -Wno-sign-compare -Wno-deprecated-declarations -Wno-unused-local-typedefs ${CMAKE_CXX_FLAGS}")
+ 
+ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+   # using regular Clang or AppleClang

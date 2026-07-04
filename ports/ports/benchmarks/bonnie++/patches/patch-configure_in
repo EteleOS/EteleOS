@@ -1,0 +1,24 @@
+--- configure.in.orig	Tue Jan 18 21:35:28 2011
++++ configure.in	Mon Oct 13 20:09:28 2014
+@@ -60,7 +60,7 @@ if [[ -n "$snprintf" ]]; then
+    snprintf="#define NO_SNPRINTF"
+ fi
+ 
+-AC_CHECK_HEADERS(algorithm algo.h algo)
++AC_CHECK_HEADERS(algorithm algo)
+ 
+ AC_SUBST(linux_pthread)
+ AC_TRY_COMPILE([#define _GNU_SOURCE
+@@ -92,6 +92,12 @@ AC_TRY_RUN([#ifndef _LARGEFILE64_SOURCE
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <stdlib.h>
++
++#define O_LARGEFILE 0
++#define off64_t off_t
++#define lseek64 lseek
++#define creat64 creat
++#define open64  open
+ 
+ int main () {
+   int fd;

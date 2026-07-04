@@ -1,0 +1,12 @@
+Index: config.def.h
+--- config.def.h.orig
++++ config.def.h
+@@ -103,7 +103,7 @@ static const char *colorname[] = {
+ 	"blue2",
+ 	"magenta3",
+ 	"cyan3",
+-	"gray90",
++	"gray",
+ 
+ 	/* 8 bright colors */
+ 	"gray50",

@@ -1,0 +1,3 @@
+@pkgpath security/sslscan,openssl
+@bin bin/sslscan
+@man man/man1/sslscan.1

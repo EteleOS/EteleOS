@@ -1,0 +1,11 @@
+--- src/defendguin.c.orig.port	Wed Jun 28 09:54:01 2023
++++ src/defendguin.c	Fri Jun 30 11:08:17 2023
+@@ -6495,7 +6495,7 @@
+   char str[128];
+  
+   vol_effects = 5;
+-  vol_music = 5;
++  vol_music = 0;
+ 
+   fname = get_option_file_path();
+ 

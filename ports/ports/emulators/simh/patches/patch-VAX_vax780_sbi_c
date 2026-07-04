@@ -1,0 +1,27 @@
+--- VAX/vax780_sbi.c.orig	Mon Mar 19 18:08:46 2012
++++ VAX/vax780_sbi.c	Wed Jun 13 06:39:29 2012
+@@ -35,6 +35,10 @@
+ 
+ #include "vax_defs.h"
+ 
++#ifndef PATH_VMB_EXE
++#define PATH_VMB_EXE   "vmb.exe"
++#endif
++
+ /* 11/780 specific IPRs */
+ 
+ /* Writeable control store */
+@@ -686,10 +690,10 @@ t_stat cpu_boot (int32 unitno, DEVICE *dptr)
+ {
+ t_stat r;
+ 
+-printf ("Loading boot code from vmb.exe\n");
++printf ("Loading boot code from %s\n", PATH_VMB_EXE);
+ if (sim_log)
+-    fprintf (sim_log, "Loading boot code from vmb.exe\n");
+-r = load_cmd (0, "-O vmb.exe 200");
++    fprintf (sim_log, "Loading boot code from %s\n", PATH_VMB_EXE);
++r = load_cmd (0, "-O " PATH_VMB_EXE " 200");
+ if (r != SCPE_OK)
+     return r;
+ SP = PC = 512;

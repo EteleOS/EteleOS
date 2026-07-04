@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/libexec/openpoppassd"
+
+. /etc/rc.d/rc.subr
+
+pexp="openpoppassd: \[master\]"
+rc_reload=NO
+
+rc_cmd $1

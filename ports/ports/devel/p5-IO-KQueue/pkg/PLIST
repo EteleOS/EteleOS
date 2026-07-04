@@ -1,0 +1,11 @@
+${P5ARCH}/
+${P5ARCH}/IO/
+${P5ARCH}/IO/KQueue.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/IO/
+${P5ARCH}/auto/IO/KQueue/
+@so ${P5ARCH}/auto/IO/KQueue/KQueue.so
+@man man/man3p/IO::KQueue.3p
+share/examples/p5-IO-KQueue/
+share/examples/p5-IO-KQueue/chat.pl
+share/examples/p5-IO-KQueue/tail.pl

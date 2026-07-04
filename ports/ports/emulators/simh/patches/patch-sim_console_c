@@ -1,0 +1,11 @@
+--- sim_console.c.orig	Sun Mar 18 08:40:08 2012
++++ sim_console.c	Wed Jun 13 06:36:24 2012
+@@ -112,7 +112,7 @@ extern DEVICE *sim_devices[];
+ /* Set/show data structures */
+ 
+ static CTAB set_con_tab[] = {
+-    { "WRU", &sim_set_kmap, KMAP_WRU | KMAP_NZ },
++    { "WRU", &sim_set_kmap, KMAP_WRU },
+     { "BRK", &sim_set_kmap, KMAP_BRK },
+     { "DEL", &sim_set_kmap, KMAP_DEL |KMAP_NZ },
+     { "PCHAR", &sim_set_pchar, 0 },

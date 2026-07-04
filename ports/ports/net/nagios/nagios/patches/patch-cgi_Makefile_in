@@ -1,0 +1,11 @@
+--- cgi/Makefile.in.orig	Tue Aug 12 17:00:01 2014
++++ cgi/Makefile.in	Thu Apr  2 13:42:46 2015
+@@ -37,7 +37,7 @@ JSONFLAGS=-DJSON_NAGIOS_4X
+ #CFLAGS_DEBUG=-ggdb3 -g3
+ #CFLAGS+=$(CFLAGS_WARN) $(CFLAGS_DEBUG)
+ 
+-LDFLAGS=@LDFLAGS@
++LDFLAGS=-static @LDFLAGS@
+ LIBS=@LIBS@
+ 
+ CGIS=archivejson.cgi avail.cgi cmd.cgi config.cgi extinfo.cgi history.cgi notifications.cgi objectjson.cgi outages.cgi showlog.cgi status.cgi statusjson.cgi statuswml.cgi summary.cgi tac.cgi $(CGIEXTRAS)

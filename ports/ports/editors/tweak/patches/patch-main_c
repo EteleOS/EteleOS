@@ -1,0 +1,25 @@
+use pledge().
+
+Index: main.c
+--- main.c.orig
++++ main.c
+@@ -173,6 +173,7 @@
+ #include <string.h>
+ #include <ctype.h>
+ #include <assert.h>
++#include <unistd.h>
+ 
+ #if defined(unix) && !defined(GO32)
+ #include <signal.h>
+@@ -231,6 +232,11 @@ void usage(FILE *fp)
+  * Main program
+  */
+ int main(int argc, char **argv) {
++    if (pledge("stdio rpath wpath cpath tty", NULL) == -1) {
++        fprintf(stderr, "pledge\n");
++        return 1;
++    }
++
+     fileoffset_t newoffset = -1, newwidth = -1;
+ 
+     /*

@@ -1,0 +1,27 @@
+@newgroup _dendrite:860
+@newuser _dendrite:860:860::Matrix.org Daemon:/var/dendrite:/sbin/nologin
+@rcscript ${RCDIR}/dendrite
+@comment bin/client-api-proxy
+@bin bin/dendrite
+@bin bin/dendrite-create-account
+@comment bin/dendrite-demo-libp2p
+@comment bin/dendrite-demo-pinecone
+@comment bin/dendrite-demo-yggdrasil
+@bin bin/dendrite-generate-config
+@bin bin/dendrite-generate-keys
+@comment bin/dendritejs
+@comment bin/federation-api-proxy
+@comment bin/goose
+@comment bin/dendritejs-pinecone
+@comment bin/dendrite-upgrade-tests
+@comment bin/furl
+@comment bin/resolve-state
+share/dendrite/
+share/dendrite/dendrite.yaml
+@mode 640
+@group _dendrite
+@sample ${SYSCONFDIR}/dendrite.yaml
+@mode 750
+@owner _dendrite
+@sample /var/dendrite/
+@sample /var/log/dendrite/

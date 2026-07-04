@@ -1,0 +1,5 @@
+@bin bin/dump1090
+share/dump1090/
+share/dump1090/gmap.html
+share/dump1090/tools/
+share/dump1090/tools/debug.html

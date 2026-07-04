@@ -1,0 +1,7 @@
+@pkgpath x11/freefarsi-ttf
+share/fonts/
+@fontdir share/fonts/freefarsi/
+share/fonts/freefarsi/FreeFarsi.ttf
+share/fonts/freefarsi/FreeFarsiBold.ttf
+share/fonts/freefarsi/FreeFarsiBoldItalic.ttf
+share/fonts/freefarsi/FreeFarsiItalic.ttf

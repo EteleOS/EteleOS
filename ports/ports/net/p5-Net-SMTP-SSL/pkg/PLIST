@@ -1,0 +1,4 @@
+${P5SITE}/Net/
+${P5SITE}/Net/SMTP/
+${P5SITE}/Net/SMTP/SSL.pm
+@man man/man3p/Net::SMTP::SSL.3p

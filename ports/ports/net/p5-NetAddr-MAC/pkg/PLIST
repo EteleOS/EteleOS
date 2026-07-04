@@ -1,0 +1,3 @@
+${P5SITE}/NetAddr/
+${P5SITE}/NetAddr/MAC.pm
+@man man/man3p/NetAddr::MAC.3p

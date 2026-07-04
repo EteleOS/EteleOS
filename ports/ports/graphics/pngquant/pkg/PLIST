@@ -1,0 +1,4 @@
+@bin bin/pngquant
+@man man/man1/pngquant.1
+share/pngquant/
+share/pngquant/COPYRIGHT

@@ -1,0 +1,5 @@
+bin/spflookup
+${P5SITE}/Mail/
+${P5SITE}/Mail/SPF/
+${P5SITE}/Mail/SPF/Iterator.pm
+@man man/man3p/Mail::SPF::Iterator.3p

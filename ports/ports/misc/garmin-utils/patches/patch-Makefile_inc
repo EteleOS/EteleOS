@@ -1,0 +1,31 @@
+--- Makefile.inc.orig	Sat Jul 15 05:56:54 2006
++++ Makefile.inc	Sat Apr 22 15:31:31 2017
+@@ -2,15 +2,11 @@
+ #
+ # Default installation directories
+ #
+-PREFIX?=	/usr/local
+-BINDIR?=	${PREFIX}/bin
+-LIBDIR?=	${PREFIX}/lib
+-.if !empty(unix:M*OpenBSD.)
+-MANDIR?=	${PREFIX}/man/cat
+-.else
+-MANDIR?=	${PREFIX}/man
+-.endif
++BINDIR=		${TRUEPREFIX}/bin
++LIBDIR=		${TRUEPREFIX}/lib
++MANDIR=		${TRUEPREFIX}/man/man
+ 
++
+ # Name the default serial port to talk to the gps
+ #
+ GPS_SERIAL_PORT?=	/dev/tty00
+@@ -28,7 +24,7 @@ SIO_TYPE?=	-DSIO_TYPE=BSD
+ # C options
+ #
+ CFLAGS+= -g -I${.CURDIR}/../lib
+-CFLAGS+= -Wall -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Werror
++CFLAGS+= -Wall -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes
+ CFLAGS+= -DDEFAULT_PORT=\"${GPS_SERIAL_PORT}\" ${VERSION} ${SIO_TYPE}
+ 
+ # Figure out where the library lives for proper dependencies

@@ -1,0 +1,11 @@
+Index: html.c
+--- html.c.orig
++++ html.c
+@@ -1010,6 +1010,7 @@ static void html_a(unsigned char *a)
+ 			format_.target = stracpy(format_.target_base);
+ 		}
+ 		/*format_.attr ^= AT_BOLD;*/
++		format_.attr |= AT_UNDERLINE;
+ 		set_link_attr();
+ 	} else if (!ev) kill_html_stack_item(&html_top);
+ 	if ((al = get_attr_val(a, cast_uchar "name"))) {

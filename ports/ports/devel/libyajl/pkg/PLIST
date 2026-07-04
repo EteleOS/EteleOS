@@ -1,0 +1,11 @@
+@bin bin/json_reformat
+@bin bin/json_verify
+include/yajl/
+include/yajl/yajl_common.h
+include/yajl/yajl_gen.h
+include/yajl/yajl_parse.h
+include/yajl/yajl_tree.h
+include/yajl/yajl_version.h
+@lib lib/libyajl.so.${LIByajl_VERSION}
+@static-lib lib/libyajl_s.a
+share/pkgconfig/yajl.pc

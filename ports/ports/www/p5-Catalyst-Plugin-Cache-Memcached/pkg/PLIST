@@ -1,0 +1,4 @@
+${P5SITE}/Catalyst/Plugin/
+${P5SITE}/Catalyst/Plugin/Cache/
+${P5SITE}/Catalyst/Plugin/Cache/Memcached.pm
+@man man/man3p/Catalyst::Plugin::Cache::Memcached.3p

@@ -1,0 +1,14 @@
+Fix -fno-common build failure.
+
+Index: cfg_control.h
+--- cfg_control.h.orig
++++ cfg_control.h
+@@ -29,7 +29,7 @@
+ #define NUM_KEYB_CONTROLS  2
+ 
+ /* constant assignment of control to event type */
+-const XBEventCode keyEventType[NUM_KEYB_CONTROLS];
++extern const XBEventCode keyEventType[NUM_KEYB_CONTROLS];
+ 
+ /* ingame controls for editing*/
+ typedef struct

@@ -1,0 +1,25 @@
+@pkgpath net/wireshark,-gtk
+@bin bin/wireshark
+@man man/man1/wireshark.1
+share/applications/org.wireshark.Wireshark.desktop
+share/doc/pkg-readmes/${PKGSTEM}
+share/icons/hicolor/128x128/apps/org.wireshark.Wireshark.png
+share/icons/hicolor/128x128/mimetypes/org.wireshark.Wireshark-mimetype.png
+share/icons/hicolor/16x16/apps/org.wireshark.Wireshark.png
+share/icons/hicolor/16x16/mimetypes/org.wireshark.Wireshark-mimetype.png
+share/icons/hicolor/24x24/apps/org.wireshark.Wireshark.png
+share/icons/hicolor/24x24/mimetypes/org.wireshark.Wireshark-mimetype.png
+share/icons/hicolor/256x256/apps/org.wireshark.Wireshark.png
+share/icons/hicolor/256x256/mimetypes/org.wireshark.Wireshark-mimetype.png
+share/icons/hicolor/32x32/apps/org.wireshark.Wireshark.png
+share/icons/hicolor/32x32/mimetypes/org.wireshark.Wireshark-mimetype.png
+share/icons/hicolor/48x48/apps/org.wireshark.Wireshark.png
+share/icons/hicolor/48x48/mimetypes/org.wireshark.Wireshark-mimetype.png
+share/icons/hicolor/64x64/apps/org.wireshark.Wireshark.png
+share/icons/hicolor/64x64/mimetypes/org.wireshark.Wireshark-mimetype.png
+share/metainfo/
+share/metainfo/org.wireshark.Wireshark.metainfo.xml
+share/mime/packages/org.wireshark.Wireshark.xml
+@tag update-desktop-database
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-mime-database

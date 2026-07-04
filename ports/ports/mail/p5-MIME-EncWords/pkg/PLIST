@@ -1,0 +1,14 @@
+${P5SITE}/Encode/
+${P5SITE}/Encode/MIME/
+${P5SITE}/Encode/MIME/EncWords.pm
+${P5SITE}/MIME/EncWords/
+${P5SITE}/MIME/EncWords.pm
+${P5SITE}/MIME/EncWords/Defaults.pm.sample
+${P5SITE}/POD2/JA/Encode/
+${P5SITE}/POD2/JA/Encode/MIME/
+${P5SITE}/POD2/JA/Encode/MIME/EncWords.pod
+${P5SITE}/POD2/JA/MIME/EncWords.pod
+@man man/man3p/Encode::MIME::EncWords.3p
+@man man/man3p/MIME::EncWords.3p
+@man man/man3p/POD2::JA::Encode::MIME::EncWords.3p
+@man man/man3p/POD2::JA::MIME::EncWords.3p

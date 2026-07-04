@@ -1,0 +1,88 @@
+@conflict p5-XML-LibXML-Common-*
+@pkgpath textproc/p5-LibXML-Common
+${P5ARCH}/
+${P5ARCH}/XML/
+${P5ARCH}/XML/LibXML/
+${P5ARCH}/XML/LibXML.pm
+${P5ARCH}/XML/LibXML.pod
+${P5ARCH}/XML/LibXML/Attr.pod
+${P5ARCH}/XML/LibXML/AttributeHash.pm
+${P5ARCH}/XML/LibXML/Boolean.pm
+${P5ARCH}/XML/LibXML/CDATASection.pod
+${P5ARCH}/XML/LibXML/Comment.pod
+${P5ARCH}/XML/LibXML/Common.pm
+${P5ARCH}/XML/LibXML/Common.pod
+${P5ARCH}/XML/LibXML/DOM.pod
+${P5ARCH}/XML/LibXML/Devel.pm
+${P5ARCH}/XML/LibXML/Document.pod
+${P5ARCH}/XML/LibXML/DocumentFragment.pod
+${P5ARCH}/XML/LibXML/Dtd.pod
+${P5ARCH}/XML/LibXML/Element.pod
+${P5ARCH}/XML/LibXML/ErrNo.pm
+${P5ARCH}/XML/LibXML/ErrNo.pod
+${P5ARCH}/XML/LibXML/Error.pm
+${P5ARCH}/XML/LibXML/Error.pod
+${P5ARCH}/XML/LibXML/InputCallback.pod
+${P5ARCH}/XML/LibXML/Literal.pm
+${P5ARCH}/XML/LibXML/Namespace.pod
+${P5ARCH}/XML/LibXML/Node.pod
+${P5ARCH}/XML/LibXML/NodeList.pm
+${P5ARCH}/XML/LibXML/Number.pm
+${P5ARCH}/XML/LibXML/PI.pod
+${P5ARCH}/XML/LibXML/Parser.pod
+${P5ARCH}/XML/LibXML/Pattern.pod
+${P5ARCH}/XML/LibXML/Reader.pm
+${P5ARCH}/XML/LibXML/Reader.pod
+${P5ARCH}/XML/LibXML/RegExp.pod
+${P5ARCH}/XML/LibXML/RelaxNG.pod
+${P5ARCH}/XML/LibXML/SAX/
+${P5ARCH}/XML/LibXML/SAX.pm
+${P5ARCH}/XML/LibXML/SAX.pod
+${P5ARCH}/XML/LibXML/SAX/Builder.pm
+${P5ARCH}/XML/LibXML/SAX/Builder.pod
+${P5ARCH}/XML/LibXML/SAX/Generator.pm
+${P5ARCH}/XML/LibXML/SAX/Parser.pm
+${P5ARCH}/XML/LibXML/Schema.pod
+${P5ARCH}/XML/LibXML/Text.pod
+${P5ARCH}/XML/LibXML/XPathContext.pm
+${P5ARCH}/XML/LibXML/XPathContext.pod
+${P5ARCH}/XML/LibXML/XPathExpression.pod
+${P5ARCH}/auto/
+${P5ARCH}/auto/XML/
+${P5ARCH}/auto/XML/LibXML/
+@so ${P5ARCH}/auto/XML/LibXML/LibXML.so
+@man man/man3p/XML::LibXML.3p
+@man man/man3p/XML::LibXML::Attr.3p
+@man man/man3p/XML::LibXML::AttributeHash.3p
+@man man/man3p/XML::LibXML::Boolean.3p
+@man man/man3p/XML::LibXML::CDATASection.3p
+@man man/man3p/XML::LibXML::Comment.3p
+@man man/man3p/XML::LibXML::Common.3p
+@man man/man3p/XML::LibXML::DOM.3p
+@man man/man3p/XML::LibXML::Devel.3p
+@man man/man3p/XML::LibXML::Document.3p
+@man man/man3p/XML::LibXML::DocumentFragment.3p
+@man man/man3p/XML::LibXML::Dtd.3p
+@man man/man3p/XML::LibXML::Element.3p
+@man man/man3p/XML::LibXML::ErrNo.3p
+@man man/man3p/XML::LibXML::Error.3p
+@man man/man3p/XML::LibXML::InputCallback.3p
+@man man/man3p/XML::LibXML::Literal.3p
+@man man/man3p/XML::LibXML::Namespace.3p
+@man man/man3p/XML::LibXML::Node.3p
+@man man/man3p/XML::LibXML::NodeList.3p
+@man man/man3p/XML::LibXML::Number.3p
+@man man/man3p/XML::LibXML::PI.3p
+@man man/man3p/XML::LibXML::Parser.3p
+@man man/man3p/XML::LibXML::Pattern.3p
+@man man/man3p/XML::LibXML::Reader.3p
+@man man/man3p/XML::LibXML::RegExp.3p
+@man man/man3p/XML::LibXML::RelaxNG.3p
+@man man/man3p/XML::LibXML::SAX.3p
+@man man/man3p/XML::LibXML::SAX::Builder.3p
+@man man/man3p/XML::LibXML::SAX::Generator.3p
+@man man/man3p/XML::LibXML::Schema.3p
+@man man/man3p/XML::LibXML::Text.3p
+@man man/man3p/XML::LibXML::XPathContext.3p
+@man man/man3p/XML::LibXML::XPathExpression.3p
+share/doc/pkg-readmes/${PKGSTEM}

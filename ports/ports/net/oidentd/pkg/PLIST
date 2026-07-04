@@ -1,0 +1,6 @@
+@man man/man5/oidentd.conf.5
+@man man/man5/oidentd_masq.conf.5
+@man man/man8/oidentd.8
+@bin sbin/oidentd
+@extra ${SYSCONFDIR}/oidentd.conf
+@extra ${SYSCONFDIR}/oidentd_masq.conf

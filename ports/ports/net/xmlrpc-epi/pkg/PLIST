@@ -1,0 +1,19 @@
+@bin bin/client
+@bin bin/hello_client
+@bin bin/hello_server
+@bin bin/memtest
+@bin bin/sample
+@bin bin/server
+@bin bin/server_compliance_test
+include/xmlrpc-epi/
+include/xmlrpc-epi/base64.h
+include/xmlrpc-epi/encodings.h
+include/xmlrpc-epi/queue.h
+include/xmlrpc-epi/simplestring.h
+include/xmlrpc-epi/xml_element.h
+include/xmlrpc-epi/xml_to_xmlrpc.h
+include/xmlrpc-epi/xmlrpc.h
+include/xmlrpc-epi/xmlrpc_introspection.h
+lib/libxmlrpc-epi.a
+lib/libxmlrpc-epi.la
+@lib lib/libxmlrpc-epi.so.${LIBxmlrpc-epi_VERSION}

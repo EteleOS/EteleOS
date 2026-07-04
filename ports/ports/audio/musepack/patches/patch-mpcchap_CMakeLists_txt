@@ -1,0 +1,32 @@
+--- mpcchap/CMakeLists.txt.orig	Sat Aug 21 17:55:01 2010
++++ mpcchap/CMakeLists.txt	Sun Jun 23 15:33:01 2013
+@@ -1,8 +1,8 @@
+-FIND_PATH(CUEFILE_INCLUDE_DIR cuetools/cuefile.h
++FIND_PATH(CUEFILE_INCLUDE_DIR libcue/libcue.h
+ 	${libmpc_SOURCE_DIR}/../libcuefile/include
+ )
+ 
+-FIND_LIBRARY(CUEFILE_LIBRARY NAMES cuefile PATHS
++FIND_LIBRARY(CUEFILE_LIBRARY NAMES cue PATHS
+ 	${CUEFILE_INCLUDE_DIR}/../src
+ )
+ 
+@@ -15,13 +15,15 @@ link_directories(${libmpc_BINARY_DIR}/libmpcenc)
+ add_executable(mpcchap mpcchap.c dictionary.c iniparser.c ${libmpc_SOURCE_DIR}/common/tags.c)
+ 
+ if(SHARED)
+-  target_link_libraries(mpcchap mpcdec)
++  target_link_libraries(mpcchap mpcdec_shared)
++  add_dependencies(mpcchap mpcdec_shared)
+ else(SHARED)
+   target_link_libraries(mpcchap mpcdec_static)
++  add_dependencies(mpcchap mpcdec_static)
+ endif(SHARED)
+ 
+-target_link_libraries(mpcchap mpcenc_static)
+-target_link_libraries(mpcchap ${CUEFILE_LIBRARY})
++target_link_libraries(mpcchap mpcenc_static ${CUEFILE_LIBRARY})
++add_dependencies(mpcchap mpcenc_static)
+ 
+ if(NOT MSVC)
+ target_link_libraries(mpcchap m)

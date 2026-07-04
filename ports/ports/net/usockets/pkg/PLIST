@@ -1,0 +1,4 @@
+include/libusockets.h
+@static-lib lib/libusockets.a
+@lib lib/libusockets.so.${LIBusockets_VERSION}
+lib/pkgconfig/libusockets.pc

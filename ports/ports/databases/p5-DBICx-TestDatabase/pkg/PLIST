@@ -1,0 +1,6 @@
+${P5SITE}/DBICx/
+${P5SITE}/DBICx/TestDatabase/
+${P5SITE}/DBICx/TestDatabase.pm
+${P5SITE}/DBICx/TestDatabase/Subclass.pm
+@man man/man3p/DBICx::TestDatabase.3p
+@man man/man3p/DBICx::TestDatabase::Subclass.3p

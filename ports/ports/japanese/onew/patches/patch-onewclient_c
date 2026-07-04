@@ -1,0 +1,21 @@
+Index: onewclient.c
+--- onewclient.c.orig
++++ onewclient.c
+@@ -21,6 +21,8 @@ History:
+ ///////////////////////////////////////////////////////////////////////*/
+ 
+ #include <signal.h>
++#include <unistd.h>
++#include <stdio.h>
+ #include "onew.h"
+ 
+ static int onew_DBG = 1;
+@@ -43,7 +45,7 @@ static dbg_printf(form,a,b,c,d,e,f,g){
+ 	Onew_message(form,a,b,c,d,e,f,g);
+ }
+ 
+-static open_onew(){
++static void open_onew(){
+ 	register int pid;
+ 	char *command;
+ 

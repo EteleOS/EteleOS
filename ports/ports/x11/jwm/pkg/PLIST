@@ -1,0 +1,5 @@
+@bin bin/jwm
+@man man/man1/jwm.1
+share/examples/jwm/
+share/examples/jwm/system.jwmrc
+@sample ${SYSCONFDIR}/system.jwmrc

@@ -1,0 +1,24 @@
+Index: nping/configure.ac
+--- nping/configure.ac.orig
++++ nping/configure.ac
+@@ -444,16 +444,13 @@ AC_CACHE_CHECK(if function signal is accessible, ac_cv
+         AC_TRY_COMPILE(
+                 [
+                     #include <signal.h>
+-                ],
+-                [
+                     void handler(int signo){
+                      int a=0;
+                     }
+-
+-                    int main () {
+-                        ssignal(SIGINT, handler);
+-                        return 0;
+-                    }
++                ],
++                [
++                    signal(SIGINT, handler);
++                    return 0;
+                 ],
+         ac_cv_have_signal=yes,
+         ac_cv_have_signal=no))

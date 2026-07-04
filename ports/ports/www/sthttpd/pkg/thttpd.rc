@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/thttpd"
+daemon_flags="-d /var/www"
+
+. /etc/rc.d/rc.subr
+
+rc_stop_signal=USR1
+
+rc_cmd $1

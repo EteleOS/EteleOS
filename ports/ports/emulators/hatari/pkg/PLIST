@@ -1,0 +1,115 @@
+bin/atari-convert-dir
+@bin bin/gst2ascii
+@bin bin/hatari
+bin/hatari-prg-args
+bin/hatari_profile
+@bin bin/hmsa
+bin/zip2st
+@man man/man1/atari-convert-dir.1
+@man man/man1/gst2ascii.1
+@man man/man1/hatari-prg-args.1
+@man man/man1/hatari.1
+@man man/man1/hatari_profile.1
+@man man/man1/hconsole.1
+@man man/man1/hmsa.1
+@man man/man1/zip2st.1
+share/applications/hatari.desktop
+share/doc/hatari/
+share/doc/hatari/authors.txt
+share/doc/hatari/bugs.txt
+share/doc/hatari/compatibility.html
+share/doc/hatari/debugger.html
+share/doc/hatari/emutos.txt
+share/doc/hatari/hatari-ui.html
+share/doc/hatari/hconsole/
+share/doc/hatari/hconsole/release-notes.txt
+share/doc/hatari/images/
+share/doc/hatari/images/callgraph.png
+share/doc/hatari/images/callgraph.svg
+share/doc/hatari/images/cpu.png
+share/doc/hatari/images/devices-portmidi.png
+share/doc/hatari/images/devices.png
+share/doc/hatari/images/fileselector.png
+share/doc/hatari/images/floppydisks.png
+share/doc/hatari/images/harddisks.png
+share/doc/hatari/images/hatari-ui-0.7.png
+share/doc/hatari/images/hatari-ui-0.9.png
+share/doc/hatari/images/hatari-ui-debug.png
+share/doc/hatari/images/hatari-ui-input.png
+share/doc/hatari/images/hatari-ui-noembed.png
+share/doc/hatari/images/hatari-ui-peripherals.png
+share/doc/hatari/images/hatari-ui-quit.png
+share/doc/hatari/images/hatari-ui-setup-edit.png
+share/doc/hatari/images/hatari-ui-setup.png
+share/doc/hatari/images/hatari-ui-speed.png
+share/doc/hatari/images/hatari-ui-trace.png
+share/doc/hatari/images/joystick.png
+share/doc/hatari/images/kcachegrind.png
+share/doc/hatari/images/keyboard.png
+share/doc/hatari/images/main.png
+share/doc/hatari/images/memory.png
+share/doc/hatari/images/monitor.png
+share/doc/hatari/images/newfloppy.png
+share/doc/hatari/images/screen.png
+share/doc/hatari/images/sound.png
+share/doc/hatari/images/system.png
+share/doc/hatari/images/tos.png
+share/doc/hatari/keymap-sample.txt
+share/doc/hatari/m68k-linux.txt
+share/doc/hatari/manual.css
+share/doc/hatari/manual.html
+share/doc/hatari/memory-usage.txt
+share/doc/hatari/midi-linux.txt
+share/doc/hatari/release-notes.txt
+share/doc/hatari/scsi-driver.txt
+share/doc/hatari/thanks.txt
+share/doc/hatari/toc.js
+share/doc/hatari/todo.txt
+share/doc/hatari/video-recording.txt
+share/hatari/
+share/hatari/hatari-icon.bmp
+share/hatari/hconsole/
+share/hatari/hconsole/${MODPY_PYCACHE}/
+share/hatari/hconsole/${MODPY_PYCACHE}example.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+share/hatari/hconsole/${MODPY_PYCACHE}example.${MODPY_PYC_MAGIC_TAG}pyc
+share/hatari/hconsole/${MODPY_PYCACHE}hconsole.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+share/hatari/hconsole/${MODPY_PYCACHE}hconsole.${MODPY_PYC_MAGIC_TAG}pyc
+share/hatari/hconsole/example-commands
+share/hatari/hconsole/example-debugger
+share/hatari/hconsole/example.py
+share/hatari/hconsole/hconsole.py
+share/hatari/tos.img
+share/icons/hicolor/128x128/apps/hatari.png
+share/icons/hicolor/128x128/mimetypes/application-vnd.fastcopy-disk-image.png
+share/icons/hicolor/128x128/mimetypes/application-vnd.msa-disk-image.png
+share/icons/hicolor/128x128/mimetypes/application-x-st-disk-image.png
+share/icons/hicolor/128x128/mimetypes/application-x-stx-disk-image.png
+share/icons/hicolor/256x256/apps/hatari.png
+share/icons/hicolor/256x256/mimetypes/application-vnd.fastcopy-disk-image.png
+share/icons/hicolor/256x256/mimetypes/application-vnd.msa-disk-image.png
+share/icons/hicolor/256x256/mimetypes/application-x-st-disk-image.png
+share/icons/hicolor/256x256/mimetypes/application-x-stx-disk-image.png
+share/icons/hicolor/32x32/apps/hatari.png
+share/icons/hicolor/32x32/mimetypes/application-vnd.fastcopy-disk-image.png
+share/icons/hicolor/32x32/mimetypes/application-vnd.msa-disk-image.png
+share/icons/hicolor/32x32/mimetypes/application-x-st-disk-image.png
+share/icons/hicolor/32x32/mimetypes/application-x-stx-disk-image.png
+share/icons/hicolor/48x48/apps/hatari.png
+share/icons/hicolor/48x48/mimetypes/application-vnd.fastcopy-disk-image.png
+share/icons/hicolor/48x48/mimetypes/application-vnd.msa-disk-image.png
+share/icons/hicolor/48x48/mimetypes/application-x-st-disk-image.png
+share/icons/hicolor/48x48/mimetypes/application-x-stx-disk-image.png
+share/icons/hicolor/64x64/apps/hatari.png
+share/icons/hicolor/64x64/mimetypes/application-vnd.fastcopy-disk-image.png
+share/icons/hicolor/64x64/mimetypes/application-vnd.msa-disk-image.png
+share/icons/hicolor/64x64/mimetypes/application-x-st-disk-image.png
+share/icons/hicolor/64x64/mimetypes/application-x-stx-disk-image.png
+share/icons/hicolor/scalable/apps/hatari.svg
+share/icons/hicolor/scalable/mimetypes/application-vnd.fastcopy-disk-image.svg
+share/icons/hicolor/scalable/mimetypes/application-vnd.msa-disk-image.svg
+share/icons/hicolor/scalable/mimetypes/application-x-st-disk-image.svg
+share/icons/hicolor/scalable/mimetypes/application-x-stx-disk-image.svg
+share/mime/packages/hatari.xml
+@tag update-desktop-database
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-mime-database

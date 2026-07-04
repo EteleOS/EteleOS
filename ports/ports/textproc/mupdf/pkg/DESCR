@@ -1,0 +1,22 @@
+MuPDF is a relatively lightweight PDF, XPS, and E-book viewer.
+
+Support includes PDF 1.7 (with transparency, encryption, hyperlinks,
+annotations, searching and more), epub, xps, cbz, mobi, fb2, various
+image types (including svg, png, jpg, bmp, jpeg, tiff), and has basic
+support for MSOffice XML formats (docx, xlsx, pptx).
+
+The renderer is tailored for high quality anti-aliased graphics. It
+renders text with metrics and spacing accurate to within fractions of a
+pixel for the highest fidelity in reproducing the look of a printed page
+on screen.
+
+The mutool command line tool supports multiple arguments, including
+"show" to print and examine objects in a PDF file, "clean" to decompress
+and pretty-print the streams and objects in PDF files and also to
+extract individual pages, "info" to display information about objects,
+"extract" to extract individual objects, "poster" to split a large
+page into many tiles, and "draw" to render documents to image files
+(pbm/pgm/ppm/pam/png/pcl and others).
+
+Flavours:
+	js - build with JavaScript support (using the MuJS interpreter)

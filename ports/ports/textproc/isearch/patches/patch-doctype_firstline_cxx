@@ -1,0 +1,12 @@
+Index: doctype/firstline.cxx
+--- doctype/firstline.cxx.orig
++++ doctype/firstline.cxx
+@@ -112,7 +112,7 @@ Description:	Class FIRSTLINE - TEXT with headline as f
+ Author:		Edward C. Zimmermann, edz@bsn.com
+ @@@-*/
+ 
+-#include <iostream.h>
++#include <iostream>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

@@ -1,0 +1,33 @@
+@newgroup _nostromo:536
+@newuser _nostromo:536:_nostromo::Nostromo Account:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/nostromo
+@man man/man8/nhttpd.8
+@bin sbin/crypt
+@bin sbin/nhttpd
+share/doc/nostromo/
+share/doc/nostromo/ChangeLog
+share/doc/nostromo/README
+@sample /var/nostromo/
+@sample /var/nostromo/conf/
+@sample /var/nostromo/htdocs/
+@sample /var/nostromo/htdocs/cgi-bin/
+@sample /var/nostromo/icons/
+@owner _nostromo
+@sample /var/nostromo/logs/
+@owner
+share/examples/nostromo/
+share/examples/nostromo/dir.gif
+@sample /var/nostromo/icons/dir.gif
+share/examples/nostromo/file.gif
+@sample /var/nostromo/icons/file.gif
+share/examples/nostromo/index.html
+@sample /var/nostromo/htdocs/index.html
+share/examples/nostromo/mimes
+@sample /var/nostromo/conf/mimes
+share/examples/nostromo/nhttpd.conf-dist
+@sample /var/nostromo/conf/nhttpd.conf
+share/examples/nostromo/nostromo.gif
+@sample /var/nostromo/htdocs/nostromo.gif
+@mode 755
+share/examples/nostromo/printenv
+@sample /var/nostromo/htdocs/cgi-bin/printenv

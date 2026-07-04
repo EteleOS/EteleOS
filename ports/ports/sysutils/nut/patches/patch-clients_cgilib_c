@@ -1,0 +1,12 @@
+Index: clients/cgilib.c
+--- clients/cgilib.c.orig
++++ clients/cgilib.c
+@@ -168,7 +168,7 @@ int checkhost(const char *host, char **desc)
+ 	if (!host)
+ 		return 0;		/* deny null hostnames */
+ 
+-	snprintf(fn, sizeof(fn), "%s/hosts.conf", confpath());
++	snprintf(fn, sizeof(fn), "%s/hosts.conf", cgiconfpath());
+ 
+ 	pconf_init(&ctx, cgilib_err);
+ 

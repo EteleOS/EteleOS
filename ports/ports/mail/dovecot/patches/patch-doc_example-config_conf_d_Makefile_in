@@ -1,0 +1,12 @@
+Index: doc/example-config/conf.d/Makefile.in
+--- doc/example-config/conf.d/Makefile.in.orig
++++ doc/example-config/conf.d/Makefile.in
+@@ -417,7 +417,7 @@ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ pkgsysconfdir = $(sysconfdir)/dovecot
+-exampledir = $(docdir)/example-config/conf.d
++exampledir = $(prefix)/share/examples/dovecot/example-config/conf.d
+ example_DATA = \
+ 	auth-checkpassword.conf.ext \
+ 	auth-deny.conf.ext \

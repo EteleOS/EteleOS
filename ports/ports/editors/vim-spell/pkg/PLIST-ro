@@ -1,0 +1,6 @@
+share/vim/
+share/vim/vimfiles/
+share/vim/vimfiles/spell/
+share/vim/vimfiles/spell/ro.cp1250.spl
+share/vim/vimfiles/spell/ro.iso-8859-2.spl
+share/vim/vimfiles/spell/ro.utf-8.spl

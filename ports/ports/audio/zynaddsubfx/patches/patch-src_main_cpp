@@ -1,0 +1,43 @@
+Parse the correct address
+Look for zyn-fusion in out-of-path directory
+
+Index: src/main.cpp
+--- src/main.cpp.orig
++++ src/main.cpp
+@@ -711,12 +711,15 @@ int main(int argc, char *argv[])
+ #endif
+     if(!noui) {
+         printf("[INFO] Launching Zyn-Fusion...\n");
+-        char *addr = middleware->getServerAddress();
++        const char *raddr = middleware->getServerAddress();
++        char *address;
++        asprintf(&address, "osc.udp://127.0.0.1%s", strrchr(raddr, ':'));
++        const char *addr = address;
+ #ifndef WIN32
+         gui_pid = fork();
+         if(gui_pid == 0) {
+             auto exec_fusion = [&addr](const char* path) {
+-                execlp(path, "zyn-fusion", addr, "--builtin", "--no-hotload",  0); };
++                execlp(path, "zyn-fusion", addr, "--builtin", "--no-hotload",  nullptr); };
+             if(fusion_dir && *fusion_dir)
+             {
+                 std::string fusion = fusion_dir;
+@@ -736,9 +739,7 @@ int main(int argc, char *argv[])
+                     exec_fusion(fusion.c_str());
+                 }
+             }
+-            exec_fusion("./zyn-fusion");
+-            exec_fusion("/opt/zyn-fusion/zyn-fusion");
+-            exec_fusion("zyn-fusion");
++            exec_fusion("/usr/local/libexec/zyn-fusion");
+             err(1,"Failed to launch Zyn-Fusion");
+         }
+ #else
+@@ -762,7 +763,6 @@ int main(int argc, char *argv[])
+             exit(1);
+         }
+ #endif
+-        free(addr);
+     }
+ #endif
+ 

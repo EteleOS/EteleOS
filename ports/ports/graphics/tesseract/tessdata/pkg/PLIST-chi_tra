@@ -1,0 +1,5 @@
+@conflict tesseract-<3.02.02
+@pkgpath graphics/tesseract,-chi_tra
+@pkgpath graphics/tesseract-langs/chi_tra
+share/tessdata/
+share/tessdata/chi_tra.traineddata

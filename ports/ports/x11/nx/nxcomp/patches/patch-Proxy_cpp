@@ -1,0 +1,22 @@
+fix bounds length warnings
+
+--- Proxy.cpp.orig	Wed Jun  1 18:04:37 2011
++++ Proxy.cpp	Mon Jan  2 09:58:30 2012
+@@ -23,7 +23,7 @@
+ 
+ #include "Misc.h"
+ 
+-#if defined(__CYGWIN32__) || defined(__APPLE__) || defined(__FreeBSD__) || defined(__sun)
++#if defined(__CYGWIN32__) || defined(__APPLE__) || defined(__FreeBSD__) || defined(__sun) || defined(__OpenBSD__)
+ #include <netinet/in_systm.h>
+ #endif
+ 
+@@ -6267,7 +6267,7 @@ int Proxy::handleNewGenericConnectionFromProxy(int cha
+ 
+   serverAddrUnix.sun_family = AF_UNIX;
+ 
+-  const int serverAddrNameLength = 108;
++  const int serverAddrNameLength = SUN_LEN(&serverAddrUnix);
+ 
+   strncpy(serverAddrUnix.sun_path, path, serverAddrNameLength);
+ 

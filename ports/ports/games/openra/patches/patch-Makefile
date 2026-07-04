@@ -1,0 +1,56 @@
+set the installdir to PREFIX/share rather than PREFIX/lib
+hardcode VERSION, instead of getting it from git
+don't install IP2LOCATION-LITE-DB1.IPV6.BIN.ZIP; use libmaxminddb from
+ports instead
+disable the script configure-system-libraries.sh which hardcodes shared libs
+
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -50,11 +50,11 @@ datadir ?= $(datarootdir)
+ mandir ?= $(datarootdir)/man/
+ bindir ?= $(prefix)/bin
+ libdir ?= $(prefix)/lib
+-gameinstalldir ?= $(libdir)/openra
++gameinstalldir ?= $(datarootdir)/openra
+ 
+ # Toolchain
+ CWD = $(shell pwd)
+-MSBUILD = msbuild -verbosity:m -nologo
++MSBUILD = msbuild -verbosity:d -nologo -clp:DisableConsoleColor
+ MONO = mono
+ RM = rm
+ RM_R = $(RM) -r
+@@ -62,7 +62,7 @@ RM_F = $(RM) -f
+ RM_RF = $(RM) -rf
+ 
+ # Only for use in target version:
+-VERSION := $(shell git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null || (c=$$(git rev-parse --short HEAD 2>/dev/null) && echo git-$$c))
++VERSION := release-20210321
+ 
+ # Detect target platform for dependencies if not given by the user
+ ifndef TARGETPLATFORM
+@@ -86,23 +86,15 @@ OPENRA_UTILITY = ENGINE_DIR=".." $(MONO) --debug bin/O
+ all:
+ 	@command -v $(firstword $(MSBUILD)) >/dev/null || (echo "OpenRA requires the '$(MSBUILD)' tool provided by Mono >= 5.18."; exit 1)
+ 	@$(MSBUILD) -t:Build -restore -p:Configuration=Release -p:TargetPlatform=$(TARGETPLATFORM)
+-ifeq ($(TARGETPLATFORM), unix-generic)
+-	@./configure-system-libraries.sh
+-endif
+-	@./fetch-geoip.sh
+ 
+ clean:
+ 	@-$(RM_RF) ./bin ./*/bin ./*/obj
+ 	@$(MSBUILD) -t:Clean
+-	@-$(RM_F) IP2LOCATION-LITE-DB1.IPV6.BIN.ZIP
+ 
+ check:
+ 	@echo
+ 	@echo "Compiling in debug mode..."
+ 	@$(MSBUILD) -t:build -restore -p:Configuration=Debug -p:TargetPlatform=$(TARGETPLATFORM)
+-ifeq ($(TARGETPLATFORM), unix-generic)
+-	@./configure-system-libraries.sh
+-endif
+ 	@echo
+ 	@echo "Checking runtime assemblies..."
+ 	@$(OPENRA_UTILITY) all --check-runtime-assemblies $(WHITELISTED_OPENRA_ASSEMBLIES) $(WHITELISTED_THIRDPARTY_ASSEMBLIES) $(WHITELISTED_CORE_ASSEMBLIES)

@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/xl2tpd"
+daemon_user="_xl2tpd"
+
+. /etc/rc.d/rc.subr
+
+rc_pre() {
+	/usr/bin/install -d -o ${daemon_user} /var/run/xl2tpd
+	[[ -p /var/run/xl2tpd/l2tp-control ]] ||
+	    mkfifo /var/run/xl2tpd/l2tp-control
+}
+
+rc_cmd $1

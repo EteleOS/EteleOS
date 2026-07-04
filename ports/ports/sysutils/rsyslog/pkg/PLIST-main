@@ -1,0 +1,33 @@
+@newgroup _rsyslogd:803
+@newuser _rsyslogd:803:_rsyslogd::Rsyslog Daemon:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/rsyslogd
+lib/rsyslog/
+@so lib/rsyslog/fmhash.so
+@so lib/rsyslog/fmhttp.so
+@so lib/rsyslog/imfile.so
+@so lib/rsyslog/imklog.so
+@so lib/rsyslog/immark.so
+@so lib/rsyslog/imrelp.so
+@so lib/rsyslog/imtcp.so
+@so lib/rsyslog/imudp.so
+@so lib/rsyslog/imuxsock.so
+@so lib/rsyslog/lmcry_gcry.so
+@so lib/rsyslog/lmnet.so
+@so lib/rsyslog/lmnetstrms.so
+@so lib/rsyslog/lmnsd_gtls.so
+@so lib/rsyslog/lmnsd_ossl.so
+@so lib/rsyslog/lmnsd_ptcp.so
+@so lib/rsyslog/lmregexp.so
+@so lib/rsyslog/lmtcpclt.so
+@so lib/rsyslog/lmtcpsrv.so
+@so lib/rsyslog/lmzlibw.so
+@so lib/rsyslog/mmexternal.so
+@so lib/rsyslog/ommail.so
+@so lib/rsyslog/omrelp.so
+@so lib/rsyslog/omtesting.so
+@man man/man5/rsyslog.conf.5
+@man man/man8/rsyslogd.8
+@bin sbin/rsyslogd
+share/examples/rsyslog/
+share/examples/rsyslog/rsyslog.conf
+@sample ${SYSCONFDIR}/rsyslog.conf

@@ -1,0 +1,20 @@
+Index: src/tk/tkoption.c
+--- src/tk/tkoption.c.orig
++++ src/tk/tkoption.c
+@@ -21,6 +21,7 @@ static char rcsid[] = "$Header: /user6/ouster/wish/RCS
+ 
+ #include "tkconfig.h"
+ #include "tkint.h"
++#include <unistd.h>
+ 
+ /*
+  * The option database is stored as one tree for each main window.
+@@ -872,7 +873,7 @@ ReadOptionFile(interp, tkwin, fileName, priority)
+ #ifdef MSDOS
+     if (read(fileId, buffer, (int) statBuf.st_size) < 0) {
+ #else
+-    if (read(fileId, buffer, (int) statBuf.st_size) != statBuf.st_size) {
++    if (read(fileId, buffer, statBuf.st_size) != statBuf.st_size) {
+ #endif
+ 	Tcl_AppendResult(interp, "error reading file \"", fileName, "\"",
+ 		(char *) NULL);

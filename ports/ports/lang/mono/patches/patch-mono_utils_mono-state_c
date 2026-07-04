@@ -1,0 +1,13 @@
+sys/stat.h required for macros lik S_IWUSR
+
+Index: mono/utils/mono-state.c
+--- mono/utils/mono-state.c.orig
++++ mono/utils/mono-state.c
+@@ -8,6 +8,7 @@
+  * (C) 2018 Microsoft, Inc.
+  *
+  */
++#include <sys/stat.h>
+ #include <config.h>
+ #include <glib.h>
+ #include <mono/utils/mono-state.h>

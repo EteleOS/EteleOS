@@ -1,0 +1,6 @@
+include/discid/
+include/discid/discid.h
+@static-lib lib/libdiscid.a
+lib/libdiscid.la
+@lib lib/libdiscid.so.${LIBdiscid_VERSION}
+lib/pkgconfig/libdiscid.pc

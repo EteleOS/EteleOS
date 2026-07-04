@@ -1,0 +1,11 @@
+--- txt_format.c.orig	Mon Mar 13 11:05:51 2017
++++ txt_format.c	Tue Mar 28 14:28:42 2017
+@@ -417,7 +417,7 @@ int fmt_seconds(ci_request_t *req, char *buf,int len, 
+ {
+     time_t tm;
+     time(&tm);
+-    return snprintf(buf, len, "%ld", tm);
++    return snprintf(buf, len, "%llu", (uint64_t) tm);
+ }
+ 
+ int fmt_httpclientip(ci_request_t *req, char *buf,int len, const char *param)

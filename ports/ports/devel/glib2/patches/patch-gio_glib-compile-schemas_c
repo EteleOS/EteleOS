@@ -1,0 +1,33 @@
+XXX do not warn about bad dconf paths
+
+Index: gio/glib-compile-schemas.c
+--- gio/glib-compile-schemas.c.orig
++++ gio/glib-compile-schemas.c
+@@ -1232,6 +1232,7 @@ parse_state_start_schema (ParseState  *state,
+       return;
+     }
+ 
++#if 0
+   if (path && (g_str_has_prefix (path, "/apps/") ||
+                g_str_has_prefix (path, "/desktop/") ||
+                g_str_has_prefix (path, "/system/")))
+@@ -1244,6 +1245,7 @@ parse_state_start_schema (ParseState  *state,
+       g_printerr ("%s\n", message);
+       g_free (message);
+     }
++#endif
+ 
+   state->schema_state = schema_state_new (path, gettext_domain,
+                                           extends, extends_name, list_of);
+@@ -2199,6 +2201,11 @@ main (int argc, char **argv)
+ #ifdef HAVE_BIND_TEXTDOMAIN_CODESET
+   bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+ #endif
++
++  if (pledge("stdio rpath wpath cpath fattr", NULL) == -1) {
++    g_printerr ("pledge\n");
++    return 1;
++  }
+ 
+   context = g_option_context_new (N_("DIRECTORY"));
+   g_option_context_set_translation_domain (context, GETTEXT_PACKAGE);

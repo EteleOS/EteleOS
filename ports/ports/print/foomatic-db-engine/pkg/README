@@ -1,0 +1,25 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+When using the Foomatic framework, printers are driven by a PPD (Printer
+Postscript Description) file which, unless already provided in a
+particular package, can be generated using the foomatic-ppdfile(1)
+command.
+Drivers availability depends on which Foomatic DB package are installed
+on the system:
+e.g. foomatic-db, hpijs, foo2zjs, gutenprint...
+
+PPD generation example for a Samsung ML-2850D
+=============================================
+$ foomatic-ppdfile -P 2850 
+Samsung ML-2850D Id='Samsung-ML-2850D' Driver='Postscript' CompatibleDrivers='Postscript pxlmono '
+$ foomatic-ppdfile -p 'Samsung-ML-2850D' -d 'Postscript' > samsung-ml2850d.ppd
+
+"samsung-ml2850d.ppd" can then be used as an input filter with CUPS or
+for direct printing using foomatic-rip(1) from the cups-filters package.
+
+Printers using CUPS native drivers (drv) or for which only schema definitions
+(xml) but no ppd exist will not be detected by foomatic-ppdfile(1) and must
+be installed using the CUPS tools, the CUPS web interface or native utilities
+(e.g. cups-genppd(8) from gutenprint).

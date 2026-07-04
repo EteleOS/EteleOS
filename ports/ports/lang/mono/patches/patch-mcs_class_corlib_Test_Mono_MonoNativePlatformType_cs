@@ -1,0 +1,11 @@
+Index: mcs/class/corlib/Test/Mono/MonoNativePlatformType.cs
+--- mcs/class/corlib/Test/Mono/MonoNativePlatformType.cs.orig
++++ mcs/class/corlib/Test/Mono/MonoNativePlatformType.cs
+@@ -40,6 +40,7 @@ namespace Mono
+ 		MONO_NATIVE_PLATFORM_TYPE_FREEBSD	= 6,
+ 		MONO_NATIVE_PLATFORM_TYPE_HAIKU		= 7,
+ 		MONO_NATIVE_PLATFORM_TYPE_NETBSD	= 8,
++		MONO_NATIVE_PLATFORM_TYPE_OPENBSD	= 9,
+ 
+ 		MONO_NATIVE_PLATFORM_TYPE_IPHONE	= 0x100,
+ 		MONO_NATIVE_PLATFORM_TYPE_TV		= 0x200,

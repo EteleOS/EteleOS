@@ -1,0 +1,19 @@
+--- forbidden.c.orig	Thu May 15 00:19:43 2014
++++ forbidden.c	Sun Aug 17 20:08:12 2014
+@@ -199,6 +199,7 @@ parseDomainFile(AtomPtr file,
+                 DomainPtr **domains_return, regex_t **regex_return)
+ {
+     struct stat ss;
++    regex_t *regex;
+     int rc;
+ 
+     if(*domains_return) {
+@@ -272,8 +273,6 @@ parseDomainFile(AtomPtr file,
+         free(domains);
+         domains = NULL;
+     }
+-
+-    regex_t *regex;
+ 
+     if(rlen > 0) {
+         regex = malloc(sizeof(regex_t));

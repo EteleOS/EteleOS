@@ -1,0 +1,9 @@
+@so lib/lua/${MODLUA_VERSION}/lfs.so
+share/doc/${FULLPKGNAME}/
+share/doc/${FULLPKGNAME}/examples.html
+share/doc/${FULLPKGNAME}/index.html
+share/doc/${FULLPKGNAME}/license.html
+share/doc/${FULLPKGNAME}/luafilesystem.png
+share/doc/${FULLPKGNAME}/manual.html
+share/examples/${FULLPKGNAME}/
+share/examples/${FULLPKGNAME}/test.lua

@@ -1,0 +1,31 @@
+COMMENT =		manage SQL database schemas via config files
+
+VERSION =		3.5.1
+DISTNAME =		liquibase-${VERSION}-bin
+PKGNAME =		liquibase-${VERSION}
+WRKDIST =		${WRKDIR}
+CATEGORIES =		databases
+REVISION =		4
+
+HOMEPAGE =		http://liquibase.org/
+
+# Apache 2.0
+PERMIT_PACKAGE=	Yes
+
+RUN_DEPENDS =		java/javaPathHelper
+
+SITES =			https://github.com/liquibase/liquibase/releases/download/liquibase-parent-${VERSION}/
+
+MODULES =		java
+MODJAVA_VER =		11+
+
+NO_BUILD =		Yes
+NO_TEST =		Yes
+
+do-install:
+	${INSTALL_DATA_DIR} ${PREFIX}/share/java/classes/liquibase
+	${INSTALL_DATA} ${FILESDIR}/liquibase.1 ${PREFIX}/man/man1
+	${INSTALL_DATA} ${WRKDIR}/liquibase.jar ${PREFIX}/share/java/classes/liquibase
+	${SUBST_PROGRAM} ${WRKDIR}/liquibase ${PREFIX}/bin/liquibase
+
+.include <bsd.port.mk>

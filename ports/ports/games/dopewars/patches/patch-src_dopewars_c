@@ -1,0 +1,12 @@
+Index: src/dopewars.c
+--- src/dopewars.c.orig
++++ src/dopewars.c
+@@ -2425,7 +2425,7 @@ static void SetupParameters(GSList *extraconfigs, gboo
+   AssignName(&ServerName, "localhost");
+   AssignName(&ServerMOTD, "");
+   AssignName(&BindAddress, "");
+-  AssignName(&OurWebBrowser, "/usr/bin/firefox");
++  AssignName(&OurWebBrowser, "/usr/local/bin/xdg-open");
+ 
+   AssignName(&Sounds.FightHit, SNDPATH"colt.wav");
+   AssignName(&Sounds.EnemyBitchKilled, SNDPATH"shotdown.wav");

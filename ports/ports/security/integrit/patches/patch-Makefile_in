@@ -1,0 +1,23 @@
+--- Makefile.in.orig	Sat Jun  2 23:41:37 2007
++++ Makefile.in	Mon May 25 19:07:08 2009
+@@ -26,7 +26,7 @@ srcdir		 = @srcdir@
+ # VPATH		 = @srcdir@
+ CC	 = @CC@
+ PROG	 = integrit
+-SBINDIR	 = @sbindir@
++SBINDIR	 = ${PREFIX}/sbin
+ INSTALL	 = @INSTALL@
+ OBJ	 = @OBJ@
+ ILIBOBJ	 = @ILIBOBJ@
+@@ -143,9 +143,9 @@ install : $(PROG)
+ 	fi
+ 	@if test ! -d $(SBINDIR); then \
+ 	  echo creating directory $(SBINDIR); \
+-	  $(INSTALL) -d -m 755 $(SBINDIR); \
++	  $(INSTALL) -d -m $(DIRMODE) $(SBINDIR); \
+ 	fi
+-	$(INSTALL) $(STRIP) -m 755 $(PROG) $(SBINDIR)/$(PROG)
++	$(INSTALL) $(STRIP) -m $(DIRMODE) $(PROG) $(SBINDIR)/$(PROG)
+ 	@echo
+ 	@echo 'It is recommended that the binary be copied to a secure location and'
+ 	@echo "  re-copied to $(SBINDIR) at runtime or run directly"

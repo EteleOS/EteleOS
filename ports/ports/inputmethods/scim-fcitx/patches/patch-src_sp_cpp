@@ -1,0 +1,17 @@
+ports-gcc: add missing headers
+
+Index: src/sp.cpp
+--- src/sp.cpp.orig
++++ src/sp.cpp
+@@ -8,9 +8,11 @@
+ using namespace scim;
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <sys/stat.h>
+ #include <limits.h>
+ #include <ctype.h>
++#include <unistd.h>
+ 
+ #include "main.h"
+ #include "sp.h"

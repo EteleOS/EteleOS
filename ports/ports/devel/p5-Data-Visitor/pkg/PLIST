@@ -1,0 +1,5 @@
+${P5SITE}/Data/Visitor/
+${P5SITE}/Data/Visitor.pm
+${P5SITE}/Data/Visitor/Callback.pm
+@man man/man3p/Data::Visitor.3p
+@man man/man3p/Data::Visitor::Callback.3p

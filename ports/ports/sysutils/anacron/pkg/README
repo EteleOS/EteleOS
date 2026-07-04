@@ -1,0 +1,29 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+To start using anacron:
+
+Create the file ${SYSCONFDIR}/anacrontab (see anacrontab(5) for
+information about its format).
+
+The following is a simple example which runs the standard
+OpenBSD daily, weekly, and monthly scripts:
+
+-----Cut
+# ${SYSCONFDIR}/anacrontab example
+SHELL=/bin/sh
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+HOME=/var/log
+# format: period delay job-identifier command
+1   5   cron.daily      /bin/sh /etc/daily
+7   10  cron.weekly     /bin/sh /etc/weekly
+30  15  cron.monthly    /bin/sh /etc/monthly
+-----Cut
+
+Comment out the invocation of the corresponding jobs in root's crontab.
+If your machine is left running for more than 24h at a time, you
+might also want to invoke anacron from an early morning cron job.
+
+To run anacron(8) at boot time, add the following to root's crontab(5):
+@reboot	${PREFIX}/sbin/anacron -ds

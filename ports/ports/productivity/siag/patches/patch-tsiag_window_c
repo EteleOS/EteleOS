@@ -1,0 +1,14 @@
+Fix build with "-fno-common".
+
+Index: tsiag/window.c
+--- tsiag/window.c.orig
++++ tsiag/window.c
+@@ -98,7 +98,7 @@ MwFmt fmt1 = {"Helvetica", 120, 0, 0, 0, 0, "black", "
+ 
+ int columns;    /* number of cells per line */
+ int width;      /* default cell width */
+-int left_margin;
++extern int left_margin;
+ /*int right_margin = 5;*/
+ 
+ float zoom = 1.0;	/* unused */

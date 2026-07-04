@@ -1,0 +1,21 @@
+--- CMake/Utils/OgreConfigTargets.cmake.orig	Sun Dec  1 18:28:12 2013
++++ CMake/Utils/OgreConfigTargets.cmake	Sun Mar 23 14:49:51 2014
+@@ -272,7 +272,6 @@ endfunction(ogre_config_framework)
+ # setup plugin build
+ function(ogre_config_plugin PLUGINNAME)
+   ogre_config_common(${PLUGINNAME})
+-  set_target_properties(${PLUGINNAME} PROPERTIES VERSION ${OGRE_SOVERSION})
+   if (OGRE_STATIC)
+     # add static prefix, if compiling static version
+     set_target_properties(${PLUGINNAME} PROPERTIES OUTPUT_NAME ${PLUGINNAME}Static)
+@@ -349,10 +348,6 @@ function(ogre_config_sample_common SAMPLENAME)
+       # disable "lib" prefix on Unix
+       set_target_properties(${SAMPLENAME} PROPERTIES PREFIX "")
+     endif (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-  endif()
+-
+-  if (NOT WIN32)
+-    set_target_properties(${SAMPLENAME} PROPERTIES VERSION ${OGRE_SOVERSION} SOVERSION ${OGRE_SOVERSION})
+   endif()
+ 
+   if (OGRE_INSTALL_SAMPLES)

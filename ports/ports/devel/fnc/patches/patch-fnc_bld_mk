@@ -1,0 +1,14 @@
+drop -Werror
+
+Index: fnc.bld.mk
+--- fnc.bld.mk.orig
++++ fnc.bld.mk
+@@ -10,7 +10,7 @@ VERSION ?=	0.18
+ HASH !=		cut -f 1 manifest.uuid
+ DATE !=		sed '2q;d' manifest | cut -d ' ' -f 2 | tr T ' '
+ 
+-CFLAGS +=	-Wall -Werror -Wsign-compare -pedantic -std=c99
++CFLAGS +=	-Wall -Wsign-compare -pedantic -std=c99
+ 
+ # FLAGS NEEDED TO BUILD SQLITE3
+ SQLITE_CFLAGS =	${CFLAGS} \

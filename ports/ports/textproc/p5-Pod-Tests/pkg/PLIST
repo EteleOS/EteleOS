@@ -1,0 +1,5 @@
+bin/pod2test
+${P5SITE}/Pod/
+${P5SITE}/Pod/Tests.pm
+@man man/man1/pod2test.1
+@man man/man3p/Pod::Tests.3p

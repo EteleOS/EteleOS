@@ -1,0 +1,3 @@
+${P5SITE}/Devel/
+${P5SITE}/Devel/OverloadInfo.pm
+@man man/man3p/Devel::OverloadInfo.3p

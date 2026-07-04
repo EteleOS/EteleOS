@@ -1,0 +1,23 @@
+Index: quodlibet/player/gstbe/util.py
+--- quodlibet/player/gstbe/util.py.orig
++++ quodlibet/player/gstbe/util.py
+@@ -11,6 +11,7 @@ try:
+ except ImportError:
+     import collections as abc  # type: ignore
+ import subprocess
++import sys
+ from enum import Enum
+ from collections.abc import Iterable
+ from gi.repository import GLib, Gst
+@@ -128,6 +129,11 @@ def find_audio_sink() -> tuple[Gst.Element, str]:
+             return [AudioSinks.JACK]
+         if is_windows():
+             return [AudioSinks.DIRECTSOUND]
++        if sys.platform.startswith('openbsd'):
++            # override default of pulse for linux-like OS. if sndiosink is
++            # used directly, it tries to set the volume before creating a handle,
++            # causing a segfault, so use auto.
++            return [AudioSinks.AUTO]
+         if is_linux() and pulse_is_running():
+             return [AudioSinks.PULSE]
+         return [

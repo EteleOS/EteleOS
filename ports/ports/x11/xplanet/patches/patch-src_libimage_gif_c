@@ -1,0 +1,30 @@
+Index: src/libimage/gif.c
+--- src/libimage/gif.c.orig
++++ src/libimage/gif.c
+@@ -179,7 +179,7 @@ read_gif(const char *filename, int *width, int *height
+ 	}
+     }
+     
+-    if (DGifCloseFile(GifFile) == GIF_ERROR) {
++    if (DGifCloseFile(GifFile, NULL) == GIF_ERROR) {
+ 	return(0);
+     }
+ 
+@@ -493,7 +493,7 @@ SortCmpRtn(const void *Entry1,
+ static void QuitGifError(GifFileType *GifFile)
+ {
+     fprintf(stderr, "Error writing GIF file\n");
+-    if (GifFile != NULL) EGifCloseFile(GifFile);
++    if (GifFile != NULL) EGifCloseFile(GifFile, NULL);
+ }
+ 
+ int 
+@@ -589,7 +589,7 @@ write_gif(const char *filename, int width, int height,
+ 	Ptr += width;
+     }
+ 
+-    if (EGifCloseFile(GifFile) == GIF_ERROR)
++    if (EGifCloseFile(GifFile, NULL) == GIF_ERROR)
+ 
+     {
+ 	QuitGifError(GifFile);

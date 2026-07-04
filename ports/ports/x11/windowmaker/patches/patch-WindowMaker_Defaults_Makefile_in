@@ -1,0 +1,12 @@
+Index: WindowMaker/Defaults/Makefile.in
+--- WindowMaker/Defaults/Makefile.in.orig
++++ WindowMaker/Defaults/Makefile.in
+@@ -573,7 +573,7 @@ WindowMaker: $(srcdir)/WindowMaker.in
+ 	chmod 644 WindowMaker
+ 
+ WMState: $(srcdir)/WMState.in
+-	$(AM_V_GEN)sed -e "s:#wprefs#:$(wpexecbindir)/WPrefs:" $(srcdir)/WMState.in > WMState ; \
++	$(AM_V_GEN)sed -e "s:#wprefs#:${TRUEPREFIX}/bin/WPrefs:" $(srcdir)/WMState.in > WMState ; \
+ 	chmod 644 WMState
+ 
+ WMRootMenu: ./../plmenu

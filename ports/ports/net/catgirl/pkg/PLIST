@@ -1,0 +1,4 @@
+@bin bin/catgirl
+@man man/man1/catgirl.1
+share/examples/catgirl/
+share/examples/catgirl/chat.tmux.conf

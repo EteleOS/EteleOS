@@ -1,0 +1,10 @@
+${P5ARCH}/
+${P5ARCH}/Package/
+${P5ARCH}/Package/Stash/
+${P5ARCH}/Package/Stash/XS.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Package/
+${P5ARCH}/auto/Package/Stash/
+${P5ARCH}/auto/Package/Stash/XS/
+@so ${P5ARCH}/auto/Package/Stash/XS/XS.so
+@man man/man3p/Package::Stash::XS.3p

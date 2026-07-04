@@ -1,0 +1,4 @@
+@bin bin/pup
+share/doc/pup/
+share/doc/pup/LICENSE
+share/doc/pup/README.md

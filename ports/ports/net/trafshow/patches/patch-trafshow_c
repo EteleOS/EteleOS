@@ -1,0 +1,19 @@
+--- trafshow.c.orig	Fri Aug 28 08:15:57 1998
++++ trafshow.c	Tue Apr  5 22:44:25 2016
+@@ -62,7 +62,7 @@ int use_colors = FALSE;
+ int resize_flag = 0;
+ int addr_size, proto_size, bytes_size, cps_size, count_size;
+ 
+-void
++int
+ main(argc, argv)
+ 	int argc;
+ 	char **argv;
+@@ -192,6 +192,7 @@ main(argc, argv)
+ 		error(0, pcap_geterr(pd));
+ 	pcap_close(pd);
+ 	cleanup(0);
++	return 0;
+ }
+ 
+ /*

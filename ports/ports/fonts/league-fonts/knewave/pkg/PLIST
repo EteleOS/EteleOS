@@ -1,0 +1,6 @@
+share/fonts/
+@fontdir share/fonts/league-fonts/
+share/fonts/league-fonts/knewave-outline.otf
+share/fonts/league-fonts/knewave-outline.ttf
+share/fonts/league-fonts/knewave.otf
+share/fonts/league-fonts/knewave.ttf

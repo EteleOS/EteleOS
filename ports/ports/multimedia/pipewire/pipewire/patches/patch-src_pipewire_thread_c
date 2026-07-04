@@ -1,0 +1,68 @@
+No support for cpu_set_t, pthread_setaffinity_np, ... on OpenBSD.
+
+Index: src/pipewire/thread.c
+--- src/pipewire/thread.c.orig
++++ src/pipewire/thread.c
+@@ -10,6 +10,10 @@
+ #include <pthread_np.h>
+ #endif
+ 
++#ifdef __OpenBSD__
++#include <pthread_np.h> /* pthread_set_name_np */
++#endif
++
+ #include <spa/utils/dict.h>
+ #include <spa/utils/defs.h>
+ #include <spa/utils/list.h>
+@@ -29,6 +33,7 @@ do {									\
+ 	}								\
+ } while(false);
+ 
++#ifndef __OpenBSD__
+ static int parse_affinity(const char *affinity, cpu_set_t *set)
+ {
+ 	struct spa_json it[1];
+@@ -44,6 +49,7 @@ static int parse_affinity(const char *affinity, cpu_se
+         }
+ 	return 0;
+ }
++#endif
+ 
+ SPA_EXPORT
+ void *pw_thread_fill_attr(const struct spa_dict *props, void *_attr)
+@@ -64,7 +70,7 @@ error:
+ 	return NULL;
+ }
+ 
+-#if defined(__FreeBSD__) || defined(__MidnightBSD__)
++#if defined(__FreeBSD__) || defined(__MidnightBSD__) || defined(__OpenBSD__)
+ #include <sys/param.h>
+ #if __FreeBSD_version < 1202000 || defined(__MidnightBSD__)
+ int pthread_setname_np(pthread_t thread, const char *name)
+@@ -78,12 +84,14 @@ int pthread_setname_np(pthread_t thread, const char *n
+ int pthread_setname_np(pthread_t thread, const char *name) { return 0; }
+ #endif
+ 
++#ifndef __OpenBSD__
+ static int thread_setaffinity(pthread_t thread, const char *affinity)
+ {
+ 	cpu_set_t set;
+ 	parse_affinity(affinity, &set);
+ 	return -pthread_setaffinity_np(thread, sizeof(set), &set);
+ }
++#endif
+ 
+ static struct spa_thread *impl_create(void *object,
+ 			const struct spa_dict *props,
+@@ -115,9 +123,11 @@ static struct spa_thread *impl_create(void *object,
+ 		if ((str = spa_dict_lookup(props, SPA_KEY_THREAD_NAME)) != NULL &&
+ 		    (err = pthread_setname_np(pt, str)) != 0)
+ 			pw_log_warn("pthread_setname error: %s", strerror(err));
++#ifndef __OpenBSD__
+ 		if ((str = spa_dict_lookup(props, SPA_KEY_THREAD_AFFINITY)) != NULL &&
+ 		    (err = thread_setaffinity(pt, str)) != 0)
+ 			pw_log_warn("pthread_setaffinity error: %s", strerror(-err));
++#endif
+ 	}
+ 	return (struct spa_thread*)pt;
+ }

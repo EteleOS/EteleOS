@@ -1,0 +1,21 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -64,7 +64,7 @@ datarootdir = $(DESTDIR)@datarootdir@
+ libdir = $(DESTDIR)@libdir@
+ libexecdir = $(DESTDIR)@libexecdir@
+ # @mandir@ tends to be $datarootdir which already has $DESTDIR.
+-mandir = @mandir@/man1
++mandir = $(DESTDIR)@mandir@/man1
+ 
+ # Where the ircII binary will be installed.
+ # 'make install' will compile and install the program
+@@ -82,7 +82,7 @@ LIBS = @LIBS@
+ 
+ # Set this to -g if you want to be able to debug the client, otherwise
+ # use -O to have the compiler do some optimization instead.
+-CFLAGS = @CFLAGS@ @DEBUGFLAGS@ @WARNINGFLAGS@ @ERRORFLAGS@
++CFLAGS = @CFLAGS@ @CPPFLAGS@ @DEBUGFLAGS@ @WARNINGFLAGS@ @ERRORFLAGS@
+ 
+ # Set this to -s if you want the binary to be stripped.
+ LDFLAGS = @LDFLAGS@

@@ -1,0 +1,12 @@
+Index: wx-config.in
+--- wx-config.in.orig
++++ wx-config.in
+@@ -1143,7 +1143,7 @@ lib_flags_for()
+         decho "             alllibs = $_all_libs"
+     fi
+ 
+-    echo $_all_ldflags $_wxlibs $_all_libs
++    echo $_all_ldflags -L${X11BASE}/lib $_wxlibs $_all_libs
+ }
+ 
+ # this is the strict subset of the above function which returns only the

@@ -1,0 +1,11 @@
+--- setup.py.orig	Sun Apr 17 13:20:47 2016
++++ setup.py	Sun Apr 17 13:23:31 2016
+@@ -19,7 +19,7 @@ if sys.argv[-1] == "publish":
+     publish()
+     sys.exit()
+ 
+-required = ['args']
++required = []
+ 
+ setup(
+     name='clint',

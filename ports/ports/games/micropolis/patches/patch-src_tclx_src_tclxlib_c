@@ -1,0 +1,12 @@
+Index: src/tclx/src/tclxlib.c
+--- src/tclx/src/tclxlib.c.orig
++++ src/tclx/src/tclxlib.c
+@@ -331,7 +331,7 @@ GenerateFileId (interp, filePath, fileId)
+         return TCL_ERROR;
+     }
+ 
+-    sprintf (fileId, "@%d:%d", statInfo.st_dev, statInfo.st_ino);
++    sprintf (fileId, "@%d:%llu", statInfo.st_dev, statInfo.st_ino);
+ 
+     return TCL_OK;
+ }

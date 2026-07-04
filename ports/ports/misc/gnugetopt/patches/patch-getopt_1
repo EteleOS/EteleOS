@@ -1,0 +1,231 @@
+--- getopt.1.orig	Thu Nov 20 21:13:24 2014
++++ getopt.1	Mon Dec  8 19:09:16 2014
+@@ -1,16 +1,16 @@
+-.TH GETOPT "1" "June 2012" "Linux" "User Commands"
++.TH GNUGETOPT "1" "June 2012" "Linux" "User Commands"
+ .SH NAME
+-getopt \- parse command options (enhanced)
++gnugetopt \- parse command options (enhanced)
+ .SH SYNOPSIS
+-.BI getopt
++.BI gnugetopt
+ .I optstring parameters
+ .br
+-.B getopt
++.B gnugetopt
+ .RI [ options ]
+ .RB [ \-\- ]
+ .I optstring parameters
+ .br
+-.B getopt
++.B gnugetopt
+ .RI [ options ]
+ .BR \-o | \-\-options
+ .I optstring
+@@ -18,7 +18,7 @@ getopt \- parse command options (enhanced)
+ .RB [ \-\- ]
+ .I parameters
+ .SH DESCRIPTION
+-.B getopt
++.B gnugetopt
+ is used to break up
+ .RI ( parse )
+ options in command lines for easy parsing by shell procedures, and to
+@@ -28,10 +28,10 @@ check for legal options.  It uses the
+ routines to do this.
+ .PP
+ The parameters
+-.B getopt
++.B gnugetopt
+ is called with can be divided into two parts: options which modify
+ the way
+-.B getopt
++.B gnugetopt
+ will do the parsing
+ .RI "(the " options
+ and the
+@@ -59,7 +59,7 @@ with a
+ .RB ' \- ',
+ the first format in the
+ .BR SYNOPSIS ),
+-.B getopt
++.B gnugetopt
+ will generate output that is compatible with that of other versions of
+ .BR getopt (1).
+ It will still do parameter shuffling and recognize optional arguments
+@@ -76,12 +76,12 @@ must once again be interpreted by the shell (usually b
+ .B eval
+ command).  This has the effect of preserving those characters, but
+ you must call
+-.B getopt
++.B gnugetopt
+ in a way that is no longer compatible with other versions (the second
+ or third format in the
+ .BR SYNOPSIS ).
+ To determine whether this enhanced version of
+-.BR getopt (1)
++.BR gnugetopt (1)
+ is installed, a special test option
+ .RB ( \-T )
+ can be used.
+@@ -106,15 +106,15 @@ and by two colons to indicate it has an optional argum
+ .TP
+ .BR \-n , " \-\-name \fIprogname\fP"
+ The name that will be used by the
+-.BR getopt (3)
++.BR gnugetopt (3)
+ routines when it reports errors.  Note that errors of
+-.BR getopt (1)
+-are still reported as coming from getopt.
++.BR gnugetopt (1)
++are still reported as coming from gnugetopt.
+ .TP
+ .BR \-o , " \-\-options \fIshortopts\fP"
+ The short (one\-character) options to be recognized.  If this option
+ is not found, the first parameter of
+-.B getopt
++.B gnugetopt
+ that does not start with a
+ .RB ' \- '
+ (and is not an option argument) is used as the short options string.
+@@ -132,11 +132,11 @@ section
+ for details).
+ .TP
+ .BR \-q , " \-\-quiet"
+-Disable error reporting by getopt(3).
++Disable error reporting by gnugetopt(3).
+ .TP
+ .BR  \-Q , " \-\-quiet\-output"
+ Do not generate normal output.  Errors are still reported by
+-.BR getopt (3),
++.BR gnugetopt (3),
+ unless you also use
+ .BR \-q .
+ .TP
+@@ -155,12 +155,12 @@ and
+ Do not quote the output.  Note that whitespace and special
+ (shell\-dependent) characters can cause havoc in this mode (like they
+ do with other
+-.BR getopt (1)
++.BR gnugetopt (1)
+ implementations).
+ .TP
+ .BR \-T , " \-\-test"
+ Test if your
+-.BR getopt (1)
++.BR gnugetopt (1)
+ is this enhanced version or an old version.  This generates no
+ output, and sets the error status to 4.  Other implementations of
+ .BR getopt (1),
+@@ -175,7 +175,7 @@ Display version information and exit.  No other output
+ .SH PARSING
+ This section specifies the format of the second part of the
+ parameters of
+-.B getopt
++.B gnugetopt
+ (the
+ .I parameters
+ in the
+@@ -186,11 +186,11 @@ describes the output that is generated.  These paramet
+ typically the parameters a shell function was called with.  Care must
+ be taken that each parameter the shell function was called with
+ corresponds to exactly one parameter in the parameter list of
+-.B getopt
++.B gnugetopt
+ (see the
+ .BR EXAMPLES ).
+ All parsing is done by the GNU
+-.BR getopt (3)
++.BR gnugetopt (3)
+ routines.
+ .PP
+ The parameters are parsed from left to right.  Each parameter is
+@@ -371,9 +371,9 @@ is written to be as compatible as possible to other ve
+ Usually you can just replace them with this version without any
+ modifications, and with some advantages.
+ .PP
+-If the first character of the first parameter of getopt is not a
++If the first character of the first parameter of gnugetopt is not a
+ .RB ' \- ',
+-.B getopt
++.B gnugetopt
+ goes into compatibility mode.  It will interpret its first
+ parameter as the string of short options, and all other arguments
+ will be parsed.  It will still do parameter shuffling (i.e. all
+@@ -385,7 +385,7 @@ is set.
+ The environment variable
+ .B GETOPT_COMPATIBLE
+ forces
+-.B getopt
++.B gnugetopt
+ into compatibility mode.  Setting both this environment variable and
+ .B POSIXLY_CORRECT
+ offers 100% compatibility for 'difficult' programs.  Usually, though,
+@@ -397,13 +397,13 @@ and
+ .RB ' + '
+ characters in the short options string are ignored.
+ .SH RETURN CODES
+-.B getopt
++.B gnugetopt
+ returns error code
+ .B 0
+ for successful parsing,
+ .B 1
+ if
+-.BR getopt (3)
++.BR gnugetopt (3)
+ returns errors,
+ .B 2
+ if it does not understand its own parameters,
+@@ -414,15 +414,13 @@ if it is called with
+ .BR \-T .
+ .SH EXAMPLES
+ Example scripts for (ba)sh and (t)csh are provided with the
+-.BR getopt (1)
++.BR gnugetopt (1)
+ distribution, and are optionally installed in
+-.BR /usr/local/share/getopt/
+-or
+-.BR /usr/share/getopt/ .
++.BR /usr/local/share/examples/gnugetopt/.
+ .SH ENVIRONMENT
+ .IP POSIXLY_CORRECT
+ This environment variable is examined by the
+-.BR getopt (3)
++.BR gnugetopt (3)
+ routines.  If it is set, parsing stops as soon as a parameter is
+ found that is not an option or an option argument.  All remaining
+ parameters are also interpreted as non\-option parameters, regardless
+@@ -430,15 +428,15 @@ whether they start with a
+ .RB ' \- '.
+ .IP GETOPT_COMPATIBLE
+ Forces
+-.B getopt
++.B gnugetopt
+ to use the first calling format as specified in the
+ .BR SYNOPSIS .
+ .SH BUGS
+-.BR getopt (3)
++.BR gnugetopt (3)
+ can parse long options with optional arguments that are given an
+ empty optional argument (but can not do this for short options).
+ This
+-.BR getopt (1)
++.BR gnugetopt (1)
+ treats optional arguments that are empty as if they were not present.
+ .PP
+ The syntax if you do not want any short option variables at all is
+@@ -449,11 +447,11 @@ string).
+ Frodo Looijaard
+ .ME
+ .SH "SEE ALSO"
+-.BR getopt (3),
++.BR gnugetopt (3),
+ .BR bash (1),
+ .BR tcsh (1).
+ .SH AVAILABILITY
+-You can download the latest getopt from
++You can download the latest gnugetopt from
+ .UR http://frodo.looijaard.name/project/getopt
+ the author's home page
+ .UE .

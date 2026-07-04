@@ -1,0 +1,10 @@
+--- pftop.8.orig	Sat Apr  3 22:45:06 2010
++++ pftop.8	Sat Apr  3 22:47:19 2010
+@@ -143,6 +143,7 @@ views display rules, while the other views display sta
+ .It Fl w Ar width
+ Set the width of the display for batch mode.
+ The default width is 80.
++.El
+ .Sh INTERACTIVE MODE
+ When
+ .Nm

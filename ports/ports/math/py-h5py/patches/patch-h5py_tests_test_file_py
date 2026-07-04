@@ -1,0 +1,13 @@
+Tests require mpi4py with openmpi.
+
+Index: h5py/tests/test_file.py
+--- h5py/tests/test_file.py.orig
++++ h5py/tests/test_file.py
+@@ -875,6 +875,7 @@ class TestPickle(TestCase):
+ # unittest doesn't work with pytest fixtures (and possibly other features),
+ # hence no subclassing TestCase
+ @pytest.mark.mpi
++@pytest.mark.skip(reason="fixture 'mpi_file_name' not present")
+ class TestMPI:
+     def test_mpio(self, mpi_file_name):
+         """ MPIO driver and options """

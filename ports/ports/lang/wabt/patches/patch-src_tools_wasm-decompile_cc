@@ -1,0 +1,27 @@
+Index: src/tools/wasm-decompile.cc
+--- src/tools/wasm-decompile.cc.orig
++++ src/tools/wasm-decompile.cc
+@@ -19,6 +19,9 @@
+ #include <cstdio>
+ #include <cstdlib>
+ 
++#include <err.h>
++#include <unistd.h>
++
+ #include "wabt/apply-names.h"
+ #include "wabt/binary-reader-ir.h"
+ #include "wabt/binary-reader.h"
+@@ -70,6 +73,13 @@ int ProgramMain(int argc, char** argv) {
+                        });
+     parser.Parse(argc, argv);
+   }
++
++  if (unveil(infile.c_str(), "r") != 0)
++    err(1, "unveil: %s", infile.c_str());
++  if (!outfile.empty() && unveil(outfile.c_str(), "wc") != 0)
++    err(1, "unveil: %s", outfile.c_str());
++  if (pledge("stdio rpath wpath cpath", NULL) != 0)
++    err(1, "pledge");
+ 
+   std::vector<uint8_t> file_data;
+   Result result = ReadFile(infile.c_str(), &file_data);

@@ -1,0 +1,12 @@
+--- doc/archiveopteryx.man.orig	Thu May  1 10:43:59 2014
++++ doc/archiveopteryx.man	Thu May  1 10:44:23 2014
+@@ -206,9 +206,6 @@ settings.
+ .SH FILES
+ .IP $CONFIGDIR/archiveopteryx.conf
+ contains the Archiveopteryx configuration.
+-.IP $LIBDIR/automatic-key.pem
+-contains a private key and self-signed certificate used by
+-.BR openssl (3).
+ .SH AUTHOR
+ The Archiveopteryx Developers, info@aox.org.
+ .SH VERSION

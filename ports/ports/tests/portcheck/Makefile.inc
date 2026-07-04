@@ -1,0 +1,2 @@
+CATEGORIES +=		${PKGPATH:C,/[^/]+$,,}
+PERMIT_PACKAGE ?=	Yes

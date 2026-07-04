@@ -1,0 +1,20 @@
+--- image.h.orig	Fri Apr 13 12:46:25 2012
++++ image.h	Fri Apr 13 12:47:21 2012
+@@ -163,7 +163,7 @@ typedef struct {
+     ((LEN) == 2 ? ((unsigned long) \
+ 		   (*(byte *)(PTR) << 8) | \
+ 		   (*((byte *)(PTR) + 1))) : \
+-     ((unsigned long)((*(byte *)(PTR) << 24) | \
++     ((unsigned long)(unsigned int)((*(byte *)(PTR) << 24) | \
+ 		      (*((byte *)(PTR) + 1) << 16) | \
+ 		      (*((byte *)(PTR) + 2) << 8) | \
+ 		      (*((byte *)(PTR) + 3)))))))
+@@ -176,7 +176,7 @@ typedef struct {
+ 		  (*((byte *)(PTR) + 2) << 16)) : \
+     ((LEN) == 2 ? ((unsigned long) \
+ 		   (*(byte *)(PTR)) | (*((byte *)(PTR) + 1) << 8)) : \
+-     ((unsigned long)((*(byte *)(PTR)) | \
++     ((unsigned long)(unsigned int)((*(byte *)(PTR)) | \
+ 		      (*((byte *)(PTR) + 1) << 8) | \
+ 		      (*((byte *)(PTR) + 2) << 16) | \
+ 		      (*((byte *)(PTR) + 3) << 24))))))

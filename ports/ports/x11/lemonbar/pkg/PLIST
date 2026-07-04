@@ -1,0 +1,4 @@
+@bin bin/lemonbar
+@man man/man1/lemonbar.1
+share/doc/lemonbar/
+share/doc/lemonbar/LICENSE

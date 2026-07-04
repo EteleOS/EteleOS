@@ -1,0 +1,21 @@
+Index: cmake/SFMLConfigDependencies.cmake.in
+--- cmake/SFMLConfigDependencies.cmake.in.orig
++++ cmake/SFMLConfigDependencies.cmake.in
+@@ -16,6 +16,8 @@ if(SFML_STATIC_LIBRARIES)
+         endif()
+     elseif(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
+         set(FIND_SFML_OS_FREEBSD 1)
++    elseif(${CMAKE_SYSTEM_NAME} MATCHES "OpenBSD")
++        set(FIND_SFML_OS_OPENBSD 1)
+     elseif(${CMAKE_SYSTEM_NAME} MATCHES "iOS")
+         set(FIND_SFML_OS_IOS 1)
+     elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+@@ -49,7 +51,7 @@ if(SFML_STATIC_LIBRARIES)
+         if(FIND_SFML_USE_DRM)
+             sfml_bind_dependency(TARGET DRM FRIENDLY_NAME "drm" SEARCH_NAMES "drm")
+             sfml_bind_dependency(TARGET GBM FRIENDLY_NAME "gbm" SEARCH_NAMES "gbm")
+-        elseif(FIND_SFML_OS_LINUX OR FIND_SFML_OS_FREEBSD)
++        elseif(FIND_SFML_OS_LINUX OR FIND_SFML_OS_FREEBSD OR FIND_SFML_OS_OPENBSD)
+             sfml_bind_dependency(TARGET X11 FRIENDLY_NAME "X11" SEARCH_NAMES "X11")
+             sfml_bind_dependency(TARGET X11 FRIENDLY_NAME "Xrandr" SEARCH_NAMES "Xrandr")
+             sfml_bind_dependency(TARGET X11 FRIENDLY_NAME "Xcursor" SEARCH_NAMES "Xcursor")

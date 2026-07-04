@@ -1,0 +1,12 @@
+Index: createPPD.sh
+--- createPPD.sh.orig
++++ createPPD.sh
+@@ -19,7 +19,7 @@
+ # Author: 
+ #
+ #echo "HP Linux Imaging and Printing System createPPD file"
+-make -f Makefile_dat2drv
++${MAKE_PROGRAM} -f Makefile_dat2drv
+ rip="foomatic-rip-hplip"
+ for argument in $*;do
+ 

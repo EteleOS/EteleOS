@@ -1,0 +1,4 @@
+bin/disdvi
+bin/dvi2tty
+@man man/man1/disdvi.1
+@man man/man1/dvi2tty.1

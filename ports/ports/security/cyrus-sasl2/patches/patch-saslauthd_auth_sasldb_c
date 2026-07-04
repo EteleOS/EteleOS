@@ -1,0 +1,11 @@
+Index: saslauthd/auth_sasldb.c
+--- saslauthd/auth_sasldb.c.orig
++++ saslauthd/auth_sasldb.c
+@@ -36,6 +36,7 @@
+ 
+ #include <string.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <pwd.h>
+ #include <config.h>
+ #include <unistd.h>

@@ -1,0 +1,14 @@
+gstmultihandlesink.c:542: error: field 'sa' has incomplete type
+gstmultihandlesink.c:544: error: field 'sa_stor' has incomplete type
+
+Index: gst/tcp/gstmultihandlesink.c
+--- gst/tcp/gstmultihandlesink.c.orig
++++ gst/tcp/gstmultihandlesink.c
+@@ -35,6 +35,7 @@
+ #endif
+ 
+ #ifndef G_OS_WIN32
++#include <sys/socket.h>
+ #include <netinet/in.h>
+ #endif
+ 

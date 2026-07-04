@@ -1,0 +1,44 @@
+--- src/fte-unix.mak.orig	Sun Jan 18 18:06:25 2009
++++ src/fte-unix.mak	Sun Jan 18 18:25:08 2009
+@@ -5,10 +5,10 @@
+ 
+ #  vfte - for Linux console directly (with limitations, see con_linux.cpp)
+ 
+-TGT_NFTE = nfte
++#TGT_NFTE = nfte
+ #TGT_QFTE = qfte
+ #TGT_SFTE = sfte
+-TGT_VFTE = vfte
++#TGT_VFTE = vfte
+ TGT_XFTE = xfte
+ 
+ TARGETS = $(TGT_XFTE) $(TGT_NFTE) $(TGT_QFTE) $(TGT_SFTE) $(TGT_VFTE)
+@@ -57,8 +57,8 @@ NOEXCEPTION = -fno-rtti -fno-exceptions
+ #######################################################################
+ # Linux
+ UOS      = -DLINUX
+-XINCDIR  = -I/usr/X11R6/include
+-XLIBDIR  = -L/usr/X11R6/lib
++XINCDIR  = -I${X11BASE}/include
++XLIBDIR  = -L${X11BASE}/lib
+ 
+ #######################################################################
+ # HP/UX
+@@ -78,7 +78,7 @@ XLIBDIR  = -L/usr/X11R6/lib
+ #MINCDIR  = -I/usr/include/Motif1.2
+ #MLIBDIR  = -L/usr/lib/Motif1.2
+ 
+-SINCDIR   = -I/usr/include/slang
++#SINCDIR   = -I/usr/include/slang
+ 
+ #######################################################################
+ # AIX
+@@ -138,7 +138,7 @@ SINCDIR   = -I/usr/include/slang
+ #QLIBDIR  = -L$(QTDIR)/lib
+ #QINCDIR  = -I$(QTDIR)/include
+ #QINCDIR  = -I/usr/include/qt
+-QINCDIR =  -I/usr/include/qt3
++#QINCDIR =  -I/usr/include/qt3
+ MOC      = moc
+ 
+ LIBDIRS   =

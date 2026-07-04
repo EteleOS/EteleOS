@@ -1,0 +1,12 @@
+#!/bin/ksh
+
+daemon="${PREFIX}/bin/consul-template"
+daemon_flags="-config ${SYSCONFDIR}/consul-template.d/default.conf"
+daemon_user="_consul-template"
+
+. /etc/rc.d/rc.subr
+
+rc_bg=YES
+rc_stop_signal=INT
+
+rc_cmd $1

@@ -1,0 +1,6 @@
+${P5SITE}/Package/
+${P5SITE}/Package/New/
+${P5SITE}/Package/New.pm
+${P5SITE}/Package/New/Dump.pm
+@man man/man3p/Package::New.3p
+@man man/man3p/Package::New::Dump.3p

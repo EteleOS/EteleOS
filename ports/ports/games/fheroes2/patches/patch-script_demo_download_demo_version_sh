@@ -1,0 +1,21 @@
+sha256sum -> sha256
+
+Index: script/demo/download_demo_version.sh
+--- script/demo/download_demo_version.sh.orig
++++ script/demo/download_demo_version.sh
+@@ -80,12 +80,12 @@ else
+     exit 1
+ fi
+ 
+-echo "$H2DEMO_SHA256 *h2demo.zip" > checksums
++echo "SHA256 (h2demo.zip) = $H2DEMO_SHA256" > checksums
+ 
+ if [[ -n "$(command -v shasum)" ]]; then
+     shasum --check --algorithm 256 checksums
+-elif [[ -n "$(command -v sha256sum)" ]]; then
+-    sha256sum --check --strict checksums
++elif [[ -n "$(command -v sha256)" ]]; then
++    sha256 -C checksums h2demo.zip
+ else
+     echo_red "Neither shasum nor sha256sum were found in your system. Unable to verify the downloaded file. Installation aborted."
+     exit 1

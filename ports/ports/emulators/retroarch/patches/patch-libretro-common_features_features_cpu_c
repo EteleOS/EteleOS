@@ -1,0 +1,14 @@
+Ensure that the undefined __mtfb() primitive is not used on powerpc, from:
+https://github.com/libretro/RetroArch/pull/10383
+
+Index: libretro-common/features/features_cpu.c
+--- libretro-common/features/features_cpu.c.orig
++++ libretro-common/features/features_cpu.c
+@@ -22,6 +22,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <sys/time.h>
+ 
+ #if defined(_WIN32)
+ #include <direct.h>

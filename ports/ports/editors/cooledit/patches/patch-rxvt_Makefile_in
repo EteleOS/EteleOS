@@ -1,0 +1,11 @@
+--- rxvt/Makefile.in.orig	Sat Nov 27 09:46:41 2004
++++ rxvt/Makefile.in	Wed May 19 17:08:39 2010
+@@ -222,7 +222,7 @@ librxvt_a_SOURCES = _rxvtlib.h grkelot.c grkelot.h rxv
+ 	rxvtlib_rmemset.c rxvtlib_screen.c rxvtlib_scrollbar.c	\
+ 	rxvtlib_xdefaults.c rxvtlib_xpm.c rxvtlibproto.h rxvtlibtypedef.h 
+ 
+-INCLUDES = -I$(top_srcdir)/widget -I$(top_srcdir) -I$(top_srcdir)/intl
++INCLUDES = -I$(top_srcdir)/widget -I$(top_srcdir)
+ all: all-am
+ 
+ .SUFFIXES:

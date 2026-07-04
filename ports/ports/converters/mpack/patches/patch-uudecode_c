@@ -1,0 +1,39 @@
+Allow building with CLang's scan-build.
+
+Index: uudecode.c
+--- uudecode.c.orig
++++ uudecode.c
+@@ -23,6 +23,8 @@
+  * SOFTWARE.
+  */
+ #include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
+ #include <ctype.h>
+ #include <string.h>
+ #include "xmalloc.h"
+@@ -35,6 +37,7 @@ extern FILE *os_createnewfile(char *fname);
+ 
+ static FILE *startDescFile(char *fname);
+ 
++void uudecodeline(char *line, FILE *outfile);
+ 
+ /* Length of a normal uuencoded line, including newline */
+ #define UULENGTH 62
+@@ -826,7 +829,7 @@ uudecodefiles(char *dir, int nparts)
+ /*
+  * Decode a uuencoded line to 'outfile'
+  */
+-int uudecodeline(char *line, FILE *outfile)
++void uudecodeline(char *line, FILE *outfile)
+ {
+     int c, len;
+ 
+@@ -845,7 +848,4 @@ int uudecodeline(char *line, FILE *outfile)
+ 	}
+ 	line += 4;
+     }
+-    return;
+ }
+-
+-    

@@ -1,0 +1,14 @@
+restrict doesn't exist in C++
+
+Index: include/IL/il.h
+--- include/IL/il.h.orig
++++ include/IL/il.h
+@@ -63,7 +63,7 @@ extern "C" {
+ 	#endif
+ #endif
+ 
+-#ifdef RESTRICT_KEYWORD
++#if defined(RESTRICT_KEYWORD) && !defined(__cplusplus)
+ #define RESTRICT restrict
+ #define CONST_RESTRICT const restrict
+ #else

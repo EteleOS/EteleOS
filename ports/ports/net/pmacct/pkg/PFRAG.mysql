@@ -1,0 +1,12 @@
+share/pmacct/sql/README.mysql
+share/pmacct/sql/pmacct-create-db_bgp_v1.mysql
+share/pmacct/sql/pmacct-create-db_v1.mysql
+share/pmacct/sql/pmacct-create-db_v2.mysql
+share/pmacct/sql/pmacct-create-db_v3.mysql
+share/pmacct/sql/pmacct-create-db_v4.mysql
+share/pmacct/sql/pmacct-create-db_v5.mysql
+share/pmacct/sql/pmacct-create-db_v6.mysql
+share/pmacct/sql/pmacct-create-db_v7.mysql
+share/pmacct/sql/pmacct-create-db_v8.mysql
+share/pmacct/sql/pmacct-create-db_v9.mysql
+share/pmacct/sql/pmacct-grant-db.mysql

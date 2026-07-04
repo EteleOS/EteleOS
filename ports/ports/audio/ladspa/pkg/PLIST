@@ -1,0 +1,21 @@
+@bin bin/analyseplugin
+@bin bin/applyplugin
+@bin bin/listplugins
+include/ladspa.h
+lib/ladspa/
+@so lib/ladspa/amp.so
+@so lib/ladspa/delay.so
+@so lib/ladspa/filter.so
+@so lib/ladspa/noise.so
+@so lib/ladspa/sine.so
+share/doc/ladspa/
+share/doc/ladspa/background.html
+share/doc/ladspa/changes.html
+share/doc/ladspa/download.html
+share/doc/ladspa/example_plugins.html
+share/doc/ladspa/index.html
+share/doc/ladspa/installation.html
+share/doc/ladspa/license.html
+share/doc/ladspa/overview.html
+share/doc/ladspa/shared_plugins.html
+share/doc/ladspa/unique_ids.html

@@ -1,0 +1,23 @@
+workaround broken iconv detection
+
+Index: meson.build
+--- meson.build.orig
++++ meson.build
+@@ -20,16 +20,7 @@ conf.set_quoted('VERSION', meson.project_version())
+ 
+ conf.set('HAVE_STRNDUP', cc.has_function('strndup', prefix: '#define _GNU_SOURCE\n#include <string.h>'))
+ 
+-iconv = get_option('iconv')
+-if iconv.disabled()
+-  iconv = false
+-elif cc.has_function('iconv')
+-  iconv = true
+-elif iconv.auto()
+-  iconv = false
+-else
+-  error('iconv() not available')
+-endif
++iconv = true
+ conf.set('HAVE_ICONV', iconv)
+ 
+ configure_file(output: 'config.h', configuration: conf)

@@ -1,0 +1,63 @@
+Attempt to replicate the following shell code:
+
+JAVA_HOME=$(javaPathHelper -h jruby)
+
+Without this, if the JAVA_HOME environment variable is not
+defined, bin/jruby will segfault when run.
+
+Index: jruby-launcher/unixlauncher.cpp
+--- jruby-launcher/unixlauncher.cpp.orig
++++ jruby-launcher/unixlauncher.cpp
+@@ -3,6 +3,7 @@
+ #include <unistd.h>
+ #include <limits.h>
+ #include <string.h>
++#include <string.h>
+ #include "unixlauncher.h"
+ #include "utilsfuncs.h"
+ 
+@@ -46,6 +47,44 @@ int UnixLauncher::run(int argc, char* argv[], char* en
+     }
+ 
+     string java("");
++
++    if (getenv("JAVA_HOME") == NULL) {
++      char *path;
++      FILE *java_home_pipe;
++      char java_home_path[256];
++
++      path = getenv("PATH");
++      if (path == NULL || strlen(path) == 0) {
++        setenv("PATH", "/usr/bin:${LOCALBASE}/bin:${JAVA_HOME}/bin", 1);
++      } else {
++        char *paths[3] = {(char *)"/usr/bin", (char *)"${LOCALBASE}/bin", (char *)"${JAVA_HOME}/bin"};
++        int modified = 0;
++        int i;
++
++        strlcpy(java_home_path, path, sizeof(java_home_path));
++        for (i = 0; i < 3; i++) {
++          if (strstr(path, paths[i]) == NULL) {
++            modified = 1;
++            strlcat(java_home_path, ":", sizeof(java_home_path));
++            strlcat(java_home_path, paths[i], sizeof(java_home_path));
++          }
++        }
++
++        if (modified == 1) {
++          setenv("PATH", java_home_path, 1);
++        }
++      }
++
++      if(java_home_pipe = popen("javaPathHelper -h jruby", "r")) {
++        size_t bytes_read;
++        bytes_read = fread(java_home_path, 1, 255, java_home_pipe);
++        if (bytes_read > 0) { 
++          java_home_path[bytes_read-1] = '\0';
++          setenv("JAVA_HOME", java_home_path, 1);
++        }
++        pclose(java_home_pipe);
++      }
++    }
+ 
+     if (getenv("JAVACMD") != NULL) {
+         java = getenv("JAVACMD");

@@ -1,0 +1,23 @@
+Auth timeout used for SO_RECVTIMEO in ssl.c which has a max of
+USHRT_MAX hz otherwise it fails with EDOM.
+
+--- perdition/options.h.orig	Fri Oct  4 03:44:12 2013
++++ perdition/options.h	Fri Jul 17 15:22:50 2015
+@@ -128,7 +128,7 @@
+ #define DEFAULT_IMAP_CAPABILITY              "IMAP4 IMAP4REV1"
+ #define DEFAULT_INETD_MODE                   0
+ #define DEFAULT_MAP_LIB                      PERDITION_LIBDIR \
+-			                     "/libperditiondb_gdbm.so.0"
++			                     "/libperditiondb_bdb.so.0"
+ #define DEFAULT_LOG_FACILITY                 "mail"
+ #define DEFAULT_LOGIN_DISABLED               0
+ #define DEFAULT_LOWER_CASE                   STATE_NONE
+@@ -145,7 +145,7 @@
+ #define DEFAULT_STRIP_DOMAIN                 STATE_NONE
+ #define DEFAULT_SERVER_RESP_LINE             0
+ #define DEFAULT_TIMEOUT                      1800 /*in seconds*/
+-#define DEFAULT_AUTHENTICATE_TIMEOUT         DEFAULT_TIMEOUT
++#define DEFAULT_AUTHENTICATE_TIMEOUT         60 /*in seconds*/
+ #ifdef WITH_USER
+ #define DEFAULT_USERNAME                     WITH_USER
+ #else

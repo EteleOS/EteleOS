@@ -1,0 +1,4 @@
+@bin bin/tcpreen
+@man man/man1/tcpreen.1
+share/locale/fr/LC_MESSAGES/tcpreen.mo
+share/locale/pt_BR/LC_MESSAGES/tcpreen.mo

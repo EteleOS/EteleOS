@@ -1,0 +1,7 @@
+bin/quakespasm
+@bin libexec/quakespasm
+share/doc/quakespasm/
+share/doc/quakespasm/Quakespasm-Music.txt
+share/doc/quakespasm/Quakespasm.html
+share/doc/quakespasm/Quakespasm.txt
+share/quakespasm/

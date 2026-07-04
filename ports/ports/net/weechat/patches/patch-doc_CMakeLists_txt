@@ -1,0 +1,12 @@
+Index: doc/CMakeLists.txt
+--- doc/CMakeLists.txt.orig
++++ doc/CMakeLists.txt
+@@ -24,7 +24,7 @@ if(ENABLE_MAN OR ENABLE_DOC)
+ 
+   # docs languages
+   set(AUTOGEN_LANG de en fr it ja pl sr)
+-  set(MAN_LANG cs de en fr it ja pl ru sr)
++  set(MAN_LANG en)
+   set(USER_LANG de en fr it ja pl sr)
+   set(PLUGIN_API_LANG en fr it ja sr)
+   set(SCRIPTING_LANG de en fr it ja pl sr)

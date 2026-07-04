@@ -1,0 +1,12 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Optional dependencies for Tkabber:
+
+* ispell (spell checking)
+* snack (sound notifications)
+* tclgpg (message signing and encryption)
+* tkcon (Tk console)
+* tkimg (support for PNG, JPG images)
+* tktray (iconify Tkabber)

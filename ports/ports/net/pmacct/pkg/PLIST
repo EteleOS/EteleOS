@@ -1,0 +1,83 @@
+@pkgpath net/pmacct,threads
+@bin bin/pmacct
+lib/pmacct/
+lib/pmacct/examples/
+lib/pmacct/examples/custom/
+lib/pmacct/examples/custom/libcustom.la
+lib/pmacct/examples/lg/
+lib/pmacct/examples/lg/pmbgp
+@bin sbin/nfacctd
+@bin sbin/pmacctd
+@bin sbin/pmbgpd
+@bin sbin/pmbmpd
+@bin sbin/pmtelemetryd
+@bin sbin/sfacctd
+%%mysql%%
+%%postgresql%%
+share/doc/pmacct/
+share/doc/pmacct/IPFIX
+share/doc/pmacct/LOOKING_GLASS_FORMAT
+share/doc/pmacct/MSGLOG_DUMP_FORMATS
+share/doc/pmacct/SIGNALS
+share/doc/pmacct/TRIGGER_VARS
+share/examples/pmacct/
+share/examples/pmacct/allow.lst.example
+share/examples/pmacct/amqp/
+share/examples/pmacct/amqp/amqp_receiver.py
+share/examples/pmacct/avro/
+share/examples/pmacct/avro/avro_file_decoder.py
+share/examples/pmacct/bgp_agent.map.example
+share/examples/pmacct/bgp_md5.lst.example
+share/examples/pmacct/bgp_xconnects.map.example
+share/examples/pmacct/flow_to_rd.map.example
+share/examples/pmacct/kafka/
+share/examples/pmacct/kafka/kafka_consumer.py
+share/examples/pmacct/lg/
+@bin share/examples/pmacct/lg/pmbgp
+share/examples/pmacct/lg/pmbgp.py
+share/examples/pmacct/networks.lst.example
+share/examples/pmacct/nfacctd-sql.conf.example
+share/examples/pmacct/pcap_interfaces.map.example
+share/examples/pmacct/peers.map.example
+share/examples/pmacct/pmacctd-imt.conf.example
+share/examples/pmacct/pmacctd-multiple-plugins.conf.example
+share/examples/pmacct/pmacctd-sql.conf.example
+share/examples/pmacct/pmacctd-sqlite3.conf.example
+share/examples/pmacct/ports.lst.example
+share/examples/pmacct/pretag.map.example
+share/examples/pmacct/primitives.lst.example
+share/examples/pmacct/probe_netflow.conf.example
+share/examples/pmacct/probe_sflow.conf.example
+share/examples/pmacct/sampling.map.example
+share/examples/pmacct/tee_receivers.lst.example
+share/pmacct/
+share/pmacct/CONFIG-KEYS
+share/pmacct/FAQS
+share/pmacct/QUICKSTART
+share/pmacct/UPGRADE
+share/pmacct/sql/
+share/pmacct/sql/README.GeoIP
+share/pmacct/sql/README.cos
+share/pmacct/sql/README.custom_primitives
+share/pmacct/sql/README.etype
+share/pmacct/sql/README.export_proto
+share/pmacct/sql/README.iface
+share/pmacct/sql/README.label
+share/pmacct/sql/README.mask
+share/pmacct/sql/README.mpls
+share/pmacct/sql/README.nat
+share/pmacct/sql/README.sampling
+share/pmacct/sql/README.sqlite3
+share/pmacct/sql/README.tag2
+share/pmacct/sql/README.timestamp
+share/pmacct/sql/README.tunnel
+share/pmacct/sql/pmacct-create-table_bgp_v1.sqlite3
+share/pmacct/sql/pmacct-create-table_v1.sqlite3
+share/pmacct/sql/pmacct-create-table_v2.sqlite3
+share/pmacct/sql/pmacct-create-table_v3.sqlite3
+share/pmacct/sql/pmacct-create-table_v4.sqlite3
+share/pmacct/sql/pmacct-create-table_v5.sqlite3
+share/pmacct/sql/pmacct-create-table_v6.sqlite3
+share/pmacct/sql/pmacct-create-table_v7.sqlite3
+share/pmacct/sql/pmacct-create-table_v8.sqlite3
+share/pmacct/sql/pmacct-create-table_v9.sqlite3

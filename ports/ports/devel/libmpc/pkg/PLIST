@@ -1,0 +1,5 @@
+include/mpc.h
+@info info/mpc.info
+@static-lib lib/libmpc.a
+lib/libmpc.la
+@lib lib/libmpc.so.${LIBmpc_VERSION}

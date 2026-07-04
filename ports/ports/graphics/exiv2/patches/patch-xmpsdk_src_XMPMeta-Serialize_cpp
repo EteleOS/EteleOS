@@ -1,0 +1,12 @@
+Index: xmpsdk/src/XMPMeta-Serialize.cpp
+--- xmpsdk/src/XMPMeta-Serialize.cpp.orig
++++ xmpsdk/src/XMPMeta-Serialize.cpp
+@@ -302,7 +302,7 @@ AppendNodeValue ( XMP_VarString & outputStr, const XMP
+ 				XMP_Assert ( (ch == kTab) || (ch == kLF) || (ch == kCR) );
+ 
+ 				char hexBuf[16];
+-				memcpy ( hexBuf, "&#xn;", 5 );
++				strlcpy ( hexBuf, "&#xn;", 5 );
+ 				hexBuf[3] = kHexDigits[ch&0xF];
+ 				outputStr.append ( hexBuf, 5 );
+ 

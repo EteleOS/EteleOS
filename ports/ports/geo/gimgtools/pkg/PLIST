@@ -1,0 +1,7 @@
+@bin bin/cmdc
+@bin bin/gimgch
+@bin bin/gimgextract
+@bin bin/gimgfixcmd
+@bin bin/gimginfo
+@bin bin/gimgunlock
+@bin bin/gimgxor

@@ -1,0 +1,70 @@
+@newgroup _lcdproc:687
+@newuser _lcdproc:687:687::LCDproc Daemon:/var/lcdproc:/sbin/nologin
+@rcscript ${RCDIR}/lcdd
+@rcscript ${RCDIR}/lcdexec
+@rcscript ${RCDIR}/lcdproc
+bin/fortune.pl
+bin/iosock.pl
+@bin bin/lcdexec
+bin/lcdident.pl
+bin/lcdmetar.pl
+@bin bin/lcdproc
+bin/tail.pl
+bin/x11amp.pl
+lib/lcdproc/
+@so lib/lcdproc/CFontz.so
+@so lib/lcdproc/CFontzPacket.so
+@so lib/lcdproc/CwLnx.so
+@so lib/lcdproc/EyeboxOne.so
+@so lib/lcdproc/IOWarrior.so
+@so lib/lcdproc/MD8800.so
+@so lib/lcdproc/MtxOrb.so
+@so lib/lcdproc/NoritakeVFD.so
+@so lib/lcdproc/SureElec.so
+@so lib/lcdproc/bayrad.so
+@so lib/lcdproc/curses.so
+@so lib/lcdproc/ea65.so
+@so lib/lcdproc/futaba.so
+@so lib/lcdproc/glcd.so
+@so lib/lcdproc/glk.so
+@so lib/lcdproc/hd44780.so
+@so lib/lcdproc/i2500vfd.so
+@so lib/lcdproc/imon.so
+@so lib/lcdproc/imonlcd.so
+@so lib/lcdproc/irtrans.so
+@so lib/lcdproc/lb216.so
+@so lib/lcdproc/lcdm001.so
+@so lib/lcdproc/lcterm.so
+@so lib/lcdproc/lis.so
+@so lib/lcdproc/mdm166a.so
+@so lib/lcdproc/ms6931.so
+@so lib/lcdproc/mtc_s16209x.so
+@so lib/lcdproc/picolcd.so
+@so lib/lcdproc/pyramid.so
+@so lib/lcdproc/rawserial.so
+@so lib/lcdproc/serialPOS.so
+@so lib/lcdproc/serialVFD.so
+@so lib/lcdproc/shuttleVFD.so
+@so lib/lcdproc/sli.so
+@so lib/lcdproc/text.so
+@so lib/lcdproc/tyan.so
+@so lib/lcdproc/ula200.so
+@so lib/lcdproc/vlsys_m428.so
+@so lib/lcdproc/yard2LCD.so
+@man man/man1/lcdexec.1
+@man man/man1/lcdproc.1
+@man man/man5/lcdproc-config.5
+@man man/man8/LCDd.8
+@bin sbin/LCDd
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/lcdproc/
+share/examples/lcdproc/LCDd.conf
+@sample ${SYSCONFDIR}/LCDd.conf
+share/examples/lcdproc/lcdexec.conf
+@sample ${SYSCONFDIR}/lcdexec.conf
+share/examples/lcdproc/lcdproc.conf
+@sample ${SYSCONFDIR}/lcdproc.conf
+@mode 770
+@owner _lcdproc
+@group _lcdproc
+@sample /var/lcdproc/

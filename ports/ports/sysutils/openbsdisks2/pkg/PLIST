@@ -1,0 +1,5 @@
+@bin bin/openbsdisks2
+share/dbus-1/system-services/org.freedesktop.UDisks2.service
+share/dbus-1/system.d/org.freedesktop.UDisks2.conf
+@sample ${SYSCONFDIR}/dbus-1/system.d/org.freedesktop.UDisks2.conf
+share/doc/pkg-readmes/${PKGSTEM}

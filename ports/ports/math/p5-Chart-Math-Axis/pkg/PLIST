@@ -1,0 +1,4 @@
+${P5SITE}/Chart/
+${P5SITE}/Chart/Math/
+${P5SITE}/Chart/Math/Axis.pm
+@man man/man3p/Chart::Math::Axis.3p

@@ -1,0 +1,77 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -25,7 +25,7 @@ mintk = 8.4
+ 
+ ### you need to localize the paths on these lines
+ 
+-WISH = /usr/local/bin/wish8.4
++WISH = wish
+ #WISH = /usr/sww/tcl-8.4/bin/wish
+ #WISH = /private/share/bin/wish8.4
+ 
+@@ -80,9 +80,9 @@ rfcdir = ""
+ # will examine for matches if a search in the usual locations fails while searching
+ # for a man pages and displaying its associated binaries (if any).
+ # Use this feature carefully as a large number of directories can slow down startup.
+-mastermen = "/usr/man /usr/local/man"
++mastermen = "${PREFIX}/man /usr/share/man ${X11BASE}/man"
+ #mastermen = "/usr/man /usr/local/man /usr/sww/man /usr/share/man /usr/kerberos/man"
+-masterbin = "/usr/bin /usr/local/bin"
++masterbin = "/usr/bin ${PREFIX}/bin ${X11BASE}/bin"
+ #masterbin = "/usr/bin /usr/local/bin /usr/sww/bin /usr/sww/share/bin /usr/sww/share/X11R5/bin"
+ 
+ 
+@@ -113,7 +113,7 @@ dpis = "75 100"
+ # Lines are cached in .../man/cat<n>@<line-length>; 
+ #   that is, the line length is appended to the usual cache directory names
+ #manformat = {groff -te -Tascii -man /tmp/ll -}
+-manformat = {groff -te -Tlatin1 -man /tmp/ll -}
++#manformat = {groff -te -Tlatin1 -man /tmp/ll -}
+ # Ultrix users should uncomment the following line (you don't have eqn)
+ #manformat = {tbl | nroff -man }
+ # HP-UX uses a number of macros that groff doesn't define, so use the builtin nroff
+@@ -121,7 +121,7 @@ manformat = {groff -te -Tlatin1 -man /tmp/ll -}
+ #  space between the .de and the macro name, and groff doesn't like this.)
+ #manformat = {tbl | neqn | nroff -man }
+ # BSD macros (.Sh, .Ss, .PP, ...) need -mandoc
+-#manformat = {groff -Tascii -te -mandoc}
++manformat = {groff -Tascii -te -mandoc}
+ # BSDI
+ #manformat = {tbl | eqn -Tascii | nroff -man }
+ # It's actually legal to leave this empty if all the pages you'll ever
+@@ -165,14 +165,14 @@ zlist = {gz z Z}
+ 
+ 
+ # pick a printing pipeline for which your platform has all the constituants
+-#manprint = {groff -man -Tps -te -l}
++manprint = {groff -mandoc -Tps -te -l}
+ # alternatives
+ #manprint = {groff -man -Tps -te -l | psnup -n2}
+ #manprint = {tbl | eqn | troff -man -t | lpr -t}
+ #manprint = {tbl | eqn | psroff -man}
+ #manprint = {tbl | eqn | gtroff -Tpsc | psdit | lpr}
+ # use an empty pipeline if you're environmentally conscious or have no printer
+-manprint = ""
++#manprint = ""
+ # printing string for preformatted pages without [tn]roff source
+ #catprint = lpr
+ #catprint = "lpr -h"
+@@ -203,7 +203,7 @@ shortnames = 0
+ # BY DEFAULT OFF
+ glimpse = ""
+ # Glimpse on, with Boolean scope set to entire file
+-glimpse = "glimpse -W"
++#glimpse = "glimpse -W"
+ # give the full path, if you'd like
+ #glimpse = /usr/sww/bin/glimpse
+ # variations (refer to the Glimpse manual page)
+@@ -460,7 +460,7 @@ install: tkman retkman
+ 	chmod +rx $(BINDIR)/tkman
+ 	$(CP) retkman $(BINDIR)
+ 	chmod +rx $(BINDIR)/retkman
+-	@echo 'You also need RosettaMan to run TkMan.'
++	#@echo 'You also need RosettaMan to run TkMan.'
+ 
+ test: dox tkman
+ 	cp tkman $(BINDIR)

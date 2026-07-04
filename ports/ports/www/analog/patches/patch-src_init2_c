@@ -1,0 +1,25 @@
+Index: src/init2.c
+--- src/init2.c.orig
++++ src/init2.c
+@@ -226,10 +226,10 @@ void configchoice(void *opt, char *cmd, char *arg1, ch
+     return;
+   }
+ 
+-  if (STREQ(cmdend - 6, "SORTBY"))
++  if ((cmd <= (cmdend - 6)) && STREQ(cmdend - 6, "SORTBY"))
+     choices = sortbychoices;
+ #ifndef NOGRAPHICS
+-  else if (STREQ(cmdend - 5, "CHART"))
++  else if ((cmd <= (cmdend - 5)) && STREQ(cmdend - 5, "CHART"))
+     choices = chartchoices;
+ #endif
+   else if (STREQ(cmd, "OUTPUT"))
+@@ -242,7 +242,7 @@ void configchoice(void *opt, char *cmd, char *arg1, ch
+     choices = langchoices;
+   else if (STREQ(cmd, "GOTOS"))
+     choices = gotochoices;
+-  else if (STREQ(cmdend - 4, "CASE")) {
++  else if ((cmd <= (cmdend - 4)) && STREQ(cmdend - 4, "CASE")) {
+     choices = casechoices;
+     islog = TRUE;
+   }

@@ -1,0 +1,2 @@
+@bin bin/curlftpfs
+@man man/man1/curlftpfs.1

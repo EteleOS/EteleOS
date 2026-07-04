@@ -1,0 +1,15 @@
+Fix for -fno-common
+From Gentoo: https://github.com/LonnyGomes/hexcurse/pull/28
+
+Index: include/hex.h
+--- include/hex.h.orig
++++ include/hex.h
+@@ -126,7 +126,7 @@ extern bool color_enabled;
+ #define max(a,b) ((a) >(b) ? (a) : (b))
+ #endif
+ 
+-FILE *fpIN;		        		/* global file ptr           */
++extern FILE *fpIN;		        		/* global file ptr           */
+ 
+ /* function prototypes */
+ 

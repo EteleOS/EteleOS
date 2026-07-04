@@ -1,0 +1,12 @@
+Index: anlgform.pl
+--- anlgform.pl.orig
++++ anlgform.pl
+@@ -52,6 +52,8 @@ $lt = localtime;
+ $progname = $0 || 'anlgform.pl';
+ if (($^O =~ /win32/i || $^O =~ /^win/i) && Win32::GetShortPathName($analog)) {
+     $analog = Win32::GetShortPathName($analog);
++} else {
++    $analog = "/usr/local/bin/analog";
+ }
+ 
+ # coerce query keys to caps in a new (key, pointer to array) hash called args

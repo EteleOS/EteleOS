@@ -1,0 +1,22 @@
+--- code/client/snd_dma.c.orig	Sat Dec 24 14:29:31 2011
++++ code/client/snd_dma.c	Tue Mar  6 22:44:31 2012
+@@ -1219,7 +1219,6 @@ void S_Update_(void) {
+ 	static			float	lastTime = 0.0f;
+ 	float			ma, op;
+ 	float			thisTime, sane;
+-	static			int ot = -1;
+ 
+ 	if ( !s_soundStarted || s_soundMuted ) {
+ 		return;
+@@ -1229,11 +1228,6 @@ void S_Update_(void) {
+ 
+ 	// Updates s_soundtime
+ 	S_GetSoundtime();
+-
+-	if (s_soundtime == ot) {
+-		return;
+-	}
+-	ot = s_soundtime;
+ 
+ 	// clear any sound effects that end before the current time,
+ 	// and start any new sounds

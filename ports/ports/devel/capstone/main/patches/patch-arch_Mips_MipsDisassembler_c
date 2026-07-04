@@ -1,0 +1,12 @@
+Index: arch/Mips/MipsDisassembler.c
+--- arch/Mips/MipsDisassembler.c.orig
++++ arch/Mips/MipsDisassembler.c
+@@ -413,7 +413,7 @@ static DecodeStatus MipsDisassembler_getInstruction(in
+ 	DecodeStatus Result;
+ 
+ 	if (instr->flat_insn->detail) {
+-		memset(instr->flat_insn->detail, 0, offsetof(cs_detail, mips)+sizeof(cs_mips));
++		memset(instr->flat_insn->detail, 0, offsetof(cs_detail, mipsen)+sizeof(cs_mips));
+ 	}
+ 
+ 	if (mode & CS_MODE_MICRO) {

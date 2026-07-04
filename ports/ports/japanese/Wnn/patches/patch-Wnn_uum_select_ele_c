@@ -1,0 +1,10 @@
+--- Wnn/uum/select_ele.c.orig
++++ Wnn/uum/select_ele.c
+@@ -53,6 +53,7 @@
+ #define DD_MAX 512
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include "commonhd.h"
+ #include "sdefine.h"
+ #include "sheader.h"

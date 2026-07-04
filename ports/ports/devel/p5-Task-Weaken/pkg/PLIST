@@ -1,0 +1,3 @@
+${P5SITE}/Task/
+${P5SITE}/Task/Weaken.pm
+@man man/man3p/Task::Weaken.3p

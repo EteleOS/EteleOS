@@ -1,0 +1,22 @@
+disable asm on i386, PIE uses registers used by asm code.
+
+--- x11/soundmng.c.orig	Wed Mar  9 02:25:50 2016
++++ x11/soundmng.c	Sat Dec 31 06:21:29 2016
+@@ -401,7 +401,7 @@ soundmng_setreverse(BOOL reverse)
+ 	} else {
+ 		fnmix = satuation_s16x;
+ 	}
+-#elif defined(GCC_CPU_ARCH_IA32)
++#elif defined(GCC_CPU_ARCH_IA32) && !defined(__OpenBSD__)
+ 	if (!reverse) {
+ 		if (mmxflag & (MMXFLAG_NOTSUPPORT|MMXFLAG_DISABLE)) {
+ 			fnmix = _saturation_s16;
+@@ -801,7 +801,7 @@ saturation_s16mmx(SINT16 *dst, const SINT32 *src, UINT
+ 		: /* output */
+ 		: "m" (dst), "m" (src), "m" (size));
+ }
+-#elif defined(GCC_CPU_ARCH_IA32)
++#elif defined(GCC_CPU_ARCH_IA32) && !defined(__OpenBSD__)
+ void PARTSCALL
+ _saturation_s16(SINT16 *dst, const SINT32 *src, UINT size)
+ {

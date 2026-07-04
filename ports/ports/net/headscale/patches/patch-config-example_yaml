@@ -1,0 +1,58 @@
+Index: config-example.yaml
+--- config-example.yaml.orig
++++ config-example.yaml
+@@ -44,7 +44,7 @@ noise:
+   # The Noise private key is used to encrypt the traffic between headscale and
+   # Tailscale clients when using the new Noise-based protocol. A missing key
+   # will be automatically generated.
+-  private_key_path: /var/lib/headscale/noise_private.key
++  private_key_path: ${SYSCONFDIR}/headscale/noise_private.key
+ 
+ # List of IP prefixes to allocate tailaddresses from.
+ # Each prefix consists of either an IPv4 or IPv6 address,
+@@ -93,7 +93,7 @@ derp:
+ 
+     # Private key used to encrypt the traffic between headscale DERP and
+     # Tailscale clients. A missing key will be automatically generated.
+-    private_key_path: /var/lib/headscale/derp_server_private.key
++    private_key_path: ${SYSCONFDIR}/headscale/derp_server_private.key
+ 
+     # This flag can be used, so the DERP map entry for the embedded DERP server is not written automatically,
+     # it enables the creation of your very own DERP map entry using a locally available file with the parameter DERP.paths
+@@ -117,7 +117,8 @@ derp:
+   #
+   # paths:
+   #   - /etc/headscale/derp-example.yaml
+-  paths: []
++  paths:
++    - ${SYSCONFDIR}/headscale/derp.yaml
+ 
+   # If enabled, a worker will be set up to periodically
+   # refresh the given sources and update the derpmap
+@@ -158,7 +159,7 @@ database:
+ 
+   # SQLite config
+   sqlite:
+-    path: /var/lib/headscale/db.sqlite
++    path: ${LOCALSTATEDIR}/db/headscale/db.sqlite
+ 
+     # Enable WAL mode for SQLite. This is recommended for production environments.
+     # https://www.sqlite.org/wal.html
+@@ -206,7 +207,7 @@ tls_letsencrypt_hostname: ""
+ # Path to store certificates and metadata needed by
+ # letsencrypt
+ # For production:
+-tls_letsencrypt_cache_dir: /var/lib/headscale/cache
++tls_letsencrypt_cache_dir: ${LOCALSTATEDIR}/db/headscale/cache
+ 
+ # Type of ACME challenge to use, currently supported types:
+ # HTTP-01 or TLS-ALPN-01
+@@ -317,7 +318,7 @@ dns:
+ 
+ # Unix socket used for the CLI to connect without authentication
+ # Note: for production you will want to set this to something like:
+-unix_socket: /var/run/headscale/headscale.sock
++unix_socket: ${LOCALSTATEDIR}/run/headscale/headscale.sock
+ unix_socket_permission: "0770"
+ #
+ # headscale supports experimental OpenID connect support,

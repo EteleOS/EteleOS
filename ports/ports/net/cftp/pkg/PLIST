@@ -1,0 +1,3 @@
+@conflict py3-twisted-*
+@bin bin/cftp
+@info info/cftp.info

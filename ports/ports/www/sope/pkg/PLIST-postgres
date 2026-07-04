@@ -1,0 +1,6 @@
+lib/sope-4.9/dbadaptors/PostgreSQL.gdladaptor/
+@bin lib/sope-4.9/dbadaptors/PostgreSQL.gdladaptor/PostgreSQL
+lib/sope-4.9/dbadaptors/PostgreSQL.gdladaptor/Resources/
+lib/sope-4.9/dbadaptors/PostgreSQL.gdladaptor/Resources/Info-gnustep.plist
+lib/sope-4.9/dbadaptors/PostgreSQL.gdladaptor/Resources/Version
+lib/sope-4.9/dbadaptors/PostgreSQL.gdladaptor/stamp.make

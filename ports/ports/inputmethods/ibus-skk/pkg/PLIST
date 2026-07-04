@@ -1,0 +1,12 @@
+@bin libexec/ibus-engine-skk
+@bin libexec/ibus-setup-skk
+share/applications/ibus-setup-skk.desktop
+share/ibus-skk/
+share/ibus-skk/icons/
+share/ibus-skk/icons/ibus-skk.svg
+share/ibus-skk/setup/
+share/ibus-skk/setup/ibus-skk-preferences.ui
+share/ibus/component/skk.xml
+share/locale/ja/LC_MESSAGES/ibus-skk.mo
+@tag update-desktop-database
+@tag ibus-write-cache

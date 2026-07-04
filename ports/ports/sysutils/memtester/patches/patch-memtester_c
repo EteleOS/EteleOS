@@ -1,0 +1,12 @@
+Index: memtester.c
+--- memtester.c.orig
++++ memtester.c
+@@ -347,7 +347,7 @@ int main(int argc, char **argv) {
+                         wantbytes = wantbytes_orig;
+                         break;
+                     default:
+-                        printf("failed for unknown reason.\n");
++                        printf("mlock: %s\n", strerror(errno));
+                         do_mlock = 0;
+                         done_mem = 1;
+                 }

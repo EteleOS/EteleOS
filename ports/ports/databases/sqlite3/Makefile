@@ -1,0 +1,71 @@
+COMMENT=	embedded SQL implementation
+
+DISTNAME=	sqlite-src-3510300
+EXTRACT_SUFX=	.zip
+PKGNAME=	sqlite3-3.51.3
+
+# XXX needs bumps every time :-/
+SHARED_LIBS +=  sqlite3                   37.37 # 8.6
+# sqlite suggests that users might like to assert() that library and header
+# versions match, so bumps are needed even if function signatures don't change.
+# ... at the current time the only one noticed is a < check (in subversion)
+# rather than an == check so minor bumps are enough to cope with this, though
+# we may run into others later.
+
+CATEGORIES=	databases
+
+HOMEPAGE=	https://www.sqlite.org/
+SITES=		https://www.sqlite.org/2026/
+
+# PD
+PERMIT_PACKAGE=	Yes
+
+WANTLIB += c curses m pthread readline z
+
+DEBUG_PACKAGES=	${BUILD_PACKAGES}
+
+MODULES=	lang/tcl
+MODTCL_VERSION=	8.6
+
+BUILD_DEPENDS=	converters/sqlite2mdoc \
+		${MODTCL_BUILD_DEPENDS}
+
+CONFIGURE_STYLE= simple
+CONFIGURE_ARGS=	--soname=${LIBsqlite3_VERSION} \
+		--prefix=${PREFIX} \
+		--sysconfdir=${SYSCONFDIR} \
+		--mandir=${PREFIX}/man \
+		--localstatedir=${LOCALSTATEDIR} \
+		--with-tclsh=${MODTCL_BIN} \
+		--enable-all
+
+CONFIGURE_ENV=	CCACHE=None \
+		CFLAGS='${CFLAGS}'
+
+CFLAGS+=	-DSQLITE_ENABLE_UNLOCK_NOTIFY \
+		-DSQLITE_ENABLE_DBSTAT_VTAB \
+		-DSQLITE_ENABLE_COLUMN_METADATA
+
+# base-gcc + ld.bfd don't like "-rpath /usr/local/lib"
+MAKE_FLAGS=	LDFLAGS.rpath="-Wl,-rpath,${PREFIX}/lib"
+# don't strip the binary
+MAKE_FLAGS+=	INSTALL.strip.0="${INSTALL_PROGRAM}"
+
+ALL_TARGET=	all sqldiff sqlite3_rsync
+INSTALL_TARGET=	install install-diff install-rsync
+
+post-install:
+		rm ${PREFIX}/lib/libsqlite3.so{,.0}
+		# This is usually incorrect, but here the build sets the library soname
+		# so renaming the file after the fact is ok.
+		mv ${PREFIX}/lib/libsqlite3.so.* ${PREFIX}/lib/libsqlite3.so.${LIBsqlite3_VERSION}
+		${INSTALL_DATA_DIR} ${PREFIX}/man/man3
+		${LOCALBASE}/bin/sqlite2mdoc -p ${PREFIX}/man/man3 ${PREFIX}/include/sqlite3.h
+		# fix the .pc file
+		sed -i -e 's/^Libs.private:.*/Libs.private: -lz -lm -lpthread/' ${PREFIX}/lib/pkgconfig/sqlite3.pc
+		# dump compile options for comparison in logs
+		echo pragma compile_options | ${WRKBUILD}/sqlite3
+
+NO_TEST=	Yes
+
+.include <bsd.port.mk>

@@ -1,0 +1,15 @@
+Fix build with base-gcc:
+bjnp-io.c:174: warning: comparison is always false due to limited range of data type
+
+Index: bjnp-io.c
+--- bjnp-io.c.orig
++++ bjnp-io.c
+@@ -161,7 +161,7 @@ bjnp_tcp_connect(printer_t *printer)
+ static printer_t *
+ bjnp_init_printer(printer_t *printer, http_addr_t *addr, const char *user, const char *title)
+ {
+-    uint16_t session_id;
++    int session_id;
+     char host[BJNP_HOST_MAX];
+     int port;
+     char family[BJNP_FAMILY_MAX];

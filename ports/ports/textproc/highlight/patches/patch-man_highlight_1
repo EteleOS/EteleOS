@@ -1,0 +1,20 @@
+Index: man/highlight.1
+--- man/highlight.1.orig
++++ man/highlight.1
+@@ -228,13 +228,13 @@ Wrapping lines with -V or -W will cause faulty highlig
+ Using line-range might interfere with multi line syntax elements. Use with caution.    
+ .SH FILES
+ The configuration files are stored in
+-.I /usr/share/highlight/.
++.I ${PREFIX}/highlight/.
+ Language definitions, themes and plugins are located in subdirectories.
+ .PP
+ Documentation files are stored in
+-.I /usr/share/doc/highlight/
++.I ${PREFIX}/doc/highlight/
+ , configuration files in
+-.I /etc/highlight/.
++.I ${SYSCONFDIR}/highlight/.
+ .PP
+ See README how to install own scripts in the home directory.
+ .SH EXAMPLES

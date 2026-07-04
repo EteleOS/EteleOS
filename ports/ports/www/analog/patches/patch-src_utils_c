@@ -1,0 +1,12 @@
+Index: src/utils.c
+--- src/utils.c.orig
++++ src/utils.c
+@@ -706,7 +706,7 @@ logical wildmatch(char *s, char *p, char *whole, int n
+      below. */
+   ss = strchr(s, '\0');
+   pp = strchr(p, '\0');
+-  while ((*ss == *pp || *pp == '?') && ss >= s && *pp != '*') {
++  while (ss >= s && *pp != '*' && (*ss == *pp || *pp == '?')) {
+     ss--;       /* pp != p is covered because *p == '*' */
+     pp--;
+   }

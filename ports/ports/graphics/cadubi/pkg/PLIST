@@ -1,0 +1,5 @@
+bin/cadubi
+@man man/man1/cadubi.1
+share/doc/cadubi/
+share/doc/cadubi/LICENSE
+share/doc/cadubi/help.txt

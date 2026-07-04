@@ -1,0 +1,20 @@
+Index: lttoolbox/lt_print.cc
+--- lttoolbox/lt_print.cc.orig
++++ lttoolbox/lt_print.cc
+@@ -19,8 +19,16 @@
+ #include <lttoolbox/cli.h>
+ #include <lttoolbox/lt_locale.h>
+ 
++#include <iostream>
++#include <unistd.h>
++
+ int main(int argc, char *argv[])
+ {
++  if (pledge("stdio rpath wpath cpath", NULL) == -1) {
++    std::cerr << "pledge" << std::endl;
++    return 1;
++  }
++
+   LtLocale::tryToSetLocale();
+   CLI cli("dump a transducer to text in ATT format", PACKAGE_VERSION);
+   cli.add_bool_arg('a', "alpha", "print transducer alphabet");

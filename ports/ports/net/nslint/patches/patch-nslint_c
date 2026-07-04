@@ -1,0 +1,14 @@
+Index: nslint.c
+--- nslint.c.orig
++++ nslint.c
+@@ -191,8 +191,8 @@ int	errors;
+ char	*bootfile = "/etc/namedb/named.boot";
+ char	*conffile = "/etc/namedb/named.conf";
+ #else
+-char	*bootfile = "/etc/named.boot";
+-char	*conffile = "/etc/named.conf";
++char	*bootfile = "/var/named/etc/named.boot";
++char	*conffile = "/var/named/etc/named.conf";
+ #endif
+ char	*nslintboot;
+ char	*nslintconf;

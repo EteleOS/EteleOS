@@ -1,0 +1,14 @@
+Fix the build with -fno-common
+
+Index: src/keyboard.c
+--- src/keyboard.c.orig
++++ src/keyboard.c
+@@ -35,6 +35,8 @@
+ #include <stdio.h>
+ #endif
+ 
++int NumLockMask, CapsLockMask, ScrollLockMask;
++
+ void
+ parseKeyString (Display * dpy, MyKey * key, char *str)
+ {

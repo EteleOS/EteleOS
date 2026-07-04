@@ -1,0 +1,30 @@
+Index: build/generic/configure
+--- build/generic/configure.orig
++++ build/generic/configure
+@@ -2269,8 +2269,6 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+ 
+ 
+ 
+-API_MAJOR="4"
+-API_MINOR="3"
+ 
+ minimum_yasm_major_version=1
+ minimum_nasm_minor_version=0
+@@ -4386,7 +4384,7 @@ $as_echo "ok" >&6; }
+ 	SHARED_LIB="libxvidcore.\$(SHARED_EXTENSION).\$(API_MAJOR).\$(API_MINOR)"
+ 	SO_API_MAJOR_LINK="libxvidcore.\$(SHARED_EXTENSION).\$(API_MAJOR)"
+ 	SO_LINK="libxvidcore.\$(SHARED_EXTENSION)"
+-	SPECIFIC_LDFLAGS="-Wl,-soname,libxvidcore.\$(SHARED_EXTENSION).\$(API_MAJOR) -shared -lc -lm"
++	SPECIFIC_LDFLAGS="-shared -fPIC -lm"
+ 	SPECIFIC_CFLAGS="-fPIC"
+ 	;;
+      [cC][yY][gG][wW][iI][nN]*|mingw32*|mks*)
+@@ -4668,7 +4666,7 @@ $as_echo "macho32" >&6; }
+ 
+        AS="$chosen_asm_prog"
+        ASSEMBLY_EXTENSION="asm"
+-       AFLAGS="-I\$(<D)/ -I../../src/ -f $NASM_FORMAT $PREFIX $MARK_FUNCS"
++       AFLAGS="-I\$(<D)/ -I../../src/ -I../../src/image/x86_asm/ -f $NASM_FORMAT $PREFIX $MARK_FUNCS"
+        ASSEMBLY_SOURCES="SRC_${ARCHITECTURE}"
+        if test "$ARCHITECTURE" = "X86_64" ; then
+                AFLAGS=${AFLAGS}" -DARCH_IS_X86_64"

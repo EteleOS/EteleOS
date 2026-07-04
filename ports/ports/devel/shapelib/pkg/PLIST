@@ -1,0 +1,28 @@
+@bin bin/Shape_PointInPoly
+@bin bin/csv2shp
+@bin bin/dbfadd
+@bin bin/dbfcat
+@bin bin/dbfcreate
+@bin bin/dbfdump
+@bin bin/dbfinfo
+@bin bin/shpadd
+@bin bin/shpcat
+@bin bin/shpcentrd
+@bin bin/shpcreate
+@bin bin/shpdata
+@bin bin/shpdump
+@bin bin/shpdxf
+@bin bin/shpfix
+@bin bin/shpinfo
+@bin bin/shprewind
+@bin bin/shpsort
+@bin bin/shptreedump
+@bin bin/shpwkb
+include/shapefil.h
+@lib lib/libshp.so.${LIBshp_VERSION}
+lib/pkgconfig/shapelib.pc
+share/shapelib/
+share/shapelib/shapelib-config-version.cmake
+share/shapelib/shapelib-config.cmake
+share/shapelib/shapelib-targets${MODCMAKE_BUILD_SUFFIX}
+share/shapelib/shapelib-targets.cmake

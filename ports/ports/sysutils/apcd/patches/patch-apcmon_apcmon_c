@@ -1,0 +1,10 @@
+--- apcmon/apcmon.c.orig	Thu Apr  8 21:48:50 2010
++++ apcmon/apcmon.c	Sun Jan 18 16:03:15 2015
+@@ -26,6 +26,7 @@
+ #include <fcntl.h>
+ #include <poll.h>
+ #include <netdb.h>
++#include <signal.h>
+ #include <string.h>
+ #include <stdio.h>
+ #include <stdlib.h>

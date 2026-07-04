@@ -1,0 +1,12 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/authentication_milter"
+daemon_flags="-d"
+
+. /etc/rc.d/rc.subr
+
+pexp="perl: authentication_milter:master"
+
+rc_reload=NO
+
+rc_cmd $1

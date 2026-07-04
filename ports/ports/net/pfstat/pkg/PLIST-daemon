@@ -1,0 +1,3 @@
+@bin bin/pfstatd
+@man man/man8/pfstatd.8
+@rcscript ${RCDIR}/pfstatd

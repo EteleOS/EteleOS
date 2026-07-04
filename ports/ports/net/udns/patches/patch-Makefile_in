@@ -1,0 +1,12 @@
+run ranlib to fix build on m88k
+
+--- Makefile.in.orig	Thu Jan 23 11:45:31 2014
++++ Makefile.in	Sat Sep 10 12:09:19 2016
+@@ -68,6 +68,7 @@ staticlib: $(LIB)
+ $(LIB): $(OBJS)
+ 	-rm -f $@
+ 	$(AR) rv $@ $(OBJS)
++	$(RANLIB) $(LIB)
+ .c.o:
+ 	$(CC) $(CFLAGS) $(CDEFS) -c $<
+ 

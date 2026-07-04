@@ -1,0 +1,4 @@
+@conflict p5-SOAP-Lite-<1.11
+${P5SITE}/IO/
+${P5SITE}/IO/SessionData.pm
+${P5SITE}/IO/SessionSet.pm

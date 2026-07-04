@@ -1,0 +1,10 @@
+--- src/gui/ophcrackgui.cpp.orig	Tue Jun  4 09:42:47 2013
++++ src/gui/ophcrackgui.cpp	Fri Jun  7 11:01:28 2013
+@@ -29,6 +29,7 @@
+  *   
+  *   
+ */
++#include <cstdlib>
+ #include <QHeaderView>
+ #include <QMessageBox>
+ #include <QTimer>

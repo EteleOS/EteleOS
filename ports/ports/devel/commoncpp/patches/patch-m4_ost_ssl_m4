@@ -1,0 +1,11 @@
+--- m4/ost_ssl.m4.orig	Fri Jan 16 07:26:48 2009
++++ m4/ost_ssl.m4	Thu Apr  2 04:56:04 2009
+@@ -41,7 +41,7 @@ AC_DEFUN([OST_LIB_SSL],[
+ #		])
+ #	],[
+ 		AC_CHECK_HEADER(openssl/ssl.h,[
+-			SSL_LIBS="-lssl"
++			SSL_LIBS="-lssl -lcrypto"
+ 			ost_cv_ssl=true
+ 			AC_DEFINE(CCXX_OPENSSL, [1], [define openssl])
+ 			AC_DEFINE(CCXX_SSL, [OPENSSL], [defines ssl])

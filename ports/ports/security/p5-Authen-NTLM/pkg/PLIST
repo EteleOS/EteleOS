@@ -1,0 +1,6 @@
+${P5SITE}/Authen/
+${P5SITE}/Authen/NTLM/
+${P5SITE}/Authen/NTLM.pm
+${P5SITE}/Authen/NTLM/DES.pm
+${P5SITE}/Authen/NTLM/MD4.pm
+@man man/man3p/Authen::NTLM.3p

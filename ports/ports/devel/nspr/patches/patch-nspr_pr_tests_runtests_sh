@@ -1,0 +1,42 @@
+Index: nspr/pr/tests/runtests.sh
+--- nspr/pr/tests/runtests.sh.orig
++++ nspr/pr/tests/runtests.sh
+@@ -69,10 +69,12 @@ fi
+ #
+ 
+ #forktest (failed on IRIX)
++#nameshm1 - runs with ClientServerTest deactivated (idles forever) under OpenBSD
+ #multiwait - fails on Linux 64bit since NSPR v 4.4 from 2004.
+ #nbconn - fails on some platforms
+ #poll_er - fails on some platforms? limited use?
+ #prpoll -  the bad-FD test needs to be moved to a different test
++#sema,semaerr and semaping - idles forever under OpenBSD (semaphore/thread)
+ #
+ # all of the following were disabled in 2019 when reenabling CI tests,
+ # because they failed on at least one of the platforms:
+@@ -123,6 +125,7 @@ exit
+ fdcach
+ fileio
+ foreign
++forktest
+ formattm
+ fsync
+ i2l
+@@ -156,6 +159,7 @@ perf
+ pipeping
+ pipeping2
+ pipeself
++poll_er
+ poll_nm
+ poll_to
+ pollable
+@@ -172,9 +176,6 @@ selct_er
+ selct_nm
+ selct_to
+ selintr
+-sema
+-semaerr
+-semaping
+ sendzlf
+ server_test
+ servr_kk

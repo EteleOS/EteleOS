@@ -1,0 +1,12 @@
+Index: TestAPI/Makefile
+--- TestAPI/Makefile.orig
++++ TestAPI/Makefile
+@@ -2,7 +2,7 @@
+ default: all
+ 
+ all:
+-	g++ -I../Dist/ *.cpp ../Dist/libfreeimage.a -o testAPI
++	$(CXX) -I../Dist/ *.cpp ../Dist/libfreeimage.a -o testAPI
+ 
+ clean:
+ 	rm -f *.o testAPI *.png *.tif

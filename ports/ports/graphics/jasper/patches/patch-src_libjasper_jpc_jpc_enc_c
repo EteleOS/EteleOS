@@ -1,0 +1,13 @@
+Index: src/libjasper/jpc/jpc_enc.c
+--- src/libjasper/jpc/jpc_enc.c.orig
++++ src/libjasper/jpc/jpc_enc.c
+@@ -990,7 +990,8 @@ static int jpc_enc_encodemainhdr(jpc_enc_t *enc)
+ 		jas_logerrorf("cannot create COM marker\n");
+ 		return -1;
+ 	}
+-	sprintf(buf, "Creator: JasPer Version %s", jas_getversion());
++	snprintf(buf, sizeof buf, "Creator: JasPer Version %s",
++	    jas_getversion());
+ 	com = &enc->mrk->parms.com;
+ 	com->len = JAS_CAST(uint_fast16_t, strlen(buf));
+ 	com->regid = JPC_COM_LATIN;

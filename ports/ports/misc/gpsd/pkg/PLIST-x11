@@ -1,0 +1,12 @@
+@conflict gpsd-motif-<=2.38p4
+@pkgpath misc/gpsd,-motif
+bin/xgps
+bin/xgpsspeed
+@man man/man1/xgps.1
+@man man/man1/xgpsspeed.1
+share/applications/xgps.desktop
+share/applications/xgpsspeed.desktop
+share/gpsd/icons/gpsd-logo.png
+share/pixmaps/
+share/pixmaps/gpsd-logo.png
+@tag update-desktop-database

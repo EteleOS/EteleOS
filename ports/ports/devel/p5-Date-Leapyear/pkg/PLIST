@@ -1,0 +1,3 @@
+${P5SITE}/Date/
+${P5SITE}/Date/Leapyear.pm
+@man man/man3p/Date::Leapyear.3p

@@ -1,0 +1,4 @@
+@bin bin/uudeview
+@bin bin/uuenview
+@man man/man1/uudeview.1
+@man man/man1/uuenview.1

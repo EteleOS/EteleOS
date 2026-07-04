@@ -1,0 +1,11 @@
+--- libAfterBase/socket.c.orig
++++ libAfterBase/socket.c
+@@ -323,7 +323,7 @@ create_fifo( int fd )
+ 	return fifo;
+ }
+ 
+-inline void
++static inline void
+ purge_fifo_queue( ASFIFOQueue *fifo )
+ {
+ 	if( fifo )

@@ -1,0 +1,15 @@
+@bin bin/xmred
+@bin bin/xmris
+bin/xmsit
+lib/X11/app-defaults/Xmris
+lib/X11/app-defaults/xmris/
+lib/X11/app-defaults/xmris/alphabet.gdn
+lib/X11/app-defaults/xmris/digits.gdn
+lib/X11/app-defaults/xmris/puzzle.gdn
+lib/X11/app-defaults/xmris/xmred.gdn
+lib/X11/xmris/
+@man man/man6/xmred.6
+@man man/man6/xmris.6
+@man man/man6/xmsit.6
+@mode 775
+lib/xmris/

@@ -1,0 +1,12 @@
+Index: src/libjasper/base/jas_string.c
+--- src/libjasper/base/jas_string.c.orig
++++ src/libjasper/base/jas_string.c
+@@ -94,7 +94,7 @@ char *jas_strdup(const char *s)
+ 	if (!(p = jas_malloc(n))) {
+ 		return 0;
+ 	}
+-	strcpy(p, s);
++	strlcpy(p, s, n);
+ 	return p;
+ }
+ 

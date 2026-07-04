@@ -1,0 +1,13 @@
+--- doc/iksemel.orig	Thu Jul 23 13:19:30 2009
++++ doc/iksemel	Fri Jan 29 18:55:06 2010
+@@ -1,5 +1,10 @@
+ This is iksemel, produced by makeinfo version 4.13 from ./iksemel.texi.
+ 
++INFO-DIR-SECTION Libraries
++START-INFO-DIR-ENTRY
++* iksemel: (iksemel).		A library of jabber/XML functions
++END-INFO-DIR-ENTRY
++
+ 
+ File: iksemel,  Node: Top,  Up: (dir)
+ 

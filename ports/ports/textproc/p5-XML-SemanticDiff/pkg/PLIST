@@ -1,0 +1,6 @@
+${P5SITE}/XML/
+${P5SITE}/XML/SemanticDiff/
+${P5SITE}/XML/SemanticDiff.pm
+${P5SITE}/XML/SemanticDiff/BasicHandler.pm
+@man man/man3p/XML::SemanticDiff.3p
+@man man/man3p/XML::SemanticDiff::BasicHandler.3p

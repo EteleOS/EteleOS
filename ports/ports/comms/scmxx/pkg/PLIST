@@ -1,0 +1,29 @@
+@bin bin/adr2vcf
+@bin bin/apoconv
+@bin bin/scmxx
+@bin bin/smi
+@comment man/de/
+@comment man/de/man1/
+@comment @man man/de/man1/scmxx.1
+@comment man/it/
+@comment man/it/man1/
+@comment @man man/it/man1/scmxx.1
+@man man/man1/scmxx.1
+@comment man/ru/
+@comment man/ru/man1/
+@comment @man man/ru/man1/scmxx.1
+share/doc/scmxx/
+share/doc/scmxx/adr.txt
+share/doc/scmxx/apo.txt
+share/doc/scmxx/doc_sources.txt
+share/doc/scmxx/gsm0338.txt
+share/doc/scmxx/gsmcharset.txt
+share/doc/scmxx/smi.txt
+share/examples/scmxx/
+share/examples/scmxx/sms.txt
+share/examples/scmxx/vCalendar.vcs
+share/examples/scmxx/vCard.vcf
+share/locale/de/LC_MESSAGES/scmxx.mo
+share/locale/fr/LC_MESSAGES/scmxx.mo
+share/locale/it/LC_MESSAGES/scmxx.mo
+share/locale/ru/LC_MESSAGES/scmxx.mo

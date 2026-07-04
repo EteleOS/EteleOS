@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Algorithm/
+${P5ARCH}/Algorithm/Combinatorics.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Algorithm/
+${P5ARCH}/auto/Algorithm/Combinatorics/
+${P5ARCH}/auto/Algorithm/Combinatorics/Combinatorics.so
+@man man/man3p/Algorithm::Combinatorics.3p

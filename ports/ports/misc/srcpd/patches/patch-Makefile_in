@@ -1,0 +1,12 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -787,7 +787,7 @@ info: info-recursive
+ 
+ info-am:
+ 
+-install-data-am: install-dist_udevDATA
++install-data-am: 
+ 
+ install-dvi: install-dvi-recursive
+ 

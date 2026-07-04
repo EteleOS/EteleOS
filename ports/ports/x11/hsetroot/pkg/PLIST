@@ -1,0 +1,3 @@
+@bin bin/hsetroot
+@bin bin/hsr-outputs
+@man man/man1/hsetroot.1

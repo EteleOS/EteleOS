@@ -1,0 +1,6 @@
+@bin bin/cvs-fast-export
+bin/cvsconvert
+bin/cvssync
+@man man/man1/cvs-fast-export.1
+@man man/man1/cvsconvert.1
+@man man/man1/cvssync.1

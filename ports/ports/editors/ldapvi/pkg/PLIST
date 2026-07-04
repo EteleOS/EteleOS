@@ -1,0 +1,2 @@
+@bin bin/ldapvi
+@man man/man1/ldapvi.1

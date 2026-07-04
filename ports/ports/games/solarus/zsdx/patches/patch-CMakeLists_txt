@@ -1,0 +1,16 @@
+From 8dc14b86107d56b893fbaec765f9091a56e6d655 Mon Sep 17 00:00:00 2001
+From: Jasper Lievisse Adriaanse <jasper@humppa.nl>
+Date: Thu, 11 Aug 2016 13:37:51 +0200
+Subject: [PATCH] Fix 'bad $-escape' build error by escaping '$'
+
+--- CMakeLists.txt.orig	Thu Aug 11 13:22:36 2016
++++ CMakeLists.txt	Thu Aug 11 13:22:42 2016
+@@ -57,7 +57,7 @@ add_custom_target(${quest_name}_data
+ add_custom_command(
+   OUTPUT ${quest_name}
+   COMMAND echo '\#!/bin/sh' > ${quest_name}
+-  COMMAND echo 'solarus-run ${SOLARUS_INSTALL_ABSOLUTE_DATADIR}/${quest_name} $*' >> ${quest_name}
++  COMMAND echo 'solarus-run ${SOLARUS_INSTALL_ABSOLUTE_DATADIR}/${quest_name} $$*' >> ${quest_name}
+ )
+ add_custom_target(${quest_name}_command
+   ALL

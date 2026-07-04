@@ -1,0 +1,26 @@
+Fix detection of openpty with gcc 4.
+
+Index: Makefile.PL
+--- Makefile.PL.orig
++++ Makefile.PL
+@@ -179,20 +179,8 @@ foreach my $f (sort keys %funcs) {
+ #include <fcntl.h>
+ 
+ /* Try platform-specific headers for openpty and friends */
+-#if defined(__has_include)
+-#  if __has_include(<pty.h>)
+-#    include <pty.h>
+-#  endif
+-#  if __has_include(<libutil.h>)
+-#    include <libutil.h>
+-#  endif
+-#  if __has_include(<termios.h>)
+ #    include <termios.h>
+-#  endif
+-#  if __has_include(<util.h>)
+ #    include <util.h>
+-#  endif
+-#endif
+ 
+ int
+ main ()

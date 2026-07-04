@@ -1,0 +1,6 @@
+${P5SITE}/Types/
+${P5SITE}/Types/Serialiser/
+${P5SITE}/Types/Serialiser.pm
+${P5SITE}/Types/Serialiser/Error.pm
+@man man/man3p/Types::Serialiser.3p
+@man man/man3p/Types::Serialiser::Error.3p

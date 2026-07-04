@@ -1,0 +1,12 @@
+--- Makefile.orig	Wed Mar 21 23:49:05 2001
++++ Makefile	Wed Mar 21 23:49:29 2001
+@@ -1,9 +1,6 @@
+ PACKAGE = ucspi-unix
+ VERSION = 0.34
+ 
+-CC = gcc
+-CFLAGS = -O -g -W -Wall
+-
+ LD = $(CC)
+ LDFLAGS = -g
+ LIBS =

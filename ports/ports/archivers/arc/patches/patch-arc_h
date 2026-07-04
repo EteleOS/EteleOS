@@ -1,0 +1,11 @@
+--- arc.h.orig	Sat Aug  7 10:06:42 2010
++++ arc.h	Thu May 19 23:35:46 2011
+@@ -106,7 +106,7 @@ extern char     tmpchr[2];	/* Temporary file prefix, d
+ #if	GEMDOS
+ extern int      hold;		/* hold screen before exiting */
+ #endif
+-extern int      warn;		/* true to print warnings */
++extern int      arcwarn;	/* true to print warnings */
+ extern int      note;		/* true to print comments */
+ extern int      bose;		/* true to be verbose */
+ extern int      nocomp;		/* true to suppress compression */

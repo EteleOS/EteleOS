@@ -1,0 +1,4 @@
+@so lib/zathura/libdjvu.so
+share/applications/org.pwmt.zathura-djvu.desktop
+share/metainfo/org.pwmt.zathura-djvu.metainfo.xml
+@tag update-desktop-database

@@ -1,0 +1,21 @@
+@newgroup _pdnsd:510
+@newuser _pdnsd:510:_pdnsd::Proxy DNS Server:/nonexistent:/sbin/nologin
+@extraunexec rm -rf /var/pdnsd/*
+@man man/man5/pdnsd.conf.5
+@man man/man8/pdnsd-ctl.8
+@man man/man8/pdnsd.8
+@bin sbin/pdnsd
+@bin sbin/pdnsd-ctl
+share/doc/pdnsd/
+share/doc/pdnsd/faq.txt
+share/doc/pdnsd/intro.txt
+share/doc/pdnsd/manual.txt
+share/examples/pdnsd/
+share/examples/pdnsd/pdnsd.conf
+@sample ${SYSCONFDIR}/pdnsd.conf
+@rcscript ${RCDIR}/pdnsd
+@owner _pdnsd
+@group _pdnsd
+@sample /var/pdnsd/
+@exec touch /var/pdnsd/pdnsd.cache
+@exec chown _pdnsd:_pdnsd /var/pdnsd/pdnsd.cache

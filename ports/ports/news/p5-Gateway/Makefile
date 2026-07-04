@@ -1,0 +1,19 @@
+COMMENT=	perl module to gateway between news and mail
+
+MODULES=	cpan
+PKG_ARCH=	*
+DISTNAME=	Gateway-0.42
+REVISION=	5
+CATEGORIES=	news
+SITES=		${SITE_PERL_CPAN:=News/}
+
+RUN_DEPENDS=	security/p5-PGP-Sign \
+		news/p5-News-Article>=1.07
+BUILD_DEPENDS=	${RUN_DEPENDS}
+
+# Perl
+PERMIT_PACKAGE=	Yes
+
+MODCPAN_EXAMPLES=	Yes
+
+.include <bsd.port.mk>

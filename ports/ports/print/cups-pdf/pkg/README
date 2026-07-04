@@ -1,0 +1,11 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+A PDF printer can be added using the following command:
+    # lpadmin -p pdfprinter -v cups-pdf:/ -m CUPS-PDF_opt.ppd -E
+
+Print outputs (i.e. PDF) will be stored under the user's home directory.
+
+Additional information can be found in:
+    ${PREFIX}/share/doc/cups-pdf/README

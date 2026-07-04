@@ -1,0 +1,11 @@
+--- prnt/hpijs/globals.cpp.orig	Thu Feb 25 00:10:32 2010
++++ prnt/hpijs/globals.cpp	Fri Mar 12 13:40:17 2010
+@@ -251,7 +251,7 @@ void *LoadPlugin (const char *szPluginName)
+     void    *ptemp = NULL;
+     char    *p = NULL;
+     int     bFound = 0;
+-    if ((fp = fopen ("/etc/hp/hplip.conf", "r")) == NULL)
++    if ((fp = fopen ("${SYSCONFDIR}/hp/hplip.conf", "r")) == NULL)
+     {
+         return NULL;
+     }

@@ -1,0 +1,24 @@
+- build without gnu make
+
+--- lib/Makefile.in.orig	Tue Apr 18 21:05:11 2006
++++ lib/Makefile.in	Mon Oct 13 13:59:13 2008
+@@ -11,7 +11,7 @@ VERSION_MAJOR=3
+ VERSION_MINOR=5
+ 
+ CC = @CC@ 
+-CFLAGS = @CFLAGS_LIBGADU@ -I. -I..
++CFLAGS += @CFLAGS_LIBGADU@ -I. -I..
+ LIBS = @LIBS_LIBGADU@
+ 
+ MAKE = @MAKE@
+@@ -90,10 +90,4 @@ install-static:	install-common
+ 
+ strip-libgadu-so:
+ 	$(STRIP) $(SHARED)
+-
+-#
+-
+-ifneq ($(wildcard .depend),)
+-include .depend
+-endif
+ 

@@ -1,0 +1,5 @@
+@pkgpath devel/libtalloc
+include/talloc.h
+@lib lib/libtalloc.so.${LIBtalloc_VERSION}
+lib/pkgconfig/talloc.pc
+@man man/man3/talloc.3

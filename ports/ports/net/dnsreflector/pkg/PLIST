@@ -1,0 +1,5 @@
+@newgroup _dnsreflector:738
+@newuser _dnsreflector:738:_dnsreflector::DNS reflector unprivileged user:/var/empty:/sbin/nologin
+@man man/man1/dnsreflector.1
+@bin sbin/dnsreflector
+@rcscript ${RCDIR}/dnsreflector

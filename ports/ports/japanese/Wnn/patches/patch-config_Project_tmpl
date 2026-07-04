@@ -1,0 +1,161 @@
+Index: config/Project.tmpl
+--- config/Project.tmpl.orig
++++ config/Project.tmpl
+@@ -70,9 +70,9 @@ XCOMM $XConsortium: Project.tmpl,v 1.242 94/04/13 14:5
+ #ifndef BuildXKB
+ #define BuildXKB		NO
+ #endif
+-#ifndef BuildXKBlib
++XCOMM needed for correct link
++#undef  BuildXKBlib
+ #define BuildXKBlib		NO	/* not yet a standard part of Xlib */
+-#endif
+ #ifndef BuildFresco
+ #if HasCplusplus && !HasGcc2ForCplusplus
+ #define BuildFresco		YES
+@@ -1081,17 +1081,12 @@ clean::									@@\
+ 	$(RM) index.troff index.pageno file.idx.nPS file.idx.PS
+ #endif
+ 
+-/* */#
+-/* */# OMRON INPUT MATHOD MAKE ENV
+-/* */#
++XCOMM 
++XCOMM  OMRON INPUT MATHOD MAKE ENV
++XCOMM 
+ 
+-#if defined(uniosu) || (defined(SVR4) && !defined(DGUX)) || defined(hpux)
+ #define termLibrary -lcurses
+ #define cvtfileDir ./sysV
+-#else
+-#define termLibrary -ltermcap
+-#define cvtfileDir ./bsd
+-#endif
+ 
+ #define	WnnSpecialObjectRule(obj, depends, direct, define)	@@\
+ obj : depends							@@\
+@@ -1100,7 +1095,7 @@ obj : depends							@@\
+ #ifdef WnnMakeDirectories
+ #undef WnnMakeDirectories
+ #endif
+-#define WnnMakeDirectories(step,dir)					@@\
++#define WnnMakeDirectories(step,dirs)					@@\
+ step::									@@\
+ 	@case '${MFLAGS}' in *[i]*) set +e;; esac;			@@\
+ 	DirFailPrefix@for i in dirs; do if [ -d $(DESTDIR)$$i ]; then \	@@\
+@@ -1134,6 +1129,10 @@ install:: list								@@\
+ 		$(WNNTOUCH) $(DESTDIR)dest/$$i); fi \			@@\
+ 	done
+ 
++/* configurable without a separate set of patches */
++
++#include "config.h"
++
+ #ifndef BuildWnn
+ #define BuildWnn	YES
+ #endif
+@@ -1230,14 +1229,14 @@ install:: list								@@\
+  * as YES. Default is that dictionary isn't installed if it exist already.
+  */
+ 
+-       WNNOWNER = wnn
++       WNNOWNER = $(WNNOWNER_INDIRECT)
+ #ifdef UseInstalled
+           IMTOP = $(TOP)
+ #else
+           IMTOP = $(CONTRIBSRC)/programs/Xsi
+ #endif
+-      WNNWNNDIR = /usr/local/lib/wnn
+-      WNNBINDIR = /usr/local/bin
++      WNNWNNDIR = $(WNNBASEDIR)/lib/wnn
++      WNNBINDIR = $(WNNBASEDIR)/bin
+       WNNINCDIR = $(INCROOT)
+       WNNLIBDIR = $(USRLIBDIR)
+     WNNTERM_LIB = termLibrary
+@@ -1248,9 +1247,9 @@ install:: list								@@\
+          WNNTOP = $(IMTOP)/Wnn
+        JWNNLANG = ja_JP
+      JWNNWNNDIR = $(WNNWNNDIR)/$(JWNNLANG)
+-     JWNNBINDIR = $(WNNBINDIR)/Wnn4
++     JWNNBINDIR = $(WNNBINDIR)
+      JWNNINCDIR = $(WNNINCDIR)/wnn
+-     JWNNDICDIR = $(JWNNWNNDIR)/dic
++     JWNNDICDIR = $(WNNDICDIR)/$(JWNNLANG)
+   JWNNPUBDICDIR = $(JWNNDICDIR)/pubdic
+ JWNNWNNCONSDICDIR = $(JWNNDICDIR)/wnncons
+   JWNNFZKSRCDIR = $(JWNNDICDIR)/src
+@@ -1278,8 +1277,8 @@ WNNWNNCONSDICSRC = $(WNNWNNCONSSRC)/dic
+        CWNNLANG = zh_CN
+      CWNNWNNDIR = $(WNNWNNDIR)/$(CWNNLANG)
+      CWNNINCDIR = $(WNNINCDIR)/cwnn
+-     CWNNBINDIR = $(WNNBINDIR)/cWnn4
+-     CWNNDICDIR = $(CWNNWNNDIR)/dic
++     CWNNBINDIR = $(WNNBINDIR)
++     CWNNDICDIR = $(WNNDICDIR)/$(CWNNLANG)
+   CWNNSYSDICDIR = $(CWNNDICDIR)/sys
+       CWNNCDSRC = $(CWNNTOP)/cd
+     CWNNCDICSRC = $(CWNNTOP)/cdic
+@@ -1301,8 +1300,8 @@ WNNWNNCONSDICSRC = $(WNNWNNCONSSRC)/dic
+        KWNNLANG = ko_KR
+      KWNNWNNDIR = $(WNNWNNDIR)/$(KWNNLANG)
+      KWNNINCDIR = $(WNNINCDIR)/kwnn
+-     KWNNBINDIR = $(WNNBINDIR)/kWnn4
+-     KWNNDICDIR = $(KWNNWNNDIR)/dic
++     KWNNBINDIR = $(WNNBINDIR)
++     KWNNDICDIR = $(WNNDICDIR)/$(KWNNLANG)
+   KWNNSYSDICDIR = $(KWNNDICDIR)/sys
+       KWNNKDSRC = $(KWNNTOP)/kd
+     KWNNKDICSRC = $(KWNNTOP)/kdic
+@@ -1322,7 +1321,7 @@ WNNWNNCONSDICSRC = $(WNNWNNCONSSRC)/dic
+ 
+        TWNNLANG = zh_TW
+      TWNNWNNDIR = $(WNNWNNDIR)/$(TWNNLANG)
+-     TWNNDICDIR = $(TWNNWNNDIR)/dic
++     TWNNDICDIR = $(WNNDICDIR)/$(TWNNLANG)
+   TWNNSYSDICDIR = $(TWNNDICDIR)/sys
+       TWNNTDSRC = $(CWNNTOP)/td
+     TWNNTDICSRC = $(CWNNTOP)/tdic
+@@ -1363,3 +1362,43 @@ XWNMOROMKANMSRC = $(XWNMOTOP)/romkan_m
+ #else
+       IMAKE_CMD = $(IMAKE) -I$(IMIRULESRC) -I$(IRULESRC) $(IMAKE_DEFINES)
+ #endif
++
++/* InstallJManPageLong: specific rules for japanese language manpages */
++#define InstallJManPageLong(file,destdir,dest)                          @@\
++all:: file.$(MANSUFFIX)							@@\
++									@@\
++file.$(MANSUFFIX):: file.man						@@\
++	@if [ -f file.man ]; \						@@\
++	then \								@@\
++	tmp=`mktemp /tmp/man.XXXXXXXX` || exit 2 ; \			@@\
++	nkf -w file.man > $$tmp; \					@@\
++	cp $$tmp file.$(MANSUFFIX); \					@@\
++	$(RM) $$tmp; \							@@\
++	fi 								@@\
++									@@\
++install.man::                                                           @@\
++	MakeDir($(DESTDIR)destdir)					@@\
++	-@if [ -f file.$(MANSUFFIX) ]; \				@@\
++	then \								@@\
++	$(INSTALL) -c $(INSTMANFLAGS) file.$(MANSUFFIX) $(DESTDIR)destdir/dest.$(MANSUFFIX); \@@\
++	fi								@@\
++									@@\
++clean::									@@\
++	RemoveFile(file.$(MANSUFFIX))
++
++#define InstallJManPageAliases(file,destdir,aliases)                    @@\
++install.man::                                                           @@\
++	for i in aliases; do \						@@\
++		(set -x; \						@@\
++		$(RM) $(DESTDIR)destdir/$$i.$(MANSUFFIX);\				@@\
++		(cd $(DESTDIR)/destdir; $(LN) file.$(MANSUFFIX) $$i.$(MANSUFFIX));\		@@\
++		); \							@@\
++	done
++
++/*
++ * InstallJManPage - generate rules to install the indicated manual page.
++ */
++#ifndef InstallJManPage
++#define	InstallJManPage(file,destdir)					@@\
++InstallJManPageLong(file,destdir,file)
++#endif /* InstallJManPage */

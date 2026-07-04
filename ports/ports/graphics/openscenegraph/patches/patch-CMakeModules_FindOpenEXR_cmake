@@ -1,0 +1,13 @@
+Fix build with OpenEXR>=3
+
+Index: CMakeModules/FindOpenEXR.cmake
+--- CMakeModules/FindOpenEXR.cmake.orig
++++ CMakeModules/FindOpenEXR.cmake
+@@ -23,6 +23,7 @@ FIND_PATH(OPENEXR_INCLUDE_DIR OpenEXR/ImfIO.h
+     /opt/include
+     /usr/freeware/include
+ )
++SET(OPENEXR_INCLUDE_DIR ${OPENEXR_INCLUDED_DIR}/OpenEXR)
+ 
+ # Macro to find exr libraries (deduplicating search paths)
+ # example: OPENEXR_FIND_VAR(OPENEXR_IlmImf_LIBRARY IlmImf)

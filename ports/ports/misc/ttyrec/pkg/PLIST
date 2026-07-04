@@ -1,0 +1,8 @@
+bin/ttyplay
+bin/ttyrec
+bin/ttytime
+@man man/man1/ttyplay.1
+@man man/man1/ttyrec.1
+@man man/man1/ttytime.1
+share/doc/ttyrec/
+share/doc/ttyrec/README

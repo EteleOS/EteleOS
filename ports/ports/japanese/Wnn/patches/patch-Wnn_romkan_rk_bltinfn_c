@@ -1,0 +1,10 @@
+--- Wnn/romkan/rk_bltinfn.c.orig
++++ Wnn/romkan/rk_bltinfn.c
+@@ -58,6 +58,7 @@
+ #include "commonhd.h"
+ #include "config.h"
+ #include "rk_header.h"
++#include <string.h>
+ 
+  /* 半角文字のコードのdefine */
+ #define HKCHOU	(HNKAK1 * 0x100 + 0xB0) /* ｰ */

@@ -1,0 +1,15 @@
+Don't clobber LDFLAGS - ensures configure finds libobjc2.
+Properly pass -export-dynamic to the linker.
+
+Index: platform.m4
+--- platform.m4.orig
++++ platform.m4
+@@ -97,7 +97,7 @@ AC_DEFUN(OD_CONFIG_PLUGIN, [
+ 	    PLUGIN_LD="${CC} -shared"
+ 	    PLUGIN_LD_FLAGS=""
+ 	    PLUGIN_SUFFIX=".so"
+-	    LDFLAGS="-export-dynamic"
++	    LDFLAGS="-Wl,-export-dynamic ${LDFLAGS}"
+ 	    ;;
+     esac
+ 

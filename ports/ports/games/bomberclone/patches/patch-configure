@@ -1,0 +1,11 @@
+--- configure.orig	Sat Dec 11 17:17:10 2010
++++ configure	Fri Oct 11 23:32:11 2013
+@@ -7671,7 +7671,7 @@ else
+   packageprefix=${prefix}
+ fi
+ 
+-packagedatadir=share/games/${PACKAGE}
++packagedatadir=share/${PACKAGE}
+ packagedocdir=share/doc/${PACKAGE}
+ 
+ packagepixmapsdir=${packagedatadir}/pixmaps

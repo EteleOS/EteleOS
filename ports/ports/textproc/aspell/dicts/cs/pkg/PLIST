@@ -1,0 +1,6 @@
+@pkgpath textproc/aspell/dicts/aspell-cs
+lib/aspell/cs.dat
+lib/aspell/cs_affix.dat
+share/aspell/cs.multi
+share/aspell/cs.rws
+share/aspell/czech.alias

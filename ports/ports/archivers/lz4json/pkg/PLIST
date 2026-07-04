@@ -1,0 +1,2 @@
+@bin bin/lz4jsoncat
+@man man/man1/lz4jsoncat.1

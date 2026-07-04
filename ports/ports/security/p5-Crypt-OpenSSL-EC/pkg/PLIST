@@ -1,0 +1,5 @@
+${P5ARCH}/Crypt/OpenSSL/EC.pm
+${P5ARCH}/auto/Crypt/OpenSSL/EC/
+@so ${P5ARCH}/auto/Crypt/OpenSSL/EC/EC.so
+${P5ARCH}/auto/Crypt/OpenSSL/EC/autosplit.ix
+@man man/man3p/Crypt::OpenSSL::EC.3p

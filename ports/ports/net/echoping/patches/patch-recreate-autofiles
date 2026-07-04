@@ -1,0 +1,12 @@
+Index: recreate-autofiles
+--- recreate-autofiles.orig
++++ recreate-autofiles
+@@ -10,7 +10,7 @@ autoheader
+ libtoolize --force
+ automake --add-missing 
+ autoconf
+-pushd plugins
++cd plugins
+ aclocal
+ automake --foreign --add-missing
+ autoconf

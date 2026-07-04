@@ -1,0 +1,4 @@
+${P5SITE}/Devel/
+${P5SITE}/Devel/Leak/
+${P5SITE}/Devel/Leak/Object.pm
+@man man/man3p/Devel::Leak::Object.3p

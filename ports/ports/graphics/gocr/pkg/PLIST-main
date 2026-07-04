@@ -1,0 +1,6 @@
+@pkgpath graphics/gocr
+@bin bin/gocr
+@man man/man1/gocr.1
+share/doc/gocr/
+share/doc/gocr/README
+share/doc/gocr/gocr.html

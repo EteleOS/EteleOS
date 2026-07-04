@@ -1,0 +1,12 @@
+Index: lib/ipmi_fru.c
+--- lib/ipmi_fru.c.orig
++++ lib/ipmi_fru.c
+@@ -2863,7 +2863,7 @@ static void ipmi_fru_picmg_ext_print(uint8_t * fru_dat
+ 							(feature > 1) & 1,
+ 							(feature&1)?"Source":"Receiver");
+ 					printf("            Family:  0x%02x  - AccLVL: 0x%02x\n", family, accuracy);
+-					printf("            FRQ: %-9ld - min: %-9ld - max: %-9ld\n",
++					printf("            FRQ: %-9u - min: %-9u - max: %-9u\n",
+ 							freq, min_freq, max_freq);
+ 				}
+ 				printf("\n");

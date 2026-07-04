@@ -1,0 +1,12 @@
+Index: src/scan.l
+--- src/scan.l.orig
++++ src/scan.l
+@@ -19,7 +19,7 @@
+ 
+ #include <string.h>
+ 
+-#include "y.tab.h"
++#include "parse.h"
+ 
+ %}
+ 

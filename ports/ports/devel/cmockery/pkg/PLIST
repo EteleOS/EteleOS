@@ -1,0 +1,14 @@
+include/google/
+include/google/cmockery.h
+lib/libcmockery.a
+lib/libcmockery.la
+@lib lib/libcmockery.so.${LIBcmockery_VERSION}
+share/doc/cmockery/
+share/doc/cmockery/AUTHORS
+share/doc/cmockery/COPYING
+share/doc/cmockery/ChangeLog
+share/doc/cmockery/INSTALL
+share/doc/cmockery/NEWS
+share/doc/cmockery/README
+share/doc/cmockery/index.html
+share/doc/cmockery/makefile

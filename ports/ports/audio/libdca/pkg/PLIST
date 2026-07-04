@@ -1,0 +1,12 @@
+@bin bin/dcadec
+@bin bin/extract_dca
+include/dca.h
+include/dts.h
+@static-lib lib/libdca.a
+lib/libdca.la
+@lib lib/libdca.so.${LIBdca_VERSION}
+lib/libdts.a
+lib/pkgconfig/libdca.pc
+lib/pkgconfig/libdts.pc
+@man man/man1/dcadec.1
+@man man/man1/extract_dca.1

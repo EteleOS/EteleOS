@@ -1,0 +1,20 @@
+Index: recon/core/base.py
+--- recon/core/base.py.orig
++++ recon/core/base.py
+@@ -19,7 +19,7 @@ from recon.core import framework
+ from recon.core.constants import BANNER, BANNER_SMALL
+ 
+ # set the __version__ variable based on the VERSION file
+-exec(open(os.path.join(Path(os.path.abspath(__file__)).parents[2], 'VERSION')).read())
++__version__ = '${GH_TAGNAME}'
+ 
+ # using stdout to spool causes tab complete issues
+ # therefore, override print function
+@@ -102,6 +102,7 @@ class Recon(framework.Framework):
+         self._fetch_module_index()
+ 
+     def _check_version(self):
++        return True
+         if self._check:
+             pattern = r"'(\d+\.\d+\.\d+[^']*)'"
+             remote = 0

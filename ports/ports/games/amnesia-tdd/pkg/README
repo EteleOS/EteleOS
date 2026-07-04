@@ -1,0 +1,6 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+Copy game data to ${PREFIX}/share/amnesia-tdd and run Amnesia-tdd. Save
+and configuration files are stored in ~/.frictionalgames/Amnesia

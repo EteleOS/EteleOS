@@ -1,0 +1,12 @@
+Index: src/ipetoipe/Makefile
+--- src/ipetoipe/Makefile.orig
++++ src/ipetoipe/Makefile
+@@ -16,7 +16,7 @@ sources	= ipetoipe.cpp
+ 
+ $(TARGET): $(objects)
+ 	$(MAKE_BINDIR)
+-	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
++	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS) ${ICONV_LIBS}
+ 
+ clean:
+ 	@-rm -f $(objects) $(TARGET) $(DEPEND)

@@ -1,0 +1,18 @@
+@bin bin/hsbench
+@bin bin/hscheck
+@bin bin/patbench
+@bin bin/pcapscan
+@bin bin/simplegrep
+include/hs/
+include/hs/hs.h
+include/hs/hs_common.h
+include/hs/hs_compile.h
+include/hs/hs_runtime.h
+@lib lib/libhs.so.${LIBhs_VERSION}
+@lib lib/libhs_runtime.so.${LIBhs_runtime_VERSION}
+lib/pkgconfig/libhs.pc
+share/examples/hyperscan/
+share/examples/hyperscan/README.md
+share/examples/hyperscan/patbench.cc
+share/examples/hyperscan/pcapscan.cc
+share/examples/hyperscan/simplegrep.c

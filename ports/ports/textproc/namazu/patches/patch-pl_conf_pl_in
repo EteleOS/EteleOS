@@ -1,0 +1,11 @@
+--- pl/conf.pl.in.orig	Mon Nov 23 16:32:10 2009
++++ pl/conf.pl.in	Mon Nov 23 16:32:11 2009
+@@ -7,7 +7,7 @@ package conf;  # Don't remove this line!
+ #
+ # Administrator's email address
+ #
+-$ADDRESS = '@OPT_ADMIN_EMAIL@';
++$ADDRESS = 'root@localhost';
+ 
+ 
+ #===================================================================

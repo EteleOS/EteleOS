@@ -1,0 +1,3 @@
+${P5SITE}/Test/
+${P5SITE}/Test/NoTabs.pm
+@man man/man3p/Test::NoTabs.3p

@@ -1,0 +1,3 @@
+${P5SITE}/Number/Compare/
+${P5SITE}/Number/Compare/Date.pm
+@man man/man3p/Number::Compare::Date.3p

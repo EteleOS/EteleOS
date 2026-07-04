@@ -1,0 +1,26 @@
+@shell bin/bgpnsh
+@shell bin/nsh
+bin/save-ro.sh
+bin/save-rw.sh
+@mode 755
+@owner root
+@group bin
+@sample bin/save.sh
+@mode 04555
+@owner
+@group
+@bin libexec/nshdoas
+@mode
+@man man/man8/bgpnsh.8
+@man man/man8/nsh.8
+share/doc/nsh/
+share/doc/nsh/COPYRIGHT
+share/doc/nsh/README.md
+share/examples/nsh/
+share/examples/nsh/nshrc/
+share/examples/nsh/nshrc/enable-sshd.nshrc
+share/examples/nsh/nshrc/initial-config.nshrc
+share/examples/nsh/nshrc/write-config.nshrc
+share/examples/nsh/shell/
+share/examples/nsh/shell/extensive-nsh-openbsd-integrate.sh
+share/examples/nsh/shell/rc.local-nsh-openbsd-integrate.sh

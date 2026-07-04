@@ -1,0 +1,32 @@
+@man man/man1/bat.1
+@bin sbin/bacula-tray-monitor
+@bin sbin/bat
+share/applications/bacula-tray-monitor.desktop
+share/applications/bat.desktop
+share/doc/bacula/clients.html
+share/doc/bacula/console.html
+share/doc/bacula/filesets.html
+share/doc/bacula/index.html
+share/doc/bacula/joblist.html
+share/doc/bacula/jobplot.html
+share/doc/bacula/jobs.html
+share/doc/bacula/mail-message-new.png
+share/doc/bacula/media.html
+share/doc/bacula/restore.html
+share/doc/bacula/status.png
+share/doc/bacula/storage.html
+share/examples/bacula/bacula-tray-monitor.conf
+@mode 640
+@group _bacula
+@sample ${SYSCONFDIR}/bacula-tray-monitor.conf
+@mode
+@group
+share/examples/bacula/bat.conf
+@mode 640
+@group _bacula
+@sample ${SYSCONFDIR}/bat.conf
+@mode
+@group
+share/pixmaps/
+share/pixmaps/bat_icon.png
+@tag update-desktop-database

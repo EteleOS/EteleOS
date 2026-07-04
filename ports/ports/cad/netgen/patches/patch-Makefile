@@ -1,0 +1,27 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -14,12 +14,10 @@ INSTALL_CAD_DIRS = lib doc
+ all:	$(ALL_TARGET)
+ 
+ standard:
+-	@echo --- errors and warnings logged in file make.log
+-	@${MAKE} mains 2>&1 | tee -a make.log
++	@${MAKE} mains
+ 
+ tcl:
+-	@echo --- errors and warnings logged in file make.log
+-	@${MAKE} tcllibrary 2>&1 | tee -a make.log
++	@${MAKE} tcllibrary
+ 
+ force:	clean all
+ 
+@@ -69,7 +67,7 @@ install-dirs:
+ install-tcl: install-dirs
+ 	@echo --- installing executable to $(DESTDIR)${INSTALL_BINDIR}
+ 	@echo --- installing run-time files to $(DESTDIR)${INSTALL_LIBDIR}
+-	@${MAKE} install-tcl-real 2>&1 >> install.log
++	@${MAKE} install-tcl-real
+ 
+ install-tcl-real: install-tcl-dirs
+ 	for dir in ${INSTALL_CAD_DIRS} ${PROGRAMS}; do \

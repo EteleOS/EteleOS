@@ -1,0 +1,13 @@
+Index: bootloader/Makefile
+--- bootloader/Makefile.orig
++++ bootloader/Makefile
+@@ -14,7 +14,8 @@
+ # platforms, make sure to use gmake to build this project
+ #
+ OBJS= hex.o bootloader.o main.o
+-CFLAGS= -g -Wall
++COPTFLAGS= -g -Wall
++CFLAGS?= ${COPTFLAGS}
+ CXXFLAGS= $(CFLAGS)
+ LDFLAGS= -g
+ LDLIBS=

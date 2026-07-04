@@ -1,0 +1,72 @@
+- drop privileges to a dedicated user
+
+--- main.c.orig	Fri Dec 26 15:31:29 2014
++++ main.c	Sun Dec  4 20:59:40 2016
+@@ -27,6 +27,8 @@
+ #include <sys/time.h>
+ #include <sys/types.h>
+ #include <pcap.h>
++#include <pwd.h>
++#include <errno.h>
+ 
+ #include "hping2.h"
+ 
+@@ -254,6 +256,21 @@ int main(int argc, char **argv)
+ 		exit(1);
+ 	}
+ 
++	if (!getuid()) {
++		struct passwd *pw;
++		pw = getpwnam("_hping");
++		if (pw == NULL) {
++			printf("[main] can't drop privs: no such user\n");
++			exit(1);
++		}
++		if (setgroups(1, &pw->pw_gid) == -1 ||
++		    setresgid(pw->pw_gid, pw->pw_gid, pw->pw_gid) == -1 ||
++		    setresuid(pw->pw_uid, pw->pw_uid, pw->pw_uid) == -1) {
++			printf("[main] can't drop privs: %s\n", strerror(errno));
++			exit(1);
++		}
++	}
++
+ 	/* get physical layer header size */
+ 	if ( get_linkhdr_size(ifname) == -1 ) {
+ 		printf("[main] physical layer header size unknown\n");
+@@ -324,24 +341,24 @@ int main(int argc, char **argv)
+ 	}
+ 
+ 	if (opt_rawipmode) {
+-		strcat(setflags, "raw IP mode");
++		strlcat(setflags, "raw IP mode", sizeof(setflags));
+ 		hdr_size = IPHDR_SIZE;
+ 	} else if (opt_icmpmode) {
+-		strcat(setflags, "icmp mode");
++		strlcat(setflags, "icmp mode", sizeof(setflags));
+ 		hdr_size = IPHDR_SIZE + ICMPHDR_SIZE;
+ 	} else if (opt_udpmode) {
+-		strcat(setflags, "udp mode");
++		strlcat(setflags, "udp mode", sizeof(setflags));
+ 		hdr_size = IPHDR_SIZE + UDPHDR_SIZE;
+ 	} else {
+-		if (tcp_th_flags & TH_RST)  strcat(setflags, "R");
+-		if (tcp_th_flags & TH_SYN)  strcat(setflags, "S");
+-		if (tcp_th_flags & TH_ACK)  strcat(setflags, "A");
+-		if (tcp_th_flags & TH_FIN)  strcat(setflags, "F");
+-		if (tcp_th_flags & TH_PUSH) strcat(setflags, "P");
+-		if (tcp_th_flags & TH_URG)  strcat(setflags, "U");
+-		if (tcp_th_flags & TH_X)    strcat(setflags, "X");
+-		if (tcp_th_flags & TH_Y)    strcat(setflags, "Y");
+-		if (setflags[0] == '\0')    strcat(setflags, "NO FLAGS are");
++		if (tcp_th_flags & TH_RST)  strlcat(setflags, "R", sizeof(setflags));
++		if (tcp_th_flags & TH_SYN)  strlcat(setflags, "S", sizeof(setflags));
++		if (tcp_th_flags & TH_ACK)  strlcat(setflags, "A", sizeof(setflags));
++		if (tcp_th_flags & TH_FIN)  strlcat(setflags, "F", sizeof(setflags));
++		if (tcp_th_flags & TH_PUSH) strlcat(setflags, "P", sizeof(setflags));
++		if (tcp_th_flags & TH_URG)  strlcat(setflags, "U", sizeof(setflags));
++		if (tcp_th_flags & TH_X)    strlcat(setflags, "X", sizeof(setflags));
++		if (tcp_th_flags & TH_Y)    strlcat(setflags, "Y", sizeof(setflags));
++		if (setflags[0] == '\0')    strlcat(setflags, "NO FLAGS are", sizeof(setflags));
+ 		hdr_size = IPHDR_SIZE + TCPHDR_SIZE;
+ 	}
+ 	

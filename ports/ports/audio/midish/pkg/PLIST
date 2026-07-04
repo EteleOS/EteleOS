@@ -1,0 +1,13 @@
+@bin bin/midish
+bin/smfplay
+bin/smfrec
+@man man/man1/midish.1
+@man man/man1/smfplay.1
+@man man/man1/smfrec.1
+share/doc/midish/
+share/doc/midish/README
+share/doc/midish/manual.html
+share/examples/midish/
+share/examples/midish/midishrc
+@sample ${SYSCONFDIR}/midishrc
+share/examples/midish/sample.sng

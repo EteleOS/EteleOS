@@ -1,0 +1,12 @@
+Index: examples.mk
+--- examples.mk.orig
++++ examples.mk
+@@ -315,7 +315,7 @@ else
+ SHARED_LIB_SUF=.so
+ endif
+ endif
+-CODEC_LIB_SUF=$(if $(CONFIG_SHARED),$(SHARED_LIB_SUF),.a)
++CODEC_LIB_SUF=$(if $(CONFIG_SHARED),$(SHARED_LIB_SUF).$(LIBVPX_VERSION),.a)
+ $(foreach bin,$(BINS-yes),\
+     $(eval $(bin):$(LIB_PATH)/lib$(CODEC_LIB)$(CODEC_LIB_SUF))\
+     $(eval $(call linker_template,$(bin),\

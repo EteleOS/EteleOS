@@ -1,0 +1,17 @@
+@newgroup _vaultwarden:879
+@newuser _vaultwarden:879:879::Vaultwarden Daemon:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/vaultwarden
+@mode 750
+@owner _vaultwarden
+@group _vaultwarden
+@sample ${LOCALSTATEDIR}/vaultwarden/data/
+@mode
+@owner
+@group
+@bin bin/vaultwarden
+share/doc/vaultwarden/
+share/doc/vaultwarden/.env.template
+@mode 640
+@owner _vaultwarden
+@group _vaultwarden
+@sample ${LOCALSTATEDIR}/vaultwarden/.env

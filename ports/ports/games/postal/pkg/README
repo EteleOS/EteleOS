@@ -1,0 +1,24 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Postal
+======
+Postal requires the original game files from Postal 1 to work properly.
+These can come from an original CD or from GOG.com.
+
+If using the GOG.com version, you must extract the files from the Linux
+version of the game, named gog_postal_classic_and_uncut_2.1.0.3.sh or
+something similar, using the unzip package.
+
+The game data is in the data/noarch/game directory that is created.
+
+The game will only run if the data/noarch/game directory is your
+current working directory.
+
+Quick setup:
+$ unzip gog_postal_classic_and_uncut_2.1.0.3.sh
+$ cd data/noarch/game
+$ postal1
+
+To go to the next level, press F1 after completing your objective.

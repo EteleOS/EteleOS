@@ -1,0 +1,34 @@
+@so lib/kamailio/modules/presence.so
+@so lib/kamailio/modules/presence_conference.so
+@so lib/kamailio/modules/presence_dialoginfo.so
+@so lib/kamailio/modules/presence_mwi.so
+@so lib/kamailio/modules/presence_profile.so
+@so lib/kamailio/modules/presence_reginfo.so
+@so lib/kamailio/modules/presence_xml.so
+@so lib/kamailio/modules/pua.so
+@so lib/kamailio/modules/pua_bla.so
+@so lib/kamailio/modules/pua_dialoginfo.so
+@so lib/kamailio/modules/pua_reginfo.so
+@so lib/kamailio/modules/pua_rpc.so
+@so lib/kamailio/modules/pua_usrloc.so
+@so lib/kamailio/modules/pua_xmpp.so
+@so lib/kamailio/modules/rls.so
+@so lib/kamailio/modules/xcap_client.so
+@so lib/kamailio/modules/xcap_server.so
+share/doc/kamailio/modules/README.presence
+share/doc/kamailio/modules/README.presence_conference
+share/doc/kamailio/modules/README.presence_dialoginfo
+share/doc/kamailio/modules/README.presence_mwi
+share/doc/kamailio/modules/README.presence_profile
+share/doc/kamailio/modules/README.presence_reginfo
+share/doc/kamailio/modules/README.presence_xml
+share/doc/kamailio/modules/README.pua
+share/doc/kamailio/modules/README.pua_bla
+share/doc/kamailio/modules/README.pua_dialoginfo
+share/doc/kamailio/modules/README.pua_reginfo
+share/doc/kamailio/modules/README.pua_rpc
+share/doc/kamailio/modules/README.pua_usrloc
+share/doc/kamailio/modules/README.pua_xmpp
+share/doc/kamailio/modules/README.rls
+share/doc/kamailio/modules/README.xcap_client
+share/doc/kamailio/modules/README.xcap_server

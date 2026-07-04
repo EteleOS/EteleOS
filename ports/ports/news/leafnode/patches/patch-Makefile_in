@@ -1,0 +1,12 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -1479,7 +1479,7 @@ info-am:
+ 
+ install-data-am: install-man
+ 	@$(NORMAL_INSTALL)
+-	$(MAKE) $(AM_MAKEFLAGS) install-data-hook
++
+ install-dvi: install-dvi-recursive
+ 
+ install-dvi-am:

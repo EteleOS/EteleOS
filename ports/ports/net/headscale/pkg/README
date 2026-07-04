@@ -1,0 +1,17 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Initial Setup
+=============
+
+Enable and start the service
+
+    # rcctl enable headscale
+    # rcctl start headscale
+
+Create an initial user:
+
+    # su -s /bin/sh _headscale
+    $ headscale users create myfirstuser
+

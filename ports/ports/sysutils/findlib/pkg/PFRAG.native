@@ -1,0 +1,7 @@
+%%dynlink%%
+lib/ocaml/findlib/findlib.a
+lib/ocaml/findlib/findlib.cmxa
+lib/ocaml/findlib/findlib_dynload.a
+lib/ocaml/findlib/findlib_dynload.cmxa
+lib/ocaml/findlib/findlib_top.a
+lib/ocaml/findlib/findlib_top.cmxa

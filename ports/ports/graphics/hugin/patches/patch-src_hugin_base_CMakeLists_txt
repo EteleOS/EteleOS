@@ -1,0 +1,17 @@
+/usr/local/include/boost/config/requires_threads.hpp:47:5: error:
+#error "Compiler threading support is not turned on. Please set the
+correct command line options for threading: -pthread (Linux),
+-pthreads (Solaris) or -mthreads (Mingw32)"
+
+Index: src/hugin_base/CMakeLists.txt
+--- src/hugin_base/CMakeLists.txt.orig
++++ src/hugin_base/CMakeLists.txt
+@@ -152,6 +152,8 @@ vigra_ext/utils.h
+ vigra_ext/VignettingCorrection.h
+ )
+ 
++set(CMAKE_CXX_FLAGS "-pthread ${CMAKE_CXX_FLAGS}")
++
+ IF (${HUGIN_SHARED_LIBS})
+   add_library(huginbase SHARED ${HUGIN_BASE_SRC} ${HUGIN_BASE_HEADER})
+   target_link_libraries(huginbase ${Boost_LIBRARIES} Threads::Threads ${X11_X11_LIB})

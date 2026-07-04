@@ -1,0 +1,4 @@
+@bin plan9/bin/devdrawclient
+@bin plan9/bin/devdrawserver
+@bin plan9/bin/dialdevdraw
+share/doc/pkg-readmes/${PKGSTEM}

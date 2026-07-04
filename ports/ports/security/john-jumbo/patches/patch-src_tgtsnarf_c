@@ -1,0 +1,16 @@
+upstreamed
+
+Index: src/tgtsnarf.c
+--- src/tgtsnarf.c.orig
++++ src/tgtsnarf.c
+@@ -261,9 +261,8 @@ int
+ main(int argc, char *argv[])
+ #endif
+ {
+-  signed char c;
+   char *p, *host, *realm, user[128];
+-  int i;
++  int c, i;
+ 
+   host = realm = NULL;
+ 

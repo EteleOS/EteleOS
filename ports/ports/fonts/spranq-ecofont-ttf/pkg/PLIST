@@ -1,0 +1,4 @@
+@pkgpath x11/spranq-ecofont-ttf
+share/fonts/
+@fontdir share/fonts/ecofont/
+share/fonts/ecofont/spranq_eco_sans_regular.ttf

@@ -1,0 +1,12 @@
+Index: cmake/modules/GenerateIconsUtils.cmake
+--- cmake/modules/GenerateIconsUtils.cmake.orig
++++ cmake/modules/GenerateIconsUtils.cmake
+@@ -4,7 +4,7 @@
+ include(ECMAddAppIcon)
+ 
+ find_program(SVG_CONVERTER
+-  NAMES inkscape inkscape.exe rsvg-convert
++  NAMES rsvg-convert
+   REQUIRED
+   HINTS "C:\\Program Files\\Inkscape\\bin" "/usr/bin" ENV SVG_CONVERTER_DIR)
+ # REQUIRED keyword is only supported on CMake 3.18 and above

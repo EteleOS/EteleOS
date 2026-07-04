@@ -1,0 +1,11 @@
+Index: src/parser/Makefile.in
+--- src/parser/Makefile.in.orig
++++ src/parser/Makefile.in
+@@ -490,7 +490,6 @@ libmodsec_parser_la_CPPFLAGS = \
+ 	-I.. \
+ 	-g \
+ 	-fPIC \
+-	-O3 \
+ 	$(CURL_CFLAGS) \
+ 	$(GEOIP_CFLAGS) \
+ 	$(GLOBAL_CPPFLAGS) \

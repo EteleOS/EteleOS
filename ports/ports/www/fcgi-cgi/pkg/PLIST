@@ -1,0 +1,5 @@
+@pkgpath www/fcgi-cgi,-main
+@pkgpath www/fcgi-cgi,-static
+@rcscript ${RCDIR}/fcgi_cgi
+@bin bin/fcgi-cgi
+@man man/man1/fcgi-cgi.1

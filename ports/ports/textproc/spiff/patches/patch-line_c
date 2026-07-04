@@ -1,0 +1,10 @@
+--- line.c.orig	Fri Jun 24 19:03:33 2011
++++ line.c	Fri Jun 24 19:03:44 2011
+@@ -12,6 +12,7 @@ static char rcsid[]= "$Header: line.c,v 1.1 88/09/15 1
+ #endif
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include "misc.h"
+ #include "token.h"
+ #include "line.h"

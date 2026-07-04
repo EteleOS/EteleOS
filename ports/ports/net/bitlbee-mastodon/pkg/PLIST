@@ -1,0 +1,4 @@
+lib/bitlbee/
+@comment lib/bitlbee/mastodon.la
+@so lib/bitlbee/mastodon.so
+share/bitlbee/mastodon-help.txt

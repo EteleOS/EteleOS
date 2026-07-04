@@ -1,0 +1,75 @@
+#!/usr/bin/perl
+
+# $OpenBSD: portgen,v 1.6 2022/08/13 07:14:24 kmos Exp $
+#
+# Copyright (c) 2015 Giannis Tsaraias <tsg@openbsd.org>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+use 5.012;
+use warnings;
+
+my ($portdir);
+
+use FindBin;
+
+BEGIN {
+	$portdir = $ENV{PORTSDIR} || '/usr/ports';
+}
+
+use lib ( "$portdir/infrastructure/lib", "$FindBin::Bin/../lib" );
+use OpenBSD::Getopt;
+
+my @opt_m;
+getopts('m:', 
+    {
+	'm' => 
+	    sub {
+		push(@opt_m, shift);
+	    }
+    });
+
+my ( $type, $module ) = @ARGV;
+
+my $map = {
+	p5 => 'CPAN',
+	ruby => 'Ruby',
+	go => 'Go',
+};
+
+my $types = join('|', sort keys %$map);
+die "usage: portgen [$types] module\n" unless $type and $module;
+
+sub portgen_class
+{
+	my $type = shift;
+	if (defined $map->{$type}) {
+		my $class = "OpenBSD::PortGen::Port::$map->{$type}";
+		eval "require $class";
+		if ($@) {
+		    	die $@;
+		}
+		return $class;
+	}else {
+		die "unknown module type $type (not in [$types])\n";
+	}
+}
+
+my $o = portgen_class($type)->new;
+
+if (@opt_m) {
+    $o->add_make_options(@opt_m);
+}
+
+my @new_ports = $o->port($module);
+say for @new_ports;

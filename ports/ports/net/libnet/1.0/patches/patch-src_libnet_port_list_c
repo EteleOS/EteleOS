@@ -1,0 +1,24 @@
+--- src/libnet_port_list.c.orig	Tue Dec 12 18:18:48 2000
++++ src/libnet_port_list.c	Sat Nov  8 22:07:54 2008
+@@ -256,16 +256,18 @@ libnet_plist_chain_dump_string(struct libnet_plist_cha
+     {
+         if (p->bport == p->eport)
+         {
+-            i = sprintf(&buf[j], "%d", p->bport);
++            i = snprintf(&buf[j], BUFSIZ-j, "%d", p->bport);
+         }
+         else
+         {
+-            i = sprintf(&buf[j], "%d-%d", p->bport, p->eport);
++            i = snprintf(&buf[j], BUFSIZ-j, "%d-%d", p->bport, p->eport);
+         }
+         j += i;
++	if (j >= BUFSIZ)
++		break;
+         if (p->next)
+         {
+-            sprintf(&buf[j++], ",");
++            snprintf(&buf[j++], BUFSIZ-j, ",");
+         }
+     }
+     return (strdup(buf));       /* XXX - reentrancy == no */

@@ -1,0 +1,3 @@
+${P5SITE}/UNIVERSAL/
+${P5SITE}/UNIVERSAL/isa.pm
+@man man/man3p/UNIVERSAL::isa.3p

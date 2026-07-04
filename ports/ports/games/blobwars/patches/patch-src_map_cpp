@@ -1,0 +1,11 @@
+--- src/map.cpp.orig
++++ src/map.cpp
+@@ -399,7 +399,7 @@ void showMap(int centerX, int centerY)
+ 	engine.flushInput();
+ 	engine.clearInput();
+ 
+-	doMusicInfo(-1);
++	doMusicInfo((unsigned int) -1);
+ 
+ 	while (true)
+ 	{

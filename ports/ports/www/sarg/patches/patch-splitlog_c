@@ -1,0 +1,12 @@
+Index: splitlog.c
+--- splitlog.c.orig
++++ splitlog.c
+@@ -76,7 +76,7 @@ void splitlog(const char *arq, char df, const struct R
+ 	}
+ 
+ 	if (arq[0] == '\0')
+-		arq="/var/log/squid/access.log";
++		arq="/var/squid/logs/access.log";
+ 
+ 	if ((fp_in=decomp(arq))==NULL) {
+ 		debuga(__FILE__,__LINE__,_("Cannot open file \"%s\": %s\n"),arq,FileObject_GetLastOpenError());

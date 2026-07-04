@@ -1,0 +1,11 @@
+include/snappy-c.h
+include/snappy-sinksource.h
+include/snappy-stubs-public.h
+include/snappy.h
+lib/cmake/
+lib/cmake/Snappy/
+lib/cmake/Snappy/SnappyConfig.cmake
+lib/cmake/Snappy/SnappyConfigVersion.cmake
+lib/cmake/Snappy/SnappyTargets${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/Snappy/SnappyTargets.cmake
+@lib lib/libsnappy.so.${LIBsnappy_VERSION}

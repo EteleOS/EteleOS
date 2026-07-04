@@ -1,0 +1,23 @@
+64-bit time_t
+
+Index: plugins/otp.c
+--- plugins/otp.c.orig
++++ plugins/otp.c
+@@ -645,7 +645,7 @@ static int make_secret(const sasl_utils_t *utils, cons
+     bin2hex(otp, OTP_HASH_SIZE, buf);
+     buf[2*OTP_HASH_SIZE] = '\0';
+     
+-    sprintf(data, "%s\t%04d\t%s\t%s\t%020ld",
++    sprintf(data, "%s\t%04d\t%s\t%s\t%020lld",
+ 	    alg, seq, seed, buf, timeout);
+     
+     return SASL_OK;
+@@ -706,7 +706,7 @@ static int parse_secret(const sasl_utils_t *utils,
+ 	    return SASL_FAIL;
+ 	}
+ 	
+-	sscanf(secret, "%s\t%04d\t%s\t%s\t%020ld",
++	sscanf(secret, "%s\t%04d\t%s\t%s\t%020lld",
+ 	       alg, seq, seed, buf, timeout);
+ 	
+ 	hex2bin(buf, otp, OTP_HASH_SIZE);

@@ -1,0 +1,47 @@
+stop building when an error occurs, rather than just keep on with the
+next subdir..
+
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -47,14 +47,14 @@ LIBTOOL_DEPS = @LIBTOOL_DEPS@
+ #-------------------------------------------------------------------------
+ 
+ all: Makefile
+-	@for I in ${all_subdirs}; \
++	@set -e; for I in ${all_subdirs}; \
+ 	  do (cd $$I; echo "==>Entering directory `pwd`"; \
+ 	      $(MAKE) DESTDIR=$(DESTDIR) $@ || (echo ""; echo ""; echo "  ====== Error in `pwd` ======"; \
+ 			    echo ""; echo ""; false ) || false) || exit 1; \
+ 	done
+ 
+ depend:
+-	@for I in ${all_subdirs}; \
++	@set -e; for I in ${all_subdirs}; \
+ 	   do echo "==> Entering directory $$I" ; \
+ 	      $(MAKE) DESTDIR=$(DESTDIR) -C $$I $@ ; done
+ 	@for I in ${pluginsdirs}; \
+@@ -62,7 +62,7 @@ depend:
+ 	      $(MAKE) DESTDIR=$(DESTDIR) -C $$I $@ ; done
+ 
+ bacula-fd: Makefile
+-	@for I in ${fd_subdirs}; \
++	@set -e; for I in ${fd_subdirs}; \
+ 	  do (cd $$I; echo "==>Entering directory `pwd`"; \
+ 	      $(MAKE) DESTDIR=$(DESTDIR) all || \
+ 	      (echo ""; echo ""; echo "   ====== Error in `pwd` ======"; \
+@@ -125,14 +125,6 @@ installdirs:
+ 	-if test ! -d $(DESTDIR)$(working_dir) ; then \
+ 	   $(MKDIR) $(DESTDIR)$(working_dir); \
+ 	   chmod 770 $(DESTDIR)$(working_dir); \
+-	fi
+-	-if test "x$(dir_user)" != "x" ; then \
+-	   chown $(dir_user) $(DESTDIR)$(working_dir); \
+-	   chown $(dir_user) $(DESTDIR)$(logdir); \
+-	fi
+-	-if test "x$(dir_group)" != "x" ; then \
+-	   chgrp $(dir_group) $(DESTDIR)$(working_dir); \
+-	   chgrp $(dir_group) $(DESTDIR)$(logdir); \
+ 	fi
+ 
+ install: installdirs install-plugins

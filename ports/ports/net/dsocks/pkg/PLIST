@@ -1,0 +1,5 @@
+@conflict dante-*
+bin/dsocks-torify.sh
+bin/dsocks.sh
+@static-lib lib/libdsocks.a
+@lib lib/libdsocks.so.${LIBdsocks_VERSION}

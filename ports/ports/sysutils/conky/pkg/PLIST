@@ -1,0 +1,11 @@
+@pkgpath ${BASE_PKGPATH},xmms2
+@pkgpath ${BASE_PKGPATH},imlib2
+@pkgpath ${BASE_PKGPATH},audacious
+@bin bin/conky
+@man man/man1/conky.1
+share/examples/conky/
+@sample ${SYSCONFDIR}/conky/
+share/examples/conky/conky.conf
+@sample ${SYSCONFDIR}/conky/conky.conf
+share/examples/conky/conky_no_x11.conf
+share/examples/conky/convert.lua

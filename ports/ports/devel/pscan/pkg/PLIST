@@ -1,0 +1,6 @@
+bin/find_formats.sh
+bin/pscan
+share/examples/pscan/
+share/examples/pscan/test.c
+share/examples/pscan/wu-ftpd.pscan
+share/examples/pscan/README

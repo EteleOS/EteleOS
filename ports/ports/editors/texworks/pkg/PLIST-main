@@ -1,0 +1,17 @@
+@pkgpath editors/texworks
+@bin bin/texworks
+lib/texworks/
+@man man/man1/texworks.1
+share/applications/texworks.desktop
+share/doc/texworks/
+share/doc/texworks/COPYING
+share/doc/texworks/NEWS
+share/doc/texworks/README.md
+share/icons/hicolor/128x128/apps/TeXworks.png
+share/icons/hicolor/48x48/apps/TeXworks.png
+share/icons/hicolor/512x512/apps/TeXworks.png
+share/icons/hicolor/64x64/apps/TeXworks.png
+share/metainfo/
+share/metainfo/texworks.appdata.xml
+@tag update-desktop-database
+@tag gtk-update-icon-cache %D/share/icons/hicolor

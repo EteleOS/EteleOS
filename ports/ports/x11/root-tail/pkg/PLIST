@@ -1,0 +1,2 @@
+@bin bin/root-tail
+@man man/man1/root-tail.1

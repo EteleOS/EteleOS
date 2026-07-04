@@ -1,0 +1,4 @@
+bin/mp3cddb
+bin/mp3cddbtag
+share/doc/mp3cddb/
+share/doc/mp3cddb/readme.txt

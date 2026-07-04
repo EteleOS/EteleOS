@@ -1,0 +1,2 @@
+@bin bin/vtags
+@man man/man1/vtags.1

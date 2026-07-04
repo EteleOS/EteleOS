@@ -1,0 +1,17 @@
+fix datadir on OpenBSD
+
+Index: src/supertux/main.cpp
+--- src/supertux/main.cpp.orig
++++ src/supertux/main.cpp
+@@ -212,10 +212,7 @@ void PhysfsSubsystem::find_datadir() const
+     }
+     else
+     {
+-      // if the game is not run from the source directory, try to find
+-      // the global install location
+-      datadir = basepath.substr(0, basepath.rfind(INSTALL_SUBDIR_BIN));
+-      datadir = FileSystem::join(datadir, INSTALL_SUBDIR_SHARE);
++      datadir = "${PREFIX}/share/supertux2";
+     }
+   }
+ 

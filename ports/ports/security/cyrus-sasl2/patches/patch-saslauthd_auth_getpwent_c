@@ -1,0 +1,12 @@
+Index: saslauthd/auth_getpwent.c
+--- saslauthd/auth_getpwent.c.orig
++++ saslauthd/auth_getpwent.c
+@@ -79,7 +79,7 @@ auth_getpwent (
+     /* END VARIABLES */
+   
+     errno = 0;
+-    pw = getpwnam(login);
++    pw = getpwnam_shadow(login);
+     errnum = errno;
+     endpwent();
+ 

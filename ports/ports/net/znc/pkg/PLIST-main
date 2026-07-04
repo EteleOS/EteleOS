@@ -1,0 +1,250 @@
+@pkgpath net/znc
+@newgroup _znc:877
+@newuser _znc:877:877::ZNC Daemon:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/znc
+@owner _znc
+@group _znc
+@sample ${LOCALSTATEDIR}/znc/
+@sample ${LOCALSTATEDIR}/znc/configs/
+@owner
+@group
+@bin bin/znc
+bin/znc-buildmod
+include/znc/
+include/znc/Buffer.h
+include/znc/Chan.h
+include/znc/Client.h
+include/znc/Config.h
+include/znc/Csocket.h
+include/znc/ExecSock.h
+include/znc/FileUtils.h
+include/znc/HTTPSock.h
+include/znc/IRCNetwork.h
+include/znc/IRCSock.h
+include/znc/Listener.h
+include/znc/MD5.h
+include/znc/Message.h
+include/znc/Modules.h
+include/znc/Nick.h
+include/znc/Query.h
+include/znc/SHA256.h
+include/znc/SSLVerifyHost.h
+include/znc/Server.h
+include/znc/Socket.h
+include/znc/Template.h
+include/znc/Threads.h
+include/znc/Translation.h
+include/znc/User.h
+include/znc/Utils.h
+include/znc/WebModules.h
+include/znc/ZNCDebug.h
+include/znc/ZNCString.h
+include/znc/defines.h
+include/znc/main.h
+include/znc/version.h
+include/znc/znc.h
+include/znc/znc_export_lib_export.h
+include/znc/zncconfig.h
+lib/pkgconfig/znc.pc
+lib/znc/
+@so lib/znc/admindebug.so
+@so lib/znc/adminlog.so
+@so lib/znc/alias.so
+@so lib/znc/autoattach.so
+@so lib/znc/autocycle.so
+@so lib/znc/autoop.so
+@so lib/znc/autoreply.so
+@so lib/znc/autovoice.so
+@so lib/znc/awaynick.so
+@so lib/znc/awaystore.so
+@so lib/znc/block_motd.so
+@so lib/znc/blockuser.so
+@so lib/znc/bouncedcc.so
+@so lib/znc/buffextras.so
+@so lib/znc/cert.so
+@so lib/znc/certauth.so
+@so lib/znc/chansaver.so
+@so lib/znc/clearbufferonmsg.so
+@so lib/znc/clientnotify.so
+@so lib/znc/controlpanel.so
+@so lib/znc/corecaps.so
+@so lib/znc/crypt.so
+@so lib/znc/ctcpflood.so
+@so lib/znc/dcc.so
+@so lib/znc/disconkick.so
+@so lib/znc/fail2ban.so
+@so lib/znc/flooddetach.so
+@so lib/znc/identfile.so
+@so lib/znc/imapauth.so
+@so lib/znc/keepnick.so
+@so lib/znc/kickrejoin.so
+@so lib/znc/lastseen.so
+@so lib/znc/listsockets.so
+@so lib/znc/log.so
+@so lib/znc/missingmotd.so
+@so lib/znc/modules_online.so
+@so lib/znc/nickserv.so
+@so lib/znc/notes.so
+@so lib/znc/notify_connect.so
+@so lib/znc/perform.so
+@so lib/znc/raw.so
+@so lib/znc/route_replies.so
+@so lib/znc/sample.so
+@so lib/znc/samplewebapi.so
+@so lib/znc/sasl.so
+@so lib/znc/savebuff.so
+@so lib/znc/schat.so
+@so lib/znc/send_raw.so
+@so lib/znc/shell.so
+@so lib/znc/simple_away.so
+@so lib/znc/stickychan.so
+@so lib/znc/stripcontrols.so
+@so lib/znc/watch.so
+@so lib/znc/webadmin.so
+@man man/man1/znc-buildmod.1
+@man man/man1/znc.1
+share/doc/pkg-readmes/${PKGSTEM}
+share/znc/
+share/znc/cmake/
+share/znc/cmake/CMakeFindDependencyMacroPC.cmake
+share/znc/cmake/ZNCConfig.cmake
+share/znc/cmake/ZNCConfigVersion.cmake
+share/znc/cmake/use_homebrew.cmake
+share/znc/cmake/znc_internal${MODCMAKE_BUILD_SUFFIX}
+share/znc/cmake/znc_internal.cmake
+share/znc/cmake/znc_public.cmake
+share/znc/modules/
+share/znc/modules/blockuser/
+share/znc/modules/blockuser/tmpl/
+share/znc/modules/blockuser/tmpl/blockuser_WebadminUser.tmpl
+share/znc/modules/cert/
+share/znc/modules/cert/tmpl/
+share/znc/modules/cert/tmpl/index.tmpl
+share/znc/modules/certauth/
+share/znc/modules/certauth/tmpl/
+share/znc/modules/certauth/tmpl/index.tmpl
+share/znc/modules/lastseen/
+share/znc/modules/lastseen/tmpl/
+share/znc/modules/lastseen/tmpl/index.tmpl
+share/znc/modules/lastseen/tmpl/lastseen_WebadminUser.tmpl
+share/znc/modules/listsockets/
+share/znc/modules/listsockets/tmpl/
+share/znc/modules/listsockets/tmpl/index.tmpl
+share/znc/modules/notes/
+share/znc/modules/notes/files/
+share/znc/modules/notes/files/trash.gif
+share/znc/modules/notes/tmpl/
+share/znc/modules/notes/tmpl/index.tmpl
+share/znc/modules/perform/
+share/znc/modules/perform/tmpl/
+share/znc/modules/perform/tmpl/index.tmpl
+share/znc/modules/q/
+share/znc/modules/q/tmpl/
+share/znc/modules/q/tmpl/index.tmpl
+share/znc/modules/samplewebapi/
+share/znc/modules/samplewebapi/tmpl/
+share/znc/modules/samplewebapi/tmpl/index.tmpl
+share/znc/modules/sasl/
+share/znc/modules/sasl/tmpl/
+share/znc/modules/sasl/tmpl/index.tmpl
+share/znc/modules/send_raw/
+share/znc/modules/send_raw/files/
+share/znc/modules/send_raw/files/select.js
+share/znc/modules/send_raw/tmpl/
+share/znc/modules/send_raw/tmpl/index.tmpl
+share/znc/modules/stickychan/
+share/znc/modules/stickychan/tmpl/
+share/znc/modules/stickychan/tmpl/index.tmpl
+share/znc/modules/stickychan/tmpl/stickychan_WebadminChan.tmpl
+share/znc/modules/webadmin/
+share/znc/modules/webadmin/files/
+share/znc/modules/webadmin/files/webadmin.css
+share/znc/modules/webadmin/files/webadmin.js
+share/znc/modules/webadmin/tmpl/
+share/znc/modules/webadmin/tmpl/add_edit_chan.tmpl
+share/znc/modules/webadmin/tmpl/add_edit_network.tmpl
+share/znc/modules/webadmin/tmpl/add_edit_user.tmpl
+share/znc/modules/webadmin/tmpl/del_network.tmpl
+share/znc/modules/webadmin/tmpl/del_user.tmpl
+share/znc/modules/webadmin/tmpl/encoding_settings.tmpl
+share/znc/modules/webadmin/tmpl/index.tmpl
+share/znc/modules/webadmin/tmpl/listusers.tmpl
+share/znc/modules/webadmin/tmpl/settings.tmpl
+share/znc/modules/webadmin/tmpl/traffic.tmpl
+share/znc/translations/
+share/znc/translations/bg-BG
+share/znc/translations/de-DE
+share/znc/translations/es-ES
+share/znc/translations/fr-FR
+share/znc/translations/id-ID
+share/znc/translations/it-IT
+share/znc/translations/nl-NL
+share/znc/translations/pl-PL
+share/znc/translations/pt-BR
+share/znc/translations/pt-PT
+share/znc/translations/ru-RU
+share/znc/translations/tr-TR
+share/znc/webskins/
+share/znc/webskins/_default_/
+share/znc/webskins/_default_/pub/
+share/znc/webskins/_default_/pub/External.png
+share/znc/webskins/_default_/pub/_default_.css
+share/znc/webskins/_default_/pub/favicon.ico
+share/znc/webskins/_default_/pub/global.css
+share/znc/webskins/_default_/pub/jquery-1.11.2.js
+share/znc/webskins/_default_/pub/jquery-1.11.2.min.js
+share/znc/webskins/_default_/pub/jquery-ui-sortable.1.11.4.css
+share/znc/webskins/_default_/pub/jquery-ui-sortable.1.11.4.js
+share/znc/webskins/_default_/pub/jquery-ui-sortable.1.11.4.min.css
+share/znc/webskins/_default_/pub/jquery-ui-sortable.1.11.4.min.js
+share/znc/webskins/_default_/pub/robots.txt
+share/znc/webskins/_default_/pub/selectize-0.12.1.css
+share/znc/webskins/_default_/pub/selectize-standalone-0.12.1.js
+share/znc/webskins/_default_/pub/selectize-standalone-0.12.1.min.js
+share/znc/webskins/_default_/tmpl/
+share/znc/webskins/_default_/tmpl/Banner.tmpl
+share/znc/webskins/_default_/tmpl/BaseHeader.tmpl
+share/znc/webskins/_default_/tmpl/BreadCrumbs.tmpl
+share/znc/webskins/_default_/tmpl/DocType.tmpl
+share/znc/webskins/_default_/tmpl/Error.tmpl
+share/znc/webskins/_default_/tmpl/ExtraHeader.tmpl
+share/znc/webskins/_default_/tmpl/Footer.tmpl
+share/znc/webskins/_default_/tmpl/FooterTag.tmpl
+share/znc/webskins/_default_/tmpl/Header.tmpl
+share/znc/webskins/_default_/tmpl/InfoBar.tmpl
+share/znc/webskins/_default_/tmpl/LoginBar.tmpl
+share/znc/webskins/_default_/tmpl/LowerBanner.tmpl
+share/znc/webskins/_default_/tmpl/Menu.tmpl
+share/znc/webskins/_default_/tmpl/MessageBar.tmpl
+share/znc/webskins/_default_/tmpl/Options.tmpl
+share/znc/webskins/_default_/tmpl/_csrf_check.tmpl
+share/znc/webskins/_default_/tmpl/index.tmpl
+share/znc/webskins/dark-clouds/
+share/znc/webskins/dark-clouds/pub/
+share/znc/webskins/dark-clouds/pub/clouds-header.jpg
+share/znc/webskins/dark-clouds/pub/dark-clouds.css
+share/znc/webskins/dark-clouds/pub/favicon.ico
+share/znc/webskins/dark-clouds/tmpl/
+share/znc/webskins/dark-clouds/tmpl/Banner.tmpl
+share/znc/webskins/dark-clouds/tmpl/FooterTag.tmpl
+share/znc/webskins/dark-clouds/tmpl/Header.tmpl
+share/znc/webskins/dark-clouds/tmpl/LowerBanner.tmpl
+share/znc/webskins/forest/
+share/znc/webskins/forest/pub/
+share/znc/webskins/forest/pub/favicon.ico
+share/znc/webskins/forest/pub/forest-header.png
+share/znc/webskins/forest/pub/forest.css
+share/znc/webskins/forest/tmpl/
+share/znc/webskins/forest/tmpl/Banner.tmpl
+share/znc/webskins/forest/tmpl/FooterTag.tmpl
+share/znc/webskins/forest/tmpl/Header.tmpl
+share/znc/webskins/forest/tmpl/LowerBanner.tmpl
+share/znc/webskins/ice/
+share/znc/webskins/ice/pub/
+share/znc/webskins/ice/pub/favicon.ico
+share/znc/webskins/ice/pub/ice.css
+share/znc/webskins/ice/pub/linkbg.jpg
+share/znc/webskins/ice/pub/pagebg.gif
+share/znc/webskins/ice/tmpl/
+share/znc/webskins/ice/tmpl/FooterTag.tmpl
+share/znc/webskins/ice/tmpl/Header.tmpl

@@ -1,0 +1,2 @@
+@bin bin/cgoban
+@man man/man6/cgoban.6

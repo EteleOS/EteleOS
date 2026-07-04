@@ -1,0 +1,11 @@
+Index: src/blkdev/blkdev.c
+--- src/blkdev/blkdev.c.orig
++++ src/blkdev/blkdev.c
+@@ -19,6 +19,7 @@
+ #endif
+ 
+ #ifdef HAVE_SYS_DISKLABEL_H
++#include <sys/dkio.h>
+ #include <sys/disklabel.h>
+ #endif
+ 

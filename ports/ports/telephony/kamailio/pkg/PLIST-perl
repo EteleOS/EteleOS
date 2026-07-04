@@ -1,0 +1,30 @@
+@so lib/kamailio/modules/app_perl.so
+@so lib/kamailio/modules/db_perlvdb.so
+lib/kamailio/perl/
+lib/kamailio/perl/Kamailio/
+lib/kamailio/perl/Kamailio.pm
+lib/kamailio/perl/Kamailio/Constants.pm
+lib/kamailio/perl/Kamailio/LDAPUtils/
+lib/kamailio/perl/Kamailio/LDAPUtils/LDAPConf.pm
+lib/kamailio/perl/Kamailio/LDAPUtils/LDAPConnection.pm
+lib/kamailio/perl/Kamailio/Message.pm
+lib/kamailio/perl/Kamailio/Utils/
+lib/kamailio/perl/Kamailio/Utils/Debug.pm
+lib/kamailio/perl/Kamailio/Utils/PhoneNumbers.pm
+lib/kamailio/perl/Kamailio/VDB/
+lib/kamailio/perl/Kamailio/VDB.pm
+lib/kamailio/perl/Kamailio/VDB/Adapter/
+lib/kamailio/perl/Kamailio/VDB/Adapter/AccountingSIPtrace.pm
+lib/kamailio/perl/Kamailio/VDB/Adapter/Alias.pm
+lib/kamailio/perl/Kamailio/VDB/Adapter/Auth.pm
+lib/kamailio/perl/Kamailio/VDB/Adapter/Describe.pm
+lib/kamailio/perl/Kamailio/VDB/Adapter/Speeddial.pm
+lib/kamailio/perl/Kamailio/VDB/Adapter/TableVersions.pm
+lib/kamailio/perl/Kamailio/VDB/Column.pm
+lib/kamailio/perl/Kamailio/VDB/Pair.pm
+lib/kamailio/perl/Kamailio/VDB/ReqCond.pm
+lib/kamailio/perl/Kamailio/VDB/Result.pm
+lib/kamailio/perl/Kamailio/VDB/VTab.pm
+lib/kamailio/perl/Kamailio/VDB/Value.pm
+share/doc/kamailio/modules/README.app_perl
+share/doc/kamailio/modules/README.db_perlvdb

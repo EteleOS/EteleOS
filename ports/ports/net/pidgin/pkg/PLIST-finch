@@ -1,0 +1,33 @@
+@conflict pidgin-<2.5.6p3
+@pkgpath net/pidgin
+@bin bin/finch
+include/finch/
+include/finch/finch.h
+include/finch/gntaccount.h
+include/finch/gntblist.h
+include/finch/gntcertmgr.h
+include/finch/gntconn.h
+include/finch/gntconv.h
+include/finch/gntdebug.h
+include/finch/gntft.h
+include/finch/gntidle.h
+include/finch/gntlog.h
+include/finch/gntmedia.h
+include/finch/gntnotify.h
+include/finch/gntplugin.h
+include/finch/gntpounce.h
+include/finch/gntprefs.h
+include/finch/gntrequest.h
+include/finch/gntroomlist.h
+include/finch/gntsound.h
+include/finch/gntstatus.h
+include/finch/gntui.h
+lib/finch/
+@so lib/finch/gntclipboard.so
+@so lib/finch/gntgf.so
+@so lib/finch/gnthistory.so
+@so lib/finch/gntlastlog.so
+@so lib/finch/gnttinyurl.so
+@so lib/finch/grouping.so
+lib/pkgconfig/finch.pc
+@man man/man1/finch.1

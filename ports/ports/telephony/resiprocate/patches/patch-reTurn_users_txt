@@ -1,0 +1,9 @@
+Index: reTurn/users.txt
+--- reTurn/users.txt.orig
++++ reTurn/users.txt
+@@ -18,4 +18,4 @@
+ #
+ # Comments can be inserted by starting a line with #
+ #
+-test:1234:reTurn:authorized
++#test:1234:reTurn:authorized

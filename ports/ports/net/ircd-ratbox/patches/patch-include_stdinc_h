@@ -1,0 +1,11 @@
+--- include/stdinc.h.orig	Sun Feb  8 23:16:36 2009
++++ include/stdinc.h	Sun Feb  8 23:16:52 2009
+@@ -85,6 +85,8 @@ char *alloca();
+ #include <stdarg.h>
+ #include <signal.h>
+ #include <ctype.h>
++#include <login_cap.h>
++#include <pwd.h>
+ 
+ #include <limits.h>
+ 

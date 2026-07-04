@@ -1,0 +1,4 @@
+${P5SITE}/Class/
+${P5SITE}/Class/Loader.pm
+${P5SITE}/Class/LoaderTest.pm
+@man man/man3p/Class::Loader.3p

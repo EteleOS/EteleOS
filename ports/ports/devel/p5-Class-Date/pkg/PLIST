@@ -1,0 +1,11 @@
+${P5SITE}/Class/
+${P5SITE}/Class/Date/
+${P5SITE}/Class/Date.pm
+@comment ${P5SITE}/Class/Date.pm.orig
+${P5SITE}/Class/Date/Const.pm
+${P5SITE}/Class/Date/Invalid.pm
+${P5SITE}/Class/Date/Rel.pm
+@man man/man3p/Class::Date.3p
+@man man/man3p/Class::Date::Const.3p
+@man man/man3p/Class::Date::Invalid.3p
+@man man/man3p/Class::Date::Rel.3p

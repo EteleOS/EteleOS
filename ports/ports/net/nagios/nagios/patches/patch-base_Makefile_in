@@ -1,0 +1,15 @@
+Index: base/Makefile.in
+--- base/Makefile.in.orig
++++ base/Makefile.in
+@@ -173,9 +173,8 @@ devclean: distclean
+ 	rm -f wpres-phash.h
+ 
+ install:
+-	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(BINDIR)
+-	$(INSTALL) -s -m 774 $(INSTALL_OPTS) @nagios_name@ $(DESTDIR)$(BINDIR)
+-	$(INSTALL) -s -m 774 $(INSTALL_OPTS) @nagiostats_name@ $(DESTDIR)$(BINDIR)
++	$(BSD_INSTALL_PROGRAM) @nagios_name@ $(DESTDIR)$(prefix)/bin
++	$(BSD_INSTALL_PROGRAM) @nagiostats_name@ $(DESTDIR)$(BINDIR)
+ 
+ install-unstripped:
+ 	$(INSTALL) -m 775 $(INSTALL_OPTS) -d $(DESTDIR)$(BINDIR)

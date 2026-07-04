@@ -1,0 +1,9 @@
+@bin bin/galois
+man/it/
+man/it/man6/
+@man man/it/man6/galois.6
+@man man/man6/galois.6
+share/applications/galois.desktop
+share/pixmaps/
+share/pixmaps/galois.png
+@tag update-desktop-database

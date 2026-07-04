@@ -1,0 +1,23 @@
+Set these here so they propagate through everything.
+
+Index: configure
+--- configure.orig
++++ configure
+@@ -9567,7 +9567,7 @@ tdbc_SRC_DIR=`cd "${tdbc_SRC_DIR}"; $CYGPATH $(pwd)`
+ 
+ # Develop a fully qualified path for where .tcl files for the tdbc package
+ # appear at run time.
+-eval tdbc_LIB_DIR="${libdir}/${PACKAGE_NAME}${PACKAGE_VERSION}"
++eval tdbc_LIB_DIR="${libdir}/tcl/${PACKAGE_NAME}"
+ if test -d "${tdbc_LIB_DIR}" ; then
+     tdbc_LIB_DIR=`cd "${tdbc_LIB_DIR}"; $CYGPATH $(pwd)`
+ fi
+@@ -9581,7 +9581,7 @@ fi
+     #--------------------------------------------------------------------
+ 
+     # pkglibdir must be a fully qualified path and (not ${exec_prefix}/lib)
+-    eval pkglibdir="${libdir}/tdbc${PACKAGE_VERSION}"
++    eval pkglibdir="${libdir}"
+     if test "${TCL_LIB_VERSIONS_OK}" = "ok"; then
+ 	eval tdbc_LIB_FLAG="-ltdbc${PACKAGE_VERSION}"
+ 	eval tdbc_STUB_LIB_FLAG="-ltdbcstub${PACKAGE_VERSION}"

@@ -1,0 +1,11 @@
+--- pkg.mk.orig	Sun Jul 31 17:20:21 2016
++++ pkg.mk	Wed Feb 22 13:15:38 2017
+@@ -118,7 +118,7 @@ test_units := $(wildcard test/test_*.rb)
+ test: check
+ check: test-unit
+ test-unit: $(test_units)
+-$(test_units): build
++$(test_units): 
+ 	$(RUBY) -I $(lib) $@ $(RUBY_TEST_OPTS)
+ 
+ # this requires GNU coreutils variants

@@ -1,0 +1,58 @@
+MODGO_MODULES =	\
+	github.com/blang/semver			 v3.5.1+incompatible \
+	github.com/chzyer/logex			 v1.1.10 \
+	github.com/chzyer/readline		 v0.0.0-20180603132655-2972be24d48e \
+	github.com/chzyer/test			 v0.0.0-20180213035817-a1ea475d72b1 \
+	github.com/creack/pty			 v1.1.18 \
+	github.com/davecgh/go-spew		 v1.1.1 \
+	github.com/dustin/go-humanize		 v1.0.0 \
+	github.com/gdamore/encoding		 v1.0.0 \
+	github.com/go-errors/errors		 v1.0.1 \
+	github.com/kballard/go-shellquote	 v0.0.0-20180428030007-95032a82bc51 \
+	github.com/kr/pretty			 v0.1.0 \
+	github.com/kr/pty			 v1.1.1 \
+	github.com/kr/text			 v0.1.0 \
+	github.com/kylelemons/godebug		 v1.1.0 \
+	github.com/layeh/gopher-luar		 v1.0.11 \
+	github.com/lucasb-eyer/go-colorful	 v1.0.3 \
+	github.com/mattn/go-isatty		 v0.0.20 \
+	github.com/mattn/go-runewidth		 v0.0.16 \
+	github.com/micro-editor/go-shellquote	 v0.0.0-20250101105543-feb6c39314f5 \
+	github.com/micro-editor/json5		 v1.0.1-micro \
+	github.com/micro-editor/tcell/v2	 v2.0.13 \
+	github.com/micro-editor/terminal	 v0.0.0-20250324214352-e587e959c6b5 \
+	github.com/mitchellh/go-homedir		 v1.1.0 \
+	github.com/pmezard/go-difflib		 v1.0.0 \
+	github.com/rivo/uniseg			 v0.2.0 \
+	github.com/robertkrimen/otto		 v0.2.1 \
+	github.com/sergi/go-diff		 v1.1.0 \
+	github.com/stretchr/objx		 v0.1.0 \
+	github.com/stretchr/testify		 v1.4.0 \
+	github.com/xo/terminfo			 v0.0.0-20200218205459-454e5b68f9e8 \
+	github.com/yuin/gopher-lua		 v1.1.1 \
+	github.com/zyedidia/clipper		 v0.1.1 \
+	github.com/zyedidia/glob		 v0.0.0-20170209203856-dd4023a66dc3 \
+	github.com/zyedidia/poller		 v1.0.1 \
+	golang.org/x/mod			 v0.6.0-dev.0.20220419223038-86c51ed26bb4 \
+	golang.org/x/sys			 v0.30.0 \
+	golang.org/x/term			 v0.29.0 \
+	golang.org/x/text			 v0.4.0 \
+	golang.org/x/tools			 v0.1.12 \
+	gopkg.in/check.v1			 v1.0.0-20190902080502-41f04d3bba15 \
+	gopkg.in/sourcemap.v1			 v1.0.5 \
+	gopkg.in/yaml.v2			 v2.2.8 \
+	layeh.com/gopher-luar			 v1.0.11
+
+MODGO_MODFILES =	\
+	github.com/davecgh/go-spew	 v1.1.0 \
+	github.com/mattn/go-runewidth	 v0.0.7 \
+	github.com/yuin/gopher-lua	 v0.0.0-20190206043414-8bfc7677f583 \
+	golang.org/x/sys		 v0.0.0-20190204203706-41f3e6584952 \
+	golang.org/x/sys		 v0.0.0-20220722155257-8c9f86f7a55f \
+	golang.org/x/sys		 v0.28.0 \
+	golang.org/x/sys		 v0.6.0 \
+	golang.org/x/text		 v0.3.0 \
+	gopkg.in/check.v1		 v0.0.0-20161208181325-20d25e280405 \
+	gopkg.in/yaml.v2		 v2.2.2 \
+	gopkg.in/yaml.v2		 v2.2.4
+

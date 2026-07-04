@@ -1,0 +1,6 @@
+Utility scripts for internationalizing XML.
+Automatically extracts translatable strings from oaf, glade, bonobo ui,
+nautilus theme and other XML files into the po files.
+Automatically merges translations from po files back into .oaf files
+(encoding to be 7-bit clean). The merging mechanism can also be extended
+to support other types of XML files.

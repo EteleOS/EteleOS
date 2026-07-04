@@ -1,0 +1,18 @@
+Index: man/dnssec-zkt.8
+--- man/dnssec-zkt.8.orig
++++ man/dnssec-zkt.8
+@@ -443,12 +443,12 @@ Specifies the name of the default global configuration
+ 
+ .SH FILES
+ .TP
+-.I /var/named/dnssec.conf
++.I /var/named/etc/dnssec.conf
+ Built-in default global configuration file.
+ The name of the default global config file is settable via
+ the environment variable ZKT_CONFFILE.
+ .TP
+-.I /var/named/dnssec-<view>.conf
++.I /var/named/etc/dnssec-<view>.conf
+ View specific global configuration file.
+ .TP
+ .I ./dnssec.conf

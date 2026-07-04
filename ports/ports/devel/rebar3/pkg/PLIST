@@ -1,0 +1,3 @@
+@conflict rebar3-*-erlang${MODERL_VERSION}
+@pkgpath devel/rebar
+bin/rebar3-${MODERL_VERSION}

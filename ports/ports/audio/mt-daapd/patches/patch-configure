@@ -1,0 +1,10 @@
+--- configure.orig	Sat Apr 19 16:17:12 2008
++++ configure	Sat May 31 14:32:07 2008
+@@ -3867,7 +3867,6 @@ fi
+ rend_posix=true
+ 
+ STATIC_LIBS=no
+-CPPFLAGS="${CPPFLAGS} -g"
+ 
+ { echo "$as_me:$LINENO: checking for pthread_creat in -lc_r" >&5
+ echo $ECHO_N "checking for pthread_creat in -lc_r... $ECHO_C" >&6; }

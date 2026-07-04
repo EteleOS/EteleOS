@@ -1,0 +1,3 @@
+@bin bin/tarlz
+@info info/tarlz.info
+@man man/man1/tarlz.1

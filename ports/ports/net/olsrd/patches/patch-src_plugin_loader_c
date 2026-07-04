@@ -1,0 +1,27 @@
+the plugins get installed to $LOCALBASE/lib/olsrd-plugins, so load them from there.
+Index: src/plugin_loader.c
+--- src/plugin_loader.c.orig
++++ src/plugin_loader.c
+@@ -91,20 +91,14 @@ olsr_load_plugins(void)
+ static int
+ olsr_load_dl(char *libname, struct plugin_param *params)
+ {
+-#if defined TESTLIB_PATH && TESTLIB_PATH
+-  char path[256] = "/usr/testlib/";
+-#endif /* defined TESTLIB_PATH && TESTLIB_PATH */
++  char path[256] = "${LOCALBASE}/lib/olsrd-plugins/";
+   struct olsr_plugin *plugin = olsr_malloc(sizeof(struct olsr_plugin), "Plugin entry");
+   int rv;
+ 
+   OLSR_PRINTF(0, "---------- LOADING LIBRARY %s ----------\n", libname);
+ 
+-#if defined TESTLIB_PATH && TESTLIB_PATH
+-  strcat(path, libname);
++  strlcat(path, libname, sizeof(path));
+   plugin->dlhandle = dlopen(path, RTLD_NOW);
+-#else /* defined TESTLIB_PATH && TESTLIB_PATH */
+-  plugin->dlhandle = dlopen(libname, RTLD_NOW);
+-#endif /* defined TESTLIB_PATH && TESTLIB_PATH */
+   if (plugin->dlhandle == NULL) {
+     const int save_errno = errno;
+     OLSR_PRINTF(0, "DL loading failed: \"%s\"!\n", dlerror());

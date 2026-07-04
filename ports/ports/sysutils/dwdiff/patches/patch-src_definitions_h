@@ -1,0 +1,19 @@
+Unbreak with icu4c >=68.1
+
+--- src/definitions.h.orig	Sun Dec 13 12:38:01 2020
++++ src/definitions.h	Mon Dec 14 08:22:25 2020
+@@ -42,14 +42,7 @@
+ #endif
+ 
+ /*==== Misc definitions ====*/
+-/* Define a bool type if not already defined (C++ and C99 do)*/
+-#if !(defined(__cplusplus) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L))
+-/*@-incondefs@*/
+-typedef enum {false, true} bool;
+-/*@+incondefs@*/
+-#elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
+ #include <stdbool.h>
+-#endif
+ 
+ /*==== Configuration definitions ====*/
+ #ifndef NO_STRDUP

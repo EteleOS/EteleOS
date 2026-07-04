@@ -1,0 +1,12 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -2,7 +2,7 @@ VERSION = 1.1
+ 
+ include config.mk
+ 
+-OBJ = strtonum.o xbattmon.o
++OBJ = xbattmon.o
+ BIN = xbattmon
+ 
+ all: $(BIN)

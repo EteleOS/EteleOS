@@ -1,0 +1,3 @@
+${P5SITE}/Devel/
+${P5SITE}/Devel/Cycle.pm
+@man man/man3p/Devel::Cycle.3p

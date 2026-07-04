@@ -1,0 +1,18 @@
+Fix build with -fno-common
+
+Index: src/wmgeneral/wmgeneral.c
+--- src/wmgeneral/wmgeneral.c.orig
++++ src/wmgeneral/wmgeneral.c
+@@ -29,6 +29,12 @@
+ 
+ #include "wmgeneral.h"
+ 
++  /*******************/
++ /* Global variable */
++/*******************/
++
++Display		*display;
++
+   /*****************/
+  /* X11 Variables */
+ /*****************/

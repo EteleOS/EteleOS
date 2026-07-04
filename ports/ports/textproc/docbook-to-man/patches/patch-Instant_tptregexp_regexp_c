@@ -1,0 +1,42 @@
+--- Instant/tptregexp/regexp.c.orig	Mon Jun 17 11:50:29 1996
++++ Instant/tptregexp/regexp.c	Mon Sep 22 17:58:40 2008
+@@ -23,6 +23,7 @@
+  * regular-expression syntax might require a total rethink.
+  */
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <string.h>
+ #include <tptregexp.h>
+ #include "regmagic.h"
+@@ -196,7 +197,6 @@ char *exp;
+ 	register char *longest;
+ 	register int len;
+ 	int flags;
+-	extern char *malloc();
+ 
+ 	if (exp == NULL)
+ 		FAIL("NULL argument");
+@@ -705,7 +705,6 @@ register regexp *prog;
+ register char *string;
+ {
+ 	register char *s;
+-	extern char *strchr();
+ 
+ 	/* Be paranoid... */
+ 	if (prog == NULL || string == NULL) {
+@@ -804,7 +803,6 @@ char *prog;
+ {
+ 	register char *scan;	/* Current node. */
+ 	char *next;		/* Next node. */
+-	extern char *strchr();
+ 
+ 	scan = prog;
+ #ifdef DEBUG
+@@ -1065,7 +1063,6 @@ regexp *r;
+ 	register char *s;
+ 	register char op = EXACTLY;	/* Arbitrary non-END op. */
+ 	register char *next;
+-	extern char *strchr();
+ 
+ 
+ 	s = r->program + 1;

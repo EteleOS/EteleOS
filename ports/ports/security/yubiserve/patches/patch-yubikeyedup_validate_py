@@ -1,0 +1,14 @@
+Index: yubikeyedup/validate.py
+--- yubikeyedup/validate.py.orig
++++ yubikeyedup/validate.py
+@@ -2,8 +2,8 @@ import re
+ 
+ from Cryptodome.Cipher import AES
+ 
+-from sql import *
+-import yubistatus
++from yubikeyedup.sql import *
++from yubikeyedup import yubistatus
+ 
+ 
+ class Validate:

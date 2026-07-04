@@ -1,0 +1,19 @@
+Index: src/init.c
+--- src/init.c.orig
++++ src/init.c
+@@ -1458,7 +1458,6 @@ choice strtoinfmt(Inputformat **ans, char *s, choice *
+ 	c++;
+       if (*c == 'S')
+ 	done = TRUE;
+-      c++;
+     }
+   }
+   if (!done) {
+@@ -1469,7 +1468,6 @@ choice strtoinfmt(Inputformat **ans, char *s, choice *
+ 	  c++;
+ 	if (*c == 's')
+ 	  *c = 'S';
+-	c++;
+       }
+     }
+   }

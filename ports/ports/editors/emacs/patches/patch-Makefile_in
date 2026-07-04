@@ -1,0 +1,23 @@
+- don't compress man and info pages.
+
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -808,7 +808,7 @@ install-info: info
+ 	      for f in `ls $$elt $$elt-[1-9] $$elt-[1-9][0-9] 2>/dev/null`; do \
+ 	       (cd "$${thisdir}"; \
+ 	        ${INSTALL_DATA} ${srcdir}/info/$$f "$(DESTDIR)${infodir}/$$f"); \
+-	        [ -n "${GZIP_PROG}" ] || continue ; \
++	        [ -n "" ] || continue ; \
+ 	        rm -f "$(DESTDIR)${infodir}/$$f.gz"; \
+ 	        ${GZIP_PROG} -9n "$(DESTDIR)${infodir}/$$f"; \
+ 	      done; \
+@@ -833,7 +833,7 @@ install-man:
+ 	  dest=`echo "$${page}" | sed -e 's/\.1$$//' -e '$(TRANSFORM)'`.1; \
+ 	  (cd "$${thisdir}"; \
+ 	   ${INSTALL_DATA} ${mansrcdir}/$${page} "$(DESTDIR)${man1dir}/$${dest}"); \
+-	  [ -n "${GZIP_PROG}" ] || continue ; \
++	  [ -n "" ] || continue ; \
+ 	  rm -f "$(DESTDIR)${man1dir}/$${dest}.gz"; \
+ 	  ${GZIP_PROG} -9n "$(DESTDIR)${man1dir}/$${dest}" || true; \
+ 	done

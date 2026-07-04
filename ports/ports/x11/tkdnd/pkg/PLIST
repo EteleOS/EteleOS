@@ -1,0 +1,5 @@
+lib/tcl/tkdnd/
+lib/tcl/tkdnd/libtkdnd.so
+lib/tcl/tkdnd/pkgIndex.tcl
+lib/tcl/tkdnd/tkDND_Utils.tcl
+@man man/mann/tkDND.n

@@ -1,0 +1,11 @@
+--- Makefile.orig	Mon Jan 17 23:08:19 2011
++++ Makefile	Mon Jan 17 23:08:49 2011
+@@ -6,7 +6,7 @@ all:
+ 	cd mace4.src    && $(MAKE) all
+ 	cd provers.src  && $(MAKE) all
+ 	cd apps.src     && $(MAKE) all
+-	/bin/cp -p utilities/* bin
++	#/bin/cp -p utilities/* bin
+ 	@echo ""
+ 	@echo "**** Now try 'make test1'. ****"
+ 	@echo ""

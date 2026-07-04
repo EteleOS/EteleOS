@@ -1,0 +1,22 @@
+--- Makefile.orig	Mon Jan  1 19:47:02 2007
++++ Makefile	Sun Nov 13 10:21:13 2011
+@@ -13,8 +13,8 @@ VERSION = 3.5.0
+ 
+ 
+ CC	= gcc
+-CFLAGS	= -I./src -I./userial -O2 # -g -Wall
+-LIBS	= -lm
++CFLAGS	+= -I./src -I./userial
++LIBS	= -lm ${LDFLAGS}
+ 
+ OBJS		=	src/digitemp.o src/device_name.o
+ HDRS		= 	src/digitemp.h src/device_name.h
+@@ -96,7 +96,7 @@ endif
+ 
+ # USB specific flags
+ ds2490:  CFLAGS += -DOWUSB
+-ds2490:  LIBS   += -lusb
++ds2490:  LIBS   += -lusb -pthread
+ 
+ 
+ help:

@@ -1,0 +1,15 @@
+decouple sope version from library interface version.
+
+--- sope-xml/SaxObjC/GNUmakefile.preamble.orig	Wed Oct 24 21:00:15 2012
++++ sope-xml/SaxObjC/GNUmakefile.preamble	Fri Oct 26 10:14:17 2012
+@@ -19,8 +19,8 @@ SaxObjC_OBJC_FILES   = $(libSaxObjC_OBJC_FILES)
+ ADDITIONAL_CPPFLAGS += \
+ 	-O2 \
+         -Wall -DCOMPILE_FOR_GSTEP_MAKE=1        \
+-        -DSOPE_MAJOR_VERSION=$(MAJOR_VERSION)   \
+-        -DSOPE_MINOR_VERSION=$(MINOR_VERSION)   \
++        -DSOPE_MAJOR_VERSION=$(SOPE_MAJOR_VERSION)   \
++        -DSOPE_MINOR_VERSION=$(SOPE_MINOR_VERSION)   \
+         -DSOPE_SUBMINOR_VERSION=$(SUBMINOR_VERSION)
+ 
+ ADDITIONAL_CPPFLAGS += -Wno-protocol

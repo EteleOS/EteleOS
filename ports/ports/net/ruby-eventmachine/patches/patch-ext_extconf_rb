@@ -1,0 +1,12 @@
+Index: ext/extconf.rb
+--- ext/extconf.rb.orig
++++ ext/extconf.rb
+@@ -147,7 +147,7 @@ if RbConfig::CONFIG["host_os"] =~ /mingw/
+   add_define "FD_SETSIZE=32767" unless found
+ end
+ 
+-# Main platform invariances:
++create_makefile "rubyeventmachine"
+ 
+ case RUBY_PLATFORM
+ when /mswin32/, /mingw32/, /bccwin32/

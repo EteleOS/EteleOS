@@ -1,0 +1,21 @@
+# sys.platform return openbsd, not unix here
+
+Index: dxf2gcode/globals/config.py
+--- dxf2gcode/globals/config.py.orig
++++ dxf2gcode/globals/config.py
+@@ -53,12 +53,12 @@ old versions are recognized and skipped"
+ """
+ 
+ # Paths change whether platform is Linux or Windows
+-if "linux" in sys.platform.lower() or "unix" in sys.platform.lower():
++if "linux" in sys.platform.lower() or "openbsd" in sys.platform.lower():
+     #Declare here the path that are specific to Linux
+     IMPORT_DIR = "~/Documents"
+     OUTPUT_DIR = "~/Documents"
+-    PDFTOPS_CMD = "/usr/bin/pdftops"
+-    PSTOEDIT_CMD = "/usr/bin/pstoedit"
++    PDFTOPS_CMD = "/usr/local/bin/pdftops"
++    PSTOEDIT_CMD = "/usr/local/bin/pstoedit"
+ else:
+     #Declare here the path that are specific to Windows
+     IMPORT_DIR = "D:/Eclipse_Workspace/DXF2GCODE/trunk/dxf"

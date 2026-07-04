@@ -1,0 +1,14 @@
+64-bit time_t
+
+Index: plugins/cram.c
+--- plugins/cram.c.orig
++++ plugins/cram.c
+@@ -135,7 +135,7 @@ static char *gettime(sasl_server_params_t *sparams)
+     
+     /* the bottom bits are really the only random ones so if
+        we overflow we don't want to loose them */
+-    snprintf(ret,15,"%lu",t%(0xFFFFFF));
++    snprintf(ret,15,"%lld",t%(0xFFFFFF));
+     
+     return ret;
+ }

@@ -1,0 +1,11 @@
+Yorick is an interpreted language for scientific computing and
+numerical analysis, very similar to Matlab.
+
+Yorick has a compact syntax, similar to C, but with array operators.
+It is easily expandable through dynamic linking of C libraries,
+allows efficient manipulation of arbitrary size/dimension arrays,
+and offers extensive graphic capabilities.
+
+Yorick includes an interactive graphics package, and a binary file
+package capable of translating to and from the raw numeric formats
+of all modern computers.

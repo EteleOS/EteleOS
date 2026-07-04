@@ -1,0 +1,13 @@
+Index: src/LYMainLoop.c
+--- src/LYMainLoop.c.orig
++++ src/LYMainLoop.c
+@@ -7225,7 +7225,8 @@ int mainloop(void)
+ 	    handle_LYK_DOWN_HALF(&old_c, real_c);
+ 	    break;
+ 
+-#ifdef CAN_CUT_AND_PASTE
++/* Disabling clipboard interactions to avoid pledged calls to exec. */
++#if 0
+ 	case LYK_TO_CLIPBOARD:	/* ^S */
+ 	    {
+ 		char *s;

@@ -1,0 +1,5 @@
+@conflict p5-YAML-<1.15
+bin/test-yaml
+${P5SITE}/Test/YAML.pm
+${P5SITE}/Test/YAML.pod
+@man man/man3p/Test::YAML.3p

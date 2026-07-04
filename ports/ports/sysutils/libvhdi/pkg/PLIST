@@ -1,0 +1,19 @@
+@bin bin/vhdiinfo
+@bin bin/vhdimount
+include/libvhdi/
+include/libvhdi.h
+include/libvhdi/codepage.h
+include/libvhdi/definitions.h
+include/libvhdi/error.h
+include/libvhdi/extern.h
+include/libvhdi/features.h
+include/libvhdi/types.h
+@static-lib lib/libvhdi.a
+lib/libvhdi.la
+@lib lib/libvhdi.so.${LIBvhdi_VERSION}
+lib/pkgconfig/libvhdi.pc
+lib/python${MODPY_VERSION}/site-packages/pyvhdi.a
+lib/python${MODPY_VERSION}/site-packages/pyvhdi.la
+@so lib/python${MODPY_VERSION}/site-packages/pyvhdi.so
+@man man/man1/vhdiinfo.1
+@man man/man3/libvhdi.3

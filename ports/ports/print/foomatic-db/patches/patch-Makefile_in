@@ -1,0 +1,15 @@
+--- Makefile.in.orig	Thu Jan 12 01:40:32 2012
++++ Makefile.in	Thu Jan 12 17:35:06 2012
+@@ -74,8 +74,10 @@ install-db:
+ 	    cp $$d $(DESTDIR)$(LIBDIR)/db/source/driver; \
+ 	  done )
+ 	cp db/source/opt/*.xml $(DESTDIR)$(LIBDIR)/db/source/opt
+-	( cd db/source && tar cf - --exclude=.svn PPD ) | \
+-	  ( cd $(DESTDIR)$(LIBDIR)/db/source && tar xf -)
++	# ( cd db/source && tar cf - --exclude=.svn PPD ) | \
++	#  ( cd $(DESTDIR)$(LIBDIR)/db/source && tar xf -)
++	( find db/source/PPD \! -path \*'.svn'\* ) | \
++	  ( pax -r -w -d $(DESTDIR)$(LIBDIR) )
+ 	if test $(GZIP) != GZIP_NOT_FOUND -a $(GZIP_PPDS) != no ; then \
+ 	  GZIP='' find $(DESTDIR)$(LIBDIR)/db/source/PPD -name "*.ppd" -exec $(GZIP) "{}" \; ; \
+ 	fi

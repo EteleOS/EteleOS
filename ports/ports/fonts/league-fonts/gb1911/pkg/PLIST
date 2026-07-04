@@ -1,0 +1,5 @@
+@conflict league-fonts-<=0.1p2
+share/fonts/
+@fontdir share/fonts/league-fonts/
+share/fonts/league-fonts/GoudyBookletter1911.otf
+share/fonts/league-fonts/GoudyBookletter1911TT.ttf

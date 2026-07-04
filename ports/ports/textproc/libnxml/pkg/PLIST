@@ -1,0 +1,5 @@
+include/nxml.h
+lib/libnxml.a
+lib/libnxml.la
+@lib lib/libnxml.so.${LIBnxml_VERSION}
+lib/pkgconfig/nxml.pc

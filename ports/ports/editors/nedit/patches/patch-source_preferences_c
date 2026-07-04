@@ -1,0 +1,23 @@
+Add .pp to the list of extensions for Pascal source files.
+
+Index: source/preferences.c
+--- source/preferences.c.orig
++++ source/preferences.c
+@@ -759,7 +759,7 @@ static PrefDescripRec PrefDescrip[] = {
+         Makefile:MAKEFILE:::None:8:8::\n\
+         Matlab:.M .OCT .SCI:::::::\n\
+         NEdit Macro:.NM .NEDITMACRO:::::::\n\
+-        Pascal:.PAS .P .INT:::::::\n\
++        Pascal:.PAS .P .PP .INT:::::::\n\
+         Perl:.PL .PM .P5:\"^[ \\t]*#[ \\t]*!.*perl\":Auto:None:::\".,/\\\\`'!$@#%^&*()-=+{}[]\"\":;<>?~|\":\n\
+         PostScript:.ps .PS .eps .EPS .epsf .epsi:\"^%!\":::::\"/%(){}[]<>\":\n\
+         Python:.PY:\"^#!.*python\":Auto:None:::\"!\"\"#$%&'()*+,-./:;<=>?@[\\\\]^`{|}~\":\n\
+@@ -788,7 +788,7 @@ static PrefDescripRec PrefDescrip[] = {
+         Makefile:Makefile makefile .gmk:::None:8:8::\n\
+         Matlab:.m .oct .sci:::::::\n\
+         NEdit Macro:.nm .neditmacro:::::::\n\
+-        Pascal:.pas .p .int:::::::\n\
++        Pascal:.pas .p .pp .int:::::::\n\
+         Perl:.pl .pm .p5 .PL:\"^[ \\t]*#[ \\t]*!.*perl\":Auto:None:::\".,/\\\\`'!$@#%^&*()-=+{}[]\"\":;<>?~|\":\n\
+         PostScript:.ps .eps .epsf .epsi:\"^%!\":::::\"/%(){}[]<>\":\n\
+         Python:.py:\"^#!.*python\":Auto:None:::\"!\"\"#$%&'()*+,-./:;<=>?@[\\\\]^`{|}~\":\n\

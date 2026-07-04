@@ -1,0 +1,33 @@
+--- VEX/priv/guest_amd64_helpers.c.orig
++++ VEX/priv/guest_amd64_helpers.c
+@@ -3873,12 +3873,16 @@
+    on amd64. */
+ void amd64g_dirtyhelper_RDTSCP ( VexGuestAMD64State* st )
+ {
++// XXX
++#if !defined(VGO_openbsd)
+ #  if defined(__x86_64__)
+    UInt eax, ecx, edx;
+    __asm__ __volatile__("rdtscp" : "=a" (eax), "=d" (edx), "=c" (ecx));
+    st->guest_RAX = (ULong)eax;
+    st->guest_RCX = (ULong)ecx;
+    st->guest_RDX = (ULong)edx;
++#endif
++// XXX
+ #  else
+    /* Do nothing. */
+ #  endif
+@@ -4782,6 +4786,13 @@
+       Typically, on linux, this assumes that %fs is only ever zero (main
+       thread) or 0x63. */
+    vex_state->guest_FS_CONST = 0;
++#if defined(VGO_openbsd)
++{
++   int fs;
++   __asm__("mov %%fs,%0" : "=r" (fs));
++   vex_state->guest_FS_CONST = fs;
++}
++#endif
+ 
+    vex_state->guest_RIP = 0;
+ 

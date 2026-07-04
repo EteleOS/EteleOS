@@ -1,0 +1,28 @@
+From 0780809731c8ab1c364202b1900d3df106b28626 Mon Sep 17 00:00:00 2001
+From: Robert Ancell <robert.ancell@canonical.com>
+Date: Wed, 14 Oct 2015 10:09:49 +0100
+Subject: Fix some compiler warnings
+
+https://bugzilla.gnome.org/show_bug.cgi?id=328697
+(patch from Fedora)
+
+--- gconf/gconftool.c.orig	Tue Aug 16 04:59:31 2011
++++ gconf/gconftool.c	Mon Feb 29 10:02:10 2016
+@@ -578,8 +578,6 @@ main (int argc, char** argv)
+   bindtextdomain (GETTEXT_PACKAGE,GCONF_LOCALE_DIR);
+   textdomain (GETTEXT_PACKAGE);
+ 
+-  g_thread_init (NULL);
+-
+   _gconf_init_i18n ();
+   
+   context = g_option_context_new (N_("- Tool to manipulate a GConf configuration"));
+@@ -4081,6 +4079,8 @@ do_makefile_install(GConfEngine* conf, const gchar** a
+ 
+       ++args;
+     }
++
++  g_spawn_command_line_sync ("/usr/bin/pkill -TERM -f " GCONF_SERVERDIR "/" GCONFD "2>/dev/null", NULL, NULL, NULL, NULL);
+ 
+   retval |= do_sync (conf);
+   return retval;

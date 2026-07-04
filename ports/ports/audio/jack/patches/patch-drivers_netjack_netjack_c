@@ -1,0 +1,22 @@
+Fix with celt>=0.11
+
+--- drivers/netjack/netjack.c.orig	Tue Feb 23 15:13:53 2016
++++ drivers/netjack/netjack.c	Fri Sep 23 09:32:04 2016
+@@ -413,7 +413,7 @@ void netjack_attach ( netjack_driver_state_t *netj )
+ 		if ( netj->bitdepth == CELT_MODE ) {
+ #if HAVE_CELT
+ #if HAVE_CELT_API_0_7 || HAVE_CELT_API_0_8
+-			netj->capture_srcs = jack_slist_append (netj->capture_srcs, celt_decoder_create ( netj->celt_mode, 1, NULL ) );
++			netj->capture_srcs = jack_slist_append (netj->capture_srcs, celt_decoder_create_custom ( netj->celt_mode, 1, NULL ) );
+ #else
+ 			netj->capture_srcs = jack_slist_append (netj->capture_srcs, celt_decoder_create ( netj->celt_mode ) );
+ #endif
+@@ -460,7 +460,7 @@ void netjack_attach ( netjack_driver_state_t *netj )
+ #if HAVE_CELT
+ #if HAVE_CELT_API_0_7 || HAVE_CELT_API_0_8
+ 			CELTMode *celt_mode = celt_mode_create ( netj->sample_rate, netj->period_size, NULL );
+-			netj->playback_srcs = jack_slist_append (netj->playback_srcs, celt_encoder_create ( celt_mode, 1, NULL ) );
++			netj->playback_srcs = jack_slist_append (netj->playback_srcs, celt_encoder_create_custom ( celt_mode, 1, NULL ) );
+ #else
+ 			CELTMode *celt_mode = celt_mode_create ( netj->sample_rate, 1, netj->period_size, NULL );
+ 			netj->playback_srcs = jack_slist_append (netj->playback_srcs, celt_encoder_create ( celt_mode ) );

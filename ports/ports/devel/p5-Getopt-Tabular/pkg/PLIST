@@ -1,0 +1,4 @@
+${P5SITE}/Getopt/
+${P5SITE}/Getopt/Tabular.pm
+${P5SITE}/Getopt/Tabular.pod
+@man man/man3p/Getopt::Tabular.3p

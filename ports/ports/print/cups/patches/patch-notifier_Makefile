@@ -1,0 +1,11 @@
+Index: notifier/Makefile
+--- notifier/Makefile.orig
++++ notifier/Makefile
+@@ -57,7 +57,6 @@ install:	all install-data install-headers install-libs
+ #
+ 
+ install-data:
+-	$(INSTALL_DIR) -m 775 -g $(CUPS_GROUP) $(CACHEDIR)/rss
+ 
+ 
+ #

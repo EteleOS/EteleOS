@@ -1,0 +1,8 @@
+${P5SITE}/Test/
+${P5SITE}/Test/Class/
+${P5SITE}/Test/Class.pm
+${P5SITE}/Test/Class/Load.pm
+${P5SITE}/Test/Class/MethodInfo.pm
+@man man/man3p/Test::Class.3p
+@man man/man3p/Test::Class::Load.3p
+@man man/man3p/Test::Class::MethodInfo.3p

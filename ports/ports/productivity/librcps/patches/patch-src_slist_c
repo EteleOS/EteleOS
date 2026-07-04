@@ -1,0 +1,12 @@
+Replace the malloc.h header with stdlib.h.
+
+--- src/slist.c.orig	Thu Nov 20 01:45:26 2014
++++ src/slist.c	Thu Nov 20 01:45:42 2014
+@@ -1,6 +1,6 @@
+ #include <assert.h>
+ #include <stdio.h>
+-#include <malloc.h>
++#include <stdlib.h>
+ #include <string.h>
+ 
+ #include "slist.h"

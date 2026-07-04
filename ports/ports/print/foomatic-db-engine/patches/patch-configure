@@ -1,0 +1,68 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -3717,15 +3717,15 @@ LIBS="$save_LIBS"
+ 
+ # Checks for programs/directories which are used by Foomtic
+ 
+-SPOOLSEARCHPATH=/var/spool:/usr/spool/:/usr/local/spool:/usr/local/var/spool:/var/local/spool:/var/local
+-LOGSEARCHPATH=/var/log:/usr/log:/usr/local/log:/usr/local/var/log:/var/local/log:/var/local
+-SYSCONFSEARCHPATH=/etc:/usr/etc:/usr/local/etc:/var/etc
+-SBINSEARCHPATH=/usr/sbin:/sbin:/usr/local/sbin:/etc/sbin
+-BINSEARCHPATH=/usr/bin:/bin:/usr/local/bin
+-DATASEARCHPATH=/usr/share:/usr/local/share:$libdir:/usr/local/lib:/opt
+-LIBSEARCHPATH=$libdir:/lib:/usr/local/lib:/usr/local/libexec:/opt
+-PTALPIPESSEARCHPATH=/var/run:/var:/var/ptal:/usr/var/run:/usr/var:/usr/var/ptal:/usr/local/var/run:/usr/local/var:/usr/local/var/ptal:/dev:/dev/ptal
+-MTINKPIPESSEARCHPATH=/var:/var/run:/usr/var/:/usr/var/run:/usr/local/var:/usr/local/var/run:/dev
++SPOOLSEARCHPATH=/var/spool
++LOGSEARCHPATH=/var/log
++SYSCONFSEARCHPATH=${SYSCONFDIR}
++SBINSEARCHPATH=/usr/sbin:/sbin:${LOCALBASE}/sbin:/etc/sbin
++BINSEARCHPATH=/usr/bin:/bin:${LOCALBASE}/bin
++DATASEARCHPATH=/usr/share:${LOCALBASE}/share:/usr/lib:${LOCALBASE}/lib
++LIBSEARCHPATH=/usr/lib:/lib:${LOCALBASE}/lib:${LOCALBASE}/libexec
++PTALPIPESSEARCHPATH=/var/run
++MTINKPIPESSEARCHPATH=/var/run
+ 
+ # There is a bug in some versions of autoconf that causes
+ # bad expansion of paths in the AC_PATH_* macros.  This is very annoying
+@@ -4210,7 +4210,7 @@ fi
+ 
+ 
+ # Check for bourne shell
+-for ac_prog in bash sh
++for ac_prog in sh
+ do
+   # Extract the first word of "$ac_prog", so it can be a program name with args.
+ set dummy $ac_prog; ac_word=$2
+@@ -5668,8 +5668,8 @@ fi
+ done
+ test -n "$CUPS_LPINFO" || CUPS_LPINFO="/usr/sbin/lpinfo"
+ 
+-
+ # Paths for PDQ
++if [ x"$with_pdq" = x"yes" ]; then
+ for ac_dir in pdq
+ do
+ # Extract the first word of "$ac_dir", so it can be a program name with args.
+@@ -5804,9 +5804,11 @@ fi
+   test -n "$PDQ_PRINT" && break
+ done
+ test -n "$PDQ_PRINT" || PDQ_PRINT="/usr/bin/pdq"
++fi  # with_pdq = yes
+ 
+ 
+ # Paths for PPR
++if [ x"$with_ppr" = x"yes" ]; then
+ for ac_prog in ppr/bin/pprd
+ do
+   # Extract the first word of "$ac_prog", so it can be a program name with args.
+@@ -6119,7 +6121,7 @@ fi
+   test -n "$PPR_PPOP" && break
+ done
+ test -n "$PPR_PPOP" || PPR_PPOP="/usr/bin/ppop"
+-
++fi  # with_ppr = yes
+ 
+ 
+ # Other paths

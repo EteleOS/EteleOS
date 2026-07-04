@@ -1,0 +1,21 @@
+Index: support/shobj-conf
+--- support/shobj-conf.orig
++++ support/shobj-conf
+@@ -174,7 +174,16 @@ darwin*)
+ 	SHLIB_LIBS='-lncurses'	# see if -lcurses works on MacOS X 10.1 
+ 	;;
+ 
+-openbsd*|netbsd*|mirbsd*)
++openbsd*)
++	SHOBJ_CFLAGS=-fPIC
++	SHOBJ_LD='${CC}'
++	SHOBJ_LDFLAGS='-shared'
++
++	SHLIB_XLDFLAGS='-R$(libdir)'
++	SHLIB_LIBVERSION='$(SHLIB_LIBSUFF).$(RL_SHLIB_V)'
++	;;
++
++netbsd*|mirbsd*)
+ 	SHOBJ_CFLAGS=-fPIC
+ 	SHOBJ_LD='${CC}'
+ 	SHOBJ_LDFLAGS='-shared'

@@ -1,0 +1,16 @@
+@bin bin/hpcd
+@bin bin/hpcopy
+@bin bin/hpfsck
+@bin bin/hpls
+@bin bin/hpmkdir
+@bin bin/hpmount
+@bin bin/hppwd
+@bin bin/hprm
+@bin bin/hpumount
+lib/libhfsp.a
+lib/libhfsp.la
+@lib lib/libhfsp.so.${LIBhfsp_VERSION}
+share/doc/hfsplus/
+share/doc/hfsplus/bugs.html
+share/doc/hfsplus/hfsp.html
+share/doc/hfsplus/libhfsp.html

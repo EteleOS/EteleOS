@@ -1,0 +1,8 @@
+bin/qrouter
+share/qrouter/
+share/qrouter/console.tcl
+@so share/qrouter/qrouter.so
+share/qrouter/qrouter.tcl
+@bin share/qrouter/qrouterexec
+@bin share/qrouter/qrouternullg
+share/qrouter/tkcon.tcl

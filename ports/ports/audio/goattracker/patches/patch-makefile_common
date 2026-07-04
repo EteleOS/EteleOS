@@ -1,0 +1,12 @@
+Index: makefile.common
+--- makefile.common.orig
++++ makefile.common
+@@ -2,7 +2,7 @@
+ 
+ CC?=gcc
+ CXX?=g++
+-CFLAGS+=-Ibme -Iasm -O3
++CFLAGS+=-Ibme -Iasm
+ CXXFLAGS+=$(CFLAGS) -fpermissive
+ 
+ EXE=	$(PREFIX)goattrk2$(SUFFIX) \

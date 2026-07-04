@@ -1,0 +1,43 @@
+Fix build with opaque BIO_METHOD in LibreSSL 3.5.
+
+Index: src/modules/tls/tls_bio.c
+--- src/modules/tls/tls_bio.c.orig
++++ src/modules/tls/tls_bio.c
+@@ -63,7 +63,7 @@ static int tls_bio_mbuf_puts(BIO* b, const char* s);
+ static long tls_bio_mbuf_ctrl(BIO* b, int cmd, long arg1, void* arg2);
+ 
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x010100000L || defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER < 0x010100000L
+ static BIO_METHOD tls_mbuf_method = {
+ 	BIO_TYPE_TLS_MBUF,	/* type */
+ 	"sr_tls_mbuf",		/* name */
+@@ -102,6 +102,19 @@ static void BIO_set_init(BIO *b, int init)
+ #endif
+ 
+ #else
++#if defined(LIBRESSL_VERSION_NUMBER)
++/*
++ * libressl doesn't have OPENSSL_zalloc
++ */
++static void *CRYPTO_zalloc(size_t num, const char *file, int line)
++{
++	void *ret = CRYPTO_malloc(num, file, line);
++	if (ret != NULL)
++		memset(ret, 0, num);
++	return ret;
++}
++# define OPENSSL_zalloc(num) CRYPTO_zalloc(num, __FILE__, __LINE__)
++#endif
+ static BIO_METHOD *tls_mbuf_method = NULL;
+ #endif
+ 
+@@ -109,7 +122,7 @@ static BIO_METHOD *tls_mbuf_method = NULL;
+ /** returns a custom tls_mbuf BIO. */
+ BIO_METHOD* tls_BIO_mbuf(void)
+ {
+-#if OPENSSL_VERSION_NUMBER < 0x010100000L || defined(LIBRESSL_VERSION_NUMBER)
++#if OPENSSL_VERSION_NUMBER < 0x010100000L
+ 	return &tls_mbuf_method;
+ #else
+ 	if(tls_mbuf_method != NULL) {

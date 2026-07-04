@@ -1,0 +1,4 @@
+@bin bin/dosbox
+@man man/man1/dosbox.1
+share/doc/dosbox/
+share/doc/dosbox/README

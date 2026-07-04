@@ -1,0 +1,20 @@
+Index: Ma2Asm/Makefile.in
+--- Ma2Asm/Makefile.in.orig
++++ Ma2Asm/Makefile.in
+@@ -59,14 +59,14 @@ CHKMA_OBJS=chkma@OBJ_SUFFIX@ chkma_ma@OBJ_SUFFIX@ ../E
+  
+ chkma@OBJ_SUFFIX@: chkma.c ../EnginePl/engine.c
+ 	if [ "$$FC" = "Y" ]; then FCFLAGS='-DFAST'; fi; \
+-	$(GPLC) --c-compiler "$(CC)" -C "$(CFLAGS) $$FCFLAGS" -c chkma.c
++	export PL_PATH=$(PWD)/../ ; ../TopComp/$(GPLC) --c-compiler "$(CC)" -C "$(CFLAGS) $$FCFLAGS" -c chkma.c
+ 
+ chkma_ma@ASM_SUFFIX@: chkma_ma.ma ma2asm@EXE_SUFFIX@
+ 	if [ "$$FC" != "Y" ]; then MAFLAGS='--ignore-fast'; fi; \
+ 	./ma2asm --comment $$MAFLAGS chkma_ma.ma
+ 
+ chkma_ma@OBJ_SUFFIX@: chkma_ma@ASM_SUFFIX@
+-	$(GPLC) -c chkma_ma@ASM_SUFFIX@
++	export PL_PATH=$(PWD)/../ ;../TopComp/$(GPLC) -c chkma_ma@ASM_SUFFIX@
+ 
+ chkma@EXE_SUFFIX@: $(CHKMA_OBJS)
+ 	$(GPLC) -o chkma@EXE_SUFFIX@ $(CHKMA_OBJS) --no-pl-lib

@@ -1,0 +1,5 @@
+share/fonts/
+@fontdir share/fonts/league-fonts/
+share/fonts/league-fonts/Junction-bold.otf
+share/fonts/league-fonts/Junction-light.otf
+share/fonts/league-fonts/Junction-regular.otf

@@ -1,0 +1,6 @@
+@rcscript ${RCDIR}/greyscanner
+@man man/man1/greyscanner.1
+sbin/greyscanner
+share/examples/greyscanner/
+share/examples/greyscanner/greyscanner.conf
+@sample ${SYSCONFDIR}/greyscanner.conf

@@ -1,0 +1,59 @@
+Provide gettid and gethostbyname_r.
+Fix build with opaque HMAC_CTX in LibreSSL 3.5.
+
+Index: libdroplet/src/utils.c
+--- libdroplet/src/utils.c.orig
++++ libdroplet/src/utils.c
+@@ -72,6 +72,13 @@ gettid()
+ {
+   return syscall(SYS_gettid);
+ }
++#elif defined(__OpenBSD__)
++#include <unistd.h>
++pid_t
++gettid(void)
++{
++  return getpid();
++}
+ 
+ #else
+ #include <syscall.h>
+@@ -120,6 +127,17 @@ linux_gethostbyname_r(const char *name,
+   *result = resultp;
+ 
+   return 0;
++#elif defined(__OpenBSD__)
++
++  struct hostent *resultp;
++
++  resultp = gethostbyname(name);
++  if (NULL == resultp)
++    return 1;
++
++  *result = resultp;
++
++  return 0;
+ #else
+   //linux
+   return gethostbyname_r(name, ret, buf, buflen, result, h_errnop);
+@@ -475,14 +493,14 @@ dpl_hmac_sha1(const char *key_buf,
+               unsigned int data_len,
+               char *digest_buf)
+ {
+-  HMAC_CTX ctx;
++  HMAC_CTX *ctx;
+   u_int digest_len;
+ 
+-  HMAC_CTX_init(&ctx);
+-  HMAC_Init_ex(&ctx, key_buf, key_len, EVP_sha1(), NULL);
+-  HMAC_Update(&ctx, (u_char *) data_buf, data_len);
+-  HMAC_Final(&ctx, (u_char *) digest_buf, &digest_len);
+-  HMAC_CTX_cleanup(&ctx);
++  ctx = HMAC_CTX_new();
++  HMAC_Init_ex(ctx, key_buf, key_len, EVP_sha1(), NULL);
++  HMAC_Update(ctx, (u_char *) data_buf, data_len);
++  HMAC_Final(ctx, (u_char *) digest_buf, &digest_len);
++  HMAC_CTX_free(ctx);
+ 
+   return digest_len;
+ }

@@ -1,0 +1,18 @@
+Index: src/squid.8.in
+--- src/squid.8.in.orig
++++ src/squid.8.in
+@@ -210,12 +210,14 @@ Some packaging distributions block even that.
+ .if !'po4a'hide' .IP "squid.conf.default"
+ Reference copy of the configuration file. Always kept up to date with
+ the version of Squid you are using.
++Located in /usr/local/share/examples/squid in the OpenBSD package.
+ .IP
+ Use this to look up the default configuration settings and syntax after upgrading.
+ .
+ .if !'po4a'hide' .IP "squid.conf.documented"
+ Reference copy of the configuration file. Always kept up to date with
+ the version of Squid you are using.
++Located in /usr/local/share/examples/squid in the OpenBSD package.
+ .IP
+ Use this to read the documentation for configuration options available in
+ your build of Squid. The online configuration manual is also available for

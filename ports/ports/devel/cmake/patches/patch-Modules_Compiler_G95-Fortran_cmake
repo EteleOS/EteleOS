@@ -1,0 +1,21 @@
+Index: Modules/Compiler/G95-Fortran.cmake
+--- Modules/Compiler/G95-Fortran.cmake.orig
++++ Modules/Compiler/G95-Fortran.cmake
+@@ -1,8 +1,13 @@
+ string(APPEND CMAKE_Fortran_FLAGS_INIT " ")
+-string(APPEND CMAKE_Fortran_FLAGS_DEBUG_INIT " -g")
+-string(APPEND CMAKE_Fortran_FLAGS_MINSIZEREL_INIT " -Os")
+-string(APPEND CMAKE_Fortran_FLAGS_RELEASE_INIT " -O3")
+-string(APPEND CMAKE_Fortran_FLAGS_RELWITHDEBINFO_INIT " -O2 -g")
++if(DEFINED ENV{MODCMAKE_PORT_BUILD})
++  string(APPEND CMAKE_Fortran_FLAGS_DEBUG_INIT " -g")
++  string(APPEND CMAKE_Fortran_FLAGS_RELWITHDEBINFO_INIT " -g")
++else()
++  string(APPEND CMAKE_Fortran_FLAGS_DEBUG_INIT " -g")
++  string(APPEND CMAKE_Fortran_FLAGS_MINSIZEREL_INIT " -Os")
++  string(APPEND CMAKE_Fortran_FLAGS_RELEASE_INIT " -O3")
++  string(APPEND CMAKE_Fortran_FLAGS_RELWITHDEBINFO_INIT " -O2 -g")
++endif()
+ set(CMAKE_Fortran_MODDIR_FLAG "-fmod=")
+ set(CMAKE_Fortran_VERBOSE_FLAG "-v")
+ set(CMAKE_Fortran_FORMAT_FIXED_FLAG "-ffixed-form")

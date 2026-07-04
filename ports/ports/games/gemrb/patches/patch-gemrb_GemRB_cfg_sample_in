@@ -1,0 +1,34 @@
+Index: gemrb/GemRB.cfg.sample.in
+--- gemrb/GemRB.cfg.sample.in.orig
++++ gemrb/GemRB.cfg.sample.in
+@@ -197,10 +197,10 @@ VitaKeepAspectRatio=1
+ #  You may need to specify this path if running GemRB without installing it.  #
+ ###############################################################################
+ 
+-#PluginsPath=@DEFAULT_PLUGINS_DIR@
++PluginsPath=@DEFAULT_PLUGINS_DIR@
+ 
+ # This is the path where GemRB will store cached files, enter the full path.
+-CachePath=@DEFAULT_CACHE_DIR@
++CachePath=~/.cache/gemrb/
+ 
+ # The path where GemRB looks for non-BAM fonts (eg. TTF)
+ #CustomFontPath=
+@@ -229,7 +229,7 @@ CachePath=@DEFAULT_CACHE_DIR@
+ #  'GUIScript' subdirectory.                                                  #
+ ###############################################################################
+ 
+-#GUIScriptsPath=@DATA_DIR@
++GUIScriptsPath=@DATA_DIR@
+ 
+ ###############################################################################
+ #  Game Data Path [String]                                                    #
+@@ -257,7 +257,7 @@ CachePath=@DEFAULT_CACHE_DIR@
+ ###############################################################################
+ 
+ #GemRBOverridePath=@DATA_DIR@
+-#GemRBUnhardcodedPath=@DATA_DIR@
++GemRBUnhardcodedPath=@DATA_DIR@
+ 
+ ###############################################################################
+ #  Game Language Path [String]                                                #

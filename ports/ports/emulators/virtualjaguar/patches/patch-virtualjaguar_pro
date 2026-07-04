@@ -1,0 +1,14 @@
+Index: virtualjaguar.pro
+--- virtualjaguar.pro.orig
++++ virtualjaguar.pro
+@@ -53,8 +53,8 @@ macx  { ICON = res/vj-icon.icns }
+ # NOTE: May have to put -Wall back in, but only on non-release cycles. It can
+ #       cause problems if you're not careful. (Can do this via command line in
+ #       qmake)
+-QMAKE_CFLAGS += `$(CROSS)sdl-config --cflags`
+-QMAKE_CXXFLAGS += `$(CROSS)sdl-config --cflags`
++QMAKE_CFLAGS = `$(CROSS)sdl-config --cflags`
++QMAKE_CXXFLAGS = `$(CROSS)sdl-config --cflags`
+ 
+ # Need to add libcdio stuffola (checking/including)...
+ 

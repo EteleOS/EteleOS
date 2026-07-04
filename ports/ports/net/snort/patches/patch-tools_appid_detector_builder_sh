@@ -1,0 +1,9 @@
+Index: tools/appid_detector_builder.sh
+--- tools/appid_detector_builder.sh.orig
++++ tools/appid_detector_builder.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!${LOCALBASE}/bin/bash
+ ##
+ ## Copyright (C) 2015 Cisco and/or its affiliates. All rights reserved.
+ ##

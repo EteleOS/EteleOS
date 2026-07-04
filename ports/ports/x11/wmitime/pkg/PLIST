@@ -1,0 +1,4 @@
+@bin bin/wmitime
+@man man/man1/wmitime.1
+share/applications/wmitime.desktop
+@tag update-desktop-database

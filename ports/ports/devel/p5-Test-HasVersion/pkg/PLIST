@@ -1,0 +1,4 @@
+bin/test_version
+${P5SITE}/Test/
+${P5SITE}/Test/HasVersion.pm
+@man man/man3p/Test::HasVersion.3p

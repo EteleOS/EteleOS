@@ -1,0 +1,15 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/upsmon"
+
+. /etc/rc.d/rc.subr
+
+rc_reload() {
+	${daemon} -c reload
+}
+
+rc_stop() {
+	${daemon} -c stop
+}
+
+rc_cmd $1

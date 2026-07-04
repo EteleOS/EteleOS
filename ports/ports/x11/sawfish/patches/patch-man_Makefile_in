@@ -1,0 +1,13 @@
+Index: man/Makefile.in
+--- man/Makefile.in.orig
++++ man/Makefile.in
+@@ -60,8 +60,7 @@ install : sawfish.info installdirs
+ 	done
+ 	-install-info --info-dir=$(DESTDIR)$(infodir) sawfish.info
+ 	for f in sawfish*.1; do \
+-		gzip $$f -c > $$f.gz; \
+-		$(INSTALL_DATA) $$f.gz $(DESTDIR)$(mandir)/man1/; \
++		$(INSTALL_DATA) $$f $(DESTDIR)$(mandir)/man1/; \
+ 	done
+ 
+ installdirs : $(top_srcdir)/mkinstalldirs

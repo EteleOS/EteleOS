@@ -1,0 +1,3 @@
+${P5SITE}/Scope/
+${P5SITE}/Scope/Guard.pm
+@man man/man3p/Scope::Guard.3p

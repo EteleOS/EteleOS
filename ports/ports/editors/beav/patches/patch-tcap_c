@@ -1,0 +1,58 @@
+Index: tcap.c
+--- tcap.c.orig
++++ tcap.c
+@@ -23,6 +23,10 @@
+ #define BEL     0x07
+ #define ESC     0x1B
+ 
++/* XXX prevent clang from unifying shit */
++#define PC myownPC
++#define UP myownUP
++
+ extern char *tgoto ();
+ 
+ #ifdef NOPROTO
+@@ -41,11 +45,12 @@ char *UP, PC, *CM, *CE, *CL, *SO, *SE, *TI, *TE;	/* DR
+ 
+ #ifdef BSD
+ #include <sys/ioctl.h>
++#ifdef TIOCGWINSZ
+ struct winsize ttysize;
+-#endif /* BSD */
+-#ifdef ULTRIX
+-struct winsize ttysize;
++#else
++struct ttysize ttysize;
+ #endif
++#endif /* BSD */
+ 
+ void
+ putpad (str)
+@@ -62,9 +67,6 @@ tcapopen ()
+     char tcbuf[1024];
+     char *tv_stype;
+     char err_str[NCOL];
+-#ifdef ULTRIX
+-    struct winsize ttysize;
+-#endif
+ 
+     nrow = NROW;
+ 
+@@ -89,7 +91,7 @@ tcapopen ()
+ 
+ 
+ #ifdef BSD
+-#ifdef ULTRIX
++#ifdef TIOCGWINSZ
+     if (ioctl (0, TIOCGWINSZ, &ttysize) == 0
+ 	&& ttysize.ws_row > 0)
+     {
+@@ -103,7 +105,7 @@ tcapopen ()
+ 	nrow = ttysize.ts_lines;
+     }
+     else
+-#endif /* ULTRIX */
++#endif /* TIOCGWINSZ */
+ #endif /* BSD */
+ 
+ #ifndef OS2

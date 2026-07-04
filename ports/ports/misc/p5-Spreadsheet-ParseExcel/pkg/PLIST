@@ -1,0 +1,64 @@
+${P5SITE}/Spreadsheet/ParseExcel/
+${P5SITE}/Spreadsheet/ParseExcel.pm
+${P5SITE}/Spreadsheet/ParseExcel/Cell.pm
+${P5SITE}/Spreadsheet/ParseExcel/Dump.pm
+${P5SITE}/Spreadsheet/ParseExcel/FmtDefault.pm
+${P5SITE}/Spreadsheet/ParseExcel/FmtJapan.pm
+${P5SITE}/Spreadsheet/ParseExcel/FmtJapan2.pm
+${P5SITE}/Spreadsheet/ParseExcel/FmtUnicode.pm
+${P5SITE}/Spreadsheet/ParseExcel/Font.pm
+${P5SITE}/Spreadsheet/ParseExcel/Format.pm
+${P5SITE}/Spreadsheet/ParseExcel/SaveParser/
+${P5SITE}/Spreadsheet/ParseExcel/SaveParser.pm
+${P5SITE}/Spreadsheet/ParseExcel/SaveParser/Workbook.pm
+${P5SITE}/Spreadsheet/ParseExcel/SaveParser/Worksheet.pm
+${P5SITE}/Spreadsheet/ParseExcel/Utility.pm
+${P5SITE}/Spreadsheet/ParseExcel/Workbook.pm
+${P5SITE}/Spreadsheet/ParseExcel/Worksheet.pm
+@man man/man3p/Spreadsheet::ParseExcel.3p
+@man man/man3p/Spreadsheet::ParseExcel::Cell.3p
+@man man/man3p/Spreadsheet::ParseExcel::Dump.3p
+@man man/man3p/Spreadsheet::ParseExcel::FmtDefault.3p
+@man man/man3p/Spreadsheet::ParseExcel::FmtJapan.3p
+@man man/man3p/Spreadsheet::ParseExcel::FmtJapan2.3p
+@man man/man3p/Spreadsheet::ParseExcel::FmtUnicode.3p
+@man man/man3p/Spreadsheet::ParseExcel::Font.3p
+@man man/man3p/Spreadsheet::ParseExcel::Format.3p
+@man man/man3p/Spreadsheet::ParseExcel::SaveParser.3p
+@man man/man3p/Spreadsheet::ParseExcel::SaveParser::Workbook.3p
+@man man/man3p/Spreadsheet::ParseExcel::SaveParser::Worksheet.3p
+@man man/man3p/Spreadsheet::ParseExcel::Utility.3p
+@man man/man3p/Spreadsheet::ParseExcel::Workbook.3p
+@man man/man3p/Spreadsheet::ParseExcel::Worksheet.3p
+share/examples/p5-Spreadsheet-ParseExcel/
+share/examples/p5-Spreadsheet-ParseExcel/Excel/
+share/examples/p5-Spreadsheet-ParseExcel/Excel/AuthorK.xls
+share/examples/p5-Spreadsheet-ParseExcel/Excel/AuthorK95.xls
+share/examples/p5-Spreadsheet-ParseExcel/Excel/FmtTest.xls
+share/examples/p5-Spreadsheet-ParseExcel/Excel/Rich.xls
+share/examples/p5-Spreadsheet-ParseExcel/Excel/Test1904.xls
+share/examples/p5-Spreadsheet-ParseExcel/Excel/Test1904_95.xls
+share/examples/p5-Spreadsheet-ParseExcel/Excel/Test95.xls
+share/examples/p5-Spreadsheet-ParseExcel/Excel/Test95J.xls
+share/examples/p5-Spreadsheet-ParseExcel/Excel/Test97.xls
+share/examples/p5-Spreadsheet-ParseExcel/Excel/Test97J.xls
+share/examples/p5-Spreadsheet-ParseExcel/Excel/oem.xls
+share/examples/p5-Spreadsheet-ParseExcel/Ilya.pl
+share/examples/p5-Spreadsheet-ParseExcel/README
+share/examples/p5-Spreadsheet-ParseExcel/chkFmt.pl
+share/examples/p5-Spreadsheet-ParseExcel/chkInfo.pl
+share/examples/p5-Spreadsheet-ParseExcel/dmpEx.pl
+share/examples/p5-Spreadsheet-ParseExcel/dmpExH.pl
+share/examples/p5-Spreadsheet-ParseExcel/dmpExHJ.pl
+share/examples/p5-Spreadsheet-ParseExcel/dmpExJ.pl
+share/examples/p5-Spreadsheet-ParseExcel/dmpExR.pl
+share/examples/p5-Spreadsheet-ParseExcel/dmpExU.pl
+share/examples/p5-Spreadsheet-ParseExcel/dmpEx_2xml.pl
+share/examples/p5-Spreadsheet-ParseExcel/iftest.pl
+share/examples/p5-Spreadsheet-ParseExcel/iftestj.pl
+share/examples/p5-Spreadsheet-ParseExcel/parse.pl
+share/examples/p5-Spreadsheet-ParseExcel/sample.pl
+share/examples/p5-Spreadsheet-ParseExcel/sampleOEM.pl
+share/examples/p5-Spreadsheet-ParseExcel/sample_j.pl
+share/examples/p5-Spreadsheet-ParseExcel/smpFile.pl
+share/examples/p5-Spreadsheet-ParseExcel/xls2csv.pl

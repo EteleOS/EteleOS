@@ -1,0 +1,51 @@
+Index: doc/Makefile
+--- doc/Makefile.orig
++++ doc/Makefile
+@@ -24,9 +24,9 @@ INFODIR=/usr/local/info
+ MAN_FMT_PRG=$(NROFF) -man
+ 
+ 
+-all: manpages fmt-manpages mgetty.texi
++all: manpages mgetty.texi
+ 
+-doc-all: mgetty.asc mgetty.info mgetty.dvi mgetty.ps fmt-manpages $(MANSRC) 
++doc-all: mgetty.info fmt-manpages $(MANSRC) 
+ 
+ manpages: $(MANSRC)
+ 
+@@ -43,7 +43,7 @@ mgetty.html: mgetty.texi
+ 	-texi2any --verbose --html --force --no-split mgetty.texi
+ 
+ mgetty.info: mgetty.texi
+-	-makeinfo mgetty.texi
++	-makeinfo --no-split mgetty.texi
+ 
+ mgetty.ps: mgetty.dvi
+ 	-dvips -o mgetty.ps mgetty.dvi
+@@ -67,21 +67,21 @@ install: $(MANSRC) mgetty.info
+ 		if [ ! -d $$D ] ; then mkdir $$D || exit 1 ; fi ; \
+ 	done
+ 	for i in $(MAN1PAGES) ; do \
+-		$(INSTALL) -m 644 $$i $(MAN1DIR) ; \
++		$(BSD_INSTALL_MAN) $$i $(MAN1DIR) ; \
+ 	done
+ 	for i in $(MAN4PAGES) ; do \
+-		$(INSTALL) -m 644 $$i $(MAN4DIR) ; \
++		$(BSD_INSTALL_MAN) $$i $(MAN4DIR) ; \
+ 	done
+ 	for i in $(MAN5PAGES) ; do \
+-		$(INSTALL) -m 644 $$i $(MAN5DIR) ; \
++		$(BSD_INSTALL_MAN) $$i $(MAN5DIR) ; \
+ 	done
+ 	for i in $(MAN8PAGES) ; do \
+-		$(INSTALL) -m 644 $$i $(MAN8DIR) ; \
++		$(BSD_INSTALL_MAN) $$i $(MAN8DIR) ; \
+ 	done
+ 	if [ -f mgetty.info ] ; then\
+ 	    test -d $(INFODIR) || mkdir $(INFODIR) 2>/dev/null ; \
+ 	    for i in mgetty.info* ; do \
+-		$(INSTALL) -m 644 $$i $(INFODIR) ; \
++		$(BSD_INSTALL_MAN) $$i $(INFODIR) ; \
+ 	    done ; \
+ 	else \
+ 	    echo "mgetty.info not made, skipping" ; \

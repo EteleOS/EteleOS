@@ -1,0 +1,32 @@
+@newgroup _ziproxy:641
+@newuser _ziproxy:641:641::Ziproxy Daemon:/var/empty:/sbin/nologin
+@extraunexec rm -rf /var/log/ziproxy/*
+@rcscript ${RCDIR}/ziproxy
+@bin bin/ziproxy
+@bin bin/ziproxylogtool
+@man man/man1/ziproxy.1
+@man man/man1/ziproxylogtool.1
+share/doc/ziproxy/
+share/doc/ziproxy/COPYING
+share/doc/ziproxy/CREDITS
+share/doc/ziproxy/JPEG2000.txt
+share/doc/ziproxy/README
+share/doc/ziproxy/README.tools
+share/examples/ziproxy/
+@sample ${SYSCONFDIR}/ziproxy/
+share/examples/ziproxy/bo_exception.list
+share/examples/ziproxy/change_tos.list
+share/examples/ziproxy/deny.list
+share/examples/ziproxy/http.passwd
+share/examples/ziproxy/noprocess.list
+share/examples/ziproxy/replace.list
+share/examples/ziproxy/replace_ct.list
+share/examples/ziproxy/sasl/
+share/examples/ziproxy/sasl/ziproxy.conf
+share/examples/ziproxy/ziproxy.conf
+@sample ${SYSCONFDIR}/ziproxy/ziproxy.conf
+share/examples/ziproxy/ziproxy_genhtml_stats.sh
+@mode 770
+@owner _ziproxy
+@group _ziproxy
+@sample /var/log/ziproxy/

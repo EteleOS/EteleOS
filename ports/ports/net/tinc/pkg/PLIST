@@ -1,0 +1,36 @@
+@newgroup _tinc:759
+@newuser _tinc:759:_tinc::tinc user:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/tincd
+@info info/tinc.info
+@man man/man5/tinc.conf.5
+@comment @man man/man8/tinc-gui.8
+@man man/man8/tinc.8
+@man man/man8/tincd.8
+@bin sbin/tinc
+@bin sbin/tincd
+share/bash-completion/
+share/bash-completion/completions/
+share/bash-completion/completions/tinc
+share/examples/tinc/
+share/examples/tinc/hosts/
+@mode 750
+@owner root
+@group _tinc
+@sample ${SYSCONFDIR}/tinc/
+@sample ${SYSCONFDIR}/tinc/example/
+@sample ${SYSCONFDIR}/tinc/example/hosts/
+@mode 600
+share/examples/tinc/hosts/alpha
+@sample ${SYSCONFDIR}/tinc/example/hosts/alpha
+share/examples/tinc/hosts/beta
+@sample ${SYSCONFDIR}/tinc/example/hosts/beta
+share/examples/tinc/rsa_key.priv
+@sample ${SYSCONFDIR}/tinc/example/rsa_key.priv
+@mode 750
+share/examples/tinc/tinc-down
+@sample ${SYSCONFDIR}/tinc/example/tinc-down
+share/examples/tinc/tinc-up
+@sample ${SYSCONFDIR}/tinc/example/tinc-up
+@mode 640
+share/examples/tinc/tinc.conf
+@sample ${SYSCONFDIR}/tinc/example/tinc.conf

@@ -1,0 +1,23 @@
+64bit time_t
+
+Index: backend/plustek_pp.c
+--- backend/plustek_pp.c.orig
++++ backend/plustek_pp.c
+@@ -279,7 +279,7 @@ static SANE_Status drvclose( Plustek_Device *dev )
+ 	    DBG( _DBG_INFO, "drvclose()\n" );
+ 
+ 		if( 0 != tsecs ) {
+-			DBG( _DBG_INFO, "TIME END 1: %lus\n", time(NULL)-tsecs);
++			DBG( _DBG_INFO, "TIME END 1: %llds\n", time(NULL)-tsecs);
+ 		}
+ 
+ 		/*
+@@ -515,7 +515,7 @@ static SANE_Status do_cancel( Plustek_Scanner *scanner
+ 	drvclose( scanner->hw );
+ 
+ 	if( tsecs != 0 ) {
+-		DBG( _DBG_INFO, "TIME END 2: %lus\n", time(NULL)-tsecs);
++		DBG( _DBG_INFO, "TIME END 2: %llds\n", time(NULL)-tsecs);
+ 		tsecs = 0;
+ 	}
+ 

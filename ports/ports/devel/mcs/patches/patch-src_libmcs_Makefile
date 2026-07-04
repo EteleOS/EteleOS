@@ -1,0 +1,8 @@
+--- src/libmcs/Makefile.orig	Sun Jan  4 09:27:02 2009
++++ src/libmcs/Makefile	Sun Jan  4 09:27:06 2009
+@@ -1,4 +1,4 @@
+-LIB = ${LIB_PREFIX}mcs${LIB_SUFFIX}
++LIB = ${LIB_PREFIX}mcs${LIB_SUFFIX}.${LIBmcs_VERSION}
+ LIB_MAJOR = 1
+ LIB_MINOR = 0
+ 

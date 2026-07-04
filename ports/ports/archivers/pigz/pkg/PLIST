@@ -1,0 +1,3 @@
+@bin bin/pigz
+@bin bin/unpigz
+@man man/man1/pigz.1

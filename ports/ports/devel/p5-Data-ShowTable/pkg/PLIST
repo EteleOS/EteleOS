@@ -1,0 +1,6 @@
+@conflict py3-astropy-*
+bin/showtable
+${P5SITE}/Data/
+${P5SITE}/Data/ShowTable.pm
+@man man/man1/showtable.1
+@man man/man3p/Data::ShowTable.3p

@@ -1,0 +1,9 @@
+@bin bin/logfmon
+@man man/man5/logfmon.conf.5
+@man man/man8/logfmon.8
+share/examples/logfmon/
+share/examples/logfmon/brandini.conf
+share/examples/logfmon/logfmon-freebsd.conf
+share/examples/logfmon/logfmon-openbsd.conf
+@sample ${SYSCONFDIR}/logfmon.conf
+@rcscript ${RCDIR}/logfmon

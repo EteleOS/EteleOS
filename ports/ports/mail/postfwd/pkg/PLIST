@@ -1,0 +1,24 @@
+@newgroup _postfwd:715
+@newuser _postfwd:715:715::Postfwd Daemon:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/postfwd2
+@rcscript ${RCDIR}/postfwd3
+bin/postfwd-client.pl
+bin/rblcheck.pl
+@man man/man8/postfwd2.8
+@man man/man8/postfwd3.8
+sbin/hapolicy
+sbin/postfwd2
+sbin/postfwd3
+share/doc/postfwd/
+share/doc/postfwd/hapolicy.html
+share/doc/postfwd/hapolicy.txt
+share/doc/postfwd/postfwd3.CHANGELOG
+share/doc/postfwd/postfwd3.html
+share/doc/postfwd/postfwd3.txt
+share/doc/postfwd/request.sample
+share/examples/postfwd/
+@sample ${SYSCONFDIR}/postfix/
+share/examples/postfwd/plugins/
+share/examples/postfwd/plugins/postfwd.plugins.sample
+share/examples/postfwd/postfwd.cf.sample
+@sample ${SYSCONFDIR}/postfix/postfwd2.cf

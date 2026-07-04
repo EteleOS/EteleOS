@@ -1,0 +1,11 @@
+Index: nspr/pr/tests/prfz.c
+--- nspr/pr/tests/prfz.c.orig
++++ nspr/pr/tests/prfz.c
+@@ -9,6 +9,7 @@
+ #include "prprf.h"
+ #include <sys/types.h>
+ #include <limits.h>
++#include <stdint.h>
+ #include <string.h>
+ #include <stdint.h>
+ 

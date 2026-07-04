@@ -1,0 +1,4 @@
+@bin bin/skippy
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/skippy/
+share/examples/skippy/skippyrc-default

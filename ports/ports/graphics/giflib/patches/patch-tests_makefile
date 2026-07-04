@@ -1,0 +1,39 @@
+#1, gmake-ism
+
+#2, unsure if this is a test bug or a command-line parser bug, but the -p
+value isn't read in the original order; same on Linux
+
+#3, "head --bytes=-20" means "display most of the file, but trim last 20 bytes"
+which isn't easily replicable with base tools, so just use ghead from coreutils
+
+Index: tests/makefile
+--- tests/makefile.orig
++++ tests/makefile
+@@ -27,12 +27,12 @@ rebuild: render-rebuild \
+ UTILS = ..
+ PICS = ../pic
+ 
+-GIFS := $(shell ls ../pic/*.gif)
++GIFS := `ls ../pic/*.gif`
+ 
+ # Test decompression and rendering by unpacking images,
+ # converting them to RGB, and comparing that result to a check file.
+ render-regress:
+-	@for test in $(GIFS); \
++	for test in $(GIFS); \
+ 	do \
+ 	    stem=`basename $${test} | sed -e "s/.gif$$//"`; \
+ 	    if echo "Testing RGB rendering of $${test}" >&2; \
+@@ -104,10 +104,10 @@ giffilter-regress:
+ 
+ giffix-rebuild:
+ 	@echo "Rebuilding giffix test."
+-	@head --bytes=-20 <$(PICS)/treescap.gif | $(UTILS)/giffix 2>/dev/null | $(UTILS)/gifbuild -d >giffixed.ico
++	@ghead --bytes=-20 <$(PICS)/treescap.gif | $(UTILS)/giffix 2>/dev/null | $(UTILS)/gifbuild -d >giffixed.ico
+ giffix-regress:
+ 	@echo "giffix: Testing giffix behavior"
+-	@head --bytes=-20 <$(PICS)/treescap.gif | $(UTILS)/giffix 2>/dev/null | $(UTILS)/gifbuild -d | diff -u giffixed.ico -
++	@ghead --bytes=-20 <$(PICS)/treescap.gif | $(UTILS)/giffix 2>/dev/null | $(UTILS)/gifbuild -d | diff -u giffixed.ico -
+ 
+ gifinto-regress:
+ 	@echo "gifinto: Checking behavior on short files."

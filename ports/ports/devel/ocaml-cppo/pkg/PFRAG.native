@@ -1,0 +1,4 @@
+%%dynlink%%
+lib/ocaml/cppo_ocamlbuild/cppo_ocamlbuild.a
+lib/ocaml/cppo_ocamlbuild/cppo_ocamlbuild.cmxa
+lib/ocaml/cppo_ocamlbuild/ocamlbuild_cppo.cmx

@@ -1,0 +1,11 @@
+--- configure.orig	Sun Mar 19 08:21:24 2006
++++ configure	Wed Mar 25 18:35:10 2009
+@@ -635,7 +635,7 @@ ic_binary_retawq_c_sources="$ic_binary_retawq_c_source
+ case "x$ic_option_threading" in
+   x0) ;;
+   *)
+-ic_binary_retawq_cflags="$ic_binary_retawq_cflags -D_REENTRANT -D_THREAD_SAFE"
++ic_binary_retawq_cflags="$ic_binary_retawq_cflags -D_REENTRANT -D_THREAD_SAFE -pthread"
+ ;;
+ esac
+ cat >&7 <<EOF

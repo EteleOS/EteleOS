@@ -1,0 +1,13 @@
+${P5ARCH}/
+${P5ARCH}/Class/
+${P5ARCH}/Class/XSAccessor/
+${P5ARCH}/Class/XSAccessor.pm
+${P5ARCH}/Class/XSAccessor/Array.pm
+${P5ARCH}/Class/XSAccessor/Heavy.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Class/
+${P5ARCH}/auto/Class/XSAccessor/
+${P5ARCH}/auto/Class/XSAccessor/XSAccessor.so
+@man man/man3p/Class::XSAccessor.3p
+@man man/man3p/Class::XSAccessor::Array.3p
+@man man/man3p/Class::XSAccessor::Heavy.3p

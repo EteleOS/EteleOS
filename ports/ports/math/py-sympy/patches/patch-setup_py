@@ -1,0 +1,14 @@
+Manual patch
+
+Index: setup.py
+--- setup.py.orig
++++ setup.py
+@@ -328,7 +328,7 @@ if __name__ == '__main__':
+               'sympy.plotting.tests': ['test_region_*.png'],
+               'sympy': ['py.typed']
+               },
+-          data_files=[('share/man/man1', ['doc/man/isympy.1'])],
++          data_files=[('man/man1', ['doc/man/isympy.1'])],
+           cmdclass={'test': test_sympy,
+                     'antlr': antlr,
+                     'sdist': sdist_sympy,

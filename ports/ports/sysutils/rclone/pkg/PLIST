@@ -1,0 +1,11 @@
+@bin bin/rclone
+@man man/man1/rclone.1
+share/bash-completion/
+share/bash-completion/completions/
+share/bash-completion/completions/rclone
+share/fish/
+share/fish/vendor_completions.d/
+share/fish/vendor_completions.d/rclone.fish
+share/zsh/
+share/zsh/site-functions/
+share/zsh/site-functions/_rclone

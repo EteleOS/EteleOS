@@ -1,0 +1,238 @@
+@conflict tor-launcher-*
+@conflict torbutton-*
+@pkgpath www/tor-browser/https-everywhere
+@pkgpath www/tor-browser/tor-launcher
+@pkgpath www/tor-browser/torbutton
+bin/${BROWSER_NAME}
+lib/${BROWSER_NAME}/
+lib/${BROWSER_NAME}/application.ini
+lib/${BROWSER_NAME}/browser/
+lib/${BROWSER_NAME}/browser/chrome/
+lib/${BROWSER_NAME}/browser/chrome/icons/
+lib/${BROWSER_NAME}/browser/chrome/icons/default/
+lib/${BROWSER_NAME}/browser/chrome/icons/default/about-logo.svg
+lib/${BROWSER_NAME}/browser/chrome/icons/default/default.png
+lib/${BROWSER_NAME}/browser/chrome/icons/default/default128.png
+lib/${BROWSER_NAME}/browser/chrome/icons/default/default16.png
+lib/${BROWSER_NAME}/browser/chrome/icons/default/default32.png
+lib/${BROWSER_NAME}/browser/chrome/icons/default/default48.png
+lib/${BROWSER_NAME}/browser/chrome/icons/default/default64.png
+lib/${BROWSER_NAME}/browser/defaults/
+lib/${BROWSER_NAME}/browser/defaults/preferences/
+@sample ${SYSCONFDIR}/${MOZILLA_PROJECT}/
+lib/${BROWSER_NAME}/browser/defaults/preferences/all-openbsd.js
+lib/${BROWSER_NAME}/browser/defaults/preferences/pledge.content
+@sample ${SYSCONFDIR}/${MOZILLA_PROJECT}/pledge.content
+lib/${BROWSER_NAME}/browser/defaults/preferences/pledge.gpu
+@sample ${SYSCONFDIR}/${MOZILLA_PROJECT}/pledge.gpu
+lib/${BROWSER_NAME}/browser/defaults/preferences/pledge.main
+@sample ${SYSCONFDIR}/${MOZILLA_PROJECT}/pledge.main
+lib/${BROWSER_NAME}/browser/defaults/preferences/pledge.rdd
+@sample ${SYSCONFDIR}/${MOZILLA_PROJECT}/pledge.rdd
+lib/${BROWSER_NAME}/browser/defaults/preferences/pledge.socket
+@sample ${SYSCONFDIR}/${MOZILLA_PROJECT}/pledge.socket
+lib/${BROWSER_NAME}/browser/defaults/preferences/pledge.utility
+@sample ${SYSCONFDIR}/${MOZILLA_PROJECT}/pledge.utility
+lib/${BROWSER_NAME}/browser/defaults/preferences/unveil.content
+@sample ${SYSCONFDIR}/${MOZILLA_PROJECT}/unveil.content
+lib/${BROWSER_NAME}/browser/defaults/preferences/unveil.gpu
+@sample ${SYSCONFDIR}/${MOZILLA_PROJECT}/unveil.gpu
+lib/${BROWSER_NAME}/browser/defaults/preferences/unveil.main
+@sample ${SYSCONFDIR}/${MOZILLA_PROJECT}/unveil.main
+lib/${BROWSER_NAME}/browser/defaults/preferences/unveil.rdd
+@sample ${SYSCONFDIR}/${MOZILLA_PROJECT}/unveil.rdd
+lib/${BROWSER_NAME}/browser/defaults/preferences/unveil.socket
+@sample ${SYSCONFDIR}/${MOZILLA_PROJECT}/unveil.socket
+lib/${BROWSER_NAME}/browser/defaults/preferences/unveil.utility
+@sample ${SYSCONFDIR}/${MOZILLA_PROJECT}/unveil.utility
+lib/${BROWSER_NAME}/browser/defaults/profile/
+lib/${BROWSER_NAME}/browser/defaults/profile/bookmarks.html
+lib/${BROWSER_NAME}/browser/omni.ja
+lib/${BROWSER_NAME}/defaults/
+lib/${BROWSER_NAME}/defaults/pref/
+lib/${BROWSER_NAME}/defaults/pref/channel-prefs.js
+lib/${BROWSER_NAME}/dependentlibs.list
+lib/${BROWSER_NAME}/distribution/
+lib/${BROWSER_NAME}/distribution/distribution.ini
+lib/${BROWSER_NAME}/fonts/
+lib/${BROWSER_NAME}/fonts/000_README.txt
+lib/${BROWSER_NAME}/fonts/Arimo-Bold.ttf
+lib/${BROWSER_NAME}/fonts/Arimo-BoldItalic.ttf
+lib/${BROWSER_NAME}/fonts/Arimo-Italic.ttf
+lib/${BROWSER_NAME}/fonts/Arimo-Regular.ttf
+lib/${BROWSER_NAME}/fonts/Cousine-Bold.ttf
+lib/${BROWSER_NAME}/fonts/Cousine-BoldItalic.ttf
+lib/${BROWSER_NAME}/fonts/Cousine-Italic.ttf
+lib/${BROWSER_NAME}/fonts/Cousine-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoColorEmoji.ttf
+lib/${BROWSER_NAME}/fonts/NotoNaskhArabic-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansAdlam-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansArmenian-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansBalinese-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansBamum-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansBassaVah-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansBatak-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansBengali-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansBuginese-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansBuhid-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansCanadianAboriginal-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansChakma-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansCham-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansCherokee-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansCoptic-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansDeseret-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansDevanagari-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansElbasan-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansEthiopic-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansGeorgian-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansGrantha-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansGujarati-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansGunjalaGondi-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansGurmukhi-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansHanifiRohingya-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansHanunoo-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansHebrew-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansJP-Regular.otf
+lib/${BROWSER_NAME}/fonts/NotoSansJavanese-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansKR-Regular.otf
+lib/${BROWSER_NAME}/fonts/NotoSansKannada-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansKayahLi-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansKhmer-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansKhojki-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansKhudawadi-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansLao-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansLepcha-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansLimbu-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansLisu-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansMahajani-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansMalayalam-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansMandaic-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansMasaramGondi-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansMedefaidrin-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansMeeteiMayek-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansMendeKikakui-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansMiao-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansModi-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansMongolian-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansMro-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansMultani-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansNKo-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansNewTaiLue-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansNewa-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansOlChiki-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansOriya-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansOsage-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansOsmanya-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansPahawhHmong-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansPauCinHau-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansRejang-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansRunic-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansSC-Regular.otf
+lib/${BROWSER_NAME}/fonts/NotoSansSamaritan-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansSaurashtra-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansSharada-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansShavian-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansSinhala-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansSoraSompeng-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansSoyombo-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansSundanese-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansSylotiNagri-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansSymbols-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansSymbols2-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansSyriac-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTC-Regular.otf
+lib/${BROWSER_NAME}/fonts/NotoSansTagalog-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTagbanwa-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTaiLe-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTaiTham-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTaiViet-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTakri-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTamil-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTelugu-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansThaana-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansThai-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTifinagh-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTifinaghAPT-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTifinaghAdrar-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTifinaghAgrawImazighen-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTifinaghAhaggar-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTifinaghAir-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTifinaghAzawagh-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTifinaghGhat-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTifinaghHawad-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTifinaghRhissaIxa-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTifinaghSIL-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTifinaghTawellemmet-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansTirhuta-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansVai-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansWancho-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansWarangCiti-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansYi-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSansZanabazarSquare-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifArmenian-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifBalinese-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifBengali-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifDevanagari-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifDogra-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifEthiopic-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifGeorgian-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifGrantha-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifGujarati-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifGurmukhi-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifHebrew-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifKannada-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifKhmer-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifKhojki-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifLao-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifMalayalam-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifMyanmar-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifNPHmong-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifSinhala-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifTamil-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifTelugu-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifThai-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifTibetan-Regular.ttf
+lib/${BROWSER_NAME}/fonts/NotoSerifYezidi-Regular.ttf
+lib/${BROWSER_NAME}/fonts/Pyidaungsu-2.5.3_Regular.ttf
+lib/${BROWSER_NAME}/fonts/STIXTwoMath-Regular.otf
+lib/${BROWSER_NAME}/fonts/Tinos-Bold.ttf
+lib/${BROWSER_NAME}/fonts/Tinos-BoldItalic.ttf
+lib/${BROWSER_NAME}/fonts/Tinos-Italic.ttf
+lib/${BROWSER_NAME}/fonts/Tinos-Regular.ttf
+lib/${BROWSER_NAME}/fonts/TwemojiMozilla.ttf
+lib/${BROWSER_NAME}/fonts/fonts.conf
+@bin lib/${BROWSER_NAME}/glxtest
+@lib lib/${BROWSER_NAME}/libfreebl3.so.${LIBfreebl3_VERSION}
+@lib lib/${BROWSER_NAME}/libgkcodecs.so.${LIBgkcodecs_VERSION}
+@lib lib/${BROWSER_NAME}/liblgpllibs.so.${LIBlgpllibs_VERSION}
+${COMMENT_FFVPX}@lib lib/${BROWSER_NAME}/libmozavcodec.so.${LIBmozavcodec_VERSION}
+${COMMENT_FFVPX}@lib lib/${BROWSER_NAME}/libmozavutil.so.${LIBmozavutil_VERSION}
+@lib lib/${BROWSER_NAME}/libmozgtk.so.${LIBmozgtk_VERSION}
+@lib lib/${BROWSER_NAME}/libmozsqlite3.so.${LIBmozsqlite3_VERSION}
+@lib lib/${BROWSER_NAME}/libmozwayland.so.${LIBmozwayland_VERSION}
+@lib lib/${BROWSER_NAME}/libnss3.so.${LIBnss3_VERSION}
+@lib lib/${BROWSER_NAME}/libnssutil3.so.${LIBnssutil3_VERSION}
+@lib lib/${BROWSER_NAME}/libsmime3.so.${LIBsmime3_VERSION}
+@lib lib/${BROWSER_NAME}/libsoftokn3.so.${LIBsoftokn3_VERSION}
+@lib lib/${BROWSER_NAME}/libssl3.so.${LIBssl3_VERSION}
+@lib lib/${BROWSER_NAME}/libxul.so.${LIBxul_VERSION}
+lib/${BROWSER_NAME}/omni.ja
+lib/${BROWSER_NAME}/platform.ini
+lib/${BROWSER_NAME}/removed-files
+@bin lib/${BROWSER_NAME}/${BROWSER_NAME}
+@bin lib/${BROWSER_NAME}/${BROWSER_NAME}-bin
+@bin lib/${BROWSER_NAME}/vaapitest
+share/applications/${BROWSER_NAME}.desktop
+share/icons/hicolor/128x128/apps/${BROWSER_NAME}.png
+share/icons/hicolor/16x16/apps/${BROWSER_NAME}.png
+share/icons/hicolor/22x22/apps/${BROWSER_NAME}.png
+share/icons/hicolor/24x24/apps/${BROWSER_NAME}.png
+share/icons/hicolor/256x256/apps/${BROWSER_NAME}.png
+share/icons/hicolor/32x32/apps/${BROWSER_NAME}.png
+share/icons/hicolor/48x48/apps/${BROWSER_NAME}.png
+share/icons/hicolor/64x64/apps/${BROWSER_NAME}.png
+share/icons/hicolor/scalable/apps/${BROWSER_NAME}.svg
+share/tor-browser/
+share/tor-browser/torrc-defaults
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

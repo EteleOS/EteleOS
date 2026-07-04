@@ -1,0 +1,4 @@
+@conflict p5-Bit-Vector-<6.4
+${P5SITE}/Carp/
+${P5SITE}/Carp/Clan.pm
+@man man/man3p/Carp::Clan.3p

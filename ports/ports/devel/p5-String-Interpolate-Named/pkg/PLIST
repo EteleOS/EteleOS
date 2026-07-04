@@ -1,0 +1,4 @@
+${P5SITE}/String/
+${P5SITE}/String/Interpolate/
+${P5SITE}/String/Interpolate/Named.pm
+@man man/man3p/String::Interpolate::Named.3p

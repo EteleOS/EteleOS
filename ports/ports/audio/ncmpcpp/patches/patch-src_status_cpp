@@ -1,0 +1,13 @@
+missing header
+
+Index: src/status.cpp
+--- src/status.cpp.orig
++++ src/status.cpp
+@@ -21,6 +21,7 @@
+ #include <boost/date_time/posix_time/posix_time.hpp>
+ #include <netinet/tcp.h>
+ #include <netinet/in.h>
++#include <sys/socket.h>
+ 
+ #include "curses/menu_impl.h"
+ #include "screens/browser.h"

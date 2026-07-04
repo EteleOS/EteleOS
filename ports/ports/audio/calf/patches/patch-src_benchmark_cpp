@@ -1,0 +1,11 @@
+Index: src/benchmark.cpp
+--- src/benchmark.cpp.orig
++++ src/benchmark.cpp
+@@ -25,6 +25,7 @@
+ #include <stdint.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ #include <config.h>
+ #include <calf/audio_fx.h>
+ 

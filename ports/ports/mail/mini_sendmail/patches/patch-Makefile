@@ -1,0 +1,11 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -22,6 +22,7 @@ diet:
+ 
+ mini_sendmail:	mini_sendmail.o
+ 	$(CC) $(LDFLAGS) mini_sendmail.o $(LDLIBS) -o mini_sendmail
++	$(CC) $(LDFLAGS) -static mini_sendmail.o $(LDLIBS) -o mini_sendmail-static
+ 
+ mini_sendmail.o:	mini_sendmail.c version.h
+ 	$(CC) $(CFLAGS) -c mini_sendmail.c

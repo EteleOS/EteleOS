@@ -1,0 +1,7 @@
+#!/bin/sh
+# simplified sh wrapper around configure.py that relies on SUBST_VARS
+
+SRCDIR=$(dirname $0)
+export OLD_CONFIGURE="$SRCDIR"/old-configure
+
+${MODPY_BIN} ${SRCDIR}/configure.py "$@"

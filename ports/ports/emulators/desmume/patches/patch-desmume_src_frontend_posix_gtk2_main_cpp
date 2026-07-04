@@ -1,0 +1,17 @@
+https://forums.desmume.org/viewtopic.php?id=10415
+
+Index: desmume/src/frontend/posix/gtk2/main.cpp
+--- desmume/src/frontend/posix/gtk2/main.cpp.orig
++++ desmume/src/frontend/posix/gtk2/main.cpp
+@@ -3551,6 +3551,11 @@ common_gtk_main( class configured_features *my_config)
+ 
+     gtk_container_add (GTK_CONTAINER (pVBox), pDrawingArea);
+ 
++    /* Set a black background color for a usable full-screen mode. */
++    GdkColor color;
++    memset(&color, 0, sizeof(color));
++    gtk_widget_modify_bg(pDrawingArea, GTK_STATE_NORMAL, &color);
++
+     gtk_widget_set_events(pDrawingArea,
+                           GDK_EXPOSURE_MASK | GDK_LEAVE_NOTIFY_MASK |
+                           GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |

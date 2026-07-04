@@ -1,0 +1,11 @@
+--- README.orig	Mon Dec 31 03:32:43 2012
++++ README	Sun Jul 19 03:33:23 2015
+@@ -54,7 +54,7 @@ The more, there absolutely definitively and in any cas
+ Data CD or Data/Video DVD in the drive -- it does not matter if it's your
+ favourite Windows CD, a video or a DVD with your last backup.
+ 
+-By default, regionset will use /dev/dvd to find your DVD drive. You can
++By default, regionset will use /dev/cd0c to find your DVD drive. You can
+ adjust this by entering the path to the DVD device as first command line
+ parameter (please absolute path!).
+ 

@@ -1,0 +1,11 @@
+--- FuzzyOcr.preps.orig	Wed Jul 14 12:56:27 2010
++++ FuzzyOcr.preps	Wed Jul 14 12:56:45 2010
+@@ -33,3 +33,8 @@ preprocessor maketiff {
+     args = -color -truecolor
+ }
+ 
++# Uses pamditherbw with thresholding on the PAM file
++preprocessor pamditherbw {
++    command = pamditherbw
++    args = -threshold
++}

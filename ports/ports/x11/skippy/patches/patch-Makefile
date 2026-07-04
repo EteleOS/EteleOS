@@ -1,0 +1,35 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -1,10 +1,10 @@
+ PREFIX = /usr/local
+ BINDIR = ${PREFIX}/bin
+ 
+-X11PREFIX = /usr/X11R6
++X11PREFIX = ${X11BASE}
+ 
+-CFLAGS += -I${X11PREFIX}/include `imlib2-config --cflags` `pkg-config xft --cflags` -g -pedantic -Wall
+-LDFLAGS += -L${X11PREFIX}/lib -lX11 -lm `imlib2-config --libs` `pkg-config xft --libs`
++CFLAGS += -I${X11PREFIX}/include `pkg-config xft imlib2 --cflags` -pedantic -Wall
++LDFLAGS += -L${X11PREFIX}/lib -lX11 -lm `pkg-config xft imlib2 --libs`
+ 
+ # Comment these out to disable Xinerama support
+ CFLAGS += -DXINERAMA
+@@ -17,11 +17,15 @@ EXESUFFIX =
+ 
+ SOURCES = skippy.c wm.c dlist.c mainwin.c clientwin.c layout.c focus.c config.c tooltip.c
+ HEADERS = skippy.h wm.h dlist.h mainwin.h clientwin.h layout.h focus.h config.h tooltip.h
++OBJECTS = ${SOURCES:.c=.o}
+ 
+ all: skippy${EXESUFFIX}
+ 
+-skippy${EXESUFFIX}: Makefile ${SOURCES} ${HEADERS}
+-	gcc ${CFLAGS} -o skippy${EXESUFFIX} ${SOURCES} ${LDFLAGS}
++.c.o:
++	${CC} ${CFLAGS} -c $<
++
++skippy${EXESUFFIX}: Makefile ${OBJECTS} ${HEADERS}
++	${CC} ${CFLAGS} -o skippy${EXESUFFIX} ${SOURCES} ${LDFLAGS}
+ 
+ clean:
+ 	rm -f skippy${EXESUFFIX}

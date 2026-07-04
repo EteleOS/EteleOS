@@ -1,0 +1,12 @@
+Don't use malloc.h header on OpenBSD.
+
+--- src/phasemod.cpp.orig	Mon Nov  3 22:54:01 2014
++++ src/phasemod.cpp	Mon Nov  3 22:54:07 2014
+@@ -24,7 +24,6 @@
+ 
+ /*****************************************************************************/
+ 
+-#include <malloc.h>
+ #include <math.h>
+ #include <stdlib.h>
+ #include "cmt.h"

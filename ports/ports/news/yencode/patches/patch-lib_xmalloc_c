@@ -1,0 +1,10 @@
+--- lib/xmalloc.c.orig	Sat Jan 22 21:43:38 2005
++++ lib/xmalloc.c	Sat Jan 22 21:44:46 2005
+@@ -27,6 +27,7 @@
+ 
+ #if !defined (ALREADY_HAVE_XMALLOC)
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <sys/types.h>
+ 
+ extern void *malloc (), *realloc ();

@@ -1,0 +1,42 @@
+Index: common/ECChannel.cpp
+--- common/ECChannel.cpp.orig
++++ common/ECChannel.cpp
+@@ -54,6 +54,8 @@
+ #define hrSuccess 0
+ #endif
+ 
++#include "config.h"
++
+ using namespace std::string_literals;
+ 
+ namespace KC {
+@@ -769,9 +771,11 @@ static int ec_listen_generic(const struct ec_socket &s
+ 		}
+ 	}
+ 	int y = 1;
++#ifdef LINUX
+ 	if (sk.m_ai->ai_family == PF_INET6 &&
+ 	    setsockopt(fd, SOL_IPV6, IPV6_V6ONLY, &y, sizeof(y)) < 0)
+ 		ec_log_warn("K-1556: Unable to set IPV6_V6ONLY: %s", strerror(errno));
++#endif
+ 	if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, reinterpret_cast<const char *>(&y), sizeof(y)) < 0)
+ 		ec_log_warn("K-1557: Unable to set reuseaddr socket option: %s", strerror(errno));
+ #ifdef LINUX
+@@ -993,6 +997,7 @@ static int ec_fdtable_socket_ai(const ec_socket &sk)
+ 		if (ret < 0)
+ 			continue;
+ 		char ifnam[24];
++#ifdef LINUX
+ 		arglen = sizeof(ifnam);
+ 		ret = getsockopt(fd, SOL_SOCKET, SO_BINDTODEVICE, ifnam, &arglen);
+ 		if (ret != 0)
+@@ -1001,6 +1006,9 @@ static int ec_fdtable_socket_ai(const ec_socket &sk)
+ 			ifnam[arglen] = '\0';
+ 		else
+ 			ifnam[sizeof(ifnam)-1] = '\0';
++#else
++		ifnam[0] = '\0';
++#endif
+ 		struct sockaddr_storage addr{};
+ 		arglen = sizeof(addr);
+ 		ret = getsockname(fd, reinterpret_cast<struct sockaddr *>(&addr), &arglen);

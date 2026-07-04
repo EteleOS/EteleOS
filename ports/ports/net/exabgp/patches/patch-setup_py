@@ -1,0 +1,12 @@
+Index: setup.py
+--- setup.py.orig
++++ setup.py
+@@ -31,7 +31,7 @@ def filesOf(directory):
+ 
+ 
+ data_files = [
+-    ('etc/exabgp/examples', filesOf('etc/exabgp')),
++    ('share/examples/exabgp', filesOf('etc/exabgp')),
+ ]
+ 
+ if platform.system() != 'NetBSD':

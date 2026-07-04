@@ -1,0 +1,2 @@
+@bin bin/sqlite2mdoc
+@man man/man1/sqlite2mdoc.1

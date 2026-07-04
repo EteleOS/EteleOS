@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Unix/
+${P5ARCH}/Unix/Syslog.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Unix/
+${P5ARCH}/auto/Unix/Syslog/
+${P5ARCH}/auto/Unix/Syslog/Syslog.so
+@man man/man3p/Unix::Syslog.3p

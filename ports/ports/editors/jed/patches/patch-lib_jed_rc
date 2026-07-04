@@ -1,0 +1,32 @@
+--- lib/jed.rc.orig	Mon Feb 13 18:51:58 2006
++++ lib/jed.rc	Sat Oct 10 18:08:25 2009
+@@ -149,7 +149,7 @@ WRAP_INDENTS	= 0;	% Non zero indents next line after w
+ %---------------------------------------------------------------------------
+ % C-mode indentation style
+ %---------------------------------------------------------------------------
+-c_set_style ("jed"); % or "linux", "gnu", "bsd", "k&r"
++c_set_style ("knf"); % or "jed" or "linux", "gnu", "bsd", "k&r"
+ 
+ #ifdef IBMPC_SYSTEM
+ % If non-zero, treat file names as case sensitive
+@@ -237,4 +237,20 @@ define dired_hook ()
+ {
+    %local_unsetkey ("^K");
+    %local_setkey ("dired_kill_line", "^K");
++}
++
++define c_set_style_hook (style)
++{  
++   if (strlow(style) == "knf")
++     {
++	TAB_DEFAULT = 8;
++	USE_TABS = 1;
++	ADD_NEWLINE = 1;
++	C_INDENT = 8;
++	C_BRACE = 0;
++	C_BRA_NEWLINE = 0;
++	C_CONTINUED_OFFSET = 0;
++	C_Colon_Offset = 0;
++	C_Comment_Column = 0;
++     }
+ }

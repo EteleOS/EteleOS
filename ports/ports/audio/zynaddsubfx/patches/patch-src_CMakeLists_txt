@@ -1,0 +1,24 @@
+Remove -O3 flag
+Add X11 libraries to LINK_PATH to fix build
+OpenBSD doesn't have librt 
+
+Index: src/CMakeLists.txt
+--- src/CMakeLists.txt.orig
++++ src/CMakeLists.txt
+@@ -261,7 +261,7 @@ set (BuildOptions_SSE
+ check_cxx_compiler_flag("${BuildOptions_SSE} -Werror" SUPPORT_SSE)
+ 
+ set (BuildOptionsBasic
+-    "-std=c++11 -Wno-unused-parameter -O3 -ffast-math -fomit-frame-pointer"
++    "-std=c++11 -Wno-unused-parameter -ffast-math -fomit-frame-pointer"
+     CACHE STRING "basic X86 compiler options"
+ )
+ STRING(APPEND BuildOptionsBasic " ${BuildOptions_ExtendedWarnings}")
+@@ -521,6 +521,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/zyn-config.
+ link_directories(${AUDIO_LIBRARY_DIRS} ${ZLIB_LIBRARY_DIRS} ${FFTW3F_LIBRARY_DIRS} ${MXML_LIBRARY_DIRS} ${FLTK_LIBRARY_DIRS} ${NTK_LIBRARY_DIRS} ${X11_LIBRARY_DIRS})
+ 
+ include_directories(
++	/usr/X11R6/include
+ 	${CMAKE_CURRENT_SOURCE_DIR}
+ 	${CMAKE_CURRENT_BINARY_DIR}
+ 	)

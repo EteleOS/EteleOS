@@ -1,0 +1,11 @@
+Index: src/examples/privacylist_example.cpp
+--- src/examples/privacylist_example.cpp.orig
++++ src/examples/privacylist_example.cpp
+@@ -22,6 +22,7 @@ using namespace gloox;
+ #include <string>
+ 
+ #include <cstdio> // [s]print[f]
++#include <ctime>
+ 
+ class PLTest : public PrivacyListHandler, ConnectionListener
+ {

@@ -1,0 +1,7 @@
+${P5SITE}/Test/TempDir/
+${P5SITE}/Test/TempDir.pm
+${P5SITE}/Test/TempDir/Factory.pm
+${P5SITE}/Test/TempDir/Handle.pm
+@man man/man3p/Test::TempDir.3p
+@man man/man3p/Test::TempDir::Factory.3p
+@man man/man3p/Test::TempDir::Handle.3p

@@ -1,0 +1,4 @@
+${P5SITE}/curry/
+${P5SITE}/curry.pm
+${P5SITE}/curry/weak.pm
+@man man/man3p/curry.3p

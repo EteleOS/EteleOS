@@ -1,0 +1,4 @@
+@pkgpath mail/pine,-pico
+@pkgpath mail/re-alpine,-pico
+@bin bin/pico
+@man man/man1/pico.1

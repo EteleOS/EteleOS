@@ -1,0 +1,151 @@
+@bin bin/cbmc
+@bin bin/crangler
+@bin bin/goto-analyzer
+@bin bin/goto-cc
+@bin bin/goto-diff
+@bin bin/goto-harness
+@bin bin/goto-inspect
+@bin bin/goto-instrument
+@bin bin/goto-synthesizer
+@man man/man1/cbmc.1
+@man man/man1/crangler.1
+@man man/man1/goto-analyzer.1
+@man man/man1/goto-cc.1
+@man man/man1/goto-diff.1
+@man man/man1/goto-harness.1
+@man man/man1/goto-inspect.1
+@man man/man1/goto-instrument.1
+@man man/man1/goto-synthesizer.1
+share/doc/cbmc/
+share/doc/cbmc/ADR/
+share/doc/cbmc/ADR/README.md
+share/doc/cbmc/ADR/cpp_api_modularisation.md
+share/doc/cbmc/ADR/homebrew_tap.md
+share/doc/cbmc/ADR/release_process.md
+share/doc/cbmc/ADR/symex_ready_goto.md
+share/doc/cbmc/API/
+share/doc/cbmc/API/README.md
+share/doc/cbmc/API/util/
+share/doc/cbmc/API/util/piped_process.md
+share/doc/cbmc/C/
+share/doc/cbmc/C/c11-undefined-behavior.html
+share/doc/cbmc/C/n1570-j-2.txt
+share/doc/cbmc/CPPLINT.cfg
+share/doc/cbmc/architectural/
+share/doc/cbmc/architectural/background-concepts.md
+share/doc/cbmc/architectural/cbmc-architecture.md
+share/doc/cbmc/architectural/central-data-structures.md
+share/doc/cbmc/architectural/code-walkthrough.md
+share/doc/cbmc/architectural/compilation-and-development.md
+share/doc/cbmc/architectural/folder-walkthrough.md
+share/doc/cbmc/architectural/front-page.md
+share/doc/cbmc/architectural/goto-program-transformations.md
+share/doc/cbmc/architectural/howto.md
+share/doc/cbmc/architectural/memory-bounds-checking.md
+share/doc/cbmc/architectural/other-tools.md
+share/doc/cbmc/architectural/symex-instructions.md
+share/doc/cbmc/assets/
+share/doc/cbmc/assets/GetLink.png
+share/doc/cbmc/assets/README.md
+share/doc/cbmc/assets/binsearch.c
+share/doc/cbmc/assets/c_to_ir.svg
+share/doc/cbmc/assets/cbmc_style.css
+share/doc/cbmc/assets/cegar-1.png
+share/doc/cbmc/assets/counter.c
+share/doc/cbmc/assets/driver.c
+share/doc/cbmc/assets/driver.h
+share/doc/cbmc/assets/expr.c
+share/doc/cbmc/assets/expr.dot
+share/doc/cbmc/assets/expr.svg
+share/doc/cbmc/assets/file1.c
+share/doc/cbmc/assets/file2.c
+share/doc/cbmc/assets/gcc-wrap.c
+share/doc/cbmc/assets/goto_program.svg
+share/doc/cbmc/assets/ireptree.svg
+share/doc/cbmc/assets/kdev_t.h
+share/doc/cbmc/assets/lock-example-fixed.c
+share/doc/cbmc/assets/lock-example.c
+share/doc/cbmc/assets/modules.h
+share/doc/cbmc/assets/pid.c
+share/doc/cbmc/assets/pid.png
+share/doc/cbmc/assets/refinement.png
+share/doc/cbmc/assets/ring_buffer1.c
+share/doc/cbmc/assets/ring_buffer2.c
+share/doc/cbmc/assets/spec.c
+share/doc/cbmc/assets/states.png
+share/doc/cbmc/assets/xml_spec.md
+share/doc/cbmc/assets/xml_spec.tex
+share/doc/cbmc/assets/xml_spec.xsd
+share/doc/cbmc/cprover-manual/
+share/doc/cbmc/cprover-manual/api.md
+share/doc/cbmc/cprover-manual/binsearch.c
+share/doc/cbmc/cprover-manual/cbmc-assertions.md
+share/doc/cbmc/cprover-manual/cbmc-tutorial.md
+share/doc/cbmc/cprover-manual/cbmc-unwinding.md
+share/doc/cbmc/cprover-manual/file1.c
+share/doc/cbmc/cprover-manual/file2.c
+share/doc/cbmc/cprover-manual/goto-analyzer.md
+share/doc/cbmc/cprover-manual/goto-cc.md
+share/doc/cbmc/cprover-manual/goto-harness.md
+share/doc/cbmc/cprover-manual/index.md
+share/doc/cbmc/cprover-manual/installation.md
+share/doc/cbmc/cprover-manual/introduction.md
+share/doc/cbmc/cprover-manual/jbmc-user-manual.md
+share/doc/cbmc/cprover-manual/lock-example.c
+share/doc/cbmc/cprover-manual/memory-primitives.md
+share/doc/cbmc/cprover-manual/modeling-assumptions.md
+share/doc/cbmc/cprover-manual/modeling-floating-point.md
+share/doc/cbmc/cprover-manual/modeling-mmio.md
+share/doc/cbmc/cprover-manual/modeling-nondeterminism.md
+share/doc/cbmc/cprover-manual/modeling-pointers.md
+share/doc/cbmc/cprover-manual/modeling-shadow-memory.md
+share/doc/cbmc/cprover-manual/properties.md
+share/doc/cbmc/cprover-manual/smt2-incr.md
+share/doc/cbmc/cprover-manual/static-functions.md
+share/doc/cbmc/cprover-manual/test-suite.md
+share/doc/cbmc/cprover-manual/unsound_options.md
+share/doc/cbmc/cprover-manual/visual-studio.md
+share/doc/cbmc/doxygen-root/
+share/doc/cbmc/doxygen-root/.gitignore
+share/doc/cbmc/doxygen-root/DoxygenLayout.xml
+share/doc/cbmc/doxygen-root/Makefile
+share/doc/cbmc/doxygen-root/README.md
+share/doc/cbmc/doxygen-root/contributing.md
+share/doc/cbmc/doxygen-root/developer_guide.md
+share/doc/cbmc/doxygen-root/doxyfile
+share/doc/cbmc/doxygen-root/doxyfile-doc-adr
+share/doc/cbmc/doxygen-root/doxyfile-doc-api
+share/doc/cbmc/doxygen-root/doxyfile-doc-assets
+share/doc/cbmc/doxygen-root/doxyfile-doc-cprover-manual
+share/doc/cbmc/doxygen-root/doxygen-markdown/
+share/doc/cbmc/doxygen-root/doxygen-markdown/append-last-modified-dates.py
+share/doc/cbmc/doxygen-root/doxygen-markdown/doxygen-markdown-preprocessor.py
+share/doc/cbmc/doxygen-root/doxygen-markdown/markdown.sh
+share/doc/cbmc/doxygen-root/doxygen-markdown/pandoc-codeblock-repair.sh
+share/doc/cbmc/doxygen-root/doxygen-markdown/pandoc-cprover-link-filter.py
+share/doc/cbmc/doxygen-root/index.md
+share/doc/cbmc/doxygen-root/installation.md
+share/doc/cbmc/doxygen-root/reference_guide.md
+share/doc/cbmc/doxygen-root/user_guide.md
+share/doc/cbmc/satabs-user-manual.md
+share/doc/cbmc/slides/
+share/doc/cbmc/slides/cbmc-latex-beamer/
+share/doc/cbmc/slides/cbmc-latex-beamer/arrow.pdf
+share/doc/cbmc/slides/cbmc-latex-beamer/bmc-loop.mp
+share/doc/cbmc/slides/cbmc-latex-beamer/cbmc-flow.fig
+share/doc/cbmc/slides/cbmc-latex-beamer/cbmc-logo-medium.png
+share/doc/cbmc/slides/cbmc-latex-beamer/cbmc-slides.tex
+share/doc/cbmc/slides/cbmc-latex-beamer/do_figures
+share/doc/cbmc/slides/cbmc-latex-beamer/frontend.fig
+share/doc/cbmc/slides/cbmc-latex-beamer/gradient_box_green.pdf
+share/doc/cbmc/slides/cbmc-latex-beamer/gradient_box_red.pdf
+share/doc/cbmc/slides/cbmc-latex-beamer/gradient_box_yellow.pdf
+share/doc/cbmc/slides/cbmc-latex-beamer/header.tex
+share/doc/cbmc/slides/cbmc-latex-beamer/sa-sat-progress.pdf
+share/doc/cbmc/slides/cbmc-latex-beamer/sha-example.mp
+share/doc/cbmc/slides/cbmc-latex-beamer/unrolling-cfg.mp
+share/doc/cbmc/slides/cbmc-latex-beamer/unrolling-full.mp
+share/doc/cbmc/slides/cbmc-latex-beamer/unrolling.mp
+share/doc/cbmc/slides/cprover-overview-latex-beamer/
+share/doc/cbmc/slides/cprover-overview-latex-beamer/cprover-overview-slides.tex
+share/doc/cbmc/slides/cprover-overview-latex-beamer/header.tex

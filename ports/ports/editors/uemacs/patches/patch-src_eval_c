@@ -1,0 +1,12 @@
+Index: src/eval.c
+--- src/eval.c.orig
++++ src/eval.c
+@@ -1470,7 +1470,7 @@ xnext:		++sp;
+ /*	setwlist:	Set an alternative list of character to be
+ 			considered "in a word */
+ 
+-PASCAL NEAR setwlist(wclist)
++void PASCAL NEAR setwlist(wclist)
+ 
+ char *wclist;	/* list of characters to consider "in a word" */
+ 

@@ -1,0 +1,10 @@
+Index: src/polkit-mate-authentication-agent-1.desktop.in
+--- src/polkit-mate-authentication-agent-1.desktop.in.orig
++++ src/polkit-mate-authentication-agent-1.desktop.in
+@@ -6,5 +6,5 @@ Terminal=false
+ Type=Application
+ Categories=
+ NoDisplay=true
+-OnlyShowIn=MATE;
++NotShowIn=GNOME;KDE;
+ X-MATE-AutoRestart=true

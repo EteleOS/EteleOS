@@ -1,0 +1,4 @@
+lib/X11/app-defaults/Gnuplot
+libexec/gnuplot/
+libexec/gnuplot/${V}/
+@bin libexec/gnuplot/${V}/gnuplot_x11

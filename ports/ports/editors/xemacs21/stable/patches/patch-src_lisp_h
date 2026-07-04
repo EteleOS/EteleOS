@@ -1,0 +1,42 @@
+* Security fix for CVE-2009-2688, xemacs: multiple integer overflow flaws.
+
+Patch from gentoo.
+
+* steal  max_align_t declaration from unistd.h to avoid redef.
+
+--- src/lisp.h.orig
++++ src/lisp.h
+@@ -193,15 +193,13 @@ void xfree (void *);
+ # endif /* GNUC */
+ #endif
+ 
+-/* No type has a greater alignment requirement than max_align_t.
+-   (except perhaps for types we don't use, like long double) */
+-typedef union
+-{
+-  struct { long l; } l;
+-  struct { void *p; } p;
+-  struct { void (*f)(void); } f;
+-  struct { double d; } d;
++#ifndef __CLANG_MAX_ALIGN_T_DEFINED
++#define __CLANG_MAX_ALIGN_T_DEFINED
++typedef struct {
++	long long __max_align_ll __aligned(__alignof__(long long));
++	long double __max_align_ld __aligned(__alignof__(long double));
+ } max_align_t;
++#endif
+ 
+ #ifndef ALIGNOF
+ # if defined (__GNUC__) && (__GNUC__ >= 2)
+@@ -265,6 +263,11 @@ void assert_failed (const char *, int, const char *);
+ /*#define REGISTER register*/
+ /*#endif*/
+ 
++#if SIZEOF_LONG == 8
++#define UINT_64_BIT unsigned long
++#elif SIZEOF_LONG_LONG == 8
++#define UINT_64_BIT unsigned long long
++#endif
+ 
+ /* EMACS_INT is the underlying integral type into which a Lisp_Object must fit.
+    In particular, it must be large enough to contain a pointer.

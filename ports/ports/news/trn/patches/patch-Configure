@@ -1,0 +1,21 @@
+--- Configure.orig	Thu Sep  2 07:12:26 2010
++++ Configure	Tue Jun 18 22:14:54 2013
+@@ -527,7 +527,7 @@ locincpth="$locincpth /opt/gnu/include /usr/GNU/includ
+ inclwanted=''
+ 
+ : List of libraries we want.
+-libswanted='malloc resolv socket net hdb bbn str nls nsl intl x ucb'
++libswanted='malloc resolv socket net bbn str nls nsl intl x ucb'
+ : Do not use vfork unless overridden by a hint file.
+ usevfork=false
+ 
+@@ -1670,6 +1670,9 @@ EOM
+ 		MiNT) osname=mint
+ 			;;
+ 		netbsd*) osname=netbsd
++			osvers="$3"
++			;;
++		openbsd*) osname=openbsd
+ 			osvers="$3"
+ 			;;
+ 		news-os) osvers="$3"

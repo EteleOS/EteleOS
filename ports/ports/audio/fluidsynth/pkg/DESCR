@@ -1,0 +1,7 @@
+FluidSynth is a cross-platform real-time software synthesizer based on the
+SoundFont 2 specifications including realtime effect modulation. It provides
+a library and command-line shell, and can be used to play MIDI files, as
+well as acting as a MIDI device via the sndio(7) interface.
+
+To use FluidSynth, you will need to provide a SoundFont 2 file; a general-
+purpose file is available in the generaluser-gs-soundfont package.

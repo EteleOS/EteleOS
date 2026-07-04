@@ -1,0 +1,11 @@
+--- tablec/Makefile.orig	Sat Apr 14 08:25:57 2007
++++ tablec/Makefile	Fri Jan 23 13:52:15 2015
+@@ -3,7 +3,7 @@
+ PROG=		tablec
+ SRCS=		tablec.c
+ 
+-CFLAGS+= 	-Wall -I{.CURDIR}
++CFLAGS+= 	-Wall -I${.CURDIR}
+ 
+ LINTFLAGS+=	-u
+ 

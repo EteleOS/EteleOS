@@ -1,0 +1,12 @@
+${P5ARCH}/
+${P5ARCH}/File/
+${P5ARCH}/File/MMagic/
+${P5ARCH}/File/MMagic/XS.pm
+${P5ARCH}/File/MMagic/benchmark.pl
+${P5ARCH}/File/MMagic/magic
+${P5ARCH}/auto/
+${P5ARCH}/auto/File/
+${P5ARCH}/auto/File/MMagic/
+${P5ARCH}/auto/File/MMagic/XS/
+${P5ARCH}/auto/File/MMagic/XS/XS.so
+@man man/man3p/File::MMagic::XS.3p

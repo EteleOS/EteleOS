@@ -1,0 +1,11 @@
+--- buildsys.mk.in.orig	Wed Jul 14 09:18:59 2010
++++ buildsys.mk.in	Sat Dec  4 17:38:36 2010
+@@ -90,7 +90,7 @@ OBJS9  = ${OBJS8:.xpm=.o}
+ OBJS10 = ${OBJS9:.S=.o}
+ OBJS  += ${OBJS10:.po=.gmo}
+ 
+-.SILENT:
++#.SILENT:
+ .SUFFIXES:
+ .SUFFIXES: .beam .c .cc .cxx .d .dep .erl .gmo .m .mm .o .po .py .pyc .xpm .S
+ .PHONY: all subdirs pre-depend depend install install-extra uninstall uninstall-extra clean distclean

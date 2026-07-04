@@ -1,0 +1,3 @@
+${P5SITE}/Sub/
+${P5SITE}/Sub/Info.pm
+@man man/man3p/Sub::Info.3p

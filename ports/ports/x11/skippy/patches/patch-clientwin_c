@@ -1,0 +1,20 @@
+--- clientwin.c.orig	Wed May 19 23:23:49 2004
++++ clientwin.c	Sat Jan  3 23:56:52 2009
+@@ -33,7 +33,7 @@ int
+ clientwin_validate_func(dlist *l, void *data)
+ {
+ 	ClientWin *cw = (ClientWin *)l->data;
+-	CARD32 desktop = (*(CARD32*)data),
++	unsigned long desktop = (*(unsigned long*)data),
+ 		w_desktop = wm_get_window_desktop(cw->mainwin->dpy, cw->client.window);
+ 	
+ #ifdef XINERAMA
+@@ -43,7 +43,7 @@ clientwin_validate_func(dlist *l, void *data)
+ 		return 0;
+ #endif
+ 	
+-	return (w_desktop == (CARD32)-1 || desktop == w_desktop) &&
++	return (w_desktop == (unsigned long)-1 || desktop == w_desktop) &&
+ 	       wm_validate_window(cw->mainwin->dpy, cw->client.window);
+ }
+ 

@@ -1,0 +1,5 @@
+libexec/squid/cert_tool
+@bin libexec/squid/ext_kerberos_ldap_group_acl
+@bin libexec/squid/negotiate_kerberos_auth
+@bin libexec/squid/negotiate_kerberos_auth_test
+@man man/man8/negotiate_kerberos_auth.8

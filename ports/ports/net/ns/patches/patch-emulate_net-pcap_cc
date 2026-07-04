@@ -1,0 +1,13 @@
+--- emulate/net-pcap.cc.orig	Wed Oct 26 10:24:58 2011
++++ emulate/net-pcap.cc	Sun Apr 22 21:58:54 2012
+@@ -345,7 +345,9 @@ PcapNetwork::phandler_callback(u_char* userdata, const
+ 	int s = inst->skiphdr();	// go to IP header
+ 	memcpy(p->accessdata(), pkt + s, ph->caplen - s);
+ 
+-	ps->callback(ps->clientdata, p, ph->ts);
++	{ struct timeval tv; tv.tv_sec = ph->ts.tv_sec;
++	tv.tv_usec = ph->ts.tv_usec;
++	ps->callback(ps->clientdata, p, tv);}
+ }
+ 
+ int

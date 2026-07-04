@@ -1,0 +1,3 @@
+${P5SITE}/File/
+${P5SITE}/File/Tempdir.pm
+@man man/man3p/File::Tempdir.3p

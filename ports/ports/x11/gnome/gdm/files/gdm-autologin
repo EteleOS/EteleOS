@@ -1,0 +1,10 @@
+# gdm-autologin settings for pam(3)
+
+auth		required	pam_permit.so
+
+account		required	pam_nologin.so
+account		include		system
+
+password	include		system
+
+session		include		system

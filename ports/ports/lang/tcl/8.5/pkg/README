@@ -1,0 +1,105 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+The OpenBSD port of the Tcl dynamic language was designed to balance
+deriving the maximum value from the original software while keeping
+any modifications to a minimum.
+
+Install locations and file names differ from the default to enable
+installing multiple versions of Tcl and Tk on OpenBSD without conflict.
+
+
+Files and Directories
+=====================
+
+Tclsh and Wish
+--------------
+normally
+${TRUEPREFIX}/lib/tclsh, ${TRUEPREFIX}/lib/wish
+now
+${TRUEPREFIX}/bin/tclsh8.5, ${TRUEPREFIX}/bin/wish8.5
+
+Library files
+-------------
+scripts, encoding files, etc.
+normally in
+${TRUEPREFIX}/lib/tcl8.5, ${TRUEPREFIX}/lib/tk8.5
+now in
+${TRUEPREFIX}/lib/tcl/tcl8.5, ${TRUEPREFIX}/lib/tcl/tk8.5
+
+Configuration Files
+-------------------
+tclConfig.sh, tkConfig.sh
+normally in
+${TRUEPREFIX}/lib
+now in
+${TRUEPREFIX}/lib/tcl/tcl8.5, ${TRUEPREFIX}/lib/tcl/tk8.5
+
+Header Files
+------------
+*.h
+normally in
+${TRUEPREFIX}/include
+now in
+${TRUEPREFIX}/include/tcl8.5, ${TRUEPREFIX}/include/tk8.5
+
+Manual Pages
+------------
+*.1, *.3, *.n
+normally in
+${TRUEPREFIX}/man
+now in
+${TRUEPREFIX}/lib/tcl/tcl8.5/man, ${TRUEPREFIX}/lib/tcl/tk8.5/man
+
+Demos
+-----
+*.tcl, *
+normally in
+${TRUEPREFIX}/lib/tk8.5/demos
+now in
+${TRUEPREFIX}/share/examples/tk8.5
+
+Bundled Tcl Modules
+-------------------
+*.tm
+normally in
+${TRUEPREFIX}/lib/tcl8/...
+now in
+${TRUEPREFIX}/lib/tcl/tcl8.5/modules
+
+Tcl Module Paths
+----------------
+normally
+${TRUEPREFIX}/lib/tcl8/...
+now
+${TRUEPREFIX}/lib/tcl/modules/85
+
+Additional Header Files
+-----------------------
+Additional ('private') header files are installed
+in ${TRUEPREFIX}/include/tcl8.5 and ${TRUEPREFIX}/include/tk8.5.
+
+Libraries
+=========
+On architectures that support shared libraries, additional static
+libraries (libtcl85.a, libtk85.a) are built from the pic-compiled
+object (.o) files.  A symbolic link from any lib.a to lib_pic.a
+is created in order to satisfy libtool.
+
+Manual Page Configuration
+=========================
+Adding the following lines to /etc/man.conf wil enable man(1)
+and related commands can find the Tcl and Tk manual pages.
+
+manpath ${TRUEPREFIX}/lib/tcl/tcl8.5/man
+manpath ${TRUEPREFIX}/lib/tcl/tk8.5/man
+
+Tcl/Tk Resources
+================
+Newsgroup: nntp://comp.lang.tcl
+Wiki:      http://wiki.tcl-lang.org
+Tutorial:  http://www.tcl-lang.org/man/tcl8.5/tutorial/tcltutorial.html
+Wikibook:  http://en.wikibooks.org/wiki/Programming:Tcl
+Book:      Practical Programming in Tcl and Tk, 4th Edition
+           ISBN: 0-13-038560-3

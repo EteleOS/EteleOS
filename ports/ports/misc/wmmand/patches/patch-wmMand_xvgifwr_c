@@ -1,0 +1,11 @@
+Index: wmMand/xvgifwr.c
+--- wmMand/xvgifwr.c.orig
++++ wmMand/xvgifwr.c
+@@ -38,6 +38,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <ctype.h>
+ #include <stddef.h>
+ #include <string.h>

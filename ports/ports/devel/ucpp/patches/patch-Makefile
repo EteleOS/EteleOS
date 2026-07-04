@@ -1,0 +1,15 @@
+--- Makefile.orig	Thu Dec 29 18:47:23 2011
++++ Makefile	Thu Dec 29 18:47:34 2011
+@@ -80,10 +80,8 @@ LIBS =
+ 
+ STAND_ALONE = -DSTAND_ALONE
+ 
+-ifdef STAND_ALONE
+-	CSRC = mem.c nhash.c cpp.c lexer.c assert.c macro.c eval.c
+-	FINAL_STEP = $(CC) $(LDFLAGS) -DUCPP_CONFIG $(STAND_ALONE) -o ucpp $(CSRC) $(LIBS)
+-endif
++CSRC = mem.c nhash.c cpp.c lexer.c assert.c macro.c eval.c
++FINAL_STEP = $(CC) $(LDFLAGS) -DUCPP_CONFIG $(STAND_ALONE) -o ucpp $(CSRC) $(LIBS)
+ 
+ # ----- nothing should be changed below this line -----
+ 

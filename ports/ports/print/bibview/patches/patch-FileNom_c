@@ -1,0 +1,38 @@
+Index: FileNom.c
+--- FileNom.c.orig
++++ FileNom.c
+@@ -822,20 +822,20 @@ FillWindow(fnw)
+     Dimension height, internalHeight, rowSpacing;
+     int num, newNum, idx;
+     struct dirent  **namelist;
+- #ifndef HAVE_DIR
++#ifndef HAVE_DIR
+     DIR *dirp;
+     struct dirent *direntp;
+     int direntp_size;
+- #else
++#else
+     extern int alphasort();
+- #endif 
++#endif 
+     char buf[MAXPATHLEN], *bp;
+     String name;
+     struct stat fstats;
+     unsigned int namlen;
+- #ifdef HAVE_DIR
++#ifdef HAVE_DIR
+     num = scandir(CurrentDir(fnw), &namelist, (int(*)())0, alphasort);
+- #else
++#else
+     /* Read the directory `CurrentDir(fnw)'
+        and set the `dirent's in `namelist'. */
+        dirp = opendir( CurrentDir(fnw) );
+@@ -860,7 +860,7 @@ FillWindow(fnw)
+ 
+     /* Sort the directory entries in `namelist'. */
+        qsort( namelist, num, sizeof(struct dirent*), direntpcmp );
+- #endif 
++#endif 
+     
+     if (num <= 0)
+     {

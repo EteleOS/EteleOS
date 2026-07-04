@@ -1,0 +1,53 @@
+COMMENT =		Atari 2600 VCS emulator
+
+V =			7.0
+REVISION =		0
+DISTNAME =		stella-$V
+CATEGORIES =		emulators
+EXTRACT_SUFX =		-src.tar.xz
+WRKDIST =		${WRKDIR}/${DISTNAME}
+
+HOMEPAGE =		https://stella-emu.github.io/
+
+MAINTAINER =		Benoit Lecocq <benoit@openbsd.org>
+
+# GPLv2
+PERMIT_PACKAGE =	Yes
+
+WANTLIB =		${COMPILER_LIBCXX} c m z pthread SDL2 png sqlite3
+
+COMPILER =		base-clang ports-gcc base-gcc
+
+SITES =		https://github.com/stella-emu/stella/releases/download/$V/
+
+LIB_DEPENDS =		devel/sdl2 \
+			graphics/png \
+			databases/sqlite3
+
+CXXFLAGS +=		-I${X11BASE}/include -I${LOCALBASE}/include
+LDFLAGS += 		-L${LOCALBASE}/lib
+
+CONFIGURE_STYLE =	simple
+CONFIGURE_ARGS +=	--with-libpng-prefix=${LOCALBASE}/lib
+
+USE_GMAKE =		Yes
+
+NO_TEST =		Yes
+
+DEBUG_PACKAGES = ${BUILD_PACKAGES}
+
+DOCSBASE =		${WRKDIST}/docs
+HTMLDOCS =		${DOCSBASE}/*.html
+HTMLGRAPHICS =		${DOCSBASE}/graphics/*.png
+DOCSDIR =		${PREFIX}/share/doc/stella
+
+do-install:
+	${INSTALL_PROGRAM}	${WRKDIST}/stella ${PREFIX}/bin
+
+post-install:
+	${INSTALL_DATA_DIR} ${DOCSDIR}
+	${INSTALL_DATA} ${HTMLDOCS} ${DOCSDIR}
+	${INSTALL_DATA_DIR} ${DOCSDIR}/graphics
+	${INSTALL_DATA} ${HTMLGRAPHICS} ${DOCSDIR}/graphics/
+
+.include <bsd.port.mk>

@@ -1,0 +1,21 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -36,6 +36,7 @@ OS_FEATURE-$(VSSCANF)                += osdep/vsscanf.
+ # conditional source declarations
+ SRCS_AUDIO_INPUT-$(ALSA)             += stream/ai_alsa.c
+ SRCS_AUDIO_INPUT-$(OSS)              += stream/ai_oss.c
++SRCS_AUDIO_INPUT-$(SNDIO)            += stream/ai_sndio.c
+ SRCS_COMMON-$(AUDIO_INPUT)           += $(SRCS_AUDIO_INPUT-yes)
+ SRCS_COMMON-$(BITMAP_FONT)           += sub/font_load.c
+ SRCS_COMMON-$(CDDA)                  += stream/stream_cdda.c            \
+@@ -613,7 +614,8 @@ SRCS_MPLAYER = command.c                \
+                libvo/vo_mpegpes.c       \
+                libvo/vo_null.c          \
+                sub/spuenc.c             \
+-               $(SRCS_MPLAYER-yes)
++               $(SRCS_MPLAYER-yes)      \
++               libao2/ao_rtunes.c
+ 
+ #MEncoder
+ SRCS_MENCODER-$(FAAC)             += libmpcodecs/ae_faac.c

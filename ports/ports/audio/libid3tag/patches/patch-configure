@@ -1,0 +1,36 @@
+--- configure.orig	Thu Feb  5 10:35:25 2004
++++ configure	Fri Apr  2 00:21:37 2010
+@@ -19007,6 +19007,7 @@ debug=""
+ optimize=""
+ profile=""
+ 
++if false; then
+ set -- $CFLAGS
+ CFLAGS=""
+ 
+@@ -19051,6 +19052,7 @@ do
+ 	    ;;
+     esac
+ done
++fi
+ 
+ 
+ echo "$as_me:$LINENO: checking for ANSI C header files" >&5
+@@ -19991,7 +19993,7 @@ _ACEOF
+ 	    debug=""
+ 	    if test "$GCC" = yes
+ 	    then
+-		optimize="$optimize -fomit-frame-pointer"
++		: optimize="$optimize -fomit-frame-pointer"
+ 	    fi
+ 	    ;;
+     esac
+@@ -20017,7 +20019,7 @@ test -n "$optimize" && CFLAGS="$CFLAGS $optimize"
+ test -n "$profile"  && CFLAGS="$CFLAGS $profile" LDFLAGS="$LDFLAGS $profile"
+ 
+ 
+-                              ac_config_files="$ac_config_files Makefile msvc++/Makefile libid3tag.list"
++                              ac_config_files="$ac_config_files Makefile msvc++/Makefile libid3tag.list id3tag.pc"
+ 
+ cat >confcache <<\_ACEOF
+ # This file is a shell script that caches the results of configure

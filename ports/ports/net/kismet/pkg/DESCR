@@ -1,0 +1,6 @@
+Kismet is an open source sniffer, WIDS, wardriver, and packet capture
+tool for Wi-Fi, Bluetooth, BTLE, wireless thermometers, airplanes, power
+meters, Zigbee, and more.
+
+Kismet can operate both headless as a standalone capture and WIDS
+system, or with a full modern web-based UI.

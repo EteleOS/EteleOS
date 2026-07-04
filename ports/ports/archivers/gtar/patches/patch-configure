@@ -1,0 +1,12 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -51811,7 +51811,7 @@ fi
+ printf "%s\n" "$acl_cv_rpath" >&6; }
+   wl="$acl_cv_wl"
+   acl_libext="$acl_cv_libext"
+-  acl_shlibext="$acl_cv_shlibext"
++  acl_shlibext="${SHLIBEXT-$acl_cv_shlibext}"
+   acl_libname_spec="$acl_cv_libname_spec"
+   acl_library_names_spec="$acl_cv_library_names_spec"
+   acl_hardcode_libdir_flag_spec="$acl_cv_hardcode_libdir_flag_spec"

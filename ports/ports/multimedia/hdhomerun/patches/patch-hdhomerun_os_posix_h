@@ -1,0 +1,18 @@
+--- hdhomerun_os_posix.h.orig	Fri Jul 18 13:52:20 2014
++++ hdhomerun_os_posix.h	Fri Jul 18 13:52:52 2014
+@@ -30,7 +30,6 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/time.h>
+-#include <sys/timeb.h>
+ #include <sys/wait.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+@@ -39,7 +38,6 @@
+ #include <pthread.h>
+ 
+ typedef int bool_t;
+-typedef void (*sig_t)(int);
+ 
+ #define LIBTYPE
+ #define console_vprintf vprintf

@@ -1,0 +1,4 @@
+@bin bin/wmtz
+@man man/man1/wmtz.1
+share/examples/wmtz/
+share/examples/wmtz/sample.wmtzrc

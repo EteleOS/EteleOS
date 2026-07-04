@@ -1,0 +1,30 @@
+Index: utils/kamctl/kamctl.base
+--- utils/kamctl/kamctl.base.orig
++++ utils/kamctl/kamctl.base
+@@ -604,7 +604,7 @@ mdbg() {
+ 
+ mwarn() {
+ 	if [ -t 1 -a -z "$NOHLPRINT" ] ; then
+-		echo -e '\E[37;32m'"\033[1mWARNING: $1\033[0m"
++		echo -e '\033[37;32m'"\033[1mWARNING: $1\033[0m"
+ 	else
+ 		echo "** WARNING: $1"
+ 	fi
+@@ -612,7 +612,7 @@ mwarn() {
+ 
+ minfo() {
+ 	if [ -t 1 -a -z "$NOHLPRINT" ] ; then
+-		echo -e '\E[37;33m'"\033[1mINFO: $1\033[0m"
++		echo -e '\033[37;33m'"\033[1mINFO: $1\033[0m"
+ 	else
+ 		echo "** INFO: $1"
+ 	fi
+@@ -628,7 +628,7 @@ mecho() {
+ 
+ merr() {
+ 	if [ -t 1 -a -z "$NOHLPRINT" ] ; then
+-		echo -e '\E[37;31m'"\033[1mERROR: $1\033[0m"
++		echo -e '\033[37;31m'"\033[1mERROR: $1\033[0m"
+ 	else
+ 		echo "** ERROR: $1"
+ 	fi

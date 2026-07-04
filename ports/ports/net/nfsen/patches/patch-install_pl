@@ -1,0 +1,133 @@
+Index: install.pl
+--- install.pl.orig
++++ install.pl
+@@ -158,14 +158,14 @@ sub VerifyUser {
+ 	if ( !defined $gid_name ) {
+ 		die "Group '$user_gid' not found on this system\n";
+ 	}
+-	# Check the members list
+-	foreach my $member ( split /\s+/, $group_members ) {
+-		if ( $member eq $user ) {
++#	# Check the members list
++#	foreach my $member ( split /\s+/, $group_members ) {
++#		if ( $member eq $user ) {
+ 			# user found
+ 			return $uid;
+-		}
+-	}
+-	die "User '$user' not a member of group '$NfConf::WWWGROUP'\n";
++#		}
++#	}
++#	die "User '$user' not a member of group '$NfConf::WWWGROUP'\n";
+ 
+ } # End of VerifyUser
+ 
+@@ -577,7 +577,6 @@ sub CopyAllFiles {
+ 	$CopyRecursive::UID 	 = 0;
+ 	$CopyRecursive::GID 	 = $www_gid;
+ 	$CopyRecursive::MODE 	 = 0755;
+-	unlink "$NfConf::BINDIR/nfsen.rc";
+ 	CopyRecursive::dircopy("bin", "$NfConf::INSTPREFIX$NfConf::BINDIR");
+ 	CopyRecursive::dircopy("libexec", "$NfConf::INSTPREFIX$NfConf::LIBEXECDIR");
+ 	$CopyRecursive::MODE 	 = 0644;
+@@ -585,11 +584,11 @@ sub CopyAllFiles {
+ 	CopyRecursive::dircopy("plugins/backend",  "$NfConf::INSTPREFIX$NfConf::BACKEND_PLUGINDIR");
+ 	CopyRecursive::dircopy("plugins/frontend", "$NfConf::INSTPREFIX$NfConf::FRONTEND_PLUGINDIR");
+ 
+-	if ( $ConfigFile eq "$NfConf::CONFDIR/nfsen.conf" ) {
++	if ( $ConfigFile eq "$NfConf::INSTPREFIX$NfConf::CONFDIR/nfsen.conf" ) {
+ 		print "Keep config file '$ConfigFile'\n";
+ 	} else {
+ 		print "Copy config file '$ConfigFile'\n";
+-		CopyRecursive::fcopy("$ConfigFile", "$NfConf::CONFDIR/nfsen.conf");
++		CopyRecursive::fcopy("$ConfigFile", "$NfConf::INSTPREFIX$NfConf::CONFDIR/nfsen.conf");
+ 	}
+ 	print "\n";
+ 
+@@ -608,7 +607,7 @@ sub Cleanup {
+ 					);
+ 
+ 	foreach my $file ( @OldFiles ) {
+-		unlink $file if -f $file;
++#		unlink $file if -f $file;
+ 	}
+ 
+ } # End of Cleanup
+@@ -622,8 +621,13 @@ sub Cleanup {
+ $| = 1;
+ 
+ my $ConfigFile = shift @ARGV;
++my $mode = shift @ARGV;
++ 
++my $configure;
++my $copy;
++$configure=1 if $mode eq '';
++$copy=1 if $mode eq 'copy';
+ 
+-
+ # Load the required NfSen modules 
+ unshift @INC, "libexec";
+ print "Check for required Perl modules: ";
+@@ -645,7 +649,7 @@ if ( $@ ) {
+ 
+ # need to run as root
+ if ( !NfSen::root_process() ) {
+-	die "nfsen setup wants to run as root\n";
++	print "Warning: nfsen setup should normally be run as root\n";
+ }
+ 
+ # need a config file
+@@ -695,7 +699,8 @@ print "Version: $nfsen_version: $VERSION\n\n";
+ 
+ # Get Perl
+ # Put this into a NfConf variable, so we can use the standard Patch Procedure
+-$NfConf::PERL = GetPerl();
++#$NfConf::PERL = GetPerl();
++$NfConf::PERL = FindCommand("perl");
+ $NfConf::INSTPREFIX = $ENV{'INSTPREFIX'};
+ if ( defined $NfConf::INSTPREFIX ) {
+ 	if ( ! $NfConf::INSTPREFIX =~ /\/$/ ) {
+@@ -711,7 +716,10 @@ my ($nfsen_uid, $www_gid, $nfdump_version ) = VerifyCo
+ $$$hints{'nfdump'} = $nfdump_version;
+ 
+ my $nfsen_run = 0;
++my $need_rrdlayout_upgrade = undef;
++my $rrdtool = undef;
+ 
++if ($configure) {
+ # test for two files of old layout
+ my $need_rrdlayout_upgrade = -f "$NfConf::PROFILESTATDIR/live/flows.rrd" && -f "$NfConf::PROFILESTATDIR/live/packets_other.rrd";
+ 
+@@ -761,10 +769,14 @@ if ( -f "$NfConf::PIDDIR/$pid_name" ) {
+ 		}
+ 	}
+ }
++}
+ 
++if ($copy) {
+ SetupHTML($nfsen_uid, $www_gid);
+ CopyAllFiles($ConfigFile, $nfsen_uid, $www_gid);
+ PatchAllScripts();
++}
++if ($configure) {
+ Cleanup();
+ SetupEnv($nfsen_uid, $www_gid);
+ 
+@@ -805,14 +817,17 @@ $$$hints{'version'} 		= $nfsen_version;
+ $$$hints{'installed'} 		= time();
+ NfSen::StoreHints();
+ chown $nfsen_uid, $www_gid, "$NfConf::INSTPREFIX$NfConf::PROFILESTATDIR/hints" || die "Can't chown hints db: $!\n";
++}
+ print "Setup done.\n\n";
+ 
++if ( $configure ) {
+ if ( $nfsen_run == 2 ) {
+ 	print "Restart NfSen\n";
+ 	system("$NfConf::BINDIR/nfsen start");
+ } elsif ( $nfsen_run == 1 ) {
+ 	print "Restart nfsend\n";
+ 	system("$NfConf::BINDIR/nfsend");
++} 
+ } 
+ 
+ print "* You may want to subscribe to the nfsen-discuss mailing list:\n";

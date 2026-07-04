@@ -1,0 +1,8 @@
+@bin bin/tnylpo
+@bin bin/tnylpo-convert
+@man man/man1/tnylpo-convert.1
+@man man/man1/tnylpo.1
+share/tnylpo/
+share/tnylpo/README.md
+share/tnylpo/mine.com
+share/tnylpo/mine.conf

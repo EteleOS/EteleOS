@@ -1,0 +1,11 @@
+--- configure.orig	Sat Sep  3 04:16:58 2011
++++ configure	Sat Sep  3 04:17:21 2011
+@@ -16076,7 +16076,7 @@ _ACEOF
+ #   (https://bugzilla.novell.com/show_bug.cgi?id=529921)
+ # - Don't require a not upstream patch to pkgconfig
+ #   (https://bugs.freedesktop.org/show_bug.cgi?id=16095)
+-popt_pkgconfig_libs='-L${libdir} -lpopt'
++popt_pkgconfig_libs='-L${libdir} -lpopt -lintl -liconv'
+ case "${host}" in
+     *-*-linux*)
+ 	case "${libdir}" in

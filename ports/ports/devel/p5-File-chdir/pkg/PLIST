@@ -1,0 +1,3 @@
+${P5SITE}/File/
+${P5SITE}/File/chdir.pm
+@man man/man3p/File::chdir.3p

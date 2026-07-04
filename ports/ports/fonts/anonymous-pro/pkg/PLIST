@@ -1,0 +1,12 @@
+@pkgpath x11/anonymous-pro
+share/doc/anonymous-pro/
+share/doc/anonymous-pro/FONTLOG.txt
+share/doc/anonymous-pro/OFL-FAQ.txt
+share/doc/anonymous-pro/OFL.txt
+share/doc/anonymous-pro/README.txt
+share/fonts/
+@fontdir share/fonts/anonymous-pro/
+share/fonts/anonymous-pro/AnonymousPro.ttf
+share/fonts/anonymous-pro/AnonymousProB.ttf
+share/fonts/anonymous-pro/AnonymousProBI.ttf
+share/fonts/anonymous-pro/AnonymousProI.ttf

@@ -1,0 +1,51 @@
+Chunks 1-3: Do not report contractions by default (local change).
+Chunk 4: Do not use /usr/local/etc/ (local change).
+
+Index: igor
+--- igor.orig
++++ igor
+@@ -104,7 +104,7 @@ usage: $prog -h
+         -f  FreeBSD obsolete features
+         -r  repeated words
+         -s  spelling
+-        -u  contractions
++        -u  contractions (off by default)
+         -w  whitespace
+         -y  style suggestions (off by default)
+ 
+@@ -234,13 +234,13 @@ sub initialize {
+ 	# -D equals -abefgmprsuw
+ 	if ( $opt_D ) {
+ 		$opt_a = $opt_b = $opt_e = $opt_f = $opt_g = $opt_m = $opt_p
+-			   = $opt_r = $opt_s = $opt_u = $opt_w = 1;
++			   = $opt_r = $opt_s = $opt_w = 1;
+ 	}
+ 
+ 	if ( $opt_z ) {
+ 		# all non-whitespace tests
+ 		$opt_a = $opt_b = $opt_c = $opt_d = $opt_e = $opt_f = $opt_g
+-			   = $opt_m = $opt_o = $opt_p = $opt_r = $opt_s = $opt_u
++			   = $opt_m = $opt_o = $opt_p = $opt_r = $opt_s
+ 			   = $opt_E = $opt_S = 1;
+ 	}
+ 
+@@ -263,7 +263,7 @@ sub initialize {
+ 		$opt_a = $opt_b = $opt_c = $opt_d = $opt_e
+ 			   = $opt_f = $opt_g = $opt_i = $opt_l = $opt_m
+ 			   = $opt_n = $opt_o = $opt_p = $opt_r = $opt_s
+-			   = $opt_t = $opt_u = $opt_w = $opt_E = $opt_S
++			   = $opt_t = $opt_w = $opt_E = $opt_S
+ 			   = $opt_W = 1;
+ 		$opt_x = $opt_y = 0;
+ 	}
+@@ -1017,8 +1017,8 @@ sub init_spellingerrors {
+ 	my @spellfiles;
+ 	# IGORSPELLFILES environment variable is a whitespace-separated list of files
+ 	push (@spellfiles, split /\s/, $ENV{'IGORSPELLFILES'}) if defined($ENV{'IGORSPELLFILES'});
+-	# all files found in /usr/local/etc/igor/spelling
+-	push (@spellfiles, split /\s/, `ls /usr/local/etc/igor/spelling/*`) if -d '/usr/local/etc/igor/spelling';
++	# all files found in /etc/igor/spelling
++	push (@spellfiles, split /\s/, `ls /etc/igor/spelling/*`) if -d '/etc/igor/spelling';
+ 	for my $spellfile (@spellfiles) {
+ 		readspelling($spellfile);
+ 	}

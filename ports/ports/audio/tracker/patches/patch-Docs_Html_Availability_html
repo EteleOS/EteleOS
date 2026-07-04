@@ -1,0 +1,11 @@
+--- Docs/Html/Availability.html.orig	Thu Apr 11 19:21:06 1996
++++ Docs/Html/Availability.html	Thu Dec 27 16:51:26 2007
+@@ -53,7 +53,7 @@ You can also contact me at the following e-mail addres
+ </P>
+ <DL><DT><DD>
+ <PRE>
+-Marc.Espie@ens.fr
++Marc.Espie@openbsd.org
+ 
+ </PRE>
+ </DL>

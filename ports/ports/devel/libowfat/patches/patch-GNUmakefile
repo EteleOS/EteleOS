@@ -1,0 +1,54 @@
+Index: GNUmakefile
+--- GNUmakefile.orig
++++ GNUmakefile
+@@ -13,7 +13,7 @@ LIBS=byte.a fmt.a scan.a str.a uint.a open.a stralloc.
+ buffer.a mmap.a taia.a tai.a dns.a case.a mult.a array.a io.a \
+ textcode.a cdb.a critbit.a
+ 
+-all: headers ent $(LIBS) libowfat.a libsocket t
++all: headers ent $(LIBS) libowfat.a libowfat.so.$(SO_VERSION) libsocket t
+ 
+ pic pie:
+ 	$(MAKE) CC="gcc -fPIC" LDFLAGS="-fpie"
+@@ -23,7 +23,7 @@ CROSS=
+ CC?=gcc
+ CCC=$(CROSS)$(CC)
+ WERROR=
+-WARN=-W -Wall -Wextra $(WERROR)
++WARN=-W -Wall $(WERROR)
+ 
+ # Use the second version if you are building for a binary that is only
+ # supposed to run on this machine. It tells gcc to use CPU instructions
+@@ -36,8 +36,8 @@ OPT_PLUS=-O3 $(NATIVE)
+ 
+ DEFINE=-D_REENTRANT
+ 
+-CFLAGS=-pipe $(WARN) $(DEFINE) $(OPT_REG)
+-CFLAGS_OPT=-pipe $(WARN) $(DEFINE) $(OPT_PLUS)
++CFLAGS=$(COPTFLAGS) $(WARN) $(DEFINE) $(OPT_REG)
++CFLAGS_OPT=$(COPTFLAGS) $(WARN) $(DEFINE) $(OPT_PLUS)
+ 
+ #CFLAGS=-pipe -Os -march=pentiumpro -mcpu=pentiumpro -fomit-frame-pointer -fschedule-insns2 -Wall
+ 
+@@ -172,6 +172,9 @@ libowfat.a: $(ALL_OBJS)
+ 	$(CROSS)ar cru $@ $(ALL_OBJS)
+ 	-$(CROSS)ranlib $@
+ 
++libowfat.so.$(SO_VERSION): $(ALL_OBJS)
++	$(CC) -shared -fpic -o $@ $(ALL_OBJS)
++
+ CFLAGS+=-I.
+ CFLAGS_OPT+=-I.
+ 
+@@ -220,9 +223,10 @@ install-inc:
+ 	install -d $(DESTDIR)$(INCLUDEDIR)/libowfat
+ 	install -m 644 $(INCLUDES) $(DESTDIR)$(INCLUDEDIR)/libowfat
+ 
+-install-lib: libowfat.a
++install-lib: libowfat.a libowfat.so.$(SO_VERSION)
+ 	install -d $(DESTDIR)$(LIBDIR)
+ 	install -m 644 libowfat.a $(DESTDIR)$(LIBDIR)
++	install -m 644 libowfat.so.$(SO_VERSION) $(DESTDIR)$(LIBDIR)
+ 
+ install-man:
+ 	install -d $(DESTDIR)$(MAN3DIR)

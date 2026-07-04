@@ -1,0 +1,18 @@
+@newgroup _blackboxexporter:862
+@newuser _blackboxexporter:862:_blackboxexporter::blackboxexporter:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/blackbox_exporter
+@bin bin/blackbox_exporter
+share/doc/blackbox_exporter/
+share/doc/blackbox_exporter/CHANGELOG.md
+share/doc/blackbox_exporter/CODE_OF_CONDUCT.md
+share/doc/blackbox_exporter/CONFIGURATION.md
+share/doc/blackbox_exporter/LICENSE
+share/doc/blackbox_exporter/MAINTAINERS.md
+share/doc/blackbox_exporter/README.md
+share/doc/blackbox_exporter/SECURITY.md
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/blackbox_exporter/
+@sample ${SYSCONFDIR}/blackbox_exporter/
+share/examples/blackbox_exporter/blackbox.yml
+@sample ${SYSCONFDIR}/blackbox_exporter/blackbox.yml
+share/examples/blackbox_exporter/example.yml

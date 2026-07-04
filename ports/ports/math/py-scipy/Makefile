@@ -1,0 +1,47 @@
+COMMENT=	maths, science and engineering modules for Python
+
+MODPY_DISTV=	1.16.3
+REVISION=	0
+DISTNAME=	scipy-${MODPY_DISTV}
+PKGNAME=	py-${DISTNAME}
+
+CATEGORIES=	math devel
+
+# BSD
+PERMIT_PACKAGE=	Yes
+
+WANTLIB += ${MODFORTRAN_WANTLIB} ${MODPY_WANTLIB}
+WANTLIB += blas cblas lapack m pthread ${COMPILER_LIBCXX} util
+
+COMPILER=	base-clang ports-gcc
+
+HOMEPAGE=	https://scipy.org/
+
+MODULES=	lang/python \
+		fortran
+
+MODFORTRAN_COMPILER=	gfortran
+
+MODPY_PI=	Yes
+MODPY_PYBUILD=	mesonpy
+
+BUILD_DEPENDS=	${RUN_DEPENDS} \
+		${MODFORTRAN_BUILD_DEPENDS} \
+		devel/py-pybind11 \
+		devel/py-setuptools \
+		lang/cython \
+		lang/pythran
+
+LIB_DEPENDS=	math/lapack \
+		${MODFORTRAN_LIB_DEPENDS}
+
+RUN_DEPENDS=	math/py-numpy \
+		devel/swig
+
+TEST_DEPENDS=	${FULLPKGNAME}:${BUILD_PKGPATH} \
+		devel/py-hypothesis
+MODPY_TEST_DIR=	${WRKINST}/${MODPY_SITEPKG}
+# this test needs pooch (not ported) to download data files at runtime
+MODPY_PYTEST_ARGS= --ignore scipy/datasets/tests/test_data.py
+
+.include <bsd.port.mk>

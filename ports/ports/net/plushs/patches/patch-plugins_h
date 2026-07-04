@@ -1,0 +1,12 @@
+Index: plugins.h
+--- plugins.h.orig
++++ plugins.h
+@@ -7,7 +7,7 @@
+ #endif
+ #endif
+ 
+-FILE *pfildes;
++extern FILE *pfildes;
+ 
+ 
+ /* 

@@ -1,0 +1,4 @@
+${P5SITE}/Locale/
+${P5SITE}/Locale/US.pm
+${P5SITE}/Locale/kruft2codes.pl
+@man man/man3p/Locale::US.3p

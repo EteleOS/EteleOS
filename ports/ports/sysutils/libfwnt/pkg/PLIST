@@ -1,0 +1,15 @@
+include/libfwnt/
+include/libfwnt.h
+include/libfwnt/definitions.h
+include/libfwnt/error.h
+include/libfwnt/extern.h
+include/libfwnt/features.h
+include/libfwnt/types.h
+@static-lib lib/libfwnt.a
+lib/libfwnt.la
+@lib lib/libfwnt.so.${LIBfwnt_VERSION}
+lib/pkgconfig/libfwnt.pc
+lib/python${MODPY_VERSION}/site-packages/pyfwnt.a
+lib/python${MODPY_VERSION}/site-packages/pyfwnt.la
+@so lib/python${MODPY_VERSION}/site-packages/pyfwnt.so
+@man man/man3/libfwnt.3

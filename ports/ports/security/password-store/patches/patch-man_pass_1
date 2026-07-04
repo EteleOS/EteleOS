@@ -1,0 +1,21 @@
+Index: man/pass.1
+--- man/pass.1.orig
++++ man/pass.1
+@@ -78,7 +78,7 @@ unspecified) is removed.
+ List names of passwords inside the tree at
+ .I subfolder
+ by using the
+-.BR tree (1)
++.BR colortree (1)
+ program. This command is alternatively named \fBlist\fP.
+ .TP
+ \fBgrep\fP [\fIGREPOPTIONS\fP] \fIsearch-string\fP
+@@ -91,7 +91,7 @@ as-is. (Note: the \fIGREP_OPTIONS\fP environment varia
+ .TP
+ \fBfind\fP \fIpass-names\fP...
+ List names of passwords inside the tree that match \fIpass-names\fP by using the
+-.BR tree (1)
++.BR colortree (1)
+ program. This command is alternatively named \fBsearch\fP.
+ .TP
+ \fBshow\fP [ \fI--clip\fP[=\fIline-number\fP], \fI-c\fP[\fIline-number\fP] ] [ \fI--qrcode\fP[=\fIline-number\fP], \fI-q\fP[\fIline-number\fP] ] \fIpass-name\fP

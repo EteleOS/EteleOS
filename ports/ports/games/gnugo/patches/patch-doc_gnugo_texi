@@ -1,0 +1,14 @@
+Index: doc/gnugo.texi
+--- doc/gnugo.texi.orig
++++ doc/gnugo.texi
+@@ -2,6 +2,10 @@
+ @c %**start of header
+ @setfilename gnugo.info
+ @settitle GNU Go Documentation
++@dircategory Games
++@direntry
++* GNU go: (gnugo)		A Go program.
++@end direntry
+ @c %**end of header
+ 
+ @dircategory GNU games

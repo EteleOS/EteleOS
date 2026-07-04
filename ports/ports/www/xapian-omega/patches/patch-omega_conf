@@ -1,0 +1,20 @@
+Index: omega.conf
+--- omega.conf.orig
++++ omega.conf
+@@ -1,8 +1,8 @@
+ # Directory containing Xapian databases:
+-database_dir /var/lib/omega/data
++database_dir /var/omega/data
+ 
+ # Directory containing OmegaScript templates:
+-template_dir /var/lib/omega/templates
++template_dir /var/omega/templates
+ 
+ # Default template name if the CGI parameter "FMT" is not specified.
+ # (If not specified here, the default template name is "query"):
+@@ -16,4 +16,4 @@ template_dir /var/lib/omega/templates
+ log_dir /var/log/omega
+ 
+ # Directory containing any cdb files for the $lookup OmegaScript command:
+-cdb_dir /var/lib/omega/cdb
++cdb_dir /var/omega/cdb

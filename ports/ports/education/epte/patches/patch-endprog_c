@@ -1,0 +1,14 @@
+Fix "-fno-common" build.
+
+Index: endprog.c
+--- endprog.c.orig
++++ endprog.c
+@@ -293,7 +293,7 @@ modification follow.
+ #include <stdlib.h>
+ #include "periodic.h"
+ 
+-FILE *Audio;
++extern FILE *Audio;
+ 
+ void endprog (int status) 
+ {

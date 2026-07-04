@@ -1,0 +1,39 @@
+--- shuffle.c.orig	Tue Jan 12 19:59:38 1993
++++ shuffle.c	Mon May 17 10:25:14 2010
+@@ -15,9 +15,13 @@
+ 
+ # include <X11/Intrinsic.h>
+ # include <stdio.h>
++# include <stdlib.h>
+ 
+ # include "debug.h"
+ # include "cdrom_globs.h"
++#if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__)
++# include "cdrom_freebsd.h"
++#endif
+ #ifdef sun
+ # include "cdrom_sun.h"
+ #endif
+@@ -29,10 +33,11 @@
+ 
+ static unsigned char	*random_tracks;
+ 
++extern AppData app_data;
++
+ void
+ shuffle_setup() {
+-	extern char	*malloc();
+-#ifdef sgi
++#if defined sgi || defined __OpenBSD__
+ 	extern time_t	time(time_t *);
+ #else
+ 	extern long	time();
+@@ -97,7 +102,7 @@ shuffle_setup() {
+ 		random_tracks[i] = try;
+ 	}
+ 
+-	if (debug == True) {
++	if (app_data.debug == True) {
+ 		debug_printf(1, "shuffle_setup: ");
+ 		for (i = 0; i < cdi.ntracks; i++)
+ 			debug_printf(1, "%d ", random_tracks[i]);

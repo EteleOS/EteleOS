@@ -1,0 +1,40 @@
+bin/ccon
+bin/crsh
+bin/csftp
+bin/cssh
+bin/ctel
+${P5SITE}/App/
+${P5SITE}/App/ClusterSSH/
+${P5SITE}/App/ClusterSSH.pm
+${P5SITE}/App/ClusterSSH/Base.pm
+${P5SITE}/App/ClusterSSH/Cluster.pm
+${P5SITE}/App/ClusterSSH/Config.pm
+${P5SITE}/App/ClusterSSH/Getopt.pm
+${P5SITE}/App/ClusterSSH/Helper.pm
+${P5SITE}/App/ClusterSSH/Host.pm
+${P5SITE}/App/ClusterSSH/L10N/
+${P5SITE}/App/ClusterSSH/L10N.pm
+${P5SITE}/App/ClusterSSH/L10N/en.pm
+${P5SITE}/App/ClusterSSH/Range.pm
+${P5SITE}/App/ClusterSSH/Window/
+${P5SITE}/App/ClusterSSH/Window.pm
+${P5SITE}/App/ClusterSSH/Window/Tk.pm
+@man man/man1/ccon.1
+@man man/man1/crsh.1
+@man man/man1/csftp.1
+@man man/man1/cssh.1
+@man man/man1/ctel.1
+@man man/man3p/App::ClusterSSH.3p
+@man man/man3p/App::ClusterSSH::Base.3p
+@man man/man3p/App::ClusterSSH::Cluster.3p
+@man man/man3p/App::ClusterSSH::Config.3p
+@man man/man3p/App::ClusterSSH::Getopt.3p
+@man man/man3p/App::ClusterSSH::Helper.3p
+@man man/man3p/App::ClusterSSH::Host.3p
+@man man/man3p/App::ClusterSSH::L10N.3p
+@man man/man3p/App::ClusterSSH::L10N::en.3p
+@man man/man3p/App::ClusterSSH::Range.3p
+@man man/man3p/App::ClusterSSH::Window.3p
+@man man/man3p/App::ClusterSSH::Window::Tk.3p
+share/bash-completion/
+share/bash-completion/clusterssh

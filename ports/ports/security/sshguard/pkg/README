@@ -1,0 +1,11 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+To use ${PKGSTEM} with pf(4), add something similar to the following to
+${SYSCONFDIR}/pf.conf:
+
+table <sshguard> persist
+
+block in quick on egress proto tcp from <sshguard> \
+	to any port ssh label "ssh bruteforce"

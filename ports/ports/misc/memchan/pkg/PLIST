@@ -1,0 +1,17 @@
+include/memchan/
+include/memchan/buf.h
+include/memchan/bufDecls.h
+include/memchan/bufIntDecls.h
+include/memchan/memchan.h
+include/memchan/memchanDecls.h
+lib/tcl/memchan/
+@lib lib/tcl/memchan/libMemchan23.so.${LIBMemchan23_VERSION}
+lib/tcl/memchan/libMemchanstub23.a
+lib/tcl/memchan/pkgIndex.tcl
+@man man/mann/fifo.n
+@man man/mann/fifo2.n
+@man man/mann/memchan.n
+@man man/mann/memchanapi.n
+@man man/mann/null.n
+@man man/mann/random.n
+@man man/mann/zero.n

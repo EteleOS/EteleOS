@@ -1,0 +1,6 @@
+@bin bin/bmf
+@bin bin/bmfconv
+@man man/man1/bmf.1
+@man man/man1/bmfconv.1
+share/doc/bmf/
+share/doc/bmf/README

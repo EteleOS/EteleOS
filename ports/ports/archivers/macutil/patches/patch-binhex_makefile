@@ -1,0 +1,8 @@
+--- binhex/makefile.orig	Fri Oct 25 17:30:16 2002
++++ binhex/makefile	Fri Oct 25 17:30:24 2002
+@@ -1,4 +1,4 @@
+-CFLAGS = -O $(CF)
++CFLAGS = $(CF)
+ 
+ SRCS  =	binhex.c dofile.c
+ 

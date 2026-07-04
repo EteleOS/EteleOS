@@ -1,0 +1,27 @@
+@bin bin/uncrustify
+@man man/man1/uncrustify.1
+share/doc/uncrustify/
+share/doc/uncrustify/AUTHORS
+share/doc/uncrustify/BUGS
+share/doc/uncrustify/COPYING
+share/doc/uncrustify/ChangeLog
+share/doc/uncrustify/HELP
+share/doc/uncrustify/README.md
+share/examples/uncrustify/
+share/examples/uncrustify/MS-calling_conventions.cfg
+share/examples/uncrustify/amxmodx.cfg
+share/examples/uncrustify/ben.cfg
+share/examples/uncrustify/ben2.cfg
+share/examples/uncrustify/d.cfg
+share/examples/uncrustify/defaults.cfg
+share/examples/uncrustify/freebsd.cfg
+share/examples/uncrustify/gnu-indent.cfg
+share/examples/uncrustify/klaus.cfg
+share/examples/uncrustify/kr-indent.cfg
+share/examples/uncrustify/linux-indent.cfg
+share/examples/uncrustify/linux.cfg
+share/examples/uncrustify/mono.cfg
+share/examples/uncrustify/msvc.cfg
+share/examples/uncrustify/objc.cfg
+share/examples/uncrustify/sun.cfg
+share/examples/uncrustify/xsupplicant.cfg

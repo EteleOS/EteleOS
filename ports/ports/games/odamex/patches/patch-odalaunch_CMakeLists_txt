@@ -1,0 +1,15 @@
+Make odalaunch find the odamex executable.
+
+Index: odalaunch/CMakeLists.txt
+--- odalaunch/CMakeLists.txt.orig
++++ odalaunch/CMakeLists.txt
+@@ -1,6 +1,9 @@
+ include(OdalaunchCopyLibs)
+ include(OdamexTargetSettings)
+ 
++add_definitions(-DINSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")
++
++
+ # API
+ set(API_DIR ../odalpapi)
+ file(GLOB API_HEADERS ${API_DIR}/*.h ${API_DIR}/threads/*.h)

@@ -1,0 +1,13 @@
+Make sure Exec points to the correct place.
+Index: Distributions/dooble.desktop
+--- Distributions/dooble.desktop.orig
++++ Distributions/dooble.desktop
+@@ -3,7 +3,7 @@
+ [Desktop Entry]
+ Categories=Network;WebBrowser;
+ Comment=Dooble Web Browser
+-Exec=/usr/bin/dooble
++Exec=${TRUEPREFIX}/bin/dooble
+ GenericName=Dooble Web Browser
+ Icon=dooble
+ Name=Dooble Web Browser

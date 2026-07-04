@@ -1,0 +1,8 @@
+${P5SITE}/MLDBM/
+${P5SITE}/MLDBM.pm
+${P5SITE}/MLDBM/Serializer/
+${P5SITE}/MLDBM/Serializer/Data/
+${P5SITE}/MLDBM/Serializer/Data/Dumper.pm
+${P5SITE}/MLDBM/Serializer/FreezeThaw.pm
+${P5SITE}/MLDBM/Serializer/Storable.pm
+@man man/man3p/MLDBM.3p

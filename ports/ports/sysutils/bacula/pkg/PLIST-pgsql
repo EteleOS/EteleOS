@@ -1,0 +1,27 @@
+@conflict bacula-server-<7.0.4p2
+@conflict bacula-mysql-*
+@conflict bacula-sqlite3-*
+lib/libbaccats-postgresql.la
+@lib lib/libbaccats-postgresql.so.${LIBbaccats-postgresql_VERSION}
+@comment no checksum
+@lib lib/libbaccats.so.${LIBbaccats_VERSION}
+libexec/bacula/
+libexec/bacula/create_postgresql_database
+libexec/bacula/drop_postgresql_database
+libexec/bacula/drop_postgresql_tables
+libexec/bacula/grant_postgresql_privileges
+libexec/bacula/make_postgresql_tables
+libexec/bacula/update_postgresql_tables
+libexec/bacula/updatedb/
+libexec/bacula/updatedb/update_postgresql_tables
+libexec/bacula/updatedb/update_postgresql_tables_1021_to_1022
+libexec/bacula/updatedb/update_postgresql_tables_1022_to_1023
+libexec/bacula/updatedb/update_postgresql_tables_1023_to_1024
+libexec/bacula/updatedb/update_postgresql_tables_1024_to_1025
+libexec/bacula/updatedb/update_postgresql_tables_1025_to_1026
+libexec/bacula/updatedb/update_postgresql_tables_10_to_11
+libexec/bacula/updatedb/update_postgresql_tables_11_to_12
+libexec/bacula/updatedb/update_postgresql_tables_7_to_8
+libexec/bacula/updatedb/update_postgresql_tables_8_to_9
+libexec/bacula/updatedb/update_postgresql_tables_9_to_10
+@exec cp %D/lib/libbaccats-postgresql.so.${LIBbaccats-postgresql_VERSION} %D/lib/libbaccats.so.${LIBbaccats_VERSION}

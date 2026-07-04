@@ -1,0 +1,25 @@
+@bin bin/cg-annotate
+@bin bin/cg-comp
+@bin bin/cg-conv
+@bin bin/cg-merge-annotations
+@bin bin/cg-mwesplit
+@bin bin/cg-proc
+@bin bin/cg-relabel
+bin/cg-sort
+bin/cg-strictify
+bin/cg-untrace
+bin/cg3-autobin.pl
+@bin bin/vislcg3
+include/cg3.h
+@lib lib/libcg3.so.${LIBcg3_VERSION}
+lib/pkgconfig/cg3.pc
+@man man/man1/cg-comp.1
+@man man/man1/cg-conv.1
+@man man/man1/cg-proc.1
+@man man/man1/cg-sort.1
+@man man/man1/cg-untrace.1
+@man man/man1/cg3-autobin.pl.1
+@man man/man1/vislcg3.1
+share/emacs/
+share/emacs/site-lisp/
+share/emacs/site-lisp/cg.el

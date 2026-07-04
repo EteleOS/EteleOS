@@ -1,0 +1,4 @@
+bin/cvs2gitdump
+bin/cvs2svndump
+@man man/man1/cvs2gitdump.1
+@man man/man1/cvs2svndump.1

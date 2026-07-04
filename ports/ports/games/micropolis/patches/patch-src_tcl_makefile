@@ -1,0 +1,15 @@
+Index: src/tcl/makefile
+--- src/tcl/makefile.orig
++++ src/tcl/makefile
+@@ -24,9 +24,8 @@
+ 
+ TCL_LIBRARY =	/usr/local/lib/tcl
+ 
+-CC =		gcc
+-
+-CFLAGS =	-O3 -I. -DTCL_LIBRARY=\"${TCL_LIBRARY}\" -DIS_LINUX
++EXTRA_CFLAGS =	-I. -DTCL_LIBRARY=\"${TCL_LIBRARY}\" -DIS_LINUX
++CFLAGS +=	$(EXTRA_CFLAGS)
+ #CFLAGS =	-g -I. -DTCL_LIBRARY=\"${TCL_LIBRARY}\" -DIS_LINUX
+ 
+ GENERIC_OBJS = \

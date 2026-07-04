@@ -1,0 +1,13 @@
+${P5SITE}/WWW/Search/Ebay/
+${P5SITE}/WWW/Search/Ebay.pm
+${P5SITE}/WWW/Search/Ebay/Auctions.pm
+${P5SITE}/WWW/Search/Ebay/BuyItNow.pm
+${P5SITE}/WWW/Search/Ebay/ByEndDate.pm
+${P5SITE}/WWW/Search/Ebay/BySellerID.pm
+${P5SITE}/WWW/Search/Ebay/Category.pm
+@man man/man3p/WWW::Search::Ebay.3p
+@man man/man3p/WWW::Search::Ebay::Auctions.3p
+@man man/man3p/WWW::Search::Ebay::BuyItNow.3p
+@man man/man3p/WWW::Search::Ebay::ByEndDate.3p
+@man man/man3p/WWW::Search::Ebay::BySellerID.3p
+@man man/man3p/WWW::Search::Ebay::Category.3p

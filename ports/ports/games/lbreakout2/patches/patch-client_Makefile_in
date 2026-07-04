@@ -1,0 +1,17 @@
+--- client/Makefile.in.orig	Sat Oct 17 18:10:11 2015
++++ client/Makefile.in	Wed Oct 21 07:50:52 2015
+@@ -670,12 +670,12 @@ install-data-local:
+ 	$(mkinstalldirs) $(DESTDIR)$(inst_dir)
+ 	$(mkinstalldirs) $(DESTDIR)$(hi_dir)
+ 	if ! test -f $(DESTDIR)$(hi_dir)/lbreakout2.hscr; then \
+-	  $(INSTALL_DATA) -m 666 empty.hscr $(DESTDIR)$(hi_dir)/lbreakout2.hscr; \
++	  $(INSTALL_DATA) empty.hscr $(DESTDIR)$(inst_dir)/lbreakout2.hscr; \
+ 	fi;
+ 
+ uninstall-local:
+ 	rm -rf $(DESTDIR)$(inst_dir)
+-	rm -f $(DESTDIR)$(hi_dir)/lbreakout2.hscr
++	rm -f $(DESTDIR)$(inst_dir)/lbreakout2.hscr
+ 	rm -rf $(DESTDIR)$(doc_dir)/lbreakout2
+ 
+ win32-install-script:

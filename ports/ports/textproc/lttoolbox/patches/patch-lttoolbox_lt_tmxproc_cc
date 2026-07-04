@@ -1,0 +1,20 @@
+Index: lttoolbox/lt_tmxproc.cc
+--- lttoolbox/lt_tmxproc.cc.orig
++++ lttoolbox/lt_tmxproc.cc
+@@ -19,8 +19,16 @@
+ #include <lttoolbox/cli.h>
+ #include <lttoolbox/file_utils.h>
+ 
++#include <iostream>
++#include <unistd.h>
++
+ int main(int argc, char *argv[])
+ {
++  if (pledge("stdio rpath wpath cpath", NULL) == -1) {
++    std::cerr << "pledge" << std::endl;
++    return EXIT_FAILURE;
++  }
++
+   LtLocale::tryToSetLocale();
+   CLI cli("process a stream with a letter transducer");
+   cli.add_file_arg("fst_file", false);

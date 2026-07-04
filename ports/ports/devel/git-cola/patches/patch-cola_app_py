@@ -1,0 +1,14 @@
+Use ssh-askpass implementation from xenocara.
+
+Index: cola/app.py
+--- cola/app.py.orig
++++ cola/app.py
+@@ -105,7 +105,7 @@ def setup_environment():
+     elif sys.platform == 'darwin':
+         askpass = resources.package_command('ssh-askpass-darwin')
+     else:
+-        askpass = resources.package_command('ssh-askpass')
++        askpass = '${X11BASE}/bin/ssh-askpass'
+ 
+     compat.setenv('GIT_ASKPASS', askpass)
+     compat.setenv('SSH_ASKPASS', askpass)

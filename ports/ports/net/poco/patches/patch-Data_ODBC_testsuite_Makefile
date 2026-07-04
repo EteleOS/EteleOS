@@ -1,0 +1,18 @@
+We don't have libdl.
+
+libltdl doesn't appear to be needed (and this is only to build a test
+program anyway; and it's not completely clear how this test program should
+be run anyway), so don't require it to be present at build time.
+If reinstating this, it will need at least a BUILD_DEPENDS on libltdl.
+
+
+--- Data/ODBC/testsuite/Makefile.orig	Wed Mar  6 12:45:59 2013
++++ Data/ODBC/testsuite/Makefile	Fri Aug 23 15:32:29 2013
+@@ -20,7 +20,6 @@ include $(POCO_BASE)/Data/ODBC/ODBC.make
+ # Note:                                                                                          #
+ #  Do not change linking order or move this line up, these libs have to be linked in this order. #
+ ##################################################################################################
+-SYSLIBS += -lltdl -ldl
+ 
+ objects = ODBCTestSuite Driver \
+ 	ODBCDB2Test ODBCMySQLTest ODBCOracleTest ODBCPostgreSQLTest \

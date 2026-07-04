@@ -1,0 +1,19 @@
+@mode g+s
+@group games
+@bin bin/moria
+@mode
+share/moria/
+share/moria/hours
+share/moria/news
+share/moria/origcmds.hlp
+share/moria/owizcmds.hlp
+share/moria/roglcmds.hlp
+share/moria/rwizcmds.hlp
+share/moria/scores
+@mode 775
+@sample /var/games/moria/
+@mode 664
+@sample /var/games/moria/scores
+@mode
+share/moria/version.hlp
+share/moria/welcome.hlp

@@ -1,0 +1,14 @@
+Execute escripts with the right version of escript, don't rely on the shebang
+
+Index: deps/rabbit/scripts/rabbitmq-env
+--- deps/rabbit/scripts/rabbitmq-env.orig
++++ deps/rabbit/scripts/rabbitmq-env
+@@ -193,7 +193,7 @@ run_escript()
+         tmp_erl_flags="-noinput $tmp_erl_flags"
+     fi
+ 
+-    ERL_FLAGS="$tmp_erl_flags" "$escript" "$@"
++    ERL_FLAGS="$tmp_erl_flags" ${LOCALBASE}/bin/escript${MODERL_VERSION} "$escript" "$@"
+ 
+     unset tmp_erl_flags
+ }

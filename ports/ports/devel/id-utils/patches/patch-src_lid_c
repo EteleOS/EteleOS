@@ -1,0 +1,11 @@
+--- src/lid.c.orig	Wed Jul  4 18:33:25 2007
++++ src/lid.c	Wed Jul  4 18:33:45 2007
+@@ -609,7 +609,7 @@ report_edit (char const *name, struct file_link **flin
+ 
+   if (eid_arg == 0)
+     {
+-      int using_vi = strequ ("vi", basename (editor));
++      int using_vi = strnequ ("vi", basename (editor), 2);
+ 
+       eid_arg = getenv ("EIDARG");
+       if (eid_arg == 0)

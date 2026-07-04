@@ -1,0 +1,18 @@
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -37,12 +37,14 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
+     MACOSX_BUNDLE ON
+ )
+ 
++if (GIT_COMMIT_HASH STREQUAL "")
+ execute_process(
+     COMMAND git -C ${CMAKE_CURRENT_SOURCE_DIR} rev-parse --short --verify HEAD
+     OUTPUT_VARIABLE GIT_COMMIT_HASH
+     OUTPUT_STRIP_TRAILING_WHITESPACE
+     ERROR_QUIET
+ )
++endif()
+ 
+ if (GIT_COMMIT_HASH STREQUAL "")
+     MESSAGE(WARNING "Could not determine git commit hash")

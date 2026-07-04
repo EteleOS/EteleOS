@@ -1,0 +1,17 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/solr"
+daemon_flags="start"
+daemon_user="_solr"
+
+. /etc/rc.d/rc.subr
+
+pexp="$(${LOCALBASE}/bin/javaPathHelper -c solr) .*-Dsolr.solr.home=${LOCALSTATEDIR}/db/solr.*jar start.jar.*"
+
+rc_reload=NO
+
+rc_stop() {
+	${daemon} stop
+}
+
+rc_cmd $1

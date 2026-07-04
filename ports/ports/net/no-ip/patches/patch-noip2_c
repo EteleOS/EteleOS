@@ -1,0 +1,25 @@
+--- noip2.c.orig	Fri Nov 21 14:19:54 2008
++++ noip2.c	Thu Apr 30 16:13:44 2009
+@@ -232,11 +232,8 @@
+ #define HOST			1
+ #define GROUP			2
+ #define DOMAIN			3
+-#ifndef PREFIX
+-  #define PREFIX		"/usr/local"
+-#endif
+-#define CONFIG_FILEPATH		PREFIX"/etc"
+-#define CONFIG_FILENAME		PREFIX"/etc/no-ip2.conf"
++#define CONFIG_FILEPATH		"${SYSCONFDIR}"
++#define CONFIG_FILENAME		"${SYSCONFDIR}/no-ip2.conf"
+ #define CONFSTRLEN		1024
+ #define MAX_DEVLEN		16
+ #define MAX_INSTANCE		4
+@@ -587,7 +584,7 @@ int main(int argc, char *argv[])
+ 
+         /* drop root privileges after reading config */
+         if (geteuid() == 0) {
+-            if ((nobody = getpwnam("nobody")) != NULL) { // if "nobody" exists
++            if ((nobody = getpwnam("_noip")) != NULL) { // if "nobody" exists
+ 	        setgid(nobody->pw_gid);
+         	setegid(nobody->pw_gid);
+                 setuid(nobody->pw_uid);

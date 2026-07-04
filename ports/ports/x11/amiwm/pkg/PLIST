@@ -1,0 +1,15 @@
+@bin bin/amiwm
+@bin bin/executecmd
+@bin bin/ppmtoinfo
+@bin bin/requestchoice
+@man man/man1/amiwm.1
+share/amiwm/
+share/amiwm/Xinitrc
+share/amiwm/Xsession
+share/amiwm/Xsession2
+share/amiwm/amiwm-init
+share/amiwm/def_tool.info
+share/amiwm/magicwb.map
+share/amiwm/schwartz.map
+share/amiwm/system.amiwmrc
+share/amiwm/system.map

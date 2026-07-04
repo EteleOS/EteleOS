@@ -1,0 +1,39 @@
+Index: pwgen.c
+--- pwgen.c.orig
++++ pwgen.c
+@@ -7,6 +7,8 @@
+  * License.
+  */
+ 
++#include "config.h"
++
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+@@ -99,6 +101,12 @@ int main(int argc, char **argv)
+ 	char	*remove=NULL;
+ 	void	(*pwgen)(char *inbuf, int size, int pw_flags, char *remove);
+ 
++#ifdef HAVE_PLEDGE
++	if (pledge("stdio rpath", NULL) == -1) {
++		fprintf(stderr, "pledge\n");
++		exit(1);
++	}
++#endif
+ 	pwgen = pw_phonemes;
+ 	pw_number = pw_random_number;
+ 	if (isatty(1))
+@@ -170,6 +178,13 @@ int main(int argc, char **argv)
+ 			break;
+ 		}
+ 	}
++#ifdef HAVE_PLEDGE
++	/* Done with SHA1 seed file, drop rpath */
++	if (pledge("stdio", NULL) == -1) {
++		fprintf(stderr, "pledge");
++		exit (1);
++	}
++#endif
+ 	if (optind < argc) {
+ 		pw_length = strtol(argv[optind], &tmp, 0);
+ 		if (pw_length < 5)

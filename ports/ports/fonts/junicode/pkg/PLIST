@@ -1,0 +1,7 @@
+share/fonts/
+@fontdir share/fonts/junicode/
+share/fonts/junicode/FoulisGreek.ttf
+share/fonts/junicode/Junicode-Bold.ttf
+share/fonts/junicode/Junicode-BoldItalic.ttf
+share/fonts/junicode/Junicode-Italic.ttf
+share/fonts/junicode/Junicode.ttf

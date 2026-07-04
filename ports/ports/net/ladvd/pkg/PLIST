@@ -1,0 +1,12 @@
+@newgroup _ladvd:606
+@newuser _ladvd:606:606::Link Advertisement Daemon:/var/empty:/sbin/nologin
+@man man/man8/ladvd.8
+@man man/man8/ladvdc.8
+@bin sbin/ladvd
+@bin sbin/ladvdc
+share/doc/ladvd/
+share/doc/ladvd/HACKING
+share/doc/ladvd/LICENSE
+share/doc/ladvd/README
+share/doc/ladvd/TODO
+@rcscript ${RCDIR}/ladvd

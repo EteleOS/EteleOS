@@ -1,0 +1,11 @@
+Index: src/sim/w_resrc.c
+--- src/sim/w_resrc.c.orig
++++ src/sim/w_resrc.c
+@@ -162,6 +162,7 @@ ResourceID(Handle h)
+ }
+ 
+ 
++void
+ GetIndString(char *str, int id, short num)
+ {
+   struct StringTable **tp, *st = NULL;

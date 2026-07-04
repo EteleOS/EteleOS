@@ -1,0 +1,8 @@
+--- tkhylafax-defaults.orig	Tue Jan 29 13:54:12 2008
++++ tkhylafax-defaults	Tue Jan 29 13:55:14 2008
+@@ -10,4 +10,4 @@
+ *editorCmd:	xterm -e vi
+ *commentLines:	4
+ *iconBitmap:	tkhylafax.xbm
+-*coverPageDirs: /usr/local/lib/fax	
++*coverPageDirs: ${PREFIX}/lib/fax	

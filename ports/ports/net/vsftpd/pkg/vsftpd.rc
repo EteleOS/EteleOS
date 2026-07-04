@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/vsftpd -obackground=yes"
+daemon_flags="${SYSCONFDIR}/vsftpd.conf"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_cmd $1

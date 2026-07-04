@@ -1,0 +1,42 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -56,7 +56,7 @@ ARCHFLAGS := $(ARCHFLAGS)
+ 
+ OPTFLAGS  ?= -g -O
+ 
+-CFLAGS    += -Wall -Wno-unused-function -Wno-write-strings -Wno-sign-compare $(ARCHFLAGS)
++CFLAGS    += -Wall -Wno-unused-function -Wno-write-strings -Wno-sign-compare -Wno-unused-variable $(ARCHFLAGS)
+ ifneq ($(findstring arm,$(shell uname -m)),)
+ 	CFLAGS += -DABC_MEMALIGN=4
+ endif
+@@ -77,6 +77,9 @@ endif
+ 
+ ABC_READLINE_INCLUDES ?=
+ ABC_READLINE_LIBRARIES ?= -lreadline
++ifeq ($(OS), OpenBSD)
++  ABC_READLINE_LIBRARIES += -lcurses
++endif
+ 
+ # whether to use libreadline
+ ifndef ABC_USE_NO_READLINE
+@@ -137,12 +140,17 @@ endif
+ 
+ # LIBS := -ldl -lrt
+ LIBS += -lm
+-ifneq ($(OS), FreeBSD)
++ifneq ($(OS), $(filter $(OS), FreeBSD OpenBSD))
+   LIBS += -ldl
+ endif
+ 
++LIBS += -lrt
++
+ ifneq ($(findstring Darwin, $(shell uname)), Darwin)
+-   LIBS += -lrt
++   LIBS := $(filter-out -lrt, $(LIBS))
++endif
++ifeq ($(OS), OpenBSD)
++   LIBS := $(filter-out -lrt, $(LIBS))
+ endif
+ 
+ ifdef ABC_USE_LIBSTDCXX

@@ -1,0 +1,14 @@
+Fix build with -fno-common
+
+Index: TerminalWindow.h
+--- TerminalWindow.h.orig
++++ TerminalWindow.h
+@@ -17,7 +17,7 @@
+ #import <AppKit/NSWindowController.h>
+ #import <AppKit/NSTabView.h>
+ 
+-NSString *TerminalWindowNoMoreActiveWindowsNotification;
++extern NSString *TerminalWindowNoMoreActiveWindowsNotification;
+ 
+ @interface TerminalWindowController : NSWindowController
+ {

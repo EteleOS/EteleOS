@@ -1,0 +1,3 @@
+${P5SITE}/DBIx/
+${P5SITE}/DBIx/XHTML_Table.pm
+@man man/man3p/DBIx::XHTML_Table.3p

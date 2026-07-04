@@ -1,0 +1,9 @@
+Index: libpurple/purple-remote
+--- libpurple/purple-remote.orig
++++ libpurple/purple-remote
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!${MODPY_BIN}
+ 
+ from __future__ import absolute_import, division, print_function
+ 

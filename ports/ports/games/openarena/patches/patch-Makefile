@@ -1,0 +1,146 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -164,13 +164,14 @@ endif
+ 
+ #############################################################################
+ 
+-BD=$(BUILD_DIR)/debug-$(PLATFORM)-$(ARCH)
+-BR=$(BUILD_DIR)/release-$(PLATFORM)-$(ARCH)
++BD=$(BUILD_DIR)/debug-$(PLATFORM)
++BR=$(BUILD_DIR)/release-$(PLATFORM)
+ CDIR=$(MOUNT_DIR)/client
+ SDIR=$(MOUNT_DIR)/server
+ RDIR=$(MOUNT_DIR)/renderer
+ CMDIR=$(MOUNT_DIR)/qcommon
+ SDLDIR=$(MOUNT_DIR)/sdl
++SNDIODIR=$(MOUNT_DIR)/sndio
+ ASMDIR=$(MOUNT_DIR)/asm
+ SYSDIR=$(MOUNT_DIR)/sys
+ GDIR=$(MOUNT_DIR)/game
+@@ -638,11 +639,11 @@ else # ifeq freebsd
+ 
+ ifeq ($(PLATFORM),openbsd)
+ 
+-  #default to i386, no tests done on anything else
+-  ARCH=i386
++  # Get the machine type
++  ARCH=$(shell uname -m)
+ 
+-  BASE_CFLAGS = -Wall -fno-strict-aliasing -Wimplicit -Wstrict-prototypes \
+-    -DUSE_ICON
++  BASE_CFLAGS = $(PIE_CFLAGS) -Wall -fno-strict-aliasing -Wimplicit -Wstrict-prototypes \
++    -DUSE_ICON -DARCH_STRING=\\\"${ARCH}\\\"
+   CLIENT_CFLAGS = $(SDL_CFLAGS)
+   SERVER_CFLAGS = 
+ 
+@@ -662,8 +663,7 @@ ifeq ($(PLATFORM),openbsd)
+     USE_CURL_DLOPEN=0
+   endif
+ 
+-  BASE_CFLAGS += -DNO_VM_COMPILED
+-  HAVE_VM_COMPILED=false
++  HAVE_VM_COMPILED=true
+ 
+   SHLIBEXT=so
+   SHLIBNAME=.$(SHLIBEXT)
+@@ -671,15 +671,16 @@ ifeq ($(PLATFORM),openbsd)
+   SHLIBLDFLAGS=-shared $(LDFLAGS)
+ 
+   THREAD_LIBS=-pthread
+-  LIBS=-lm
++  LIBS= $(PIE_LDFLAGS) -lm
+ 
+   CLIENT_LIBS =
+ 
+-  CLIENT_LIBS += $(SDL_LIBS) -lGL
++  CLIENT_LIBS += $(SDL_LIBS) -lGL -lsndio
+ 
+   ifeq ($(USE_OPENAL),1)
++    CLIENT_LIBS += $(THREAD_LIBS)
+     ifneq ($(USE_OPENAL_DLOPEN),1)
+-      CLIENT_LIBS += $(THREAD_LIBS) -lossaudio -lopenal
++      CLIENT_LIBS += $(shell openal-config --libs)
+     endif
+   endif
+ 
+@@ -851,11 +852,11 @@ ifndef SHLIBNAME
+ endif
+ 
+ ifneq ($(BUILD_SERVER),0)
+-  TARGETS += $(B)/oa_ded$(FULLBINEXT)
++  TARGETS += $(B)/openarena-server$(FULLBINEXT)
+ endif
+ 
+ ifneq ($(BUILD_CLIENT),0)
+-  TARGETS += $(B)/openarena$(FULLBINEXT)
++  TARGETS += $(B)/openarena-client$(FULLBINEXT)
+   ifneq ($(BUILD_CLIENT_SMP),0)
+     TARGETS += $(B)/openarena-smp$(FULLBINEXT)
+   endif
+@@ -897,7 +898,7 @@ ifeq ($(USE_VOIP),1)
+   CLIENT_CFLAGS += -DUSE_VOIP
+   SERVER_CFLAGS += -DUSE_VOIP
+   ifeq ($(USE_INTERNAL_SPEEX),1)
+-    CLIENT_CFLAGS += -DFLOATING_POINT -DUSE_ALLOCA -I$(SPEEXDIR)/include
++    CLIENT_CFLAGS := -DFLOATING_POINT -DUSE_ALLOCA -I$(SPEEXDIR)/include $(CLIENT_CFLAGS)
+   else
+     CLIENT_LIBS += -lspeex -lspeexdsp
+   endif
+@@ -1471,8 +1472,9 @@ Q3OBJ = \
+   \
+   $(B)/client/sdl_gamma.o \
+   $(B)/client/sdl_input.o \
+-  $(B)/client/sdl_snd.o \
+   \
++  $(B)/client/snd_sndio.o \
++  \
+   $(B)/client/con_passive.o \
+   $(B)/client/con_log.o \
+   $(B)/client/sys_main.o
+@@ -1597,7 +1599,7 @@ Q3POBJ += \
+ Q3POBJ_SMP += \
+   $(B)/clientsmp/sdl_glimp.o
+ 
+-$(B)/openarena$(FULLBINEXT): $(Q3OBJ) $(Q3POBJ) $(LIBSDLMAIN)
++$(B)/openarena-client$(FULLBINEXT): $(Q3OBJ) $(Q3POBJ) $(LIBSDLMAIN)
+ 	$(echo_cmd) "LD $@"
+ 	$(Q)$(CC) $(CLIENT_CFLAGS) $(CFLAGS) $(CLIENT_LDFLAGS) $(LDFLAGS) \
+ 		-o $@ $(Q3OBJ) $(Q3POBJ) \
+@@ -1756,7 +1758,7 @@ ifeq ($(PLATFORM),darwin)
+     $(B)/ded/sys_osx.o
+ endif
+ 
+-$(B)/oa_ded$(FULLBINEXT): $(Q3DOBJ)
++$(B)/openarena-server$(FULLBINEXT): $(Q3DOBJ)
+ 	$(echo_cmd) "LD $@"
+ 	$(Q)$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(Q3DOBJ) $(LIBS)
+ 
+@@ -2076,6 +2078,9 @@ $(B)/client/%.o: $(ZDIR)/%.c
+ $(B)/client/%.o: $(RDIR)/%.c
+ 	$(DO_CC)
+ 
++$(B)/client/%.o: $(SNDIODIR)/%.c
++	$(DO_CC)
++
+ $(B)/client/%.o: $(SDLDIR)/%.c
+ 	$(DO_CC)
+ 
+@@ -2223,7 +2228,7 @@ copyfiles: release
+ 	-$(MKDIR) -p -m 0755 $(COPYDIR)/missionpack
+ 
+ ifneq ($(BUILD_CLIENT),0)
+-	$(INSTALL) $(STRIP_FLAG) -m 0755 $(BR)/openarena$(FULLBINEXT) $(COPYBINDIR)/openarena$(FULLBINEXT)
++	$(INSTALL) $(STRIP_FLAG) -m 0755 $(BR)/openarena-client$(FULLBINEXT) $(COPYBINDIR)/openarena-client$(FULLBINEXT)
+ endif
+ 
+ # Don't copy the SMP until it's working together with SDL.
+@@ -2233,7 +2238,7 @@ endif
+ 
+ ifneq ($(BUILD_SERVER),0)
+ 	@if [ -f $(BR)/oa_ded$(FULLBINEXT) ]; then \
+-		$(INSTALL) $(STRIP_FLAG) -m 0755 $(BR)/oa_ded$(FULLBINEXT) $(COPYBINDIR)/oa_ded$(FULLBINEXT); \
++		$(INSTALL) $(STRIP_FLAG) -m 0755 $(BR)/openarena-server$(FULLBINEXT) $(COPYBINDIR)/openarena-server$(FULLBINEXT); \
+ 	fi
+ endif
+ 

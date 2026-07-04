@@ -1,0 +1,4 @@
+${P5SITE}/Net/
+${P5SITE}/Net/CIDR/
+${P5SITE}/Net/CIDR/Lite.pm
+@man man/man3p/Net::CIDR::Lite.3p

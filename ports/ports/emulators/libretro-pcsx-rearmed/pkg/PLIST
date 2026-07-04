@@ -1,0 +1,2 @@
+lib/libretro/
+@so lib/libretro/pcsx_rearmed_libretro.so

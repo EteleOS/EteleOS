@@ -1,0 +1,20 @@
+Index: docs/conf/httpd.conf.in
+--- docs/conf/httpd.conf.in.orig
++++ docs/conf/httpd.conf.in
+@@ -74,8 +74,8 @@ Listen @@Port@@
+ # It is usually good practice to create a dedicated user and group for
+ # running httpd, as with most system services.
+ #
+-User daemon
+-Group daemon
++User @@User@@
++Group @@Group@@
+ 
+ </IfModule>
+ 
+@@ -416,3 +416,5 @@ SSLRandomSeed startup builtin
+ SSLRandomSeed connect builtin
+ </IfModule>
+ 
++# Include extra module configuration files
++IncludeOptional /var/www/conf/modules/*.conf

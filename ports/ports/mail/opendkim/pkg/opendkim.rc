@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/opendkim"
+daemon_flags="-x ${SYSCONFDIR}/opendkim.conf -u _opendkim"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_cmd $1

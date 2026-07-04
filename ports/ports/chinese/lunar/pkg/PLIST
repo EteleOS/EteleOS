@@ -1,0 +1,4 @@
+@bin bin/lunar
+@man man/man1/lunar.1
+share/chinese/
+share/chinese/lunar.bitmap

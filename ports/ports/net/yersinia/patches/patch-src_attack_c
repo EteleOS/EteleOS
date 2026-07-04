@@ -1,0 +1,18 @@
+Index: src/attack.c
+--- src/attack.c.orig
++++ src/attack.c
+@@ -262,8 +262,12 @@ attacks->attack_th.id);
+ void
+ attack_gen_mac(u_int8_t *mac)
+ {
+-    *((in_addr_t *)mac) = libnet_get_prand(LIBNET_PRu32);
+-    *((u_int16_t *)(mac + 4)) = libnet_get_prand(LIBNET_PRu16);
++    u_int32_t tmp1;
++    u_int16_t tmp2;
++    tmp1 = libnet_get_prand(LIBNET_PRu32);
++    memcpy(mac, &tmp1, sizeof(tmp1));
++    tmp2 = libnet_get_prand(LIBNET_PRu16);
++    memcpy(mac + 4, &tmp2, sizeof(tmp2));
+ }
+ 
+ 

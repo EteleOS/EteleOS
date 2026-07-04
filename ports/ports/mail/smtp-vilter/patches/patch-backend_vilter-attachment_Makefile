@@ -1,0 +1,20 @@
+Index: backend/vilter-attachment/Makefile
+--- backend/vilter-attachment/Makefile.orig
++++ backend/vilter-attachment/Makefile
+@@ -5,7 +5,6 @@ SRCS=		vilter-attachment.c parse.y scan.l
+ 
+ YFLAGS=		-d -p attachment
+ LFLAGS=		-Pattachment -olex.yy.c
+-CLEANFILES+=	y.tab.h parse.c scan.c
+ 
+ LIBDIR= 	/usr/local/lib/smtp-vilter
+ NOMAN= 		1
+@@ -14,7 +13,7 @@ NOPROFILE= 	1
+ CFLAGS+= 	-Wall -fPIC -I${.CURDIR} -I${.CURDIR}/../../include \
+ 		-I/usr/src/gnu/usr.sbin/sendmail/include
+ 
+-LDADD+=		-nostdlib
++LDADD+=		-nodefaultlibs
+ 
+ install:
+ 	-test ! -d ${DESTDIR}${LIBDIR} && mkdir ${DESTDIR}${LIBDIR}

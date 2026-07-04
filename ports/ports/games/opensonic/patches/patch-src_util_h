@@ -1,0 +1,10 @@
+--- src/util.h.orig	Tue Jun  2 15:28:43 2009
++++ src/util.h	Tue Jun  2 15:29:15 2009
+@@ -21,6 +21,7 @@
+ #define _UTIL_H
+ 
+ #include <stdlib.h>
++#include <math.h>
+ #include "global.h"
+ #include "osspec.h"
+ 

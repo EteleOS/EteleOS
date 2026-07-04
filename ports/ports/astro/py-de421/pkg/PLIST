@@ -1,0 +1,25 @@
+@pkgpath astro/py-de421,python3
+lib/python${MODPY_VERSION}/site-packages/de421/
+lib/python${MODPY_VERSION}/site-packages/de421-${MODPY_DISTV}.dist-info/
+lib/python${MODPY_VERSION}/site-packages/de421-${MODPY_DISTV}.dist-info/METADATA
+lib/python${MODPY_VERSION}/site-packages/de421-${MODPY_DISTV}.dist-info/RECORD
+lib/python${MODPY_VERSION}/site-packages/de421-${MODPY_DISTV}.dist-info/WHEEL
+lib/python${MODPY_VERSION}/site-packages/de421-${MODPY_DISTV}.dist-info/top_level.txt
+lib/python${MODPY_VERSION}/site-packages/de421/__init__.py
+lib/python${MODPY_VERSION}/site-packages/de421/${MODPY_PYCACHE}/
+lib/python${MODPY_VERSION}/site-packages/de421/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/de421/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/de421/constants.npy
+lib/python${MODPY_VERSION}/site-packages/de421/jpl-earthmoon.npy
+lib/python${MODPY_VERSION}/site-packages/de421/jpl-jupiter.npy
+lib/python${MODPY_VERSION}/site-packages/de421/jpl-librations.npy
+lib/python${MODPY_VERSION}/site-packages/de421/jpl-mars.npy
+lib/python${MODPY_VERSION}/site-packages/de421/jpl-mercury.npy
+lib/python${MODPY_VERSION}/site-packages/de421/jpl-moon.npy
+lib/python${MODPY_VERSION}/site-packages/de421/jpl-neptune.npy
+lib/python${MODPY_VERSION}/site-packages/de421/jpl-nutations.npy
+lib/python${MODPY_VERSION}/site-packages/de421/jpl-pluto.npy
+lib/python${MODPY_VERSION}/site-packages/de421/jpl-saturn.npy
+lib/python${MODPY_VERSION}/site-packages/de421/jpl-sun.npy
+lib/python${MODPY_VERSION}/site-packages/de421/jpl-uranus.npy
+lib/python${MODPY_VERSION}/site-packages/de421/jpl-venus.npy

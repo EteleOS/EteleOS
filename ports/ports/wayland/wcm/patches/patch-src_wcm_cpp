@@ -1,0 +1,46 @@
+Index: src/wcm.cpp
+--- src/wcm.cpp.orig
++++ src/wcm.cpp
+@@ -7,7 +7,6 @@
+ #include <wayfire/config/types.hpp>
+ #include <wayfire/config/xml.hpp>
+ #include <wayfire/util/duration.hpp>
+-#include <wordexp.h>
+ 
+ #define OUTPUT_CONFIG_PROGRAM "wdisplays"
+ 
+@@ -1604,15 +1603,6 @@ void WCM::open_page(Plugin *plugin)
+     current_plugin = plugin;
+ }
+ 
+-static std::string wordexp_str(const char *str)
+-{
+-    wordexp_t exp;
+-    wordexp(str, &exp, 0);
+-    std::string result = exp.we_wordv[0];
+-    wordfree(&exp);
+-    return result;
+-}
+-
+ void WCM::load_config_files()
+ {
+     const char *wf_config_file_override = getenv("WAYFIRE_CONFIG_FILE");
+@@ -1620,7 +1610,7 @@ void WCM::load_config_files()
+ 
+     if (wf_config_file.empty())
+     {
+-        wf_config_file = wordexp_str(wf_config_file_override ? wf_config_file_override : WAYFIRE_CONFIG_FILE);
++        wf_config_file = wf_config_file_override ? wf_config_file_override : WAYFIRE_CONFIG_FILE;
+     }
+ 
+     std::vector<std::string> wayfire_xmldirs;
+@@ -1643,8 +1633,7 @@ void WCM::load_config_files()
+ 
+     if (wf_shell_config_file.empty())
+     {
+-        wf_shell_config_file = wordexp_str(
+-            wf_shell_config_file_override ? wf_shell_config_file_override : WF_SHELL_CONFIG_FILE);
++        wf_shell_config_file = wf_shell_config_file_override ? wf_shell_config_file_override : WF_SHELL_CONFIG_FILE;
+     }
+ 
+ #if HAVE_WFSHELL

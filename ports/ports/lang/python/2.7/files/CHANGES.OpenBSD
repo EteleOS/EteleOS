@@ -1,0 +1,18 @@
+As required by item 3 of the PSF license, here is a brief summary
+of changes made to this version of Python for the OpenBSD package.
+
+1.  Regression tests have been taught about OpenBSD.
+
+2.  INSTSONAME could be incorrect, configure.ac was patched to fix it.
+
+3.  RAND_egd support has been disabled, as it is not available in LibreSSL.
+
+4.  ERR_get_state is no longer called, it is not used in OpenSSL 3.0 or
+    libressl as of 20240303
+
+5.  Removed calls to the CRYPTO_THREADID noops.
+
+6.  Treat ASN1_STRING as opaque
+
+These changes are available in the OpenBSD CVS repository
+<http://www.openbsd.org/anoncvs.html> in ports/lang/python/2.7.

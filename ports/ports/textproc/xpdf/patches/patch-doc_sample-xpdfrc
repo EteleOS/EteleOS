@@ -1,0 +1,9 @@
+Index: doc/sample-xpdfrc
+--- doc/sample-xpdfrc.orig
++++ doc/sample-xpdfrc
+@@ -83,4 +83,4 @@
+ # Set the command used to run a web browser when a URL hyperlink is
+ # clicked.
+ 
+-#launchCommand  viewer-script
++#urlCommand>---"firefox -newtab -url 'openURL(%s)'"

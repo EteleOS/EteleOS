@@ -1,0 +1,12 @@
+Index: compiler-core/src/error.rs
+--- compiler-core/src/error.rs.orig
++++ compiler-core/src/error.rs
+@@ -1329,7 +1329,7 @@ your app.src file \"{app_ver}\"."
+                 text.push('\n');
+ 
+                 match program.as_str() {
+-                    "erl" | "erlc" | "escript" => text.push_str(
++                    "erl" | "erlc" | "escript" | "escript${MODERL_VERSION}" => text.push_str(
+                         "
+ Documentation for installing Erlang can be viewed here:
+ https://gleam.run/getting-started/installing/",

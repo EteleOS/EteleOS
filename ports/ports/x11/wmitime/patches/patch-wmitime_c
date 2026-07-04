@@ -1,0 +1,21 @@
+Index: wmitime.c
+--- wmitime.c.orig
++++ wmitime.c
+@@ -248,7 +248,7 @@ void DrawInetTime(void)
+ 
+     /* Compute Inet Time */
+     iTime=(clk->tm_hour*3600+clk->tm_min*60+clk->tm_sec);
+-    iTime=iTime+((timezone-1)+3600);
++    iTime=iTime+((1-clk->tm_gmtoff)+3600);
+     if (clk->tm_isdst)
+         iTime-=3600;
+     iTime=(iTime*1000)/86400;
+@@ -374,7 +374,7 @@ void DrawInetWheel(void)
+ 
+     /* Calculate Wheel Position... */
+     iTime=(clk->tm_hour*3600+clk->tm_min*60+clk->tm_sec);
+-    iTime=iTime+((timezone-1)+3600);
++    iTime=iTime+((1-clk->tm_gmtoff)+3600);
+     if (clk->tm_isdst)
+         iTime-=3600;
+     iTime=(iTime*1000)/8640;

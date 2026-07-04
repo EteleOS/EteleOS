@@ -1,0 +1,20 @@
+Prevent gnome-mplayer from hanging at startup when executed outside
+of a Desktop Environment
+
+--- src/dbus-interface.c.orig	Tue Jul 23 22:36:58 2013
++++ src/dbus-interface.c	Mon Oct  7 10:10:48 2013
+@@ -1635,10 +1635,14 @@ static gboolean switch_screensaver(gboolean enabled)
+ 
+ void dbus_enable_screensaver()
+ {
++#if 0
+     (void) switch_screensaver(TRUE);
++#endif
+ }
+ 
+ void dbus_disable_screensaver()
+ {
++#if 0
+     (void) switch_screensaver(FALSE);
++#endif
+ }

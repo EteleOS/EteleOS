@@ -1,0 +1,14 @@
+Drop -Werror
+
+Index: tools/kore-serve/conf/build.conf
+--- tools/kore-serve/conf/build.conf.orig
++++ tools/kore-serve/conf/build.conf
+@@ -2,7 +2,7 @@ single_binary=yes
+ kore_source=../../
+ kore_flavor=NOTLS=1
+ 
+-cflags=-std=c99 -Werror
++cflags=-std=c99
+ cflags=-Wall -Wmissing-declarations -Wshadow
+ cflags=-Wstrict-prototypes -Wmissing-prototypes
+ cflags=-Wpointer-arith -Wcast-qual -Wsign-compare

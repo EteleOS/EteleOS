@@ -1,0 +1,10 @@
+--- bin/cron/check_MailScanner.cron.orig	Sat Apr 24 18:54:47 2010
++++ bin/cron/check_MailScanner.cron	Mon May 24 10:21:05 2010
+@@ -16,6 +16,6 @@ fi
+ [ -f $LOCKFILE ] && exit 0
+ trap "rm -f $LOCKFILE" EXIT
+ touch $LOCKFILE
+-/opt/MailScanner/bin/check_mailscanner -q # >/dev/null 2>&1
++%PREFIX%/bin/check_MailScanner -q # >/dev/null 2>&1
+ rm -f $LOCKFILE
+ exit 0

@@ -1,0 +1,23 @@
+--- Wnn/include/commonhd.h.orig	Fri Aug 19 02:30:30 1994
++++ Wnn/include/commonhd.h	Fri Nov 21 01:19:48 2014
+@@ -52,6 +52,7 @@
+  * Common header 
+  ****************/
+ #include <stdio.h>
++#include <sys/unistd.h>
+ #ifdef linux
+ #include <unistd.h>
+ #endif
+@@ -152,6 +153,12 @@ typedef  unsigned char UCHAR;
+ #endif /* DGUX */
+ #endif /* sun */
+ #endif /* luna */
++
++#ifdef __OpenBSD__
++#undef TERMCAP
++#define TERMINFO
++#define SRAND48
++#endif
+ 
+ #if defined(SYSVR2) || defined(sun)
+ # define SRAND48

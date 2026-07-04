@@ -1,0 +1,11 @@
+--- skippy.c.orig	Wed May 19 23:23:49 2004
++++ skippy.c	Sat Jan  3 23:56:53 2009
+@@ -72,7 +72,7 @@ skippy_run(MainWin *mw, dlist *clients, int force, Win
+ 	int die = 0;
+ 	dlist *iter, *tmp;
+ 	Window dummy_w, *tree_windows;
+-	CARD32 desktop = wm_get_current_desktop(mw->dpy);
++	unsigned long desktop = wm_get_current_desktop(mw->dpy);
+ 	Bool refocus = False;
+ 	
+ 	/* Update the main window's geometry (and Xinerama info if applicable) */

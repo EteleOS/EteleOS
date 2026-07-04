@@ -1,0 +1,45 @@
+@bin bin/tetzle
+@man man/man6/tetzle.6
+share/applications/tetzle.desktop
+share/icons/hicolor/1024x1024/
+share/icons/hicolor/1024x1024/apps/
+share/icons/hicolor/1024x1024/apps/tetzle.png
+share/icons/hicolor/128x128/apps/tetzle.png
+share/icons/hicolor/16x16/apps/tetzle.png
+share/icons/hicolor/22x22/apps/tetzle.png
+share/icons/hicolor/24x24/apps/tetzle.png
+share/icons/hicolor/256x256/apps/tetzle.png
+share/icons/hicolor/32x32/apps/tetzle.png
+share/icons/hicolor/48x48/apps/tetzle.png
+share/icons/hicolor/512x512/apps/tetzle.png
+share/icons/hicolor/64x64/apps/tetzle.png
+share/icons/hicolor/scalable/apps/tetzle.svg
+share/metainfo/
+share/metainfo/tetzle.appdata.xml
+share/tetzle/
+share/tetzle/translations/
+share/tetzle/translations/tetzle_ca.qm
+share/tetzle/translations/tetzle_cs.qm
+share/tetzle/translations/tetzle_de.qm
+share/tetzle/translations/tetzle_el.qm
+share/tetzle/translations/tetzle_en.qm
+share/tetzle/translations/tetzle_eo.qm
+share/tetzle/translations/tetzle_es.qm
+share/tetzle/translations/tetzle_fr.qm
+share/tetzle/translations/tetzle_he.qm
+share/tetzle/translations/tetzle_lt.qm
+share/tetzle/translations/tetzle_lv.qm
+share/tetzle/translations/tetzle_ms.qm
+share/tetzle/translations/tetzle_nb_NO.qm
+share/tetzle/translations/tetzle_nl.qm
+share/tetzle/translations/tetzle_pl.qm
+share/tetzle/translations/tetzle_pt.qm
+share/tetzle/translations/tetzle_pt_BR.qm
+share/tetzle/translations/tetzle_ro.qm
+share/tetzle/translations/tetzle_ru.qm
+share/tetzle/translations/tetzle_tr.qm
+share/tetzle/translations/tetzle_uk.qm
+share/tetzle/translations/tetzle_uk_UA.qm
+share/tetzle/translations/tetzle_zh.qm
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

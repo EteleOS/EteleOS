@@ -1,0 +1,53 @@
+--- Imakefile.orig	Tue Jul  6 23:07:06 2021
++++ Imakefile	Tue Jul  6 23:05:29 2021
+@@ -1,5 +1,5 @@
+ XCOMM Should install to /usr or /usr/local ??
+-DESTDIR=/usr
++#DESTDIR=/usr
+ 
+ XCOMM Name of man subdirectory of DESTDIR:
+ MANDIR=/X11R6/man/man1
+@@ -8,7 +8,7 @@ XCOMM Name of bin subdirectory of DESTDIR: /X11R6/bin 
+ BINDIR=/X11R6/bin
+ 
+ XCOMM Name of share subdirectory of DESTDIR:
+-SHAREDIR=/share/sunclock
++SHAREDIR=${PREFIX}/share/sunclock
+ 
+ XCOMM Name of library subdirectory of DESTDIR:
+ EMXBINDIR=/share/sunclock/bin
+@@ -48,13 +48,13 @@ CCOPTIONS = -Ae $(XPMINC) $(JINC) -DZLIB -DSHAREDIR=\"
+ #CCOPTIONS=-O -DZLIB -DNEW_CTIME -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)\"
+ 
+ # Solaris, Linux
+-#XPMLIBDIR=-L/usr/X11R6/lib
+-#XPMINC=-I/usr/X11R6/include/X11
+-#JLIBDIR=-L/usr/lib
+-#ZLIBDIR=-L/usr/lib
+-#JINC=-I/usr/include
++XPMLIBDIR=-L${X11BASE}/lib
++XPMINC=-I${X11BASE}/include/X11
++JLIBDIR=-L${LOCALBASE}/lib
++ZLIBDIR=
++JINC=-I${LOCALBASE}/include
+ 
+-CCOPTIONS=-O -DZLIB -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)\" -DEMXBINDIR=\"$(DESTDIR)$(EMXBINDIR)\"
++CCOPTIONS=$(JINC) $(PINC) $(XPMINC) -DZLIB -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)\" -DEMXBINDIR=\"$(DESTDIR)$(EMXBINDIR)\"
+ #endif
+ 
+ SRCS=sunclock.c astro.c widgets.c tildepath.c dirlist.c \
+@@ -66,14 +66,6 @@ LOCAL_LIBRARIES=-lX11 $(XPMLIBDIR) -lXpm $(ZLIBDIR) -l
+ DEPLIBS=		# I don't know what I'm doing, and I hate imake!
+ 
+ ComplexProgramTarget(sunclock)
+-
+-all::
+-	cd editkit ; xmkmf ; make emx \
+-          DESTDIR=$(DESTDIR) \
+-	  BINDIR=$(EMXBINDIR) \
+-	  MANDIR=$(DESTDIR)$(SHAREDIR)/editkit \
+-	  SHAREDIR=$(DESTDIR)$(SHAREDIR)/editkit \
+-          DOCDIR=$(DOCDIR)
+ 
+ install.man::
+ 	if [ -r $(DESTDIR)$(MANDIR)/sunclock.1x.gz ] ; \

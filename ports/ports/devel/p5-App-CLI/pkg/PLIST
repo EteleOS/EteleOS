@@ -1,0 +1,11 @@
+${P5SITE}/App/
+${P5SITE}/App/CLI/
+${P5SITE}/App/CLI.pm
+${P5SITE}/App/CLI/Command/
+${P5SITE}/App/CLI/Command.pm
+${P5SITE}/App/CLI/Command/Help.pm
+${P5SITE}/App/CLI/Helper.pm
+@man man/man3p/App::CLI.3p
+@man man/man3p/App::CLI::Command.3p
+@man man/man3p/App::CLI::Command::Help.3p
+@man man/man3p/App::CLI::Helper.3p

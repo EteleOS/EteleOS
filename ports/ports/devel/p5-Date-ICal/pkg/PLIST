@@ -1,0 +1,5 @@
+${P5SITE}/Date/ICal/
+${P5SITE}/Date/ICal.pm
+${P5SITE}/Date/ICal/Duration.pm
+@man man/man3p/Date::ICal.3p
+@man man/man3p/Date::ICal::Duration.3p

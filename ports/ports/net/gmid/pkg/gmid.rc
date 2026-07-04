@@ -1,0 +1,11 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/gmid"
+
+. /etc/rc.d/rc.subr
+
+rc_configtest() {
+	${daemon} -n ${daemon_flags}
+}
+
+rc_cmd $1

@@ -1,0 +1,3 @@
+@conflict ibus-<1.5.24p0
+@so lib/gtk-2.0/2.10.0/immodules/im-ibus.so
+@tag gtk-query-immodules-2.0

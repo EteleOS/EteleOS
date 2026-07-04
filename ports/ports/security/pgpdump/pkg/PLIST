@@ -1,0 +1,2 @@
+@bin bin/pgpdump
+@man man/man1/pgpdump.1

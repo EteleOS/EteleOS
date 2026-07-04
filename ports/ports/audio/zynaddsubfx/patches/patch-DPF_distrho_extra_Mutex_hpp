@@ -1,0 +1,15 @@
+OpenBSD doesn't support pthread_condattr_setpshared
+
+Index: DPF/distrho/extra/Mutex.hpp
+--- DPF/distrho/extra/Mutex.hpp.orig
++++ DPF/distrho/extra/Mutex.hpp
+@@ -196,7 +196,9 @@ class Signal (public)
+     {
+         pthread_condattr_t cattr;
+         pthread_condattr_init(&cattr);
++#if 0
+         pthread_condattr_setpshared(&cattr, PTHREAD_PROCESS_PRIVATE);
++#endif
+         pthread_cond_init(&fCondition, &cattr);
+         pthread_condattr_destroy(&cattr);
+ 

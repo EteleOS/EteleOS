@@ -1,0 +1,12 @@
+Index: libs/maildrop/maildropfilter.7.in
+--- libs/maildrop/maildropfilter.7.in.orig
++++ libs/maildrop/maildropfilter.7.in
+@@ -380,7 +380,7 @@ seconds before trying to create its own dot\-lock file
+ .PP
+ \fILOGNAME\fR
+ .RS 4
+-Name of the user to who the message is being delivered\&.
++Name of the user to whom the message is being delivered\&.
+ .RE
+ .PP
+ \fIMAILFILTER\fR

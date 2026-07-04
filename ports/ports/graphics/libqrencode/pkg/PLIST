@@ -1,0 +1,7 @@
+@bin bin/qrencode
+include/qrencode.h
+@static-lib lib/libqrencode.a
+lib/libqrencode.la
+@lib lib/libqrencode.so.${LIBqrencode_VERSION}
+lib/pkgconfig/libqrencode.pc
+@man man/man1/qrencode.1

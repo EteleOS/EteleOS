@@ -1,0 +1,12 @@
+Index: src/clients/lib/xmmsclient-glib/wscript
+--- src/clients/lib/xmmsclient-glib/wscript.orig
++++ src/clients/lib/xmmsclient-glib/wscript
+@@ -7,7 +7,7 @@ def build(bld):
+         source = 'xmmsclient-glib.c',
+         uselib = 'glib2',
+         use = 'xmmsclient xmmsc-glib',
+-        vnum = '1.0.0',
++        vnum = '${LIBxmmsclient-glib_VERSION}',
+         defines = 'G_LOG_DOMAIN="xmmsclient-glib"'
+         )
+ 

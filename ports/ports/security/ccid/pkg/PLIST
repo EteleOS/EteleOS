@@ -1,0 +1,13 @@
+lib/pcsc/
+lib/pcsc/drivers/
+lib/pcsc/drivers/ifd-ccid.bundle/
+lib/pcsc/drivers/ifd-ccid.bundle/Contents/
+lib/pcsc/drivers/ifd-ccid.bundle/Contents/Info.plist
+lib/pcsc/drivers/ifd-ccid.bundle/Contents/OpenBSD/
+@so lib/pcsc/drivers/ifd-ccid.bundle/Contents/OpenBSD/libccid.so
+lib/pcsc/drivers/serial/
+@so lib/pcsc/drivers/serial/libccidtwin.so
+share/examples/reader.conf.d/
+@sample ${SYSCONFDIR}/reader.conf.d/
+share/examples/reader.conf.d/libccidtwin
+@sample ${SYSCONFDIR}/reader.conf.d/libccidtwin

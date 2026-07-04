@@ -1,0 +1,11 @@
+Index: mono/utils/networking-posix.c
+--- mono/utils/networking-posix.c.orig
++++ mono/utils/networking-posix.c
+@@ -21,6 +21,7 @@
+ #include <sys/socket.h>
+ #endif
+ #ifdef HAVE_NET_IF_H
++#include <sys/socket.h>
+ #include <net/if.h>
+ #endif
+ #ifdef HAVE_UNISTD_H

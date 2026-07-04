@@ -1,0 +1,33 @@
+@conflict py-secretstorage-*
+@pkgpath security/py-secretstorage,python3
+lib/python${MODPY_VERSION}/site-packages/secretstorage/
+lib/python${MODPY_VERSION}/site-packages/secretstorage-${MODPY_DISTV}.dist-info/
+lib/python${MODPY_VERSION}/site-packages/secretstorage-${MODPY_DISTV}.dist-info/METADATA
+lib/python${MODPY_VERSION}/site-packages/secretstorage-${MODPY_DISTV}.dist-info/RECORD
+lib/python${MODPY_VERSION}/site-packages/secretstorage-${MODPY_DISTV}.dist-info/WHEEL
+lib/python${MODPY_VERSION}/site-packages/secretstorage-${MODPY_DISTV}.dist-info/licenses/
+lib/python${MODPY_VERSION}/site-packages/secretstorage-${MODPY_DISTV}.dist-info/licenses/LICENSE
+lib/python${MODPY_VERSION}/site-packages/secretstorage-${MODPY_DISTV}.dist-info/top_level.txt
+lib/python${MODPY_VERSION}/site-packages/secretstorage/__init__.py
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}/
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}__init__.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}collection.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}collection.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}defines.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}defines.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}dhcrypto.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}dhcrypto.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}exceptions.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}exceptions.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}item.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}item.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}util.${MODPY_PYC_MAGIC_TAG}${MODPY_PYOEXTENSION}
+lib/python${MODPY_VERSION}/site-packages/secretstorage/${MODPY_PYCACHE}util.${MODPY_PYC_MAGIC_TAG}pyc
+lib/python${MODPY_VERSION}/site-packages/secretstorage/collection.py
+lib/python${MODPY_VERSION}/site-packages/secretstorage/defines.py
+lib/python${MODPY_VERSION}/site-packages/secretstorage/dhcrypto.py
+lib/python${MODPY_VERSION}/site-packages/secretstorage/exceptions.py
+lib/python${MODPY_VERSION}/site-packages/secretstorage/item.py
+lib/python${MODPY_VERSION}/site-packages/secretstorage/py.typed
+lib/python${MODPY_VERSION}/site-packages/secretstorage/util.py

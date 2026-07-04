@@ -1,0 +1,5 @@
+Prometheus exporter for metrics gathered from SNMP.
+
+This package contains both the exporter that does the actual scraping,
+and a generator (which depends on Net-SNMP) that creates the
+configuration for use by the exporter.

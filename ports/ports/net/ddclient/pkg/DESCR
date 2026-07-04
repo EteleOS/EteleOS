@@ -1,0 +1,6 @@
+DDclient is a Perl client used to update host records at various free
+and paid-for "dynamic DNS" providers with your current IP address.
+
+It uses various methods to fetch your current address (either from the
+local machine, a local router, or various web lookup services) and
+supports various providers (see https://ddclient.net/protocols.html).

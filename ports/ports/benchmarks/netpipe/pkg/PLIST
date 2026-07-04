@@ -1,0 +1,4 @@
+@bin bin/NPtcp
+@bin bin/NPtcp6
+bin/netpipe
+@man man/man1/netpipe.1

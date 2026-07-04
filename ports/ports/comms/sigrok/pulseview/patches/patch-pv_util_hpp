@@ -1,0 +1,13 @@
+backport commit 136b891 to work around boost + clang10 issue
+
+Index: pv/util.hpp
+--- pv/util.hpp.orig
++++ pv/util.hpp
+@@ -25,6 +25,7 @@
+ #include <vector>
+ 
+ #ifndef Q_MOC_RUN
++#include <boost/serialization/nvp.hpp>
+ #include <boost/multiprecision/cpp_dec_float.hpp>
+ #endif
+ 

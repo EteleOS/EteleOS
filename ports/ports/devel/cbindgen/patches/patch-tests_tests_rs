@@ -1,0 +1,16 @@
+supposed to read CXX & CC from env, but for some reason this doesnt work ?
+
+Index: tests/tests.rs
+--- tests/tests.rs.orig
++++ tests/tests.rs
+@@ -113,8 +113,8 @@ fn compile(
+     skip_warning_as_error: bool,
+ ) {
+     let cc = match language {
+-        Language::Cxx => env::var("CXX").unwrap_or_else(|_| "g++".to_owned()),
+-        Language::C => env::var("CC").unwrap_or_else(|_| "gcc".to_owned()),
++        Language::Cxx => env::var("CXX").unwrap_or_else(|_| "c++".to_owned()),
++        Language::C => env::var("CC").unwrap_or_else(|_| "cc".to_owned()),
+         Language::Cython => env::var("CYTHON").unwrap_or_else(|_| "cython".to_owned()),
+     };
+ 

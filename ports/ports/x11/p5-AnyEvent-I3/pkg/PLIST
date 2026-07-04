@@ -1,0 +1,3 @@
+${P5SITE}/AnyEvent/
+${P5SITE}/AnyEvent/I3.pm
+@man man/man3p/AnyEvent::I3.3p

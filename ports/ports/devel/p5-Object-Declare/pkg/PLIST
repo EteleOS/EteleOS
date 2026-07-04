@@ -1,0 +1,3 @@
+${P5SITE}/Object/
+${P5SITE}/Object/Declare.pm
+@man man/man3p/Object::Declare.3p

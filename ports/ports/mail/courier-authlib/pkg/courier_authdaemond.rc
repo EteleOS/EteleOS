@@ -1,0 +1,18 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/authdaemond"
+daemon_flags="start"
+
+. /etc/rc.d/rc.subr
+
+pexp="${TRUEPREFIX}/sbin/courierlogger .* -start ${TRUEPREFIX}/libexec/courier-authlib/authdaemond"
+
+rc_pre() {
+	mkdir -p /var/run/courier{,-auth}/
+}
+
+rc_stop() {
+	${daemon} stop
+}
+
+rc_cmd $1

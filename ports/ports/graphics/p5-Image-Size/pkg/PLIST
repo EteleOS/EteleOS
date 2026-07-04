@@ -1,0 +1,5 @@
+bin/imgsize
+${P5SITE}/Image/
+${P5SITE}/Image/Size.pm
+@man man/man1/imgsize.1
+@man man/man3p/Image::Size.3p

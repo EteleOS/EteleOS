@@ -1,0 +1,27 @@
+@bin bin/glewinfo
+@bin bin/visualinfo
+include/GL/
+include/GL/eglew.h
+include/GL/glew.h
+include/GL/glxew.h
+include/GL/wglew.h
+@static-lib lib/libGLEW.a
+@lib lib/libGLEW.so.${LIBGLEW_VERSION}
+lib/pkgconfig/glew.pc
+share/doc/glew/
+share/doc/glew/advanced.html
+share/doc/glew/basic.html
+share/doc/glew/build.html
+share/doc/glew/credits.html
+share/doc/glew/eglew.html
+share/doc/glew/github.png
+share/doc/glew/glew.css
+share/doc/glew/glew.html
+share/doc/glew/glew.png
+share/doc/glew/glxew.html
+share/doc/glew/index.html
+share/doc/glew/install.html
+share/doc/glew/log.html
+share/doc/glew/new.png
+share/doc/glew/ogl_sm.jpg
+share/doc/glew/wglew.html

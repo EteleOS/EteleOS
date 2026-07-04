@@ -1,0 +1,12 @@
+Index: setup.py
+--- setup.py.orig
++++ setup.py
+@@ -82,7 +82,7 @@ params = {
+         'Source': 'https://github.com/cinemagoer/cinemagoer',
+     },
+     'download_url': dwnl_url,
+-    'scripts': scripts,
++    #'scripts': scripts,
+     'package_data': {
+         # Here, the "*" represents any possible language ID.
+         'imdb.locale': [

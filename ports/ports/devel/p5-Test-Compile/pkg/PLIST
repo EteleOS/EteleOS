@@ -1,0 +1,6 @@
+${P5SITE}/Test/
+${P5SITE}/Test/Compile/
+${P5SITE}/Test/Compile.pm
+${P5SITE}/Test/Compile/Internal.pm
+@man man/man3p/Test::Compile.3p
+@man man/man3p/Test::Compile::Internal.3p

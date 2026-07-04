@@ -1,0 +1,3 @@
+${P5SITE}/Catalyst/Model/
+${P5SITE}/Catalyst/Model/RDBO.pm
+@man man/man3p/Catalyst::Model::RDBO.3p

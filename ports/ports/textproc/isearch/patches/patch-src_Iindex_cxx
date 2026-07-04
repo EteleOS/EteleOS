@@ -1,0 +1,21 @@
+Index: src/Iindex.cxx
+--- src/Iindex.cxx.orig
++++ src/Iindex.cxx
+@@ -43,7 +43,7 @@ Author:		Nassib Nassar, nrn@cnidr.org
+ #include <stdlib.h>
+ #include <errno.h>
+ #include <string.h>
+-#include <iostream.h>
++#include <iostream>
+ #include <locale.h>
+ 
+ #if defined(_MSDOS) || defined(_WIN32)
+@@ -149,7 +149,7 @@ void AddFile(PIDB IdbPtr, STRING& PathName, STRING& Fi
+ 	   }
+ 	 }
+ 	 if (Found) {
+-	   Offset = (GPTYPE)((UINT4)Found - (UINT4)Buffer);
++	   Offset = (GPTYPE)((UINT8)Found - (UINT8)Buffer);
+ 	   /* the separator marks the beginning of the next 
+ 	      record. (offset - 1), then marks the end of 
+ 	      the current record. we must make sure that the

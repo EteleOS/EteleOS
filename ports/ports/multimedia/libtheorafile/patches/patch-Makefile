@@ -1,0 +1,23 @@
+add ${LOCALBASE}/lib to linker path
+add local include path
+add -o to create binary 'theorafile-test' rather than 'a.out'
+add CFLAGS and LDFLAGS
+
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -38,8 +38,6 @@ else
+ 	CFLAGS += -fpic -fPIC
+ endif
+ 
+-CFLAGS += -O3
+-
+ SRCDIR = $(dir $(MAKEFILE_LIST))
+ 
+ vpath %.c $(SRCDIR)
+@@ -98,4 +96,4 @@ clean:
+ 	rm -f libtheorafile.$(TARGET)
+ 
+ test:
+-	$(CC) -g -o theorafile-test sdl2test/sdl2test.c $(TFSRC) $(INCLUDES) $(DEFINES) `sdl2-config --cflags --libs` -lm
++	$(CC) ${CFLAGS} ${LDFLAGS} -g -o theorafile-test sdl2test/sdl2test.c $(TFSRC) $(INCLUDES) -I${LOCALBASE} $(DEFINES) `sdl2-config --cflags --libs` -L${LOCALBASE}/lib -lm

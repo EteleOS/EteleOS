@@ -1,0 +1,9 @@
+@bin bin/ncmpcpp
+@man man/man1/ncmpcpp.1
+share/examples/ncmpcpp/
+@comment share/examples/ncmpcpp/NEWS
+@comment share/examples/ncmpcpp/AUTHORS
+share/examples/ncmpcpp/CHANGELOG.md
+@comment share/examples/ncmpcpp/COPYING
+share/examples/ncmpcpp/bindings
+share/examples/ncmpcpp/config

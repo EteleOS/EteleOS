@@ -1,0 +1,5 @@
+; Longer example available in ${TRUEPREFIX}/share/examples/asterisk/default
+
+[default]
+100 => 1234,Phone #1
+101 => 1234,Phone #2

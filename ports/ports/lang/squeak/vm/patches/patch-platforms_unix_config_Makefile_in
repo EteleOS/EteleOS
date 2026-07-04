@@ -1,0 +1,12 @@
+Index: platforms/unix/config/Makefile.in
+--- platforms/unix/config/Makefile.in.orig
++++ platforms/unix/config/Makefile.in
+@@ -43,7 +43,7 @@ all : $(squeak) plugins squeak.1 $(npsqueak)
+ # VM
+ 
+ $(squeak) : config.sh $(SQLIBS) version.o
+-	$(LINK) $(squeak) $(SQLIBS) version.o $(LIBS) [plibs] vm/vm.a
++	$(LINK) $(squeak) vm/vm.a $(SQLIBS) version.o $(LIBS) [plibs]
+ 	@echo
+ 	@size $(squeak)
+ 	@echo

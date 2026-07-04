@@ -1,0 +1,15 @@
+- Needed for SGABIOS option ROM for VMM. Normally these are setup based on
+  the QEMU fw_cfg interface (or coreboot CBFS on hardware).
+
+Index: src/optionroms.c
+--- src/optionroms.c.orig
++++ src/optionroms.c
+@@ -387,7 +387,7 @@ optionrom_setup(void)
+ 
+     // All option roms found and deployed - now build BEV/BCV vectors.
+ 
+-    u32 pos = post_vga;
++    u32 pos = BUILD_BIOS_ADDR - BUILD_ROM_START;
+     while (pos < rom_get_last()) {
+         struct rom_header *rom = (void*)pos;
+         if (! is_valid_rom(rom)) {

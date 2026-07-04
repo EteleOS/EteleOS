@@ -1,0 +1,35 @@
+include/security/
+include/security/openpam.h
+include/security/openpam_attr.h
+include/security/openpam_version.h
+include/security/pam_appl.h
+include/security/pam_constants.h
+include/security/pam_mod_misc.h
+include/security/pam_modules.h
+include/security/pam_types.h
+@static-lib lib/libpam.a
+@lib lib/libpam.so.${LIBpam_VERSION}
+@static-lib lib/libpam_p.a
+lib/security/
+@so lib/security/pam_bsdauth.so
+@so lib/security/pam_deny.so
+@so lib/security/pam_echo.so
+@so lib/security/pam_exec.so
+@so lib/security/pam_group.so
+@so lib/security/pam_nologin.so
+@so lib/security/pam_permit.so
+@so lib/security/pam_rootok.so
+@so lib/security/pam_self.so
+@man man/man8/pam_bsdauth.8
+@man man/man8/pam_deny.8
+@man man/man8/pam_echo.8
+@man man/man8/pam_exec.8
+@man man/man8/pam_group.8
+@man man/man8/pam_nologin.8
+@man man/man8/pam_permit.8
+@man man/man8/pam_rootok.8
+@man man/man8/pam_self.8
+share/examples/pam/
+@sample ${SYSCONFDIR}/pam.d/
+share/examples/pam/system
+@sample ${SYSCONFDIR}/pam.d/system

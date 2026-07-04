@@ -1,0 +1,13 @@
+Use shiny CMake FindBacktrace module.
+Index: ext/libclementine-common/core/logging.cpp
+--- ext/libclementine-common/core/logging.cpp.orig
++++ ext/libclementine-common/core/logging.cpp
+@@ -336,7 +336,7 @@ void DumpStackTrace() {
+   }
+   free(symbols);
+ #else
+-  qLog(Debug) << "FIXME: Implement printing stack traces on this platform";
++  qLog(Debug) << "FIXME: Implement printing stack traces on this platform, or port backtrace library";
+ #endif
+ }
+ 

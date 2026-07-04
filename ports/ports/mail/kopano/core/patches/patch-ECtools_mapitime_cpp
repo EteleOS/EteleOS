@@ -1,0 +1,21 @@
+Index: ECtools/mapitime.cpp
+--- ECtools/mapitime.cpp.orig
++++ ECtools/mapitime.cpp
+@@ -38,6 +38,17 @@ using namespace KC;
+ using clk = std::chrono::steady_clock;
+ using duration = decltype(time_point()-time_point());
+ 
++#if defined(__OpenBSD__)
++#define SIGEV_SIGNAL 1
++struct sigevent /* dummy */
++{
++	int sigev_notify;
++	int sigev_signo;
++};
++#define timer_create(clockid, sevp, timerp) ((void) (clockid), (void) (sevp), (void) (timerp), errno = ENOSYS, -1)
++#define timer_settime(timer, flags, value, ovalue) ((void) (timer), (void) (flags), (void) (value), (void) (ovalue), errno = ENOSYS, -1)
++#endif
++
+ struct mpt_stat_entry {
+ 	duration delta;
+ };

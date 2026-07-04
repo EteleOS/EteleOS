@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/libexec/postgrey -d"
+daemon_flags="--inet=10023"
+
+. /etc/rc.d/rc.subr
+
+pexp="perl: .*postgrey -d${daemon_flags:+ ${daemon_flags}}.*"
+
+rc_cmd $1

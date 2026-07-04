@@ -1,0 +1,21 @@
+Index: include/imapproxy.h
+--- include/imapproxy.h.orig
++++ include/imapproxy.h
+@@ -161,7 +161,7 @@
+ /* 
+  * Common definitions 
+  */
+-#define PGM                     "in.imapproxyd"
++#define PGM                     "imapproxyd"
+ #define IMAP_UNTAGGED_OK        "* OK "           /* untagged OK response    */
+ #define IMAP_TAGGED_OK          "1 OK "           /* tagged OK response      */
+ #define BUFSIZE                 8192              /* default buffer size     */
+@@ -179,7 +179,7 @@
+ #define SELECT_STATUS_BUF_SIZE  256               /* size of select status   */
+ 
+ #ifndef DEFAULT_CONFIG_FILE
+-#define DEFAULT_CONFIG_FILE     "/etc/imapproxy.conf"
++#define DEFAULT_CONFIG_FILE     "${SYSCONFDIR}/imapproxy.conf"
+ #endif
+ #ifndef DEFAULT_PID_FILE
+ #define DEFAULT_PID_FILE       "/var/run/imapproxy.pid"

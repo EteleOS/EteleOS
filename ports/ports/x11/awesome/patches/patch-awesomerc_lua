@@ -1,0 +1,12 @@
+Index: awesomerc.lua
+--- awesomerc.lua.orig
++++ awesomerc.lua
+@@ -53,7 +53,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "d
+ -- @DOC_DEFAULT_APPLICATIONS@
+ -- This is used later as the default terminal and editor to run.
+ terminal = "xterm"
+-editor = os.getenv("EDITOR") or "nano"
++editor = os.getenv("EDITOR") or "vi"
+ editor_cmd = terminal .. " -e " .. editor
+ 
+ -- Default modkey.

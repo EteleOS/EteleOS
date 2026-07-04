@@ -1,0 +1,10 @@
+--- examples/conn-async.c.orig	Sat Sep 10 11:56:38 2016
++++ examples/conn-async.c	Sat Sep 10 11:57:03 2016
+@@ -24,6 +24,7 @@
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <stdlib.h>
++#include <sys/select.h> /* fd_set */
+ #include <errno.h>
+ #include <string.h>
+ #include <time.h>

@@ -1,0 +1,45 @@
+Index: lily/pango-font.cc
+--- lily/pango-font.cc.orig
++++ lily/pango-font.cc
+@@ -165,18 +165,18 @@ Pango_font::derived_mark () const
+ }
+ 
+ void
+-get_glyph_index_name (char *s, FT_ULong code)
++get_glyph_index_name (char *s, size_t size, FT_ULong code)
+ {
+-  sprintf (s, "glyphIndex%lX", code);
++  snprintf (s, size, "glyphIndex%lX", code);
+ }
+ 
+ void
+-get_unicode_name (char *s, FT_ULong code)
++get_unicode_name (char *s, size_t size, FT_ULong code)
+ {
+   if (code > 0xFFFF)
+-    sprintf (s, "u%lX", code);
++    snprintf (s, size, "u%lX", code);
+   else
+-    sprintf (s, "uni%04lX", code);
++    snprintf (s, size, "uni%04lX", code);
+ }
+ 
+ Box
+@@ -278,7 +278,7 @@ Pango_font::get_glyph_desc (PangoGlyphInfo const &pgi,
+       if (cmap && cmap->find (pg) != cmap->end ())
+         {
+           FT_ULong char_code = cmap->find (pg)->second;
+-          get_unicode_name (glyph_name, char_code);
++          get_unicode_name (glyph_name, sizeof(glyph_name), char_code);
+         }
+     }
+ 
+@@ -296,7 +296,7 @@ Pango_font::get_glyph_desc (PangoGlyphInfo const &pgi,
+ 
+   if (glyph_name[0] == '\0' && is_ttf)
+     // Access by glyph index directly.
+-    get_glyph_index_name (glyph_name, pg);
++    get_glyph_index_name (glyph_name, sizeof(glyph_name), pg);
+ 
+   if (glyph_name[0] == '\0')
+     {

@@ -1,0 +1,5 @@
+@conflict p5-Text-Markdown->=1.0.19,<=1.0.24
+bin/MultiMarkdown.pl
+${P5SITE}/Text/MultiMarkdown.pm
+@man man/man1/MultiMarkdown.pl.1
+@man man/man3p/Text::MultiMarkdown.3p

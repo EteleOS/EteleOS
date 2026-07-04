@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Data/
+${P5ARCH}/Data/Alias.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Data/
+${P5ARCH}/auto/Data/Alias/
+@so ${P5ARCH}/auto/Data/Alias/Alias.so
+@man man/man3p/Data::Alias.3p

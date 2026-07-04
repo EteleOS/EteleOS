@@ -1,0 +1,40 @@
+Fix build with png-1.5.
+
+--- src/glpng.c.orig	Mon Jul 10 21:27:10 2000
++++ src/glpng.c	Sun Jun  2 16:55:55 2013
+@@ -29,7 +29,7 @@
+ #include <GL/gl.h>
+ #include <stdlib.h>
+ #include <math.h>
+-#include "png/png.h"
++#include <png.h>
+ 
+ /* Used to decide if GL/gl.h supports the paletted extension */
+ #ifdef GL_COLOR_INDEX1_EXT
+@@ -276,7 +276,7 @@ int APIENTRY pngLoadRawF(FILE *fp, pngRawInfo *pinfo) 
+ 	endinfo = png_create_info_struct(png);
+ 
+ 	// DH: added following lines
+-	if (setjmp(png->jmpbuf))
++	if (setjmp(png_jmpbuf(png)))
+ 	{
+ 		png_destroy_read_struct(&png, &info, &endinfo);
+ 		return 0;
+@@ -380,7 +380,7 @@ int APIENTRY pngLoadF(FILE *fp, int mipmap, int trans,
+ 	endinfo = png_create_info_struct(png);
+ 
+ 	// DH: added following lines
+-	if (setjmp(png->jmpbuf))
++	if (setjmp(png_jmpbuf(png)))
+ 	{
+ 		png_destroy_read_struct(&png, &info, &endinfo);
+ 		return 0;
+@@ -559,7 +559,7 @@ int APIENTRY pngLoadF(FILE *fp, int mipmap, int trans,
+ 			#define ALPHA *q
+ 
+ 			switch (trans) {
+-				case PNG_CALLBACK:
++				case PNG_CALLBACKT:
+ 					FORSTART
+ 						ALPHA = AlphaCallback((unsigned char) r, (unsigned char) g, (unsigned char) b);
+ 					FOREND

@@ -1,0 +1,11 @@
+--- lib/bitdefender-autoupdate.orig	Thu Dec 11 06:57:04 2008
++++ lib/bitdefender-autoupdate	Sat Jan 10 21:16:03 2009
+@@ -107,7 +107,7 @@ use IO::File;
+ use Archive::Zip qw(:ERROR_CODES);
+ use Sys::Syslog;
+ 
+-my $PackageDir = shift || "/opt/bdc";
++my $PackageDir = shift || "%PREFIX%/bdc";
+ 
+ $LockFile = shift || "/var/spool/MailScanner/incoming/Locks/bitdefenderBusy.lock";
+ 

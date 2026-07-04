@@ -1,0 +1,26 @@
+Index: src/Makefile.sub.in
+--- src/Makefile.sub.in.orig
++++ src/Makefile.sub.in
+@@ -5,7 +5,8 @@ SHELL=@SHELL@
+ 
+ CC=@CC@
+ LD=@LD@
+-CFLAGS=@CFLAGS@ -I..
++CFLAGS=@CFLAGS@
++CPPFLAGS=@CPPFLAGS@ -I..
+ OBJEXT=@OBJEXT@
+ 
+ ifeq '$(SOURCES)' ''
+@@ -35,10 +36,10 @@ endif
+ 
+ .PHONY: depend
+ depend:
+-	$(CC) $(CFLAGS) -MM $(SOURCES) >.dependencies
++	$(CC) $(CPPFLAGS) -MM $(SOURCES) >.dependencies
+ 
+ .dependencies: $(SOURCES) $(HEADERS)
+-	$(CC) $(CFLAGS) -MM $(SOURCES) >$@
++	$(CC) $(CPPFLAGS) -MM $(SOURCES) >$@
+ 
+ .PHONY: clean
+ clean:

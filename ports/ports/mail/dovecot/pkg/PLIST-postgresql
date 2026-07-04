@@ -1,0 +1,3 @@
+@so lib/dovecot/auth/libdriver_pgsql.so
+@so lib/dovecot/dict/libdriver_pgsql.so
+@so lib/dovecot/libdriver_pgsql.so

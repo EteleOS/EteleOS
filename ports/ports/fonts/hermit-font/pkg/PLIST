@@ -1,0 +1,8 @@
+share/fonts/
+@fontdir share/fonts/hermit/
+share/fonts/hermit/Hermit-Bold.otf
+share/fonts/hermit/Hermit-BoldItalic.otf
+share/fonts/hermit/Hermit-Light.otf
+share/fonts/hermit/Hermit-LightItalic.otf
+share/fonts/hermit/Hermit-Regular.otf
+share/fonts/hermit/Hermit-RegularItalic.otf

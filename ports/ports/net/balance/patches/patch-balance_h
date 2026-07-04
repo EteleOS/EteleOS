@@ -1,0 +1,22 @@
+--- balance.h.orig	Wed Nov  6 11:56:36 2013
++++ balance.h	Sat Jan 17 22:49:08 2015
+@@ -24,6 +24,10 @@
+ #define BalanceBSD 1
+ #endif 
+ 
++#ifdef __OpenBSD__
++#define BalanceBSD 1
++#endif
++
+ #ifdef bsdi
+ #define BalanceBSD 1
+ #endif
+@@ -66,7 +70,7 @@
+  * this should be a directory that isn't cleaned up periodically, or at
+  * reboot of the machine (/tmp is cleaned at reboot on many OS versions)
+  */
+-#define SHMDIR 		"/var/run/balance/"
++#define SHMDIR 		"/var/balance/"
+ #define	SHMFILESUFFIX	".shm"
+ 
+ #define MAXCHANNELS 		64	/* max channels in group          */

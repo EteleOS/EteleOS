@@ -1,0 +1,11 @@
+--- Makefile.orig	Mon May 23 13:43:02 2005
++++ Makefile	Mon May 23 13:43:44 2005
+@@ -8,7 +8,7 @@ PCAP_H = -I/usr/include/pcap
+ PCAP_L = -lpcap
+ 
+ NIDS_H = -I/usr/local/include
+-NIDS_L = -L/usr/local/lib -lnids -lnet -lpcap
++NIDS_L = -L${LOCALBASE}/lib/libnet-1.0 -L${LOCALBASE}/lib -lnids -lnet -lpcap
+ 
+ PROJ = scanlogd
+ 

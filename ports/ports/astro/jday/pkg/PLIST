@@ -1,0 +1,10 @@
+@conflict netatalk-*
+@bin bin/dbd
+@bin bin/j2d
+@bin bin/jday
+include/jday.h
+lib/libjday.a
+lib/libjday.la
+@lib lib/libjday.so.${LIBjday_VERSION}
+lib/pkgconfig/jday.pc
+@man man/man1/jday.1

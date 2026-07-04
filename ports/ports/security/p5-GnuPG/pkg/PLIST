@@ -1,0 +1,12 @@
+bin/gpgmailtunl
+${P5SITE}/GnuPG/
+${P5SITE}/GnuPG.pm
+${P5SITE}/GnuPG/Tie/
+${P5SITE}/GnuPG/Tie.pm
+${P5SITE}/GnuPG/Tie/ClearSign.pm
+${P5SITE}/GnuPG/Tie/Decrypt.pm
+${P5SITE}/GnuPG/Tie/Encrypt.pm
+${P5SITE}/GnuPG/Tie/Sign.pm
+@man man/man1/gpgmailtunl.1
+@man man/man3p/GnuPG.3p
+@man man/man3p/GnuPG::Tie.3p

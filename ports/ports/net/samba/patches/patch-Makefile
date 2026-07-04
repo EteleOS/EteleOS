@@ -1,0 +1,16 @@
+Add support for passing arguments to waf in Makefile
+https://bugzilla.samba.org/show_bug.cgi?id=9886
+
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -1,7 +1,8 @@
+ # simple makefile wrapper to run waf
+ 
+ WAF_BINARY=$(PYTHON) ./buildtools/bin/waf
+-WAF=PYTHONHASHSEED=1 WAF_MAKE=1 $(WAF_BINARY)
++WAF_ARGS?=
++WAF=PYTHONHASHSEED=1 WAF_MAKE=1 $(WAF_BINARY) $(WAF_ARGS)
+ 
+ all:
+ 	$(WAF) build

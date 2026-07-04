@@ -1,0 +1,2 @@
+${P5SITE}/Plack/Middleware/RemoveRedundantBody.pm
+@man man/man3p/Plack::Middleware::RemoveRedundantBody.3p

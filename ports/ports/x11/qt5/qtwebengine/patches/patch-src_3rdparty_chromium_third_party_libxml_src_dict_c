@@ -1,0 +1,30 @@
+Index: src/3rdparty/chromium/third_party/libxml/src/dict.c
+--- src/3rdparty/chromium/third_party/libxml/src/dict.c.orig
++++ src/3rdparty/chromium/third_party/libxml/src/dict.c
+@@ -37,7 +37,7 @@
+  *  list we will use the BigKey algo as soon as the hash size grows
+  *  over MIN_DICT_SIZE so this actually works
+  */
+-#if !defined(FUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION)
++#if !defined(FUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION) || defined(HAVE_ARC4RANDOM)
+ #define DICT_RANDOMIZATION
+ #endif
+ 
+@@ -133,7 +133,7 @@ struct _xmlDict {
+ static xmlMutex xmlDictMutex;
+ 
+ #ifdef DICT_RANDOMIZATION
+-#ifdef HAVE_RAND_R
++#if defined(HAVE_RAND_R) && !defined(HAVE_ARC4RANDOM)
+ /*
+  * Internal data for random function, protected by xmlDictMutex
+  */
+@@ -160,7 +160,7 @@ int xmlInitializeDict(void) {
+ int __xmlInitializeDict(void) {
+     xmlInitMutex(&xmlDictMutex);
+ 
+-#ifdef DICT_RANDOMIZATION
++#if defined(DICT_RANDOMIZATION) && !defined(HAVE_ARC4RANDOM)
+ #ifdef HAVE_RAND_R
+     rand_seed = time(NULL);
+     rand_r(& rand_seed);

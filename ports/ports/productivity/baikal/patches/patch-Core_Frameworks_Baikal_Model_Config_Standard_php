@@ -1,0 +1,14 @@
+Base URI in chroot.
+
+Index: Core/Frameworks/Baikal/Model/Config/Standard.php
+--- Core/Frameworks/Baikal/Model/Config/Standard.php.orig
++++ Core/Frameworks/Baikal/Model/Config/Standard.php
+@@ -42,7 +42,7 @@ class Standard extends \Baikal\Model\Config {
+         // While not editable as will change admin & any existing user passwords,
+         // could be set to different value when migrating from legacy config
+         "auth_realm"            => "BaikalDAV",
+-        "base_uri"              => "",
++        "base_uri"              => "/baikal/",
+     ];
+ 
+     function __construct() {

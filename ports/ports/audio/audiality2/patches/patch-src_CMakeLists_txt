@@ -1,0 +1,21 @@
+Index: src/CMakeLists.txt
+--- src/CMakeLists.txt.orig
++++ src/CMakeLists.txt
+@@ -63,6 +63,7 @@ set(sources ${sources}
+ if(SDL2_FOUND)
+ 	add_definitions(-DA2_HAVE_SDL)
+ 	include_directories(${SDL2_INCLUDE_DIRS})
++	link_directories(${SDL2_LIBDIR})
+ endif(SDL2_FOUND)
+ 
+ if(USE_JACK)
+@@ -108,9 +109,6 @@ endif(WIN32)
+ # Until 2.0, we assume there's no ABI compatibility across releases!
+ set_target_properties(audiality2 PROPERTIES VERSION ${VERSION_STRING}
+ 	SOVERSION ${VERSION_STRING})
+-
+-# Release build: full optimization, no debug features, no debug info
+-set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG")
+ 
+ # Static release build: full optimization, no debug features, no debug info
+ set(CMAKE_C_FLAGS_STATIC "-O3 -DNDEBUG")

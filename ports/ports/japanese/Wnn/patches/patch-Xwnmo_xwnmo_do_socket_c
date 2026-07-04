@@ -1,0 +1,19 @@
+--- Xwnmo/xwnmo/do_socket.c.orig	Tue Aug 23 10:11:30 1994
++++ Xwnmo/xwnmo/do_socket.c	Fri Mar 11 17:01:40 2016
+@@ -116,8 +116,6 @@ static int	rc = 0;
+ #define	sock_clr(array,pos)	(array[pos/BINTSIZE] &= ~(1<<(pos%BINTSIZE)))
+ #define	sock_tst(array,pos)	(array[pos/BINTSIZE] & (1<<(pos%BINTSIZE)))
+ 
+-extern int read(), write();
+-
+ #define	_Read(fd, data, size)	read((fd), (data), (size))
+ #define	_Write(fd, data, size)	write((fd), (data), (size))
+ 
+@@ -588,7 +586,6 @@ wait_for_socket()
+ {
+     register int i;
+     int n, ret;
+-    extern int errno;
+     extern int select();
+ 
+     /*

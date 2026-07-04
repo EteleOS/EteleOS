@@ -1,0 +1,15 @@
+Index: src/modes/system/systemConfiguration.cpp
+--- src/modes/system/systemConfiguration.cpp.orig
++++ src/modes/system/systemConfiguration.cpp
+@@ -8,7 +8,11 @@
+ 
+ SystemConfiguration::SystemConfiguration()
+     : GenericLogModeConfiguration(QStringLiteral(SYSTEM_LOG_MODE_ID),
++#if defined(__OpenBSD__)
++                                  QStringList() << QStringLiteral("/var/log/messages"),
++#else
+                                   QStringList() << QStringLiteral("/var/log/syslog"),
++#endif
+                                   QList<int>() << Globals::INFORMATION_LOG_LEVEL_ID)
+ {
+     /*

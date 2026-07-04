@@ -1,0 +1,45 @@
+--- usr/bin/mysql-zrm-verify-backup.orig	Mon Aug 26 22:45:37 2013
++++ usr/bin/mysql-zrm-verify-backup	Tue May 13 15:45:54 2014
+@@ -30,7 +30,7 @@ use lib "/usr/lib/mysql-zrm";
+ use ZRM::Common;
+ 
+ 
+-my $MD5SUM="md5sum";
++my $MD5SUM="md5";
+ my $CHECKSUM_FILE="zrm_checksum";
+ my $CHECKSUM_PENDING=".checksum_pending";
+ 
+@@ -55,13 +55,13 @@ sub verifyCheckSum()
+ 				$_ ne $EXTRACTED_FILENAME && $_ ne $CHECKSUM_FILE ){
+ 				my $file = $File::Find::fullname;
+ 				if( -f $file ){
+-					my $x = $MD5SUM." -b "."\"$file\"";
++					my $x = $MD5SUM." -q "."\"$file\"";
+         				$x = &execCmdAndGetOutput($x);
++					chomp($x);
+ 					if( !defined $x ){
+ 						&printError( "Could not get md5 checksum\n" );
+ 					}else{
+-						my @a = split( / /, $x );
+-						&verifyCMForFile( $file, $a[0],
++						&verifyCMForFile( $file, $x,
+ 								 	$dir );
+ 					}
+ 				}
+@@ -120,13 +120,13 @@ sub calculateMD5Sum()
+                         if( $_ ne "index" && $_ ne $CHECKSUM_PENDING ){
+                                 my $file = $File::Find::fullname;
+                                 if( -f $file ){
+-                                        my $x = $MD5SUM." -b "."\"$file\"";
++                                        my $x = $MD5SUM." -q "."\"$file\"";
+                                         $x = &execCmdAndGetOutput($x);
++					chomp($x);
+                                         if( !defined $x ){
+                                                 &printError( "Could not get md5 checksum\n" );
+                                         }else{
+-                                                my @a = split( / /, $x );
+-                                                $mdcheck{$file}=$a[0];
++                                                $mdcheck{$file}=$x;
+                                         }
+                                 }
+                         }

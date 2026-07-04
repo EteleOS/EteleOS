@@ -1,0 +1,17 @@
+Remove a pend that hides missing support for SSL_CTX_set_client_cert_cb()
+in the TLSv1.3 stack.
+
+Index: test/openssl/test_ssl.rb
+--- test/openssl/test_ssl.rb.orig
++++ test/openssl/test_ssl.rb
+@@ -495,7 +495,9 @@ class OpenSSL::TestSSL < OpenSSL::SSLTestCase
+   end
+ 
+   def test_client_ca
+-    pend "LibreSSL doesn't support certificate_authorities" if libressl?
++    if ENV['SKIP_EXPECTED_FAILURES']
++      pend "skip failing client CA test"
++    end
+ 
+     ctx_proc = Proc.new do |ctx|
+       store = OpenSSL::X509::Store.new

@@ -1,0 +1,11 @@
+--- usr/bin/mysql-zrm.orig	Thu Feb  4 01:19:25 2010
++++ usr/bin/mysql-zrm	Wed May  5 12:10:49 2010
+@@ -36,7 +36,7 @@ if ( $^O =~ /^MSWin/ ) {
+ 	$ZRM_BINPATH= catfile( $ZRM_HOME, "usr", "bin" );
+ } else {
+ 	$ENV{'PATH'} = "/usr/local/bin:/opt/csw/bin:/usr/bin:/usr/sbin:/sbin:/bin:/usr/ucb";
+-	$ZRM_BINPATH="/usr/bin";
++	$ZRM_BINPATH="${PREFIX}/bin";
+ }
+ 
+ 

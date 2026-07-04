@@ -1,0 +1,12 @@
+Index: etc/a2ps_cfg.in
+--- etc/a2ps_cfg.in.orig
++++ etc/a2ps_cfg.in
+@@ -54,7 +54,7 @@ LibraryPath: @libpath@
+ 
+ # It may be useful to extend it so that a2ps can see some
+ # TeX or X11 resources: it likes AFM files and PF[AB] files.
+-#AppendLibraryPath: foo
++AppendLibraryPath: ${X11BASE}/lib/X11/fonts/Type1:${LOCALBASE}/share/fonts/ghostscript
+ 
+ 
+ #################################################################

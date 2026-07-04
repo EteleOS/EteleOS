@@ -1,0 +1,5 @@
+@bin bin/cgo
+@man man/man1/cgo.1
+share/examples/cgo/
+share/examples/cgo/cgorc
+@sample ${SYSCONFDIR}/cgorc

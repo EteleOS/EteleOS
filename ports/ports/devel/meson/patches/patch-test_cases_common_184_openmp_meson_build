@@ -1,0 +1,15 @@
+XXX https://github.com/jasperla/openbsd-wip/tree/master/devel/openmp
+
+Index: test cases/common/184 openmp/meson.build
+--- "test cases/common/184 openmp/meson.build.orig"
++++ "test cases/common/184 openmp/meson.build"
+@@ -19,6 +19,9 @@ endif
+ if host_machine.system() == 'darwin'
+   error('MESON_SKIP_TEST macOS does not support OpenMP.')
+ endif
++if host_machine.system() == 'openbsd'
++  error('MESON_SKIP_TEST OpenBSD does not support OpenMP.')
++endif
+ 
+ openmp = dependency('openmp')
+ env = environment()

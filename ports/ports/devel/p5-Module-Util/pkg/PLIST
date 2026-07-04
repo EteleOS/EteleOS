@@ -1,0 +1,5 @@
+bin/pm_which
+${P5SITE}/Module/
+${P5SITE}/Module/Util.pm
+@man man/man1/pm_which.1
+@man man/man3p/Module::Util.3p

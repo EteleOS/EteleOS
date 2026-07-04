@@ -1,0 +1,19 @@
+Nove include so __uintptr_t gets defined when needed.
+
+Index: src/api/dirmonitor/kqueue.c
+--- src/api/dirmonitor/kqueue.c.orig
++++ src/api/dirmonitor/kqueue.c
+@@ -1,11 +1,11 @@
+ #include <SDL3/SDL.h>
+-#include <sys/event.h>
+-#include <sys/stat.h>
+ #include <stdlib.h>
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <time.h>
++#include <sys/event.h>
++#include <sys/stat.h>
+ 
+ struct dirmonitor_internal {
+   int fd;

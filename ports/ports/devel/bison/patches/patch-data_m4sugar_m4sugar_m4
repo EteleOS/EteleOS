@@ -1,0 +1,17 @@
+Index: data/m4sugar/m4sugar.m4
+--- data/m4sugar/m4sugar.m4.orig
++++ data/m4sugar/m4sugar.m4
+@@ -31,13 +31,6 @@ divert(-1)#                                           
+ changequote()
+ changequote([, ])
+ 
+-# Some old m4's don't support m4exit.  But they provide
+-# equivalent functionality by core dumping because of the
+-# long macros we define.
+-ifdef([__gnu__], ,
+-[errprint(M4sugar requires GNU M4. Install it before installing M4sugar or
+-set the M4 environment variable to its absolute file name.)
+-m4exit(2)])
+ 
+ 
+ ## ------------------------------- ##

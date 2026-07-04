@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/snmp_exporter"
+daemon_flags="--config.file=${SYSCONFDIR}/snmp_exporter/snmp.yml"
+daemon_logger="daemon.info"
+daemon_user="_snmpexporter"
+
+. /etc/rc.d/rc.subr
+
+pexp="${daemon}.*"
+rc_bg=YES
+rc_reload=NO
+
+rc_cmd $1

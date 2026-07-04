@@ -1,0 +1,39 @@
+Index: dns_resolv.c
+--- dns_resolv.c.orig
++++ dns_resolv.c
+@@ -78,11 +78,11 @@ DBC      *geo_dbc  = NULL;                     /* GeoD
+ 
+ struct   dns_child child[MAXCHILD];            /* DNS child pipe data      */
+ 
+-DNODEPTR host_table[MAXHASH];                  /* hostname/ip hash table   */
++extern DNODEPTR host_table[MAXHASH];                  /* hostname/ip hash table   */
+ 
+-char     buffer[BUFSIZE];                      /* log file record buffer   */
+-char     tmp_buf[BUFSIZE];                     /* used to temp save above  */
+-struct   utsname system_info;                  /* system info structure    */
++extern char     buffer[BUFSIZE];                      /* log file record buffer   */
++extern char     tmp_buf[BUFSIZE];                     /* used to temp save above  */
++extern struct   utsname system_info;                  /* system info structure    */
+ 
+ int      raiseSigChild = 1;
+ 
+@@ -244,7 +244,7 @@ int dns_resolver(void *log_fp)
+          continue;                        /* go get next record if any    */
+       }
+ 
+-      strcpy(tmp_buf, buffer);            /* save buffer in case of error */
++      strlcpy(tmp_buf, buffer, sizeof(tmp_buf));            /* save buffer in case of error */
+       if(parse_record(buffer))            /* parse the record             */
+       {
+          struct addrinfo hints, *ares;
+@@ -418,8 +418,8 @@ static void process_list(DNODEPTR l_list)
+                      {
+                         /* If long hostname, take max domain name part */
+                         if ((size = strlen(hbuf)) > MAXHOST-2)
+-                           strcpy(child_buf,(hbuf+(size-MAXHOST+1)));
+-                        else strcpy(child_buf, hbuf);
++                           strlcpy(child_buf,(hbuf+(size-MAXHOST+1)),sizeof(child_buf));
++                        else strlcpy(child_buf, hbuf,sizeof(child_buf));
+                         size = strlen(child_buf);
+                      }
+                      else

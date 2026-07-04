@@ -1,0 +1,43 @@
+Index: etc/i3status.conf
+--- etc/i3status.conf.orig
++++ etc/i3status.conf
+@@ -7,6 +7,7 @@
+ # If the above line is not correctly displayed, fix your editor first!
+ 
+ general {
++        output_format = "i3bar"
+         colors = true
+         interval = 5
+ }
+@@ -19,7 +20,20 @@ order += "disk /"
+ order += "load"
+ order += "memory"
+ order += "tztime local"
++order += "cpu_temperature cpu0"
++order += "cpu_temperature acpitz0"
++order += "volume master"
++ 
++cpu_temperature cpu0 {
++         format = "C: %degrees C"
++         path = "cpu0"
++}
+ 
++cpu_temperature acpitz0 {
++        format = "TZ: %degrees C"
++}
++
++
+ wireless _first_ {
+         format_up = "W: (%quality at %essid) %ip"
+         format_down = "W: down"
+@@ -36,6 +50,10 @@ battery all {
+ 
+ disk "/" {
+         format = "%avail"
++}
++
++volume master {
++	format = "vol: %volume"
+ }
+ 
+ load {

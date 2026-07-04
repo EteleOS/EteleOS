@@ -1,0 +1,12 @@
+Index: Makefile.bsd
+--- Makefile.bsd.orig
++++ Makefile.bsd
+@@ -48,7 +48,7 @@ endif
+ LINKER_LINK_SHARED_LIBRARY_OPTIONS = -shared
+ LINKER_LINK_SHARED_DLOADABLE_OPTIONS = -shared -Wl,-rpath="$(RUNTIME_LINKER_PATH)" -Wl,-L.
+ LINKER_LINK_SHARED_PROGRAM_OPTIONS = -Wl,-rpath="$(RUNTIME_LINKER_PATH)"
+-LIBCHICKEN_SO_LINKER_OPTIONS = -Wl,-soname,lib$(PROGRAM_PREFIX)chicken$(PROGRAM_SUFFIX).so.$(BINARYVERSION)
++LIBCHICKEN_SO_LINKER_OPTIONS = -Wl,-soname,lib$(PROGRAM_PREFIX)chicken$(PROGRAM_SUFFIX).so.$(LIBchicken_VERSION)
+ LIBRARIES = -lm -lpthread
+ NEEDS_RELINKING = yes
+ USES_SONAME = yes

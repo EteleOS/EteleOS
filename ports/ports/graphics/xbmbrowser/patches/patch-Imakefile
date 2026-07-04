@@ -1,0 +1,34 @@
+--- Imakefile.orig	Fri Aug  4 05:19:36 1995
++++ Imakefile	Wed Aug 25 19:55:25 2010
+@@ -17,8 +17,8 @@
+ #    -DNO_TRANS_COLOR    Turn off setting the `none' color in xpixmaps
+ 
+         DO_XPMS = -DDO_XPMS
+-        XPM_INC = -I/usr/include/X11
+-        XPM_LIB = -L$(LIBDIR)/xpm -lXpm
++        XPM_INC = -I${X11BASE}/include/X11
++        XPM_LIB = -lXpm
+ 
+ 
+ # If you need this uncomment (particularly on decstations)
+@@ -44,10 +44,11 @@ LOCAL_LIBRARIES = $(XPM_LIB) XawClientLibs
+     CDEBUGFLAGS = DefaultCDebugFlags -DNDEBUG
+ #   CDEBUGFLAGS = -g
+ #   CDEBUGFLAGS = -g -DPARSE
+-#ifdef HPArchitecture
++#if defined(HPArchitecture) && !defined(OpenBSDArchitecture)
+     CCOPTIONS = -Aa -D_HPUX_SOURCE
+ #endif
+ 
++.SUFFIXES: .sed
+ # Sed substitions rule
+ .sed: 
+ 	@echo 'SED SUBSTITUTIONS "$@.sed" ==> "$@"'
+@@ -57,7 +58,6 @@ LOCAL_LIBRARIES = $(XPM_LIB) XawClientLibs
+ 	     -e 's|==X_BITMAPS==|$(X_BITMAPS)|'   \
+ 	     -e '/==COLOR_SETTINGS_DIVIDER==/d'   \
+ 	     < $@.sed  >$@
+-.SUFFIXES: .sed
+ 
+ # ---------------------------------------
+ # Rules for the actual build

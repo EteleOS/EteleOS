@@ -1,0 +1,20 @@
+--- lib/Rose/HTML/Object/Repeatable.pm.orig	Sun Jan 10 14:22:15 2010
++++ lib/Rose/HTML/Object/Repeatable.pm	Sun Jan 10 14:22:28 2010
+@@ -3,7 +3,7 @@ package Rose::HTML::Object::Repeatable;
+ use strict;
+ 
+ use Carp;
+-use Clone::PP();
++use Clone();
+ 
+ use base 'Rose::HTML::Form';
+ 
+@@ -86,7 +86,7 @@ sub prototype_clone
+ 
+   if(my $obj = $self->prototype)
+   {
+-    return Clone::PP::clone($obj);
++    return Clone::clone($obj);
+   }
+   else
+   {

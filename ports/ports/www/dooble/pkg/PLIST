@@ -1,0 +1,5 @@
+@bin bin/dooble
+share/applications/dooble.desktop
+share/pixmaps/
+share/pixmaps/dooble.png
+@tag update-desktop-database

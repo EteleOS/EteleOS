@@ -1,0 +1,12 @@
+- handle pppoe interfaces
+
+--- getlhs.c.orig	Fri Dec 26 15:31:29 2014
++++ getlhs.c	Sun Dec  4 20:53:14 2016
+@@ -62,6 +62,7 @@ int dltype_to_lhs(int dltype)
+ #ifdef DLT_ATM_CLIP
+ 	case DLT_ATM_CLIP:
+ #endif
++	case DLT_PPP_ETHER:
+ 		lhs = 8;
+ 		break;
+ #ifdef DLT_C_HDLC

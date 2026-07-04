@@ -1,0 +1,14 @@
+Index: sasl_defs.c
+--- sasl_defs.c.orig
++++ sasl_defs.c
+@@ -35,10 +35,6 @@ const char *const locations_file_path[] = {
+ };
+ #endif
+ 
+-#ifndef HAVE_SASL_CALLBACK_FT
+-typedef int (*sasl_callback_ft)(void);
+-#endif
+-
+ #ifdef ENABLE_SASL_PWDB
+ #define MAX_ENTRY_LEN 256
+ 

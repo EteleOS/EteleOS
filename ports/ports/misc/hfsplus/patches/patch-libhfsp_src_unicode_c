@@ -1,0 +1,15 @@
+--- libhfsp/src/unicode.c.orig	Tue Mar  5 20:50:29 2002
++++ libhfsp/src/unicode.c	Fri May  1 20:01:32 2015
+@@ -15,8 +15,12 @@
+  
+ #include <stdlib.h>
+ #include <endian.h>
++#if defined(__OpenBSD__)
++#include <stddef.h>
++#else
+ #include <byteswap.h>
+ #include <linux/string.h>
++#endif
+ 
+ #define __USE_GNU
+     /* need wcsrtomb */

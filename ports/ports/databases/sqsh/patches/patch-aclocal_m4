@@ -1,0 +1,23 @@
+Index: aclocal.m4
+--- aclocal.m4.orig
++++ aclocal.m4
+@@ -279,10 +279,6 @@ AC_DEFUN([AC_SYBASE_ASE], [
+ 			else
+ 				SYBASE_LIBDIR="$SYBASE_OCOS/lib"
+ 			fi
+-			if [[ ! -f $SYBASE_LIBDIR/libct.so ]]; then
+-				AC_MSG_RESULT(fail)
+-				AC_MSG_ERROR([No properly installed FreeTDS or Sybase environment found in ${SYBASE_OCOS}.])
+-			fi
+ 			case "${host_os}" in
+ 	                        *cygwin)
+ 					SYBASE_LIBS="-lct"
+@@ -369,6 +365,8 @@ AC_DEFUN([AC_SYBASE_ASE], [
+ 		case "${host_os}" in
+ 			linux*)
+ 				SYBASE_OS="-ldl -lm";;
++			openbsd*)
++				SYBASE_OS="-lm";;
+ 			irix*)
+ 				SYBASE_OS="-lnsl -lm";;
+ 			ncr*)

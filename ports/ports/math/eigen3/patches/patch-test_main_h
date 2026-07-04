@@ -1,0 +1,16 @@
+This test fails, and we actually DO provide min() and max() correctly,
+so disable it.
+Index: test/main.h
+--- test/main.h.orig
++++ test/main.h
+@@ -88,8 +88,8 @@
+   //
+   // So instead choosing to simply disable this check for HIP
+   //
+-  #define min(A,B) please_protect_your_min_with_parentheses
+-  #define max(A,B) please_protect_your_max_with_parentheses
++  //#define min(A,B) please_protect_your_min_with_parentheses
++  //#define max(A,B) please_protect_your_max_with_parentheses
+   #define isnan(X) please_protect_your_isnan_with_parentheses
+   #define isinf(X) please_protect_your_isinf_with_parentheses
+   #define isfinite(X) please_protect_your_isfinite_with_parentheses

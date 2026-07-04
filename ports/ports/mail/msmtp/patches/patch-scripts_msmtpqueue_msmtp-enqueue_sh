@@ -1,0 +1,9 @@
+Index: scripts/msmtpqueue/msmtp-enqueue.sh
+--- scripts/msmtpqueue/msmtp-enqueue.sh.orig
++++ scripts/msmtpqueue/msmtp-enqueue.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env sh
++#!/bin/sh
+ 
+ QUEUEDIR=$HOME/.msmtpqueue
+ 

@@ -1,0 +1,225 @@
+@option is-branch
+@conflict openldap-client-<=2.4.45p0
+@pkgpath databases/openldap,-server,bdb
+@pkgpath databases/openldap23
+@ask-update openldap-server-<2.5v0 BDB/HDB backends are removed in 2.5, convert to MDB before updating if you use them. Backup your existing database with slapcat
+@newgroup _openldap:544
+@newuser _openldap:544:_openldap::OpenLDAP Account:/nonexistent:/sbin/nologin
+@comment XXXextra @extraunexec rm -Rf ${LDAP_SYSCONF}/slapd.d/*
+@comment XXXextra @extraunexec rm -Rf /var/openldap-data/*
+@rcscript ${RCDIR}/slapd
+libexec/openldap/
+libexec/openldap/accesslog.la
+@so libexec/openldap/accesslog.so
+libexec/openldap/argon2.la
+@so libexec/openldap/argon2.so
+libexec/openldap/auditlog.la
+@so libexec/openldap/auditlog.so
+libexec/openldap/autoca.la
+@so libexec/openldap/autoca.so
+libexec/openldap/back_asyncmeta.la
+@so libexec/openldap/back_asyncmeta.so
+libexec/openldap/back_dnssrv.la
+@so libexec/openldap/back_dnssrv.so
+libexec/openldap/back_ldap.la
+@so libexec/openldap/back_ldap.so
+libexec/openldap/back_meta.la
+@so libexec/openldap/back_meta.so
+libexec/openldap/back_null.la
+@so libexec/openldap/back_null.so
+libexec/openldap/back_perl.la
+@so libexec/openldap/back_perl.so
+libexec/openldap/back_relay.la
+@so libexec/openldap/back_relay.so
+libexec/openldap/collect.la
+@so libexec/openldap/collect.so
+libexec/openldap/constraint.la
+@so libexec/openldap/constraint.so
+libexec/openldap/dds.la
+@so libexec/openldap/dds.so
+libexec/openldap/deref.la
+@so libexec/openldap/deref.so
+libexec/openldap/dyngroup.la
+@so libexec/openldap/dyngroup.so
+libexec/openldap/dynlist.la
+@so libexec/openldap/dynlist.so
+libexec/openldap/homedir.la
+@so libexec/openldap/homedir.so
+libexec/openldap/memberof.la
+@so libexec/openldap/memberof.so
+libexec/openldap/nestgroup.la
+@so libexec/openldap/nestgroup.so
+libexec/openldap/otp.la
+@so libexec/openldap/otp.so
+libexec/openldap/pcache.la
+@so libexec/openldap/pcache.so
+libexec/openldap/ppolicy.la
+@so libexec/openldap/ppolicy.so
+@comment libexec/openldap/pw-totp.a
+libexec/openldap/pw-totp.la
+@so libexec/openldap/pw-totp.so
+libexec/openldap/refint.la
+@so libexec/openldap/refint.so
+libexec/openldap/remoteauth.la
+@so libexec/openldap/remoteauth.so
+libexec/openldap/retcode.la
+@so libexec/openldap/retcode.so
+libexec/openldap/rwm.la
+@so libexec/openldap/rwm.so
+libexec/openldap/seqmod.la
+@so libexec/openldap/seqmod.so
+libexec/openldap/sssvlv.la
+@so libexec/openldap/sssvlv.so
+libexec/openldap/translucent.la
+@so libexec/openldap/translucent.so
+libexec/openldap/unique.la
+@so libexec/openldap/unique.so
+libexec/openldap/valsort.la
+@so libexec/openldap/valsort.so
+@bin libexec/slapd
+@comment @man man/man5/lloadd.conf.5
+@man man/man5/slapd-asyncmeta.5
+@man man/man5/slapd-config.5
+@man man/man5/slapd-dnssrv.5
+@man man/man5/slapd-ldap.5
+@man man/man5/slapd-ldif.5
+@man man/man5/slapd-mdb.5
+@man man/man5/slapd-meta.5
+@man man/man5/slapd-monitor.5
+@man man/man5/slapd-null.5
+@man man/man5/slapd-passwd.5
+@man man/man5/slapd-perl.5
+@man man/man5/slapd-relay.5
+@man man/man5/slapd-sock.5
+@man man/man5/slapd-sql.5
+@man man/man5/slapd-wt.5
+@man man/man5/slapd.access.5
+@man man/man5/slapd.backends.5
+@man man/man5/slapd.conf.5
+@man man/man5/slapd.overlays.5
+@man man/man5/slapd.plugin.5
+@man man/man5/slapo-accesslog.5
+@man man/man5/slapo-auditlog.5
+@man man/man5/slapo-autoca.5
+@man man/man5/slapo-chain.5
+@man man/man5/slapo-collect.5
+@man man/man5/slapo-constraint.5
+@man man/man5/slapo-dds.5
+@man man/man5/slapo-deref.5
+@man man/man5/slapo-dyngroup.5
+@man man/man5/slapo-dynlist.5
+@man man/man5/slapo-homedir.5
+@man man/man5/slapo-memberof.5
+@man man/man5/slapo-nestgroup.5
+@man man/man5/slapo-otp.5
+@man man/man5/slapo-pbind.5
+@man man/man5/slapo-pcache.5
+@man man/man5/slapo-ppolicy.5
+@man man/man5/slapo-refint.5
+@man man/man5/slapo-remoteauth.5
+@man man/man5/slapo-retcode.5
+@man man/man5/slapo-rwm.5
+@man man/man5/slapo-sock.5
+@man man/man5/slapo-sssvlv.5
+@man man/man5/slapo-syncprov.5
+@man man/man5/slapo-totp.5
+@man man/man5/slapo-translucent.5
+@man man/man5/slapo-unique.5
+@man man/man5/slapo-valsort.5
+@man man/man5/slappw-argon2.5
+@comment @man man/man8/lloadd.8
+@man man/man8/slapacl.8
+@man man/man8/slapadd.8
+@man man/man8/slapauth.8
+@man man/man8/slapcat.8
+@man man/man8/slapd.8
+@man man/man8/slapdn.8
+@man man/man8/slapindex.8
+@man man/man8/slapmodify.8
+@man man/man8/slappasswd.8
+@man man/man8/slapschema.8
+@man man/man8/slaptest.8
+sbin/slapacl
+sbin/slapadd
+sbin/slapauth
+sbin/slapcat
+sbin/slapdn
+sbin/slapindex
+sbin/slapmodify
+sbin/slappasswd
+sbin/slapschema
+sbin/slaptest
+share/examples/openldap/schema/
+@sample ${LDAP_SYSCONF}/schema/
+share/examples/openldap/schema/README
+share/examples/openldap/schema/collective.ldif
+@sample ${LDAP_SYSCONF}/schema/collective.ldif
+share/examples/openldap/schema/collective.schema
+@sample ${LDAP_SYSCONF}/schema/collective.schema
+share/examples/openldap/schema/corba.ldif
+@sample ${LDAP_SYSCONF}/schema/corba.ldif
+share/examples/openldap/schema/corba.schema
+@sample ${LDAP_SYSCONF}/schema/corba.schema
+share/examples/openldap/schema/core.ldif
+@sample ${LDAP_SYSCONF}/schema/core.ldif
+share/examples/openldap/schema/core.schema
+@sample ${LDAP_SYSCONF}/schema/core.schema
+share/examples/openldap/schema/cosine.ldif
+@sample ${LDAP_SYSCONF}/schema/cosine.ldif
+share/examples/openldap/schema/cosine.schema
+@sample ${LDAP_SYSCONF}/schema/cosine.schema
+share/examples/openldap/schema/dsee.ldif
+@sample ${LDAP_SYSCONF}/schema/dsee.ldif
+share/examples/openldap/schema/dsee.schema
+@sample ${LDAP_SYSCONF}/schema/dsee.schema
+share/examples/openldap/schema/duaconf.ldif
+@sample ${LDAP_SYSCONF}/schema/duaconf.ldif
+share/examples/openldap/schema/duaconf.schema
+@sample ${LDAP_SYSCONF}/schema/duaconf.schema
+share/examples/openldap/schema/dyngroup.ldif
+@sample ${LDAP_SYSCONF}/schema/dyngroup.ldif
+share/examples/openldap/schema/dyngroup.schema
+@sample ${LDAP_SYSCONF}/schema/dyngroup.schema
+share/examples/openldap/schema/inetorgperson.ldif
+@sample ${LDAP_SYSCONF}/schema/inetorgperson.ldif
+share/examples/openldap/schema/inetorgperson.schema
+@sample ${LDAP_SYSCONF}/schema/inetorgperson.schema
+share/examples/openldap/schema/java.ldif
+@sample ${LDAP_SYSCONF}/schema/java.ldif
+share/examples/openldap/schema/java.schema
+@sample ${LDAP_SYSCONF}/schema/java.schema
+share/examples/openldap/schema/misc.ldif
+@sample ${LDAP_SYSCONF}/schema/misc.ldif
+share/examples/openldap/schema/misc.schema
+@sample ${LDAP_SYSCONF}/schema/misc.schema
+share/examples/openldap/schema/msuser.ldif
+@sample ${LDAP_SYSCONF}/schema/msuser.ldif
+share/examples/openldap/schema/msuser.schema
+@sample ${LDAP_SYSCONF}/schema/msuser.schema
+share/examples/openldap/schema/namedobject.ldif
+@sample ${LDAP_SYSCONF}/schema/namedobject.ldif
+share/examples/openldap/schema/namedobject.schema
+@sample ${LDAP_SYSCONF}/schema/namedobject.schema
+share/examples/openldap/schema/nis.ldif
+@sample ${LDAP_SYSCONF}/schema/nis.ldif
+share/examples/openldap/schema/nis.schema
+@sample ${LDAP_SYSCONF}/schema/nis.schema
+share/examples/openldap/schema/openldap.ldif
+@sample ${LDAP_SYSCONF}/schema/openldap.ldif
+share/examples/openldap/schema/openldap.schema
+@sample ${LDAP_SYSCONF}/schema/openldap.schema
+share/examples/openldap/schema/pmi.ldif
+@sample ${LDAP_SYSCONF}/schema/pmi.ldif
+share/examples/openldap/schema/pmi.schema
+@sample ${LDAP_SYSCONF}/schema/pmi.schema
+share/examples/openldap/slapd.conf
+@comment -- slapd.conf is intentionally not @sampled, OLC is used by default
+@mode 0640
+share/examples/openldap/slapd.ldif
+@sample ${LDAP_SYSCONF}/slapd.ldif
+@mode 0750
+@group _openldap
+@sample ${LDAP_SYSCONF}/slapd.d/
+@mode 0700
+@owner _openldap
+@sample /var/openldap-data/

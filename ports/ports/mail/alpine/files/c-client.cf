@@ -1,0 +1,7 @@
+#I accept the risk
+
+# uw-imap RC: uncomment first line to enable
+
+# uncomment the following line to enable plaintext authentication over
+# non-encrypted connection
+#set disable-plaintext nil

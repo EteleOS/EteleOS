@@ -1,0 +1,12 @@
+Index: ncdap_test/tst_urls.sh
+--- ncdap_test/tst_urls.sh.orig
++++ ncdap_test/tst_urls.sh
+@@ -9,7 +9,7 @@
+ # Define various sets of test targets
+ 
+ # Figure our dst server; if none, then just stop
+-DTS=`${execdir}/findtestserver dap2 dts`
++DTS=`./findtestserver dap2 dts`
+ if test "x$DTS" = "x" ; then
+ echo "WARNING: Cannot locate test server for dts"
+ exit 0

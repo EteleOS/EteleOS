@@ -1,0 +1,11 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+You will need to add
+
+    csh -cf '${PREFIX}/sbin/runsvdir-start &'
+
+to /etc/rc.local in order to have runit start at boot.
+
+Read ${PREFIX}/share/doc/runit/upgrade.html on update.

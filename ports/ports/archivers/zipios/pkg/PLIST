@@ -1,0 +1,19 @@
+@bin bin/appendzip
+@bin bin/dosdatetime
+@bin bin/zipios
+include/zipios/
+include/zipios/collectioncollection.hpp
+include/zipios/directorycollection.hpp
+include/zipios/directoryentry.hpp
+include/zipios/dosdatetime.hpp
+include/zipios/filecollection.hpp
+include/zipios/fileentry.hpp
+include/zipios/filepath.hpp
+include/zipios/virtualseeker.hpp
+include/zipios/zipfile.hpp
+include/zipios/zipios-config.hpp
+include/zipios/zipiosexceptions.hpp
+@lib lib/libzipios.so.${LIBzipios_VERSION}
+share/cmake/
+share/cmake/ZipIos/
+share/cmake/ZipIos/ZipIosConfig.cmake

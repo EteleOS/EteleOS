@@ -1,0 +1,11 @@
+Index: source/describe.cc
+--- source/describe.cc.orig
++++ source/describe.cc
+@@ -21,6 +21,7 @@
+ 
+ #include <stdlib.h>
+ #include <stdio.h>
++#include <string.h>
+ #include <string>
+ 
+ #ifdef DOS

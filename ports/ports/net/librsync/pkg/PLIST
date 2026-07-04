@@ -1,0 +1,6 @@
+@bin bin/rdiff
+include/librsync.h
+include/librsync_export.h
+@lib lib/librsync.so.${LIBrsync_VERSION}
+@man man/man1/rdiff.1
+@man man/man3/librsync.3

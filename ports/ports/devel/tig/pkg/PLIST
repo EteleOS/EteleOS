@@ -1,0 +1,8 @@
+@bin bin/tig
+@man man/man1/tig.1
+@man man/man5/tigrc.5
+@man man/man7/tigmanual.7
+share/doc/tig/
+share/doc/tig/manual.html
+share/examples/tig/
+share/examples/tig/tigrc

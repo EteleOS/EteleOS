@@ -1,0 +1,14 @@
+Index: fuse-zip.1
+--- fuse-zip.1.orig
++++ fuse-zip.1
+@@ -86,10 +86,6 @@ Be patient. Wait for fuse-zip process finish after unm
+ .SH "PERMISSIONS"
+ Access check will not be performed unless
+ \fB-o default_permissions\fP mount option is given.
+-.SH "FILES"
+-.TP 
+-.if !'po4a'hide' .I /var/log/user.log
+-see this file in case any errors occur
+ .SH "SEE ALSO"
+ .BR fusermount (1),
+ .BR mount.fuse (8).

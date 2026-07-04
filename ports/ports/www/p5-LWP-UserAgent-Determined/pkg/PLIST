@@ -1,0 +1,3 @@
+${P5SITE}/LWP/UserAgent/
+${P5SITE}/LWP/UserAgent/Determined.pm
+@man man/man3p/LWP::UserAgent::Determined.3p

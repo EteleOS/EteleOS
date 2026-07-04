@@ -1,0 +1,5 @@
+${P5SITE}/Catalyst/Plugin/Session/Store/DBIC/
+${P5SITE}/Catalyst/Plugin/Session/Store/DBIC.pm
+${P5SITE}/Catalyst/Plugin/Session/Store/DBIC/Delegate.pm
+@man man/man3p/Catalyst::Plugin::Session::Store::DBIC.3p
+@man man/man3p/Catalyst::Plugin::Session::Store::DBIC::Delegate.3p

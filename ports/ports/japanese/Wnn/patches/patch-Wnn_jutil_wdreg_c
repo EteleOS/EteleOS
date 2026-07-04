@@ -1,0 +1,20 @@
+--- Wnn/jutil/wdreg.c.orig
++++ Wnn/jutil/wdreg.c
+@@ -53,6 +53,8 @@ static char *rcs_id = "$Id: wdreg.c,v 1.5 1992/11/30 0
+ */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/file.h>
+ #include "commonhd.h"
+@@ -99,7 +101,7 @@ err()
+     exit(1);
+ }
+ 
+-void
++int
+ main(argc, argv)
+ int argc;
+ char **argv;

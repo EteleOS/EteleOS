@@ -1,0 +1,8 @@
+@mode g+s
+@group games
+@bin bin/moon-buggy
+@mode
+@group
+@info info/moon-buggy.info
+@man man/man6/moon-buggy.6
+@extra /var/games/mbscore

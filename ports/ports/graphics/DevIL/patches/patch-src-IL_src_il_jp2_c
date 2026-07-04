@@ -1,0 +1,14 @@
+Cope with libjasper>=1.900.25
+
+Index: src-IL/src/il_jp2.c
+--- src-IL/src/il_jp2.c.orig
++++ src-IL/src/il_jp2.c
+@@ -459,7 +459,7 @@ static void jas_stream_initbuf(jas_stream_t *stream, i
+ 			/* The buffer must be large enough to accommodate maximum
+ 			  putback. */
+ 			assert(bufsize > JAS_STREAM_MAXPUTBACK);
+-			stream->bufbase_ = JAS_CAST(uchar *, buf);
++			stream->bufbase_ = JAS_CAST(jas_uchar *, buf);
+ 			stream->bufsize_ = bufsize - JAS_STREAM_MAXPUTBACK;
+ 		}
+ 	} else {

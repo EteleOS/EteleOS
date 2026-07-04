@@ -1,0 +1,19 @@
+@bin bin/indexer
+@bin bin/indextool
+@bin bin/searchd
+@bin bin/spelldump
+@bin bin/wordbreaker
+@man man/man1/indexer.1
+@man man/man1/indextool.1
+@man man/man1/searchd.1
+@man man/man1/spelldump.1
+share/doc/sphinx/
+share/doc/sphinx/sphinx.txt
+share/examples/sphinx/
+share/examples/sphinx/example.sql
+share/examples/sphinx/sphinx-min.conf.dist
+share/examples/sphinx/sphinx.conf.dist
+@sample ${SYSCONFDIR}/sphinx.conf
+@sample ${LOCALSTATEDIR}/
+@sample ${LOCALSTATEDIR}/data/
+@sample ${LOCALSTATEDIR}/log/

@@ -1,0 +1,21 @@
+Index: src/rtx_comp.cc
+--- src/rtx_comp.cc.orig
++++ src/rtx_comp.cc
+@@ -7,11 +7,17 @@
+ #include <iostream>
+ #include <libxml/xmlreader.h>
+ #include <trx_compiler.h>
++#include <unistd.h>
+ 
+ using namespace std;
+ 
+ int main(int argc, char *argv[])
+ {
++  if (pledge("stdio rpath wpath cpath", NULL) == -1)
++  {
++    cerr << "pledge" << endl;
++    exit(EXIT_FAILURE);
++  }
+   LtLocale::tryToSetLocale();
+   CLI cli("compile .rtx files", PACKAGE_VERSION);
+   cli.add_str_arg('e', "exclude", "exclude a rule by name", "NAME");

@@ -1,0 +1,7 @@
+include/cudd.h
+@static-lib lib/libcudd.a
+lib/libcudd.la
+@lib lib/libcudd.so.${LIBcudd_VERSION}
+share/doc/cudd/
+share/doc/cudd/cudd.pdf
+share/doc/cudd/phase.pdf

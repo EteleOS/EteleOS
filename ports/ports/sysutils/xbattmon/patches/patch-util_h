@@ -1,0 +1,6 @@
+Index: util.h
+--- util.h.orig
++++ util.h
+@@ -1,2 +0,0 @@
+-#undef strtonum
+-long long strtonum(const char *, long long, long long, const char **);

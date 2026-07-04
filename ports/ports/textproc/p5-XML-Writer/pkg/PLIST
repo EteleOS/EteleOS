@@ -1,0 +1,11 @@
+${P5SITE}/XML/
+${P5SITE}/XML/Writer.pm
+@man man/man3p/XML::Writer.3p
+share/examples/p5-XML-Writer/
+share/examples/p5-XML-Writer/data-mode-sample.pl
+share/examples/p5-XML-Writer/directory-as-atom.pl
+share/examples/p5-XML-Writer/double-escaping-example.pl
+share/examples/p5-XML-Writer/namespace-prefixes.pl
+share/examples/p5-XML-Writer/simple-xml.pl
+share/examples/p5-XML-Writer/writing-unicode.pl
+share/examples/p5-XML-Writer/xml-writer-string.pl

@@ -1,0 +1,13 @@
+Print compiler invocations.
+
+Index: mk/buildsys.mk.in
+--- mk/buildsys.mk.in.orig
++++ mk/buildsys.mk.in
+@@ -124,7 +124,6 @@ DEPS = ${OBJS:.o=.dep}			\
+ 
+ MO_FILES = ${LOCALES:.po=.mo}
+ 
+-.SILENT:
+ .SUFFIXES:
+ .SUFFIXES: .amigalib.o .beam .c .cc .class .cxx .d .erl .lib.o .java .mo .m .mm .o .plugin.o .po .py .pyc .rc .S .xpm
+ .PHONY: all subdirs subdirs-after pre-depend depend install install-extra post-install uninstall uninstall-extra clean pre-clean distclean pre-distclean locales copy-headers-into-framework ${SUBDIRS} ${SUBDIRS_AFTER}

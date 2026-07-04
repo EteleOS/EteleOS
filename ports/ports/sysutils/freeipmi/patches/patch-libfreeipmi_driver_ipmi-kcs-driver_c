@@ -1,0 +1,21 @@
+Index: libfreeipmi/driver/ipmi-kcs-driver.c
+--- libfreeipmi/driver/ipmi-kcs-driver.c.orig
++++ libfreeipmi/driver/ipmi-kcs-driver.c
+@@ -148,7 +148,7 @@
+ #if defined(__FreeBSD__)
+ # include <machine/cpufunc.h>
+ # include <machine/sysarch.h>
+-#elif defined(__NetBSD__) || defined(__OpenBSD__)
++#elif defined(__NetBSD__)
+ # include <machine/pio.h>               /* inb/outb */
+ # include <machine/sysarch.h>   /* sysarch call */
+ #elif defined(HAVE_SYS_IO_H)
+@@ -159,7 +159,7 @@
+ # include <asm/io.h>
+ #endif
+ 
+-#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__)
++#if defined(__FreeBSD__) || defined(__NetBSD__)
+ # define _INB(port)  inb (port)
+ # define _OUTB(data, port)  outb (port, data)
+ #elif defined(HAVE_INB) && defined(HAVE_OUTB)

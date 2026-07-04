@@ -1,0 +1,22 @@
+--- Wnn/jserver/do_filecom.c.orig
++++ Wnn/jserver/do_filecom.c
+@@ -55,6 +55,8 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <stdio.h>
++#include <string.h>
++#include <unistd.h>
+ 
+ #include "demcom.h"
+ #include "commonhd.h"
+@@ -82,7 +84,9 @@ file_init()
+ 
+ /*	mkdir	*/
+ 
+-#define	MODE (0000000 | 0000777)
++#define MODE	0755
++
++/* #define	MODE (0000000 | 0000777) */
+ #if defined(BSD42) || defined(uniosu) || defined(UX386) || defined(DGUX)
+ /* #define	MODE (0040000 | 0000731) */
+ /* #define	MODE (0000000 | 0000733) */ 

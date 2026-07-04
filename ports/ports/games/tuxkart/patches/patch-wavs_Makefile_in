@@ -1,0 +1,11 @@
+--- wavs/Makefile.in.orig	Sun Nov  9 12:38:00 2008
++++ wavs/Makefile.in	Sun Nov  9 12:38:04 2008
+@@ -77,7 +77,7 @@ am__include = @am__include@
+ am__quote = @am__quote@
+ install_sh = @install_sh@
+ 
+-pkgdatadir = $(datadir)/games/@PACKAGE@/wavs
++pkgdatadir = $(datadir)/@PACKAGE@/wavs
+ 
+ pkgdata_DATA = $(wildcard *.wav)
+ 

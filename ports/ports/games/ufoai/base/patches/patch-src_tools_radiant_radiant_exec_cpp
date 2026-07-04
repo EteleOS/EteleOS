@@ -1,0 +1,10 @@
+--- src/tools/radiant/radiant/exec.cpp.orig	Wed Jul  2 01:55:04 2014
++++ src/tools/radiant/radiant/exec.cpp	Wed Jul  2 01:55:41 2014
+@@ -28,6 +28,7 @@
+ 
+ #if defined (__FreeBSD__) || defined(__OpenBSD__)
+ # include <signal.h>
++# include <sys/wait.h>
+ #elif defined(__linux__)
+ # include <sys/wait.h>
+ #endif

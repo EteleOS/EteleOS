@@ -1,0 +1,21 @@
+Index: src/processes.c
+--- src/processes.c.orig
++++ src/processes.c
+@@ -169,7 +169,7 @@
+ #if defined(ARG_MAX) && (ARG_MAX < 4096)
+ #define CMDLINE_BUFFER_SIZE ARG_MAX
+ #else
+-#define CMDLINE_BUFFER_SIZE 4096
++#define CMDLINE_BUFFER_SIZE 4*4096
+ #endif
+ #endif
+ 
+@@ -2544,7 +2544,7 @@ static int ps_read(void) {
+ 
+       proc_ptr = &(procs[i]);
+       /* Don't probe zombie processes  */
+-      if (!P_ZOMBIE(proc_ptr)) {
++      if ((proc_ptr->p_psflags & PS_ZOMBIE) == 0) {
+         char **argv;
+         int argc;
+         int status;

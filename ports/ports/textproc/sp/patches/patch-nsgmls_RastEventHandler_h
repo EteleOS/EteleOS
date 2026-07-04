@@ -1,0 +1,11 @@
+--- nsgmls/RastEventHandler.h.orig	Fri Jan 17 07:08:26 1997
++++ nsgmls/RastEventHandler.h	Mon May  6 15:50:18 2013
+@@ -102,7 +102,7 @@ class RastSubdocState { (private)
+ 
+ class RastEventHandler : public ErrorCountEventHandler,
+                          private RastSubdocState,
+-                         private Messenger {
++                         protected Messenger {
+ public:
+   RastEventHandler(SgmlParser *, Messenger *);
+   void data(DataEvent *);

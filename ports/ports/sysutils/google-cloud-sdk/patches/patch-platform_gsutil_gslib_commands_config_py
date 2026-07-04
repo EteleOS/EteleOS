@@ -1,0 +1,12 @@
+Index: platform/gsutil/gslib/commands/config.py
+--- platform/gsutil/gslib/commands/config.py.orig
++++ platform/gsutil/gslib/commands/config.py
+@@ -300,7 +300,7 @@ CONFIG_INPUTLESS_GSUTIL_SECTION_CONTENT = """
+ # available. 'software_update_check_period' specifies the number of days
+ # between such checks. The default is 30. Setting the value to 0 disables
+ # periodic software update checks.
+-#software_update_check_period = 30
++software_update_check_period = 0
+ 
+ # 'tab_completion_timeout' controls the timeout (in seconds) for tab
+ # completions that involve remote requests (such as bucket or object names).

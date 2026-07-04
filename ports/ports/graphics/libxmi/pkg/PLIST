@@ -1,0 +1,5 @@
+include/xmi.h
+@info info/libxmi.info
+lib/libxmi.a
+lib/libxmi.la
+@lib lib/libxmi.so.${LIBxmi_VERSION}

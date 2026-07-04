@@ -1,0 +1,12 @@
+Index: tools/spgen/source/spgen_test.ml
+--- tools/spgen/source/spgen_test.ml.orig
++++ tools/spgen/source/spgen_test.ml
+@@ -42,7 +42,7 @@ let score_ext = "score" (* marshalling format used by 
+  *  -B: ignore changes in blank lines
+  *)
+ let get_diff filename1 filename2 =
+-  let com = spf "diff -u -b -B %s %s" filename1 filename2 in
++  let com = spf "gdiff -u -b -B %s %s" filename1 filename2 in
+   let xs = Common.cmd_to_list com in
+ 
+   (* get rid of the --- and +++ lines *)

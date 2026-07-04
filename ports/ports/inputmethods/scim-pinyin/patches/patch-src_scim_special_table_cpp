@@ -1,0 +1,13 @@
+Add missing header for ports-gcc
+
+Index: src/scim_special_table.cpp
+--- src/scim_special_table.cpp.orig
++++ src/scim_special_table.cpp
+@@ -20,6 +20,7 @@
+ #define Uses_STL_IOMANIP
+ #define Uscs_C_STRING
+ 
++#include <string.h>
+ #include <time.h>
+ #include <scim.h>
+ #include "scim_pinyin_private.h"

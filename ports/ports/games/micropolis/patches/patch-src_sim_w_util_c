@@ -1,0 +1,42 @@
+Index: src/sim/w_util.c
+--- src/sim/w_util.c.orig
++++ src/sim/w_util.c
+@@ -64,6 +64,7 @@
+ 
+ /* comefrom: drawTaxesCollected incBoxValue decBoxValue drawCurrentFunds 
+ 	     drawActualBox UpdateFunds updateCurrentCost */
++void
+ makeDollarDecimalStr(char *numStr, char *dollarStr)
+ {
+   register short leftMostSet;
+@@ -210,6 +211,7 @@ UpdateGameLevel()
+ }
+ 
+ 
++void
+ setCityName(char *name)
+ {
+   char *cp = name;
+@@ -223,12 +225,13 @@ setCityName(char *name)
+ }
+ 
+ 
++void
+ setAnyCityName(char *name)
+ {
+   char buf[1024];
+ 
+   CityName = name;
+-  sprintf(buf, "UISetCityName {%s}", CityName);
++  snprintf(buf, 1024, "UISetCityName {%s}", CityName);
+   Eval(buf);
+ }
+ 
+@@ -266,6 +269,7 @@ DoSetMapState(SimView *view, short state)
+ }
+ 
+ 
++void
+ DoNewGame()
+ {
+   Eval("UINewGame");

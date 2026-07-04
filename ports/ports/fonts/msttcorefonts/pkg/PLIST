@@ -1,0 +1,34 @@
+@pkgpath x11/msttcorefonts
+share/fonts/
+@fontdir share/fonts/mscorefonts/
+!%%no_comic%%
+share/fonts/mscorefonts/andalemo.ttf
+share/fonts/mscorefonts/arial.ttf
+share/fonts/mscorefonts/arialbd.ttf
+share/fonts/mscorefonts/arialbi.ttf
+share/fonts/mscorefonts/ariali.ttf
+share/fonts/mscorefonts/ariblk.ttf
+share/fonts/mscorefonts/cour.ttf
+share/fonts/mscorefonts/courbd.ttf
+share/fonts/mscorefonts/courbi.ttf
+share/fonts/mscorefonts/couri.ttf
+share/fonts/mscorefonts/eula.txt
+share/fonts/mscorefonts/georgia.ttf
+share/fonts/mscorefonts/georgiab.ttf
+share/fonts/mscorefonts/georgiai.ttf
+share/fonts/mscorefonts/georgiaz.ttf
+share/fonts/mscorefonts/impact.ttf
+share/fonts/mscorefonts/tahoma.ttf
+share/fonts/mscorefonts/times.ttf
+share/fonts/mscorefonts/timesbd.ttf
+share/fonts/mscorefonts/timesbi.ttf
+share/fonts/mscorefonts/timesi.ttf
+share/fonts/mscorefonts/trebuc.ttf
+share/fonts/mscorefonts/trebucbd.ttf
+share/fonts/mscorefonts/trebucbi.ttf
+share/fonts/mscorefonts/trebucit.ttf
+share/fonts/mscorefonts/verdana.ttf
+share/fonts/mscorefonts/verdanab.ttf
+share/fonts/mscorefonts/verdanai.ttf
+share/fonts/mscorefonts/verdanaz.ttf
+share/fonts/mscorefonts/webdings.ttf

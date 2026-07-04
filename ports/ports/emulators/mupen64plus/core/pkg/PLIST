@@ -1,0 +1,13 @@
+include/mupen64plus/
+include/mupen64plus/m64p_common.h
+include/mupen64plus/m64p_config.h
+include/mupen64plus/m64p_debugger.h
+include/mupen64plus/m64p_frontend.h
+include/mupen64plus/m64p_plugin.h
+include/mupen64plus/m64p_types.h
+include/mupen64plus/m64p_vidext.h
+@lib lib/libmupen64plus.so.${LIBmupen64plus_VERSION}
+share/mupen64plus/
+share/mupen64plus/font.ttf
+share/mupen64plus/mupen64plus.ini
+share/mupen64plus/mupencheat.txt

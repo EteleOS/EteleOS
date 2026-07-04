@@ -1,0 +1,4 @@
+lib/libretro/
+@so lib/libretro/genesis_plus_gx_libretro.so
+share/doc/libretro-genesis-plus-gx/
+share/doc/libretro-genesis-plus-gx/LICENSE.txt

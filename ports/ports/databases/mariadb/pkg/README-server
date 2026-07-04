@@ -1,0 +1,51 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Initial setup
+=============
+
+If you are installing MariaDB for the first time, you have to create
+a default database first. In order to create the database, please run
+${TRUEPREFIX}/bin/mariadb-install-db
+
+You will need to tune the values in the my.cnf file (examples
+available in ${TRUEPREFIX}/share/examples/mysql).
+
+By default, the MariaDB processes run in the login(1) class of "mysqld".
+On a busy server, it may be advisable to tune the resources, such as more
+open file descriptors etc.
+
+The capability database file is located at /etc/login.conf.d/mysqld
+
+If you are using InnoDB and experience an error such as "doesn't exist
+in engine" you will need to increase kern.maxlocksperuid.
+
+For larger servers and dedicated database servers, these numbers
+and memory limits (e.g. datasize and stacksize) may also need to be
+increased. Please report any changes and experiences to the package
+maintainers so that we can update this file for future versions.
+
+Upgrades
+========
+
+mariadb-upgrade(1) should be run after updating the MariaDB server.
+
+chrooted daemons and MariaDB socket
+===================================
+
+For external program running under a chroot(8) to be able to access the
+MariaDB server without using a network connection, the socket must be
+placed inside the chroot.
+
+e.g. httpd(8) or nginx(8): connecting to MariaDB from PHP
+---------------------------------------------------------
+Create a directory for the MariaDB socket:
+
+    # install -d -m 0711 -o _mysql -g _mysql /var/www/var/run/mysql
+
+Adjust ${SYSCONFDIR}/my.cnf to use the socket in the chroot - this
+applies to both client and server processes:
+
+    [client-server]
+    socket = /var/www/var/run/mysql/mysql.sock

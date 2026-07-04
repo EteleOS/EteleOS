@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/prometheus"
+daemon_flags="--config.file ${SYSCONFDIR}/prometheus/prometheus.yml"
+daemon_flags="${daemon_flags} --storage.tsdb.path '${LOCALSTATEDIR}/prometheus'"
+daemon_logger="daemon.info"
+daemon_user="_prometheus"
+
+. /etc/rc.d/rc.subr
+
+pexp="${daemon}.*"
+rc_bg=YES
+
+rc_cmd $1

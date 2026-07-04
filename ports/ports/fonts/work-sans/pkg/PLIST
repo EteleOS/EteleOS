@@ -1,0 +1,23 @@
+share/doc/work-sans/
+share/doc/work-sans/OFL.txt
+share/doc/work-sans/README.md
+share/fonts/
+@fontdir share/fonts/work-sans/
+share/fonts/work-sans/WorkSans-Black.ttf
+share/fonts/work-sans/WorkSans-BlackItalic.ttf
+share/fonts/work-sans/WorkSans-Bold.ttf
+share/fonts/work-sans/WorkSans-BoldItalic.ttf
+share/fonts/work-sans/WorkSans-ExtraBold.ttf
+share/fonts/work-sans/WorkSans-ExtraBoldItalic.ttf
+share/fonts/work-sans/WorkSans-ExtraLight.ttf
+share/fonts/work-sans/WorkSans-ExtraLightItalic.ttf
+share/fonts/work-sans/WorkSans-Italic.ttf
+share/fonts/work-sans/WorkSans-Light.ttf
+share/fonts/work-sans/WorkSans-LightItalic.ttf
+share/fonts/work-sans/WorkSans-Medium.ttf
+share/fonts/work-sans/WorkSans-MediumItalic.ttf
+share/fonts/work-sans/WorkSans-Regular.ttf
+share/fonts/work-sans/WorkSans-SemiBold.ttf
+share/fonts/work-sans/WorkSans-SemiBoldItalic.ttf
+share/fonts/work-sans/WorkSans-Thin.ttf
+share/fonts/work-sans/WorkSans-ThinItalic.ttf

@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/tor"
+daemon_timeout=60
+
+. /etc/rc.d/rc.subr
+
+rc_stop_signal=INT
+
+rc_configtest() {
+	${daemon} ${daemon_flags} --verify-config
+}
+
+rc_cmd $1

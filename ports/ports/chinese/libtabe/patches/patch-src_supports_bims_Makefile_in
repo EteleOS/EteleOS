@@ -1,0 +1,11 @@
+--- src/supports/bims/Makefile.in.orig	Sat Dec 24 14:31:08 2005
++++ src/supports/bims/Makefile.in	Sat Dec 24 14:31:47 2005
+@@ -45,7 +45,7 @@ all: $(LIBNAME)
+ 
+ $(LIBNAME): $(LIBOBJS)
+ 	$(LIBTOOL) --mode=link $(CC) -o $@ $(LIBOBJS) -rpath $(libdir) \
+-		-version-info $(CURRENT_VER):$(REVISION_VER):$(AGE_VER)
++		$(libbims_la_LDFLAGS)
+ 
+ bims.lo: bims.c bims.h
+ 	$(LIBTOOL) --mode=compile $(CC) -c $(CFLAGS) $(DEFS) $(INC) -o $@ bims.c

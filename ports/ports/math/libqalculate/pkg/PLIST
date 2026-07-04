@@ -1,0 +1,42 @@
+@bin bin/qalc
+include/libqalculate/
+include/libqalculate/BuiltinFunctions.h
+include/libqalculate/Calculator.h
+include/libqalculate/DataSet.h
+include/libqalculate/ExpressionItem.h
+include/libqalculate/Function.h
+include/libqalculate/MathStructure.h
+include/libqalculate/Number.h
+include/libqalculate/Prefix.h
+include/libqalculate/QalculateDateTime.h
+include/libqalculate/Unit.h
+include/libqalculate/Variable.h
+include/libqalculate/includes.h
+include/libqalculate/qalculate.h
+include/libqalculate/util.h
+@static-lib lib/libqalculate.a
+lib/libqalculate.la
+@lib lib/libqalculate.so.${LIBqalculate_VERSION}
+lib/pkgconfig/libqalculate.pc
+@man man/man1/qalc.1
+share/locale/ca/LC_MESSAGES/libqalculate.mo
+share/locale/de/LC_MESSAGES/libqalculate.mo
+share/locale/es/LC_MESSAGES/libqalculate.mo
+share/locale/fr/LC_MESSAGES/libqalculate.mo
+share/locale/ka/LC_MESSAGES/libqalculate.mo
+share/locale/nl/LC_MESSAGES/libqalculate.mo
+share/locale/ru/LC_MESSAGES/libqalculate.mo
+share/locale/sv/LC_MESSAGES/libqalculate.mo
+share/locale/zh_CN/LC_MESSAGES/libqalculate.mo
+share/locale/zh_TW/LC_MESSAGES/libqalculate.mo
+share/qalculate/
+share/qalculate/currencies.xml
+share/qalculate/datasets.xml
+share/qalculate/elements.xml
+share/qalculate/eurofxref-daily.xml
+share/qalculate/functions.xml
+share/qalculate/planets.xml
+share/qalculate/prefixes.xml
+share/qalculate/rates.json
+share/qalculate/units.xml
+share/qalculate/variables.xml

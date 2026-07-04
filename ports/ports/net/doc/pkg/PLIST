@@ -1,0 +1,6 @@
+bin/doc
+libexec/doc/
+libexec/doc/doc-1.awk
+libexec/doc/doc-3.awk
+libexec/doc/doc-4.awk
+@man man/man8/doc.8

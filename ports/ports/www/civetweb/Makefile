@@ -1,0 +1,31 @@
+COMMENT =	embedded C/C++ web server
+
+GH_ACCOUNT =	civetweb
+GH_PROJECT =	civetweb
+GH_TAGNAME =	v1.16
+
+SHARED_LIBS +=  civetweb                  0.1 # 0.0
+SHARED_LIBS +=  civetweb-cpp              0.1 # 0.0
+
+CATEGORIES =	www
+
+# MIT
+PERMIT_PACKAGE =	Yes
+
+# C++
+COMPILER =		base-clang ports-gcc
+
+WANTLIB += ${COMPILER_LIBCXX} c m z
+
+MODULES =		devel/cmake
+
+CONFIGURE_ARGS =	-DCIVETWEB_BUILD_TESTING=OFF \
+			-DCIVETWEB_ENABLE_CXX=ON \
+			-DCIVETWEB_ENABLE_IPV6=ON \
+			-DCIVETWEB_ENABLE_ZLIB=ON \
+			-DCIVETWEB_ENABLE_WEBSOCKETS=ON \
+			-DBUILD_SHARED_LIBS=ON
+
+MODCMAKE_POLICY_VERSION_OVERRIDE = Yes
+
+.include <bsd.port.mk>

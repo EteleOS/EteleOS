@@ -1,0 +1,11 @@
+--- src/opstack.hxx.orig	Sat May 22 13:46:42 2010
++++ src/opstack.hxx	Sat May 22 13:46:47 2010
+@@ -55,7 +55,7 @@ class OPSTACK { (public)
+ 	OPSTACK& operator<<(const OPOBJ& Op);
+ 	POPOBJ operator>>(POPOBJ& OpPtr);
+ 	PIRSET operator>>(PIRSET& OpPtr);
+-	void OPSTACK::Reverse();
++	void Reverse();
+ 	~OPSTACK();
+ private:
+ 	void Push(const OPOBJ& Op);

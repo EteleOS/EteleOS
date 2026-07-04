@@ -1,0 +1,4 @@
+bin/gkrellm.GrabWeather
+lib/gkrellm2/
+lib/gkrellm2/plugins/
+lib/gkrellm2/plugins/gkrellweather.so

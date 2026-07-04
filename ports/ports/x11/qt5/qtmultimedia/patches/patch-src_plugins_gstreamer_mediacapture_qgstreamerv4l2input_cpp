@@ -1,0 +1,18 @@
+Allow our V4L2 to be used.
+
+Index: src/plugins/gstreamer/mediacapture/qgstreamerv4l2input.cpp
+--- src/plugins/gstreamer/mediacapture/qgstreamerv4l2input.cpp.orig
++++ src/plugins/gstreamer/mediacapture/qgstreamerv4l2input.cpp
+@@ -43,7 +43,11 @@
+ #include <QtCore/qfile.h>
+ 
+ #include <private/qcore_unix_p.h>
+-#include <linux/videodev2.h>
++#if defined(__OpenBSD__)
++#  include <sys/videoio.h>
++#else
++#  include <linux/videodev2.h>
++#endif
+ 
+ #include <algorithm>
+ 

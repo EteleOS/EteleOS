@@ -1,0 +1,13 @@
+64 bit clean; ross
+
+--- unix/portnm.c.orig	Sun Aug 20 15:30:33 1995
++++ unix/portnm.c	Thu Jul 12 21:56:10 2001
+@@ -32,7 +32,7 @@ zsysdep_port_name (ftcp_port)
+ 
+ #if HAVE_TCP
+   {
+-    size_t clen;
++    int clen;
+     struct sockaddr s;
+ 
+     clen = sizeof (struct sockaddr);

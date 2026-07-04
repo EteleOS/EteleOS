@@ -1,0 +1,38 @@
+Index: config.layout
+--- config.layout.orig
++++ config.layout
+@@ -102,6 +102,34 @@
+   customplugindir:  ${customdir}/plugins
+ </Layout>
+ 
++<Layout OpenBSD>
++  prefix:               /usr/local
++  exec_prefix:          /usr/local
++  bindir:               ${exec_prefix}/bin
++  sbindir:              ${exec_prefix}/sbin
++  sysconfdir:           /etc/rt
++  mandir:               ${prefix}/man
++  plugindir:            ${prefix}/plugins
++  libdir:               ${prefix}/libdata/perl5/site_perl
++  datadir:              ${prefix}/share/rt
++  htmldir:              ${datadir}/html
++  fontdir:              ${datadir}/fonts
++  lexdir:               ${datadir}/po
++  staticdir:            ${datadir}/static
++  manualdir:            ${prefix}/share/doc/rt
++  localstatedir:        /var/www/rt
++  logfiledir:           /var/log
++  masonstatedir:        ${localstatedir}/mason_data
++  sessionstatedir:      ${localstatedir}/session_data
++  customdir:            ${datadir}/local
++  custometcdir:         ${sysconfdir}/local
++  customhtmldir:        ${customdir}/html
++  customlexdir:         ${customdir}/po
++  customstaticdir:      ${customdir}/static
++  customlibdir:         ${libdir}
++  customplugindir:      ${customdir}/plugins
++</Layout>
++
+ <Layout FreeBSD>
+   prefix:		/usr/local
+   exec_prefix:		${prefix}

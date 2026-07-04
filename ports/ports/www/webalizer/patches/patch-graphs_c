@@ -1,0 +1,84 @@
+- use memmove() instead of memcpy() to prevent a backwards copy
+
+--- graphs.c.orig	Tue Apr  8 20:58:18 2014
++++ graphs.c	Wed Dec 10 11:05:24 2014
+@@ -214,7 +214,7 @@ int year_graph6x(char *fname, char *title, struct hist
+             if (j>28)
+             {
+                /* format the year string */
+-               sprintf(maxvaltxt, "%04d", data[i].year);
++               snprintf(maxvaltxt, sizeof(maxvaltxt), "%04d", data[i].year);
+                gdImageString(im,gdFontSmall,ci+((i-s_mth)*cs)+(j/2)-12,
+                              236, (unsigned char *)maxvaltxt, CHLEGENDCOLOR);
+             }
+@@ -227,7 +227,7 @@ int year_graph6x(char *fname, char *title, struct hist
+       if (data[i].page  > maxval) maxval = data[i].page;
+    }
+    if (maxval <= 0) maxval = 1;
+-   sprintf(maxvaltxt, "%llu", maxval);
++   snprintf(maxvaltxt, sizeof(maxvaltxt), "%llu", maxval);
+    gdImageStringUp(im,gdFontSmall,6,26+(strlen(maxvaltxt)*6),
+                    (unsigned char *)maxvaltxt,CHLEGENDCOLOR);
+ 
+@@ -274,7 +274,7 @@ int year_graph6x(char *fname, char *title, struct hist
+        if (data[i].visit > maxval) maxval = data[i].visit;
+    }
+    if (maxval <= 0) maxval = 1;
+-   sprintf(maxvaltxt, "%llu", maxval);
++   snprintf(maxvaltxt, sizeof(maxvaltxt), "%llu", maxval);
+    gdImageStringUp(im, gdFontSmall,493,26+(strlen(maxvaltxt)*6),
+                    (unsigned char *)maxvaltxt, CHLEGENDCOLOR);
+ 
+@@ -310,10 +310,10 @@ int year_graph6x(char *fname, char *title, struct hist
+    for (i=s_mth; i<HISTSIZE; i++)
+        if (data[i].xfer > fmaxval) fmaxval = data[i].xfer;
+    if (fmaxval <= 0.0) fmaxval = 1.0;
+-   sprintf(maxvaltxt, "%s", hr_size(fmaxval*1024));
++   snprintf(maxvaltxt, sizeof(maxvaltxt), "%s", hr_size(fmaxval*1024));
+    i=strstr(maxvaltxt,"&")-maxvaltxt; /* search for HTML-tag &nbsp;*/
+    memset(maxvaltxt+i,' ',1); /* add space */
+-   memcpy(maxvaltxt+i+1,maxvaltxt+i+6,strlen(maxvaltxt)-i); /* remove &nbsp; */
++   memmove(maxvaltxt+i+1,maxvaltxt+i+6,strlen(maxvaltxt)-i); /* remove &nbsp; */
+    gdImageStringUp(im, gdFontSmall,493,130+(strlen(maxvaltxt)*6),
+                    (unsigned char *)maxvaltxt,CHLEGENDCOLOR);
+    
+@@ -427,7 +427,7 @@ int month_graph6(     char  *fname,        /* filename
+        if (data7[i] > maxval) maxval = data7[i];
+    }
+    if (maxval <= 0) maxval = 1;
+-   sprintf(maxvaltxt, "%llu", maxval);
++   snprintf(maxvaltxt, sizeof(maxvaltxt), "%llu", maxval);
+    gdImageStringUp(im, gdFontSmall,8,26+(strlen(maxvaltxt)*6),
+                    (unsigned char *)maxvaltxt,CHLEGENDCOLOR);
+ 
+@@ -549,7 +549,7 @@ int month_graph6(     char  *fname,        /* filename
+       if (data8[i]>maxval) maxval = data8[i];
+    }
+    if (maxval <= 0) maxval = 1;
+-   sprintf(maxvaltxt, "%llu", maxval);
++   snprintf(maxvaltxt, sizeof(maxvaltxt), "%llu", maxval);
+    gdImageStringUp(im, gdFontSmall,8,224+(strlen(maxvaltxt)*6),
+                    (unsigned char *)maxvaltxt, CHLEGENDCOLOR);
+    
+@@ -588,10 +588,10 @@ int month_graph6(     char  *fname,        /* filename
+       }
+    }
+    if (fmaxval <= 0.0) fmaxval = 1.0;
+-   sprintf(maxvaltxt, "%s", hr_size(fmaxval));
++   snprintf(maxvaltxt, sizeof(maxvaltxt), "%s", hr_size(fmaxval));
+    i=strstr(maxvaltxt,"&")-maxvaltxt; /* search for HTML-tag &nbsp;*/
+    memset(maxvaltxt+i,' ',1); /* add space */
+-   memcpy(maxvaltxt+i+1,maxvaltxt+i+6,strlen(maxvaltxt)-i); /* remove &nbsp; */
++   memmove(maxvaltxt+i+1,maxvaltxt+i+6,strlen(maxvaltxt)-i); /* remove &nbsp; */
+    gdImageStringUp(im, gdFontSmall,8,352+(strlen(maxvaltxt)*6),
+                    (unsigned char *)maxvaltxt, CHLEGENDCOLOR);
+    
+@@ -696,7 +696,7 @@ int day_graph3(     char  *fname,
+       if (data3[i] > maxval) maxval = data3[i];
+    }
+    if (maxval <= 0) maxval = 1;
+-   sprintf(maxvaltxt, "%llu", maxval);
++   snprintf(maxvaltxt, sizeof(maxvaltxt), "%llu", maxval);
+    gdImageStringUp(im, gdFontSmall, 8, 26+(strlen(maxvaltxt)*6),
+                    (unsigned char *)maxvaltxt, CHLEGENDCOLOR);
+    

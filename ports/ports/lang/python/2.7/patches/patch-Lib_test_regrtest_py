@@ -1,0 +1,42 @@
+- test_bsddb and test_bsddb3 are in the list below as they are only available
+  on i386 and amd64.
+
+Index: Lib/test/regrtest.py
+--- Lib/test/regrtest.py.orig
++++ Lib/test/regrtest.py
+@@ -2047,22 +2047,16 @@ _expectations = {
+         """,
+     'openbsd3':
+         """
+-        test_ascii_formatd
+         test_bsddb
+         test_bsddb3
+         test_ctypes
++        test_curses
+         test_dl
+         test_epoll
+-        test_gdbm
+-        test_locale
+-        test_normalization
++        test_gdb
+         test_ossaudiodev
+-        test_pep277
+-        test_tcl
+         test_tk
+         test_ttk_guionly
+-        test_ttk_textonly
+-        test_multiprocessing
+         """,
+     'netbsd3':
+         """
+@@ -2089,6 +2083,10 @@ _expectations['freebsd5'] = _expectations['freebsd4']
+ _expectations['freebsd6'] = _expectations['freebsd4']
+ _expectations['freebsd7'] = _expectations['freebsd4']
+ _expectations['freebsd8'] = _expectations['freebsd4']
++_expectations['openbsd4'] = _expectations['openbsd3']
++_expectations['openbsd5'] = _expectations['openbsd3']
++_expectations['openbsd6'] = _expectations['openbsd3']
++_expectations['openbsd7'] = _expectations['openbsd3']
+ 
+ class _ExpectedSkips:
+     def __init__(self):

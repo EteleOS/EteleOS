@@ -1,0 +1,13 @@
+--- crawl.c.orig	Sun May 18 03:26:41 2003
++++ crawl.c	Sat May 22 16:42:06 2010
+@@ -167,8 +167,8 @@ image_saver(struct uri *uri)
+ 		return (-1);
+ 
+ 	if (uri->length != -1 && uri->bdlen != uri->length) {
+-		snprintf(tmp, sizeof(tmp), " (%4.1f%%/%d)",
+-		    (float)uri->bdlen/uri->length*100, uri->length);
++		snprintf(tmp, sizeof(tmp), " (%4.1f%%/%ld)",
++		    (float)uri->bdlen/uri->length*100, (long)uri->length);
+ 		p = tmp;
+ 	}
+ 	fprintf(stdout, "%s %s%s\n",

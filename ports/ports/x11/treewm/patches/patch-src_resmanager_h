@@ -1,0 +1,11 @@
+Index: src/resmanager.h
+--- src/resmanager.h.orig
++++ src/resmanager.h
+@@ -9,6 +9,7 @@
+ #ifndef RESMANAGER_H
+ #define RESMANAGER_H
+ 
++#include <string.h>
+ #include "global.h"
+ #include "client.h"
+ #include <map>

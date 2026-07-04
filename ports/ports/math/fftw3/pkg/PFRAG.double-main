@@ -1,0 +1,14 @@
+@pkgpath math/fftw3
+@pkgpath math/fftw3,double
+@bin bin/fftw-wisdom
+lib/cmake/fftw3/FFTW3Config.cmake
+lib/cmake/fftw3/FFTW3ConfigVersion.cmake
+lib/cmake/fftw3/FFTW3LibraryDepends.cmake
+@static-lib lib/libfftw3.a
+lib/libfftw3.la
+@lib lib/libfftw3.so.${LIBfftw3_VERSION}
+@static-lib lib/libfftw3_threads.a
+lib/libfftw3_threads.la
+@lib lib/libfftw3_threads.so.${LIBfftw3_threads_VERSION}
+lib/pkgconfig/fftw3.pc
+@man man/man1/fftw-wisdom.1

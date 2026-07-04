@@ -1,0 +1,68 @@
+@conflict mozilla-thunderbird-<74.0
+@conflict lightning-<74.0v0
+@pkgpath mail/mozilla-thunderbird,-main
+@pkgpath mail/mozilla-thunderbird,-lightning
+bin/${MOZILLA_PROJECT}
+lib/${MOZILLA_PROJECT}/
+lib/${MOZILLA_PROJECT}/application.ini
+lib/${MOZILLA_PROJECT}/chrome/
+lib/${MOZILLA_PROJECT}/chrome/icons/
+lib/${MOZILLA_PROJECT}/chrome/icons/default/
+lib/${MOZILLA_PROJECT}/chrome/icons/default/calendar-alarm-dialog.png
+lib/${MOZILLA_PROJECT}/chrome/icons/default/calendar-general-dialog.png
+lib/${MOZILLA_PROJECT}/chrome/icons/default/default128.png
+lib/${MOZILLA_PROJECT}/chrome/icons/default/default16.png
+lib/${MOZILLA_PROJECT}/chrome/icons/default/default22.png
+lib/${MOZILLA_PROJECT}/chrome/icons/default/default24.png
+lib/${MOZILLA_PROJECT}/chrome/icons/default/default256.png
+lib/${MOZILLA_PROJECT}/chrome/icons/default/default32.png
+lib/${MOZILLA_PROJECT}/chrome/icons/default/default48.png
+lib/${MOZILLA_PROJECT}/chrome/icons/default/default64.png
+lib/${MOZILLA_PROJECT}/chrome/icons/default/msgcomposeWindow16.png
+lib/${MOZILLA_PROJECT}/chrome/icons/default/msgcomposeWindow24.png
+lib/${MOZILLA_PROJECT}/chrome/icons/default/msgcomposeWindow32.png
+lib/${MOZILLA_PROJECT}/chrome/icons/default/msgcomposeWindow48.png
+lib/${MOZILLA_PROJECT}/defaults/
+lib/${MOZILLA_PROJECT}/defaults/messenger/
+lib/${MOZILLA_PROJECT}/defaults/messenger/mailViews.dat
+lib/${MOZILLA_PROJECT}/defaults/pref/
+lib/${MOZILLA_PROJECT}/defaults/pref/all-openbsd.js
+lib/${MOZILLA_PROJECT}/defaults/pref/channel-prefs.js
+lib/${MOZILLA_PROJECT}/dependentlibs.list
+lib/${MOZILLA_PROJECT}/distribution/
+lib/${MOZILLA_PROJECT}/distribution/distribution.ini
+@bin lib/${MOZILLA_PROJECT}/glxtest
+lib/${MOZILLA_PROJECT}/isp/
+lib/${MOZILLA_PROJECT}/isp/Bogofilter.sfd
+lib/${MOZILLA_PROJECT}/isp/DSPAM.sfd
+lib/${MOZILLA_PROJECT}/isp/POPFile.sfd
+lib/${MOZILLA_PROJECT}/isp/SpamAssassin.sfd
+lib/${MOZILLA_PROJECT}/isp/SpamPal.sfd
+@lib lib/${MOZILLA_PROJECT}/libgkcodecs.so.${LIBgkcodecs_VERSION}
+@lib lib/${MOZILLA_PROJECT}/liblgpllibs.so.${LIBlgpllibs_VERSION}
+${COMMENT_FFVPX}@lib lib/${MOZILLA_PROJECT}/libmozavcodec.so.${LIBmozavcodec_VERSION}
+${COMMENT_FFVPX}@lib lib/${MOZILLA_PROJECT}/libmozavutil.so.${LIBmozavutil_VERSION}
+@lib lib/${MOZILLA_PROJECT}/libmozgtk.so.${LIBmozgtk_VERSION}
+@lib lib/${MOZILLA_PROJECT}/libmozsqlite3.so.${LIBmozsqlite3_VERSION}
+@lib lib/${MOZILLA_PROJECT}/libmozwayland.so.${LIBmozwayland_VERSION}
+@lib lib/${MOZILLA_PROJECT}/libxul.so.${LIBxul_VERSION}
+lib/${MOZILLA_PROJECT}/omni.ja
+@bin lib/${MOZILLA_PROJECT}/pingsender
+lib/${MOZILLA_PROJECT}/platform.ini
+lib/${MOZILLA_PROJECT}/removed-files
+@bin lib/${MOZILLA_PROJECT}/${MOZILLA_PROJECT}
+@bin lib/${MOZILLA_PROJECT}/${MOZILLA_PROJECT}-bin
+@bin lib/${MOZILLA_PROJECT}/vaapitest
+share/applications/${MOZILLA_PROJECT}.desktop
+share/doc/pkg-readmes/${PKGSTEM}
+share/icons/hicolor/128x128/apps/org.mozilla.${MOZILLA_PROJECT}.png
+share/icons/hicolor/16x16/apps/org.mozilla.${MOZILLA_PROJECT}.png
+share/icons/hicolor/22x22/apps/org.mozilla.${MOZILLA_PROJECT}.png
+share/icons/hicolor/24x24/apps/org.mozilla.${MOZILLA_PROJECT}.png
+share/icons/hicolor/256x256/apps/org.mozilla.${MOZILLA_PROJECT}.png
+share/icons/hicolor/32x32/apps/org.mozilla.${MOZILLA_PROJECT}.png
+share/icons/hicolor/48x48/apps/org.mozilla.${MOZILLA_PROJECT}.png
+share/icons/hicolor/64x64/apps/org.mozilla.${MOZILLA_PROJECT}.png
+share/icons/hicolor/scalable/apps/org.mozilla.${MOZILLA_PROJECT}.svg
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

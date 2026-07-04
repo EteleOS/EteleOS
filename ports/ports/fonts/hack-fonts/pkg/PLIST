@@ -1,0 +1,6 @@
+share/fonts/
+@fontdir share/fonts/Hack/
+share/fonts/Hack/Hack-Bold.ttf
+share/fonts/Hack/Hack-BoldItalic.ttf
+share/fonts/Hack/Hack-Italic.ttf
+share/fonts/Hack/Hack-Regular.ttf

@@ -1,0 +1,6 @@
+XZ Utils provide a general purpose data compression library and
+command line tools. The native file format is the .xz format, but
+also the legacy .lzma format is supported. The .xz format supports
+multiple compression algorithms, of which LZMA2 is currently the
+primary algorithm. With typical files, XZ Utils create about 30 %
+smaller files than gzip.

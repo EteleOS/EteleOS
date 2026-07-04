@@ -1,0 +1,6 @@
+${P5SITE}/Catalyst/Helper/View/TT/
+${P5SITE}/Catalyst/Helper/View/TT/ForceUTF8.pm
+${P5SITE}/Catalyst/View/TT/
+${P5SITE}/Catalyst/View/TT/ForceUTF8.pm
+@man man/man3p/Catalyst::Helper::View::TT::ForceUTF8.3p
+@man man/man3p/Catalyst::View::TT::ForceUTF8.3p

@@ -1,0 +1,14 @@
+"install-data-hook" compresses manual pages.  Stop doing that.
+
+Index: doc/Makefile.in
+--- doc/Makefile.in.orig
++++ doc/Makefile.in
+@@ -663,7 +663,7 @@ info-am:
+ install-data-am: install-gnubg_helpDATA install-gnubg_imageDATA \
+ 	install-man
+ 	@$(NORMAL_INSTALL)
+-	$(MAKE) $(AM_MAKEFLAGS) install-data-hook
++	$(MAKE) $(AM_MAKEFLAGS)
+ install-dvi: install-dvi-am
+ 
+ install-dvi-am:

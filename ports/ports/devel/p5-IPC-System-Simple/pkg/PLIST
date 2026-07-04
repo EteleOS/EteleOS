@@ -1,0 +1,4 @@
+${P5SITE}/IPC/
+${P5SITE}/IPC/System/
+${P5SITE}/IPC/System/Simple.pm
+@man man/man3p/IPC::System::Simple.3p

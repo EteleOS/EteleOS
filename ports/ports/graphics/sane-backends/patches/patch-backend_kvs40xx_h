@@ -1,0 +1,11 @@
+Index: backend/kvs40xx.h
+--- backend/kvs40xx.h.orig
++++ backend/kvs40xx.h
+@@ -9,6 +9,7 @@
+ */
+ 
+ #include "../include/sane/config.h"
++#include <pthread.h>
+ #include <semaphore.h>
+ #ifdef HAVE_SYS_TYPES_H
+ #include <sys/types.h>

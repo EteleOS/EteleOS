@@ -1,0 +1,6 @@
+SHA256 (radare2-5.8.8.tar.gz) = T4jDPkOR9JLH0Ac9+b/8xmbMHiygqV1uEDXezaoieyY=
+SHA256 (vector35-arch-arm64-55d73c6b.tar.gz) = XZLQYrzh8iRq+vT1BjqM4SRKJmiTjGtd6J2JbSlKq5U=
+SHA256 (vector35-arch-armv7-f270a6cc.tar.gz) = AG955LOB89dXY9xT75Roj+8kdGXCj0gUwsES++GyXy4=
+SIZE (radare2-5.8.8.tar.gz) = 11169182
+SIZE (vector35-arch-arm64-55d73c6b.tar.gz) = 1050988
+SIZE (vector35-arch-armv7-f270a6cc.tar.gz) = 255278

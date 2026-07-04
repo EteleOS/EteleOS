@@ -1,0 +1,15 @@
+@group bin
+@bin bin/gapcmon
+share/applications/gapcmon.desktop
+@group
+share/pixmaps/
+@group bin
+@mode 444
+share/pixmaps/apcupsd.png
+share/pixmaps/charging.png
+share/pixmaps/gapc_prefs.png
+share/pixmaps/onbatt.png
+share/pixmaps/online.png
+share/pixmaps/unplugged.png
+@mode
+@tag update-desktop-database

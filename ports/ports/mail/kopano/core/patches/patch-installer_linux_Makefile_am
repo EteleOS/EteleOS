@@ -1,0 +1,11 @@
+Index: installer/linux/Makefile.am
+--- installer/linux/Makefile.am.orig
++++ installer/linux/Makefile.am
+@@ -65,7 +65,6 @@ kopano-statsd.service: kopano-statsd.service.in ${top_
+ if ENABLE_BASE
+ install-data-hook:
+ 	install -d -m 755 ${DESTDIR}/${sysconfdir}/kopano/license
+-	mkdir -p ${DESTDIR}${localstatedir}/lib/kopano/empty
+ 	mv -v ${DESTDIR}${sysconf_rotatedir}/kopano.logrotate ${DESTDIR}${sysconf_rotatedir}/kopano
+ 
+ uninstall-local:

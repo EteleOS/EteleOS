@@ -1,0 +1,29 @@
+@conflict john-jumbo-*
+@bin bin/john
+bin/mailer
+bin/unafs
+bin/unique
+bin/unshadow
+share/doc/john/
+share/doc/john/CHANGES
+share/doc/john/CONFIG
+share/doc/john/CONTACT
+share/doc/john/COPYING
+@comment share/doc/john/CREDITS
+share/doc/john/EXAMPLES
+share/doc/john/EXTERNAL
+share/doc/john/FAQ
+share/doc/john/INSTALL
+share/doc/john/LICENSE
+share/doc/john/MODES
+share/doc/john/OPTIONS
+share/doc/john/README
+share/doc/john/RULES
+share/examples/john/
+share/examples/john/john.conf
+@sample ${SYSCONFDIR}/john.conf
+share/john/
+share/john/ascii.chr
+share/john/digits.chr
+share/john/lm_ascii.chr
+share/john/password.lst

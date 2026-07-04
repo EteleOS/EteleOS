@@ -1,0 +1,56 @@
+Fix problem with remembered softvol not being loaded
+
+--- src/main.c.orig	Tue Apr 29 14:48:12 2014
++++ src/main.c	Tue Apr 29 14:50:25 2014
+@@ -88,7 +88,6 @@ static GOptionEntry entries[] = {
+      N_("Last software volume percentage- only applied when remember_softvol is set to TRUE"),
+      NULL},
+     {"mixer", 0, 0, G_OPTION_ARG_STRING, &(audio_device.alsa_mixer), N_("Mixer to use"), NULL},
+-    {"volume", 0, 0, G_OPTION_ARG_INT, &(pref_volume), N_("Set initial volume percentage"), NULL},
+     // note that sizeof(gint)==sizeof(gboolean), so we can give &showcontrols here
+     {"showcontrols", 0, 0, G_OPTION_ARG_INT, &showcontrols, N_("Show the controls in window"),
+      "[0|1]"},
+@@ -841,7 +840,6 @@ int main(int argc, char *argv[])
+     update_control_flag = FALSE;
+     skip_fixed_allocation_on_show = FALSE;
+     skip_fixed_allocation_on_hide = FALSE;
+-    pref_volume = -1;
+     use_mplayer2 = FALSE;
+     enable_global_menu = FALSE;
+     cover_art_uri = NULL;
+@@ -910,9 +908,6 @@ int main(int argc, char *argv[])
+     pplevel = gm_pref_store_get_int(gm_store, PPLEVEL);
+ #ifndef HAVE_ASOUNDLIB
+     volume = gm_pref_store_get_int(gm_store, VOLUME);
+-    if (pref_volume == -1) {
+-        pref_volume = volume;
+-    }
+ #endif
+     audio_channels = gm_pref_store_get_int(gm_store, AUDIO_CHANNELS);
+     use_hw_audio = gm_pref_store_get_boolean(gm_store, USE_HW_AUDIO);
+@@ -1058,7 +1053,9 @@ int main(int argc, char *argv[])
+         printf(_("gmtk v%s\n"), gmtk_version());
+         printf("GTK %i.%i.%i\n", GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
+         printf("GLIB %i.%i.%i\n", GLIB_MAJOR_VERSION, GLIB_MINOR_VERSION, GLIB_MICRO_VERSION);
++#ifdef LIBGDA_ENABLED
+         printf("GDA Enabled\n");
++#endif
+     }
+ 
+     if (cache_size == 0)
+@@ -1326,14 +1323,7 @@ int main(int argc, char *argv[])
+     //gm_audio_get_volume(&audio_device);
+     set_media_player_attributes(media);
+     if (softvol) {
+-        if (pref_volume != -1) {
+-            audio_device.volume = (gdouble) pref_volume / 100.0;
+-            gm_log(verbose, G_LOG_LEVEL_INFO, "The volume on '%s' is %f", audio_device.description,
+-                   audio_device.volume);
+-            volume = audio_device.volume * 100;
+-        } else {
+-            audio_device.volume = volume / 100.0;
+-        }
++        audio_device.volume = volume / 100.0;
+     }
+     gm_log(verbose, G_LOG_LEVEL_DEBUG, "Volume is %lf Audio Device Volume = %f", volume, audio_device.volume);
+ 

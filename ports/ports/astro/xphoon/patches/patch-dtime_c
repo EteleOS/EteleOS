@@ -1,0 +1,49 @@
+--- dtime.c.orig	Sat Sep 14 07:15:25 1991
++++ dtime.c	Fri Nov 29 21:38:33 2013
+@@ -22,17 +22,12 @@ static char rcsid[] =
+ #ifdef  SYS5
+ extern int daylight;
+ extern long timezone;
+-#else /*SYS5*/
+-#include <sys/timeb.h>
+ #endif /*SYS5*/
+ 
+-extern long time();
+-struct tm* localtime();
+-
+ struct tws*
+ dtwstime()
+     {
+-    long clock;
++    time_t clock;
+ 
+     (void) time( &clock );
+     return dlocaltime( &clock );
+@@ -40,15 +35,12 @@ dtwstime()
+ 
+ struct tws*
+ dlocaltime( clock )
+-    long* clock;
++    time_t* clock;
+     {
+     register struct tm* tm;
+-#ifndef SYS5
+-    struct timeb tb;
+-#endif not SYS5
+     static struct tws tw;
+ 
+-    if ( clock == (long*) 0 )
++    if ( clock == 0 )
+ 	return (struct tws*) 0;
+     tw.tw_flags = TW_NULL;
+ 
+@@ -64,8 +56,7 @@ dlocaltime( clock )
+     if ( tm->tm_isdst )
+ 	tw.tw_flags |= TW_DST;
+ #ifndef  SYS5
+-    ftime( &tb );
+-    tw.tw_zone = -tb.timezone;
++    tw.tw_zone = (tm->tm_isdst ? (tm->tm_gmtoff - 3600) : tm->tm_gmtoff) / 60;
+ #else   SYS5
+     tzset();
+     tw.tw_zone = -( timezone / 60 );

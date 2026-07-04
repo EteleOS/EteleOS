@@ -1,0 +1,6 @@
+@pkgpath textproc/aspell/dicts/aspell-eo
+lib/aspell/eo.dat
+lib/aspell/eo_affix.dat
+share/aspell/eo.multi
+share/aspell/eo.rws
+share/aspell/esperanto.alias

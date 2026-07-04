@@ -1,0 +1,11 @@
+--- Makefile.orig	Wed Sep 24 14:02:07 2003
++++ Makefile	Fri Jul  8 11:36:15 2011
+@@ -20,7 +20,7 @@ modules_install:
+ 	-install -m 755 modules/xttfm.ttfm $(prefix)/share/fonts/install/
+ 
+ ttfinfo: ttfinfo.o
+-	$(CC) -o $@ $< $(LDFALGS) $?
++	$(CC) -o $@ $(LDFALGS) $?
+ 
+ ttfinfo.o: ttfinfo.c panose.h ttos2val.h
+ 

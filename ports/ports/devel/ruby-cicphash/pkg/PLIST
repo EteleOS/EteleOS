@@ -1,0 +1,6 @@
+${GEM_LIB}/cache/${DISTNAME}.gem
+${GEM_LIB}/gems/${DISTNAME}/
+${GEM_LIB}/gems/${DISTNAME}/cicphash.rb
+${GEM_LIB}/gems/${DISTNAME}/test/
+${GEM_LIB}/gems/${DISTNAME}/test/test_cicphash.rb
+${GEM_LIB}/specifications/${DISTNAME}.gemspec

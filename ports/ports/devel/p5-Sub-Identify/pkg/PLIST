@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Sub/
+${P5ARCH}/Sub/Identify.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Sub/
+${P5ARCH}/auto/Sub/Identify/
+${P5ARCH}/auto/Sub/Identify/Identify.so
+@man man/man3p/Sub::Identify.3p

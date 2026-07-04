@@ -1,0 +1,5 @@
+${P5SITE}/Ogg/
+${P5SITE}/Ogg/Vorbis/
+${P5SITE}/Ogg/Vorbis/Header/
+${P5SITE}/Ogg/Vorbis/Header/PurePerl.pm
+@man man/man3p/Ogg::Vorbis::Header::PurePerl.3p

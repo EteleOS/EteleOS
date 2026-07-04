@@ -1,0 +1,13 @@
+Don't hardcode -g -O3 (CFLAGS will be respected).
+
+Index: tasks/toolchains/gcc.rake
+--- tasks/toolchains/gcc.rake.orig
++++ tasks/toolchains/gcc.rake
+@@ -1,6 +1,6 @@
+ MRuby::Toolchain.new(:gcc) do |conf, params|
+   default_command = params[:default_command] || 'gcc'
+-  compiler_flags = %w(-g -O3 -Wall -Wundef)
++  compiler_flags = %w(-Wall -Wundef)
+   c_mandatory_flags = %w(-std=gnu99)
+   cxx_invalid_flags = %w(-Werror-implicit-function-declaration)
+   compile_opt = '%{flags} -o "%{outfile}" "%{infile}"'

@@ -1,0 +1,16 @@
+--- doc/readme/README.orig	Thu May  1 11:20:52 2014
++++ doc/readme/README	Thu May  1 11:21:01 2014
+@@ -33,12 +33,10 @@ Archiveopteryx for the first time (see below if you're
+    errors are likely to be minor, and if you tell us about them, we'd be
+    happy to help you resolve them.
+ 
+-2. Type "make install" as root to install the software into $PREFIX
++2. Type "make install" as root to install the software
+    (then switch to that directory to continue).
+ 
+    The archiveopteryx(7) manual page introduces the software.
+-
+-   (You may want to add $MANDIR to your MANPATH.)
+ 
+ 3. Run "lib/installer" to create a Unix user and group, a PostgreSQL
+    user, the necessary database tables, and to generate an initial

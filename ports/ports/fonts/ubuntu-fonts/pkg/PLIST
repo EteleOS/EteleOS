@@ -1,0 +1,24 @@
+share/doc/ubuntu-fonts/
+share/doc/ubuntu-fonts/CONTRIBUTING.txt
+share/doc/ubuntu-fonts/FONTLOG.txt
+share/doc/ubuntu-fonts/LICENCE-FAQ.txt
+share/doc/ubuntu-fonts/LICENCE.txt
+share/doc/ubuntu-fonts/README.txt
+share/doc/ubuntu-fonts/TRADEMARKS.txt
+share/doc/ubuntu-fonts/copyright.txt
+share/fonts/
+@fontdir share/fonts/ubuntu/
+share/fonts/ubuntu/Ubuntu-B.ttf
+share/fonts/ubuntu/Ubuntu-BI.ttf
+share/fonts/ubuntu/Ubuntu-C.ttf
+share/fonts/ubuntu/Ubuntu-L.ttf
+share/fonts/ubuntu/Ubuntu-LI.ttf
+share/fonts/ubuntu/Ubuntu-M.ttf
+share/fonts/ubuntu/Ubuntu-MI.ttf
+share/fonts/ubuntu/Ubuntu-R.ttf
+share/fonts/ubuntu/Ubuntu-RI.ttf
+share/fonts/ubuntu/Ubuntu-Th.ttf
+share/fonts/ubuntu/UbuntuMono-B.ttf
+share/fonts/ubuntu/UbuntuMono-BI.ttf
+share/fonts/ubuntu/UbuntuMono-R.ttf
+share/fonts/ubuntu/UbuntuMono-RI.ttf

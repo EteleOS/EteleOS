@@ -1,0 +1,12 @@
+Index: etc/icinga2/conf.d/hosts.conf
+--- etc/icinga2/conf.d/hosts.conf.orig
++++ etc/icinga2/conf.d/hosts.conf
+@@ -24,7 +24,7 @@ object Host NodeName {
+   address6 = "::1"
+ 
+   /* Set custom variable `os` for hostgroup assignment in `groups.conf`. */
+-  vars.os = "Linux"
++  vars.os = "OpenBSD"
+ 
+   /* Define http vhost attributes for service apply rules in `services.conf`. */
+   vars.http_vhosts["http"] = {

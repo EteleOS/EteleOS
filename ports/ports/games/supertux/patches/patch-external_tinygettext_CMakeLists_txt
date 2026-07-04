@@ -1,0 +1,10 @@
+--- external/tinygettext/CMakeLists.txt.orig	Tue Apr 18 17:37:50 2017
++++ external/tinygettext/CMakeLists.txt	Tue Apr 18 17:38:13 2017
+@@ -131,7 +131,6 @@ option(WERROR "Stops on first compiler warning in debu
+ option(WARNINGS "Enable long list of warnings for compiler to check" ON)
+ 
+ CHECK_CXX_FLAG(std=c++0x)
+-CHECK_CXX_FLAG(O3)
+ IF(NOT MSVC)
+     #MSVC is excessivly verbose when Wall is activated
+     CHECK_CXX_FLAG(Wall)

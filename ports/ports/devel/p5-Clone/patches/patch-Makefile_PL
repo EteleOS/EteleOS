@@ -1,0 +1,11 @@
+--- Makefile.PL.orig	Sun Dec  9 16:18:58 2012
++++ Makefile.PL	Sat Mar  2 19:29:45 2013
+@@ -13,8 +13,6 @@ WriteMakefile(
+     'LIBS'          => [''],     # e.g., '-lm'
+     'DEFINE'        => '',       # e.g., '-DHAVE_SOMETHING'
+     'INC'           => '',       # e.g., '-I/usr/include/other'
+-#   'OPTIMIZE'      => '-g',     # e.g., '-I/usr/include/other'
+-    'OPTIMIZE'      => '-O3',    # e.g., '-I/usr/include/other'
+     clean           => { FILES => '_Inline' },
+     META_MERGE      => {
+       resources => {

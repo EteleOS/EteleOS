@@ -1,0 +1,38 @@
+@conflict ${MODPY_PY_PREFIX}z3-solver-*
+@bin bin/z3
+include/z3++.h
+include/z3.h
+include/z3_algebraic.h
+include/z3_api.h
+include/z3_ast_containers.h
+include/z3_fixedpoint.h
+include/z3_fpa.h
+include/z3_macros.h
+include/z3_optimization.h
+include/z3_polynomial.h
+include/z3_rcf.h
+include/z3_spacer.h
+include/z3_v1.h
+include/z3_version.h
+lib/cmake/
+lib/cmake/z3/
+lib/cmake/z3/Z3Config.cmake
+lib/cmake/z3/Z3ConfigVersion.cmake
+lib/cmake/z3/Z3Targets${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/z3/Z3Targets.cmake
+@lib lib/libz3.so.${LIBz3_VERSION}
+lib/pkgconfig/z3.pc
+lib/python${MODPY_VERSION}/
+lib/python${MODPY_VERSION}/site-packages/
+lib/python${MODPY_VERSION}/site-packages/z3/
+lib/python${MODPY_VERSION}/site-packages/z3/__init__.py
+lib/python${MODPY_VERSION}/site-packages/z3/z3.py
+lib/python${MODPY_VERSION}/site-packages/z3/z3consts.py
+lib/python${MODPY_VERSION}/site-packages/z3/z3core.py
+lib/python${MODPY_VERSION}/site-packages/z3/z3num.py
+lib/python${MODPY_VERSION}/site-packages/z3/z3poly.py
+lib/python${MODPY_VERSION}/site-packages/z3/z3printer.py
+lib/python${MODPY_VERSION}/site-packages/z3/z3rcf.py
+lib/python${MODPY_VERSION}/site-packages/z3/z3test.py
+lib/python${MODPY_VERSION}/site-packages/z3/z3types.py
+lib/python${MODPY_VERSION}/site-packages/z3/z3util.py

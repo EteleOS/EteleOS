@@ -1,0 +1,24 @@
+pledge:
+    'par2 repair' with par2 files - stdio rpath cpath
+        once the target files have been opened for writing, wpath is no
+        longer required, cpath must be kept to delete partial files in
+        case of an error
+
+Index: src/par2repairer.cpp
+--- src/par2repairer.cpp.orig
++++ src/par2repairer.cpp
+@@ -187,6 +187,14 @@ Result Par2Repairer::Process(const CommandLine &comman
+         if (!CreateTargetFiles())
+           return eFileIOError;
+ 
++#ifdef HAVE_PLEDGE
++        if (pledge("stdio rpath cpath", NULL) == -1)
++        {
++          cerr << "pledge failed" << endl;
++          return eLogicError;
++        }
++#endif
++
+         // Work out which data blocks are available, which need to be copied
+         // directly to the output, and which need to be recreated, and compute
+         // the appropriate Reed Solomon matrix.

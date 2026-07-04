@@ -1,0 +1,21 @@
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -35,7 +35,7 @@ AC_DEFINE(TKGATE_HOMEPAGE,	"https://bitbucket.org/star
+ #
+ # Tcl/Tk version we will try to use (from most favored to least favored)
+ #
+-TKGATE_TCLTK_VERSIONS="8.6 8.5 8.4 8.3"
++#TKGATE_TCLTK_VERSIONS="8.6 8.5 8.4 8.3"
+ 
+ #
+ # Directories to search for include files
+@@ -45,7 +45,7 @@ TKGATE_INCDIRS="/usr/X11R6/include /usr/X11/include /p
+ #
+ # Directories to search for library files
+ #
+-TKGATE_LIBDIRS="/usr/X11R6/lib /usr/X11/lib /pkgs/lib /usr/local/lib /usr/lib /sw/lib /opt/local/lib /usr/local/lib/tcl /usr/lib64"
++#TKGATE_LIBDIRS="/usr/X11R6/lib /usr/X11/lib /pkgs/lib /usr/local/lib /usr/lib /sw/lib /opt/local/lib /usr/local/lib/tcl /usr/lib64"
+ 
+ #
+ # Libraries we may need if available.

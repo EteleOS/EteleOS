@@ -1,0 +1,11 @@
+--- configure.orig	Thu Sep 22 22:12:58 2016
++++ configure	Thu Sep 22 22:13:27 2016
+@@ -2604,7 +2604,7 @@ fi
+ 
+ if test "x$enable_maintainermode" = "xno"; then
+ if test "x$enable_release" = "xyes"; then
+-    FLAGS_ALL="-O3 -fomit-frame-pointer -Wall -fsigned-char"
++    FLAGS_ALL="${CFLAGS}"
+ else
+     FLAGS_ALL="-ggdb -g3 -O0 -Wall -fsigned-char"
+ fi

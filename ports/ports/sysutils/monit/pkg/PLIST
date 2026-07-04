@@ -1,0 +1,9 @@
+@rcscript ${RCDIR}/monit
+@bin bin/monit
+@man man/man1/monit.1
+share/examples/monit/
+share/examples/monit/monitrc
+@mode 0600
+@sample ${SYSCONFDIR}/monitrc
+@mode
+@sample ${LOCALSTATEDIR}/monit/

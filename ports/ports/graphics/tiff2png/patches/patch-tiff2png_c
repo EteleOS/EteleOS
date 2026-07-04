@@ -1,0 +1,27 @@
+--- tiff2png.c.orig	Fri Sep 13 01:00:00 2002
++++ tiff2png.c	Mon Mar 31 09:44:29 2014
+@@ -78,6 +78,7 @@
+ 
+ #define VERSION "0.91 of 12 September 2002"
+ 
++#include <string.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+@@ -87,6 +88,7 @@
+ #  include "tiffcomp.h"		/* not installed by default */
+ #endif
+ #include "png.h"
++#include <zlib.h>
+ 
+ #ifdef _MSC_VER   /* works for MSVC 5.0; need finer tuning? */
+ #  define strcasecmp _stricmp
+@@ -817,7 +819,7 @@ tiff2png (tiffname, pngname, verbose, force, interlace
+     res_x = res_x_half;
+     if (verbose)
+     {
+-      fprintf (stderr, "tiff2png:  new width = %lu pixels\n", width);
++      fprintf (stderr, "tiff2png:  new width = %u pixels\n", width);
+       fprintf (stderr, "tiff2png:  new color type = paletted\n");
+       fprintf (stderr, "tiff2png:  new bit depth = %d\n", bit_depth);
+     }

@@ -1,0 +1,37 @@
+Index: ttg.c
+--- ttg.c.orig
++++ ttg.c
+@@ -127,15 +127,6 @@ int main(int argc, char **argv) {
+     if((argc-optind)!=3)
+         usage();
+ 
+-    if(strcmp(netsnmp_get_version(), PACKAGE_VERSION)!=0) {
+-        fprintf(stderr,
+-            "ERROR: Net-SNMP version mismatch!\n"
+-            "Compiled with headers: %s\n"
+-            "Executed with library: %s\n",
+-            PACKAGE_VERSION, netsnmp_get_version());
+-        exit(1);
+-    }
+-
+     S_MB=S_KB*S_KB;
+     S_GB=S_KB*S_KB*S_KB;
+ 
+@@ -646,7 +637,7 @@ void version(void) {
+         "SNMP Text Traffic Grapher\n"
+         "Released under MIT License\n" 
+         "Version %s [Build: %s, %s]\n"
+-        "NET-SNMP Libraries=%s Headers=%s\n"
++        "NET-SNMP Libraries=%s\n"
+         "GCC Version %s\n"
+         "Kilo=%d (default)\n"
+         "Homepage: http://www.tenox.net/out#ttg\n"
+@@ -656,7 +647,7 @@ void version(void) {
+         "  Tomasz Nowak <tommy@ntinternals.net>\n"
+         "  S.Ivanov <piston@otel.net>\n"
+         "  Petr Laznovsky <lazna@volny.cz>\n",
+-        VERSION, __DATE__, __TIME__, netsnmp_get_version(), PACKAGE_VERSION, __VERSION__, (int)S_KB);
++        VERSION, __DATE__, __TIME__, netsnmp_get_version(), __VERSION__, (int)S_KB);
+     exit(0);
+ }
+ 

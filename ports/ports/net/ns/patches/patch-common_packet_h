@@ -1,0 +1,43 @@
+Index: common/packet.h
+--- common/packet.h.orig
++++ common/packet.h
+@@ -40,10 +40,11 @@
+ #include <string.h>
+ #include <assert.h>
+ 
++#include <sys/queue.h>
++
+ #include "config.h"
+ #include "scheduler.h"
+ #include "object.h"
+-#include "lib/bsd-list.h"
+ #include "packet-stamp.h"
+ #include "ns-process.h"
+ 
+@@ -294,7 +295,7 @@ class p_info { (public)
+ 	{
+ 		if(nPkt_ >= PT_NTYPE+1)
+ 		        return;
+-		char **nameNew = new char*[PT_NTYPE+1];
++		const char **nameNew = new const char*[PT_NTYPE+1];
+ 		for(unsigned int i = (unsigned int)PT_SMAC+1; i < nPkt_; i++)
+ 		{
+ 		        nameNew[i] = name_[i];
+@@ -419,7 +420,7 @@ class p_info { (public)
+ 
+ 		name_[PT_NTYPE]= "undefined";
+ 	}
+-	static int addPacket(char *name);
++	static int addPacket(const char *name);
+ 	static packet_t getType(const char *name)
+ 	{
+ 		for(unsigned int i = 0; i < nPkt_; i++)
+@@ -431,7 +432,7 @@ class p_info { (public)
+ 
+ 	}
+ private:
+-	static char** name_;
++	static const char** name_;
+ 	static unsigned int nPkt_;
+ 	static PacketClassifier *pc_;
+ };

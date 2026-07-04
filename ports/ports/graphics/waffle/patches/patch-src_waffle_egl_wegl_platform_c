@@ -1,0 +1,12 @@
+Index: src/waffle/egl/wegl_platform.c
+--- src/waffle/egl/wegl_platform.c.orig
++++ src/waffle/egl/wegl_platform.c
+@@ -31,7 +31,7 @@
+ #include "wegl_platform.h"
+ 
+ 
+-#ifdef WAFFLE_HAS_ANDROID
++#if defined(WAFFLE_HAS_ANDROID) || defined(__OpenBSD__)
+ static const char *libEGL_filename = "libEGL.so";
+ #else
+ static const char *libEGL_filename = "libEGL.so.1";

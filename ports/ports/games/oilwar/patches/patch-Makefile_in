@@ -1,0 +1,11 @@
+--- Makefile.in.orig	Wed Apr  2 18:59:19 2003
++++ Makefile.in	Wed Nov  5 19:33:10 2008
+@@ -84,7 +84,7 @@ singlegunshot.wav bulletricochet.wav explode.wav gasp.
+ scorefiledir = /var/games
+ scorefile_DATA = oilwar.scores
+ 
+-AM_CPPFLAGS = $(sound_flag) -DDATA_DIR=\"$(datafiledir)/\" -DSCORE_DIR=\"$(scorefiledir)/\"
++AM_CPPFLAGS = $(sound_flag) -DDATA_DIR=\"$(prefix)/share/oilwar/\" -DSCORE_DIR=\"$(scorefiledir)/\"
+ 
+ bin_PROGRAMS = oilwar
+ oilwar_SOURCES = Main.hpp Main.cpp cParticleSystem.hpp cParticleSystem.cpp Config.hpp

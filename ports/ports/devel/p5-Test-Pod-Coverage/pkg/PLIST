@@ -1,0 +1,4 @@
+${P5SITE}/Test/
+${P5SITE}/Test/Pod/
+${P5SITE}/Test/Pod/Coverage.pm
+@man man/man3p/Test::Pod::Coverage.3p

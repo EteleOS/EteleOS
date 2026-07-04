@@ -1,0 +1,22 @@
+bin/squeak
+lib/squeak/${FULLV}/
+@so lib/squeak/${FULLV}/B3DAcceleratorPlugin.so
+@so lib/squeak/${FULLV}/PseudoTTYPlugin.so
+@so lib/squeak/${FULLV}/Squeak3D.so
+@so lib/squeak/${FULLV}/UnixOSProcessPlugin.so
+@so lib/squeak/${FULLV}/XDisplayControlPlugin.so
+@so lib/squeak/${FULLV}/npsqueak.so
+@bin lib/squeak/${FULLV}/squeak
+@so lib/squeak/${FULLV}/vm-display-X11.so
+@so lib/squeak/${FULLV}/vm-display-null.so
+@so lib/squeak/${FULLV}/vm-sound-null.so
+@so lib/squeak/${FULLV}/vm-sound-sndio.so
+lib/squeak/npsqueakregister
+lib/squeak/npsqueakrun
+@man man/man1/inisqueak.1
+@man man/man1/squeak.1
+share/doc/squeak/
+share/doc/squeak/LICENSE.gz
+share/doc/squeak/README.Contributing.gz
+share/doc/squeak/README.Keyboard.gz
+share/doc/squeak/README.Sound.gz

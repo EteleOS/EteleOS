@@ -1,0 +1,54 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+phpVirtualBox has been installed into:
+    ${INSTDIR}
+
+Configuration is done in:
+    ${INSTDIR}/config.php
+
+Default username/password is: admin/admin
+
+VirtualBox configuration on Linux Red Hat(-like) systems
+========================================================
+
+Official documentation is available at:
+    http://sourceforge.net/p/phpvirtualbox/wiki/Home/
+
+phpVirtualBox user
+------------------
+Since phpVirtualBox is mostly used in shared environments, it's a good
+idea to create a specific UNIX user for it.
+
+# useradd -c "PHP VirtualBox" -U -G vboxusers vbox
+# passwd vbox
+
+This user credentials must match the "$username" and "$password" values
+set in ${INSTDIR}/config.php.
+
+VirtualBox extension pack
+-------------------------
+Remote display support using VRDP requires the installation of the
+proprietary extension pack from Oracle.
+
+e.g.
+# wget http://download.virtualbox.org/virtualbox/4.3.20/Oracle_VM_VirtualBox_Extension_Pack-4.3.20-96996.vbox-extpack
+# VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-4.3.20-96996.vbox-extpack
+
+VirtualBox web service
+----------------------
+By default, the VirtualBox web service will not run and needs to be
+enabled.
+
+# echo "VBOXWEB_HOST=127.0.0.1" >>/etc/default/virtualbox
+# echo "VBOXWEB_USER=vbox" >>/etc/default/virtualbox
+# systemctl start vboxweb-service
+
+VBOXWEB_HOST is the local IP address the service will bind too. It must
+match the "$location" value set in ${INSTDIR}/config.php.
+VBOXWEB_USER is the VirtualBox user that phpVirtualBox will use. It must
+match the "$username" value set in ${INSTDIR}/config.php.
+
+More info is available at:
+    http://sourceforge.net/p/phpvirtualbox/wiki/vboxweb-service%20Configuration%20in%20Linux/

@@ -1,0 +1,25 @@
+@bin bin/fsv2
+include/fsv2/
+include/fsv2/ColorCellEditable.h
+include/fsv2/ColorCellRenderer.h
+lib/libfsvui.a
+lib/libfsvui.la
+@lib lib/libfsvui.so.${LIBfsvui_VERSION}
+share/applications/fsv2.desktop
+share/doc/fsv2/
+share/doc/fsv2/about.html
+share/doc/fsv2/dirtree.png
+share/doc/fsv2/filelist.png
+share/doc/fsv2/fsv.html
+share/doc/fsv2/mapv.png
+share/doc/fsv2/menus.html
+share/doc/fsv2/mouse.html
+share/doc/fsv2/startup.html
+share/doc/fsv2/t1.html
+share/doc/fsv2/tb.png
+share/doc/fsv2/treev.png
+share/doc/fsv2/viewport.png
+share/doc/fsv2/window.html
+share/doc/fsv2/window.png
+share/locale/ru/LC_MESSAGES/fsv2.mo
+@tag update-desktop-database

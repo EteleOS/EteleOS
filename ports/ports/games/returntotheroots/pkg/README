@@ -1,0 +1,23 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Return to the Roots
+===================
+Return to the Roots requires the original game files from The Settlers 2
+Gold Edition to work properly.  These can come from an original CD or
+from GOG.com.
+
+If using the GOG.com version, you must extract the files from
+the distributed .exe file using the innoextract package.
+Copy the extracted files to the ${TRUEPREFIX}/share/s25rttr/S2/
+directory.
+
+The easiest way to do this is to execute the following:
+$ doas cp -R * ${TRUEPREFIX}/share/s25rttr/S2
+
+You can then delete everything extracted from the exe, such as the tmp
+directory.
+
+While returntotheroots is open source, The Settlers 2: Gold Edition is
+not. You will need to purchase the game in order to use this package.

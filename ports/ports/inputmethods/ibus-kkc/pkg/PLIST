@@ -1,0 +1,10 @@
+@bin libexec/ibus-engine-kkc
+@bin libexec/ibus-setup-kkc
+share/applications/ibus-setup-kkc.desktop
+share/ibus-kkc/
+share/ibus-kkc/icons/
+share/ibus-kkc/icons/ibus-kkc.svg
+share/ibus/component/kkc.xml
+share/locale/ja/LC_MESSAGES/ibus-kkc.mo
+@tag update-desktop-database
+@tag ibus-write-cache

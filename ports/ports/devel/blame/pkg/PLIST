@@ -1,0 +1,2 @@
+@bin bin/blame
+@man man/man1/blame.1

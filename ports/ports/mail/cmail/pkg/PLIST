@@ -1,0 +1,5 @@
+@conflict xboard-*
+bin/cmail
+@man man/man1/cmail.1
+share/examples/cmail/
+share/examples/cmail/cmailrc.sample

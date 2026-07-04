@@ -1,0 +1,12 @@
+@bin bin/dumpsexp
+@bin bin/hmac256
+bin/libgcrypt-config
+@bin bin/mpicalc
+include/gcrypt.h
+@info info/gcrypt.info
+@static-lib lib/libgcrypt.a
+lib/libgcrypt.la
+@lib lib/libgcrypt.so.${LIBgcrypt_VERSION}
+lib/pkgconfig/libgcrypt.pc
+@man man/man1/hmac256.1
+share/aclocal/libgcrypt.m4

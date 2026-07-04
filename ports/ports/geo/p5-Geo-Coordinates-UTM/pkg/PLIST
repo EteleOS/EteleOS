@@ -1,0 +1,4 @@
+${P5SITE}/Geo/
+${P5SITE}/Geo/Coordinates/
+${P5SITE}/Geo/Coordinates/UTM.pm
+@man man/man3p/Geo::Coordinates::UTM.3p

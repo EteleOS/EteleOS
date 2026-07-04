@@ -1,0 +1,12 @@
+Index: lib/IlmCtl/CtlTypeStorage.cpp
+--- lib/IlmCtl/CtlTypeStorage.cpp.orig
++++ lib/IlmCtl/CtlTypeStorage.cpp
+@@ -67,7 +67,7 @@
+ #ifdef _WIN32
+ 	#include <malloc.h>
+ #else
+-	#include <alloca.h>
++	#include <stdlib.h>
+ #endif
+ #include <stdio.h>
+ #include <stdlib.h>

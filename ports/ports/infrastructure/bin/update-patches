@@ -1,0 +1,426 @@
+#! /usr/bin/perl
+
+# $OpenBSD: update-patches,v 1.24 2023/05/04 14:13:10 espie Exp $
+# Copyright (c) 2017-2023
+# Marc Espie.  All rights reserved.
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Neither the name of OpenBSD nor the names of its contributors
+#    may be used to endorse or promote products derived from this software
+#    without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY ITS AUTHOR AND THE OpenBSD project ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+
+use File::Find;
+use v5.36;
+
+# our "normal" output is STDERR
+open my $oldout, '>&STDOUT';
+open STDOUT, '>&STDERR'; 
+
+# grab env stuff
+my ($distorig, $patchorig, $wrkdist, $patchdir, $patch_list, $wrkobj) = 
+    ($ENV{DISTORIG}, $ENV{PATCHORIG}, $ENV{WRKDIST}, $ENV{PATCHDIR},
+	 $ENV{PATCH_LIST}, $ENV{WRKOBJDIR});
+
+if ($patchorig ne '.orig.port') {
+	say "PATCHORIG=$patchorig";
+}
+my $force = defined($ENV{FORCE_REGEN});
+my $verbose = defined($ENV{PATCH_VERBOSE});
+
+my $origwrkdist = $wrkdist;
+# protect against dirty stuff
+$wrkdist =~ s/\/$//g;
+
+if (-l $wrkdist) {
+	my $d = readlink($wrkdist);
+	if (!defined $d) {
+		say "WRKDIST=$origwrkdist is a symlink that can't be resolved";
+		exit 1;
+	}
+	if ($d =~ m,^/,) {
+		$wrkdist = $d;
+	} else {
+		require File::Basename;
+		$wrkdist = join('/', File::Basename::dirname($wrkdist), $d);
+	}
+}
+
+if (!-d $wrkdist) {
+	if (!-e $wrkdist) {
+		say "WRKDIST=$origwrkdist does not exist";
+	} else {
+		say "WRKDIST=$origwrkdist is not a directory";
+	}
+	exit 1;
+}
+
+my @diff_args;
+# XXX more processing maybe ?
+if (defined $ENV{DIFF_ARGS}) {
+	push(@diff_args, split(/\s+/, $ENV{DIFF_ARGS}));
+}
+
+my ($actual, $saved, $done, $nochange);
+my @edit;
+
+my $kw_re = qr{\$(
+		Author|CVSHeader|Date|Header|Id|Name|Locker|Log|
+			RCSFile|Revision|Source|State|OpenBSD
+		    )\b.*\$}x;
+
+sub fuzz_chunk($chunk)
+{
+	return 0 if @{$chunk->{lines}} < 4;
+	my $zap = 0;
+	my $fuzzed = 0;
+	if ($chunk->{lines}[0] =~ m/^\s/ && 
+	    $chunk->{lines}[0] =~ m/$kw_re/) {
+	    	$zap = 1;
+	}
+	if ($chunk->{lines}[0] =~ m/^\s/ &&
+	    $chunk->{lines}[1] =~ m/^\s/ && 
+	    $chunk->{lines}[1] =~ m/$kw_re/) {
+	    	$zap = 2;
+	}
+	while ($zap) {
+		shift @{$chunk->{lines}};
+		$chunk->{oldstart}++;
+		$chunk->{newstart}++;
+		$chunk->{oldplus}--;
+		$chunk->{newplus}--;
+		$zap--;
+		$fuzzed = 1;
+	}
+	if ($chunk->{lines}[-1] =~ m/^\s/ &&
+	    $chunk->{lines}[-1] =~ m/$kw_re/) {
+	    	$zap=1;
+	}
+	if ($chunk->{lines}[-1] =~ m/^\s/ &&
+	    $chunk->{lines}[-2] =~ m/^\s/ &&
+	    $chunk->{lines}[-2] =~ m/$kw_re/) {
+	    	$zap=2;
+	}
+	while ($zap) {
+		pop @{$chunk->{lines}};
+		$chunk->{oldplus}--;
+		$chunk->{newplus}--;
+		$zap--;
+		$fuzzed = 1;
+	}
+	return $fuzzed;
+}
+
+sub may_fuzz_patch($stem, $list)
+{
+	my $try_fuzz = 0;
+	for my $l (@$list) {
+		if ($l =~ m/$kw_re/) {
+			$try_fuzz = 1;
+			last;
+		}
+	}
+
+	return unless $try_fuzz;
+
+	my @lines = @$list;
+	if (@lines < 2) {
+		return;
+	}
+	# extract the header
+	my $h1 = shift @lines;
+	my $h2 = shift @lines;
+	# cut up the patch
+	my $patch = [];
+	my $chunk;
+	my $fuzzed = 0;
+
+	while (@lines > 0) {
+		my $l = shift @lines;
+		if ($l =~ m/^\@\@\s+\-(\d+)\,(\d+)\s+\+(\d+)\,(\d+)\s+\@\@$/) {
+			if (defined $chunk) {
+				if ($chunk->{fuzzable} && fuzz_chunk($chunk)) {
+					$fuzzed = 1;
+				}
+				push(@$patch, $chunk);
+			}
+			$chunk = {oldstart => $1, oldplus => $2,
+				newstart => $3, newplus => $4};
+		} else {
+			return if !defined $chunk;
+			if ($l =~ m/$kw_re/) {
+				$chunk->{fuzzable} = 1;
+			}
+			push(@{$chunk->{lines}}, $l);
+		}
+	}
+	if (defined $chunk) {
+		if ($chunk->{fuzzable} && fuzz_chunk($chunk)) {
+			$fuzzed = 1;
+		}
+		push(@$patch, $chunk);
+	}
+
+	return unless $fuzzed;
+
+	say "*** Patch for $stem fuzzed because of CVS keywords" if $verbose;
+	@$list = ($h1, $h2);
+
+	for my $chunk (@{$patch}) {
+		push(@$list, '@@ -'.$chunk->{oldstart}.','.$chunk->{oldplus}.
+			' +'.$chunk->{newstart}.','.$chunk->{newplus}.
+			' @@'."\n");
+		push(@$list, @{$chunk->{lines}});
+	}
+}
+
+sub create_patch($src, $dst, $stem)
+{
+	say "Processing $stem" if $verbose;
+	open(my $file, "-|", "diff", "-u", "-p", "-a", @diff_args, "-L",
+		"$stem.orig", "-L", $stem, "--", $src, $dst) or 
+	    die "can't start diff: $!";
+	my @lines = <$file>;
+	unless (close $file) {
+		if ($? != 256) {
+			die "diff exited with an error";
+		}
+	}
+	may_fuzz_patch($stem, \@lines);
+	return {stem => $stem, patch => \@lines, 
+		filename => patch_name($stem),
+		comment => [] };
+}
+
+sub parse_existing_patch($filename)
+{
+	open (my $f, '<', $filename) or die "can't read existing $filename: $!";
+	my (@comment, $src, @patch);
+	while (<$f>) {
+		if (m/^Index:\s+(\S.*)/) {
+			$src = $1;
+			while (<$f>) {
+				push(@patch, $_);
+			}
+			last;
+		}
+		# XXX have to do *two* matches so that $1 is okay
+		# otherwise if $patchorig = 'sthg.orig' this will fail
+		if (m/^\-\-\-\s+(\S.*)\Q$patchorig\E/ ||
+		    m/^\-\-\-\s+(\S.*)\.orig/) {
+			push(@patch, $_);
+			$src = $1;
+			while (<$f>) {
+				push(@patch, $_);
+			}
+			last;
+		}
+		push(@comment, $_);
+	}
+	if (@comment > 0 && $comment[0] =~ m/^\$OpenBSD/) {
+		shift @comment;
+	}
+	while (@comment > 0 && $comment[0] =~ m/^\s*$/) {
+		shift @comment;
+	}
+	return {stem => $src, filename => $filename, 
+	    comment => \@comment, patch => \@patch};
+}
+
+sub write_patch($p)
+{
+	if (-f $p->{filename}) {
+		rename $p->{filename}, $p->{filename}.".orig" or 
+		    die "can't rename $p->{filename}: $!";
+	}
+	open(my $f, '>', $p->{filename}) or 
+	    die "can't write to $p->{filename}: $!";
+	for my $l (@{$p->{comment}}) {
+		print $f $l;
+	}
+	if (defined $p->{stem}) {
+		print $f "Index: $p->{stem}\n";
+	}
+	for my $l (@{$p->{patch}}) {
+		print $f $l;
+	}
+	close $f or die;
+}
+
+sub patch_name($arg)
+{
+	$arg =~ s/[\s\/\.]/_/g;
+	return "patch-$arg";
+}
+
+sub description($p)
+{
+	if ($p->{filename} ne patch_name($p->{stem})) {
+		return "$p->{filename} for $p->{stem}";
+	} else {
+		return "for $p->{stem}";
+	}
+}
+
+sub patches_differ($a, $b)
+{
+	if (@{$a->{patch}} != @{$b->{patch}}) {
+		return 1;
+	}
+	my @m = @{$b->{patch}};
+	for my $l (@{$a->{patch}}) {
+		my $m = shift @m;
+		next if $l =~ m/^(\-\-\-|\+\+\+)\s+\Q$a->{stem}\E/;
+		return 1 if $l ne $m;
+	}
+	return 0;
+}
+
+sub identical_msg($name)
+{
+	return "$name and $name$distorig are identical";
+}
+
+# figure out which files to work with
+find({wanted =>
+    sub() {
+    	return if -l $_;
+	return unless -f _;
+	return unless m/\Q$patchorig\E$/;
+	return if $_ eq 'Oops.rej.orig';
+	return if m/\Q$distorig\E$/;
+	# avoid double reporting patches
+	my $src = $File::Find::name;
+	my $dst = $src;
+	$dst =~ s/\Q$patchorig\E$//;
+	# don't double-report
+	return if $dst =~ m/^(.*)\.beforesubst$/ && -f $1.$patchorig;
+	my $stem = $dst;
+	$stem =~ s/^\Q$wrkdist\E\///;
+	my $attach = '';
+	if (-f "$dst.beforesubst") {
+		$dst = "$dst.beforesubst";
+		$attach = '.beforesubst';
+	} elsif (!-f $dst) {
+		say "$stem not found";
+		return;
+	}
+	require File::Compare;
+	if (File::Compare::compare($src, $dst) == 0) {
+		if ($verbose) {
+			say identical_msg($stem);
+		} else {
+			$nochange->{$stem} = 1;
+		}
+		return;
+	}
+	my $p = create_patch($src, $dst, $stem);
+	$actual->{$p->{stem}} = $p;
+    }, follow => 0, follow_skip => 2 }, $wrkdist);
+
+# do we have patches ?
+if (keys %$actual) {
+	unless (-d $patchdir) {
+		require File::Path;
+		File::Path::make_path($patchdir) or die;
+	}
+}
+
+if (chdir($patchdir)) {
+	# figure out which patch is which
+	for my $i (glob $patch_list) {
+		next unless -f $i;
+		next if $i =~ m/(\.orig|\.rej|\~)$/;
+		$done->{$i} = 1;
+		my $parsed = parse_existing_patch($i);
+		if (!defined $parsed->{stem}) {
+			say "*** File $i is not a proper patch";
+			$parsed->{stem} = $i;
+		}
+		$saved->{$parsed->{stem}} = $parsed;
+	}
+}
+
+# handle patches
+for my $k (sort keys %$actual) {
+	my $p = $actual->{"$k"};
+	# is there already a patch ?  we need to compare
+	if (exists $saved->{$k}) {
+		my $o = $saved->{$k};
+		my $differ = patches_differ($o, $p);
+		$o->{accounted} = 1;
+		next unless $differ || $force;
+
+		$o->{patch} = $p->{patch};
+		write_patch($o);
+		next unless $differ;
+
+		say "Patch ", description($o), " updated";
+		system {"diff"} ('diff', '-u', @diff_args, '--', 
+		    $o->{filename}.".orig", $o->{filename}) if $verbose;
+		push(@edit, $o->{filename});
+	} else {
+		say "New patch ", description($p);
+		write_patch($p);
+		# register it as known so we don't reparse
+		$saved->{$p->{stem}} = $p;
+		$done->{$p->{filename}} = 1;
+		$p->{accounted} = 1;
+		push(@edit, $p->{filename});
+	}
+}
+
+# parse supplementary files
+if (chdir($patchdir)) {
+	for my $i (glob '*') {
+		next unless -f $i;
+		next if $i =~ m/(\.orig|\.rej|\~)$/;
+		next if $done->{$i};
+		my $parsed = parse_existing_patch($i);
+		$parsed->{stem} //= $i;
+		$saved->{$parsed->{stem}} = $parsed;
+	}
+}
+
+#for my $k (sort {$a->{filename} cmp $b->{filename}} keys %$old) {
+for my $k (sort keys %$saved) {
+	my $p = $saved->{"$k"};
+	if (!$p->{accounted}) {
+		if ($nochange->{$p->{stem}}) {
+			say identical_msg($p->{stem});
+		}
+		say "*** Patch ", description($p), " not accounted for";
+	}
+	my ($warned_newline, $warned_keyword, $warned_pobj) = (0, 0, 0);
+	for my $l (@{$p->{patch}}) {
+		if ($l =~ m/^\\ No newline at end of file/) {
+			say "*** Patch ", description($p), " misses newline at end of file" 
+			    unless $warned_newline;
+			$warned_newline = 1;
+		} elsif ($l =~ m/$kw_re/) {
+			say "*** Patch ",  description($p), " contains CVS keyword" 
+			    unless $warned_keyword;
+			$warned_keyword = 1;
+		} elsif ($l =~ m/\Q$wrkobj\E/) {
+			say "*** Patch ", description($p), " contains $wrkobj (WRKOBJDIR)"
+			    unless $warned_pobj;
+			$warned_pobj = 1;
+		}
+	}
+}
+
+say $oldout join(' ', @edit);

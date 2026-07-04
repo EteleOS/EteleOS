@@ -1,0 +1,13 @@
+Index: test/test-lib-OPENBSD.sh
+--- test/test-lib-OPENBSD.sh.orig
++++ test/test-lib-OPENBSD.sh
+@@ -4,6 +4,8 @@ if command -v gdate >/dev/null
+        date () { gdate "$@"; }
+        base64 () { gbase64 "$@"; }
+        wc () { gwc "$@"; }
+-       sed () { gsed "$@"; }
++       stat () { gstat "$@"; }
+        sha256sum () { gsha256sum "$@"; }
+    fi
++gdb () { egdb "$@"; }
++tar () { gtar "$@"; }

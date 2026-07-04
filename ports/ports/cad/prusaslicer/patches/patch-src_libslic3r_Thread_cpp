@@ -1,0 +1,39 @@
+Index: src/libslic3r/Thread.cpp
+--- src/libslic3r/Thread.cpp.orig
++++ src/libslic3r/Thread.cpp
+@@ -168,6 +168,35 @@ std::optional<std::string> get_current_thread_name()
+ 	return std::nullopt;
+ }
+ 
++#elif __OpenBSD__
++
++#include <pthread_np.h>
++
++bool set_thread_name(std::thread &thread, const char *thread_name)
++{
++	pthread_set_name_np(thread.native_handle(), thread_name);
++	return true;
++}
++
++bool set_thread_name(boost::thread &thread, const char *thread_name)
++{
++	pthread_set_name_np(thread.native_handle(), thread_name);
++	return true;
++}
++
++bool set_current_thread_name(const char *thread_name)
++{
++	pthread_set_name_np(pthread_self(), thread_name);
++	return true;
++}
++
++std::optional<std::string> get_current_thread_name()
++{
++	char buf[16];
++	pthread_get_name_np(pthread_self(), buf, 16);
++	return std::string(buf);
++}
++
+ #else
+ 
+ // posix

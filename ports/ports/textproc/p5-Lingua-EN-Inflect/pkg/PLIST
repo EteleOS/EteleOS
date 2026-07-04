@@ -1,0 +1,10 @@
+${P5SITE}/Lingua/
+${P5SITE}/Lingua/EN/
+${P5SITE}/Lingua/EN/Inflect.pm
+@man man/man3p/Lingua::EN::Inflect.3p
+share/examples/p5-Lingua-EN-Inflect/
+share/examples/p5-Lingua-EN-Inflect/demo_NO.pl
+share/examples/p5-Lingua-EN-Inflect/demo_NUM.pl
+share/examples/p5-Lingua-EN-Inflect/demo_PL.pl
+share/examples/p5-Lingua-EN-Inflect/demo_eq.pl
+share/examples/p5-Lingua-EN-Inflect/demo_inflect.pl

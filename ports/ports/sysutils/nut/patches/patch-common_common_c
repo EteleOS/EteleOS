@@ -1,0 +1,21 @@
+Index: common/common.c
+--- common/common.c.orig
++++ common/common.c
+@@ -3478,6 +3478,17 @@ const char * confpath(void)
+ 	return path;
+ }
+ 
++/* return a config path for the CGIs so they can be kept seperate */
++const char * cgiconfpath(void) 
++{
++	const char * path;
++
++	if ((path = getenv("NUT_CGICONFPATH")) == NULL)
++		path = "/conf/nut";
++
++	return path;
++}
++
+ /* Return the default path for the directory containing state files */
+ const char * dflt_statepath(void)
+ {

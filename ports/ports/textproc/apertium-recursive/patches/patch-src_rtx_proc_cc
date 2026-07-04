@@ -1,0 +1,19 @@
+Index: src/rtx_proc.cc
+--- src/rtx_proc.cc.orig
++++ src/rtx_proc.cc
+@@ -4,9 +4,15 @@
+ #include <lttoolbox/file_utils.h>
+ #include <lttoolbox/lt_locale.h>
+ #include <iostream>
++#include <unistd.h>
+ 
+ int main(int argc, char *argv[])
+ {
++  if (pledge("stdio rpath wpath cpath", NULL) == -1)
++  {
++    cerr << "pledge" << endl;
++    exit(EXIT_FAILURE);
++  }
+   LtLocale::tryToSetLocale();
+   CLI cli("perform structural transfer", PACKAGE_VERSION);
+   cli.add_bool_arg('a', "anaphora", "expect coreference LUs from apertium-anaphora");

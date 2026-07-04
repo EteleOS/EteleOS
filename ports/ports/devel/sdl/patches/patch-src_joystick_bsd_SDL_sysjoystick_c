@@ -1,0 +1,24 @@
+It is easy to exhaust uhid devices in this day and age.
+use ujoy(4) device nodes
+
+Index: src/joystick/bsd/SDL_sysjoystick.c
+--- src/joystick/bsd/SDL_sysjoystick.c.orig
++++ src/joystick/bsd/SDL_sysjoystick.c
+@@ -77,7 +77,7 @@
+ #include "../SDL_sysjoystick.h"
+ #include "../SDL_joystick_c.h"
+ 
+-#define MAX_UHID_JOYS	4
++#define MAX_UHID_JOYS	16
+ #define MAX_JOY_JOYS	2
+ #define MAX_JOYS	(MAX_UHID_JOYS + MAX_JOY_JOYS)
+ 
+@@ -170,7 +170,7 @@ SDL_SYS_JoystickInit(void)
+ 	for (i = 0; i < MAX_UHID_JOYS; i++) {
+ 		SDL_Joystick nj;
+ 
+-		SDL_snprintf(s, SDL_arraysize(s), "/dev/uhid%d", i);
++		SDL_snprintf(s, SDL_arraysize(s), "/dev/ujoy/%d", i);
+ 
+ 		nj.index = SDL_numjoysticks;
+ 		joynames[nj.index] = strdup(s);

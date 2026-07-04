@@ -1,0 +1,21 @@
+--- Makefile.in.orig	Fri Mar  2 13:16:52 2012
++++ Makefile.in	Fri Mar  2 13:18:22 2012
+@@ -626,7 +626,8 @@ info-am:
+ 
+ install-data-am:
+ 	@$(NORMAL_INSTALL)
+-	$(MAKE) $(AM_MAKEFLAGS) install-data-hook
++	$(MAKE) $(AM_MAKEFLAGS)
++
+ install-dvi: install-dvi-recursive
+ 
+ install-dvi-am:
+@@ -699,7 +700,7 @@ install-data-hook:
+ 	$(mkinstalldirs) "$(DESTDIR)$(cachedir)"
+ 	test -f "$(DESTDIR)$(cachedir)/pdnsd.cache" || \
+ 	  touch "$(DESTDIR)$(cachedir)/pdnsd.cache"
+-	if test `whoami` = "root"; then \
++	if test `userinfo -e _pdnsd`; then \
+ 	  chown $(def_id) "$(DESTDIR)$(cachedir)/pdnsd.cache"; \
+ 	  chown $(def_id) "$(DESTDIR)$(cachedir)"; \
+ 	fi

@@ -1,0 +1,13 @@
+https://github.com/plougher/squashfs-tools/commit/fa862f08f15f1beadfeb39122cb976057160bf14
+
+Index: squashfs-tools/mksquashfs.h
+--- squashfs-tools/mksquashfs.h.orig
++++ squashfs-tools/mksquashfs.h
+@@ -24,6 +24,7 @@
+  * mksquashfs.h
+  *
+  */
++#include <pthread.h>
+ 
+ struct dir_info {
+ 	char			*pathname;

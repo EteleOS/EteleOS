@@ -1,0 +1,39 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Keybase and KBFS
+================
+
+The keybase package includes two daemons which you need to run as regular user
+to access to the most of the Keybase features. "keybase" is the main daemon and
+you can control it with "keybase ctl".
+
+KBFS is a distributed and encrypted filesystem. Also, it's used as a remote for
+the encrypted git repos. You need to run "kbfsfuse" to be able to use the
+"keybase fs" commands to access the files on KBFS. The git remote helper can
+work directly with the keybase daemon and it doesn't need the kbfsfuse daemon
+running. Despite the name the daemon will not use FUSE, so you can run it
+without root access.
+
+The "kbfsfuse" daemon will wait until the keybase daemon is ready. You can
+start both in parallel without worrying about the order. Upstream uses these
+commands to autostart the daemons (the logs are saved in ~/.cache/keybase):
+
+- keybase --debug --use-default-log-file service --auto-forked
+- kbfsfuse -debug -log-to-file -mode default
+
+The default mode of KBFS uses part of the memory to speed up the access to the
+most used files on KBFS. Upstream provides the mode "constrained" for systems
+with limited resources which they use for phones but can work also on
+computers. If KBFS is still consuming too much resources, try "memoryLimited".
+It will use the minimal memory required to work but the access to files will be
+slow.
+
+Using the Keybase services requires an account on keybase.io. If you don't have
+an account, use "keybase signup" to register a new account and "keybase login"
+to provision every new computer.
+
+If you have a weak connection to the internet, you can speed up the access to
+the KBFS files with an encrypted local cache: "keybase fs sync enable
+/keybase/private/youruser".

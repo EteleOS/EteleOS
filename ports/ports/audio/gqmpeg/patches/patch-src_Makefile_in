@@ -1,0 +1,12 @@
+Index: src/Makefile.in
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -342,7 +342,7 @@ gqmpeg_SOURCES = \
+ 	$(module_mpg123) $(module_xmp) $(module_ogg123) $(module_radio)
+ 
+ 
+-gqmpeg_LDADD = $(GTK_LIBS) $(LIBPNG)
++gqmpeg_LDADD = $(GTK_LIBS) $(LIBPNG) -lsndio
+ 
+ EXTRA_DIST = \
+ 	$(extra_SLIK)	\

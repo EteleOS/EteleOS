@@ -1,0 +1,10 @@
+--- Wnn/etc/gethinsi.c.orig
++++ Wnn/etc/gethinsi.c
+@@ -52,6 +52,7 @@
+ */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include "commonhd.h"
+ #include "config.h"
+ #include "wnnerror.h"

@@ -1,0 +1,10 @@
+--- unifuzz.c.orig	Sat Apr 22 15:50:15 2017
++++ unifuzz.c	Sat Apr 22 15:50:54 2017
+@@ -97,6 +97,7 @@ EmitBadUTF8 () {
+ }
+ 
+ /* Emit the middle character from each range */
++void
+ EmitAllRanges(short AboveBMPP) {
+   int i;
+   UTF32 scp;

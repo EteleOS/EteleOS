@@ -1,0 +1,162 @@
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -100,9 +100,6 @@ AM_CONDITIONAL(SILC_X86_64, test x$cpu_x86_64 = xtrue)
+ AM_CONDITIONAL(SILC_POWERPC, test x$cpu_ppc = xtrue)
+ AM_CONDITIONAL(SILC_IA64, test x$cpu_ia64 = xtrue)
+ 
+-# Control compiler optimizations
+-CFLAGS=`echo $CFLAGS | sed 's/-O[ 0123456789s]*//g'`
+-
+ AC_PROG_CC
+ AC_C_INLINE
+ AC_C_CONST
+@@ -188,12 +185,13 @@ AC_DEFUN([SILC_ADD_CFLAGS],
+ # Function to check if compiler flag works, destination specifiable
+ # Usage: SILC_ADD_CC_FLAGS(VAR, FLAGS, [ACTION-IF-FAILED])
+ AC_DEFUN([SILC_ADD_CC_FLAGS],
+-[ tmp_CFLAGS="$1_CFLAGS"
+-  $1_CFLAGS="${$1_CFLAGS} $2"
++[ tmp_CFLAGS="$CFLAGS"
++  CFLAGS="${$1_CFLAGS} $2"
+   AC_MSG_CHECKING(whether $CC accepts $2 flag)
+-  AC_TRY_LINK([], [], [AC_MSG_RESULT(yes)], [AC_MSG_RESULT(no)
+-				       $1_CFLAGS="$tmp_CFLAGS"
++  AC_TRY_LINK([], [], [AC_MSG_RESULT(yes)
++      $1_CFLAGS="$CFLAGS"], [AC_MSG_RESULT(no)
+ 				       $3])
++  CFLAGS="$tmp_CFLAGS"
+   unset tmp_CFLAGS
+ ])
+ 
+@@ -406,8 +404,7 @@ AC_TRY_COMPILE(
+   [
+     #include <stdarg.h>
+     #include <stdlib.h>
+-  ],
+-  [
++
+     int t(int x, ...)
+     {
+       va_list va, cp;
+@@ -419,12 +416,11 @@ AC_TRY_COMPILE(
+       va_end(cp);
+       return 0;
+     }
+-    int main()
+-    {
+-      return t(0, 0xff11);
+-    }
+   ],
+   [
++    return t(0, 0xff11);
++  ],
++  [
+     AC_DEFINE([HAVE_VA_COPY], [], [HAVE_VA_COPY])
+     AC_MSG_RESULT(yes)
+     va_copy=true
+@@ -441,8 +437,7 @@ if test x$va_copy = xfalse; then
+   [
+     #include <stdarg.h>
+     #include <stdlib.h>
+-  ],
+-  [
++
+     int t(int x, ...)
+     {
+       va_list va, cp;
+@@ -454,12 +449,11 @@ if test x$va_copy = xfalse; then
+       va_end(cp);
+       return 0;
+     }
+-    int main()
+-    {
+-      return t(0, 0xff11);
+-    }
+   ],
+   [
++    return t(0, 0xff11);
++  ],
++  [
+     AC_DEFINE([HAVE___VA_COPY], [], [HAVE___VA_COPY])
+     AC_MSG_RESULT(yes)
+     va_copy=true
+@@ -504,59 +498,9 @@ fi
+ ## Compiler and compiler flag checks
+ ##
+ 
+-if test "$GCC"; then
+-  # GCC specific options
+-  if test "x$summary_debug" = "xyes"; then
+-    SILC_ADD_CFLAGS(-g)
+-  else
+-    SILC_ADD_CFLAGS(-g)
+-  fi
+-  SILC_ADD_CFLAGS(-Wall -finline-functions)
+-  SILC_ADD_CFLAGS(-Wno-pointer-sign)
+-else
+-  # Other compilers
+-  case "$target" in
+-    alpha*-dec-osf*)
+-      SILC_ADD_CFLAGS(-g3)
+-      ;;
+-    mips*-sgi-irix*)
+-      SILC_ADD_CFLAGS(-g3)
+-      ;;
+-    *)
+-      SILC_ADD_CFLAGS(-g)
+-      ;;
+-  esac
++SILC_ADD_CFLAGS(-Wall -finline-functions)
++SILC_ADD_CFLAGS(-Wno-pointer-sign)
+ 
+-  # Intel C++ Compiler needs -restrict
+-  if test "x$CC" = "xicc"; then
+-    SILC_ADD_CFLAGS(-restrict)
+-  fi
+-fi
+-
+-if test x$want_cc_optimizations = xtrue; then
+-  if test "$GCC"; then
+-    # GCC specific options
+-    if test "x$summary_debug" = "xyes"; then
+-      SILC_ADD_CFLAGS(-O)
+-    else
+-      SILC_ADD_CFLAGS(-O2)
+-    fi
+-  else
+-    # Other compilers
+-    case "$target" in
+-      alpha*-dec-osf*)
+-        SILC_ADD_CFLAGS(-O2, SILC_ADD_CFLAGS(-O))
+-        ;;
+-      mips*-sgi-irix*)
+-        SILC_ADD_CFLAGS(-O2, SILC_ADD_CFLAGS(-O))
+-        ;;
+-      *)
+-        SILC_ADD_CFLAGS(-O2, SILC_ADD_CFLAGS(-O))
+-        ;;
+-    esac
+-  fi
+-fi
+-
+ #
+ # Workaround a bug in GCC 2.x which causes memory exhaustion
+ # when compiling sha1 with optimizations on UltraSPARC.
+@@ -1314,7 +1258,7 @@ fi
+ 
+ SILC_ADD_CC_FLAGS(SILC_CRYPTO, -fno-regmove)
+ if test x$summary_debug = xno -a x$want_cc_optimizations = xtrue; then
+-  SILC_ADD_CC_FLAGS(SILC_CRYPTO, -fomit-frame-pointer -O3)
++  SILC_ADD_CC_FLAGS(SILC_CRYPTO, -fomit-frame-pointer)
+ fi
+ 
+ AC_SUBST(SILC_CRYPTO_CFLAGS)
+@@ -1350,7 +1294,6 @@ if test x$compile_libs = xtrue; then
+ AC_MSG_NOTICE([configuring math library])
+ 
+ if test x$want_cc_optimizations = xtrue; then
+-  SILC_ADD_CC_FLAGS(MATH, -O3, SILC_ADD_CC_FLAGS(MATH, -O2))
+   SILC_ADD_CC_FLAGS(MATH, -funroll-all-loops)
+ fi
+ if test x$enable_stack_trace != xyes; then

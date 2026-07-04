@@ -1,0 +1,10 @@
+${P5SITE}/Audio/
+${P5SITE}/Audio/M4P/
+${P5SITE}/Audio/M4P.pm
+${P5SITE}/Audio/M4P/Atom.pm
+${P5SITE}/Audio/M4P/Decrypt.pm
+${P5SITE}/Audio/M4P/QuickTime.pm
+@man man/man3p/Audio::M4P.3p
+@man man/man3p/Audio::M4P::Atom.3p
+@man man/man3p/Audio::M4P::Decrypt.3p
+@man man/man3p/Audio::M4P::QuickTime.3p

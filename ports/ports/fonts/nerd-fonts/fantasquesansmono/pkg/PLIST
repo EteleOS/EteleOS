@@ -1,0 +1,15 @@
+share/fonts/
+share/fonts/nerd-fonts/
+@fontdir share/fonts/nerd-fonts/fantasquesansmono/
+share/fonts/nerd-fonts/fantasquesansmono/FantasqueSansMNerdFont-Bold.ttf
+share/fonts/nerd-fonts/fantasquesansmono/FantasqueSansMNerdFont-BoldItalic.ttf
+share/fonts/nerd-fonts/fantasquesansmono/FantasqueSansMNerdFont-Italic.ttf
+share/fonts/nerd-fonts/fantasquesansmono/FantasqueSansMNerdFont-Regular.ttf
+share/fonts/nerd-fonts/fantasquesansmono/FantasqueSansMNerdFontMono-Bold.ttf
+share/fonts/nerd-fonts/fantasquesansmono/FantasqueSansMNerdFontMono-BoldItalic.ttf
+share/fonts/nerd-fonts/fantasquesansmono/FantasqueSansMNerdFontMono-Italic.ttf
+share/fonts/nerd-fonts/fantasquesansmono/FantasqueSansMNerdFontMono-Regular.ttf
+share/fonts/nerd-fonts/fantasquesansmono/FantasqueSansMNerdFontPropo-Bold.ttf
+share/fonts/nerd-fonts/fantasquesansmono/FantasqueSansMNerdFontPropo-BoldItalic.ttf
+share/fonts/nerd-fonts/fantasquesansmono/FantasqueSansMNerdFontPropo-Italic.ttf
+share/fonts/nerd-fonts/fantasquesansmono/FantasqueSansMNerdFontPropo-Regular.ttf

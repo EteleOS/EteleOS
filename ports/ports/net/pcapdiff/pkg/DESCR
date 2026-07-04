@@ -1,0 +1,6 @@
+pcap_diff.py is a tool that takes two or more pcap files as input,
+compares them, and produces a pcap file or displays to show differences
+between the two. It is useful when comparing packets captured at two
+points to identify interference with packets. It has options to ignore
+certain parts of the packet (by default ttl, checksums and timestamps
+are ignored).

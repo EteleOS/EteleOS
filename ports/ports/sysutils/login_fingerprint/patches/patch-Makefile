@@ -1,0 +1,18 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -11,14 +11,10 @@ MANDIR=		$(LOCALBASE)/man/cat
+ 
+ CFLAGS+=	-Wall
+ CFLAGS+=	`pkg-config --cflags libfprint`
+-CFLAGS+=	`pkg-config --cflags libusb`
+ CFLAGS+=	-I${X11BASE}/include
+ 
+ LDADD+=		-L${X11BASE}/lib
+ LDADD+=		`pkg-config --libs libfprint`
+-LDADD+=		`pkg-config --libs libusb`
+-LDADD+=		`pkg-config --libs libfprint`
+-LDADD+=		`pkg-config --libs MagickWand`
+ LDADD+=		-lcrypto -lfreetype
+ 
+ BINDIR=		$(LOCALBASE)/libexec/auth

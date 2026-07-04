@@ -1,0 +1,32 @@
+Fix incorrect type usage, zlib's gzFile is already a pointer type.
+Don't use data read from file as a format string (obvious security issue).
+
+--- readvmf.c.orig	Fri Aug 22 22:58:52 2008
++++ readvmf.c	Tue Jul  6 23:10:48 2021
+@@ -340,7 +340,7 @@ pixmap_image()
+ char *
+ getdata(fd)
+ #ifdef ZLIB
+-gzFile * fd;
++gzFile fd;
+ #else
+ FILE *fd;
+ #endif
+@@ -433,7 +433,7 @@ struct Sundata * Context;
+   double theta, phi;
+   char *str, *ptr;
+ #ifdef ZLIB
+-  gzFile * fd;
++  gzFile fd;
+   int plen;
+   char *zpath;
+ #else
+@@ -505,7 +505,7 @@ struct Sundata * Context;
+      ret_value = 5;
+      goto abort;
+   }
+-  if (reformat) printf(str);
++  if (reformat) printf("%s", str);
+ 
+   k = 0;
+   num_colors = 0;

@@ -1,0 +1,28 @@
+Index: installer/linux/dagent.cfg
+--- installer/linux/dagent.cfg.orig
++++ installer/linux/dagent.cfg
+@@ -26,7 +26,7 @@
+ # Log raw message to a file. Can be "no", "all", or a list of usernames
+ # for which messages should be saved.
+ #log_raw_message = no
+-#log_raw_message_path = /var/lib/kopano
++#log_raw_message_path = /var/db/kopano
+ 
+ # Maximum LMTP threads that can be running simultaneously
+ # This is also limited by your SMTP server. (20 is the postfix default concurrency limit)
+@@ -56,12 +56,12 @@
+ 
+ # Path to the activated dagent plugins.
+ #   This folder contains symlinks to the kopano plugins and custom scripts. The plugins are
+-#   installed in '/usr/share/kopano-dagent/python/plugins/'. To activate a plugin create a symbolic
++#   installed in '/usr/local/share/kopano-dagent/python/plugins/'. To activate a plugin create a symbolic
+ #   link in the 'plugin_path' directory.
+ #
+ # Example:
+-#  $ ln -s /usr/share/kopano-dagent/python/plugins/BMP2PNG.py /var/lib/kopano/dagent/plugins/BMP2PNG.py
+-#plugin_path = /var/lib/kopano/dagent/plugins
++#  $ ln -s /usr/local/share/kopano-dagent/python/plugins/BMP2PNG.py /var/db/kopano/dagent/plugins/BMP2PNG.py
++#plugin_path = /var/db/kopano/dagent/plugins
+ 
+ ##############################################################
+ # DAGENT RULE SETTINGS

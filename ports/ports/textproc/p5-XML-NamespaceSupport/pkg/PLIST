@@ -1,0 +1,3 @@
+${P5SITE}/XML/
+${P5SITE}/XML/NamespaceSupport.pm
+@man man/man3p/XML::NamespaceSupport.3p

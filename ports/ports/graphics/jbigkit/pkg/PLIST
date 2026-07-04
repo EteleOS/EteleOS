@@ -1,0 +1,14 @@
+@bin bin/jbgtopbm
+@bin bin/pbmtojbg
+include/jbig.h
+include/jbig85.h
+include/jbig_ar.h
+lib/libjbig.a
+@lib lib/libjbig.so.${LIBjbig_VERSION}
+lib/libjbig85.a
+@lib lib/libjbig85.so.${LIBjbig85_VERSION}
+@man man/man1/jbgtopbm.1
+@man man/man1/pbmtojbg.1
+share/doc/jbigkit/
+share/doc/jbigkit/jbig.txt
+share/doc/jbigkit/jbig85.txt

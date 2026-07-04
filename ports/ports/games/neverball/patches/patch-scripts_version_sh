@@ -1,0 +1,11 @@
+--- scripts/version.sh.orig	Wed May 21 15:21:43 2014
++++ scripts/version.sh	Fri Sep  5 14:46:26 2014
+@@ -29,6 +29,8 @@
+     VERSION="$(git_version || date -u +"%Y-%m-%d" || echo "$VERSION-dev")"
+ fi
+ 
++VERSION=${V}
++
+ if [ "$VERSION" != "$(cat "$CACHE_FILE" 2> /dev/null)" ]; then
+     sed 's,0\.0\.0,'"$VERSION"',' < "$TEMPLATE_FILE" > "$HEADER_FILE"
+     echo "$VERSION" > "$CACHE_FILE" 2> /dev/null

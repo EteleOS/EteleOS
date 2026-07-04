@@ -1,0 +1,6 @@
+@man man/man8/softflowctl.8
+@man man/man8/softflowd.8
+@bin sbin/softflowctl
+@bin sbin/softflowd
+share/doc/pkg-readmes/${PKGSTEM}
+@rcscript ${RCDIR}/softflowd

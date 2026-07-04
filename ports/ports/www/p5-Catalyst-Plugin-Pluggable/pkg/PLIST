@@ -1,0 +1,4 @@
+${P5SITE}/Catalyst/
+${P5SITE}/Catalyst/Plugin/
+${P5SITE}/Catalyst/Plugin/Pluggable.pm
+@man man/man3p/Catalyst::Plugin::Pluggable.3p

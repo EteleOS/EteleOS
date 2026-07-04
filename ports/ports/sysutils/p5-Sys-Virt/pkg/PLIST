@@ -1,0 +1,71 @@
+${P5ARCH}/Sys/
+${P5ARCH}/Sys/Virt/
+${P5ARCH}/Sys/Virt.pm
+${P5ARCH}/Sys/Virt/Domain.pm
+${P5ARCH}/Sys/Virt/DomainCheckpoint.pm
+${P5ARCH}/Sys/Virt/DomainSnapshot.pm
+${P5ARCH}/Sys/Virt/Error.pm
+${P5ARCH}/Sys/Virt/Event.pm
+${P5ARCH}/Sys/Virt/EventImpl.pm
+${P5ARCH}/Sys/Virt/Interface.pm
+${P5ARCH}/Sys/Virt/NWFilter.pm
+${P5ARCH}/Sys/Virt/NWFilterBinding.pm
+${P5ARCH}/Sys/Virt/Network.pm
+${P5ARCH}/Sys/Virt/NetworkPort.pm
+${P5ARCH}/Sys/Virt/NodeDevice.pm
+${P5ARCH}/Sys/Virt/Secret.pm
+${P5ARCH}/Sys/Virt/StoragePool.pm
+${P5ARCH}/Sys/Virt/StorageVol.pm
+${P5ARCH}/Sys/Virt/Stream.pm
+${P5ARCH}/auto/Sys/
+${P5ARCH}/auto/Sys/Virt/
+${P5ARCH}/auto/Sys/Virt/Virt.bs
+@so ${P5ARCH}/auto/Sys/Virt/Virt.so
+@man man/man3p/Sys::Virt.3p
+@man man/man3p/Sys::Virt::Domain.3p
+@man man/man3p/Sys::Virt::DomainCheckpoint.3p
+@man man/man3p/Sys::Virt::DomainSnapshot.3p
+@man man/man3p/Sys::Virt::Error.3p
+@man man/man3p/Sys::Virt::Event.3p
+@man man/man3p/Sys::Virt::EventImpl.3p
+@man man/man3p/Sys::Virt::Interface.3p
+@man man/man3p/Sys::Virt::NWFilter.3p
+@man man/man3p/Sys::Virt::NWFilterBinding.3p
+@man man/man3p/Sys::Virt::Network.3p
+@man man/man3p/Sys::Virt::NetworkPort.3p
+@man man/man3p/Sys::Virt::NodeDevice.3p
+@man man/man3p/Sys::Virt::Secret.3p
+@man man/man3p/Sys::Virt::StoragePool.3p
+@man man/man3p/Sys::Virt::StorageVol.3p
+@man man/man3p/Sys::Virt::Stream.3p
+share/examples/p5-${DISTNAME}/
+share/examples/p5-${DISTNAME}/auth.pl
+share/examples/p5-${DISTNAME}/devices.pl
+share/examples/p5-${DISTNAME}/dhcp-leases.pl
+share/examples/p5-${DISTNAME}/dom-fsinfo.pl
+share/examples/p5-${DISTNAME}/dom-ifinfo.pl
+share/examples/p5-${DISTNAME}/dom-migrate.pl
+share/examples/p5-${DISTNAME}/dom-stats.pl
+share/examples/p5-${DISTNAME}/dump-info.pl
+share/examples/p5-${DISTNAME}/dump-xml.pl
+share/examples/p5-${DISTNAME}/emulator-pin.pl
+share/examples/p5-${DISTNAME}/events.pl
+share/examples/p5-${DISTNAME}/fs-freeze.pl
+share/examples/p5-${DISTNAME}/hv-stat.pl
+share/examples/p5-${DISTNAME}/iothreadinfo.pl
+share/examples/p5-${DISTNAME}/node-alloc.pl
+share/examples/p5-${DISTNAME}/node-cpu.pl
+share/examples/p5-${DISTNAME}/node-devlist.pl
+share/examples/p5-${DISTNAME}/node-info.pl
+share/examples/p5-${DISTNAME}/node-ksm.pl
+share/examples/p5-${DISTNAME}/open-console.pl
+share/examples/p5-${DISTNAME}/save-restore.pl
+share/examples/p5-${DISTNAME}/send-key.pl
+share/examples/p5-${DISTNAME}/vcpuinfo.pl
+share/examples/p5-${DISTNAME}/vol-download-all.pl
+share/examples/p5-${DISTNAME}/vol-download-nonblock.pl
+share/examples/p5-${DISTNAME}/vol-download.pl
+share/examples/p5-${DISTNAME}/vol-sparse.pl
+share/examples/p5-${DISTNAME}/vol-upload-all.pl
+share/examples/p5-${DISTNAME}/vol-upload-nonblock.pl
+share/examples/p5-${DISTNAME}/vol-upload.pl

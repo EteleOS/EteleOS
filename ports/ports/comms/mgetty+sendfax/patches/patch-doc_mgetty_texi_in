@@ -1,0 +1,24 @@
+Index: doc/mgetty.texi-in
+--- doc/mgetty.texi-in.orig
++++ doc/mgetty.texi-in
+@@ -17,6 +17,11 @@ This is the online documentation for the mgetty + send
+ package.
+ 
+ Copyright @copyright{} 1993-2005 Gert Doering
+++@format
+++START-INFO-DIR-ENTRY
+++* Mgetty: (mgetty).           Mgetty: an advanced getty that can manage faxes.
+++END-INFO-DIR-ENTRY
+++@end format
+ @end ifinfo
+ 
+ @titlepage
+@@ -1517,7 +1522,7 @@ FAX_NOTIFY_PROGRAM @var{<hangup code>} '@var{<sender i
+ 
+ @var{<hangup code>} is 0 if the receive was successful, non-zero
+ otherwise.  @var{<sender id>} is the fax identification string received
+-from the other side.  @var{<file name page (i)>} is the full path name for
++from the other side.  @var{<file name page 'i'>} is the full path name for
+ each received page.
+ 
+ A sample command line might look like this:

@@ -1,0 +1,11 @@
+Use installed package to execute buildonly test.
+
+Index: conformance/interfaces/sigignore/5-1.sh
+--- conformance/interfaces/sigignore/5-1.sh.orig
++++ conformance/interfaces/sigignore/5-1.sh
+@@ -9,4 +9,4 @@
+ #   Test various methods of passing invalid signals to sigignore().
+ # 
+ 
+-conformance/interfaces/sigignore/5-core-buildonly.test 1
++${TRUEPREFIX}/libexec/posixtestsuite/conformance/interfaces/sigignore/5-core-buildonly.test 1

@@ -1,0 +1,11 @@
+--- Tk/unix/Makefile.in.orig	Sun Oct 25 22:52:31 1998
++++ Tk/unix/Makefile.in	Fri Aug 15 20:15:21 2008
+@@ -98,7 +98,7 @@ LIBS = @TCL_BUILD_LIB_SPEC@ @LIBS@ $(X11_LIB_SWITCHES)
+ 
+ # To change the compiler switches, for example to change from -O
+ # to -g, change the following line:
+-CFLAGS = -O
++#CFLAGS = -O
+ 
+ # To turn off the security checks that disallow incoming sends when
+ # the X server appears to be insecure, reverse the comments on the

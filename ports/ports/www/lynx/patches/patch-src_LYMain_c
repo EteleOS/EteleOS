@@ -1,0 +1,26 @@
+Index: src/LYMain.c
+--- src/LYMain.c.orig
++++ src/LYMain.c
+@@ -2177,6 +2177,22 @@ int main(int argc,
+     }
+ 
+     /*
++     * Disabling features requiring 'proc' + 'exec' and calling pledge
++     */
++    no_editor = TRUE;
++    no_exec = TRUE;
++    no_mail = TRUE;
++    no_shell = TRUE;
++
++    rlogin_ok = FALSE;
++    telnet_ok = FALSE;
++
++    if (pledge("stdio rpath wpath cpath fattr dns inet tty", NULL) == -1) {
++	fprintf(stderr, "%s: pledge: %s\n", getprogname(), strerror(errno));
++	exit_immediately(EXIT_FAILURE);
++    }
++
++    /*
+      * Here's where we do all the work.
+      */
+     if (dump_output_immediately) {

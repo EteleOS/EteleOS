@@ -1,0 +1,15 @@
+quick hack to fix building following if.h split; should really have an
+autoconf check for it but that's harder because AC_CHECK_HEADERS isn't enough
+for this file
+
+Index: include/common/zbxsysinc.h
+--- include/common/zbxsysinc.h.orig
++++ include/common/zbxsysinc.h
+@@ -291,6 +291,7 @@
+ 
+ #ifdef HAVE_NET_IF_H
+ #	include <net/if.h>
++#	include <net/if_var.h>
+ #endif
+ 
+ #ifdef HAVE_NET_IF_MIB_H

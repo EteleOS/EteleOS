@@ -1,0 +1,11 @@
+Don't look in $PWD/lib, it breaks startup if $PWD is inaccessible by the
+current user.  Note: hand-edited patch to avoid RCS ID.
+
+--- bin/razor-admin.orig	Fri Feb  5 11:46:43 2016
++++ bin/razor-admin	Fri Feb  5 11:46:46 2016
+@@ -12,5 +12,4 @@
+ 
+-use lib qw(lib);
+ use strict;
+ use Razor2::Client::Agent;
+ 

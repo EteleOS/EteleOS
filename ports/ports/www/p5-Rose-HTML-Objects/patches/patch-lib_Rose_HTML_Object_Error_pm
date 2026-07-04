@@ -1,0 +1,20 @@
+--- lib/Rose/HTML/Object/Error.pm.orig	Mon Nov  9 20:47:51 2009
++++ lib/Rose/HTML/Object/Error.pm	Sun Jan 10 14:20:58 2010
+@@ -3,7 +3,7 @@ package Rose::HTML::Object::Error;
+ use strict;
+ 
+ use Carp;
+-use Clone::PP();
++use Clone();
+ use Scalar::Util();
+ 
+ use base 'Rose::Object';
+@@ -150,7 +150,7 @@ sub locale
+ sub clone
+ {
+   my($self) = shift;
+-  my $clone = Clone::PP::clone($self);
++  my $clone = Clone::clone($self);
+   $clone->parent(undef);
+   return $clone;
+ }

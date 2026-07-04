@@ -1,0 +1,14 @@
+@bin bin/gxmessage
+@info info/gxmessage.info
+@man man/man1/gxmessage.1
+share/examples/gxmessage/
+share/examples/gxmessage/gtkrc
+share/examples/gxmessage/gxaddress
+share/examples/gxmessage/gxdialup
+share/examples/gxmessage/gxdict
+share/examples/gxmessage/gxman
+share/examples/gxmessage/gxtest
+share/examples/gxmessage/gxview
+share/examples/gxmessage/nautilus-word-count
+share/icons/hicolor/48x48/apps/gxmessage.png
+@tag gtk-update-icon-cache %D/share/icons/hicolor

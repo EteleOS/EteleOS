@@ -1,0 +1,27 @@
+Index: unixpk.c
+--- unixpk.c.orig
++++ unixpk.c
+@@ -22,9 +22,11 @@
+  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+  * SOFTWARE.
+  */
++#include <sys/wait.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <errno.h>
++#include <stdlib.h>
+ #include "common.h"
+ #include "version.h"
+ #include "xmalloc.h"
+@@ -164,9 +166,9 @@ int main(int argc, char **argv)
+ 	    strcpy(fnamebuf, getenv("TMPDIR"));
+ 	}
+ 	else {
+-	    strcpy(fnamebuf, "/usr/tmp");
++	    strcpy(fnamebuf, "/var/tmp");
+ 	}
+-	strcat(fnamebuf, "/mpackXXXXXX");
++	strcat(fnamebuf, "/mpackXXXXXXXXXX");
+ 	mktemp(fnamebuf);
+ 	outfname = strsave(fnamebuf);
+     }

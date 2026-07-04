@@ -1,0 +1,12 @@
+Index: bin/smokeping_cgi
+--- bin/smokeping_cgi.orig
++++ bin/smokeping_cgi
+@@ -17,7 +17,7 @@ use Smokeping;
+ 
+ use CGI::Fast;
+ 
+-my $cfg = (shift @ARGV) || "$FindBin::Bin/../etc/config";
++my $cfg = (shift @ARGV) || "${SYSCONFDIR}/config";
+ 
+ 
+ while (my $q = new CGI::Fast) {

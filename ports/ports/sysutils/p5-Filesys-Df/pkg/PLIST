@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Filesys/
+${P5ARCH}/Filesys/Df.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Filesys/
+${P5ARCH}/auto/Filesys/Df/
+${P5ARCH}/auto/Filesys/Df/Df.so
+@man man/man3p/Filesys::Df.3p

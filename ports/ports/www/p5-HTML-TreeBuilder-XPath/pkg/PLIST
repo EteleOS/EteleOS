@@ -1,0 +1,3 @@
+${P5SITE}/HTML/TreeBuilder/
+${P5SITE}/HTML/TreeBuilder/XPath.pm
+@man man/man3p/HTML::TreeBuilder::XPath.3p

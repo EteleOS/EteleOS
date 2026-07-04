@@ -1,0 +1,10 @@
+--- Wnn/jlib/wnnerrmsg.c.orig
++++ Wnn/jlib/wnnerrmsg.c
+@@ -49,6 +49,7 @@
+ /*	Version 4.0
+  */
+ #include <stdio.h>
++#include <string.h>
+ #include "jslib.h"
+ #include "commonhd.h"
+ #include "wnn_os.h"

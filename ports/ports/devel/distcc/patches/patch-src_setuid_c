@@ -1,0 +1,12 @@
+Index: src/setuid.c
+--- src/setuid.c.orig
++++ src/setuid.c
+@@ -41,7 +41,7 @@
+ #endif
+ #endif
+ 
+-const char *opt_user = "distcc";
++const char *opt_user = "_distcc";
+ 
+ 
+ /**

@@ -1,0 +1,5 @@
+${P5SITE}/Cache/
+${P5SITE}/Cache/Memcached/
+${P5SITE}/Cache/Memcached.pm
+${P5SITE}/Cache/Memcached/GetParser.pm
+@man man/man3p/Cache::Memcached.3p

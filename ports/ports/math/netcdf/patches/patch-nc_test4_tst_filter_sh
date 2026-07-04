@@ -1,0 +1,9 @@
+Index: nc_test4/tst_filter.sh
+--- nc_test4/tst_filter.sh.orig
++++ nc_test4/tst_filter.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ if test "x$srcdir" = x ; then srcdir=`pwd`; fi
+ . ../test_common.sh

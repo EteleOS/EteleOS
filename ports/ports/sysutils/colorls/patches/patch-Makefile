@@ -1,0 +1,18 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -2,7 +2,11 @@
+ 
+-PROG=	ls
++PROG=	colorls
+ SRCS=	cmp.c ls.c main.c print.c util.c utf8.c
+-DPADD= ${LIBUTIL}
+-LDADD= -lutil
++BINDIR=	${TRUEPREFIX}/bin
++MANDIR=	${TRUEPREFIX}/man/man
++
++CFLAGS+= -DCOLORLS
++DPADD= ${LIBCURSES} ${LIBUTIL}
++LDADD= -lcurses -lutil
+ 
+ .include <bsd.prog.mk>

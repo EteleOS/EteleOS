@@ -1,0 +1,5 @@
+include/opensmtpd.h
+@static-lib lib/libopensmtpd.a
+@lib lib/libopensmtpd.so.${LIBopensmtpd_VERSION}
+@static-lib lib/libopensmtpd_p.a
+@man man/man3/osmtpd_run.3

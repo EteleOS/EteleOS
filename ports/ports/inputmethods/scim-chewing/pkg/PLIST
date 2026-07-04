@@ -1,0 +1,6 @@
+@comment lib/scim-1.0/1.4.0/IMEngine/chewing.la
+lib/scim-1.0/1.4.0/IMEngine/chewing.so
+@comment lib/scim-1.0/1.4.0/SetupUI/chewing-imengine-setup.la
+lib/scim-1.0/1.4.0/SetupUI/chewing-imengine-setup.so
+share/scim/icons/scim-chewing-swap-colors.png
+share/scim/icons/scim-chewing.png

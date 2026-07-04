@@ -1,0 +1,29 @@
+Index: src/sim/g_bigmap.c
+--- src/sim/g_bigmap.c.orig
++++ src/sim/g_bigmap.c
+@@ -63,14 +63,16 @@
+ 
+ 
+ int dynamicFilter(int c, int r);
+-int WireDrawBeegMapRect(SimView *view, short x, short y, short w, short h);
++void WireDrawBeegMapRect(SimView *view, short x, short y, short w, short h);
+ 
++void
+ drawBeegMaps()
+ {
+   sim_update_editors();
+ }
+ 
+ 
++void
+ MemDrawBeegMapRect(SimView *view, int x, int y, int w, int h)
+ {
+   int lineBytes = view->line_bytes;
+@@ -264,6 +266,7 @@ MemDrawBeegMapRect(SimView *view, int x, int y, int w,
+ }
+ 
+ 
++void
+ WireDrawBeegMapRect(SimView *view, short x, short y, short w, short h)
+ {
+   unsigned short *map;

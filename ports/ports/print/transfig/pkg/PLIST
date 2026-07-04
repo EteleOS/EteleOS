@@ -1,0 +1,22 @@
+@pkgpath print/transfig,a4
+@bin bin/fig2dev
+bin/fig2ps2tex
+bin/pic2tpic
+@bin bin/transfig
+@man man/man1/fig2dev.1
+@man man/man1/fig2ps2tex.1
+@man man/man1/pic2tpic.1
+@man man/man1/transfig.1
+share/fig2dev/
+share/fig2dev/i18n/
+share/fig2dev/i18n/ja.ps
+share/fig2dev/i18n/ja_JP.EUC.ps
+share/fig2dev/i18n/ja_JP.eucJP.ps
+share/fig2dev/i18n/ja_JP.ps
+share/fig2dev/i18n/ja_JP.ujis.ps
+share/fig2dev/i18n/japanese.ps
+share/fig2dev/i18n/ko.ps
+share/fig2dev/i18n/ko_KR.EUC.ps
+share/fig2dev/i18n/ko_KR.eucKR.ps
+share/fig2dev/i18n/ko_KR.ps
+share/fig2dev/i18n/korean.ps

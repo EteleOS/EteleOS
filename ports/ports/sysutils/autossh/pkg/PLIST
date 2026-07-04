@@ -1,0 +1,8 @@
+@bin bin/autossh
+@man man/man1/autossh.1
+share/doc/autossh/
+share/doc/autossh/CHANGES
+share/doc/autossh/README
+share/examples/autossh/
+share/examples/autossh/autossh.host
+share/examples/autossh/rscreen

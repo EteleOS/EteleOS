@@ -1,0 +1,27 @@
+Don't do this git stuff.
+Don't do the cpplint stuff. Elimintates python as a dependency.
+
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -10,9 +10,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+ 
+ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+ 
+-include(GitTools)
+-git_make_version(FREESERF_VERSION ${CMAKE_CURRENT_SOURCE_DIR} ${PROJECT_VERSION})
+-message(STATUS "FREESERF_VERSION = ${FREESERF_VERSION}")
++message(STATUS "FREESERF_VERSION = ${PROJECT_VERSION}")
+ 
+ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+   set(CMAKE_CXX_FLAGS "-std=gnu++11 ${CMAKE_CXX_FLAGS}")
+@@ -28,9 +26,6 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/version
+                @ONLY)
+ 
+ add_definitions(-DPACKAGE_BUGREPORT="https://github.com/freeserf/freeserf/issues")
+-
+-include(CppLint)
+-enable_check_style()
+ 
+ add_subdirectory(src)
+ 

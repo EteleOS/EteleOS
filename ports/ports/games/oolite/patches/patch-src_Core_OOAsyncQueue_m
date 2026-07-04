@@ -1,0 +1,15 @@
+missing header
+
+Index: src/Core/OOAsyncQueue.m
+--- src/Core/OOAsyncQueue.m.orig
++++ src/Core/OOAsyncQueue.m
+@@ -53,6 +53,9 @@ SOFTWARE.
+ #import "NSThreadOOExtensions.h"
+ #import <stdlib.h>
+ 
++#include <assert.h>
++
++
+ 
+ enum
+ {

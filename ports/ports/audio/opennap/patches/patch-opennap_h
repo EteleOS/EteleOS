@@ -1,0 +1,75 @@
+--- opennap.h.orig	Mon Oct  1 00:12:37 2001
++++ opennap.h	Sat Sep 10 10:44:09 2016
+@@ -16,6 +16,8 @@
+ #endif
+ 
+ #include <stdarg.h>
++/* fd_set */
++#include <sys/select.h>
+ #include <sys/types.h>
+ #include <zlib.h>
+ #include "hash.h"
+@@ -143,9 +145,26 @@ struct _user
+ 				   NOTE. this is a pointer to an entry in
+ 				   Server_Names, and not malloc'd. */
+ 
++    time_t  connected;		/* time at which the user connected */
++    LIST   *channels;		/* channels of which this user is a member */
++    CONNECTION *con;		/* local connection, or server which this
++				   user is behind */
++
++    unsigned int libsize;	/* approximate size of shared files in kB */
++    unsigned int ip;		/* ip of user in network byte order */
++
+     unsigned short uploads;	/* no. of uploads in progress */
+     unsigned short downloads;	/* no. of downloads in progress */
++    unsigned short port;	/* data port client is listening on */
++    unsigned short conport;	/* remote port for connection to server */
++    unsigned short totalup;	/* total number of uploads */
++    unsigned short totaldown;	/* total number of downloads */
+ 
++    unsigned short shared;	/* # of shared files */
++    unsigned short wantPong;	/* # of outstanding PONGs */
++
++    unsigned short yyy;		/* unused */
++
+     unsigned int level:3;	/* user level */
+     unsigned int speed:4;	/* link speed */
+     unsigned int local:1;	/* nonzero if locally connected */
+@@ -154,20 +173,6 @@ struct _user
+     unsigned int unsharing:1;
+     unsigned int cloaked:1;
+     unsigned int xxx:4;		/* unused */
+-    unsigned short shared;	/* # of shared files */
+-
+-    unsigned short totalup;	/* total number of uploads */
+-    unsigned short totaldown;	/* total number of downloads */
+-
+-    unsigned int libsize;	/* approximate size of shared files in kB */
+-    unsigned int ip;		/* ip of user in network byte order */
+-
+-    unsigned short port;	/* data port client is listening on */
+-    unsigned short conport;	/* remote port for connection to server */
+-    time_t  connected;		/* time at which the user connected */
+-    LIST   *channels;		/* channels of which this user is a member */
+-    CONNECTION *con;		/* local connection, or server which this
+-				   user is behind */
+ };
+ 
+ enum
+@@ -486,6 +491,7 @@ extern HASH *MD5;
+ extern int Stats_Port;
+ #endif
+ 
++extern int gBlockWinMX;
+ extern HASH *Channel_Db;
+ extern int Client_Queue_Length;
+ extern HASH *Client_Versions;
+@@ -835,6 +841,7 @@ int     config (int);
+ void    config_defaults (void);
+ USERDB *create_db (USER *);
+ void    destroy_connection (CONNECTION *);
++void	discipline_user (USER *);
+ void    dump_channels (void);
+ void    exec_timers (time_t);
+ void    expand_hex (char *, int);

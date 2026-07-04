@@ -1,0 +1,3 @@
+${P5SITE}/UPS/
+${P5SITE}/UPS/Nut.pm
+@man man/man3p/UPS::Nut.3p

@@ -1,0 +1,10 @@
+include/libzrtpcpp/
+include/libzrtpcpp/ZrtpCWrapper.h
+include/libzrtpcpp/ZrtpCallback.h
+include/libzrtpcpp/ZrtpCodes.h
+include/libzrtpcpp/ZrtpConfigure.h
+include/libzrtpcpp/ZrtpUserCallback.h
+include/libzrtpcpp/common/
+include/libzrtpcpp/common/osSpecifics.h
+@static-lib lib/libzrtpcppcore.a
+lib/pkgconfig/libzrtpcppcore.pc

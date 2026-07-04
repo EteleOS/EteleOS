@@ -1,0 +1,7 @@
+@bin bin/vanessa_logger_sample
+include/vanessa_logger.h
+lib/libvanessa_logger.a
+lib/libvanessa_logger.la
+@lib lib/libvanessa_logger.so.${LIBvanessa_logger_VERSION}
+lib/pkgconfig/vanessa-logger.pc
+@man man/man1/vanessa_logger_sample.1

@@ -1,0 +1,4 @@
+bin/poink
+@man man/man1/poink.1
+share/doc/poink/
+share/doc/poink/README

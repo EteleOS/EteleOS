@@ -1,0 +1,17 @@
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -1,11 +1,12 @@
+ AC_INIT(pwgen.c)
+ AC_PREREQ(2.50)
++AC_CONFIG_HEADERS(config.h)
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PATH_PROG(MV, mv, mv)
+ AC_PATH_PROG(RM, rm, rm)
+ AC_PATH_PROG(SED, sed, sed)
+ AC_PATH_PROG(PERL, perl, perl)
+-AC_CHECK_FUNCS(getopt_long)
++AC_CHECK_FUNCS(arc4random arc4random_uniform getopt_long pledge)
+ AC_CHECK_HEADERS(getopt.h)
+ AC_OUTPUT(Makefile)

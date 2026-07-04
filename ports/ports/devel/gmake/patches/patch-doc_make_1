@@ -1,0 +1,199 @@
+Since we install GNU make as gmake replace make with gmake in the
+manpage where it makes sense.
+
+Index: doc/make.1
+--- doc/make.1.orig
++++ doc/make.1
+@@ -1,13 +1,13 @@
+-.TH MAKE 1 "26 May 2023" "GNU" "User Commands"
++.TH GMAKE 1 "31 May 2022" "GNU" "User Commands"
+ .SH NAME
+-make \- GNU Make utility to maintain groups of programs
++gmake \- GNU Make utility to maintain groups of programs
+ .SH SYNOPSIS
+-.B make
++.B gmake
+ [\fIOPTION\fR]... [\fITARGET\fR]...
+ .SH DESCRIPTION
+ .LP
+ The
+-.I make
++.I gmake
+ utility will determine automatically which pieces of a large program need to
+ be recompiled, and issue the commands to recompile them.  The manual describes
+ the GNU implementation of
+@@ -15,15 +15,15 @@ the GNU implementation of
+ which was written by Richard Stallman and Roland McGrath, and is currently
+ maintained by Paul Smith.  Our examples show C programs, since they are very
+ common, but you can use
+-.B make
++.B gmake
+ with any programming language whose compiler can be run with a shell command.
+ In fact,
+-.B make
++.B gmake
+ is not limited to programs.  You can use it to describe any task where some
+ files must be updated automatically from others whenever the others change.
+ .LP
+ To prepare to use
+-.BR make ,
++.BR gmake ,
+ you must write a file called the
+ .I makefile
+ that describes the relationships among files in your program, and provides
+@@ -35,17 +35,17 @@ Once a suitable makefile exists, each time you change 
+ this simple shell command:
+ .sp 1
+ .RS
+-.B make
++.B gmake
+ .RE
+ .sp 1
+ suffices to perform all necessary recompilations.
+ The
+-.B make
++.B gmake
+ program uses the makefile description and the last-modification times of the
+ files to decide which of the files need to be updated.  For each of those
+ files, it issues the commands recorded in the makefile.
+ .LP
+-.B make
++.B gmake
+ executes commands in the
+ .I makefile
+ to update one or more
+@@ -56,7 +56,7 @@ is typically a program.
+ If no
+ .B \-f
+ option is present,
+-.B make
++.B gmake
+ will look for the makefiles
+ .IR GNUmakefile ,
+ .IR makefile ,
+@@ -83,7 +83,7 @@ If
+ .I makefile
+ is '\-', the standard input is read.
+ .LP
+-.B make
++.B gmake
+ updates a target if it depends on prerequisite files
+ that have been modified since the target was last modified,
+ or if the target does not exist.
+@@ -110,7 +110,7 @@ previous one:
+ is equivalent to
+ .BR "\-C " /etc.
+ This is typically used with recursive invocations of
+-.BR make .
++.BR gmake .
+ .TP 0.5i
+ .B \-d
+ Print debugging information in addition to normal processing.
+@@ -118,7 +118,7 @@ The debugging information says which files are being c
+ remaking, which file-times are being compared and with what results,
+ which files actually need to be remade, which implicit rules are
+ considered and which are applied---everything interesting about how
+-.B make
++.B gmake
+ decides what to do.
+ .TP 0.5i
+ .BI \-\-debug "[=FLAGS]"
+@@ -148,7 +148,7 @@ for debugging while remaking makefiles,
+ shows all recipes that are run even if they are silent, and
+ .I why
+ shows the reason
+-.BR make
++.BR gmake
+ decided to rebuild each target.  Use
+ .I none
+ to disable all previous debugging flags.
+@@ -178,7 +178,7 @@ If several
+ options are used to specify several directories, the directories are
+ searched in the order specified.
+ Unlike the arguments to other flags of
+-.BR make ,
++.BR gmake ,
+ directories given with
+ .B \-I
+ flags may come directly after the flag:
+@@ -201,7 +201,7 @@ option, the last one is effective.
+ If the
+ .B \-j
+ option is given without an argument,
+-.BR make
++.BR gmake
+ will not limit the number of jobs that can run simultaneously.
+ .TP 0.5i
+ \fB\--jobserver-style=\fR\fIstyle\fR
+@@ -272,7 +272,7 @@ This also prints the version information given by the
+ .B \-v
+ switch (see below).
+ To print the data base without trying to remake any files, use
+-.IR "make \-p \-f/dev/null" .
++.IR "gmake \-p \-f/dev/null" .
+ .TP 0.5i
+ \fB\-q\fR, \fB\-\-question\fR
+ ``Question mode''.
+@@ -303,7 +303,7 @@ Touch files (mark them up to date without really chang
+ instead of running their commands.
+ This is used to pretend that the commands were done, in order to fool
+ future invocations of
+-.BR make .
++.BR gmake .
+ .TP 0.5i
+ .B \-\-trace
+ Information about the disposition of each target is printed (why the target is
+@@ -311,7 +311,7 @@ being rebuilt and what commands are run to rebuild it)
+ .TP 0.5i
+ \fB\-v\fR, \fB\-\-version\fR
+ Print the version of the
+-.B make
++.B gmake
+ program plus a copyright, a list of authors and a notice that there
+ is no warranty.
+ .TP 0.5i
+@@ -320,7 +320,7 @@ Print a message containing the working directory
+ before and after other processing.
+ This may be useful for tracking down errors from complicated nests of
+ recursive
+-.B make
++.B gmake
+ commands.
+ .TP 0.5i
+ .B \-\-no\-print\-directory
+@@ -360,9 +360,9 @@ Without
+ it is almost the same as running a
+ .I touch
+ command on the given file before running
+-.BR make ,
++.BR gmake ,
+ except that the modification time is changed only in the imagination of
+-.BR make .
++.BR gmake .
+ .TP 0.5i
+ .B \-\-warn\-undefined\-variables
+ Warn when an undefined variable is referenced.
+@@ -372,19 +372,19 @@ and no targets that were built failed.  A status of on
+ if the
+ .B \-q
+ flag was used and
+-.B make
++.B gmake
+ determines that a target needs to be rebuilt.  A status of two will be
+ returned if any errors were encountered.
+ .SH "SEE ALSO"
+ The full documentation for
+-.B make
++.B gmake
+ is maintained as a Texinfo manual.  If the
+ .B info
+ and
+-.B make
++.B gmake
+ programs are properly installed at your site, the command
+ .IP
+-.B info make
++.B info 'GNU make'
+ .PP
+ should give you access to the complete manual.
+ .SH BUGS

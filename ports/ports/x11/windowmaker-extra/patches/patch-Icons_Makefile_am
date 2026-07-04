@@ -1,0 +1,12 @@
+--- Icons/Makefile.am.orig	Thu Apr  1 14:44:13 1999
++++ Icons/Makefile.am	Tue Feb 13 17:03:43 2001
+@@ -61,8 +61,7 @@ defsdata_DATA =\
+ 	tile.black.xpm\
+ 	tile.snow.xpm\
+ 	tile.xpm\
+-	tile2.xpm\
+-	xv.xpm
++	tile2.xpm
+ 
+ EXTRA_DIST = $(defsdata_DATA) mkMakefile
+ 

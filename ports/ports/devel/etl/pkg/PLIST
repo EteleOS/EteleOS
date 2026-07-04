@@ -1,0 +1,7 @@
+bin/ETL-config
+include/ETL/
+include/ETL/ETL/
+include/ETL/ETL/_handle.h
+include/ETL/ETL/etl_profile.h
+include/ETL/ETL/handle
+lib/pkgconfig/ETL.pc

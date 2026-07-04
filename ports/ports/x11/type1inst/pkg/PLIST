@@ -1,0 +1,5 @@
+bin/t1embed
+bin/type1inst
+@man man/man1/type1inst.1
+share/doc/type1inst/
+share/doc/type1inst/README

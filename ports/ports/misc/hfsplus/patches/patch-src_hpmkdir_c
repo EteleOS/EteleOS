@@ -1,0 +1,12 @@
+--- src/hpmkdir.c.orig	Tue Mar  5 20:50:29 2002
++++ src/hpmkdir.c	Wed Mar 16 23:33:44 2016
+@@ -46,8 +46,8 @@ int ioctl(int, int, ...);
+ # include <string.h>
+ # include <time.h>
+ # include <ctype.h>
+-# include <errno.h>
+ */
++# include <errno.h>
+ # include <stdio.h>
+ # include <stdlib.h>
+ 

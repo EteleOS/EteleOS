@@ -1,0 +1,22 @@
+Index: ECtools/spamd/kopano_spamd/__init__.py
+--- ECtools/spamd/kopano_spamd/__init__.py.orig
++++ ECtools/spamd/kopano_spamd/__init__.py
+@@ -18,12 +18,12 @@ kopano-spamd - ICS driven spam learning daemon for Kop
+ """
+ 
+ CONFIG = {
+-    'spam_dir': Config.string(default="/var/lib/kopano/spamd/spam"),
+-    'ham_dir': Config.string(default="/var/lib/kopano/spamd/ham"),
+-    'spam_db': Config.string(default="/var/lib/kopano/spamd/spam.db"),
+-    'sa_group': Config.string(default="amavis"),
+-    'run_as_user': Config.string(default="kopano"),
+-    'run_as_group': Config.string(default="kopano"),
++    'spam_dir': Config.string(default="/var/db/kopano/spamd/spam"),
++    'ham_dir': Config.string(default="/var/db/kopano/spamd/ham"),
++    'spam_db': Config.string(default="/var/db/kopano/spamd/spam.db"),
++    'sa_group': Config.string(default="_spamdaemon"),
++    'run_as_user': Config.string(default="_kopano"),
++    'run_as_group': Config.string(default="_kopano"),
+     'learn_ham': Config.boolean(default=True),
+     'header_tag': Config.string(default="x-spam-flag")
+ }

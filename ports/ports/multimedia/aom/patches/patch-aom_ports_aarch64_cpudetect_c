@@ -1,0 +1,35 @@
+Add AArch64 CPU feature detection support for OpenBSD.
+
+Index: aom_ports/aarch64_cpudetect.c
+--- aom_ports/aarch64_cpudetect.c.orig
++++ aom_ports/aarch64_cpudetect.c
+@@ -127,7 +127,7 @@ static int arm_get_cpu_caps(void) {
+   return flags;
+ }
+ 
+-#elif defined(__linux__)  // end defined(AOM_USE_ANDROID_CPU_FEATURES)
++#elif defined(__linux__) || defined(__OpenBSD__)  // end defined(AOM_USE_ANDROID_CPU_FEATURES)
+ 
+ #include <sys/auxv.h>
+ 
+@@ -142,10 +142,20 @@ static int arm_get_cpu_caps(void) {
+ static int arm_get_cpu_caps(void) {
+   int flags = 0;
+ #if HAVE_ARM_CRC32 || HAVE_NEON_DOTPROD || HAVE_SVE
++#ifdef __OpenBSD__
++  unsigned long hwcap = 0;
++  elf_aux_info(AT_HWCAP, &hwcap, sizeof(hwcap));
++#else
+   unsigned long hwcap = getauxval(AT_HWCAP);
+ #endif
++#endif
+ #if HAVE_NEON_I8MM || HAVE_SVE2
++#ifdef __OpenBSD__
++  unsigned long hwcap2 = 0;
++  elf_aux_info(AT_HWCAP2, &hwcap2, sizeof(hwcap2));
++#else
+   unsigned long hwcap2 = getauxval(AT_HWCAP2);
++#endif
+ #endif
+ 
+ #if HAVE_NEON

@@ -1,0 +1,12 @@
+Index: python/louis/Makefile.in
+--- python/louis/Makefile.in.orig
++++ python/louis/Makefile.in
+@@ -1698,7 +1698,7 @@ uninstall-am:
+ 
+ 
+ all:
+-	source ../../liblouis/liblouis.la ; \
++	. ../../liblouis/liblouis.la ; \
+ 	sed "s/###LIBLOUIS_SONAME###/$$dlname/" \
+ 		< $(srcdir)/__init__.py.in \
+ 		> __init__.py

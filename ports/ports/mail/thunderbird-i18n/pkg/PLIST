@@ -1,0 +1,2 @@
+@pkgpath mail/thunderbird-i18n,-${L}
+lib/thunderbird/distribution/extensions/langpack-${L}@thunderbird.mozilla.org.xpi

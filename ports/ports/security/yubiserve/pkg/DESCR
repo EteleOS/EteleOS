@@ -1,0 +1,9 @@
+yubikeyedup is a lightweight validation server for Yubikey OTP
+authentication written in Python. It provides the standard HTTP-based
+Validation Protocol 2.0 used by various servers including Yubico's
+official PHP-based server.
+
+It is a complete rewrite of the earlier project "YubiServe" (seemingly
+abandoned and never ported to Python 3). It uses the same database schema
+and is broadly compatible, though does not support HTTPS internally (if
+wanted, this can be added by proxying from relayd, nginx or similar).

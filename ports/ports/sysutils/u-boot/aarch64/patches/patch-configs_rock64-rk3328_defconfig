@@ -1,0 +1,12 @@
+Index: configs/rock64-rk3328_defconfig
+--- configs/rock64-rk3328_defconfig.orig
++++ configs/rock64-rk3328_defconfig
+@@ -78,7 +78,7 @@ CONFIG_RAM=y
+ CONFIG_SPL_RAM=y
+ CONFIG_TPL_RAM=y
+ CONFIG_DM_RESET=y
+-CONFIG_BAUDRATE=1500000
++CONFIG_BAUDRATE=115200
+ CONFIG_DEBUG_UART_SHIFT=2
+ CONFIG_ROCKCHIP_SPI=y
+ CONFIG_SYSINFO=y

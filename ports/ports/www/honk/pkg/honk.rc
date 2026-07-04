@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/honk"
+daemon_flags="-datadir ${LOCALSTATEDIR}/honk -viewdir ${LOCALSTATEDIR}/honk"
+daemon_logger="daemon.info"
+daemon_user="_honk"
+
+. /etc/rc.d/rc.subr
+
+pexp="honk: .*"
+rc_bg=YES
+rc_reload=NO
+
+rc_cmd $1

@@ -1,0 +1,16 @@
+- provide a standard check_disk that checks all volumes, apart from hda1
+not existing, it's stupid to check individual FS when they're split up
+as usual with OpenBSD.
+
+Index: sample-config/nrpe.cfg.in
+--- sample-config/nrpe.cfg.in.orig
++++ sample-config/nrpe.cfg.in
+@@ -299,7 +299,7 @@ disable_syslog=0
+ 
+ command[check_users]=@pluginsdir@/check_users -w 5 -c 10
+ command[check_load]=@pluginsdir@/check_load -r -w .15,.10,.05 -c .30,.25,.20
+-command[check_hda1]=@pluginsdir@/check_disk -w 20% -c 10% -p /dev/hda1
++command[check_disk]=@pluginsdir@/check_disk -w 20% -c 10%
+ command[check_zombie_procs]=@pluginsdir@/check_procs -w 5 -c 10 -s Z
+ command[check_total_procs]=@pluginsdir@/check_procs -w 150 -c 200
+ 

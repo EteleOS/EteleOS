@@ -1,0 +1,12 @@
+- rc.conf* are not shell scripts anymore.
+
+--- lenses/simplelines.aug.orig	Wed May  4 01:02:57 2016
++++ lenses/simplelines.aug	Sat May 14 14:47:24 2016
+@@ -44,5 +44,7 @@ let filter = incl "/etc/at.allow"
+            . incl "/etc/default/grub_installdevice"
+            . incl "/etc/pam.d/allow.pamlist"
+            . incl "/etc/hostname.*"
++           . incl "/etc/rc.conf"
++           . incl "/etc/rc.conf.local"
+ 
+ let xfm = transform lns filter

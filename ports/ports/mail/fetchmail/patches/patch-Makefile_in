@@ -1,0 +1,12 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -2237,7 +2237,7 @@ info: info-recursive
+ 
+ info-am:
+ 
+-install-data-am: install-man install-pythonPYTHON
++install-data-am: install-man
+ 
+ install-dvi: install-dvi-recursive
+ 

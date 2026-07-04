@@ -1,0 +1,5 @@
+# $OpenBSD: Makefile.bsd-wrapper,v 1.9 2025/03/09 15:14:49 matthieu Exp $
+
+SHARED_LIBS=	Xft 13.0
+
+.include <bsd.xorg.mk>

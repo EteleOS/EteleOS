@@ -1,0 +1,12 @@
+Index: src/session_record.c
+--- src/session_record.c.orig
++++ src/session_record.c
+@@ -5,7 +5,7 @@
+ #include <assert.h>
+ 
+ #include "session_state.h"
+-#include "utlist.h"
++#include "utlist_local.h"
+ #include "LocalStorageProtocol.pb-c.h"
+ #include "signal_protocol_internal.h"
+ 

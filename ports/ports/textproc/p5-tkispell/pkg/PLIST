@@ -1,0 +1,5 @@
+bin/tkispell
+${P5SITE}/Tk/
+${P5SITE}/Tk/SimpleFileSelect.pm
+@man man/man1/tkispell.1
+@man man/man3p/Tk::SimpleFileSelect.3p

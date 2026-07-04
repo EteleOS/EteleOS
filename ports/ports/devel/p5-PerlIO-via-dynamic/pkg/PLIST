@@ -1,0 +1,4 @@
+${P5SITE}/PerlIO/
+${P5SITE}/PerlIO/via/
+${P5SITE}/PerlIO/via/dynamic.pm
+@man man/man3p/PerlIO::via::dynamic.3p

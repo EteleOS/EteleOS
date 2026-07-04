@@ -1,0 +1,5 @@
+Nano is a small and simple text editor for use on the terminal.
+It copied the interface and key bindings of the Pico editor but
+added several missing features: undo/redo, syntax highlighting,
+line numbers, softwrapping, multiple buffers, search-and-replace
+with regular expressions, and several other conveniences.

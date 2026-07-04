@@ -1,0 +1,21 @@
+Index: src/Makefile.in
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -499,7 +499,7 @@ distdir-am: $(DISTFILES)
+ 	done
+ check-am: all-am
+ check: check-am
+-all-am: Makefile $(SCRIPTS) $(MANS) $(DATA)
++all-am: Makefile $(SCRIPTS) $(MANS)
+ installdirs:
+ 	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(man1dir)" "$(DESTDIR)$(man7dir)" "$(DESTDIR)$(docdir)"; do \
+ 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
+@@ -555,7 +555,7 @@ info: info-am
+ 
+ info-am:
+ 
+-install-data-am: install-docDATA install-man
++install-data-am: install-man
+ 
+ install-dvi: install-dvi-am
+ 

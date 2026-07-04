@@ -1,0 +1,13 @@
+Do not gzip man page.
+
+Index: Pinta.Install.proj
+--- Pinta.Install.proj.orig
++++ Pinta.Install.proj
+@@ -243,7 +243,6 @@
+     <Copy SourceFiles="xdg/32x32/pinta.png" DestinationFolder="$(DataRootDir)/icons/hicolor/32x32/apps" />
+     <Copy SourceFiles="xdg/96x96/pinta.png" DestinationFolder="$(DataRootDir)/icons/hicolor/96x96/apps" />
+     <Copy SourceFiles="xdg/scalable/pinta.svg" DestinationFolder="$(DataRootDir)/icons/hicolor/scalable/apps" />
+-    <Exec Command='gzip -f "$(ManDir)/man1/pinta.1"' />
+   </Target>
+ 
+   <!-- Uninstall everything for Pinta -->

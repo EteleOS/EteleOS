@@ -1,0 +1,6 @@
+${P5SITE}/Object/
+${P5SITE}/Object/Signature/
+${P5SITE}/Object/Signature.pm
+${P5SITE}/Object/Signature/File.pm
+@man man/man3p/Object::Signature.3p
+@man man/man3p/Object::Signature::File.3p

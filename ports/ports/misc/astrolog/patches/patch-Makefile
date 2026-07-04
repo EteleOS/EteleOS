@@ -1,0 +1,15 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -26,9 +26,7 @@ OBJ = astrolog.o atlas.o calc.o charts0.o charts1.o ch
+ # If you don't have X windows, delete the "-lX11" part from the line below:
+ # If not compiling with GNUC, delete the "-ldl" part from the line below:
+ LIBS = -lm -lX11 -ldl
+-CPPFLAGS = -O -Wno-write-strings -Wno-narrowing -Wno-comment
++CPPFLAGS = -Wno-write-strings -Wno-narrowing -Wno-comment
+ 
+ astrolog:: $(OBJ)
+-	cc -o $(NAME) $(OBJ) $(LIBS)
+-	strip $(NAME)
+-#
++	$(CC) -o $(NAME) $(OBJ) $(LIBS)

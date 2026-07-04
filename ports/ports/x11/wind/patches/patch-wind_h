@@ -1,0 +1,16 @@
+Index: wind.h
+--- wind.h.orig
++++ wind.h
+@@ -94,9 +94,9 @@ extern GC hlbackground;
+ extern int lineheight;
+ extern int halfleading;
+ 
+-struct font *font;
+-struct fontcolor *fhighlight;
+-struct fontcolor *fnormal;
++extern struct font *font;
++extern struct fontcolor *fhighlight;
++extern struct fontcolor *fnormal;
+ 
+ extern struct bitmap *deletebitmap;
+ 

@@ -1,0 +1,3 @@
+${P5SITE}/Cookie/
+${P5SITE}/Cookie/Baker.pm
+@man man/man3p/Cookie::Baker.3p

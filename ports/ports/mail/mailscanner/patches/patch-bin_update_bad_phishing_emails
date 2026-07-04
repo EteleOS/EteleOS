@@ -1,0 +1,30 @@
+--- bin/update_bad_phishing_emails.orig	Wed Feb 18 06:53:04 2015
++++ bin/update_bad_phishing_emails	Fri Mar 13 20:26:56 2015
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w -I/opt/MailScanner/lib
++#!/usr/bin/perl -w -I%PREFIX%/lib/MailScanner
+ 
+ #
+ #   MailScanner - SMTP E-Mail Virus Scanner
+@@ -39,17 +39,17 @@ use MailScanner::Config;
+ 
+ # Work out Quarantine Directory from MailScanner.conf
+ my $base = '/var/spool/MailScanner/quarantine'; # Default value
+-if (-f '/opt/MailScanner/etc/MailScanner.conf') {
+-    $base = MailScanner::Config::QuickPeek('/opt/MailScanner/etc/MailScanner.conf', 'QuarantineDir');
++if (-f '%SYSCONFDIR%/MailScanner/MailScanner.conf') {
++    $base = MailScanner::Config::QuickPeek('%SYSCONFDIR%/MailScanner/MailScanner.conf', 'QuarantineDir');
+ }else{
+-    warn "Default configuration file /opt/MailScanner/etc/MailScanner.conf not found";
++    warn "Default configuration file %SYSCONFDIR%/MailScanner/MailScanner.conf not found";
+ }
+ 
+ my $current = $base . '/phishingupdate/';
+ my $cache = $current . 'emails.cache/';
+ my $status = $current . 'emails.status';
+ my $urlbase = "http://cdn.mailscanner.info/emails.";
+-my $target= "/opt/MailScanner/etc/phishing.bad.emails.conf";
++my $target= "%SYSCONFDIR%/MailScanner/phishing.bad.emails.conf";
+ my $query="emails.msupdate.greylist.bastionmail.com";
+ 
+ my $baseupdated = 0;

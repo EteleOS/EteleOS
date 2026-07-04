@@ -1,0 +1,11 @@
+Index: src/backend/distributed/commands/multi_copy.c
+--- src/backend/distributed/commands/multi_copy.c.orig
++++ src/backend/distributed/commands/multi_copy.c
+@@ -43,6 +43,7 @@
+  *-------------------------------------------------------------------------
+  */
+ 
++#include <sys/stat.h> /* S_IRUSR and S_IWUSR constants */
+ #include <arpa/inet.h> /* for htons */
+ #include <netinet/in.h> /* for htons */
+ #include <string.h>

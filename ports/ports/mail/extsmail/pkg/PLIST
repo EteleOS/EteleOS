@@ -1,0 +1,6 @@
+@bin bin/extsmail
+@bin bin/extsmaild
+@man man/man1/extsmail.1
+@man man/man1/extsmaild.1
+@man man/man5/extsmail.conf.5
+@man man/man5/extsmail.externals.5

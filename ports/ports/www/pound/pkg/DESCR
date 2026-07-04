@@ -1,0 +1,4 @@
+The Pound program is a reverse proxy, load balancer and HTTPS front-end
+for web server(s). Pound was developed to enable distributing the load
+among several web servers and to allow for a convenient SSL wrapper for
+those web servers that do not offer it natively.

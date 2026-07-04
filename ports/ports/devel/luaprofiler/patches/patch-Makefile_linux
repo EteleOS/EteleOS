@@ -1,0 +1,16 @@
+--- Makefile.linux.orig	Mon Nov 27 19:32:11 2006
++++ Makefile.linux	Fri May 15 22:56:19 2015
+@@ -1,10 +1,10 @@
+-include config.linux
++include ../config.linux
+ 
+-OBJS= src/clocks.o src/core_profiler.o src/function_meter.o src/stack.o src/lua50_profiler.o
++OBJS= clocks.o core_profiler.o function_meter.o stack.o lua50_profiler.o
+ 
+ 
+ profiler: $(OBJS)
+-	mkdir -p bin && $(LD) -Bshareable -o $(PROFILER_OUTPUT) $(OBJS)
++	mkdir -p bin && $(CC) -shared -o $(PROFILER_OUTPUT) $(OBJS)
+ 
+ clean:
+ 	rm -f $(PROFILER_OUTPUT) src/*.o

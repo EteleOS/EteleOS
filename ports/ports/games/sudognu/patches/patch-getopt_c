@@ -1,0 +1,11 @@
+--- getopt.c.orig	Sat Mar 21 15:44:26 2009
++++ getopt.c	Sun Apr  5 20:52:13 2009
+@@ -83,7 +83,7 @@ int getoptions(int argc, char *argv[]) {
+ 				}
+ 				break;
+ 			case 't':
+-				nthread = sysconf(_SC_NPROCESSORS_ONLN);
++				nthread = 0;
+ 				break;
+ 			case 'f':
+ 				if (strlen(optarg) > MAX_STRLEN) {

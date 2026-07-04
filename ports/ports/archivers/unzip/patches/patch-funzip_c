@@ -1,0 +1,13 @@
+--- funzip.c.orig	Wed Oct  7 12:11:04 2015
++++ funzip.c	Wed Oct  7 12:12:57 2015
+@@ -294,6 +294,10 @@ char **argv;
+ #else /* !CRYPT */
+   char *s = "";
+ #endif /* ?CRYPT */
++
++  if (pledge("stdio rpath wpath cpath fattr tty", NULL) == -1)
++      err(1, "pledge");
++
+   CONSTRUCTGLOBALS();
+ 
+   /* skip executable name */

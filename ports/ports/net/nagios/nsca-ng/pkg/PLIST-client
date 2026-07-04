@@ -1,0 +1,12 @@
+@conflict nsca-client-*
+libexec/nagios/
+libexec/nagios/send_nsca
+@man man/man5/send_nsca.cfg.5
+@man man/man8/send_nsca.8
+@bin sbin/send_nsca
+share/examples/nsca-ng/
+share/examples/nsca-ng/send_nsca.cfg
+@mode 750
+@owner root
+@group wheel
+@sample ${SYSCONFDIR}/send_nsca.cfg

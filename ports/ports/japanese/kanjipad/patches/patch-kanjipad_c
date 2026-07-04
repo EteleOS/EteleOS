@@ -1,0 +1,11 @@
+--- kanjipad.c.orig	Mon Feb  1 07:55:13 2010
++++ kanjipad.c	Mon Feb  1 07:55:46 2010
+@@ -510,7 +510,7 @@ init_engine()
+   if (data_file)
+     argv[2] = data_file;
+   else
+-    argv[1] = NULL;
++    argv[1] = (char *)0;
+ 
+   if (!g_spawn_async_with_pipes (NULL, /* working directory */
+ 				 argv, NULL,	/* argv, envp */

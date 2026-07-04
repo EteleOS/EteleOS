@@ -1,0 +1,13 @@
+Index: acinclude.m4
+--- acinclude.m4.orig
++++ acinclude.m4
+@@ -649,8 +649,7 @@ for be in ${BACKENDS}; do
+     ;;
+ 
+     v4l)
+-    if test "${have_linux_ioctl_defines}" != "yes" \
+-      || test "${have_libv4l1}" != "yes"; then
++    if test "${have_libv4l1}" != "yes"; then
+       echo "*** $be backend requires v4l libraries - $DISABLE_MSG"
+       backend_supported="no"
+     fi

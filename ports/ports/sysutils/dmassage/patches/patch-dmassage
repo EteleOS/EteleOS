@@ -1,0 +1,51 @@
+--- dmassage.orig	Sun Jan 27 12:35:53 2002
++++ dmassage	Tue Jan  7 09:48:54 2014
+@@ -97,14 +97,11 @@ sub parse_dmesg
+ {
+     open(DMESG, $DMESG) || die "cannot read dmesg: $!\n";
+ 
+-    # "mainbus0 at root" should be always there.
+-    $dmesgdev{"root"}{"mainbus0"}++;
+-
+     while (<DMESG>) {
+ 	chomp;
+ 	s/\s+/ /g;
+ 	s/^ //;
+-	if (m/^([a-z]{2,}[0-9]+) at ([a-z]{2,}[0-9]+)/) {
++	if (m/^([a-z]{2,}[0-9]+) at ([a-z]{2,}[0-9]+|root)/) {
+ 	    $dmesgdev{$2}{$1}++;
+ 	}
+     }
+@@ -191,7 +188,6 @@ sub printdev
+ sub usage
+ {
+     die <<USAGE
+-Type 'perldoc -F $0' to see the documentation.
+ Usage: dmassage [-d dmesg] <-f kernel | -s kernelconfig | -t>
+ USAGE
+ }
+@@ -214,6 +210,8 @@ B<dmassage> - dmesg parser
+ 
+ =cut
+ 
++=back
++
+ =head1 DESCRIPTION
+ 
+ B<dmassage> parses your system's dmesg to learn which devices are
+@@ -265,5 +263,15 @@ B<< dmassage -s GENERIC >SMALLKERNEL >>
+ Camiel Dobbelaar <cd@sentia.nl>
+ 
+ http://www.sentia.org/projects/dmassage
++
++=head1 CAVEATS
++
++dmassage does not fully support recent OpenBSD releases and
++will often no longer directly create a working kernel configuration
++file; in most cases you will need to make additional changes yourself.
++
++Additionally, note that using a custom kernel is unsupported.
++If reporting any OS bugs, be sure to verify that they still occur
++with GENERIC or GENERIC.MP.
+ 
+ =cut

@@ -1,0 +1,11 @@
+--- socket.h.orig	Mon Aug  7 21:01:39 1995
++++ socket.h	Thu Jul  8 21:22:03 2010
+@@ -80,7 +80,7 @@ Send formatted output to the socket, followed
+ by a CR-LF.
+ Returns 0 for success.
+ */
+-int SockPrintf();
++int SockPrintf(int, char *, ...);
+ 
+ /*
+ Check socket for readability.  return 0 for not readable,

@@ -1,0 +1,32 @@
+--- dvi2tty.c.orig	Thu Jan 23 11:28:30 2003
++++ dvi2tty.c	Tue May 11 07:06:36 2010
+@@ -180,7 +180,7 @@
+                               /* don't have terminals with Scand. nat. chars */
+ #define WANTPAGER   TRUE      /* default: try to pipe through a pager (like  */
+                               /* more) if stdout is tty and no -o switch     */
+-#define DEFPAGER    "/usr/bin/pg"   /* CHANGE TO YOUR LOCAL PAGER            */
++#define DEFPAGER    "/usr/bin/more"   /* CHANGE TO YOUR LOCAL PAGER            */
+ 
+     /*------------------ end of customization constants ---------------------*/
+ 
+@@ -263,11 +263,6 @@ int     getlong   (long *, int *, char *);
+ void    usage     (int);
+ #else
+ 
+-# if defined(VMS)
+-        main      (int argc, char ** argv); 
+-# else
+-void    main      (int argc, char ** argv); 
+-# endif
+ void    setoption (char * optarg);
+ void    getargs   (void);
+ void    getpages  (int j, char * str);
+@@ -288,7 +283,7 @@ void    usage     (int uerr);
+ #if defined(VMS)
+ main(int argc, char **argv)
+ #else
+-void main(int argc, char **argv)
++int main(int argc, char **argv)
+ #endif
+ {
+ 

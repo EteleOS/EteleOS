@@ -1,0 +1,24 @@
+OpenBSD path and there is no point in logging to stderr if we use
+daemon() to daemonise (stderr will get closed).
+
+Index: LCDd.conf
+--- LCDd.conf.orig
++++ LCDd.conf
+@@ -34,7 +34,7 @@
+ #            the driver modules and will thus not be able to
+ #            function properly.
+ # NOTE: Always place a slash as last character !
+-DriverPath=server/drivers/
++DriverPath=${TRUEPREFIX}/lib/lcdproc/
+ 
+ # Tells the server to load the given drivers. Multiple lines can be given.
+ # The name of the driver is case sensitive and determines the section
+@@ -68,7 +68,7 @@ Port=13666
+ 
+ # User to run as.  LCDd will drop its root privileges and run as this user
+ # instead. [default: nobody]
+-User=nobody
++User=_lcdproc
+ 
+ # The server will stay in the foreground if set to yes.
+ # [default: no, legal: yes, no]

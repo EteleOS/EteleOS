@@ -1,0 +1,6 @@
+share/fonts/
+@fontdir share/fonts/league-fonts/
+share/fonts/league-fonts/Fanwood-Italic.otf
+share/fonts/league-fonts/Fanwood.otf
+share/fonts/league-fonts/FanwoodText-Italic.otf
+share/fonts/league-fonts/FanwoodText.otf

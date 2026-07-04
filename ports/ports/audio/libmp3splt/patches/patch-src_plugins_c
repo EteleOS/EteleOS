@@ -1,0 +1,14 @@
+Index: src/plugins.c
+--- src/plugins.c.orig
++++ src/plugins.c
+@@ -148,8 +148,8 @@ static int splt_p_filter_plugin_files(const struct dir
+ 
+ #ifndef __WIN32__
+   //gnu/linux .so.0
+-  p_end = strstr(file, ".so.0");
+-  if (p_end != NULL && (p_start == p_end) && (*(p_end+5) == '\0'))
++  p_end = strstr(file, ".so");
++  if (p_end != NULL && (p_start == p_end) && (*(p_end+3) == '\0'))
+   {
+     return 1;
+   }

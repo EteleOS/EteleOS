@@ -1,0 +1,49 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -34,7 +34,7 @@ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+ datarootdir = @datarootdir@
+ srcdir = @srcdir@
+-docdir = @datadir@/doc/argus-3.0
++docdir = @datadir@/doc/argus
+ 
+ 
+ #### End of system configuration section. ####
+@@ -55,7 +55,7 @@ DISTFILES = AUTHORS COPYING ChangeLog INSTALL MANIFEST
+ .PHONY: install installdirs all
+ 
+ all: force
+-	@-for d in $(DIRS);\
++	@for d in $(DIRS);\
+ 	do \
+ 		(cd $$d; echo "### Making in" `pwd`;\
+ 			$(MAKE) $(MFLAGS) ;\
+@@ -70,10 +70,6 @@ install:  force
+ 		(mkdir -p $(DESTDIR)@sbindir@; chmod 755 $(DESTDIR)@sbindir@)
+ 	[ -d $(DESTDIR)@bindir@ ] || \
+ 		(mkdir -p $(DESTDIR)@bindir@; chmod 755 $(DESTDIR)@bindir@)
+-	[ -d $(DESTDIR)$(exec_prefix)/argus ] || \
+-		(mkdir -p $(DESTDIR)$(exec_prefix)/argus; chmod 755 $(DESTDIR)$(exec_prefix)/argus)
+-	[ -d $(DESTDIR)$(exec_prefix)/argus/archive ] || \
+-		(mkdir -p $(DESTDIR)$(exec_prefix)/argus/archive; chmod 755 $(DESTDIR)$(exec_prefix)/argus/archive)
+ 
+ 	@-for d in $(DIRS); \
+ 	do \
+@@ -100,7 +96,6 @@ install-doc:  force
+ 	[ -d $(DESTDIR)$(docdir) ] || \
+ 		(mkdir -p $(DESTDIR)$(docdir); chmod 755 $(DESTDIR)$(docdir))
+ 	$(INSTALL) -m 0644 $(srcdir)/README $(DESTDIR)$(docdir)
+-	$(INSTALL) -m 0644 $(srcdir)/COPYING $(DESTDIR)$(docdir)
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)@mandir@/man5/argus.5
+@@ -118,7 +113,7 @@ uninstall:
+ 
+ installdirs:
+ 	${srcdir}/config/mkinstalldirs $(DESTDIR)$(bindir) $(DESTDIR)$(mandir)\
+-		$(DESTDIR)$(docdir) $(DESTDIR)$(exec_prefix)/argus/archive
++		$(DESTDIR)$(docdir)
+ 
+ Makefile: Makefile.in config.status
+ 	$(SHELL) config.status

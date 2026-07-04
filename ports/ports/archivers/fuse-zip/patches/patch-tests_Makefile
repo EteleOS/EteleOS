@@ -1,0 +1,8 @@
+--- tests/Makefile.orig	Tue Jan 21 00:10:21 2014
++++ tests/Makefile	Tue Jan 21 00:10:24 2014
+@@ -1,5 +1,4 @@
+ all:
+-	make -C blackbox all
+ 	make -C whitebox test
+ 
+ valgrind:

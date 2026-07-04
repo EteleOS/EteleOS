@@ -1,0 +1,4 @@
+libexec/nagios/
+libexec/nagios/check_mssql_health
+share/doc/check_mssql_health/
+share/doc/check_mssql_health/README

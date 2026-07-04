@@ -1,0 +1,21 @@
+Index: src/multitrans.cc
+--- src/multitrans.cc.orig
++++ src/multitrans.cc
+@@ -1,4 +1,5 @@
+ #include "multi_translator.h"
++#include <unistd.h>
+ #include <lttoolbox/lt_locale.h>
+ 
+ bool trim = false;
+@@ -25,6 +26,11 @@ void printError(char *name) {
+ }
+ 
+ void parseArguments(int argc, char **argv) {
++    if (pledge("stdio rpath wpath cpath", NULL) == -1) {
++      wcerr << "pledge" << endl;
++      exit(1);
++    }
++
+     if (argc < 3 || argc > 7) {
+       printError(argv[0]);
+       exit(1);

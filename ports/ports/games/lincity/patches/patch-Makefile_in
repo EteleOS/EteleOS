@@ -1,0 +1,17 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -203,10 +203,11 @@ EXTRA_DIST = $(LC_DISTDIRS) \
+ 	CHANGES COPYRIGHT Acknowledgements \
+ 	config.sh \
+ 	README.profiling \
+-	lincity.6
++	lincity.6 \
++	xlincity.6
+ 
+ 
+-man_MANS = lincity.6
++man_MANS = lincity.6 xlincity.6
+ nobase_pkgdata_DATA = help/* icons/* messages/* opening/* colour.pal
+ 
+ 

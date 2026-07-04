@@ -1,0 +1,32 @@
+fix build on alpha, powerpc
+
+Index: platforms/unix/config/acinclude.m4
+--- platforms/unix/config/acinclude.m4.orig
++++ platforms/unix/config/acinclude.m4
+@@ -114,9 +114,6 @@ if test "$GCC" = yes; then
+   i?86)
+     ac_optflags="-fomit-frame-pointer"
+     ;;
+-  powerpc|ppc)
+-    ac_optflags="-O3 -funroll-loops -mcpu=750 -mno-fused-madd"
+-    ;;
+   esac
+   AC_DEFINE(VM_BUILD_STRING, ["Unix built on "__DATE__ " "__TIME__" Compiler: "__VERSION__])
+ else
+@@ -254,16 +251,6 @@ else ac_cv_module_prefix="lib"
+ fi)
+ AC_DEFINE_UNQUOTED(VM_MODULE_PREFIX,"$mkfrags_lib_prefix")
+ test "$ac_cv_module_prefix" = lib && mkfrags_lib_prefix=lib])
+-
+-AC_DEFUN([AC_64BIT_ARCH],
+-[AC_MSG_CHECKING(for compiler flags to force 32-bit addresses)
+-case $host in
+-  alpha*)
+-    CFLAGS_32="-taso"
+-    test "$GCC" = "yes" && CC="\$(utldir)/decgcc"
+-    ;;
+-esac
+-AC_MSG_RESULT($CFLAGS_32)])
+ 
+ 
+ ### plugin support

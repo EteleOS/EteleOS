@@ -1,0 +1,13 @@
+--- logcapture.py.orig	Sun Jun  7 21:25:33 2015
++++ logcapture.py	Thu Jun 11 08:11:35 2015
+@@ -37,8 +37,8 @@ from base.sixext import to_string_utf8
+ from subprocess import Popen, PIPE
+ from installer.core_install import *
+ 
+-CUPS_FILE='/etc/cups/cupsd.conf'
+-CUPS_BACKUP_FILE='/etc/cups/cupsd.conf_orginal'
++CUPS_FILE='${SYSCONFDIR}/cups/cupsd.conf'
++CUPS_BACKUP_FILE='${SYSCONFDIR}/cups/cupsd.conf_orginal'
+ LOG_FOLDER_PATH='./'
+ LOG_FOLDER_NAME='hplip_troubleshoot_logs'
+ LOG_FILES=LOG_FOLDER_PATH + LOG_FOLDER_NAME

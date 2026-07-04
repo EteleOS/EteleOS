@@ -1,0 +1,4 @@
+${P5SITE}/XML/
+${P5SITE}/XML/Atom/
+${P5SITE}/XML/Atom/SimpleFeed.pm
+@man man/man3p/XML::Atom::SimpleFeed.3p

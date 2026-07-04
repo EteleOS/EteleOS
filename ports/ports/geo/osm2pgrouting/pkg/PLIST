@@ -1,0 +1,8 @@
+@bin bin/osm2pgrouting
+share/osm2pgrouting/
+share/osm2pgrouting/COPYING
+share/osm2pgrouting/README.md
+share/osm2pgrouting/mapconfig.xml
+share/osm2pgrouting/mapconfig_for_bicycles.xml
+share/osm2pgrouting/mapconfig_for_cars.xml
+share/osm2pgrouting/mapconfig_for_pedestrian.xml

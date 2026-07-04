@@ -1,0 +1,12 @@
+Index: src/tk/tkbutton.c
+--- src/tk/tkbutton.c.orig
++++ src/tk/tkbutton.c
+@@ -383,7 +383,7 @@ Tk_ButtonCmd(clientData, interp, argc, argv)
+ 	    break;
+ 	default:
+ 	    sprintf(interp->result,
+-		    "unknown button-creation command \"%.50s\"");
++		    "unknown button-creation command \"%.50s\"", argv[0]);
+ 	    return TCL_ERROR;
+     }
+ 

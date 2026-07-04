@@ -1,0 +1,72 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Cgit config
+===========
+By default, the cgitrc config file is searched in ${PREFIX}/conf/cgitrc.
+Refer to cgitrc(5) for the syntax.
+
+Webserver config
+================
+
+OpenBSD httpd
+-------------
+server "default" {
+	listen on egress port 80
+
+	# don't serve static files from cgit CGI: cgit.css and cgit.png
+	location "/cgit.*" {
+		root "/cgit"
+		no fastcgi
+	}
+	root "/cgi-bin/cgit.cgi"
+	fastcgi socket "/run/slowcgi.sock"
+}
+
+Nginx
+-----
+An example nginx config snippet is provided below, to run with
+slowcgi:
+
+server {
+	server_name cgit.example.com;
+	access_log logs/cgit-access main;
+	error_log logs/cgit-error warn;
+	location ~ /cgit.(png|css) {
+		root /var/www/htdocs;
+	}
+	location / {
+		rewrite /(.*) /cgi-bin/cgit.cgi/$1;
+	}
+	location /cgi-bin/ {
+		fastcgi_pass unix:run/slowcgi.sock;
+		fastcgi_split_path_info ^(/cgi-bin/[^/]+)(.*);
+		fastcgi_param  PATH_INFO $fastcgi_path_info;
+		include fastcgi_params;
+	}
+}
+
+Apache config
+-------------
+
+This config snippet works with Apache:
+
+ScriptAlias /cgit /cgi-bin/cgit.cgi
+<Location "/cgit">
+	AllowOverride None
+	Options +ExecCGI
+	Order allow,deny
+	Allow from all
+</Location>
+
+
+snapshots
+---------
+Nginx and OpenBSD httpd use chroot(2).
+
+For .tar.gz snapshot support a static binary in $chroot/bin/gzip is required.
+
+	cd /usr/src/usr.bin/compress
+	make clean && make LDFLAGS="-static -pie"
+	cp obj/compress $chroot/bin/gzip

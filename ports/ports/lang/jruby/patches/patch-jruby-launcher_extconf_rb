@@ -1,0 +1,11 @@
+Index: jruby-launcher/extconf.rb
+--- jruby-launcher/extconf.rb.orig
++++ jruby-launcher/extconf.rb
+@@ -1,6 +1,7 @@
+ mf = File.read('Makefile')
+ mf = mf.gsub(/^BINDIR\s*=.*$/, "BINDIR = #{RbConfig::CONFIG['bindir']}")
+ mf = mf.gsub(/^PREFIX\s*=.*$/, "PREFIX = #{File.dirname(RbConfig::CONFIG['libdir'])}")
++mf = mf.gsub(/^INSTALLDIR\s*=.*$/, "INSTALLDIR = #{File.dirname(RbConfig::CONFIG['libdir'])}/lib/ruby/stdlib/rubygems/defaults")
+ mf = mf.gsub(/^JRUBY_VERSION\s*=.*$/, "JRUBY_VERSION = #{JRUBY_VERSION}")
+ 
+ # Launcher will use .module_opts file if present, otherwise hardcoded add-opens for this module.

@@ -1,0 +1,3 @@
+sbin/monitord
+share/examples/monitord/
+share/examples/monitord/monitord.conf

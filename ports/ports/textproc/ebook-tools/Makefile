@@ -1,0 +1,29 @@
+COMMENT =		accessing and converting various ebook file formats
+V =			0.2.2
+DISTNAME =		ebook-tools-${V}
+REVISION =		0
+
+HOMEPAGE =		https://sourceforge.net/projects/ebook-tools/
+
+SHARED_LIBS +=		epub		0.0	# 0.2
+
+CATEGORIES =		textproc devel
+
+# MIT
+PERMIT_PACKAGE =	Yes
+
+WANTLIB += c pthread xml2 z zip
+
+SITES =			${SITE_SOURCEFORGE:=ebook-tools/${V}/}
+
+MODULES =		devel/cmake
+LIB_DEPENDS =		textproc/libxml \
+			archivers/libzip
+
+NO_TEST =		Yes
+
+MODCMAKE_LDFLAGS =	-L${LOCALBASE}/lib
+
+MODCMAKE_POLICY_VERSION_OVERRIDE = Yes
+
+.include <bsd.port.mk>

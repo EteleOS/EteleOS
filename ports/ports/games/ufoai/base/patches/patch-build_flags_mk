@@ -1,0 +1,40 @@
+Index: build/flags.mk
+--- build/flags.mk.orig
++++ build/flags.mk
+@@ -21,7 +21,7 @@ CFLAGS += -g
+ CFLAGS += -Winline
+ CFLAGS += -Wcast-qual
+ CFLAGS += -Wcast-align
+-CFLAGS += -Wmissing-declarations
++#CFLAGS += -Wmissing-declarations
+ CFLAGS += -Wpointer-arith
+ CFLAGS += -Wno-long-long
+ CFLAGS += -pedantic
+@@ -32,13 +32,17 @@ CFLAGS += -Wno-unused-parameter
+ CFLAGS += -Wreturn-type
+ CFLAGS += -Wwrite-strings
+ CFLAGS += -Wno-variadic-macros
+-CFLAGS += -Wno-format-zero-length
++#CFLAGS += -Wno-format-zero-length
+ 
+ # clang stuff
+-ifneq (,$(findstring clang,$(CXX)))
++ifeq ($(USE_CLANG), 1)
+   CFLAGS += -Wno-extended-offsetof
+-  CFLAGS += -Wno-c++11-extensions
+   CFLAGS += -Wno-cast-align
++  CFLAGS += -Wno-expansion-to-defined
++# XXX this one may break at runtime, to investigate
++  CFLAGS += -Wno-dynamic-class-memaccess
++# XXX so far so good ?
++  CFLAGS += -Wno-varargs
+ endif
+ 
+ ifeq ($(PROFILING),1)
+@@ -62,3 +66,6 @@ CCFLAGS += -std=c99
+ #CCFLAGS += -Wc++-compat
+ 
+ CXXFLAGS += -Wnon-virtual-dtor
++# features such as nullptr can only be used safely with variadic functions
++# in C++11
++CXXFLAGS += -std=c++11

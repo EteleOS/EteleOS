@@ -1,0 +1,11 @@
+--- mplex/Makefile.in.orig	Sun Oct  9 17:32:35 2011
++++ mplex/Makefile.in	Sun Oct  9 17:32:46 2011
+@@ -335,7 +335,7 @@ libmplex_include_HEADERS = \
+ libmplex2_la_LDFLAGS = \
+ 	$(LT_STATIC) \
+ 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
+-	-release $(LT_RELEASE) $(EXTRA_LDFLAGS)
++	$(EXTRA_LDFLAGS)
+ 
+ libmplex2_la_LIBADD = $(top_builddir)/utils/libmjpegutils.la \
+ 	$(am__append_1)

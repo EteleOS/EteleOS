@@ -1,0 +1,9 @@
+Index: gdb/config/aarch64/obsd.mh
+--- gdb/config/aarch64/obsd.mh.orig
++++ gdb/config/aarch64/obsd.mh
+@@ -0,0 +1,5 @@
++# Host: OpenBSD/arm64
++NATDEPFILES= fork-child.o inf-ptrace.o obsd-nat.o \
++	aarch64-obsd-nat.o bsd-kvm.o
++
++LOADLIBES= -lkvm

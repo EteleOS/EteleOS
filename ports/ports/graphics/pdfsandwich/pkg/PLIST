@@ -1,0 +1,5 @@
+@bin bin/pdfsandwich
+@man man/man1/pdfsandwich.1
+share/doc/pdfsandwich/
+share/doc/pdfsandwich/changelog.gz
+share/doc/pdfsandwich/copyright

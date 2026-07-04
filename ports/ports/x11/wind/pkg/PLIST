@@ -1,0 +1,6 @@
+@bin bin/wind
+@man man/man1/wind.1
+share/doc/wind/
+share/doc/wind/LICENSE
+share/doc/wind/NEWS
+share/doc/wind/README

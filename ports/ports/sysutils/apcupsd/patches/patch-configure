@@ -1,0 +1,17 @@
+We care more about building with clang than binary portability between
+Linux distributions.
+
+Index: configure
+--- configure.orig
++++ configure
+@@ -12397,7 +12397,9 @@ $as_echo "$as_me: error: gethostbyname_r is required" 
+    ;;
+ esac
+ 
+-if test -n "$GCC"; then
++if true; then
++      LD="$CXX"
++else
+    # Starting with GCC 3.0, you must link C++ programs against either
+    # libstdc++ (shared by default), or libsupc++ (always static).  If
+    # you care about binary portability between Linux distributions,

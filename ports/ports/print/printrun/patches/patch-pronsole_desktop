@@ -1,0 +1,12 @@
+Index: pronsole.desktop
+--- pronsole.desktop.orig
++++ pronsole.desktop
+@@ -4,7 +4,7 @@ Name=Pronsole
+ GenericName=Printer console
+ Comment=Controls your 3D printer form console
+ Icon=pronsole
+-Exec=/usr/bin/pronsole.py
++Exec=${PREFIX}/pronsole
+ StartupNotify=true
+ Terminal=true
+ Categories=Utility;Graphics;3DGraphics;ConsoleOnly;

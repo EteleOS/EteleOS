@@ -1,0 +1,11 @@
+Index: mono/metadata/w32process-unix-bsd.c
+--- mono/metadata/w32process-unix-bsd.c.orig
++++ mono/metadata/w32process-unix-bsd.c
+@@ -7,6 +7,7 @@
+ 
+ #ifdef USE_BSD_BACKEND
+ 
++#include <signal.h>
+ #include <errno.h>
+ #include <signal.h>
+ #include <sys/proc.h>

@@ -1,0 +1,6 @@
+${P5ARCH}/DBD/Sybase.pm
+${P5ARCH}/DBD/dbd-sybase.pod
+${P5ARCH}/auto/DBD/
+${P5ARCH}/auto/DBD/Sybase/
+@so ${P5ARCH}/auto/DBD/Sybase/Sybase.so
+@man man/man3p/DBD::Sybase.3

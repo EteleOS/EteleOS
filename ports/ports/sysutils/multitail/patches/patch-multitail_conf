@@ -1,0 +1,13 @@
+--- multitail.conf.orig	Wed Jun 24 15:17:48 2015
++++ multitail.conf	Sun Jul 17 22:00:04 2016
+@@ -1001,8 +1001,8 @@ tab_stop:8
+ # what program to start when the user presses a key
+ # ...:x:...  just that key
+ # ...:^x:... that key with control
+-bind:g:/usr/bin/pine
+-bind:^k:/bin/bash
++bind:g:/usr/bin/mail
++bind:^k:/bin/ksh
+ bind:^l:/usr/bin/telnet
+ bind:^s:/bin/su
+ #

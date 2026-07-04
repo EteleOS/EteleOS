@@ -1,0 +1,12 @@
+Index: doc/example-config/Makefile.in
+--- doc/example-config/Makefile.in.orig
++++ doc/example-config/Makefile.in
+@@ -480,7 +480,7 @@ top_srcdir = @top_srcdir@
+ SUBDIRS = conf.d
+ pkgsysconfdir = $(sysconfdir)/dovecot
+ nodist_pkgsysconf_DATA = README
+-exampledir = $(docdir)/example-config
++exampledir = $(prefix)/share/examples/dovecot/example-config
+ example_DATA = \
+ 	dovecot.conf \
+ 	dovecot-dict-auth.conf.ext \

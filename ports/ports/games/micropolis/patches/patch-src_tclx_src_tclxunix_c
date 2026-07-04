@@ -1,0 +1,12 @@
+Index: src/tclx/src/tclxunix.c
+--- src/tclx/src/tclxunix.c.orig
++++ src/tclx/src/tclxunix.c
+@@ -203,7 +203,7 @@ Tcl_TimesCmd (clientData, interp, argc, argv)
+ 
+     times(&tm);
+ 
+-    sprintf(interp->result, "%ld %ld %ld %ld", 
++    sprintf(interp->result, "%lld %lld %lld %lld", 
+ #ifdef MSDOS
+             tm.tms_utime  * MS_PER_TICK, 
+             tm.tms_utime2 * MS_PER_TICK, 

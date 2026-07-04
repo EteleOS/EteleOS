@@ -1,0 +1,9 @@
+@newgroup _mactelnet:812
+@newuser _mactelnet:812:_mactelnet::mactelnet user:/nonexistent:/sbin/nologin
+@bin bin/macping
+@bin bin/mactelnet
+@bin bin/mndp
+@man man/man1/macping.1
+@man man/man1/mactelnet.1
+@man man/man1/mndp.1
+share/doc/pkg-readmes/${PKGSTEM}

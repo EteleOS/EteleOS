@@ -1,0 +1,8 @@
+${P5ARCH}/
+${P5ARCH}/Crypt/
+${P5ARCH}/Crypt/Ed25519.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Crypt/
+${P5ARCH}/auto/Crypt/Ed25519/
+@so ${P5ARCH}/auto/Crypt/Ed25519/Ed25519.so
+@man man/man3p/Crypt::Ed25519.3p

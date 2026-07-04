@@ -1,0 +1,20 @@
+--- gtk/xboard.h.orig	Wed May 18 07:50:45 2016
++++ gtk/xboard.h	Mon Apr 24 17:18:01 2017
+@@ -109,7 +109,7 @@ typedef struct {
+ 
+ #define BORDER_X_OFFSET 3
+ #define BORDER_Y_OFFSET 27
+-#define FIRST_CHESS_PROGRAM	"fairymax"
++#define FIRST_CHESS_PROGRAM	"gnuchess"
+ #define SECOND_CHESS_PROGRAM	""
+ #define FIRST_DIRECTORY         "."
+ #define SECOND_DIRECTORY        "."
+@@ -118,7 +118,7 @@ typedef struct {
+ #define FCP_NAMES               ""
+ #define SCP_NAMES               ""
+ #define ICS_TEXT_MENU_DEFAULT   ""
+-#define SETTINGS_FILE           SYSCONFDIR"/xboard.conf"
++#define SETTINGS_FILE           SYSCONFDIR"/xboard/xboard.conf"
+ #define COLOR_BKGD              "white"
+ 
+ GdkPixbuf *LoadIconFile P((char *name));

@@ -1,0 +1,22 @@
+Index: src/qt-console/tray-monitor/tray-monitor.pro.in
+--- src/qt-console/tray-monitor/tray-monitor.pro.in.orig
++++ src/qt-console/tray-monitor/tray-monitor.pro.in
+@@ -21,7 +21,8 @@ cross-win32 {
+   INCLUDEPATH += ../../win32/compat
+ }
+ !cross-win32 {
+-  LIBS        += -L../../lib -lbaccfg -lbac -L../../findlib -lbacfind @OPENSSL_LIBS@
++  LIBS        += -L../../lib -lbaccfg -lbac -L../../findlib -lbacfind @OPENSSL_LIBS@ -L/usr/local/lib/inotify -linotify -Wl,-rpath,/usr/local/lib/inotify
++  INCLUDEPATH += /usr/local/include/inotify
+ }
+ 
+ 
+@@ -42,7 +43,7 @@ QMAKE_LINK   = $${LIBTOOL_LINK} $(CXX)
+ QMAKE_INSTALL_PROGRAM = $${LIBTOOL_INSTALL} install -m @SBINPERM@ -p
+ QMAKE_CLEAN += obj/* .libs/* bacula-tray-monitor release/bacula-tray-monitor
+ QMAKE_CXXFLAGS += -DTRAY_MONITOR
+-QMAKE_CFLAGS += -DTRAY_MONITOR
++QMAKE_CFLAGS += -x c++ -DTRAY_MONITOR
+ 
+ INSTALLS = bins confs
+ 

@@ -1,0 +1,21 @@
+--- Wnn/jlib/jl.c.orig
++++ Wnn/jlib/jl.c
+@@ -55,13 +55,12 @@
+ #include "commonhd.h"
+ #include "config.h"
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <time.h>
+ #include <sys/types.h>
+-#ifdef SYSVR2
+-#   include <string.h>
+-#endif
+-#ifdef BSD42
+-#   include <strings.h>
+-#endif
++#include <unistd.h>
++#include <sys/stat.h>
+ #include <sys/file.h>
+ #include <ctype.h>
+ #include <pwd.h>

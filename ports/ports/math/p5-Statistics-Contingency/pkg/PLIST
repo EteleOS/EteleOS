@@ -1,0 +1,3 @@
+${P5SITE}/Statistics/
+${P5SITE}/Statistics/Contingency.pm
+@man man/man3p/Statistics::Contingency.3p

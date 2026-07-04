@@ -1,0 +1,11 @@
+--- bmf.c.orig	Sun Oct 20 14:19:17 2002
++++ bmf.c	Sun Oct 27 12:26:18 2002
+@@ -88,7 +88,7 @@ int main( int argc, char** argv )
+     stats_t     stats;
+     lex_t       lex;
+     tok_t       tok;
+-    bool_t      is_spam;
++    bool_t      is_spam = false;
+ 
+     int fd = STDIN_FILENO;
+     char* infile = NULL;

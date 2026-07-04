@@ -1,0 +1,24 @@
+Index: apertium/apertium-postlatex-raw.l
+--- apertium/apertium-postlatex-raw.l.orig
++++ apertium/apertium-postlatex-raw.l
+@@ -7,6 +7,7 @@
+ #include <cstdlib>
+ #include <iostream>
+ #include <string>
++#include <unistd.h>
+ 
+ extern "C" {
+ #if !defined(__STDC__)
+@@ -229,6 +230,12 @@ void usage(string const &progname)
+ 
+ int main(int argc, char *argv[])
+ {
++  if (pledge("stdio rpath wpath cpath", NULL) == -1)
++  {
++    cerr << "pledge" << endl;
++    exit(EXIT_FAILURE);
++  }
++
+   LtLocale::tryToSetLocale();
+   size_t base = 0;
+ 

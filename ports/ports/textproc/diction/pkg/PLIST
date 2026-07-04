@@ -1,0 +1,10 @@
+@bin bin/diction
+@bin bin/style
+@man man/man1/diction.1
+@man man/man1/style.1
+share/diction/
+share/diction/C
+share/diction/de
+share/diction/en
+share/diction/en_GB
+share/diction/nl

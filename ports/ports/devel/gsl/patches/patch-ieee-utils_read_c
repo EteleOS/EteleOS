@@ -1,0 +1,19 @@
+Index: ieee-utils/read.c
+--- ieee-utils/read.c.orig
++++ ieee-utils/read.c
+@@ -41,14 +41,12 @@ gsl_ieee_read_mode_string (const char * description, 
+   int rounding_count = 0 ;
+   int exception_count = 0 ;
+ 
+-  start = (char *) malloc(strlen(description) + 1) ;
++  start = strdup(description) ;
+ 
+   if (start == 0) 
+     {
+       GSL_ERROR ("no memory to parse mode string", GSL_ENOMEM) ;
+     }
+-
+-  strcpy (start, description) ;
+ 
+   p = start ;
+ 

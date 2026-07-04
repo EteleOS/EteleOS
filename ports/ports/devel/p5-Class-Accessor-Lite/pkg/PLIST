@@ -1,0 +1,4 @@
+${P5SITE}/Class/
+${P5SITE}/Class/Accessor/
+${P5SITE}/Class/Accessor/Lite.pm
+@man man/man3p/Class::Accessor::Lite.3p

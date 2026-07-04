@@ -1,0 +1,18 @@
+--- symbol.c.orig	Wed Dec 11 20:07:15 2013
++++ symbol.c	Wed Dec 11 20:07:15 2013
+@@ -8,7 +8,6 @@
+ #include		<string.h>
+ #include		"def.h"
+ 
+-void keyadd ();
+ void keydup ();
+ 
+ 
+@@ -221,7 +220,6 @@ extern char save_region ();	/* Save region in named bu
+ * Defined by "spawn.c".
+ */
+ extern char spawncli ();	/* Run CLI in a subjob.	 */
+-extern char clock ();		/* display time in modeline */
+ 
+ /*
+ * Defined by "window.c".

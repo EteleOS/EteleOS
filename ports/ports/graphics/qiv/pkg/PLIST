@@ -1,0 +1,8 @@
+@bin bin/qiv
+@man man/man1/qiv.1
+@comment share/applications/
+@comment share/applications/qiv.desktop
+share/examples/qiv/
+share/examples/qiv/qiv-command.example
+@comment share/pixmaps/
+@comment share/pixmaps/qiv.png

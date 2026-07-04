@@ -1,0 +1,98 @@
+@newgroup _icecast:611
+@newuser _icecast:611:_icecast::Icecast Server:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/icecast
+@bin bin/icecast
+share/doc/icecast/
+share/doc/icecast/AUTHORS
+share/doc/icecast/NEWS
+share/doc/icecast/admin-interface.html
+share/doc/icecast/assets/
+share/doc/icecast/assets/css/
+share/doc/icecast/assets/css/style.css
+share/doc/icecast/assets/font/
+share/doc/icecast/assets/font/FiraMono-Bold.eot
+share/doc/icecast/assets/font/FiraMono-Bold.woff
+share/doc/icecast/assets/font/FiraMono-Regular.eot
+share/doc/icecast/assets/font/FiraMono-Regular.woff
+share/doc/icecast/assets/font/FiraSans-Bold.eot
+share/doc/icecast/assets/font/FiraSans-Bold.woff
+share/doc/icecast/assets/font/FiraSans-BoldItalic.eot
+share/doc/icecast/assets/font/FiraSans-BoldItalic.woff
+share/doc/icecast/assets/font/FiraSans-Italic.eot
+share/doc/icecast/assets/font/FiraSans-Italic.woff
+share/doc/icecast/assets/font/FiraSans-Regular.eot
+share/doc/icecast/assets/font/FiraSans-Regular.woff
+share/doc/icecast/assets/img/
+share/doc/icecast/assets/img/xiph-community.svg
+share/doc/icecast/auth.html
+share/doc/icecast/basic-setup.html
+share/doc/icecast/changes.html
+share/doc/icecast/config-file.html
+share/doc/icecast/faq.html
+share/doc/icecast/glossary.html
+share/doc/icecast/img/
+share/doc/icecast/img/listener_auth1.png
+share/doc/icecast/img/listener_auth2.png
+share/doc/icecast/img/listener_auth3.png
+share/doc/icecast/img/masterslave.png
+share/doc/icecast/img/relay.png
+share/doc/icecast/index.html
+share/doc/icecast/introduction.html
+share/doc/icecast/relaying.html
+share/doc/icecast/server-stats.html
+share/doc/icecast/win32.html
+share/doc/icecast/yp.html
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/icecast/
+@owner _icecast
+@group _icecast
+@sample /var/icecast/
+@sample /var/icecast/admin/
+share/examples/icecast/admin/
+share/examples/icecast/admin/listclients.xsl
+@sample /var/icecast/admin/listclients.xsl
+share/examples/icecast/admin/listmounts.xsl
+@sample /var/icecast/admin/listmounts.xsl
+share/examples/icecast/admin/manageauth.xsl
+@sample /var/icecast/admin/manageauth.xsl
+share/examples/icecast/admin/moveclients.xsl
+@sample /var/icecast/admin/moveclients.xsl
+share/examples/icecast/admin/response.xsl
+@sample /var/icecast/admin/response.xsl
+share/examples/icecast/admin/stats.xsl
+@sample /var/icecast/admin/stats.xsl
+share/examples/icecast/admin/updatemetadata.xsl
+@sample /var/icecast/admin/updatemetadata.xsl
+share/examples/icecast/admin/vclt.xsl
+@sample /var/icecast/admin/vclt.xsl
+share/examples/icecast/admin/xspf.xsl
+@sample /var/icecast/admin/xspf.xsl
+@mode 600
+share/examples/icecast/icecast.xml.dist
+@sample /var/icecast/icecast.xml
+@mode
+share/examples/icecast/icecast_minimal.xml.dist
+share/examples/icecast/icecast_shoutcast_compat.xml.dist
+share/examples/icecast/icecast_urlauth.xml.dist
+share/examples/icecast/web/
+@sample /var/icecast/web/
+share/examples/icecast/web/auth.xsl
+@sample /var/icecast/web/auth.xsl
+share/examples/icecast/web/icecast.png
+@sample /var/icecast/web/icecast.png
+share/examples/icecast/web/key.png
+@sample /var/icecast/web/key.png
+share/examples/icecast/web/server_version.xsl
+@sample /var/icecast/web/server_version.xsl
+share/examples/icecast/web/status-json.xsl
+@sample /var/icecast/web/status-json.xsl
+share/examples/icecast/web/status.xsl
+@sample /var/icecast/web/status.xsl
+share/examples/icecast/web/style.css
+@sample /var/icecast/web/style.css
+share/examples/icecast/web/tunein.png
+@sample /var/icecast/web/tunein.png
+@sample /var/icecast/log/
+@sample /var/icecast/etc/
+share/examples/icecast/web/xml2json.xslt
+@sample /var/icecast/web/xml2json.xslt

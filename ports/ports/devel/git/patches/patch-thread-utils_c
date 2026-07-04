@@ -1,0 +1,32 @@
+Cap the maximum number of detected cores to 4; on many-cpu systems, kernel
+locking takes significant cpu time. This could be revised as SMT in OpenBSD
+improves, and the value can be overridden in /etc/gitconfig if needed e.g.
+
+[grep]
+	threads = 8
+[index]
+	threads = 8
+[pack]
+	threads = 8
+
+Index: thread-utils.c
+--- thread-utils.c.orig
++++ thread-utils.c
+@@ -18,6 +18,8 @@
+ #  endif
+ #endif
+ 
++#define MIN(a,b) (((a)<(b))?(a):(b))
++
+ int online_cpus(void)
+ {
+ #ifdef NO_PTHREADS
+@@ -53,7 +55,7 @@ int online_cpus(void)
+ #  endif /* HW_AVAILCPU */
+ 	len = sizeof(cpucount);
+ 	if (!sysctl(mib, 2, &cpucount, &len, NULL, 0))
+-		return cpucount;
++		return MIN(cpucount, 4);
+ #endif /* defined(HAVE_BSD_SYSCTL) && defined(HW_NCPU) */
+ 
+ #ifdef _SC_NPROCESSORS_ONLN

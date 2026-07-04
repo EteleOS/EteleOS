@@ -1,0 +1,11 @@
+Index: libusb/libusb.h
+--- libusb/libusb.h.orig
++++ libusb/libusb.h
+@@ -47,6 +47,7 @@ typedef SSIZE_T ssize_t;
+ #if !defined(_MSC_VER)
+ #include <sys/time.h>
+ #endif
++#include <sys/select.h> /* timeval */
+ #include <time.h>
+ 
+ #if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L)

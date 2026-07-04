@@ -1,0 +1,21 @@
+${P5SITE}/Net/IMP/Adaptor/
+${P5SITE}/Net/IMP/Adaptor/STREAM2HTTPConn.pm
+${P5SITE}/Net/IMP/HTTP/
+${P5SITE}/Net/IMP/HTTP.pm
+${P5SITE}/Net/IMP/HTTP/Connection.pm
+${P5SITE}/Net/IMP/HTTP/Example/
+${P5SITE}/Net/IMP/HTTP/Example/AddXFooHeader.pm
+${P5SITE}/Net/IMP/HTTP/Example/BlockContentType.pm
+${P5SITE}/Net/IMP/HTTP/Example/FlipImg.pm
+${P5SITE}/Net/IMP/HTTP/Example/LogFormData.pm
+${P5SITE}/Net/IMP/HTTP/Example/SaveResponse.pm
+${P5SITE}/Net/IMP/HTTP/Request.pm
+@man man/man3p/Net::IMP::Adaptor::STREAM2HTTPConn.3p
+@man man/man3p/Net::IMP::HTTP.3p
+@man man/man3p/Net::IMP::HTTP::Connection.3p
+@man man/man3p/Net::IMP::HTTP::Example::AddXFooHeader.3p
+@man man/man3p/Net::IMP::HTTP::Example::BlockContentType.3p
+@man man/man3p/Net::IMP::HTTP::Example::FlipImg.3p
+@man man/man3p/Net::IMP::HTTP::Example::LogFormData.3p
+@man man/man3p/Net::IMP::HTTP::Example::SaveResponse.3p
+@man man/man3p/Net::IMP::HTTP::Request.3p

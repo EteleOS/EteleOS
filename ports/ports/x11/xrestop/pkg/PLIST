@@ -1,0 +1,2 @@
+@bin bin/xrestop
+@man man/man1/xrestop.1

@@ -1,0 +1,16 @@
+Deal with _POSIX_SAVED_IDS when relinquishing privileges
+
+--- unix/spawn.c.orig	Thu May 29 08:08:49 2003
++++ unix/spawn.c	Fri Apr 13 15:57:26 2012
+@@ -352,8 +352,10 @@ ixsspawn (pazargs, aidescs, fkeepuid, fkeepenv, zchdir
+   if (! fkeepuid)
+     {
+       /* Return to the uid of the invoking user.  */
+-      (void) setuid (getuid ());
++      (void) setegid (getgid ());
+       (void) setgid (getgid ());
++      (void) seteuid (getuid ());
++      (void) setuid (getuid ());
+     }
+   else
+     {

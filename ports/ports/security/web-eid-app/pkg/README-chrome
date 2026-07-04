@@ -1,0 +1,12 @@
++-------------------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-------------------------------------------------------------------------------
+
+Install the official Web eID extension
+    https://chrome.google.com/webstore/detail/ncibgoaomkmdpilpocfeponihegamlic
+and add the following unveil rules to either of
+    ${SYSCONFDIR}/{chromium,iridium,ungoogled-chromium}/unveil.main:
+
+    # native messaging host
+    /usr/local/bin r
+    /usr/local/bin/web-eid rx

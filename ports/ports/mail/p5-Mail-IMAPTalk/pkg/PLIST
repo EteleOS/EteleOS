@@ -1,0 +1,3 @@
+${P5SITE}/Mail/
+${P5SITE}/Mail/IMAPTalk.pm
+@man man/man3p/Mail::IMAPTalk.3p

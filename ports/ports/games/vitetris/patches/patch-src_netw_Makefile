@@ -1,0 +1,18 @@
+--- src/netw/Makefile.orig	Thu Oct 16 11:39:35 2008
++++ src/netw/Makefile	Fri Nov  9 17:08:44 2012
+@@ -7,11 +7,13 @@ all: $(netw_lib)$(inet_obj)
+ 
+ netw.ainet.o: $(OBJS) comm_inet.o
+ 	-ar dc netw.a no_inet.o
+-	ar rs netw.a $(OBJS) comm_inet.o
++	ar r netw.a $(OBJS) comm_inet.o
++	ranlib netw.a
+ 
+ netw.a: $(OBJS) no_inet.o ../src-conf.mk
+ 	-ar dc netw.a inet.o comm_inet.o
+-	ar rs netw.a $(OBJS) no_inet.o
++	ar r netw.a $(OBJS) no_inet.o
++	ranlib netw.a
+ 
+ socket.o: socket.c sock.h internal.h ../input/input.h $(config_h)
+ 

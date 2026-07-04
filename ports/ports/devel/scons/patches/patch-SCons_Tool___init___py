@@ -1,0 +1,16 @@
+Index: SCons/Tool/__init__.py
+--- SCons/Tool/__init__.py.orig
++++ SCons/Tool/__init__.py
+@@ -759,9 +759,9 @@ def tool_list(platform, env):
+     else:
+         "prefer GNU tools on all other platforms"
+         linkers = ['gnulink', 'ilink']
+-        c_compilers = ['gcc', 'clang', 'intelc', 'icc', 'cc']
+-        cxx_compilers = ['g++', 'clang++', 'intelc', 'icc', 'cxx']
+-        assemblers = ['gas', 'nasm', 'masm']
++        c_compilers = ['cc']
++        cxx_compilers = ['c++']
++        assemblers = ['as']
+         fortran_compilers = ['gfortran', 'g77', 'ifort', 'ifl', 'f95', 'f90', 'f77']
+         ars = ['ar', ]
+ 

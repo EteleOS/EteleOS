@@ -1,0 +1,16 @@
+@bin bin/uriparse
+include/uriparser/
+include/uriparser/Uri.h
+include/uriparser/UriBase.h
+include/uriparser/UriDefsAnsi.h
+include/uriparser/UriDefsConfig.h
+include/uriparser/UriDefsUnicode.h
+include/uriparser/UriIp4.h
+lib/cmake/
+lib/cmake/${GH_TAGNAME}/
+lib/cmake/${GH_TAGNAME}/uriparser-config-version.cmake
+lib/cmake/${GH_TAGNAME}/uriparser-config.cmake
+lib/cmake/${GH_TAGNAME}/uriparser${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/${GH_TAGNAME}/uriparser.cmake
+@lib lib/liburiparser.so.${LIBuriparser_VERSION}
+lib/pkgconfig/liburiparser.pc

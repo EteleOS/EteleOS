@@ -1,0 +1,12 @@
+Index: src/keyevents.c
+--- src/keyevents.c.orig
++++ src/keyevents.c
+@@ -226,7 +226,7 @@ void init_keyevents(void) {
+ 
+ 	free(confpath);
+ 
+-	if (!conf && ((conf = fopen("/etc/feh/keys", "r")) == NULL))
++	if (!conf && ((conf = fopen("${SYSCONFDIR}/feh/keys", "r")) == NULL))
+ 		return;
+ 
+ 	while (fgets(line, sizeof(line), conf)) {

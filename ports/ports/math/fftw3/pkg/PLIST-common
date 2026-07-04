@@ -1,0 +1,14 @@
+@pkgpath math/fftw3,-common,double
+@pkgpath math/fftw3,-common,float
+bin/fftw-wisdom-to-conf
+include/fftw3.f
+include/fftw3.f03
+include/fftw3.h
+include/fftw3l.f03
+include/fftw3q.f03
+@info info/fftw3.info
+lib/cmake/
+lib/cmake/fftw3/
+@man man/man1/fftw-wisdom-to-conf.1
+share/doc/fftw3/
+share/doc/fftw3/fftw3.pdf

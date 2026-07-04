@@ -1,0 +1,2 @@
+include/http_parser.h
+@lib lib/libhttp_parser.so.${LIBhttp_parser_VERSION}

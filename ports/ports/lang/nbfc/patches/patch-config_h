@@ -1,0 +1,7 @@
+--- config.h.orig	Mon Dec 13 23:47:07 1999
++++ config.h	Tue Apr 12 17:10:53 2011
+@@ -1,2 +1,2 @@
+-#define CC     "/usr/bin/gcc -g -O4"
+-#define JAVAC  "/usr/bin/guavac"
++#define CC     "${CC} ${CFLAGS}"
++#define JAVAC  "${LOCALBASE}/bin/nbfc-javac"

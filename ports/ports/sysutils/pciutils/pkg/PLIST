@@ -1,0 +1,18 @@
+include/pci/
+include/pci/config.h
+include/pci/header.h
+include/pci/pci.h
+include/pci/types.h
+@static-lib lib/libpci.a
+lib/pkgconfig/libpci.pc
+@man man/man5/pci.ids.5
+@man man/man8/lspci.8
+@man man/man8/pcilmr.8
+@man man/man8/setpci.8
+@man man/man8/update-pciids.8
+@bin sbin/lspci
+@bin sbin/pcilmr
+@bin sbin/setpci
+sbin/update-pciids
+@comment no checksum
+share/pci.ids.gz

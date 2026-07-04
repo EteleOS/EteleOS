@@ -1,0 +1,36 @@
+--- doc/Makefile.orig	Wed Oct 22 09:10:10 2008
++++ doc/Makefile	Wed Oct 22 09:11:51 2008
+@@ -10,7 +10,7 @@ include ../config.mk
+ 
+ all: info man
+ 
+-info: xzgv.gz
++info: xzgv.info
+ dvi: xzgv.dvi
+ 
+ xzgv.gz: xzgv.texi
+@@ -23,6 +23,9 @@ xzgv.dvi: xzgv.texi
+ 	@echo "=== NB: If you don't want A4 paper, edit config.mk! ==="
+ 	texi2dvi -c $(USE_A4_DEF) xzgv.texi
+ 
++xzgv.info: xzgv.texi
++	makeinfo --no-split xzgv.texi -o xzgv.info
++
+ # This explicitly mentions `gawk' because makeman requires it
+ # (and can't easily be made not to, since it really does need gensub).
+ # To avoid problems on gawkless systems, a prebuilt xzgv.1 is included
+@@ -36,10 +39,10 @@ xzgv.1: xzgv.texi makeman.awk
+ installdirs:
+ 	/bin/sh ../mkinstalldirs $(INFODIR) $(MANDIR)
+ 
+-install: installdirs
+-	install xzgv.1 $(MANDIR)
+-	install xzgv.gz $(INFODIR)
+-	install-info  --infodir=$(INFODIR) xzgv.gz
++install:
++	${BSD_INSTALL_MAN} xzgv.1 ${MANDIR}
++	${BSD_INSTALL_DATA} xzgv.info ${INFODIR}
++	install-info ${INFODIR}/xzgv.info ${INFODIR}/dir
+ 
+ uninstall:
+ 	$(RM) $(MANDIR)/xzgv.1

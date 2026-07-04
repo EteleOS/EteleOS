@@ -1,0 +1,11 @@
+Drush is a command line shell and Unix scripting interface for Drupal,
+allowing most administration tasks to be done without using the web
+interface.
+
+It ships with lots of useful commands for interacting with code like
+modules/themes/profiles, it is able to run updates, execute sql queries
+and DB migrations, and other utilities like running cron or clearing
+cache. Drush can be extended by 3rd party commandfiles.
+
+Note that drush should be invoked from the directory where Drupal is
+installed, or using the -r option.

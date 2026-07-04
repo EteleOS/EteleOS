@@ -1,0 +1,5 @@
+@bin bin/antic
+@bin bin/jlint
+bin/jlint.sh
+share/doc/jlint/
+share/doc/jlint/manual.pdf

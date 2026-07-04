@@ -1,0 +1,4 @@
+${P5SITE}/Convert/
+${P5SITE}/Convert/BER.pm
+${P5SITE}/Convert/BER.pod
+@man man/man3p/Convert::BER.3p

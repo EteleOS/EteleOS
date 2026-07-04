@@ -1,0 +1,13 @@
+--- src/ftdi.c.orig	Thu Mar 15 05:58:44 2012
++++ src/ftdi.c	Sat Nov  9 19:47:18 2013
+@@ -44,6 +44,10 @@
+ #include <linux/usbdevice_fs.h>
+ #endif
+ 
++#if !defined(ENODATA) && defined(ENOENT)
++#define ENODATA ENOENT
++#endif
++
+ #define ftdi_error_return(code, str) do {  \
+         ftdi->error_str = str;             \
+         return code;                       \

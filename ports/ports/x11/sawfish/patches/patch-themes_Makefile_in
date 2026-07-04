@@ -1,0 +1,29 @@
+BSD tar cannot handle the StyleTar.tar.gz file:
+tar: Cannot identify format. Searching...
+tar: Cpio file name length 20804 is out of range
+tar: Invalid header, starting valid header search.
+tar: Cpio file name length 59038 is out of range
+
+Index: themes/Makefile.in
+--- themes/Makefile.in.orig
++++ themes/Makefile.in
+@@ -39,9 +39,7 @@ THEMES := StyleTab absolute-e Crux microGUI mxflat Elb
+ 
+ all :
+ 	for d in $(THEMES); do \
+-		( tar --help|grep -q sort= && rbopts=--sort=name ; \
+-	          tar --help|grep -q 'GNU tar' && rbopts="$$rbopts --format=gnu --mtime @1" ; \
+-		  cd $(srcdir) && LC_ALL=C tar $$rbopts -c $$d/* | gzip -n9 > $$d.tar.gz ) ; \
++		( cd $(srcdir) && LC_ALL=C tar -f - -c $$d/* | gzip -n9 > $$d.tar.gz ) ; \
+ 	done
+ 
+ install : all installdirs
+@@ -51,7 +49,7 @@ install : all installdirs
+ 	done
+ 	@# Don't use tar for StyleTab. It's not compression, but tar
+ 	@# itself slows in librep.
+-	cd $(DESTDIR)$(themedir) && tar xf StyleTab.tar.gz && rm StyleTab.tar.gz
++	cd $(DESTDIR)$(themedir) && ${LOCALBASE}/bin/gtar xf StyleTab.tar.gz && rm StyleTab.tar.gz
+ 
+ installdirs : $(top_srcdir)/mkinstalldirs
+ 	$(SHELL) $< $(DESTDIR)$(themedir)

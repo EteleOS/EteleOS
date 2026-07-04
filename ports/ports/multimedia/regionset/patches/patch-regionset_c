@@ -1,0 +1,11 @@
+--- regionset.c.orig	Mon Dec 31 03:19:17 2012
++++ regionset.c	Sun Jul 19 03:34:44 2015
+@@ -27,7 +27,7 @@
+ #include <stdio.h>
+ #include "dvd_udf.h"
+ 
+-#define DEFAULTDEVICE "/dev/dvd"
++#define DEFAULTDEVICE "/dev/cd0c"
+ #define VERSION "0.2"
+ 
+ int main (int argc, char* argv[]) {

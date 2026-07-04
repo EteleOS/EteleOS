@@ -1,0 +1,11 @@
+Index: mkspecs/features/qt_module.prf
+--- mkspecs/features/qt_module.prf.orig
++++ mkspecs/features/qt_module.prf
+@@ -214,6 +214,7 @@ equals(QT_ARCH, i386):contains(QT_CPU_FEATURES.$$QT_AR
+ }
+ 
+ android: CONFIG += qt_android_deps no_linker_version_script
++openbsd-*: CONFIG += no_linker_version_script
+ 
+ !header_module:unix:!isEmpty(QMAKE_LFLAGS_VERSION_SCRIPT):!no_linker_version_script:!static {
+     verscript = $${TARGET}.version

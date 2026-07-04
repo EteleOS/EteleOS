@@ -1,0 +1,8 @@
+To have ipguard start at boot time, add the following line
+to /etc/rc.local, substituting <interface> as needed:
+
+if [ -x ${PREFIX}/sbin/ipguard ]; then
+	install -d -o _ipguard /var/run/ipguard
+	${PREFIX}/sbin/ipguard <interface>
+	echo -n ' ipguard'
+fi

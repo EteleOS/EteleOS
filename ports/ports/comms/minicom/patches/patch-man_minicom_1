@@ -1,0 +1,13 @@
+Index: man/minicom.1
+--- man/minicom.1.orig
++++ man/minicom.1
+@@ -862,7 +862,8 @@ $HOME/minicom.log
+ /usr/share/locale/*/LC_MESSAGES/minicom.mo
+ .fi
+ .SH SEE ALSO
+-.BR runscript (1)
++\fIascii-xfr\fP(1),
++\fIrunscript\fP(1)
+ .SH BUGS
+ Please report any bugs to
+ .IR minicom-devel@lists.alioth.debian.org .

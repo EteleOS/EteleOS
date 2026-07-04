@@ -1,0 +1,15 @@
+getopt(3) returns an int; avoid infinite loop on platforms where char is
+unsigned.
+
+Index: adplugdb/adplugdb.cpp
+--- adplugdb/adplugdb.cpp.orig
++++ adplugdb/adplugdb.cpp
+@@ -298,7 +298,7 @@ static void db_save(void)
+ 
+ int main(int argc, char *argv[])
+ {
+-  char		opt;
++  int		opt;
+   bool		dbokay;
+   unsigned int	i;
+ 

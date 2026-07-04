@@ -1,0 +1,14 @@
+use versioned erlang binary
+
+Index: vendor/relx/priv/templates/extended_bin
+--- vendor/relx/priv/templates/extended_bin.orig
++++ vendor/relx/priv/templates/extended_bin
+@@ -199,7 +199,7 @@ find_erts_dir() {
+     if [ -d "$__erts_dir" ]; then
+         ERTS_DIR="$__erts_dir";
+     else
+-        __erl="$(command -v erl)"
++        __erl="$(command -v erl${MODERL_VERSION})"
+         code="io:format(\"~s\", [code:root_dir()]), halt()."
+         __erl_root="$("$__erl" -boot no_dot_erlang -sasl errlog_type error -noshell -eval "$code")"
+         ERTS_DIR="$__erl_root/erts-$ERTS_VSN"

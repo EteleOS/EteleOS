@@ -1,0 +1,10 @@
+share/doc/opendyslexic/
+share/doc/opendyslexic/OFL-FAQ.txt
+share/doc/opendyslexic/OFL.txt
+share/doc/opendyslexic/README.md
+share/fonts/
+@fontdir share/fonts/opendyslexic/
+share/fonts/opendyslexic/OpenDyslexic-Bold-Italic.otf
+share/fonts/opendyslexic/OpenDyslexic-Bold.otf
+share/fonts/opendyslexic/OpenDyslexic-Italic.otf
+share/fonts/opendyslexic/OpenDyslexic-Regular.otf

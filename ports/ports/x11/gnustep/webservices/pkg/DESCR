@@ -1,0 +1,4 @@
+Framework for GNUstep programs to interact with web services.  GNUstep
+WebServices provides an easy/simple ObjectiveC API for
+parsing/generating XML documents, XMLRPC and SOAP remote procedure call
+support, and WSDL support.

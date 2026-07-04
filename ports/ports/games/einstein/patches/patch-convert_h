@@ -1,0 +1,11 @@
+Index: convert.h
+--- convert.h.orig
++++ convert.h
+@@ -5,6 +5,7 @@
+ #include <iostream>
+ #include <sstream>
+ #include <string>
++#include <typeinfo>
+ 
+ #include "exceptions.h"
+ #include "unicode.h"

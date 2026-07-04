@@ -1,0 +1,12 @@
+--- README.orig	Tue Mar 13 06:46:18 2001
++++ README	Mon Dec 30 00:30:01 2002
+@@ -13,7 +13,9 @@ OVERVIEW
+ 
+   PS10
+   PS20
++  PS40
+   PS100 (Digital Ixus)
++  PS200 (Digital Elph)
+   A50
+   Pro70
+ 

@@ -1,0 +1,28 @@
+${P5SITE}/GnuPG/
+${P5SITE}/GnuPG/Fingerprint.pm
+${P5SITE}/GnuPG/Handles.pm
+${P5SITE}/GnuPG/HashInit.pm
+${P5SITE}/GnuPG/Interface.pm
+${P5SITE}/GnuPG/Key.pm
+${P5SITE}/GnuPG/Options.pm
+${P5SITE}/GnuPG/PrimaryKey.pm
+${P5SITE}/GnuPG/PublicKey.pm
+${P5SITE}/GnuPG/Revoker.pm
+${P5SITE}/GnuPG/SecretKey.pm
+${P5SITE}/GnuPG/Signature.pm
+${P5SITE}/GnuPG/SubKey.pm
+${P5SITE}/GnuPG/UserAttribute.pm
+${P5SITE}/GnuPG/UserId.pm
+@man man/man3p/GnuPG::Fingerprint.3p
+@man man/man3p/GnuPG::Handles.3p
+@man man/man3p/GnuPG::Interface.3p
+@man man/man3p/GnuPG::Key.3p
+@man man/man3p/GnuPG::Options.3p
+@man man/man3p/GnuPG::PrimaryKey.3p
+@man man/man3p/GnuPG::PublicKey.3p
+@man man/man3p/GnuPG::Revoker.3p
+@man man/man3p/GnuPG::SecretKey.3p
+@man man/man3p/GnuPG::Signature.3p
+@man man/man3p/GnuPG::SubKey.3p
+@man man/man3p/GnuPG::UserAttribute.3p
+@man man/man3p/GnuPG::UserId.3p

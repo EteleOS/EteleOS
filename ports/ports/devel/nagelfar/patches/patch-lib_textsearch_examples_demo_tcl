@@ -1,0 +1,15 @@
+Index: lib/textsearch/examples/demo.tcl
+--- lib/textsearch/examples/demo.tcl.orig
++++ lib/textsearch/examples/demo.tcl
+@@ -47,10 +47,7 @@ menu .m.f
+ menu .m.s
+ textSearch::searchMenu .m.s
+ 
+-foreach dir {. tcl ../tcl} {
+-    if {![catch {set ch [open [file join $dir textsearch.tcl] r]}]} {
++    if {![catch {set ch [open [file join [file dirname [::tcl::pkgconfig get libdir,install]] share doc textsearch readme.txt] r]}]} {
+         $w insert end [read $ch]
+         close $ch
+-        break
+     }
+-}

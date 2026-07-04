@@ -1,0 +1,12 @@
+@bin bin/teensyloader
+share/examples/teensy/
+share/examples/teensy/blink_slow_Teensy2.hex
+share/examples/teensy/blink_slow_Teensy2pp.hex
+share/examples/teensy/blink_slow_Teensy30.hex
+share/examples/teensy/blink_slow_Teensy32.hex
+share/examples/teensy/blink_slow_Teensy35.hex
+share/examples/teensy/blink_slow_Teensy36.hex
+share/examples/teensy/blink_slow_Teensy40.hex
+share/examples/teensy/blink_slow_Teensy41.hex
+share/examples/teensy/blink_slow_TeensyLC.hex
+share/examples/teensy/blink_slow_TeensyMM.hex

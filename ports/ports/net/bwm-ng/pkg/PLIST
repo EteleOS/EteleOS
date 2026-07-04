@@ -1,0 +1,5 @@
+@bin bin/bwm-ng
+@man man/man1/bwm-ng.1
+share/examples/bwm-ng/
+share/examples/bwm-ng/bwm-ng.conf-example
+share/examples/bwm-ng/bwm-ng.css

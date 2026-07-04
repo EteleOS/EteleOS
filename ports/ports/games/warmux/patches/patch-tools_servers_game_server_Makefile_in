@@ -1,0 +1,21 @@
+Index: tools/servers/game_server/Makefile.in
+--- tools/servers/game_server/Makefile.in.orig
++++ tools/servers/game_server/Makefile.in
+@@ -164,7 +164,7 @@ LIBINTL = @LIBINTL@
+ LIBOBJS = @LIBOBJS@
+ LIBPNG_CFLAGS = @LIBPNG_CFLAGS@
+ LIBPNG_LIBS = @LIBPNG_LIBS@
+-LIBS = @LIBS@ @LIBCURL@
++LIBS = @LIBS@ @LIBCURL@ @LIBINTL@
+ LIBXML2_CFLAGS = @LIBXML2_CFLAGS@
+ LIBXML2_LIBS = @LIBXML2_LIBS@
+ LOCALEDIR = @LOCALEDIR@
+@@ -268,7 +268,7 @@ warmux_server_SOURCES = \
+ 	server.h server.cpp \
+ 	main.cpp
+ 
+-warmux_server_LDFLAGS = -Wl,--as-needed
++warmux_server_LDFLAGS = 
+ AM_CXXFLAGS = -DPACKAGE_VERSION=\"$(PACKAGE_VERSION)\" \
+ 	  @LIBCURL_CPPFLAGS@ -I$(top_srcdir)/lib/warmux-server/include \
+ 	-I$(top_srcdir)/lib/warmux/include \

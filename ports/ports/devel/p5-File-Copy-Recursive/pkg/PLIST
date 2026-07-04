@@ -1,0 +1,4 @@
+${P5SITE}/File/
+${P5SITE}/File/Copy/
+${P5SITE}/File/Copy/Recursive.pm
+@man man/man3p/File::Copy::Recursive.3p

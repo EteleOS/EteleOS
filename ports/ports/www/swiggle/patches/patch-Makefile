@@ -1,0 +1,19 @@
+--- Makefile.orig	Wed Oct 22 23:01:18 2003
++++ Makefile	Mon Feb 27 21:14:49 2017
+@@ -5,13 +5,13 @@ CC = gcc
+ PROGRAM = swiggle
+ OBJS = swiggle.o resize.o html.o
+ HEADER = swiggle.h
+-CFLAGS += -Wall -I/usr/local/include -I/usr/local/include/libexif
+-LDFLAGS += -L/usr/local/lib -ljpeg -lexif
++CFLAGS += -Wall -I${LOCALBASE}/include -I${LOCALBASE}/include/libexif
++LDFLAGS += -L${LOCALBASE}/lib -ljpeg -lexif
+ 
+ all: ${PROGRAM}
+ 
+ ${PROGRAM}: ${OBJS}
+-	gcc ${CFLAGS} ${LDFLAGS} -o ${PROGRAM} ${OBJS}
++	${CC} ${CFLAGS} ${LDFLAGS} -o ${PROGRAM} ${OBJS}
+ 
+ ${OBJS}: ${HEADER}
+ 

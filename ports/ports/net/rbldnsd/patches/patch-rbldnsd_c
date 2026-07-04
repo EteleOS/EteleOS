@@ -1,0 +1,12 @@
+Index: rbldnsd.c
+--- rbldnsd.c.orig
++++ rbldnsd.c
+@@ -762,7 +762,7 @@ break;
+ #endif
+ 
+   if (!user && !(uid = getuid()))
+-    user = "rbldns";
++    user = "_rbldns";
+ 
+   if (!user)
+     p = NULL;

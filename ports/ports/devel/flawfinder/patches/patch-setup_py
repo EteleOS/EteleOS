@@ -1,0 +1,11 @@
+Index: setup.py
+--- setup.py.orig
++++ setup.py
+@@ -46,6 +46,6 @@ It is released under the GNU GPL license.""",
+             'flawfinder = flawfinder:main',
+         ],
+        },
+-       data_files = [ ('share/man/man1', [ 'flawfinder.1.gz' ]) ],
++       data_files = [ ('man/man1', [ 'flawfinder.1' ]) ],
+        py_modules = ['flawfinder'],
+       )

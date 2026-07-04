@@ -1,0 +1,35 @@
+ov_read() can return less than asked for.  get the full 4096 bytes
+before continuing to save cycles and avoid confusion elsewhere.
+
+Index: mpegsound/oggplayer.cc
+--- mpegsound/oggplayer.cc.orig
++++ mpegsound/oggplayer.cc
+@@ -160,15 +160,22 @@ bool Oggplayer::playing()
+ bool Oggplayer::run(int sec)
+ {
+ 	int bitstream;
+-	long bytes_read = ov_read(of, soundbuf, 4096, bigendian, wordsize, signeddata,
+-		&bitstream);
++	long bytes_read, ret;
+ 
+-	if (sec); //prevent warning
+-
+-	if (bytes_read < 0)
+-		return seterrorcode(SOUND_ERROR_BAD);
++	bytes_read = 0;
++	while (bytes_read < 4096) {
++		ret = ov_read(of, soundbuf + bytes_read, 4096 - bytes_read,
++		    bigendian, wordsize, signeddata, &bitstream);
++		if (ret < 0)
++			return seterrorcode(SOUND_ERROR_BAD);
++		if (!ret)
++			break;
++		bytes_read += ret;
++	}
+ 	if (!bytes_read)
+ 		return seterrorcode(SOUND_ERROR_FINISH);
++
++	if (sec); //prevent warning
+ 
+ 	vorbis_info *vi = ov_info(of, bitstream);
+ 

@@ -1,0 +1,11 @@
+Index: src/desktop/clipboard.cpp
+--- src/desktop/clipboard.cpp.orig
++++ src/desktop/clipboard.cpp
+@@ -15,6 +15,7 @@
+ 
+ #include "desktop/clipboard.hpp"
+ #include "serialization/unicode.hpp"
++#include <unistd.h>
+ #include <algorithm>
+ 
+ #include <SDL2/SDL_events.h>

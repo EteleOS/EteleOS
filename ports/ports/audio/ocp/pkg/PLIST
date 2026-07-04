@@ -1,0 +1,66 @@
+@bin bin/ocp
+bin/ocp-curses
+bin/ocp-sdl3
+@info info/ocp.info
+lib/ocp/
+lib/ocp/autoload/
+@so lib/ocp/autoload/35-devpnone.so
+@so lib/ocp/autoload/35-devpsdl3.so
+@so lib/ocp/autoload/35-devwmix.so
+@so lib/ocp/autoload/35-devwmixf.so
+@so lib/ocp/autoload/35-devwnone.so
+@so lib/ocp/autoload/95-playay.so
+@so lib/ocp/autoload/95-playcda.so
+@so lib/ocp/autoload/95-playflac.so
+@so lib/ocp/autoload/95-playgmd.so
+@so lib/ocp/autoload/95-playhvl.so
+@so lib/ocp/autoload/95-playit.so
+@so lib/ocp/autoload/95-playmp2.so
+@so lib/ocp/autoload/95-playogg.so
+@so lib/ocp/autoload/95-playopl.so
+@so lib/ocp/autoload/95-playqoa.so
+@so lib/ocp/autoload/95-playsid.so
+@so lib/ocp/autoload/95-playtimidity.so
+@so lib/ocp/autoload/95-playwav.so
+@so lib/ocp/autoload/95-playxm.so
+@so lib/ocp/autoload/95-playym.so
+@so lib/ocp/autoload/freverb.so
+@so lib/ocp/autoload/ireverb.so
+@so lib/ocp/libocp.so
+@man man/man1/ocp.1
+share/applications/cubic.org-opencubicplayer.desktop
+share/doc/ocp/
+share/doc/ocp/AUTHORS
+share/doc/ocp/BUGS
+share/doc/ocp/COPYING
+share/doc/ocp/CREDITS
+share/doc/ocp/KEYBOARD_REMAPS
+share/doc/ocp/SUID
+share/doc/ocp/html/
+share/doc/ocp/html/configuration.html
+share/doc/ocp/html/faq.html
+share/doc/ocp/html/fileselector.html
+share/doc/ocp/html/index.html
+share/doc/ocp/html/player.html
+share/doc/ocp/html/specialdrive.html
+share/doc/ocp/html/starting.html
+share/doc/ocp/html/support.html
+share/doc/ocp/html/wap.html
+share/icons/hicolor/128x128/apps/opencubicplayer.png
+share/icons/hicolor/16x16/apps/opencubicplayer.png
+share/icons/hicolor/22x22/apps/opencubicplayer.png
+share/icons/hicolor/24x24/apps/opencubicplayer.png
+share/icons/hicolor/32x32/apps/opencubicplayer.png
+share/icons/hicolor/48x48/apps/opencubicplayer.png
+share/icons/hicolor/64x64/apps/opencubicplayer.png
+share/icons/hicolor/scalable/apps/opencubicplayer.svg
+share/mime/packages/opencubicplayer.xml
+share/ocp/
+share/ocp/data/
+share/ocp/data/adplug.db
+share/ocp/data/ocp.hlp
+share/ocp/etc/
+share/ocp/etc/ocp.ini
+@tag update-desktop-database
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-mime-database

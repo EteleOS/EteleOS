@@ -1,0 +1,4 @@
+@bin bin/nmzmail
+@man man/man1/nmzmail.1
+share/doc/nmzmail/
+share/doc/nmzmail/README

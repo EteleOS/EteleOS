@@ -1,0 +1,18 @@
+@conflict libcdio-<2.0.0
+@bin bin/cd-paranoia
+include/cdio/paranoia/
+include/cdio/paranoia/cdda.h
+include/cdio/paranoia/paranoia.h
+include/cdio/paranoia/toc.h
+@static-lib lib/libcdio_cdda.a
+lib/libcdio_cdda.la
+@lib lib/libcdio_cdda.so.${LIBcdio_cdda_VERSION}
+@static-lib lib/libcdio_paranoia.a
+lib/libcdio_paranoia.la
+@lib lib/libcdio_paranoia.so.${LIBcdio_paranoia_VERSION}
+lib/pkgconfig/libcdio_cdda.pc
+lib/pkgconfig/libcdio_paranoia.pc
+man/ja/
+man/ja/man1/
+@man man/ja/man1/cd-paranoia.1
+@man man/man1/cd-paranoia.1

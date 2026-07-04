@@ -1,0 +1,57 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -37,7 +37,7 @@ INSTALLBIN	?= $(INSTALL) -o $(binowner) -g $(bingroup)
+ 
+ SECURITY_CFLAGS	= \
+ 	-fstack-protector-all -fwrapv -fPIC \
+-	-D_FORTIFY_SOURCE=2 -Wall -g -O2 -gdwarf-2
++	-D_FORTIFY_SOURCE=2 -Wall
+ 
+ SYSTEM		:= $(shell uname -s)
+ ifeq ($(SYSTEM), Linux)
+@@ -267,7 +267,7 @@ LIBSSH_CFLAGS=		$(PCSC_CFLAGS) \
+ 			$(SYSTEM_CFLAGS) \
+ 			$(SECURITY_CFLAGS) \
+ 			$(CONFIG_CFLAGS) \
+-			-O2 -g -D_GNU_SOURCE \
++			-D_GNU_SOURCE \
+ 			-I$(OPENSSH) \
+ 			-DPIVY_VERSION='"$(VERSION)"'
+ LIBSSH_LDFLAGS=		$(SYSTEM_LDFLAGS) \
+@@ -338,7 +338,7 @@ PIVTOOL_CFLAGS=		$(PCSC_CFLAGS) \
+ 			$(SECURITY_CFLAGS) \
+ 			$(CONFIG_CFLAGS) \
+ 			$(OPTIM_CFLAGS) \
+-			-O2 -g -D_GNU_SOURCE \
++			-D_GNU_SOURCE \
+ 			-DPIVY_VERSION='"$(VERSION)"'
+ PIVTOOL_LDFLAGS=	$(SYSTEM_LDFLAGS) \
+ 			$(OPTIM_LDFLAGS)
+@@ -380,7 +380,7 @@ PIVYCA_CFLAGS=		$(PCSC_CFLAGS) \
+ 			$(OPTIM_CFLAGS) \
+ 			$(SECURITY_CFLAGS) \
+ 			$(CONFIG_CFLAGS) \
+-			-O0 -g -gdwarf-2 -D_GNU_SOURCE \
++			-D_GNU_SOURCE \
+ 			-DPIVY_VERSION='"$(VERSION)"'
+ PIVYCA_LDFLAGS=		$(SYSTEM_LDFLAGS) \
+ 			$(OPTIM_LDFLAGS)
+@@ -430,7 +430,7 @@ PIVYBOX_CFLAGS=		$(PCSC_CFLAGS) \
+ 			$(OPTIM_CFLAGS) \
+ 			$(CONFIG_CFLAGS) \
+ 			$(SECURITY_CFLAGS) \
+-			-O2 -g -D_GNU_SOURCE -std=gnu99
++			-D_GNU_SOURCE -std=gnu99
+ PIVYBOX_LDFLAGS=	$(SYSTEM_LDFLAGS) \
+ 			$(OPTIM_LDFLAGS)
+ PIVYBOX_LIBS=		$(CRYPTO_LIBS) \
+@@ -610,7 +610,7 @@ AGENT_CFLAGS=		$(PCSC_CFLAGS) \
+ 			$(OPTIM_CFLAGS) \
+ 			$(CONFIG_CFLAGS) \
+ 			$(SECURITY_CFLAGS) \
+-			-O2 -g -D_GNU_SOURCE
++			-D_GNU_SOURCE
+ AGENT_LDFLAGS=		$(SYSTEM_LDFLAGS) \
+ 			$(OPTIM_LDFLAGS)
+ AGENT_LIBS=		$(CRYPTO_LIBS) \

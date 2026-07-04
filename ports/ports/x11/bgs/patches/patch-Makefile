@@ -1,0 +1,19 @@
+--- Makefile.orig	Sun Jul 13 11:51:32 2008
++++ Makefile	Sun Jul 13 11:52:46 2008
+@@ -15,14 +15,12 @@ options:
+ 	@echo "CC       = ${CC}"
+ 
+ .c.o:
+-	@echo CC $<
+-	@${CC} -c ${CFLAGS} $<
++	${CC} -c ${CFLAGS} $<
+ 
+ ${OBJ}: config.mk
+ 
+ bgs: ${OBJ}
+-	@echo CC -o $@
+-	@${CC} -o $@ ${OBJ} ${LDFLAGS}
++	${CC} -o $@ ${OBJ} ${LDFLAGS}
+ 
+ clean:
+ 	@echo cleaning

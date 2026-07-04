@@ -1,0 +1,11 @@
+--- gconf/Makefile.in.orig	Tue Jan 22 02:59:41 2013
++++ gconf/Makefile.in	Tue Jan 22 07:03:47 2013
+@@ -440,7 +440,7 @@ INCLUDES = \
+ 	-DGCONF_LOCALE_DIR=\""$(datadir)/locale"\"			\
+         -DGCONF_SRCDIR=\""$(absolute_top_srcdir)"\"			\
+ 	-DGCONF_CONFDIR=\""$(sysgconfdir)/$(MAJOR_VERSION)"\"		\
+-	-DGCONF_ETCDIR=\""$(sysgconfdir)"\"				\
++	-DGCONF_ETCDIR=\""/var/db/gconf"\"					\
+ 	-DGCONF_BINDIR=\""$(bindir)"\"					\
+ 	-DGCONF_SERVERDIR=\""$(libexecdir)"\"           \
+ 	-DGCONF_BUILDDIR=\""$(top_builddir)"\"				\

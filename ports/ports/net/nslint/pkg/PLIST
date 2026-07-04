@@ -1,0 +1,2 @@
+@bin bin/nslint
+@man man/man8/nslint.8

@@ -1,0 +1,23 @@
+pcap-int.h no longer exists in /usr/include
+
+Index: bpf_image.c
+--- bpf_image.c.orig
++++ bpf_image.c
+@@ -28,7 +28,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ 
+-#include "pcap-int.h"
++#include "pcap.h"
+ 
+ #ifdef HAVE_OS_PROTO_H
+ #include "os-proto.h"
+@@ -36,7 +36,7 @@
+ 
+ char *
+ bpf_image(p, n)
+-	struct bpf_insn *p;
++	const struct bpf_insn *p;
+ 	int n;
+ {
+ 	int v;

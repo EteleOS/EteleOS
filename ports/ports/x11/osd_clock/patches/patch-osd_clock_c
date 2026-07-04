@@ -1,0 +1,49 @@
+Hunk #1:
+On arm and ppc char is unsigned by default. It is not enough to hold
+the return value of getopt_long(3), that returns -1 once all arguments
+have been exhausted, use the proper int type instead.
+
+Index: osd_clock.c
+--- osd_clock.c.orig
++++ osd_clock.c
+@@ -43,7 +43,7 @@ static struct option long_options[] = {
+ 
+ int main (int argc, char *argv[])
+ {
+-  char c;
++  int c;
+   
+   static const char *format;
+   time_t *t = NULL;
+@@ -109,7 +109,15 @@ int main (int argc, char *argv[])
+     }
+   }
+   
+-  osd = xosd_init (font, color, delay, pos, offset, shadow);
++  osd = xosd_create(1);
++
++  xosd_set_font(osd, font);
++  xosd_set_colour(osd, color);
++  xosd_set_timeout(osd, delay);
++  xosd_set_pos(osd, pos);
++  xosd_set_vertical_offset(osd, offset);
++  xosd_set_shadow_offset(osd, shadow);
++  
+   if (!osd)
+   {
+     fprintf (stderr, "Error initializing osd\n");
+@@ -126,11 +134,12 @@ int main (int argc, char *argv[])
+    
+     strftime(output, 255, format, localtime(&curr_time));
+ 
+-    xosd_display (osd, 1, XOSD_string, output);
++    if ((xosd_display (osd, 0, XOSD_string, output)) == -1) 
++	    (void)fprintf(stderr, "xosd_display() failed\n");
+     sleep(interval);
+   }
+ 
+-  xosd_uninit (osd);
++  xosd_destroy (osd);
+   
+   return EXIT_SUCCESS;
+ }

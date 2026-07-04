@@ -1,0 +1,11 @@
+@conflict p5-List-MoreUtils-<0.419
+${P5ARCH}/
+${P5ARCH}/List/
+${P5ARCH}/List/MoreUtils/
+${P5ARCH}/List/MoreUtils/XS.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/List/
+${P5ARCH}/auto/List/MoreUtils/
+${P5ARCH}/auto/List/MoreUtils/XS/
+@so ${P5ARCH}/auto/List/MoreUtils/XS/XS.so
+@man man/man3p/List::MoreUtils::XS.3p

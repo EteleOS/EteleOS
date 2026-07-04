@@ -1,0 +1,14 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -11014,8 +11014,8 @@ if test "$enable_default_db" = "yes"; then
+ 
+ if test "x$sysconfdir" != x'${prefix}/etc'; then
+ 	evalled_sysconfdir=`eval echo "$sysconfdir"`
+-	default_db="$evalled_sysconfdir/aide.db"
+-	default_db_out="$evalled_sysconfdir/aide.db.new"
++	default_db="/var/db/aide.db"
++	default_db_out="/var/db/aide.db.new"
+ elif test "x$prefix" != xNONE; then
+ 	default_db="$prefix/etc/aide.db"
+ 	default_db_out="$prefix/etc/aide.db.new"

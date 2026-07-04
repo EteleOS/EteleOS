@@ -1,0 +1,27 @@
+--- doc/automake.texi.orig	Thu May 13 22:41:35 2004
++++ doc/automake.texi	Thu Jul 22 13:56:06 2010
+@@ -1,7 +1,8 @@
+ \input texinfo   @c -*-texinfo-*-
+ @c %**start of header
+ @setfilename automake.info
+-@settitle automake
++@dircategory Programming & development tools 
++@settitle automake${SUFFIX}
+ @setchapternewpage off
+ @c %**end of header
+ 
+@@ -34,12 +35,12 @@ published by the Free Software Foundation raise funds 
+ 
+ @dircategory Software development
+ @direntry
+-* automake: (automake).		Making Makefile.in's.
++* automake${SUFFIX}: (automake${SUFFIX}).		Making Makefile.in's.
+ @end direntry
+ 
+ @dircategory Individual utilities
+ @direntry
+-* aclocal: (automake)Invoking aclocal.          Generating aclocal.m4.
++* aclocal${SUFFIX}: (automake${SUFFIX})Invoking aclocal.          Generating aclocal.m4.
+ @end direntry
+ 
+ @titlepage

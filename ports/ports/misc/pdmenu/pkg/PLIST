@@ -1,0 +1,18 @@
+@bin bin/pdmenu
+@man man/man1/pdmenu.1
+@man man/man5/pdmenurc.5
+share/examples/pdmenu/
+share/examples/pdmenu/README
+share/examples/pdmenu/ba.lpd
+share/examples/pdmenu/editdir.pl
+share/examples/pdmenu/newbie/
+share/examples/pdmenu/newbie/modem-check
+share/examples/pdmenu/newbie/pdmenurc.newbie
+share/examples/pdmenu/newbie/rpm-info-on-command
+share/examples/pdmenu/pdmenurc
+share/examples/pdmenu/pdmenurc.complex
+share/examples/pdmenu/pdmenurc.monitor
+share/examples/pdmenu/showdir.pl
+share/locale/es/LC_MESSAGES/pdmenu.mo
+share/locale/fr/LC_MESSAGES/pdmenu.mo
+share/locale/ru/LC_MESSAGES/pdmenu.mo

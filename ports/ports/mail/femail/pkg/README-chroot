@@ -1,0 +1,15 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Setup with httpd from OpenBSD base system
+=========================================
+By default, femail will use `localhost' for smtphost. 
+httpd(8) inside the chroot(2) will NOT be able to use the system
+/etc/hosts or /etc/resolv.conf. One will need to populate /var/www/etc/hosts 
+and/or /var/www/etc/resolv.conf in the chroot(2) environment.
+
+Additionally, one may create a custom femail.conf; see femail(8).
+
+If you're using femail with PHP inside a chroot jail, be aware that
+PHP's built-in "mail" function uses popen(), which requires /bin/sh.

@@ -1,0 +1,47 @@
+Index: build/clang/Makefile
+--- build/clang/Makefile.orig
++++ build/clang/Makefile
+@@ -32,16 +32,12 @@ endif
+ SYSCONF_PATH=$(prefix)/share/doc/astyle
+ 
+ # define macros
+-# CXX defaults to g++
+-ifeq ($(CXX), g++)
+-	CXX = clang++
+-endif
+ bindir = bin
+ objdir = obj
+ ipath=$(prefix)/bin
+ CBASEFLAGS = -Wall -Wextra -fno-rtti -fno-exceptions -std=c++11
+ JAVAINCS   = -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
+-INSTALL=install -o $(USER) -g $(USER)
++INSTALL=install
+ 
+ # Library's major version number -- Increment in case of incompatible API
+ # change.
+@@ -62,7 +58,7 @@ ifdef CFLAGS
+     CFLAGSr   = -DNDEBUG $(CBASEFLAGS) $(CFLAGS)
+     CFLAGSd   = -g $(CBASEFLAGS) $(CFLAGS)
+ else
+-    CFLAGSr   = -DNDEBUG -O3 $(CBASEFLAGS)
++    CFLAGSr   = -DNDEBUG $(CBASEFLAGS)
+     CFLAGSd   = -g $(CBASEFLAGS)
+ endif
+ CFLAGSs   = -DASTYLE_LIB -fPIC $(CFLAGSr)
+@@ -213,14 +209,9 @@ cleanobj:
+ 
+ install:
+ 	$(INSTALL) -m 755 -d $(ipath)
+-	@$(INSTALL) -m 755 $(bindir)/astyle  $(ipath)
++	$(INSTALL) -m 755 $(bindir)/astyle  $(ipath)
+ 
+-	@if [ -d $(SYSCONF_PATH)/html ]; then \
+-		rm -rf  $(SYSCONF_PATH)/html; \
+-	fi
+-
+-	$(INSTALL) -m 755 -d $(SYSCONF_PATH)
+-	@mkdir -p $(SYSCONF_PATH)/html;
++	$(INSTALL) -m 755 -d $(SYSCONF_PATH)/html
+ 	@for files in astyle.html \
+                   install.html \
+                   news.html \

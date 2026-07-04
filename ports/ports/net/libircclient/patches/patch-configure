@@ -1,0 +1,12 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -4410,7 +4410,7 @@ fi
+ if test "$use_debug" = "yes"; then
+ 	CFLAGS="${CFLAGS} -g -DENABLE_DEBUG"
+ else
+-	CFLAGS="${CFLAGS} -O3"
++	CFLAGS="${CFLAGS}"
+ fi
+ 
+ # Choosing the target

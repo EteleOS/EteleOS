@@ -1,0 +1,12 @@
+Index: src/libjasper/pnm/pnm_enc.c
+--- src/libjasper/pnm/pnm_enc.c.orig
++++ src/libjasper/pnm/pnm_enc.c
+@@ -375,7 +375,7 @@ static int pnm_putdata(jas_stream_t *out, pnm_hdr_t *h
+ 						}
+ 					}
+ 				} else {
+-					n = sprintf(buf, "%s%ld", ((!(!x && !cmptno)) ? " " : ""),
++					n = snprintf(buf, sizeof buf, "%s%ld", ((!(!x && !cmptno)) ? " " : ""),
+ 					  (long) v);
+ 					if (linelen > 0 && linelen + n > PNM_MAXLINELEN) {
+ 						jas_stream_printf(out, "\n");

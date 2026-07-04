@@ -1,0 +1,23 @@
+Drop -Werror
+
+Index: kodev/Makefile
+--- kodev/Makefile.orig
++++ kodev/Makefile
+@@ -9,7 +9,7 @@ INSTALL_DIR=$(PREFIX)/bin
+ 
+ S_SRC=	../src/cli.c
+ 
+-CFLAGS+=-Wall -Werror -Wstrict-prototypes -Wmissing-prototypes
++CFLAGS+=-Wall -Wstrict-prototypes -Wmissing-prototypes
+ CFLAGS+=-Wmissing-declarations -Wshadow -Wpointer-arith -Wcast-qual
+ CFLAGS+=-Wsign-compare -Iincludes -std=c99 -pedantic
+ CFLAGS+=-DPREFIX='"$(PREFIX)"'
+@@ -17,8 +17,6 @@ LDFLAGS=-lcrypto
+ 
+ ifneq ("$(NOOPT)", "")
+ 	CFLAGS+=-O0
+-else
+-	CFLAGS+=-O2
+ endif
+ 
+ ifneq ("$(MINIMAL)", "")

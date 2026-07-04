@@ -1,0 +1,20 @@
+--- configure.orig	Mon May 22 07:10:07 2006
++++ configure	Thu Dec 31 09:20:11 2015
+@@ -8593,7 +8593,7 @@ case "$host_os" in
+ 					os_src=openbsd29.c
+ 				;;
+ 
+-				*openbsd3*)
++				*openbsd*)
+ 					os_src=openbsd30.c
+ 				;;
+ 			esac
+@@ -8604,7 +8604,7 @@ case "$host_os" in
+ 					os_src=openbsd.c
+ 				;;
+ 
+-				*openbsd3* )
++				*openbsd* )
+ 					os_src=openbsd30.c
+ 				;;
+ 			esac

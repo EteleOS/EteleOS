@@ -1,0 +1,10 @@
+--- Wnn/jserver/do_env.c.orig
++++ Wnn/jserver/do_env.c
+@@ -49,6 +49,7 @@
+ /*	Version 4.0
+  */
+ #include <stdio.h>
++#include <string.h>
+ 
+ #include "demcom.h"
+ #include "commonhd.h"

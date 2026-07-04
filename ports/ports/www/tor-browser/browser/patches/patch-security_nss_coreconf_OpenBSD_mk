@@ -1,0 +1,14 @@
+Taken from security/nss
+
+Index: security/nss/coreconf/OpenBSD.mk
+--- security/nss/coreconf/OpenBSD.mk.orig
++++ security/nss/coreconf/OpenBSD.mk
+@@ -24,7 +24,7 @@ OS_LIBS			+= -pthread
+ DSO_LDOPTS		+= -pthread
+ endif
+ 
+-DLL_SUFFIX		= so.1.0
++DLL_SUFFIX		= so.${SO_VERSION}
+ 
+ OS_CFLAGS		= $(DSO_CFLAGS) $(OS_REL_CFLAGS) -Wall -Wno-switch -pipe -DOPENBSD
+ 

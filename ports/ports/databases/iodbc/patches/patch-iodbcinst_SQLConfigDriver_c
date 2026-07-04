@@ -1,0 +1,17 @@
+Index: iodbcinst/SQLConfigDriver.c
+--- iodbcinst/SQLConfigDriver.c.orig
++++ iodbcinst/SQLConfigDriver.c
+@@ -481,11 +481,11 @@ SQLConfigDriver_Internal (HWND hwndParent, WORD fReque
+ #else
+   if (waMode == 'A')
+     {
+-      CALL_CONFIG_DRIVER ("libdrvproxy.so.2");
++      CALL_CONFIG_DRIVER ("libdrvproxy.so");
+     }
+   else
+     {
+-      CALL_CONFIG_DRIVERW ("libdrvproxy.so.2");
++      CALL_CONFIG_DRIVERW ("libdrvproxy.so");
+     }
+ #endif
+ 

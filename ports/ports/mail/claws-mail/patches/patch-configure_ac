@@ -1,0 +1,33 @@
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -600,13 +600,6 @@ dnl enchant is used for spell checking
+ AC_MSG_CHECKING([whether to use enchant])
+ AC_MSG_RESULT($enable_enchant)
+ if test $enable_enchant = yes; then
+-	PKG_CHECK_MODULES(ENCHANT, enchant >= 1.4.0,
+-	[
+-		AC_DEFINE(USE_ENCHANT, 1, enchant)
+-		echo "Building with enchant"
+-		enable_enchant=yes
+-	],
+-	[
+ 		PKG_CHECK_MODULES(ENCHANT, enchant-2 >= 2.0.0,
+ 		[
+ 			AC_DEFINE(USE_ENCHANT, 1, enchant-2)
+@@ -617,7 +610,6 @@ if test $enable_enchant = yes; then
+ 			echo "Building without enchant-notification"
+ 			enable_enchant=no
+ 		])
+-	])
+ 	AC_SUBST(ENCHANT_CFLAGS)
+ 	AC_SUBST(ENCHANT_LIBS)
+ fi
+@@ -804,6 +796,7 @@ if test x"$enable_alternate_addressbook" = xno; then
+ 		AC_CHECK_LIB(resolv, res_query, LDAP_LIBS="$LDAP_LIBS -lresolv")
+ 		AC_CHECK_LIB(socket, bind, LDAP_LIBS="$LDAP_LIBS -lsocket")
+ 		AC_CHECK_LIB(nsl, gethostbyaddr, LDAP_LIBS="$LDAP_LIBS -lnsl")
++		AC_CHECK_LIB(sasl2, sasl_version, LDAP_LIBS="$LDAP_LIBS -lsasl2")
+ 		AC_CHECK_LIB(lber, ber_get_tag, LDAP_LIBS="$LDAP_LIBS -llber",,
+ 				 $LDAP_LIBS)
+ 

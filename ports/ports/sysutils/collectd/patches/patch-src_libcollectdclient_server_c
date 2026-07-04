@@ -1,0 +1,16 @@
+Index: src/libcollectdclient/server.c
+--- src/libcollectdclient/server.c.orig
++++ src/libcollectdclient/server.c
+@@ -39,10 +39,11 @@
+ 
+ // clang-format off
+ #include <errno.h>
++#include <sys/time.h>
++#include <sys/socket.h>
+ #include <stdbool.h>
+ #include <string.h>
+ #include <unistd.h>
+-#include <sys/socket.h>
+ #include <sys/types.h>
+ #include <net/if.h>
+ #include <netdb.h>

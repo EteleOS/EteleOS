@@ -1,0 +1,13 @@
+--- Imakefile.orig	Fri Jul 12 01:01:04 1996
++++ Imakefile	Fri May 31 21:51:50 2013
+@@ -24,6 +24,10 @@ XCOMM $Id: Imakefile,v 6.3 1996/07/12 05:01:03 kagotan
+          PTYLIB = -lpucc
+ #endif
+ 
++#if defined(OpenBSDArchitecture)
++PTYLIB = -lutil
++#endif
++
+  OSMAJORVERSION = OSMajorVersion
+  OSMINORVERSION = OSMinorVersion
+ 

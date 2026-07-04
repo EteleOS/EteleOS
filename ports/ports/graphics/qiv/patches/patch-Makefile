@@ -1,0 +1,63 @@
+Hunk #4 is a fix for bogus manpaths that can be removed for qiv>2.3.2,
+see https://codeberg.org/ciberandy/qiv/commit/195fe9d5
+
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -4,7 +4,7 @@
+ #######################################################################
+ 
+ # Directory where qiv will be installed under.
+-PREFIX = /usr/local
++PREFIX ?= /usr/local
+ 
+ # Fonts to use for statusbar and comments
+ STATUSBAR_FONT = "Monospace 9"
+@@ -31,7 +31,7 @@ GETOPT_LONG = -DHAVE_GETOPT_LONG
+ 
+ # This program will be run on the manual page after it is installed.
+ # If you don't want to compress the manpage, change it to 'true'.
+-COMPRESS_PROG = gzip -9f
++COMPRESS_PROG = true
+ 
+ # Comment this line out if your system doesn't have lcms2 installed
+ # (for minimal Color Management support)
+@@ -51,14 +51,12 @@ EXIF = -DHAVE_EXIF
+ ######################################################################
+ 
+ ifeq ($(origin CC),default)
+-CC = gcc
++CC ?= gcc
+ endif
+ 
+ PKG_CONFIG ?= pkg-config
+ #CFLAGS    = -O0 -g -Wall
+-CFLAGS    = -O2 -Wall \
+-	    -fcaller-saves -ffast-math -fno-strength-reduce \
+-	    -fthread-jumps #-march=pentium #-DSTAT_MACROS_BROKEN
++CFLAGS    = -Wall
+ #CFLAGS    = -O2 -Wall -fomit-frame-pointer -finline-functions \
+ #	    -fcaller-saves -ffast-math -fno-strength-reduce \
+ #	    -fthread-jumps #-march=pentium #-DSTAT_MACROS_BROKEN
+@@ -153,8 +151,8 @@ install: $(PROGRAM)
+ 	  echo install -d -m 0755 $(PREFIX)/man/man1; \
+ 	  install -d -m 0755 $(PREFIX)/man/man1; \
+ 	fi
+-	install -m 0644 $(PROGRAM).1 $(PREFIX)/share/man/man1
+-	$(COMPRESS_PROG) $(PREFIX)/share/man/man1/$(PROGRAM).1
++	install -m 0644 $(PROGRAM).1 $(PREFIX)/man/man1
++	$(COMPRESS_PROG) $(PREFIX)/man/man1/$(PROGRAM).1
+ 	@if [ ! -e $(PREFIX)/share/pixmaps ]; then \
+ 	  echo install -d -m 0755 $(PREFIX)/share/pixmaps; \
+ 	  install -d -m 0755 $(PREFIX)/share/pixmaps; \
+@@ -165,10 +163,6 @@ install: $(PROGRAM)
+ 	  install -d -m 0755 $(PREFIX)/share/applications; \
+ 	fi
+ 	install -m 0644 qiv.desktop $(PREFIX)/share/applications/qiv.desktop
+-	@if ./qiv -f ./intro.jpg ; \
+-	then echo "-- Test Passed --" ; \
+-	else echo "-- Test Failed --" ; \
+-	fi
+ 	@echo "\nDont forget to look into the \"qiv-command\" file and install it!\n-> cp qiv-command.example $(PREFIX)/bin/qiv-command\n\n"
+ 
+ # the end... ;-)

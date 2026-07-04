@@ -1,0 +1,13 @@
+Index: config/jvm.options
+--- config/jvm.options.orig
++++ config/jvm.options
+@@ -29,6 +29,9 @@
+ 
+ ## basic
+ 
++# OpenBSD-specific
++-Djava.library.path=${TRUEPREFIX}/jruby/lib/jni/x86_64-OpenBSD
++
+ # set the I/O temp directory
+ #-Djava.io.tmpdir=${HOME}
+ 

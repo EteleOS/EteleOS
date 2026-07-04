@@ -1,0 +1,34 @@
+Index: doc/example-config/conf.d/auth-system.conf.ext
+--- doc/example-config/conf.d/auth-system.conf.ext.orig
++++ doc/example-config/conf.d/auth-system.conf.ext
+@@ -7,12 +7,12 @@
+ # PAM is typically used with either userdb passwd or userdb static.
+ # REMEMBER: You'll need /etc/pam.d/dovecot file created for PAM
+ # authentication to actually work. <doc/wiki/PasswordDatabase.PAM.txt>
+-passdb {
+-  driver = pam
++#passdb {
++  #driver = pam
+   # [session=yes] [setcred=yes] [failure_show_msg=yes] [max_requests=<n>]
+   # [cache_key=<key>] [<service name>]
+   #args = dovecot
+-}
++#}
+ 
+ # System users (NSS, /etc/passwd, or similar).
+ # In many systems nowadays this uses Name Service Switch, which is
+@@ -34,11 +34,11 @@ passdb {
+ 
+ # PAM-like authentication for OpenBSD.
+ # <doc/wiki/PasswordDatabase.BSDAuth.txt>
+-#passdb {
+-  #driver = bsdauth
++passdb {
++  driver = bsdauth
+   # [blocking=no] [cache_key=<key>]
+   #args =
+-#}
++}
+ 
+ ##
+ ## User databases

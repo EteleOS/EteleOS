@@ -1,0 +1,14 @@
+Conflicting definition used elsewhere.
+
+Index: plug-ins/rand_flood/rand_flood.c
+--- plug-ins/rand_flood/rand_flood.c.orig
++++ plug-ins/rand_flood/rand_flood.c
+@@ -54,7 +54,7 @@ struct arp_eth_header {
+ 
+ #define FAKE_PCK_LEN sizeof(struct eth_header)+sizeof(struct arp_header)+sizeof(struct arp_eth_header)
+ struct packet_object fake_po;
+-char fake_pck[FAKE_PCK_LEN];
++static char fake_pck[FAKE_PCK_LEN];
+ 
+ 
+ /* protos */

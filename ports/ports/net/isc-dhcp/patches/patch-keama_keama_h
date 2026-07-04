@@ -1,0 +1,12 @@
+Index: keama/keama.h
+--- keama/keama.h.orig
++++ keama/keama.h
+@@ -28,6 +28,8 @@
+ #include "data.h"
+ #include "dhctoken.h"
+ 
++#include <sys/socket.h>
++#include <errno.h>
+ #include <time.h>
+ 
+ /* Resolution of FQDNs into IPv4 addresses */

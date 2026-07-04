@@ -1,0 +1,36 @@
+@bin bin/gpx-viewer
+share/applications/gpx-viewer.desktop
+share/gpx-viewer/
+share/gpx-viewer/default-layout.xml
+share/icons/hicolor/128x128/apps/gpx-viewer.png
+share/icons/hicolor/16x16/apps/gpx-viewer.png
+share/icons/hicolor/22x22/apps/gpx-viewer.png
+share/icons/hicolor/24x24/apps/gpx-viewer.png
+share/icons/hicolor/256x256/apps/gpx-viewer.png
+share/icons/hicolor/32x32/apps/gpx-viewer.png
+share/icons/hicolor/48x48/apps/gpx-viewer.png
+share/icons/hicolor/scalable/apps/gpx-viewer.svg
+share/icons/hicolor/scalable/status/pin-blue.svg
+share/icons/hicolor/scalable/status/pin-green.svg
+share/icons/hicolor/scalable/status/pin-grey.svg
+share/icons/hicolor/scalable/status/pin-orange.svg
+share/icons/hicolor/scalable/status/pin-purple.svg
+share/icons/hicolor/scalable/status/pin-red.svg
+share/icons/hicolor/scalable/status/pin-yellow.svg
+share/locale/ar/LC_MESSAGES/gpx-viewer.mo
+share/locale/cs/LC_MESSAGES/gpx-viewer.mo
+share/locale/de/LC_MESSAGES/gpx-viewer.mo
+share/locale/el/LC_MESSAGES/gpx-viewer.mo
+share/locale/es/LC_MESSAGES/gpx-viewer.mo
+share/locale/fr/LC_MESSAGES/gpx-viewer.mo
+share/locale/hu/LC_MESSAGES/gpx-viewer.mo
+share/locale/it/LC_MESSAGES/gpx-viewer.mo
+share/locale/ru/LC_MESSAGES/gpx-viewer.mo
+share/locale/uk/LC_MESSAGES/gpx-viewer.mo
+share/locale/zh_CN/LC_MESSAGES/gpx-viewer.mo
+share/metainfo/
+share/metainfo/gpx-viewer.metainfo.xml
+share/mime/packages/gpx-viewer.xml
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-mime-database
+@tag update-desktop-database

@@ -1,0 +1,42 @@
+Index: conf/conf.xml.in
+--- conf/conf.xml.in.orig
++++ conf/conf.xml.in
+@@ -31,7 +31,7 @@
+ 		<Logging>
+ 			<!-- Command line verbosity will overwrite configure file -->
+ 			<Verbosity>3</Verbosity>
+-			<Syslog><Facility>local0</Facility></Syslog>
++			<Syslog><Facility>daemon</Facility></Syslog>
+ 		</Logging>
+ 		
+ 		<PolicyFile>@OPENDNSSEC_CONFIG_DIR@/kasp.xml</PolicyFile>
+@@ -39,10 +39,10 @@
+ 	</Common>
+ 
+ 	<Enforcer>
+-<?xmlif if condition privdrop="user|group|both"?>		<Privileges>
+-<?xmlif fi?><?xmlif if condition privdrop="user|both"?>			<User>@INSTALLATIONUSER@</User>
+-<?xmlif fi?><?xmlif if condition privdrop="group|both"?>			<Group>@INSTALLATIONGROUP@</Group>
+-<?xmlif fi?><?xmlif if condition privdrop="user|group|both"?>		</Privileges><?xmlif fi?>
++		<Privileges>
++			<User>_opendnssec</User>
++			<Group>_opendnssec</Group>
++		</Privileges>
+ 
+ 		<Datastore><SQLite>@OPENDNSSEC_STATE_DIR@/kasp.db</SQLite></Datastore>
+ 		<!-- <ManualKeyGeneration/> -->
+@@ -59,10 +59,10 @@
+ 	</Enforcer>
+ 
+ 	<Signer>
+-<?xmlif if condition privdrop="user|group|both"?>		<Privileges>
+-<?xmlif fi?><?xmlif if condition privdrop="user|both"?>			<User>@INSTALLATIONUSER@</User>
+-<?xmlif fi?><?xmlif if condition privdrop="group|both"?>			<Group>@INSTALLATIONGROUP@</Group>
+-<?xmlif fi?><?xmlif if condition privdrop="user|group|both"?>		</Privileges><?xmlif fi?>
++		<Privileges>
++			<User>_opendnssec</User>
++			<Group>_opendnssec</Group>
++		</Privileges>
+ 
+ 		<WorkingDirectory>@OPENDNSSEC_STATE_DIR@/signer</WorkingDirectory>
+ 		<WorkerThreads>4</WorkerThreads>

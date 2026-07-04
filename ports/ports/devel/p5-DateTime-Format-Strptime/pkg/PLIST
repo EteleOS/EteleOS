@@ -1,0 +1,6 @@
+${P5SITE}/DateTime/Format/
+${P5SITE}/DateTime/Format/Strptime/
+${P5SITE}/DateTime/Format/Strptime.pm
+${P5SITE}/DateTime/Format/Strptime/Types.pm
+@man man/man3p/DateTime::Format::Strptime.3p
+@man man/man3p/DateTime::Format::Strptime::Types.3p

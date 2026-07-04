@@ -1,0 +1,13 @@
+Index: node/sbin/munin-run
+--- node/sbin/munin-run.orig
++++ node/sbin/munin-run
+@@ -118,6 +118,9 @@ sub main
+         $ENV{$key} =~ /^(.*)$/s;
+         $ENV{$key} = $1;
+     }
++    # plugins run in taint mode because the uid is changed, so the path
++    # must not contain writable directories.
++    $ENV{PATH}='/bin:/sbin:/usr/bin:/usr/sbin:${PREFIX}/bin:${PREFIX}/sbin';
+ 
+     $0 =~ /^(.*)$/;
+     $0 = $1;

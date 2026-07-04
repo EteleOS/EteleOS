@@ -1,0 +1,4 @@
+${P5SITE}/CGI/Application/Generator/
+${P5SITE}/CGI/Application/Generator.pm
+${P5SITE}/CGI/Application/Generator/app_module.tmpl
+@man man/man3p/CGI::Application::Generator.3p

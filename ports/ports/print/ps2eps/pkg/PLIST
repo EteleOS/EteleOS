@@ -1,0 +1,5 @@
+@conflict texlive_texmf-minimal-<=2012p0
+@bin bin/bbox
+bin/ps2eps
+@man man/man1/bbox.1
+@man man/man1/ps2eps.1

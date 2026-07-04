@@ -1,0 +1,23 @@
+Index: raddb/radiusd.conf.in
+--- raddb/radiusd.conf.in.orig
++++ raddb/radiusd.conf.in
+@@ -168,7 +168,7 @@ db_dir = ${raddbdir}
+ #	make
+ #	make install
+ #
+-libdir = @libdir@
++libdir = @libdir@/freeradius
+ 
+ #  pidfile: Where to place the PID of the RADIUS server.
+ #
+@@ -603,8 +603,8 @@ security {
+ 	#  member.  This can allow for some finer-grained access
+ 	#  controls.
+ 	#
+-#	user = radius
+-#	group = radius
++	user = _freeradius
++	group = _freeradius
+ 
+ 	#  Core dumps are a bad thing.  This should only be set to
+ 	#  'yes' if you're debugging a problem with the server.

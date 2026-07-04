@@ -1,0 +1,12 @@
+Index: src/grip.c
+--- src/grip.c.orig
++++ src/grip.c
+@@ -637,7 +637,7 @@ static void DoLoadConfig(GripInfo *ginfo)
+ 
+   *ginfo->version='\0';
+ 
+-  strcpy(ginfo->cd_device,"/dev/cdrom");
++  strcpy(ginfo->cd_device,"/dev/cd0c");
+   *ginfo->force_scsi='\0';
+ 
+   ginfo->local_mode=FALSE;

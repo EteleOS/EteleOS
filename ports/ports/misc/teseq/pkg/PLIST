@@ -1,0 +1,5 @@
+bin/reseq
+@bin bin/teseq
+@info info/teseq.info
+@man man/man1/reseq.1
+@man man/man1/teseq.1

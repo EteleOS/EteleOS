@@ -1,0 +1,2 @@
+@conflict cmus-<2.7.1
+@so lib/cmus/ip/ffmpeg.so

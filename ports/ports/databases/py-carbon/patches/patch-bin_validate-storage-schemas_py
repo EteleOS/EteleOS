@@ -1,0 +1,12 @@
+Index: bin/validate-storage-schemas.py
+--- bin/validate-storage-schemas.py.orig
++++ bin/validate-storage-schemas.py
+@@ -26,7 +26,7 @@ if len(sys.argv) == 2:
+   SCHEMAS_FILE = sys.argv[1]
+   print("Loading storage-schemas configuration from: '%s'" % SCHEMAS_FILE)
+ else:
+-  SCHEMAS_FILE = realpath(join(dirname(__file__), '..', 'conf', 'storage-schemas.conf'))
++  SCHEMAS_FILE = '${SYSCONFDIR}/graphite/storage-schemas.conf'
+   print("Loading storage-schemas configuration from default location at: '%s'" % SCHEMAS_FILE)
+ 
+ config_parser = ConfigParser()

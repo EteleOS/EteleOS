@@ -1,0 +1,14 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+To enable desired plugins copy or link their directories to
+~/.tkabber/plugins/ :
+
+ln -s ${PREFIX}/share/tkabber-plugins/aniemoticons/ \
+	~/.tkabber/plugins/
+
+Dependencies for Tkabber plugins:
+
+* xosd ("osd" plugin)
+* tklib ("tkabber-khim" plugin)

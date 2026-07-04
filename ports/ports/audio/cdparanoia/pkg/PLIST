@@ -1,0 +1,11 @@
+@bin bin/cdparanoia
+include/cdda_interface.h
+include/cdda_paranoia.h
+@comment include/utils.h
+lib/libcdda_interface.a
+@lib lib/libcdda_interface.so.${LIBcdda_interface_VERSION}
+lib/libcdda_paranoia.a
+@lib lib/libcdda_paranoia.so.${LIBcdda_paranoia_VERSION}
+@man man/man1/cdparanoia.1
+share/doc/cdparanoia/
+share/doc/cdparanoia/FAQ.txt

@@ -1,0 +1,7 @@
+${P5SITE}/Config/
+${P5SITE}/Config/Grammar/
+${P5SITE}/Config/Grammar.pm
+${P5SITE}/Config/Grammar/Document.pm
+${P5SITE}/Config/Grammar/Dynamic.pm
+@man man/man3p/Config::Grammar.3p
+@man man/man3p/Config::Grammar::Dynamic.3p

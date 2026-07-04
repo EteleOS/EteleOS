@@ -1,0 +1,239 @@
+#	$OpenBSD: Makefile,v 1.8 2025/11/16 16:43:35 matthieu Exp $
+
+FONTCONFIG =	${.CURDIR}/../../../dist/fontconfig
+
+MAN =	fc-cache.1 \
+	fc-cat.1 \
+	fc-conflist.1 \
+	fc-list.1 \
+	fc-match.1 \
+	fc-pattern.1 \
+	fc-query.1 \
+	fc-scan.1 \
+	fc-validate.1 \
+	FcAtomicCreate.3 \
+	FcAtomicDeleteNew.3 \
+	FcAtomicDestroy.3 \
+	FcAtomicLock.3 \
+	FcAtomicNewFile.3 \
+	FcAtomicOrigFile.3 \
+	FcAtomicReplaceOrig.3 \
+	FcAtomicUnlock.3 \
+	FcBlanksAdd.3 \
+	FcBlanksCreate.3 \
+	FcBlanksDestroy.3 \
+	FcBlanksIsMember.3 \
+	FcCacheCopySet.3 \
+	FcCacheCreateTagFile.3 \
+	FcCacheDir.3 \
+	FcCacheNumFont.3 \
+	FcCacheNumSubdir.3 \
+	FcCacheSubdir.3 \
+	FcCharSetAddChar.3 \
+	FcCharSetCopy.3 \
+	FcCharSetCount.3 \
+	FcCharSetCoverage.3 \
+	FcCharSetCreate.3 \
+	FcCharSetDelChar.3 \
+	FcCharSetDestroy.3 \
+	FcCharSetEqual.3 \
+	FcCharSetFirstPage.3 \
+	FcCharSetHasChar.3 \
+	FcCharSetIntersect.3 \
+	FcCharSetIntersectCount.3 \
+	FcCharSetIsSubset.3 \
+	FcCharSetMerge.3 \
+	FcCharSetNew.3 \
+	FcCharSetNextPage.3 \
+	FcCharSetSubtract.3 \
+	FcCharSetSubtractCount.3 \
+	FcCharSetUnion.3 \
+	FcConfigAcceptFilter.3 \
+	FcConfigAcceptFont.3 \
+	FcConfigAppFontAddDir.3 \
+	FcConfigAppFontAddFile.3 \
+	FcConfigAppFontClear.3 \
+	FcConfigBuildFonts.3 \
+	FcConfigCreate.3 \
+	FcConfigDestroy.3 \
+	FcConfigEnableHome.3 \
+	FcConfigFilename.3 \
+	FcConfigGetBlanks.3 \
+	FcConfigGetCache.3 \
+	FcConfigGetCacheDirs.3 \
+	FcConfigGetConfigDirs.3 \
+	FcConfigGetConfigFiles.3 \
+	FcConfigGetCurrent.3 \
+	FcConfigGetDefaultLangs.3 \
+	FcConfigGetFilename.3 \
+	FcConfigGetFontDirs.3 \
+	FcConfigGetFonts.3 \
+	FcConfigGetRescanInterval.3 \
+	FcConfigGetSysRoot.3 \
+	FcConfigHome.3 \
+	FcConfigParseAndLoad.3 \
+	FcConfigPreferAppFont.3 \
+	FcConfigReference.3 \
+	FcConfigSetCurrent.3 \
+	FcConfigSetDefaultSubstitute.3 \
+	FcConfigSetFontSetFilter.3  \
+	FcConfigSetRescanInterval.3 \
+	FcConfigSetSysRoot.3 \
+	FcConfigSubstitute.3 \
+	FcConfigSubstituteWithPat.3 \
+	FcConfigUptoDate.3 \
+	FcDefaultSubstitute.3 \
+	FcDirCacheClean.3 \
+	FcDirCacheLoad.3 \
+	FcDirCacheLoadFile.3 \
+	FcDirCacheRead.3 \
+	FcDirCacheRescan.3 \
+	FcDirCacheUnlink.3 \
+	FcDirCacheUnload.3 \
+	FcDirCacheValid.3 \
+	FcDirSave.3 \
+	FcDirScan.3 \
+	FcFileIsDir.3 \
+	FcFileScan.3 \
+	FcFini.3 \
+	FcFontList.3 \
+	FcFontMatch.3 \
+	FcFontRenderPrepare.3 \
+	FcFontSetAdd.3 \
+	FcFontSetCreate.3 \
+	FcFontSetDestroy.3 \
+	FcFontSetList.3 \
+	FcFontSetMatch.3 \
+	FcFontSetPrint.3 \
+	FcFontSetSort.3 \
+	FcFontSetSortDestroy.3 \
+	FcFontSort.3 \
+	FcFreeTypeCharIndex.3 \
+	FcFreeTypeCharSet.3 \
+	FcFreeTypeCharSetAndSpacing.3 \
+	FcFreeTypeQuery.3 \
+	FcFreeTypeQueryFace.3 \
+	FcGetDefaultLangs.3 \
+	FcGetLangs.3 \
+	FcGetVersion.3 \
+	FcInit.3 \
+	FcInitBringUptoDate.3 \
+	FcInitLoadConfig.3 \
+	FcInitLoadConfigAndFonts.3 \
+	FcInitReinitialize.3 \
+	FcIsLower.3 \
+	FcIsUpper.3 \
+	FcLangGetCharSet.3 \
+	FcLangNormalize.3 \
+	FcLangSetAdd.3 \
+	FcLangSetCompare.3 \
+	FcLangSetContains.3 \
+	FcLangSetCopy.3 \
+	FcLangSetCreate.3 \
+	FcLangSetDel.3 \
+	FcLangSetDestroy.3 \
+	FcLangSetEqual.3 \
+	FcLangSetGetLangs.3 \
+	FcLangSetHasLang.3 \
+	FcLangSetHash.3 \
+	FcLangSetSubtract.3 \
+	FcLangSetUnion.3 \
+	FcMatrixCopy.3 \
+	FcMatrixEqual.3 \
+	FcMatrixInit.3 \
+	FcMatrixMultiply.3 \
+	FcMatrixRotate.3 \
+	FcMatrixScale.3 \
+	FcMatrixShear.3 \
+	FcNameConstant.3 \
+	FcNameGetConstant.3 \
+	FcNameGetConstantFor.3 \
+	FcNameGetObjectType.3 \
+	FcNameParse.3 \
+	FcNameRegisterConstants.3 \
+	FcNameRegisterObjectTypes.3 \
+	FcNameUnparse.3 \
+	FcNameUnregisterConstants.3 \
+	FcNameUnregisterObjectTypes.3 \
+	FcObjectSetAdd.3 \
+	FcObjectSetBuild.3 \
+	FcObjectSetCreate.3 \
+	FcObjectSetDestroy.3 \
+	FcPatternAdd-Type.3 \
+	FcPatternAdd.3 \
+	FcPatternAddWeak.3 \
+	FcPatternBuild.3 \
+	FcPatternCreate.3 \
+	FcPatternDel.3 \
+	FcPatternDestroy.3 \
+	FcPatternDuplicate.3 \
+	FcPatternEqual.3 \
+	FcPatternEqualSubset.3 \
+	FcPatternFilter.3 \
+	FcPatternFormat.3 \
+	FcPatternGet-Type.3 \
+	FcPatternGet.3 \
+	FcPatternHash.3 \
+	FcPatternPrint.3 \
+	FcPatternReference.3 \
+	FcPatternRemove.3 \
+	FcRangeCopy.3 \
+	FcRangeCreateDouble.3 \
+	FcRangeCreateInteger.3 \
+	FcRangeDestroy.3 \
+	FcRangeGetDouble.3 \
+	FcStrBasename.3 \
+	FcStrBuildFilename.3 \
+	FcStrCmp.3 \
+	FcStrCmpIgnoreCase.3 \
+	FcStrCopy.3 \
+	FcStrCopyFilename.3 \
+	FcStrDirname.3 \
+	FcStrDowncase.3 \
+	FcStrFree.3 \
+	FcStrListCreate.3 \
+	FcStrListDone.3 \
+	FcStrListFirst.3 \
+	FcStrListNext.3 \
+	FcStrPlus.3 \
+	FcStrSetAdd.3 \
+	FcStrSetAddFilename.3 \
+	FcStrSetCreate.3 \
+	FcStrSetDel.3 \
+	FcStrSetDestroy.3 \
+	FcStrSetEqual.3 \
+	FcStrSetMember.3 \
+	FcStrStr.3 \
+	FcStrStrIgnoreCase.3 \
+	FcToLower.3 \
+	FcUcs4ToUtf8.3 \
+	FcUtf16Len.3 \
+	FcUtf16ToUcs4.3 \
+	FcUtf8Len.3 \
+	FcUtf8ToUcs4.3 \
+	FcValueDestroy.3 \
+	FcValueEqual.3 \
+	FcValuePrint.3 \
+	FcValueSave.3 \
+	FcWeightFromOpenType.3 \
+	FcWeightToOpenType.3 \
+	fonts-conf.5
+
+PDF_FILES = fontconfig-devel.pdf fontconfig-user.pdf
+TXT_FILES = fontconfig-devel.txt fontconfig-user.txt
+HTML_FILES = fontconfig-devel.html fontconfig-user.html
+
+
+afterinstall:
+	@for f in ${PDF_FILES} ${TXT_FILES} ${HTML_FILES}; do \
+		echo "installing $$f" ; \
+		${INSTALL_DATA} ${.CURDIR}/$$f \
+		  ${DESTDIR}${X11BASE}/share/doc/fontconfig ; \
+	done
+
+.PATH: ${FONTCONFIG}/doc
+
+YESMAN=
+
+.include <bsd.prog.mk>
+.include <bsd.xorg.mk>

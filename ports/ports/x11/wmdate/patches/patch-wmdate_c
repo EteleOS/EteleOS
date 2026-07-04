@@ -1,0 +1,26 @@
+Hunk #1: fix with libdockapp>=0.7
+
+Index: wmdate.c
+--- wmdate.c.orig
++++ wmdate.c
+@@ -39,7 +39,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
+ #include <X11/extensions/shape.h>
+ #include <time.h>
+ 
+-#include <dockapp.h>
++#include <libdockapp/dockapp.h>
+ #include "config.h"
+ #include "geometry.h"
+ 
+@@ -93,9 +93,9 @@ main (int argc, char *argv[])
+    Pixmap disp;			/* Pixmap that is actually displayed */
+    unsigned long fore_pix, back_pix;
+    int old_day;
+-   unsigned int w=183, h=84;
++   unsigned short w=183, h=84;
+ 
+-   DAParseArguments(argc, argv, options, 4, DESCRIPTION, VERSION);
++   DAParseArguments(argc, argv, options, 3, DESCRIPTION, VERSION);
+    shaped = !options[1].used;
+    doTest = options[2].used;
+  

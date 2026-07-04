@@ -1,0 +1,11 @@
+Index: tests/test_utarray.h
+--- tests/test_utarray.h.orig
++++ tests/test_utarray.h
+@@ -5,6 +5,6 @@
+ 
+ #define oom() ck_abort()
+ 
+-#include "utarray.h"
++#include "utarray_local.h"
+ 
+ #endif /* TEST_UTARRAY_H */

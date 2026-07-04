@@ -1,0 +1,9 @@
+Index: installer/linux/unix.cfg
+--- installer/linux/unix.cfg.orig
++++ installer/linux/unix.cfg
+@@ -39,4 +39,4 @@ max_group_gid = 10000
+ # except_group_gids =
+ 
+ # Create a user as non-active when it has this Unix shell
+-non_login_shell = /sbin/nologin /bin/false
++non_login_shell = /sbin/nologin

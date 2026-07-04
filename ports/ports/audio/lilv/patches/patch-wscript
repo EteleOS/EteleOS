@@ -1,0 +1,14 @@
+set proper shared library version
+
+Index: wscript
+--- wscript.orig
++++ wscript
+@@ -357,7 +357,7 @@ def build(bld):
+                   includes        = ['.', 'include', './src'],
+                   name            = 'liblilv',
+                   target          = 'lilv-%s' % LILV_MAJOR_VERSION,
+-                  vnum            = LILV_VERSION,
++                  vnum            = os.environ['liblilv_0_ltversion'],
+                   install_path    = '${LIBDIR}',
+                   defines         = ['LILV_INTERNAL', 'ZIX_STATIC'],
+                   cflags          = libflags,

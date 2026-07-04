@@ -1,0 +1,5 @@
+${P5SITE}/Class/C3/Componentised/
+${P5SITE}/Class/C3/Componentised.pm
+${P5SITE}/Class/C3/Componentised/ApplyHooks.pm
+@man man/man3p/Class::C3::Componentised.3p
+@man man/man3p/Class::C3::Componentised::ApplyHooks.3p

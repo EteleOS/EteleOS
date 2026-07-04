@@ -1,0 +1,20 @@
+--- configure.in.orig	Fri Aug 27 15:51:53 2010
++++ configure.in	Sun Apr 28 07:51:37 2013
+@@ -216,7 +216,8 @@ if test $openpty -eq 0 ; then
+ 	# the default behavior, we must also handle augment LIBS too.
+ 	# This needn't be done in the 2nd and 3rd tests.
+ 	AC_DEFINE(HAVE_OPENPTY)
+-	LIBS="$LIBS -lutil"
++	PTYLIB="-lutil"
++	LIBS="$LIBS $PTYLIB"
+   ])
+ fi
+ 
+@@ -980,6 +981,7 @@ AC_SUBST(DEFAULT_STTY_ARGS)
+ # Expect uses these from tclConfig.sh to make the main executable
+ AC_SUBST(TCL_DL_LIBS)
+ AC_SUBST(TCL_CC_SEARCH_FLAGS)
++AC_SUBST(PTYLIB)
+ 
+ #--------------------------------------------------------------------
+ # More TEA code based on data we got from the original expect

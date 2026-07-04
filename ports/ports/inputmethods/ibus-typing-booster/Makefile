@@ -1,0 +1,43 @@
+COMMENT =		completion input-method to speed up typing
+
+VERSION =		2.30.6
+DISTNAME =		ibus-typing-booster-${VERSION}
+
+CATEGORIES =		inputmethods productivity
+
+HOMEPAGE =		https://mike-fabian.github.io/ibus-typing-booster/
+
+MAINTAINER =		Antoine Jacoutot <ajacoutot@openbsd.org>
+
+# GPLv3+, APLv2 (fonts)
+PERMIT_PACKAGE =	Yes
+
+SITES =			https://github.com/mike-fabian/ibus-typing-booster/releases/download/${VERSION}/
+
+MODULES =		devel/dconf \
+			lang/python
+
+BUILD_DEPENDS =		devel/gettext,-tools \
+			inputmethods/ibus
+
+RUN_DEPENDS =		devel/desktop-file-utils \
+			devel/py-gobject3 \
+			devel/py-xdg \
+			inputmethods/ibus \
+			misc/m17n/db \
+			misc/m17n/lib \
+			textproc/py-enchant \
+			x11/gtk+4 \
+			x11/gtk+4,-guic
+
+USE_GMAKE =		Yes
+
+CONFIGURE_STYLE =	gnu
+
+pre-configure:
+	sed -i -e "s,^#!/usr/bin/sh,#!/bin/sh," \
+		${WRKSRC}/engine/emoji-picker.in \
+		${WRKSRC}/engine/ibus-engine-typing-booster.in \
+		${WRKSRC}/setup/ibus-setup-typing-booster.in
+
+.include <bsd.port.mk>

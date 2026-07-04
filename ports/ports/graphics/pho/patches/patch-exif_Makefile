@@ -1,0 +1,11 @@
+--- exif/Makefile.orig	Fri Dec 20 16:54:45 2013
++++ exif/Makefile	Fri Dec 20 16:55:03 2013
+@@ -2,7 +2,7 @@
+ 
+ EXIFLIB = libphoexif.a
+ 
+-CFLAGS += -Wall -g -O2 -I../include
++CFLAGS += -Wall -I../include
+ 
+ SRCS = jhead.c jpgfile.c exif.c phoexif.c
+ 

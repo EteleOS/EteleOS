@@ -1,0 +1,16 @@
+Don't try to access list members to free them unless already
+initialised
+
+Index: src/utils/eloop.c
+--- src/utils/eloop.c.orig
++++ src/utils/eloop.c
+@@ -1254,6 +1254,9 @@ void eloop_destroy(void)
+ 	struct eloop_timeout *timeout, *prev;
+ 	struct os_reltime now;
+ 
++	if (eloop.timeout.prev == NULL)
++		return;
++
+ 	os_get_reltime(&now);
+ 	dl_list_for_each_safe(timeout, prev, &eloop.timeout,
+ 			      struct eloop_timeout, list) {

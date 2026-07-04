@@ -1,0 +1,12 @@
+Index: gphoto2/actions.c
+--- gphoto2/actions.c.orig
++++ gphoto2/actions.c
+@@ -19,7 +19,7 @@
+  * Boston, MA  02110-1301  USA
+  */
+ 
+-#define _XOPEN_SOURCE	/* strptime proto, but this hides other prototypes */
++#define _XOPEN_SOURCE 700	/* strptime proto, but this hides other prototypes */
+ #define _GNU_SOURCE	/* get all the other prototypes */
+ #define __EXTENSIONS__	/* for solaris to get back strdup and strcasecmp */
+ #define _DARWIN_C_SOURCE

@@ -1,0 +1,2 @@
+bin/portroach-cli
+@man man/man1/portroach-cli.1

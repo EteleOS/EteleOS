@@ -1,0 +1,11 @@
+--- doc/make.texi.orig	Sat May 21 23:34:49 2016
++++ doc/make.texi	Fri Jun 24 18:19:09 2016
+@@ -52,7 +52,7 @@ developing GNU and promoting software freedom.''
+ 
+ @dircategory Software development
+ @direntry
+-* Make: (make).            Remake files automatically.
++* GNU Make: (make).            The GNU make utility.
+ @end direntry
+ 
+ @iftex

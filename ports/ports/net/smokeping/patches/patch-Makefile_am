@@ -1,0 +1,12 @@
+Index: Makefile.am
+--- Makefile.am.orig
++++ Makefile.am
+@@ -16,7 +16,7 @@
+ 
+ AUTOMAKE_OPTIONS =  foreign
+ 
+-SUBDIRS = lib thirdparty bin doc etc htdocs
++SUBDIRS = lib bin doc etc htdocs
+ 
+ EXTRA_DIST = COPYRIGHT CHANGES CONTRIBUTORS LICENSE cpanfile VERSION README.md
+ 

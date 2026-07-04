@@ -1,0 +1,25 @@
+Index: init.c
+--- init.c.orig
++++ init.c
+@@ -541,8 +541,8 @@ void init(void) {
+ 	csls = sugarcsls;
+     } else {
+ nosugar:
+-	logolib = getenv("LOGOLIB");
+-	helpfiles = getenv("LOGOHELP");
++	logolib = "${PREFIX}/share/ucblogo";
++	helpfiles = "${PREFIX}/share/ucblogo/helpfiles";
+ 	csls = getenv("CSLS");
+     }
+     editor = getenv("EDITOR");
+@@ -756,8 +756,8 @@ nosugar:
+     the_generation = cons(NIL, NIL);
+     Not_Enough_Node = cons(NIL, NIL);
+ 
+-    sprintf(linebuf,"%s%sMessages", logolib, separator);
+-    fp = fopen("Messages", "r");
++    sprintf(linebuf,"%s%smessages", logolib, separator);
++    fp = fopen("messages", "r");
+     if (fp == NULL)
+ 	fp = fopen(linebuf, "r");
+     if (fp == NULL)

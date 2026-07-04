@@ -1,0 +1,11 @@
+--- configure.in.orig	Thu Dec  6 10:41:06 2012
++++ configure.in	Thu Dec  6 10:41:27 2012
+@@ -53,7 +53,7 @@ if test "x${enable_hildon}" = "xyes" ; then
+    AC_SUBST(HILDON_CFLAGS)
+    AC_SUBST(HILDON_LIBS)
+ else
+-   desktopentrydir=/usr/share/applications
++   desktopentrydir=$datadir/applications
+    serviceentrydir=$datadir/numptyphysics
+    numptyphysicsdir=$datadir/numptyphysics
+    icon_26x26dir=$datadir/icons/hicolor/26x26/apps

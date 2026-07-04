@@ -1,0 +1,34 @@
+--- Config.h.orig	Wed Dec  5 15:53:11 2012
++++ Config.h	Thu Dec  6 15:12:55 2012
+@@ -59,7 +59,7 @@
+ # if MAEMO_VERSION >= 5
+ #  define INSTALL_BASE_PATH "/opt/numptyphysics"
+ # else
+-#  define INSTALL_BASE_PATH "/usr/share/numptyphysics"
++#  define INSTALL_BASE_PATH "${TRUEPREFIX}/share/numptyphysics"
+ # endif
+ #endif
+ #define DEFAULT_LEVEL_PATH INSTALL_BASE_PATH
+@@ -81,10 +81,6 @@
+ #endif
+ #define USER_LEVEL_PATH USER_BASE_PATH
+ 
+-#define DEMO_TEMP_FILE "/tmp/demo.nph"
+-#define HTTP_TEMP_FILE "/tmp/http.nph"
+-#define SEND_TEMP_FILE "/tmp/mailto:numptyphysics@gmail.com.nph"
+-
+ #define ICON_SCALE_FACTOR 6
+ 
+ #define VIDEO_FPS 20
+@@ -126,11 +122,6 @@ class Config
+   static const std::string& userDataDir()
+   {
+     static const std::string d = std::string(getenv("HOME")) + Os::pathSep + USER_BASE_PATH;
+-    return d;
+-  }
+-  static const std::string& planetRoot()
+-  {
+-    static const std::string d("http://10.10.10.10:8080");
+     return d;
+   }
+   static std::string findFile( const std::string& name );

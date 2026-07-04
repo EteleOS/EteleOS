@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/dhcpcd"
+daemon_flags="-Mq"
+
+. /etc/rc.d/rc.subr
+
+pexp="dhcpcd:.*manager.*"
+
+rc_cmd $1

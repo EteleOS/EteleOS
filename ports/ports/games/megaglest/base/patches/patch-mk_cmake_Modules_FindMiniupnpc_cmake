@@ -1,0 +1,18 @@
+--- mk/cmake/Modules/FindMiniupnpc.cmake.orig	Sun Jan 24 14:00:38 2016
++++ mk/cmake/Modules/FindMiniupnpc.cmake	Thu Jan 28 14:32:22 2016
+@@ -153,6 +153,7 @@ if (MINIUPNP_FOUND)
+             {
+                 char externalIP[16]     = \"\";
+                 int compileTest = 1;
++	        externalIP[0] = '\0';
+ 	        if(compileTest == 0) UPNP_GetExternalIPAddress(urls.controlURL, data.first.servicetype, externalIP);
+ 
+                 return 0;
+@@ -174,6 +175,7 @@ if (MINIUPNP_FOUND)
+             {
+                 char externalIP[16]     = \"\";
+                 int compileTest = 1;
++	        externalIP[0] = '\0';
+ 	        if(compileTest == 0) UPNP_GetExternalIPAddress(urls.controlURL, data.servicetype, externalIP);
+ 
+                 return 0;

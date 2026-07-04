@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/collectd"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+
+rc_pre() {
+	chgrp _collectd ${SYSCONFDIR}/collectd.conf
+	chmod g+r ${SYSCONFDIR}/collectd.conf
+}
+
+rc_cmd $1

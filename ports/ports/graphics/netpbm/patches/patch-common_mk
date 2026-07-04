@@ -1,0 +1,21 @@
+Index: common.mk
+--- common.mk.orig
++++ common.mk
+@@ -482,7 +482,7 @@ endif
+ 
+ PKGMANSUBDIRS = man1 man3 man5 web
+ 
+-PKGSUBDIRS = bin include include/netpbm lib sharedlink staticlink misc \
++PKGSUBDIRS = bin include include/netpbm lib sharedlink staticlink share/netpbm \
+   $(PKGMANSUBDIRS:%=$(PKGMANDIR)/%)
+ 
+ $(PKGSUBDIRS:%=$(PKGDIR)/%):
+@@ -516,7 +516,7 @@ $(SCRIPTS:%=%_installscript): $(PKGDIR)/bin
+ install.data: $(DATAFILES:%=%_installdata) $(SUBDIRS:%=%/install.data)
+ 
+ .PHONY: $(DATAFILES:%=%_installdata) 
+-$(DATAFILES:%=%_installdata): $(PKGDIR)/misc
++$(DATAFILES:%=%_installdata): $(PKGDIR)/share/netpbm
+ 	$(INSTALL) -c -m $(INSTALL_PERM_DATA) \
+ 	  $(SRCDIR)/$(SUBDIR)/$(@:%_installdata=%) $<
+ 

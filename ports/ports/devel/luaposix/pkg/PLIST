@@ -1,0 +1,41 @@
+lib/lua/${MODLUA_VERSION}/posix/
+@so lib/lua/${MODLUA_VERSION}/posix/ctype.so
+@so lib/lua/${MODLUA_VERSION}/posix/dirent.so
+@so lib/lua/${MODLUA_VERSION}/posix/errno.so
+@so lib/lua/${MODLUA_VERSION}/posix/fcntl.so
+@so lib/lua/${MODLUA_VERSION}/posix/fnmatch.so
+@so lib/lua/${MODLUA_VERSION}/posix/glob.so
+@so lib/lua/${MODLUA_VERSION}/posix/grp.so
+@so lib/lua/${MODLUA_VERSION}/posix/libgen.so
+@so lib/lua/${MODLUA_VERSION}/posix/poll.so
+@so lib/lua/${MODLUA_VERSION}/posix/pwd.so
+@so lib/lua/${MODLUA_VERSION}/posix/sched.so
+@so lib/lua/${MODLUA_VERSION}/posix/signal.so
+@so lib/lua/${MODLUA_VERSION}/posix/stdio.so
+@so lib/lua/${MODLUA_VERSION}/posix/stdlib.so
+lib/lua/${MODLUA_VERSION}/posix/sys/
+@so lib/lua/${MODLUA_VERSION}/posix/sys/msg.so
+@so lib/lua/${MODLUA_VERSION}/posix/sys/resource.so
+@so lib/lua/${MODLUA_VERSION}/posix/sys/socket.so
+@so lib/lua/${MODLUA_VERSION}/posix/sys/stat.so
+@so lib/lua/${MODLUA_VERSION}/posix/sys/statvfs.so
+@so lib/lua/${MODLUA_VERSION}/posix/sys/time.so
+@so lib/lua/${MODLUA_VERSION}/posix/sys/times.so
+@so lib/lua/${MODLUA_VERSION}/posix/sys/utsname.so
+@so lib/lua/${MODLUA_VERSION}/posix/sys/wait.so
+@so lib/lua/${MODLUA_VERSION}/posix/syslog.so
+@so lib/lua/${MODLUA_VERSION}/posix/termio.so
+@so lib/lua/${MODLUA_VERSION}/posix/time.so
+@so lib/lua/${MODLUA_VERSION}/posix/unistd.so
+@so lib/lua/${MODLUA_VERSION}/posix/utime.so
+share/doc/${FULLPKGNAME}/
+share/lua/${MODLUA_VERSION}/posix/
+share/lua/${MODLUA_VERSION}/posix/_base.lua
+share/lua/${MODLUA_VERSION}/posix/_bitwise.lua
+share/lua/${MODLUA_VERSION}/posix/_strict.lua
+share/lua/${MODLUA_VERSION}/posix/compat.lua
+share/lua/${MODLUA_VERSION}/posix/deprecated.lua
+share/lua/${MODLUA_VERSION}/posix/init.lua
+share/lua/${MODLUA_VERSION}/posix/sys.lua
+share/lua/${MODLUA_VERSION}/posix/util.lua
+share/lua/${MODLUA_VERSION}/posix/version.lua

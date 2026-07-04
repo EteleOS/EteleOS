@@ -1,0 +1,4 @@
+bin/aub
+@man man/man1/aub.1
+share/doc/aub/
+share/doc/aub/BUG_FIXES

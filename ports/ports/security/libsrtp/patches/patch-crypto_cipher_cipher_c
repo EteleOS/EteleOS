@@ -1,0 +1,12 @@
+Index: crypto/cipher/cipher.c
+--- crypto/cipher/cipher.c.orig
++++ crypto/cipher/cipher.c
+@@ -462,7 +462,7 @@ srtp_err_status_t srtp_cipher_type_test(
+         uint8_t iv[MAX_KEY_LEN];
+ 
+         /* choose a length at random (leaving room for IV and padding) */
+-        length = srtp_cipher_rand_u32_for_tests() % (SELF_TEST_BUF_OCTETS - 64);
++        length = arc4random_uniform(SELF_TEST_BUF_OCTETS - 64);
+         debug_print(srtp_mod_cipher, "random plaintext length %d\n", length);
+         srtp_cipher_rand_for_tests(buffer, length);
+ 

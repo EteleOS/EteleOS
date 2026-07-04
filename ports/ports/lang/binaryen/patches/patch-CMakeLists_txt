@@ -1,0 +1,17 @@
+- Partially revert upstream commit b76d2fb1e5bb839249b25b7094db94219695f515,
+  it breaks the build on OpenBSD.
+
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -442,10 +442,6 @@ else() # MSVC
+     add_compile_flag("-Wno-error=missing-field-initializers")
+   endif()
+ 
+-  if(NOT APPLE AND NOT "${CMAKE_CXX_FLAGS}" MATCHES "-fsanitize")
+-    # This flag only applies to shared libraries so don't use add_link_flag
+-    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-undefined")
+-  endif()
+ 
+ endif()
+ 

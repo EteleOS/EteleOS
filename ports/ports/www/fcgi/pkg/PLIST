@@ -1,0 +1,31 @@
+@bin bin/cgi-fcgi
+include/fastcgi.h
+include/fcgi_config.h
+include/fcgi_stdio.h
+include/fcgiapp.h
+include/fcgimisc.h
+include/fcgio.h
+include/fcgios.h
+@static-lib lib/libfcgi++.a
+lib/libfcgi++.la
+@lib lib/libfcgi++.so.${LIBfcgi++_VERSION}
+@static-lib lib/libfcgi.a
+lib/libfcgi.la
+@lib lib/libfcgi.so.${LIBfcgi_VERSION}
+lib/pkgconfig/fcgi++.pc
+lib/pkgconfig/fcgi.pc
+@man man/cat1/cgi-fcgi.0
+@man man/cat3/FCGI_Accept.0
+@man man/cat3/FCGI_Finish.0
+@man man/cat3/FCGI_SetExitStatus.0
+@man man/cat3/FCGI_StartFilterData.0
+share/doc/fcgi/
+share/doc/fcgi/fcgi-devel-kit.htm
+share/doc/fcgi/fcgi-java.htm
+share/doc/fcgi/fcgi-perf.htm
+share/doc/fcgi/fcgi-perl.htm
+share/doc/fcgi/fcgi-spec.html
+share/doc/fcgi/fcgi-tcl.htm
+share/doc/fcgi/omi-logo.gif
+share/doc/fcgi/overview.html
+share/doc/fcgi/www5-api-workshop.html

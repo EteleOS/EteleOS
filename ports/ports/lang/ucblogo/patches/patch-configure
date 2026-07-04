@@ -1,0 +1,12 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -1673,7 +1673,7 @@ EOF
+ 
+ fi
+ 
+-for ac_hdr in sgtty.h termio.h unistd.h string.h
++for ac_hdr in sgtty.h termios.h termio.h unistd.h string.h
+ do
+ ac_safe=`echo "$ac_hdr" | tr './\055' '___'`
+ echo $ac_n "checking for $ac_hdr""... $ac_c" 1>&6

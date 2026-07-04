@@ -1,0 +1,21 @@
+Index: mosquitto.conf
+--- mosquitto.conf.orig
++++ mosquitto.conf
+@@ -225,7 +225,7 @@
+ # If run as a non-root user, this setting has no effect.
+ # Note that on Windows this has no effect and so mosquitto should be started by
+ # the user you wish it to run as.
+-#user mosquitto
++user _mosquitto
+ 
+ # =================================================================
+ # Listeners
+@@ -557,7 +557,7 @@
+ # Note that if the broker is running as a Windows service it will default to
+ # "log_dest none" and neither stdout nor stderr logging is available.
+ # Use "log_dest none" if you wish to disable logging.
+-#log_dest stderr
++log_dest syslog
+ 
+ # Types of messages to log. Use multiple log_type lines for logging
+ # multiple types of messages.

@@ -1,0 +1,10 @@
+--- Xwnmo/romkan_m/rk_alloc.c.orig	Sat Jul 25 17:02:12 2015
++++ Xwnmo/romkan_m/rk_alloc.c	Sat Jul 25 17:02:27 2015
+@@ -64,6 +64,7 @@
+ #endif	/*MULTI*/
+ #endif
+ #include "rext.h"
++#include <stdlib.h>
+ 
+ static
+ void

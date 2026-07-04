@@ -1,0 +1,5 @@
+@bin bin/lpass
+@man man/man1/lpass.1
+share/bash-completion/
+share/bash-completion/completions/
+share/bash-completion/completions/lpass

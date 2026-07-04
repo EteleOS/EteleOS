@@ -1,0 +1,21 @@
+--- Wnn/jutil/dtoa.c.orig
++++ Wnn/jutil/dtoa.c
+@@ -53,6 +53,9 @@ static char *rcs_id = "$Id: dtoa.c,v 1.9 1994/06/28 02
+   */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
+ #include "commonhd.h"
+ #include "config.h"
+ #include "jslib.h"
+@@ -89,7 +92,7 @@ struct wnn_file_head file_head;
+ 
+ char *hinsi_file_name = NULL;
+ 
+-void
++int
+ main(argc, argv)
+ int argc;
+ char **argv;

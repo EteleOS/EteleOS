@@ -1,0 +1,7 @@
+S-nail provides a simple and friendly environment for sending and receiving
+mail.  It is intended to provide the functionality of the POSIX mailx(1)
+command, but is MIME capable and optionally offers extensions for line editing,
+S/MIME, SMTP and POP3, among others.
+
+Flavors:
+	idna - Link with GNU Libidn2 to support internationalized domain names.

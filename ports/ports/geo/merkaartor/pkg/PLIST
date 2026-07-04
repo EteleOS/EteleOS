@@ -1,0 +1,61 @@
+@bin bin/merkaartor
+lib/merkaartor/
+lib/merkaartor/plugins/
+lib/merkaartor/plugins/background/
+@so lib/merkaartor/plugins/background/libMGdalBackgroundPlugin.so
+@so lib/merkaartor/plugins/background/libMGeoTiffBackgroundPlugin.so
+@so lib/merkaartor/plugins/background/libMMsBingMapBackgroundPlugin.so
+share/applications/org.merkaartor.merkaartor.desktop
+share/icons/hicolor/128x128/apps/merkaartor.png
+share/icons/hicolor/16x16/apps/merkaartor.png
+share/icons/hicolor/192x192/apps/merkaartor.png
+share/icons/hicolor/22x22/apps/merkaartor.png
+share/icons/hicolor/24x24/apps/merkaartor.png
+share/icons/hicolor/256x256/apps/merkaartor.png
+share/icons/hicolor/32x32/apps/merkaartor.png
+share/icons/hicolor/36x36/apps/merkaartor.png
+share/icons/hicolor/40x40/
+share/icons/hicolor/40x40/apps/
+share/icons/hicolor/40x40/apps/merkaartor.png
+share/icons/hicolor/42x42/
+share/icons/hicolor/42x42/apps/
+share/icons/hicolor/42x42/apps/merkaartor.png
+share/icons/hicolor/48x48/apps/merkaartor.png
+share/icons/hicolor/512x512/apps/merkaartor.png
+share/icons/hicolor/64x64/apps/merkaartor.png
+share/icons/hicolor/72x72/apps/merkaartor.png
+share/icons/hicolor/80x80/
+share/icons/hicolor/80x80/apps/
+share/icons/hicolor/80x80/apps/merkaartor.png
+share/icons/hicolor/8x8/
+share/icons/hicolor/8x8/apps/
+share/icons/hicolor/8x8/apps/merkaartor.png
+share/icons/hicolor/96x96/apps/merkaartor.png
+share/merkaartor/
+share/merkaartor/BookmarksList.xml
+share/merkaartor/Projections.xml
+share/merkaartor/TmsServersList.xml
+share/merkaartor/WmsServersList.xml
+share/merkaartor/translations/
+share/merkaartor/translations/merkaartor_cs.qm
+share/merkaartor/translations/merkaartor_de.qm
+share/merkaartor/translations/merkaartor_en.qm
+share/merkaartor/translations/merkaartor_es.qm
+share/merkaartor/translations/merkaartor_fi.qm
+share/merkaartor/translations/merkaartor_fr.qm
+share/merkaartor/translations/merkaartor_hr.qm
+share/merkaartor/translations/merkaartor_hu.qm
+share/merkaartor/translations/merkaartor_id_ID.qm
+share/merkaartor/translations/merkaartor_it.qm
+share/merkaartor/translations/merkaartor_ja.qm
+share/merkaartor/translations/merkaartor_nl.qm
+share/merkaartor/translations/merkaartor_pl.qm
+share/merkaartor/translations/merkaartor_pt_BR.qm
+share/merkaartor/translations/merkaartor_ru.qm
+share/merkaartor/translations/merkaartor_sv.qm
+share/merkaartor/translations/merkaartor_uk.qm
+share/merkaartor/translations/merkaartor_zh_TW.qm
+share/metainfo/
+share/metainfo/org.merkaartor.merkaartor.appdata.xml
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

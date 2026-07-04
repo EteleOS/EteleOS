@@ -1,0 +1,42 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/bin/sh
+ 
+ if test x"$1" = x"-h" -o x"$1" = x"--help" ; then
+ cat <<EOF
+@@ -1414,10 +1414,6 @@ if [ "$pic" = "yes" ] ; then
+     [ $SYS = SunOS -a "$ARCH" = "X86" ] && SOFLAGS="$SOFLAGS -mimpure-text"
+ fi
+ 
+-if [ "$debug" != "yes" -a "$gprof" != "yes" ]; then
+-    CFLAGS="$CFLAGS -fomit-frame-pointer"
+-fi
+-
+ if [ "$strip" = "yes" ]; then
+     LDFLAGS="$LDFLAGS -s"
+ fi
+@@ -1426,11 +1422,11 @@ if [ "$debug" = "yes" ]; then
+     CFLAGS="-O1 -g $CFLAGS"
+     RCFLAGS="$RCFLAGS -DDEBUG"
+ else
+-    CFLAGS="-O3 -ffast-math $CFLAGS"
++    CFLAGS="-ffast-math $CFLAGS"
+     if [ "$lto" = "auto" ] && [ $compiler = GNU ] && cc_check "" "-flto" ; then
+         lto="yes"
+         CFLAGS="$CFLAGS -flto"
+-        LDFLAGS="$LDFLAGS -O3 -flto"
++        LDFLAGS="$LDFLAGS -flto"
+     fi
+ fi
+ [ "$lto" = "auto" ] && lto="no"
+@@ -1663,7 +1659,6 @@ if [ "$cli" = "yes" ]; then
+ fi
+ 
+ if [ "$shared" = "yes" ]; then
+-    API=$(grep '#define X264_BUILD' < ${SRCPATH}/x264.h | cut -f 3 -d ' ')
+     if [ "$SYS" = "WINDOWS" -o "$SYS" = "CYGWIN" ]; then
+         echo "SONAME=libx264-$API.dll" >> config.mak
+         if [ $compiler_style = MS ]; then

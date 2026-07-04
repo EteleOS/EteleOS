@@ -1,0 +1,3 @@
+${P5SITE}/File/
+${P5SITE}/File/BOM.pm
+@man man/man3p/File::BOM.3p

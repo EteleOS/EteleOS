@@ -1,0 +1,6 @@
+The PySNMP core library implements a robust SNMP engine entirely in
+Python. It provides full support for SNMPv1, SNMPv2c, and SNMPv3, as
+well as key features like MIB handling and asynchronous operations.
+
+See the source distribution or https://github.com/lextudio/pysnmp for
+a variety of examples showing common use cases and advanced features.

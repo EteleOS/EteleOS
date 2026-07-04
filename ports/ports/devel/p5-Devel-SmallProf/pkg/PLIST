@@ -1,0 +1,3 @@
+${P5SITE}/Devel/
+${P5SITE}/Devel/SmallProf.pm
+@man man/man3p/Devel::SmallProf.3p

@@ -1,0 +1,5 @@
+@bin bin/castget
+@man man/man1/castget.1
+@man man/man5/castgetrc.5
+share/examples/castget/
+share/examples/castget/castgetrc.example

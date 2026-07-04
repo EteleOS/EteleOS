@@ -1,0 +1,3 @@
+@bin bin/pcb2gcode
+@bin bin/wkt_to_svg
+@man man/man1/pcb2gcode.1

@@ -1,0 +1,3 @@
+${P5SITE}/Test/
+${P5SITE}/Test/Deep/Type.pm
+@man man/man3p/Test::Deep::Type.3p

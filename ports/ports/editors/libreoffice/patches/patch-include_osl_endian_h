@@ -1,0 +1,17 @@
+Index: include/osl/endian.h
+--- include/osl/endian.h.orig
++++ include/osl/endian.h
+@@ -60,6 +60,13 @@ extern "C" {
+ #   elif defined _BIG_ENDIAN
+ #       define OSL_BIGENDIAN
+ #   endif
++#elif defined OPENBSD
++#   include <endian.h>
++#   if BYTE_ORDER == LITTLE_ENDIAN
++#       define OSL_LITENDIAN
++#   elif BYTE_ORDER == BIG_ENDIAN
++#       define OSL_BIGENDIAN
++#   endif
+ #elif defined __sun
+ #   include <sys/isa_defs.h>
+ #   if defined _LITTLE_ENDIAN

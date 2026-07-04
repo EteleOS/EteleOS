@@ -1,0 +1,100 @@
+Index: sarg.conf
+--- sarg.conf.orig
++++ sarg.conf
+@@ -17,7 +17,7 @@
+ #       If some files are passed on the command line with "sarg -l file" or
+ #       "sarg file", the files listed here are ignored.
+ #
+-#access_log /usr/local/squid/var/logs/access.log
++#access_log /var/squid/logs/access.log
+ 
+ # TAG: graphs yes|no
+ #	Use graphics where is possible.
+@@ -30,7 +30,7 @@
+ #       The full path to the TTF font file to use to create the graphs. It is required
+ #       if graphs is set to yes.
+ #
+-#graph_font /usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf
++#graph_font /etc/sarg/fonts/DejaVuSans.ttf
+ 
+ # TAG:	title
+ # 	Especify the title for html page.
+@@ -147,7 +147,7 @@
+ #       The reports will be saved in that directory
+ #       sarg -o dir
+ #
+-#output_dir /var/www/html/squid-reports
++#output_dir /var/www/htdocs/sarg
+ 
+ # TAG:  anonymous_output_files yes/no
+ #       Use anonymous file and directory names in the report. If it is set to
+@@ -364,7 +364,7 @@
+ #      Only codes matching exactly one of the line is rejected. The
+ #      comparison is not case sensitive.
+ #
+-#exclude_codes /usr/local/sarg/etc/exclude_codes
++#exclude_codes /etc/sarg/exclude_codes
+ 
+ # TAG: replace_index string
+ #      Replace "index.html" in the main index file with this string
+@@ -632,7 +632,7 @@
+ #      Generate reports from SquidGuard logs.
+ #      Use 'none' to disable.
+ #      You can use sarg -L filename to use an alternate squidGuard log.
+-#      squidguard_conf /usr/local/squidGuard/squidGuard.conf
++#      squidguard_conf /etc/squidguard/squidguard.conf
+ #
+ #squidguard_conf none
+ 
+@@ -642,7 +642,7 @@
+ #      If this option is specified, it takes precedence over squidguard_conf.
+ #      The command line option -L override this option.
+ #
+-#redirector_log /usr/local/squidGuard/var/logs/urls.log
++#redirector_log /var/log/squidguard/urls.log
+ 
+ # TAG: redirector_filter_out_date on|off
+ #      This option replaces squidguard_ignore_date and redirector_ignore_date whose names were not
+@@ -678,13 +678,13 @@
+ #
+ #parsed_output_log none
+ 
+-# TAG: parsed_output_log_compress /bin/gzip|/usr/bin/bzip2|nocompress
++# TAG: parsed_output_log_compress /usr/bin/gzip|/usr/bin/bzip2|nocompress
+ #      Command to run to compress sarg parsed output log. It may contain
+ #      options (such as -f to overwrite existing target file). The name of
+ #      the file to compresse is provided at the end of this
+ #      command line. Don't forget to quote things appropriately.
+ #
+-#parsed_output_log_compress /bin/gzip
++#parsed_output_log_compress /usr/bin/gzip
+ 
+ # TAG: displayed_values bytes|abbreviation
+ #      how the values will be displayed in reports.
+@@ -717,7 +717,7 @@
+ #     Sarg will create sarg-php directory with some PHP modules:
+ #     - sarg-squidguard-block.php - add urls from user reports to squidGuard DB
+ #
+-#www_document_root /var/www/html
++#www_document_root /var/www/htdocs
+ 
+ # TAG: block_it module_url
+ #     This tag allow you to pass urls from user reports to a cgi or php module,
+@@ -725,7 +725,7 @@
+ #
+ #     Eg.: block_it /sarg-php/sarg-block-it.php
+ #     sarg-block-it is a php that will append a url to a flat file.
+-#     You must change /var/www/html/sarg-php/sarg-block-it to point to your file
++#     You must change /var/www/htdocs/sarg-php/sarg-block-it to point to your file
+ #     in $filename variable, and chown to a httpd owner.
+ #
+ #     sarg will pass http://module_url?url=url
+@@ -896,7 +896,7 @@
+ #      65.52.00.00/14 *.mail.live.com
+ #      re:/\.dropbox\.com(:443)?/ dropbox
+ #      re:/([\w-]+)\.(\w*[a-zA-Z]\w*)(?::\d+)?$/ \1.\2
+-#hostalias /usr/local/sarg/hostalias
++#hostalias /etc/sarg/hostalias
+ 
+ # TAG: useralias
+ #      The name of a text file containing the user names one per line and the

@@ -1,0 +1,19 @@
+bin/gflags_completions.sh
+include/gflags/
+include/gflags/gflags.h
+include/gflags/gflags_completions.h
+include/gflags/gflags_declare.h
+include/gflags/gflags_gflags.h
+lib/cmake/
+lib/cmake/gflags/
+lib/cmake/gflags/gflags-config-version.cmake
+lib/cmake/gflags/gflags-config.cmake
+lib/cmake/gflags/gflags-nonamespace-targets${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/gflags/gflags-nonamespace-targets.cmake
+lib/cmake/gflags/gflags-targets${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/gflags/gflags-targets.cmake
+@static-lib lib/libgflags.a
+@lib lib/libgflags.so.${LIBgflags_VERSION}
+@static-lib lib/libgflags_nothreads.a
+@lib lib/libgflags_nothreads.so.${LIBgflags_nothreads_VERSION}
+lib/pkgconfig/gflags.pc

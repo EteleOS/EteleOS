@@ -1,0 +1,23 @@
+Index: src/tools/wasm-objdump.cc
+--- src/tools/wasm-objdump.cc.orig
++++ src/tools/wasm-objdump.cc
+@@ -18,6 +18,9 @@
+ #include <cstdlib>
+ #include <cstring>
+ 
++#include <err.h>
++#include <unistd.h>
++
+ #include "wabt/binary-reader-objdump.h"
+ #include "wabt/binary-reader.h"
+ #include "wabt/common.h"
+@@ -121,6 +124,9 @@ Result dump_file(const char* filename) {
+ 
+ int ProgramMain(int argc, char** argv) {
+   InitStdio();
++
++  if (pledge("stdio rpath", NULL) != 0)
++    err(1, "pledge");
+ 
+   ParseOptions(argc, argv);
+   if (!s_objdump_options.headers && !s_objdump_options.details &&

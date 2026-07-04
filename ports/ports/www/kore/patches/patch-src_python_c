@@ -1,0 +1,109 @@
+From d7cef8236280659f1a6cbe1e0398ceb60116c3fe Mon Sep 17 00:00:00 2001
+From: Joris Vink <joris@coders.se>
+Date: Sun, 25 Sep 2022 00:29:08 +0200
+Subject: [PATCH] Python improvements: Rework corotracing for 3.11.
+
+In the upcoming Python 3.11 release the PyCoroObject no longer
+has a full PyFrameObject, but instead their internal frame
+struct _PyInterpreterFrame. Use that when we are building
+against 3.11 or higher so we can still provide useful tracing
+functionality (and so that it builds).
+
+From f34d21caa7337466c96fd7e1920bdd57b26ef7a4 Mon Sep 17 00:00:00 2001
+From: Joris Vink <joris@coders.se>
+Date: Mon, 26 Sep 2022 08:48:29 +0200
+Subject: [PATCH] Hack around some hidden Python symbols.
+
+The _PyInterpreterFrame_GetLine() is hidden in dynamic libs so
+roll our own variant of it.
+
+Shuffle the old code so we always end up calling python_resolve_frame_line()
+no matter the Python version.
+
+Index: src/python.c
+--- src/python.c.orig
++++ src/python.c
+@@ -55,6 +55,10 @@
+ 
+ #include <frameobject.h>
+ 
++#if PY_VERSION_HEX >= 0x030b0000
++#include <internal/pycore_frame.h>
++#endif
++
+ #if PY_VERSION_HEX < 0x030A0000
+ typedef enum {
+ 	PYGEN_RETURN = 0,
+@@ -73,6 +77,7 @@ TAILQ_HEAD(reqcall_list, reqcall);
+ PyMODINIT_FUNC		python_module_init(void);
+ 
+ static PyObject		*python_import(const char *);
++static int		python_resolve_frame_line(void *);
+ static PyObject		*pyconnection_alloc(struct connection *);
+ static PyObject		*python_callable(PyObject *, const char *);
+ static void		python_split_arguments(char *, char **, size_t);
+@@ -1179,21 +1184,49 @@ python_coro_suspend(struct python_coro *coro)
+ 	python_coro_trace("suspended", coro);
+ }
+ 
++static int
++python_resolve_frame_line(void *ptr)
++{
++	int			line;
++#if PY_VERSION_HEX >= 0x030b0000
++	int			addr;
++	_PyInterpreterFrame	*frame;
++
++	frame = ptr;
++	addr = _PyInterpreterFrame_LASTI(frame) * sizeof(_Py_CODEUNIT);
++	line = PyCode_Addr2Line(frame->f_code, addr);
++#else
++	line = PyFrame_GetLineNumber(ptr);
++#endif
++
++	return (line);
++}
++
+ static void
+ python_coro_trace(const char *label, struct python_coro *coro)
+ {
+ 	int			line;
+-	PyGenObject		*gen;
++	PyCoroObject		*obj;
+ 	PyCodeObject		*code;
++#if PY_VERSION_HEX >= 0x030b0000
++	_PyInterpreterFrame	*frame;
++#else
++	PyFrameObject		*frame;
++#endif
+ 	const char		*func, *fname, *file;
+ 
+ 	if (coro_tracing == 0)
+ 		return;
+ 
+-	gen = (PyGenObject *)coro->obj;
++	obj = (PyCoroObject *)coro->obj;
+ 
+-	if (gen->gi_frame != NULL && gen->gi_frame->f_code != NULL) {
+-		code = gen->gi_frame->f_code;
++#if PY_VERSION_HEX >= 0x030b0000
++	frame = (_PyInterpreterFrame *)obj->cr_iframe;
++#else
++	frame = obj->cr_frame;
++#endif
++	if (frame != NULL && frame->f_code != NULL) {
++		code = frame->f_code;
+ 		func = PyUnicode_AsUTF8AndSize(code->co_name, NULL);
+ 		file = PyUnicode_AsUTF8AndSize(code->co_filename, NULL);
+ 
+@@ -1206,8 +1239,8 @@ python_coro_trace(const char *label, struct python_cor
+ 		fname = "unknown";
+ 	}
+ 
+-	if (gen->gi_frame != NULL)
+-		line = PyFrame_GetLineNumber(gen->gi_frame);
++	if (frame != NULL)
++		line = python_resolve_frame_line(frame);
+ 	else
+ 		line = -1;
+ 

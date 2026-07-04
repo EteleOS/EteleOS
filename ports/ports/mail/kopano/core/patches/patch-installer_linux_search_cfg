@@ -1,0 +1,12 @@
+Index: installer/linux/search.cfg
+--- installer/linux/search.cfg.orig
++++ installer/linux/search.cfg
+@@ -1,7 +1,7 @@
+ # See kopano-search.cfg(5) for more details and directives.
+ 
+ # Location of the index files
+-#index_path = /var/lib/kopano/search/
++#index_path = /var/db/kopano/search/
+ # Limit the number of results returned (0 = no limit)
+ #limit_results = 1000
+ 

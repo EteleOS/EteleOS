@@ -1,0 +1,17 @@
+@newgroup _xl2tpd:711
+@newuser _xl2tpd:711:_xl2tpd::xl2tpd user:/nonexistent:/sbin/nologin
+@rcscript ${RCDIR}/xl2tpd
+@man man/man5/l2tp-secrets.5
+@man man/man5/xl2tpd.conf.5
+@man man/man8/xl2tpd-control.8
+@man man/man8/xl2tpd.8
+@bin sbin/xl2tpd
+@bin sbin/xl2tpd-control
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/xl2tpd/
+@sample ${SYSCONFDIR}/xl2tpd/
+share/examples/xl2tpd/l2tp-secrets.sample
+@sample ${SYSCONFDIR}/xl2tpd/l2tp-secrets
+share/examples/xl2tpd/l2tpd.conf.sample
+@sample ${SYSCONFDIR}/xl2tpd/xl2tpd.conf
+share/examples/xl2tpd/ppp-options.xl2tpd

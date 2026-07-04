@@ -1,0 +1,10 @@
+--- src/log.cpp.orig
++++ src/log.cpp
+@@ -30,6 +30,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
+ #include <stdexcept>
+ #include <SDL.h>
+ 
++using dd::mutex;
+ 
+ struct log_msg
+ {

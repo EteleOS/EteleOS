@@ -1,0 +1,12 @@
+Index: sizes.h
+--- sizes.h.orig
++++ sizes.h
+@@ -14,7 +14,7 @@
+ 
+ #include <limits.h>
+ 
+-#define rand32() ((unsigned int) rand() | ( (unsigned int) rand() << 16))
++#define rand32() arc4random()
+ 
+ #if (ULONG_MAX == 4294967295UL)
+     #define FMT_TARGET "0x%08lx"

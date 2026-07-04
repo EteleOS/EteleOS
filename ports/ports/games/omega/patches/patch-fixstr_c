@@ -1,0 +1,13 @@
+Index: fixstr.c
+--- fixstr.c.orig
++++ fixstr.c
+@@ -15,7 +15,9 @@ to be far arrays. You don't need to run this for the u
+ Thus it can be broken. */
+ 
+ #include <stdio.h>
++#ifndef __OpenBSD__
+ #include <malloc.h>
++#endif
+ 
+ #define TMPFILE "fixtmp.c"
+ 

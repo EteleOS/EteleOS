@@ -1,0 +1,53 @@
+--- configure.in.orig	Fri Dec  8 04:31:16 2006
++++ configure.in	Thu Jun  2 15:56:11 2011
+@@ -453,9 +453,15 @@ while test $# != 0; do
+       opt="`echo '' $opt | sed -e 's:^ ::' | tr - _`"
+ 
+       dnl Support --without-FOO as a synonym for --with-FOO=no
+-      case "${valomitted}-${opt}" in yes-without_* )
+-	opt=`echo $opt | sed 's/without/with/'`
+-	valomitted="no" val="no" ;;
++      case "${valomitted}-${opt}" in
++	yes-without_* )
++	  opt=`echo $opt | sed 's/without/with/'`
++	  valomitted="no" val="no"
++	;;
++	yes-disable_*)
++	  opt=`echo $opt | sed 's/disable/enable/'`
++	  valomitted="no" val="no"
++	;;
+       esac
+ 
+       dnl Process the option.
+@@ -817,6 +823,14 @@ The default is to autodetect native and NAS sound supp
+ 	  AC_MSG_WARN([Obsolete option \`--$optname' ignored.])
+ 	;;
+ 
++	dnl Unknown `--with-PACKAGE' and `--enable-FEATURE' options
++	dnl elicit only a warning, to support configuring entire source
++	dnl trees.
++	with_* | \
++	enable_* )
++	  AC_MSG_WARN([Unrecognized option: $arg])
++	;;
++
+         dnl Unrecognized option?  No mercy for user errors.
+ 	* ) USAGE_ERROR("Unrecognized option: $arg") ;;
+ 
+@@ -954,7 +968,7 @@ case "$srcdir" in
+ esac
+ 
+ dnl Check if the source directory already has a configured system in it.
+-if test `pwd` != `sh -c cd $srcdir && pwd`  \
++if test `pwd` != `sh -c "cd $srcdir" && pwd`  \
+    && test -f "$srcdir/src/config.h"; then
+   (echo "$progname: WARNING: The directory tree \`$srcdir' is being used"
+    echo "   as a build directory right now; it has been configured in its own"
+@@ -3847,6 +3861,7 @@ if test "$with_mule" = "yes" ; then
+   XE_ADD_OBJS(mule.o mule-ccl.o mule-charset.o file-coding.o)
+ 
+   dnl Use -lintl to get internationalized strerror for Mule
++  LIBS="-liconv ${LIBS}"
+   AC_CHECK_HEADERS(libintl.h)
+   AC_CHECK_LIB(intl, strerror)
+ 

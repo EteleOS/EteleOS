@@ -1,0 +1,20 @@
+--- win/jtp/gamedata/config/jtp_opts.txt.orig	Sun Jun 24 18:57:26 2001
++++ win/jtp/gamedata/config/jtp_opts.txt	Tue Nov 18 05:30:52 2014
+@@ -39,7 +39,7 @@ fullscreen=0
+ % don't have the appropriate sound hardware.
+ %
+ play_music=1
+-play_effects=1
++play_effects=0
+ 
+ 
+ % -----------------------------------
+@@ -60,7 +60,7 @@ linux_midi_player=/usr/local/bin/timidity -idqq %s
+ % files. You can also give your own command; use %s in place of the 
+ % filename. Please give the full path to the player binary. 
+ %
+-linux_mp3_player=/usr/bin/mpg123 -q %s
++linux_mp3_player=/usr/local/bin/mpg123 -q %s
+ 
+ 
+ % ------------

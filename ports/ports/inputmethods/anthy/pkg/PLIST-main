@@ -1,0 +1,26 @@
+@pkgpath inputmethods/anthy
+@bin bin/anthy-agent
+@bin bin/anthy-dic-tool
+@bin bin/anthy-morphological-analyzer
+include/anthy/
+include/anthy/anthy.h
+include/anthy/dicutil.h
+include/anthy/input.h
+@static-lib lib/libanthy.a
+lib/libanthy.la
+@lib lib/libanthy.so.${LIBanthy_VERSION}
+@static-lib lib/libanthydic.a
+lib/libanthydic.la
+@lib lib/libanthydic.so.${LIBanthydic_VERSION}
+@static-lib lib/libanthyinput.a
+lib/libanthyinput.la
+@lib lib/libanthyinput.so.${LIBanthyinput_VERSION}
+lib/pkgconfig/anthy.pc
+share/anthy/
+share/anthy/anthy.dic
+share/anthy/dic-tool-usage.txt
+share/anthy/typetab
+share/anthy/zipcode.t
+share/examples/anthy/
+share/examples/anthy/anthy-conf
+@sample ${SYSCONFDIR}/anthy-conf

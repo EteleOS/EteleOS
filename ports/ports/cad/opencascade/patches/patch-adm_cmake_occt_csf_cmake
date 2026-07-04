@@ -1,0 +1,20 @@
+Index: adm/cmake/occt_csf.cmake
+--- adm/cmake/occt_csf.cmake.orig
++++ adm/cmake/occt_csf.cmake
+@@ -153,7 +153,7 @@ else()
+     set (CSF_OpenGlesLibs "EGL GLESv2")
+     set (CSF_androidlog  "log")
+   elseif (UNIX)
+-    set (CSF_ThreadLibs  "pthread rt stdc++")
++    set (CSF_ThreadLibs  "pthread stdc++")
+     if (USE_XLIB)
+       set (CSF_OpenGlLibs "GL")
+       set (CSF_XwLibs     "X11")
+@@ -161,7 +161,6 @@ else()
+       set (CSF_OpenGlLibs "GL EGL")
+     endif()
+     set (CSF_OpenGlesLibs "EGL GLESv2")
+-    set (CSF_dl          "dl")
+     if (USE_FREETYPE)
+       set (CSF_fontconfig "fontconfig")
+     endif()

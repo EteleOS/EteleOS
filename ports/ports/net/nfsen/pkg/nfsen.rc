@@ -1,0 +1,21 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/nfsend"
+
+. /etc/rc.d/rc.subr
+
+ctl="${TRUEPREFIX}/bin/nfsen"
+pexp="/usr/bin/perl -w ${daemon}"
+
+# nfsen reconfig is interactive when certain changes are made
+rc_reload=NO
+
+rc_start() {
+	rc_exec "${ctl} start"
+}
+
+rc_stop() {
+	${ctl} stop
+}
+
+rc_cmd $1

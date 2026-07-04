@@ -1,0 +1,5 @@
+${P5SITE}/POE/Component/IRC/Plugin/RSS/
+${P5SITE}/POE/Component/IRC/Plugin/RSS/Headlines.pm
+@man man/man3p/POE::Component::IRC::Plugin::RSS::Headlines.3p
+share/examples/p5-POE-Component-IRC-Plugin-RSS-Headlines/
+share/examples/p5-POE-Component-IRC-Plugin-RSS-Headlines/synopsis.pl

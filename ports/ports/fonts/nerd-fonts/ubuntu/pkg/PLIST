@@ -1,0 +1,21 @@
+share/fonts/
+share/fonts/nerd-fonts/
+@fontdir share/fonts/nerd-fonts/ubuntu/
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFont-Bold.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFont-BoldItalic.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFont-Condensed.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFont-Italic.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFont-Light.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFont-LightItalic.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFont-Medium.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFont-MediumItalic.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFont-Regular.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFontPropo-Bold.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFontPropo-BoldItalic.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFontPropo-Condensed.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFontPropo-Italic.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFontPropo-Light.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFontPropo-LightItalic.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFontPropo-Medium.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFontPropo-MediumItalic.ttf
+share/fonts/nerd-fonts/ubuntu/UbuntuNerdFontPropo-Regular.ttf

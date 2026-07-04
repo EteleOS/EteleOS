@@ -1,0 +1,13 @@
+silence locate --help call that will always fail for us
+Index: catfish/CatfishSearchEngine.py
+--- catfish/CatfishSearchEngine.py.orig
++++ catfish/CatfishSearchEngine.py
+@@ -800,7 +800,7 @@ class CatfishSearchMethod_Locate(CatfishSearchMethodEx
+             "regex": False
+         }
+         try:
+-            details = subprocess.check_output(["locate", "--help"])
++            details = subprocess.check_output(["locate", "--help"],stderr=subprocess.DEVNULL)
+             details = details.decode("utf-8")
+             if "--existing" in details:
+                 caps["existing"] = True

@@ -1,0 +1,14 @@
+LLVM 9+ no longer pretends to be gcc 4.2.1
+
+Index: configure.ac
+--- configure.ac.orig
++++ configure.ac
+@@ -193,7 +193,7 @@ gcc4=no
+ if test "$GCC" = yes && test "$ICC" = no ; then
+     case `$CC -dumpversion 2>/dev/null` in
+ 	""|2.*|3.*) ;;
+-	4.*) gcc4=yes ;;
++	*) gcc4=yes ;;
+     esac
+     case "$CC" in
+ 	*clang) gcc4=yes ;;

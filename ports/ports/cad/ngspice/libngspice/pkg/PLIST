@@ -1,0 +1,7 @@
+@conflict ngspice-<30p0
+include/ngspice/
+include/ngspice/sharedspice.h
+@static-lib lib/libngspice.a
+lib/libngspice.la
+@lib lib/libngspice.so.${LIBngspice_VERSION}
+lib/pkgconfig/ngspice.pc

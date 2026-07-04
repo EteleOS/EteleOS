@@ -1,0 +1,47 @@
+Index: build/generic/Makefile
+--- build/generic/Makefile.orig
++++ build/generic/Makefile
+@@ -46,6 +46,7 @@ include platform.inc
+ endif
+ 
+ RM = rm -rf
++INSTALL = install -c
+ 
+ ##############################################################################
+ #
+@@ -94,7 +95,7 @@ $(BUILD_DIR):
+ .$(ASSEMBLY_EXTENSION).$(OBJECT_EXTENSION):
+ 	@echo "  A: $(@D)/$(<F)"
+ 	@$(INSTALL) -d $(BUILD_DIR)/$(@D)
+-	@$(AS) $(AFLAGS) $< -o $(BUILD_DIR)/$@
++	$(AS) $(AFLAGS) $< -o $(BUILD_DIR)/$@
+ 
+ #-----------------------------------------------------------------------------
+ # Generic C rule
+@@ -105,7 +106,7 @@ $(PPC_ALTIVEC_OBJECTS): CFLAGS+= $(ALTIVEC_CFLAGS)
+ .c.$(OBJECT_EXTENSION):
+ 	@echo "  C: $(@D)/$(<F)"
+ 	@$(INSTALL) -d $(BUILD_DIR)/$(@D)
+-	@$(CC) -c $(ARCHITECTURE) $(BUS) $(ENDIANNESS) $(FEATURES) $(SPECIFIC_CFLAGS) $(CFLAGS) $< -o $(BUILD_DIR)/$@
++	$(CC) -c $(ARCHITECTURE) $(BUS) $(ENDIANNESS) $(FEATURES) $(SPECIFIC_CFLAGS) $(CFLAGS) $< -o $(BUILD_DIR)/$@
+ 
+ #-----------------------------------------------------------------------------
+ # Static Library
+@@ -113,7 +114,7 @@ $(PPC_ALTIVEC_OBJECTS): CFLAGS+= $(ALTIVEC_CFLAGS)
+ 
+ $(STATIC_LIB): $(BUILD_DIR) $(OBJECTS)
+ 	@echo "  L: $(@F)"
+-	@cd $(BUILD_DIR) && $(AR) rc $(@F) $(OBJECTS) && $(RANLIB) $(@F)
++	cd $(BUILD_DIR) && $(AR) rc $(@F) $(OBJECTS) && $(RANLIB) $(@F)
+ 
+ #-----------------------------------------------------------------------------
+ # Shared Library
+@@ -134,7 +135,7 @@ $(SHARED_LIB): $(BUILD_DIR) $(OBJECTS)
+ 	@echo "  L: $(@F)"
+ 	@$(INSTALL) -m 644 libxvidcore.def $(BUILD_DIR)/libxvidcore.def
+ 	@$(INSTALL) -m 644 libxvidcore.ld $(BUILD_DIR)/libxvidcore.ld
+-	@cd $(BUILD_DIR) && $(CC) $(LDFLAGS) $(OBJECTS) -o $(PRE_SHARED_LIB) $(SPECIFIC_LDFLAGS)
++	cd $(BUILD_DIR) && $(CC) $(LDFLAGS) $(OBJECTS) -o $(PRE_SHARED_LIB) $(SPECIFIC_LDFLAGS)
+ 
+ #-----------------------------------------------------------------------------
+ # Installation

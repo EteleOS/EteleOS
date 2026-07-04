@@ -1,0 +1,24 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -1,9 +1,9 @@
+ include config.mk
+ 
+-PROGNAME = tetris$(EXE)
++PROGNAME = vitetris$(EXE)
+ 
+ # Uncomment to change the default.  (Only used in Unix-like systems.)
+-#HISCORE_FILENAME = /var/games/vitetris-hiscores
++HISCORE_FILENAME = /var/games/vitetris-hiscores
+ 
+ INSTALL = install
+ 
+@@ -18,7 +18,7 @@ build: src/src-conf.mk
+ 	cd src; $(MAKE) tetris
+ 	mv -f src/tetris$(EXE) $(PROGNAME)
+ 	@echo stripping symbols to reduce program size:
+-	-strip --strip-all $(PROGNAME)
++	-strip $(PROGNAME)
+ 
+ gameserver: src/netw/gameserver.c
+ 	cd src/netw; $(MAKE) gameserver

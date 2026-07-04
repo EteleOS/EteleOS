@@ -1,0 +1,4 @@
+supuner (SUPpress UNless ERror) executes a command and manipulates its stderr
+and stdout. By default, it captures both stderr and stdout and only outputs
+their combined value to stdout if the command fails. supuner is useful for
+"chatty" commands whose output is only relevant if the command fails.

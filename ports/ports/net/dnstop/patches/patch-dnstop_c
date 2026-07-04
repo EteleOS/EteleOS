@@ -1,0 +1,11 @@
+Index: dnstop.c
+--- dnstop.c.orig
++++ dnstop.c
+@@ -48,6 +48,7 @@ static const char *Version = "@VERSION@";
+ #include <netdb.h>
+ 
+ #ifdef HAVE_NET_IF_PPP_H
++#include <net/ppp_defs.h>
+ #include <net/if_ppp.h>
+ #define PPP_ADDRESS_VAL       0xff	/* The address byte value */
+ #define PPP_CONTROL_VAL       0x03	/* The control byte value */

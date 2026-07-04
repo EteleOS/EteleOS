@@ -1,0 +1,22 @@
+Index: src/tclx/src/tclxint.h
+--- src/tclx/src/tclxint.h.orig
++++ src/tclx/src/tclxint.h
+@@ -83,16 +83,9 @@
+ struct tm *gmtime ();
+ struct tm *localtime ();
+ 
+-#ifndef MAXINT
+-#    define BITSPERBYTE   8
+-#    define BITS(type)    (BITSPERBYTE * (int)sizeof(type))
+-#    define HIBITI        ((unsigned int)(1 << BITS(int) - 1))
+-#    define MAXINT        ((int)(~HIBITI))
+-#endif
++#define MAXINT INT_MAX
+ 
+-#ifndef MININT
+-#    define MININT (-MAXINT)-1
+-#endif
++#define MININT INT_MIN
+ 
+ #ifndef TRUE
+ #    define TRUE   (1)

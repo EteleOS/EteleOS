@@ -1,0 +1,5 @@
+@conflict tesseract-<3.02.02
+@pkgpath graphics/tesseract,-jpn
+@pkgpath graphics/tesseract-langs/jpn
+share/tessdata/
+share/tessdata/jpn.traineddata

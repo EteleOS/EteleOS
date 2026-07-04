@@ -1,0 +1,30 @@
+Index: src/Makefile
+--- src/Makefile.orig
++++ src/Makefile
+@@ -81,7 +81,7 @@ SYS_LDFLAGS = $(SDL_LIBS) $(shell sdl-config --libs)
+ endif
+ 
+ ifeq ($(TARGET),sdl2)			# compiling for SDL2 target
+-SYS_CFLAGS = -DTARGET_SDL2 $(shell sdl2-config --cflags)
++SYS_CFLAGS = -DTARGET_SDL2 $(shell sdl2-config --cflags) -fgnu89-inline
+ SDL_LIBS = -lSDL2_image -lSDL2_mixer -lSDL2_net
+ SYS_LDFLAGS = $(SDL_LIBS) $(shell sdl2-config --libs)
+ endif
+@@ -107,7 +107,7 @@ DEBUG = -DDEBUG -g
+ 
+ # OPTIONS = $(DEBUG) -Wall			# only for debugging purposes
+ # OPTIONS = $(DEBUG) -O3 -Wall			# only for debugging purposes
+-OPTIONS = $(DEBUG) -Wall			# only for debugging purposes
++#OPTIONS = $(DEBUG) -Wall			# only for debugging purposes
+ # OPTIONS = $(DEBUG) -Wall -ansi -pedantic	# only for debugging purposes
+ # OPTIONS = -O3 -Wall -ansi -pedantic
+ # OPTIONS = -O3 -Wall
+@@ -221,7 +221,7 @@ GRAPHICS_DIR = ../graphics
+ all: $(AUTOCONF) libgame_dir game_em_dir game_sp_dir game_mm_dir $(PROGNAME) graphics_dir
+ 
+ $(PROGNAME): $(RNDLIBS) $(TIMESTAMP_FILE) $(OBJS) $(ICON)
+-	$(CC) $(PROFILING) $(OBJS) $(ICON) $(RNDLIBS) $(LDFLAGS) -o $(PROGNAME)
++	$(CC) $(CFLAGS) $(PROFILING) $(OBJS) $(ICON) $(RNDLIBS) $(LDFLAGS) -o $(PROGNAME)
+ ifdef BUILD_DIST
+ 	strip $(PROGNAME)
+ endif

@@ -1,0 +1,9 @@
+@pkgpath databases/p5-DBD-Pg,regress
+${P5ARCH}/Bundle/DBD/
+${P5ARCH}/Bundle/DBD/Pg.pm
+${P5ARCH}/DBD/Pg.pm
+${P5ARCH}/auto/DBD/
+${P5ARCH}/auto/DBD/Pg/
+@so ${P5ARCH}/auto/DBD/Pg/Pg.so
+@man man/man3p/Bundle::DBD::Pg.3p
+@man man/man3p/DBD::Pg.3p

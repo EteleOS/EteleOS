@@ -1,0 +1,14 @@
+Don't strip static libraries.
+
+Index: source/tools/toolutil/Makefile.in
+--- source/tools/toolutil/Makefile.in.orig
++++ source/tools/toolutil/Makefile.in
+@@ -87,7 +87,7 @@ install-local: install-library
+ install-library: all-local
+ 	$(MKINSTALLDIRS) $(DESTDIR)$(libdir)
+ ifneq ($(ENABLE_STATIC),)
+-	$(INSTALL-L) $(TARGET) $(DESTDIR)$(libdir)
++	$(INSTALL_DATA) $(TARGET) $(DESTDIR)$(libdir)
+ endif
+ ifneq ($(ENABLE_SHARED),)
+ # For MinGW, do we want the DLL to go in the bin location?

@@ -1,0 +1,12 @@
+Index: src/std/build-features.ss
+--- src/std/build-features.ss.orig
++++ src/std/build-features.ss
+@@ -1,7 +1,7 @@
+ ;; This file is meant to be include'd by build-config.ss
+ 
+ ;; build std/xml libraries - requires libxml2
+-(enable libxml #f)
++(enable libxml #t)
+ 
+ ;; build std/text/yaml library - requires libyaml
+ (enable libyaml #f)

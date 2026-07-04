@@ -1,0 +1,10 @@
+--- ratmen.c.orig	Thu Oct 25 14:13:39 2007
++++ ratmen.c	Fri Apr  1 18:45:59 2011
+@@ -128,7 +128,6 @@ int   unfocus_exit = Undef;                    /* -u, 
+ 
+ 
+ /* function prototypes */
+-int  strcasecmp(char*, char*);                 /* string comparison */
+ void ask_wm_for_delete(void);
+ void reap(int);
+ void redraw_snazzy(int, int, int);

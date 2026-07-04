@@ -1,0 +1,3 @@
+@bin bin/xdu
+lib/X11/app-defaults/XDu
+@man man/man1/xdu.1

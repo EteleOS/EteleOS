@@ -1,0 +1,13 @@
+--- src/pixmaps/Makefile.in.orig	Mon Jan 20 15:01:50 1997
++++ src/pixmaps/Makefile.in	Tue Feb 13 13:59:41 2001
+@@ -81,10 +81,8 @@ dvi:
+ check: all
+ installcheck:
+ install-exec: 
+-	$(NORMAL_INSTALL)
+ 
+ install-data: 
+-	$(NORMAL_INSTALL)
+ 
+ install: install-exec install-data all
+ 	@:

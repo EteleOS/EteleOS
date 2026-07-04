@@ -1,0 +1,6 @@
+${P5SITE}/Net/DNS/
+${P5SITE}/Net/DNS/DynDNS.pm
+@man man/man3p/Net::DNS::DynDNS.3p
+share/examples/p5-Net-DNS-DynDNS/
+share/examples/p5-Net-DNS-DynDNS/dyndnsd.cnf
+share/examples/p5-Net-DNS-DynDNS/dyndnsd.pl

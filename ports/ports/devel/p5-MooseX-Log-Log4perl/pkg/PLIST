@@ -1,0 +1,7 @@
+${P5SITE}/MooseX/
+${P5SITE}/MooseX/Log/
+${P5SITE}/MooseX/Log/Log4perl/
+${P5SITE}/MooseX/Log/Log4perl.pm
+${P5SITE}/MooseX/Log/Log4perl/Easy.pm
+@man man/man3p/MooseX::Log::Log4perl.3p
+@man man/man3p/MooseX::Log::Log4perl::Easy.3p

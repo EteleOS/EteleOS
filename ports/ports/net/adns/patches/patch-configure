@@ -1,0 +1,11 @@
+--- configure.orig	Sun Oct 26 14:22:06 2014
++++ configure	Wed Apr 27 16:40:21 2016
+@@ -4050,7 +4050,7 @@ SHLIBSONAME='$(SHLIBFORLINK).$(MAJOR)'
+ SHLIBFILE='$(SHLIBSONAME).$(MINOR)'
+ 
+ SHLIBCC='$(CC) $(CFLAGS) -fpic'
+-MKSHLIB_1='$(CC) $(LDFLAGS) -shared -Wl,-soname=$(SHLIBSONAME) -o'
++MKSHLIB_1='$(CC) $(LDFLAGS) -shared -o'
+ MKSHLIB_2=''
+ MKSHLIB_3='-lc'
+ 

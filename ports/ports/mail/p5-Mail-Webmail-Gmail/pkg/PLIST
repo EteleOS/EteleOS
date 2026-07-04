@@ -1,0 +1,4 @@
+${P5SITE}/Mail/
+${P5SITE}/Mail/Webmail/
+${P5SITE}/Mail/Webmail/Gmail.pm
+@man man/man3p/Mail::Webmail::Gmail.3p

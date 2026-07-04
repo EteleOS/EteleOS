@@ -1,0 +1,11 @@
+--- node/munin-node.conf.in.orig	Fri May 10 22:59:50 2013
++++ node/munin-node.conf.in	Sun May 26 22:02:43 2013
+@@ -10,7 +10,7 @@ background 1
+ setsid 1
+ 
+ user root
+-group root
++group wheel
+ 
+ # This is the timeout for the whole transaction.
+ # Units are in sec. Default is 15 min

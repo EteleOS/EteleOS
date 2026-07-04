@@ -1,0 +1,6 @@
+@bin bin/xbindkeys
+bin/xbindkeys_show
+@man man/man1/xbindkeys.1
+@man man/man1/xbindkeys_show.1
+share/applications/xbindkeys.desktop
+@tag update-desktop-database

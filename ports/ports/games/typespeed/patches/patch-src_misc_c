@@ -1,0 +1,23 @@
+Hunk #1: Fix -fno-common build failure.
+Hunk #2: Use arc4random()
+
+Index: src/misc.c
+--- src/misc.c.orig
++++ src/misc.c
+@@ -75,6 +75,7 @@ char		*xstrdup(char *);
+ void		 xstrncpy(char *, char *, size_t);
+ 
+ extern char	*progname;
++extern struct opt opt;
+ 
+ static int graph = 0;
+ 
+@@ -224,7 +224,7 @@ r(int range)
+ #ifdef WIN32
+ 	return (int)(rand() % range);
+ #else
+-	return (int)(random() % range);
++	return (int)(arc4random() % range);
+ #endif /* WIN32 */
+ }
+ 

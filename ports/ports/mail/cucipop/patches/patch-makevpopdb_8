@@ -1,0 +1,11 @@
+--- makevpopdb.8.orig	Sun May 10 08:57:40 1998
++++ makevpopdb.8	Thu Feb 22 19:39:36 2001
+@@ -48,7 +48,7 @@
+ .SH NAME
+ makevpopdb \- Creates the vpop database for cucipop
+ .SH SYNOPSIS
+-.B /usr/sbin/makevpopdb
++.B !!PREFIX!!/libexec/makevpopdb
+ .I dbasefile
+ .ad
+ .SH DESCRIPTION

@@ -1,0 +1,13 @@
+--- src/bitmaps/Makefile.in.orig	Mon Jan 20 15:01:49 1997
++++ src/bitmaps/Makefile.in	Tue Feb 13 13:59:38 2001
+@@ -85,10 +85,8 @@ dvi:
+ check: all
+ installcheck:
+ install-exec: 
+-	$(NORMAL_INSTALL)
+ 
+ install-data: 
+-	$(NORMAL_INSTALL)
+ 
+ install: install-exec install-data all
+ 	@:

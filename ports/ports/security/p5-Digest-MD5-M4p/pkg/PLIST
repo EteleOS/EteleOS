@@ -1,0 +1,10 @@
+${P5ARCH}/
+${P5ARCH}/Digest/
+${P5ARCH}/Digest/MD5/
+${P5ARCH}/Digest/MD5/M4p.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/Digest/
+${P5ARCH}/auto/Digest/MD5/
+${P5ARCH}/auto/Digest/MD5/M4p/
+${P5ARCH}/auto/Digest/MD5/M4p/M4p.so
+@man man/man3p/Digest::MD5::M4p.3p

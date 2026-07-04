@@ -1,0 +1,20 @@
+Index: nslint.8
+--- nslint.8.orig
++++ nslint.8
+@@ -101,14 +101,14 @@ Missing semicolons and quotes.
+ Specify an alternate
+ .I named.boot
+ file. The default is
+-.IR /etc/named.boot .
++.IR /var/named/etc/named.boot .
+ .TP
+ .TP
+ .B -c
+ Specify an alternate
+ .I named.conf
+ file. The default is
+-.IR /etc/named.conf .
++.IR /var/named/etc/named.conf .
+ .TP
+ .B -B
+ Specify an alternate

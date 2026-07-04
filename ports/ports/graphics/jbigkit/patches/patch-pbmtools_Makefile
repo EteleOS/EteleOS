@@ -1,0 +1,23 @@
+--- pbmtools/Makefile.orig	Thu Mar 27 18:47:15 2014
++++ pbmtools/Makefile	Tue Apr  8 14:54:55 2014
+@@ -10,7 +10,7 @@ CPPFLAGS = -I../libjbig 
+ .SUFFIXES: .1 .5 .txt $(SUFFIXES)
+ .PHONY: txt test test82 test85 clean
+ 
+-all: pbmtojbg jbgtopbm pbmtojbg85 jbgtopbm85 txt
++all: pbmtojbg jbgtopbm pbmtojbg85 jbgtopbm85
+ 
+ txt: pbmtojbg.txt jbgtopbm.txt pbm.txt pgm.txt
+ 
+@@ -111,8 +111,11 @@ test85: pbmtojbg jbgtopbm pbmtojbg85 jbgtopbm85 test-t
+ 	make IMG=t82 "OPTIONSP=-Y -1 1920" dotest85
+ 	make IMG=t82 "OPTIONSP=-Y -1 1949" dotest85
+ 	make IMG=t82 "OPTIONSP=-Y -1 1950" dotest85
++	make IMG=ccitt1 dotest1
+ 	make IMG=ccitt1 dotest85
++	make IMG=ccitt2 dotest1
+ 	make IMG=ccitt2 dotest85
++	make IMG=ccitt3 dotest1
+ 	make IMG=ccitt3 dotest85
+ 	rm -f test-*.jbg test-*.jbg85 test-*.pbm
+ 	@echo

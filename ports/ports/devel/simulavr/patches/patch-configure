@@ -1,0 +1,24 @@
+--- configure.orig	Sun Jul  3 11:13:03 2011
++++ configure	Wed Apr 26 07:45:39 2017
+@@ -6267,7 +6267,7 @@ fi
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for doxygen" >&5
+ $as_echo_n "checking for doxygen... " >&6; }
+-dox_ver=`doxygen --version 2>/dev/null`
++dox_ver=``
+ if test "x$dox_ver" = "x"; then
+ 	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+ $as_echo "no" >&6; }
+@@ -6323,9 +6323,9 @@ fi
+ 
+ 
+ # If we are compiling with gcc, enable all warning and make warnings errors.
+-if test "$GCC" = yes; then
+-    ENABLE_WARNINGS="-Wall -Winline -Werror"
+-fi
++#if test "$GCC" = yes; then
++#    ENABLE_WARNINGS="-Wall -Winline -Werror"
++#fi
+ ENABLE_WARNINGS=$ENABLE_WARNINGS
+ 
+ 

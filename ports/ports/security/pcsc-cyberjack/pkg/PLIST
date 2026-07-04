@@ -1,0 +1,10 @@
+lib/pcsc/
+lib/pcsc/drivers/
+lib/pcsc/drivers/libifd-cyberjack.bundle/
+lib/pcsc/drivers/libifd-cyberjack.bundle/Contents/
+lib/pcsc/drivers/libifd-cyberjack.bundle/Contents/Info.plist
+lib/pcsc/drivers/libifd-cyberjack.bundle/Contents/OpenBSD/
+@static-lib lib/pcsc/drivers/libifd-cyberjack.bundle/Contents/OpenBSD/libifd-cyberjack.a
+lib/pcsc/drivers/libifd-cyberjack.bundle/Contents/OpenBSD/libifd-cyberjack.la
+@lib lib/pcsc/drivers/libifd-cyberjack.bundle/Contents/OpenBSD/libifd-cyberjack.so.${LIBifd-cyberjack_VERSION}
+lib/pcsc/drivers/libifd-cyberjack.bundle/Contents/PkgInfo

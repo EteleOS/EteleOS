@@ -1,0 +1,52 @@
+getc() returns an int.
+
+Prevent an endless loop:
+https://github.com/mbert/elvis/commit/f0ca07a429d1
+
+Fix a segmentation fault:
+https://github.com/mbert/elvis/commit/8a42aebd91bd
+
+--- ctags.c.orig	Tue Oct 21 04:32:25 2003
++++ ctags.c	Mon Apr 17 12:58:42 2017
+@@ -241,7 +241,7 @@ int file_copyline(seek, fp, buf)
+ {
+ 	long	oldseek;/* where the file's pointer was before we messed it up */
+ 	int	ch;	/* a single character from the file */
+-	char	next;	/* the next character from this file */
++	int	next;	/* the next character from this file */
+ 	char	*build;	/* where to store the next character */
+ 
+ 	/* go to the start of the line */
+@@ -640,9 +640,10 @@ int lex_gettoken()
+ 					 */
+ 					if (ch == '/')
+ 					{
+-						while ((ch = cpp_getc()) != '\n')
++						do
+ 						{
+-						}
++							ch = cpp_getc();
++						} while (ch != '\n' && ch != EOF);
+ 					}
+ 
+ 					/* the last name before a comma, '=', or
+@@ -969,7 +970,7 @@ void maketag(scope, name, lnum, seek, number, kind, in
+ 				for (; scan && !strcmp(scan->TAGNAME,name); scan = next)
+ 				{
+ 					if (warn_duplicate)
+-						printf("duplicate tag \"%s\" is typedef: keeping one from %s, not %ss\n", name, file_name, scan->TAGFILE);
++						printf("duplicate tag \"%s\" is typedef: keeping one from %s, not %s\n", name, file_name, scan->TAGFILE);
+ 
+ 					/* make any references to it point to
+ 					 * the next tag instead.
+@@ -984,7 +985,10 @@ void maketag(scope, name, lnum, seek, number, kind, in
+ 							ref->bighop = scan->next;
+ 					}
+ 					if (taglist == scan)
++					{
+ 						taglist = scan->next;
++						next = taglist;
++					}
+ 
+ 					/* delete this one */
+ 					(void)tagfree(scan);

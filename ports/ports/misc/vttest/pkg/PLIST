@@ -1,0 +1,2 @@
+@bin bin/vttest
+@man man/man1/vttest.1

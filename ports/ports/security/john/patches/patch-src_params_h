@@ -1,0 +1,30 @@
+--- src/params.h.orig	Wed Jun 22 15:38:55 2011
++++ src/params.h	Fri Jun 24 09:09:42 2011
+@@ -51,15 +51,15 @@
+  * notes above.
+  */
+ #ifndef JOHN_SYSTEMWIDE
+-#define JOHN_SYSTEMWIDE			0
++#define JOHN_SYSTEMWIDE			1
+ #endif
+ 
+ #if JOHN_SYSTEMWIDE
+ #ifndef JOHN_SYSTEMWIDE_EXEC /* please refer to the notes above */
+-#define JOHN_SYSTEMWIDE_EXEC		"/usr/libexec/john"
++#define JOHN_SYSTEMWIDE_EXEC		"${PREFIX}/bin/john"
+ #endif
+ #ifndef JOHN_SYSTEMWIDE_HOME
+-#define JOHN_SYSTEMWIDE_HOME		"/usr/share/john"
++#define JOHN_SYSTEMWIDE_HOME		"${PREFIX}/share/john"
+ #endif
+ #define JOHN_PRIVATE_HOME		"~/.john"
+ #endif
+@@ -103,7 +103,7 @@
+ /*
+  * File names.
+  */
+-#define CFG_FULL_NAME			"$JOHN/john.conf"
++#define CFG_FULL_NAME			"${SYSCONFDIR}/john.conf"
+ #define CFG_ALT_NAME			"$JOHN/john.ini"
+ #if JOHN_SYSTEMWIDE
+ #define CFG_PRIVATE_FULL_NAME		JOHN_PRIVATE_HOME "/john.conf"

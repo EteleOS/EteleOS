@@ -1,0 +1,3 @@
+include/xvid.h
+@static-lib lib/libxvidcore.a
+@lib lib/libxvidcore.so.${LIBxvidcore_VERSION}

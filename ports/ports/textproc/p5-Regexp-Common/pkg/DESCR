@@ -1,0 +1,13 @@
+By default, this module exports a single hash (%RE) that stores or
+generates commonly needed regular expressions.  Patterns currently
+provided include:
+   * strings with balanced parenthesized delimiters
+   * comments of various languages (43 languages currently)
+   * delimited strings
+   * palindromes
+   * lists
+   * IPv4, IPv6, and MAC addresses
+   * numbers (integers and reals)
+   * profanity
+   * leading and trailing whitespace
+   * zip codes

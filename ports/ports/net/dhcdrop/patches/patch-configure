@@ -1,0 +1,27 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -1887,7 +1887,7 @@ rm -f -r conftest* confdefs.h
+ # Predefined preprocessor variables.
+ 
+ cat >>confdefs.h <<_ACEOF
+-#define PACKAGE_NAME "$PACKAGE_NAME"
++#define PACKAGE_NAME $PACKAGE_NAME
+ _ACEOF
+ 
+ 
+@@ -1902,12 +1902,12 @@ _ACEOF
+ 
+ 
+ cat >>confdefs.h <<_ACEOF
+-#define PACKAGE_STRING "$PACKAGE_STRING"
++#define PACKAGE_STRING $PACKAGE_STRING
+ _ACEOF
+ 
+ 
+ cat >>confdefs.h <<_ACEOF
+-#define PACKAGE_BUGREPORT "$PACKAGE_BUGREPORT"
++#define PACKAGE_BUGREPORT $PACKAGE_BUGREPORT
+ _ACEOF
+ 
+ 

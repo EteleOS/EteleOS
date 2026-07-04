@@ -1,0 +1,10 @@
+--- ckufio.c.orig	Thu Dec  5 23:31:16 2013
++++ ckufio.c	Thu Dec  5 23:33:03 2013
+@@ -206,7 +206,6 @@ extern int eofmethod;
+ #define TIMESTAMP                       /* Can do file dates */
+ #endif /* TIMESTAMP */
+ #include <sys/time.h>
+-#include <sys/timeb.h>
+ 
+ #else  /* Not BSD44 */
+ 

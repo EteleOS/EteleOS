@@ -1,0 +1,12 @@
+Index: src/tkgate/verilog_out.c
+--- src/tkgate/verilog_out.c.orig
++++ src/tkgate/verilog_out.c
+@@ -893,7 +893,7 @@ static int check_file(const char *name)
+   system(cmd);
+ #endif
+ 
+-  sprintf(cmd,"%s/libexec/tkgate",TkGate.homedir);
++  sprintf(cmd,"%${PREFIX}/bin/tkgate",TkGate.homedir);
+   if (!(pid = fork())) {
+     execl(cmd,cmd,"-Vq",name,(char*)NULL);
+     exit(1);

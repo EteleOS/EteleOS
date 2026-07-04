@@ -1,0 +1,37 @@
+64bit time_t fix.
+
+Index: lib/Resource.cc
+--- lib/Resource.cc.orig
++++ lib/Resource.cc
+@@ -29,6 +29,7 @@
+ #include <X11/Xresource.h>
+ 
+ #include <stdio.h>
++#include <string.h>
+ 
+ 
+ bt::Resource::Resource(void)
+@@ -200,9 +201,23 @@ void bt::Resource::write(const char* resource, long va
+ }
+ 
+ 
++void bt::Resource::write(const char* resource, long long value) {
++  char tmp[64];
++  sprintf(tmp, "%lld", value);
++  write(resource, tmp);
++}
++
++
+ void bt::Resource::write(const char* resource, unsigned long value) {
+   char tmp[64];
+   sprintf(tmp, "%lu", value);
++  write(resource, tmp);
++}
++
++
++void bt::Resource::write(const char* resource, unsigned long long value) {
++  char tmp[64];
++  sprintf(tmp, "%llu", value);
+   write(resource, tmp);
+ }
+ 

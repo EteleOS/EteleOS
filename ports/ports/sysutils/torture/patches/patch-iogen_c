@@ -1,0 +1,12 @@
+Index: iogen.c
+--- iogen.c.orig
++++ iogen.c
+@@ -150,7 +150,7 @@ err_log(int flags, const char *fmt, ...)
+ 	if (flags & LOGERR)
+ 		snprintf(buf, sizeof buf, "%s: %s", buf, strerror(errno_save));
+ 		
+-	syslog(flags & LOGFATAL ? LOG_CRIT : LOG_NOTICE, buf);
++	syslog(flags & LOGFATAL ? LOG_CRIT : LOG_NOTICE, "%s", buf);
+ 
+ 	if (flags & LOGKILLALL)
+ 		killall();

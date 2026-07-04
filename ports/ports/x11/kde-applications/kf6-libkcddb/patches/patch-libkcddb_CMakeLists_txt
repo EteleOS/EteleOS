@@ -1,0 +1,14 @@
+Index: libkcddb/CMakeLists.txt
+--- libkcddb/CMakeLists.txt.orig
++++ libkcddb/CMakeLists.txt
+@@ -137,7 +137,9 @@ install(FILES
+ 
+ set(KCDDB_INCLUDE_DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KCddb6")
+ 
+-install(FILES libkcddb5.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
++if (KF_MAJOR_VERSION STREQUAL "5")
++    install(FILES libkcddb5.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
++endif()
+ 
+ ecm_qt_install_logging_categories(
+     EXPORT KCDDB

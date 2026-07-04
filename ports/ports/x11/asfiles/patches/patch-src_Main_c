@@ -1,0 +1,11 @@
+--- src/Main.c.orig	Wed May 21 18:25:09 1997
++++ src/Main.c	Wed Feb  7 16:03:20 2001
+@@ -391,7 +391,7 @@ void init_arg0flag()
+   Main function
+ ---------------------------------------------------------------------------*/
+ 
+-void main(int argc, char *argv[])
++int main(int argc, char *argv[])
+ {
+   char *s, *buf;
+   int bufsize;

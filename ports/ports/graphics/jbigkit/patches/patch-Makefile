@@ -1,0 +1,11 @@
+--- Makefile.orig	Tue Apr  8 14:41:53 2014
++++ Makefile	Tue Apr  8 14:42:35 2014
+@@ -7,8 +7,6 @@ CC = gcc
+ CFLAGS = -O2 -W -Wno-unused-result
+ # CFLAGS = -O -g -W -Wall -Wno-unused-result -ansi -pedantic # -DDEBUG
+ 
+-export CC CFLAGS
+-
+ VERSION=2.1
+ 
+ all: lib pbm

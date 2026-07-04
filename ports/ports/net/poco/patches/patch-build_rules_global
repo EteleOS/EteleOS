@@ -1,0 +1,21 @@
+we do not want to build the debug libraries
+
+--- build/rules/global.orig	Wed Mar  6 19:45:52 2013
++++ build/rules/global	Tue Mar 19 17:12:36 2013
+@@ -200,13 +200,13 @@ LINKMODE = BOTH
+ endif
+ 
+ ifeq ($(LINKMODE),SHARED)
+-DEFAULT_TARGET = all_shared
++DEFAULT_TARGET = shared_release
+ endif
+ ifeq ($(LINKMODE),STATIC)
+-DEFAULT_TARGET = all_static
++DEFAULT_TARGET = static_release
+ endif
+ ifeq ($(LINKMODE),BOTH)
+-DEFAULT_TARGET = all_static all_shared
++DEFAULT_TARGET = all_release
+ endif
+ 
+ #

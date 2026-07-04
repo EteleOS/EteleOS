@@ -1,0 +1,3 @@
+${P5SITE}/News/
+${P5SITE}/News/Newsrc.pm
+@man man/man3p/News::Newsrc.3p

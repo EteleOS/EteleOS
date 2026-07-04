@@ -1,0 +1,68 @@
+remove linux-only plugins from default config file
+use xlock (it's in base) instead of slock
+
+--- data/config/default.in.orig	Wed May 12 20:30:00 2010
++++ data/config/default.in	Tue Dec 21 07:02:26 2010
+@@ -159,7 +159,7 @@ Plugin {
+             item {
+                 name = Lock Display
+                 icon = gnome-lockscreen
+-                action = slock
++                action = xlock
+             }
+             separator {
+             }
+@@ -273,53 +273,6 @@ Plugin {
+         size = 10
+     }
+ }
+-
+-Plugin {
+-    type = mem
+-    expand = false
+-    padding = 2
+-    config {
+-        ShowSwap = false
+-    }
+-}
+-
+-Plugin {
+-    type = cpu
+-    config {
+-        Color = green
+-    }
+-}
+-
+-Plugin {
+-    type = net
+-    expand = false
+-    padding = 0
+-    config {
+-        #interface = ppp0
+-        interface = eth0
+-        # set connection limits to make traffic graph more accurate
+-        TxLimit = 20
+-        RxLimit = 190
+-        TxColor = violet
+-        RxColor = blue
+-    }
+-}
+-
+-
+-Plugin {
+-    type = space
+-    config {
+-        size = 10
+-    }
+-}
+-
+-plugin {
+-    type = volume
+-}
+-
+-#plugin {
+-#    type = battery
+-#}
+ 
+ Plugin {
+     type = tray

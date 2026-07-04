@@ -1,0 +1,3 @@
+${P5SITE}/Feed/
+${P5SITE}/Feed/Find.pm
+@man man/man3p/Feed::Find.3p

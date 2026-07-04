@@ -1,0 +1,11 @@
+bin/tcptraceroute
+@man man/man1/tcptraceroute.1
+share/doc/tcptraceroute/
+@comment share/doc/tcptraceroute/AUTHORS
+@comment share/doc/tcptraceroute/COPYING
+@comment share/doc/tcptraceroute/ChangeLog
+@comment share/doc/tcptraceroute/NEWS
+@comment share/doc/tcptraceroute/README
+share/doc/tcptraceroute/examples.txt
+share/doc/tcptraceroute/tcptraceroute.1.html
+share/doc/tcptraceroute/tcptraceroute.lsm

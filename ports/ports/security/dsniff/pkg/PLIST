@@ -1,0 +1,28 @@
+lib/dnsspoof.hosts
+lib/dsniff.magic
+lib/dsniff.services
+@man man/man8/arpspoof.8
+@man man/man8/dnsspoof.8
+@man man/man8/dsniff.8
+@man man/man8/filesnarf.8
+@man man/man8/macof.8
+@man man/man8/mailsnarf.8
+@man man/man8/msgsnarf.8
+@man man/man8/sshmitm.8
+@man man/man8/tcpkill.8
+@man man/man8/tcpnice.8
+@man man/man8/urlsnarf.8
+@man man/man8/webmitm.8
+@bin sbin/arpspoof
+@bin sbin/dnsspoof
+@bin sbin/dsniff
+@bin sbin/filesnarf
+@bin sbin/macof
+@bin sbin/mailsnarf
+@bin sbin/msgsnarf
+@bin sbin/sshmitm
+@bin sbin/tcpkill
+@bin sbin/tcpnice
+@bin sbin/urlsnarf
+@bin sbin/webmitm
+!%%no_x11%%

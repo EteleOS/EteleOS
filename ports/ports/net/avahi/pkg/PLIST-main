@@ -1,0 +1,63 @@
+@conflict howl-*
+@newgroup _avahi:629
+@newuser _avahi:629:629::Avahi User:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/avahi_daemon
+@rcscript ${RCDIR}/avahi_dnsconfd
+@bin bin/avahi-browse
+bin/avahi-browse-domains
+@bin bin/avahi-publish
+bin/avahi-publish-address
+bin/avahi-publish-service
+@bin bin/avahi-resolve
+bin/avahi-resolve-address
+bin/avahi-resolve-host-name
+@bin bin/avahi-set-host-name
+@man man/man1/avahi-browse-domains.1
+@man man/man1/avahi-browse.1
+@man man/man1/avahi-publish-address.1
+@man man/man1/avahi-publish-service.1
+@man man/man1/avahi-publish.1
+@man man/man1/avahi-resolve-address.1
+@man man/man1/avahi-resolve-host-name.1
+@man man/man1/avahi-resolve.1
+@man man/man1/avahi-set-host-name.1
+@man man/man5/avahi-daemon.conf.5
+@man man/man5/avahi.hosts.5
+@man man/man5/avahi.service.5
+@man man/man8/avahi-daemon.8
+@man man/man8/avahi-dnsconfd.8
+@man man/man8/avahi-dnsconfd.action.8
+@bin sbin/avahi-daemon
+@bin sbin/avahi-dnsconfd
+share/avahi/
+share/avahi/avahi-service.dtd
+share/dbus-1/interfaces/
+share/dbus-1/interfaces/org.freedesktop.Avahi.AddressResolver.xml
+share/dbus-1/interfaces/org.freedesktop.Avahi.DomainBrowser.xml
+share/dbus-1/interfaces/org.freedesktop.Avahi.EntryGroup.xml
+share/dbus-1/interfaces/org.freedesktop.Avahi.HostNameResolver.xml
+share/dbus-1/interfaces/org.freedesktop.Avahi.RecordBrowser.xml
+share/dbus-1/interfaces/org.freedesktop.Avahi.Server.xml
+share/dbus-1/interfaces/org.freedesktop.Avahi.ServiceBrowser.xml
+share/dbus-1/interfaces/org.freedesktop.Avahi.ServiceResolver.xml
+share/dbus-1/interfaces/org.freedesktop.Avahi.ServiceTypeBrowser.xml
+share/dbus-1/system-services/org.freedesktop.Avahi.service
+share/doc/pkg-readmes/${PKGSTEM}
+share/examples/avahi/
+@sample ${SYSCONFDIR}/avahi/
+share/examples/avahi/avahi-daemon.conf
+@sample ${SYSCONFDIR}/avahi/avahi-daemon.conf
+share/examples/avahi/avahi-dnsconfd.action
+@sample ${SYSCONFDIR}/avahi/avahi-dnsconfd.action
+share/examples/avahi/dbus-1/
+share/examples/avahi/dbus-1/system.d/
+share/examples/avahi/dbus-1/system.d/avahi-dbus.conf
+@sample ${SYSCONFDIR}/dbus-1/system.d/avahi-dbus.conf
+share/examples/avahi/hosts
+@sample ${SYSCONFDIR}/avahi/hosts
+share/examples/avahi/services/
+@sample ${SYSCONFDIR}/avahi/services/
+share/examples/avahi/services/sftp-ssh.service
+@sample ${SYSCONFDIR}/avahi/services/sftp-ssh.service
+share/examples/avahi/services/ssh.service
+@sample ${SYSCONFDIR}/avahi/services/ssh.service

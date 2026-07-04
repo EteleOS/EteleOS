@@ -1,0 +1,6 @@
+include/libisofs/
+include/libisofs/libisofs.h
+@static-lib lib/libisofs.a
+lib/libisofs.la
+@lib lib/libisofs.so.${LIBisofs_VERSION}
+lib/pkgconfig/libisofs-1.pc

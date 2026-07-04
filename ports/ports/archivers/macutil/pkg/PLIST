@@ -1,0 +1,18 @@
+@conflict avenger-*
+@bin bin/binhex
+@bin bin/frommac
+@bin bin/hexbin
+@bin bin/macsave
+@bin bin/macstream
+@bin bin/macunpack
+@bin bin/tomac
+@man man/man1/binhex.1
+@man man/man1/frommac.1
+@man man/man1/hexbin.1
+@man man/man1/macsave.1
+@man man/man1/macstream.1
+@man man/man1/macunpack.1
+@man man/man1/macutil.1
+@man man/man1/tomac.1
+share/doc/macutil/
+share/doc/macutil/README

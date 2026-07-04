@@ -1,0 +1,2 @@
+@bin bin/aucatctl
+@man man/man1/aucatctl.1

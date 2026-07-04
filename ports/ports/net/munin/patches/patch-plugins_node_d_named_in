@@ -1,0 +1,21 @@
+Index: plugins/node.d/named.in
+--- plugins/node.d/named.in.orig
++++ plugins/node.d/named.in
+@@ -48,7 +48,7 @@ To ensure read access to the log files, you will need 
+ =head2 DEFAULT CONFIGURATION
+ 
+  [named]
+-  env.logfile /var/adm/messages or /var/log/daemon.log
++  env.logfile /var/adm/messages or /var/log/daemon
+ 
+ =head1 AUTHOR
+ 
+@@ -78,7 +78,7 @@ else
+     if [ -f /var/adm/messages ]; then
+         SYSLOGFILE=/var/adm/messages
+     else
+-        SYSLOGFILE=/var/log/daemon.log
++        SYSLOGFILE=/var/log/daemon
+     fi
+ fi
+ 

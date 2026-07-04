@@ -1,0 +1,54 @@
+Index: Src/SID.cpp
+--- Src/SID.cpp.orig
++++ Src/SID.cpp
+@@ -64,6 +64,9 @@ class DigitalPlayer;
+ #define ldSINTAB 9			// size of sinus table (0 to 90 degrees)
+ #endif
+ 
++#ifdef USE_SNDIO
++#include <sndio.h>
++#endif
+ 
+ #ifdef USE_FIXPOINT_MATHS
+ #include "FixPoint.i"
+@@ -374,7 +377,7 @@ class DigitalRenderer : public SIDRenderer { (private)
+ 	static const uint16 TriSawRectTable[0x100];
+ 	static const uint32 EGTable[16];	// Increment/decrement values for all A/D/R settings
+ 	static const uint8 EGDRShift[256]; // For exponential approximation of D/R
+-	static const int16 SampleTab[16]; // Table for sampled voice
++	static const uint16 SampleTab[16]; // Table for sampled voice
+ 
+ 	DRVoice voice[3];				// Data for 3 voices
+ 
+@@ -481,6 +484,12 @@ class DigitalRenderer : public SIDRenderer { (private)
+ 	uint8 *sound_buffer;
+ 	C64 *the_c64;
+ #endif
++
++#ifdef USE_SNDIO
++	struct sio_hdl *hdl;
++	int16 *sound_calc_buf;
++#endif
++
+ };
+ 
+ // Static data members
+@@ -800,7 +809,7 @@ const uint8 DigitalRenderer::EGDRShift[256] = {
+ 	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ };
+ 
+-const int16 DigitalRenderer::SampleTab[16] = {
++const uint16 DigitalRenderer::SampleTab[16] = {
+ 	0x8000, 0x9111, 0xa222, 0xb333, 0xc444, 0xd555, 0xe666, 0xf777,
+ 	0x0888, 0x1999, 0x2aaa, 0x3bbb, 0x4ccc, 0x5ddd, 0x6eee, 0x7fff,
+ };
+@@ -1353,6 +1362,9 @@ void DigitalRenderer::calc_buffer(int16 *buf, long cou
+ 
+ #elif defined(__linux__)
+ #include "SID_linux.i"
++
++#elif defined(USE_SNDIO)
++#include "SID_sndio.i"
+ 
+ #elif defined(SUN)
+ #include "SID_sun.i"

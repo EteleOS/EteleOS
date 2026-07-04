@@ -1,0 +1,8 @@
+@bin bin/httppc
+@bin bin/sockc
+@bin bin/tlsc
+@bin bin/tlss
+@man man/man1/httppc.1
+@man man/man1/sockc.1
+@man man/man1/tlsc.1
+@man man/man1/tlss.1

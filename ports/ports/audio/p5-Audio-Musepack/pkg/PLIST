@@ -1,0 +1,6 @@
+${P5SITE}/Audio/
+${P5SITE}/Audio/APE.pm
+${P5SITE}/Audio/APETags.pm
+${P5SITE}/Audio/Musepack.pm
+@man man/man3p/Audio::APE.3p
+@man man/man3p/Audio::Musepack.3p

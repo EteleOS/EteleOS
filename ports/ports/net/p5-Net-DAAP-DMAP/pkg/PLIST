@@ -1,0 +1,4 @@
+${P5SITE}/Net/
+${P5SITE}/Net/DAAP/
+${P5SITE}/Net/DAAP/DMAP.pm
+@man man/man3p/Net::DAAP::DMAP.3p

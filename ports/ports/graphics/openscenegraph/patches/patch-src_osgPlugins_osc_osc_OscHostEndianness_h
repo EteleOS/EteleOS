@@ -1,0 +1,17 @@
+--- src/osgPlugins/osc/osc/OscHostEndianness.h.orig	Thu Jul 23 13:14:00 2015
++++ src/osgPlugins/osc/osc/OscHostEndianness.h	Thu Sep 10 20:45:13 2015
+@@ -77,6 +77,14 @@
+         #else
+             #error Unknown machine endianness detected.
+         #endif
++    #elif defined(__OpenBSD__)
++        #if (_BYTE_ORDER == _LITTLE_ENDIAN)
++            #define __LITTLE_ENDIAN__
++        #elif (_BYTE_ORDER == _BIG_ENDIAN)
++            #define __BIG_ENDIAN__
++        #else
++            #error Unknown machine endianness detected.
++        #endif
+     #endif
+ 
+     #if   defined(__LITTLE_ENDIAN__)

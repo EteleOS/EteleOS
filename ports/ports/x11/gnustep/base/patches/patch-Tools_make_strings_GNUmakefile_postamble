@@ -1,0 +1,13 @@
+Do not install gzipped manual page
+
+--- Tools/make_strings/GNUmakefile.postamble.orig	Mon Mar 16 12:44:23 2015
++++ Tools/make_strings/GNUmakefile.postamble	Mon Mar 16 12:44:31 2015
+@@ -44,8 +44,6 @@ after-install::
+ 	for file in $(MAN1_PAGES) __done; do \
+ 	  if [ $$file != __done ]; then \
+ 	    $(INSTALL_DATA) $$file $(GNUSTEP_DOC_MAN)/man1/$$file; \
+-	    which gzip && rm -f $(GNUSTEP_DOC_MAN)/man1/$$file.gz \
+-		&& gzip -9 $(GNUSTEP_DOC_MAN)/man1/$$file; \
+ 	  fi; \
+ 	done; \
+ 

@@ -1,0 +1,20 @@
+@bin bin/evtexport
+@bin bin/evtinfo
+include/libevt/
+include/libevt.h
+include/libevt/codepage.h
+include/libevt/definitions.h
+include/libevt/error.h
+include/libevt/extern.h
+include/libevt/features.h
+include/libevt/types.h
+@static-lib lib/libevt.a
+lib/libevt.la
+@lib lib/libevt.so.${LIBevt_VERSION}
+lib/pkgconfig/libevt.pc
+lib/python${MODPY_VERSION}/site-packages/pyevt.a
+lib/python${MODPY_VERSION}/site-packages/pyevt.la
+@so lib/python${MODPY_VERSION}/site-packages/pyevt.so
+@man man/man1/evtexport.1
+@man man/man1/evtinfo.1
+@man man/man3/libevt.3

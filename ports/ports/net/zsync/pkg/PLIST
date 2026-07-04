@@ -1,0 +1,7 @@
+@bin bin/zsync
+@bin bin/zsyncmake
+@man man/man1/zsync.1
+@man man/man1/zsyncmake.1
+share/doc/zsync/
+share/doc/zsync/COPYING
+share/doc/zsync/README

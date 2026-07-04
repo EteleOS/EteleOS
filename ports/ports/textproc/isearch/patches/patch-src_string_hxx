@@ -1,0 +1,34 @@
+Index: src/string.hxx
+--- src/string.hxx.orig
++++ src/string.hxx
+@@ -43,7 +43,11 @@ Author:		Nassib Nassar, nrn@cnidr.org
+ #ifndef STRING_HXX
+ #define STRING_HXX
+ 
+-#include <iostream.h>
++#include <iostream>
++using std::ostream;
++using std::ofstream;
++using std::endl;
++using std::cout;
+ #include "gdt.h"
+ 
+ #ifdef METRICS
+@@ -67,7 +71,7 @@ class STRING { (public)
+ 	STRING& operator=(const INT IntValue);
+ 	STRING& operator=(const DOUBLE DoubleValue);
+ 	STRING& operator=(const STRING& OtherString);
+-	void STRING::Set(const UCHR* NewBuffer, const STRINGINDEX BufferLength);
++	void Set(const UCHR* NewBuffer, const STRINGINDEX BufferLength);
+  	STRING& operator+=(const UCHR Character);
+  	STRING& operator+=(const CHR* CString);
+  	STRING& operator+=(const STRING& OtherString);
+@@ -134,7 +138,7 @@ class STRING { (public)
+ 	void StrBuffAlloc(INT BufferSizeRequest);
+ 	~STRING();
+ private:
+-	void STRING::Copy(const UCHR *CString, STRINGINDEX CLength);
++	void Copy(const UCHR *CString, STRINGINDEX CLength);
+ 	STRINGINDEX Length;
+ 	UCHR* Buffer;
+ 	static INT4 InitialBufferLength;

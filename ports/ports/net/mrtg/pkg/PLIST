@@ -1,0 +1,48 @@
+@newgroup _mrtg:578
+@newuser _mrtg:578:578::MRTG account:/var/empty:/sbin/nologin
+@rcscript ${RCDIR}/mrtg
+bin/cfgmaker
+bin/indexmaker
+bin/mrtg
+bin/mrtg-traffic-sum
+@bin bin/rateup
+lib/mrtg2/
+@comment lib/mrtg2/BER.pm
+lib/mrtg2/MRTG_lib.pm
+lib/mrtg2/Net_SNMP_util.pm
+@comment lib/mrtg2/SNMP_Session.pm
+@comment lib/mrtg2/SNMP_util.pm
+lib/mrtg2/locales_mrtg.pm
+@man man/man1/cfgmaker.1
+@man man/man1/indexmaker.1
+@man man/man1/mrtg-contrib.1
+@man man/man1/mrtg-faq.1
+@man man/man1/mrtg-forum.1
+@man man/man1/mrtg-ipv6.1
+@man man/man1/mrtg-logfile.1
+@man man/man1/mrtg-mibhelp.1
+@man man/man1/mrtg-nt-guide.1
+@man man/man1/mrtg-nw-guide.1
+@man man/man1/mrtg-reference.1
+@man man/man1/mrtg-rrd.1
+@man man/man1/mrtg-squid.1
+@man man/man1/mrtg-traffic-sum.1
+@man man/man1/mrtg-unix-guide.1
+@man man/man1/mrtg-webserver.1
+@man man/man1/mrtg.1
+@man man/man1/rateup.1
+@man man/man3/mrtglib.3
+@man man/man5/mrtg.cfg.5
+share/examples/mrtg/
+share/examples/mrtg/mrtg.cfg
+@sample ${SYSCONFDIR}/mrtg.cfg
+share/mrtg/
+share/mrtg/favicon.ico
+share/mrtg/mrtg-l.gif
+share/mrtg/mrtg-l.png
+share/mrtg/mrtg-m.gif
+share/mrtg/mrtg-m.png
+share/mrtg/mrtg-r.gif
+share/mrtg/mrtg-r.png
+share/mrtg/mrtg-ti.gif
+share/mrtg/mrtg-ti.png

@@ -1,0 +1,20 @@
+--- ZipFile.cpp.orig	Thu Dec  6 10:39:34 2012
++++ ZipFile.cpp	Thu Dec  6 10:40:52 2012
+@@ -110,7 +110,7 @@ int uncompress_int(unsigned char *dest, int *destLen, 
+ ZipFile::ZipFile(const std::string& fn)
+ {
+   m_temp = NULL;
+-  m_fd=open(fn.c_str(), O_RDONLY);
++  if ( m_fd=open(fn.c_str(), O_RDONLY) == -1) throw "open failed";
+   struct stat stat;
+   if (fstat(m_fd, &stat)==0 && S_ISREG(stat.st_mode)) {
+     m_dataLen = stat.st_size;
+@@ -119,7 +119,7 @@ ZipFile::ZipFile(const std::string& fn)
+     if ( !m_data ) throw "mmap failed";
+     if ( *(int*)&m_data[0] != 0x04034b50 ) throw "bad zip magic";
+     m_eoc = (zip_eoc*)&m_data[m_dataLen-sizeof(zip_eoc)];
+-    m_firstcd = (zip_cd*)&m_data[m_eoc->zipeofst];
++    m_firstcd = m_eoc ? (zip_cd*)&m_data[m_eoc->zipeofst] : 0;
+     if ( m_eoc && m_firstcd ) {
+       m_entries = m_eoc->zipenum;
+     } else {

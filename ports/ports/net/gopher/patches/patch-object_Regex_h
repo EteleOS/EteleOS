@@ -1,0 +1,19 @@
+--- object/Regex.h.orig	Wed Jul 20 17:28:53 2005
++++ object/Regex.h	Fri Nov 29 19:13:00 2013
+@@ -177,10 +177,14 @@ in unistd.h.  Eww. */
+ 
+ char *posix_re_comp(char *regex);
+ int posix_re_exec(char *string);
+-#define re_comp(a) (posix_re_comp(a))
+-#define re_exec(a) (posix_re_exec(a))
++#define gopher_re_comp(a) (posix_re_comp(a))
++#define gopher_re_exec(a) (posix_re_exec(a))
++
+ #else
+ 
++#define gopher_re_comp(a) (re_comp(a))
++#define gopher_re_exec(a) (re_comp(a))
++
+ /* ********** Try to figure out what else they have. */
+ 
+ #ifdef HAVE_RE_COMP

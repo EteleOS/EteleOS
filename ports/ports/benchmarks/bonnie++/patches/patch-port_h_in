@@ -1,0 +1,28 @@
+Index: port.h.in
+--- port.h.in.orig
++++ port.h.in
+@@ -1,6 +1,8 @@
+ #ifndef PORT_UNIX_H
+ #define PORT_UNIX_H
+ 
++#include <sys/types.h>
++
+ #include "conf.h"
+ 
+ @semun@
+@@ -24,10 +26,11 @@
+ typedef struct timeval TIMEVAL_TYPE;
+ 
+ #ifdef _LARGEFILE64_SOURCE
+-#define OFF_TYPE off64_t
+-#define file_lseek lseek64
+-#define file_creat creat64
+-#define file_open open64
++#define O_LARGEFILE 0
++#define OFF_TYPE off_t
++#define file_lseek lseek
++#define file_creat creat
++#define file_open open
+ #else
+ #define OFF_TYPE off_t
+ #define file_lseek lseek

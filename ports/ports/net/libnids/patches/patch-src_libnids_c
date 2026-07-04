@@ -1,0 +1,89 @@
+nids_params:
+https://github.com/MITRECND/libnids/commit/81d7ac0d09cb5c98cf8eff9e6aaba1f4eb5ed519
+https://github.com/MITRECND/libnids/commit/4ab31b6efaf15a01b7121443b6e3de4cde13d3a5
+
+Index: src/libnids.c
+--- src/libnids.c.orig
++++ src/libnids.c
+@@ -14,7 +14,9 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <syslog.h>
++#ifndef __OpenBSD__
+ #include <alloca.h>
++#endif
+ #include <pcap.h>
+ #include <errno.h>
+ #include <config.h>
+@@ -32,6 +34,12 @@
+ #include <glib.h>
+ #endif
+ 
++#ifdef DLT_PFLOG
++#include <sys/socket.h>
++#include <net/if.h>
++#include <net/if_pflog.h>
++#endif
++
+ #ifdef __linux__
+ extern int set_all_promisc();
+ #endif
+@@ -108,7 +116,8 @@ struct nids_prm nids_params = {
+     0,				/* multiproc */
+     20000,			/* queue_limit */
+     0,				/* tcp_workarounds */
+-    NULL			/* pcap_desc */
++    NULL,			/* pcap_desc */
++    3600			        /* tcp_flow_timeout */
+ };
+ 
+ static int nids_ip_filter(struct ip *x, int len)
+@@ -619,22 +628,46 @@ int nids_init()
+     case DLT_NULL:
+         nids_linkoffset = 4;
+         break;
+-#endif        
++#endif
++#ifdef DLT_LOOP
++    case DLT_LOOP:
++        nids_linkoffset = 4;
++        break;
++#endif
+     case DLT_EN10MB:
+ 	nids_linkoffset = 14;
+ 	break;
+     case DLT_PPP:
+ 	nids_linkoffset = 4;
+ 	break;
++#ifdef DLT_PPP_ETHER
++    case DLT_PPP_ETHER:
++	nids_linkoffset = 8;
++	break;
++#endif
+ 	/* Token Ring Support by vacuum@technotronic.com, thanks dugsong! */
+     case DLT_IEEE802:
+ 	nids_linkoffset = 22;
+ 	break;
+-
+     case DLT_RAW:
+     case DLT_SLIP:
+ 	nids_linkoffset = 0;
+ 	break;
++#ifdef DLT_OLD_PFLOG
++    case DLT_OLD_PFLOG:
++	nids_linkoffset = 28;
++	break;
++#endif
++#ifdef DLT_PFLOG
++    case DLT_PFLOG:
++	nids_linkoffset = PFLOG_HDRLEN;
++	break;
++#endif
++#ifdef DLT_PFSYNC
++    case DLT_PFSYNC:
++	nids_linkoffset = 4;
++	break;
++#endif
+ #define DLT_LINUX_SLL   113
+     case DLT_LINUX_SLL:
+ 	nids_linkoffset = 16;

@@ -1,0 +1,3 @@
+${P5SITE}/SNMP/
+${P5SITE}/SNMP/BridgeQuery.pm
+@man man/man3p/SNMP::BridgeQuery.3p

@@ -1,0 +1,38 @@
+@bin xtensa-esp32-elf/bin/xtensa-esp32-elf-gdb
+xtensa-esp32-elf/bin/xtensa-esp32-elf-gdb-add-index
+xtensa-esp32-elf/include/
+xtensa-esp32-elf/include/gdb/
+xtensa-esp32-elf/include/gdb/jit-reader.h
+xtensa-esp32-elf/lib/charset.alias
+xtensa-esp32-elf/share/gdb/
+xtensa-esp32-elf/share/gdb/syscalls/
+xtensa-esp32-elf/share/gdb/syscalls/aarch64-linux.xml
+xtensa-esp32-elf/share/gdb/syscalls/amd64-linux.xml
+xtensa-esp32-elf/share/gdb/syscalls/arm-linux.xml
+xtensa-esp32-elf/share/gdb/syscalls/freebsd.xml
+xtensa-esp32-elf/share/gdb/syscalls/gdb-syscalls.dtd
+xtensa-esp32-elf/share/gdb/syscalls/i386-linux.xml
+xtensa-esp32-elf/share/gdb/syscalls/mips-n32-linux.xml
+xtensa-esp32-elf/share/gdb/syscalls/mips-n64-linux.xml
+xtensa-esp32-elf/share/gdb/syscalls/mips-o32-linux.xml
+xtensa-esp32-elf/share/gdb/syscalls/ppc-linux.xml
+xtensa-esp32-elf/share/gdb/syscalls/ppc64-linux.xml
+xtensa-esp32-elf/share/gdb/syscalls/s390-linux.xml
+xtensa-esp32-elf/share/gdb/syscalls/s390x-linux.xml
+xtensa-esp32-elf/share/gdb/syscalls/sparc-linux.xml
+xtensa-esp32-elf/share/gdb/syscalls/sparc64-linux.xml
+xtensa-esp32-elf/share/gdb/system-gdbinit/
+xtensa-esp32-elf/share/gdb/system-gdbinit/elinos.py
+xtensa-esp32-elf/share/gdb/system-gdbinit/wrs-linux.py
+@info xtensa-esp32-elf/share/info/
+@info xtensa-esp32-elf/share/info/annotate.info
+@comment @info xtensa-esp32-elf/share/info/bfd.info
+@info xtensa-esp32-elf/share/info/gdb.info
+@info xtensa-esp32-elf/share/info/stabs.info
+@man xtensa-esp32-elf/share/man/man1/xtensa-esp32-elf-gdb-add-index.1
+@man xtensa-esp32-elf/share/man/man1/xtensa-esp32-elf-gdb.1
+@man xtensa-esp32-elf/share/man/man1/xtensa-esp32-elf-gdbserver.1
+xtensa-esp32-elf/share/man/man5/
+@man xtensa-esp32-elf/share/man/man5/xtensa-esp32-elf-gdbinit.5
+xtensa-esp32-elf/xtensa-esp32-elf/lib/
+@static-lib xtensa-esp32-elf/xtensa-esp32-elf/lib/libiberty.a

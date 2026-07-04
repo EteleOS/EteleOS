@@ -1,0 +1,20 @@
+@bin bin/abook
+@man man/man1/abook.1
+@man man/man5/abookrc.5
+share/examples/abook/
+share/examples/abook/sample.abookrc
+share/locale/de/LC_MESSAGES/abook.mo
+share/locale/de/LC_TIME/
+share/locale/de/LC_TIME/abook.mo
+share/locale/fr/LC_MESSAGES/abook.mo
+share/locale/fr/LC_TIME/
+share/locale/fr/LC_TIME/abook.mo
+share/locale/it/LC_MESSAGES/abook.mo
+share/locale/it/LC_TIME/
+share/locale/it/LC_TIME/abook.mo
+share/locale/ja/LC_MESSAGES/abook.mo
+share/locale/ja/LC_TIME/
+share/locale/ja/LC_TIME/abook.mo
+share/locale/sv/LC_MESSAGES/abook.mo
+share/locale/sv/LC_TIME/
+share/locale/sv/LC_TIME/abook.mo

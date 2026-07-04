@@ -1,0 +1,8 @@
+--- perdition/db/mysql/perditiondb_mysql_makedb.orig	Fri Jul 17 18:24:54 2015
++++ perdition/db/mysql/perditiondb_mysql_makedb	Fri Jul 17 18:25:11 2015
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/bin/sh
+ ######################################################################
+ # makedb                                                 December 2000
+ # Horms                                             horms@verge.net.au

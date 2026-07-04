@@ -1,0 +1,5 @@
+@bin bin/reaver
+@bin bin/wash
+@extraunexec rm -f ${LOCALSTATEDIR}/reaver/*
+@man man/man1/reaver.1
+@sample ${LOCALSTATEDIR}/reaver/

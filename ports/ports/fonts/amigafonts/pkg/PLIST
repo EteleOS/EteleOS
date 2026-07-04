@@ -1,0 +1,12 @@
+share/doc/amigafonts/
+share/doc/amigafonts/README
+share/fonts/
+@fontdir share/fonts/amigafonts/
+share/fonts/amigafonts/MicroKnight.ttf
+share/fonts/amigafonts/MicroKnightPlus.ttf
+share/fonts/amigafonts/P0T-NOoDLE.ttf
+share/fonts/amigafonts/Topaz-a1200.ttf
+share/fonts/amigafonts/Topaz-a500.ttf
+share/fonts/amigafonts/TopazPlus-a1200.ttf
+share/fonts/amigafonts/TopazPlus-a500.ttf
+share/fonts/amigafonts/mO'sOul.ttf

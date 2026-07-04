@@ -1,0 +1,15 @@
+Index: plugins/node.d.openbsd/vmstat.in
+--- plugins/node.d.openbsd/vmstat.in.orig
++++ plugins/node.d.openbsd/vmstat.in
+@@ -73,10 +73,7 @@ if [ "$1" = "config" ]; then
+ 	echo 'blocked.label wait'
+ 	echo 'blocked.info processes blocked for resources (I/O, paging, etc)'
+ 	echo 'blocked.type GAUGE'
+-	echo 'pagewait.label pagewait'
+-	echo 'pagewait.info processes waiting for page-in'
+-	echo 'pagewait.type GAUGE'
+ 	exit 0
+ fi
+ 
+-/usr/bin/vmstat 1 2 | /usr/bin/awk 'END { print "running.value " $1 "\nblocked.value " $2 "\npagewait.value " $3}' 
++/usr/bin/vmstat 1 2 | /usr/bin/awk 'END { print "running.value " $1 "\nblocked.value " $2}'

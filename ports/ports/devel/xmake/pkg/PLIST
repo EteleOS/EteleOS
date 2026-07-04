@@ -1,0 +1,2 @@
+@bin bin/xmake
+@man man/man1/xmake.1

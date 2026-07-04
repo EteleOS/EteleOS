@@ -1,0 +1,12 @@
+Index: src_v4l2.c
+--- src_v4l2.c.orig
++++ src_v4l2.c
+@@ -19,7 +19,7 @@
+ #include <errno.h>
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
+-#include "videodev2.h"
++#include <sys/videoio.h>
+ #include "src.h"
+ #include "log.h"
+ 

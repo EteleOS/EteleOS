@@ -1,0 +1,2 @@
+@bin bin/innoextract
+@man man/man1/innoextract.1

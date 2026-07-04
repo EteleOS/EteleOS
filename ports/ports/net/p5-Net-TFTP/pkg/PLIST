@@ -1,0 +1,3 @@
+${P5SITE}/Net/
+${P5SITE}/Net/TFTP.pm
+@man man/man3p/Net::TFTP.3p

@@ -1,0 +1,16 @@
+Don't do git.
+
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -241,8 +241,8 @@ endif()
+ # version
+ 
+ string(TIMESTAMP OJ_DATE "%Y-%m-%d")
+-include(GetGitRevisionDescription)
+-git_get_exact_tag(GIT_TAG)
++#include(GetGitRevisionDescription)
++#git_get_exact_tag(GIT_TAG)
+ # Do not include a hash, if we are building a release tag
+ if(NOT GIT_TAG)
+ 	# otherwise concatenate a version with hash

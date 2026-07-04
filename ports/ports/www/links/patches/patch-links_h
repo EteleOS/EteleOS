@@ -1,0 +1,10 @@
+--- links.h.orig	Fri Jan 27 11:19:20 2017
++++ links.h	Fri Jan 27 11:19:23 2017
+@@ -820,7 +820,6 @@ struct connection {
+ 	int detached;
+ #ifdef HAVE_SSL
+ 	SSL *ssl;
+-	int no_tsl;
+ #endif
+ };
+ 

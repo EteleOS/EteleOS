@@ -1,0 +1,25 @@
+Index: drivers/pstex.c
+--- drivers/pstex.c.orig
++++ drivers/pstex.c
+@@ -243,7 +243,8 @@ proc_str( PLStream *pls, EscText *args )
+         fprintf( fp, "\\special{ps: 0 0 0 setrgbcolor}{" );
+ 
+     fprintf( fp, "%% Your text follows:\n" );
+-    fprintf( fp, "%s\n", cptr );
++    if (strlen(cptr) > 0)
++      fprintf( fp, "%s\n", cptr );
+     fprintf( fp, "}}}}" );
+ 
+     //
+@@ -274,6 +275,11 @@ parse_str( const char *str, char *dest )
+                           "psi",     "Psi",     "omega",  "Omega" };
+ 
+     plgesc( &esc );
++
++    if (str == NULL) {
++      *tp = '\0';
++      return;
++    }
+ 
+     while ( *str )
+     {

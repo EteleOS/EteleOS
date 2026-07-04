@@ -1,0 +1,23 @@
+Index: apertium/apertium_tmxbuild.cc
+--- apertium/apertium_tmxbuild.cc.orig
++++ apertium/apertium_tmxbuild.cc
+@@ -21,6 +21,7 @@
+ #include <string>
+ #include <cstdio>
+ #include <lttoolbox/lt_locale.h>
++#include <unistd.h>
+ 
+ #include <apertium/apertium_config.h>
+ #include <apertium/tmx_builder.h>
+@@ -59,6 +60,11 @@ void usage(char *progname)
+ 
+ int main(int argc, char *argv[])
+ {
++  if (pledge("stdio rpath wpath cpath", NULL) == -1) {
++    wcerr << L"pledge" << endl;
++    exit(EXIT_FAILURE);
++  }
++
+   LtLocale::tryToSetLocale();
+   string output_file = "";
+   string doc1 = "", doc2 = "";

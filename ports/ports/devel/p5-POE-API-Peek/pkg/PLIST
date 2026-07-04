@@ -1,0 +1,3 @@
+${P5SITE}/POE/API/
+${P5SITE}/POE/API/Peek.pm
+@man man/man3p/POE::API::Peek.3p

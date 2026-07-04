@@ -1,0 +1,8 @@
+@conflict advancemess-*
+@pkgpath emulators/advancemess
+@bin bin/advmame
+@bin bin/advmess
+@man man/man1/advmame.1
+@man man/man1/advmess.1
+share/doc/advancemame/
+share/doc/advancemame/advmame.txt

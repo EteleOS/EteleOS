@@ -1,0 +1,15 @@
+Index: configure
+--- configure.orig
++++ configure
+@@ -3955,11 +3955,6 @@ fi
+ 
+ 
+ 
+-if test -z "$orig_CFLAGS"; then
+-  if test x$GCC = xyes; then
+-    CFLAGS="-g -O3"
+-  fi
+-fi
+ 
+ 
+ case `pwd` in

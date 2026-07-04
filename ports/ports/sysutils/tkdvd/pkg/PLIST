@@ -1,0 +1,8 @@
+bin/tkdvd
+share/icons/hicolor/32x32/apps/tkdvd-2-32.png
+share/icons/hicolor/32x32/apps/tkdvd-32.png
+share/icons/hicolor/48x48/apps/tkdvd-2-48.png
+share/icons/hicolor/48x48/apps/tkdvd-48.png
+share/tkdvd/
+share/tkdvd/FAQ
+@tag gtk-update-icon-cache %D/share/icons/hicolor

@@ -1,0 +1,40 @@
+--- configure.orig	Sun Sep  5 00:33:59 2010
++++ configure	Mon Apr 23 11:16:49 2012
+@@ -4814,6 +4814,7 @@ TCL_OLD_ALT_VERS=`echo $TCL_OLD_VERS | sed 's/\.//'`
+ 
+ TCL_TCL_PLACES_D="$d \
+ 
++		$d/lib/tcl/tcl$TCL_VERS \
+ 		$d/lib64/tcl$TCL_HI_VERS \
+ 		$d/lib64/tcl$TCL_VERS \
+ 		$d/lib64/tcl$TCL_ALT_VERS \
+@@ -5429,6 +5430,7 @@ TK_OLD_VERS=8.4
+ TK_OLD_ALT_VERS=`echo $TK_OLD_VERS | sed 's/\.//'`
+ 
+ TK_TCL_PLACES_D="$d \
++                $d/lib/tcl/tk$TK_VERS \
+                 $d/lib64/tk$TK_VERS \
+                 $d/lib64/tk$TK_ALT_VERS \
+ 		$d/lib64/tk$TK_HI_VERS \
+@@ -6866,9 +6868,9 @@ fi
+ if test "x$ac_cv_header_dlfcn_h" = x""yes; then
+ 
+ 	    SHLIB_CFLAGS="-fpic"
+-	    SHLIB_LD="ld -Bshareable -x"
++	    SHLIB_LD="cc -shared"
+ 	    SHLIB_LD_LIBS=""
+-	    SHLIB_SUFFIX=".so"
++	    SHLIB_SUFFIX=".so.${LIBotcl_VERSION}"
+ 	    DL_LIBS=""
+ 	    DL_LD_FLAGS=""
+ 	    DL_LD_SEARCH_FLAGS=""
+@@ -7122,9 +7124,6 @@ fi
+ #
+ 
+ INST_OLIBSH="${prefix}/lib"
+-if test -d ${prefix}/shlib ; then
+-  INST_OLIBSH="${prefix}/shlib"
+-fi
+ 
+ 
+ 

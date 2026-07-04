@@ -1,0 +1,12 @@
+ball.h:113:19: error: 'NULL' was not declared in this scope
+Index: src/ball.h
+--- src/ball.h.orig
++++ src/ball.h
+@@ -25,6 +25,7 @@
+ class ball;
+ 
+ #include "square.h"
++#include <cstddef>
+ 
+ class ball_base
+ {

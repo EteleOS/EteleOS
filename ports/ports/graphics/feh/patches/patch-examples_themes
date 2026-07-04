@@ -1,0 +1,25 @@
+Index: examples/themes
+--- examples/themes.orig
++++ examples/themes
+@@ -1,6 +1,6 @@
+ # Feh themes configuration file.
+ # Lines starting with # are comments. Midline comments are not supported.
+-# Place this as either ~/.config/feh/themes or /etc/feh/themes
++# Place this as either ~/.config/feh/themes or ${SYSCONFDIR}/feh/themes
+ 
+ # Options are defined in theme_name/options pairs.
+ # Separate themename and options by whitespace.
+@@ -48,11 +48,11 @@ fs  --full-screen --hide-pointer --auto-zoom --sort fi
+ 
+ thumb_s  --thumbnails --cache-thumbnails --thumb-width 128 --thumb-height 128 \
+          --limit-width 1024 --sort filename \
+-         --fontpath /usr/share/fonts/truetype/ttf-dejavu/ --font DejaVuSans/8
++         --fontpath ${X11BASE}/lib/X11/fonts/TTF/ --font DejaVuSans/8
+ 
+ thumb_b  --thumbnails --cache-thumbnails --thumb-width 256 --thumb-height 256 \
+          --limit-width 1024 --sort filename \
+-         --fontpath /usr/share/fonts/truetype/ttf-dejavu/ --font DejaVuSans/8
++         --fontpath ${X11BASE}/lib/X11/fonts/TTF/ --font DejaVuSans/8
+ 
+ thumb_s_nt --thumbnails --cache-thumbnails --thumb-width 128 --thumb-height 128 \
+            --limit-width 1024 --sort filename --index-name 0

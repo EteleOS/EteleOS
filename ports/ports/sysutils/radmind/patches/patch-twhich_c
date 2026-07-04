@@ -1,0 +1,13 @@
+Fix build with -fno-common
+
+Index: twhich.c
+--- twhich.c.orig
++++ twhich.c
+@@ -23,6 +23,7 @@
+ const EVP_MD    *md;
+ 
+ int		case_sensitive = 1;
++int		cksum;
+ int		tran_format = -1; 
+ 
+ /*

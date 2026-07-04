@@ -1,0 +1,26 @@
+Index: tar/bsdtar.1
+--- tar/bsdtar.1.orig
++++ tar/bsdtar.1
+@@ -9,7 +9,7 @@
+ .Dt TAR 1
+ .Os
+ .Sh NAME
+-.Nm tar
++.Nm bsdtar
+ .Nd manipulate tape archives
+ .Sh SYNOPSIS
+ .Nm
+@@ -252,11 +252,9 @@ The filename can be
+ for standard input or standard output.
+ The default varies by system;
+ on
+-.Fx ,
++.Ox ,
+ the default is
+-.Pa /dev/sa0 ;
+-on Linux, the default is
+-.Pa /dev/st0 .
++.Pa /dev/rst0 .
+ .It Fl Fl gid Ar id
+ Use the provided group id number.
+ On extract, this overrides the group id in the archive;

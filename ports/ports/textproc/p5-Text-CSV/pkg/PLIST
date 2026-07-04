@@ -1,0 +1,5 @@
+${P5SITE}/Text/
+${P5SITE}/Text/CSV.pm
+${P5SITE}/Text/CSV_PP.pm
+@man man/man3p/Text::CSV.3p
+@man man/man3p/Text::CSV_PP.3p

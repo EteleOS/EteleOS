@@ -1,0 +1,21 @@
+Index: sound/Makefile
+--- sound/Makefile.orig
++++ sound/Makefile
+@@ -8,13 +8,13 @@ MAN=
+ 
+ gtk_CFLAGS!= pkg-config --cflags gtk+-2.0
+ gtk_LDFLAGS!= pkg-config --libs gtk+-2.0
+-CFLAGS= -W -Wall -g -O0 -I../lib $(gtk_CFLAGS)
++CFLAGS+= -W -Wall -I../lib $(gtk_CFLAGS)
+ LDFLAGS= -L../lib $(gtk_LDFLAGS)
+-LDADD= -ltrayapp
++LDADD= -ltrayapp -lsndio
+ 
+-BINDIR=/usr/local/libexec/tray-app
++BINDIR=${TRUEPREFIX}/libexec/tray-app
+ 
+ beforeinstall:
+-	if [ \! -d "$(BINDIR)" ]; then mkdir "$(BINDIR)"; fi
++	if [ \! -d "$(DESTDIR)$(BINDIR)" ]; then mkdir -p "$(DESTDIR)$(BINDIR)"; fi
+ 
+ .include <bsd.prog.mk>

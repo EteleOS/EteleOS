@@ -1,0 +1,13 @@
+#!/bin/ksh
+
+# localbase is intentional; prefix is /var/www
+daemon="${LOCALBASE}/bin/icingacli director daemon run"
+daemon_user="_icingadirector"
+
+. /etc/rc.d/rc.subr
+
+pexp="php.* icinga::director.*"
+rc_bg=YES
+rc_reload=NO
+
+rc_cmd $1

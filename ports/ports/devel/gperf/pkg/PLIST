@@ -1,0 +1,5 @@
+@bin bin/gperf
+@info info/gperf.info
+@man man/man1/gperf.1
+share/doc/gperf/
+share/doc/gperf/gperf.html

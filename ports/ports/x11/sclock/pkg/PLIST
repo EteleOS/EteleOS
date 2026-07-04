@@ -1,0 +1,2 @@
+@bin bin/sclock
+@man man/man1/sclock.1

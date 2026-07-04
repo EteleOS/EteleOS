@@ -1,0 +1,77 @@
+@pkgpath textproc/libical
+include/libical/
+include/libical/ical.h
+include/libical/icalarray.h
+include/libical/icalattach.h
+include/libical/icalbdbset_cxx.h
+include/libical/icalcalendar.h
+include/libical/icalclassify.h
+include/libical/icalcluster.h
+include/libical/icalcomponent.h
+include/libical/icalderivedparameter.h
+include/libical/icalderivedproperty.h
+include/libical/icalderivedvalue.h
+include/libical/icaldirset.h
+include/libical/icaldirsetimpl.h
+include/libical/icalduration.h
+include/libical/icalenums.h
+include/libical/icalerror.h
+include/libical/icalfileset.h
+include/libical/icalfilesetimpl.h
+include/libical/icalgauge.h
+include/libical/icalgaugeimpl.h
+include/libical/icallangbind.h
+include/libical/icalmemory.h
+include/libical/icalmessage.h
+include/libical/icalmime.h
+include/libical/icalparameter.h
+include/libical/icalparameter_cxx.h
+include/libical/icalparser.h
+include/libical/icalperiod.h
+include/libical/icalproperty.h
+include/libical/icalproperty_cxx.h
+include/libical/icalrecur.h
+include/libical/icalrestriction.h
+include/libical/icalset.h
+include/libical/icalspanlist.h
+include/libical/icalspanlist_cxx.h
+include/libical/icalss.h
+include/libical/icalssyacc.h
+include/libical/icaltime.h
+include/libical/icaltimezone.h
+include/libical/icaltypes.h
+include/libical/icaltz-util.h
+include/libical/icalvalue.h
+include/libical/icalvalue_cxx.h
+include/libical/icalvcal.h
+include/libical/icptrholder_cxx.h
+include/libical/libical_ical_export.h
+include/libical/libical_icalss_export.h
+include/libical/libical_vcal_export.h
+include/libical/pvl.h
+include/libical/sspm.h
+include/libical/vcaltmp.h
+include/libical/vcc.h
+include/libical/vcomponent_cxx.h
+include/libical/vobject.h
+lib/cmake/
+lib/cmake/LibIcal/
+lib/cmake/LibIcal/LibIcalConfig.cmake
+lib/cmake/LibIcal/LibIcalConfigVersion.cmake
+lib/cmake/LibIcal/LibIcalTargets${MODCMAKE_BUILD_SUFFIX}
+lib/cmake/LibIcal/LibIcalTargets.cmake
+lib/girepository-1.0/
+lib/girepository-1.0/ICal-3.0.typelib
+@static-lib lib/libical.a
+@lib lib/libical.so.${LIBical_VERSION}
+@static-lib lib/libical_cxx.a
+@lib lib/libical_cxx.so.${LIBical_cxx_VERSION}
+@static-lib lib/libicalss.a
+@lib lib/libicalss.so.${LIBicalss_VERSION}
+@static-lib lib/libicalss_cxx.a
+@lib lib/libicalss_cxx.so.${LIBicalss_cxx_VERSION}
+@static-lib lib/libicalvcal.a
+@lib lib/libicalvcal.so.${LIBicalvcal_VERSION}
+lib/pkgconfig/libical.pc
+share/gir-1.0/
+share/gir-1.0/ICal-3.0.gir

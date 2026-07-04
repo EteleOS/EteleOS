@@ -1,0 +1,8 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/lcdproc"
+daemon_user="_lcdproc"
+
+. /etc/rc.d/rc.subr
+
+rc_cmd $1

@@ -1,0 +1,24 @@
+Index: misc/fsck.8.in
+--- misc/fsck.8.in.orig
++++ misc/fsck.8.in
+@@ -2,9 +2,9 @@
+ .\" Copyright 1993, 1994, 1995 by Theodore Ts'o.  All Rights Reserved.
+ .\" This file may be copied under the terms of the GNU Public License.
+ .\"
+-.TH FSCK 8 "@E2FSPROGS_MONTH@ @E2FSPROGS_YEAR@" "E2fsprogs version @E2FSPROGS_VERSION@"
++.TH PFSCK 8 "@E2FSPROGS_MONTH@ @E2FSPROGS_YEAR@" "E2fsprogs version @E2FSPROGS_VERSION@"
+ .SH NAME
+-fsck \- check and repair a Linux file system
++pfsck \- check and repair a Linux file system
+ .SH SYNOPSIS
+ .B fsck
+ [
+@@ -25,7 +25,7 @@ fsck \- check and repair a Linux file system
+ .B fs-specific-options
+ ]
+ .SH DESCRIPTION
+-.B fsck
++.B pfsck
+ is used to check and optionally repair one or more Linux file systems.
+ .I filesys
+ can be a device name (e.g.

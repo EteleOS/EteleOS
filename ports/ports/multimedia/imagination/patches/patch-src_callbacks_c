@@ -1,0 +1,10 @@
+--- src/callbacks.c.orig	Mon Apr 15 16:00:51 2013
++++ src/callbacks.c	Mon Apr 15 16:01:08 2013
+@@ -19,6 +19,7 @@
+  *
+  */
+ 
++#include <libintl.h>
+ #include "callbacks.h"
+ #include "export.h"
+ #include <math.h>

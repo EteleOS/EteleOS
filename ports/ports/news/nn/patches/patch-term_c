@@ -1,0 +1,43 @@
+Index: term.c
+--- term.c.orig
++++ term.c
+@@ -25,7 +25,7 @@
+ #include "regexp.h"
+ #include "nn_term.h"
+ 
+-#if !defined(__FreeBSD__) && !(__NetBSD__) && !defined(NeXT)
++#if !defined(__FreeBSD__) && !(__NetBSD__) && !(__OpenBSD__) && !defined(NeXT)
+ #include <stropts.h>
+ #else
+ #include <sys/ioctl.h>
+@@ -74,9 +74,9 @@ extern int      s_resized;
+ 
+ #else
+ 
+-#ifndef __FreeBSD__
++#if !defined(__FreeBSD__) && !defined(__OpenBSD__)
+ #include <sgtty.h>
+-#endif				/* __FreeBSD__ */
++#endif
+ 
+ #endif
+ 
+@@ -139,6 +139,7 @@ int             message_history = 15;
+ char           *term_name = NULL;
+ int             show_current_time = 1;
+ int             conf_dont_sleep = 0;
++int             prompt_line;
+ int             prompt_length;
+ int             terminal_speed = 0;
+ int             slow_speed = 1200;
+@@ -171,8 +172,8 @@ extern char    *tgoto();	/* some systems don't have th
+ #else
+ 
+ char           *tgoto();
+-char            PC;
+-char           *BC, *UP;
++extern char     PC;
++extern char    *BC, *UP;
+ char            nnspeed;
+ 
+ static char     XBC[64], XUP[64];

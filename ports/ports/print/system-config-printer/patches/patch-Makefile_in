@@ -1,0 +1,39 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -1955,7 +1955,7 @@ all-local: .stamp-distutils-in-builddir config.py cups
+ 
+ # Use distutils to install the module.
+ install-exec-local: .stamp-distutils-in-builddir
+-	$(PYTHON) setup.py install --prefix=$(DESTDIR)$(prefix)
++	$(PYTHON) setup.py install --root=$(DESTDIR) --single-version-externally-managed
+ 
+ # Uninstall the module, crossing our fingers that we know enough
+ # about how distutils works to do this.  Unfortunately, distutils
+@@ -2029,7 +2029,7 @@ update-po: missing-languages
+ 	$(MAKE) -C po update-po
+ 
+ missing-languages:
+-	bash -c '\
++	sh -c '\
+ 	diff -u <(cat po/LINGUAS) \
+ 		<(cd po; ls -1 *.po | sed -e "s,\.po$$,,")'
+ 
+@@ -2076,7 +2076,7 @@ help:
+ 	@echo " test-xmldriverprefs  Show preferred driver order for all models"
+ 
+ test-xml-validity.sh:	FORCE
+-	echo "#!/bin/bash" > "$@"
++	echo "#!/bin/sh" > "$@"
+ 	echo "set -e" >> "$@"
+ 	echo "xmllint --relaxng \\" >> "$@"
+ 	echo "    $(top_srcdir)/xml/preferreddrivers.rng \\" >> "$@"
+@@ -2086,7 +2086,7 @@ test-xml-validity.sh:	FORCE
+ 	chmod 755 "$@"
+ 
+ py.test.sh:	FORCE
+-	echo "#!/bin/bash" > "$@"
++	echo "#!/bin/sh" > "$@"
+ 	echo "exec ${PYTEST-py.test}" >> "$@"
+ 	chmod 755 "$@"
+ 

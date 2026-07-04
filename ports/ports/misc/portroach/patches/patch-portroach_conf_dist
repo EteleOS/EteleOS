@@ -1,0 +1,11 @@
+--- portroach.conf.dist.orig	Sun Apr 12 13:41:32 2015
++++ portroach.conf.dist	Sun Apr 12 13:42:22 2015
+@@ -32,7 +32,7 @@ wwwdir           = %(prefix)/www/
+ 
+ html data dir    = %(wwwdir)/portroach 		# Where to put generated HTML
+ 
+-templates dir    = /usr/local/share/portroach/templates # Where HTML templates are kept
++templates dir    = ${PREFIX}/share/portroach/templates # Where HTML templates are kept
+ 
+ # Generate dynamic (AngularJS) pages or just 'json'.
+ # defaults to 'dynamic'.

@@ -1,0 +1,24 @@
+Fix for ports-gcc, the code generates warnings that triggers a
+build failure
+
+Index: CMakeLists.txt
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.8)
+ find_package(PythonInterp REQUIRED)
+ 
+ if(CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+-    set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror ${CMAKE_CXX_FLAGS}")
++    set(CMAKE_CXX_FLAGS "-Wall -Wextra ${CMAKE_CXX_FLAGS}")
+ endif()
+ 
+ set(PYTHON_VERSIONS
+@@ -63,7 +63,7 @@ install(TARGETS pycdc
+ # For tests
+ if(POLICY CMP0037)
+     # Don't complain about adding a target named "test"
+-    cmake_policy(SET CMP0037 OLD)
++    cmake_policy(SET CMP0037 NEW)
+ endif()
+ 
+ add_custom_target(test "${CMAKE_CURRENT_SOURCE_DIR}/pycdc_test.sh"

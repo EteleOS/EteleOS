@@ -1,0 +1,11 @@
+--- src/main.c.orig	Sun Jan  5 11:12:40 2020
++++ src/main.c	Sun Jan  5 11:12:48 2020
+@@ -35,7 +35,7 @@
+ #define BITDEPTH 16
+ 
+ int delay = 0;
+-int fullscreen = 1;
++int fullscreen = 0;
+ int audio_on = 1;
+ int audio_freq = 22050;
+ int audio_format = AUDIO_S16LSB;

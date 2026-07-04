@@ -1,0 +1,25 @@
+${GEM_LIB}/cache/${DISTNAME}.gem
+${GEM_LIB}/gems/${DISTNAME}/
+${GEM_LIB}/gems/${DISTNAME}/.gemtest
+${GEM_LIB}/gems/${DISTNAME}/CHANGELOG.md
+${GEM_LIB}/gems/${DISTNAME}/CONTRIBUTING.md
+${GEM_LIB}/gems/${DISTNAME}/FAQ.md
+${GEM_LIB}/gems/${DISTNAME}/INSTALLATION.md
+${GEM_LIB}/gems/${DISTNAME}/LICENSE
+${GEM_LIB}/gems/${DISTNAME}/README.md
+${GEM_LIB}/gems/${DISTNAME}/dependencies.yml
+${GEM_LIB}/gems/${DISTNAME}/lib/
+${GEM_LIB}/gems/${DISTNAME}/lib/sqlite3/
+${GEM_LIB}/gems/${DISTNAME}/lib/sqlite3.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/sqlite3/constants.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/sqlite3/database.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/sqlite3/errors.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/sqlite3/fork_safety.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/sqlite3/pragmas.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/sqlite3/resultset.rb
+@so ${GEM_LIB}/gems/${DISTNAME}/lib/sqlite3/sqlite3_native.so
+${GEM_LIB}/gems/${DISTNAME}/lib/sqlite3/statement.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/sqlite3/value.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/sqlite3/version.rb
+${GEM_LIB}/gems/${DISTNAME}/lib/sqlite3/version_info.rb
+${GEM_LIB}/specifications/${DISTNAME}.gemspec

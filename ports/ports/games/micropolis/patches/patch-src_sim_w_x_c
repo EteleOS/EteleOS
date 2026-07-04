@@ -1,0 +1,52 @@
+Index: src/sim/w_x.c
+--- src/sim/w_x.c.orig
++++ src/sim/w_x.c
+@@ -90,6 +90,8 @@ unsigned char ColorIntensities[] = {
+ 	/* COLOR_DARKGRAY */		63,
+ 	/* COLOR_BLACK */		0,
+ };
++void DoPanTo(struct SimView *view, int x, int y);
++void DoResizeView(SimView *view, int w, int h);
+ 
+ 
+ ViewToTileCoords(SimView *view, int x, int y, int *outx, int *outy)
+@@ -148,6 +150,7 @@ ViewToPixelCoords(SimView *view, int x, int y, int *ou
+ }
+ 
+ 
++void
+ UpdateFlush()
+ {
+   struct XDisplay *xd;
+@@ -216,6 +219,7 @@ printf("GOT X ERROR code %d request code %d %d\n",
+ }
+ 
+ 
++void
+ DoStopMicropolis()
+ {
+   (void)XSetErrorHandler(CatchXError);
+@@ -244,6 +248,7 @@ DoStopMicropolis()
+ }
+ 
+ 
++void
+ DoTimeoutListen()
+ {
+   while (Tk_DoOneEvent(TK_DONT_WAIT)) ;
+@@ -723,6 +728,7 @@ AllocPixels(int len, unsigned char pixel)
+ }
+ 
+ 
++void
+ DoResizeView(SimView *view, int w, int h)
+ {
+   int resize = 0;
+@@ -1254,6 +1260,7 @@ DoPanBy(struct SimView *view, int dx, int dy)
+ }
+ 
+ 
++void
+ DoPanTo(struct SimView *view, int x, int y)
+ {
+   if (view->class != Editor_Class) {

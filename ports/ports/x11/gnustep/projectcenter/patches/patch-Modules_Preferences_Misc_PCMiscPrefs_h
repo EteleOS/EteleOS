@@ -1,0 +1,13 @@
+much better objc support in gdb from ports
+
+--- Modules/Preferences/Misc/PCMiscPrefs.h.orig	Sat Oct 19 09:33:34 2013
++++ Modules/Preferences/Misc/PCMiscPrefs.h	Sat Oct 19 09:34:10 2013
+@@ -27,7 +27,7 @@
+ #import <Protocols/Preferences.h>
+ 
+ #ifndef PCDefaultDebugger
+-#define PCDefaultDebugger @"/usr/bin/gdb"
++#define PCDefaultDebugger @"${LOCALBASE}/bin/egdb"
+ #endif
+ 
+ #define PromptOnQuit         @"PromtOnQuit"

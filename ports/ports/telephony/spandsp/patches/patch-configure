@@ -1,0 +1,14 @@
+our gnu C has not this option!
+
+Index: configure
+--- configure.orig
++++ configure
+@@ -19658,7 +19658,7 @@ fi
+ 
+ case "${ax_cv_c_compiler_vendor}" in
+ gnu)
+-    COMP_VENDOR_CFLAGS="-std=gnu99 -ffast-math -Wall -Wunused-variable -Wunused-but-set-variable -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes $COMP_VENDOR_CFLAGS"
++    COMP_VENDOR_CFLAGS="-std=gnu99 -ffast-math -Wall -Wunused-variable -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes $COMP_VENDOR_CFLAGS"
+     if test "$enable_avx" = "yes" ; then
+         COMP_VENDOR_CFLAGS="-mavx $COMP_VENDOR_CFLAGS"
+     fi

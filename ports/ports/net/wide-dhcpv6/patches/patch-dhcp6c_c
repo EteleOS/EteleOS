@@ -1,0 +1,117 @@
+- Close inherited file descriptors
+
+wide-dhcpv6 binaries should close inherited fds.
+
+- Update ifid on interface restart
+
+Interface ID may have changed between a stop and start.
+
+- Close file descriptors on exec
+
+Avoid FD leakage to children.
+
+- Call client script after interfaces have been updated
+
+--- dhcp6c.c.orig	Sun Jun 15 03:48:41 2008
++++ dhcp6c.c	Sun Jan 10 00:59:31 2016
+@@ -88,7 +88,6 @@ static sig_atomic_t sig_flags = 0;
+ const dhcp6_mode_t dhcp6_mode = DHCP6_MODE_CLIENT;
+ 
+ int sock;	/* inbound/outbound udp port */
+-int rtsock;	/* routing socket */
+ int ctlsock = -1;		/* control TCP port */
+ char *ctladdr = DEFAULT_CLIENT_CONTROL_ADDR;
+ char *ctlport = DEFAULT_CLIENT_CONTROL_PORT;
+@@ -159,6 +158,7 @@ main(argc, argv)
+ 	char *progname;
+ 	FILE *pidfp;
+ 	struct dhcp6_if *ifp;
++	int fd;
+ 
+ #ifndef HAVE_ARC4RANDOM
+ 	srandom(time(NULL) & getpid());
+@@ -205,8 +205,12 @@ main(argc, argv)
+ 		exit(0);
+ 	}
+ 
+-	if (foreground == 0)
++	if (foreground == 0) {
++		for (fd = 3; fd < 1024; fd++)
++			close(fd);
++
+ 		openlog(progname, LOG_NDELAY|LOG_PID, LOG_DAEMON);
++	}
+ 
+ 	setloglevel(debug);
+ 
+@@ -282,6 +286,8 @@ client6_init()
+ 		    gai_strerror(error));
+ 		exit(1);
+ 	}
++	/* Force socket to be closed on execve */
++	res->ai_socktype |= SOCK_CLOEXEC;
+ 	sock = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
+ 	if (sock < 0) {
+ 		dprintf(LOG_ERR, FNAME, "socket");
+@@ -337,13 +343,6 @@ client6_init()
+ 	}
+ 	freeaddrinfo(res);
+ 
+-	/* open a routing socket to watch the routing table */
+-	if ((rtsock = socket(PF_ROUTE, SOCK_RAW, 0)) < 0) {
+-		dprintf(LOG_ERR, FNAME, "open a routing socket: %s",
+-		    strerror(errno));
+-		exit(1);
+-	}
+-
+ 	memset(&hints, 0, sizeof(hints));
+ 	hints.ai_family = PF_INET6;
+ 	hints.ai_socktype = SOCK_DGRAM;
+@@ -763,6 +762,15 @@ client6_ifctl(ifname, command)
+ 
+ 	switch(command) {
+ 	case DHCP6CTL_COMMAND_START:
++		/*
++		 * The ifid might have changed, so reset it before releasing the
++		 * lease.
++		 */
++		if (ifreset(ifp)) {
++			dprintf(LOG_NOTICE, FNAME, "failed to reset %s",
++			    ifname);
++			return (-1);
++		}
+ 		free_resources(ifp);
+ 		if (client6_start(ifp)) {
+ 			dprintf(LOG_NOTICE, FNAME, "failed to restart %s",
+@@ -1828,15 +1836,6 @@ client6_recvreply(ifp, dh6, len, optinfo)
+ 	}
+ 
+ 	/*
+-	 * Call the configuration script, if specified, to handle various
+-	 * configuration parameters.
+-	 */
+-	if (ifp->scriptpath != NULL && strlen(ifp->scriptpath) != 0) {
+-		dprintf(LOG_DEBUG, FNAME, "executes %s", ifp->scriptpath);
+-		client6_script(ifp->scriptpath, state, optinfo);
+-	}
+-
+-	/*
+ 	 * Set refresh timer for configuration information specified in
+ 	 * information-request.  If the timer value is specified by the server
+ 	 * in an information refresh time option, use it; use the protocol
+@@ -1899,6 +1898,15 @@ client6_recvreply(ifp, dh6, len, optinfo)
+ 		 * [RFC3315 Section 18.1.8]
+ 		 */
+ 		check_exit();
++	}
++
++	/*
++	 * Call the configuration script, if specified, to handle various
++	 * configuration parameters.
++	 */
++	if (ifp->scriptpath != NULL && strlen(ifp->scriptpath) != 0) {
++		dprintf(LOG_DEBUG, FNAME, "executes %s", ifp->scriptpath);
++		client6_script(ifp->scriptpath, state, optinfo);
+ 	}
+ 
+ 	dprintf(LOG_DEBUG, FNAME, "got an expected reply, sleeping.");

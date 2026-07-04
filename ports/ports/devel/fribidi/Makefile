@@ -1,0 +1,31 @@
+COMMENT=		library implementing the Unicode Bidirectional Algorithm
+
+V=			1.0.16
+GH_PROJECT=		fribidi
+GH_ACCOUNT=		fribidi
+GH_TAGNAME=		v${V}
+REVISION=		0
+
+CATEGORIES=		devel
+
+SHARED_LIBS += fribidi                   3.1 # 0.4.0
+
+MAINTAINER=		Antoine Jacoutot <ajacoutot@openbsd.org>
+
+# LGPLv2.1+
+PERMIT_PACKAGE=		Yes
+
+WANTLIB += c
+
+MODULES=		devel/meson
+
+DEBUG_PACKAGES=		${BUILD_PACKAGES}
+
+# needs c2man
+CONFIGURE_ARGS=		-Ddocs=false
+
+DEBUG_PACKAGES=		${BUILD_PACKAGES}
+
+TEST_DEPENDS=		${BASE_PKGPATH}=${V}
+
+.include <bsd.port.mk>

@@ -1,0 +1,7 @@
+@extraunexec rm -rf /var/scmpc/*
+@bin bin/scmpc
+@man man/man1/scmpc.1
+share/examples/scmpc/
+@sample /var/scmpc/
+share/examples/scmpc/scmpc.conf.example
+@sample ${SYSCONFDIR}/scmpc.conf

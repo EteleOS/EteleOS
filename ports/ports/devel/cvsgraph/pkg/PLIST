@@ -1,0 +1,6 @@
+@bin bin/cvsgraph
+@man man/man1/cvsgraph.1
+@man man/man5/cvsgraph.conf.5
+share/examples/cvsgraph/
+share/examples/cvsgraph/cvsgraph.conf
+@sample ${SYSCONFDIR}/cvsgraph.conf

@@ -1,0 +1,14 @@
+Index: gpsinfo.c
+--- gpsinfo.c.orig
++++ gpsinfo.c
+@@ -168,8 +168,8 @@ void ProcessGpsInfo(unsigned char * DirStart, unsigned
+                 break;
+ 
+             case TAG_GPS_ALT:
+-                snprintf(ImageInfo.GpsAlt+1, sizeof(ImageInfo.GpsAlt)-1,
+-                    "%.2fm", ConvertAnyFormat(ValuePtr, Format));
++                snprintf(ImageInfo.GpsAlt+1, sizeof(ImageInfo.GpsAlt)+1,
++                    "%.dm", Get32s(ValuePtr));
+                 break;
+         }
+ 

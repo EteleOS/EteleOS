@@ -1,0 +1,24 @@
+Index: pstree.c
+--- pstree.c.orig
++++ pstree.c
+@@ -75,7 +75,7 @@ extern getargs(struct ProcInfo *, int, char *, int);
+  * DragonFlyBSD contributed by Krzysztof Piecuch <piecuch AT kpiecuch.pl>                                                                    
+  */
+ #  define HAS_PGID
+-#  define PSCMD 	"ps -axwwo user,pid,ppid,pgid,command"
++#  define PSCMD 	"ps -kaxwwo user,pid,ppid,pgid,command"
+ #  define PSFORMAT 	"%s %ld %ld %ld %[^\n]"
+ #  define PSVARS	P[i].name, &P[i].pid, &P[i].ppid, &P[i].pgid, P[i].cmd
+ #  define PSVARSN	5
+@@ -899,6 +899,11 @@ int main(int argc, char **argv) {
+   FixParentCycle();                                                                                                                          
+ #endif                                                                                                                                       
+   
++  if (pledge("stdio getpw proc tty", NULL) == -1) {
++    fprintf(stderr, "%s: pledge\n", Progname);
++    exit(1);
++  }
++
+   if (NProc == 0) {
+     fprintf(stderr, "%s: No processes read.\n", Progname);
+     exit(1);

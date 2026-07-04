@@ -1,0 +1,10 @@
+lib/lua/${MODLUA_VERSION}/compat53/
+@so lib/lua/${MODLUA_VERSION}/compat53/string.so
+@so lib/lua/${MODLUA_VERSION}/compat53/table.so
+@so lib/lua/${MODLUA_VERSION}/compat53/utf8.so
+share/doc/${FULLPKGNAME}/
+share/doc/${FULLPKGNAME}/README.md
+share/lua/${MODLUA_VERSION}/compat53/
+share/lua/${MODLUA_VERSION}/compat53/file_mt.lua
+share/lua/${MODLUA_VERSION}/compat53/init.lua
+share/lua/${MODLUA_VERSION}/compat53/module.lua

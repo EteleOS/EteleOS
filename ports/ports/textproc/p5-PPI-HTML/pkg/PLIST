@@ -1,0 +1,5 @@
+bin/ppi2html
+${P5SITE}/PPI/HTML/
+${P5SITE}/PPI/HTML.pm
+${P5SITE}/PPI/HTML/Fragment.pm
+@man man/man3p/PPI::HTML.3p

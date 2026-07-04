@@ -1,0 +1,4 @@
+@bin bin/tcpdpriv
+@man man/man1/tcpdpriv.1
+share/doc/tcpdpriv/
+share/doc/tcpdpriv/attack50.ps

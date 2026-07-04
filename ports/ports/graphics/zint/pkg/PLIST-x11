@@ -1,0 +1,7 @@
+@bin bin/zint-qt
+include/qzint.h
+@static-lib lib/libQZint.a
+share/applications/zint-qt.desktop
+share/pixmaps/
+share/pixmaps/zint-qt.png
+@tag update-desktop-database

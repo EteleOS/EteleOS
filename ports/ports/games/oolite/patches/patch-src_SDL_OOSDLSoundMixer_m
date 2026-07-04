@@ -1,0 +1,15 @@
+missing header
+
+Index: src/SDL/OOSDLSoundMixer.m
+--- src/SDL/OOSDLSoundMixer.m.orig
++++ src/SDL/OOSDLSoundMixer.m
+@@ -49,6 +49,9 @@ SOFTWARE.
+ #import "OOCocoa.h"
+ #import "OOSDLSoundInternal.h"
+ 
++#include <assert.h>
++
++
+ 
+ static OOSoundMixer *sSingleton = nil;
+ 

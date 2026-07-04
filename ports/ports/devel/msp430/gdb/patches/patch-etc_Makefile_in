@@ -1,0 +1,11 @@
+--- etc/Makefile.in.orig	Tue Nov 30 11:51:06 2010
++++ etc/Makefile.in	Tue Nov 30 11:51:15 2010
+@@ -64,7 +64,7 @@ PDFFILES = standards.pdf configure.pdf
+ HTMLFILES = standards.html configure.html
+ 
+ all: info
+-install: install-info
++install:
+ 
+ uninstall:
+ 

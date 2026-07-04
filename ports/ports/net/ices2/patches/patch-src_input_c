@@ -1,0 +1,23 @@
+--- src/input.c.orig	Tue Aug  7 00:22:01 2012
++++ src/input.c	Wed Apr 15 11:13:57 2015
+@@ -47,6 +47,10 @@
+ #include "im_oss.h"
+ #endif
+ 
++#ifdef HAVE_SNDIO
++#include "im_sndio.h"
++#endif
++
+ #ifdef HAVE_SUN_AUDIO
+ #include "im_sun.h"
+ #endif
+@@ -89,6 +93,9 @@ static module modules[] = {
+ #endif
+ #ifdef HAVE_OSS
+     { "oss", oss_open_module},
++#endif
++#ifdef HAVE_SNDIO
++    { "sndio", sndio_open_module},
+ #endif
+ #ifdef HAVE_SUN_AUDIO
+     { "sun", sun_open_module},

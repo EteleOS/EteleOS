@@ -1,0 +1,6 @@
+${P5SITE}/Config/
+${P5SITE}/Config/Options/
+${P5SITE}/Config/Options.pm
+${P5SITE}/Config/Options/Threaded.pm
+@man man/man3p/Config::Options.3p
+@man man/man3p/Config::Options::Threaded.3p

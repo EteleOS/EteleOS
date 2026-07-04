@@ -1,0 +1,20 @@
+SEC is an event correlation tool for advanced event processing which can be
+harnessed for event log monitoring, for network and security management, for
+fraud detection, and for any other task which involves event correlation. Event
+correlation is a procedure where a stream of events is processed, in order to
+detect (and act on) certain event groups that occur within predefined time
+windows. Unlike many other event correlation products which are heavyweight
+solutions, SEC is a lightweight and platform-independent event correlator which
+runs as a single process. The user can start it as a daemon, employ it in shell
+pipelines, execute it interactively in a terminal, run many SEC processes
+simultaneously for different tasks, and use it in a wide variety of other ways.
+
+SEC reads lines from files, named pipes, or standard input, matches the lines
+with patterns (like regular expressions or Perl subroutines) for recognizing
+input events, and correlates events according to the rules in its configuration
+file(s). SEC can produce output by executing external programs (e.g., snmptrap
+or mail), by writing to files, by sending data to TCP and UDP based servers, by
+calling precompiled Perl subroutines, etc.
+
+Note that the --dumpfjson option requires the presence of the Perl JSON module,
+available via the p5-JSON package.

@@ -1,0 +1,5 @@
+${P5SITE}/HTML/
+${P5SITE}/HTML/FormatText/
+${P5SITE}/HTML/FormatText/WithLinks/
+${P5SITE}/HTML/FormatText/WithLinks/AndTables.pm
+@man man/man3p/HTML::FormatText::WithLinks::AndTables.3p

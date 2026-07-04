@@ -1,0 +1,13 @@
+- https://rt.cpan.org/Public/Bug/Display.html?id=89579
+
+--- t/00_load.t~	Tue Oct  1 14:46:15 2013
++++ t/00_load.t	Mon Dec 22 10:28:54 2014
+@@ -5,7 +5,7 @@
+ 
+ # change 'tests => 1' to 'tests => last_test_to_print';
+ 
+-use local::lib;
++# use local::lib;
+ use Test::More tests => 1;
+ BEGIN { use_ok('XML::RSS::Parser::Lite') };
+ 

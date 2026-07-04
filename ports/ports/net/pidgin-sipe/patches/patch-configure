@@ -1,0 +1,16 @@
+Fix build with glib2 >= 2.62
+sipe-utils.c:304:3: error: 'GTimeVal' is deprecated: Use 'GDateTime' instead [-Werror,-Wdeprecated-declarations]
+                GTimeVal currtime;
+
+Index: configure
+--- configure.orig
++++ configure
+@@ -13120,7 +13120,7 @@ fi
+ 
+ 
+ if test "x$enable_quality_check" = xyes; then :
+-           QUALITY_CFLAGS="$QUALITY_CFLAGS -Werror -Wall"
++           QUALITY_CFLAGS="$QUALITY_CFLAGS -Wall"
+ 
+ 	 	 	 for newflag in \
+ 			"-Wextra" \

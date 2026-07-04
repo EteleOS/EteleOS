@@ -1,0 +1,3 @@
+${P5SITE}/Test/WWW/Mechanize/
+${P5SITE}/Test/WWW/Mechanize/Catalyst.pm
+@man man/man3p/Test::WWW::Mechanize::Catalyst.3p

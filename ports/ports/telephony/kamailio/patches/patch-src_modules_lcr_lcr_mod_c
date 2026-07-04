@@ -1,0 +1,14 @@
+Index: src/modules/lcr/lcr_mod.c
+--- src/modules/lcr/lcr_mod.c.orig
++++ src/modules/lcr/lcr_mod.c
+@@ -38,7 +38,9 @@
+  * The LCR module supports many independent LCR instances (gateways and
+  * least cost rules). Each such instance has its own LCR identifier.
+  */
+-
++#include <sys/types.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

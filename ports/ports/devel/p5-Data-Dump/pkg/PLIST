@@ -1,0 +1,9 @@
+${P5SITE}/Data/
+${P5SITE}/Data/Dump/
+${P5SITE}/Data/Dump.pm
+${P5SITE}/Data/Dump/FilterContext.pm
+${P5SITE}/Data/Dump/Filtered.pm
+${P5SITE}/Data/Dump/Trace.pm
+@man man/man3p/Data::Dump.3p
+@man man/man3p/Data::Dump::Filtered.3p
+@man man/man3p/Data::Dump::Trace.3p

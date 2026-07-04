@@ -1,0 +1,5 @@
+@bin bin/distccmon-gnome
+share/applications/distccmon-gnome.desktop
+share/pixmaps/
+share/pixmaps/distccmon-gnome.png
+@tag update-desktop-database

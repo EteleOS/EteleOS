@@ -1,0 +1,21 @@
+Index: config
+--- config.orig
++++ config
+@@ -259,7 +259,7 @@
+ #
+ #      No trailing "/", please.
+ #
+-confdir .
++confdir ${SYSCONFDIR}/privoxy
+ #
+ #  2.2. templdir
+ #  ==============
+@@ -344,7 +344,7 @@ confdir .
+ #
+ #      No trailing "/", please.
+ #
+-logdir .
++logdir /log
+ #
+ #  2.5. actionsfile
+ #  =================

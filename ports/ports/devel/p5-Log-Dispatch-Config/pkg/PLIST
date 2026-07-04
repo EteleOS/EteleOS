@@ -1,0 +1,9 @@
+${P5SITE}/Log/
+${P5SITE}/Log/Dispatch/
+${P5SITE}/Log/Dispatch/Config.pm
+${P5SITE}/Log/Dispatch/Configurator/
+${P5SITE}/Log/Dispatch/Configurator.pm
+${P5SITE}/Log/Dispatch/Configurator/AppConfig.pm
+@man man/man3p/Log::Dispatch::Config.3p
+@man man/man3p/Log::Dispatch::Configurator.3p
+@man man/man3p/Log::Dispatch::Configurator::AppConfig.3p

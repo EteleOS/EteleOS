@@ -1,0 +1,14 @@
+XXX: OpenBSD's locale support is very limited. This can probably
+be removed when support for LC_MESSAGES is added.
+
+--- src/client/cl_language.cpp.orig	Thu Jun  5 08:18:39 2014
++++ src/client/cl_language.cpp	Thu Jul  3 22:41:56 2014
+@@ -326,6 +326,8 @@ static bool CL_LanguageTest (const char* localeID)
+ 		Com_DPrintf(DEBUG_CLIENT, "No locale mappings for locale with id '%s'\n", localeID);
+ 		return false;
+ 	}
++	// Everything just works! Return here.
++	return true;
+ 	/* Cycle through all mappings, but stop at first locale possible to set. */
+ 	do {
+ 		/* setlocale() will return nullptr if no setting possible. */

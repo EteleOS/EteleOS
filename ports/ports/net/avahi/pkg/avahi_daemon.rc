@@ -1,0 +1,19 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/avahi-daemon -D"
+
+. /etc/rc.d/rc.subr
+
+rc_check() {
+	rc_exec "${daemon} --check"
+}
+
+rc_reload() {
+	rc_exec "${daemon} --reload"
+}
+
+rc_stop() {
+	rc_exec "${daemon} --kill"
+}
+
+rc_cmd $1

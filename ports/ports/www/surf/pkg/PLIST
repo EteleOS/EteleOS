@@ -1,0 +1,5 @@
+@pkgpath www/surf2
+@bin bin/surf
+lib/surf/
+@so lib/surf/webext-surf.so
+@man man/man1/surf.1

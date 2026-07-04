@@ -1,0 +1,12 @@
+Index: alpine/pine-use.c
+--- alpine/pine-use.c.orig
++++ alpine/pine-use.c
+@@ -20,7 +20,7 @@
+ #include <sys/stat.h>
+ 
+ #ifndef MAILSPOOLPCTS
+-#define MAILSPOOLPCTS "/usr/spool/mail/%s"
++#define MAILSPOOLPCTS "/var/mail/%s"
+ /* #define MAILSPOOLPCTS "/usr/mail/%s" */
+ #endif
+ 

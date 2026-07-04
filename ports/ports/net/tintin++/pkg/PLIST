@@ -1,0 +1,4 @@
+@bin bin/tt++
+share/doc/tintin++/
+share/doc/tintin++/chat_protocol.txt
+share/doc/tintin++/tintin19.txt

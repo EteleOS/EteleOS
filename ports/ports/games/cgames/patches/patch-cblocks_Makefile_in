@@ -1,0 +1,14 @@
+Index: cblocks/Makefile.in
+--- cblocks/Makefile.in.orig
++++ cblocks/Makefile.in
+@@ -35,8 +35,8 @@ install: cblocks
+ 	install -c ./cblocks $(bindir)/cblocks
+ 	install -d $(mandir)/man6
+ 	install -c ./cblocks.6 $(mandir)/man6/cblocks.6
+-	install -d -g games $(datadir)
+-	install -c ./series/* $(datadir)/
++	install -d -g bin $(datadir)/cblocks
++	install -c ./series/* $(datadir)/cblocks/
+ 
+ movelist.o: movelist.c gen.h movelist.h
+ dirio.o   : dirio.c gen.h dirio.h

@@ -1,0 +1,13 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/sbin/rt-server"
+daemon_flags="--port 8080"
+daemon_user="_rt"
+
+. /etc/rc.d/rc.subr
+
+pexp=".*perl.*(${daemon}|perl-fcgi-pm).*"
+rc_bg=YES
+rc_reload=NO
+
+rc_cmd $1

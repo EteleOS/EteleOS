@@ -1,0 +1,5 @@
+@conflict tesseract-<3.02.02
+@pkgpath graphics/tesseract,-ukr
+@pkgpath graphics/tesseract-langs/ukr
+share/tessdata/
+share/tessdata/ukr.traineddata

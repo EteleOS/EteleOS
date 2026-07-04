@@ -1,0 +1,14 @@
+64bit time_t
+
+Index: tests/test-mime.c
+--- tests/test-mime.c.orig
++++ tests/test-mime.c
+@@ -381,7 +381,7 @@ test_date_parser (void)
+ 			tz_offset *= sign;
+ 			
+ 			if (time != dates[i].date)
+-				throw (exception_new ("time_t's do not match: actual: %ld; expected: %ld", time, dates[i].date));
++				throw (exception_new ("time_t's do not match: actual: %lld; expected: %lld", time, dates[i].date));
+ 			
+ 			if (tz_offset != dates[i].tzone)
+ 				throw (exception_new ("timezones do not match"));

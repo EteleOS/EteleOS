@@ -1,0 +1,13 @@
+Index: scripts/taiseilib/version.py
+--- scripts/taiseilib/version.py.orig
++++ scripts/taiseilib/version.py
+@@ -77,6 +77,9 @@ def get(*, rootdir=None, fallback=VERSION_FALLBACK, ar
+         return Version(version_str)
+ 
+     try:
++        # XXX do not call git, use port-provided fallback instead
++        raise subprocess.SubprocessError("git external calls disabled")
++
+         version_str = subprocess.check_output(
+             shlex.split('git describe --dirty --match v[0-9]*[!asz]'),
+             cwd=str(rootdir),

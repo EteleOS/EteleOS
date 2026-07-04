@@ -1,0 +1,14 @@
+Index: sal/osl/unx/uunxapi.cxx
+--- sal/osl/unx/uunxapi.cxx.orig
++++ sal/osl/unx/uunxapi.cxx
+@@ -692,8 +692,10 @@ std::string UnixErrnoString(int nErrno)
+ #endif
+         case EPROTO:
+             return "EPROTO";
++#ifdef EMULTIHOP
+         case EMULTIHOP:
+             return "EMULTIHOP";
++#endif
+ #ifdef EDOTDOT
+         case EDOTDOT:
+             return "EDOTDOT";

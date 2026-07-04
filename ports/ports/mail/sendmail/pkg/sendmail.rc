@@ -1,0 +1,10 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/libexec/sendmail/sendmail"
+daemon_flags="-L sm-mta -C${SYSCONFDIR}/mail/localhost.cf -bd -q30m"
+
+. /etc/rc.d/rc.subr
+
+pexp="(sendmail: (accepting|rejecting).*|${daemon}.* -(q[0-9]|bd)*)"
+
+rc_cmd $1

@@ -1,0 +1,37 @@
+Our file(1) doesn't have all that fancy options.
+
+--- src/dialogs/e2_file_info_dialog.c.orig	Fri Jan 10 03:55:23 2014
++++ src/dialogs/e2_file_info_dialog.c	Sun Sep 20 09:24:15 2015
+@@ -175,7 +175,7 @@ static gboolean _e2_file_info_dialog_get_file_type (VP
+ #else
+ //tag E2_BADQUOTES
+ 		gchar *qp = e2_utils_quote_string (VPCSTR (localpath));
+-		gchar *command = e2_utils_strcat ("file -bhnprs ", qp);
++		gchar *command = e2_utils_strcat ("file -bNs ", qp);
+ 		gpointer results;
+ 		if (!e2_fs_get_command_output (command, &results))
+ 		{
+@@ -191,23 +191,6 @@ static gboolean _e2_file_info_dialog_get_file_type (VP
+ 
+ 		*mime_type = e2_utils_get_mimetype (localpath);
+ 
+-		if (*mime_type != NULL && g_str_has_prefix (*mime_type, "text/"))
+-		{
+-			//try to get encoding as well
+-			command = e2_utils_strcat ("file -bhnpri ", qp);
+-			if (e2_fs_get_command_output (command, &results))
+-			{
+-				g_strstrip ((gchar *)results);	//get rid of \n etc
+-				if (*(gchar *)results != '\0')
+-				{
+-					g_free (*mime_type);
+-					*mime_type = results;
+-				}
+-				else
+-					g_free (results);
+-			}
+-			g_free (command);
+-		}
+ 		g_free (qp);
+ 
+ 		return TRUE;

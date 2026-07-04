@@ -1,0 +1,15 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+Chicken Scheme will use better warnings when it has access to module database.
+You can generate the database by running `chicken-install -update-db'.
+
+There are also a lot of extensions called 'eggs' available for your use.
+You can list and install eggs using the 'chicken-install' command.
+
+Due to binary name conflicts the csc and csi binaries have been
+renamed to chicken-csc and chicken-csi.
+
+See more information at
+https://wiki.call-cc.org/

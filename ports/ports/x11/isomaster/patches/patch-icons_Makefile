@@ -1,0 +1,15 @@
+--- icons/Makefile.orig	Thu Sep 17 02:31:02 2009
++++ icons/Makefile	Wed Jan 20 19:34:35 2010
+@@ -5,10 +5,10 @@ ICONS = isomaster.png go-back-kearone.png folder-new-k
+ install: 
+ 	$(INSTALL) -d $(DESTDIR)$(ICONPATH)
+ 	for NAME in $(ICONS); do \
+-	  $(INSTALL) -v -m 644 $$NAME $(DESTDIR)$(ICONPATH); \
++	  $(INSTALL) -m 644 $$NAME $(DESTDIR)$(ICONPATH); \
+ 	done
+ 
+ uninstall:
+ 	for NAME in $(ICONS); do \
+-	  $(RM) -f $(DESTDIR)$(ICONPATH)/$$NAME; \
++	  $(RM) $(DESTDIR)$(ICONPATH)/$$NAME; \
+ 	done

@@ -1,0 +1,75 @@
+@conflict bacula-<2.2.7
+@conflict bacula-client-<5.2.6p2
+@pkgpath sysutils/bacula,-server,mysql
+@pkgpath sysutils/bacula,-server,pgsql
+@pkgpath sysutils/bacula,-server,sqlite3
+@newuser _bacula-sd:599:_bacula::Bacula Storage Daemon:/nonexistent:/sbin/nologin
+@extraunexec rm -rf /var/bacula
+@rcscript ${RCDIR}/bacula_dir
+@rcscript ${RCDIR}/bacula_sd
+lib/libbacsd.la
+@lib lib/libbacsd.so.${LIBbacsd_VERSION}
+lib/libbacsql.la
+@lib lib/libbacsql.so.${LIBbacsql_VERSION}
+libexec/bacula/bacula
+libexec/bacula/bacula-ctl-dir
+libexec/bacula/bacula-ctl-sd
+libexec/bacula/baculabackupreport
+libexec/bacula/btraceback.dbx
+libexec/bacula/btraceback.gdb
+libexec/bacula/btraceback.mdb
+libexec/bacula/chio-changer-openbsd.dist
+@mode 0755
+@sample libexec/bacula/chio-changer-openbsd
+@mode
+libexec/bacula/create_bacula_database
+libexec/bacula/delete_catalog_backup
+libexec/bacula/disk-changer
+libexec/bacula/drop_bacula_database
+libexec/bacula/drop_bacula_tables
+libexec/bacula/grant_bacula_privileges
+libexec/bacula/make_bacula_tables
+libexec/bacula/make_catalog_backup
+libexec/bacula/make_catalog_backup.pl
+libexec/bacula/mtx-changer
+libexec/bacula/mtx-changer.conf.dist
+@sample libexec/bacula/mtx-changer.conf
+libexec/bacula/query.sql.dist
+@sample libexec/bacula/query.sql
+libexec/bacula/update_bacula_tables
+libexec/bacula/updatedb/README
+@man man/man1/bsmtp.1
+@man man/man8/bacula-dir.8
+@man man/man8/bacula-sd.8
+@man man/man8/bacula.8
+@man man/man8/bcopy.8
+@man man/man8/bextract.8
+@man man/man8/bls.8
+@man man/man8/bscan.8
+@man man/man8/btape.8
+@man man/man8/btraceback.8
+@man man/man8/dbcheck.8
+@bin sbin/bacula-dir
+@bin sbin/bacula-sd
+@bin sbin/bcopy
+@bin sbin/bextract
+@bin sbin/bls
+@bin sbin/bregex
+@bin sbin/bscan
+@bin sbin/bsmtp
+@bin sbin/btape
+sbin/btraceback
+@bin sbin/bwild
+@bin sbin/dbcheck
+share/doc/pkg-readmes/${PKGSTEM}
+@mode 644
+share/examples/bacula/bacula-dir.conf
+@mode 640
+@group _bacula
+@sample ${SYSCONFDIR}/bacula-dir.conf
+@mode 644
+@group
+share/examples/bacula/bacula-sd.conf
+@mode 640
+@group _bacula
+@sample ${SYSCONFDIR}/bacula-sd.conf

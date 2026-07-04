@@ -1,0 +1,11 @@
+--- src/main.C.orig	Tue Nov 15 02:20:31 2005
++++ src/main.C	Wed Jun 30 17:24:16 2010
+@@ -27,8 +27,6 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <stdio.h>
+-#include <sys/soundcard.h>
+-#include <sys/ioctl.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <string.h>

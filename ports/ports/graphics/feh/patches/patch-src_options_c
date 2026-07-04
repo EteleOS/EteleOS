@@ -1,0 +1,12 @@
+Index: src/options.c
+--- src/options.c.orig
++++ src/options.c
+@@ -164,7 +164,7 @@ static void feh_load_options_for_theme(char *theme)
+ 
+ 	free(oldrcpath);
+ 
+-	if (!fp && ((fp = fopen("/etc/feh/themes", "r")) == NULL))
++	if (!fp && ((fp = fopen("${SYSCONFDIR}/feh/themes", "r")) == NULL))
+ 		return;
+ 
+ 	/* Oooh. We have an options file :) */

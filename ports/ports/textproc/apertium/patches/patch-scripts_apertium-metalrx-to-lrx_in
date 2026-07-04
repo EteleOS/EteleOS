@@ -1,0 +1,9 @@
+Index: scripts/apertium-metalrx-to-lrx.in
+--- scripts/apertium-metalrx-to-lrx.in.orig
++++ scripts/apertium-metalrx-to-lrx.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!${LOCALBASE}/bin/bash
+ case $# in
+   2)
+     INFILE=$1

@@ -1,0 +1,45 @@
+--- src/Imakefile.orig	Sun Nov  5 20:05:10 2000
++++ src/Imakefile	Fri Nov 29 23:16:04 2013
+@@ -194,7 +194,7 @@ OBJS		= $(STDOBJS) $(XOBJS) $(KIT_OBJS)
+ MYPROG		= xpat2
+ LANGUAGES	= italian german russian french de_DE fr_FR it_IT
+ DEFINES		= $(LOAD_OPTION) $(HELP_OPTION) $(KIT_OPTION) $(ROUND_OPTION) \
+-		  $(SOUND_OPTION) $(XPM_OPTION) $(GFX_OPTION) \
++		  $(SOUND_OPTION) $(XPM_OPTION) $(GFX_OPTION) -DNO_CUSERID \
+ 		  -DSCOREFILE=\"$(SCOREFILE)\" -DLIBDIR=\"$(XPATLIBDIR)\"
+ 
+ XCOMM Dependencies:
+@@ -205,23 +205,20 @@ XCOMM X-widget.c additionally requires TableauP.h
+ all::		$(MYPROG)
+ 
+ install::	$(MYPROGS)
+-	mkdirhier $(XPATLIBDIR)
+-	chmod 755 $(XPATLIBDIR)
++	mkdirhier $(DESTDIR)$(XPATLIBDIR)
++	chmod 755 $(DESTDIR)$(XPATLIBDIR)
+ 	for f in $(LANGUAGES); do \
+-	  mkdirhier $(APPDEFSDIR)/$$f/app-defaults; \
+-	  cp ../lib/$$f/XPat $(APPDEFSDIR)/$$f/app-defaults; \
+-	  chmod 755 $(APPDEFSDIR)/$$f/app-defaults; \
+-	  chmod 644 $(APPDEFSDIR)/$$f/app-defaults/XPat; \
++	  mkdirhier $(DESTDIR)$(APPDEFSDIR)/$$f/app-defaults; \
++	  cp ../lib/$$f/XPat $(DESTDIR)$(APPDEFSDIR)/$$f/app-defaults; \
++	  chmod 755 $(DESTDIR)$(APPDEFSDIR)/$$f/app-defaults; \
++	  chmod 644 $(DESTDIR)$(APPDEFSDIR)/$$f/app-defaults/XPat; \
+ 	done 
+-	(cd ../lib; tar cf - * | (cd $(XPATLIBDIR); tar xf -))
+-	chown -R root $(XPATLIBDIR)
+-	chmod -R a+r $(XPATLIBDIR)
++	(cd ../lib; tar cf - * | (cd $(DESTDIR)$(XPATLIBDIR); tar xf -))
++	chown -R root $(DESTDIR)$(XPATLIBDIR)
++	chmod -R a+r $(DESTDIR)$(XPATLIBDIR)
+ 	for f in $(LANGUAGES); do \
+-	    chmod 755 $(XPATLIBDIR)/$$f; \
++	    chmod 755 $(DESTDIR)$(XPATLIBDIR)/$$f; \
+ 	done
+-	mkdirhier $(XPATMANDIR)
+-	cp xpat2.man $(XPATMANDIR)/xpat2.6x
+-	chmod 644 $(XPATMANDIR)/xpat2.6x
+ 
+ ComplexProgramTarget($(MYPROG))
+ InstallAppDefaults(XPat)

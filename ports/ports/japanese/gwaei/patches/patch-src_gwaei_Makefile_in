@@ -1,0 +1,17 @@
+Remove -DGTK_DISABLE_DEPRECATED: fix build with gtk+3>=3.8.0 (XXX check on next update)
+
+Index: src/gwaei/Makefile.in
+--- src/gwaei/Makefile.in.orig
++++ src/gwaei/Makefile.in
+@@ -319,9 +319,9 @@ target_alias = @target_alias@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-SUBDIRS = include/gwaei help
++SUBDIRS = include/gwaei
+ ACLOCAL_AMFLAGS = -I m4
+-DEFINITIONS = -DDATADIR2=\"$(datadir)\" -DLIBDIR=\"$(libdir)\" -DENCHANT=\"$(ENCHANT)\" -DGWAEI_LOCALEDIR=\"$(GWAEI_LOCALEDIR)\" -DGTK_DISABLE_DEPRECATED -DG_SEAL_ENABLE -Wall
++DEFINITIONS = -DDATADIR2=\"$(datadir)\" -DLIBDIR=\"$(libexecdir)\" -DENCHANT=\"$(ENCHANT)\" -DGWAEI_LOCALEDIR=\"$(GWAEI_LOCALEDIR)\" -DG_SEAL_ENABLE -Wall
+ gwaei_SOURCES = gwaei.c application.c application-callbacks.c window.c dictinfolist.c dictinfolist-callbacks.c searchwindow.c searchwindow-callbacks.c searchwindow-output.c search-data.c spellcheck.c spellcheck-callbacks.c printing.c radicalswindow.c radicalswindow-callbacks.c kanjipadwindow-callbacks.c kanjipad-drawingarea.c kanjipad-candidatearea.c  kanjipadwindow.c settingswindow.c settingswindow-callbacks.c dictionaryinstallwindow.c dictionaryinstallwindow-callbacks.c  installprogresswindow.c installprogresswindow-callbacks.c
+ gwaei_LDADD = $(GWAEI_LIBS) ../libwaei/libwaei.la $(am__append_1)
+ gwaei_CPPFLAGS = $(DEFINITIONS) $(GWAEI_CFLAGS) $(GWAEI_DEFS) \

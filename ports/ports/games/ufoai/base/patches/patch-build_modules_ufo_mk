@@ -1,0 +1,13 @@
+Commited upstream ee51106ced2f17bcdd5cf6c706627f41f3f6c175
+
+--- build/modules/ufo.mk.orig	Thu Jun  5 08:18:39 2014
++++ build/modules/ufo.mk	Tue Jul  1 19:37:31 2014
+@@ -107,7 +107,7 @@ $(TARGET)_SRCS      = $(subst $(SRCDIR)/,, \
+ 	\
+ 	$(JPEG_SRCS)
+ 
+-ifneq ($(findstring $(TARGET_OS), netbsd freebsd linux),)
++ifneq ($(findstring $(TARGET_OS), netbsd freebsd openbsd linux),)
+ 	$(TARGET)_SRCS += \
+ 		ports/linux/linux_main.cpp \
+ 		ports/unix/unix_console.cpp \

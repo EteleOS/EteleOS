@@ -1,0 +1,5 @@
+Deprecated package which exports a LockFile class, providing a simple API for
+locking files.
+
+The developers recommend using https://pypi.org/project/fasteners/ or
+https://docs.openstack.org/oslo.concurrency/latest/ instead.

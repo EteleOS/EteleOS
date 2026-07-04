@@ -1,0 +1,10 @@
+@pkgpath textproc/mozilla-dicts,-${L}
+share/mozilla-dicts/
+share/mozilla-dicts/ro.aff
+share/mozilla-dicts/ro.dic
+share/mozilla-dicts/ro_RO-cedilla.aff
+share/mozilla-dicts/ro_RO-cedilla.dic
+share/mozilla-dicts/ro_RO-classic.aff
+share/mozilla-dicts/ro_RO-classic.dic
+share/mozilla-dicts/ro_RO-classiccedilla.aff
+share/mozilla-dicts/ro_RO-classiccedilla.dic

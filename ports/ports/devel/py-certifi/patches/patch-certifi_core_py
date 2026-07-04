@@ -1,0 +1,20 @@
+Index: certifi/core.py
+--- certifi/core.py.orig
++++ certifi/core.py
+@@ -11,7 +11,15 @@ def exit_cacert_ctx() -> None:
+     _CACERT_CTX.__exit__(None, None, None)  # type: ignore[union-attr]
+ 
+ 
+-if sys.version_info >= (3, 11):
++if sys.platform.startswith('openbsd'):
++
++    def where() -> str:
++        return '/etc/ssl/cert.pem'
++
++    def contents() -> str:
++        return open('/etc/ssl/cert.pem').read()
++
++elif sys.version_info >= (3, 11):
+ 
+     from importlib.resources import as_file, files
+ 

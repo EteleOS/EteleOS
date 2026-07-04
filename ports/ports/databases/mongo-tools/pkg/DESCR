@@ -1,0 +1,11 @@
+Tools for use with MongoDB:
+
+- bsondump: display BSON files in a human-readable format
+- mongoimport: convert data from JSON, TSV or CSV and insert them
+    into a collection
+- mongoexport: write an existing collection to CSV or JSON format
+- mongodump/mongorestore: Dump MongoDB backups to disk in .BSON format,
+    or restore them to a live database
+- mongostat: monitor live MongoDB servers, replica sets, or sharded clusters
+- mongofiles: read, write, delete, or update files in GridFS
+- mongotop: monitor read/write activity on a mongo server

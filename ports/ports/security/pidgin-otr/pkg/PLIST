@@ -1,0 +1,3 @@
+@comment lib/pidgin/pidgin-otr.la
+lib/pidgin/pidgin-otr.so
+share/doc/pidgin/otr-plugin.txt

@@ -1,0 +1,52 @@
+include/gtkglext-1.0/
+include/gtkglext-1.0/gdk/
+include/gtkglext-1.0/gdk/gdkgl.h
+include/gtkglext-1.0/gdk/gdkglconfig.h
+include/gtkglext-1.0/gdk/gdkglcontext.h
+include/gtkglext-1.0/gdk/gdkgldebug.h
+include/gtkglext-1.0/gdk/gdkgldefs.h
+include/gtkglext-1.0/gdk/gdkgldrawable.h
+include/gtkglext-1.0/gdk/gdkglenumtypes.h
+include/gtkglext-1.0/gdk/gdkglglext.h
+include/gtkglext-1.0/gdk/gdkglinit.h
+include/gtkglext-1.0/gdk/gdkglpixmap.h
+include/gtkglext-1.0/gdk/gdkglquery.h
+include/gtkglext-1.0/gdk/gdkgltokens.h
+include/gtkglext-1.0/gdk/gdkgltypes.h
+include/gtkglext-1.0/gdk/gdkglversion.h
+include/gtkglext-1.0/gdk/gdkglwindow.h
+include/gtkglext-1.0/gdk/glext/
+include/gtkglext-1.0/gdk/glext/glext-extra.h
+include/gtkglext-1.0/gdk/glext/glext.h
+include/gtkglext-1.0/gdk/glext/glxext-extra.h
+include/gtkglext-1.0/gdk/glext/glxext.h
+include/gtkglext-1.0/gdk/glext/wglext-extra.h
+include/gtkglext-1.0/gdk/glext/wglext.h
+include/gtkglext-1.0/gdk/x11/
+include/gtkglext-1.0/gdk/x11/gdkglglxext.h
+include/gtkglext-1.0/gdk/x11/gdkglx.h
+include/gtkglext-1.0/gtk/
+include/gtkglext-1.0/gtk/gtkgl.h
+include/gtkglext-1.0/gtk/gtkgldebug.h
+include/gtkglext-1.0/gtk/gtkgldefs.h
+include/gtkglext-1.0/gtk/gtkglinit.h
+include/gtkglext-1.0/gtk/gtkglversion.h
+include/gtkglext-1.0/gtk/gtkglwidget.h
+lib/girepository-1.0/GdkGLExt-1.0.typelib
+lib/girepository-1.0/GtkGLExt-1.0.typelib
+lib/gtkglext-1.0/
+lib/gtkglext-1.0/include/
+lib/gtkglext-1.0/include/gdkglext-config.h
+@static-lib lib/libgdkglext-x11-1.0.a
+lib/libgdkglext-x11-1.0.la
+@lib lib/libgdkglext-x11-1.0.so.${LIBgdkglext-x11-1.0_VERSION}
+@static-lib lib/libgtkglext-x11-1.0.a
+lib/libgtkglext-x11-1.0.la
+@lib lib/libgtkglext-x11-1.0.so.${LIBgtkglext-x11-1.0_VERSION}
+lib/pkgconfig/gdkglext-1.0.pc
+lib/pkgconfig/gdkglext-x11-1.0.pc
+lib/pkgconfig/gtkglext-1.0.pc
+lib/pkgconfig/gtkglext-x11-1.0.pc
+share/gir-1.0/GdkGLExt-1.0.gir
+share/gir-1.0/GtkGLExt-1.0.gir
+share/gtk-doc/html/gtkglext/

@@ -1,0 +1,3 @@
+${P5SITE}/Math/
+${P5SITE}/Math/Derivative.pm
+@man man/man3p/Math::Derivative.3p

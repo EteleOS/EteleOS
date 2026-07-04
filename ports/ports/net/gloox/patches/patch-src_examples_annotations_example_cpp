@@ -1,0 +1,11 @@
+Index: src/examples/annotations_example.cpp
+--- src/examples/annotations_example.cpp.orig
++++ src/examples/annotations_example.cpp
+@@ -22,6 +22,7 @@ using namespace gloox;
+ #include <string>
+ 
+ #include <cstdio> // [s]print[f]
++#include <ctime>
+ 
+ class AnnotationsTest : public AnnotationsHandler, ConnectionListener
+ {

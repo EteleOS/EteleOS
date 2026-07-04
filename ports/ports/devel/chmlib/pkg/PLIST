@@ -1,0 +1,10 @@
+@bin bin/chm_http
+@bin bin/enum_chmLib
+@bin bin/enumdir_chmLib
+@bin bin/extract_chmLib
+@bin bin/test_chmLib
+include/chm_lib.h
+include/lzx.h
+lib/libchm.a
+lib/libchm.la
+@lib lib/libchm.so.${LIBchm_VERSION}

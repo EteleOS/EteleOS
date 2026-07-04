@@ -1,0 +1,11 @@
+--- bitio.c.orig	Sun Jun 10 01:26:59 2001
++++ bitio.c	Sun Jun 10 01:28:08 2001
+@@ -80,6 +80,8 @@
+  *==============*/
+ 
+ #include <assert.h>
++#include <time.h>
++#include <unistd.h>
+ #include "all.h"
+ #include "byteorder.h"
+ #include "bitio.h"

@@ -1,0 +1,16 @@
+@rcscript ${RCDIR}/svscan
+@bin bin/anonidentd
+@bin bin/dumblog
+@bin bin/envdir
+@bin bin/envuidgid
+@bin bin/fargv0
+bin/mkservice
+@bin bin/ratelimit
+@bin bin/setlock
+@bin bin/setuidgid
+@bin bin/softlimit
+@bin bin/supervise
+@bin bin/svc
+@bin bin/svok
+@bin bin/svscan
+@bin bin/svstat

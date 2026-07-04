@@ -1,0 +1,13 @@
++-----------------------------------------------------------------------
+| Running ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+In order to use vmwh add the following line to ~/.xinitrc or
+~/.xsession before the window manager:
+
+${TRUEPREFIX}/bin/vmwh &
+
+To enable copy and paste from/to xterm(1) add the following line
+to ~/.Xdefaults:
+
+XTerm*selectToClipboard:true

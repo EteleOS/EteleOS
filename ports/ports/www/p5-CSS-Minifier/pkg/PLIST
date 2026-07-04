@@ -1,0 +1,3 @@
+${P5SITE}/CSS/
+${P5SITE}/CSS/Minifier.pm
+@man man/man3p/CSS::Minifier.3p

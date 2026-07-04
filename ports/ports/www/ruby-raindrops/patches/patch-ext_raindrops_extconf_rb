@@ -1,0 +1,12 @@
+Index: ext/raindrops/extconf.rb
+--- ext/raindrops/extconf.rb.orig
++++ ext/raindrops/extconf.rb
+@@ -134,7 +134,7 @@ SRC
+   if try_link(src)
+     $defs.push(format("-DHAVE_GCC_ATOMIC_BUILTINS"))
+     true
+-  else
++  elsif false
+     # some compilers still target 386 by default, but we need at least 486
+     # to run atomic builtins.
+     prev_cflags = $CFLAGS

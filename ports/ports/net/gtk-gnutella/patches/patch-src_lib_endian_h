@@ -1,0 +1,19 @@
+Index: src/lib/endian.h
+--- src/lib/endian.h.orig
++++ src/lib/endian.h
+@@ -244,6 +244,7 @@ poke_le64(gpointer p, guint64 v)
+  * SUN's XDR implementation.
+  */
+ #if \
++	defined(__aarch64__) || \
+ 	defined(__alpha__) || \
+ 	defined(__arm__) || \
+ 	defined(__hppa__) || \
+@@ -254,6 +255,7 @@ poke_le64(gpointer p, guint64 v)
+ 	defined(__ns32k__) || \
+ 	defined(__powerpc__) || \
+ 	defined(__ppc__) || \
++	defined(__riscv) || \
+ 	defined(__s390__) || \
+ 	defined(__sh__) || \
+ 	defined(__sparc__) || \

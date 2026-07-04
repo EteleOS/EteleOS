@@ -1,0 +1,42 @@
+- no mount -l/tmpfs in OpenBSD
+- use date(1) -r instead of GNU date(1) --date=
+
+Index: lib/keyringer/functions
+--- lib/keyringer/functions.orig
++++ lib/keyringer/functions
+@@ -123,7 +123,7 @@ function keyringer_check_tmp {
+ 
+   # Ramdisk check
+   mount="`df "$path" | sed -n '$p' | awk '{ print $NF }'`"
+-  mount -l -t tmpfs | awk '{ print $3 }' | grep -q -e "^$mount$"
++  mount -t mfs | awk '{ print $3 }' | grep -q -e "^$mount$"
+ }
+ 
+ # Setup a temporary file
+@@ -734,7 +734,7 @@ function keyringer_check_expiration {
+ 
+   # Check if key is expired
+   if [ ! -z "$expiry" ] && [[ "$seconds" -gt "$expiry" ]]; then
+-    echo -n "Warning: primary key for $recipient expired on `date --date="@$expiry"`"
++    echo -n "Warning: primary key for $recipient expired on `date -r "$expiry"`"
+ 
+     if [ "$KEYRINGER_MODE" == "write" ] || [ "$KEYRINGER_MODE" == "readwrite" ]; then
+       echo ", aborting."
+@@ -749,7 +749,7 @@ function keyringer_check_expiration {
+   # TODO: Users can be alerted by mail if configured by user preferences.
+   # TODO: Outgoing emails can be encrypted.
+   if [ "$BASENAME" == "check" ] && [ ! -z "$expiry" ] && [[ "$ahead" -gt "$expiry" ]]; then
+-    echo "Warning: key $recipient will expire soon, on `date --date="@$expiry"`"
++    echo "Warning: key $recipient will expire soon, on `date -r "$expiry"`"
+   fi
+ 
+   # Check the subkeys
+@@ -765,7 +765,7 @@ function keyringer_check_expiration {
+       not_expired="1"
+ 
+       if [[ "$ahead" -gt "$expiry" ]] && [ "$BASENAME" == "check" ]; then
+-        echo "Warning: subkey from $recipient will expire soon, on `date --date="@$expiry"`"
++        echo "Warning: subkey from $recipient will expire soon, on `date -r "$expiry"`"
+ 
+         KEYRINGER_HAS_EXPIRING_KEYS="1"
+       fi

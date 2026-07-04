@@ -1,0 +1,17 @@
+@bin bin/upplay
+share/applications/upplay.desktop
+share/icons/hicolor/48x48/apps/upplay.png
+share/pixmaps/
+share/pixmaps/upplay.png
+share/upplay/
+share/upplay/cdbrowser.css
+share/upplay/common.qss
+share/upplay/containerscript.js
+share/upplay/dark.css
+share/upplay/dark.qss
+share/upplay/metadata.conf
+share/upplay/qwebchannel.js
+share/upplay/standard.css
+share/upplay/standard.qss
+@tag gtk-update-icon-cache %D/share/icons/hicolor
+@tag update-desktop-database

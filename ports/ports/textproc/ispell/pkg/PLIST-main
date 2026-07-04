@@ -1,0 +1,27 @@
+@pkgpath textproc/ispell
+@unexec-delete rm -f ${PREFIX}/lib/ispell/default.aff
+@unexec-delete rm -f ${PREFIX}/lib/ispell/default.hash
+@bin bin/buildhash
+bin/findaffix
+@bin bin/icombine
+@bin bin/ijoin
+@bin bin/ispell
+bin/ispell-config
+bin/munchlist
+bin/tryaffix
+lib/ispell/
+lib/ispell/american.aff
+lib/ispell/american.hash
+lib/ispell/americanmed+.hash
+lib/ispell/british.aff
+lib/ispell/british.hash
+lib/ispell/britishxlg.hash
+@man man/man1/buildhash.1
+@man man/man1/findaffix.1
+@man man/man1/ispell.1
+@man man/man1/munchlist.1
+@man man/man1/tryaffix.1
+@man man/man5/english.5
+@man man/man5/ispell.5
+share/doc/pkg-readmes/${PKGSTEM}
+@exec test -e %D/lib/ispell/default.aff || %D/bin/ispell-config 2 >/dev/null

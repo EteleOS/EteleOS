@@ -1,0 +1,2 @@
+dhcpdump captures DHCP traffic and displays it in a simple format with
+many options decoded, allowing simple checking and debugging.

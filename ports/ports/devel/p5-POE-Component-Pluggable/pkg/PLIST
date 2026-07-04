@@ -1,0 +1,9 @@
+${P5SITE}/POE/Component/Pluggable/
+${P5SITE}/POE/Component/Pluggable.pm
+${P5SITE}/POE/Component/Pluggable/Constants.pm
+${P5SITE}/POE/Component/Pluggable/Pipeline.pm
+@man man/man3p/POE::Component::Pluggable.3p
+@man man/man3p/POE::Component::Pluggable::Constants.3p
+@man man/man3p/POE::Component::Pluggable::Pipeline.3p
+share/examples/p5-POE-Component-Pluggable/
+share/examples/p5-POE-Component-Pluggable/synopsis.pl

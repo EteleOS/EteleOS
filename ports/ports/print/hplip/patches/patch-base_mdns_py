@@ -1,0 +1,19 @@
+IP_MULTICAST_TTL socket option on OpenBSD currently doesn't accept
+int, only unsigned char:
+Unable to setup multicast socket... [Errno 22] Invalid argument
+
+--- base/mdns.py.orig	Thu Jan 29 13:20:35 2015
++++ base/mdns.py	Thu Feb  5 14:34:06 2015
+@@ -208,9 +208,9 @@ def createSocketsWithsetOption(ttl=4):
+         pass
+ 
+     try:
+-        s.setsockopt(socket.SOL_IP, socket.IP_MULTICAST_TTL, ttl)
+-        s.setsockopt(socket.SOL_IP, socket.IP_MULTICAST_IF, socket.inet_aton(intf) + socket.inet_aton('0.0.0.0'))
+-        s.setsockopt(socket.SOL_IP, socket.IP_MULTICAST_LOOP ,1)
++        s.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, ttl)
++        s.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_IF, socket.inet_aton(intf))
++        s.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_LOOP, struct.pack('B', 1))
+     except Exception as e:
+         log.error("Unable to setup multicast socket for mDNS: %s" % e)
+         if s:

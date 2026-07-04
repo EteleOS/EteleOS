@@ -1,0 +1,13 @@
+@newgroup _cntlm:692
+@newuser _cntlm:692:_cntlm::Cntlm Daemon:/var/empty:/sbin/nologin
+@man man/man1/cntlm.1
+@bin sbin/cntlm
+share/examples/cntlm/
+@sample ${SYSCONFDIR}/cntlm/
+share/examples/cntlm/cntlm.conf
+@mode 0640
+@group _cntlm
+@sample ${SYSCONFDIR}/cntlm/cntlm.conf
+@mode
+@group
+@rcscript ${RCDIR}/cntlm

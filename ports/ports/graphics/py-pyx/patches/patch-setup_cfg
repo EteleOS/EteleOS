@@ -1,0 +1,9 @@
+--- setup.cfg.orig	Sun Oct 16 14:38:35 2022
++++ setup.cfg	Tue Oct 18 09:37:50 2022
+@@ -1,5 +1,5 @@
+ [PyX]
+-build_t1code = 0
++build_t1code = 1
+ build_pykpathsea = 0
+ 
+ [build_ext]

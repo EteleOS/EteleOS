@@ -1,0 +1,16 @@
+@pkgpath net/py-pcapy,python3
+@so lib/python${MODPY_VERSION}/site-packages/pcapy.${MODPY_PYC_MAGIC_TAG}so
+lib/python${MODPY_VERSION}/site-packages/pcapy_ng-${MODPY_DISTV}.dist-info/
+lib/python${MODPY_VERSION}/site-packages/pcapy_ng-${MODPY_DISTV}.dist-info/METADATA
+lib/python${MODPY_VERSION}/site-packages/pcapy_ng-${MODPY_DISTV}.dist-info/RECORD
+lib/python${MODPY_VERSION}/site-packages/pcapy_ng-${MODPY_DISTV}.dist-info/WHEEL
+lib/python${MODPY_VERSION}/site-packages/pcapy_ng-${MODPY_DISTV}.dist-info/licenses/
+lib/python${MODPY_VERSION}/site-packages/pcapy_ng-${MODPY_DISTV}.dist-info/licenses/LICENSE
+lib/python${MODPY_VERSION}/site-packages/pcapy_ng-${MODPY_DISTV}.dist-info/top_level.txt
+share/doc/pcapy-ng/
+share/doc/pcapy-ng/LICENSE
+share/doc/pcapy-ng/README
+share/doc/pcapy-ng/pcapy.html
+@comment share/doc/pcapy-ng/tests/
+@comment share/doc/pcapy-ng/tests/96pings.pcap
+@comment share/doc/pcapy-ng/tests/pcapytests.py

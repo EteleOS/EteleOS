@@ -1,0 +1,21 @@
+Index: lgutil.c
+--- lgutil.c.orig
++++ lgutil.c
+@@ -113,7 +113,7 @@ void Internal_Help_Language_List()
+ 		check=0;
+ 		if (*config=='\n' || config[strlen(config)-2]!='\\')
+ 			check=1;
+-		if (fgets(config, BUFFERSIZE, tf)==NULL) break;
++		if (fgets(config, sizeof config, tf)==NULL) break;
+ 		if (check!=0) AddToLList(config, &currlch, &llch);
+ 	} while (strcmp((*currlch).name, "EndOfLanguageDefinitions")!=0);
+ 	rch=lch;
+@@ -277,7 +277,7 @@ varsubst *parsevartab(char* fname)
+ 	char linebuf[201], *cp;
+ 	varsubst *varsubsts=NULL, *substitem, *substlistpos;
+ 
+-	if (f==NULL) return;
++	if (f==NULL) return varsubsts;
+ 	while (!feof(f))
+ 	{
+ 		fscanf(f, "%200[^\n]", linebuf);

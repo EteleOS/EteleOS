@@ -1,0 +1,22 @@
+- add an explicit -lm for lld
+
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -11,13 +11,13 @@ LOCALEDIR = $(DATADIR)/locale
+ MANDIR = $(DATADIR)/man/man6
+ 
+ CFLAGS = -Wall -g
+-CPPFLAGS = $(shell pkg-config --cflags gtk+-3.0 cairo glib-2.0 gstreamer-1.0)  -DDATADIR=\""$(PKGDATADIR)"\"  -DLOCALDIR=\""$(LOCALEDIR)"\" -DSYSCONFDIR=\""$(SYSCONFDIR)"\"
+-LDLIBS = $(shell pkg-config --libs gtk+-3.0 cairo glib-2.0 gstreamer-1.0)  -DDATADIR=\""$(PKGDATADIR)"\"  -DLOCALDIR=\""$(LOCALEDIR)"\" -DSYSCONFDIR=\""$(SYSCONFDIR)"\" -lm
++CPPFLAGS = $$(pkg-config --cflags gtk+-3.0 cairo glib-2.0 gstreamer-1.0)  -DDATADIR=\""$(PKGDATADIR)"\"  -DLOCALDIR=\""$(LOCALEDIR)"\" -DSYSCONFDIR=\""$(SYSCONFDIR)"\"
++LDLIBS = $$(pkg-config --libs gtk+-3.0 cairo glib-2.0 gstreamer-1.0)  -DDATADIR=\""$(PKGDATADIR)"\"  -DLOCALDIR=\""$(LOCALEDIR)"\" -DSYSCONFDIR=\""$(SYSCONFDIR)"\" -lm
+ LDFLAGS = -g 
+ CC = gcc
+ target = gamine
+ objs = gamine.o
+-langs = $(shell ls locale|grep -v pot|cut -d "." --field=1)
++langs = $$(ls locale|grep -v pot|cut -d "." -f 1)
+ 
+ $(target): $(objs)
+ 	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS)

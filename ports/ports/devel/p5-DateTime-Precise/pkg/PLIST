@@ -1,0 +1,6 @@
+${P5SITE}/DateTime/
+${P5SITE}/DateTime/Math/
+${P5SITE}/DateTime/Math/bigfloat.pl
+${P5SITE}/DateTime/Math/bigint.pl
+${P5SITE}/DateTime/Precise.pm
+@man man/man3p/DateTime::Precise.3p

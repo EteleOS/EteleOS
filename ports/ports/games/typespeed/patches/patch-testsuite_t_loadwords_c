@@ -1,0 +1,13 @@
+Fix -fno-common build failure.
+
+Index: testsuite/t_loadwords.c
+--- testsuite/t_loadwords.c.orig
++++ testsuite/t_loadwords.c
+@@ -52,6 +52,7 @@ extern void	freewords(void);
+ extern int	loadwords(char *);
+ 
+ extern char	worddir[MAXPATHLEN];
++extern struct rawdata  words;
+ 
+ int
+ main(void)

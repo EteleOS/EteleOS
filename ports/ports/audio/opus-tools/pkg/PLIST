@@ -1,0 +1,6 @@
+@bin bin/opusdec
+@bin bin/opusenc
+@bin bin/opusinfo
+@man man/man1/opusdec.1
+@man man/man1/opusenc.1
+@man man/man1/opusinfo.1

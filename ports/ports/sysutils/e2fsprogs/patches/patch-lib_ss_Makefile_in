@@ -1,0 +1,14 @@
+Index: lib/ss/Makefile.in
+--- lib/ss/Makefile.in.orig
++++ lib/ss/Makefile.in
+@@ -16,8 +16,8 @@ DLOPEN_LIB = @DLOPEN_LIB@
+ LIBRARY= libss
+ LIBDIR= ss
+ 
+-ELF_VERSION = 2.0
+-ELF_SO_VERSION = 2
++ELF_VERSION = $(LIBss_VERSION)
++ELF_SO_VERSION = $(LIBss_VERSION)
+ ELF_IMAGE = libss
+ ELF_MYDIR = ss
+ ELF_INSTALL_DIR = $(root_libdir)

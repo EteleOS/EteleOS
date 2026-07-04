@@ -1,0 +1,8 @@
+bin/ksba-config
+include/ksba.h
+@info info/ksba.info
+@static-lib lib/libksba.a
+lib/libksba.la
+@lib lib/libksba.so.${LIBksba_VERSION}
+lib/pkgconfig/ksba.pc
+share/aclocal/ksba.m4

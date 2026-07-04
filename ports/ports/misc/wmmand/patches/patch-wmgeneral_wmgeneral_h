@@ -1,0 +1,22 @@
+Index: wmgeneral/wmgeneral.h
+--- wmgeneral/wmgeneral.h.orig
++++ wmgeneral/wmgeneral.h
+@@ -28,12 +28,12 @@ typedef struct {
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
+-Window          Root;
+-int		d_depth;
+-GC              NormalGC;
+-XpmIcon         wmgen;
+-Window		iconwin, win;
++extern Display		*display;
++extern Window		Root;
++extern int		d_depth;
++extern GC		NormalGC;
++extern XpmIcon		wmgen;
++extern Window		iconwin, win;
+ 
+ 
+   /***********************/

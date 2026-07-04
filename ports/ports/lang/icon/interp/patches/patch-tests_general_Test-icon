@@ -1,0 +1,12 @@
+--- tests/general/Test-icon.orig	Fri Mar 26 18:54:22 2010
++++ tests/general/Test-icon	Sun Nov  3 13:07:41 2013
+@@ -10,6 +10,9 @@ ICONX=../../bin/iconx
+ unset IPATH LPATH FPATH
+ unset BLKSIZE STRSIZE MSTKSIZE COEXPSIZE QLSIZE
+ 
++IPATH=/usr/local/share/ipl/ucode
++FPATH=/usr/local/lib
++export IPATH FPATH
+ # may be needed if Icon is built with BinaryHeader defined
+ export ICONX
+ 

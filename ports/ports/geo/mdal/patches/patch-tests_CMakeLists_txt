@@ -1,0 +1,19 @@
+Index: tests/CMakeLists.txt
+--- tests/CMakeLists.txt.orig
++++ tests/CMakeLists.txt
+@@ -30,7 +30,7 @@ IF (NOT GTEST_FOUND)
+ 
+     SET(GTEST_LIBRARIES gtest gmock)
+ ELSE(NOT GTEST_FOUND)
+-    INCLUDE_DIRECTORIES(${GTEST_INCLUDE_DIR})
++    INCLUDE_DIRECTORIES(${GTEST_INCLUDE_DIRS})
+ ENDIF(NOT GTEST_FOUND)
+ 
+ #########################################################################
+@@ -183,5 +183,5 @@ SET(UNITTESTS_SRC
+ )
+ 
+ ADD_EXECUTABLE(mdal_unittests ${UNITTESTS_SRC})
+-TARGET_LINK_LIBRARIES(mdal_unittests ${GTEST_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} mdal_a)
++TARGET_LINK_LIBRARIES(mdal_unittests gtest gmock ${CMAKE_THREAD_LIBS_INIT} mdal_a ${SQLite3_LIBRARY})
+ ADD_TEST(mdal_unittests ${CMAKE_CURRENT_BINARY_DIR}/mdal_unittests)

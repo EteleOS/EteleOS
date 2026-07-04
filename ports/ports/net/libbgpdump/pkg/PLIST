@@ -1,0 +1,8 @@
+@bin bin/bgpdump
+include/bgpdump-config.h
+include/bgpdump_attr.h
+include/bgpdump_formats.h
+include/bgpdump_lib.h
+include/bgpdump_mstream.h
+@static-lib lib/libbgpdump.a
+@lib lib/libbgpdump.so.${LIBbgpdump_VERSION}

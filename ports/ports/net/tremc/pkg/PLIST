@@ -1,0 +1,8 @@
+bin/tremc
+@man man/man1/tremc.1
+share/bash-completion/
+share/bash-completion/completions/
+share/bash-completion/completions/tremc
+share/zsh/
+share/zsh/site-functions/
+share/zsh/site-functions/_tremc

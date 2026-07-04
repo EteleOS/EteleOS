@@ -1,0 +1,11 @@
+Index: thirdparty/qzip/qzip.cpp
+--- thirdparty/qzip/qzip.cpp.orig
++++ thirdparty/qzip/qzip.cpp
+@@ -44,6 +44,7 @@
+ #include "qzipwriter_p.h"
+ 
+ #include <zlib.h>
++#include <sys/stat.h>
+ 
+ // Zip standard version for archives handled by this API
+ // (actually, the only basic support of this version is implemented but it is enough for now)

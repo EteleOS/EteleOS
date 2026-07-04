@@ -1,0 +1,67 @@
+--- Xwnmo/xwnmo/jhlp.c.orig
++++ Xwnmo/xwnmo/jhlp.c
+@@ -80,6 +80,7 @@ static char rcs_id[] = "$Id: jhlp.c,v 1.26 1994/08/04 
+ /*	Version 4.0
+  */
+ #include <signal.h>
++#include <stdlib.h>
+ #include <pwd.h>
+ #include "commonhd.h"
+ #include "sdefine.h"
+@@ -89,12 +90,7 @@ static char rcs_id[] = "$Id: jhlp.c,v 1.26 1994/08/04 
+ #include "config.h"
+ #include "ext.h"
+ 
+-#ifdef	BSD42
+-#include <sgtty.h>
+-#endif	/* BSD42 */
+-#ifdef	SYSVR2
+-#include <termio.h>
+-#endif	/* SYSVR2 */
++#include <termios.h>
+ extern char *optarg;
+ extern int optind;
+ 
+@@ -238,7 +234,7 @@ char	**argv;
+ /* get rubout_code */
+ #define UNDEF_STTY 0xff
+ 
+-#ifdef BSD42
++#if 0
+ static void
+ get_rubout()
+ {
+@@ -253,13 +249,13 @@ get_rubout()
+ }
+ #endif /* BSD42 */
+ 
+-#ifdef SYSVR2
++#if 1
+ static void
+ get_rubout()
+ {
+-    struct termio tmio;
++    struct termios tmio;
+ 
+-    if ((ioctl(0, TCGETA, &tmio) < 0) ||
++    if ((tcgetattr(0, &tmio) < 0) ||
+ 	(tmio.c_cc[VERASE] == UNDEF_STTY)) {
+ 	rubout_code = RUBOUT;		/* BackSpase */
+     } else {
+@@ -398,7 +394,7 @@ int argc;
+     return(0);
+ }
+ 
+-void
++int
+ main(argc, argv)
+ int argc;
+ char **argv;
+@@ -415,7 +411,6 @@ char **argv;
+     XLCd xlc;
+ #endif /* X11R5 */
+     extern char *get_server_env();
+-    extern char *index();
+ 
+     prgname = argv[0];
+     if (create_arg_string(argv, argc) == -1) exit(1);

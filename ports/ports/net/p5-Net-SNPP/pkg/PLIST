@@ -1,0 +1,7 @@
+${P5SITE}/Net/
+${P5SITE}/Net/SNPP/
+${P5SITE}/Net/SNPP.pm
+${P5SITE}/Net/SNPP/HylaFAX.pm
+${P5SITE}/Net/SNPP/Server.pm
+@man man/man3p/Net::SNPP.3p
+@man man/man3p/Net::SNPP::Server.3p

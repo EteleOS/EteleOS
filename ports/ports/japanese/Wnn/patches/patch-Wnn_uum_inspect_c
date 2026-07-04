@@ -1,0 +1,10 @@
+--- Wnn/uum/inspect.c.orig
++++ Wnn/uum/inspect.c
+@@ -49,6 +49,7 @@
+ /*	Version 4.0
+  */
+ #include <stdio.h>
++#include <string.h>
+ #include "jllib.h"
+ #include "commonhd.h"
+ #include "sdefine.h"

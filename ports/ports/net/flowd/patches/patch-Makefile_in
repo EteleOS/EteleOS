@@ -1,0 +1,11 @@
+--- Makefile.in.orig	Wed Jun  8 18:18:12 2005
++++ Makefile.in	Wed Jun  8 18:20:11 2005
+@@ -25,7 +25,7 @@ VPATH=@srcdir@
+ CC=@CC@
+ LDFLAGS=@LDFLAGS@
+ CFLAGS=@CFLAGS@
+-CPPFLAGS=-I$(srcdir) @CPPFLAGS@ $(PATHFLAGS) $(PROGFLAGS) @DEFS@
++CPPFLAGS=-I$(srcdir) -fPIC @CPPFLAGS@ $(PATHFLAGS) $(PROGFLAGS) @DEFS@
+ LIBS=@LIBS@
+ EXEEXT=@EXEEXT@
+ INSTALL=@INSTALL@

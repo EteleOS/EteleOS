@@ -1,0 +1,286 @@
+.\"	$OpenBSD: sqlports.5,v 1.12 2023/09/25 17:10:44 espie Exp $
+.\"
+.\" Copyright (c) 2020 Marc Espie <espie@openbsd.org>
+.\"
+.\" Permission to use, copy, modify, and distribute this software for any
+.\" purpose with or without fee is hereby granted, provided that the above
+.\" copyright notice and this permission notice appear in all copies.
+.\"
+.\" THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+.\" WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+.\" MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+.\" ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+.\" WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+.\" ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+.\" OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.Dd $Mdocdate: September 25 2023 $
+.Dt SQLPORTS 5
+.Os
+.Sh NAME
+.Nm sqlports
+.Nd sqlite database for ports meta information
+.Sh DESCRIPTION
+.Nm
+is built as a port by parsing the output of
+.Li make dump-vars
+over the full ports tree.
+.Pp
+The database contains tables for automated tools, along with nice views
+for human consumption.
+.Pp
+Table names are prefixed with underscore, .e.g,
+.Sq _Ports
+contrary to views, e.g.,
+.Sq Paths .
+.Pp
+The special table
+.Sq Meta
+contains only one entry, detailing the current database.
+.Bl -tag -offset indent -width keyword
+.It Meta (SchemaVersion, Hash, CurrentDate)
+SchemaVersion follows the usual major.minor rules as shared libraries,
+Hash is unique to each generated database,
+CurrentDate is the date the database was generated.
+.El
+.Pp
+Other tables are as follows:
+.Bl -tag -offset indent -width keyword
+.It _Paths (ID, FULLPKGPATH, PKGPATH, CANONICAL)
+PKGPATH points to a PATHS entry corresponding to the stripped down version of 
+FULLPKGPATH, without flavors or subpackage markers, or is null if FULLPKGPATH
+is already stripped.  
+Every other FULLPKGPATH, PKGPATH, DEPENDSPATH entry
+in the database points to this table.
+The FULLPKGPATH is complete, including flavors and pseudo flavors markers. 
+For every port with MULTI_PACKAGES settings, one entry is written 
+for each SUBPACKAGE.
+CANONICAL points to the actual ID to use as an entry in other tables, for
+FULLPKGPATH which don't have their own entry.
+.It _Ports(FULLPKGPATH, ...)
+holds all the information retrieved through various variables that is not
+stored in specialized tables, e.g.,:
+.Bl -tag -width AUTOMAKE_VERSION -offset indent -compact
+.It AUTOCONF_VERSION
+.It AUTOMAKE_VERSION 
+.It COMES_WITH
+.It COMMENT 
+.It COMPILER
+.It COMPILER_LANGS
+.It DISTFILES 
+.It DISTNAME 
+.It DIST_SUBDIR 
+.It EPOCH
+.It FIX_EXTRACT_PERMISSIONS
+.It FULLPKGNAME
+.It GH_*
+.It HOMEPAGE 
+.It IGNORE
+.It IS_INTERACTIVE 
+.It MAINTAINER
+.It NO_*
+.It PERMIT_*
+.It PKGNAME 
+.It PKGSPEC
+.It PKGSTEM
+.It PKG_ARCH 
+.It PORTROACH
+.It PORTROACH_COMMENT
+.It PREFIX
+.It PSEUDO_FLAVOR
+.It REVISION
+.It SEPARATE_BUILD
+.It STATIC_PLIST
+.It SUBPACKAGE
+.It SUPDISTFILES
+.It TEST_IS_INTERACTIVE 
+.It UPDATE_PLIST_ARGS
+.It USE_*
+.El
+Some of this information is stored as indexes in keyword tables,
+and Yes/No variables have been replaced with 1/0.
+Variables not present in a given port are left undefined.
+.Pp
+Specifically, AUTOCONF_VERSION and AUTOMAKE_VERSION reference _AutoVersion,
+MAINTAINER references _EMail, PERMIT_DISTFILES and SEPARATE_BUILD 
+reference _Keywords2, PKG_ARCH references _Arch, and PREFIX references _Prefix.
+Note that USE_LIBTOOL is 3-valued: 2 is gnu, 1 is yes, undef is no.
+Note that USE_WXNEEDED is 3-valued: 2 is special, 1 is yes, undef is no.
+.Pp
+MULTI_PACKAGES ports hold several entries with corresponding FULLPKGPATH
+(after canonicalisation).
+.It _Flavors(FULLPKGPATH, VALUE, N)
+.It _PseudoFlavors(FULLPKGPATH, VALUE, N)
+.It _Categories(FULLPKGPATH, VALUE, N)
+.It _Multi(FULLPKGPATH, VALUE, SUBPKGPATH, N)
+No values are stored for SUBPKGPATH=-.
+.It _Modules(FULLPKGPATH, VALUE, N)
+.It _Configure(FULLPKGPATH, VALUE, N)
+Corresponds to CONFIGURE_STYLE
+.It _ConfigureArgs(FULLPKGPATH, VALUE, N, QUOTETYPE)
+.It _DebugConfigureArgs(FULLPKGPATH, VALUE, N, QUOTETYPE)
+.It _MasterSites(FULLPKGPATH, N, VALUE)
+.It _Makefiles(FULLPKGPATH, VALUE, N)
+This tables contains only Makefiles from MAKE_FILE_LIST that are not
+.Sq default values
+(always included makefiles).
+.It _FixCRLFFiles(FULLPKGPATH, VALUE, N)
+.It _NotForArch(FULLPKGPATH, VALUE, N)
+.It _OnlyForArch(FULLPKGPATH, VALUE, N)
+All of these variable values are actually ordered lists (hence the N).
+.Pp
+Each keyword table follows the same scheme
+TABLENAME(KEYREF, VALUE)
+.It _Depends(FULLPKGPATH, FULLDEPENDS, PKGSPEC, REST, DEPENDSPATH, TYPE, N)
+All depends are stored in a single table, the type is
+.Bl -tag -width 10 -offset indent -compact
+.It 0
+LIB_DEPENDS
+.It 1
+RUN_DEPENDS
+.It 2
+BUILD_DEPENDS
+.It 3
+TEST_DEPENDS
+.El
+FULLDEPENDS is the full text of the dependency, which parses as DEPENDSPATH,
+the actual PKGPATH we depend upon, PKGSPEC, the spec we depend upon 
+(if explicit), and REST the remainder of the text (things like :configure and
+such).
+.It _Distfiles(FULLPKGPATH, VALUE, Sufx, Type)
+All distfiles/patchfiles/supdistfiles are stored in a single table, with Type
+.Bl -tag -width 10 -offset indent -compact
+.It 0
+distfiles
+.It 1 
+patchfiles
+.It 2
+supdistfiles
+.El
+.It _DPBProperties (FULLPKGPATH, VALUE, N)
+.It _Wantlib(FULLPKGPATH, VALUE, EXTRA)
+All the libraries the FULLPKGPATH depends upon, with optional version 
+number specification stored in EXTRA
+coming from the WANTLIB variable.
+.It _Multi(FULLPKGPATH, VALUE, SUBPKGPATH, N)
+also contains the normalized pkgpath for the corresponding subpackage.
+.It _DebugPackages(FULLPKGPATH, VALUE, SUBPKGPATH, N)
+contrary to _Multi, also contains
+.Sq -
+entries for packages without subpackages which have debug packages.
+.It _PkgPaths(FULLPKGPATH, Value, N)
+all build_packages associated to a fullpkgpath.
+.It _Broken(FULLPKGPATH, ARCH, TEXT)
+.It _Shared_Libs(FULLPKGPATH, LIBNAME, VERSION)
+.It _SubstVars(FULLPKGPATH, VALUE, N)
+.It _TARGETS(FULLPKGPATH, VALUE)
+.El
+Some information, both in the main table and in secondary tables 
+is stored as keyword references to other tables:
+.Bl -tag -width AUTOMAKE_VERSIONblablabla -offset indent -compact
+.It AUTOCONF_VERSION , AUTOMAKE_VERSION
+_AUTOVERSION
+.It FixCRLFFiles 
+_FILENAME2
+.It _DPBProperties.value 
+_DPBKeys
+.It MAINTAINER 
+_EMAIL
+.It CATEGORIES 
+_CATEGORYKEYS
+.It CONFIGURE 
+_CONFIGURE_KEYS
+.It MAKEFILES 
+_FILENAME
+.It MODULES
+_MODULEKEYS
+.It PREFIX 
+_PREFIX
+.It _WANTLIB.VALUE , _SHARED_LIBS.LIBNAME 
+_LIBRARY
+.It PERMIT_* , SEPARATE_BUILD 
+_KEYWORDS2
+.It FLAVORS , PSEUDO_FLAVORS 
+_KEYWORDS
+.It NOT_FOR_ARCHS , ONLY_FOR_ARCHS , PKG_ARCH 
+_ARCH
+.It _SubstVars.value
+_substvarskey
+.It TARGETS 
+_TARGETKEYS
+.It _Distfiles.value 
+_Fetchfiles
+.El
+A few views are provided for convenience while building complex requests.
+.Bl -bullet -offset indent
+.It 
+Ports:
+contains all info from _ports and from secondary tables with indices 
+replaced with text values.
+.It
+* Depends_ordered, Categories_ordered, CompilerLinks_Ordered,
+Configureargs_ordered, Configure_ordered, DebugConfigureArgs_Ordered, 
+DPBProperties_ordered,
+Flavors_ordered, Makefiles_ordered, Modules_ordered, NotForArch_ordered,
+OnlyforArch_ordered, PkgPaths_ordered, PseudoFlavors_ordered,
+SubstVars_ordered, Targets_ordered, distfiles_ordered, wantlib_ordered: 
+reconstituted lists of text values as a single string from the 
+corresponding table.
+.It
+each "keyword" list also has a corresponding view, e.g.,
+_BROKEN -> BROKEN (PathId, FULLPKGPATH, Arch, Value)
+with text fields, and PathId still the index entry for the fullpkgpath,
+suitable for further joins.
+.It
+canonical_depends: fullpkgpath/dependspath/dependstype from _depends but
+normalized as canonical paths.
+.El
+.Pp
+The database also contains a caching table named
+.Sq PortsQ
+that contains the actual data from the
+.Sq Ports
+view.
+.Sh EXAMPLES
+Looking at the details of a view:
+.Bd -literal -offset indent
+sqlite> .schema depends 
+CREATE VIEW Depends AS
+    SELECT
+        _Paths.Id AS PathId,
+        _Paths.FullPkgPath AS FullPkgPath,
+        FullDepends,
+        PkgSpec,
+        Rest,
+        T0001.FullPkgpath AS DependsPath,
+        Type,
+        N
+    FROM _Depends
+        JOIN _Paths
+            ON _Paths.Canonical=_Depends.FullPkgPath
+        JOIN _Paths T0001
+            ON T0001.Canonical=DependsPath
+/* Depends(PathId,FullPkgPath,FullDepends,PkgSpec,Rest,DependsPath,Type,N) */;
+.Ed
+List the fullpkgpaths of leaf ports (not a dependency of anything):
+.Bd -literal -offset indent
+sqlite> select distinct fullpkgpath from _paths where pkgpath not in 
+    (select pkgpath from _paths 
+    	join _depends on _depends.dependspath=_paths.id);
+.Ed
+.Sh BUGS AND LIMITATIONS
+The optimizer in
+.Xr sqlite 1
+doesn't care for non-standard constructs such as
+.Sq group_concat
+and doesn't optimize left joins away when it should,
+so even if you don't ask for agregated columns in the
+.Sq Ports
+view, it will compute them irregardless.
+Hence the
+.Sq PortsQ
+cache.
+.Sh FILES
+.Pa ${TRUEPREFIX}/share/sqlports
+.Sh SEE ALSO
+.Xr sqlite3 1

@@ -1,0 +1,3 @@
+@pkgpath devel/doxygen,-gui
+@bin bin/doxywizard
+@man man/man1/doxywizard.1

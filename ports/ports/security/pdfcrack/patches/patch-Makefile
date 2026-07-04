@@ -1,0 +1,9 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -16,4 +16,4 @@ clean:
+ 	rm -f pdfcrack pdfreader testreader *.o
+ 
+ %.o: %.c
+-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -c -o $@ $+
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -c -o $@ $>

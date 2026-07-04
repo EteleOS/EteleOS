@@ -1,0 +1,8 @@
+@conflict kdirstat-*
+@pkgpath x11/kdirstat
+@bin bin/qdirstat
+bin/qdirstat-cache-writer
+share/applications/qdirstat.desktop
+share/icons/hicolor/32x32/apps/qdirstat.svg
+@tag update-desktop-database
+@tag gtk-update-icon-cache %D/share/icons/hicolor

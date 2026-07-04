@@ -1,0 +1,758 @@
+@bin bin/virsh
+@bin bin/virt-admin
+@bin bin/virt-host-validate
+@bin bin/virt-pki-query-dn
+@bin bin/virt-pki-validate
+bin/virt-qemu-qmp-proxy
+@bin bin/virt-qemu-run
+bin/virt-qemu-sev-validate
+@bin bin/virt-ssh-helper
+bin/virt-xml-validate
+include/libvirt/
+include/libvirt/libvirt-admin.h
+include/libvirt/libvirt-common.h
+include/libvirt/libvirt-domain-checkpoint.h
+include/libvirt/libvirt-domain-snapshot.h
+include/libvirt/libvirt-domain.h
+include/libvirt/libvirt-event.h
+include/libvirt/libvirt-host.h
+include/libvirt/libvirt-interface.h
+include/libvirt/libvirt-lxc.h
+include/libvirt/libvirt-network.h
+include/libvirt/libvirt-nodedev.h
+include/libvirt/libvirt-nwfilter.h
+include/libvirt/libvirt-qemu.h
+include/libvirt/libvirt-secret.h
+include/libvirt/libvirt-storage.h
+include/libvirt/libvirt-stream.h
+include/libvirt/libvirt.h
+include/libvirt/virterror.h
+@comment lib/charset.alias
+lib/libvirt/
+@lib lib/libvirt-admin.so.${LIBvirt-admin_VERSION}
+@lib lib/libvirt-lxc.so.${LIBvirt-lxc_VERSION}
+@lib lib/libvirt-qemu.so.${LIBvirt-qemu_VERSION}
+@lib lib/libvirt.so.${LIBvirt_VERSION}
+lib/libvirt/connection-driver/
+@so lib/libvirt/connection-driver/libvirt_driver_qemu.so
+@so lib/libvirt/connection-driver/libvirt_driver_secret.so
+@so lib/libvirt/connection-driver/libvirt_driver_storage.so
+@so lib/libvirt/connection-driver/libvirt_driver_vbox.so
+lib/libvirt/lock-driver/
+@so lib/libvirt/lock-driver/lockd.so
+lib/libvirt/storage-backend/
+@so lib/libvirt/storage-backend/libvirt_storage_backend_fs.so
+lib/libvirt/storage-file/
+lib/pkgconfig/libvirt-admin.pc
+lib/pkgconfig/libvirt-lxc.pc
+lib/pkgconfig/libvirt-qemu.pc
+lib/pkgconfig/libvirt.pc
+lib/sysusers.d/
+lib/sysusers.d/libvirt-qemu.conf
+lib/sysusers.d/libvirt.conf
+libexec/libvirt-guests.sh
+@bin libexec/libvirt_iohelper
+@man man/man1/virsh.1
+@man man/man1/virt-admin.1
+@man man/man1/virt-host-validate.1
+@man man/man1/virt-pki-query-dn.1
+@man man/man1/virt-pki-validate.1
+@man man/man1/virt-qemu-qmp-proxy.1
+@man man/man1/virt-qemu-run.1
+@man man/man1/virt-qemu-sev-validate.1
+@man man/man1/virt-xml-validate.1
+@man man/man7/virkeycode-atset1.7
+@man man/man7/virkeycode-atset2.7
+@man man/man7/virkeycode-atset3.7
+@man man/man7/virkeycode-linux.7
+@man man/man7/virkeycode-osx.7
+@man man/man7/virkeycode-qnum.7
+@man man/man7/virkeycode-usb.7
+@man man/man7/virkeycode-win32.7
+@man man/man7/virkeycode-xtkbd.7
+@man man/man7/virkeyname-linux.7
+@man man/man7/virkeyname-osx.7
+@man man/man7/virkeyname-win32.7
+@man man/man8/libvirt-guests.8
+@man man/man8/libvirtd.8
+@man man/man8/virt-ssh-helper.8
+@man man/man8/virtlockd.8
+@man man/man8/virtlogd.8
+@man man/man8/virtproxyd.8
+@man man/man8/virtqemud.8
+@man man/man8/virtsecretd.8
+@man man/man8/virtstoraged.8
+@man man/man8/virtvboxd.8
+@bin sbin/libvirtd
+@bin sbin/virtlockd
+@bin sbin/virtlogd
+@bin sbin/virtproxyd
+@bin sbin/virtqemud
+@bin sbin/virtsecretd
+@bin sbin/virtstoraged
+@bin sbin/virtvboxd
+share/augeas/
+share/augeas/lenses/
+share/augeas/lenses/libvirt_lockd.aug
+share/augeas/lenses/libvirt_secrets.aug
+share/augeas/lenses/libvirtd.aug
+share/augeas/lenses/libvirtd_qemu.aug
+share/augeas/lenses/tests/
+share/augeas/lenses/tests/test_libvirt_lockd.aug
+share/augeas/lenses/tests/test_libvirt_secrets.aug
+share/augeas/lenses/tests/test_libvirtd.aug
+share/augeas/lenses/tests/test_libvirtd_qemu.aug
+share/augeas/lenses/tests/test_virtlockd.aug
+share/augeas/lenses/tests/test_virtlogd.aug
+share/augeas/lenses/tests/test_virtproxyd.aug
+share/augeas/lenses/tests/test_virtqemud.aug
+share/augeas/lenses/tests/test_virtsecretd.aug
+share/augeas/lenses/tests/test_virtstoraged.aug
+share/augeas/lenses/tests/test_virtvboxd.aug
+share/augeas/lenses/virtlockd.aug
+share/augeas/lenses/virtlogd.aug
+share/augeas/lenses/virtproxyd.aug
+share/augeas/lenses/virtqemud.aug
+share/augeas/lenses/virtsecretd.aug
+share/augeas/lenses/virtstoraged.aug
+share/augeas/lenses/virtvboxd.aug
+share/doc/libvirt/
+share/doc/libvirt/examples/
+share/doc/libvirt/examples/c/
+share/doc/libvirt/examples/c/admin/
+share/doc/libvirt/examples/c/admin/client_close.c
+share/doc/libvirt/examples/c/admin/client_info.c
+share/doc/libvirt/examples/c/admin/client_limits.c
+share/doc/libvirt/examples/c/admin/list_clients.c
+share/doc/libvirt/examples/c/admin/list_servers.c
+share/doc/libvirt/examples/c/admin/logging.c
+share/doc/libvirt/examples/c/admin/threadpool_params.c
+share/doc/libvirt/examples/c/domain/
+share/doc/libvirt/examples/c/domain/dommigrate.c
+share/doc/libvirt/examples/c/domain/domtop.c
+share/doc/libvirt/examples/c/domain/info1.c
+share/doc/libvirt/examples/c/domain/rename.c
+share/doc/libvirt/examples/c/domain/suspend.c
+share/doc/libvirt/examples/c/misc/
+share/doc/libvirt/examples/c/misc/event-test.c
+share/doc/libvirt/examples/c/misc/hellolibvirt.c
+share/doc/libvirt/examples/c/misc/openauth.c
+share/doc/libvirt/examples/polkit/
+share/doc/libvirt/examples/polkit/libvirt-acl.rules
+share/doc/libvirt/examples/sh/
+share/doc/libvirt/examples/sh/virt-lxc-convert
+share/doc/libvirt/examples/systemtap/
+share/doc/libvirt/examples/systemtap/amd-sev-es-vmsa.stp
+share/doc/libvirt/examples/systemtap/events.stp
+share/doc/libvirt/examples/systemtap/lock-debug.stp
+share/doc/libvirt/examples/systemtap/qemu-monitor.stp
+share/doc/libvirt/examples/systemtap/rpc-monitor.stp
+share/doc/libvirt/examples/xml/
+share/doc/libvirt/examples/xml/storage/
+share/doc/libvirt/examples/xml/storage/pool-dir.xml
+share/doc/libvirt/examples/xml/storage/pool-fs.xml
+share/doc/libvirt/examples/xml/storage/pool-logical.xml
+share/doc/libvirt/examples/xml/storage/pool-netfs.xml
+share/doc/libvirt/examples/xml/storage/vol-cow.xml
+share/doc/libvirt/examples/xml/storage/vol-qcow.xml
+share/doc/libvirt/examples/xml/storage/vol-qcow2.xml
+share/doc/libvirt/examples/xml/storage/vol-raw.xml
+share/doc/libvirt/examples/xml/storage/vol-sparse.xml
+share/doc/libvirt/examples/xml/storage/vol-vmdk.xml
+share/doc/libvirt/examples/xml/test/
+share/doc/libvirt/examples/xml/test/testdev.xml
+share/doc/libvirt/examples/xml/test/testdomfc4.xml
+share/doc/libvirt/examples/xml/test/testdomfv0.xml
+share/doc/libvirt/examples/xml/test/testnetdef.xml
+share/doc/libvirt/examples/xml/test/testnetpriv.xml
+share/doc/libvirt/examples/xml/test/testnode.xml
+share/doc/libvirt/examples/xml/test/testnodeinline.xml
+share/doc/libvirt/examples/xml/test/testpool.xml
+share/doc/libvirt/examples/xml/test/testvol.xml
+share/doc/libvirt/html/
+share/doc/libvirt/html/404.html
+share/doc/libvirt/html/acl.html
+share/doc/libvirt/html/aclpolkit.html
+share/doc/libvirt/html/advanced-tests.html
+share/doc/libvirt/html/android-chrome-192x192.png
+share/doc/libvirt/html/android-chrome-256x256.png
+share/doc/libvirt/html/api.html
+share/doc/libvirt/html/api_extension.html
+share/doc/libvirt/html/apple-touch-icon.png
+share/doc/libvirt/html/apps.html
+share/doc/libvirt/html/auditlog.html
+share/doc/libvirt/html/auth.html
+share/doc/libvirt/html/best-practices.html
+share/doc/libvirt/html/bindings.html
+share/doc/libvirt/html/browserconfig.xml
+share/doc/libvirt/html/bugs.html
+share/doc/libvirt/html/cgroups.html
+share/doc/libvirt/html/ci-dashboard.html
+share/doc/libvirt/html/ci-runners.html
+share/doc/libvirt/html/ci.html
+share/doc/libvirt/html/clangd.html
+share/doc/libvirt/html/coding-style.html
+share/doc/libvirt/html/committer-guidelines.html
+share/doc/libvirt/html/compiling.html
+share/doc/libvirt/html/contact.html
+share/doc/libvirt/html/contribute.html
+share/doc/libvirt/html/csharp.html
+share/doc/libvirt/html/css/
+share/doc/libvirt/html/css/fonts.css
+share/doc/libvirt/html/css/generic.css
+share/doc/libvirt/html/css/libvirt-api.css
+share/doc/libvirt/html/css/libvirt-template.css
+share/doc/libvirt/html/css/libvirt.css
+share/doc/libvirt/html/css/local.css
+share/doc/libvirt/html/css/main.css
+share/doc/libvirt/html/css/mobile-libvirt.css
+share/doc/libvirt/html/css/mobile-template.css
+share/doc/libvirt/html/daemons.html
+share/doc/libvirt/html/dbus.html
+share/doc/libvirt/html/docs.html
+share/doc/libvirt/html/downloads.html
+share/doc/libvirt/html/drivers.html
+share/doc/libvirt/html/drvbhyve.html
+share/doc/libvirt/html/drvch.html
+share/doc/libvirt/html/drvesx.html
+share/doc/libvirt/html/drvhyperv.html
+share/doc/libvirt/html/drvlxc.html
+share/doc/libvirt/html/drvnetwork.html
+share/doc/libvirt/html/drvnodedev.html
+share/doc/libvirt/html/drvopenvz.html
+share/doc/libvirt/html/drvqemu.html
+share/doc/libvirt/html/drvsecret.html
+share/doc/libvirt/html/drvtest.html
+share/doc/libvirt/html/drvvbox.html
+share/doc/libvirt/html/drvvirtuozzo.html
+share/doc/libvirt/html/drvvmware.html
+share/doc/libvirt/html/drvxen.html
+share/doc/libvirt/html/errors.html
+share/doc/libvirt/html/favicon-16x16.png
+share/doc/libvirt/html/favicon-32x32.png
+share/doc/libvirt/html/favicon.ico
+share/doc/libvirt/html/firewall.html
+share/doc/libvirt/html/fonts/
+share/doc/libvirt/html/fonts/LICENSE.rst
+share/doc/libvirt/html/fonts/overpass-bold-italic.woff
+share/doc/libvirt/html/fonts/overpass-bold.woff
+share/doc/libvirt/html/fonts/overpass-italic.woff
+share/doc/libvirt/html/fonts/overpass-light-italic.woff
+share/doc/libvirt/html/fonts/overpass-light.woff
+share/doc/libvirt/html/fonts/overpass-mono-bold.woff
+share/doc/libvirt/html/fonts/overpass-mono-light.woff
+share/doc/libvirt/html/fonts/overpass-mono-regular.woff
+share/doc/libvirt/html/fonts/overpass-mono-semibold.woff
+share/doc/libvirt/html/fonts/overpass-regular.woff
+share/doc/libvirt/html/format.html
+share/doc/libvirt/html/formatbackup.html
+share/doc/libvirt/html/formatcaps.html
+share/doc/libvirt/html/formatcheckpoint.html
+share/doc/libvirt/html/formatdomain.html
+share/doc/libvirt/html/formatdomaincaps.html
+share/doc/libvirt/html/formatnetwork.html
+share/doc/libvirt/html/formatnetworkport.html
+share/doc/libvirt/html/formatnode.html
+share/doc/libvirt/html/formatnwfilter.html
+share/doc/libvirt/html/formatsecret.html
+share/doc/libvirt/html/formatsnapshot.html
+share/doc/libvirt/html/formatstorage.html
+share/doc/libvirt/html/formatstoragecaps.html
+share/doc/libvirt/html/formatstorageencryption.html
+share/doc/libvirt/html/glib-adoption.html
+share/doc/libvirt/html/go/
+share/doc/libvirt/html/go/libvirt.html
+share/doc/libvirt/html/go/libvirtxml.html
+share/doc/libvirt/html/goals.html
+share/doc/libvirt/html/golang.html
+share/doc/libvirt/html/governance.html
+share/doc/libvirt/html/hacking.html
+share/doc/libvirt/html/hooks.html
+share/doc/libvirt/html/html/
+share/doc/libvirt/html/html/index.html
+share/doc/libvirt/html/html/libvirt-libvirt-admin.html
+share/doc/libvirt/html/html/libvirt-libvirt-common.html
+share/doc/libvirt/html/html/libvirt-libvirt-domain-checkpoint.html
+share/doc/libvirt/html/html/libvirt-libvirt-domain-snapshot.html
+share/doc/libvirt/html/html/libvirt-libvirt-domain.html
+share/doc/libvirt/html/html/libvirt-libvirt-event.html
+share/doc/libvirt/html/html/libvirt-libvirt-host.html
+share/doc/libvirt/html/html/libvirt-libvirt-interface.html
+share/doc/libvirt/html/html/libvirt-libvirt-lxc.html
+share/doc/libvirt/html/html/libvirt-libvirt-network.html
+share/doc/libvirt/html/html/libvirt-libvirt-nodedev.html
+share/doc/libvirt/html/html/libvirt-libvirt-nwfilter.html
+share/doc/libvirt/html/html/libvirt-libvirt-qemu.html
+share/doc/libvirt/html/html/libvirt-libvirt-secret.html
+share/doc/libvirt/html/html/libvirt-libvirt-storage.html
+share/doc/libvirt/html/html/libvirt-libvirt-stream.html
+share/doc/libvirt/html/html/libvirt-virterror.html
+share/doc/libvirt/html/hvsupport.html
+share/doc/libvirt/html/images/
+share/doc/libvirt/html/images/event_loop_simple.png
+share/doc/libvirt/html/images/event_loop_worker.png
+share/doc/libvirt/html/images/libvirt-daemon-arch.png
+share/doc/libvirt/html/images/libvirt-driver-arch.png
+share/doc/libvirt/html/images/libvirt-object-model.png
+share/doc/libvirt/html/images/libvirt-virConnect-example.png
+share/doc/libvirt/html/images/migration-managed-direct.png
+share/doc/libvirt/html/images/migration-managed-p2p.png
+share/doc/libvirt/html/images/migration-native.png
+share/doc/libvirt/html/images/migration-tunnel.png
+share/doc/libvirt/html/images/migration-unmanaged-direct.png
+share/doc/libvirt/html/index.html
+share/doc/libvirt/html/issue-handling.html
+share/doc/libvirt/html/js/
+share/doc/libvirt/html/js/main.js
+share/doc/libvirt/html/js/virt-tools-blog-planet.js
+share/doc/libvirt/html/kbase/
+share/doc/libvirt/html/kbase/backing_chains.html
+share/doc/libvirt/html/kbase/debuglogs.html
+share/doc/libvirt/html/kbase/domainstatecapture.html
+share/doc/libvirt/html/kbase/failed_connection_after_install.html
+share/doc/libvirt/html/kbase/index.html
+share/doc/libvirt/html/kbase/internals/
+share/doc/libvirt/html/kbase/internals/command.html
+share/doc/libvirt/html/kbase/internals/eventloop.html
+share/doc/libvirt/html/kbase/internals/incremental-backup.html
+share/doc/libvirt/html/kbase/internals/locking.html
+share/doc/libvirt/html/kbase/internals/migration.html
+share/doc/libvirt/html/kbase/internals/overview.html
+share/doc/libvirt/html/kbase/internals/qemu-event-handlers.html
+share/doc/libvirt/html/kbase/internals/qemu-migration.html
+share/doc/libvirt/html/kbase/internals/qemu-threads.html
+share/doc/libvirt/html/kbase/internals/rpc.html
+share/doc/libvirt/html/kbase/kvm-realtime.html
+share/doc/libvirt/html/kbase/launch_security_sev.html
+share/doc/libvirt/html/kbase/live_full_disk_backup.html
+share/doc/libvirt/html/kbase/locking-lockd.html
+share/doc/libvirt/html/kbase/locking-sanlock.html
+share/doc/libvirt/html/kbase/locking.html
+share/doc/libvirt/html/kbase/memorydevices.html
+share/doc/libvirt/html/kbase/merging_disk_image_chains.html
+share/doc/libvirt/html/kbase/qemu-core-dump.html
+share/doc/libvirt/html/kbase/qemu-passthrough-security.html
+share/doc/libvirt/html/kbase/rpm-deployment.html
+share/doc/libvirt/html/kbase/s390_protected_virt.html
+share/doc/libvirt/html/kbase/secureboot.html
+share/doc/libvirt/html/kbase/secureusage.html
+share/doc/libvirt/html/kbase/snapshots.html
+share/doc/libvirt/html/kbase/systemtap.html
+share/doc/libvirt/html/kbase/tlscerts.html
+share/doc/libvirt/html/kbase/virtiofs.html
+share/doc/libvirt/html/libvirt-go-xml.html
+share/doc/libvirt/html/libvirt-go.html
+share/doc/libvirt/html/logging.html
+share/doc/libvirt/html/logos/
+share/doc/libvirt/html/logos/index.html
+share/doc/libvirt/html/logos/logo-banner-dark-256.png
+share/doc/libvirt/html/logos/logo-banner-dark-800.png
+share/doc/libvirt/html/logos/logo-banner-dark.svg
+share/doc/libvirt/html/logos/logo-banner-light-256.png
+share/doc/libvirt/html/logos/logo-banner-light-800.png
+share/doc/libvirt/html/logos/logo-banner-light.svg
+share/doc/libvirt/html/logos/logo-base.svg
+share/doc/libvirt/html/logos/logo-square-128.png
+share/doc/libvirt/html/logos/logo-square-192.png
+share/doc/libvirt/html/logos/logo-square-256.png
+share/doc/libvirt/html/logos/logo-square-96.png
+share/doc/libvirt/html/logos/logo-square-powered-128.png
+share/doc/libvirt/html/logos/logo-square-powered-192.png
+share/doc/libvirt/html/logos/logo-square-powered-256.png
+share/doc/libvirt/html/logos/logo-square-powered-96.png
+share/doc/libvirt/html/logos/logo-square-powered.svg
+share/doc/libvirt/html/logos/logo-square.svg
+share/doc/libvirt/html/logos/logo-sticker-hexagon.svg
+share/doc/libvirt/html/logos/logo-sticker-square.svg
+share/doc/libvirt/html/macos.html
+share/doc/libvirt/html/manifest.json
+share/doc/libvirt/html/manpages/
+share/doc/libvirt/html/manpages/index.html
+share/doc/libvirt/html/manpages/libvirt-guests.html
+share/doc/libvirt/html/manpages/libvirtd.html
+share/doc/libvirt/html/manpages/virkeycode-atset1.html
+share/doc/libvirt/html/manpages/virkeycode-atset2.html
+share/doc/libvirt/html/manpages/virkeycode-atset3.html
+share/doc/libvirt/html/manpages/virkeycode-linux.html
+share/doc/libvirt/html/manpages/virkeycode-osx.html
+share/doc/libvirt/html/manpages/virkeycode-qnum.html
+share/doc/libvirt/html/manpages/virkeycode-usb.html
+share/doc/libvirt/html/manpages/virkeycode-win32.html
+share/doc/libvirt/html/manpages/virkeycode-xtkbd.html
+share/doc/libvirt/html/manpages/virkeyname-linux.html
+share/doc/libvirt/html/manpages/virkeyname-osx.html
+share/doc/libvirt/html/manpages/virkeyname-win32.html
+share/doc/libvirt/html/manpages/virsh.html
+share/doc/libvirt/html/manpages/virt-admin.html
+share/doc/libvirt/html/manpages/virt-host-validate.html
+share/doc/libvirt/html/manpages/virt-login-shell.html
+share/doc/libvirt/html/manpages/virt-pki-query-dn.html
+share/doc/libvirt/html/manpages/virt-pki-validate.html
+share/doc/libvirt/html/manpages/virt-qemu-qmp-proxy.html
+share/doc/libvirt/html/manpages/virt-qemu-run.html
+share/doc/libvirt/html/manpages/virt-qemu-sev-validate.html
+share/doc/libvirt/html/manpages/virt-sanlock-cleanup.html
+share/doc/libvirt/html/manpages/virt-ssh-helper.html
+share/doc/libvirt/html/manpages/virt-xml-validate.html
+share/doc/libvirt/html/manpages/virtbhyved.html
+share/doc/libvirt/html/manpages/virtinterfaced.html
+share/doc/libvirt/html/manpages/virtlockd.html
+share/doc/libvirt/html/manpages/virtlogd.html
+share/doc/libvirt/html/manpages/virtlxcd.html
+share/doc/libvirt/html/manpages/virtnetworkd.html
+share/doc/libvirt/html/manpages/virtnodedevd.html
+share/doc/libvirt/html/manpages/virtnwfilterd.html
+share/doc/libvirt/html/manpages/virtproxyd.html
+share/doc/libvirt/html/manpages/virtqemud.html
+share/doc/libvirt/html/manpages/virtsecretd.html
+share/doc/libvirt/html/manpages/virtstoraged.html
+share/doc/libvirt/html/manpages/virtvboxd.html
+share/doc/libvirt/html/manpages/virtvzd.html
+share/doc/libvirt/html/manpages/virtxend.html
+share/doc/libvirt/html/migration.html
+share/doc/libvirt/html/mstile-150x150.png
+share/doc/libvirt/html/newreposetup.html
+share/doc/libvirt/html/news.html
+share/doc/libvirt/html/nss.html
+share/doc/libvirt/html/pci-addresses.html
+share/doc/libvirt/html/pci-hotplug.html
+share/doc/libvirt/html/platforms.html
+share/doc/libvirt/html/programming-languages.html
+share/doc/libvirt/html/python.html
+share/doc/libvirt/html/remote.html
+share/doc/libvirt/html/secretencryption.html
+share/doc/libvirt/html/securityprocess.html
+share/doc/libvirt/html/ssh-proxy.html
+share/doc/libvirt/html/storage.html
+share/doc/libvirt/html/strategy.html
+share/doc/libvirt/html/styleguide.html
+share/doc/libvirt/html/submitting-patches.html
+share/doc/libvirt/html/support.html
+share/doc/libvirt/html/testapi.html
+share/doc/libvirt/html/testing.html
+share/doc/libvirt/html/testtck.html
+share/doc/libvirt/html/uri.html
+share/doc/libvirt/html/windows.html
+share/examples/libvirt/
+@sample ${SYSCONFDIR}/libvirt/
+share/examples/libvirt/libvirt-admin.conf
+@sample ${SYSCONFDIR}/libvirt/libvirt-admin.conf
+share/examples/libvirt/libvirt.conf
+@sample ${SYSCONFDIR}/libvirt/libvirt.conf
+share/examples/libvirt/libvirtd.conf
+@sample ${SYSCONFDIR}/libvirt/libvirtd.conf
+share/examples/libvirt/qemu/
+@sample ${SYSCONFDIR}/libvirt/qemu/
+share/examples/libvirt/qemu-lockd.conf
+@sample ${SYSCONFDIR}/libvirt/qemu-lockd.conf
+share/examples/libvirt/qemu.conf
+@sample ${SYSCONFDIR}/libvirt/qemu.conf
+share/examples/libvirt/qemu/autostart/
+@sample ${SYSCONFDIR}/libvirt/qemu/autostart/
+share/examples/libvirt/sasl2/
+share/examples/libvirt/sasl2/libvirt.conf
+@sample ${SYSCONFDIR}/sasl2/libvirt.conf
+share/examples/libvirt/secret.conf
+share/examples/libvirt/secrets/
+@sample ${SYSCONFDIR}/libvirt/secrets/
+share/examples/libvirt/storage/
+@sample ${SYSCONFDIR}/libvirt/storage/
+share/examples/libvirt/storage/autostart/
+@sample ${SYSCONFDIR}/libvirt/storage/autostart/
+share/examples/libvirt/virtlockd.conf
+@sample ${SYSCONFDIR}/libvirt/virtlockd.conf
+share/examples/libvirt/virtlogd.conf
+@sample ${SYSCONFDIR}/libvirt/virtlogd.conf
+share/examples/libvirt/virtproxyd.conf
+@sample ${SYSCONFDIR}/libvirt/virtproxyd.conf
+share/examples/libvirt/virtqemud.conf
+@sample ${SYSCONFDIR}/libvirt/virtqemud.conf
+share/examples/libvirt/virtsecretd.conf
+@sample ${SYSCONFDIR}/libvirt/virtsecretd.conf
+share/examples/libvirt/virtstoraged.conf
+@sample ${SYSCONFDIR}/libvirt/virtstoraged.conf
+share/examples/libvirt/virtvboxd.conf
+@sample ${SYSCONFDIR}/libvirt/virtvboxd.conf
+share/libvirt/
+share/libvirt/api/
+share/libvirt/api/libvirt-admin-api.xml
+share/libvirt/api/libvirt-api.xml
+share/libvirt/api/libvirt-lxc-api.xml
+share/libvirt/api/libvirt-qemu-api.xml
+share/libvirt/cpu_map/
+share/libvirt/cpu_map/arm_Ampere-1.xml
+share/libvirt/cpu_map/arm_Ampere-1a.xml
+share/libvirt/cpu_map/arm_FT-2000plus.xml
+share/libvirt/cpu_map/arm_Falkor.xml
+share/libvirt/cpu_map/arm_Kunpeng-920.xml
+share/libvirt/cpu_map/arm_Neoverse-N1.xml
+share/libvirt/cpu_map/arm_Neoverse-N2.xml
+share/libvirt/cpu_map/arm_Neoverse-V1.xml
+share/libvirt/cpu_map/arm_Tengyun-S2500.xml
+share/libvirt/cpu_map/arm_ThunderX299xx.xml
+share/libvirt/cpu_map/arm_a64fx.xml
+share/libvirt/cpu_map/arm_cortex-a53.xml
+share/libvirt/cpu_map/arm_cortex-a57.xml
+share/libvirt/cpu_map/arm_cortex-a72.xml
+share/libvirt/cpu_map/arm_features.xml
+share/libvirt/cpu_map/arm_vendors.xml
+share/libvirt/cpu_map/index.xml
+share/libvirt/cpu_map/ppc64_POWER10.xml
+share/libvirt/cpu_map/ppc64_POWER11.xml
+share/libvirt/cpu_map/ppc64_POWER6.xml
+share/libvirt/cpu_map/ppc64_POWER7.xml
+share/libvirt/cpu_map/ppc64_POWER8.xml
+share/libvirt/cpu_map/ppc64_POWER9.xml
+share/libvirt/cpu_map/ppc64_POWERPC_e5500.xml
+share/libvirt/cpu_map/ppc64_POWERPC_e6500.xml
+share/libvirt/cpu_map/ppc64_vendors.xml
+share/libvirt/cpu_map/x86_486-v1.xml
+share/libvirt/cpu_map/x86_486.xml
+share/libvirt/cpu_map/x86_Broadwell-IBRS.xml
+share/libvirt/cpu_map/x86_Broadwell-noTSX-IBRS.xml
+share/libvirt/cpu_map/x86_Broadwell-noTSX.xml
+share/libvirt/cpu_map/x86_Broadwell-v1.xml
+share/libvirt/cpu_map/x86_Broadwell-v2.xml
+share/libvirt/cpu_map/x86_Broadwell-v3.xml
+share/libvirt/cpu_map/x86_Broadwell-v4.xml
+share/libvirt/cpu_map/x86_Broadwell.xml
+share/libvirt/cpu_map/x86_Cascadelake-Server-noTSX.xml
+share/libvirt/cpu_map/x86_Cascadelake-Server-v1.xml
+share/libvirt/cpu_map/x86_Cascadelake-Server-v2.xml
+share/libvirt/cpu_map/x86_Cascadelake-Server-v3.xml
+share/libvirt/cpu_map/x86_Cascadelake-Server-v4.xml
+share/libvirt/cpu_map/x86_Cascadelake-Server-v5.xml
+share/libvirt/cpu_map/x86_Cascadelake-Server.xml
+share/libvirt/cpu_map/x86_ClearwaterForest-v1.xml
+share/libvirt/cpu_map/x86_ClearwaterForest.xml
+share/libvirt/cpu_map/x86_Conroe-v1.xml
+share/libvirt/cpu_map/x86_Conroe.xml
+share/libvirt/cpu_map/x86_Cooperlake-v1.xml
+share/libvirt/cpu_map/x86_Cooperlake-v2.xml
+share/libvirt/cpu_map/x86_Cooperlake.xml
+share/libvirt/cpu_map/x86_Denverton-v1.xml
+share/libvirt/cpu_map/x86_Denverton-v2.xml
+share/libvirt/cpu_map/x86_Denverton-v3.xml
+share/libvirt/cpu_map/x86_Denverton.xml
+share/libvirt/cpu_map/x86_Dhyana-v1.xml
+share/libvirt/cpu_map/x86_Dhyana-v2.xml
+share/libvirt/cpu_map/x86_Dhyana.xml
+share/libvirt/cpu_map/x86_EPYC-Genoa-v1.xml
+share/libvirt/cpu_map/x86_EPYC-Genoa-v2.xml
+share/libvirt/cpu_map/x86_EPYC-Genoa.xml
+share/libvirt/cpu_map/x86_EPYC-IBPB.xml
+share/libvirt/cpu_map/x86_EPYC-Milan-v1.xml
+share/libvirt/cpu_map/x86_EPYC-Milan-v2.xml
+share/libvirt/cpu_map/x86_EPYC-Milan-v3.xml
+share/libvirt/cpu_map/x86_EPYC-Milan.xml
+share/libvirt/cpu_map/x86_EPYC-Rome-v1.xml
+share/libvirt/cpu_map/x86_EPYC-Rome-v2.xml
+share/libvirt/cpu_map/x86_EPYC-Rome-v3.xml
+share/libvirt/cpu_map/x86_EPYC-Rome-v4.xml
+share/libvirt/cpu_map/x86_EPYC-Rome-v5.xml
+share/libvirt/cpu_map/x86_EPYC-Rome.xml
+share/libvirt/cpu_map/x86_EPYC-Turin-v1.xml
+share/libvirt/cpu_map/x86_EPYC-Turin.xml
+share/libvirt/cpu_map/x86_EPYC-v1.xml
+share/libvirt/cpu_map/x86_EPYC-v2.xml
+share/libvirt/cpu_map/x86_EPYC-v3.xml
+share/libvirt/cpu_map/x86_EPYC-v4.xml
+share/libvirt/cpu_map/x86_EPYC-v5.xml
+share/libvirt/cpu_map/x86_EPYC.xml
+share/libvirt/cpu_map/x86_GraniteRapids-v1.xml
+share/libvirt/cpu_map/x86_GraniteRapids-v2.xml
+share/libvirt/cpu_map/x86_GraniteRapids-v3.xml
+share/libvirt/cpu_map/x86_GraniteRapids.xml
+share/libvirt/cpu_map/x86_Haswell-IBRS.xml
+share/libvirt/cpu_map/x86_Haswell-noTSX-IBRS.xml
+share/libvirt/cpu_map/x86_Haswell-noTSX.xml
+share/libvirt/cpu_map/x86_Haswell-v1.xml
+share/libvirt/cpu_map/x86_Haswell-v2.xml
+share/libvirt/cpu_map/x86_Haswell-v3.xml
+share/libvirt/cpu_map/x86_Haswell-v4.xml
+share/libvirt/cpu_map/x86_Haswell.xml
+share/libvirt/cpu_map/x86_Icelake-Client-noTSX.xml
+share/libvirt/cpu_map/x86_Icelake-Client.xml
+share/libvirt/cpu_map/x86_Icelake-Server-noTSX.xml
+share/libvirt/cpu_map/x86_Icelake-Server-v1.xml
+share/libvirt/cpu_map/x86_Icelake-Server-v2.xml
+share/libvirt/cpu_map/x86_Icelake-Server-v3.xml
+share/libvirt/cpu_map/x86_Icelake-Server-v4.xml
+share/libvirt/cpu_map/x86_Icelake-Server-v5.xml
+share/libvirt/cpu_map/x86_Icelake-Server-v6.xml
+share/libvirt/cpu_map/x86_Icelake-Server-v7.xml
+share/libvirt/cpu_map/x86_Icelake-Server.xml
+share/libvirt/cpu_map/x86_IvyBridge-IBRS.xml
+share/libvirt/cpu_map/x86_IvyBridge-v1.xml
+share/libvirt/cpu_map/x86_IvyBridge-v2.xml
+share/libvirt/cpu_map/x86_IvyBridge.xml
+share/libvirt/cpu_map/x86_KnightsMill-v1.xml
+share/libvirt/cpu_map/x86_KnightsMill.xml
+share/libvirt/cpu_map/x86_Nehalem-IBRS.xml
+share/libvirt/cpu_map/x86_Nehalem-v1.xml
+share/libvirt/cpu_map/x86_Nehalem-v2.xml
+share/libvirt/cpu_map/x86_Nehalem.xml
+share/libvirt/cpu_map/x86_Opteron_G1-v1.xml
+share/libvirt/cpu_map/x86_Opteron_G1.xml
+share/libvirt/cpu_map/x86_Opteron_G2-v1.xml
+share/libvirt/cpu_map/x86_Opteron_G2.xml
+share/libvirt/cpu_map/x86_Opteron_G3-v1.xml
+share/libvirt/cpu_map/x86_Opteron_G3.xml
+share/libvirt/cpu_map/x86_Opteron_G4-v1.xml
+share/libvirt/cpu_map/x86_Opteron_G4.xml
+share/libvirt/cpu_map/x86_Opteron_G5-v1.xml
+share/libvirt/cpu_map/x86_Opteron_G5.xml
+share/libvirt/cpu_map/x86_Penryn-v1.xml
+share/libvirt/cpu_map/x86_Penryn.xml
+share/libvirt/cpu_map/x86_SandyBridge-IBRS.xml
+share/libvirt/cpu_map/x86_SandyBridge-v1.xml
+share/libvirt/cpu_map/x86_SandyBridge-v2.xml
+share/libvirt/cpu_map/x86_SandyBridge.xml
+share/libvirt/cpu_map/x86_SapphireRapids-v1.xml
+share/libvirt/cpu_map/x86_SapphireRapids-v2.xml
+share/libvirt/cpu_map/x86_SapphireRapids-v3.xml
+share/libvirt/cpu_map/x86_SapphireRapids-v4.xml
+share/libvirt/cpu_map/x86_SapphireRapids.xml
+share/libvirt/cpu_map/x86_SierraForest-v1.xml
+share/libvirt/cpu_map/x86_SierraForest-v2.xml
+share/libvirt/cpu_map/x86_SierraForest-v3.xml
+share/libvirt/cpu_map/x86_SierraForest.xml
+share/libvirt/cpu_map/x86_Skylake-Client-IBRS.xml
+share/libvirt/cpu_map/x86_Skylake-Client-noTSX-IBRS.xml
+share/libvirt/cpu_map/x86_Skylake-Client-v1.xml
+share/libvirt/cpu_map/x86_Skylake-Client-v2.xml
+share/libvirt/cpu_map/x86_Skylake-Client-v3.xml
+share/libvirt/cpu_map/x86_Skylake-Client-v4.xml
+share/libvirt/cpu_map/x86_Skylake-Client.xml
+share/libvirt/cpu_map/x86_Skylake-Server-IBRS.xml
+share/libvirt/cpu_map/x86_Skylake-Server-noTSX-IBRS.xml
+share/libvirt/cpu_map/x86_Skylake-Server-v1.xml
+share/libvirt/cpu_map/x86_Skylake-Server-v2.xml
+share/libvirt/cpu_map/x86_Skylake-Server-v3.xml
+share/libvirt/cpu_map/x86_Skylake-Server-v4.xml
+share/libvirt/cpu_map/x86_Skylake-Server-v5.xml
+share/libvirt/cpu_map/x86_Skylake-Server.xml
+share/libvirt/cpu_map/x86_Snowridge-v1.xml
+share/libvirt/cpu_map/x86_Snowridge-v2.xml
+share/libvirt/cpu_map/x86_Snowridge-v3.xml
+share/libvirt/cpu_map/x86_Snowridge-v4.xml
+share/libvirt/cpu_map/x86_Snowridge.xml
+share/libvirt/cpu_map/x86_Westmere-IBRS.xml
+share/libvirt/cpu_map/x86_Westmere-v1.xml
+share/libvirt/cpu_map/x86_Westmere-v2.xml
+share/libvirt/cpu_map/x86_Westmere.xml
+share/libvirt/cpu_map/x86_YongFeng-v1.xml
+share/libvirt/cpu_map/x86_YongFeng-v2.xml
+share/libvirt/cpu_map/x86_YongFeng-v3.xml
+share/libvirt/cpu_map/x86_YongFeng.xml
+share/libvirt/cpu_map/x86_athlon-v1.xml
+share/libvirt/cpu_map/x86_athlon.xml
+share/libvirt/cpu_map/x86_core2duo-v1.xml
+share/libvirt/cpu_map/x86_core2duo.xml
+share/libvirt/cpu_map/x86_coreduo-v1.xml
+share/libvirt/cpu_map/x86_coreduo.xml
+share/libvirt/cpu_map/x86_cpu64-rhel5.xml
+share/libvirt/cpu_map/x86_cpu64-rhel6.xml
+share/libvirt/cpu_map/x86_features.xml
+share/libvirt/cpu_map/x86_kvm32-v1.xml
+share/libvirt/cpu_map/x86_kvm32.xml
+share/libvirt/cpu_map/x86_kvm64-v1.xml
+share/libvirt/cpu_map/x86_kvm64.xml
+share/libvirt/cpu_map/x86_n270-v1.xml
+share/libvirt/cpu_map/x86_n270.xml
+share/libvirt/cpu_map/x86_pentium-v1.xml
+share/libvirt/cpu_map/x86_pentium.xml
+share/libvirt/cpu_map/x86_pentium2-v1.xml
+share/libvirt/cpu_map/x86_pentium2.xml
+share/libvirt/cpu_map/x86_pentium3-v1.xml
+share/libvirt/cpu_map/x86_pentium3.xml
+share/libvirt/cpu_map/x86_pentiumpro.xml
+share/libvirt/cpu_map/x86_phenom-v1.xml
+share/libvirt/cpu_map/x86_phenom.xml
+share/libvirt/cpu_map/x86_qemu32-v1.xml
+share/libvirt/cpu_map/x86_qemu32.xml
+share/libvirt/cpu_map/x86_qemu64-v1.xml
+share/libvirt/cpu_map/x86_qemu64.xml
+share/libvirt/cpu_map/x86_vendors.xml
+share/libvirt/schemas/
+share/libvirt/schemas/basictypes.rng
+share/libvirt/schemas/capability.rng
+share/libvirt/schemas/cpu.rng
+share/libvirt/schemas/cputypes.rng
+share/libvirt/schemas/domain.rng
+share/libvirt/schemas/domainbackup.rng
+share/libvirt/schemas/domaincaps.rng
+share/libvirt/schemas/domaincheckpoint.rng
+share/libvirt/schemas/domaincommon.rng
+share/libvirt/schemas/domainoverrides.rng
+share/libvirt/schemas/domainsnapshot.rng
+share/libvirt/schemas/inactiveDomain.rng
+share/libvirt/schemas/interface.rng
+share/libvirt/schemas/network.rng
+share/libvirt/schemas/networkcommon.rng
+share/libvirt/schemas/networkport.rng
+share/libvirt/schemas/nodedev.rng
+share/libvirt/schemas/nwfilter.rng
+share/libvirt/schemas/nwfilter_params.rng
+share/libvirt/schemas/nwfilterbinding.rng
+share/libvirt/schemas/privatedata.rng
+share/libvirt/schemas/secret.rng
+share/libvirt/schemas/storagecommon.rng
+share/libvirt/schemas/storagepool.rng
+share/libvirt/schemas/storagepoolcaps.rng
+share/libvirt/schemas/storagevol.rng
+share/libvirt/schemas/sysinfo.rng
+share/libvirt/schemas/sysinfocommon.rng
+share/libvirt/test-screenshot.png
+share/locale/ar/LC_MESSAGES/libvirt.mo
+share/locale/as/LC_MESSAGES/libvirt.mo
+share/locale/bg/LC_MESSAGES/libvirt.mo
+share/locale/bn_IN/LC_MESSAGES/libvirt.mo
+share/locale/bs/LC_MESSAGES/libvirt.mo
+share/locale/ca/LC_MESSAGES/libvirt.mo
+share/locale/cs/LC_MESSAGES/libvirt.mo
+share/locale/da/LC_MESSAGES/libvirt.mo
+share/locale/de/LC_MESSAGES/libvirt.mo
+share/locale/el/LC_MESSAGES/libvirt.mo
+share/locale/en_GB/LC_MESSAGES/libvirt.mo
+share/locale/es/LC_MESSAGES/libvirt.mo
+share/locale/fi/LC_MESSAGES/libvirt.mo
+share/locale/fr/LC_MESSAGES/libvirt.mo
+share/locale/gu/LC_MESSAGES/libvirt.mo
+share/locale/hi/LC_MESSAGES/libvirt.mo
+share/locale/hr/LC_MESSAGES/libvirt.mo
+share/locale/hu/LC_MESSAGES/libvirt.mo
+share/locale/id/LC_MESSAGES/libvirt.mo
+share/locale/it/LC_MESSAGES/libvirt.mo
+share/locale/ja/LC_MESSAGES/libvirt.mo
+share/locale/ka/LC_MESSAGES/libvirt.mo
+share/locale/kn/LC_MESSAGES/libvirt.mo
+share/locale/ko/LC_MESSAGES/libvirt.mo
+share/locale/mk/LC_MESSAGES/libvirt.mo
+share/locale/ml/LC_MESSAGES/libvirt.mo
+share/locale/mr/LC_MESSAGES/libvirt.mo
+share/locale/ms/LC_MESSAGES/libvirt.mo
+share/locale/nb/LC_MESSAGES/libvirt.mo
+share/locale/nl/LC_MESSAGES/libvirt.mo
+share/locale/or/LC_MESSAGES/libvirt.mo
+share/locale/pa/LC_MESSAGES/libvirt.mo
+share/locale/pl/LC_MESSAGES/libvirt.mo
+share/locale/pt/LC_MESSAGES/libvirt.mo
+share/locale/pt_BR/LC_MESSAGES/libvirt.mo
+share/locale/ro/LC_MESSAGES/libvirt.mo
+share/locale/ru/LC_MESSAGES/libvirt.mo
+share/locale/si/LC_MESSAGES/libvirt.mo
+share/locale/sr/LC_MESSAGES/libvirt.mo
+share/locale/sr@latin/LC_MESSAGES/libvirt.mo
+share/locale/sv/LC_MESSAGES/libvirt.mo
+share/locale/ta/LC_MESSAGES/libvirt.mo
+share/locale/te/LC_MESSAGES/libvirt.mo
+share/locale/tr/LC_MESSAGES/libvirt.mo
+share/locale/uk/LC_MESSAGES/libvirt.mo
+share/locale/vi/LC_MESSAGES/libvirt.mo
+share/locale/zh_CN/LC_MESSAGES/libvirt.mo
+share/locale/zh_Hant/
+share/locale/zh_Hant/LC_MESSAGES/
+share/locale/zh_Hant/LC_MESSAGES/libvirt.mo
+share/locale/zh_TW/LC_MESSAGES/libvirt.mo
+@sample /var/cache/libvirt/

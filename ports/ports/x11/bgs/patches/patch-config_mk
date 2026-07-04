@@ -1,0 +1,13 @@
+--- config.mk.orig	Fri Sep  4 11:27:41 2015
++++ config.mk	Wed Nov 18 22:07:29 2015
+@@ -4,8 +4,8 @@ VERSION = 0.8
+ # Customize below to fit your system
+ 
+ # paths
+-PREFIX = /usr/local
+-MANPREFIX = ${PREFIX}/share/man
++#PREFIX = /usr/local
++MANPREFIX = ${PREFIX}/man
+ 
+ # Xinerama, comment if you don't want it
+ XINERAMALIBS = -lXinerama

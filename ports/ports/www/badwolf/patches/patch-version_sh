@@ -1,0 +1,13 @@
+Index: version.sh
+--- version.sh.orig
++++ version.sh
+@@ -3,6 +3,9 @@
+ # SPDX-FileCopyrightText: 2019-2022 Badwolf Authors <https://hacktivis.me/projects/badwolf>
+ # SPDX-License-Identifier: BSD-3-Clause
+ 
++
++[ -d .git ] || exit
++
+ if command -v git 2>/dev/null >/dev/null
+ then
+ 	hash=$(git --git-dir="$(dirname $0)/.git" rev-parse --short HEAD 2>/dev/null)

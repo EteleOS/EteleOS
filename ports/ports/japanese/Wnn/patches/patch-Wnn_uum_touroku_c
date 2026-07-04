@@ -1,0 +1,10 @@
+--- Wnn/uum/touroku.c.orig
++++ Wnn/uum/touroku.c
+@@ -51,6 +51,7 @@
+ /* 登録のためのルーチン */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include "jllib.h"
+ #include "commonhd.h"
+ #include "sdefine.h"

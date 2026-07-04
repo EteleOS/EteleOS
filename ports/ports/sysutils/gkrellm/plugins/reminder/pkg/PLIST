@@ -1,0 +1,5 @@
+@conflict gkrellm-reminder-*
+@pkgpath ${BASE_PKGPATH}
+lib/gkrellm2/
+lib/gkrellm2/plugins/
+lib/gkrellm2/plugins/reminder.so

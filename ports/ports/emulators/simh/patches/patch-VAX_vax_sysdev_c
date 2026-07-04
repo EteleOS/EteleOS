@@ -1,0 +1,27 @@
+--- VAX/vax_sysdev.c.orig	Sun Apr 29 19:02:06 2012
++++ VAX/vax_sysdev.c	Wed Jun 13 06:36:24 2012
+@@ -54,6 +54,10 @@
+ 
+ #include "vax_defs.h"
+ 
++#ifndef PATH_KA655X_BIN
++#define PATH_KA655X_BIN "ka655x.bin"
++#endif
++
+ #define UNIT_V_NODELAY  (UNIT_V_UF + 0)                 /* ROM access equal to RAM access */
+ #define UNIT_NODELAY    (1u << UNIT_V_NODELAY)
+ 
+@@ -1552,10 +1556,10 @@ conpsl = PSL_IS | PSL_IPL1F | CON_PWRUP;
+ if (rom == NULL)
+     return SCPE_IERR;
+ if (*rom == 0) {                                        /* no boot? */
+-    printf ("Loading boot code from ka655x.bin\n");
++    printf ("Loading boot code from %s\n", PATH_KA655X_BIN);
+     if (sim_log)
+-        fprintf (sim_log, "Loading boot code from ka655x.bin\n");
+-    r = load_cmd (0, "-R ka655x.bin");
++        fprintf (sim_log, "Loading boot code from %s\n", PATH_KA655X_BIN);
++    r = load_cmd (0, "-R " PATH_KA655X_BIN);
+     if (r != SCPE_OK)
+         return r;
+     }

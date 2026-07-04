@@ -1,0 +1,39 @@
+Index: log.c
+--- log.c.orig
++++ log.c
+@@ -136,7 +136,7 @@ int main(int argc,char *argv[])
+ 	RedirectorLogFormat[0]='\0';
+ 	NRedirectorLogs=0;
+ 
+-	snprintf(ExcludeCodes,sizeof(ExcludeCodes),"%s/exclude_codes",SYSCONFDIR);
++	snprintf(ExcludeCodes,sizeof(ExcludeCodes),"%s/sarg/exclude_codes",SYSCONFDIR);
+ 	strcpy(GraphDaysBytesBarColor,"orange");
+ 	strcpy(BgColor,"#ffffff");
+ 	strcpy(TxColor,"#000000");
+@@ -151,7 +151,7 @@ int main(int argc,char *argv[])
+ 	strcpy(FontSize,"9px");
+ 	strcpy(TempDir,"/tmp");
+ 	TempDirPath[0] = '\0';
+-	strcpy(OutputDir,"/var/www/html/squid-reports");
++	strcpy(OutputDir,"/var/www/htdocs/squid-reports");
+ 	AnonymousOutputFiles=false;
+ 	Ip2Name=false;
+ 	DateFormat='u';
+@@ -452,7 +452,7 @@ int main(int argc,char *argv[])
+ 
+ 	if (debug) debuga(__FILE__,__LINE__,_("Init\n"));
+ 
+-	if (ConfigFile[0] == '\0') snprintf(ConfigFile,sizeof(ConfigFile),"%s/sarg.conf",SYSCONFDIR);
++	if (ConfigFile[0] == '\0') snprintf(ConfigFile,sizeof(ConfigFile),"%s/sarg/sarg.conf",SYSCONFDIR);
+ 	if (access(ConfigFile, R_OK) != 0) {
+ 		debuga(__FILE__,__LINE__,_("Cannot open file \"%s\": %s\n"),ConfigFile,strerror(errno));
+ 		exit(EXIT_FAILURE);
+@@ -484,7 +484,7 @@ int main(int argc,char *argv[])
+ 
+ 	if (AccessLog==NULL) {
+ 		AccessLog=FileList_Create();
+-		if (!FileList_AddFile(AccessLog,"/var/log/squid/access.log")) {
++		if (!FileList_AddFile(AccessLog,"/var/squid/logs/access.log")) {
+ 			debuga(__FILE__,__LINE__,_("Not enough memory to store the input log file names\n"));
+ 			exit(EXIT_FAILURE);
+ 		}

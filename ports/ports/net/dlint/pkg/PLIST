@@ -1,0 +1,3 @@
+bin/digparse
+bin/dlint
+@man man/man1/dlint.1

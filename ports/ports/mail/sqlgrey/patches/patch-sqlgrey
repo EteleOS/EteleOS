@@ -1,0 +1,29 @@
+Index: sqlgrey
+--- sqlgrey.orig
++++ sqlgrey
+@@ -32,6 +32,7 @@ use Pod::Usage;
+ use Getopt::Long 2.25 qw(:config posix_default no_ignore_case);
+ use Net::Server::Multiplex;
+ use DBI;
++use DBIx::DBCluster;
+ use Math::BigInt;
+ 
+ use POSIX ':sys_wait_h';
+@@ -39,7 +40,7 @@ use POSIX ':sys_wait_h';
+ use vars qw(@ISA);
+ @ISA = qw(Net::Server::Multiplex);
+ 
+-my $VERSION = "1.8.0";
++my $VERSION = "";
+ my $software = 'SQLgrey-' . $VERSION;
+ 
+ my $DB_VERSION = 3;
+@@ -2475,7 +2476,7 @@ sub read_conffile($)
+         s/\s+$//;       # no trailing white
+         next unless length;     # anything left ?
+         my ($var, $value) = split(/\s*=\s*/, $_, 2);
+-        $dflt{$var} = $value || 1;
++        $dflt{$var} = $value || undef;
+     }
+     close CONF
+ 	or die "Couldn't close config file $config_file\n";

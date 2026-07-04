@@ -1,0 +1,2 @@
+@bin bin/ems-flasher
+@man man/man1/ems-flasher.1

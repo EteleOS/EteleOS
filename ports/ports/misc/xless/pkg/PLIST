@@ -1,0 +1,5 @@
+@bin bin/xless
+lib/X11/app-defaults/XLess
+lib/X11/app-defaults/XLess-color
+lib/X11/xless.help
+@man man/man1/xless.1

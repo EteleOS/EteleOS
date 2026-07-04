@@ -1,0 +1,26 @@
+include/lzo/
+include/lzo/lzo1.h
+include/lzo/lzo1a.h
+include/lzo/lzo1b.h
+include/lzo/lzo1c.h
+include/lzo/lzo1f.h
+include/lzo/lzo1x.h
+include/lzo/lzo1y.h
+include/lzo/lzo1z.h
+include/lzo/lzo2a.h
+include/lzo/lzo_asm.h
+include/lzo/lzoconf.h
+include/lzo/lzodefs.h
+include/lzo/lzoutil.h
+lib/liblzo2.a
+lib/liblzo2.la
+@lib lib/liblzo2.so.${LIBlzo2_VERSION}
+lib/pkgconfig/lzo2.pc
+share/doc/lzo2/
+share/doc/lzo2/AUTHORS
+share/doc/lzo2/COPYING
+share/doc/lzo2/LZO.FAQ
+share/doc/lzo2/LZO.TXT
+share/doc/lzo2/LZOAPI.TXT
+share/doc/lzo2/NEWS
+share/doc/lzo2/THANKS

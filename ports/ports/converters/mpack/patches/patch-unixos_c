@@ -1,0 +1,82 @@
+Fixes from Sebastian Pipping/gentoo.
+
+Index: unixos.c
+--- unixos.c.orig
++++ unixos.c
+@@ -26,10 +26,13 @@
+ #include <ctype.h>
+ #include <string.h>
+ #include <errno.h>
++#include <err.h>
+ #include <sys/types.h>
+ #include <sys/param.h>
++#include <sys/stat.h>
+ #include <netdb.h>
+ #include <fcntl.h>
++#include <stdlib.h>
+ #include "xmalloc.h"
+ #include "common.h"
+ #include "part.h"
+@@ -38,10 +41,6 @@
+ #define MAXHOSTNAMELEN 64
+ #endif
+ 
+-extern int errno;
+-extern char *malloc();
+-extern char *getenv();
+-
+ int overwrite_files = 0;
+ int didchat;
+ 
+@@ -76,7 +75,7 @@ char *os_genid(void)
+     }
+ 
+     result = malloc(25+strlen(hostname));
+-    sprintf(result, "%d.%d@%s", pid, curtime++, hostname);
++    sprintf(result, "%d.%lld@%s", pid, (long long)curtime++, hostname);
+     return result;
+ }
+ 
+@@ -90,7 +89,7 @@ char *os_idtodir(char *id)
+ 	strcpy(buf, getenv("TMPDIR"));
+     }
+     else {
+-	strcpy(buf, "/usr/tmp");
++	strcpy(buf, "/var/tmp");
+     }
+     strcat(buf, "/m-prts-");
+     p = getenv("USER");
+@@ -136,11 +135,7 @@ FILE *os_createnewfile(char *fname)
+     int fd;
+     FILE *ret;
+      
+-#ifdef O_EXCL
+-    fd=open(fname, O_RDWR|O_CREAT|O_EXCL, 0644);
+-#else
+-    fd=open(fname, O_RDWR|O_CREAT|O_TRUNC, 0644);
+-#endif
++    fd=open(fname, O_RDWR|O_CREAT|O_EXCL, 0600);
+ 
+     if (fd == -1)
+         return NULL;
+@@ -149,7 +144,19 @@ FILE *os_createnewfile(char *fname)
+     return ret;
+ }
+ 
+-     
++FILE *os_resetfile(char *fname)
++{
++    int fd;
++    FILE *ret;
++
++    fd=open(fname, O_RDWR|O_CREAT|O_TRUNC, 0600);
++    if (fd == -1)
++        return NULL;
++
++    ret=fdopen(fd, "w");
++    return ret;
++}
++
+ /*
+  * Create a new file, with suggested filename "fname".
+  * "fname" may have come from an insecure source, so clean it up first.

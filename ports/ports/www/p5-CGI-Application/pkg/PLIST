@@ -1,0 +1,5 @@
+${P5SITE}/CGI/Application/
+${P5SITE}/CGI/Application.pm
+${P5SITE}/CGI/Application/Mailform.pm
+@man man/man3p/CGI::Application.3p
+@man man/man3p/CGI::Application::Mailform.3p

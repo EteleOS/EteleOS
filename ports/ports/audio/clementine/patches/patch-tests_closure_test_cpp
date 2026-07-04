@@ -1,0 +1,14 @@
+Unbreak tests.
+Index: tests/closure_test.cpp
+--- tests/closure_test.cpp.orig
++++ tests/closure_test.cpp
+@@ -3,6 +3,9 @@
+ #include <functional>
+ #include <memory>
+ 
++#include <boost/scoped_ptr.hpp>
++#include <boost/function.hpp>
++
+ #include <QCoreApplication>
+ #include <QPointer>
+ #include <QSharedPointer>

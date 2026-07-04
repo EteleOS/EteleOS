@@ -1,0 +1,12 @@
+Index: lib/beautiful/init.lua
+--- lib/beautiful/init.lua.orig
++++ lib/beautiful/init.lua
+@@ -91,7 +91,7 @@ local active_font
+ -- @beautiful beautiful.wallpaper
+ 
+ -- The icon theme name.
+--- It has to be a directory in `/usr/share/icons` or an XDG icon folder.
++-- It has to be a directory in `${LOCALBASE}/share/icons` or an XDG icon folder.
+ -- @beautiful beautiful.icon_theme
+ 
+ --- The Awesome icon path.

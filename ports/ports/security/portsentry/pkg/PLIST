@@ -1,0 +1,11 @@
+bin/portsentry
+share/doc/portsentry/
+share/doc/portsentry/README.install
+share/doc/portsentry/README.methods
+share/doc/portsentry/README.stealth
+share/examples/portsentry/
+@sample ${SYSCONFDIR}/portsentry/
+share/examples/portsentry/portsentry.conf
+@sample ${SYSCONFDIR}/portsentry/portsentry.conf
+share/examples/portsentry/portsentry.ignore
+@sample ${SYSCONFDIR}/portsentry/portsentry.ignore

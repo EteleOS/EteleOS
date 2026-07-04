@@ -1,0 +1,3 @@
+${P5SITE}/Carp/
+${P5SITE}/Carp/Always.pm
+@man man/man3p/Carp::Always.3p

@@ -1,0 +1,7 @@
+Index: dev/bin/pythonstats
+--- dev/bin/pythonstats.orig
++++ dev/bin/pythonstats
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-python -m pstats stat.prof
++${MODPY_BIN} -m pstats stat.prof

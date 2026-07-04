@@ -1,0 +1,14 @@
+Conflicting definition used elsewhere.
+
+Index: plug-ins/stp_mangler/stp_mangler.c
+--- plug-ins/stp_mangler/stp_mangler.c.orig
++++ plug-ins/stp_mangler/stp_mangler.c
+@@ -63,7 +63,7 @@ struct stp_header 
+ 
+ #define FAKE_PCK_LEN 60
+ struct packet_object fake_po;
+-char fake_pck[FAKE_PCK_LEN];
++static char fake_pck[FAKE_PCK_LEN];
+ 
+ 
+ /* protos */

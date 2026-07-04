@@ -1,0 +1,17 @@
+fix bash_completion install
+
+Index: cmake/BashCompletion.cmake
+--- cmake/BashCompletion.cmake.orig
++++ cmake/BashCompletion.cmake
+@@ -71,9 +71,9 @@ ELSE()
+ 		SET(BASHCOMP_SCRIPT "${CMAKE_CURRENT_BINARY_DIR}/install_${SCRIPT_NAME}_completion.sh")
+ 
+ 		FILE(WRITE ${BASHCOMP_SCRIPT} "\
+-#!${BASH}\n\
++#!/bin/sh\n\
+ set -e\n\
+-BASHCOMP_PKG_PATH=\"${BASHCOMP_USER_PATH}\"\n\
++BASHCOMP_PKG_PATH=\"\$DESTDIR${BASHCOMP_USER_PATH}\"\n\
+ if [ -n \"${BASHCOMP_PKG_PATH}\" ]; then\n\
+   BASHCOMP_PKG_PATH=\"${BASHCOMP_PKG_PATH}\"\n\
+ fi\n\

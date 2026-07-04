@@ -1,0 +1,23 @@
+include/itcl/
+include/itcl/itcl.h
+include/itcl/itclDecls.h
+include/itcl/itclInt.h
+include/itcl/itclIntDecls.h
+@lib lib/libitcl34.so.${LIBitcl34_VERSION}
+lib/libitclstub34.a
+lib/tcl/itcl/
+lib/tcl/itcl/itcl.tcl
+lib/tcl/itcl/itclConfig.sh
+lib/tcl/itcl/pkgIndex.tcl
+@man man/mann/body.n
+@man man/mann/class.n
+@man man/mann/code.n
+@man man/mann/configbody.n
+@man man/mann/delete.n
+@man man/mann/ensemble.n
+@man man/mann/find.n
+@man man/mann/is.n
+@man man/mann/itcl.n
+@man man/mann/itclvars.n
+@man man/mann/local.n
+@man man/mann/scope.n

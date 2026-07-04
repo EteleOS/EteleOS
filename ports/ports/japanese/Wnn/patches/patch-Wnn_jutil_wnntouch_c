@@ -1,0 +1,20 @@
+--- Wnn/jutil/wnntouch.c.orig
++++ Wnn/jutil/wnntouch.c
+@@ -53,6 +53,8 @@ static char *rcs_id = "$Id: wnntouch.c,v 1.3 1992/09/2
+   */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
+ #include "jslib.h"
+ #include "commonhd.h"
+ 
+@@ -90,7 +92,7 @@ usage()
+   exit(1);
+ }
+ 
+-void
++int
+ main(argc, argv)
+ int argc;
+ char **argv;

@@ -1,0 +1,7 @@
+@conflict fcgi-<=2.4.0p17
+${P5ARCH}/
+${P5ARCH}/FCGI.pm
+${P5ARCH}/auto/
+${P5ARCH}/auto/FCGI/
+@so ${P5ARCH}/auto/FCGI/FCGI.so
+@man man/man3p/FCGI.3p

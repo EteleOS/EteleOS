@@ -1,0 +1,10 @@
+--- demos/FFConsoleDemo.cpp.orig	Sun Apr  9 22:15:21 2017
++++ demos/FFConsoleDemo.cpp	Sun Apr  9 22:15:43 2017
+@@ -1,6 +1,7 @@
+ #include "OIS.h"
+ 
+ #include <math.h>
++#include <unistd.h>
+ #include <cstdlib>
+ #include <iostream>
+ #include <iomanip>

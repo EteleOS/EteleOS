@@ -1,0 +1,11 @@
+Index: src/ipmievd.c
+--- src/ipmievd.c.orig
++++ src/ipmievd.c
+@@ -41,6 +41,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <signal.h>
++#include <strings.h>
+ 
+ #if defined(HAVE_CONFIG_H)
+ # include <config.h>

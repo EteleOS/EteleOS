@@ -1,0 +1,9 @@
+include/ssw-axis-model.h
+include/ssw-sheet-axis.h
+include/ssw-sheet.h
+include/ssw-virtual-model.h
+@info info/spread-sheet-widget.info
+@static-lib lib/libspread-sheet-widget.a
+lib/libspread-sheet-widget.la
+@lib lib/libspread-sheet-widget.so.${LIBspread-sheet-widget_VERSION}
+lib/pkgconfig/spread-sheet-widget.pc

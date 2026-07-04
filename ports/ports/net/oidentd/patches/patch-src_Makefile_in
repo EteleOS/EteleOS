@@ -1,0 +1,13 @@
+--- src/Makefile.in.orig	Mon May 22 07:10:05 2006
++++ src/Makefile.in	Thu Dec 31 09:20:50 2015
+@@ -171,8 +171,8 @@ sedpath = @sedpath@
+ sharedstatedir = @sharedstatedir@
+ sysconfdir = @sysconfdir@
+ target_alias = @target_alias@
+-SUBDIRS = missing
+-oidentd_LDADD = -Lmissing -lmissing $(ADD_LIB)
++SUBDIRS =
++oidentd_LDADD = $(ADD_LIB)
+ AM_CFLAGS = -funsigned-char $(DEBUG_CFLAGS) $(WARN_CFLAGS)
+ AM_CPPFLAGS = "-Imissing"
+ DISTCLEANFILES = \

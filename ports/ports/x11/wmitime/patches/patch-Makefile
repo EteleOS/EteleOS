@@ -1,0 +1,21 @@
+Index: Makefile
+--- Makefile.orig
++++ Makefile
+@@ -1,4 +1,4 @@
+-LIBS   = -lXpm -lXext -lX11 -lm -ldockapp
++LIBS   = -lXpm -lXext -lX11 -lm -ldockapp -liconv
+ CFLAGS = -O2 -Wall
+ OBJS = wmitime.o
+ INSTALL = install
+@@ -11,9 +11,9 @@ DESKTOPDIR = $(PREFIX)/share/applications
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $*.o
+ 
+ wmitime: $(OBJS)
+-	$(CC) $(LDFLAGS) -o wmitime $^ $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBDIR) $(LIBS)
+ 
+-all:: wmtime
++all:: wmitime
+ 
+ clean::
+ 	for i in $(OBJS) ; do \

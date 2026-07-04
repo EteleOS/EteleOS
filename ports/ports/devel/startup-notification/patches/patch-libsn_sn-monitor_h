@@ -1,0 +1,23 @@
+From a7e49fefde18ea8d5bada8096d32f23bcfb5a6dc Mon Sep 17 00:00:00 2001
+From: Federico G. Schwindt <fgsch@openbsd.org>
+Date: Mon, 17 Feb 2014 14:48:12 +0000
+Subject: Fix crash on 32bit architectures where time_t is 64 bit
+
+--- libsn/sn-monitor.h.orig	Tue Nov  5 17:53:25 2013
++++ libsn/sn-monitor.h	Tue Nov  5 17:53:53 2013
+@@ -77,11 +77,11 @@ const char* sn_startup_sequence_get_application_id    
+ int         sn_startup_sequence_get_screen                (SnStartupSequence *sequence);
+ 
+ void        sn_startup_sequence_get_initiated_time        (SnStartupSequence *sequence,
+-                                                           long              *tv_sec,
+-                                                           long              *tv_usec);
++                                                           time_t            *tv_sec,
++                                                           suseconds_t       *tv_usec);
+ void        sn_startup_sequence_get_last_active_time      (SnStartupSequence *sequence,
+-                                                           long              *tv_sec,
+-                                                           long              *tv_usec);
++                                                           time_t            *tv_sec,
++                                                           suseconds_t       *tv_usec);
+ 
+ void        sn_startup_sequence_complete                  (SnStartupSequence *sequence);
+ 

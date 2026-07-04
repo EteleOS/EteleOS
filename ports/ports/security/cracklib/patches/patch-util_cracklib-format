@@ -1,0 +1,12 @@
+Index: util/cracklib-format
+--- util/cracklib-format.orig
++++ util/cracklib-format
+@@ -13,7 +13,7 @@
+ LC_ALL=C
+ export LC_ALL
+ gzip -cdf "$@" |
+-    grep -a -v '^#' |
++    grep -a -v '^\(#\|$\)' |
+     tr '[A-Z]' '[a-z]' |
+     tr -cd '\n[:graph:]' |
+     cut -c 1-1022 |

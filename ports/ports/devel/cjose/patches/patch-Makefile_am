@@ -1,0 +1,11 @@
+Can't easily disable doxygen use, use a bigger hammer.
+
+Index: Makefile.am
+--- Makefile.am.orig
++++ Makefile.am
+@@ -1,4 +1,4 @@
+-SUBDIRS = . include src test doc platform
++SUBDIRS = . include src test platform
+ EXTRA_DIST = CHANGELOG.md README.md LICENSE
+ 
+ pkgconfigdir = $(libdir)/pkgconfig

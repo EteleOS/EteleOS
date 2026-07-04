@@ -1,0 +1,53 @@
+Index: conf/zabbix_proxy.conf
+--- conf/zabbix_proxy.conf.orig
++++ conf/zabbix_proxy.conf
+@@ -81,7 +81,7 @@ Hostname=Zabbix proxy
+ # Default:
+ # LogFile=
+ 
+-LogFile=/tmp/zabbix_proxy.log
++LogFile=/var/log/zabbix/proxy.log
+ 
+ ### Option: LogFileSize
+ #	Maximum size of log file in MB.
+@@ -129,7 +129,7 @@ LogFile=/tmp/zabbix_proxy.log
+ #
+ # Mandatory: no
+ # Default:
+-# PidFile=/tmp/zabbix_proxy.pid
++PidFile=/var/run/zabbix/zabbix_proxy.pid
+ 
+ ### Option: SocketDir
+ #	IPC socket directory.
+@@ -195,6 +195,7 @@ DBUser=zabbix
+ # Mandatory: no
+ # Default:
+ # DBSocket=
++DBSocket=/var/www/var/run/mysql/mysql.sock
+ 
+ # Option: DBPort
+ #	Database port when not using local socket. Ignored for SQLite.
+@@ -605,6 +606,7 @@ Timeout=4
+ # Mandatory: no
+ # Default:
+ # ExternalScripts=${datadir}/zabbix/externalscripts
++ExternalScripts=${SYSCONFDIR}/zabbix/externalscripts
+ 
+ ### Option: FpingLocation
+ #	Location of fping.
+@@ -613,6 +615,7 @@ Timeout=4
+ # Mandatory: no
+ # Default:
+ # FpingLocation=/usr/sbin/fping
++FpingLocation=${LOCALBASE}/sbin/fping
+ 
+ ### Option: Fping6Location
+ #	Location of fping6.
+@@ -622,6 +625,7 @@ Timeout=4
+ # Mandatory: no
+ # Default:
+ # Fping6Location=/usr/sbin/fping6
++Fping6Location=${LOCALBASE}/sbin/fping6
+ 
+ ### Option: SSHKeyLocation
+ #	Location of public and private keys for SSH checks and actions.

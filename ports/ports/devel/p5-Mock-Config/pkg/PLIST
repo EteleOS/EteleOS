@@ -1,0 +1,3 @@
+${P5SITE}/Mock/
+${P5SITE}/Mock/Config.pm
+@man man/man3p/Mock::Config.3p

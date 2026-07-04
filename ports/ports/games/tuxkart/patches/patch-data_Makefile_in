@@ -1,0 +1,11 @@
+--- data/Makefile.in.orig	Sun Nov  9 12:37:34 2008
++++ data/Makefile.in	Sun Nov  9 12:37:40 2008
+@@ -77,7 +77,7 @@ am__include = @am__include@
+ am__quote = @am__quote@
+ install_sh = @install_sh@
+ 
+-pkgdatadir = $(datadir)/games/@PACKAGE@/data
++pkgdatadir = $(datadir)/@PACKAGE@/data
+ 
+ pkgdata_DATA = $(wildcard *.dat) $(wildcard *.loc) $(wildcard *.drv)
+ 

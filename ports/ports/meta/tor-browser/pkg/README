@@ -1,0 +1,41 @@
++-----------------------------------------------------------------------
+| ${PKGSTEM} on OpenBSD
++-----------------------------------------------------------------------
+
+To start Tor Browser:
+
+  $ tor-browser
+
+This will create a ~/TorBrowser-Data directory tree if it does not
+exist.
+
+Tor Browser uses its own instance of the tor server running on a
+different port than the net/tor port is configured to use by default.
+It starts and stops this tor daemon using the integrated tor-launcher.
+It should not interfere with any tor daemon you have running via the
+standard mechanism (e.g. rcctl start tor).
+
+The tor instance used by Tor Browser stores its configuration in
+~/TorBrowser-Data/Tor/torrc; the tor daemon stores state files in
+~/TorBrowser-Data/Tor.
+
+As of the 12.5 release, torrc has been moved from
+~/TorBrowser-Data/torrc to ~/TorBrowser-Data/Tor/torrc.
+If you wish to preserve your tor configuration (e.g., bridges),
+please do the following BEFORE starting tor-browser after you upgrade:
+
+  $ mv ~/TorBrowser-Data/torrc ~/TorBrowser-Data/Tor
+
+When you use Tor Browser to change your configuration (e.g. add
+bridges) the above torrc is updated.  You can also add bridges by
+editing your torrc yourself.  Make sure Tor Browser is not running
+before doing so if you use this method; if Tor Browser is running it
+might overwrite your torrc.
+
+NOTE: on OpenBSD, the only Pluggable Transports that are available
+for now are meek-azure, obfs4 and snowflake.  Pluggable Transports have
+a web page worth reading:
+  https://2019.www.torproject.org/docs/pluggable-transports.html.en
+
+For more information about Tor Browser and the Tor anonymity network
+in general please visit https://www.torproject.org

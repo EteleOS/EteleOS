@@ -1,0 +1,11 @@
+--- src/Unix/sys_unix.cpp.orig	Thu Mar 25 08:56:59 2010
++++ src/Unix/sys_unix.cpp	Thu Mar 25 08:57:30 2010
+@@ -128,7 +128,7 @@ void SysAddFloppyPrefs(void)
+ 		PrefsAddString("floppy", "/dev/fd0");
+ 		PrefsAddString("floppy", "/dev/fd1");
+ 	}
+-#elif defined(__NetBSD__)
++#elif defined(__NetBSD__) || defined(__OpenBSD__)
+ 	PrefsAddString("floppy", "/dev/fd0a");
+ 	PrefsAddString("floppy", "/dev/fd1a");
+ #elif defined(__APPLE__) && defined(__MACH__)

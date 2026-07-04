@@ -1,0 +1,11 @@
+Index: src/prefs.cc
+--- src/prefs.cc.orig
++++ src/prefs.cc
+@@ -13,6 +13,7 @@
+ #include <fstream>
+ #include <iostream>
+ #include <stdio.h>
++#include <stdlib.h>
+ 
+ #include <list>
+ 

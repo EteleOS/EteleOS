@@ -1,0 +1,12 @@
+--- configure.in.orig	Wed Nov  6 12:55:10 2002
++++ configure.in	Mon Aug  9 23:53:26 2010
+@@ -256,7 +256,8 @@ if test x$enableval = "xyes"; then
+        fi
+        AC_MSG_CHECKING([for freetype/freetype.h])
+        AC_TRY_COMPILE(
+-#include <freetype/freetype.h>
++#include <ft2build.h>
++#include FT_FREETYPE_H
+         ,,
+         AC_MSG_RESULT([yes])
+         dnl Checks for Xft

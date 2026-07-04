@@ -1,0 +1,17 @@
+Index: libhb/decavcodec.c
+--- libhb/decavcodec.c.orig
++++ libhb/decavcodec.c
+@@ -1320,11 +1320,13 @@ static hb_buffer_t *copy_frame( hb_work_private_t *pv 
+             int type = AV_FRAME_DATA_DOVI_RPU_BUFFER;
+             sd = av_frame_get_side_data(pv->frame, type);
+ 
++#ifdef AV_FRAME_DATA_DOVI_RPU_BUFFER_T35
+             if (sd == NULL)
+             {
+                 type = AV_FRAME_DATA_DOVI_RPU_BUFFER_T35;
+                 sd = av_frame_get_side_data(pv->frame, type);
+             }
++#endif
+ 
+             if (sd != NULL && sd->size > 0)
+             {

@@ -1,0 +1,11 @@
+--- io/hpmud/jd.c.orig	Thu Jan 29 13:20:45 2015
++++ io/hpmud/jd.c	Thu Feb  5 14:28:00 2015
+@@ -31,6 +31,8 @@
+ #endif
+ 
+ #include <signal.h>
++#include <limits.h> /* strtol(3) */
++#include <stdlib.h> /* strtol(3) */
+ #include "hpmud.h"
+ #include "hpmudi.h"
+ 

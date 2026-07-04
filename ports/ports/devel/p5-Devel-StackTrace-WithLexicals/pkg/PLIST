@@ -1,0 +1,4 @@
+${P5SITE}/Devel/StackTrace/WithLexicals/
+${P5SITE}/Devel/StackTrace/WithLexicals.pm
+${P5SITE}/Devel/StackTrace/WithLexicals/Frame.pm
+@man man/man3p/Devel::StackTrace::WithLexicals.3p

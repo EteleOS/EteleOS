@@ -1,0 +1,4 @@
+@pkgpath mail/opensmtpd-filter-senderscore
+libexec/smtpd/
+@bin libexec/smtpd/filter-senderscore
+share/doc/pkg-readmes/${PKGSTEM}

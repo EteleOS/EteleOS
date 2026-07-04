@@ -1,0 +1,6 @@
+share/fonts/
+@fontdir share/fonts/league-fonts/
+share/fonts/league-fonts/GoudyStM-Italic.otf
+share/fonts/league-fonts/GoudyStM.otf
+share/fonts/league-fonts/GoudyStMTT-Italic.ttf
+share/fonts/league-fonts/GoudyStMTT.ttf

@@ -1,0 +1,31 @@
+--- configure.orig	Sun Sep 26 17:02:14 1999
++++ configure	Tue Jul 19 09:27:22 2011
+@@ -618,7 +618,7 @@ DFLGS="-DSTk_CODE -DSCM_CODE"
+ EOBJ=""
+ ETKOBJ=""
+ EDFLGS=""
+-MACHINE=$os-$version-$machine
++MACHINE=$os-$machine
+ if test "$machine" = win32
+ then 
+   FLAVOR=win
+@@ -692,6 +692,7 @@ case $MACHINE in
+   HP*)	     OS=HPUX; DFLGS="$DFLGS -Dhpux";;
+   Linux*)    OS=LINUX;;
+   NetBSD-1*) OS=NETBSD1;;
++  OpenBSD*)  OS=OPENBSD;;
+   FreeBSD*)  OS=FREEBSD;;
+   IRIX-5*)   OS=IRIX5;;
+   IRIX*-6*)  OS=IRIX5;;
+@@ -2277,6 +2278,11 @@ case $OS in 
+      SH_CCFLAGS="-fpic"
+      SH_LDFLAGS="-Bshareable -o"
+      SH_LOADER="ld"
++     SH_SUFFIX='so';;
++   OPENBSD)
++     SH_CCFLAGS="-fpic"
++     SH_LDFLAGS="-shared -o"
++     SH_LOADER="${CC}"
+      SH_SUFFIX='so';;
+    HPUX)
+      SH_CCFLAGS="+Z"

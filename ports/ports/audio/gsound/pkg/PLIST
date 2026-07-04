@@ -1,0 +1,12 @@
+@bin bin/gsound-play
+include/gsound-attr.h
+include/gsound-context.h
+include/gsound.h
+lib/girepository-1.0/
+lib/girepository-1.0/GSound-1.0.typelib
+@lib lib/libgsound.so.${LIBgsound_VERSION}
+lib/pkgconfig/gsound.pc
+share/gir-1.0/
+share/gir-1.0/GSound-1.0.gir
+share/vala/vapi/gsound.deps
+share/vala/vapi/gsound.vapi

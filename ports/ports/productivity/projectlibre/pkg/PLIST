@@ -1,0 +1,7 @@
+bin/projectlibre
+lib/projectlibre/
+lib/projectlibre/lib/
+lib/projectlibre/lib/projectlibre-contrib.jar
+lib/projectlibre/lib/projectlibre-reports.jar
+lib/projectlibre/lib/projectlibre-script.jar
+lib/projectlibre/projectlibre.jar

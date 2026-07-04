@@ -1,0 +1,12 @@
+Index: iodbc/connect.c
+--- iodbc/connect.c.orig
++++ iodbc/connect.c
+@@ -2922,7 +2922,7 @@ SQLDriverConnect_Internal (
+ # endif
+ #else
+ 
+-      hdll = _iodbcdm_dllopen ("libiodbcadm.so.2");
++      hdll = _iodbcdm_dllopen ("libiodbcadm.so");
+             
+       if (!hdll)
+          break;

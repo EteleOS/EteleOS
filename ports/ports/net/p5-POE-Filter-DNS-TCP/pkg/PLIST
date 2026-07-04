@@ -1,0 +1,3 @@
+${P5SITE}/POE/Filter/DNS/
+${P5SITE}/POE/Filter/DNS/TCP.pm
+@man man/man3p/POE::Filter::DNS::TCP.3p

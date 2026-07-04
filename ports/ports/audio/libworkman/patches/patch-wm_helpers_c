@@ -1,0 +1,21 @@
+Index: wm_helpers.c
+--- wm_helpers.c.orig
++++ wm_helpers.c
+@@ -30,7 +30,7 @@ static char wm_helpers_id[] = "$Id: wm_helpers.c,v 1.7
+ 
+ #include <stdio.h>
+ #include <string.h>
+-#include <malloc.h>
++#include <stdlib.h>
+ #include <errno.h>
+ #include <stdarg.h>
+ #include <sys/time.h>
+@@ -63,7 +63,7 @@ char *wm_libver_number( void )
+ 
+ 	s = malloc(10);
+ 	/* this is not used very often, so don't care about speed...*/
+-	sprintf(s, "%d.%d.%d", wm_libver_major(), wm_libver_minor(), wm_libver_pl());
++	snprintf(s, sizeof(s), "%d.%d.%d", wm_libver_major(), wm_libver_minor(), wm_libver_pl());
+ 	return s;
+ } /* wm_libver_number() */
+ 

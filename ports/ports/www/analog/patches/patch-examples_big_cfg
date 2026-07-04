@@ -1,0 +1,21 @@
+Index: examples/big.cfg
+--- examples/big.cfg.orig
++++ examples/big.cfg
+@@ -19,7 +19,7 @@
+ # it must go here, above the LOGFILE commands.
+ # LOGFORMAT MICROSOFT-NA
+ # The logfile(s) to be analysed
+-LOGFILE logfile.log
++LOGFILE /var/www/logs/access_log
+ # LOGFILE /old/logs/access_log.*
+ #
+ # Your organisation's name and URL for the top line of the report
+@@ -30,7 +30,7 @@ HOSTURL none
+ OUTFILE Report.html
+ #
+ # URL for the images directory
+-IMAGEDIR images/
++IMAGEDIR analog-images/
+ #
+ # Whether to use PNG or GIF images
+ PNGIMAGES ON

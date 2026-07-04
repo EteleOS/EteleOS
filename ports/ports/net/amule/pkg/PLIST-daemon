@@ -1,0 +1,4 @@
+@bin bin/amulecmd
+@bin bin/amuled
+@man man/man1/amulecmd.1
+@man man/man1/amuled.1

@@ -1,0 +1,3 @@
+${P5SITE}/File/
+${P5SITE}/File/NCopy.pm
+@man man/man3p/File::NCopy.3p

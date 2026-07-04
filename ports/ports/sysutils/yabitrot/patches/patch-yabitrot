@@ -1,0 +1,9 @@
+Index: yabitrot
+--- yabitrot.orig
++++ yabitrot
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/python3.6 -u
++#!${MODPY_BIN} -u
+ # -*- coding:Utf-8 -*-
+ 
+ 

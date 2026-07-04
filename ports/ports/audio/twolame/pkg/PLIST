@@ -1,0 +1,15 @@
+@bin bin/twolame
+include/twolame.h
+@static-lib lib/libtwolame.a
+lib/libtwolame.la
+@lib lib/libtwolame.so.${LIBtwolame_VERSION}
+lib/pkgconfig/twolame.pc
+@man man/man1/twolame.1
+share/doc/twolame/
+share/doc/twolame/AUTHORS
+share/doc/twolame/COPYING
+share/doc/twolame/NEWS
+share/doc/twolame/README
+share/doc/twolame/api.txt
+share/doc/twolame/psycho.txt
+share/doc/twolame/vbr.txt

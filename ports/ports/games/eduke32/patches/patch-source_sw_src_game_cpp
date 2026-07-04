@@ -1,0 +1,49 @@
+store log file in ~/.config/voidsw/
+
+Index: source/sw/src/game.cpp
+--- source/sw/src/game.cpp.orig
++++ source/sw/src/game.cpp
+@@ -3393,6 +3393,9 @@ void CommandLineHelp(char const * const * argv)
+ 
+ int32_t app_main(int32_t argc, char const * const * argv)
+ {
++    char logpath[BMAX_PATH];
++    char *homedir;
++    int r;
+     int i;
+     extern int MovesPerPacket;
+     void DoSector(void);
+@@ -3457,21 +3460,22 @@ int32_t app_main(int32_t argc, char const * const * ar
+     }
+ #endif
+ 
+-#ifdef __APPLE__
+-    if (!g_useCwd)
++    homedir = Bgethomedir();
++    if (!g_useCwd && homedir != NULL)
+     {
+-        char cwd[BMAX_PATH];
+-        char *homedir = Bgethomedir();
+-        if (homedir)
+-            Bsnprintf(cwd, sizeof(cwd), "%s/Library/Logs/" APPBASENAME ".log", homedir);
++        Bsnprintf(logpath, sizeof(logpath), "%s/.config/%s", homedir, APPBASENAME);
++        r = Bmkdir(logpath, S_IRWXU);
++        if (r == 0 || (r == -1 && errno == EEXIST))
++        {
++            Bsnprintf(logpath, sizeof(logpath), "%s/.config/%s/%s.log", homedir, APPBASENAME, APPBASENAME);
++            OSD_SetLogFile(logpath);
++        }
+         else
+-            Bstrcpy(cwd, APPBASENAME ".log");
+-        OSD_SetLogFile(cwd);
+-        Xfree(homedir);
++            OSD_SetLogFile(APPBASENAME ".log");
+     }
+     else
+-#endif
+-    OSD_SetLogFile(APPBASENAME ".log");
++        OSD_SetLogFile(APPBASENAME ".log");
++    Bfree(homedir);
+ 
+     wm_setapptitle(APPNAME);
+ 

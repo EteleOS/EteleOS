@@ -1,0 +1,15 @@
+Index: src_c/camera.h
+--- src_c/camera.h.orig
++++ src_c/camera.h
+@@ -190,7 +190,11 @@ v4l2_set_control(int fd, int id, int value);
+ PyObject *
+ v4l2_read_raw(pgCameraObject *self);
+ int
++#ifdef __OpenBSD__
++v4l2_xioctl(int fd, unsigned long request, void *arg);
++#else
+ v4l2_xioctl(int fd, int request, void *arg);
++#endif
+ int
+ v4l2_process_image(pgCameraObject *self, const void *image, int buffer_size,
+                    SDL_Surface *surf);

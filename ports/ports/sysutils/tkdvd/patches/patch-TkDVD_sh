@@ -1,0 +1,12 @@
+Index: TkDVD.sh
+--- TkDVD.sh.orig
++++ TkDVD.sh
+@@ -25,7 +25,7 @@ wm geometry . 700x550
+ wm protocol . WM_DELETE_WINDOW { save_options; destroy . }
+ set burn_type "burn_dvd"
+ set v_create_iso "no"
+-set burning_device "/dev/sr0"
++set burning_device "/dev/rcd0c"
+ #used when creating ISO to save CD/DVD device
+ set temp_burning_device ""
+ set dvd_burning_command "growisofs"

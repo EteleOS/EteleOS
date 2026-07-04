@@ -1,0 +1,15 @@
+--- Makefile.PL.orig	Wed Mar 23 01:42:36 2011
++++ Makefile.PL	Wed Mar 23 01:42:46 2011
+@@ -3,10 +3,12 @@ name 'Feed-Find';
+ all_from 'lib/Feed/Find.pm';
+ readme_from 'lib/Feed/Find.pm';
+ 
++=pod
+ requires 'Class::ErrorHandler';
+ requires 'LWP';
+ requires 'HTML::Parser';
+ requires 'URI';
++=cut
+ 
+ test_requires 'Test::More';
+ 

@@ -1,0 +1,6 @@
+@comment lib/libauthpgsql.a
+@comment lib/libauthpgsql.la
+@lib lib/libauthpgsql.so.${LIBauthpgsql_VERSION}
+share/examples/courier-authlib/authpgsqlrc.dist
+@mode 600
+@sample ${SYSCONFDIR}/courier/authpgsqlrc

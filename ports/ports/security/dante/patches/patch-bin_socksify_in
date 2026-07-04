@@ -1,0 +1,11 @@
+--- bin/socksify.in.orig	Sun Oct 27 16:24:41 2013
++++ bin/socksify.in	Thu Dec 12 13:40:08 2013
+@@ -72,7 +72,7 @@ fi
+ 
+ #dlib/Makefile.am libtool flags should produce a predictable library name
+ #(ending in SOLIB_POSTFIX).
+-LIBRARY="${SOCKS_LIBRARY:-${FULLPATH}libdsocks.@SOLIB_POSTFIX@}"
++LIBRARY="${SOCKS_LIBRARY:-${FULLPATH}libdsocks.@SOLIB_POSTFIX@.${LIBdsocks_VERSION}}"
+ 
+ #platform dependent LD_PRELOAD-variant format
+ PRELOAD_SEPERATOR="@PRELOAD_SEPERATOR@"

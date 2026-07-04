@@ -1,0 +1,23 @@
+COMMENT =		CUE sheet parser library
+
+GH_ACCOUNT =		lipnitsk
+GH_PROJECT =		libcue
+GH_TAGNAME =		v2.3.0
+
+CATEGORIES =		audio
+
+SHARED_LIBS =		cue		1.0	# 1.4
+
+# GPLv2
+PERMIT_PACKAGE =	Yes
+
+MODULES =		devel/cmake
+
+BUILD_DEPENDS =		devel/bison
+
+CONFIGURE_ARGS =	-DBUILD_SHARED_LIBS=ON
+MODCMAKE_POLICY_VERSION_OVERRIDE = Yes
+
+NO_TEST =		Yes
+
+.include <bsd.port.mk>

@@ -1,0 +1,3 @@
+${P5SITE}/Devel/
+${P5SITE}/Devel/CheckBin.pm
+@man man/man3p/Devel::CheckBin.3p

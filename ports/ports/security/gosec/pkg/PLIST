@@ -1,0 +1,3 @@
+@bin bin/gosec
+@comment bin/gosecutil
+@comment bin/tlsconfig

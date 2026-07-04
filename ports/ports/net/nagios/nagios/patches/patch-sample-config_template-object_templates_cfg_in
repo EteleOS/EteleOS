@@ -1,0 +1,18 @@
+Index: sample-config/template-object/templates.cfg.in
+--- sample-config/template-object/templates.cfg.in.orig
++++ sample-config/template-object/templates.cfg.in
+@@ -61,12 +61,12 @@ define host {
+ 
+ 
+ 
+-# Linux host definition template
++# OpenBSD host definition template
+ # This is NOT a real host, just a template!
+ 
+ define host {
+ 
+-    name                            linux-server            ; The name of this host template
++    name                            openbsd-server            ; The name of this host template
+     use                             generic-host            ; This template inherits other values from the generic-host template
+     check_period                    24x7                    ; By default, Linux hosts are checked round the clock
+     check_interval                  5                       ; Actively check the host every 5 minutes

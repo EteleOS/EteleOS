@@ -1,0 +1,31 @@
+PORTROACH=	skipv:bm_start
+
+COMMENT=	radio contest logger
+
+GH_ACCOUNT=	Tlf
+GH_PROJECT=	tlf
+GH_TAGNAME=	tlf-1.2.1
+PKGNAME=	${GH_TAGNAME}
+
+CATEGORIES=	comms hamradio
+REVISION=	2
+
+HOMEPAGE=	http://home.iae.nl/users/reinc/TLF-0.2.html
+
+# GPLv2+
+PERMIT_PACKAGE=	Yes
+
+WANTLIB=  c glib-2.0 hamlib>=2 iconv intl m curses panel pthread sndio
+
+AUTOCONF_VERSION= 2.69
+AUTOMAKE_VERSION= 1.11
+
+CONFIGURE_STYLE= autoreconf
+CONFIGURE_ARGS+= --enable-hamlib
+LIB_DEPENDS=	comms/hamlib \
+		devel/glib2
+
+CONFIGURE_ENV=	CPPFLAGS="-I${LOCALBASE}/include" \
+		LDFLAGS="-lsndio -L${LOCALBASE}/lib"
+
+.include <bsd.port.mk>

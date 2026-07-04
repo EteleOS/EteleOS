@@ -1,0 +1,22 @@
+@bin bin/ratpoison
+bin/rpws
+@info info/ratpoison.info
+@man man/man1/ratpoison.1
+share/doc/ratpoison/
+share/doc/ratpoison/AUTHORS
+share/doc/ratpoison/COPYING
+share/doc/ratpoison/NEWS
+share/doc/ratpoison/README
+share/emacs/
+share/emacs/site-lisp/
+share/emacs/site-lisp/ratpoison.el
+share/ratpoison/
+share/ratpoison/allwindows.sh
+share/ratpoison/clickframe.pl
+share/ratpoison/genrpbindings
+share/ratpoison/ratdate.sh
+share/ratpoison/rpshowall.sh
+share/ratpoison/rpws
+share/ratpoison/sloppy.c
+share/ratpoison/split.sh
+share/ratpoison/unrat.c

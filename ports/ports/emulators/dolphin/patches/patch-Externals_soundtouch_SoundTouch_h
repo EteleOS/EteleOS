@@ -1,0 +1,19 @@
+Avoid picking up SoundTouch.h from audio/soundtouch if installed.
+
+CMakeLists.txt: "Unable to use system soundtouch library: We require shorts, not
+floats"
+
+Index: Externals/soundtouch/SoundTouch.h
+--- Externals/soundtouch/SoundTouch.h.orig
++++ Externals/soundtouch/SoundTouch.h
+@@ -62,8 +62,8 @@
+ //
+ ////////////////////////////////////////////////////////////////////////////////
+ 
+-#ifndef SoundTouch_H
+-#define SoundTouch_H
++#ifndef ExtSoundTouch_H
++#define ExtSoundTouch_H
+ 
+ #include "FIFOSamplePipe.h"
+ #include "STTypes.h"

@@ -1,0 +1,15 @@
+Index: cmake/Modules/WaffleValidateOptions.cmake
+--- cmake/Modules/WaffleValidateOptions.cmake.orig
++++ cmake/Modules/WaffleValidateOptions.cmake
+@@ -87,11 +87,6 @@ if(waffle_on_linux)
+                 "${gbm_missing_deps} gbm"
+                 )
+         endif()
+-        if(NOT libudev_FOUND)
+-            set(gbm_missing_deps
+-                "${gbm_missing_deps} libudev"
+-                )
+-        endif()
+         if(NOT egl_FOUND)
+             set(gbm_missing_deps
+                 "${gbm_missing_deps} egl"

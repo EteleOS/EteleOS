@@ -1,0 +1,4 @@
+@bin bin/einstein
+share/einstein/
+share/einstein/res/
+share/einstein/res/einstein.res

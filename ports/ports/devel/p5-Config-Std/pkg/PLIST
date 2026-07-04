@@ -1,0 +1,3 @@
+${P5SITE}/Config/
+${P5SITE}/Config/Std.pm
+@man man/man3p/Config::Std.3p

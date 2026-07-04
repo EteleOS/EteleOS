@@ -1,0 +1,12 @@
+Index: Makefile.in
+--- Makefile.in.orig
++++ Makefile.in
+@@ -209,7 +209,7 @@ makeServerDirs::
+ 	-${INSTALL} -u ${FAXUSER} -g ${FAXGROUP} -m ${DIRMODE} \
+ 	    -idb hylafax.sw.server -dir \
+ 	    -root ${INSTALLROOT} -F ${SPOOL} bin client config dev etc info log recvq status
+-	-${INSTALL} -u ${FAXUSER} -g ${FAXGROUP} -m 700 \
++	-${INSTALL} -u ${FAXUSER} -g ${FAXGROUP} -m 755 \
+ 	    -idb hylafax.sw.server -dir \
+ 	    -root ${INSTALLROOT} -F ${SPOOL} sendq doneq docq tmp pollq archive
+ makeDirs: makeClientDirs makeServerDirs

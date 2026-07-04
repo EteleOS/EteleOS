@@ -1,0 +1,15 @@
+This package provides the golang.org/x/tools module, comprising various
+tools and packages mostly for static analysis of Go programs, some of
+which are listed below.
+
+- callgraph: prints the call graph of a Go program.
+- deadcode: reports unreachable functions.
+- digraph: utility for manipulating directed graphs in textual notation.
+- goimports: formats a Go program like go fmt and additionally inserts
+import statements for any packages required by the file after it is
+edited.
+- stringer: generates declarations (including a String method) for
+"enum" types.
+- present: runs a web server that presents slide and article files from
+- toolstash: simplifies  working with multiple versions of the Go toolchain.
+the current directory. 

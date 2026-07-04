@@ -1,0 +1,8 @@
+--- perdition/db/postgresql/perditiondb_postgresql_makedb.orig	Fri Jul 17 18:25:43 2015
++++ perdition/db/postgresql/perditiondb_postgresql_makedb	Fri Jul 17 18:25:54 2015
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/bin/sh
+ ######################################################################
+ # perditiondb_postgresql_makedb                          December 2000
+ # Horms                                             horms@verge.net.au

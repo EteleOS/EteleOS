@@ -1,0 +1,14 @@
+Adjust ConfigPlaces.
+
+Index: ietf
+--- ietf.orig
++++ ietf
+@@ -119,7 +119,7 @@ __license__ = "https://en.wikipedia.org/wiki/WTFPL"
+ KnownCmds = ("auth48", "author", "bcp", "bcponly", "charter", "conflict", "diff", "draft", "draftreport", \
+ 	 "iesg", "mirror", "rfc", "rfcextra", "rfchtml", "rfchtmlized", "rfcinfo", "rg", "std", "stdonly", "tools", \
+ 	 "tracker")
+-ConfigPlaces = ("~/bin/ietf.config", "/usr/local/bin/ietf.config", "~/.ietf/ietf.config")
++ConfigPlaces = ("~/bin/ietf.config", "/usr/local/bin/ietf.config", "~/.ietf/ietf.config", "${SYSCONFDIR}/ietf.config")
+ 
+ # Make a block of text that can be executed in the CLI
+ CLICmdCode = ""

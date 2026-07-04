@@ -1,0 +1,12 @@
+Index: scan.l
+--- scan.l.orig
++++ scan.l
+@@ -19,7 +19,7 @@
+ 
+ #include <string.h>
+ 
+-#include "y.tab.h"
++#include "parse.h"
+ 
+ %}
+ 

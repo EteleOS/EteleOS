@@ -1,0 +1,11 @@
+Index: src/ipetoipe/ipetoipe.cpp
+--- src/ipetoipe/ipetoipe.cpp.orig
++++ src/ipetoipe/ipetoipe.cpp
+@@ -32,6 +32,7 @@
+ #include <cstdlib>
+ #include <cstring>
+ 
++using std::exit;
+ using ipe::Document;
+ using ipe::String;
+ using ipe::FileFormat;

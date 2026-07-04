@@ -1,0 +1,12 @@
+Index: plugins/node.d/postfix_mailvolume.in
+--- plugins/node.d/postfix_mailvolume.in.orig
++++ plugins/node.d/postfix_mailvolume.in
+@@ -65,7 +65,7 @@ my %expired_queue_ids = ();
+ use constant queue_id_expiry => 6 * 3600;
+ 
+ my $LOGDIR  = $ENV{'logdir'}  || '/var/log';
+-my $LOGFILE = $ENV{'logfile'} || 'syslog';
++my $LOGFILE = $ENV{'logfile'} || 'maillog';
+ 
+ 
+ sub parseLogfile {

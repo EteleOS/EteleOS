@@ -1,0 +1,69 @@
+Don't build wayland renderer.
+Correct shared library numbers.
+Don't create shared library symlinks.
+No -ldl.
+We don't have pkg-config files for curses.
+Don't relink the shared library during install time.
+Don't install library symlinks but do install the shared library.
+
+Index: GNUmakefile
+--- GNUmakefile.orig
++++ GNUmakefile
+@@ -24,7 +24,7 @@ libs = libbemenu.so
+ pkgconfigs = bemenu.pc
+ bins = bemenu bemenu-run
+ mans = bemenu.1
+-renderers = bemenu-renderer-x11.so bemenu-renderer-curses.so bemenu-renderer-wayland.so
++renderers = bemenu-renderer-x11.so bemenu-renderer-curses.so
+ all: $(bins) $(renderers) $(mans)
+ clients: $(bins)
+ curses: bemenu-renderer-curses.so
+@@ -40,12 +40,10 @@ wayland: bemenu-renderer-wayland.so
+ %.a:
+ 	$(LINK.c) -c $(filter %.c,$^) $(LDLIBS) -o $@
+ 
+-$(libs): private override full=$(addsuffix .$(VERSION), $@)
++$(libs): private override full=$(addsuffix .$(LIBbemenu_VERSION), $@)
+ $(libs): private override major=$(addsuffix .$(firstword $(subst ., ,$(VERSION))), $@)
+ $(libs): %: VERSION .git/index
+-	$(LINK.c) -shared -fPIC $(filter %.c %.a,$^) $(LDLIBS) -o $(full) -Wl,-soname,$(major)
+-	ln -fs $(full) $(major)
+-	ln -fs $(full) $@
++	$(LINK.c) -shared -fPIC $(filter %.c %.a,$^) $(LDLIBS) -o $(full) -Wl,-soname,$(full)
+ 
+ $(pkgconfigs): %: VERSION %.in
+ 	sed "s/@VERSION@/$(VERSION)/;s,@PREFIX@,$(PREFIX),;s,@LIBDIR@,$(libdir),;s,@INCLUDEDIR@,$(includedir)," $(addsuffix .in, $@) > $@
+@@ -65,11 +63,9 @@ cdl.a: lib/3rdparty/cdl.c lib/3rdparty/cdl.h
+ util.a: private override LDFLAGS += -fPIC
+ util.a: lib/util.c lib/internal.h
+ 
+-libbemenu.so: private override LDLIBS += -ldl
+ libbemenu.so: lib/bemenu.h lib/internal.h lib/filter.c lib/item.c lib/library.c lib/list.c lib/menu.c lib/vim.c util.a cdl.a
+ 
+-bemenu-renderer-curses.so: private override LDLIBS += $(shell $(PKG_CONFIG) --libs ncursesw) -lm
+-bemenu-renderer-curses.so: private override CPPFLAGS += $(shell $(PKG_CONFIG) --cflags-only-I ncursesw)
++bemenu-renderer-curses.so: private override LDLIBS += -lncursesw -lm
+ bemenu-renderer-curses.so: lib/renderers/curses/curses.c util.a
+ 
+ bemenu-renderer-x11.so: private override LDLIBS += $(shell $(PKG_CONFIG) --libs x11 xinerama cairo pango pangocairo)
+@@ -125,9 +121,9 @@ install-include: lib/bemenu.h
+ 	mkdir -p "$(DESTDIR)$(PREFIX)$(includedir)"
+ 	cp $^ "$(DESTDIR)$(PREFIX)$(includedir)"
+ 
+-install-libs: $(libs)
++install-libs:
+ 	mkdir -p "$(DESTDIR)$(PREFIX)$(libdir)"
+-	cp $(addsuffix .$(VERSION), $^) "$(DESTDIR)$(PREFIX)$(libdir)"
++	cp $(addsuffix .$(LIBbemenu_VERSION), $(libs)) "$(DESTDIR)$(PREFIX)$(libdir)"
+ 
+ install-lib-symlinks: $(libs) | install-libs
+ 	cp -RP $^ $(addsuffix .$(firstword $(subst ., ,$(VERSION))), $^) "$(DESTDIR)$(PREFIX)$(libdir)"
+@@ -157,7 +153,7 @@ install-x11:
+ 
+ install-docs: install-man
+ 
+-install-base: install-pkgconfig install-include install-lib-symlinks install-bins
++install-base: install-pkgconfig install-include install-libs install-bins
+ 
+ install: install-base install-renderers install-docs
+ 	@echo "Install OK!"

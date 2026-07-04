@@ -1,0 +1,24 @@
+--- usr/lib/mysql-zrm/ZRM/Common.pm.orig	Mon Aug 26 22:45:36 2013
++++ usr/lib/mysql-zrm/ZRM/Common.pm	Thu Mar 12 11:08:53 2015
+@@ -90,9 +90,9 @@ our $LOGGER;
+ our $INDEX_FILENAME="index";
+ our $MYSQL_ZRM_CONFIG_FILE=catfile( $MYSQL_ZRM_BASEDIR, "mysql-zrm.conf");
+ #Compress & Encrypt progs
+-our $TAR="tar";
+-our $TAR_COMPRESS_OPTIONS=" --same-owner -cpsC ";
+-our $TAR_UNCOMPRESS_OPTIONS=" --same-owner -xpsC ";
++our $TAR="gtar";
++our $TAR_COMPRESS_OPTIONS=" --same-owner -f- -cpC ";
++our $TAR_UNCOMPRESS_OPTIONS=" --same-owner -f- -xpC ";
+ our $TAR_EXCLUDE_OPTION=" --exclude";
+ our $COMPRESS_FILENAME="backup-data";
+ our $COMPRESS_LOGICAL_FILENAME="backup-sql";
+@@ -1350,7 +1350,7 @@ sub createConfigFile()
+ #	if( $action eq "check" ){
+ 		#return;
+ 	#}
+-	$confFileHandle = new File::Temp(TEMPLATE=>"tmpXXXXX",DIR=>$backupset_dir,SUFFIX=>".conf", UNLINK=>1);
++	$confFileHandle = new File::Temp(TEMPLATE=>"tmpXXXXXXXXXX",DIR=>$backupset_dir,SUFFIX=>".conf", UNLINK=>1);
+ 	$ENV{'ZRM_CONF'} = "$confFileHandle";
+ 	if( $verbose ){
+ 		&printLog( "ZRM Temporary configuration file = $confFileHandle\n" );

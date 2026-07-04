@@ -1,0 +1,6 @@
+Index: requirements.txt
+--- requirements.txt.orig
++++ requirements.txt
+@@ -1 +1 @@
+-dnspython==1.16.0
++dnspython

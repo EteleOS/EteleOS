@@ -1,0 +1,12 @@
+--- loudmouth/Makefile.in.orig	Mon Aug  4 13:37:02 2008
++++ loudmouth/Makefile.in	Mon Aug  4 13:37:12 2008
+@@ -306,8 +306,7 @@ libloudmouthinclude_HEADERS = \
+ 
+ libloudmouth_1_la_LIBADD = \
+ 	$(LOUDMOUTH_LIBS)		\
+-	$(LIBIDN_LIBS) \
+-	-lresolv
++	$(LIBIDN_LIBS)
+ 
+ libloudmouth_1_la_LDFLAGS = \
+ 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \

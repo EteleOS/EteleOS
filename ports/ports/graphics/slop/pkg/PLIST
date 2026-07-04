@@ -1,0 +1,4 @@
+@bin bin/slop
+include/slop.hpp
+@lib lib/libslopy.so.${LIBslopy_VERSION}
+@man man/man1/slop.1

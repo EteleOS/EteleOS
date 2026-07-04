@@ -1,0 +1,26 @@
+Index: link-grammar/utilities.h
+--- link-grammar/utilities.h.orig
++++ link-grammar/utilities.h
+@@ -165,16 +165,20 @@ int strncasecmp(const char *s1, const char *s2, size_t
+ /* Cygwin < 2.6.0 doesn't have locale_t. */
+ #ifdef HAVE_LOCALE_T
+ locale_t newlocale_LC_CTYPE(const char *);
++// XXX horrible magic to get the stubs to shut things up
++#elif defined(__clang__) && __has_include(<support/xlocale/__nop_locale_mgmt.h>)
++#include <cstddef>
++#include <support/xlocale/__nop_locale_mgmt.h>
+ #else
+ typedef void *locale_t;
++#define freelocale(l)
++#endif /* HAVE_LOCALE_T */
+ #define iswupper_l(c, l) iswupper(c)
+ #define iswalpha_l(c, l) iswalpha(c)
+ #define iswdigit_l(c, l) iswdigit(c)
+ #define iswspace_l(c, l) iswspace(c)
+ #define towlower_l(c, l) towlower(c)
+ #define towupper_l(c, l) towupper(c)
+-#define freelocale(l)
+-#endif /* HAVE_LOCALE_T */
+ 
+ #if HAVE__ALIGNED_MALLOC
+ #define aligned_alloc(alignment, size) _aligned_malloc (size, alignment)

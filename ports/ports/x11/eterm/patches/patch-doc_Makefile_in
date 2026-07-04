@@ -1,0 +1,11 @@
+--- doc/Makefile.in.orig	Wed Mar 16 07:10:30 2011
++++ doc/Makefile.in	Thu Jun 25 14:40:32 2015
+@@ -417,7 +417,7 @@ uninstall-man: uninstall-man1
+ 	uninstall-man uninstall-man1
+ 
+ 
+-all: Makefile Eterm.1.html
++all: Makefile
+ 
+ Eterm.1: $(top_srcdir)/doc/Eterm.1.in
+ 	$(SED) -e 's%@''VERSION''@%$(VERSION)%g' -e 's%@''DATE''@%$(DATE)%g' -e 's%@THEMEDIR@%$(pkgdatadir)/themes%g' $(top_srcdir)/doc/$@.in > $@

@@ -1,0 +1,10 @@
+@bin bin/gnushogi
+@man man/man6/gnushogi.6
+share/doc/gnushogi/
+share/doc/gnushogi/BOOKFILES
+share/doc/gnushogi/PORTING
+share/doc/gnushogi/shogi.rules
+share/doc/gnushogi/tutorial1.gam
+share/doc/gnushogi/tutorial2.gam
+share/gnushogi/
+share/gnushogi/gnushogi.bbk

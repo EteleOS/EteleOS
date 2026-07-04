@@ -1,0 +1,15 @@
+include/dvdnav/
+include/dvdnav/dvd_types.h
+include/dvdnav/dvdnav.h
+include/dvdnav/dvdnav_events.h
+include/dvdnav/version.h
+@static-lib lib/libdvdnav.a
+lib/libdvdnav.la
+@lib lib/libdvdnav.so.${LIBdvdnav_VERSION}
+lib/pkgconfig/dvdnav.pc
+share/doc/libdvdnav/
+share/doc/libdvdnav/AUTHORS
+share/doc/libdvdnav/COPYING
+share/doc/libdvdnav/ChangeLog
+share/doc/libdvdnav/README
+share/doc/libdvdnav/TODO

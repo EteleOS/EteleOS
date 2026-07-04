@@ -1,0 +1,27 @@
+Index: makefiles/Makefile.openbsd
+--- makefiles/Makefile.openbsd.orig
++++ makefiles/Makefile.openbsd
+@@ -2,5 +2,5 @@
+-CC=cc
+-AR=ar
++CC?=cc
++AR?=ar
+ 
+ # For editres, add -DEDITRES to CFLAGS and -lXmu to LIBS
+ #
+@@ -10,9 +10,13 @@ AR=ar
+ # To test if the Motif library exports the runtime version
+ # add -DHAVE__XMVERSIONSTRING to CFLAGS
+ #
+-CFLAGS=-O -I/usr/X11R6/include -DUSE_DIRENT -DUSE_LPR_PRINT_CMD
++LOCALBASE?=/usr/local
++X11BASE?=/usr/X11R6
++CFLAGS+=-I${X11BASE}/include -I${LOCALBASE}/include
++CFLAGS+=-DUSE_DIRENT -DUSE_LPR_PRINT_CMD -DHAVE_MKSTEMP
+ ARFLAGS=-ur
+-LIBS= -L/usr/X11R6/lib -lXm -lXpm -lXp -lXext -lXt -lSM -lICE -lX11 -lm
++MOTIFLIB?=-L${LOCALBASE} -lXm
++LIBS=-L${X11BASE}/lib ${MOTIFLIB} -lXft -lXpm -lXext -lXt -lSM -lICE -lX11 -lfontconfig -lfreetype -lexpat -lm -lXau -lXdmcp -lXrender -lXmu -lz -liconv 
+ 
+ include Makefile.common
+ 

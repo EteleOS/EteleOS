@@ -1,0 +1,14 @@
+#!/bin/ksh
+
+daemon="${TRUEPREFIX}/bin/pgbouncer -d"
+daemon_flags="-q -u _pgbouncer ${SYSCONFDIR}/pgbouncer/pgbouncer.ini"
+
+. /etc/rc.d/rc.subr
+
+rc_pre() {
+	/usr/bin/install -d -o _pgbouncer /var/run/pgbouncer
+}
+
+rc_stop_signal=QUIT
+
+rc_cmd $1

@@ -1,0 +1,11 @@
+--- plugins/node.d/psu_.in.orig	Thu Oct 14 18:46:10 2010
++++ plugins/node.d/psu_.in	Thu Oct 14 18:46:23 2010
+@@ -35,7 +35,7 @@ suggestions.
+ =head1 MAGIC MARKERS
+ 
+  #%# family=manual
+- #%# capabilities=autoconf suggest
++ #%# capabilities=autoconf
+ 
+ =cut
+ 

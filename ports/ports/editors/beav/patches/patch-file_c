@@ -1,0 +1,10 @@
+--- file.c.orig	Wed Dec 11 20:07:15 2013
++++ file.c	Wed Dec 11 20:07:15 2013
+@@ -10,7 +10,6 @@
+ char load_file ();
+ char readin ();
+ void makename ();
+-bool writeout ();
+ bool parse_f_name ();
+ A32 ffseek ();
+ A32 file_len ();

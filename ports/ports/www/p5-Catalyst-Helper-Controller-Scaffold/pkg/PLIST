@@ -1,0 +1,5 @@
+${P5SITE}/Catalyst/
+${P5SITE}/Catalyst/Helper/
+${P5SITE}/Catalyst/Helper/Controller/
+${P5SITE}/Catalyst/Helper/Controller/Scaffold.pm
+@man man/man3p/Catalyst::Helper::Controller::Scaffold.3p

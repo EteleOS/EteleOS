@@ -1,0 +1,95 @@
+Index: examples/mimedefang-filter-openbsd-ports
+--- examples/mimedefang-filter-openbsd-ports.orig
++++ examples/mimedefang-filter-openbsd-ports
+@@ -3,9 +3,6 @@
+ #
+ # mimedefang-filter
+ #
+-# Suggested minimum-protection filter for Microsoft Windows clients, plus
+-# SpamAssassin checks if SpamAssassin is installed.
+-#
+ # Copyright (C) 2002 Roaring Penguin Software Inc.
+ #
+ # This program may be distributed under the terms of the GNU General
+@@ -20,7 +17,7 @@
+ # MIMEDefang policy.    A good example would be 'defang-admin@mydomain.com'
+ #***********************************************************************
+ $AdminAddress = 'postmaster@localhost';
+-$AdminName = "MIMEDefang Administrator's Full Name";
++$AdminName = "Postmaster";
+ 
+ #***********************************************************************
+ # Set the e-mail address from which MIMEDefang quarantine warnings and
+@@ -28,7 +25,7 @@ $AdminName = "MIMEDefang Administrator's Full Name";
+ # 'mimedefang@mydomain.com'.    Make sure to have an alias for this
+ # address if you want replies to it to work.
+ #***********************************************************************
+-$DaemonAddress = 'mimedefang@localhost';
++$DaemonAddress = 'postmaster@localhost';
+ 
+ #***********************************************************************
+ # If you set $AddWarningsInline to 1, then MIMEDefang tries *very* hard
+@@ -63,6 +60,12 @@ md_graphdefang_log_enable('mail', 1);
+ # $MaxMIMEParts = 50;
+ 
+ #***********************************************************************
++# Uncomment to enable the clamd(8) anti-virus daemon.
++#***********************************************************************
++# $Features{'Virus:CLAMD'} = 1;
++# $ClamdSock = "/tmp/clamd.socket";
++
++#***********************************************************************
+ # Set various stupid things your mail client does below.
+ #***********************************************************************
+ 
+@@ -259,6 +262,9 @@ sub filter_end {
+     # No sense doing any extra work
+     return if message_rejected();
+ 
++    # Uncomment to disable SPAM scanning from Sendmail authenticated users
++    #return if ($SendmailMacros{'auth_authen'});
++
+     # Spam checks if SpamAssassin is installed
+     if ($Features{"SpamAssassin"}) {
+         if (-s "./INPUTMSG" < 100*1024) {
+@@ -328,7 +334,40 @@ sub filter_end {
+     # by marginal software.  Your call.
+ 
+     # action_rebuild();
++
++    # Uncomment to prepend '[SPAM] ' to the subject of X-Spam-Status tagged mails.
++    # if (spam_assassin_is_spam()) { action_change_header("Subject", "[SPAM] $Subject"); }
++
++    # If the file(s) /etc/mail/disclaimer.txt and/or /etc/mail/disclaimer.html
++    # are present, they will be appended to all outgoing mails.
++    # Modify 192.168.1 to match your local network(s).
++#    if ($RelayAddr =~ /192\.168\.1\./ or $RelayAddr eq "127.0.0.1") {
++#	my $disclaimer = '/etc/mail/disclaimer.txt';
++#	my $disclaimer_html = '/etc/mail/disclaimer.html';
++#
++#	if (-e $disclaimer) {
++#	    open FILE, "<$disclaimer";
++#	    my $text_boilerplate = do { local $/; <FILE> };
++#	    append_text_boilerplate($entity, $text_boilerplate, 0);
++#	}
++#	if (-e $disclaimer_html) {
++#	    open FILE, "<$disclaimer_html";
++#	    my $html_boilerplate = do { local $/; <FILE> };
++#	    append_html_boilerplate($entity, $html_boilerplate, 0);
++#	}
++#    }
+ }
++
++# Uncomment to disable processing any mails sent from localhost
++# (mimedefang(8) must be stated with the `-r' flag).
++#sub filter_relay {
++#    my ($ip, $name) = @_;
++#    if ($ip eq '127.0.0.1') {
++#        return ('ACCEPT_AND_NO_MORE_FILTERING', "ok");
++#    }
++#
++#    return ('CONTINUE', "ok");
++#}
+ 
+ # DO NOT delete the next line, or Perl will complain.
+ 1;

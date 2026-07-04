@@ -1,0 +1,15 @@
+Fix for -fno-common
+https://bazaar.launchpad.net/~foxtrotgps-team/foxtrotgps/trunk/revision/323
+
+Index: src/callbacks.c
+--- src/callbacks.c.orig
++++ src/callbacks.c
+@@ -46,7 +46,7 @@ static gboolean msg_pane_visible=TRUE;
+ static gboolean maximized = FALSE;
+ 
+ 
+-GtkWidget *dialog10 = NULL;
++static GtkWidget *dialog10 = NULL;
+ 
+ 
+ static int local_x = 0;

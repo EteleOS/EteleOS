@@ -1,0 +1,11 @@
+--- dns.c.orig	Sun May 18 03:21:33 2003
++++ dns.c	Sun May 23 18:24:21 2010
+@@ -139,7 +139,7 @@ dns_read(int fd, short why, void *arg)
+ 		event_add(&child->ev_write, NULL);
+ 
+ 	if (atomicio(read, fd, &size, sizeof(size)) != sizeof(size))
+-		err(1, "%s: read(%d)", __func__, sizeof(size));
++		err(1, "%s: read(%lu)", (unsigned long)sizeof(size), __func__);
+ 
+ 	if (size == -1)
+ 		goto fail;
