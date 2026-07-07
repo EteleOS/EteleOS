@@ -1,6 +1,6 @@
 #	$OpenBSD: Makefile,v 1.67 2025/10/23 20:42:52 miod Exp $
 #	$NetBSD: Makefile,v 1.35 1996/04/03 21:20:52 chuck Exp $
-
+#     $EteleOS: Makefile, 2026/07/07$
 .include <bsd.own.mk>
 
 .if make(obj)
