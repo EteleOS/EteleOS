@@ -1,9 +1,10 @@
 #!/bin/sh
-#
+# EteleOS: ltconfig
+# Author: Tran Phuoc Dat, time wirte: 2026/07/08
+# This file uses the Apache-2.0 license
 # ltconfig: generate a system-specific "libtool" script.
-# Part of the EteleOS build tools. No external license — written for
-# EteleOS, which only targets amd64, arm64, riscv64 with Clang on
-# EteleOS/OpenBSD (ELF, GNU-compatible ld via lld).
+# Which only targets amd64, arm64, riscv64 with Clang on
+# EteleOS (ELF, GNU-compatible ld via lld).
 #
 # Output format matches the variable names ltmain.sh expects, so the
 # generated "libtool" script stays a drop-in replacement.
@@ -77,7 +78,7 @@ host=$("$config_sub" "$host_alias") || { echo "$progname: unrecognized host '$ho
 host_cpu=$(echo "$host" | cut -d- -f1)
 host_os=$(echo "$host" | cut -d- -f3-)
 
-# EteleOS only ever builds with Clang, targeting ELF/EteleOS-OpenBSD.
+# EteleOS only ever builds with Clang, targeting ELF/EteleOS.
 CC=${CC-clang}
 AR=${AR-llvm-ar}
 RANLIB=${RANLIB-llvm-ranlib}

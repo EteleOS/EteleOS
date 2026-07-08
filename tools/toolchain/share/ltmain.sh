@@ -1,8 +1,10 @@
 #!/bin/sh
+# EteleOS: ltmain.sh
+# Author: Tran Phuoc Dat, time wirte: 2026/07/08
+# This file uses the Apache-2.0 license
 #
 # ltmain.sh: generalized library-building support script for EteleOS.
-# Part of the EteleOS build tools. No external license — written for
-# EteleOS. Appended to the output of ltconfig to form the "libtool"
+# Appended to the output of ltconfig to form the "libtool"
 # script used by Makefiles (xenocara, userland, etc).
 #
 # Supports only what EteleOS needs: Clang + lld + ELF shared/static

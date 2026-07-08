@@ -1,11 +1,12 @@
 #!/bin/sh
+# EteleOS: config.guess
+# Author: Tran Phuoc Dat, time wirte: [2026/07/08]
+# This file uses the Apache-2.0 license
 #
 # config.guess: print a canonical target triple for the build machine.
-# Part of the EteleOS build tools. No external license — written for
-# EteleOS, which only targets amd64, arm64, and riscv64 on EteleOS/OpenBSD.
+# Which only targets amd64, arm64, and riscv64 on EteleOS.
 #
 # Output format: <arch>-unknown-eteleos<release>
-#
 # Usage: config.guess [-h|--help] [-v|--version]
 
 progname=$(basename "$0")
@@ -52,15 +53,10 @@ case "$machine" in
 esac
 
 # Normalize the OS name. EteleOS build hosts are expected to be either
-# EteleOS itself or the OpenBSD base it was built from.
 case "$system" in
 	EteleOS)
 		os="eteleos${release}"
 		;;
-	OpenBSD)
-		os="openbsd${release}"
-		;;
-	*)
 		echo "$progname: unsupported build host '$system'" >&2
 		exit 1
 		;;

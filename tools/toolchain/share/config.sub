@@ -1,10 +1,12 @@
 #!/bin/sh
+# EteleOS: config.sub
+# Author: Tran Phuoc Dat, time wirte: [2026/07/08]
+# This file uses the Apache-2.0 license
 #
 # config.sub: validate and canonicalize a target triple.
-# Part of the EteleOS build tools. No external license — written for
-# EteleOS, which only targets amd64, arm64, and riscv64 on EteleOS/OpenBSD.
+# Which only targets amd64, arm64, and riscv64 on EteleOS.
 #
-# Accepts a triple/alias like "amd64", "arm64-eteleos", "riscv64-unknown-openbsd7.9"
+# Accepts a triple/alias like "amd64", "arm64", "riscv64"
 # and prints the canonical form: <arch>-unknown-<os>
 #
 # Usage: config.sub [-h|--help] [-v|--version] TRIPLE
@@ -19,7 +21,7 @@ Usage: $progname [OPTION] CPU-MFR-OS
 
 Canonicalize a target configuration name for EteleOS.
 Supported CPUs: amd64, arm64, riscv64
-Supported OS:   eteleos, openbsd
+Supported OS:   eteleos
 
   -h, --help     show this help and exit
   -v, --version  show version and exit
@@ -51,17 +53,13 @@ case "$cpu_part" in
 esac
 
 # Normalize whatever's left (vendor/os fields) down to just an OS name.
-# Accept forms like "eteleos", "unknown-eteleos", "unknown-openbsd7.9", or empty.
+# Accept forms like "eteleos", "unknown-eteleos" or empty.
 os_raw=$(echo "$rest" | sed -e 's/^unknown-//' -e 's/^pc-//')
 
 case "$os_raw" in
 	eteleos*|"")
 		os=${os_raw:-eteleos}
 		;;
-	openbsd*)
-		os=$os_raw
-		;;
-	*)
 		echo "$progname: invalid configuration \`$input': os \`$os_raw' not supported" >&2
 		echo "$progname: EteleOS only supports eteleos and openbsd targets" >&2
 		exit 1

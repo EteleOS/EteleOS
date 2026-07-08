@@ -1,7 +1,9 @@
 #!/bin/sh
+# EteleOS: [filename]
+# Author: [authorname], time wirte: [yyyy/mm/dd]
+# This file uses the Apache-2.0 license
 #
 # move-if-change: move $1 to $2 only if their contents differ.
-# Part of EteleOS build tools. Public domain / no restrictions.
 #
 # Usage: move-if-change <new-file> <target-file>
 
