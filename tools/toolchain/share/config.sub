@@ -1,6 +1,5 @@
 #!/bin/sh
-# EteleOS: config.sub
-# Author: Tran Phuoc Dat, time wirte: [2026/07/08]
+# EteleOS: config.sub, time wirte: 2026/07/08
 # This file uses the Apache-2.0 license
 #
 # config.sub: validate and canonicalize a target triple.

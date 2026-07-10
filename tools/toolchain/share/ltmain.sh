@@ -1,6 +1,5 @@
 #!/bin/sh
-# EteleOS: ltmain.sh
-# Author: Tran Phuoc Dat, time wirte: 2026/07/08
+# EteleOS: ltmain.sh, time wirte: 2026/07/08
 # This file uses the Apache-2.0 license
 #
 # ltmain.sh: generalized library-building support script for EteleOS.

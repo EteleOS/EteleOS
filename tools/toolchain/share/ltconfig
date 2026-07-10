@@ -1,7 +1,7 @@
 #!/bin/sh
-# EteleOS: ltconfig
-# Author: Tran Phuoc Dat, time wirte: 2026/07/08
+# EteleOS: ltconfig, time wirte: 2026/07/08
 # This file uses the Apache-2.0 license
+#
 # ltconfig: generate a system-specific "libtool" script.
 # Which only targets amd64, arm64, riscv64 with Clang on
 # EteleOS (ELF, GNU-compatible ld via lld).
