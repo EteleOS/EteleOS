@@ -13,6 +13,6 @@ Directory structure:
 - tests/: unit tests, integration tests, benchmarks and validation tools
 - tools/: development and build support tools
 - userland/: user space applications and system utilities
-- xenocara/: X Window System, graphical libraries, and desktop components
+- gui/: graphical user interface stack, window systems, graphical libraries, and desktop components
 - docs/: documentation, manuals, design notes, and developer guides
 
