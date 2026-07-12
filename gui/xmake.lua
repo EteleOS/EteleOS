@@ -6,26 +6,26 @@
 
 --[[
 ================================================================================
- EteleOS :: xenocara/xmake.lua
+ EteleOS :: gui/xmake.lua
 ================================================================================
 
 Manages the X.Org-derived windowing stack: Window System, Display Server,
 Graphics Libraries, Fonts, and X11 apps/utilities (verified categories:
 app/, driver/, font/, lib/, proto/, util/, xserver/ -- roughly 27,000 files
-across ~200 separately-versioned upstream modules listed in xenocara/MODULES).
+across ~200 separately-versioned upstream modules listed in gui/MODULES).
 
 WHAT DOES NOT EXIST HERE -- please read first
 -------------------------------------------------
   Compositor, Desktop Environment, Mobile UI, and Wayland were requested as
   responsibilities of this file, but NONE of them exist anywhere in the
-  current source tree -- verified by searching the whole xenocara/ tree:
+  current source tree -- verified by searching the whole gui/ tree:
     - No compositor implementation (Xorg itself has a compositing
       *extension*, "composite/" inside xserver/, which is real and
       already built as part of xserver below -- but that is not the same
       thing as a standalone Wayland-style compositor).
-    - No desktop environment or window manager is vendored in xenocara/
+    - No desktop environment or window manager is vendored in gui/
       (traditional OpenBSD ships bare X11; a WM like cwm is a separate
-      userland/ or ports/ concern, not part of xenocara/).
+      userland/ or ports/ concern, not part of gui/).
     - No mobile UI code anywhere.
     - No Wayland protocol/compositor implementation. The only "wayland"
       hits in the entire tree are an OPTIONAL backend inside the vendored
@@ -37,7 +37,7 @@ WHAT DOES NOT EXIST HERE -- please read first
 
 WHY THIS FILE LOOKS DIFFERENT FROM kernel/libraries/userland's xmake.lua
 --------------------------------------------------------------------------
-  Every xenocara module is its own independently-versioned upstream X.Org
+  Every gui module is its own independently-versioned upstream X.Org
   project, built with autotools/libtool (configure.ac, Makefile.am), NOT a
   simple PROG=/SRCS= BSD Makefile. Re-implementing autotools' own
   dependency/feature detection in xmake is not realistic; the verified,
@@ -60,14 +60,14 @@ script, which is the correct, honest shape of this problem.
 --]]
 
 -- ==============================================================================
--- Module discovery: parse the real xenocara/MODULES file (category/name,
+-- Module discovery: parse the real gui/MODULES file (category/name,
 -- upstream version, optional status flag) instead of hand-listing ~200
 -- modules.
 -- ==============================================================================
 local function parse_modules_list(filepath)
     local f = io.open(filepath, "r")
     if not f then
-        wprint("eteleos-xenocara: MODULES file not found at %s", filepath)
+        wprint("eteleos-gui: MODULES file not found at %s", filepath)
         return {}
     end
     local modules = {}
@@ -88,7 +88,7 @@ end
 
 -- ==============================================================================
 -- Per-module configure overrides -- confirmed real from
--- xenocara/xserver/Makefile.bsd-wrapper. Everything NOT listed here uses
+-- gui/xserver/Makefile.bsd-wrapper. Everything NOT listed here uses
 -- the generic default args below (matching the generic
 -- ".include <bsd.xorg.mk>"-only wrapper that most modules actually have,
 -- verified against xf86-video-apm's real Makefile.bsd-wrapper).
@@ -106,7 +106,7 @@ local MODULE_CONFIGURE_OVERRIDES = {
         "--disable-xdm-auth-1",
         "--without-fop", "--without-xmlto", "--without-xsltproc",
         -- GLX/DRI left at their configure-script defaults here (the real
-        -- wrapper branches on XENOCARA_BUILD_GL / XENOCARA_BUILD_DRI make
+        -- wrapper branches on gui_BUILD_GL / gui_BUILD_DRI make
         -- variables, which have no equivalent wired up in this file yet).
     },
 }
@@ -115,10 +115,10 @@ local MODULE_CONFIGURE_OVERRIDES = {
 -- Generic autotools wrapper: one utility target per module, cross-building
 -- via our own toolchain's target triple.
 -- ==============================================================================
-local function eteleos_xenocara_module(mod)
-    -- xserver is vendored directly at xenocara/xserver/ (MODULES lists it
+local function eteleos_gui_module(mod)
+    -- xserver is vendored directly at gui/xserver/ (MODULES lists it
     -- as a bare "xserver" entry with no category/name split), not nested
-    -- as xenocara/xserver/xserver/ -- special-case its directory.
+    -- as gui/xserver/xserver/ -- special-case its directory.
     local moddir
     if mod.relpath == "xserver/xserver" then
         moddir = path.join(os.scriptdir(), "xserver")
@@ -126,11 +126,11 @@ local function eteleos_xenocara_module(mod)
         moddir = path.join(os.scriptdir(), mod.category, mod.name)
     end
     if not os.isdir(moddir) then
-        wprint("eteleos-xenocara: %s not found on disk, skipping", mod.relpath)
+        wprint("eteleos-gui: %s not found on disk, skipping", mod.relpath)
         return
     end
 
-    local target_name = "xenocara-" .. mod.category .. "-" .. mod.name
+    local target_name = "gui-" .. mod.category .. "-" .. mod.name
 
     target(target_name)
         set_kind("phony")
@@ -155,7 +155,7 @@ local function eteleos_xenocara_module(mod)
                 end
             end
             if not os.isfile(configure) then
-                wprint("eteleos-xenocara: %s has no configure script (and autoreconf "
+                wprint("eteleos-gui: %s has no configure script (and autoreconf "
                        .. "unavailable/failed) -- skipping", mod.relpath)
                 return
             end
@@ -172,20 +172,20 @@ local function eteleos_xenocara_module(mod)
             local envs = { CC = cc }
             local ok = os.execv(configure, args, { curdir = moddir, envs = envs, try = true })
             if not ok then
-                wprint("eteleos-xenocara: %s: configure failed", mod.relpath)
+                wprint("eteleos-gui: %s: configure failed", mod.relpath)
                 return
             end
 
             local make = find_tool("make") or find_tool("gmake")
             if make then
                 if not os.execv(make.program, {}, { curdir = moddir, try = true }) then
-                    wprint("eteleos-xenocara: %s: make failed", mod.relpath)
+                    wprint("eteleos-gui: %s: make failed", mod.relpath)
                     return
                 end
                 os.execv(make.program, {"install", "DESTDIR=" .. installdir},
                           { curdir = moddir, try = true })
             else
-                wprint("eteleos-xenocara: no make/gmake found, cannot build %s", mod.relpath)
+                wprint("eteleos-gui: no make/gmake found, cannot build %s", mod.relpath)
             end
         end)
     target_end()
@@ -196,14 +196,14 @@ end
 -- ==============================================================================
 local modules_file = path.join(os.scriptdir(), "MODULES")
 local all_modules = parse_modules_list(modules_file)
-cprint("${green}eteleos-xenocara${clear}: %d modules discovered from MODULES", #all_modules)
+cprint("${green}eteleos-gui${clear}: %d modules discovered from MODULES", #all_modules)
 
 for _, mod in ipairs(all_modules) do
-    eteleos_xenocara_module(mod)
+    eteleos_gui_module(mod)
 end
 
 -- xserver itself is not listed in MODULES (it is vendored directly under
--- xenocara/xserver/, not xenocara/xserver/xserver/) -- wire it up
+-- gui/xserver/, not gui/xserver/xserver/) -- wire it up
 -- explicitly since it is the single most important target here (the
 -- actual Window System / Display Server the user's spec asks for).
-eteleos_xenocara_module({ category = "xserver", name = "xserver", relpath = "xserver/xserver" })
+eteleos_gui_module({ category = "xserver", name = "xserver", relpath = "xserver/xserver" })

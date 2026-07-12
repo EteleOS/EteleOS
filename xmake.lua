@@ -18,7 +18,7 @@ declare available to every module included after it -- which is why
 NOTE ON LOCATION: this file lives at the repository ROOT. EteleOS calls the
 whole source tree "src" (OpenBSD convention, as in /usr/src), but there is
 no literal src/ subdirectory in this repository -- tools/, include/,
-libraries/, kernel/, resources/, userland/, xenocara/, installer/, tests/,
+libraries/, kernel/, resources/, userland/, gui/, installer/, tests/,
 ports/, configs/ and docs/ already live directly at the repo root.
 --------------------------------------------------------------------------------
 --]]
@@ -109,7 +109,7 @@ local modules = {
     "kernel",
     "resources",
     "userland",
-    "xenocara",
+    "gui",
     "installer",
     "tests",
     "ports",
