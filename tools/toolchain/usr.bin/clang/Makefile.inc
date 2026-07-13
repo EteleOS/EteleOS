@@ -1,5 +1,5 @@
 # $OpenBSD: Makefile.inc,v 1.28 2023/11/17 15:46:58 visa Exp $
-# Edited by Tran Phuoc Dat, 2026/07/07
+# $EteleOS: Makefile.inc(Edited), 2026/07/07
 
 CLANG_SRCS?=	${.CURDIR}/../../../llvm/clang
 LLDB_SRCS?=	${.CURDIR}/../../../llvm/lldb
