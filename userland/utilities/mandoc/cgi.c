@@ -1,4 +1,6 @@
 /* $OpenBSD: cgi.c,v 1.120 2022/12/26 19:16:02 jmc Exp $ */
+/* This file edited*/
+/* $EteleOS: cgi.c, 2026/07/15*/
 /*
  * Copyright (c) 2014-2019, 2021, 2022 Ingo Schwarze <schwarze@usta.de>
  * Copyright (c) 2011, 2012 Kristaps Dzonsons <kristaps@bsd.lv>
@@ -20,7 +22,6 @@
  */
 #include <sys/types.h>
 #include <sys/time.h>
-
 #include <ctype.h>
 #include <err.h>
 #include <errno.h>
