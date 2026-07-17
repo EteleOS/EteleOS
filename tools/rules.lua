@@ -1,11 +1,7 @@
-/*
-EteleOS: xmake.lua, time wirte: 2026/07/10
-This file uses the Apache-2.0 license
-*/
-
 --[[
 ================================================================================
- EteleOS :: tools/rules.lua
+ EteleOS: tools/rules.lua, time write: 2026/07/10
+ This file uses the Apache-2.0 license
 ================================================================================
 
 Project-wide rule() declarations for EteleOS.
@@ -23,6 +19,7 @@ Rule catalogue
                         this rule MUST also add eteleos.base first.
 
   eteleos.userland      Hardening flags for userland executables.
+  eteleos.userland_static Static-link variant, for /bin and /sbin.
 
   eteleos.library       Flags for shared/static libraries.
 
@@ -174,6 +171,29 @@ rule("eteleos.userland")
             {force = true})
 
         -- No executable stack.
+        target:add("ldflags", "-Wl,-z,noexecstack", {force = true})
+    end)
+rule_end()
+
+-- ==============================================================================
+-- eteleos.userland_static
+-- ==============================================================================
+-- Same hardening as eteleos.userland, for the long-standing BSD convention
+-- that /bin and /sbin link statically so they still work if /usr (and
+-- whatever shared libraries live there) isn't mounted yet during early
+-- boot/single-user recovery. Not combined with -fpie/-pie: a static PIE
+-- executable is a real but much less common mode (-static-pie) with its
+-- own runtime-relocation requirements, and isn't what "so it works before
+-- /usr is mounted" is actually asking for here.
+-- MUST be combined with eteleos.base.
+-- Usage:
+--   target("mount")
+--       add_rules("eteleos.base", "eteleos.userland_static")
+-- ==============================================================================
+rule("eteleos.userland_static")
+    on_load(function (target)
+        target:add("ldflags", "-static", {force = true})
+        target:add("cxflags", "-fstack-protector-strong", {force = true})
         target:add("ldflags", "-Wl,-z,noexecstack", {force = true})
     end)
 rule_end()

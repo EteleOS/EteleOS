@@ -1,11 +1,7 @@
-/*
- EteleOS: xmake.lua, time wirte: 2026/07/10
- This file uses the Apache-2.0 license
-*/
-
 --[[
 ================================================================================
- EteleOS :: root xmake.lua -- pure orchestrator
+ EteleOS: root xmake.lua, time write: 2026/07/10
+ This file uses the Apache-2.0 license
 ================================================================================
 
 This file does ONLY project-wide orchestration.
@@ -125,3 +121,4 @@ for _, mod in ipairs(modules) do
         wprint("eteleos: skipping '%s' (no xmake.lua there yet)", mod)
     end
 end
+

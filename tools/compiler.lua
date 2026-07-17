@@ -1,11 +1,7 @@
-/*
-EteleOS: xmake.lua, time wirte: 2026/07/10
-This file uses the Apache-2.0 license
-*/
-
 --[[
 ================================================================================
- EteleOS :: tools/compiler.lua
+ EteleOS: tools/compiler.lua, time write: 2026/07/10
+ This file uses the Apache-2.0 license
 ================================================================================
 
 Project-global compiler, linker and assembler default configuration.

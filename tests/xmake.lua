@@ -1,11 +1,7 @@
-/*
- EteleOS: xmake.lua, time wirte: 2026/07/13
- This file uses the Apache-2.0 license
-*/
-
 --[[
 ================================================================================
- EteleOS :: tests/xmake.lua
+ EteleOS: tests/xmake.lua, time write: 2026/07/13
+ This file uses the Apache-2.0 license
 ================================================================================
 
 Manages: regression, benchmark, unit tests, integration tests.

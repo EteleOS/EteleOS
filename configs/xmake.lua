@@ -1,12 +1,7 @@
-/*
- EteleOS: xmake.lua, time wirte: 2026/07/13
- This file uses the Apache-2.0 license
-*/
-
-
 --[[
 ================================================================================
- EteleOS :: configs/xmake.lua
+ EteleOS: configs/xmake.lua, time write: 2026/07/13 
+ This file uses the Apache-2.0 license
 ================================================================================
 
 Manages: etc, rc, passwd, group, login.conf, sysctl.conf, and the rest of

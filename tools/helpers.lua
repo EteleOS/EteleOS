@@ -1,11 +1,7 @@
-/*
-EteleOS: xmake.lua, time wirte: 2026/07/10
-This file uses the Apache-2.0 license
-*/
-
 --[[
 ================================================================================
- EteleOS :: tools/helpers.lua
+ EteleOS: tools/helpers.lua, time write: 2026/07/10
+ This file uses the Apache-2.0 license
 ================================================================================
 
 Global helper tables and utility functions for the EteleOS build framework.

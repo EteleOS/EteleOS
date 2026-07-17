@@ -1,11 +1,7 @@
-/*
-EteleOS: xmake.lua, time wirte: 2026/07/10
-This file uses the Apache-2.0 license
-*/
-
 --[[
 ================================================================================
- EteleOS :: tools/options.lua
+ EteleOS: tools/options.lua, time write: 2026/07/16
+ This file uses the Apache-2.0 license
 ================================================================================
 
 All project-wide option() declarations.
@@ -112,4 +108,26 @@ option("verbose_build")
     set_default(false)
     set_showmenu(true)
     set_description("Show verbose compiler command lines during build (-v)")
+option_end()
+
+-- ==============================================================================
+-- GUI: GLX / DRI
+-- ==============================================================================
+-- Real upstream Makefile.bsd-wrapper files (xserver's, and driver modules
+-- like xf86-video-intel's) branch on XENOCARA_BUILD_GL / XENOCARA_BUILD_DRI
+-- make variables to add --enable/--disable-glx and --enable/--disable-dri
+-- configure flags. gui/xmake.lua reads these two options for that same
+-- toggle. Off by default: a from-scratch OS bring-up (this project's own
+-- notes point at VirtualBox/UEFI testing) gets a working, testable X server
+-- faster without also having to bring up a GL/DRI-capable driver stack.
+option("build_gl")
+    set_default(false)
+    set_showmenu(true)
+    set_description("Build X.Org modules with GLX support")
+option_end()
+
+option("build_dri")
+    set_default(false)
+    set_showmenu(true)
+    set_description("Build X.Org modules with DRI support")
 option_end()

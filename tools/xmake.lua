@@ -1,11 +1,7 @@
-/*
-EteleOS: xmake.lua, time wirte: 2026/07/10
-This file uses the Apache-2.0 license
-*/
-
 --[[
 ================================================================================
- EteleOS :: tools/xmake.lua -- Build Framework
+ EteleOS: tools/xmake.lua, time write: 2026/07/10
+ This file uses the Apache-2.0 license
 ================================================================================
 
 This file is the Build Framework of EteleOS. It owns every project-wide

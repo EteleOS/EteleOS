@@ -1,12 +1,7 @@
-/*
- EteleOS: xmake.lua, time wirte: 2026/07/12
- This file uses the Apache-2.0 license
-*/
-
-
 --[[
 ================================================================================
- EteleOS :: gui/xmake.lua
+ EteleOS: gui/xmake.lua, time write: 2026/07/16
+ This file uses the Apache-2.0 license
 ================================================================================
 
 Manages the X.Org-derived windowing stack: Window System, Display Server,
@@ -56,6 +51,26 @@ Does not use xmake's native compiler pipeline (add_files/target kind
 binary) -- every module here is a "phony" utility target whose real work
 happens in on_build/on_install shelling out to that module's own configure
 script, which is the correct, honest shape of this problem.
+
+WHAT CHANGED IN THIS REVISION
+------------------------------------------------------
+xserver's GLX/DRI/KDRIVE configure flags -- previously left at the
+configure script's own defaults, per this file's own prior note ("no
+equivalent wired up in this file yet") -- now read the new build_gl/
+build_dri project options (tools/options.lua), matching the real
+Makefile.bsd-wrapper's own XENOCARA_BUILD_GL/XENOCARA_BUILD_DRI-gated
+--enable/--disable flags. MODULE_CONFIGURE_OVERRIDES entries are now
+functions (receiving the resolved build_gl/build_dri booleans) rather than
+static lists, so any OTHER module needing the same toggle can reuse it --
+demonstrated with a second, independently-confirmed real example,
+xf86-video-intel, whose own Makefile.bsd-wrapper branches on the identical
+XENOCARA_BUILD_DRI variable. The other ~60 modules with real, non-generic
+Makefile.bsd-wrapper overrides (mostly WANTLIB/library-dependency hints
+autotools' own configure already discovers on its own, plus a long tail of
+one-off CONFIGURE_ARGS) are intentionally NOT transcribed here -- same
+"explicit, honest deferral" this codebase already uses elsewhere (see
+libraries/xmake.lua's own note on its 19 libraries) rather than silently
+guessing at dozens of individual upstream quirks.
 --------------------------------------------------------------------------------
 --]]
 
@@ -87,29 +102,60 @@ local function parse_modules_list(filepath)
 end
 
 -- ==============================================================================
--- Per-module configure overrides -- confirmed real from
--- gui/xserver/Makefile.bsd-wrapper. Everything NOT listed here uses
--- the generic default args below (matching the generic
--- ".include <bsd.xorg.mk>"-only wrapper that most modules actually have,
--- verified against xf86-video-apm's real Makefile.bsd-wrapper).
+-- Per-module configure overrides -- confirmed real from gui/xserver/
+-- Makefile.bsd-wrapper and gui/driver/xf86-video-intel/Makefile.bsd-wrapper.
+-- Everything NOT listed here uses the generic default args below (matching
+-- the generic ".include <bsd.xorg.mk>"-only wrapper most modules actually
+-- have, verified against xf86-video-apm's real Makefile.bsd-wrapper).
+-- Entries are functions of (build_gl, build_dri) -- the resolved values of
+-- this project's own build_gl/build_dri options -- rather than static
+-- lists, so any module needing the same GLX/DRI toggle real upstream
+-- Makefiles use can reuse it exactly as xf86-video-intel does below.
 -- ==============================================================================
+local function gl_dri_flags(build_gl, build_dri)
+    local flags = {}
+    flags[#flags + 1] = build_gl and "--enable-glx" or "--disable-glx"
+    flags[#flags + 1] = build_dri and "--enable-dri" or "--disable-dri"
+    return flags
+end
+
 local MODULE_CONFIGURE_OVERRIDES = {
-    ["xserver/xserver"] = {
-        "--localstatedir=/var",
-        "--sysconfdir=/etc/X11",
-        "--with-xkb-path=/usr/X11R6/share/X11/xkb",
-        "--with-xkb-output=/var/db/xkb",
-        "--with-default-xkb-rules=base",
-        "--disable-install-setuid",
-        "--enable-privsep",
-        "--enable-xcsecurity",
-        "--disable-xdm-auth-1",
-        "--without-fop", "--without-xmlto", "--without-xsltproc",
-        -- GLX/DRI left at their configure-script defaults here (the real
-        -- wrapper branches on gui_BUILD_GL / gui_BUILD_DRI make
-        -- variables, which have no equivalent wired up in this file yet).
-    },
+    ["xserver/xserver"] = function (build_gl, build_dri)
+        local args = {
+            "--localstatedir=/var",
+            "--sysconfdir=/etc/X11",
+            "--with-xkb-path=/usr/X11R6/share/X11/xkb",
+            "--with-xkb-output=/var/db/xkb",
+            "--with-default-xkb-rules=base",
+            "--disable-install-setuid",
+            "--enable-privsep",
+            "--enable-xcsecurity",
+            "--disable-xdm-auth-1",
+            "--without-fop", "--without-xmlto", "--without-xsltproc",
+        }
+        for _, f in ipairs(gl_dri_flags(build_gl, build_dri)) do args[#args + 1] = f end
+        -- KDRIVE (the small-footprint Xfbdev-style server variant) tracks
+        -- DRI in the real wrapper -- no separate project option for it.
+        args[#args + 1] = build_dri and "--enable-kdrive" or "--disable-kdrive"
+        return args
+    end,
+    -- Confirmed real: gui/driver/xf86-video-intel/Makefile.bsd-wrapper
+    -- branches on the identical XENOCARA_BUILD_DRI variable as xserver's
+    -- own wrapper (DRI is what a GPU driver module actually needs; GLX is
+    -- an xserver-level concern).
+    ["driver/xf86-video-intel"] = function (_build_gl, build_dri)
+        return gl_dri_flags(false, build_dri)  -- driver modules don't take --enable-glx
+    end,
 }
+
+local function resolve_module_configure_args(relpath)
+    local entry = MODULE_CONFIGURE_OVERRIDES[relpath]
+    if not entry then return {} end
+    if type(entry) == "function" then
+        return entry(get_config("build_gl") or false, get_config("build_dri") or false)
+    end
+    return entry
+end
 
 -- ==============================================================================
 -- Generic autotools wrapper: one utility target per module, cross-building
@@ -164,7 +210,7 @@ local function eteleos_gui_module(mod)
                 "--host=" .. (triple or arch),
                 "--prefix=/usr/X11R6",
             }
-            for _, extra in ipairs(MODULE_CONFIGURE_OVERRIDES[mod.relpath] or {}) do
+            for _, extra in ipairs(resolve_module_configure_args(mod.relpath)) do
                 args[#args + 1] = extra
             end
 

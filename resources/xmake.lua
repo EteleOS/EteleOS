@@ -1,11 +1,7 @@
-/*
- EteleOS: xmake.lua, time wirte: 2026/07/12
- This file uses the Apache-2.0 license
-*/
-
 --[[
 ================================================================================
- EteleOS :: resources/xmake.lua
+ EteleOS: resources/xmake.lua, time write: 2026/07/12
+ This file uses the Apache-2.0 license
 ================================================================================
 
 Manages: firmware, fonts, locale, man, zoneinfo, dict, and the rest of the

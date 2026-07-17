@@ -1,11 +1,7 @@
-/*
- EteleOS: xmake.lua, time wirte: 2026/07/13
- This file uses the Apache-2.0 license
-*/
-
 --[[
 ================================================================================
- EteleOS :: installer/xmake.lua
+ EteleOS: installer/xmake.lua, time write: 2026/07/13
+ This file uses the Apache-2.0 license
 ================================================================================
 
 Manages: install image, iso, boot image, release image, sets.

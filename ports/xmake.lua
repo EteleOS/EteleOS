@@ -1,11 +1,7 @@
-/*
- EteleOS: xmake.lua, time wirte: 2026/07/13
- This file uses the Apache-2.0 license
-*/
-
 --[[
 ================================================================================
- EteleOS :: ports/xmake.lua
+ EteleOS: ports/xmake.lua, time write: 2026/07/13
+ This file uses the Apache-2.0 license
 ================================================================================
 
 Manages: ports framework, package build, third-party software.
