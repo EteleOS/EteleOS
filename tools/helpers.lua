@@ -103,15 +103,17 @@ function eteleos_is_cross()
     return host_bsd ~= target
 end
 
--- Raise a hard error if target_arch is set to a value we no longer support.
+-- Warn now if the user passed an unsupported --target_arch, so the
+-- mismatch is visible immediately rather than only surfacing as a
+-- confusing compiler/toolchain error later.
 -- Called from tools/xmake.lua after options.lua is loaded.
 function eteleos_check_arch()
     local arch = get_config("target_arch")
     if not arch then return end
     if not ETELEOS_TARGET_TRIPLES[arch] then
         local supported = table.concat(ETELEOS_SUPPORTED_ARCHS, ", ")
-        raise("EteleOS: unsupported target_arch '%s'. Supported: %s",
-              arch, supported)
+        print(string.format("EteleOS: unsupported target_arch '%s'. Supported: %s",
+              arch, supported))
     end
 end
 

@@ -1131,10 +1131,6 @@ unaryop		: /* any */
 		{
 			$$ = HOSTAPD_OP_EQ;
 		}
-		| '=='
-		{
-			$$ = HOSTAPD_OP_EQ;
-		}
 		| '!'
 		{
 			$$ = HOSTAPD_OP_NE;

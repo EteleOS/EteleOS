@@ -36,13 +36,37 @@ Usage in sibling modules (after tools/ is loaded first by root xmake.lua):
 --------------------------------------------------------------------------------
 --]]
 
+-- Confirmed by testing: wprint/cprint are unavailable not just at
+-- description scope, but also inside on_load/on_build during xmake f's
+-- own internal target pre-check pass (_check_targets) on a project this
+-- size -- a stricter environment than a normal `xmake build` invocation
+-- of the same callback. Shimmed as LOCALS (not modifying the globals) so
+-- every on_load/on_build closure later in this same file resolves them
+-- via lexical scoping, which works regardless of which of the two
+-- environments is actually active at call time -- falls through to the
+-- real wprint/cprint when they do exist, so normal builds keep the
+-- colored output.
+local wprint = wprint or function(fmt, ...) print(string.format(fmt, ...)) end
+local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%w_]+}", "")), ...)) end
+
 -- ==============================================================================
 -- Load build framework sub-modules in dependency order
 -- ==============================================================================
 
 -- 1. Helper tables and functions (ETELEOS_* globals, eteleos_* functions).
---    Everything else depends on this.
+--    Everything else depends on this. Description-scope-to-description-
+--    scope only (confirmed: this genuinely works) -- for script-scope
+--    (on_load/on_build/...) use, see tools/modules/eteleos/helpers.lua
+--    and the add_moduledirs()/import() pair right below instead; a plain
+--    global here is NOT visible from inside any callback, confirmed by
+--    isolated testing against a real xmake v3.0.9 build.
 includes("helpers.lua")
+
+-- Registers tools/modules/ as an import() search path, so any on_load/
+-- on_build/after_install/on_test callback anywhere in this project can do
+-- `import("eteleos.helpers")` to reach the script-scope twin of the table
+-- above (tools/modules/eteleos/helpers.lua).
+add_moduledirs(path.join(os.scriptdir(), "modules"))
 
 -- 2. All option() declarations. Must precede compiler.lua (which calls
 --    has_config() / get_config() on those options).
@@ -77,8 +101,9 @@ target("eteleos-framework")
     set_kind("phony")
     set_default(false)
     on_build(function (target)
+        import("eteleos.helpers")
         local arch   = get_config("target_arch") or "amd64"
-        local triple = ETELEOS_TARGET_TRIPLES[arch] or "unknown"
+        local triple = helpers.eteleos_get_triple()
         local tc     = get_config("toolchain") or "unknown"
         cprint("${green}EteleOS build framework${clear}")
         cprint("  target arch : %s  ->  %s", arch, triple)
@@ -88,6 +113,6 @@ target("eteleos-framework")
         cprint("  asan        : %s", tostring(has_config("asan")))
         cprint("  ubsan       : %s", tostring(has_config("ubsan")))
         cprint("  werror      : %s", tostring(has_config("werror")))
-        cprint("  cross build : %s", tostring(eteleos_is_cross()))
+        cprint("  cross build : %s", tostring(helpers.eteleos_is_cross()))
     end)
 target_end()

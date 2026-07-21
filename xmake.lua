@@ -22,7 +22,7 @@ ports/, configs/ and docs/ already live directly at the repo root.
 -- Require a reasonably recent xmake so every API used across this project
 -- (custom toolchains, mode.releasedbg/minsizerel, LTO/sanitizer policies,
 -- etc.) is guaranteed to exist. Bump this if you rely on something newer.
-set_xmakever("2.8.5")
+set_xmakever("3.0.9")
 
 -- ==============================================================================
 -- Project identity
@@ -68,19 +68,16 @@ set_config("installdir", "$(projectdir)/build/install")
 
 -- xmake's own package cache/install locations are normally read from the
 -- XMAKE_PKG_CACHEDIR / XMAKE_PKG_INSTALLDIR environment variables at
--- process start-up. Point them at project-local folders so a full EteleOS
--- checkout stays self-contained -- but never clobber a value already set
--- (e.g. by CI). NOTE: because these are env vars, this only reliably
--- affects xmake processes launched *after* this script runs; export the
--- same variables in your shell/CI beforehand if you need it to apply to
--- the current invocation too.
-local pkgroot = path.join(os.scriptdir(), "build", ".xmake-pkg")
-if not os.getenv("XMAKE_PKG_CACHEDIR") then
-    os.setenv("XMAKE_PKG_CACHEDIR", path.join(pkgroot, "cache"))
-end
-if not os.getenv("XMAKE_PKG_INSTALLDIR") then
-    os.setenv("XMAKE_PKG_INSTALLDIR", path.join(pkgroot, "packages"))
-end
+-- process start-up. EteleOS has no add_requires() package dependencies
+-- (see tools/compiler.lua), so these paths are never actually consulted --
+-- and as of xmake 3.0.9, os.setenv() is no longer callable at description
+-- scope at all (confirmed: it is not in the interpreter-scope os module,
+-- core/sandbox/modules/interpreter/os.lua -- only script-scope callbacks
+-- like on_load can call it, via the separate, broader sandbox os module).
+-- If a future revision of this project DOES start using add_requires(),
+-- point XMAKE_PKG_CACHEDIR / XMAKE_PKG_INSTALLDIR at project-local folders
+-- from the calling shell/CI instead (this can no longer be done from
+-- inside xmake.lua itself).
 
 -- ==============================================================================
 -- Shared include path
@@ -118,7 +115,7 @@ for _, mod in ipairs(modules) do
     if os.isfile(modfile) then
         includes(mod)
     else
-        wprint("eteleos: skipping '%s' (no xmake.lua there yet)", mod)
+        print(string.format("eteleos: skipping '%s' (no xmake.lua there yet)", mod))
     end
 end
 

@@ -74,32 +74,29 @@ guessing at dozens of individual upstream quirks.
 --------------------------------------------------------------------------------
 --]]
 
+-- Confirmed by testing: wprint/cprint are unavailable not just at
+-- description scope, but also inside on_load/on_build during xmake f's
+-- own internal target pre-check pass (_check_targets) on a project this
+-- size -- a stricter environment than a normal `xmake build` invocation
+-- of the same callback. Shimmed as LOCALS (not modifying the globals) so
+-- every on_load/on_build closure later in this same file resolves them
+-- via lexical scoping, which works regardless of which of the two
+-- environments is actually active at call time -- falls through to the
+-- real wprint/cprint when they do exist, so normal builds keep the
+-- colored output.
+local wprint = wprint or function(fmt, ...) print(string.format(fmt, ...)) end
+local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%w_]+}", "")), ...)) end
+
 -- ==============================================================================
--- Module discovery: parse the real gui/MODULES file (category/name,
--- upstream version, optional status flag) instead of hand-listing ~200
--- modules.
+-- Module discovery: gui/MODULES (category/name, upstream version, optional
+-- status flag) is parsed offline by tools/gen/gen_gui_manifest.lua, since
+-- io.open() cannot run at xmake.lua description scope (confirmed against a
+-- real xmake v3.0.9 build -- see userland/xmake.lua's header for the full
+-- explanation of this scope rule, which applies project-wide). This file
+-- just reads the resulting ETELEOS_GUI_MANIFEST global table.
+-- Regenerate with: xmake lua tools/gen/gen_gui_manifest.lua
 -- ==============================================================================
-local function parse_modules_list(filepath)
-    local f = io.open(filepath, "r")
-    if not f then
-        wprint("eteleos-gui: MODULES file not found at %s", filepath)
-        return {}
-    end
-    local modules = {}
-    for line in f:lines() do
-        local stripped = line:gsub("#.*$", "")
-        local relpath, version = stripped:match("^(%S+)%s+(%S+)")
-        if relpath then
-            local category, name = relpath:match("^([^/]+)/(.+)$")
-            if category and name then
-                modules[#modules + 1] = { category = category, name = name,
-                                           relpath = relpath, version = version }
-            end
-        end
-    end
-    f:close()
-    return modules
-end
+includes("generated_manifest.lua")
 
 -- ==============================================================================
 -- Per-module configure overrides -- confirmed real from gui/xserver/
@@ -172,7 +169,7 @@ local function eteleos_gui_module(mod)
         moddir = path.join(os.scriptdir(), mod.category, mod.name)
     end
     if not os.isdir(moddir) then
-        wprint("eteleos-gui: %s not found on disk, skipping", mod.relpath)
+        print(string.format("eteleos-gui: %s not found on disk, skipping", mod.relpath))
         return
     end
 
@@ -184,9 +181,10 @@ local function eteleos_gui_module(mod)
 
         on_build(function (target)
             import("lib.detect.find_tool")
+            import("eteleos.helpers")
 
             local arch = get_config("target_arch") or "amd64"
-            local triple = (ETELEOS_TARGET_TRIPLES or {})[arch]
+            local triple = helpers.eteleos_get_triple()
             local installdir = get_config("installdir")
                                 or path.join(os.scriptdir(), "..", "build", "install")
 
@@ -240,9 +238,8 @@ end
 -- ==============================================================================
 -- Discover and wire up every module from the real MODULES file
 -- ==============================================================================
-local modules_file = path.join(os.scriptdir(), "MODULES")
-local all_modules = parse_modules_list(modules_file)
-cprint("${green}eteleos-gui${clear}: %d modules discovered from MODULES", #all_modules)
+local all_modules = ETELEOS_GUI_MANIFEST or {}
+print(string.format("eteleos-gui: %d modules discovered from MODULES", #all_modules))
 
 for _, mod in ipairs(all_modules) do
     eteleos_gui_module(mod)

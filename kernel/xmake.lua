@@ -126,8 +126,54 @@ one a modern hypervisor/UEFI-first target (this project's own VirtualBox
 testing notes point the same way) needs far less than EFI boot does. Left
 as an explicit follow-up, same as libraries/xmake.lua does for its own
 deferred 19 libraries.
+
+WHAT CHANGED IN THIS REVISION (2026/07/18) -- relocated to script scope
+------------------------------------------------------------------------
+Confirmed against a real xmake v3.0.9 build (not just documentation): io,
+import, os.execv, os.iorun, pcall and even raw Lua error()/assert() are ALL
+nil at xmake.lua description scope -- only a small read-only allowlist
+(os.getenv, os.isfile, os.isdir, os.files, os.dirs, get_config, ...) is
+available there. This means the config(8) bootstrap this file's own header
+above describes as "tested... successfully bootstraps" was tested outside
+xmake's own description-scope execution path -- the logic itself checks
+out (re-confirmed here: 2470/1803/951 files selected, matching exactly),
+but running it inline in a bare `do...end` block at the top of this file,
+as the previous revision did, cannot actually load under a real xmake
+binary. The exact same bootstrap logic now lives in
+tools/gen/gen_kernel_manifest.lua, run via `xmake lua` (confirmed: io/
+os.execv/import are all real there), writing its result to
+generated_manifest.lua. This file just reads that manifest now. A few
+smaller casualties of the same scope rule, also fixed here: wprint/cprint/
+raise are script-scope-only too (fixed at every description-scope call
+site to use print() instead); pcall is nil even inside on_load (fixed via
+xmake's try{}/catch{} construct instead, confirmed to work there); and
+config.builddir() is nil in EVERY scope, on_load included, since the
+`config` module is never auto-imported (fixed throughout this project to
+use path.join(os.projectdir(), "build", ...) instead, which needs no import
+and, confirmed by testing, always resolves to a real path (get_config("builddir")
+returned the project's "$(projectdir)/build" template UNEXPANDED during
+xmake f in this project -- os.projectdir() itself is never templated). Also fixed
+here: config(8)'s own output states some paths relative to the
+pre-restructure flat layout (e.g. "conf/swapgeneric.c" for what is now
+core/conf/swapgeneric.c) -- the driver/MI-optional file loop now retries
+the same ""/"core/"/"dev/"/"fs/" prefixes tools/gen/gen_kernel_manifest.lua
+already uses for config(8) itself, instead of silently dropping these as
+if they were conditionally-disabled.
 --------------------------------------------------------------------------------
 --]]
+
+-- Confirmed by testing: wprint/cprint are unavailable not just at
+-- description scope, but also inside on_load/on_build during xmake f's
+-- own internal target pre-check pass (_check_targets) on a project this
+-- size -- a stricter environment than a normal `xmake build` invocation
+-- of the same callback. Shimmed as LOCALS (not modifying the globals) so
+-- every on_load/on_build closure later in this same file resolves them
+-- via lexical scoping, which works regardless of which of the two
+-- environments is actually active at call time -- falls through to the
+-- real wprint/cprint when they do exist, so normal builds keep the
+-- colored output.
+local wprint = wprint or function(fmt, ...) print(string.format(fmt, ...)) end
+local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%w_]+}", "")), ...)) end
 
 local unpack = table.unpack or unpack
 local arch   = get_config("target_arch") or "amd64"
@@ -192,538 +238,77 @@ local PER_FILE_CFLAGS = {
 }
 
 if not MD_CORE_DIRS[arch] then
-    raise("eteleos-kernel: unsupported target_arch '%s'", arch)
+    print(string.format("eteleos-kernel: unsupported target_arch '%s' -- no kernel target "
+          .. "will be built for it", arch))
 end
-
--- ==============================================================================
--- Small utilities (unchanged)
--- ==============================================================================
-local function read_file(filepath)
-    local f = io.open(filepath, "r")
-    if not f then return nil end
-    local c = f:read("*a")
-    f:close()
-    return c
-end
-
-local function write_file(filepath, content)
-    local f = io.open(filepath, "w")
-    if not f then
-        raise("eteleos-kernel: could not write %s", filepath)
-    end
-    f:write(content)
-    f:close()
-end
-
-local function strip_comment(line)
-    local in_quote = false
-    for i = 1, #line do
-        local c = line:sub(i, i)
-        if c == '"' then in_quote = not in_quote
-        elseif c == "#" and not in_quote then
-            return line:sub(1, i - 1)
-        end
-    end
-    return line
-end
-
-local function extract_base_name(token)
-    return (token:gsub("[%d%*]+$", ""))
-end
-
-local function newest_mtime(files)
-    local newest = 0
-    for _, f in ipairs(files) do
-        local ok, mt = pcall(os.mtime, f)
-        if ok and mt and mt > newest then newest = mt end
-    end
-    return newest
-end
-
--- config(8) itself is a plain host tool (it runs on the BUILD machine, not
--- the target), and -- once the UKC-editor files are excluded below -- none
--- of its remaining sources need any kernel or <machine/...> header at all.
 
 local core_conf_dir = path.join(os.scriptdir(), "core", "conf")
 local arch_conf_dir = path.join(os.scriptdir(), "arch", arch, "conf")
-local gen_root       = path.join(config.builddir() or "build", "eteleos-kernel-gen")
 
 -- ==============================================================================
--- REAL config(8), bootstrapped as a private host tool
+-- File discovery + config(8) bootstrap -- MOVED to tools/gen/gen_kernel_manifest.lua
 -- ==============================================================================
--- Every function in this section shells out / touches disk only under
--- gen_root -- never inside kernel/ or userland/ -- and every failure is
--- recoverable (returns nil/false, caller falls back to the old parser).
+-- Confirmed against a real xmake v3.0.9 build (not just documentation): io,
+-- import, os.execv and os.iorun are all nil at xmake.lua description scope --
+-- only a small read-only allowlist (os.getenv, os.isfile, os.isdir, os.files,
+-- os.dirs, ...) is available there (see
+-- docs.xmake.io/api/scripts/builtin-modules/import.html, "most module
+-- interfaces can only be used in the script domain"). This is xmake's
+-- long-standing scope model, not a 3.0-specific change, so the previous
+-- revision of this file -- which built and ran config(8) directly in a bare
+-- `do ... end` block at description scope, before target("eteleos-kernel")
+-- even starts -- could not actually have loaded under a real xmake binary,
+-- at any version.
+--
+-- That logic (bootstrap config(8) as a host tool from userland/system/config,
+-- patch a scratch copy of util.c's sourcepath() for the post-restructure
+-- directory layout, run it against each arch's real GENERIC, fall back to an
+-- approximate files/GENERIC parser when any of that fails) is UNCHANGED --
+-- only relocated to tools/gen/gen_kernel_manifest.lua, which runs via
+-- `xmake lua` (confirmed: io/os.execv/import are all real there) and writes
+-- its result to generated_manifest.lua as a plain ETELEOS_KERNEL_MANIFEST
+-- global-table assignment, keyed by arch.
+--
+-- Verified end to end against the real tree, with bison/flex available on
+-- the host: amd64 2470 files selected, arm64 1803, riscv64 951 -- via REAL
+-- config(8) output, ioconf.c generated for all three -- matching this
+-- project's own previously-recorded numbers, confirming the underlying
+-- bootstrap logic itself was always sound and only needed to run in the
+-- right scope. Without bison/flex on the host, all three arches cleanly
+-- fall back to the approximate parser instead (373/344/303 files) rather
+-- than failing outright.
+--
+-- Regenerate with: xmake lua tools/gen/gen_kernel_manifest.lua
+-- (or: xmake eteleos-regen-kernel, once a project is configured)
+-- whenever kernel/ Makefiles, GENERIC/files lists, or directory layout
+-- change. The output is committed to the repo, like a `configure` script or
+-- generated protobuf code -- description scope cannot regenerate it itself.
 -- ==============================================================================
 
--- Locate config(8)'s own, verified-real source at userland/system/config/,
--- patch a SCRATCH COPY of gram.y for the one hardcoded "core/" path break
--- described in the file header, run it through yacc/bison + lex/flex, and
--- compile the result with the HOST's native compiler (never the eteleos-*
--- cross toolchain -- this tool runs at build time, on the build machine).
--- Cached by source mtime so normal incremental builds don't repay this cost.
-local function build_host_config_tool()
-    import("lib.detect.find_tool")
+includes("generated_manifest.lua")
 
-    local config_srcdir = path.join(os.scriptdir(), "..", "userland", "system", "config")
-    if not os.isdir(config_srcdir) then
-        wprint("eteleos-kernel: userland/system/config not found -- cannot bootstrap "
-               .. "real config(8), falling back to the approximate parser")
-        return nil
+local selected_files, ioconf_c_path, ioconf_gendir = {}, nil, nil
+
+local kernel_manifest = ETELEOS_KERNEL_MANIFEST and ETELEOS_KERNEL_MANIFEST[arch]
+if kernel_manifest then
+    selected_files = kernel_manifest.selected_files or {}
+    if kernel_manifest.mode == "real-config8" and kernel_manifest.ioconf_c then
+        ioconf_gendir = path.join(os.projectdir(), "build", "eteleos-kernel-gen", arch, "config-run", "build")
+        ioconf_c_path = path.join(ioconf_gendir, "ioconf.c")
+        -- NOTE: the actual file write happens in target("eteleos-kernel")'s
+        -- on_load below (io.open needs script scope -- see this block's own
+        -- header comment) -- ioconf_c_path/ioconf_gendir here are just the
+        -- plain strings description scope is allowed to compute.
     end
-
-    local bootstrap_dir = path.join(gen_root, "host-config-bootstrap")
-    os.mkdir(bootstrap_dir)
-    local out_bin = path.join(bootstrap_dir, is_host("windows") and "config.exe" or "config")
-
-    -- Every real source file except the grammar/lexer (handled separately
-    -- below, since they need codegen) and main.c's own translation unit,
-    -- which is included like all the others.
-    -- The interactive "UKC" boot-time config editor (cmd.c, ukc.c,
-    -- ukcutil.c, exec_elf.c) is reachable ONLY via main.c's
-    -- "if (eflag) return ukc(...)" -- gated behind the -e flag, which this
-    -- bootstrap never passes (it only ever runs "config -s ... -b ...
-    -- GENERIC" in batch/generate mode). Excluding these 4 files avoids a
-    -- hard dependency on BSD-only host headers (<nlist.h>, <kvm.h> -- both
-    -- confirmed absent on a plain Linux host while testing this file) that
-    -- have nothing to do with generating ioconf.c/the selected-files
-    -- Makefile. A one-line stub replaces the single symbol (ukc()) that
-    -- main.c references.
-    local UKC_EXCLUDED = { ["cmd.c"]=true, ["ukc.c"]=true, ["ukcutil.c"]=true, ["exec_elf.c"]=true,
-                           ["util.c"]=true }  -- util.c: a patched copy is added back in below
-    local c_srcs = {}
-    for _, f in ipairs(os.files(path.join(config_srcdir, "*.c"))) do
-        if not UKC_EXCLUDED[path.filename(f)] then c_srcs[#c_srcs + 1] = f end
-    end
-    local ukc_stub_path = path.join(bootstrap_dir, "ukc_stub.c")
-    write_file(ukc_stub_path, [[
-/* Stub for kernel/xmake.lua's private config(8) bootstrap: the real ukc()
- * (interactive UKC boot-config editor, normally in ukc.c) needs BSD-only
- * <nlist.h>/<kvm.h> host APIs unrelated to batch-mode ioconf.c generation,
- * which is all this bootstrap tool is ever used for (see kernel/xmake.lua). */
-int ukc(char *file, char *outfile, int uflag, int force);
-int ukc(char *file, char *outfile, int uflag, int force) {
-    (void)file; (void)outfile; (void)uflag; (void)force;
-    return (1);
-}
-]])
-    c_srcs[#c_srcs + 1] = ukc_stub_path
-
-    -- BSD libc provides major()/minor()/makedev()/errc() as real, linkable
-    -- functions; glibc only offers major/minor/makedev as MACROS (from the
-    -- separate <sys/sysmacros.h>, which config(8)'s own BSD-native sources
-    -- don't include) and has no errc() at all. Confirmed necessary by
-    -- testing: link fails with undefined references to all four on a plain
-    -- Linux host. Exact dev_t bit layout doesn't need to match a real
-    -- OpenBSD kernel's -- this bootstrap never talks to an actual running
-    -- kernel or device node, it only needs internal consistency
-    -- (major(makedev(a,b)) == a) for mkswap.c/sem.c's own bookkeeping.
-    local devfuncs_stub_path = path.join(bootstrap_dir, "devfuncs_stub.c")
-    write_file(devfuncs_stub_path, [[
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <string.h>
-#include <errno.h>
-int major(int dev) { return (dev >> 8) & 0xff; }
-int minor(int dev) { return dev & 0xff; }
-int makedev(int maj, int min) { return ((maj & 0xff) << 8) | (min & 0xff); }
-void errc(int eval, int code, const char *fmt, ...) {
-    va_list ap;
-    va_start(ap, fmt);
-    vfprintf(stderr, fmt, ap);
-    va_end(ap);
-    fprintf(stderr, ": %s\n", strerror(code));
-    exit(eval);
-}
-]])
-    c_srcs[#c_srcs + 1] = devfuncs_stub_path
-
-    local newest_src = newest_mtime(c_srcs)
-    newest_src = math.max(newest_src, newest_mtime({
-        path.join(config_srcdir, "gram.y"), path.join(config_srcdir, "scan.l"),
-    }))
-    if os.isfile(out_bin) and os.mtime(out_bin) >= newest_src then
-        return out_bin   -- up to date, nothing to do
-    end
-
-    local cc = find_tool("clang") or find_tool("cc") or find_tool("gcc")
-    if not cc then
-        wprint("eteleos-kernel: no host C compiler (clang/cc/gcc) found -- cannot "
-               .. "bootstrap real config(8), falling back to the approximate parser")
-        return nil
-    end
-
-    local yacc = find_tool("bison") or find_tool("yacc")
-    local lex  = find_tool("flex") or find_tool("lex")
-    if not yacc or not lex then
-        wprint("eteleos-kernel: no yacc/bison or lex/flex found on host -- cannot "
-               .. "bootstrap real config(8) (needs to build gram.y/scan.l), falling "
-               .. "back to the approximate parser")
-        return nil
-    end
-
-    -- The restructuring the user is mid-way through (see file header)
-    -- consistently moved several formerly-top-level directories one level
-    -- deeper -- confirmed for THREE separate stale references while
-    -- testing this file: arch/<arch>/conf/GENERIC's own
-    -- "include ../../../conf/GENERIC" (needs core/conf/GENERIC), gram.y's
-    -- own hardcoded "conf/files" auto-include (needs core/conf/files), and
-    -- arch/amd64/conf/files.amd64's own "include scsi/files.scsi" (needs
-    -- dev/scsi/files.scsi). Rather than special-case each file+line as more
-    -- turn up, this patches the ONE function ALL of config(8)'s include
-    -- resolution funnels through -- util.c's sourcepath() -- on a scratch
-    -- copy, so it transparently retries a file under core/, dev/, or fs/
-    -- when the plain srcdir-relative path doesn't exist. This fixes every
-    -- occurrence of the pattern at once, including ones not yet discovered
-    -- by hand, and needs no changes to gram.y or to any staged/patched
-    -- GENERIC copy.
-    local util_c_src = read_file(path.join(config_srcdir, "util.c"))
-    if not util_c_src then
-        wprint("eteleos-kernel: could not read util.c, falling back to the approximate parser")
-        return nil
-    end
-    local old_sourcepath = [[
-sourcepath(const char *file)
-{
-	char *cp;
-
-	if (asprintf(&cp, "%s/%s", srcdir, file) == -1)
-		err(1, NULL);
-
-	return cp;
-}]]
-    local new_sourcepath = [[
-sourcepath(const char *file)
-{
-	char *cp;
-	/* eteleos: fall back to a handful of known-relocated prefixes when
-	 * the plain srcdir-relative path doesn't exist -- see kernel/xmake.lua. */
-	static const char *eteleos_prefixes[] = { "", "core/", "dev/", "fs/" };
-	struct stat eteleos_sb;
-	size_t eteleos_i;
-
-	for (eteleos_i = 0; eteleos_i < 4; eteleos_i++) {
-		if (asprintf(&cp, "%s/%s%s", srcdir, eteleos_prefixes[eteleos_i], file) == -1)
-			err(1, NULL);
-		if (stat(cp, &eteleos_sb) == 0)
-			return cp;
-		free(cp);
-	}
-	if (asprintf(&cp, "%s/%s", srcdir, file) == -1)
-		err(1, NULL);
-	return cp;
-}]]
-    local patched_util_c, n = util_c_src:gsub(old_sourcepath:gsub("%p", "%%%1"), (new_sourcepath:gsub("%%", "%%%%")))
-    if n == 0 then
-        wprint("eteleos-kernel: util.c's sourcepath() was not found in the expected "
-               .. "shape (upstream file may have changed) -- proceeding unpatched; "
-               .. "real config(8) may fail to resolve some relocated include paths")
-        patched_util_c = util_c_src
-    end
-    patched_util_c = patched_util_c:gsub('(#include <sys/types%.h>)', "%1\n#include <sys/stat.h>", 1)
-    local staged_util_c = path.join(bootstrap_dir, "util.c")
-    write_file(staged_util_c, patched_util_c)
-    c_srcs[#c_srcs + 1] = staged_util_c
-
-    -- yacc/bison -d gram.y -> y.tab.c/y.tab.h (or gram.tab.*, depending on
-    -- the tool) -- ask explicitly for fixed output names so the rest of
-    -- this function doesn't need to guess.
-    local gram_c = path.join(bootstrap_dir, "gram.c")
-    local gram_h = path.join(bootstrap_dir, "gram.h")
-    local yacc_ok = os.execv(yacc.program,
-        {"-d", "-o", gram_c, path.join(config_srcdir, "gram.y")}, {curdir = bootstrap_dir, try = true})
-    if not yacc_ok or not os.isfile(gram_c) then
-        wprint("eteleos-kernel: yacc/bison failed on gram.y, falling back to the approximate parser")
-        return nil
-    end
-    if not os.isfile(gram_h) then
-        -- some bison versions name the companion header gram.c's basename + .h
-        -- already (handled by -o above); others still emit y.tab.h regardless
-        local alt = path.join(bootstrap_dir, "y.tab.h")
-        if os.isfile(alt) then os.cp(alt, gram_h) end
-    end
-
-    local scan_c = path.join(bootstrap_dir, "scan.c")
-    local lex_ok = os.execv(lex.program,
-        {"-o", scan_c, path.join(config_srcdir, "scan.l")},
-        {curdir = bootstrap_dir, try = true})
-    if not lex_ok or not os.isfile(scan_c) then
-        wprint("eteleos-kernel: lex/flex failed on scan.l, falling back to the approximate parser")
-        return nil
-    end
-
-    -- Compile everything with the HOST compiler. Two portability defines:
-    --   - pledge(a,b)=0: pledge(2) is OpenBSD-only; this bootstrap tool only
-    --     ever runs on the BUILD machine (Linux/macOS/Windows+clang), which
-    --     will not have it. Dropping the sandboxing hint is safe here: this
-    --     is a short-lived, build-time-only code generator, not the actual
-    --     installed system tool (that one is userland/xmake.lua's own
-    --     host-system-config target, built for and run only on real EteleOS/
-    --     OpenBSD-family hosts where pledge() genuinely exists).
-    --   - -I bootstrap_dir so generated gram.h/config.h-relative includes
-    --     resolve, and -I config_srcdir for config.h/cmd.h/etc. Deliberately
-    --     no -I into kernel/core here: with the UKC files excluded above,
-    --     nothing left actually #includes a kernel header (mkioconf.c's own
-    --     "sys/device.h" text is a string it writes INTO the generated
-    --     ioconf.c, for the real kernel build to consume later -- not an
-    --     #include of config(8)'s own), and adding kernel/core would shadow
-    --     the host's own <sys/cdefs.h> and break normal libc header
-    --     resolution (confirmed while testing this file).
-    local all_srcs = {gram_c, scan_c}
-    for _, f in ipairs(c_srcs) do all_srcs[#all_srcs + 1] = f end
-
-    local cflags = {
-        "-O1", "-w", "-I", bootstrap_dir, "-I", config_srcdir,
-        "-Dpledge(a,b)=0",
-        "-o", out_bin,
-    }
-    for _, f in ipairs(all_srcs) do cflags[#cflags + 1] = f end
-
-    local compile_ok = os.execv(cc.program, cflags, {curdir = bootstrap_dir, try = true})
-    if not compile_ok or not os.isfile(out_bin) then
-        wprint("eteleos-kernel: host compile of config(8) failed, falling back to the "
-               .. "approximate parser (this is a build-time-only bootstrap tool -- it "
-               .. "does not affect the installed /usr/sbin/config userland/xmake.lua "
-               .. "already builds separately)")
-        return nil
-    end
-    return out_bin
+    print(string.format("eteleos-kernel: %s: using %s output (%d files selected%s)",
+          arch, kernel_manifest.mode == "real-config8" and "REAL config(8)" or "the approximate files/GENERIC parser",
+          #selected_files, kernel_manifest.mode == "real-config8" and ", ioconf.c generated" or ""))
+else
+    print(string.format("eteleos-kernel: no generated_manifest.lua entry for arch '%s' -- "
+          .. "run: xmake lua tools/gen/gen_kernel_manifest.lua -- building with zero "
+          .. "driver/MI-optional files", arch))
 end
 
--- Run the real, freshly-bootstrapped config(8) directly against the real,
--- unmodified arch/<arch>/conf/GENERIC -- no staging needed here anymore;
--- the sourcepath() patch above already makes every relative include
--- (GENERIC's own, gram.y's hardcoded ones, and files.<arch>'s own) resolve
--- against the current tree layout. -s is the real, unmodified kernel/ dir.
--- Returns the run's builddir on success.
-local function run_real_config(config_bin)
-    local real_generic = path.join(arch_conf_dir, "GENERIC")
-    if not os.isfile(real_generic) then
-        wprint("eteleos-kernel: %s not found, falling back to the approximate parser", real_generic)
-        return nil
-    end
-
-    local run_dir = path.join(gen_root, arch, "config-run")
-    os.mkdir(run_dir)
-    local builddir = path.join(run_dir, "build")
-
-    local ok = os.execv(config_bin,
-        {"-s", os.scriptdir(), "-b", builddir, real_generic},
-        {curdir = run_dir, try = true})
-    if not ok then
-        wprint("eteleos-kernel: real config(8) run failed for arch '%s', falling back "
-               .. "to the approximate parser", arch)
-        return nil
-    end
-    if not os.isfile(path.join(builddir, "ioconf.c")) then
-        wprint("eteleos-kernel: config(8) ran but did not produce ioconf.c, falling "
-               .. "back to the approximate parser")
-        return nil
-    end
-    return builddir
-end
-
--- Parse the Makefile config(8) itself wrote (see mkmakefile.c's emitrules():
--- every selected file becomes a line "<base>.o: [$S/]<path>", one line per
--- file, with "$S/" present whenever the path is srcdir-relative -- which,
--- since we pass -s <the real kernel/ dir>, is every file that matters here).
--- This is config(8)'s OWN attach-graph-resolved decision, not a re-derived
--- approximation, so it is authoritative.
-local function harvest_selected_files(builddir)
-    local makefile_path = path.join(builddir, "Makefile")
-    local content = read_file(makefile_path)
-    if not content then
-        wprint("eteleos-kernel: config(8) did not write a Makefile at %s, falling back "
-               .. "to the approximate parser", makefile_path)
-        return nil
-    end
-    local files, seen = {}, {}
-    for line in (content .. "\n"):gmatch("(.-)\n") do
-        local relpath = line:match("^%S+%.o:%s+%$S/(%S+)%s*$")
-        if relpath and not seen[relpath] then
-            seen[relpath] = true
-            files[#files + 1] = relpath
-        end
-    end
-    if #files == 0 then
-        wprint("eteleos-kernel: parsed config(8)'s Makefile but found zero selected "
-               .. "files -- something is wrong, falling back to the approximate parser")
-        return nil
-    end
-    return files
-end
-
--- ==============================================================================
--- OLD approximate parser -- kept verbatim as the fallback path (see file
--- header). Does not resolve the attach graph and never produces ioconf.c;
--- used only when the real config(8) bootstrap above fails.
--- ==============================================================================
-local function resolve_include(from_dir, incpath, conf_dir)
-    local naive = path.join(from_dir, incpath)
-    if os.isfile(naive) then return naive end
-    local fallback = path.join(conf_dir, path.filename(incpath))
-    if os.isfile(fallback) then return fallback end
-    return nil
-end
-
-local function parse_generic(filepath, conf_dir, enabled, seen)
-    seen = seen or {}
-    if seen[filepath] then return end
-    seen[filepath] = true
-    local content = read_file(filepath)
-    if not content then
-        wprint("eteleos-kernel: config file not found: %s", filepath)
-        return
-    end
-    local from_dir = path.directory(filepath)
-    for line in (content .. "\n"):gmatch("(.-)\n") do
-        local stripped = strip_comment(line)
-        local tokens = {}
-        for tok in stripped:gmatch("%S+") do tokens[#tokens + 1] = tok end
-        if #tokens > 0 then
-            local kw = tokens[1]
-            local disabled = tokens[#tokens] == "disable"
-            if kw == "option" and tokens[2] then
-                for name in tokens[2]:gmatch("[^,=]+") do enabled[name] = true end
-            elseif kw == "pseudo-device" and tokens[2] then
-                enabled[tokens[2]] = true
-            elseif kw == "include" and tokens[2] then
-                local incpath = tokens[2]:gsub('"', "")
-                local resolved = resolve_include(from_dir, incpath, conf_dir)
-                if resolved then
-                    parse_generic(resolved, conf_dir, enabled, seen)
-                else
-                    wprint("eteleos-kernel: could not resolve GENERIC include \"%s\" from %s",
-                           incpath, filepath)
-                end
-            elseif tokens[2] == "at" and not disabled then
-                enabled[extract_base_name(kw)] = true
-            end
-        end
-    end
-end
-
-local DIRECTIVES = {
-    file=true, device=true, attach=true, define=true, ["pseudo-device"]=true,
-    major=true, maxpartitions=true, maxusers=true, obsolete=true, deffs=true,
-    defflag=true, defopt=true, defparam=true, filesystem=true, machine=true,
-    source=true, include=true, ["export-jail"]=true,
-}
-
-local function parse_files_list(filepath, entries)
-    local content = read_file(filepath)
-    if not content then
-        wprint("eteleos-kernel: files list not found: %s", filepath)
-        return
-    end
-    local pending
-    local function flush() if pending then entries[#entries + 1] = pending end; pending = nil end
-    for line in (content .. "\n"):gmatch("(.-)\n") do
-        local stripped = strip_comment(line)
-        local tokens = {}
-        for tok in stripped:gmatch("%S+") do tokens[#tokens + 1] = tok end
-        if #tokens > 0 then
-            if tokens[1] == "file" then
-                flush()
-                pending = { path = tokens[2], cond = {} }
-                for i = 3, #tokens do pending.cond[#pending.cond + 1] = tokens[i] end
-            elseif DIRECTIVES[tokens[1]] then
-                flush()
-            elseif pending then
-                for _, t in ipairs(tokens) do pending.cond[#pending.cond + 1] = t end
-            end
-        end
-    end
-    flush()
-end
-
-local function strip_modifiers(cond)
-    local out, i = {}, 1
-    while i <= #cond do
-        local t = cond[i]
-        if t == "needs-flag" then
-        elseif t == "needs-count" then i = i + 1
-        else out[#out + 1] = t end
-        i = i + 1
-    end
-    return out
-end
-
-local function eval_expr(cond, enabled)
-    cond = strip_modifiers(cond)
-    if #cond == 0 then return true end
-    local pos = 1
-    local function peek() return cond[pos] end
-    local function advance() pos = pos + 1 end
-    local parse_or, parse_and, parse_atom
-    parse_atom = function()
-        local t = peek()
-        if t == "(" then
-            advance()
-            local v = parse_or()
-            if peek() == ")" then advance() end
-            return v
-        elseif t == nil then return true
-        else advance(); return enabled[t] == true end
-    end
-    parse_and = function()
-        local v = parse_atom()
-        while peek() == "&" do advance(); v = parse_atom() and v end
-        return v
-    end
-    parse_or = function()
-        local v = parse_and()
-        while peek() == "|" do advance(); v = parse_and() or v end
-        return v
-    end
-    return parse_or()
-end
-
-local function approximate_parser_selected_files()
-    local enabled = {}
-    parse_generic(path.join(core_conf_dir, "GENERIC"), core_conf_dir, enabled)
-    parse_generic(path.join(arch_conf_dir, "GENERIC"), core_conf_dir, enabled)
-
-    local file_entries = {}
-    parse_files_list(path.join(core_conf_dir, "files"), file_entries)
-    parse_files_list(path.join(arch_conf_dir, "files." .. arch), file_entries)
-
-    local selected = {}
-    for _, e in ipairs(file_entries) do
-        if eval_expr(e.cond, enabled) then
-            selected[#selected + 1] = e.path
-        end
-    end
-    return selected
-end
-
--- ==============================================================================
--- Resolve the file list + optional ioconf.c, real config(8) first
--- ==============================================================================
-local selected_files, ioconf_c_path, ioconf_gendir
-
-do
-    local config_bin = build_host_config_tool()
-    local builddir = config_bin and run_real_config(config_bin) or nil
-    local harvested = builddir and harvest_selected_files(builddir) or nil
-
-    if harvested then
-        selected_files = harvested
-        ioconf_c_path = path.join(builddir, "ioconf.c")
-        ioconf_gendir = builddir
-        cprint("${green}eteleos-kernel${clear}: using REAL config(8) output for arch=%s "
-               .. "(%d files selected, ioconf.c generated, attach graph fully resolved)",
-               arch, #selected_files)
-    else
-        selected_files = approximate_parser_selected_files()
-        cprint("${yellow}eteleos-kernel${clear}: using the approximate files/GENERIC "
-               .. "parser for arch=%s (%d files selected) -- no ioconf.c, and the "
-               .. "attach-graph gap (e.g. vga_pci) still applies; see the file header "
-               .. "for why and how to get the real config(8) path working",
-               arch, #selected_files)
-    end
-end
 
 -- ==============================================================================
 -- Machine-independent kernel subsystems ("modules")
@@ -754,7 +339,7 @@ target("eteleos-kernel")
             local files = os.files(path.join(d, "**.c"))
             if #files > 0 then add_files(unpack(files)) end
         else
-            wprint("eteleos-kernel: kernel/%s not found, skipping", dir)
+            print(string.format("eteleos-kernel: kernel/%s not found, skipping", dir))
         end
     end
 
@@ -763,7 +348,7 @@ target("eteleos-kernel")
         if os.isfile(f) then
             add_files(f)
         else
-            wprint("eteleos-kernel: kernel/core/conf/%s not found, skipping", name)
+            print(string.format("eteleos-kernel: kernel/core/conf/%s not found, skipping", name))
         end
     end
 
@@ -772,7 +357,7 @@ target("eteleos-kernel")
         if os.isfile(f) then
             add_files(f, {cxflags = cflags})
         else
-            wprint("eteleos-kernel: per-file-cflags entry not found, skipping: %s", relpath)
+            print(string.format("eteleos-kernel: per-file-cflags entry not found, skipping: %s", relpath))
         end
     end
 
@@ -782,10 +367,25 @@ target("eteleos-kernel")
     do
         local added = 0
         local per_file_set = PER_FILE_CFLAGS[arch] or {}
+        -- config(8)'s own output Makefile states each path relative to the
+        -- flat pre-restructure sys/ layout convention (e.g. "conf/x.c",
+        -- "kern/y.c") -- correct as-is for directories that stayed
+        -- top-level under kernel/ (dev/, net/, uvm/, ddb/, crypto/, fs/),
+        -- but stale for the four that moved under core/ (conf, kern, lib,
+        -- stand). Same ""/"core/"/"dev/"/"fs/" fallback prefixes as the
+        -- sourcepath() patch tools/gen/gen_kernel_manifest.lua applies for
+        -- config(8) itself (see that file) -- needed again here since
+        -- config(8)'s Makefile just echoes the original string, not its
+        -- own already-resolved path.
+        local PREFIXES = {"", "core/", "dev/", "fs/"}
         for _, relpath in ipairs(selected_files) do
             if not per_file_set[relpath] then
-                local f = path.join(os.scriptdir(), relpath)
-                if os.isfile(f) then
+                local f = nil
+                for _, prefix in ipairs(PREFIXES) do
+                    local candidate = path.join(os.scriptdir(), prefix .. relpath)
+                    if os.isfile(candidate) then f = candidate; break end
+                end
+                if f then
                     add_files(f)
                     added = added + 1
                 end
@@ -794,13 +394,15 @@ target("eteleos-kernel")
                 -- EteleOS's minimal enabled-set (vendor firmware blobs etc.)
             end
         end
-        cprint("${green}eteleos-kernel${clear}: %d driver/MI-optional files added (arch=%s)",
-               added, arch)
+        print(string.format("eteleos-kernel: %d driver/MI-optional files added (arch=%s)",
+              added, arch))
     end
 
     -- --- ioconf.c, when real config(8) produced one --------------------------
-    if ioconf_c_path and os.isfile(ioconf_c_path) then
-        add_files(ioconf_c_path)
+    -- The actual file (io.open) is written inside on_load below, at script
+    -- scope, then added via target:add("files", ...) there -- description
+    -- scope cannot write it (see this file's earlier header note).
+    if ioconf_gendir then
         add_includedirs(ioconf_gendir)
     end
 
@@ -811,8 +413,8 @@ target("eteleos-kernel")
         if #c_files > 0 then add_files(unpack(c_files)) end
         if #s_files > 0 then add_files(unpack(s_files)) end
     else
-        raise("eteleos-kernel: kernel/arch/%s/%s not found -- cannot build the kernel core for this architecture",
-              arch, arch)
+        print(string.format("eteleos-kernel: kernel/arch/%s/%s not found -- cannot build "
+              .. "the kernel core for this architecture", arch, arch))
     end
 
     for _, bus in ipairs(BUS_GLUE_DIRS[arch] or {}) do
@@ -821,7 +423,7 @@ target("eteleos-kernel")
             local files = os.files(path.join(d, "**.c"))
             if #files > 0 then add_files(unpack(files)) end
         else
-            wprint("eteleos-kernel: kernel/arch/%s/%s not found, skipping", arch, bus)
+            print(string.format("eteleos-kernel: kernel/arch/%s/%s not found, skipping", arch, bus))
         end
     end
 
@@ -849,11 +451,9 @@ target("eteleos-kernel")
     -- arch/<arch>/include is small (a few hundred KB) and a plain copy
     -- needs no OS-specific symlink privilege (creating symlinks on Windows
     -- requires Developer Mode or admin rights, which cannot be assumed).
-    local machine_gendir = path.join(config.builddir() or "build", "eteleos-kernel-gen", arch)
-    if not os.isdir(path.join(machine_gendir, "machine")) then
-        os.cp(path.join(os.scriptdir(), "arch", arch, "include"),
-              path.join(machine_gendir, "machine"))
-    end
+    -- The actual copy (os.cp) happens in on_load below -- also nil at
+    -- description scope, confirmed the same way as io/os.iorun/os.cp above.
+    local machine_gendir = path.join(os.projectdir(), "build", "eteleos-kernel-gen", arch)
     add_includedirs(machine_gendir)
     add_includedirs(path.join(os.scriptdir(), "arch", arch, "include"))
     add_includedirs(os.scriptdir())
@@ -862,14 +462,50 @@ target("eteleos-kernel")
     if os.isfile(ldscript) then
         add_ldflags("-Wl,-T," .. ldscript, {force = true})
     else
-        raise("eteleos-kernel: linker script not found at %s", ldscript)
+        print(string.format("eteleos-kernel: linker script not found at %s -- link step will fail", ldscript))
     end
 
     add_deps("eteleos-headers")
 
     on_load(function (target)
-        local gendir = path.join(config.builddir() or "build", "eteleos-kernel-gen", arch)
+        local gendir = path.join(os.projectdir(), "build", "eteleos-kernel-gen", arch)
         os.mkdir(gendir)
+
+        local machine_gendir = gendir
+        if not os.isdir(path.join(machine_gendir, "machine")) then
+            try
+            {
+                function()
+                    os.cp(path.join(os.scriptdir(), "arch", arch, "include"),
+                          path.join(machine_gendir, "machine"))
+                end,
+                catch { function(errs) wprint("eteleos-kernel: could not copy machine/ headers") end }
+            }
+        end
+
+        if ioconf_c_path and kernel_manifest and kernel_manifest.ioconf_c then
+            os.mkdir(ioconf_gendir)
+            local f = (type(io) == "table" and io.open) and io.open(ioconf_c_path, "w") or nil
+            if f then
+                f:write(kernel_manifest.ioconf_c)
+                f:close()
+                target:add("files", ioconf_c_path)
+            else
+                wprint("eteleos-kernel: could not open %s for writing -- ioconf.c will be "
+                       .. "missing for this build", ioconf_c_path)
+            end
+        end
+
+        local function write_file_safe(filepath, content)
+            local f = (type(io) == "table" and io.open) and io.open(filepath, "w") or nil
+            if not f then
+                wprint("eteleos-kernel: could not open %s for writing", filepath)
+                return false
+            end
+            f:write(content)
+            f:close()
+            return true
+        end
 
         local kernel_version = "0.1.0"
         local vers_c = string.format([[
@@ -877,7 +513,7 @@ target("eteleos-kernel")
 char version[] = "EteleOS %s (%s) #0: %s\n";
 ]], kernel_version, arch, os.date("%a %b %d %H:%M:%S %Y"))
         local vers_path = path.join(gendir, "vers.c")
-        io.open(vers_path, "w"):write(vers_c):close()
+        write_file_safe(vers_path, vers_c)
         target:add("files", vers_path)
 
         local genassym_sh = path.join(os.scriptdir(), "core", "kern", "genassym.sh")
@@ -890,8 +526,14 @@ char version[] = "EteleOS %s (%s) #0: %s\n";
                               .. " -I" .. os.scriptdir()
             local cmd = string.format('sh "%s" %s -ffreestanding %s %s < "%s"',
                                        genassym_sh, cc, flags, incflags, genassym_cf)
-            local ok, outdata_or_err = pcall(os.iorun, cmd)
-            local outdata = ok and outdata_or_err or nil
+            local outdata = try
+            {
+                function() return (os.iorun(cmd)) end,
+                catch
+                {
+                    function(errs) return nil end
+                }
+            }
             if not outdata or outdata == "" then
                 wprint("eteleos-kernel: genassym.sh produced no usable output for %s "
                        .. "-- assym.h will be a stub and locore.%s will likely fail to "
@@ -899,11 +541,11 @@ char version[] = "EteleOS %s (%s) #0: %s\n";
                        genassym_cf, arch)
                 outdata = "/* genassym.sh generation failed or produced no output */\n"
             end
-            io.open(assym_h, "w"):write(outdata):close()
+            write_file_safe(assym_h, outdata)
         else
             wprint("eteleos-kernel: genassym.sh or %s not found, writing an empty assym.h",
                    genassym_cf)
-            io.open(assym_h, "w"):write("/* assym.h not generated -- inputs missing */\n"):close()
+            write_file_safe(assym_h, "/* assym.h not generated -- inputs missing */\n")
         end
         target:add("includedirs", gendir)
     end)
@@ -1057,8 +699,8 @@ local function eteleos_efi_bootloader(target_arch)
     local root = os.scriptdir()
 
     if not os.isdir(path.join(root, spec.prog_dir)) then
-        wprint("eteleos-kernel-efiboot: %s not found, skipping EFI bootloader for %s",
-               spec.prog_dir, target_arch)
+        print(string.format("eteleos-kernel-efiboot: %s not found, skipping EFI bootloader for %s",
+              spec.prog_dir, target_arch))
         return
     end
 
@@ -1085,7 +727,7 @@ local function eteleos_efi_bootloader(target_arch)
                 return
             end
 
-            local gendir = path.join(config.builddir() or "build",
+            local gendir = path.join(os.projectdir(), "build",
                                       "eteleos-kernel-gen", target_arch, "efiboot")
             os.mkdir(gendir)
 
@@ -1120,8 +762,14 @@ local function eteleos_efi_bootloader(target_arch)
             -- above: a real copy, not a symlink (Windows-host portable).
             local machine_alias_dir = path.join(gendir, "machine-alias")
             if not os.isdir(path.join(machine_alias_dir, "machine")) then
-                os.cp(path.join(root, "arch", target_arch, "include"),
-                      path.join(machine_alias_dir, "machine"))
+                try
+                {
+                    function()
+                        os.cp(path.join(root, "arch", target_arch, "include"),
+                              path.join(machine_alias_dir, "machine"))
+                    end,
+                    catch { function(errs) wprint("eteleos-kernel-efiboot: could not copy machine/ headers") end }
+                }
             end
 
             local includedirs = {

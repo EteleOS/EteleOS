@@ -71,12 +71,16 @@ rule("eteleos.base")
         end
 
         -- --- Architecture-specific flags ----------------------------------------
-        -- These come from the ETELEOS_ARCH_CFLAGS table defined in helpers.lua.
-        -- eteleos_get_arch_cflags() is safe to call from on_load.
-        local arch_flags = eteleos_get_arch_cflags()
+        -- These come from tools/modules/eteleos/helpers.lua (NOT the plain
+        -- global of the same name in tools/helpers.lua -- confirmed by
+        -- testing that a description-scope global, even one defined in
+        -- this exact project, is invisible from on_load; see that
+        -- module's header for the full explanation).
+        import("eteleos.helpers")
+        local arch_flags = helpers.eteleos_get_arch_cflags()
         if #arch_flags > 0 then
-            eteleos_add_flags(target, "cxflags", arch_flags)
-            eteleos_add_flags(target, "asflags", arch_flags)
+            helpers.eteleos_add_flags(target, "cxflags", arch_flags)
+            helpers.eteleos_add_flags(target, "asflags", arch_flags)
         end
 
         -- --- Cross-build sysroot ------------------------------------------------

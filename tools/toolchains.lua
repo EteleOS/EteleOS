@@ -31,6 +31,19 @@ Nothing in this file compiles any source file or declares any target.
 --------------------------------------------------------------------------------
 --]]
 
+-- Confirmed by testing: wprint/cprint are unavailable not just at
+-- description scope, but also inside on_load/on_build during xmake f's
+-- own internal target pre-check pass (_check_targets) on a project this
+-- size -- a stricter environment than a normal `xmake build` invocation
+-- of the same callback. Shimmed as LOCALS (not modifying the globals) so
+-- every on_load/on_build closure later in this same file resolves them
+-- via lexical scoping, which works regardless of which of the two
+-- environments is actually active at call time -- falls through to the
+-- real wprint/cprint when they do exist, so normal builds keep the
+-- colored output.
+local wprint = wprint or function(fmt, ...) print(string.format(fmt, ...)) end
+local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%w_]+}", "")), ...)) end
+
 -- ==============================================================================
 -- Primary toolchain: Clang/LLVM
 -- ==============================================================================
@@ -57,12 +70,17 @@ toolchain("eteleos-clang")
 
     -- --- Dynamic configuration via on_load ------------------------------------
     -- on_load fires once per toolchain instance (i.e. once when xmake f runs).
-    -- We use the closure over ETELEOS_TARGET_TRIPLES (from helpers.lua) to
-    -- resolve the triple without requiring a target object.
+    -- Confirmed by isolated testing against a real xmake v3.0.9 build: a
+    -- plain global (like ETELEOS_TARGET_TRIPLES, assigned in helpers.lua's
+    -- own description-scope execution) is NOT visible from inside on_load,
+    -- even within the same project -- description scope and script scope
+    -- have separate Lua global environments. import("eteleos.helpers")
+    -- (tools/modules/eteleos/helpers.lua) is the real, working mechanism
+    -- for this instead.
     on_load(function (toolchain)
+        import("eteleos.helpers")
         local arch   = get_config("target_arch") or "amd64"
-        local triple = ETELEOS_TARGET_TRIPLES[arch]
-                       or ("unknown-" .. arch .. "-unknown-openbsd")
+        local triple = helpers.eteleos_get_triple()
 
         -- Retarget compiler, assembler and linker to the chosen architecture.
         -- This is what allows a single Clang installation to cross-compile

@@ -77,19 +77,19 @@ file:		  /* VOID */
 		| file command
 		;
 
-command:	  NAME '=' namelist = {
+command:	  NAME '=' namelist {
 			(void) lookup($1, INSERT, $3);
 		}
-		| namelist ARROW namelist cmdlist = {
+		| namelist ARROW namelist cmdlist {
 			insert((char *)NULL, $1, $3, $4);
 		}
-		| NAME COLON namelist ARROW namelist cmdlist = {
+		| NAME COLON namelist ARROW namelist cmdlist {
 			insert($1, $3, $5, $6);
 		}
-		| namelist DCOLON NAME cmdlist = {
+		| namelist DCOLON NAME cmdlist {
 			append((char *)NULL, $1, $3, $4);
 		}
-		| NAME COLON namelist DCOLON NAME cmdlist = {
+		| NAME COLON namelist DCOLON NAME cmdlist {
 			append($1, $3, $5, $6);
 		}
 		| error
@@ -109,10 +109,10 @@ namelist: 	nlist {
 		}
 		;
 
-nlist:	  NAME = {
+nlist:	  NAME {
 			$$ = makenl($1);
 		}
-		| '(' names ')' = {
+		| '(' names ')' {
 			$$ = $2;
 		}
 		;
@@ -120,7 +120,7 @@ nlist:	  NAME = {
 names:		  /* VOID */ {
 			$$ = last_n = NULL;
 		}
-		| names NAME = {
+		| names NAME {
 			if (last_n == NULL)
 				$$ = last_n = makenl($2);
 			else {
@@ -134,7 +134,7 @@ names:		  /* VOID */ {
 cmdlist:	  /* VOID */ {
 			$$ = last_sc = NULL;
 		}
-		| cmdlist cmd = {
+		| cmdlist cmd {
 			if (last_sc == NULL)
 				$$ = last_sc = $2;
 			else {
@@ -145,7 +145,7 @@ cmdlist:	  /* VOID */ {
 		}
 		;
 
-cmd:		  INSTALL options opt_namelist ';' = {
+cmd:		  INSTALL options opt_namelist ';' {
 			struct namelist *nl;
 
 			$1->sc_options = $2 | options;
@@ -161,17 +161,17 @@ cmd:		  INSTALL options opt_namelist ';' = {
 			}
 			$$ = $1;
 		}
-		| NOTIFY namelist ';' = {
+		| NOTIFY namelist ';' {
 			if ($2 != NULL)
 				$1->sc_args = expand($2, E_VARS);
 			$$ = $1;
 		}
-		| EXCEPT namelist ';' = {
+		| EXCEPT namelist ';' {
 			if ($2 != NULL)
 				$1->sc_args = expand($2, E_ALL);
 			$$ = $1;
 		}
-		| PATTERN namelist ';' = {
+		| PATTERN namelist ';' {
 			struct namelist *nl;
 			char ebuf[BUFSIZ];
 			regex_t reg;
@@ -190,13 +190,13 @@ cmd:		  INSTALL options opt_namelist ';' = {
 			$1->sc_args = expand($2, E_VARS);
 			$$ = $1;
 		}
-		| SPECIAL opt_namelist STRING ';' = {
+		| SPECIAL opt_namelist STRING ';' {
 			if ($2 != NULL)
 				$1->sc_args = expand($2, E_ALL);
 			$1->sc_name = $3;
 			$$ = $1;
 		}
-		| CMDSPECIAL opt_namelist STRING ';' = {
+		| CMDSPECIAL opt_namelist STRING ';' {
 			if ($2 != NULL)
 				$1->sc_args = expand($2, E_ALL);
 			$1->sc_name = $3;
@@ -204,18 +204,18 @@ cmd:		  INSTALL options opt_namelist ';' = {
 		}
 		;
 
-options:	  /* VOID */ = {
+options:	  /* VOID */ {
 			$$ = 0;
 		}
-		| options OPTION = {
+		| options OPTION {
 			$$ |= $2;
 		}
 		;
 
-opt_namelist:	  /* VOID */ = {
+opt_namelist:	  /* VOID */ {
 			$$ = NULL;
 		}
-		| namelist = {
+		| namelist {
 			$$ = $1;
 		}
 		;

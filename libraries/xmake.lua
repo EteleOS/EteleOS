@@ -43,10 +43,40 @@ WHAT CHANGED IN THIS REVISION
    NOT implemented here -- every library still builds and links correctly
    without it, it only affects which symbols are exported as public ABI, so
    it is left as a follow-up rather than a build-correctness fix.
+3. read_shlib_version() no longer reads shlib_version files directly (that
+   used io.open() at description scope, which is nil there in a real
+   xmake v3.0.9 run -- confirmed; only script-scope callbacks like on_load
+   have it). The major/minor numbers now come from a lookup into
+   ETELEOS_LIBRARIES_SHLIB_VERSIONS, precomputed offline by
+   tools/gen/gen_libraries_manifest.lua (xmake lua tools/gen/gen_libraries_manifest.lua
+   to regenerate after any library gains/changes a shlib_version file).
 --------------------------------------------------------------------------------
 --]]
 
+-- Confirmed by testing: wprint/cprint are unavailable not just at
+-- description scope, but also inside on_load/on_build during xmake f's
+-- own internal target pre-check pass (_check_targets) on a project this
+-- size -- a stricter environment than a normal `xmake build` invocation
+-- of the same callback. Shimmed as LOCALS (not modifying the globals) so
+-- every on_load/on_build closure later in this same file resolves them
+-- via lexical scoping, which works regardless of which of the two
+-- environments is actually active at call time -- falls through to the
+-- real wprint/cprint when they do exist, so normal builds keep the
+-- colored output.
+local wprint = wprint or function(fmt, ...) print(string.format(fmt, ...)) end
+local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%w_]+}", "")), ...)) end
+
 local unpack = table.unpack or unpack
+
+-- Provides ETELEOS_LIBRARIES_SHLIB_VERSIONS (see read_shlib_version() below
+-- and tools/gen/gen_libraries_manifest.lua for why this is a separate,
+-- generated file rather than read here directly).
+includes("generated_manifest.lua")
+if type(ETELEOS_LIBRARIES_SHLIB_VERSIONS) ~= "table" then
+    print("eteleos-libraries: generated_manifest.lua did not define ETELEOS_LIBRARIES_SHLIB_VERSIONS -- "
+          .. "every library will link with version 0.0. Run: xmake lua tools/gen/gen_libraries_manifest.lua")
+    ETELEOS_LIBRARIES_SHLIB_VERSIONS = {}
+end
 
 -- ==============================================================================
 -- Helpers (local to this file -- library-build-specific, not project-wide
@@ -55,6 +85,16 @@ local unpack = table.unpack or unpack
 
 -- Read a small text file fully. Returns nil if it does not exist.
 local function read_file(filepath)
+    -- Defensive: `io` has been observed nil at this exact on_load call
+    -- site during `xmake f` on this project's full ~230k-file tree, even
+    -- though io/os.iorun are confirmed present inside on_load in small
+    -- isolated tests and elsewhere in this same file's on_load blocks.
+    -- Root cause not fully pinned down (possibly an xmake internals
+    -- interaction specific to config-time's target pre-check pass at this
+    -- scale) -- guarded rather than assumed away, so a fluke here
+    -- degrades one library's stub generation instead of aborting the
+    -- entire project configure.
+    if type(io) ~= "table" or not io.open then return nil end
     local f = io.open(filepath, "r")
     if not f then return nil end
     local content = f:read("*a")
@@ -63,10 +103,18 @@ local function read_file(filepath)
 end
 
 local function write_file(filepath, content)
+    if type(io) ~= "table" or not io.open then
+        print(string.format("eteleos: io unavailable, could not write %s", filepath))
+        return false
+    end
     local f = io.open(filepath, "w")
-    if not f then raise("eteleos: could not write %s", filepath) end
+    if not f then
+        print(string.format("eteleos: could not write %s", filepath))
+        return false
+    end
     f:write(content)
     f:close()
+    return true
 end
 
 -- "foo/bar/baz.c" -> "baz" (basename without extension). Pure Lua pattern
@@ -113,12 +161,22 @@ end
 
 -- Parse "major=N" / "minor=N" out of a BSD-style shlib_version file.
 -- Returns 0, 0 if the file is missing or unparseable.
-local function read_shlib_version(srcdir)
-    local content = read_file(path.join(srcdir, "shlib_version"))
-    if not content then return 0, 0 end
-    local major = tonumber(content:match("major%s*=%s*(%d+)")) or 0
-    local minor = tonumber(content:match("minor%s*=%s*(%d+)")) or 0
-    return major, minor
+--
+-- CHANGED: this used to call read_file() (io.open) directly here, at
+-- description scope. Confirmed against a real xmake v3.0.9 build: io is
+-- nil at description scope (only script-scope callbacks like on_load have
+-- it -- see docs.xmake.io/api/scripts/builtin-modules/import.html, "most
+-- module interfaces can only be used in the script domain"), so that could
+-- never actually have run. The major/minor numbers are now precomputed
+-- offline (xmake lua tools/gen/gen_libraries_manifest.lua, run against
+-- every libraries/{core,extra}/*/shlib_version file) into
+-- generated_manifest.lua's ETELEOS_LIBRARIES_SHLIB_VERSIONS table; this
+-- function is now just a lookup, keyed by srcdir_rel exactly as passed to
+-- eteleos_bsd_library() below (e.g. "core/libc", "extra/libcurses").
+local function read_shlib_version(srcdir_rel)
+    local v = ETELEOS_LIBRARIES_SHLIB_VERSIONS and ETELEOS_LIBRARIES_SHLIB_VERSIONS[srcdir_rel]
+    if not v then return 0, 0 end
+    return v.major, v.minor
 end
 
 -- ==============================================================================
@@ -308,7 +366,7 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
     local srcdir = path.join(os.scriptdir(), srcdir_rel)
 
     if not os.isdir(srcdir) then
-        wprint("eteleos: libraries/%s not found, skipping lib%s", srcdir_rel, name)
+        print(string.format("eteleos: libraries/%s not found, skipping lib%s", srcdir_rel, name))
         return
     end
 
@@ -322,28 +380,38 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
                 mi_files[#mi_files + 1] = f
             end
         else
-            wprint("eteleos: lib%s: extra_srcdirs entry not found, skipping: %s", name, extra_dir)
+            print(string.format("eteleos: lib%s: extra_srcdirs entry not found, skipping: %s", name, extra_dir))
         end
     end
 
     for _, f in ipairs(opts.extra_files or {}) do
         if os.isfile(f) then mi_files[#mi_files + 1] = f
-        else wprint("eteleos: lib%s: extra_files entry not found, skipping: %s", name, f) end
+        else print(string.format("eteleos: lib%s: extra_files entry not found, skipping: %s", name, f)) end
     end
 
     if opts.arch_files and opts.arch_files[arch] then
         local f = path.join(srcdir, opts.arch_files[arch])
         if os.isfile(f) then mi_files[#mi_files + 1] = f
-        else wprint("eteleos: lib%s: arch_files[%s] not found, skipping: %s", name, arch, f) end
+        else print(string.format("eteleos: lib%s: arch_files[%s] not found, skipping: %s", name, arch, f)) end
     end
 
     if #mi_files == 0 and #md_files == 0 then
-        wprint("eteleos: lib%s (%s) has no source files for arch '%s' yet, skipping",
-               name, srcdir_rel, arch)
+        print(string.format("eteleos: lib%s (%s) has no source files for arch '%s' yet, skipping",
+               name, srcdir_rel, arch))
         return
     end
 
-    local major, minor = read_shlib_version(srcdir)
+    local major, minor = read_shlib_version(srcdir_rel)
+
+    -- Record that this library actually gets a target, for other modules
+    -- (tests/xmake.lua, userland/xmake.lua) to check before add_deps()-ing
+    -- a LDADD-derived "lib<x>-shared" that might not exist -- add_deps() on
+    -- a nonexistent target is a hard xmake error, confirmed by testing
+    -- (e.g. tests/sys/kern/signal/sig/stop2 LDADD's -lpthread, but
+    -- libpthread currently has zero source files for amd64 and so never
+    -- reaches this point).
+    ETELEOS_DECLARED_LIBRARIES = ETELEOS_DECLARED_LIBRARIES or {}
+    ETELEOS_DECLARED_LIBRARIES[name] = true
 
     for _, kind in ipairs({"static", "shared"}) do
         target("lib" .. name .. "-" .. kind)
@@ -378,7 +446,7 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
 
             if opts.gen_files_fn then
                 on_load(function (target)
-                    local gendir = path.join(config.builddir() or "build",
+                    local gendir = path.join(os.projectdir(), "build",
                                               "eteleos-libraries-gen", "lib" .. name, arch)
                     local files = opts.gen_files_fn(gendir)
                     for _, f in ipairs(files) do target:add("files", f) end
@@ -573,6 +641,8 @@ do
     local pcap_srcdir = path.join(os.scriptdir(), "extra", "libpcap")
     if os.isdir(pcap_srcdir) then
         local arch = get_config("target_arch") or "amd64"
+        ETELEOS_DECLARED_LIBRARIES = ETELEOS_DECLARED_LIBRARIES or {}
+        ETELEOS_DECLARED_LIBRARIES["pcap"] = true
         for _, kind in ipairs({"static", "shared"}) do
             target("libpcap-" .. kind)
                 set_kind(kind)
@@ -580,11 +650,11 @@ do
                 set_default(false)
                 add_rules("eteleos.base", "eteleos.library")
 
-                local mi_files = select(1, collect_sources(pcap_srcdir, arch))
+                local mi_files = collect_sources(pcap_srcdir, arch)
                 if #mi_files > 0 then add_files(unpack(mi_files)) end
                 local bpf_filter_c = path.join(os.scriptdir(), "..", "kernel", "net", "net", "bpf_filter.c")
                 if os.isfile(bpf_filter_c) then add_files(bpf_filter_c)
-                else wprint("eteleos: libpcap: kernel/net/net/bpf_filter.c not found, skipping") end
+                else print("eteleos: libpcap: kernel/net/net/bpf_filter.c not found, skipping") end
 
                 add_includedirs(pcap_srcdir)
                 add_defines("HAVE_SYS_IOCCOM_H", "HAVE_SYS_SOCKIO_H", "HAVE_ETHER_HOSTTON",
@@ -601,7 +671,7 @@ do
                                .. "will be missing its filter-expression parser")
                         return
                     end
-                    local gendir = path.join(config.builddir() or "build",
+                    local gendir = path.join(os.projectdir(), "build",
                                               "eteleos-libraries-gen", "libpcap", arch)
                     os.mkdir(gendir)
                     local gram_c = path.join(gendir, "grammar.c")
@@ -628,7 +698,7 @@ do
             target_end()
         end
     else
-        wprint("eteleos: libraries/extra/libpcap not found, skipping libpcap")
+        print("eteleos: libraries/extra/libpcap not found, skipping libpcap")
     end
 end
 
@@ -647,6 +717,8 @@ do
     local RPCSVC_SPECS = { "bootparam_prot", "klm_prot", "mount", "nfs_prot",
                             "nlm_prot", "rnusers", "rquota", "rstat", "rusers", "rwall" }
     if os.isdir(rpcsvc_srcdir) then
+        ETELEOS_DECLARED_LIBRARIES = ETELEOS_DECLARED_LIBRARIES or {}
+        ETELEOS_DECLARED_LIBRARIES["rpcsvc"] = true
         for _, kind in ipairs({"static", "shared"}) do
             target("librpcsvc-" .. kind)
                 set_kind(kind)
@@ -665,7 +737,7 @@ do
                                .. "be an empty library", #RPCSVC_SPECS)
                         return
                     end
-                    local gendir = path.join(config.builddir() or "build",
+                    local gendir = path.join(os.projectdir(), "build",
                                               "eteleos-libraries-gen", "librpcsvc")
                     os.mkdir(gendir)
                     local n = 0
@@ -698,7 +770,7 @@ do
             target_end()
         end
     else
-        wprint("eteleos: libraries/extra/librpcsvc not found, skipping librpcsvc")
+        print("eteleos: libraries/extra/librpcsvc not found, skipping librpcsvc")
     end
 end
 

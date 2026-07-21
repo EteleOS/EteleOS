@@ -59,6 +59,19 @@ same steps when they exist, and clearly warns and skips otherwise.
 --------------------------------------------------------------------------------
 --]]
 
+-- Confirmed by testing: wprint/cprint are unavailable not just at
+-- description scope, but also inside on_load/on_build during xmake f's
+-- own internal target pre-check pass (_check_targets) on a project this
+-- size -- a stricter environment than a normal `xmake build` invocation
+-- of the same callback. Shimmed as LOCALS (not modifying the globals) so
+-- every on_load/on_build closure later in this same file resolves them
+-- via lexical scoping, which works regardless of which of the two
+-- environments is actually active at call time -- falls through to the
+-- real wprint/cprint when they do exist, so normal builds keep the
+-- colored output.
+local wprint = wprint or function(fmt, ...) print(string.format(fmt, ...)) end
+local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%w_]+}", "")), ...)) end
+
 local unpack = table.unpack or unpack
 local arch = get_config("target_arch") or "amd64"
 
@@ -66,6 +79,7 @@ local arch = get_config("target_arch") or "amd64"
 -- Small utilities
 -- ==============================================================================
 local function read_file(filepath)
+    if type(io) ~= "table" or not io.open then return nil end
     local f = io.open(filepath, "r")
     if not f then return nil end
     local c = f:read("*a")
@@ -74,11 +88,8 @@ local function read_file(filepath)
 end
 
 local function list_subdirs(dir)
-    local out = os.iorun(string.format('find "%s" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | sort', dir))
-    local dirs = {}
-    if out then
-        for line in out:gmatch("[^\r\n]+") do dirs[#dirs + 1] = line end
-    end
+    local dirs = os.dirs(path.join(dir, "*"))
+    table.sort(dirs)
     return dirs
 end
 
@@ -154,7 +165,15 @@ local function write_tarball(setname, entries, destdir, outdir, version)
     os.mkdir(outdir)
     local outfile = path.join(outdir, setname .. version .. ".tgz")
     local listfile = path.join(outdir, "." .. setname .. ".list")
+    if type(io) ~= "table" or not io.open then
+        wprint("eteleos-installer: io unavailable, cannot write %s", listfile)
+        return
+    end
     local f = io.open(listfile, "w")
+    if not f then
+        wprint("eteleos-installer: could not write %s", listfile)
+        return
+    end
     for _, e in ipairs(entries) do f:write(e, "\n") end
     f:close()
 
@@ -186,13 +205,13 @@ end
 local function eteleos_special_tool(name, specialdir)
     local srcdir = find_userland_program_dir(name)
     if not srcdir then
-        wprint("eteleos-installer: special/%s: no matching userland/ program found by name, skipping",
-               name)
+        print(string.format("eteleos-installer: special/%s: no matching userland/ program found by name, skipping",
+              name))
         return
     end
     local c_files = os.files(path.join(srcdir, "**.c"))
     if #c_files == 0 then
-        wprint("eteleos-installer: special/%s: source dir %s has no .c files, skipping", name, srcdir)
+        print(string.format("eteleos-installer: special/%s: source dir %s has no .c files, skipping", name, srcdir))
         return
     end
 
@@ -250,7 +269,7 @@ do
             end
         end
     else
-        wprint("eteleos-installer: installer/special not found, skipping miniroot tools")
+        print("eteleos-installer: installer/special not found, skipping miniroot tools")
     end
 end
 
@@ -307,9 +326,23 @@ target("eteleos-release")
             wprint("eteleos-installer: notes/%s/install not found, skipping INSTALL.%s", arch, arch)
         end
 
+        local function write_file_safe(filepath, content)
+            if type(io) ~= "table" or not io.open then
+                wprint("eteleos-installer: io unavailable, could not write %s", filepath)
+                return
+            end
+            local f = io.open(filepath, "w")
+            if not f then
+                wprint("eteleos-installer: could not write %s", filepath)
+                return
+            end
+            f:write(content)
+            f:close()
+        end
+
         local buildinfo = string.format("BUILD: EteleOS 0.1 (%s)\nDATE: %s\n",
                                          arch, os.date("%Y-%m-%d %H:%M:%S"))
-        io.open(path.join(outdir, "BUILDINFO"), "w"):write(buildinfo):close()
+        write_file_safe(path.join(outdir, "BUILDINFO"), buildinfo)
 
         -- SHA256 manifest of everything just built, matching the real
         -- release directory's own "SHA256" file -- best-effort: uses
@@ -325,7 +358,7 @@ target("eteleos-release")
                         for _, f in ipairs(files) do names[#names+1] = f:match("([^/]+)$") end
                         return names
                     end)(), " ")))
-                io.open(path.join(outdir, "SHA256"), "w"):write(out or ""):close()
+                write_file_safe(path.join(outdir, "SHA256"), out or "")
             end
         else
             wprint("eteleos-installer: no sha256/sha256sum found, skipping SHA256 manifest")

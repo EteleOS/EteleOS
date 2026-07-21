@@ -94,7 +94,7 @@ ksym_lookup(keysym_t ksym)
 
 %%
 
-program		: = {
+program		: {
 			int i;
 			struct wscons_keymap *mp;
 
@@ -120,7 +120,7 @@ expr		: keysym_expr
 		| keycode_expr
 		;
 
-keysym_expr	: T_KEYSYM keysym_var "=" keysym_var = {
+keysym_expr	: T_KEYSYM keysym_var "=" keysym_var {
 			int src, dst;
 
 			dst = ksym_lookup($2);
@@ -131,7 +131,7 @@ keysym_expr	: T_KEYSYM keysym_var "=" keysym_var = {
 		}
 		;
 
-keycode_expr	: T_KEYCODE T_NUMBER "=" = {
+keycode_expr	: T_KEYCODE T_NUMBER "=" {
 			if ($2 >= KS_NUMKEYCODES)
 				errx(1, "%d: keycode too large", $2);
 			if ($2 >= newkbmap.maplen)
@@ -141,30 +141,30 @@ keycode_expr	: T_KEYCODE T_NUMBER "=" = {
 		;
 
 keysym_cmd	: /* empty */
-		| T_KEYSYM_CMD_VAR = {
+		| T_KEYSYM_CMD_VAR {
 			cur_mp->command = $1;
 		}
 		;
 
-keysym_list	: keysym_var = {
+keysym_list	: keysym_var {
 			cur_mp->group1[0] = $1;
 			cur_mp->group1[1] = ksym_upcase(cur_mp->group1[0]);
 			cur_mp->group2[0] = cur_mp->group1[0];
 			cur_mp->group2[1] = cur_mp->group1[1];
 		}
-		| keysym_var keysym_var = {
+		| keysym_var keysym_var {
 			cur_mp->group1[0] = $1;
 			cur_mp->group1[1] = $2;
 			cur_mp->group2[0] = cur_mp->group1[0];
 			cur_mp->group2[1] = cur_mp->group1[1];
 		}
-		| keysym_var keysym_var keysym_var = {
+		| keysym_var keysym_var keysym_var {
 			cur_mp->group1[0] = $1;
 			cur_mp->group1[1] = $2;
 			cur_mp->group2[0] = $3;
 			cur_mp->group2[1] = ksym_upcase(cur_mp->group2[0]);
 		}
-		| keysym_var keysym_var keysym_var keysym_var = {
+		| keysym_var keysym_var keysym_var keysym_var {
 			cur_mp->group1[0] = $1;
 			cur_mp->group1[1] = $2;
 			cur_mp->group2[0] = $3;
@@ -172,10 +172,10 @@ keysym_list	: keysym_var = {
 		}
 		;
 
-keysym_var	: T_KEYSYM_VAR = {
+keysym_var	: T_KEYSYM_VAR {
 			$$ = $1;
 		}
-		| T_NUMBER = {
+		| T_NUMBER {
 			char name[2];
 			int res;
 

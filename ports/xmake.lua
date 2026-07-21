@@ -57,139 +57,54 @@ FRAMEWORK PIPELINE (per port, in eteleos_port())
 --------------------------------------------------------------------------------
 --]]
 
+-- Confirmed by testing: wprint/cprint are unavailable not just at
+-- description scope, but also inside on_load/on_build during xmake f's
+-- own internal target pre-check pass (_check_targets) on a project this
+-- size -- a stricter environment than a normal `xmake build` invocation
+-- of the same callback. Shimmed as LOCALS (not modifying the globals) so
+-- every on_load/on_build closure later in this same file resolves them
+-- via lexical scoping, which works regardless of which of the two
+-- environments is actually active at call time -- falls through to the
+-- real wprint/cprint when they do exist, so normal builds keep the
+-- colored output.
+local wprint = wprint or function(fmt, ...) print(string.format(fmt, ...)) end
+local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%w_]+}", "")), ...)) end
+
 local unpack = table.unpack or unpack
 local arch = get_config("target_arch") or "amd64"
 
 local EXCLUDED_TOP_LEVEL = { infrastructure = true }
 
 -- ==============================================================================
--- Small utilities
+-- Port Makefile + distinfo parsing is done offline now by
+-- tools/gen/gen_ports_manifest.lua, since io.open() cannot run at
+-- xmake.lua description scope (confirmed against a real xmake v3.0.9
+-- build -- see userland/xmake.lua's header for the full explanation of
+-- this scope rule, which applies project-wide). Directory discovery
+-- itself (os.dirs()-based, at the bottom of this file) already worked at
+-- description scope and is unchanged.
+-- Regenerate with: xmake lua tools/gen/gen_ports_manifest.lua
 -- ==============================================================================
-local function read_file(filepath)
-    local f = io.open(filepath, "r")
-    if not f then return nil end
-    local c = f:read("*a")
-    f:close()
-    return c
-end
-
-local function logical_lines(content)
-    local lines = {}
-    local acc = nil
-    for line in (content .. "\n"):gmatch("(.-)\n") do
-        local cont = line:match("(.*)\\%s*$")
-        if cont then
-            acc = (acc or "") .. cont .. " "
-        else
-            lines[#lines + 1] = (acc or "") .. line
-            acc = nil
-        end
-    end
-    return lines
-end
-
-local function expand_vars(value, vars)
-    -- KNOWN LIMITATION, confirmed against real data: this only expands
-    -- plain ${VAR}/$(VAR) references. BSD Make's variable MODIFIERS
-    -- (${VAR:S/pattern/repl/}, :M, :N, :T, :H, :R, ...) are NOT evaluated.
-    -- Verified real example this misses: ports/archivers/zip/Makefile has
-    -- DISTNAME=zip${VERSION:S/.//} (VERSION=3.0, ":S/.//" strips the "."
-    -- to produce "zip30") -- this function leaves that whole expression
-    -- as a literal, unexpanded "${VERSION:S/.//}" in the result rather
-    -- than resolving it to "30". Ports whose DISTNAME/PKGNAME depend on a
-    -- modifier like this will have a wrong/unresolved distfile name here.
-    return (value:gsub("%$[{(]([%w_.:=]+)[})]", function (name)
-        local base = name:match("^([%w_]+)")
-        return vars[base] or ("${" .. name .. "}")
-    end))
-end
-
--- ==============================================================================
--- Port Makefile parser
--- ==============================================================================
-local function parse_port_makefile(dir)
-    local content = read_file(path.join(dir, "Makefile"))
-    if not content then return nil end
-
-    local info = {
-        distname = nil, version = nil, pkgname = nil, categories = {},
-        sites = nil, wantlib = {}, gnu_configure = false, has_custom_target = false,
-        extract_sufx = ".tar.gz",
-    }
-    local vars = {}
-
-    for _, line in ipairs(logical_lines(content)) do
-        local stripped = line:gsub("#.*$", ""):match("^%s*(.-)%s*$")
-        if stripped ~= "" then
-            local var, op, rest = stripped:match("^(%u[%u_]*)%s*([+?:!]?=)%s*(.*)$")
-            if var and op ~= "!=" then
-                local expanded = expand_vars(rest, vars)
-                if op == "+=" and vars[var] then
-                    vars[var] = vars[var] .. " " .. expanded
-                elseif op == "?=" and vars[var] then
-                    -- no override
-                else
-                    vars[var] = expanded
-                end
-            elseif stripped:match("^do%-configure%s*:") or stripped:match("^do%-build%s*:")
-                   or stripped:match("^do%-install%s*:") or stripped:match("^post%-") 
-                   or stripped:match("^pre%-") then
-                info.has_custom_target = true
-            end
-        end
-    end
-
-    info.distname = vars.DISTNAME
-    info.version = vars.VERSION
-    info.pkgname = vars.PKGNAME or info.distname
-    info.sites = vars.SITES or vars.MASTER_SITES
-    info.extract_sufx = vars.EXTRACT_SUFX or ".tar.gz"
-    info.gnu_configure = (vars.GNU_CONFIGURE == "Yes" or vars.GNU_CONFIGURE == "yes")
-    if vars.CATEGORIES then
-        for c in vars.CATEGORIES:gmatch("%S+") do info.categories[#info.categories + 1] = c end
-    end
-    if vars.WANTLIB then
-        for l in vars.WANTLIB:gmatch("%S+") do info.wantlib[#info.wantlib + 1] = l end
-    end
-    return info
-end
-
--- ==============================================================================
--- distinfo parser: "SHA256 (file) = hash" / "SIZE (file) = bytes"
--- ==============================================================================
-local function parse_distinfo(dir)
-    local content = read_file(path.join(dir, "distinfo"))
-    local entries = {}
-    if not content then return entries end
-    for line in (content .. "\n"):gmatch("(.-)\n") do
-        local algo, fname, value = line:match("^([%u%d]+)%s*%(([^)]+)%)%s*=%s*(.+)$")
-        if algo and fname then
-            entries[fname] = entries[fname] or {}
-            entries[fname][algo] = value
-        end
-    end
-    return entries
-end
+includes("generated_manifest.lua")
+local PORTS_MANIFEST = ETELEOS_PORTS_MANIFEST or {}
 
 -- ==============================================================================
 -- One port's build pipeline
 -- ==============================================================================
 local stats = { discovered = 0, drivable = 0, custom_flagged = 0, no_distname = 0 }
 
-local function eteleos_port(target_name, portdir, category)
-    local info = parse_port_makefile(portdir)
+local function eteleos_port(target_name, portdir, category, info, distinfo)
     if not info then return end
     stats.discovered = stats.discovered + 1
 
     if not info.distname then
         stats.no_distname = stats.no_distname + 1
-        wprint("eteleos-ports: %s/%s: no DISTNAME found, skipping", category, path.filename(portdir))
+        print(string.format("eteleos-ports: %s/%s: no DISTNAME found, skipping", category, path.filename(portdir)))
         return
     end
 
-    local distinfo = parse_distinfo(portdir)
     local distfile = info.distname .. info.extract_sufx
-    local checksum = distinfo[distfile] and distinfo[distfile].SHA256
+    local checksum = distinfo and distinfo[distfile] and distinfo[distfile].SHA256
 
     if info.has_custom_target then
         stats.custom_flagged = stats.custom_flagged + 1
@@ -201,7 +116,7 @@ local function eteleos_port(target_name, portdir, category)
         set_kind("phony")
         set_default(false)
         on_build(function (target)
-            local wrkdir = path.join(config.builddir() or "build", "ports-wrk", category,
+            local wrkdir = path.join(os.projectdir(), "build", "ports-wrk", category,
                                       path.filename(portdir))
             local stagedir = path.join(wrkdir, "stage")
             os.mkdir(wrkdir)
@@ -215,10 +130,15 @@ local function eteleos_port(target_name, portdir, category)
                     return
                 end
                 local url = info.sites .. distfile
-                local ok = pcall(function()
-                    import("net.http")
-                    http.download(url, distpath)
-                end)
+                local ok = try
+                {
+                    function()
+                        import("net.http")
+                        http.download(url, distpath)
+                        return true
+                    end,
+                    catch { function(errs) return false end }
+                }
                 if not ok then
                     wprint("eteleos-ports: %s: failed to fetch %s (network access to this "
                            .. "port's SITES may not be available in this build environment)",
@@ -231,13 +151,18 @@ local function eteleos_port(target_name, portdir, category)
             if checksum then
                 import("utils.archive.sha256") -- best-effort; xmake also exposes a
                                                  -- hash module under some versions
-                local ok, actual = pcall(function()
-                    import("lib.detect.find_tool")
-                    local tool = find_tool("sha256") or find_tool("sha256sum")
-                    if not tool then return nil end
-                    local out = os.iorun(string.format('%s "%s"', tool.program, distpath))
-                    return out and out:match("(%x+)")
-                end)
+                local actual = try
+                {
+                    function()
+                        import("lib.detect.find_tool")
+                        local tool = find_tool("sha256") or find_tool("sha256sum")
+                        if not tool then return nil end
+                        local out = os.iorun(string.format('%s "%s"', tool.program, distpath))
+                        return out and out:match("(%x+)")
+                    end,
+                    catch { function(errs) return nil end }
+                }
+                local ok = actual ~= nil
                 if not ok or not actual then
                     wprint("eteleos-ports: %s: could not verify checksum (no sha256 tool found)",
                            target:name())
@@ -319,11 +244,12 @@ for _, category in ipairs(discover_categories()) do
         if os.isfile(path.join(portdir, "Makefile")) and os.isfile(path.join(portdir, "distinfo")) then
             local name = path.filename(portdir)
             local target_name = ("port-" .. category .. "-" .. name):gsub("[^%w%-]", "-")
-            eteleos_port(target_name, portdir, category)
+            local entry = PORTS_MANIFEST[category .. "/" .. name]
+            eteleos_port(target_name, portdir, category, entry and entry.info, entry and entry.distinfo)
         end
     end
 end
 
-cprint("${green}eteleos-ports${clear}: %d ports discovered, %d GNU_CONFIGURE-drivable, "
-       .. "%d flagged custom (need per-port build logic), %d missing DISTNAME",
-       stats.discovered, stats.drivable, stats.custom_flagged, stats.no_distname)
+print(string.format("eteleos-ports: %d ports discovered, %d GNU_CONFIGURE-drivable, "
+      .. "%d flagged custom (need per-port build logic), %d missing DISTNAME",
+      stats.discovered, stats.drivable, stats.custom_flagged, stats.no_distname))

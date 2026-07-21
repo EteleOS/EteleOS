@@ -117,6 +117,19 @@ directly on the host.
 --------------------------------------------------------------------------------
 --]]
 
+-- Confirmed by testing: wprint/cprint are unavailable not just at
+-- description scope, but also inside on_load/on_build during xmake f's
+-- own internal target pre-check pass (_check_targets) on a project this
+-- size -- a stricter environment than a normal `xmake build` invocation
+-- of the same callback. Shimmed as LOCALS (not modifying the globals) so
+-- every on_load/on_build closure later in this same file resolves them
+-- via lexical scoping, which works regardless of which of the two
+-- environments is actually active at call time -- falls through to the
+-- real wprint/cprint when they do exist, so normal builds keep the
+-- colored output.
+local wprint = wprint or function(fmt, ...) print(string.format(fmt, ...)) end
+local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%w_]+}", "")), ...)) end
+
 local unpack = table.unpack or unpack
 local arch = get_config("target_arch") or "amd64"
 
@@ -135,30 +148,18 @@ local KNOWN_INCLUDES = { ["bsd.regress.mk"] = true, ["bsd.subdir.mk"] = true }
 local INTERPRETER_BY_EXT = { sh = "sh", py = "python3", pl = "perl", lua = "lua" }
 
 -- ==============================================================================
--- Small utilities
+-- Makefile parsing (all the operator/${VAR}/.if/.include handling
+-- documented above) is now done offline by
+-- tools/gen/gen_tests_manifest.lua, since io.open() cannot run at
+-- xmake.lua description scope (confirmed against a real xmake v3.0.9
+-- build -- see userland/xmake.lua's header for the full explanation of
+-- this scope rule, which applies project-wide). find_test_dirs() below is
+-- UNCHANGED -- os.files()/os.dirs() genuinely do work at description
+-- scope, so directory discovery still happens right here.
+-- Regenerate with: xmake lua tools/gen/gen_tests_manifest.lua
 -- ==============================================================================
-local function read_file(filepath)
-    local f = io.open(filepath, "r")
-    if not f then return nil end
-    local c = f:read("*a")
-    f:close()
-    return c
-end
-
-local function logical_lines(content)
-    local lines = {}
-    local acc = nil
-    for line in (content .. "\n"):gmatch("(.-)\n") do
-        local cont = line:match("(.*)\\%s*$")
-        if cont then
-            acc = (acc or "") .. cont .. " "
-        else
-            lines[#lines + 1] = (acc or "") .. line
-            acc = nil
-        end
-    end
-    return lines
-end
+includes("generated_manifest.lua")
+local TESTS_MANIFEST = ETELEOS_TESTS_MANIFEST or {}
 
 -- Portable recursive discovery via os.files()/os.dirs() instead of
 -- shelling out to `find` -- works the same on any host xmake itself runs on.
@@ -191,126 +192,20 @@ local function find_userland_program_dir(name)
 end
 
 -- ==============================================================================
--- Makefile parser: variable assignments (all operators), ${VAR}/$(VAR)
--- expansion, .if MACHINE conditionals, .include tracking, and recipe
--- capture for the golden-file translator.
+-- Makefile parsing itself (variable assignments, ${VAR}/$(VAR) expansion,
+-- .if MACHINE conditionals, .include tracking, recipe capture) is done
+-- offline now -- see the includes() note above. read_file() is kept here
+-- because TEST_RUNNERS.golden_file's on_test callback below still needs it
+-- (that call happens inside on_test, script scope, where io.open works).
 -- ==============================================================================
-local function expand_vars(value, vars)
-    local unresolved = {}
-    local result = value:gsub("%$[{(]([%w_.]+)[})]", function (name)
-        if vars[name] ~= nil then return vars[name] end
-        unresolved[#unresolved + 1] = name
-        return "${" .. name .. "}"   -- leave unresolved refs visible, not blank
-    end)
-    return result, unresolved
-end
-
-local function parse_makefile(dir)
-    local content = read_file(path.join(dir, "Makefile"))
-    if not content then return nil end
-
-    local info = {
-        prog = nil, progs = {}, srcs = {}, ldadd_libs = {},
-        custom = false, dynamic_vars = {}, unknown_includes = {},
-        targets = {},   -- name -> { recipe_lines = {...} }
-        has_regress_targets_var = false,
-    }
-    local vars = {}          -- raw (unexpanded) variable values, first pass
-    local order = {}         -- lines in order, classified
-
-    -- First pass: collect every VAR<op>= assignment (any operator) so
-    -- ${VAR}/$(VAR) references can be resolved regardless of definition
-    -- order within the file (BSD Make itself is order-sensitive for `?=`,
-    -- but for THIS file's purposes -- test discovery, not a real Make
-    -- implementation -- resolving against the final value is sufficient).
-    for _, line in ipairs(logical_lines(content)) do
-        local stripped = line:gsub("#.*$", ""):match("^%s*(.-)%s*$")
-        if stripped ~= "" then
-            local var, op, rest = stripped:match("^(%u[%u_]*)%s*([+?:!]?=)%s*(.*)$")
-            if var and op ~= "!=" then
-                if op == "+=" and vars[var] then
-                    vars[var] = vars[var] .. " " .. rest
-                elseif op == "?=" and vars[var] then
-                    -- already set: ?= does not override, matches BSD Make
-                else
-                    vars[var] = rest
-                end
-            elseif var and op == "!=" then
-                info.dynamic_vars[#info.dynamic_vars + 1] = var
-                vars[var] = vars[var] or ""   -- unresolved shell output; keep parsing usable
-            end
-        end
-    end
-
-    -- Second pass: classify each line (assignment / conditional / include
-    -- / target+recipe), expanding ${VAR}/$(VAR) in assignment values as
-    -- we go, and evaluating simple `.if ${MACHINE} == "x"` blocks against
-    -- the active target_arch.
-    local if_stack = {}   -- stack of booleans: is the current block active?
-    local function block_active()
-        for _, v in ipairs(if_stack) do if not v then return false end end
-        return true
-    end
-
-    local current_target = nil
-    for _, line in ipairs(logical_lines(content)) do
-        local stripped = line:gsub("#.*$", ""):match("^%s*(.-)%s*$")
-        if stripped ~= "" then
-            local ifcond = stripped:match("^%.%s*if%s+(.*)$")
-            local var, op, rest = stripped:match("^(%u[%u_]*)%s*([+?:!]?=)%s*(.*)$")
-
-            if ifcond then
-                local machvar, cmpval = ifcond:match('%${(MACHINE_?A?R?C?H?)}%s*==%s*"([%w_]+)"')
-                if machvar then
-                    if_stack[#if_stack + 1] = (cmpval == arch)
-                else
-                    -- Not a simple MACHINE/MACHINE_ARCH equality check --
-                    -- conservatively assume true (include both branches'
-                    -- worth of info) rather than guess wrong.
-                    if_stack[#if_stack + 1] = true
-                end
-            elseif stripped:match("^%.%s*else") then
-                if #if_stack > 0 then if_stack[#if_stack] = not if_stack[#if_stack] end
-            elseif stripped:match("^%.%s*endif") then
-                if #if_stack > 0 then table.remove(if_stack) end
-            elseif stripped:match("^%.%s*include") then
-                local inc = stripped:match("[<\"]([^>\"]+)[>\"]")
-                if inc and not KNOWN_INCLUDES[path.filename(inc)] then
-                    info.unknown_includes[#info.unknown_includes + 1] = inc
-                end
-            elseif block_active() and var and op ~= "!=" then
-                local expanded, unresolved = expand_vars(rest, vars)
-                if var == "PROG" then info.prog = expanded:match("%S+")
-                elseif var == "PROGS" then
-                    for n in expanded:gmatch("%S+") do info.progs[#info.progs + 1] = n end
-                elseif var == "SRCS" then
-                    for f in expanded:gmatch("%S+") do info.srcs[#info.srcs + 1] = f end
-                elseif var == "LDADD" then
-                    for lib in expanded:gmatch("%-l([%w_]+)") do
-                        info.ldadd_libs[#info.ldadd_libs + 1] = lib
-                    end
-                elseif var == "REGRESS_TARGETS" then
-                    info.has_regress_targets_var = true
-                end
-                current_target = nil
-            elseif block_active() then
-                local tname = stripped:match("^([%w_%-]+)%s*:")
-                if tname then
-                    current_target = tname
-                    info.targets[tname] = info.targets[tname] or { recipe_lines = {} }
-                    info.custom = true
-                elseif current_target and stripped:match("^@?[%w./${}%-]") then
-                    -- a recipe line (make strips a leading tab, already
-                    -- gone via our own line trim) belonging to current_target
-                    table.insert(info.targets[current_target].recipe_lines, stripped)
-                else
-                    info.custom = true   -- something we don't recognize; be conservative
-                end
-            end
-        end
-    end
-
-    return info
+local function read_file(filepath)
+    if not os.isfile(filepath) then return nil end
+    if type(io) ~= "table" or not io.open then return nil end
+    local f = io.open(filepath, "r")
+    if not f then return nil end
+    local c = f:read("*a")
+    f:close()
+    return c
 end
 
 -- ==============================================================================
@@ -385,9 +280,8 @@ end
 -- ==============================================================================
 local stats = { simple = 0, golden = 0, script = 0, custom_skipped = 0, empty = 0 }
 
-local function eteleos_test_unit(target_name, testdir, group)
-    local info = parse_makefile(testdir)
-    if not info then
+local function eteleos_test_unit(target_name, testdir, group, info)
+    if not info or not info.has_makefile then
         -- No Makefile: check for a directly-runnable script (shell/python/
         -- perl/lua test with no build step at all).
         for ext in pairs(INTERPRETER_BY_EXT) do
@@ -402,8 +296,8 @@ local function eteleos_test_unit(target_name, testdir, group)
     end
 
     if #info.unknown_includes > 0 then
-        wprint("eteleos-tests: %s includes non-standard %s", testdir,
-               table.concat(info.unknown_includes, ", "))
+        print(string.format("eteleos-tests: %s includes non-standard %s", testdir,
+              table.concat(info.unknown_includes, ", ")))
     end
 
     if info.custom then
@@ -457,10 +351,22 @@ local function eteleos_test_unit(target_name, testdir, group)
         add_deps("eteleos-headers")
 
         for _, libname in ipairs(info.ldadd_libs) do
-            add_deps("lib" .. libname .. "-shared")
+            if ETELEOS_DECLARED_LIBRARIES and ETELEOS_DECLARED_LIBRARIES[libname] then
+                add_deps("lib" .. libname .. "-shared")
+            else
+                print(string.format("eteleos-tests: %s: LDADD -l%s has no matching library "
+                      .. "target (not yet built for this arch), linking without it",
+                      target_name, libname))
+            end
         end
         if dep_dir then
-            add_deps("userland-" .. dep_cat:gsub("/", "-") .. "-" .. path.filename(testdir))
+            local dep_target = "userland-" .. dep_cat:gsub("/", "-") .. "-" .. path.filename(testdir)
+            if ETELEOS_DECLARED_USERLAND and ETELEOS_DECLARED_USERLAND[dep_target] then
+                add_deps(dep_target)
+            else
+                print(string.format("eteleos-tests: %s: matching userland program '%s' has no "
+                      .. "compiled target (script-only or empty), building standalone", target_name, dep_target))
+            end
         end
 
         on_test(function (t, opt)
@@ -491,13 +397,14 @@ for _, category in ipairs(TEST_CATEGORIES) do
             local safe_name = ("tests-" .. category .. "-" .. relpath):gsub("[/.]", "-")
             local group = (path.filename(testdir) == "benchmark") and "benchmark"
                           or (category == "sys" and "kernel" or category)
-            eteleos_test_unit(safe_name, testdir, group)
+            local manifest_key = category .. "/" .. relpath
+            eteleos_test_unit(safe_name, testdir, group, TESTS_MANIFEST[manifest_key])
         end
     else
-        wprint("eteleos-tests: tests/%s not found, skipping", category)
+        print(string.format("eteleos-tests: tests/%s not found, skipping", category))
     end
 end
 
-cprint("${green}eteleos-tests${clear}: %d simple (build+run), %d golden-file-translated, "
-       .. "%d script-only, %d empty, %d custom skipped (arch=%s)",
-       stats.simple, stats.golden, stats.script, stats.empty, stats.custom_skipped, arch)
+print(string.format("eteleos-tests: %d simple (build+run), %d golden-file-translated, "
+      .. "%d script-only, %d empty, %d custom skipped (arch=%s)",
+      stats.simple, stats.golden, stats.script, stats.empty, stats.custom_skipped, arch))
