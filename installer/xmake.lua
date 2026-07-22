@@ -179,16 +179,24 @@ local function write_tarball(setname, entries, destdir, outdir, version)
 
     import("lib.detect.find_tool")
     local pax = find_tool("pax")
+    local sh = find_tool("sh")
     local ok
-    if pax then
+    if pax and sh then
         -- pax -w -d < list | gzip > outfile -- matches maketars exactly.
-        ok = os.execv("sh", {"-c",
+        ok = os.execv(sh.program, {"-c",
             string.format('cd "%s" && pax -w -d < "%s" | gzip > "%s"', destdir, listfile, outfile)},
             {try = true})
     else
-        wprint("eteleos-installer: pax not found, falling back to tar --files-from "
-               .. "(not byte-identical to the real maketars, but produces an "
-               .. "equivalent .tgz for plain path lists)")
+        if not sh then
+            wprint("eteleos-installer: no POSIX shell (sh) found -- falling back to tar "
+                   .. "--files-from (not byte-identical to the real maketars, but produces "
+                   .. "an equivalent .tgz). On Windows, install Git Bash, WSL, or MSYS2 for "
+                   .. "the exact pax-based behavior.")
+        else
+            wprint("eteleos-installer: pax not found, falling back to tar --files-from "
+                   .. "(not byte-identical to the real maketars, but produces an "
+                   .. "equivalent .tgz for plain path lists)")
+        end
         ok = os.execv("tar", {"-czf", outfile, "-C", destdir, "--files-from=" .. listfile}, {try = true})
     end
     if ok then

@@ -395,14 +395,22 @@ local function eteleos_program(target_name, progdir, opts, info)
             local tic_dir = abspath(opts.gen_termsort.tic_dir)
             local curses_dir = abspath(opts.gen_termsort.curses_dir)
             on_load(function (target)
+                import("lib.detect.find_tool")
                 local gendir = path.join(os.projectdir(), "build",
                                           "eteleos-userland-gen", target_name)
                 os.mkdir(gendir)
                 local termsort_h = path.join(gendir, "termsort.h")
                 local mkscript = path.join(tic_dir, "MKtermsort.sh")
                 local caps = path.join(curses_dir, "Caps")
-                if os.isfile(mkscript) and os.isfile(caps) then
-                    local out = os.iorun(string.format('sh "%s" awk "%s"', mkscript, caps))
+                local sh = find_tool("sh")
+                if not sh then
+                    wprint("eteleos-userland: %s: no POSIX shell (sh) found -- "
+                           .. "MKtermsort.sh needs one to run. On Windows, install "
+                           .. "Git Bash, WSL, or MSYS2 and make sure its sh is on PATH; "
+                           .. "on Linux/macOS this should already be present. "
+                           .. "Skipping termsort.h for now.", target_name)
+                elseif os.isfile(mkscript) and os.isfile(caps) then
+                    local out = os.iorun(string.format('"%s" "%s" awk "%s"', sh.program, mkscript, caps))
                     if out and out ~= "" then
                     if type(io) == "table" and io.open then
                         local f = io.open(termsort_h, "w")

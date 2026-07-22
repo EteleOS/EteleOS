@@ -197,15 +197,23 @@ local function eteleos_port(target_name, portdir, category, info, distinfo)
                        .. "target -- this framework only auto-drives the plain GNU_CONFIGURE "
                        .. "flow, so the actual build/install step is NOT run here", target:name())
             elseif info.gnu_configure then
-                os.mkdir(stagedir)
-                local srcdir = wrkdir  -- best-effort: real ports often extract into a
-                                       -- versioned subdir (e.g. wrkdir/zip30/); locating
-                                       -- it precisely needs DISTNAME-based subdir detection
-                                       -- not implemented here.
-                os.execv("sh", {"-c", string.format(
-                    'cd "%s" && ./configure --prefix=/usr/local && make', srcdir)}, {try = true})
-                os.execv("sh", {"-c", string.format(
-                    'cd "%s" && make install DESTDIR="%s"', srcdir, stagedir)}, {try = true})
+                local sh = find_tool("sh")
+                if not sh then
+                    wprint("eteleos-ports: %s: no POSIX shell (sh) found -- cannot run "
+                           .. "./configure/make. On Windows, install Git Bash, WSL, or "
+                           .. "MSYS2 and make sure its sh is on PATH; on Linux/macOS this "
+                           .. "should already be present. Skipping build/install.", target:name())
+                else
+                    os.mkdir(stagedir)
+                    local srcdir = wrkdir  -- best-effort: real ports often extract into a
+                                           -- versioned subdir (e.g. wrkdir/zip30/); locating
+                                           -- it precisely needs DISTNAME-based subdir detection
+                                           -- not implemented here.
+                    os.execv(sh.program, {"-c", string.format(
+                        'cd "%s" && ./configure --prefix=/usr/local && make', srcdir)}, {try = true})
+                    os.execv(sh.program, {"-c", string.format(
+                        'cd "%s" && make install DESTDIR="%s"', srcdir, stagedir)}, {try = true})
+                end
             else
                 wprint("eteleos-ports: %s: not GNU_CONFIGURE and no custom target detected -- "
                        .. "build style unknown, skipping build/install step", target:name())
@@ -218,8 +226,7 @@ local function eteleos_port(target_name, portdir, category, info, distinfo)
                 local outdir = path.join(os.scriptdir(), "..", "build", "packages", arch)
                 os.mkdir(outdir)
                 local pkgfile = path.join(outdir, (info.pkgname or info.distname) .. ".tgz")
-                os.execv("sh", {"-c", string.format(
-                    'cd "%s" && tar -czf "%s" .', stagedir, pkgfile)}, {try = true})
+                os.execv("tar", {"-czf", pkgfile, "-C", stagedir, "."}, {try = true})
                 cprint("${green}eteleos-ports${clear}: packaged %s", pkgfile)
             end
         end)
@@ -253,3 +260,4 @@ end
 print(string.format("eteleos-ports: %d ports discovered, %d GNU_CONFIGURE-drivable, "
       .. "%d flagged custom (need per-port build logic), %d missing DISTNAME",
       stats.discovered, stats.drivable, stats.custom_flagged, stats.no_distname))
+      

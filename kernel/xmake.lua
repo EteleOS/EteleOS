@@ -519,13 +519,22 @@ char version[] = "EteleOS %s (%s) #0: %s\n";
         local genassym_sh = path.join(os.scriptdir(), "core", "kern", "genassym.sh")
         local genassym_cf = path.join(md_dir, "genassym.cf")
         local assym_h = path.join(gendir, "assym.h")
-        if os.isfile(genassym_sh) and os.isfile(genassym_cf) then
+        import("lib.detect.find_tool")
+        local sh = find_tool("sh")
+        if not sh then
+            wprint("eteleos-kernel: no POSIX shell (sh) found -- genassym.sh needs one "
+                   .. "to run. On Windows, install Git Bash, WSL, or MSYS2 and make sure "
+                   .. "its sh is on PATH; on Linux/macOS this should already be present. "
+                   .. "Writing a stub assym.h for now (locore.%s will likely fail to "
+                   .. "assemble until this is resolved).", arch)
+            write_file_safe(assym_h, "/* assym.h not generated -- no POSIX shell (sh) found on this host */\n")
+        elseif os.isfile(genassym_sh) and os.isfile(genassym_cf) then
             local cc = get_config("cc") or "clang"
             local flags = table.concat(CMACHFLAGS[arch] or {}, " ")
             local incflags = "-I" .. path.join(os.scriptdir(), "arch", arch, "include")
                               .. " -I" .. os.scriptdir()
-            local cmd = string.format('sh "%s" %s -ffreestanding %s %s < "%s"',
-                                       genassym_sh, cc, flags, incflags, genassym_cf)
+            local cmd = string.format('"%s" "%s" %s -ffreestanding %s %s < "%s"',
+                                       sh.program, genassym_sh, cc, flags, incflags, genassym_cf)
             local outdata = try
             {
                 function() return (os.iorun(cmd)) end,
