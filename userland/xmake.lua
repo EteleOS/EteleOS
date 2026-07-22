@@ -353,7 +353,30 @@ local function eteleos_program(target_name, progdir, opts, info)
         if opts.host then
             -- Host-native build tool: escape the project-wide cross
             -- toolchain default so this actually runs on the build host.
-            set_toolchains("clang", "gcc")
+            --
+            -- NOT done via set_toolchains("clang", "gcc") anymore: that
+            -- relies on xmake's own built-in toolchain auto-detection,
+            -- which on Windows also checks for a Visual Studio environment
+            -- as part of validating clang -- fails with "toolchain(\"clang\"):
+            -- not found!" for a plain LLVM/clang install with no VS
+            -- present, confirmed by a real user report. find_tool() only
+            -- checks that the binary exists and runs, with none of that
+            -- extra platform-specific validation, so it works here even
+            -- without Visual Studio.
+            on_load(function (target)
+                import("lib.detect.find_tool")
+                local cc = find_tool("clang") or find_tool("gcc") or find_tool("cc")
+                if cc then
+                    target:set("toolchains", nil)
+                    target:set("toolset", "cc", cc.program)
+                    target:set("toolset", "ld", cc.program)
+                    target:set("toolset", "sh", cc.program)
+                    target:set("toolset", "ar", cc.program)
+                else
+                    wprint("eteleos-userland: %s: no host C compiler (clang/gcc/cc) found -- "
+                           .. "this host-native tool will fail to build", target_name)
+                end
+            end)
         end
 
         for _, libname in ipairs(info.ldadd_libs) do
