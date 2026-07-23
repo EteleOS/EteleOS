@@ -1,6 +1,6 @@
 **/obj
 **/tags
-**/CVS
+
 # Build outputs & cache
 build/
 .xmake/
