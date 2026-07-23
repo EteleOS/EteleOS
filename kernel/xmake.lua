@@ -713,6 +713,9 @@ local function eteleos_efi_bootloader(target_arch)
         return
     end
 
+    ETELEOS_DECLARED_EFIBOOT = ETELEOS_DECLARED_EFIBOOT or {}
+    ETELEOS_DECLARED_EFIBOOT[target_arch] = true
+
     target("eteleos-kernel-efiboot-" .. target_arch)
         set_kind("phony")
         set_default(false)
