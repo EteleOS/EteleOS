@@ -8,7 +8,6 @@ Directory structure:
 - installer/: installer, image creation and boot media generation
 - kernel/: operating system kernel source code
 - libraries/: shared system libraries
-- ports/: third-party software ports and package build framework
 - resources/: system resources (firmware, fonts, icons, data files, etc...)
 - tests/: unit tests, integration tests, benchmarks and validation tools
 - tools/: development and build support tools
