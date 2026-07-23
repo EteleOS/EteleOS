@@ -1,3 +1,21 @@
 **/obj
 **/tags
 **/CVS
+# Build outputs & cache
+build/
+.xmake/
+*.o
+*.a
+*.so
+*.elf
+*.bin
+*.iso
+*.img
+
+# Editor / OS files
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
