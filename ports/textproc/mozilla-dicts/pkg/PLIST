@@ -1,4 +1,0 @@
-@pkgpath textproc/mozilla-dicts,-${L}
-share/mozilla-dicts/
-share/mozilla-dicts/${L2}.aff
-share/mozilla-dicts/${L2}.dic

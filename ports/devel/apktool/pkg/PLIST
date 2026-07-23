@@ -1,3 +1,0 @@
-bin/apktool
-share/apktool/
-share/apktool/${DISTNAME}.jar

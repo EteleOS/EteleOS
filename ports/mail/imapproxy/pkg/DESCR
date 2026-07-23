@@ -1,3 +1,0 @@
-imapproxy keeps the connection to an IMAP server open after a client
-logs out and reuses it when the client connects again. This is mostly
-useful for webmail clients.

@@ -1,3 +1,0 @@
-This module offers a minimalist class construction kit in around 120
-lines of code. Multiple-inheritance is possible. It uses no non-core
-modules for any recent Perl.

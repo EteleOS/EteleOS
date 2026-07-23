@@ -1,5 +1,0 @@
-@conflict inconsolata-new-*
-@pkgpath x11/inconsolata-font
-share/fonts/
-@fontdir share/fonts/inconsolata/
-share/fonts/inconsolata/Inconsolata.otf

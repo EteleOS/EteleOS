@@ -1,3 +1,0 @@
-File::Find::Rule::Perl provides methods for finding various types of
-Perl-related files, or replicating search queries run on a distribution
-in various parts of the CPAN ecosystem.

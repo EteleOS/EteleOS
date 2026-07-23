@@ -1,3 +1,0 @@
-Data::ICal::TimeZone provides a mechanism for adding the Olsen
-standard timezones to your ical documents, plus a copy of the Olsen
-timezone database.

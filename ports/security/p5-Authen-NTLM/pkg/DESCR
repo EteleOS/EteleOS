@@ -1,3 +1,0 @@
-This module implements the NTLM (Microsoft Windows NT LAN Manager)
-authentication mechanism.  It can be used to perform NTLM style
-authentication for any desired protocol.

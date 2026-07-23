@@ -1,2 +1,0 @@
-@so ngx_http_js_module.so
-@so ngx_stream_js_module.so

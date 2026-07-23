@@ -1,2 +1,0 @@
-B::Keywords supplies lists of keywords used inside the perl language.
-It is used by modules like B::Deparse and B::Deobfuscate

@@ -1,4 +1,0 @@
-Set up validation hooks before inserting/updating data through DBIx::Class.
-
-The validation framework is modular, it defaults to using
-FormValidator::Simple, but it can use Data::FormValidator instead.

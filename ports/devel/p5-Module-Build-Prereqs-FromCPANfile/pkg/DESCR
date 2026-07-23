@@ -1,2 +1,0 @@
-Reads a cpanfile and converts its content into valid prerequisite
-parameters for the new() method of Module::Build.

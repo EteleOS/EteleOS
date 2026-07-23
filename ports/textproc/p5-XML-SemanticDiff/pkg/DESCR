@@ -1,2 +1,0 @@
-This perl module semantically compares XML files for equivalence.
-Whitespace variations and the order of attributes are ignored.

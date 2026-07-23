@@ -1,1 +1,0 @@
-This storage module will store session data in a database using DBIx::Class.

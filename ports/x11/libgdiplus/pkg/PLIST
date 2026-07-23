@@ -1,4 +1,0 @@
-@static-lib lib/libgdiplus.a
-lib/libgdiplus.la
-@lib lib/libgdiplus.so.${LIBgdiplus_VERSION}
-lib/pkgconfig/libgdiplus.pc

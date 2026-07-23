@@ -1,3 +1,0 @@
-TLS is an OpenSSL / RSA-bsafe Tcl extension that provides
-secure connections on top of the Tcl socket mechanism. 
-Within a few lines of code, users can query https servers.

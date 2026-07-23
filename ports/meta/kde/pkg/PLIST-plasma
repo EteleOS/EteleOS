@@ -1,4 +1,0 @@
-@pkgpath ${BASE_PKGPATH},-plasma
-share/doc/pkg-readmes/${PKGSTEM}
-share/examples/login.conf.d/kde
-@sample ${SYSCONFDIR}/login.conf.d/kde

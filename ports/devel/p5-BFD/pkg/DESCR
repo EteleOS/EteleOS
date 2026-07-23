@@ -1,3 +1,0 @@
-This module allows for impromptu dumping of output to STDERR. 
-Useful when you want to take a peek at a nest Perl data structure
-by emitting (relatively) nicely formatted output.

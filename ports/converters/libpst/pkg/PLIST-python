@@ -1,2 +1,0 @@
-@conflict py-libpst-*
-@so lib/python${MODPY_VERSION}/site-packages/_libpst.so

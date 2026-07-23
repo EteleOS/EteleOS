@@ -1,3 +1,0 @@
-netifaces is a portable Python module providing a high-level means
-of retrieving information about the local machine's network interfaces,
-including their addresses.

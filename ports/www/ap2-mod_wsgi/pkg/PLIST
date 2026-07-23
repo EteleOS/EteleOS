@@ -1,2 +1,0 @@
-@so lib/apache2/mod_wsgi.so
-share/doc/pkg-readmes/${PKGSTEM}

@@ -1,2 +1,0 @@
-The Net::PcapWriter module allows to create pcap files within
-a perl programm without capturing any data.

@@ -1,4 +1,0 @@
-tetrinetx provides a server for hosting TetriNet games (a multiplayer
-variant of Tetris for up to six players).
-
-When the ipv6 flavor is used, IPv4 support is disabled.

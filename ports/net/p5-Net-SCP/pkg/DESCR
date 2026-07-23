@@ -1,2 +1,0 @@
-Net::SCP is a Perl extension to make use of SCP, providing simple
-wrappers around the system scp command.

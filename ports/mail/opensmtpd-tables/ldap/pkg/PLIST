@@ -1,3 +1,0 @@
-@conflict opensmtpd-extras-*
-libexec/smtpd/
-@bin libexec/smtpd/table-ldap

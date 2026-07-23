@@ -1,2 +1,0 @@
-Nampa is a package for reading IDA Pro's .sig files. It comes with its
-own command-line tool for analyzing such files: dumpsig.py.

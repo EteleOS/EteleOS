@@ -1,4 +1,0 @@
-include/nslog/
-include/nslog/nslog.h
-@lib lib/libnslog.so.${LIBnslog_VERSION}
-lib/pkgconfig/libnslog.pc

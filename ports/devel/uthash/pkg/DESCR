@@ -1,3 +1,0 @@
-In scripting languages like Perl, hashes are used all the time. In C,
-hashes don't exist in the language itself. This software provides a hash
-for C structures.

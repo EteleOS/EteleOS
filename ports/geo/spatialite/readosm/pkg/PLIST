@@ -1,4 +1,0 @@
-include/readosm.h
-lib/libreadosm.la
-@lib lib/libreadosm.so.${LIBreadosm_VERSION}
-lib/pkgconfig/readosm.pc

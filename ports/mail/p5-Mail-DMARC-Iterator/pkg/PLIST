@@ -1,3 +1,0 @@
-${P5SITE}/Mail/DMARC/
-${P5SITE}/Mail/DMARC/Iterator.pm
-@man man/man3p/Mail::DMARC::Iterator.3p

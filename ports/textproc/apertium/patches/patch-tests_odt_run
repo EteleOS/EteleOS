@@ -1,9 +1,0 @@
-Index: tests/odt/run
---- tests/odt/run.orig
-+++ tests/odt/run
-@@ -1,4 +1,4 @@
--#!/bin/bash
-+#!${LOCALBASE}/bin/bash
- set -e -u
- 
- cd "$(dirname "$0")"

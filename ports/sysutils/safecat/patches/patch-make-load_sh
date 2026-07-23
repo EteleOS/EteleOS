@@ -1,7 +1,0 @@
-Index: make-load.sh
---- make-load.sh.orig
-+++ make-load.sh
-@@ -1,2 +1,2 @@
- echo 'main="$1"; shift'
--echo exec "$LD" '-o "$main" "$main".o ${1+"$@"}'
-+echo exec "$LD" '-o "$main" "$main".o -L. ${1+"$@"}'

@@ -1,2 +1,0 @@
-include/tinyxml.h
-@lib lib/libtinyxml.so.${LIBtinyxml_VERSION}

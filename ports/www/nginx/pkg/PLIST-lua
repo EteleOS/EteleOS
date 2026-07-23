@@ -1,2 +1,0 @@
-@so ndk_http_module.so
-@so ngx_http_lua_module.so

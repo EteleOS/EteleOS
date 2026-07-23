@@ -1,6 +1,0 @@
-ensmallen is a C++ template library for function optimization. 
-It is devoted to efficiently solving the problem
-
-	argmin f(x)
-
-for many different types of f

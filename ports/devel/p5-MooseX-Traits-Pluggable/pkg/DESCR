@@ -1,2 +1,0 @@
-MooseX::Traits::Pluggable loads and applies roles at object creation
-time.

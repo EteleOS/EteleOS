@@ -1,2 +1,0 @@
-@pkgpath www/firefox-i18n,-${L}
-lib/firefox/distribution/extensions/langpack-${L}@firefox.mozilla.org.xpi

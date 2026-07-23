@@ -1,4 +1,0 @@
-${P5SITE}/Module/
-${P5SITE}/Module/Versions/
-${P5SITE}/Module/Versions/Report.pm
-@man man/man3p/Module::Versions::Report.3p

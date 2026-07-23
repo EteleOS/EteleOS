@@ -1,7 +1,0 @@
-${P5SITE}/HTML/RewriteAttributes/
-${P5SITE}/HTML/RewriteAttributes.pm
-${P5SITE}/HTML/RewriteAttributes/Links.pm
-${P5SITE}/HTML/RewriteAttributes/Resources.pm
-@man man/man3p/HTML::RewriteAttributes.3p
-@man man/man3p/HTML::RewriteAttributes::Links.3p
-@man man/man3p/HTML::RewriteAttributes::Resources.3p

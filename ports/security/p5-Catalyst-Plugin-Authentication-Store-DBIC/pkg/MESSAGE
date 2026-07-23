@@ -1,2 +1,0 @@
-Catalyst::Plugin::Authentication::Store::DBIC is deprecated.   Use
-Catalyst::Authentication::Store::DBIx::Class instead.

@@ -1,3 +1,0 @@
-@conflict EMBOSS-*
-@bin bin/yank
-@man man/man1/yank.1

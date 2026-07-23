@@ -1,3 +1,0 @@
-@conflict unoconv-*
-@bin bin/odt2txt
-@man man/man1/odt2txt.1

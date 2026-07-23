@@ -1,3 +1,0 @@
-Install mozilla dictionaries for extra hunspell languages.
-e.g.
-    # pkg_add mozilla-dicts-ca

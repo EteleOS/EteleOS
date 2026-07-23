@@ -1,3 +1,0 @@
-@conflict openimageio-*
-@bin bin/idiff
-@man man/man1/idiff.1

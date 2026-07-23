@@ -1,3 +1,0 @@
-Net::SIP consists of packages for handling SIP packets, for transport
-of packets, for processing packets and on top of all that a simplified
-layer for common tasks.

@@ -1,3 +1,0 @@
-This package provides some extensions to the Python standard library
-unit testing framework.  It is needed by some ports to run their
-regression tests.

@@ -1,4 +1,0 @@
-@conflict xorriso-<=1.4.6
-bin/xorriso-tcltk
-@info info/xorriso-tcltk.info
-@man man/man1/xorriso-tcltk.1

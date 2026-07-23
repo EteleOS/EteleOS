@@ -1,2 +1,0 @@
-SQL::Abstract::Pg extends SQL::Abstract with a few PostgreSQL features used by
-Mojo::Pg.

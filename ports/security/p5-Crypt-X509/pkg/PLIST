@@ -1,3 +1,0 @@
-${P5SITE}/Crypt/
-${P5SITE}/Crypt/X509.pm
-@man man/man3p/Crypt::X509.3p

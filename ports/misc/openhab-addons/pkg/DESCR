@@ -1,3 +1,0 @@
-Addons for the open Home Automation Bus (openHAB) project. This package
-provides the addons in package form, avoiding the need for openHAB to have
-outgoing network access in some cases.

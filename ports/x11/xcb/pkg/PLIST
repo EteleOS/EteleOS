@@ -1,3 +1,0 @@
-@bin bin/xcb
-lib/X11/app-defaults/Xcb
-@man man/man1/xcb.1

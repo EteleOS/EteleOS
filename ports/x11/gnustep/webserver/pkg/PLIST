@@ -1,5 +1,0 @@
-include/WebServer/
-include/WebServer/WebServer.h
-include/WebServer/WebServerBundles.h
-include/WebServer/WebServerHTML.h
-@lib lib/libWebServer.so.${LIBWebServer_VERSION}

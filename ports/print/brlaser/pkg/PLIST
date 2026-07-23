@@ -1,3 +1,0 @@
-@bin libexec/cups/filter/rastertobrlaser
-share/cups/drv/brlaser.drv
-share/doc/pkg-readmes/${PKGSTEM}

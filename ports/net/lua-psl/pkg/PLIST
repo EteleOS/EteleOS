@@ -1,3 +1,0 @@
-lib/lua/${MODLUA_VERSION}/psl.so
-share/doc/${FULLPKGNAME}/
-share/doc/${FULLPKGNAME}/index.md

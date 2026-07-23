@@ -1,3 +1,0 @@
-A simple password-based encryption utility as a demonstration of
-the scrypt key derivation function, greatly increasing the cost of
-a brute force attack compared to openssl enc.

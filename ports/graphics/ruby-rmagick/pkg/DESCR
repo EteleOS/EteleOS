@@ -1,3 +1,0 @@
-A Ruby interface to the ImageMagick image processing library.
-It supports more than 90 image formats, including GIF, JPEG and PNG.
-Includes RVG, a 2D drawing API.

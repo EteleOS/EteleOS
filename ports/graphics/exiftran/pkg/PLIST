@@ -1,3 +1,0 @@
-@bin bin/exiftran
-@bin bin/thumbnail.cgi
-@man man/man1/exiftran.1

@@ -1,5 +1,0 @@
-@conflict tesseract-<3.02.02
-@pkgpath graphics/tesseract,-pol
-@pkgpath graphics/tesseract-langs/pol
-share/tessdata/
-share/tessdata/pol.traineddata

@@ -1,3 +1,0 @@
-Script to help visualize profiling data collected with the cProfile
-python module with the kcachegrind_ (screenshots_) graphical calltree
-analyser.

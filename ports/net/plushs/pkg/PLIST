@@ -1,8 +1,0 @@
-@bin bin/plushs
-@man man/man1/plushs.1
-share/doc/plushs/
-share/doc/plushs/README
-share/doc/plushs/patterns.list
-share/plushs/
-share/plushs/README
-share/plushs/patterns.list

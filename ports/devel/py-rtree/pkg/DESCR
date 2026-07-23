@@ -1,2 +1,0 @@
-Rtree is a ctypes Python wrapper of libspatialindex that provides
-a number of advanced spatial indexing features.

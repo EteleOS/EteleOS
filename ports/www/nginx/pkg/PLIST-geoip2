@@ -1,2 +1,0 @@
-@so ngx_http_geoip2_module.so
-@so ngx_stream_geoip2_module.so

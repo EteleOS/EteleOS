@@ -1,2 +1,0 @@
-@conflict coxpcall-*
-share/lua/${MODLUA_VERSION}/coxpcall.lua

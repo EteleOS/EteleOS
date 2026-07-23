@@ -1,3 +1,0 @@
-This module is a Perl mail client interface for sending message that
-support HTML format and build them for you.. it transform a HTML page
-in MIME::Lite mail.

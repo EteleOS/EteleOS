@@ -1,4 +1,0 @@
-bin/cgichk
-share/examples/cgichk/
-share/examples/cgichk/cgichk.conf
-@sample ${SYSCONFDIR}/cgichk.conf

@@ -1,7 +1,0 @@
-@pkgpath geo/gpsbabel
-@bin bin/gpsbabel
-@comment share/applications/
-share/doc/gpsbabel/
-share/doc/gpsbabel/README.contrib
-share/doc/gpsbabel/README.igc
-share/doc/gpsbabel/README.md

@@ -1,2 +1,0 @@
-Tools to help build and install Jupyter Python packages that require
-a pre-build step that may include JavaScript build steps.

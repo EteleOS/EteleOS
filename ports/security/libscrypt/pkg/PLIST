@@ -1,2 +1,0 @@
-include/libscrypt.h
-@lib lib/libscrypt.so.${LIBscrypt_VERSION}

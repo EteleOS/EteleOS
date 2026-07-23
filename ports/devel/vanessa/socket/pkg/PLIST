@@ -1,7 +1,0 @@
-@bin bin/vanessa_socket_pipe
-include/vanessa_socket.h
-lib/libvanessa_socket.a
-lib/libvanessa_socket.la
-@lib lib/libvanessa_socket.so.${LIBvanessa_socket_VERSION}
-lib/pkgconfig/vanessa-socket.pc
-@man man/man1/vanessa_socket_pipe.1

@@ -1,2 +1,0 @@
-This is a minimal boostrap cross-compiler to compile avr32-newlib.
-It is needed to avoid a circular dependency while building avr32-gcc.

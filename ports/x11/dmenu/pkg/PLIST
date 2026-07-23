@@ -1,6 +1,0 @@
-@bin bin/dmenu
-bin/dmenu_path
-bin/dmenu_run
-@bin bin/stest
-@man man/man1/dmenu.1
-@man man/man1/stest.1

@@ -1,4 +1,0 @@
-This is a Python port of Google's libphonenumber library (original code
-in Java).  Among other features it provides phone number validation,
-standardized formatting, and informations like location and original
-carrier.

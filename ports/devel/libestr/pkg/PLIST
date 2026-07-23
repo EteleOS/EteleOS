@@ -1,5 +1,0 @@
-include/libestr.h
-lib/libestr.a
-lib/libestr.la
-@lib lib/libestr.so.${LIBestr_VERSION}
-lib/pkgconfig/libestr.pc

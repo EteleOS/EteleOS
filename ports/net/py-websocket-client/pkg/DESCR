@@ -1,2 +1,0 @@
-A WebSocket client library for python. It provides a low level API for
-WebSockets. All functions are synchronous.

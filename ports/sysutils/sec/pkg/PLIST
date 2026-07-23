@@ -1,5 +1,0 @@
-bin/sec
-@man man/man1/sec.1
-share/examples/sec/
-share/examples/sec/itostream.c
-share/examples/sec/swatch2sec.pl

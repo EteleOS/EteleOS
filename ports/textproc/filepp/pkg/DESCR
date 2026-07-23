@@ -1,3 +1,0 @@
-filepp is a generic file preprocessor. It is designed to allow the functionality
-provided by the C preprocessor to be used with any file type. filepp supports
-the usual C preprocessor keywords and more.

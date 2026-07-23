@@ -1,3 +1,0 @@
-@bin bin/xgas
-lib/X11/app-defaults/XGas
-@man man/man1/xgas.1

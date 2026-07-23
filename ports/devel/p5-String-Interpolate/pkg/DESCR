@@ -1,3 +1,0 @@
-String::Interpolate provides a neat interface to the solution to that perenial
-Perl problem - how to invoke the Perl string interpolation engine on a string
-contained in a scalar variable.

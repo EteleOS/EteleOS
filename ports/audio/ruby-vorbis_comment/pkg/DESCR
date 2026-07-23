@@ -1,4 +1,0 @@
-ruby-vorbis_comment is a ruby extension for manipulating Vorbis
-comments. It wraps libvorbis and libogg, so it should be completely
-standards compatible. Vorbis comment is the standard tagging format for
-Ogg Vorbis, FLAC, and Speex files.

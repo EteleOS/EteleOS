@@ -1,3 +1,0 @@
-This library is a reimplementation of libdjb.  It contains several
-wrappers for socket functions, mkfifo, opendir, wait, an abstraction
-around errno, Unix signal functions, memory and string handling.

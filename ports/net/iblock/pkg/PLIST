@@ -1,4 +1,0 @@
-@newgroup _iblock:884
-@newuser _iblock:884:884::iblock inetd user:/nonexistent:/sbin/nologin
-@bin sbin/iblock
-share/doc/pkg-readmes/${PKGSTEM}

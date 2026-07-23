@@ -1,2 +1,0 @@
-The EMBOSS programs can be found in ${PREFIX}/libexec/emboss/.
-You might want to add that directory to your PATH.

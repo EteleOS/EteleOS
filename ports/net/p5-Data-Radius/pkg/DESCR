@@ -1,3 +1,0 @@
-The "Data::Radius::Packet" module provides a methods to encode/decode
-RADIUS messages. It can be used to implement both Radius client or
-Radius server.

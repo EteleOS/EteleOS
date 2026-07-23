@@ -1,3 +1,0 @@
-This module provides the user with methods to connect to a remote
-server, send a stream of XML to the server, and receive/parse an XML
-stream from the server.

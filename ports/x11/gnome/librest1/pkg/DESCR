@@ -1,2 +1,0 @@
-librest is a helper library for RESTful services.
-It uses libsoup to provide HTTP communication.

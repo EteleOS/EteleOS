@@ -1,2 +1,0 @@
-#! /bin/sh
-cd ${PREFIX}/${DATADIR} && exec ${PREFIX}/libexec/stepmania "$@"

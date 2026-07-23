@@ -1,6 +1,0 @@
-@mode 2555
-@group auth
-@bin bin/i3lock
-@mode
-@group
-@man man/man1/i3lock.1

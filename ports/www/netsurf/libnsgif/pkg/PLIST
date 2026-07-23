@@ -1,3 +1,0 @@
-include/nsgif.h
-@lib lib/libnsgif.so.${LIBnsgif_VERSION}
-lib/pkgconfig/libnsgif.pc

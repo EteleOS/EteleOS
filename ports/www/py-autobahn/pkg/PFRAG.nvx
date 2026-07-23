@@ -1,1 +1,0 @@
-@so lib/python${MODPY_VERSION}/site-packages/_nvx_utf8validator${MODPY_ABI3SO}.so

@@ -1,4 +1,0 @@
-@conflict opensmtpd-extras-pgsql-*
-libexec/smtpd/
-@bin libexec/smtpd/table-postgres
-@man man/man5/table-postgres.5

@@ -1,4 +1,0 @@
-@pkgpath mail/imap-uw,-mailutil,plaintext
-@pkgpath mail/re-alpine,-mailutil
-@bin bin/mailutil
-@man man/man1/mailutil.1

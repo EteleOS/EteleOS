@@ -1,3 +1,0 @@
-WWW::Tumblr is Perl interface for the Tumblr API. It is intended
-to offer "a sane OO way to implement Blog::Normalize::Tumblr without
-just scraping"

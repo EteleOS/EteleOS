@@ -1,2 +1,0 @@
-{:paths ["."]
- :deps {jna/jna {:local/root "/usr/local/share/java/classes/jna.jar"}}}

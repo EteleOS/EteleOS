@@ -1,2 +1,0 @@
-Catalyst::Plugin::ConfigLoader::Environment reads environment variables
-and sets up the configuration in your application accordingly.

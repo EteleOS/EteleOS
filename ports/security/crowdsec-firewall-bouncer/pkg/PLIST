@@ -1,7 +1,0 @@
-@rcscript ${RCDIR}/crowdsec_firewall_bouncer
-@bin bin/cs-firewall-bouncer
-share/doc/pkg-readmes/${PKGSTEM}
-share/examples/crowdsec-firewall-bouncer/
-@sample ${SYSCONFDIR}/crowdsec-firewall-bouncer/
-share/examples/crowdsec-firewall-bouncer/crowdsec-firewall-bouncer.yaml
-@sample ${SYSCONFDIR}/crowdsec-firewall-bouncer/crowdsec-firewall-bouncer.yaml

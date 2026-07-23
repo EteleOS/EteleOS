@@ -1,3 +1,0 @@
-@bin bin/mcrypt
-bin/mdecrypt
-@man man/man1/mcrypt.1

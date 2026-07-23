@@ -1,3 +1,0 @@
-This plugin redirects perl's warn() warnings to a Catalyst log
-($c->log->warn), allowing you to filter warnings, log warnings to a
-database, Log4Perl, etc.

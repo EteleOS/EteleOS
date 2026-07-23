@@ -1,3 +1,0 @@
-share/emacs/${VERSION}/etc/org.gnu.emacs.defaults.gschema.valid
-share/glib-2.0/schemas/org.gnu.emacs.defaults.gschema.xml
-@tag glib-compile-schemas

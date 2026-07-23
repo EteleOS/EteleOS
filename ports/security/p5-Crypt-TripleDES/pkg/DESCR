@@ -1,3 +1,0 @@
-This perl module implements 3DES encryption in ECB mode.
-
-Please see 'perldoc Crypt::TripleDES' for more information.

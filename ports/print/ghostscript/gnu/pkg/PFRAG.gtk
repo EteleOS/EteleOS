@@ -1,2 +1,0 @@
-@pkgpath print/ghostscript/gnu,a4${FLAVOR_STRING}
-@bin bin/gsx

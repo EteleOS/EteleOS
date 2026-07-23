@@ -1,2 +1,0 @@
-The b2 CLI utility is renamed to backblaze-b2 on OpenBSD, to avoid
-conflict with the Boost b2 utility.

@@ -1,2 +1,0 @@
-Test::MockTime::HiRes is a Time::HiRes compatible version of
-Test::MockTime.  You can wait milliseconds in simulated time.

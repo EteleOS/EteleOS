@@ -1,4 +1,0 @@
-@bin bin/mikmod
-@man man/man1/mikmod.1
-share/mikmod/
-share/mikmod/mikmodrc

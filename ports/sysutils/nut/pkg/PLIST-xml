@@ -1,3 +1,0 @@
-@conflict nut-<2.6.0p1
-@bin bin/netxml-ups
-@man man/man8/netxml-ups.8

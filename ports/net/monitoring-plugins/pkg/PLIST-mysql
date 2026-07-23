@@ -1,2 +1,0 @@
-@bin libexec/nagios/check_mysql
-@bin libexec/nagios/check_mysql_query

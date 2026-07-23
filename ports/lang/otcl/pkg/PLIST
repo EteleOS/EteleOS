@@ -1,5 +1,0 @@
-@bin bin/otclsh
-@bin bin/owish
-include/otcl.h
-lib/libotcl.a
-@lib lib/libotcl.so.${LIBotcl_VERSION}

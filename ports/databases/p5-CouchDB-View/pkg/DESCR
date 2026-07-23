@@ -1,3 +1,0 @@
-CouchDB::View provides a Perlish interface to creating CouchDB views. It
-uses Data::Dump::Streamer to serialize coderefs, which are deserialized
-and used by CouchDB::View::Server.

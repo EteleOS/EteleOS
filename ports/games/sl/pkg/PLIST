@@ -1,3 +1,0 @@
-@conflict sl-ls-*
-@bin bin/sl
-@man man/man1/sl.1

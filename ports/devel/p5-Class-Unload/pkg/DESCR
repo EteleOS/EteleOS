@@ -1,2 +1,0 @@
-Unloads a given class by clearing out its symbol table and removing
-it from %INC.

@@ -1,2 +1,0 @@
-Library for loading PNG files for the Allegro library. Does not depend
-on libpng nor zlib (however can take advantage of zlib if installed).

@@ -1,4 +1,0 @@
-@bin bin/viewfax
-lib/X11/viewfax/
-lib/X11/viewfax/viewfax.tif
-@man man/man1/viewfax.1

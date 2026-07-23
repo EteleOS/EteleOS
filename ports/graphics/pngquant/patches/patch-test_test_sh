@@ -1,9 +1,0 @@
-Index: test/test.sh
---- test/test.sh.orig
-+++ test/test.sh
-@@ -1,4 +1,4 @@
--#!/bin/bash
-+#!/usr/bin/env bash
- set -eu
- set -o pipefail
- 

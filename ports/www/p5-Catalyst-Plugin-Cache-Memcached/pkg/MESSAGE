@@ -1,2 +1,0 @@
-Catalyst::Plugin::Cache::Memcached is deprecated.  Use Cache::Memcached
-in Catalyst::Plugin::Cache configuration directly.

@@ -1,3 +1,0 @@
-This library has logic for searching, filtering and sorting icalendar data,
-and storing and representing icalendar search queries. It is used by the Pyhton
-CalDAV client library and may be useful in other cases.

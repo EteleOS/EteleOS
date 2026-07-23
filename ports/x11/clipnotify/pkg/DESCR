@@ -1,2 +1,0 @@
-clipnotify waits until a new selection is available and then exits.
-It is primarly made for clipmenu, but it can be used in shell scripts.

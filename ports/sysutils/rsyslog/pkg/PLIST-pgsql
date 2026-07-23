@@ -1,2 +1,0 @@
-@so lib/rsyslog/ompgsql.so
-share/examples/rsyslog/createDB_pgsql.sql

@@ -1,3 +1,0 @@
-Crypt::OpenSSL::ECDSA is a perl module that provides an interface
-to the ECDSA (Elliptic Curve Digital Signature Algorithm) functions
-in OpenSSL.

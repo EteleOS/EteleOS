@@ -1,3 +1,0 @@
-@so lib/libaircrack-ce-wpa-arm-neon-${API_REV}.so
-lib/libaircrack-ce-wpa-arm-neon.la
-@so lib/libaircrack-ce-wpa-arm-neon.so

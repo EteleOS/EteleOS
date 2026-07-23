@@ -1,4 +1,0 @@
-check_postgres is a script for monitoring various attributes of
-your database (transaction id status, blocked queries, long running
-queries, connection status and more). It is designed to work with
-Nagios, MRTG, or in standalone scripts.

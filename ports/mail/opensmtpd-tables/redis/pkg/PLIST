@@ -1,4 +1,0 @@
-@conflict opensmtpd-extras-redis-*
-libexec/smtpd/
-@bin libexec/smtpd/table-redis
-@man man/man5/table-redis.5

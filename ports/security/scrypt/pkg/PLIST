@@ -1,6 +1,0 @@
-@bin bin/scrypt
-include/scrypt-kdf.h
-@static-lib lib/libscrypt-kdf.a
-lib/libscrypt-kdf.la
-@lib lib/libscrypt-kdf.so.${LIBscrypt-kdf_VERSION}
-@man man/man1/scrypt.1

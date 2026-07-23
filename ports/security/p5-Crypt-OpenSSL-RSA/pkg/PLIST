@@ -1,4 +1,0 @@
-${P5ARCH}/Crypt/OpenSSL/RSA.pm
-${P5ARCH}/auto/Crypt/OpenSSL/RSA/
-@so ${P5ARCH}/auto/Crypt/OpenSSL/RSA/RSA.so
-@man man/man3p/Crypt::OpenSSL::RSA.3p

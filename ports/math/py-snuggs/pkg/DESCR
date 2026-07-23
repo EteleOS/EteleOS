@@ -1,4 +1,0 @@
-Snuggs wraps Numpy in expressions with the following syntax:
-
-expression = "(" (operator | function) *arg ")"
-arg = expression | name | number | string

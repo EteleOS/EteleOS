@@ -1,3 +1,0 @@
-This module validates a config hash reference against a given hash
-structure in contrast to Data::Validate in which you have to check
-each value separately using certain methods.

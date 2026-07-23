@@ -1,4 +1,0 @@
-@bin bin/cgdb
-@info info/cgdb.info
-share/cgdb/
-share/cgdb/cgdb.txt

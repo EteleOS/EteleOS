@@ -1,2 +1,0 @@
-Flask extension to extract OpenAPI-Specification from all Flask views
-registered in your API.

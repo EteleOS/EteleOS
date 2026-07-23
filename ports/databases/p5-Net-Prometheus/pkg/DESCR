@@ -1,3 +1,0 @@
-This module provides the ability for a program to
-collect monitoring metrics and export them to the
-prometheus.io monitoring server.

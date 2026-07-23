@@ -1,2 +1,0 @@
-@conflict luakit-<2015.01.24p0v0
-share/lua/${MODLUA_VERSION}/markdown.lua

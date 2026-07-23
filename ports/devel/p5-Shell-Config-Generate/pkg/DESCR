@@ -1,3 +1,0 @@
-This module provides an interface for specifying shell configurations for
-different shell environments without having to worry about the arcane
-differences between shells such as csh, sh, cmd.exe and command.com.

@@ -1,2 +1,0 @@
-@so lib/collectd/rrdcached.so
-@so lib/collectd/rrdtool.so

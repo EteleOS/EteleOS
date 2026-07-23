@@ -1,4 +1,0 @@
-bin/docker-compose
-libexec/docker/
-libexec/docker/cli-plugins/
-@bin libexec/docker/cli-plugins/docker-compose

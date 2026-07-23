@@ -1,4 +1,0 @@
-@conflict google-cloud-sdk-*
-bin/gsutil
-share/doc/gsutil/
-share/doc/gsutil/README

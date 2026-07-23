@@ -1,4 +1,0 @@
-@conflict binutils-<2.45p0
-@bin bin/gas
-@info info/gas.info
-@man man/man1/gas.1

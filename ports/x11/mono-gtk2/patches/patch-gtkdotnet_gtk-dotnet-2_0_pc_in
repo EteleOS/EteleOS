@@ -1,9 +1,0 @@
---- gtkdotnet/gtk-dotnet-2.0.pc.in.orig	Wed Jan  7 17:54:14 2009
-+++ gtkdotnet/gtk-dotnet-2.0.pc.in	Mon Dec  7 13:41:02 2009
-@@ -6,5 +6,5 @@ libdir=${exec_prefix}/lib
- Name: Gtk.DotNet
- Description: .NET Extensions for Gtk
- Version: @VERSION@
--Requires:gtk-sharp-2.0
-+Requires: gtk-sharp-2.0
- Libs: -r:${libdir}/mono/@PACKAGE_VERSION@/gtk-dotnet.dll

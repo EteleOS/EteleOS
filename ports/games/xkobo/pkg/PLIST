@@ -1,9 +1,0 @@
-@extraunexec rm -rf /var/games/xkobo.scores/*
-@mode 2755
-@group games
-bin/xkobo
-@mode 575
-@sample /var/games/xkobo.scores/
-@mode
-@group
-@man man/man1/xkobo.1

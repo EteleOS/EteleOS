@@ -1,2 +1,0 @@
-Socket::GetAddrInfo is a perl module for RFC 2553's getaddrinfo and
-getnameinfo functions.

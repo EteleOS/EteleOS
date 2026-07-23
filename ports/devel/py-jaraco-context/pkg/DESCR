@@ -1,2 +1,0 @@
-A context manager that will catch certain exceptions and provide an
-indication they occurred.

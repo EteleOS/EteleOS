@@ -1,3 +1,0 @@
-bin/xmltidy
-${P5SITE}/XML/Tidy.pm
-@man man/man3p/XML::Tidy.3p

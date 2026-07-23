@@ -1,5 +1,0 @@
-#!/bin/ksh
-
-JAVA_HOME=${JAVA_HOME:-$(javaPathHelper -h scala)}
-
-JAVA_HOME=${JAVA_HOME} ${TRUEPREFIX}/scala/bin/scalac "$@"

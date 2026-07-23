@@ -1,3 +1,0 @@
-Simple CA that can be used to manage server and client certificates for
-use with e.g. TLS VPNs, 802.1X, or a simple home lab with self issued
-certificates.

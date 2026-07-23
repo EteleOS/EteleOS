@@ -1,3 +1,0 @@
-This is a tool for managing a recorded version number in setuptools-based
-python projects. The goal is to remove the tedious and error-prone
-"update the embedded version string" step from the release process.

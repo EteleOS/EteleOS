@@ -1,3 +1,0 @@
-The gettext module permits access from perl to the gettext() family of
-functions for retrieving message strings from databases constructed to
-internationalize software.

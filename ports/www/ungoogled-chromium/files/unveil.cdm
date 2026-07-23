@@ -1,9 +1,0 @@
-/dev/null rw
-
-/etc/openwv r
-/usr/local/lib/openwv r
-
-# needed for IPC communication, X.Org, etc.
-/tmp rwc
-
-~/.config/ungoogled-chromium/WidevineCdm r

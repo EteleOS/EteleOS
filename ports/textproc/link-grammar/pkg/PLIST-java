@@ -1,6 +1,0 @@
-@static-lib lib/liblink-grammar-java.a
-lib/liblink-grammar-java.la
-@lib lib/liblink-grammar-java.so.${LIBlink-grammar-java_VERSION}
-share/java/
-share/java/linkgrammar-${VERSION}.jar
-share/java/linkgrammar.jar

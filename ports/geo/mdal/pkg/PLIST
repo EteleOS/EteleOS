@@ -1,5 +1,0 @@
-@bin bin/mdal_translate
-@bin bin/mdalinfo
-include/mdal.h
-@lib lib/libmdal.so.${LIBmdal_VERSION}
-@static-lib lib/libmdal_a.a

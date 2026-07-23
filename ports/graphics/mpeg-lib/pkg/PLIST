@@ -1,3 +1,0 @@
-include/mpeg.h
-lib/libmpeg.a
-@lib lib/libmpeg.so.${LIBmpeg_VERSION}

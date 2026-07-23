@@ -1,9 +1,0 @@
-${P5SITE}/PDF/
-${P5SITE}/PDF/Reuse/
-${P5SITE}/PDF/Reuse.pm
-${P5SITE}/PDF/Reuse/Util.pm
-${P5SITE}/PDF/Util/
-${P5SITE}/PDF/Util/graphObj_pl
-${P5SITE}/PDF/Util/reuseComponent_pl
-@man man/man3p/PDF::Reuse.3p
-@man man/man3p/PDF::Reuse::Util.3p

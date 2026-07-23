@@ -1,3 +1,0 @@
-#!/bin/sh
-
-${TRUEPREFIX}/bin/mono ${TRUEPREFIX}/share/spacetrader/SpaceTrader.exe

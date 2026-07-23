@@ -1,3 +1,0 @@
-@bin bin/gosh
-@bin bin/shfmt
-@man man/man1/shfmt.1

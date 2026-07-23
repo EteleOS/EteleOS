@@ -1,4 +1,0 @@
-#!/bin/sh
-
-cd ${TRUEPREFIX}/share/makehuman && \
-	exec ${MODPY_BIN} makehuman.py "$@"

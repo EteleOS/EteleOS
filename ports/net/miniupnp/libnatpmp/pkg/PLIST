@@ -1,6 +1,0 @@
-@bin bin/natpmpc
-include/natpmp.h
-include/natpmp_declspec.h
-@lib lib/libnatpmp.so.${LIBnatpmp_VERSION}
-lib/pkgconfig/natpmp.pc
-@man man/man1/natpmpc.1

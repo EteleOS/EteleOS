@@ -1,5 +1,0 @@
-@bin bin/git-remote-keybase
-@bin bin/kbfsfuse
-@bin bin/keybase
-bin/run_keybase
-share/doc/pkg-readmes/${PKGSTEM}

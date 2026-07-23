@@ -1,9 +1,0 @@
-#!/bin/ksh
-
-daemon="${TRUEPREFIX}/sbin/smtp-vilter"
-
-. /etc/rc.d/rc.subr
-
-pexp="smtp-vilter: parent"
-
-rc_cmd $1

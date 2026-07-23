@@ -1,5 +1,0 @@
-A text-based interface (TUI) to view and interact with Reddit
-from your terminal.
-
-tuir supports color schemes, user login, persistent authentication and mailcap
-for opening media links;  all with extensive examples and documentation.

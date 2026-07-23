@@ -1,3 +1,0 @@
-#! /bin/sh
-export SHARE_PREFIX=${TRUEPREFIX}
-exec ${MODPHP_BIN} ${TRUEPREFIX}/libexec/drush/drush.php "$@"

@@ -1,3 +1,0 @@
-File identification library for Python.
-Given a file (or some information about a file), return a set of
-standardized tags identifying what the file is.

@@ -1,3 +1,0 @@
-DataBasin is a data access tool for Salesforce.com, it allows querying,
-deleting and inserting records. It accesses the APIs through the usage
-of web services.

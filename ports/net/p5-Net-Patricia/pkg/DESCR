@@ -1,3 +1,0 @@
-This module uses a Patricia Trie data structure to quickly perform IP
-address prefix matching for applications such as IP subnet, network or
-routing table lookups.

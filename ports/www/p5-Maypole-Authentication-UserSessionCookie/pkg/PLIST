@@ -1,3 +1,0 @@
-${P5SITE}/Maypole/Authentication/
-${P5SITE}/Maypole/Authentication/UserSessionCookie.pm
-@man man/man3p/Maypole::Authentication::UserSessionCookie.3p

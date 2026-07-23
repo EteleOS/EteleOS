@@ -1,3 +1,0 @@
-Terminal screen size detection that works on Linux, macOS and Windows
-systems and supports Ruby MRI, JRuby, TruffleRuby and Rubinius
-interpreters.

@@ -1,7 +1,0 @@
-+-----------------------------------------------------------------------
-| Compiling ${PKGSTEM} on OpenBSD
-+-----------------------------------------------------------------------
-
-${PKGSTEM} appears to have problems with STATICPIE so use:
-	env STATICPIE= CC=pcc make
-When doing builds

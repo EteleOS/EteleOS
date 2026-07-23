@@ -1,3 +1,0 @@
-Before running pianobar, a configuration file needs to be created.
-Copy the provided ${PREFIX}/share/examples/pianobar/config to
-~/.config/pianobar/config and modify as necessary.

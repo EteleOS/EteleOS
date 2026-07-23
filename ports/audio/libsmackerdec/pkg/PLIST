@@ -1,5 +1,0 @@
-include/BitReader.h
-include/FileStream.h
-include/LogError.h
-include/SmackerDecoder.h
-@lib lib/libsmackerdec.so.${LIBsmackerdec_VERSION}

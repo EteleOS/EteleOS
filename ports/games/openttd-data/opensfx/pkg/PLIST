@@ -1,5 +1,0 @@
-@conflict openttd-<1.7.0
-share/openttd/
-share/openttd/data/
-share/openttd/data/opensfx.cat
-share/openttd/data/opensfx.obs

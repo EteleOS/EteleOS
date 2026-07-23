@@ -1,3 +1,0 @@
-milter-spamd is a sendmail milter plugin that passes mails through
-SpamAssassin's spamd, rejecting mails inline that are considered
-spam.

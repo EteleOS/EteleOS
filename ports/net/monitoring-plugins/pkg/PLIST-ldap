@@ -1,2 +1,0 @@
-@bin libexec/nagios/check_ldap
-libexec/nagios/check_ldaps

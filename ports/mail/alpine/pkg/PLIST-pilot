@@ -1,4 +1,0 @@
-@pkgpath mail/pine,-pilot
-@pkgpath mail/re-alpine,-pilot
-@bin bin/pilot
-@man man/man1/pilot.1

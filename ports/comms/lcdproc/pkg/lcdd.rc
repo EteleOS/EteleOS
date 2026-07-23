@@ -1,7 +1,0 @@
-#!/bin/ksh
-
-daemon="${TRUEPREFIX}/sbin/LCDd"
-
-. /etc/rc.d/rc.subr
-
-rc_cmd $1

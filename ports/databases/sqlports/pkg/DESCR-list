@@ -1,3 +1,0 @@
-Reduced list of every fullpkgpath reachable in the ports tree, with
-duplicate pkgnames removed, and with ports without static plists taken
-out.

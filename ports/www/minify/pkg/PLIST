@@ -1,6 +1,0 @@
-@bin bin/minify
-share/bash-completion/
-share/bash-completion/completions/
-share/bash-completion/completions/minify
-share/doc/minify/
-share/doc/minify/README.md

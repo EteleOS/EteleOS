@@ -1,3 +1,0 @@
-It can load a MANIFEST file that comes in a Perl distribution tarball,
-examine the contents, and perform some simple tasks.  It can also load
-the MANIFEST.SKIP file and check that.

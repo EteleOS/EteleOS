@@ -1,2 +1,0 @@
-Parse YAML safely, without that pesky arbitrary object deserialization
-vulnerability.

@@ -1,2 +1,0 @@
-Data::PowerSet takes a list and returns all possible combinations of the
-elements appearing in the list without replacement.

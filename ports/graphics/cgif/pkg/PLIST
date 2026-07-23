@@ -1,4 +1,0 @@
-include/cgif.h
-@static-lib lib/libcgif.a
-@lib lib/libcgif.so.${LIBcgif_VERSION}
-lib/pkgconfig/cgif.pc

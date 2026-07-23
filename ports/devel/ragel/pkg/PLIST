@@ -1,5 +1,0 @@
-@bin bin/ragel
-@man man/man1/ragel.1
-share/doc/ragel/
-share/doc/ragel/CREDITS
-share/doc/ragel/ChangeLog

@@ -1,3 +1,0 @@
-Bemenu is a dynamic menu library and client program inspired by dmenu.
-Bemenu works similarly to dmenu but supports a wider range of outputs like
-curses, x11 and wayland, etc.

@@ -1,2 +1,0 @@
-Limits is a python library for rate limiting via multiple strategies
-with commonly used storage backends (Redis, Memcached & MongoDB).

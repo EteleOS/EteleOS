@@ -1,8 +1,0 @@
-@bin bin/senpai
-@man man/man1/senpai.1
-@man man/man5/senpai.5
-share/applications/senpai.desktop
-@tag update-desktop-database
-share/icons/hicolor/48x48/apps/senpai.png
-share/icons/hicolor/scalable/apps/senpai.svg
-@tag gtk-update-icon-cache %D/share/icons/hicolor

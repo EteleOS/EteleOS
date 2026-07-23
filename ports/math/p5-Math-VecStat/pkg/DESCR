@@ -1,4 +1,0 @@
-This package provides some basic statistics on numerical vectors.
-All the subroutines can take a reference to the vector to be operated
-on. In some cases a copy of the vector is acceptable, but is not
-recommended for efficiency.

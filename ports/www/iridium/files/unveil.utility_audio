@@ -1,9 +1,0 @@
-/dev/null rw
-
-# needed for iridium
-/etc/iridium r
-
-# needed for IPC communication, X.Org, etc.
-/tmp rwc
-
-~/.sndio rwc

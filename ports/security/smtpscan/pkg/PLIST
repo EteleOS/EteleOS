@@ -1,5 +1,0 @@
-bin/smtpscan
-@man man/man1/smtpscan.1
-share/smtpscan/
-share/smtpscan/fingerprints
-share/smtpscan/tests

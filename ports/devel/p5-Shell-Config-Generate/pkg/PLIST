@@ -1,4 +1,0 @@
-${P5SITE}/Shell/
-${P5SITE}/Shell/Config/
-${P5SITE}/Shell/Config/Generate.pm
-@man man/man3p/Shell::Config::Generate.3p

@@ -1,3 +1,0 @@
-Software::License provides templated software licenses. It also
-includes Software::LicenseUtils, which contains useful bits of code
-for guessing licenses and creating Software::License objects.

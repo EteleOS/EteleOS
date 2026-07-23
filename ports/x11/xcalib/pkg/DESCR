@@ -1,3 +1,0 @@
-xcalib is a tiny monitor calibration loader for XFree86 (or X.org) and
-MS-Windows. It allows you to load the 'vcgt'-tag of ICC profiles to
-X-server (like MS-Windows or MacOS do) to calibrate your display.

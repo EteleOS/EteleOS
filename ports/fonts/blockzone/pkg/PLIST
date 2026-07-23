@@ -1,6 +1,0 @@
-@conflict BlockZone-*
-share/doc/blockzone/
-share/doc/blockzone/LICENSE
-share/fonts/
-@fontdir share/fonts/blockzone/
-share/fonts/blockzone/BlockZone.ttf

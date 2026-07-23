@@ -1,2 +1,0 @@
-#!/bin/ksh
-exec ${TRUEPREFIX}/lib/password-gorilla/gorilla.tcl

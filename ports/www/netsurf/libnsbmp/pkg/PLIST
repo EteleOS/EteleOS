@@ -1,3 +1,0 @@
-include/libnsbmp.h
-@lib lib/libnsbmp.so.${LIBnsbmp_VERSION}
-lib/pkgconfig/libnsbmp.pc

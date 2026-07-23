@@ -1,3 +1,0 @@
-@bin bin/astconv
-@so lib/asterisk/modules/codec_g729.so
-share/doc/pkg-readmes/${PKGSTEM}

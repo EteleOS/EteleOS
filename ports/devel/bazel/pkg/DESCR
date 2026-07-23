@@ -1,8 +1,0 @@
-Bazel is a declarative, multilanguage build tool. It is the
-open-source version of the build tool that Google uses internally.
-
-Known limitations:
-
-- Running Bazel to build/test Java code doesn't work yet.
-
-- Sandboxing is unsupported.

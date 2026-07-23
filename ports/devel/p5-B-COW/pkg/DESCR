@@ -1,2 +1,0 @@
-B::COW provides some naive additional B helpers to check the COW
-status of one SvPV.

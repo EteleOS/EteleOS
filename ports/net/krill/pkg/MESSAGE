@@ -1,2 +1,0 @@
-Do not forget to edit `admin_token` in ${SYSCONFDIR}/krill.conf
-before starting the daemon.

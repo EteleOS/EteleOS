@@ -1,3 +1,0 @@
-@bin bin/rbw
-@bin bin/rbw-agent
-share/doc/pkg-readmes/${PKGSTEM}

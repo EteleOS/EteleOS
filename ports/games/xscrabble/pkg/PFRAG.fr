@@ -1,3 +1,0 @@
-lib/X11/app-defaults/XScrabble_fr
-lib/X11/xscrabble/ODS4.gz
-lib/X11/xscrabble/scrabble_regles

@@ -1,3 +1,0 @@
-@conflict influxdb-<2
-@pkgpath databases/influxdb
-@bin bin/influx

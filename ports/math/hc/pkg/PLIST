@@ -1,3 +1,0 @@
-@conflict zh-hc-*
-bin/hc
-@man man/man1/hc.1

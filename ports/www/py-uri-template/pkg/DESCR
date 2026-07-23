@@ -1,4 +1,0 @@
-An implementation of RFC 6570 URI Templates.
-
-This packages implements URI Template expansion in strict adherence to RFC 6570,
-but adds a few extensions.

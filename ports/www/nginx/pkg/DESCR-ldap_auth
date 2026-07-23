@@ -1,2 +1,0 @@
-nginx-auth-ldap is a module which allows one or more LDAP servers to be
-used as an authentication source for NGINX.

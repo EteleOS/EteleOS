@@ -1,3 +1,0 @@
-${P5SITE}/Catalyst/Plugin/
-${P5SITE}/Catalyst/Plugin/Markdown.pm
-@man man/man3p/Catalyst::Plugin::Markdown.3p

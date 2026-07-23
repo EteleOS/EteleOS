@@ -1,4 +1,0 @@
-%%dynlink%%
-lib/ocaml/yojson/yojson.a
-lib/ocaml/yojson/yojson.cmx
-lib/ocaml/yojson/yojson.cmxa

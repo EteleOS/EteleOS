@@ -1,3 +1,0 @@
-include/tommath.h
-@static-lib lib/libtommath.a
-lib/pkgconfig/libtommath.pc

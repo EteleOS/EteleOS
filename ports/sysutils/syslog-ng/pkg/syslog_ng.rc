@@ -1,9 +1,0 @@
-#!/bin/ksh
-
-daemon="${TRUEPREFIX}/sbin/syslog-ng"
-
-. /etc/rc.d/rc.subr
-
-pexp="${daemon}"
-
-rc_cmd $1

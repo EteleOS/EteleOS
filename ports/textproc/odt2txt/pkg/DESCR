@@ -1,3 +1,0 @@
-odt2txt is a simple converter from OpenDocument Text to plain text. It's
-a command-line tool which extracts the text out of OpenDocument Texts
-produced by OpenOffice.org, StarOffice, KOffice and others.

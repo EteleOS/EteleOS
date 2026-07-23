@@ -1,3 +1,0 @@
-${P5SITE}/Crypt/
-${P5SITE}/Crypt/SysRandom.pm
-@man man/man3p/Crypt::SysRandom.3p

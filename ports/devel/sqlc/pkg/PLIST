@@ -1,2 +1,0 @@
-@bin bin/sqlc
-@bin bin/sqlc-gen-json

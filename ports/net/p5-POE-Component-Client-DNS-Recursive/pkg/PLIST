@@ -1,3 +1,0 @@
-${P5SITE}/POE/Component/Client/DNS/
-${P5SITE}/POE/Component/Client/DNS/Recursive.pm
-@man man/man3p/POE::Component::Client::DNS::Recursive.3p

@@ -1,3 +1,0 @@
-A very stripped down and rearranged version of the old xpm pixbuf
-loader, providing a single function (hopefully) suitable for the likes
-of Dia to port away from `gdk_pixbuf_new_from_xpm_data`.

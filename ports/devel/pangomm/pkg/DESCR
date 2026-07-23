@@ -1,3 +1,0 @@
-pangomm is a C++ wrapper for the pango text rendering library. It
-offers all the power of pango with an interface familiar to C++
-developers,

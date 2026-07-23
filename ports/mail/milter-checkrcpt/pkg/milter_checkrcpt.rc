@@ -1,9 +1,0 @@
-#!/bin/ksh
-
-daemon="${TRUEPREFIX}/libexec/milter-checkrcpt"
-
-. /etc/rc.d/rc.subr
-
-rc_reload=NO
-
-rc_cmd $1

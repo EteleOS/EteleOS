@@ -1,3 +1,0 @@
-Seer is a GUI front-end to GDB. It includes a main view, a seer console,
-an assembly view, a memory visualizer, an array visualizer and a struct
-visualizer.

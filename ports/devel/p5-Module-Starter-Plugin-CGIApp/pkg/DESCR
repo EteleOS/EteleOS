@@ -1,3 +1,0 @@
-This module extends Module::Starter to enable the creation of skeletal
-CGI::Application and Titanium projects, with templates based on
-HTML::Template.

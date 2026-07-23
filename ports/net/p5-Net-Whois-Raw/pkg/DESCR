@@ -1,2 +1,0 @@
-This perl module allows to collect whois information from a whois server
-in a raw, unparsed way. The result is simply stored in a string.

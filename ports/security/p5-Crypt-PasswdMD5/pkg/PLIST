@@ -1,3 +1,0 @@
-${P5SITE}/Crypt/
-${P5SITE}/Crypt/PasswdMD5.pm
-@man man/man3p/Crypt::PasswdMD5.3p

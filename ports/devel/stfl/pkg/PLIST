@@ -1,5 +1,0 @@
-include/stfl.h
-@lib lib/libstfl.so.${LIBstfl_VERSION}
-lib/pkgconfig/stfl.pc
-share/doc/stfl/
-share/doc/stfl/README

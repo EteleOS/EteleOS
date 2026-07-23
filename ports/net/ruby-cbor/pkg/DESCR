@@ -1,2 +1,0 @@
-This is a Ruby implementation of the CBOR encoding, based on the
-(polished) high-performance msgpack-ruby code.

@@ -1,5 +1,0 @@
-lib/lua/${MODLUA_VERSION}/pack.so
-share/doc/${FULLPKGNAME}/
-share/doc/${FULLPKGNAME}/README
-share/examples/${FULLPKGNAME}/
-share/examples/${FULLPKGNAME}/test.lua

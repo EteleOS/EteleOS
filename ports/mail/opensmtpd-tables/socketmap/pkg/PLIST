@@ -1,4 +1,0 @@
-@conflict opensmtpd-extras-*
-libexec/smtpd/
-@bin libexec/smtpd/table-socketmap
-@man man/man5/table-socketmap.5

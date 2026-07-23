@@ -1,3 +1,0 @@
-@conflict openmotif-demos-*
-@bin bin/tree
-@man man/man1/tree.1

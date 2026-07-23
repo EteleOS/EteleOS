@@ -1,8 +1,0 @@
-schema2ldif is a tool to convert .schema files to .ldif
-files for usage with an OpenLDAP server.
-ldap-schema-manager is a tool to manage schemas by
-allowing the following functions among other functions:
-- insertion
-- deletion
-- modification
-- listing current schemas

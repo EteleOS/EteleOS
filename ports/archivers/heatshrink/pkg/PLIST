@@ -1,7 +1,0 @@
-@bin bin/heatshrink
-include/heatshrink_common.h
-include/heatshrink_config.h
-include/heatshrink_decoder.h
-include/heatshrink_encoder.h
-@static-lib lib/libheatshrink_dynamic.a
-@static-lib lib/libheatshrink_static.a

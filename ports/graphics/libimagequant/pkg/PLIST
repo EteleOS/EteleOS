@@ -1,4 +1,0 @@
-include/libimagequant.h
-@static-lib lib/libimagequant.a
-@lib lib/libimagequant.so.${LIBimagequant_VERSION}
-lib/pkgconfig/imagequant.pc

@@ -1,3 +1,0 @@
-This package contains cups-browsed, a helper daemon to browse the network for
-remote CUPS queues and IPP network printers and automatically create local
-queues pointing to them.

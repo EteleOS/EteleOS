@@ -1,3 +1,0 @@
-MED-fichier (Modelisation and Data Exchange) is a library to store
-and exchange meshed data or computation results. It uses the HDF5
-file format to store the data.

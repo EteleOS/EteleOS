@@ -1,5 +1,0 @@
-bin/json2lua.lua${MODLUA_VERSION}
-bin/lua2json.lua${MODLUA_VERSION}
-lib/lua/${MODLUA_VERSION}/cjson.so
-share/lua/${MODLUA_VERSION}/cjson/
-share/lua/${MODLUA_VERSION}/cjson/util.lua

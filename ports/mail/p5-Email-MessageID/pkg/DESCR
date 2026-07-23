@@ -1,3 +1,0 @@
-Message-ids are optional, but highly recommended, headers
-that identify a message uniquely. This module generates a
-unique message-id.

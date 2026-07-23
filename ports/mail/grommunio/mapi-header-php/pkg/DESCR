@@ -1,3 +1,0 @@
-mapi-headers-php is the central repository for PHP-based MAPI applications.
-These header files are used by grommunio Web, grommunio Sync and
-grommunio DAV, eliminating the bundling of headers.

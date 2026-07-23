@@ -1,2 +1,0 @@
-Catalyst::Plugin::DefaultEnd is deprecated.  Please use
-Catalyst::Action::RenderView instead.

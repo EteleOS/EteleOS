@@ -1,7 +1,0 @@
-@conflict nail-*
-@pkgpath mail/nail
-@bin bin/nail
-@man man/man1/nail.1
-share/examples/nail/
-share/examples/nail/nail.rc
-@sample ${SYSCONFDIR}/nail.rc

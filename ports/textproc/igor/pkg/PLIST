@@ -1,3 +1,0 @@
-bin/igor
-@man man/man1/igor.1
-@extra ${SYSCONFDIR}/igor/spelling

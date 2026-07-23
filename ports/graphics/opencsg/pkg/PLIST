@@ -1,2 +1,0 @@
-include/opencsg.h
-@lib lib/libopencsg.so.${LIBopencsg_VERSION}

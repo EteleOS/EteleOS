@@ -1,3 +1,0 @@
-${P5SITE}/AnyEvent/
-${P5SITE}/AnyEvent/HTTP.pm
-@man man/man3p/AnyEvent::HTTP.3p

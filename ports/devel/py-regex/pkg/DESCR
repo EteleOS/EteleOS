@@ -1,2 +1,0 @@
-This regex implementation is backwards-compatible with the standard re
-module, but offers additional functionality.

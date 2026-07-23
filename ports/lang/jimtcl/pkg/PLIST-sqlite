@@ -1,2 +1,0 @@
-@conflict jimtcl-<0.81
-@so lib/jim/sqlite3.so

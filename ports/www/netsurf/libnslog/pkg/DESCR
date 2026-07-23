@@ -1,3 +1,0 @@
-Libnslog provides a category-based logging library which supports complex
-logging filters, multiple log levels, and provides context through to client
-applications.

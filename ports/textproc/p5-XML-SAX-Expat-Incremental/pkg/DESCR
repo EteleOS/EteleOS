@@ -1,2 +1,0 @@
-XML::SAX::Expat subclass for non-blocking (incremental) parsing, with
-XML::Parser::ExpatNB.

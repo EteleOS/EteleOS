@@ -1,3 +1,0 @@
-@so ${GEGL_PLUGINS}/clay.so
-share/doc/gegl-filters/
-share/doc/gegl-filters/clay_bevel_guide.txt

@@ -1,3 +1,0 @@
-The DBD::Chart provides a DBI abstraction for rendering pie charts, bar
-charts, box&whisker charts (aka boxcharts), histograms, Gantt charts,
-and line, point, and area graphs.

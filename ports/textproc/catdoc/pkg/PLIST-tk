@@ -1,3 +1,0 @@
-@conflict catdoc-*-tk
-bin/wordview
-@man man/man1/wordview.1

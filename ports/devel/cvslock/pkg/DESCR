@@ -1,2 +1,0 @@
-The cvslock program is used to safely manipulate and inspect CVS
-repositories; to this end, it properly uses CVS' lock file mechanism.

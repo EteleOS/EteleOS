@@ -1,3 +1,0 @@
-@pkgpath www/w3m,image,japanese
-@bin libexec/w3m/w3mimgdisplay
-share/doc/w3m/README.img

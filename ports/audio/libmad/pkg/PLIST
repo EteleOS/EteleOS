@@ -1,6 +1,0 @@
-@conflict mad-*
-include/mad.h
-@static-lib lib/libmad.a
-lib/libmad.la
-@lib lib/libmad.so.${LIBmad_VERSION}
-lib/pkgconfig/mad.pc

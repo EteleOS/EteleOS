@@ -1,2 +1,0 @@
-@so lib/collectd/redis.so
-@so lib/collectd/write_redis.so

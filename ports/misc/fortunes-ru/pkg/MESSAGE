@@ -1,4 +1,0 @@
-Use the following commands to create symlinks to call fortunes by name:
-
-  cd /usr/share/games/fortune
-  for f in ${PREFIX}/share/games/fortune/ru/*; do ln -sf $f; done

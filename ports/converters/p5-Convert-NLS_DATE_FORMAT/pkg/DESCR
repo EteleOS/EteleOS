@@ -1,2 +1,0 @@
-Convert Oracle's NLS_DATE_FORMAT string into a strptime format
-string, or the reverse.

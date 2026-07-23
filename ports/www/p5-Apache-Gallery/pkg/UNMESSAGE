@@ -1,3 +1,0 @@
-To completely deinstall Apache::Gallery you need to perform the
-following steps as root:
-    # rm -f /var/www/conf/modules/apache-gallery.conf

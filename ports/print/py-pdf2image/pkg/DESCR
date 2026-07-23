@@ -1,2 +1,0 @@
-Python module that wraps pdftoppm and pdftocairo to convert PDF to a
-PIL Image object

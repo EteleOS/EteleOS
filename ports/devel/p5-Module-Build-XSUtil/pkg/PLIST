@@ -1,4 +1,0 @@
-${P5SITE}/Module/
-${P5SITE}/Module/Build/
-${P5SITE}/Module/Build/XSUtil.pm
-@man man/man3p/Module::Build::XSUtil.3p

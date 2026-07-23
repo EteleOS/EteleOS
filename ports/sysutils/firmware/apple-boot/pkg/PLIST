@@ -1,4 +1,0 @@
-@pkgpath sysutils/firmware/m1n1-uboot
-@conflict m1n1-uboot-firmware-*
-firmware/apple-boot-license
-firmware/apple-boot.bin

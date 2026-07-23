@@ -1,2 +1,0 @@
-when used, creates a method that lists subclasses of the
-given class obtained by scanning @INC.

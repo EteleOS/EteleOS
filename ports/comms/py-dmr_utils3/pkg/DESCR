@@ -1,3 +1,0 @@
-Utilities for working with Digital Moible Radio (DMR) in Python.
-Includes routines for assembling and disasembling packets and
-encoding/removing FEC/ECC routines.

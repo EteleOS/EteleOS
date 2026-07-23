@@ -1,2 +1,0 @@
-apertium-streamparser is a Python 3 library to parse the Apertium stream
-format, generating LexicalUnits.

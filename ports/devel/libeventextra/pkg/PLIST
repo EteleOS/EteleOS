@@ -1,5 +1,0 @@
-include/evdns.h
-include/evhttp.h
-include/evrpc.h
-lib/libeventextra.a
-@lib lib/libeventextra.so.${LIBeventextra_VERSION}

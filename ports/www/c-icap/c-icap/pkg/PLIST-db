@@ -1,3 +1,0 @@
-@bin bin/c-icap-mkbdb
-@so lib/c_icap/bdb_tables.so
-@man man/man8/c-icap-mkbdb.8

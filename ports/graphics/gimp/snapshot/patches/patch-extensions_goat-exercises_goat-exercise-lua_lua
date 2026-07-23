@@ -1,9 +1,0 @@
-Index: extensions/goat-exercises/goat-exercise-lua.lua
---- extensions/goat-exercises/goat-exercise-lua.lua.orig
-+++ extensions/goat-exercises/goat-exercise-lua.lua
-@@ -1,4 +1,4 @@
--#!/usr/bin/env lua
-+#!/usr/bin/env luajit${MODLUA_DEP_VERSION}
- 
- -- GIMP - The GNU Image Manipulation Program
- -- Copyright (C) 1995 Spencer Kimball and Peter Mattis

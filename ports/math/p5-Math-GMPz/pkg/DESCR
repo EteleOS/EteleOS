@@ -1,3 +1,0 @@
-A bignum module utilising the Gnu MP (GMP) library. Basically this
-module simply wraps nearly all of the integer functions provided by
-that library.

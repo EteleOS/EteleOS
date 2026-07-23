@@ -1,3 +1,0 @@
-s-cdda queries information, like the table-of-contents, from audio CD-ROMs.
-It also reads audio tracks to store them as WAVE audio files.
-It only works with SCSI MMC-3 aware cdrom/drivers.

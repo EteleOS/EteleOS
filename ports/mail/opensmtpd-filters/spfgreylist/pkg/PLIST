@@ -1,3 +1,0 @@
-share/doc/pkg-readmes/${PKGSTEM}
-libexec/smtpd/
-@bin libexec/smtpd/filter-spfgreylist

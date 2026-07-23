@@ -1,4 +1,0 @@
-${P5SITE}/Module/
-${P5SITE}/Module/Pluggable/
-${P5SITE}/Module/Pluggable/Fast.pm
-@man man/man3p/Module::Pluggable::Fast.3p

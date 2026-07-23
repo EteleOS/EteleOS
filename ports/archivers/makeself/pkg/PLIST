@@ -1,3 +1,0 @@
-bin/makeself-header.sh
-bin/makeself.sh
-@man man/man1/makeself.1

@@ -1,6 +1,0 @@
-${P5ARCH}/
-${P5ARCH}/Internals.pm
-${P5ARCH}/auto/
-${P5ARCH}/auto/Internals/
-${P5ARCH}/auto/Internals/Internals.so
-@man man/man3p/Internals.3p

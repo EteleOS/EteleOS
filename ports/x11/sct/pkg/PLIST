@@ -1,4 +1,0 @@
-@bin bin/sct
-bin/sctd
-@man man/man1/sct.1
-@man man/man1/sctd.1

@@ -1,8 +1,0 @@
-#!/bin/ksh
-
-daemon="${TRUEPREFIX}/sbin/reTurnServer"
-daemon_flags="${SYSCONFDIR}/reTurn/reTurnServer.config"
-
-. /etc/rc.d/rc.subr
-
-rc_cmd $1

@@ -1,3 +1,0 @@
-This module is for web application framework developers
-who currently uses CGI to handle query parameters, and
-would like for the frameworks to comply with the PSGI protocol.

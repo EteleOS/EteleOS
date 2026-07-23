@@ -1,7 +1,0 @@
-@pkgpath devel/py-rcsparse,python3
-lib/python${MODPY_VERSION}/site-packages/rcsparse-${MODPY_DISTV}.dist-info/
-lib/python${MODPY_VERSION}/site-packages/rcsparse-${MODPY_DISTV}.dist-info/METADATA
-lib/python${MODPY_VERSION}/site-packages/rcsparse-${MODPY_DISTV}.dist-info/RECORD
-lib/python${MODPY_VERSION}/site-packages/rcsparse-${MODPY_DISTV}.dist-info/WHEEL
-lib/python${MODPY_VERSION}/site-packages/rcsparse-${MODPY_DISTV}.dist-info/top_level.txt
-@so lib/python${MODPY_VERSION}/site-packages/rcsparse.${MODPY_PYC_MAGIC_TAG}so

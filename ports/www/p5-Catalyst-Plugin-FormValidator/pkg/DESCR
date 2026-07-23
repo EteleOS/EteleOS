@@ -1,5 +1,0 @@
-This plugin uses Data::FormValidator to validate and set up form data
-from your request parameters. 
-
-It's just a thin wrapper, refer to the p5-Data-FormValidator 
-documentation.

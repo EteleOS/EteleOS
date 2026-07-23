@@ -1,3 +1,0 @@
-include/scfg.h
-@lib lib/libscfg.so.${LIBscfg_VERSION}
-lib/pkgconfig/scfg.pc

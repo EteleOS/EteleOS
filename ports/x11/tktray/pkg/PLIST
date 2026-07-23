@@ -1,4 +1,0 @@
-lib/tcl/tktray/
-lib/tcl/tktray/libtktray${VER}.so
-lib/tcl/tktray/pkgIndex.tcl
-@man man/mann/tktray.n

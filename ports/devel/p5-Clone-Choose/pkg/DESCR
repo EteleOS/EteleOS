@@ -1,2 +1,0 @@
-Clone::Choose checks several different modules which provide a clone()
-function and selects an appropriate one.

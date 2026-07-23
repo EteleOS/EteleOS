@@ -1,6 +1,0 @@
-@bin bin/cpucycles-info
-include/cpucycles.h
-@static-lib lib/libcpucycles.a
-@lib lib/libcpucycles.so.${LIBcpucycles_VERSION}
-@man man/man1/cpucycles-info.1
-@man man/man3/cpucycles.3

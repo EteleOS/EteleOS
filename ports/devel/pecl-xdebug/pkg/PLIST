@@ -1,6 +1,0 @@
-${MODPECL_DEFAULTV}@pkgpath www/pecl-xdebug,php80
-${MODPECL_DEFAULTV}@pkgpath www/pecl-xdebug,php81
-@extra ${SYSCONFDIR}/php-${MODPHP_VERSION}/${MODULE_NAME}.ini 
-@so lib/php-${MODPHP_VERSION}/modules/${MODULE_NAME}.so
-share/examples/php-${MODPHP_VERSION}/${MODULE_NAME}.ini
-@sample ${SYSCONFDIR}/php-${MODPHP_VERSION}.sample/${MODULE_NAME}.ini

@@ -1,3 +1,0 @@
-PPIx::Utils is a collection of utility functions for working with PPI
-documents. The functions are organized into submodules, and may be
-imported from the appropriate submodule or via this module.

@@ -1,3 +1,0 @@
-include/svgtiny.h
-@lib lib/libsvgtiny.so.${LIBsvgtiny_VERSION}
-lib/pkgconfig/libsvgtiny.pc

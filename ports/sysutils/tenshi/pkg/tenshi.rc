@@ -1,9 +1,0 @@
-#!/bin/ksh
-
-daemon="${TRUEPREFIX}/sbin/tenshi"
-
-. /etc/rc.d/rc.subr
-
-pexp="perl: tenshi"
-
-rc_cmd $1

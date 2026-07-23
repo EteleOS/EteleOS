@@ -1,5 +1,0 @@
-Sample classifiers have been installed in
-
-${PREFIX}/share/examples/xscribble
-
-These need to be copied to the ~/.classifiers directory.

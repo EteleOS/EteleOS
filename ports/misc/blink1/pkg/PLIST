@@ -1,3 +1,0 @@
-@bin bin/blink1-tool
-include/blink1-lib.h
-@lib lib/libblink1.so.${LIBblink1_VERSION}

@@ -1,3 +1,0 @@
-Easy thumbnails creating with Dancer and GD.
-Makes thumbnail image from original file by chain of graphic operations
-(crop and resize).

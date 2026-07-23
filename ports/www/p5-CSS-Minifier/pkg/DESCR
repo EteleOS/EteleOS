@@ -1,3 +1,0 @@
-This module removes unnecessary whitespace from CSS.  The primary
-requirement developing this module is to not break working stylesheets:
-if working CSS is in input then working CSS is output.

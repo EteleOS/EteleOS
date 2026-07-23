@@ -1,3 +1,0 @@
-include/libudev.h
-@lib lib/libudev.so.${LIBudev_VERSION}
-lib/pkgconfig/libudev.pc

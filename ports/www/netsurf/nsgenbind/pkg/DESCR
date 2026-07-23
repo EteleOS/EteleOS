@@ -1,2 +1,0 @@
-nsgenbind is a tool to generate JavaScript to DOM bindings from w3c webidl
-files and a binding configuration file.

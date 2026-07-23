@@ -1,4 +1,0 @@
-${P5SITE}/MLDBM/Sync/
-${P5SITE}/MLDBM/Sync.pm
-${P5SITE}/MLDBM/Sync/SDBM_File.pm
-@man man/man3p/MLDBM::Sync.3p

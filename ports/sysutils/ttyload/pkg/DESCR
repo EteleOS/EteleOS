@@ -1,2 +1,0 @@
-ttyload writes a color-coded graph of load averages over time, using
-the full width of a tty.

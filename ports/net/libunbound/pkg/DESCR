@@ -1,3 +1,0 @@
-This package contains the validating resolver library from the Unbound
-distribution (the main Unbound resolver daemon and tools are in OpenBSD's
-base OS).

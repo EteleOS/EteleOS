@@ -1,3 +1,0 @@
-@pkgpath devel/shellcheck,-main
-@bin bin/shellcheck
-@man man/man1/shellcheck.1

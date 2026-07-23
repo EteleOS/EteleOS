@@ -1,5 +1,0 @@
-@bin bin/opmsg
-share/doc/opmsg/
-share/doc/opmsg/README.md
-share/examples/opmsg/
-share/examples/opmsg/sample.config

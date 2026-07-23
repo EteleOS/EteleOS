@@ -1,3 +1,0 @@
-bin/archivemail
-lib/python${MODPY_VERSION}/site-packages/archivemail-${VERSION}-py${MODPY_VERSION}.egg-info
-@man man/man1/archivemail.1

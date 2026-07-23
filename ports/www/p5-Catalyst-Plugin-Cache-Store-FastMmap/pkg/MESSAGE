@@ -1,2 +1,0 @@
-Catalyst::Plugin::Cache::Store::FastMmap is deprecated because
-Cache::FastMmap no longer needs to be wrapped to store plain values.

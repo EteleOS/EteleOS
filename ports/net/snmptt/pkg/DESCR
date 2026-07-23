@@ -1,2 +1,0 @@
-SNMP Trap Translator is used to 'translate' traps received from the
-NET-SNMP snmptrapd trap daemon into easy to understand messages.

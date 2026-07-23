@@ -1,3 +1,0 @@
-A micro library providing objects with Publish-Subscribe capabilities.
-Both synchronous (in-process) and asynchronous (out-of-process)
-subscriptions are supported.

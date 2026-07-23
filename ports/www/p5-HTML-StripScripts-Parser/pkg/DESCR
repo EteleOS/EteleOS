@@ -1,2 +1,0 @@
-This class provides an easy interface to HTML::StripScripts, using
-HTML::Parser to parse the HTML.

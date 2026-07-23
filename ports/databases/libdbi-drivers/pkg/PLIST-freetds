@@ -1,4 +1,0 @@
-lib/dbd/
-@static-lib lib/dbd/libdbdfreetds.a
-lib/dbd/libdbdfreetds.la
-@so lib/dbd/libdbdfreetds.so

@@ -1,3 +1,0 @@
-If you changed your /etc/rc or /etc/rc.local files
-to recover jove files on reboot after a system crash
-you should back out those changes now.

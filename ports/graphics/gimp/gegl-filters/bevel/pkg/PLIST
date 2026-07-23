@@ -1,3 +1,0 @@
-@so ${GEGL_PLUGINS}/bevel.so
-share/doc/gegl-filters/
-share/doc/gegl-filters/bevel_guide.pdf

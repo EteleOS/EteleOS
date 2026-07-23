@@ -1,3 +1,0 @@
-${P5SITE}/CGI/Application/Plugin/
-${P5SITE}/CGI/Application/Plugin/DBH.pm
-@man man/man3p/CGI::Application::Plugin::DBH.3p

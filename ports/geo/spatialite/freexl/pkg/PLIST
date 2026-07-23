@@ -1,4 +1,0 @@
-include/freexl.h
-lib/libfreexl.la
-@lib lib/libfreexl.so.${LIBfreexl_VERSION}
-lib/pkgconfig/freexl.pc

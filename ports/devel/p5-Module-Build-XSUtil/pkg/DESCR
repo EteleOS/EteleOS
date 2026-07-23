@@ -1,2 +1,0 @@
-Module::Build::XSUtil is subclass of Module::Build for support
-building XS modules.

@@ -1,3 +1,0 @@
-System::Command is a class that launches an external system command and
-returns an objects representing it, allowing interaction through the
-STDIN, STDOUT and STDERR handles.

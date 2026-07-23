@@ -1,3 +1,0 @@
-Trash-d is a near drop-in replacement for rm that uses the FreeDesktop
-trash bin. Written in the D programming language using only D's Phobos
-standard library.

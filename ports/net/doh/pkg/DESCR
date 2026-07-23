@@ -1,2 +1,0 @@
-doh is a simple tool that uses libcurl to resolve a host name
-using a POST request to a DNS-over-HTTPS (DoH) server.

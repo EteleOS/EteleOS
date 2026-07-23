@@ -1,3 +1,0 @@
-First, the insult utility executes the specified cmd with the given args.
-Afterwards, if the given cmd exits with an error an insult is written to
-standard error.

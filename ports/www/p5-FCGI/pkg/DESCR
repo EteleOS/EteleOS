@@ -1,2 +1,0 @@
-The FCGI module for perl5 which enables CGI scripts to take
-advantage of servers that are FastCGI-enabled.

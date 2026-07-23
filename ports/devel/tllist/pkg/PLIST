@@ -1,5 +1,0 @@
-include/tllist.h
-lib/pkgconfig/tllist.pc
-share/doc/tllist/
-share/doc/tllist/LICENSE
-share/doc/tllist/README.md

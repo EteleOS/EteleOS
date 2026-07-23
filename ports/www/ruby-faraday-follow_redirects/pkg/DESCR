@@ -1,3 +1,0 @@
-Faraday 2.x compatible extraction of FaradayMiddleware::FollowRedirects.
-This gem will also work with Faraday 1.x, to support gem codebases which
-can work with Faraday 1.x or 2.x.

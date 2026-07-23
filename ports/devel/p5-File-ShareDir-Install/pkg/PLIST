@@ -1,4 +1,0 @@
-${P5SITE}/File/
-${P5SITE}/File/ShareDir/
-${P5SITE}/File/ShareDir/Install.pm
-@man man/man3p/File::ShareDir::Install.3p

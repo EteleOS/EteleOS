@@ -1,5 +1,0 @@
-include/libserialport.h
-@static-lib lib/libserialport.a
-lib/libserialport.la
-@lib lib/libserialport.so.${LIBserialport_VERSION}
-lib/pkgconfig/libserialport.pc

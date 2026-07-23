@@ -1,7 +1,0 @@
-bin/clipctl
-bin/clipdel
-bin/clipfsck
-bin/clipmenu
-bin/clipmenud
-share/doc/clipmenu/
-share/doc/clipmenu/README.md

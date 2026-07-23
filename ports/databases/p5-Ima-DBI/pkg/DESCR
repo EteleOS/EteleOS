@@ -1,2 +1,0 @@
-Ima::DBI attempts to organize and facilitate caching and make more
-efficient use of database connections and statement handles.

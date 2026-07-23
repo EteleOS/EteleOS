@@ -1,3 +1,0 @@
-@bin bin/garbd
-@so lib/libgalera.so
-@so lib/libgalera_smm.so

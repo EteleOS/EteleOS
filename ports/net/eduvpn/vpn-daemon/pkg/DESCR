@@ -1,3 +1,0 @@
-This is a simple daemon written in Go providing a HTTP(S) API as an
-abstraction on top of the management socket of (multiple) OpenVPN server
-process(es) and WireGuard.

@@ -1,2 +1,0 @@
-Crypt::OpenSSL::PKCS10 provides the ability to create PKCS10 certificate
-requests using RSA key pairs.

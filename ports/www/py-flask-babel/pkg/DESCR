@@ -1,2 +1,0 @@
-Implements i18n and l10n support for Flask. This is based on the
-Python babel and pytz modules

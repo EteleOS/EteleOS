@@ -1,2 +1,0 @@
-dbus-daemon-launch-helper is a setuid helper for starting system services
-usually located under ${PREFIX}/share/dbus-1/system-services/.

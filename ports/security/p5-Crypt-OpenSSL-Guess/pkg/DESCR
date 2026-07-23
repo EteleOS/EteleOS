@@ -1,2 +1,0 @@
-Crypt::OpenSSL::Guess provides helpers to guess OpenSSL include path on any
-platforms.

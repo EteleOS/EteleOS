@@ -1,2 +1,0 @@
-osd_clock is a small clock which uses libxosd to render text to the
-root window.

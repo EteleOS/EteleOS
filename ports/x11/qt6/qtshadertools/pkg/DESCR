@@ -1,3 +1,0 @@
-The Qt Shader Tools module builds on the SPIR-V Open Source Ecosystem as
-described at the Khronos SPIR-V web site. For compiling into SPIR-V glslang is
-used, while translating and reflecting is done via SPIRV-Cross.

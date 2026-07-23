@@ -1,2 +1,0 @@
-Python wrapper for Xvfb, Xephyr and Xvnc.
-Optional dependency: py3-Pillow should be installed for smartdisplay submodule.

@@ -1,2 +1,0 @@
-In general, once you have an XML::Generator object, you then simply call
-methods on that object named for each XML tag you wish to generate.

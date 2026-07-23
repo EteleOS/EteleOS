@@ -1,3 +1,0 @@
-@bin bin/bgp-blaster
-@bin bin/bgp-canary
-@man man/man8/bgp-blaster.8

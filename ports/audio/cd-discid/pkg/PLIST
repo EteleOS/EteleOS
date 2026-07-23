@@ -1,3 +1,0 @@
-@conflict abcde-<=2.3.0
-@bin bin/cd-discid
-@man man/man1/cd-discid.1

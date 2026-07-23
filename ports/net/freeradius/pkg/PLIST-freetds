@@ -1,2 +1,0 @@
-@pkgpath net/freeradius3,-freetds
-@so lib/freeradius/rlm_sql_freetds.so
