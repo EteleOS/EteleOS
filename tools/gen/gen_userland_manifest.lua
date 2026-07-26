@@ -1,11 +1,9 @@
 --[[
-================================================================================
- EteleOS: tools/gen/gen_userland_manifest.lua
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tools/gen/gen_userland_manifest.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
-WHY THIS FILE EXISTS
-------------------------------------------------------
+--[[
 userland/xmake.lua needs to know, for ~900+ program directories, what each
 one's own (still-unedited, pre-restructure-path) Makefile says: PROG=,
 PROGS=, SUBDIR=, SRCS=, MAN=, LDADD=, MLINKS=, SCRIPTS=, BINOWN=/BINMODE=/
@@ -37,7 +35,6 @@ in the includer afterwards), even though it does NOT propagate a `return`
 value back to the caller.
 
 REGENERATING
-------------
 Run this whenever userland/ Makefiles or directory layout change:
     xmake lua tools/gen/gen_userland_manifest.lua
 (also wired up as the `eteleos-regen-userland` task in tools/tasks.lua, so
@@ -48,14 +45,12 @@ scripts, etc.) -- xmake.lua's description scope cannot regenerate it
 itself, so it has to already be present and correct at `xmake f` time.
 
 PARSING LOGIC
-------------------
 Ported as-is from the previous userland/xmake.lua (that logic was already
 correct Lua -- only WHERE it ran was wrong). One real change:
 list_subdirs() now uses os.dirs() instead of shelling out to `find` (os.dirs
 is available in both script and description scope, is portable, and is the
 same approach tests/xmake.lua's header already documented as correct for
 exactly this reason -- this brings userland/ in line with that).
---------------------------------------------------------------------------------
 --]]
 
 local ROOT      = path.absolute(os.scriptdir() .. "/../..")     -- repo root, from tools/gen/
@@ -67,9 +62,8 @@ local HOST_TOOL_DIRS = {
     "utilities/mklocale",
 }
 
--- ==============================================================================
+
 -- Small utilities (unchanged from the original userland/xmake.lua)
--- ==============================================================================
 local function read_file(filepath)
     -- xmake's io.open raises a Lua error on a missing file instead of
     -- returning nil the way stock Lua's io.open does (confirmed by
@@ -91,9 +85,7 @@ local function basename_noext(filepath)
     return (name:gsub("%.[^.]+$", ""))
 end
 
--- CHANGED: os.dirs() instead of os.iorun('find ...') -- portable, and
--- works in both script and description scope (matches tests/xmake.lua's
--- already-established convention).
+
 local function list_subdirs(dir)
     local dirs = os.dirs(path.join(dir, "*"))
     table.sort(dirs)
@@ -115,9 +107,8 @@ local function logical_lines(content)
     return lines
 end
 
--- ==============================================================================
+
 -- Makefile parser -- unchanged from the original userland/xmake.lua
--- ==============================================================================
 local function parse_program_makefile(dir)
     local info = {
         found = false, prog = nil, progs = {}, srcs = {}, man = {},
@@ -187,12 +178,11 @@ local MODULE_TIC_DEPS = {
     ["utilities/infocmp"] = { termsort = true },
 }
 
--- ==============================================================================
+
 -- Discovery walk -- same shape as the original eteleos_walk_dir/
 -- eteleos_category, but RECORDS build units into `UNITS` instead of calling
 -- target()/target_end() (which are not available here -- and shouldn't be;
 -- this script's only job is parsing, not declaring targets).
--- ==============================================================================
 local UNITS = {}   -- flat list of build-unit descriptors, consumed by userland/xmake.lua
 local stats = { programs = 0, script_only = 0, progs_groups = 0, subdir_dirs = 0, empty = 0 }
 
@@ -299,9 +289,8 @@ walk_category("utilities",   "utilities")
 walk_category("essential/bin",  "bin",  true)
 walk_category("essential/sbin", "sbin", true)
 
--- ==============================================================================
+
 -- Serialize UNITS to a plain Lua data file
--- ==============================================================================
 local function lua_quote(s)
     return string.format("%q", s)
 end

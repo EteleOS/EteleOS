@@ -1,9 +1,9 @@
 --[[
-================================================================================
- EteleOS: tools/toolchains.lua, time write: 2026/07/10
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tools/toolchains.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Clang/LLVM and GCC toolchain declarations for EteleOS.
 Loaded by tools/xmake.lua (after rules.lua, which means helpers.lua is
 already in scope and ETELEOS_TARGET_TRIPLES etc. are accessible).
@@ -13,10 +13,10 @@ any module can reference these toolchains, and the default set in
 compiler.lua (via set_config("toolchain", ...)) applies to all targets
 that do not override it explicitly.
 
-Architecture → triple mapping:
-  amd64   → x86_64-unknown-openbsd
-  arm64   → aarch64-unknown-openbsd
-  riscv64 → riscv64-unknown-openbsd
+Architecture -> triple mapping:
+  amd64   -> x86_64-unknown-openbsd
+  arm64   -> aarch64-unknown-openbsd
+  riscv64 -> riscv64-unknown-openbsd
 
 Design:
   - A single Clang binary is retargeted via the -target <triple> flag so that
@@ -28,7 +28,6 @@ Design:
     `xmake f --sdk=/path/to/cross-gcc-sysroot`.
 
 Nothing in this file compiles any source file or declares any target.
---------------------------------------------------------------------------------
 --]]
 
 -- Confirmed by testing: wprint/cprint are unavailable not just at
@@ -44,15 +43,14 @@ Nothing in this file compiles any source file or declares any target.
 local wprint = wprint or function(fmt, ...) print(string.format(fmt, ...)) end
 local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%w_]+}", "")), ...)) end
 
--- ==============================================================================
+
 -- Primary toolchain: Clang/LLVM
--- ==============================================================================
 toolchain("eteleos-clang")
     set_kind("standalone")
     set_homepage("https://github.com/EteleOS/EteleOS")
     set_description("Clang/LLVM toolchain for EteleOS (default)")
 
-    -- --- Tool binaries --------------------------------------------------------
+    -- Tool binaries 
     -- No hard-coded paths: xmake searches PATH for these names.
     -- Users can override any binary via: xmake f --cc=/usr/bin/clang-17 etc.
     set_toolset("cc",     "clang")
@@ -68,7 +66,7 @@ toolchain("eteleos-clang")
     set_toolset("nm",     "llvm-nm", "nm")
     set_toolset("size",   "llvm-size", "size")
 
-    -- --- Dynamic configuration via on_load ------------------------------------
+    -- Dynamic configuration via on_load 
     -- on_load fires once per toolchain instance (i.e. once when xmake f runs).
     -- Confirmed by isolated testing against a real xmake v3.0.9 build: a
     -- plain global (like ETELEOS_TARGET_TRIPLES, assigned in helpers.lua's
@@ -99,9 +97,8 @@ toolchain("eteleos-clang")
     end)
 toolchain_end()
 
--- ==============================================================================
+
 -- Secondary toolchain: GCC (best-effort)
--- ==============================================================================
 -- Plain `gcc` only targets the host. For cross-builds, the user must either:
 --   (a) supply a cross-prefixed gcc in their PATH and tell xmake about it, or
 --   (b) set the --sdk option to the root of a cross-gcc installation.

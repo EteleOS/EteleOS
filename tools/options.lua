@@ -1,12 +1,11 @@
 --[[
-================================================================================
- EteleOS: tools/options.lua, time write: 2026/07/16
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tools/options.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 All project-wide option() declarations.
 Loaded by tools/xmake.lua (after helpers.lua).
-
 option() declarations are project-global in xmake: once declared here, any
 module's xmake.lua can interrogate them with has_config() / get_config()
 regardless of where in the include tree it sits.
@@ -18,12 +17,9 @@ User interface:
   xmake f --werror=y
   xmake f --sysroot=/path/to/sysroot
   xmake f --eteleos_toolchain=eteleos-gcc
---------------------------------------------------------------------------------
 --]]
 
--- ==============================================================================
 -- Target architecture
--- ==============================================================================
 -- The values listed here are the COMPLETE set of architectures still present
 -- in the EteleOS source tree after the pruning described in the build spec.
 -- Do not add back removed architectures here.
@@ -34,9 +30,7 @@ option("target_arch")
     set_values("amd64", "arm64", "riscv64")
 option_end()
 
--- ==============================================================================
 -- Toolchain preset
--- ==============================================================================
 -- Selects which toolchain() declaration (from tools/toolchains.lua) is
 -- activated as the project default. Setting this option also drives the
 -- set_config("toolchain", ...) call in tools/compiler.lua.
@@ -47,9 +41,7 @@ option("eteleos_toolchain")
     set_values("eteleos-clang", "eteleos-gcc")
 option_end()
 
--- ==============================================================================
 -- Cross-build sysroot
--- ==============================================================================
 -- When a dedicated OpenBSD sysroot is available on the host (e.g. a Linux
 -- cross-build environment with a pre-built OpenBSD-amd64 sysroot extracted),
 -- point to it here. Empty string means: let the toolchain use its own default
@@ -60,9 +52,7 @@ option("sysroot")
     set_description("Sysroot for cross-compilation (empty = toolchain default)")
 option_end()
 
--- ==============================================================================
 -- Link-time optimization (LTO)
--- ==============================================================================
 -- Off by default to keep iteration fast. Enable for official release builds.
 -- Activate with: xmake f --lto=y
 option("lto")
@@ -71,9 +61,7 @@ option("lto")
     set_description("Enable link-time optimization (LTO)")
 option_end()
 
--- ==============================================================================
 -- Sanitizers
--- ==============================================================================
 -- These are intentionally separate options so that, for example, a test build
 -- can enable ubsan without asan. Both are ONLY valid for hosted targets
 -- (userland tools, tests); the eteleos.kernel rule blocks them on the kernel.
@@ -90,10 +78,7 @@ option("ubsan")
     set_description("Enable UndefinedBehaviorSanitizer (hosted/userland targets only)")
 option_end()
 
--- ==============================================================================
 -- Warning / quality flags
--- ==============================================================================
-
 -- Promotes every compiler warning to a hard error. Recommended for CI; off
 -- by default so developers can iterate without a full-green build.
 option("werror")
@@ -110,9 +95,7 @@ option("verbose_build")
     set_description("Show verbose compiler command lines during build (-v)")
 option_end()
 
--- ==============================================================================
 -- GUI: GLX / DRI
--- ==============================================================================
 -- Real upstream Makefile.bsd-wrapper files (xserver's, and driver modules
 -- like xf86-video-intel's) branch on XENOCARA_BUILD_GL / XENOCARA_BUILD_DRI
 -- make variables to add --enable/--disable-glx and --enable/--disable-dri

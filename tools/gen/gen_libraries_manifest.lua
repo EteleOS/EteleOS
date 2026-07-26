@@ -1,9 +1,9 @@
 --[[
-================================================================================
- EteleOS: tools/gen/gen_libraries_manifest.lua
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tools/gen/gen_libraries_manifest.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Same reasoning as tools/gen/gen_userland_manifest.lua (see that file's
 header for the full explanation, confirmed against a real xmake v3.0.9
 build, of why io.open cannot run at xmake.lua description scope).
@@ -19,7 +19,6 @@ srcdir path relative to libraries/.
 
 Regenerate with: xmake lua tools/gen/gen_libraries_manifest.lua
 (or: xmake eteleos-regen-libraries, once a project is configured)
---------------------------------------------------------------------------------
 --]]
 
 local ROOT       = path.absolute(os.scriptdir() .. "/../..")

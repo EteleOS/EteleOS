@@ -1,16 +1,12 @@
 --[[
-================================================================================
- EteleOS: installer/xmake.lua, time write: 2026/07/13
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: installer/xmake.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Manages: install image, iso, boot image, release image, sets.
-
-Verified against the current tree (github.com/EteleOS/EteleOS):
-  installer/{amd64,arm64,riscv64,miniroot,notes,sets,special,syspatch,Makefile}
-
+Source tree: installer/{amd64,arm64,riscv64,miniroot,notes,sets,special,syspatch,Makefile}
 SETS -- the most tractable and fully implemented piece
---------------------------------------------------------
 installer/sets/lists/<name>/{mi, md.<arch>} are plain text files, one
 "./relative/path" per line -- verified real, e.g. base/mi lists "./bin/cat",
 "./bin/ksh", etc. The real maketars script (read in full) does exactly this
@@ -26,7 +22,6 @@ installer/sets/makeetcset is a separate script with upgrade-merge-aware
 behavior this file does not replicate -- see the note below.
 
 SPECIAL (miniroot tools) -- implemented via name search, not .PATH
----------------------------------------------------------------------
 installer/special/ has 72 program directories, each a thin wrapper Makefile
 that reuses a userland/ program's source via ".PATH: ${.CURDIR}/../../../X"
 and rebuilds it statically, size-optimized, without a man page, for the
@@ -38,7 +33,6 @@ same-named directory across the same categories userland/xmake.lua already
 discovers programs in, and reuses ITS sources.
 
 BOOT IMAGE -- honest gap, tied to kernel/xmake.lua
------------------------------------------------------
 The install ramdisk needs a SEPARATE kernel build (RAMDISK / RAMDISK_CD
 configs, confirmed present at kernel/arch/<arch>/conf/{RAMDISK,RAMDISK_CD}),
 not the GENERIC-equivalent kernel/xmake.lua currently builds. kernel/xmake.lua
@@ -47,7 +41,6 @@ option (and re-running the files/GENERIC parser against RAMDISK instead of
 GENERIC) is a concrete follow-up, not attempted here.
 
 INSTALL IMAGE / ISO -- honest gap, inherent to the tools involved
-----------------------------------------------------------------------
 The real installer/amd64/iso/Makefile (read in full) builds the install
 image using vnconfig(8), fdisk(8), disklabel(8), newfs(8) and mount(8) --
 OpenBSD kernel-specific privileged disk operations (vnd(4)) that cannot run
@@ -56,7 +49,6 @@ is not a gap in this file's logic; it is what release(8) building has always
 required a real (or emulated) OpenBSD host for. This file provides a
 best-effort wrapper that looks for these tools via find_tool() and runs the
 same steps when they exist, and clearly warns and skips otherwise.
---------------------------------------------------------------------------------
 --]]
 
 -- Confirmed by testing: wprint/cprint are unavailable not just at
@@ -75,9 +67,9 @@ local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%
 local unpack = table.unpack or unpack
 local arch = get_config("target_arch") or "amd64"
 
--- ==============================================================================
--- Small utilities
--- ==============================================================================
+
+-- SMALL UTILITIES
+
 local function read_file(filepath)
     if type(io) ~= "table" or not io.open then return nil end
     local f = io.open(filepath, "r")
@@ -109,10 +101,9 @@ local function find_userland_program_dir(name)
     return nil
 end
 
--- ==============================================================================
+
 -- Sets: parse installer/sets/lists/<name>/{mi,md.<arch>} into a sorted,
 -- lib-first path list, matching maketars' own ordering exactly.
--- ==============================================================================
 local SET_NAMES = {"base", "comp", "etc", "game", "man"}
 
 local function read_list_file(filepath)
@@ -206,10 +197,9 @@ local function write_tarball(setname, entries, destdir, outdir, version)
     end
 end
 
--- ==============================================================================
+
 -- Special (miniroot) tools: statically-linked, size-optimized rebuild of a
 -- same-named userland program, for the install ramdisk.
--- ==============================================================================
 local function eteleos_special_tool(name, specialdir)
     local srcdir = find_userland_program_dir(name)
     if not srcdir then
@@ -241,11 +231,9 @@ local function eteleos_special_tool(name, specialdir)
     target_end()
 end
 
--- ==============================================================================
--- Targets
--- ==============================================================================
 
--- --- Sets ---------------------------------------------------------------------
+-- TARGET
+-- Sets 
 target("eteleos-sets")
     set_kind("phony")
     set_default(false)
@@ -266,7 +254,7 @@ target("eteleos-sets")
     end)
 target_end()
 
--- --- Special (miniroot) tools --------------------------------------------------
+-- Special (miniroot) tools
 do
     local specialdir = path.join(os.scriptdir(), "special")
     if os.isdir(specialdir) then
@@ -281,7 +269,7 @@ do
     end
 end
 
--- --- Boot image (RAMDISK kernel) -- honest gap, see file header ---------------
+-- Boot image (RAMDISK kernel) -- honest gap, see file header
 target("eteleos-boot-image")
     set_kind("phony")
     set_default(false)
@@ -292,10 +280,8 @@ target("eteleos-boot-image")
     end)
 target_end()
 
--- --- Install image / ISO -- best-effort, requires an OpenBSD-like host --------
--- ==============================================================================
+-- Install image / ISO -- best-effort, requires an OpenBSD-like host
 -- INSTALL IMAGE / ISO -- cross-platform rewrite (mtools + xorriso)
--- ==============================================================================
 -- The real installer/amd64/iso/Makefile builds the install image using
 -- vnconfig(8), fdisk(8), disklabel(8), newfs(8), mount(8) -- OpenBSD-only
 -- privileged disk operations that cannot run on any other host, and were
@@ -334,7 +320,6 @@ target_end()
 --     this delivery -- verified only that the pipeline runs and produces
 --     a file of the expected shape (valid FAT image, valid ISO9660+El
 --     Torito structure). Please boot-test it yourself before relying on it.
--- ==============================================================================
 
 local EFI_PROG_NAMES = {amd64 = "BOOTX64.EFI", arm64 = "BOOTAA64.EFI", riscv64 = "BOOTRISCV64.EFI"}
 
@@ -395,7 +380,7 @@ target("eteleos-install-image")
         os.tryrm(isoroot)
         os.mkdir(path.join(isoroot, "EFI", "BOOT"))
 
-        -- --- 1. Build the FAT "EFI System Partition" image with mtools ------------
+        -- 1. Build the FAT "EFI System Partition" image with mtools
         -- 4 MiB is comfortably more than a single small bootloader binary needs;
         -- mtools defaults to FAT12/16 at this size, which is what UEFI firmware
         -- expects for a removable-media ESP this small.
@@ -419,12 +404,12 @@ target("eteleos-install-image")
             return
         end
 
-        -- --- 2. Assemble the ISO9660 tree ------------------------------------------
+        -- 2. Assemble the ISO9660 tree
         os.cp(esp_img, path.join(isoroot, "efiboot.img"))
         os.cp(efi_bin, path.join(isoroot, "EFI", "BOOT", prog_name))
         os.cp(kernel_bin, path.join(isoroot, "bsd"))
 
-        -- --- 3. Author the ISO with xorriso -----------------------------------------
+        -- 3. Author the ISO with xorriso
         -- -e/-no-emul-boot: El Torito "no emulation" boot pointing at the FAT
         -- image above -- this is what UEFI firmware looks for. -isohybrid-gpt-basdat
         -- additionally makes the same .iso file directly writable to a USB stick
@@ -449,7 +434,7 @@ target("eteleos-install-image")
     end)
 target_end()
 
--- --- Release image: notes + checksums, the tractable part of "make release" ---
+-- Release image: notes + checksums, the tractable part of "make release"
 target("eteleos-release")
     set_kind("phony")
     set_default(false)

@@ -1,6 +1,6 @@
-/* $OpenBSD: cgi.c,v 1.120 2022/12/26 19:16:02 jmc Exp $ */
 /* This file edited*/
-/* $EteleOS: cgi.c, 2026/07/15*/
+/* EteleOS: cgi.c, time write: 2026/07/26*/
+/* $OpenBSD: cgi.c,v 1.120 2022/12/26 19:16:02 jmc Exp $ */
 /*
  * Copyright (c) 2014-2019, 2021, 2022 Ingo Schwarze <schwarze@usta.de>
  * Copyright (c) 2011, 2012 Kristaps Dzonsons <kristaps@bsd.lv>

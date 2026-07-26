@@ -1,9 +1,9 @@
 --[[
-================================================================================
- EteleOS: tools/helpers.lua, time write: 2026/07/10
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tools/helpers.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Global helper tables and utility functions for the EteleOS build framework.
 Loaded FIRST by tools/xmake.lua; every symbol defined here is a Lua global
 (ETELEOS_ prefix) so it remains accessible inside on_load() / on_build()
@@ -11,12 +11,10 @@ callbacks defined in the files that follow.
 
 Nothing here calls any xmake description-scope API that declares a project
 entity (no option(), no toolchain(), no rule(), no target()).
---------------------------------------------------------------------------------
 --]]
 
--- ==============================================================================
+
 -- Architecture → LLVM target triple
--- ==============================================================================
 -- Only the three architectures that remain in the EteleOS tree after pruning.
 -- Keep this table in sync with option("target_arch") in options.lua.
 ETELEOS_TARGET_TRIPLES = {
@@ -29,9 +27,8 @@ ETELEOS_TARGET_TRIPLES = {
 -- Used for validation and for the option values list.
 ETELEOS_SUPPORTED_ARCHS = { "amd64", "arm64", "riscv64" }
 
--- ==============================================================================
+
 -- Architecture → GCC cross-prefix
--- ==============================================================================
 -- Only meaningful for eteleos-gcc / external cross-toolchains.
 ETELEOS_CROSS_PREFIXES = {
     amd64   = "x86_64-unknown-openbsd-",
@@ -39,9 +36,8 @@ ETELEOS_CROSS_PREFIXES = {
     riscv64 = "riscv64-unknown-openbsd-",
 }
 
--- ==============================================================================
+
 -- Architecture-specific compiler flags
--- ==============================================================================
 -- Flags required for correctness on a given ISA, beyond the -target triple.
 -- Used in rules.lua (eteleos.base on_load) and toolchains.lua (on_load).
 ETELEOS_ARCH_CFLAGS = {
@@ -60,10 +56,8 @@ ETELEOS_ARCH_CFLAGS = {
     },
 }
 
--- ==============================================================================
--- Helper functions
--- ==============================================================================
 
+-- Helper functions
 -- Return the LLVM target triple for the currently configured architecture.
 -- Safe to call from both description scope (loading phase) and script-scope
 -- callbacks (build phase).

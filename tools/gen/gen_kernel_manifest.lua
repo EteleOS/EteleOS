@@ -1,9 +1,9 @@
 --[[
-================================================================================
- EteleOS: tools/gen/gen_kernel_manifest.lua
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tools/gen/gen_kernel_manifest.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Same reasoning as tools/gen/gen_userland_manifest.lua (see that file's
 header for the full explanation of why io.open()/os.execv() cannot run at
 xmake.lua description scope, confirmed against a real xmake v3.0.9 build).
@@ -27,7 +27,6 @@ Output: kernel/generated_manifest.lua, containing
 ETELEOS_KERNEL_MANIFEST[arch] = { selected_files = {...}, ioconf_c = <string
 or nil>, mode = "real-config8" | "approximate" } for each of amd64, arm64,
 riscv64.
---------------------------------------------------------------------------------
 --]]
 
 local ROOT   = path.absolute(os.scriptdir() .. "/../..")
@@ -36,9 +35,8 @@ local GEN_ROOT = path.join(ROOT, "build", "eteleos-kernel-gen")
 
 local ARCHES = {"amd64", "arm64", "riscv64"}
 
--- ==============================================================================
--- Small utilities (unchanged)
--- ==============================================================================
+
+-- Small utilities
 local function read_file(filepath)
     if not os.isfile(filepath) then return nil end
     local f = io.open(filepath, "r")
@@ -86,10 +84,9 @@ local function newest_mtime(files)
     return newest
 end
 
--- ==============================================================================
+
 -- REAL config(8), bootstrapped as a private host tool. Arch-independent --
 -- built once, reused for all three arches below.
--- ==============================================================================
 local function build_host_config_tool()
     import("lib.detect.find_tool")
 
@@ -309,9 +306,8 @@ local function harvest_selected_files(builddir)
     return files
 end
 
--- ==============================================================================
+
 -- Approximate files/GENERIC parser -- fallback path, unchanged logic.
--- ==============================================================================
 local function resolve_include(from_dir, incpath, conf_dir)
     local naive = path.join(from_dir, incpath)
     if os.isfile(naive) then return naive end
@@ -451,10 +447,9 @@ local function approximate_parser_selected_files(arch, core_conf_dir, arch_conf_
     return selected
 end
 
--- ==============================================================================
+
 -- Drive it for all three arches. config(8) itself is arch-independent, so
 -- it is only built once and reused.
--- ==============================================================================
 local config_bin = build_host_config_tool()
 
 local MANIFEST = {}
@@ -486,9 +481,8 @@ for _, arch in ipairs(ARCHES) do
     end
 end
 
--- ==============================================================================
+
 -- Serialize
--- ==============================================================================
 local function lua_quote(s) return string.format("%q", s) end
 
 local function serialize_list(list, indent)

@@ -1,9 +1,9 @@
 --[[
-================================================================================
- EteleOS: tools/rules.lua, time write: 2026/07/10
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tools/rules.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Project-wide rule() declarations for EteleOS.
 Loaded by tools/xmake.lua (after compiler.lua).
 
@@ -11,42 +11,39 @@ rule() declarations are project-global in xmake: once declared here, any
 module can opt in with add_rules("eteleos.*").
 
 Rule catalogue
---------------
-  eteleos.base          Common flags for every EteleOS target (hosted or not).
-                        Every target in every module should add this rule.
+    eteleos.base: Common flags for every EteleOS target (hosted or not).
+        Every target in every module should add this rule.
 
-  eteleos.kernel        Freestanding flags for the kernel. Builds that add
-                        this rule MUST also add eteleos.base first.
+    eteleos.kernel: Freestanding flags for the kernel. Builds that add
+        this rule MUST also add eteleos.base first.
 
-  eteleos.userland      Hardening flags for userland executables.
-  eteleos.userland_static Static-link variant, for /bin and /sbin.
+    eteleos.userland: Hardening flags for userland executables.
+    eteleos.userland_static Static-link variant, for /bin and /sbin.
 
-  eteleos.library       Flags for shared/static libraries.
+    eteleos.library: Flags for shared/static libraries.
 
-  eteleos.asm           Preprocessed assembler (.S) support.
+    eteleos.asm: Preprocessed assembler (.S) support.
 
-  eteleos.strip_release Strip all symbols in release/minsizerel mode.
+    eteleos.strip_release Strip all symbols in release/minsizerel mode.
 
-  eteleos.lto           Explicit per-target LTO (for modules that do not rely
-                        on the global policy set in compiler.lua).
+    eteleos.lto: Explicit per-target LTO (for modules that do not rely
+        on the global policy set in compiler.lua).
 
-  eteleos.asan          AddressSanitizer for hosted targets.
+    eteleos.asan: AddressSanitizer for hosted targets.
 
-  eteleos.ubsan         UndefinedBehaviorSanitizer for hosted targets.
+    eteleos.ubsan: UndefinedBehaviorSanitizer for hosted targets.
 
 Nothing in this file compiles any source file or declares any target.
---------------------------------------------------------------------------------
 --]]
 
--- ==============================================================================
+
 -- eteleos.base
--- ==============================================================================
 -- Common flags that apply to every EteleOS target (hosted or freestanding).
 -- Think of this as EteleOS's global "baseline" build configuration.
 -- Usage (in any module's xmake.lua):
 --   target("foo")
 --       add_rules("eteleos.base")
--- ==============================================================================
+
 rule("eteleos.base")
     on_load(function (target)
         -- --- Preprocessor -------------------------------------------------------
@@ -106,15 +103,14 @@ rule("eteleos.base")
     end)
 rule_end()
 
--- ==============================================================================
+
 -- eteleos.kernel
--- ==============================================================================
 -- Freestanding flags for the kernel. MUST be combined with eteleos.base.
 -- Explicitly blocks sanitizers (which require a hosted runtime library).
 -- Usage (in kernel/xmake.lua):
 --   target("eteleos-kernel")
 --       add_rules("eteleos.base", "eteleos.kernel")
--- ==============================================================================
+
 rule("eteleos.kernel")
     on_load(function (target)
         -- Freestanding environment: no libc, no hosted ABI assumptions.
@@ -150,15 +146,14 @@ rule("eteleos.kernel")
     end)
 rule_end()
 
--- ==============================================================================
+
 -- eteleos.userland
--- ==============================================================================
 -- Security hardening flags for EteleOS userland executables.
 -- MUST be combined with eteleos.base.
 -- Usage:
 --   target("sh")
 --       add_rules("eteleos.base", "eteleos.userland")
--- ==============================================================================
+
 rule("eteleos.userland")
     on_load(function (target)
         -- Position-independent executable.
@@ -179,9 +174,8 @@ rule("eteleos.userland")
     end)
 rule_end()
 
--- ==============================================================================
+
 -- eteleos.userland_static
--- ==============================================================================
 -- Same hardening as eteleos.userland, for the long-standing BSD convention
 -- that /bin and /sbin link statically so they still work if /usr (and
 -- whatever shared libraries live there) isn't mounted yet during early
@@ -193,7 +187,7 @@ rule_end()
 -- Usage:
 --   target("mount")
 --       add_rules("eteleos.base", "eteleos.userland_static")
--- ==============================================================================
+
 rule("eteleos.userland_static")
     on_load(function (target)
         target:add("ldflags", "-static", {force = true})
@@ -202,15 +196,14 @@ rule("eteleos.userland_static")
     end)
 rule_end()
 
--- ==============================================================================
+
 -- eteleos.library
--- ==============================================================================
 -- Flags for shared libraries (and static libraries intended for later dynamic
 -- linking). MUST be combined with eteleos.base.
 -- Usage:
 --   target("libcrypto")
 --       add_rules("eteleos.base", "eteleos.library")
--- ==============================================================================
+
 rule("eteleos.library")
     on_load(function (target)
         -- Position-independent code.
@@ -220,15 +213,14 @@ rule("eteleos.library")
     end)
 rule_end()
 
--- ==============================================================================
+
 -- eteleos.asm
--- ==============================================================================
 -- Support rule for pure-assembly source modules (.S / .s).
 -- Can be combined with eteleos.base or eteleos.kernel as needed.
 -- Usage:
 --   target("boot")
 --       add_rules("eteleos.base", "eteleos.kernel", "eteleos.asm")
--- ==============================================================================
+
 rule("eteleos.asm")
     on_load(function (target)
         target:add("asflags",
@@ -238,15 +230,14 @@ rule("eteleos.asm")
     end)
 rule_end()
 
--- ==============================================================================
+
 -- eteleos.strip_release
--- ==============================================================================
 -- Strip all debug symbols from the installed binary in release / minsizerel
 -- modes. Optional: only add this rule to targets where stripping is desired.
 -- Usage:
 --   target("sh")
 --       add_rules("eteleos.base", "eteleos.userland", "eteleos.strip_release")
--- ==============================================================================
+
 rule("eteleos.strip_release")
     on_load(function (target)
         if is_mode("release") or is_mode("minsizerel") then
@@ -255,15 +246,14 @@ rule("eteleos.strip_release")
     end)
 rule_end()
 
--- ==============================================================================
+
 -- eteleos.lto
--- ==============================================================================
 -- Explicit per-target LTO, for modules that prefer to opt in target-by-target
 -- rather than rely on the global policy set in compiler.lua.
 -- Usage:
 --   target("libssl")
 --       add_rules("eteleos.base", "eteleos.library", "eteleos.lto")
--- ==============================================================================
+
 rule("eteleos.lto")
     on_load(function (target)
         -- Raw -flto flag, not the xmake policy; this ensures the flag appears
@@ -273,15 +263,14 @@ rule("eteleos.lto")
     end)
 rule_end()
 
--- ==============================================================================
+
 -- eteleos.asan
--- ==============================================================================
 -- AddressSanitizer for hosted targets (userland tools, tests).
 -- NEVER add this rule to the kernel or any freestanding target.
 -- Usage:
 --   target("my-tool")
 --       add_rules("eteleos.base", "eteleos.userland", "eteleos.asan")
--- ==============================================================================
+
 rule("eteleos.asan")
     on_load(function (target)
         if has_config("asan") then
@@ -291,15 +280,14 @@ rule("eteleos.asan")
     end)
 rule_end()
 
--- ==============================================================================
+
 -- eteleos.ubsan
--- ==============================================================================
 -- UndefinedBehaviorSanitizer for hosted targets.
 -- NEVER add this rule to the kernel or any freestanding target.
 -- Usage:
 --   target("my-tool")
 --       add_rules("eteleos.base", "eteleos.userland", "eteleos.ubsan")
--- ==============================================================================
+
 rule("eteleos.ubsan")
     on_load(function (target)
         if has_config("ubsan") then

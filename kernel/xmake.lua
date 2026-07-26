@@ -1,143 +1,20 @@
 --[[
-================================================================================
- EteleOS: kernel/xmake.lua, time write: 2026/07/14
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: kernel/xmake.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Manages: kernel core, subsystems ("modules"), drivers, architecture, linker
 script, the final kernel image ("bsd"), and the EFI bootloader.
 
-WHAT CHANGED IN THIS REVISION
-------------------------------------------------------
-The previous revision's hand-rolled files/GENERIC parser (parse_generic,
-parse_files_list, eval_expr) had one confirmed correctness bug: it does not
-resolve config(8)'s "attach <dev> at <bus> with <alias>" graph, so a file
-conditioned on an attach alias (e.g. dev/ic/vga.c's "vga & (vga_pci |
-vga_isa)") is wrongly excluded even when GENERIC enables it. It also never
-generated ioconf.c.
-
-Rather than extend the hand-rolled parser to reimplement config(8)'s
-attach-graph resolution (config(8)'s own sem.c is ~1200 lines of exactly this
-logic -- a second, parallel, Lua reimplementation is how the vga_pci bug got
-in here in the first place), this revision builds and runs the REAL config(8)
-as a private, build-time-only HOST tool, bootstrapped straight from its own
-verified-present source at userland/system/config/*.c. This is not the same
-"config" as userland/xmake.lua's own host-system-config target (that one
-builds the INSTALLED /usr/sbin/config end users get); this is kernel/'s own
-private bootstrap copy, analogous to how many OS build systems bootstrap a
-small host-side tool ahead of the real build. Concretely, real config(8)
-gives us, in one step:
-  - ioconf.c, generated exactly the way config(8) has always generated it
-    (see BUILD_HOST_CONFIG_TOOL / RUN_REAL_CONFIG / HARVEST_CONFIG_OUTPUT
-    below), closing the "ioconf.c missing" gap.
-  - a fully attach-graph-correct selected-files list, harvested from the
-    Makefile config(8) itself writes (see HARVEST_CONFIG_OUTPUT) -- closing
-    the vga_pci-style false-negative bug for free, because it is the real
-    tool's own decision, not a re-derived approximation.
-
-The restructuring the user flagged (source include paths not yet fixed for
-the new layout) turned out, on inspection, to be a consistent pattern: the
-old top-level sys/{conf,kern,lib,stand} each gained a new "core/" prefix
-(verified: sys/conf -> kernel/core/conf, sys/lib -> kernel/core/lib, sys/
-stand -> kernel/core/stand), dev/ absorbed scsi/ as a subdirectory (sys/scsi
--> kernel/dev/scsi), and net/ gained an extra nesting level (sys/net/if.h ->
-kernel/net/net/if.h, same for netinet/netinet6/netmpls/net80211). Every
-occurrence found so far (arch/<arch>/conf/GENERIC's own include line,
-gram.y's hardcoded "conf/files" auto-include, files.amd64's own "include
-scsi/files.scsi") is fixed with ONE general patch rather than one-off
-staged copies: a scratch copy of config(8)'s own util.c has its sourcepath()
-changed to retry a file under core/, dev/, or fs/ before giving up, when the
-plain srcdir-relative path doesn't exist (patched into the private bootstrap
-binary only -- see BUILD_HOST_CONFIG_TOOL below -- never touching the real
-userland/system/config/util.c or any file under kernel/). This is a single,
-general fix rather than a per-file special case, and -s (srcdir) is passed
-as the real, unmodified kernel/ directory throughout: no staged/patched
-GENERIC or files.* copies anywhere in this pipeline, and no filesystem
-symlinks either (a symlink-based shim srcdir would silently break on a
-Windows host with no symlink privilege -- a real concern, not a
-hypothetical one, since this project's own transcripts show a Windows dev
-environment; where a directory alias is genuinely needed -- <machine/...>
-headers, see below -- it is a real directory COPY instead).
-
-This file's include paths needed the same three fixes for the SAME reason,
-confirmed by actually test-compiling this file end to end against the real
-tree (not just reading it): kernel/core (for <sys/...>), kernel/fs (for
-<isofs/...>, <ufs/...>, ...), and kernel/net (for <net/...>, <netinet/...>,
-...) are all now on both the main kernel target's and the EFI bootloader's
-include paths. <machine/...> resolution -- normally a "machine" symlink
-config(8)/bsd.own.mk creates pointing at arch/<arch>/include -- is
-materialized here as a real directory copy for the same Windows-portability
-reason as above (arch/<arch>/include is a few hundred KB; copying it is
-cheap and needs no special privilege).
-
-Two small host-portability gaps surfaced the same way (this bootstrap tool
-runs on the BUILD machine, which will not be OpenBSD): pledge(2) is
-OpenBSD-only (compiled out via -Dpledge(a,b)=0 -- safe here since this is a
-short-lived code generator, not the actual installed system tool userland/
-xmake.lua's own host-system-config target already builds separately), and
-BSD libc's major()/minor()/makedev()/errc() have no glibc equivalent
-reachable the way config(8)'s sources expect (a tiny stub .c provides
-standard-shaped replacements -- see devfuncs_stub_path below). The
-interactive "UKC" boot-time config editor (cmd.c/ukc.c/ukcutil.c/exec_elf.c)
-needs real BSD <nlist.h>/<kvm.h> host APIs unrelated to this bootstrap's
-only job (batch-mode ioconf.c/file-list generation); since it is reachable
-only through main.c's single, flag-gated "if (eflag) return ukc(...)" call,
-those 4 files are excluded and replaced with a one-line ukc() stub instead
-of chasing BSD-only headers that add nothing for this use case.
-
-If the host bootstrap fails for any reason (no host C compiler, no
-yacc/bison, no lex/flex, or a genuine compile error), this file falls back
-to the OLD hand-rolled parser -- kept below, unchanged -- so a kernel still
-builds (without ioconf.c, with the known attach-graph gap) rather than
-hard-failing the whole project. Every fallback path prints a clear wprint()
-explaining what is degraded and why, matching this file's existing style.
-
-Tested (not just read) while drafting this revision: a plain Linux host
-(gcc/bison/flex/lld) successfully bootstraps config(8), runs it against the
-real GENERIC for amd64/arm64/riscv64 (2470/1803/951 files selected, all
-three with ioconf.c generated), and compiles every EFI bootloader source for
-all three architectures; amd64 additionally linked and objcopy'd into a
-real, verified PE/EFI application end to end. arm64/riscv64 only got as far
-as compiling (a cross-gcc packaging gap in the test sandbox, unrelated to
-this project's actual clang-based toolchain, kept the link step from being
-verified there too) -- worth re-confirming against the project's real
-toolchain, but every source-level and path-resolution question is settled.
-
-EFI BOOTLOADER (previously entirely out of scope)
-------------------------------------------------------
-kernel/arch/*/stand/ is real on all three supported architectures, but only
-as EFI applications -- verified: arm64 and riscv64 have ONLY
-stand/efiboot/ (no legacy BIOS chain at all, they are EFI-only platforms
-upstream too), and amd64 additionally has biosboot/cdboot/cdbr/fdboot/mbr/
-pxeboot/rdboot/vmboot (the legacy real-mode BIOS chain). This revision adds
-EFI boot for all three architectures (ELETEOS_EFI_BOOTLOADERS below), reusing
-the verified real recipe from each arch's own efiboot Makefile(.common):
-compile freestanding+PIC, link as a "-shared" ELF, then objcopy into a PE/EFI
-application (x86_64 via objcopy's real "efi-app-x86_64" BFD target; arm64/
-riscv64 via a raw ".peheader"-section binary dump, exactly as their own
-Makefiles do it -- the two are genuinely different mechanisms upstream, not
-a simplification on this file's part).
-
-The amd64-only legacy BIOS chain (biosboot/cdboot/cdbr/fdboot/mbr/pxeboot/
-rdboot/vmboot) is explicitly NOT implemented here: it is 16-bit real-mode
-code with flat-binary (not ELF) linking and sector-boundary size limits --
-a genuinely different build problem from everything else in this file, and
-one a modern hypervisor/UEFI-first target (this project's own VirtualBox
-testing notes point the same way) needs far less than EFI boot does. Left
-as an explicit follow-up, same as libraries/xmake.lua does for its own
-deferred 19 libraries.
-
-WHAT CHANGED IN THIS REVISION (2026/07/18) -- relocated to script scope
-------------------------------------------------------------------------
-Confirmed against a real xmake v3.0.9 build (not just documentation): io,
-import, os.execv, os.iorun, pcall and even raw Lua error()/assert() are ALL
+Relocated to script scope, confirmed against a real xmake v3.0.9 build (not just documentation):
+io, import, os.execv, os.iorun, pcall and even raw Lua error()/assert() are ALL
 nil at xmake.lua description scope -- only a small read-only allowlist
 (os.getenv, os.isfile, os.isdir, os.files, os.dirs, get_config, ...) is
 available there. This means the config(8) bootstrap this file's own header
 above describes as "tested... successfully bootstraps" was tested outside
 xmake's own description-scope execution path -- the logic itself checks
-out (re-confirmed here: 2470/1803/951 files selected, matching exactly),
-but running it inline in a bare `do...end` block at the top of this file,
+out, but running it inline in a bare `do...end` block at the top of this file,
 as the previous revision did, cannot actually load under a real xmake
 binary. The exact same bootstrap logic now lives in
 tools/gen/gen_kernel_manifest.lua, run via `xmake lua` (confirmed: io/
@@ -159,7 +36,6 @@ core/conf/swapgeneric.c) -- the driver/MI-optional file loop now retries
 the same ""/"core/"/"dev/"/"fs/" prefixes tools/gen/gen_kernel_manifest.lua
 already uses for config(8) itself, instead of silently dropping these as
 if they were conditionally-disabled.
---------------------------------------------------------------------------------
 --]]
 
 -- Confirmed by testing: wprint/cprint are unavailable not just at
@@ -178,9 +54,8 @@ local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%
 local unpack = table.unpack or unpack
 local arch   = get_config("target_arch") or "amd64"
 
--- ==============================================================================
+
 -- Per-architecture facts (unchanged from the previous revision)
--- ==============================================================================
 local MD_CORE_DIRS = { amd64 = "amd64", arm64 = "arm64", riscv64 = "riscv64" }
 
 local BUS_GLUE_DIRS = {
@@ -245,9 +120,8 @@ end
 local core_conf_dir = path.join(os.scriptdir(), "core", "conf")
 local arch_conf_dir = path.join(os.scriptdir(), "arch", arch, "conf")
 
--- ==============================================================================
+
 -- File discovery + config(8) bootstrap -- MOVED to tools/gen/gen_kernel_manifest.lua
--- ==============================================================================
 -- Confirmed against a real xmake v3.0.9 build (not just documentation): io,
 -- import, os.execv and os.iorun are all nil at xmake.lua description scope --
 -- only a small read-only allowlist (os.getenv, os.isfile, os.isdir, os.files,
@@ -283,12 +157,9 @@ local arch_conf_dir = path.join(os.scriptdir(), "arch", arch, "conf")
 -- whenever kernel/ Makefiles, GENERIC/files lists, or directory layout
 -- change. The output is committed to the repo, like a `configure` script or
 -- generated protobuf code -- description scope cannot regenerate it itself.
--- ==============================================================================
 
 includes("generated_manifest.lua")
-
 local selected_files, ioconf_c_path, ioconf_gendir = {}, nil, nil
-
 local kernel_manifest = ETELEOS_KERNEL_MANIFEST and ETELEOS_KERNEL_MANIFEST[arch]
 if kernel_manifest then
     selected_files = kernel_manifest.selected_files or {}
@@ -310,9 +181,7 @@ else
 end
 
 
--- ==============================================================================
 -- Machine-independent kernel subsystems ("modules")
--- ==============================================================================
 local KERNEL_MI_DIRS = {
     "core/kern", "core/lib/libkern", "core/miscfs",
     "uvm", "ddb", "crypto",
@@ -320,9 +189,8 @@ local KERNEL_MI_DIRS = {
     "fs/ufs", "fs/nfs", "fs/msdosfs", "fs/isofs", "fs/ntfs", "fs/tmpfs",
 }
 
--- ==============================================================================
+
 -- Kernel image
--- ==============================================================================
 target("eteleos-kernel")
     set_kind("binary")
     set_basename("bsd")
@@ -560,7 +428,7 @@ char version[] = "EteleOS %s (%s) #0: %s\n";
     end)
 target_end()
 
--- ==============================================================================
+
 -- EFI bootloader -- one target per architecture, built as a phony target
 -- with its whole recipe in on_build (freestanding compile -> shared-object
 -- link -> objcopy to the final .EFI application), since none of this is a
@@ -570,7 +438,7 @@ target_end()
 -- Makefile for arm64/riscv64, which are self-contained) -- NOT auto-globbed,
 -- because these directories mix in unrelated files (softraid_arm64.h,
 -- headers, etc.) that must not be fed to the compiler as sources.
--- ==============================================================================
+
 local EFI_BOOTLOADERS = {
     amd64 = {
         efidir       = "core/stand/efi",

@@ -1,16 +1,15 @@
 --[[
-================================================================================
- EteleOS: gui/xmake.lua, time write: 2026/07/16
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: gui/xmake.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Manages the X.Org-derived windowing stack: Window System, Display Server,
 Graphics Libraries, Fonts, and X11 apps/utilities (verified categories:
 app/, driver/, font/, lib/, proto/, util/, xserver/ -- roughly 27,000 files
 across ~200 separately-versioned upstream modules listed in gui/MODULES).
 
 WHAT DOES NOT EXIST HERE -- please read first
--------------------------------------------------
   Compositor, Desktop Environment, Mobile UI, and Wayland were requested as
   responsibilities of this file, but NONE of them exist anywhere in the
   current source tree -- verified by searching the whole gui/ tree:
@@ -31,7 +30,6 @@ WHAT DOES NOT EXIST HERE -- please read first
   more complete than it is.
 
 WHY THIS FILE LOOKS DIFFERENT FROM kernel/libraries/userland's xmake.lua
---------------------------------------------------------------------------
   Every gui module is its own independently-versioned upstream X.Org
   project, built with autotools/libtool (configure.ac, Makefile.am), NOT a
   simple PROG=/SRCS= BSD Makefile. Re-implementing autotools' own
@@ -53,7 +51,6 @@ happens in on_build/on_install shelling out to that module's own configure
 script, which is the correct, honest shape of this problem.
 
 WHAT CHANGED IN THIS REVISION
-------------------------------------------------------
 xserver's GLX/DRI/KDRIVE configure flags -- previously left at the
 configure script's own defaults, per this file's own prior note ("no
 equivalent wired up in this file yet") -- now read the new build_gl/
@@ -71,7 +68,6 @@ one-off CONFIGURE_ARGS) are intentionally NOT transcribed here -- same
 "explicit, honest deferral" this codebase already uses elsewhere (see
 libraries/xmake.lua's own note on its 19 libraries) rather than silently
 guessing at dozens of individual upstream quirks.
---------------------------------------------------------------------------------
 --]]
 
 -- Confirmed by testing: wprint/cprint are unavailable not just at
@@ -87,7 +83,7 @@ guessing at dozens of individual upstream quirks.
 local wprint = wprint or function(fmt, ...) print(string.format(fmt, ...)) end
 local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%w_]+}", "")), ...)) end
 
--- ==============================================================================
+
 -- Module discovery: gui/MODULES (category/name, upstream version, optional
 -- status flag) is parsed offline by tools/gen/gen_gui_manifest.lua, since
 -- io.open() cannot run at xmake.lua description scope (confirmed against a
@@ -95,10 +91,9 @@ local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%
 -- explanation of this scope rule, which applies project-wide). This file
 -- just reads the resulting ETELEOS_GUI_MANIFEST global table.
 -- Regenerate with: xmake lua tools/gen/gen_gui_manifest.lua
--- ==============================================================================
 includes("generated_manifest.lua")
 
--- ==============================================================================
+
 -- Per-module configure overrides -- confirmed real from gui/xserver/
 -- Makefile.bsd-wrapper and gui/driver/xf86-video-intel/Makefile.bsd-wrapper.
 -- Everything NOT listed here uses the generic default args below (matching
@@ -108,7 +103,6 @@ includes("generated_manifest.lua")
 -- this project's own build_gl/build_dri options -- rather than static
 -- lists, so any module needing the same GLX/DRI toggle real upstream
 -- Makefiles use can reuse it exactly as xf86-video-intel does below.
--- ==============================================================================
 local function gl_dri_flags(build_gl, build_dri)
     local flags = {}
     flags[#flags + 1] = build_gl and "--enable-glx" or "--disable-glx"
@@ -154,10 +148,9 @@ local function resolve_module_configure_args(relpath)
     return entry
 end
 
--- ==============================================================================
+
 -- Generic autotools wrapper: one utility target per module, cross-building
 -- via our own toolchain's target triple.
--- ==============================================================================
 local function eteleos_gui_module(mod)
     -- xserver is vendored directly at gui/xserver/ (MODULES lists it
     -- as a bare "xserver" entry with no category/name split), not nested
@@ -235,9 +228,8 @@ local function eteleos_gui_module(mod)
     target_end()
 end
 
--- ==============================================================================
+
 -- Discover and wire up every module from the real MODULES file
--- ==============================================================================
 local all_modules = ETELEOS_GUI_MANIFEST or {}
 print(string.format("eteleos-gui: %d modules discovered from MODULES", #all_modules))
 

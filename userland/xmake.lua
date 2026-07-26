@@ -1,9 +1,9 @@
 --[[
-================================================================================
- EteleOS: userland/xmake.lua, time write: 2026/07/18
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: userland/xmake.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Manages: applications, commands, daemons, utilities, services -- every
 individual program under userland/ (verified categories: development,
 essential/{bin,sbin}, games, libexec, multimedia, network, package, security,
@@ -11,7 +11,6 @@ system, utilities -- 565 build units as of the current tree; see
 tools/gen/gen_userland_manifest.lua for how that number is produced).
 
 ARCHITECTURE CHANGE IN THIS REVISION -- discovery moved out of this file
--------------------------------------------------------------------------
 Confirmed against a real xmake v3.0.9 build (not just documentation): io,
 import, pcall, os.iorun and os.exec are ALL nil at xmake.lua description
 scope -- only a small read-only allowlist (os.getenv, os.isfile, os.isdir,
@@ -46,7 +45,6 @@ so it has to already be correct at `xmake f` time.
 
 WHAT THIS FILE (VIA THE GENERATOR) PARSES OUT OF EACH PROGRAM'S OWN
 MAKEFILE (real, verified; unchanged from the previous revision)
---------------------------------------------------------------------------
   PROG=            program name (falls back to the directory name if absent)
   SRCS=            explicit source list, when given (falls back to a
                     recursive *.c/*.S/*.cc glob otherwise)
@@ -64,7 +62,6 @@ MAKEFILE (real, verified; unchanged from the previous revision)
                     nothing today)
 
 GENERATED SOURCES (best-effort, tool-checked)
-----------------------------------------------
   *.y (yacc/bison), *.l (lex/flex): verified real, 53 + 8 files across
     userland (e.g. httpd/parse.y, security/doas/parse.y,
     utilities/mklocale/{lex.l,yacc.y}).
@@ -76,7 +73,6 @@ GENERATED SOURCES (best-effort, tool-checked)
     those 3 Makefiles actually uses.
 
 HOST-BUILD vs CROSS-BUILD
----------------------------
   Two programs here are needed as HOST-native build-time tools, not (only)
   as target-arch binaries: userland/system/config (the config(8) tool --
   see the ioconf.c/ generation gap noted in kernel/xmake.lua) and
@@ -90,7 +86,6 @@ HOST-BUILD vs CROSS-BUILD
   gap notes in kernel/xmake.lua and resources/xmake.lua.
 
 REMAINING KNOWN LIMITATIONS
-----------------------------------
   - BINOWN/BINMODE are applied via a best-effort chmod/chown in
     after_install; chown only succeeds when the install itself runs as
     root, exactly like the original Makefiles' behavior.
@@ -99,7 +94,6 @@ REMAINING KNOWN LIMITATIONS
     previous revision -- only relocated into the generator. See
     tools/gen/gen_userland_manifest.lua for the up-to-date verification
     notes on those.
---------------------------------------------------------------------------------
 --]]
 
 -- Confirmed by testing: wprint/cprint are unavailable not just at
@@ -117,9 +111,8 @@ local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%
 
 local unpack = table.unpack or unpack
 
--- ==============================================================================
+
 -- Small utilities still needed HERE (build-time, not discovery-time)
--- ==============================================================================
 local function basename_noext(filepath)
     local name = filepath:match("([^/]+)$") or filepath
     return (name:gsub("%.[^.]+$", ""))
@@ -131,11 +124,10 @@ local function abspath(rel)
     return path.join(os.scriptdir(), rel)
 end
 
--- ==============================================================================
+
 -- Generated-source handling (yacc/lex/rpcgen), shared by every program --
 -- unchanged: this was already entirely on_load-scoped (script scope), where
 -- import()/os.execv() genuinely do work.
--- ==============================================================================
 local function is_fresh(outc, srcfile)
     return os.isfile(outc) and os.isfile(srcfile) and os.mtime(outc) >= os.mtime(srcfile)
 end
@@ -217,10 +209,9 @@ local function wire_generated_sources(target_name, progdir, y_files, l_files, x_
     end)
 end
 
--- ==============================================================================
+
 -- Install permissions (BINOWN/BINMODE/BINGRP), applied best-effort --
 -- unchanged: already entirely after_install-scoped.
--- ==============================================================================
 local function wire_install_perms(info)
     if not (info.binmode or info.binown or info.bingrp) then return end
     after_install(function (target)
@@ -243,9 +234,8 @@ local function wire_install_perms(info)
     end)
 end
 
--- ==============================================================================
+
 -- Man page install -- unchanged: add_installfiles() is description-scope-safe.
--- ==============================================================================
 local function wire_man_pages(progdir, man_files)
     if #man_files == 0 then return end
     for _, m in ipairs(man_files) do
@@ -256,14 +246,13 @@ local function wire_man_pages(progdir, man_files)
     end
 end
 
--- ==============================================================================
+
 -- Define one userland program. UNCHANGED from the previous revision except:
 -- `info` is now a parameter (pre-parsed by the generator) instead of being
 -- computed here via parse_program_makefile(progdir); and opts.extra_includedirs
 -- / opts.extra_srcdirs / opts.gen_termsort now hold paths relative to
 -- userland/ (resolved here via abspath()) instead of pre-resolved absolutes,
 -- since the generator cannot know this machine's checkout path.
--- ==============================================================================
 local function eteleos_program(target_name, progdir, opts, info)
     opts = opts or {}
 
@@ -455,12 +444,11 @@ local function eteleos_program(target_name, progdir, opts, info)
     target_end()
 end
 
--- ==============================================================================
+
 -- Consume the generated manifest (see file header). This is the ONLY thing
 -- that replaces the previous eteleos_walk_dir()/eteleos_category() calls --
 -- everything about WHICH programs exist and WHAT their Makefiles say was
 -- already decided by tools/gen/gen_userland_manifest.lua.
--- ==============================================================================
 includes("generated_manifest.lua")
 
 if type(ETELEOS_USERLAND_MANIFEST) == "table" then

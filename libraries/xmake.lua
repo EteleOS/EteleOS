@@ -1,56 +1,53 @@
 --[[
-================================================================================
- EteleOS: libraries/xmake.lua, time write: 2026/07/16
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: libraries/xmake.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Manages the whole libraries/ tree: libc, libm, libcrypto, libssl, libpthread,
 librthread, libutil, libtls, libz, libedit, libelf, libevent, libexpat (all of
 libraries/core/), plus every library under libraries/extra/, following the
-current source layout (verified against github.com/EteleOS/EteleOS, NOT the
-stale per-library Makefiles, which still reference pre-restructure paths).
-
+current source layout (NOT the stale per-library Makefiles, which still reference pre-restructure paths).
 Every library is built as a PAIR of targets -- "<name>-static" and
 "<name>-shared" -- via the eteleos_bsd_library() helper below. This file does
 not compile object/kernel/userland/driver/xenocara code; it only builds the
 libraries/ tree, per the build spec.
 
-WHAT CHANGED IN THIS REVISION
-------------------------------------------------------
 1. libc syscall stubs (previously missing -- only the one hand-written
-   libc/sys/canceled.c was ever picked up by the generic glob). The real
-   OpenBSD mechanism, confirmed against libc/sys/Makefile.inc, is NOT "parse
-   syscalls.master and generate one .S per entry" -- it's simpler: the
-   Makefile hand-maintains 5 name lists (ASM, ASM_NOERR, PSEUDO,
-   PSEUDO_NOERR, HIDDEN) and, for each name, pipes a 2-line "source"
-   (#include "SYS.h" + one of RSYSCALL()/RSYSCALL_NOERROR()/PSEUDO()/
-   PSEUDO_NOERROR()/RSYSCALL_HIDDEN()) straight into the compiler, no file
-   ever written to disk. This revision parses those 5 lists out of
-   libc/sys/Makefile.inc (a small, constrained parse -- not a general
-   Makefile parser) and materializes the same 2-line stub as a real file
-   under a gendir instead of piping to stdin, since that fits this project's
-   add_files()-based model much better; a handful of syscalls with real,
-   hand-written .S files (Ovfork.S, brk.S, sigprocmask.S, ...) are picked up
-   by the ordinary glob exactly as before, unaffected by this change.
+libc/sys/canceled.c was ever picked up by the generic glob). The real
+OpenBSD mechanism, confirmed against libc/sys/Makefile.inc, is NOT "parse
+syscalls.master and generate one .S per entry" -- it's simpler: the
+Makefile hand-maintains 5 name lists (ASM, ASM_NOERR, PSEUDO,
+PSEUDO_NOERR, HIDDEN) and, for each name, pipes a 2-line "source"
+(#include "SYS.h" + one of RSYSCALL()/RSYSCALL_NOERROR()/PSEUDO()/
+PSEUDO_NOERROR()/RSYSCALL_HIDDEN()) straight into the compiler, no file
+ever written to disk. This revision parses those 5 lists out of
+libc/sys/Makefile.inc (a small, constrained parse -- not a general
+Makefile parser) and materializes the same 2-line stub as a real file
+under a gendir instead of piping to stdin, since that fits this project's
+add_files()-based model much better; a handful of syscalls with real,
+hand-written .S files (Ovfork.S, brk.S, sigprocmask.S, ...) are picked up
+by the ordinary glob exactly as before, unaffected by this change.
+
 2. All 19 libraries under libraries/extra/ (besides librthread, already
-   wired) are now built. Most reuse eteleos_bsd_library() unchanged; four
-   needed real per-library handling, documented at each call site:
-   libkvm (arch-specific kvm_<arch>.c), libossaudio (sources shared with
-   libsndio), libpcap (yacc/lex with a custom symbol prefix, plus one file
-   from kernel/net/net/), and librpcsvc (every source is rpcgen-generated
-   from a .x spec, not written by hand). Symbol-visibility control
-   (Symbols.map / VERSION_SCRIPT, present in several of these Makefiles) is
-   NOT implemented here -- every library still builds and links correctly
-   without it, it only affects which symbols are exported as public ABI, so
-   it is left as a follow-up rather than a build-correctness fix.
+wired) are now built. Most reuse eteleos_bsd_library() unchanged; four
+needed real per-library handling, documented at each call site:
+libkvm (arch-specific kvm_<arch>.c), libossaudio (sources shared with
+libsndio), libpcap (yacc/lex with a custom symbol prefix, plus one file
+from kernel/net/net/), and librpcsvc (every source is rpcgen-generated
+from a .x spec, not written by hand). Symbol-visibility control
+(Symbols.map / VERSION_SCRIPT, present in several of these Makefiles) is
+NOT implemented here -- every library still builds and links correctly
+without it, it only affects which symbols are exported as public ABI, so
+it is left as a follow-up rather than a build-correctness fix.
+
 3. read_shlib_version() no longer reads shlib_version files directly (that
-   used io.open() at description scope, which is nil there in a real
-   xmake v3.0.9 run -- confirmed; only script-scope callbacks like on_load
-   have it). The major/minor numbers now come from a lookup into
-   ETELEOS_LIBRARIES_SHLIB_VERSIONS, precomputed offline by
-   tools/gen/gen_libraries_manifest.lua (xmake lua tools/gen/gen_libraries_manifest.lua
-   to regenerate after any library gains/changes a shlib_version file).
---------------------------------------------------------------------------------
+used io.open() at description scope, which is nil there in a real
+xmake v3.0.9 run -- confirmed; only script-scope callbacks like on_load
+have it). The major/minor numbers now come from a lookup into
+ETELEOS_LIBRARIES_SHLIB_VERSIONS, precomputed offline by
+tools/gen/gen_libraries_manifest.lua (xmake lua tools/gen/gen_libraries_manifest.lua
+to regenerate after any library gains/changes a shlib_version file).
 --]]
 
 -- Confirmed by testing: wprint/cprint are unavailable not just at
@@ -78,11 +75,9 @@ if type(ETELEOS_LIBRARIES_SHLIB_VERSIONS) ~= "table" then
     ETELEOS_LIBRARIES_SHLIB_VERSIONS = {}
 end
 
--- ==============================================================================
+
 -- Helpers (local to this file -- library-build-specific, not project-wide
 -- utilities, so these do not belong in tools/helpers.lua)
--- ==============================================================================
-
 -- Read a small text file fully. Returns nil if it does not exist.
 local function read_file(filepath)
     -- Defensive: `io` has been observed nil at this exact on_load call
@@ -161,8 +156,7 @@ end
 
 -- Parse "major=N" / "minor=N" out of a BSD-style shlib_version file.
 -- Returns 0, 0 if the file is missing or unparseable.
---
--- CHANGED: this used to call read_file() (io.open) directly here, at
+-- This used to call read_file() (io.open) directly here, at
 -- description scope. Confirmed against a real xmake v3.0.9 build: io is
 -- nil at description scope (only script-scope callbacks like on_load have
 -- it -- see docs.xmake.io/api/scripts/builtin-modules/import.html, "most
@@ -179,13 +173,13 @@ local function read_shlib_version(srcdir_rel)
     return v.major, v.minor
 end
 
--- ==============================================================================
+
 -- libc syscall stubs -- see file header. Parses ASM/ASM_NOERR/PSEUDO/
 -- PSEUDO_NOERR/HIDDEN out of libc/sys/Makefile.inc and materializes the
 -- 2-line SYS.h-macro stub each name expands to, as a real file per name,
 -- instead of piping to the compiler's stdin the way the real Makefile does
 -- (add_files() needs real paths; this is the same content either way).
--- ==============================================================================
+
 local SYSCALL_CLASS_MACRO = {
     ASM         = "RSYSCALL",
     ASM_NOERR   = "RSYSCALL_NOERROR",
@@ -345,22 +339,22 @@ end
 
 -- Define a BSD-style library as a pair of targets: "<name>-static" (kind
 -- "static") and "<name>-shared" (kind "shared"), both named libNAME on disk.
---   name:     library name without the "lib" prefix, e.g. "c" for libc
---   srcdir_rel: source directory, relative to this file (e.g. "core/libc")
---   opts:     { deps, defines, extra_includedirs, extra_srcdirs, extra_files,
---               arch_files, gen_files_fn }
---     extra_srcdirs: additional dirs (relative to this file, NOT to srcdir --
---       e.g. a sibling extra/ library, or kernel/net) to ALSO recursively
---       glob **.c from, for libraries whose real Makefile pulls sources
---       from outside their own directory via .PATH.
---     extra_files: absolute file paths to add as-is (for one-off cases not
---       worth a whole extra_srcdirs glob).
---     arch_files: { [arch] = "relative/file.c" } -- exactly one extra,
---       arch-specific file to add (e.g. libkvm's kvm_<arch>.c).
---     gen_files_fn: function(target_gendir) -> {list of generated file
---       paths}, called from on_load so generated sources are still added
---       to this same build's file list (matching this project's existing
---       generated-sources convention -- see kernel/xmake.lua's vers.c).
+-- name: library name without the "lib" prefix, e.g. "c" for libc
+-- srcdir_rel: source directory, relative to this file (e.g. "core/libc")
+-- opts:  { deps, defines, extra_includedirs, extra_srcdirs, extra_files,
+-- arch_files, gen_files_fn }
+-- extra_srcdirs: additional dirs (relative to this file, NOT to srcdir --
+-- e.g. a sibling extra/ library, or kernel/net) to ALSO recursively
+-- glob **.c from, for libraries whose real Makefile pulls sources
+-- from outside their own directory via .PATH.
+-- extra_files: absolute file paths to add as-is (for one-off cases not
+-- worth a whole extra_srcdirs glob).
+-- arch_files: { [arch] = "relative/file.c" } -- exactly one extra,
+-- arch-specific file to add (e.g. libkvm's kvm_<arch>.c).
+-- gen_files_fn: function(target_gendir) -> {list of generated file
+-- paths}, called from on_load so generated sources are still added
+-- to this same build's file list (matching this project's existing
+-- generated-sources convention -- see kernel/xmake.lua's vers.c).
 local function eteleos_bsd_library(name, srcdir_rel, opts)
     opts = opts or {}
     local srcdir = path.join(os.scriptdir(), srcdir_rel)
@@ -457,11 +451,9 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
     end
 end
 
--- ==============================================================================
+
 -- libraries/core -- one entry per library, srcdir verified against the
 -- current tree
--- ==============================================================================
-
 -- libc: the C standard library. Syscall stubs (open.S, read.S, ...) are now
 -- generated from libc/sys/Makefile.inc's own ASM/ASM_NOERR/PSEUDO/
 -- PSEUDO_NOERR/HIDDEN lists -- see generate_syscall_stubs() above.
@@ -540,11 +532,11 @@ eteleos_bsd_library("event", "core/libevent")
 -- libexpat: XML parser, vendored (sources under libexpat/lib/).
 eteleos_bsd_library("expat", "core/libexpat")
 
--- ==============================================================================
+
 -- libraries/extra -- librthread (already wired) plus the 19 libraries this
 -- revision adds. Most are plain eteleos_bsd_library() calls; a few needed
 -- real per-library handling, called out below.
--- ==============================================================================
+
 
 -- librthread: the real pthread implementation (libpthread above is a thin
 -- shim over this).
@@ -794,7 +786,7 @@ eteleos_bsd_library("usbhid", "extra/libusbhid", {
 -- libkeynote/libl above).
 eteleos_bsd_library("y", "extra/liby")
 
--- ==============================================================================
+
 -- Not yet wired up (out of scope for this revision -- see the readiness
 -- notes this file's history is based on):
 --   csu (C runtime startup objects: crt0.o, crtbegin.o, ...) and libarch
@@ -804,4 +796,4 @@ eteleos_bsd_library("y", "extra/liby")
 --   support code consumed directly by libc's own build, not a
 --   separately-linked library. Both are real, additional gaps found while
 --   auditing this file -- worth a dedicated pass, not folded into this one.
--- ==============================================================================
+

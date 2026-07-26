@@ -1,11 +1,9 @@
 --[[
-================================================================================
- EteleOS: tools/modules/eteleos/helpers.lua
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tools/modules/eteleos/helpers.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
-WHY THIS FILE EXISTS, SEPARATELY FROM tools/helpers.lua
--------------------------------------------------------------
+--[[
 Confirmed by direct, isolated testing against a real xmake v3.0.9 build:
 xmake.lua description scope and script scope (on_load/on_build/on_test/
 after_install/...) have COMPLETELY SEPARATE Lua global environments --
@@ -37,7 +35,6 @@ tools/helpers.lua -- mirror any change here too).
 
 Registered via add_moduledirs(path.join(os.scriptdir(), "modules")) in
 tools/xmake.lua.
---------------------------------------------------------------------------------
 --]]
 
 local TARGET_TRIPLES = {

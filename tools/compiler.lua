@@ -1,9 +1,9 @@
 --[[
-================================================================================
- EteleOS: tools/compiler.lua, time write: 2026/07/10
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tools/compiler.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Project-global compiler, linker and assembler default configuration.
 Loaded by tools/xmake.lua (after options.lua).
 
@@ -19,12 +19,10 @@ Key points about xmake scoping that drive the design of this file:
     hosted sanitizer policies).
 
 Nothing in this file compiles any source file or declares any target.
---------------------------------------------------------------------------------
 --]]
 
--- ==============================================================================
--- Default toolchain
--- ==============================================================================
+
+-- DEFAULT TOOLCHAIN
 -- Drive the default toolchain from the eteleos_toolchain option. This is
 -- equivalent to `xmake f --toolchain=eteleos-clang` but persisted in
 -- xmake.lua so fresh checkouts get the right default automatically.
@@ -32,9 +30,8 @@ Nothing in this file compiles any source file or declares any target.
 local _tc = get_config("eteleos_toolchain") or "eteleos-clang"
 set_config("toolchain", _tc)
 
--- ==============================================================================
+
 -- Compiler / linker / assembler binary defaults
--- ==============================================================================
 -- These act as fallbacks when no custom toolchain is active, and also drive
 -- the `xmake f --cc / --cxx / --ld ...` CLI defaults for the Clang preset.
 -- Switch to GCC equivalents when the eteleos-gcc preset is selected.
@@ -57,9 +54,8 @@ else
     set_config("ranlib", "llvm-ranlib")
 end
 
--- ==============================================================================
+
 -- LTO policy (tools/ scope)
--- ==============================================================================
 -- Activating LTO via a policy lets XMake coordinate the compiler, linker and
 -- archiver flags automatically. This policy is scope-limited to the tools/
 -- subtree here; other modules (libraries/, kernel/, userland/, ...) that want
@@ -69,9 +65,8 @@ if has_config("lto") then
     set_policy("build.optimization.lto", true)
 end
 
--- ==============================================================================
+
 -- Sanitizer policies (tools/ scope)
--- ==============================================================================
 -- Scope-limited to tools/ intentionally: the kernel must NOT inherit hosted
 -- sanitizer runtime dependencies. Other modules that want sanitizers should
 -- add the eteleos.asan / eteleos.ubsan rules (declared in rules.lua) to

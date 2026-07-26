@@ -1,26 +1,22 @@
 --[[
-================================================================================
- EteleOS: configs/xmake.lua, time write: 2026/07/13 
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: configs/xmake.lua, time write: 2026/07/26 
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Manages: etc, rc, passwd, group, login.conf, sysctl.conf, and the rest of
 the system configuration tree (configs/ is OpenBSD's /etc, reorganized
 thematically). Does NOT compile anything -- pure file installation, same
 model as resources/xmake.lua (headeronly target + after_install copy
 logic).
 
-Verified against the current tree (github.com/EteleOS/EteleOS):
-  configs/{etc, filesystem, logging, mail, network, security, system,
-           templates, Makefile, Makefile.inc}
+Source tree: configs/{etc, filesystem, logging, mail, network, security, system,templates, Makefile, Makefile.inc}
   configs/etc/{etc.amd64, etc.arm64, etc.riscv64}/ -- per-architecture
     /etc files: disktab, fbtab, login.conf, sysctl.conf, ttys, MAKEDEV(.md)
     -- confirming the user's login.conf/sysctl.conf are architecture-
     specific here, not flat top-level files.
 
-THE DESTINATION MAPPING BELOW IS A RECONSTRUCTION, NOT A VERIFIED CURRENT
-SOURCE -- please read
---------------------------------------------------------------------------------
+
 The only Makefile that states install destinations explicitly and is NOT
 stale is configs/mail/Makefile (still correct: aliases/smtpd.conf ->
 ${DESTDIR}/etc/mail/, mode 644 root:wheel -- verified and used directly
@@ -34,37 +30,11 @@ kernel/ tree kernel/xmake.lua now builds. It is also NOT this file's job to
 build kernels for a release -- that overlap in the legacy Makefile belongs
 to kernel/xmake.lua and installer/xmake.lua respectively.
 
-So: every category-to-destination mapping below other than mail/ is this
-file's own reconstruction from the directory names and standard OpenBSD
-/etc conventions, not read from a current authoritative source. Treat it
-as a starting point to correct against a real installed system if any
-mapping turns out wrong.
-
-  filesystem/mtree/*      -> /etc/mtree/*     (mtree(8) specs -- ALSO used
-                                                by installer/ to construct
-                                                the base directory tree,
-                                                not just passive data; that
-                                                usage is not wired up here)
-  filesystem/{MAKEDEV,fbtab.*,minfree} -> /etc/
-  logging/*               -> /etc/
-  mail/*                  -> /etc/mail/       (verified, see above)
-  network/*               -> /etc/
-  security/*              -> /etc/
-  system/*                -> /etc/
-  templates/skel/*        -> /etc/skel/
-  templates/root/*        -> /root/
-  templates/examples/*    -> /etc/examples/
-  templates/ksh.kshrc     -> /etc/
-  etc/etc.<target_arch>/* -> /etc/            (flattened; Makefile/
-                                                Makefile.inc excluded, see
-                                                below)
-
 Build-system artifacts (Makefile, Makefile.inc) found inside these
 directories are deliberately EXCLUDED from installation -- they configure
 the legacy BSD Make install step, not runtime files.
 
 PERMISSIONS
---------------
 Only one file gets a non-default mode here: system/master.passwd at 600
 (well-established OpenBSD convention -- it contains password hashes).
 Everything else installs at the standard 644, root:wheel. This is a
@@ -72,7 +42,6 @@ smaller, more conservative permissions pass than userland/xmake.lua's
 BINMODE parsing (there is no per-file BINMODE metadata to read here, since
 the one Makefile that had it -- the top-level configs/Makefile -- is the
 stale one described above).
---------------------------------------------------------------------------------
 --]]
 
 local arch = get_config("target_arch") or "amd64"
@@ -83,9 +52,8 @@ local SENSITIVE_MODES = {
     ["master.passwd"] = "600",
 }
 
--- ==============================================================================
--- Small utilities
--- ==============================================================================
+
+-- SMALL UTILITIES
 local function copy_dir_flat(srcdir, dstdir)
     if not os.isdir(srcdir) then return 0 end
     os.mkdir(dstdir)
@@ -119,9 +87,8 @@ local function copy_dir_recursive(srcdir, dstdir)
     return count
 end
 
--- ==============================================================================
--- Target
--- ==============================================================================
+
+-- TARGET
 target("eteleos-configs")
     set_kind("headeronly")
     set_default(false)

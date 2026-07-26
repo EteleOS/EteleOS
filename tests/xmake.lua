@@ -1,11 +1,10 @@
 --[[
-================================================================================
- EteleOS: tests/xmake.lua, time write: 2026/07/13
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tests/xmake.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Manages: regression, benchmark, unit tests, integration tests.
-
 tests/ is OpenBSD's regress/ tree, renamed, still mirroring the OLD
 pre-restructure top-level layout (bin, sbin, usr.bin, usr.sbin, lib,
 libexec, gnu, include, misc, sys) -- roughly 20,000 files, arbitrarily
@@ -13,26 +12,24 @@ nested, far too many to hand-enumerate. This file discovers test units by
 walking that tree with xmake's own os.files()/os.dirs() (portable across
 platforms -- no shelling out to `find`).
 
-THE CENTRAL LIMITATION, still real -- please read
-------------------------------------------------------
+THE CENTRAL LIMITATION, please read
 OpenBSD's regress tests are driven by resources/mk/bsd.regress.mk, which
 supports two shapes:
-  (a) PROG/PROGS + nothing else -- bsd.regress.mk auto-generates a
-      "run-regress-<prog>" target that just builds and runs it, pass/fail
-      by exit code. Maps directly onto xmake's native add_tests().
-  (b) hand-written REGRESS_TARGETS with custom shell recipes, often
-      comparing output against checked-in .in/.out golden files (verified
-      real: tests/usr.bin/apply/Makefile runs six variations of the
-      ALREADY-BUILT /usr/bin/apply and `cmp`s the output -- it does not
-      compile anything of its own at all).
+(a)PROG/PROGS + nothing else -- bsd.regress.mk auto-generates a
+"run-regress-<prog>" target that just builds and runs it, pass/fail
+by exit code. Maps directly onto xmake's native add_tests().
+(b) hand-written REGRESS_TARGETS with custom shell recipes, often
+comparing output against checked-in .in/.out golden files (verified
+real: tests/usr.bin/apply/Makefile runs six variations of the
+ALREADY-BUILT /usr/bin/apply and `cmp`s the output -- it does not
+compile anything of its own at all).
 Spot-checking suggests shape (b) is the majority, not a minority. This
 revision narrows that gap in two concrete ways (see GOLDEN-FILE RECIPE
 TRANSLATION and NON-COMPILED TEST SUPPORT below), but does not claim to
 have closed it -- most custom shell recipes still are not, and likely
 cannot responsibly be, translated by pattern-matching alone.
 
-MAKEFILE PARSING -- what changed in this revision
-------------------------------------------------------
+MAKEFILE PARSING
   - Operators: =, +=, ?=, := are all parsed (":=" was already accepted by
     the old regex incidentally; this revision makes that explicit and
     adds "!=" (shell-assignment) recognition -- its value is treated as
@@ -54,7 +51,6 @@ MAKEFILE PARSING -- what changed in this revision
     standard convention.
 
 GOLDEN-FILE RECIPE TRANSLATION
------------------------------------
 For custom REGRESS_TARGETS whose recipe matches the extremely common
 idiom (confirmed real, e.g. tests/usr.bin/apply's t1-t6):
     <command...> > NAME.res
@@ -66,14 +62,11 @@ match this specific idiom are still left as shape (b) and skipped, counted
 separately from "fully unrecognized".
 
 NON-COMPILED TEST SUPPORT (shell / python / perl / lua)
--------------------------------------------------------------
-A phony target with on_test() (xmake's own hook, confirmed alongside
-add_tests() in 2.8.5) runs an interpreter directly instead of assuming a
+A phony target with on_test() runs an interpreter directly instead of assuming a
 C compile step. Interpreter selection: shebang line if present, else file
 extension (.sh, .py, .pl, .lua).
 
 DEPENDENCY LINKING TO userland/ AND libraries/
-----------------------------------------------------
 Every discovered test unit's directory name is looked up in userland/'s
 categories (same search userland/xmake.lua and installer/xmake.lua's
 special/ handling already use) and, if found, add_deps() is added to that
@@ -83,7 +76,6 @@ are linked the same way libraries/xmake.lua's targets are named
 ("lib<x>-shared").
 
 CLASSIFICATION -- explicit about being a heuristic
--------------------------------------------------------
 "kernel" (tests/sys/) and "benchmark" (any dir literally named
 "benchmark") are structural facts, not guesses. "unit" vs "integration" is
 NOT a structural fact in this tree (it is organized by what is tested, not
@@ -95,7 +87,6 @@ with no add_deps() on an external userland program is tagged
 ("unit-like"/"integration-like"), rather than asserting it as fact.
 
 RUNNING TESTS
-----------------
   xmake test                     -- everything
   xmake test usr.bin/*           -- one category (group names below)
   xmake test -g benchmark        -- benchmark group only
@@ -106,7 +97,6 @@ Groups are named "<category>" (bin, sbin, usr.bin, usr.sbin, lib, libexec,
 gnu, include, misc), "kernel" (sys/), or "benchmark".
 
 CROSS-BUILD EXECUTION
---------------------------
 Test binaries are built for target_arch, which may differ from the build
 host's own architecture. When cross-building, this file looks for a
 matching qemu-<arch> user-mode emulator (find_tool) and runs tests through
@@ -114,7 +104,6 @@ it if found; otherwise tests are still BUILT (so compile regressions are
 caught) but their on_test run step reports "skipped: cross build, no
 qemu-<arch> found" rather than attempting to execute a foreign-arch binary
 directly on the host.
---------------------------------------------------------------------------------
 --]]
 
 -- Confirmed by testing: wprint/cprint are unavailable not just at
@@ -147,17 +136,15 @@ local KNOWN_INCLUDES = { ["bsd.regress.mk"] = true, ["bsd.subdir.mk"] = true }
 
 local INTERPRETER_BY_EXT = { sh = "sh", py = "python3", pl = "perl", lua = "lua" }
 
--- ==============================================================================
 -- Makefile parsing (all the operator/${VAR}/.if/.include handling
 -- documented above) is now done offline by
 -- tools/gen/gen_tests_manifest.lua, since io.open() cannot run at
--- xmake.lua description scope (confirmed against a real xmake v3.0.9
--- build -- see userland/xmake.lua's header for the full explanation of
--- this scope rule, which applies project-wide). find_test_dirs() below is
+-- xmake.lua description scope uses xmake v3.0.9 build -- see userland/xmake.lua's
+-- header for the full explanation of this scope rule,
+-- which applies project-wide. find_test_dirs() below is
 -- UNCHANGED -- os.files()/os.dirs() genuinely do work at description
 -- scope, so directory discovery still happens right here.
 -- Regenerate with: xmake lua tools/gen/gen_tests_manifest.lua
--- ==============================================================================
 includes("generated_manifest.lua")
 local TESTS_MANIFEST = ETELEOS_TESTS_MANIFEST or {}
 
@@ -191,13 +178,12 @@ local function find_userland_program_dir(name)
     return nil
 end
 
--- ==============================================================================
+
 -- Makefile parsing itself (variable assignments, ${VAR}/$(VAR) expansion,
 -- .if MACHINE conditionals, .include tracking, recipe capture) is done
 -- offline now -- see the includes() note above. read_file() is kept here
 -- because TEST_RUNNERS.golden_file's on_test callback below still needs it
 -- (that call happens inside on_test, script scope, where io.open works).
--- ==============================================================================
 local function read_file(filepath)
     if not os.isfile(filepath) then return nil end
     if type(io) ~= "table" or not io.open then return nil end
@@ -208,13 +194,12 @@ local function read_file(filepath)
     return c
 end
 
--- ==============================================================================
+
 -- Golden-file recipe translation: recognize the
 --   <command...> > NAME.res
 --   cmp -s EXPECTED.out NAME.res ...
 -- idiom inside a custom target's recipe and extract enough to run it
 -- without shelling back out to `make`.
--- ==============================================================================
 local function try_translate_golden_file_recipe(recipe_lines, testdir)
     local run_line, cmp_line
     for _, l in ipairs(recipe_lines) do
@@ -234,11 +219,10 @@ local function try_translate_golden_file_recipe(recipe_lines, testdir)
     }
 end
 
--- ==============================================================================
+
 -- Extension registry for future test-runner shapes (item 15 of the ask):
 -- add an entry here to support a new kind of test without touching the
 -- discovery/wiring logic below.
--- ==============================================================================
 local TEST_RUNNERS = {}
 
 TEST_RUNNERS.interpreter = function (target_name, scriptfile, group)
@@ -275,9 +259,8 @@ TEST_RUNNERS.golden_file = function (target_name, translated, group)
     target_end()
 end
 
--- ==============================================================================
+
 -- Wire one discovered test directory.
--- ==============================================================================
 local stats = { simple = 0, golden = 0, script = 0, custom_skipped = 0, empty = 0 }
 
 local function eteleos_test_unit(target_name, testdir, group, info)
@@ -386,9 +369,8 @@ local function eteleos_test_unit(target_name, testdir, group, info)
     stats.simple = stats.simple + 1
 end
 
--- ==============================================================================
+
 -- Discovery
--- ==============================================================================
 for _, category in ipairs(TEST_CATEGORIES) do
     local catdir = path.join(os.scriptdir(), category)
     if os.isdir(catdir) then

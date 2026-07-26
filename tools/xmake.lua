@@ -1,9 +1,9 @@
 --[[
-================================================================================
- EteleOS: tools/xmake.lua, time write: 2026/07/10
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tools/xmake.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 This file is the Build Framework of EteleOS. It owns every project-wide
 piece of build infrastructure:
   - helper tables and utility functions        (helpers.lua)
@@ -13,12 +13,13 @@ piece of build infrastructure:
   - all toolchain() declarations               (toolchains.lua)
 
 Loading order matters:
-  helpers.lua     → must be first; toolchains.lua and rules.lua close over
+  helpers.lua     -> must be first; toolchains.lua and rules.lua close over
                     the ETELEOS_* globals it defines.
-  options.lua     → must be before compiler.lua (has_config() checks options).
-  compiler.lua    → must be before rules.lua (rules check has_config too).
-  rules.lua       → must be before toolchains.lua (rules reference helpers).
-  toolchains.lua  → last, after all helpers and options are in scope.
+  options.lua     -> must be before compiler.lua (has_config() checks options).
+  compiler.lua    -> must be before rules.lua (rules check has_config too).
+  rules.lua       -> must be before toolchains.lua (rules reference helpers).
+  toolchains.lua  -> after all helpers and options are in scope.
+  tasks.lua       -> no ordering dependency; loaded last by convention.
 
 Constraints (build spec, section 3):
   - This file MUST NOT build any target.
@@ -49,10 +50,8 @@ Usage in sibling modules (after tools/ is loaded first by root xmake.lua):
 local wprint = wprint or function(fmt, ...) print(string.format(fmt, ...)) end
 local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%w_]+}", "")), ...)) end
 
--- ==============================================================================
--- Load build framework sub-modules in dependency order
--- ==============================================================================
 
+-- Load build framework sub-modules in dependency order
 -- 1. Helper tables and functions (ETELEOS_* globals, eteleos_* functions).
 --    Everything else depends on this. Description-scope-to-description-
 --    scope only (confirmed: this genuinely works) -- for script-scope
@@ -84,17 +83,15 @@ includes("rules.lua")
 --    ETELEOS_TARGET_TRIPLES) and options.lua (reads target_arch / sysroot).
 includes("toolchains.lua")
 
--- ==============================================================================
 -- Architecture validation
--- ==============================================================================
 -- Raise a hard error now if the user passed an unsupported --target_arch
 -- so the failure is immediate and obvious rather than a confusing
 -- compiler error later.
+includes("tasks.lua")
 eteleos_check_arch()
 
--- ==============================================================================
+
 -- Phony diagnostic target
--- ==============================================================================
 -- Builds nothing. Run with: xmake build eteleos-framework
 -- Prints a summary of the active build configuration.
 target("eteleos-framework")

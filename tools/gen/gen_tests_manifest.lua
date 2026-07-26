@@ -1,9 +1,9 @@
 --[[
-================================================================================
- EteleOS: tools/gen/gen_tests_manifest.lua
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tools/gen/gen_tests_manifest.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Same reasoning as tools/gen/gen_userland_manifest.lua. tests/xmake.lua's own
 parse_makefile() used io.open() directly, called from description scope --
 confirmed nil there in a real xmake v3.0.9 run. The directory *discovery*
@@ -13,7 +13,6 @@ tests/xmake.lua; only the Makefile-content parse is relocated here.
 
 Regenerate with: xmake lua tools/gen/gen_tests_manifest.lua
 whenever tests/ Makefiles or directory layout change.
---------------------------------------------------------------------------------
 --]]
 
 local ROOT  = path.absolute(os.scriptdir() .. "/../..")
@@ -27,9 +26,8 @@ local TEST_CATEGORIES = {
 local KNOWN_INCLUDES = { ["bsd.regress.mk"] = true, ["bsd.subdir.mk"] = true }
 local INTERPRETER_BY_EXT = { sh = "sh", py = "python3", pl = "perl", lua = "lua" }
 
--- ==============================================================================
+
 -- Unchanged from the previous revision of tests/xmake.lua
--- ==============================================================================
 local function read_file(filepath)
     if not os.isfile(filepath) then return nil end
     local f = io.open(filepath, "r")
@@ -174,9 +172,8 @@ local function parse_makefile(dir)
     return info
 end
 
--- ==============================================================================
+
 -- Walk every category, parse every discovered testdir's Makefile (if any)
--- ==============================================================================
 local MANIFEST = {}   -- testdir_rel (relative to tests/) -> info table, or a
                        -- table with has_makefile=false for script-only dirs
 local stats = { with_makefile = 0, script_only = 0 }
@@ -204,9 +201,8 @@ end
 print(string.format("eteleos-gen-tests: %d dirs with a Makefile, %d script-only (arch=%s)",
       stats.with_makefile, stats.script_only, arch))
 
--- ==============================================================================
+
 -- Serialize
--- ==============================================================================
 local function lua_quote(s) return string.format("%q", s) end
 
 local function serialize(value, indent)

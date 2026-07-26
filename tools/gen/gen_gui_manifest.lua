@@ -1,9 +1,9 @@
 --[[
-================================================================================
- EteleOS: tools/gen/gen_gui_manifest.lua
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tools/gen/gen_gui_manifest.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Same reasoning as tools/gen/gen_userland_manifest.lua. gui/xmake.lua's own
 parse_modules_list() used io.open() directly at description scope to read
 gui/MODULES (~200 lines, category/name + upstream version per X.Org
@@ -14,7 +14,6 @@ result to gui/generated_manifest.lua.
 Regenerate with: xmake lua tools/gen/gen_gui_manifest.lua
 (only needed again if gui/MODULES itself changes -- upstream module
 versions, additions, removals.)
---------------------------------------------------------------------------------
 --]]
 
 local ROOT = path.absolute(os.scriptdir() .. "/../..")

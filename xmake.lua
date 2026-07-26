@@ -1,22 +1,15 @@
 --[[
-================================================================================
- EteleOS: root xmake.lua, time write: 2026/07/10
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: root xmake.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 This file does ONLY project-wide orchestration.
-
-tools/xmake.lua is responsible for loading helpers.lua, options.lua,
-compiler.lua, rules.lua and toolchains.lua and making everything they
-declare available to every module included after it -- which is why
-"tools" is always the first entry in the module list below.
-
 NOTE ON LOCATION: this file lives at the repository ROOT. EteleOS calls the
 whole source tree "src" (OpenBSD convention, as in /usr/src), but there is
 no literal src/ subdirectory in this repository -- tools/, include/,
 libraries/, kernel/, resources/, userland/, gui/, installer/, tests/,
 configs/ and docs/ already live directly at the repo root.
---------------------------------------------------------------------------------
 --]]
 
 -- Require a reasonably recent xmake so every API used across this project
@@ -24,18 +17,16 @@ configs/ and docs/ already live directly at the repo root.
 -- etc.) is guaranteed to exist. Bump this if you rely on something newer.
 set_xmakever("3.0.9")
 
--- ==============================================================================
--- Project identity
--- ==============================================================================
+
+-- PROJECT IDENTITY
 set_project("EteleOS")
 
 -- Placeholder version -- replace with EteleOS's real versioning scheme once
 -- one is decided; this only needs to be *some* valid semver for now.
 set_version("0.1.0", {build = "%Y%m%d"})
 
--- ==============================================================================
--- Global policies
--- ==============================================================================
+
+-- GLOBAL POLICIES
 -- We are cross-compiling an entire OS: a flag that xmake silently drops
 -- because it "looks unsupported" is a much worse failure mode here than a
 -- loud build error, so auto-ignoring is turned off project-wide.
@@ -49,17 +40,15 @@ set_policy("build.warning", true)
 -- apply here.
 set_policy("build.ccache", true)
 
--- ==============================================================================
--- Build modes
--- ==============================================================================
+
+-- BUILD MODES
 -- Required: debug, release. Extended: releasedbg, minsizerel. Per-mode
 -- optimize/symbols levels come from these built-in rules; nothing here
 -- overrides them -- that stays out of the root file entirely.
 add_rules("mode.debug", "mode.release", "mode.releasedbg", "mode.minsizerel")
 
--- ==============================================================================
--- Directories: build / install / package / cache
--- ==============================================================================
+
+-- DIRECTORIES: build / install / package / cache
 -- Keep every generated artifact under build/, never inside the source tree.
 set_config("builddir", "$(projectdir)/build")
 
@@ -79,16 +68,14 @@ set_config("installdir", "$(projectdir)/build/install")
 -- from the calling shell/CI instead (this can no longer be done from
 -- inside xmake.lua itself).
 
--- ==============================================================================
--- Shared include path
--- ==============================================================================
+
+-- SHARED INCLUDE PATH
 -- include/ holds the headers shared across kernel, libraries and userland
 -- (per README.md).
 add_includedirs("$(projectdir)/include")
 
--- ==============================================================================
--- Submodules
--- ==============================================================================
+
+-- SUBMODULES
 -- Fixed dependency order mandated by the build spec -- do not reorder
 -- without a clear technical reason. "tools" is loaded first because it now
 -- owns every toolchain/option/compiler/rule declaration that every other

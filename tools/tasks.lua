@@ -1,9 +1,9 @@
 --[[
-================================================================================
- EteleOS: tools/tasks.lua, time write: 2026/07/24
- This file uses the Apache-2.0 license
-================================================================================
+EteleOS: tools/tasks.lua, time write: 2026/07/26
+This file uses the Apache-2.0 license
+--]]
 
+--[[
 Long-referenced but, until this revision, never actually implemented:
 userland/xmake.lua, kernel/xmake.lua, and three of the tools/gen/gen_*.lua
 generator scripts themselves all say regeneration is "also wired up as the
@@ -38,52 +38,6 @@ xmake task, run BEFORE `xmake f`/`xmake build` (same as you would run a
     xmake eteleos-regen-tests
     xmake eteleos-regen-gui
     xmake eteleos-regen-all        -- runs all five, in one command
-
-TWO REAL BUGS FOUND AND FIXED IN THIS REVISION BY ACTUALLY RUNNING IT
-against real xmake v3.0.9 (downloaded straight from the xmake-io/xmake
-v3.0.9 GitHub release, not assumed from docs) -- neither is visible from
-luac -p or from reading the code:
-
-1) `xmake eteleos-regen-gui` first failed with "attempt to call a nil value
-   (global 'import')". import("lib.detect.find_tool") was called from
-   inside a shared plain Lua helper function that on_run() merely called,
-   not written directly inside on_run() itself. xmake statically scans each
-   script block (on_run/on_load/on_build/...) for import() calls to hoist
-   by LEXICAL position in the source, not by dynamic Lua call stack -- so
-   import() only resolves when textually written directly inside a
-   recognized block.
-
-2) After moving import()+find_tool() inline, the next run failed with
-   "attempt to call a nil value (field 'execv')". Confirmed by a minimal
-   reproduction (two on_run bodies, one calling os.execv directly and one
-   calling it via a one-line helper): os.execv (and by the same mechanism,
-   presumably exec/run/runv/iorun/iorunv) is ALSO only visible directly
-   inside the callback body itself -- a plain helper function it calls
-   sees a *different*, more restricted `os` table where os.execv is nil,
-   even though os.isfile/os.projectdir/path.join stay visible everywhere
-   (confirmed by the same test). Likely cause: xmake enriches the callback
-   function's own environment right before invoking it, which in Lua does
-   not propagate to a separately-defined function's environment even when
-   that function is called from inside the enriched one.
-
-Fixed by keeping the shared helper (eteleos_resolve_script) limited to only
-path.join/os.isfile/os.projectdir (confirmed safe across the function
-boundary), and moving import("lib.detect.find_tool"), find_tool("xmake"),
-and os.execv() all directly, lexically, inside every task's own on_run()
-body below -- one repeated block per task, matching the exact repetition
-already established in userland/xmake.lua's on_load callbacks for the same
-reason. Re-verified end-to-end after the fix: in an isolated sandbox
-project, `xmake eteleos-regen-gui` now correctly resolves the real xmake
-binary, resolves the real script path, os.execv()'s a real subprocess
-running the real tools/gen/gen_gui_manifest.lua, which runs to completion
-(reporting gui/MODULES not found, which is only because that sandbox has
-no gui/ source tree checked out -- an unrelated, expected limitation of the
-test environment, not a bug in this file).
-
-NOTE ON gen_ports_manifest.lua -- deliberately NOT wired up here. ports/
-was removed from the tree; that generator was removed with this revision
-as dead code.
---------------------------------------------------------------------------------
 --]]
 
 -- Shared by every eteleos-regen-* task below. Confirmed safe to call from a
