@@ -1,6 +1,9 @@
-EteleOS is an operating system developed based on OpenBSD 7.9, aiming to provide a simple and stable operating system
+EteleOS is an operating system developed based on OpenBSD 7.9, with the goal of a simple and stable operating system for personal.
 
-WARRING! THIS CODE IS NOT YET READY FOR USE!
+CPU Architecture support:
+X86 64bit
+Arm 64bit
+Risc-V 64bit
 
 Directory structure:
 - configs/: system configuration and default settings
