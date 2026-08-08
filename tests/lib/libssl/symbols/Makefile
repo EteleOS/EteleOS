@@ -11,8 +11,8 @@ CFLAGS+=	-Wno-deprecated-declarations
 
 CLEANFILES+= symbols.c symbols.c.tmp
 
-symbols.c: symbols.awk ../../../../lib/libssl/Symbols.list
-	awk -f ${.CURDIR}/symbols.awk \
+symbols.c: symbols.lua ../../../../lib/libssl/Symbols.list
+	xmake lua -q ${.CURDIR}/symbols.lua \
 		< ${BSDSRCDIR}/lib/libssl/Symbols.list > $@.tmp && \
 	mv -f $@.tmp $@
 

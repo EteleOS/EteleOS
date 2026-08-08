@@ -48,7 +48,7 @@ if test $# != 0
 then
 	OPT2="$1"; shift 1
 else
-	OPT2="tinfo/MKcaptab.awk"
+	OPT2="tinfo/MKcaptab.lua"
 fi
 
 cat <<EOF
@@ -75,9 +75,9 @@ EOF
 cat "$@" |./make_hash 1 info $OPT1
 cat "$@" |./make_hash 3 cap  $OPT1
 
-cat "$@" |$AWK -f $OPT2 bigstrings=$OPT1 tablename=capalias
+cat "$@" | xmake lua -q "$OPT2" capalias "$OPT1"
 
-cat "$@" |$AWK -f $OPT2 bigstrings=$OPT1 tablename=infoalias
+cat "$@" | xmake lua -q "$OPT2" infoalias "$OPT1"
 
 cat <<EOF
 /* *INDENT-ON* */

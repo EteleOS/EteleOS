@@ -2,6 +2,6 @@
 
 AWK=	awk
 
-sdmmcdevs.h: sdmmcdevs devlist2h.awk
+sdmmcdevs.h: sdmmcdevs devlist2h.lua
 	/bin/rm -f sdmmcdevs.h
-	${AWK} -f devlist2h.awk sdmmcdevs
+	xmake lua -q devlist2h.lua sdmmcdevs

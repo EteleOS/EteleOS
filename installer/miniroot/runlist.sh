@@ -10,4 +10,4 @@ fi
 ( while [ "X$1" != "X" ]; do
 	cat $1
 	shift
-done ) | awk -f ${UTILS:-${CURDIR}}/list2sh.awk | ${SHELLCMD}
+done ) | xmake lua -q ${UTILS:-${CURDIR}}/list2sh.lua | ${SHELLCMD}

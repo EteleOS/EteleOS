@@ -17,9 +17,9 @@
 -- ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 -- OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-io.stdout:setvbuf("no")
+if io.stdout and io.stdout.setvbuf then io.stdout:setvbuf("no") end
 
-local argv = arg or {}
+local argv = {...}; if #argv == 0 then argv = arg or {} end
 
 if #argv < 2 then
     io.stderr:write("usage: xmake lua trimcerts.lua cert.pem outputfile\n")

@@ -61,6 +61,6 @@ CFLAGS+=-DFAKE_PF_KERNEL
 
 #SRCS+=	smbutil.c print-smb.c
 
-AWKS =	atime.awk packetdat.awk send-ack.awk stime.awk
+AWKS =	atime.lua packetdat.lua send-ack.awk stime.lua
 
 .include <bsd.prog.mk>

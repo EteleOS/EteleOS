@@ -18,8 +18,8 @@ run-extent: ${PROG}
 	    ${.CURDIR}/extest.exp >extest.norm
 	diff -up extest.norm extest.out
 
-extest.c: extest.awk tests
-	awk -f ${.CURDIR}/extest.awk ${.CURDIR}/tests >extest.c.tmp
+extest.c: extest.lua tests
+	xmake lua -q ${.CURDIR}/extest.lua ${.CURDIR}/tests >extest.c.tmp
 	mv extest.c.tmp extest.c
 
 .include <bsd.regress.mk>

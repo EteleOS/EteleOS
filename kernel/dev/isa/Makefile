@@ -3,6 +3,6 @@
 
 AWK=	awk
 
-pnpdevs.h: pnpdevs devlist2h.awk
+pnpdevs.h: pnpdevs devlist2h.lua
 	/bin/rm -f pnpdevs.h
-	${AWK} -f devlist2h.awk pnpdevs
+	xmake lua -q devlist2h.lua pnpdevs

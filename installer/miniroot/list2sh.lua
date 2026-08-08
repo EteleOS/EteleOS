@@ -7,7 +7,7 @@
 -- Convert `list' spec to shell script.
 -- Ported from list2sh.awk (OpenBSD)
 
-io.stdout:setvbuf("no")
+if io.stdout and io.stdout.setvbuf then io.stdout:setvbuf("no") end
 
 local function split_fields(line)
     local fields = {}

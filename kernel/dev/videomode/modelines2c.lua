@@ -34,9 +34,9 @@
 -- ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 -- POSSIBILITY OF SUCH DAMAGE.
 
-io.stdout:setvbuf("no")
+if io.stdout and io.stdout.setvbuf then io.stdout:setvbuf("no") end
 
-local argv = arg or {}
+local argv = {...}; if #argv == 0 then argv = arg or {} end
 local infile = argv[1]
 
 local function split_fields(line)

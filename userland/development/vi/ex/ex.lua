@@ -5,9 +5,9 @@
 -- $OpenBSD: ex.awk,v 1.3 2017/12/14 10:02:53 martijn Exp $
 -- @(#)ex.awk 10.1 (Berkeley) 6/8/95
 
-io.stdout:setvbuf("no")
+if io.stdout and io.stdout.setvbuf then io.stdout:setvbuf("no") end
 
-local argv = arg or {}
+local argv = {...}; if #argv == 0 then argv = arg or {} end
 local infile = argv[1]
 
 local inp = infile and io.open(infile, "r") or io.stdin
