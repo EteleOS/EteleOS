@@ -5,9 +5,9 @@
 -- $OpenBSD: options.awk,v 1.4 2017/12/14 10:02:53 martijn Exp $
 -- @(#)options.awk 10.1 (Berkeley) 6/8/95
 
-if io.stdout and io.stdout.setvbuf then io.stdout:setvbuf("no") end
+io.stdout:setvbuf("no")
 
-local argv = {...}; if #argv == 0 then argv = arg or {} end
+local argv = arg or {}
 local infile = argv[1]
 
 local inp = infile and io.open(infile, "r") or io.stdin

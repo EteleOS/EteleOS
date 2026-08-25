@@ -125,21 +125,24 @@ expanded.c: ${.CURDIR}/term.h ${.CURDIR}/curses.priv.h \
 
 comp_captab.c: make_hash
 	sh ${.CURDIR}/tinfo/MKcaptab.sh ${AWK} ${USE_BIG_STRINGS} \
-		${.CURDIR}/tinfo/MKcaptab.lua ${CAPLIST} > ${.TARGET}
+		${.CURDIR}/tinfo/MKcaptab.awk ${CAPLIST} > ${.TARGET}
 
-lib_keyname.c: keys.list ${.CURDIR}/base/MKkeyname.lua
-	xmake lua -q ${.CURDIR}/base/MKkeyname.lua \
-		${USE_BIG_STRINGS} keys.list > ${.TARGET}
+lib_keyname.c: keys.list ${.CURDIR}/base/MKkeyname.awk
+	${AWK} -f ${.CURDIR}/base/MKkeyname.awk \
+		bigstrings=${USE_BIG_STRINGS} \
+		keys.list > ${.TARGET}
 
-names.c: ${.CURDIR}/tinfo/MKnames.lua
-	xmake lua -q ${.CURDIR}/tinfo/MKnames.lua \
-		${USE_BIG_STRINGS} ${CAPLIST} > ${.TARGET}
-codes.c: ${.CURDIR}/tinfo/MKcodes.lua
-	xmake lua -q ${.CURDIR}/tinfo/MKcodes.lua \
-		${USE_BIG_STRINGS} ${CAPLIST} > ${.TARGET}
+names.c: ${.CURDIR}/tinfo/MKnames.awk
+	${AWK} -f ${.CURDIR}/tinfo/MKnames.awk \
+		bigstrings=${USE_BIG_STRINGS} \
+		${CAPLIST} > ${.TARGET}
+codes.c: ${.CURDIR}/tinfo/MKcodes.awk
+	${AWK} -f ${.CURDIR}/tinfo/MKcodes.awk \
+		bigstrings=${USE_BIG_STRINGS} \
+		${CAPLIST} > ${.TARGET}
 
-unctrl.c: ${.CURDIR}/base/MKunctrl.lua
-	xmake lua -q ${.CURDIR}/base/MKunctrl.lua 1 > ${.TARGET}
+unctrl.c: ${.CURDIR}/base/MKunctrl.awk
+	echo | ${AWK} -f ${.CURDIR}/base/MKunctrl.awk bigstrings=1 > ${.TARGET}
 
 all: ${PC_FILES}
 

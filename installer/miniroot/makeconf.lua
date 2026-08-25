@@ -7,7 +7,7 @@
 -- generate crunchgen(1) configuration file from `list' spec.
 -- Ported from makeconf.awk (OpenBSD)
 
-if io.stdout and io.stdout.setvbuf then io.stdout:setvbuf("no") end
+io.stdout:setvbuf("no")
 
 local libs = "libs -lstubs -lutil -lm -ltls -lssl -lcrypto -levent -lc -lz"
 local progs = {}   -- progs[p] = count of links

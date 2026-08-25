@@ -10,6 +10,6 @@
 
 AWK=	awk
 
-ediddevs.h ediddevs_data.h: ediddevs devlist2h.lua
+ediddevs.h ediddevs_data.h: ediddevs devlist2h.awk
 	/bin/rm -f ediddevs.h ediddevs_data.h
-	xmake lua -q devlist2h.lua ediddevs
+	${AWK} -f devlist2h.awk ediddevs

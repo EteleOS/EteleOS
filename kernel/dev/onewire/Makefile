@@ -2,6 +2,6 @@
 
 AWK?=	awk
 
-onewiredevs.h onewiredevs_data.h: onewiredevs devlist2h.lua
+onewiredevs.h onewiredevs_data.h: onewiredevs devlist2h.awk
 	/bin/rm -f onewiredevs.h onewiredevs_data.h
-	xmake lua -q devlist2h.lua onewiredevs
+	${AWK} -f devlist2h.awk onewiredevs

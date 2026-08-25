@@ -3,6 +3,6 @@
 
 AWK=	awk
 
-miidevs.h: miidevs devlist2h.lua
+miidevs.h: miidevs devlist2h.awk
 	/bin/rm -f miidevs.h
-	xmake lua -q devlist2h.lua miidevs
+	${AWK} -f devlist2h.awk miidevs

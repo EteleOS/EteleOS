@@ -33,9 +33,9 @@
 -- (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 -- THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-if io.stdout and io.stdout.setvbuf then io.stdout:setvbuf("no") end
+io.stdout:setvbuf("no")
 
-local argv = {...}; if #argv == 0 then argv = arg or {} end
+local argv = arg or {}
 local infile = argv[1] or "pnpdevs"
 
 local function split_fields(line)

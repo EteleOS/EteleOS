@@ -100,7 +100,7 @@ instbin: instbin.mk instbin.cache instbin.c
 	${MAKE} ${MFLAGS} -f instbin.mk SRCLIBDIR=${.CURDIR}/../../../lib all
 
 instbin.conf: ${LISTS}
-	xmake lua -q ${UTILS}/makeconf.lua  ${LISTS} > instbin.conf
+	awk -f ${UTILS}/makeconf.awk  ${LISTS} > instbin.conf
 
 unconfig:
 	-umount -f ${MOUNT_POINT}

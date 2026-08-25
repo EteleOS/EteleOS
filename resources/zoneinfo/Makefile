@@ -84,7 +84,7 @@ TDATA=		africa antarctica asia australasia \
 		backward
 TABDATA=	iso3166.tab zone.tab zone1970.tab zonenow.tab $(TZDATA_TEXT)
 DATA=		$(TDATA) $(TABDATA)
-DSTDATA_ZI_DEPS= ziguard.lua $(TDATA)
+DSTDATA_ZI_DEPS= ziguard.awk $(TDATA)
 
 ZIC=		zic $(ZFLAGS)
 
@@ -92,21 +92,23 @@ all: leapseconds tzdata.zi
 
 $(DATAFORM).zi:	$(DSTDATA_ZI_DEPS)
 		(cd ${.CURDIR}/datfiles && \
-		    xmake lua -q ../ziguard.lua --dataform `expr $@ : '\(.*\).zi'` \
+		    awk -v DATAFORM=`expr $@ : '\(.*\).zi'` -f ../ziguard.awk \
 		    $(TDATA) >${.OBJDIR}/$@.out)
 		mv -f ${.OBJDIR}/$@.out ${.OBJDIR}/$@
 
-tzdata.zi:	$(DATAFORM).zi version zishrink.lua
+tzdata.zi:	$(DATAFORM).zi version zishrink.awk
 		(cd ${.CURDIR}/datfiles && version=`sed 1q ../version` && \
-		  LC_ALL=C xmake lua -q ../zishrink.lua \
-		    --dataform '$(DATAFORM)' \
-		    --deps='$(DSTDATA_ZI_DEPS) zishrink.lua' \
-		    --redo='$(REDO)' --version="$$version" \
+		  LC_ALL=C awk \
+		    -v dataform='$(DATAFORM)' \
+		    -v deps='$(DSTDATA_ZI_DEPS) zishrink.awk' \
+		    -v redo='$(REDO)' \
+		    -v version="$$version" \
+		    -f ../zishrink.awk \
 		    ${.OBJDIR}/$(DATAFORM).zi >${.OBJDIR}/$@.out)
 		mv -f ${.OBJDIR}/$@.out ${.OBJDIR}/$@
 
-leapseconds: leapseconds.lua datfiles/leap-seconds.list
-	xmake lua -q ${.CURDIR}/leapseconds.lua \
+leapseconds: leapseconds.awk datfiles/leap-seconds.list
+	awk -v EXPIRES_LINE=$(EXPIRES_LINE) -f ${.CURDIR}/leapseconds.awk \
 	    ${.CURDIR}/datfiles/leap-seconds.list >${.OBJDIR}/$@.out
 	mv -f ${.OBJDIR}/$@.out ${.OBJDIR}/$@
 

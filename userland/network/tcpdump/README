@@ -75,7 +75,7 @@ send-ack.awk
 	ftp was 1sec, +-500ms).  Since the receiver is expecting
 	1536, 1536 is re-acked when 0 arrives.
 
-packetdat.lua
+packetdat.awk
 	Computes chunk summary data for an ftp (or similar
 	unidirectional tcp transfer). [A "chunk" refers to
 	a chunk of the sequence space -- essentially the packet
@@ -126,8 +126,8 @@ packetdat.lua
 	2 seconds on the average).  It was acked once, 140ms
 	after it first arrived.
 
-stime.lua
-atime.lua
+stime.awk
+atime.awk
 	Output one line per send or ack, respectively, in the form
 		<time> <seq. number>
 	where <time> is the time in seconds since the start of the
@@ -156,11 +156,11 @@ The method was:
     two files of summary data (maxsize is the maximum packet size,
     tracedata is the file of tcpdump tracedata):
       awk -f send-ack.awk packetsize=avgsize tracedata >sa
-      xmake lua -q packetdat.lua packetsize=avgsize tracedata >pd
+      awk -f packetdat.awk packetsize=avgsize tracedata >pd
 
   - While the summary data files are printing, take a look at
     how the transfer behaved:
-      xmake lua -q stime.lua tracedata | xgraph
+      awk -f stime.awk tracedata | xgraph
     (90% of what you learn seems to happen in this step).
 
   - Do all of the above steps several times, both directions,
@@ -177,3 +177,4 @@ The method was:
   - Once a week, tell your funding agent that you're discovering
     wonderful things and you'll write up that research report
     "real soon now".
+

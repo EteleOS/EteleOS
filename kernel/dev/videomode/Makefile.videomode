@@ -9,6 +9,6 @@
 
 AWK=	awk
 
-videomode.c: modelines modelines2c.lua
+videomode.c: modelines modelines2c.awk
 	/bin/rm -f videomode.c
-	xmake lua -q modelines2c.lua modelines > videomode.c
+	${AWK} -f modelines2c.awk modelines > videomode.c

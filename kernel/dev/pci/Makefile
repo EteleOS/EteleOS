@@ -3,6 +3,6 @@
 
 AWK=	awk
 
-pcidevs.h pcidevs_data.h: pcidevs devlist2h.lua
+pcidevs.h pcidevs_data.h: pcidevs devlist2h.awk
 	/bin/rm -f pcidevs.h pcidevs_data.h
-	xmake lua -q devlist2h.lua pcidevs
+	${AWK} -f devlist2h.awk pcidevs

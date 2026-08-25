@@ -2,6 +2,6 @@
 
 AWK=	awk
 
-radeon_devlist.h: ../include/drm/drm_pciids.h devlist.lua
+radeon_devlist.h: ../include/drm/drm_pciids.h devlist.awk
 	/bin/rm -f radeon_devlist.h
-	xmake lua -q devlist.lua ../include/drm/drm_pciids.h > radeon_devlist.h
+	${AWK} -f devlist.awk ../include/drm/drm_pciids.h > radeon_devlist.h

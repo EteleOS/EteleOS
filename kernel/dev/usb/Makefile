@@ -4,15 +4,15 @@
 AWK=	awk
 UNAME=	uname
 
-PROG=	makemap.lua
+PROG=	makemap.awk
 MAP=	../pckbc/wskbdmap_mfii.c
 
 all:	usbdevs.h ukbdmap.c
 
-usbdevs.h usbdevs_data.h: usbdevs devlist2h.lua
+usbdevs.h usbdevs_data.h: usbdevs devlist2h.awk
 	/bin/rm -f usbdevs.h usbdevs_data.h
-	xmake lua -q devlist2h.lua usbdevs
+	${AWK} -f devlist2h.awk usbdevs
 
 ukbdmap.c: ${MAP} ${PROG}
 	/bin/rm -f $@
-	xmake lua -q ${PROG} ${MAP} > $@
+	${AWK} -f ${PROG} ${MAP} > $@
