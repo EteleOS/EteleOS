@@ -10,6 +10,6 @@
 
 AWK=	awk
 
-ediddevs.h ediddevs_data.h: ediddevs devlist2h.awk
+ediddevs.h ediddevs_data.h: ediddevs devlist2h.pl
 	/bin/rm -f ediddevs.h ediddevs_data.h
-	${AWK} -f devlist2h.awk ediddevs
+	perl devlist2h.pl ediddevs

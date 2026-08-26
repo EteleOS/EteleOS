@@ -3,6 +3,6 @@
 
 AWK=	awk
 
-pcidevs.h pcidevs_data.h: pcidevs devlist2h.awk
+pcidevs.h pcidevs_data.h: pcidevs devlist2h.pl
 	/bin/rm -f pcidevs.h pcidevs_data.h
-	${AWK} -f devlist2h.awk pcidevs
+	perl devlist2h.pl pcidevs

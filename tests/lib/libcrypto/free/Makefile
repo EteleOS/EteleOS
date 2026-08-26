@@ -14,8 +14,8 @@ CFLAGS+=	-Wall -Werror
 
 CLEANFILES+= freenull.c freenull.c.body freenull.c.tmp
 
-freenull.c: freenull.awk freenull.c.head freenull.c.tail ../../../../lib/libcrypto/Symbols.list
-	awk -f ${.CURDIR}/freenull.awk \
+freenull.c: freenull.pl freenull.c.head freenull.c.tail ../../../../lib/libcrypto/Symbols.list
+	perl ${.CURDIR}/freenull.pl \
 		< ${BSDSRCDIR}/lib/libcrypto/Symbols.list > freenull.c.body
 	cat ${.CURDIR}/freenull.c.head freenull.c.body \
 		${.CURDIR}/freenull.c.tail > freenull.c.tmp

@@ -90,25 +90,25 @@ ZIC=		zic $(ZFLAGS)
 
 all: leapseconds tzdata.zi
 
-$(DATAFORM).zi:	$(DSTDATA_ZI_DEPS)
+$(DATAFORM).zi:	$(DSTDATA_ZI_DEPS) ziguard.pl
 		(cd ${.CURDIR}/datfiles && \
-		    awk -v DATAFORM=`expr $@ : '\(.*\).zi'` -f ../ziguard.awk \
+		    DATAFORM=`expr $@ : '\(.*\).zi'` perl ../ziguard.pl \
 		    $(TDATA) >${.OBJDIR}/$@.out)
 		mv -f ${.OBJDIR}/$@.out ${.OBJDIR}/$@
 
-tzdata.zi:	$(DATAFORM).zi version zishrink.awk
+tzdata.zi:	$(DATAFORM).zi version zishrink.pl
 		(cd ${.CURDIR}/datfiles && version=`sed 1q ../version` && \
-		  LC_ALL=C awk \
-		    -v dataform='$(DATAFORM)' \
-		    -v deps='$(DSTDATA_ZI_DEPS) zishrink.awk' \
-		    -v redo='$(REDO)' \
-		    -v version="$$version" \
-		    -f ../zishrink.awk \
+		  LC_ALL=C \
+		    dataform='$(DATAFORM)' \
+		    deps='$(DSTDATA_ZI_DEPS) zishrink.awk' \
+		    redo='$(REDO)' \
+		    version="$$version" \
+		    perl ../zishrink.pl \
 		    ${.OBJDIR}/$(DATAFORM).zi >${.OBJDIR}/$@.out)
 		mv -f ${.OBJDIR}/$@.out ${.OBJDIR}/$@
 
-leapseconds: leapseconds.awk datfiles/leap-seconds.list
-	awk -v EXPIRES_LINE=$(EXPIRES_LINE) -f ${.CURDIR}/leapseconds.awk \
+leapseconds: leapseconds.pl datfiles/leap-seconds.list
+	EXPIRES_LINE=$(EXPIRES_LINE) perl ${.CURDIR}/leapseconds.pl \
 	    ${.CURDIR}/datfiles/leap-seconds.list >${.OBJDIR}/$@.out
 	mv -f ${.OBJDIR}/$@.out ${.OBJDIR}/$@
 

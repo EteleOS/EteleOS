@@ -67,7 +67,7 @@ LINK	instbin					usr/sbin/pwd_mkdb
 ARGVLINK ksh					-sh
 SPECIAL	rm bin/md5
 
-SPECIAL awk -f ${UTILS}/trimcerts.awk ${DESTDIR}/etc/ssl/cert.pem etc/ssl/cert.pem
+SPECIAL perl ${UTILS}/trimcerts.pl ${DESTDIR}/etc/ssl/cert.pem etc/ssl/cert.pem
 LINK	instbin					usr/bin/ftp-ssl usr/bin/ftp
 SPECIAL	rm usr/bin/ftp-ssl
 

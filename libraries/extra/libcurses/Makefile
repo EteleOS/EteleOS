@@ -125,24 +125,24 @@ expanded.c: ${.CURDIR}/term.h ${.CURDIR}/curses.priv.h \
 
 comp_captab.c: make_hash
 	sh ${.CURDIR}/tinfo/MKcaptab.sh ${AWK} ${USE_BIG_STRINGS} \
-		${.CURDIR}/tinfo/MKcaptab.awk ${CAPLIST} > ${.TARGET}
+		${.CURDIR}/tinfo/MKcaptab.pl ${CAPLIST} > ${.TARGET}
 
-lib_keyname.c: keys.list ${.CURDIR}/base/MKkeyname.awk
-	${AWK} -f ${.CURDIR}/base/MKkeyname.awk \
+lib_keyname.c: keys.list ${.CURDIR}/base/MKkeyname.pl
+	perl ${.CURDIR}/base/MKkeyname.pl \
 		bigstrings=${USE_BIG_STRINGS} \
 		keys.list > ${.TARGET}
 
-names.c: ${.CURDIR}/tinfo/MKnames.awk
-	${AWK} -f ${.CURDIR}/tinfo/MKnames.awk \
+names.c: ${.CURDIR}/tinfo/MKnames.pl
+	perl ${.CURDIR}/tinfo/MKnames.pl \
 		bigstrings=${USE_BIG_STRINGS} \
 		${CAPLIST} > ${.TARGET}
-codes.c: ${.CURDIR}/tinfo/MKcodes.awk
-	${AWK} -f ${.CURDIR}/tinfo/MKcodes.awk \
+codes.c: ${.CURDIR}/tinfo/MKcodes.pl
+	perl ${.CURDIR}/tinfo/MKcodes.pl \
 		bigstrings=${USE_BIG_STRINGS} \
 		${CAPLIST} > ${.TARGET}
 
-unctrl.c: ${.CURDIR}/base/MKunctrl.awk
-	echo | ${AWK} -f ${.CURDIR}/base/MKunctrl.awk bigstrings=1 > ${.TARGET}
+unctrl.c: ${.CURDIR}/base/MKunctrl.pl
+	echo | perl ${.CURDIR}/base/MKunctrl.pl bigstrings=1 > ${.TARGET}
 
 all: ${PC_FILES}
 

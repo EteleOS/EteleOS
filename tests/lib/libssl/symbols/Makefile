@@ -11,8 +11,8 @@ CFLAGS+=	-Wno-deprecated-declarations
 
 CLEANFILES+= symbols.c symbols.c.tmp
 
-symbols.c: symbols.awk ../../../../lib/libssl/Symbols.list
-	awk -f ${.CURDIR}/symbols.awk \
+symbols.c: symbols.pl ../../../../lib/libssl/Symbols.list
+	perl ${.CURDIR}/symbols.pl \
 		< ${BSDSRCDIR}/lib/libssl/Symbols.list > $@.tmp && \
 	mv -f $@.tmp $@
 

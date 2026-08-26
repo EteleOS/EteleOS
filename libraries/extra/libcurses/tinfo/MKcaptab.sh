@@ -75,9 +75,16 @@ EOF
 cat "$@" |./make_hash 1 info $OPT1
 cat "$@" |./make_hash 3 cap  $OPT1
 
-cat "$@" |$AWK -f $OPT2 bigstrings=$OPT1 tablename=capalias
-
-cat "$@" |$AWK -f $OPT2 bigstrings=$OPT1 tablename=infoalias
+case $OPT2 in
+*.pl)
+	cat "$@" |perl $OPT2 bigstrings=$OPT1 tablename=capalias
+	cat "$@" |perl $OPT2 bigstrings=$OPT1 tablename=infoalias
+	;;
+*)
+	cat "$@" |$AWK -f $OPT2 bigstrings=$OPT1 tablename=capalias
+	cat "$@" |$AWK -f $OPT2 bigstrings=$OPT1 tablename=infoalias
+	;;
+esac
 
 cat <<EOF
 /* *INDENT-ON* */

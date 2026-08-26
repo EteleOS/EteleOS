@@ -3,7 +3,7 @@
 
 DIR=	usd/13.viref
 SRCS=	vi.ref ex.cmd.roff set.opt.roff vi.cmd.roff ref.so
-EXTRA=	merge.awk spell.ok
+EXTRA=	merge.awk merge.pl spell.ok
 MACROS=	-me
 CLEANFILES+=index index.so
 
@@ -21,7 +21,7 @@ index.so: vi.ref
 	    -e 's/DOUBLEQUOTE/""/' \
 	    -e "s/SQUOTE/'/" \
 	    -e 's/ /__SPACE/g' < index | \
-	sort -u '-t	' +0 -1 +1n | awk -f merge.awk | \
+	sort -u '-t	' +0 -1 +1n | perl merge.pl | \
 	sed -e 's/__SPACE/ /g' > index.so
 	rm -f index
 

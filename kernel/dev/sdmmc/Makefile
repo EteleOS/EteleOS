@@ -2,6 +2,6 @@
 
 AWK=	awk
 
-sdmmcdevs.h: sdmmcdevs devlist2h.awk
+sdmmcdevs.h: sdmmcdevs devlist2h.pl
 	/bin/rm -f sdmmcdevs.h
-	${AWK} -f devlist2h.awk sdmmcdevs
+	perl devlist2h.pl sdmmcdevs

@@ -26,9 +26,9 @@ CFLAGS+=	-Wno-deprecated-declarations -DUSE_LIBRESSL_NAMESPACE
 
 CLEANFILES+= include_headers.c symbols.c symbols.c.tmp
 
-symbols.c: symbols.awk ../../../../lib/libcrypto/Symbols.list
+symbols.c: symbols.pl ../../../../lib/libcrypto/Symbols.list
 	make -f ${.CURDIR}/Makefile include_headers.c; \
-	awk -f ${.CURDIR}/symbols.awk \
+	perl ${.CURDIR}/symbols.pl \
 		< ${BSDSRCDIR}/lib/libcrypto/Symbols.list > $@.tmp; \
 	mv -f $@.tmp $@
 

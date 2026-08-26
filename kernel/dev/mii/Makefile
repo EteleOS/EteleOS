@@ -3,6 +3,6 @@
 
 AWK=	awk
 
-miidevs.h: miidevs devlist2h.awk
+miidevs.h: miidevs devlist2h.pl
 	/bin/rm -f miidevs.h
-	${AWK} -f devlist2h.awk miidevs
+	perl devlist2h.pl miidevs

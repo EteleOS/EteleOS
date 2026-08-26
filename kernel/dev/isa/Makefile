@@ -3,6 +3,6 @@
 
 AWK=	awk
 
-pnpdevs.h: pnpdevs devlist2h.awk
+pnpdevs.h: pnpdevs devlist2h.pl
 	/bin/rm -f pnpdevs.h
-	${AWK} -f devlist2h.awk pnpdevs
+	perl devlist2h.pl pnpdevs

@@ -7,8 +7,6 @@
 # 3.) Execute "make -f Makefile.videomode" in "src/sys/dev/videomode".
 # 4.) Commit "src/sys/dev/videomode/videomode.c"
 
-AWK=	awk
-
-videomode.c: modelines modelines2c.awk
+videomode.c: modelines modelines2c.pl
 	/bin/rm -f videomode.c
-	${AWK} -f modelines2c.awk modelines > videomode.c
+	perl modelines2c.pl modelines > videomode.c
