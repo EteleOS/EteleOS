@@ -9,19 +9,6 @@ LDADD=	-lrpcsvc
 
 CFLAGS+= -I.
 
-CLEANFILES=	sm_inter_svc.c sm_inter.h
-
-RPCSRC=	${DESTDIR}/usr/include/rpcsvc/sm_inter.x
-RPCGEN=	rpcgen -L -C
-
-sm_inter_svc.c: ${RPCSRC}
-	${RPCGEN} -m -o ${.TARGET} ${RPCSRC}
-
-sm_inter.h: ${RPCSRC}
-	${RPCGEN} -h -o ${.TARGET} ${RPCSRC}
-
-BUILDFIRST =	sm_inter.h
-
 test: ${.CURDIR}/test.c
 	cc -o test ${.CURDIR}/test.c -lrpcsvc
 

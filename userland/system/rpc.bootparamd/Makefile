@@ -9,10 +9,4 @@ MAN=	bootparams.5 rpc.bootparamd.8
 DPADD=	${LIBRPCSVC}
 LDADD=	-lrpcsvc
 
-bootparam_prot_svc.c: ${DESTDIR}/usr/include/rpcsvc/bootparam_prot.x
-	ln -fs ${DESTDIR}/usr/include/rpcsvc/bootparam_prot.h .
-	rpcgen -C -m -o $@ $>
-
-CLEANFILES += bootparam_prot_svc.c bootparam_prot.h
-
 .include <bsd.prog.mk>

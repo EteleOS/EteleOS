@@ -6,7 +6,6 @@ RPCSRCS=	bootparam_prot.x klm_prot.x mount.x nfs_prot.x \
 		sm_inter.x spray.x yp.x yppasswd.x
 SRCS=		${RPCSRCS:R:S/$/.c/g}
 HDRS=           ${RPCSRCS:R:S/$/.h/g}
-CLEANFILES+=	${SRCS} ${HDRS}
 
 LIB=		rpcsvc
 NOMAN=
@@ -32,12 +31,4 @@ includes:	${HDRS}
 		echo $$j; $$j; } \
 	done
 
-# new suffixes have to go afterwards, because bsd.lib.mk clears them
 .include <bsd.lib.mk>
-.SUFFIXES: .x .c .h
-
-.x.c:
-	rpcgen -C -c ${.IMPSRC} -o ${.TARGET}
-
-.x.h:
-	rpcgen -C -h ${.IMPSRC} -o ${.TARGET}

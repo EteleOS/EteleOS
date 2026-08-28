@@ -180,3 +180,20 @@ task("peteleos-regen-all")
         description = "Regenerate every module's generated_manifest.lua",
     })
 task_end()
+
+task("eteleos-verify-rpcgen-output")
+    on_run(function ()
+        import("lib.detect.find_tool")
+        local sh = find_tool("sh")
+        local scriptpath = eteleos_resolve_script("rpcgen-output", "tools/verify-rpcgen-output.sh")
+        if not sh then
+            print("eteleos-verify-rpcgen-output: could not find sh on PATH")
+        elseif scriptpath then
+            os.execv(sh.program, {scriptpath})
+        end
+    end)
+    set_menu({
+        usage = "xmake eteleos-verify-rpcgen-output",
+        description = "Verify committed RPC generated C/header output using pinned rpcgen",
+    })
+task_end()
