@@ -65,12 +65,9 @@ GENERATED SOURCES (best-effort, tool-checked)
   *.y (yacc/bison), *.l (lex/flex): verified real, 53 + 8 files across
     userland (e.g. httpd/parse.y, security/doas/parse.y,
     utilities/mklocale/{lex.l,yacc.y}).
-  *.x (rpcgen): verified real but rare -- only 3 files found
-    (system/amd/rpcx/{amq,nfs_prot}.x, system/ypserv/ypserv/ypv1.x).
-    rpcgen conventionally emits MULTIPLE files per .x (_clnt.c, _svc.c,
-    _xdr.c, a header); this implementation is a reasonable best-effort
-    invocation, not a byte-verified replica of every rpcgen flag each of
-    those 3 Makefiles actually uses.
+  RPC .x specifications have their generated C/header output committed to
+    the source tree.  Regular builds intentionally never invoke rpcgen;
+    tools/verify-rpcgen-output.sh is the opt-in maintainer/CI freshness check.
 
 HOST-BUILD vs CROSS-BUILD
   Two programs here are needed as HOST-native build-time tools, not (only)
@@ -125,15 +122,15 @@ local function abspath(rel)
 end
 
 
--- Generated-source handling (yacc/lex/rpcgen), shared by every program --
+-- Generated-source handling (yacc/lex), shared by every program --
 -- unchanged: this was already entirely on_load-scoped (script scope), where
 -- import()/os.execv() genuinely do work.
 local function is_fresh(outc, srcfile)
     return os.isfile(outc) and os.isfile(srcfile) and os.mtime(outc) >= os.mtime(srcfile)
 end
 
-local function wire_generated_sources(target_name, progdir, y_files, l_files, x_files)
-    if #y_files == 0 and #l_files == 0 and #x_files == 0 then return end
+local function wire_generated_sources(target_name, progdir, y_files, l_files)
+    if #y_files == 0 and #l_files == 0 then return end
     on_load(function (target)
         import("lib.detect.find_tool")
         local gendir = path.join(os.projectdir(), "build", "eteleos-userland-gen", target:name())
@@ -171,38 +168,6 @@ local function wire_generated_sources(target_name, progdir, y_files, l_files, x_
                     end
                 else
                     wprint("eteleos-userland: %s: no flex/lex found, skipping %s", target:name(), lfile)
-                end
-            end
-        end
-
-        for _, xfile in ipairs(x_files) do
-            local base = basename_noext(xfile)
-            local all_cached = is_fresh(path.join(gendir, base .. "_clnt.c"), xfile)
-                and is_fresh(path.join(gendir, base .. "_svc.c"), xfile)
-                and is_fresh(path.join(gendir, base .. "_xdr.c"), xfile)
-            if all_cached then
-                for _, suffix in ipairs({"_clnt.c", "_svc.c", "_xdr.c"}) do
-                    target:add("files", path.join(gendir, base .. suffix))
-                end
-                target:add("includedirs", gendir)
-            else
-                local rpcgen = find_tool("rpcgen")
-                if rpcgen then
-                    -- rpcgen's usual output set: <base>_clnt.c, <base>_svc.c,
-                    -- <base>_xdr.c and <base>.h -- generated into gendir and
-                    -- added if rpcgen actually produced them (best-effort: not
-                    -- every .x file uses all four, e.g. header-only .x files).
-                    os.execv(rpcgen.program, {"-h", "-o", path.join(gendir, base .. ".h"), xfile}, {try = true})
-                    for _, suffix in ipairs({"_clnt.c", "_svc.c", "_xdr.c"}) do
-                        local outc = path.join(gendir, base .. suffix)
-                        local flag = (suffix == "_clnt.c" and "-l") or (suffix == "_svc.c" and "-m") or "-c"
-                        if os.execv(rpcgen.program, {flag, "-o", outc, xfile}, {try = true}) then
-                            target:add("files", outc)
-                        end
-                    end
-                    target:add("includedirs", gendir)
-                else
-                    wprint("eteleos-userland: %s: rpcgen not found, skipping %s", target:name(), xfile)
                 end
             end
         end
@@ -256,14 +221,14 @@ end
 local function eteleos_program(target_name, progdir, opts, info)
     opts = opts or {}
 
-    local portable_files, y_files, l_files, x_files
+    local portable_files, y_files, l_files
 
     if opts.explicit_srcs then
         -- PROGS= caller: exactly one source file, already resolved (path
         -- relative to userland/, from the generator).
         portable_files = {}
         for _, f in ipairs(opts.explicit_srcs) do portable_files[#portable_files + 1] = abspath(f) end
-        y_files, l_files, x_files = {}, {}, {}
+        y_files, l_files = {}, {}
     else
         local c_files  = os.files(path.join(progdir, "**.c"))
         local cc_files = os.files(path.join(progdir, "**.cc"))
@@ -271,7 +236,6 @@ local function eteleos_program(target_name, progdir, opts, info)
         local s_files  = os.files(path.join(progdir, "*.S"))
         y_files  = os.files(path.join(progdir, "*.y"))
         l_files  = os.files(path.join(progdir, "*.l"))
-        x_files  = os.files(path.join(progdir, "*.x"))
 
         -- Prefer the Makefile's own explicit SRCS= list when present (it is
         -- the ground truth for which files actually belong to this program,
@@ -312,7 +276,7 @@ local function eteleos_program(target_name, progdir, opts, info)
         end
     end
 
-    if #portable_files == 0 and #y_files == 0 and #l_files == 0 and #x_files == 0 then
+    if #portable_files == 0 and #y_files == 0 and #l_files == 0 then
         -- Script-only program (SCRIPTS=, no compiled sources at all).
         if info.found and #info.scripts > 0 then
             for _, s in ipairs(info.scripts) do
@@ -378,7 +342,7 @@ local function eteleos_program(target_name, progdir, opts, info)
             end
         end
 
-        wire_generated_sources(target_name, progdir, y_files, l_files, x_files)
+        wire_generated_sources(target_name, progdir, y_files, l_files)
         wire_install_perms(info)
 
         -- In PROGS= mode (opts.prog_name set), a shared MAN= list covers
