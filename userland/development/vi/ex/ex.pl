@@ -1,4 +1,4 @@
-# EteleOS: userland/development/vi/ex/ex.pl, time wirte: 2026/08/26
+# PeteleOS: userland/development/vi/ex/ex.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 
 #	$OpenBSD: ex.awk,v 1.3 2017/12/14 10:02:53 martijn Exp $

@@ -1,4 +1,4 @@
-# EteleOS: userland/development/vi/docs/USD.doc/vi.ref/merge.pl, time wirte: 2026/08/26
+# PeteleOS: userland/development/vi/docs/USD.doc/vi.ref/merge.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 
 #	$OpenBSD: merge.awk,v 1.3 2001/01/29 01:58:35 niklas Exp $

@@ -1,12 +1,12 @@
 #!/bin/sh
-# EteleOS: ltmain.sh, time wirte: 2026/07/08
+# PeteleOS: ltmain.sh, time wirte: 2026/07/08
 # This file uses the Apache-2.0 license
 #
-# ltmain.sh: generalized library-building support script for EteleOS.
+# ltmain.sh: generalized library-building support script for PeteleOS.
 # Appended to the output of ltconfig to form the "libtool"
 # script used by Makefiles (xenocara, userland, etc).
 #
-# Supports only what EteleOS needs: Clang + lld + ELF shared/static
+# Supports only what PeteleOS needs: Clang + lld + ELF shared/static
 # libraries on amd64, arm64, riscv64. No AIX/HP-UX/IRIX/SCO/Windows
 # branches, no dlopen self-tests, no multi-OS versioning schemes.
 
@@ -36,7 +36,7 @@ while [ $# -gt 0 ]; do
 	--dry-run|-n) run=:; shift ;;
 	--quiet|--silent) show=:; shift ;;
 	--help) usage; exit 0 ;;
-	--version) echo "$progname (EteleOS libtool)"; exit 0 ;;
+	--version) echo "$progname (PeteleOS libtool)"; exit 0 ;;
 	--config)
 		sed -e '1,/^### BEGIN LIBTOOL CONFIG/d' -e '/^### END LIBTOOL CONFIG/,$d' "$0"
 		exit 0
@@ -168,7 +168,7 @@ link)
 		# .la metadata file, so `install` mode and dependents can find things.
 		$run $rm "$output"
 		cat > "$output" <<-EOF
-			# $outname - EteleOS libtool library file
+			# $outname - PeteleOS libtool library file
 			dlname='$realname'
 			library_names='$realname lib${name}.so'
 			old_library='lib${name}.a'

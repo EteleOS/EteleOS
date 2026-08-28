@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# EteleOS: resources/zoneinfo/leapseconds.pl, time wirte: 2026/08/26
+# PeteleOS: resources/zoneinfo/leapseconds.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 #
 # --- Original upstream header follows (preserved verbatim) ---

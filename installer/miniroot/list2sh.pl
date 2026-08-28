@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# EteleOS: installer/miniroot/list2sh.pl, time wirte: 2026/08/26
+# PeteleOS: installer/miniroot/list2sh.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 #
 # Converted from the original AWK implementation.

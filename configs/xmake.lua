@@ -1,5 +1,5 @@
 --[[
-EteleOS: configs/xmake.lua, time write: 2026/07/26 
+PeteleOS: configs/xmake.lua, time write: 2026/07/26 
 This file uses the Apache-2.0 license
 --]]
 
@@ -89,7 +89,7 @@ end
 
 
 -- TARGET
-target("eteleos-configs")
+target("peteleos-configs")
     set_kind("headeronly")
     set_default(false)
 
@@ -104,7 +104,7 @@ target("eteleos-configs")
         for _, category in ipairs({"logging", "network", "security", "system"}) do
             local n = copy_dir_flat(path.join(scriptdir, category), etcdir)
             if n == 0 then
-                wprint("eteleos-configs: configs/%s not found or empty, skipping", category)
+                wprint("peteleos-configs: configs/%s not found or empty, skipping", category)
             end
             total = total + n
         end
@@ -148,12 +148,12 @@ target("eteleos-configs")
         if os.isdir(archdir) then
             total = total + copy_dir_flat(archdir, etcdir)
         else
-            wprint("eteleos-configs: configs/etc/etc.%s not found, skipping "
+            wprint("peteleos-configs: configs/etc/etc.%s not found, skipping "
                    .. "architecture-specific /etc files (login.conf, sysctl.conf, "
                    .. "disktab, ttys, ...)", arch)
         end
 
-        cprint("${green}eteleos-configs${clear}: installed %d files to %s (arch=%s)",
+        cprint("${green}peteleos-configs${clear}: installed %d files to %s (arch=%s)",
                total, etcdir, arch)
     end)
 target_end()

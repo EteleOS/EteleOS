@@ -1,5 +1,5 @@
 --[[
-EteleOS: libraries/xmake.lua, time write: 2026/07/26
+PeteleOS: libraries/xmake.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
@@ -70,7 +70,7 @@ local unpack = table.unpack or unpack
 -- generated file rather than read here directly).
 includes("generated_manifest.lua")
 if type(ETELEOS_LIBRARIES_SHLIB_VERSIONS) ~= "table" then
-    print("eteleos-libraries: generated_manifest.lua did not define ETELEOS_LIBRARIES_SHLIB_VERSIONS -- "
+    print("peteleos-libraries: generated_manifest.lua did not define ETELEOS_LIBRARIES_SHLIB_VERSIONS -- "
           .. "every library will link with version 0.0. Run: xmake lua tools/gen/gen_libraries_manifest.lua")
     ETELEOS_LIBRARIES_SHLIB_VERSIONS = {}
 end
@@ -99,12 +99,12 @@ end
 
 local function write_file(filepath, content)
     if type(io) ~= "table" or not io.open then
-        print(string.format("eteleos: io unavailable, could not write %s", filepath))
+        print(string.format("peteleos: io unavailable, could not write %s", filepath))
         return false
     end
     local f = io.open(filepath, "w")
     if not f then
-        print(string.format("eteleos: could not write %s", filepath))
+        print(string.format("peteleos: could not write %s", filepath))
         return false
     end
     f:write(content)
@@ -248,7 +248,7 @@ local function parse_syscall_lists(makefile_inc_path)
             return out
         end
         if tok:find("%$") or tok:find("{") then
-            wprint("eteleos: libc syscall list parser: don't know how to expand "
+            wprint("peteleos: libc syscall list parser: don't know how to expand "
                    .. "\"%s\" -- skipping this token (see parse_syscall_lists)", tok)
             return {}
         end
@@ -294,7 +294,7 @@ end
 local function generate_syscall_stubs(libc_srcdir, gendir)
     local lists = parse_syscall_lists(path.join(libc_srcdir, "sys", "Makefile.inc"))
     if not lists then
-        wprint("eteleos: libc/sys/Makefile.inc not found or unparseable -- syscall "
+        wprint("peteleos: libc/sys/Makefile.inc not found or unparseable -- syscall "
                .. "stubs will NOT be generated; libc will build but have no syscall "
                .. "entry points")
         return {}
@@ -330,7 +330,7 @@ local function generate_syscall_stubs(libc_srcdir, gendir)
         end
     end
     if #generated == 0 then
-        wprint("eteleos: parsed libc/sys/Makefile.inc but found zero syscall names "
+        wprint("peteleos: parsed libc/sys/Makefile.inc but found zero syscall names "
                .. "in ASM/ASM_NOERR/PSEUDO/PSEUDO_NOERR/HIDDEN -- check the file's "
                .. "shape hasn't changed upstream")
     end
@@ -360,7 +360,7 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
     local srcdir = path.join(os.scriptdir(), srcdir_rel)
 
     if not os.isdir(srcdir) then
-        print(string.format("eteleos: libraries/%s not found, skipping lib%s", srcdir_rel, name))
+        print(string.format("peteleos: libraries/%s not found, skipping lib%s", srcdir_rel, name))
         return
     end
 
@@ -374,23 +374,23 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
                 mi_files[#mi_files + 1] = f
             end
         else
-            print(string.format("eteleos: lib%s: extra_srcdirs entry not found, skipping: %s", name, extra_dir))
+            print(string.format("peteleos: lib%s: extra_srcdirs entry not found, skipping: %s", name, extra_dir))
         end
     end
 
     for _, f in ipairs(opts.extra_files or {}) do
         if os.isfile(f) then mi_files[#mi_files + 1] = f
-        else print(string.format("eteleos: lib%s: extra_files entry not found, skipping: %s", name, f)) end
+        else print(string.format("peteleos: lib%s: extra_files entry not found, skipping: %s", name, f)) end
     end
 
     if opts.arch_files and opts.arch_files[arch] then
         local f = path.join(srcdir, opts.arch_files[arch])
         if os.isfile(f) then mi_files[#mi_files + 1] = f
-        else print(string.format("eteleos: lib%s: arch_files[%s] not found, skipping: %s", name, arch, f)) end
+        else print(string.format("peteleos: lib%s: arch_files[%s] not found, skipping: %s", name, arch, f)) end
     end
 
     if #mi_files == 0 and #md_files == 0 then
-        print(string.format("eteleos: lib%s (%s) has no source files for arch '%s' yet, skipping",
+        print(string.format("peteleos: lib%s (%s) has no source files for arch '%s' yet, skipping",
                name, srcdir_rel, arch))
         return
     end
@@ -413,7 +413,7 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
             set_basename("lib" .. name)
             set_default(false)   -- built explicitly by userland/kernel deps, not by a plain `xmake`
 
-            add_rules("eteleos.base", "eteleos.library")
+            add_rules("peteleos.base", "peteleos.library")
 
             if #mi_files > 0 then add_files(unpack(mi_files)) end
             if #md_files > 0 then add_files(unpack(md_files)) end
@@ -429,8 +429,8 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
 
             if opts.defines then add_defines(unpack(opts.defines)) end
 
-            -- Every EteleOS library builds against the exported headers.
-            add_deps("eteleos-headers")
+            -- Every PeteleOS library builds against the exported headers.
+            add_deps("peteleos-headers")
             if opts.deps then add_deps(unpack(opts.deps)) end
 
             -- Soname/version, shared build only.
@@ -441,7 +441,7 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
             if opts.gen_files_fn then
                 on_load(function (target)
                     local gendir = path.join(os.projectdir(), "build",
-                                              "eteleos-libraries-gen", "lib" .. name, arch)
+                                              "peteleos-libraries-gen", "lib" .. name, arch)
                     local files = opts.gen_files_fn(gendir)
                     for _, f in ipairs(files) do target:add("files", f) end
                     if #files > 0 then target:add("includedirs", gendir) end
@@ -468,7 +468,7 @@ eteleos_bsd_library("c", "core/libc", {
         -- DEFS.h itself does "#include <machine/asm.h>" -- confirmed
         -- necessary by testing. kernel/arch/<arch>/include is the same
         -- real "machine" headers directory the kernel and (per
-        -- include/xmake.lua's own "eteleos-headers" relink() logic) the
+        -- include/xmake.lua's own "peteleos-headers" relink() logic) the
         -- installed userland headers both resolve <machine/...> against;
         -- materialized here as a real directory copy (not a symlink, same
         -- Windows-host-portability reasoning as kernel/xmake.lua) directly
@@ -488,7 +488,7 @@ eteleos_bsd_library("c", "core/libc", {
 eteleos_bsd_library("m", "core/libm")
 
 -- libcrypto: OpenSSL's libcrypto, vendored. arch/ here covers many more
--- architectures than EteleOS supports (alpha, hppa, i386, m88k, ...); the
+-- architectures than PeteleOS supports (alpha, hppa, i386, m88k, ...); the
 -- MD-override logic above only looks at arch/<target_arch>, so unrelated
 -- architectures are never compiled in.
 eteleos_bsd_library("crypto", "core/libcrypto")
@@ -640,31 +640,31 @@ do
                 set_kind(kind)
                 set_basename("libpcap")
                 set_default(false)
-                add_rules("eteleos.base", "eteleos.library")
+                add_rules("peteleos.base", "peteleos.library")
 
                 local mi_files = collect_sources(pcap_srcdir, arch)
                 if #mi_files > 0 then add_files(unpack(mi_files)) end
                 local bpf_filter_c = path.join(os.scriptdir(), "..", "kernel", "net", "net", "bpf_filter.c")
                 if os.isfile(bpf_filter_c) then add_files(bpf_filter_c)
-                else print("eteleos: libpcap: kernel/net/net/bpf_filter.c not found, skipping") end
+                else print("peteleos: libpcap: kernel/net/net/bpf_filter.c not found, skipping") end
 
                 add_includedirs(pcap_srcdir)
                 add_defines("HAVE_SYS_IOCCOM_H", "HAVE_SYS_SOCKIO_H", "HAVE_ETHER_HOSTTON",
                             "yylval=pcap_yylval")
-                add_deps("eteleos-headers")
+                add_deps("peteleos-headers")
 
                 on_load(function (target)
                     import("lib.detect.find_tool")
                     local yacc = find_tool("bison") or find_tool("yacc")
                     local lex  = find_tool("flex") or find_tool("lex")
                     if not yacc or not lex then
-                        wprint("eteleos: libpcap: no yacc/bison or lex/flex found -- "
+                        wprint("peteleos: libpcap: no yacc/bison or lex/flex found -- "
                                .. "grammar.y/scanner.l will not be compiled, libpcap "
                                .. "will be missing its filter-expression parser")
                         return
                     end
                     local gendir = path.join(os.projectdir(), "build",
-                                              "eteleos-libraries-gen", "libpcap", arch)
+                                              "peteleos-libraries-gen", "libpcap", arch)
                     os.mkdir(gendir)
                     local gram_c = path.join(gendir, "grammar.c")
                     local gram_h = path.join(gendir, "grammar.h")
@@ -674,7 +674,7 @@ do
                                 path.join(pcap_srcdir, "grammar.y")}, {try = true}) then
                         target:add("files", gram_c)
                     else
-                        wprint("eteleos: libpcap: yacc/bison failed on grammar.y")
+                        wprint("peteleos: libpcap: yacc/bison failed on grammar.y")
                     end
                     local scan_c = path.join(gendir, "scanner.c")
                     if os.isfile(scan_c) then
@@ -683,14 +683,14 @@ do
                                 path.join(pcap_srcdir, "scanner.l")}, {try = true}) then
                         target:add("files", scan_c)
                     else
-                        wprint("eteleos: libpcap: lex/flex failed on scanner.l")
+                        wprint("peteleos: libpcap: lex/flex failed on scanner.l")
                     end
                     target:add("includedirs", gendir)
                 end)
             target_end()
         end
     else
-        print("eteleos: libraries/extra/libpcap not found, skipping libpcap")
+        print("peteleos: libraries/extra/libpcap not found, skipping libpcap")
     end
 end
 
@@ -716,21 +716,21 @@ do
                 set_kind(kind)
                 set_basename("librpcsvc")
                 set_default(false)
-                add_rules("eteleos.base", "eteleos.library")
+                add_rules("peteleos.base", "peteleos.library")
                 add_includedirs(rpcsvc_srcdir)
-                add_deps("eteleos-headers")
+                add_deps("peteleos-headers")
 
                 on_load(function (target)
                     import("lib.detect.find_tool")
                     local rpcgen = find_tool("rpcgen")
                     if not rpcgen then
-                        wprint("eteleos: librpcsvc: rpcgen not found on host -- none of "
+                        wprint("peteleos: librpcsvc: rpcgen not found on host -- none of "
                                .. "the %d RPC spec(s) can be compiled, librpcsvc will "
                                .. "be an empty library", #RPCSVC_SPECS)
                         return
                     end
                     local gendir = path.join(os.projectdir(), "build",
-                                              "eteleos-libraries-gen", "librpcsvc")
+                                              "peteleos-libraries-gen", "librpcsvc")
                     os.mkdir(gendir)
                     local n = 0
                     for _, spec in ipairs(RPCSVC_SPECS) do
@@ -749,20 +749,20 @@ do
                                 target:add("files", c_file)
                                 n = n + 1
                             else
-                                wprint("eteleos: librpcsvc: rpcgen failed on %s.x", spec)
+                                wprint("peteleos: librpcsvc: rpcgen failed on %s.x", spec)
                             end
                         else
-                            wprint("eteleos: librpcsvc: %s.x not found, skipping", spec)
+                            wprint("peteleos: librpcsvc: %s.x not found, skipping", spec)
                         end
                     end
                     target:add("includedirs", gendir)
-                    cprint("${green}eteleos${clear}: librpcsvc: %d/%d RPC specs compiled",
+                    cprint("${green}peteleos${clear}: librpcsvc: %d/%d RPC specs compiled",
                            n, #RPCSVC_SPECS)
                 end)
             target_end()
         end
     else
-        print("eteleos: libraries/extra/librpcsvc not found, skipping librpcsvc")
+        print("peteleos: libraries/extra/librpcsvc not found, skipping librpcsvc")
     end
 end
 

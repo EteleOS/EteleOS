@@ -1,4 +1,4 @@
-# EteleOS: tests/lib/libcrypto/symbols/symbols.pl, time wirte: 2026/08/26
+# PeteleOS: tests/lib/libcrypto/symbols/symbols.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 #
 # Converted from symbols.awk to Perl.

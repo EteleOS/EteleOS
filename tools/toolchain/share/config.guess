@@ -1,15 +1,15 @@
 #!/bin/sh
-# EteleOS: config.guess, time wirte: 2026/07/26
+# PeteleOS: config.guess, time wirte: 2026/07/26
 # This file uses the Apache-2.0 license
 #
 # config.guess: print a canonical target triple for the build machine.
-# Which only targets amd64, arm64, and riscv64 on EteleOS.
+# Which only targets amd64, arm64, and riscv64 on PeteleOS.
 #
-# Output format: <arch>-unknown-eteleos<release>
+# Output format: <arch>-unknown-peteleos<release>
 # Usage: config.guess [-h|--help] [-v|--version]
 
 progname=$(basename "$0")
-version_tag="eteleos-config.guess 1.0"
+version_tag="peteleos-config.guess 1.0"
 
 usage() {
 	cat <<EOF
@@ -33,7 +33,7 @@ machine=$(uname -m 2>/dev/null) || machine=unknown
 system=$(uname -s 2>/dev/null)  || system=unknown
 release=$(uname -r 2>/dev/null) || release=unknown
 
-# Normalize the machine name to EteleOS's three supported architectures.
+# Normalize the machine name to PeteleOS's three supported architectures.
 case "$machine" in
 	amd64|x86_64)
 		arch=amd64
@@ -46,15 +46,15 @@ case "$machine" in
 		;;
 	*)
 		echo "$progname: unsupported machine type '$machine'" >&2
-		echo "$progname: EteleOS only supports amd64, arm64, riscv64" >&2
+		echo "$progname: PeteleOS only supports amd64, arm64, riscv64" >&2
 		exit 1
 		;;
 esac
 
-# Normalize the OS name. EteleOS build hosts are expected to be either
+# Normalize the OS name. PeteleOS build hosts are expected to be either
 case "$system" in
-	EteleOS)
-		os="eteleos${release}"
+	PeteleOS)
+		os="peteleos${release}"
 		;;
 		echo "$progname: unsupported build host '$system'" >&2
 		exit 1

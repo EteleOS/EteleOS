@@ -1,5 +1,5 @@
 --[[
-EteleOS: tools/options.lua, time write: 2026/07/26
+PeteleOS: tools/options.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
@@ -16,17 +16,17 @@ User interface:
   xmake f --asan=y --ubsan=y
   xmake f --werror=y
   xmake f --sysroot=/path/to/sysroot
-  xmake f --eteleos_toolchain=eteleos-gcc
+  xmake f --eteleos_toolchain=peteleos-gcc
 --]]
 
 -- Target architecture
 -- The values listed here are the COMPLETE set of architectures still present
--- in the EteleOS source tree after the pruning described in the build spec.
+-- in the PeteleOS source tree after the pruning described in the build spec.
 -- Do not add back removed architectures here.
 option("target_arch")
     set_default("amd64")
     set_showmenu(true)
-    set_description("EteleOS target CPU architecture")
+    set_description("PeteleOS target CPU architecture")
     set_values("amd64", "arm64", "riscv64")
 option_end()
 
@@ -35,10 +35,10 @@ option_end()
 -- activated as the project default. Setting this option also drives the
 -- set_config("toolchain", ...) call in tools/compiler.lua.
 option("eteleos_toolchain")
-    set_default("eteleos-clang")
+    set_default("peteleos-clang")
     set_showmenu(true)
     set_description("Build toolchain preset")
-    set_values("eteleos-clang", "eteleos-gcc")
+    set_values("peteleos-clang", "peteleos-gcc")
 option_end()
 
 -- Cross-build sysroot
@@ -64,7 +64,7 @@ option_end()
 -- Sanitizers
 -- These are intentionally separate options so that, for example, a test build
 -- can enable ubsan without asan. Both are ONLY valid for hosted targets
--- (userland tools, tests); the eteleos.kernel rule blocks them on the kernel.
+-- (userland tools, tests); the peteleos.kernel rule blocks them on the kernel.
 
 option("asan")
     set_default(false)

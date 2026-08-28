@@ -1,53 +1,53 @@
 --[[
-EteleOS: tools/rules.lua, time write: 2026/07/26
+PeteleOS: tools/rules.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
 --[[
-Project-wide rule() declarations for EteleOS.
+Project-wide rule() declarations for PeteleOS.
 Loaded by tools/xmake.lua (after compiler.lua).
 
 rule() declarations are project-global in xmake: once declared here, any
-module can opt in with add_rules("eteleos.*").
+module can opt in with add_rules("peteleos.*").
 
 Rule catalogue
-    eteleos.base: Common flags for every EteleOS target (hosted or not).
+    peteleos.base: Common flags for every PeteleOS target (hosted or not).
         Every target in every module should add this rule.
 
-    eteleos.kernel: Freestanding flags for the kernel. Builds that add
-        this rule MUST also add eteleos.base first.
+    peteleos.kernel: Freestanding flags for the kernel. Builds that add
+        this rule MUST also add peteleos.base first.
 
-    eteleos.userland: Hardening flags for userland executables.
-    eteleos.userland_static Static-link variant, for /bin and /sbin.
+    peteleos.userland: Hardening flags for userland executables.
+    peteleos.userland_static Static-link variant, for /bin and /sbin.
 
-    eteleos.library: Flags for shared/static libraries.
+    peteleos.library: Flags for shared/static libraries.
 
-    eteleos.asm: Preprocessed assembler (.S) support.
+    peteleos.asm: Preprocessed assembler (.S) support.
 
-    eteleos.strip_release Strip all symbols in release/minsizerel mode.
+    peteleos.strip_release Strip all symbols in release/minsizerel mode.
 
-    eteleos.lto: Explicit per-target LTO (for modules that do not rely
+    peteleos.lto: Explicit per-target LTO (for modules that do not rely
         on the global policy set in compiler.lua).
 
-    eteleos.asan: AddressSanitizer for hosted targets.
+    peteleos.asan: AddressSanitizer for hosted targets.
 
-    eteleos.ubsan: UndefinedBehaviorSanitizer for hosted targets.
+    peteleos.ubsan: UndefinedBehaviorSanitizer for hosted targets.
 
 Nothing in this file compiles any source file or declares any target.
 --]]
 
 
--- eteleos.base
--- Common flags that apply to every EteleOS target (hosted or freestanding).
--- Think of this as EteleOS's global "baseline" build configuration.
+-- peteleos.base
+-- Common flags that apply to every PeteleOS target (hosted or freestanding).
+-- Think of this as PeteleOS's global "baseline" build configuration.
 -- Usage (in any module's xmake.lua):
 --   target("foo")
---       add_rules("eteleos.base")
+--       add_rules("peteleos.base")
 
-rule("eteleos.base")
+rule("peteleos.base")
     on_load(function (target)
         -- --- Preprocessor -------------------------------------------------------
-        -- __EteleOS__ identifies EteleOS-specific code paths.
+        -- __EteleOS__ identifies PeteleOS-specific code paths.
         -- __OpenBSD__ is NOT added here: clang/gcc predefine it automatically
         -- when the target triple ends in "-openbsd" (see toolchains.lua).
         target:add("defines", "__EteleOS__")
@@ -68,12 +68,12 @@ rule("eteleos.base")
         end
 
         -- --- Architecture-specific flags ----------------------------------------
-        -- These come from tools/modules/eteleos/helpers.lua (NOT the plain
+        -- These come from tools/modules/peteleos/helpers.lua (NOT the plain
         -- global of the same name in tools/helpers.lua -- confirmed by
         -- testing that a description-scope global, even one defined in
         -- this exact project, is invisible from on_load; see that
         -- module's header for the full explanation).
-        import("eteleos.helpers")
+        import("peteleos.helpers")
         local arch_flags = helpers.eteleos_get_arch_cflags()
         if #arch_flags > 0 then
             helpers.eteleos_add_flags(target, "cxflags", arch_flags)
@@ -104,14 +104,14 @@ rule("eteleos.base")
 rule_end()
 
 
--- eteleos.kernel
--- Freestanding flags for the kernel. MUST be combined with eteleos.base.
+-- peteleos.kernel
+-- Freestanding flags for the kernel. MUST be combined with peteleos.base.
 -- Explicitly blocks sanitizers (which require a hosted runtime library).
 -- Usage (in kernel/xmake.lua):
---   target("eteleos-kernel")
---       add_rules("eteleos.base", "eteleos.kernel")
+--   target("peteleos-kernel")
+--       add_rules("peteleos.base", "peteleos.kernel")
 
-rule("eteleos.kernel")
+rule("peteleos.kernel")
     on_load(function (target)
         -- Freestanding environment: no libc, no hosted ABI assumptions.
         target:add("cxflags",
@@ -147,14 +147,14 @@ rule("eteleos.kernel")
 rule_end()
 
 
--- eteleos.userland
--- Security hardening flags for EteleOS userland executables.
--- MUST be combined with eteleos.base.
+-- peteleos.userland
+-- Security hardening flags for PeteleOS userland executables.
+-- MUST be combined with peteleos.base.
 -- Usage:
 --   target("sh")
---       add_rules("eteleos.base", "eteleos.userland")
+--       add_rules("peteleos.base", "peteleos.userland")
 
-rule("eteleos.userland")
+rule("peteleos.userland")
     on_load(function (target)
         -- Position-independent executable.
         target:add("cxflags",  "-fpie",  {force = true})
@@ -175,20 +175,20 @@ rule("eteleos.userland")
 rule_end()
 
 
--- eteleos.userland_static
--- Same hardening as eteleos.userland, for the long-standing BSD convention
+-- peteleos.userland_static
+-- Same hardening as peteleos.userland, for the long-standing BSD convention
 -- that /bin and /sbin link statically so they still work if /usr (and
 -- whatever shared libraries live there) isn't mounted yet during early
 -- boot/single-user recovery. Not combined with -fpie/-pie: a static PIE
 -- executable is a real but much less common mode (-static-pie) with its
 -- own runtime-relocation requirements, and isn't what "so it works before
 -- /usr is mounted" is actually asking for here.
--- MUST be combined with eteleos.base.
+-- MUST be combined with peteleos.base.
 -- Usage:
 --   target("mount")
---       add_rules("eteleos.base", "eteleos.userland_static")
+--       add_rules("peteleos.base", "peteleos.userland_static")
 
-rule("eteleos.userland_static")
+rule("peteleos.userland_static")
     on_load(function (target)
         target:add("ldflags", "-static", {force = true})
         target:add("cxflags", "-fstack-protector-strong", {force = true})
@@ -197,14 +197,14 @@ rule("eteleos.userland_static")
 rule_end()
 
 
--- eteleos.library
+-- peteleos.library
 -- Flags for shared libraries (and static libraries intended for later dynamic
--- linking). MUST be combined with eteleos.base.
+-- linking). MUST be combined with peteleos.base.
 -- Usage:
 --   target("libcrypto")
---       add_rules("eteleos.base", "eteleos.library")
+--       add_rules("peteleos.base", "peteleos.library")
 
-rule("eteleos.library")
+rule("peteleos.library")
     on_load(function (target)
         -- Position-independent code.
         target:add("cxflags", "-fpic", {force = true})
@@ -214,14 +214,14 @@ rule("eteleos.library")
 rule_end()
 
 
--- eteleos.asm
+-- peteleos.asm
 -- Support rule for pure-assembly source modules (.S / .s).
--- Can be combined with eteleos.base or eteleos.kernel as needed.
+-- Can be combined with peteleos.base or peteleos.kernel as needed.
 -- Usage:
 --   target("boot")
---       add_rules("eteleos.base", "eteleos.kernel", "eteleos.asm")
+--       add_rules("peteleos.base", "peteleos.kernel", "peteleos.asm")
 
-rule("eteleos.asm")
+rule("peteleos.asm")
     on_load(function (target)
         target:add("asflags",
             "-D__ASSEMBLER__",
@@ -231,14 +231,14 @@ rule("eteleos.asm")
 rule_end()
 
 
--- eteleos.strip_release
+-- peteleos.strip_release
 -- Strip all debug symbols from the installed binary in release / minsizerel
 -- modes. Optional: only add this rule to targets where stripping is desired.
 -- Usage:
 --   target("sh")
---       add_rules("eteleos.base", "eteleos.userland", "eteleos.strip_release")
+--       add_rules("peteleos.base", "peteleos.userland", "peteleos.strip_release")
 
-rule("eteleos.strip_release")
+rule("peteleos.strip_release")
     on_load(function (target)
         if is_mode("release") or is_mode("minsizerel") then
             target:set("strip", "all")
@@ -247,14 +247,14 @@ rule("eteleos.strip_release")
 rule_end()
 
 
--- eteleos.lto
+-- peteleos.lto
 -- Explicit per-target LTO, for modules that prefer to opt in target-by-target
 -- rather than rely on the global policy set in compiler.lua.
 -- Usage:
 --   target("libssl")
---       add_rules("eteleos.base", "eteleos.library", "eteleos.lto")
+--       add_rules("peteleos.base", "peteleos.library", "peteleos.lto")
 
-rule("eteleos.lto")
+rule("peteleos.lto")
     on_load(function (target)
         -- Raw -flto flag, not the xmake policy; this ensures the flag appears
         -- whether or not set_policy("build.optimization.lto") is active.
@@ -264,14 +264,14 @@ rule("eteleos.lto")
 rule_end()
 
 
--- eteleos.asan
+-- peteleos.asan
 -- AddressSanitizer for hosted targets (userland tools, tests).
 -- NEVER add this rule to the kernel or any freestanding target.
 -- Usage:
 --   target("my-tool")
---       add_rules("eteleos.base", "eteleos.userland", "eteleos.asan")
+--       add_rules("peteleos.base", "peteleos.userland", "peteleos.asan")
 
-rule("eteleos.asan")
+rule("peteleos.asan")
     on_load(function (target)
         if has_config("asan") then
             target:add("cxflags", "-fsanitize=address", {force = true})
@@ -281,14 +281,14 @@ rule("eteleos.asan")
 rule_end()
 
 
--- eteleos.ubsan
+-- peteleos.ubsan
 -- UndefinedBehaviorSanitizer for hosted targets.
 -- NEVER add this rule to the kernel or any freestanding target.
 -- Usage:
 --   target("my-tool")
---       add_rules("eteleos.base", "eteleos.userland", "eteleos.ubsan")
+--       add_rules("peteleos.base", "peteleos.userland", "peteleos.ubsan")
 
-rule("eteleos.ubsan")
+rule("peteleos.ubsan")
     on_load(function (target)
         if has_config("ubsan") then
             target:add("cxflags", "-fsanitize=undefined", {force = true})

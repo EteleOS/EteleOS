@@ -1,4 +1,4 @@
-# EteleOS: kernel/dev/pci/drm/radeon/devlist.pl, time wirte: 2026/08/26
+# PeteleOS: kernel/dev/pci/drm/radeon/devlist.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 #
 # Converted from devlist.awk

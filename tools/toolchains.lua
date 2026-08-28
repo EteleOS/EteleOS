@@ -1,10 +1,10 @@
 --[[
-EteleOS: tools/toolchains.lua, time write: 2026/07/26
+PeteleOS: tools/toolchains.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
 --[[
-Clang/LLVM and GCC toolchain declarations for EteleOS.
+Clang/LLVM and GCC toolchain declarations for PeteleOS.
 Loaded by tools/xmake.lua (after rules.lua, which means helpers.lua is
 already in scope and ETELEOS_TARGET_TRIPLES etc. are accessible).
 
@@ -23,7 +23,7 @@ Design:
     the SAME toolchain declaration works for both native and cross builds.
     Switching target_arch only changes a flag, not the toolchain binary.
   - GCC is secondary/best-effort. Plain gcc cannot retarget with a single
-    flag; eteleos-gcc works for native builds out of the box. For real
+    flag; peteleos-gcc works for native builds out of the box. For real
     cross-builds, the user must supply a properly-prefixed cross-gcc via
     `xmake f --sdk=/path/to/cross-gcc-sysroot`.
 
@@ -45,10 +45,10 @@ local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%
 
 
 -- Primary toolchain: Clang/LLVM
-toolchain("eteleos-clang")
+toolchain("peteleos-clang")
     set_kind("standalone")
-    set_homepage("https://github.com/EteleOS/EteleOS")
-    set_description("Clang/LLVM toolchain for EteleOS (default)")
+    set_homepage("https://github.com/PeteleOS/PeteleOS")
+    set_description("Clang/LLVM toolchain for PeteleOS (default)")
 
     -- Tool binaries 
     -- No hard-coded paths: xmake searches PATH for these names.
@@ -72,11 +72,11 @@ toolchain("eteleos-clang")
     -- plain global (like ETELEOS_TARGET_TRIPLES, assigned in helpers.lua's
     -- own description-scope execution) is NOT visible from inside on_load,
     -- even within the same project -- description scope and script scope
-    -- have separate Lua global environments. import("eteleos.helpers")
-    -- (tools/modules/eteleos/helpers.lua) is the real, working mechanism
+    -- have separate Lua global environments. import("peteleos.helpers")
+    -- (tools/modules/peteleos/helpers.lua) is the real, working mechanism
     -- for this instead.
     on_load(function (toolchain)
-        import("eteleos.helpers")
+        import("peteleos.helpers")
         local arch   = get_config("target_arch") or "amd64"
         local triple = helpers.eteleos_get_triple()
 
@@ -102,11 +102,11 @@ toolchain_end()
 -- Plain `gcc` only targets the host. For cross-builds, the user must either:
 --   (a) supply a cross-prefixed gcc in their PATH and tell xmake about it, or
 --   (b) set the --sdk option to the root of a cross-gcc installation.
--- This toolchain is intentionally simpler than eteleos-clang; advanced
+-- This toolchain is intentionally simpler than peteleos-clang; advanced
 -- cross-build wiring is left as an extension point in tools/cross/.
-toolchain("eteleos-gcc")
+toolchain("peteleos-gcc")
     set_kind("standalone")
-    set_description("GCC toolchain for EteleOS (secondary / best-effort)")
+    set_description("GCC toolchain for PeteleOS (secondary / best-effort)")
 
     on_check(function (toolchain)
         -- Confirm that gcc is actually available before marking this
@@ -116,7 +116,7 @@ toolchain("eteleos-gcc")
         local gcc = find_tool("gcc")
         if not gcc then
             cprint("${yellow}warning${clear}: gcc not found; "
-                   .. "eteleos-gcc toolchain will not be usable")
+                   .. "peteleos-gcc toolchain will not be usable")
             return false
         end
         return true

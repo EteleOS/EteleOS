@@ -1,5 +1,5 @@
 --[[
-EteleOS: userland/xmake.lua, time write: 2026/07/26
+PeteleOS: userland/xmake.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
@@ -38,7 +38,7 @@ never the problem -- they are all real description- and script-scope APIs).
 Regenerate generated_manifest.lua with:
     xmake lua tools/gen/gen_userland_manifest.lua
 whenever userland/ Makefiles or directory layout change (also wired up as
-the `eteleos-regen-userland` task in tools/tasks.lua). The output is
+the `peteleos-regen-userland` task in tools/tasks.lua). The output is
 committed to the repo, the same way a `configure` script or generated
 protobuf code would be -- description scope cannot regenerate it itself,
 so it has to already be correct at `xmake f` time.
@@ -136,7 +136,7 @@ local function wire_generated_sources(target_name, progdir, y_files, l_files, x_
     if #y_files == 0 and #l_files == 0 and #x_files == 0 then return end
     on_load(function (target)
         import("lib.detect.find_tool")
-        local gendir = path.join(os.projectdir(), "build", "eteleos-userland-gen", target:name())
+        local gendir = path.join(os.projectdir(), "build", "peteleos-userland-gen", target:name())
         os.mkdir(gendir)
 
         for _, yfile in ipairs(y_files) do
@@ -149,10 +149,10 @@ local function wire_generated_sources(target_name, progdir, y_files, l_files, x_
                     if os.execv(yacc.program, {"-o", outc, yfile}, {try = true}) then
                         target:add("files", outc)
                     else
-                        wprint("eteleos-userland: %s: bison/yacc failed on %s", target:name(), yfile)
+                        wprint("peteleos-userland: %s: bison/yacc failed on %s", target:name(), yfile)
                     end
                 else
-                    wprint("eteleos-userland: %s: no bison/yacc found, skipping %s", target:name(), yfile)
+                    wprint("peteleos-userland: %s: no bison/yacc found, skipping %s", target:name(), yfile)
                 end
             end
         end
@@ -167,10 +167,10 @@ local function wire_generated_sources(target_name, progdir, y_files, l_files, x_
                     if os.execv(lex.program, {"-o", outc, lfile}, {try = true}) then
                         target:add("files", outc)
                     else
-                        wprint("eteleos-userland: %s: flex/lex failed on %s", target:name(), lfile)
+                        wprint("peteleos-userland: %s: flex/lex failed on %s", target:name(), lfile)
                     end
                 else
-                    wprint("eteleos-userland: %s: no flex/lex found, skipping %s", target:name(), lfile)
+                    wprint("peteleos-userland: %s: no flex/lex found, skipping %s", target:name(), lfile)
                 end
             end
         end
@@ -202,7 +202,7 @@ local function wire_generated_sources(target_name, progdir, y_files, l_files, x_
                     end
                     target:add("includedirs", gendir)
                 else
-                    wprint("eteleos-userland: %s: rpcgen not found, skipping %s", target:name(), xfile)
+                    wprint("peteleos-userland: %s: rpcgen not found, skipping %s", target:name(), xfile)
                 end
             end
         end
@@ -220,7 +220,7 @@ local function wire_install_perms(info)
         if info.binmode then
             local is_setuid = info.binmode:match("^[24]") ~= nil
             if is_setuid then
-                cprint("${yellow}eteleos-userland${clear}: %s installs SETUID (mode %s, owner %s) -- "
+                cprint("${yellow}peteleos-userland${clear}: %s installs SETUID (mode %s, owner %s) -- "
                        .. "review before shipping", target:name(), info.binmode, info.binown or "?")
             end
             os.execv("chmod", {info.binmode, installed}, {try = true})
@@ -318,7 +318,7 @@ local function eteleos_program(target_name, progdir, opts, info)
             for _, s in ipairs(info.scripts) do
                 add_installfiles(path.join(progdir, s), {prefixdir = "bin"})
             end
-            print(string.format("eteleos-userland: %s installed as a script (SCRIPTS=), nothing compiled",
+            print(string.format("peteleos-userland: %s installed as a script (SCRIPTS=), nothing compiled",
                   target_name))
         end
         return
@@ -331,13 +331,13 @@ local function eteleos_program(target_name, progdir, opts, info)
         set_kind("binary")
         set_default(false)
 
-        add_rules("eteleos.base", opts.static and "eteleos.userland_static" or "eteleos.userland",
-                   "eteleos.strip_release")
+        add_rules("peteleos.base", opts.static and "peteleos.userland_static" or "peteleos.userland",
+                   "peteleos.strip_release")
         if #portable_files > 0 then add_files(unpack(portable_files)) end
         add_includedirs(progdir)
         if info.found then add_includedirs(path.join(progdir, "..")) end
         for _, d in ipairs(opts.extra_includedirs or {}) do add_includedirs(abspath(d)) end
-        add_deps("eteleos-headers")
+        add_deps("peteleos-headers")
 
         if opts.host then
             -- Host-native build tool: escape the project-wide cross
@@ -362,7 +362,7 @@ local function eteleos_program(target_name, progdir, opts, info)
                     target:set("toolset", "sh", cc.program)
                     target:set("toolset", "ar", cc.program)
                 else
-                    wprint("eteleos-userland: %s: no host C compiler (clang/gcc/cc) found -- "
+                    wprint("peteleos-userland: %s: no host C compiler (clang/gcc/cc) found -- "
                            .. "this host-native tool will fail to build", target_name)
                 end
             end)
@@ -372,7 +372,7 @@ local function eteleos_program(target_name, progdir, opts, info)
             if ETELEOS_DECLARED_LIBRARIES and ETELEOS_DECLARED_LIBRARIES[libname] then
                 add_deps("lib" .. libname .. "-shared")
             else
-                print(string.format("eteleos-userland: %s: LDADD -l%s has no matching library "
+                print(string.format("peteleos-userland: %s: LDADD -l%s has no matching library "
                       .. "target (not yet built for this arch), linking without it",
                       target_name, libname))
             end
@@ -409,14 +409,14 @@ local function eteleos_program(target_name, progdir, opts, info)
             on_load(function (target)
                 import("lib.detect.find_tool")
                 local gendir = path.join(os.projectdir(), "build",
-                                          "eteleos-userland-gen", target_name)
+                                          "peteleos-userland-gen", target_name)
                 os.mkdir(gendir)
                 local termsort_h = path.join(gendir, "termsort.h")
                 local mkscript = path.join(tic_dir, "MKtermsort.sh")
                 local caps = path.join(curses_dir, "Caps")
                 local sh = find_tool("sh")
                 if not sh then
-                    wprint("eteleos-userland: %s: no POSIX shell (sh) found -- "
+                    wprint("peteleos-userland: %s: no POSIX shell (sh) found -- "
                            .. "MKtermsort.sh needs one to run. On Windows, install "
                            .. "Git Bash, WSL, or MSYS2 and make sure its sh is on PATH; "
                            .. "on Linux/macOS this should already be present. "
@@ -427,16 +427,16 @@ local function eteleos_program(target_name, progdir, opts, info)
                     if type(io) == "table" and io.open then
                         local f = io.open(termsort_h, "w")
                         if f then f:write(out); f:close(); target:add("includedirs", gendir)
-                        else wprint("eteleos-userland: %s: could not write termsort.h", target_name) end
+                        else wprint("peteleos-userland: %s: could not write termsort.h", target_name) end
                     else
-                        wprint("eteleos-userland: %s: io unavailable, skipping termsort.h", target_name)
+                        wprint("peteleos-userland: %s: io unavailable, skipping termsort.h", target_name)
                     end
                     else
-                        wprint("eteleos-userland: %s: MKtermsort.sh produced no output, "
+                        wprint("peteleos-userland: %s: MKtermsort.sh produced no output, "
                                .. "termsort.h will be missing", target_name)
                     end
                 else
-                    wprint("eteleos-userland: %s: MKtermsort.sh or Caps not found, "
+                    wprint("peteleos-userland: %s: MKtermsort.sh or Caps not found, "
                            .. "skipping termsort.h generation", target_name)
                 end
             end)
@@ -456,6 +456,6 @@ if type(ETELEOS_USERLAND_MANIFEST) == "table" then
         eteleos_program(unit.target_name, abspath(unit.progdir_rel), unit.opts, unit.info)
     end
 else
-    print("eteleos-userland: generated_manifest.lua did not define ETELEOS_USERLAND_MANIFEST -- "
+    print("peteleos-userland: generated_manifest.lua did not define ETELEOS_USERLAND_MANIFEST -- "
           .. "no userland programs will be built. Run: xmake lua tools/gen/gen_userland_manifest.lua")
 end

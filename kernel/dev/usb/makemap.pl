@@ -1,4 +1,4 @@
-# EteleOS: kernel/dev/usb/makemap.pl, time wirte: 2026/08/26
+# PeteleOS: kernel/dev/usb/makemap.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 #
 #	$OpenBSD: makemap.awk,v 1.18 2026/01/06 18:42:18 helg Exp $

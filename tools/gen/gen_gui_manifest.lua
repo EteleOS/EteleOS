@@ -1,5 +1,5 @@
 --[[
-EteleOS: tools/gen/gen_gui_manifest.lua, time write: 2026/07/26
+PeteleOS: tools/gen/gen_gui_manifest.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
@@ -21,7 +21,7 @@ local GUI  = path.join(ROOT, "gui")
 
 local function parse_modules_list(filepath)
     if not os.isfile(filepath) then
-        print(string.format("eteleos-gen-gui: MODULES file not found at %s", filepath))
+        print(string.format("peteleos-gen-gui: MODULES file not found at %s", filepath))
         return {}
     end
     local f = io.open(filepath, "r")
@@ -43,7 +43,7 @@ local function parse_modules_list(filepath)
 end
 
 local all_modules = parse_modules_list(path.join(GUI, "MODULES"))
-print(string.format("eteleos-gen-gui: %d modules discovered from MODULES", #all_modules))
+print(string.format("peteleos-gen-gui: %d modules discovered from MODULES", #all_modules))
 
 local function lua_quote(s) return string.format("%q", s) end
 
@@ -63,4 +63,4 @@ local outpath = path.join(GUI, "generated_manifest.lua")
 local f = io.open(outpath, "w")
 f:write(table.concat(out, "\n"))
 f:close()
-print(string.format("eteleos-gen-gui: manifest written to %s", outpath))
+print(string.format("peteleos-gen-gui: manifest written to %s", outpath))

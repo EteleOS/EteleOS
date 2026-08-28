@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# EteleOS: resources/zoneinfo/zishrink.pl, time wirte: 2026/08/26
+# PeteleOS: resources/zoneinfo/zishrink.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 #
 # --- Original upstream header follows (preserved verbatim) ---
@@ -14,7 +14,7 @@
 #
 # --- End of original upstream header ---
 #
-# NOTE (EteleOS): This is a line-for-line Perl port of the upstream
+# NOTE (PeteleOS): This is a line-for-line Perl port of the upstream
 # zishrink.awk tzdata tool.  See the project README / conversion report
 # for details on why this was ported, and the caveat that future
 # upstream tzdata changes to zishrink.awk will need to be manually

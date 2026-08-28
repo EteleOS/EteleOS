@@ -1,4 +1,4 @@
-# EteleOS: userland/development/vi/common/options.pl, time wirte: 2026/08/26
+# PeteleOS: userland/development/vi/common/options.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 
 #	$OpenBSD: options.awk,v 1.4 2017/12/14 10:02:53 martijn Exp $

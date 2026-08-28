@@ -1,5 +1,5 @@
 --[[
-EteleOS: tools/gen/gen_libraries_manifest.lua, time write: 2026/07/26
+PeteleOS: tools/gen/gen_libraries_manifest.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
@@ -18,7 +18,7 @@ libraries/core and libraries/extra that has a shlib_version file, keyed by
 srcdir path relative to libraries/.
 
 Regenerate with: xmake lua tools/gen/gen_libraries_manifest.lua
-(or: xmake eteleos-regen-libraries, once a project is configured)
+(or: xmake peteleos-regen-libraries, once a project is configured)
 --]]
 
 local ROOT       = path.absolute(os.scriptdir() .. "/../..")
@@ -78,5 +78,5 @@ f:close()
 
 local count = 0
 for _ in pairs(VERSIONS) do count = count + 1 end
-print(string.format("eteleos-gen: libraries manifest written to %s\n  %d shlib_version files found",
+print(string.format("peteleos-gen: libraries manifest written to %s\n  %d shlib_version files found",
       outpath, count))

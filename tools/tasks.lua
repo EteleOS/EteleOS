@@ -1,5 +1,5 @@
 --[[
-EteleOS: tools/tasks.lua, time write: 2026/07/26
+PeteleOS: tools/tasks.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
@@ -7,7 +7,7 @@ This file uses the Apache-2.0 license
 Long-referenced but, until this revision, never actually implemented:
 userland/xmake.lua, kernel/xmake.lua, and three of the tools/gen/gen_*.lua
 generator scripts themselves all say regeneration is "also wired up as the
-`eteleos-regen-<module>` task in tools/tasks.lua" -- this file is that
+`peteleos-regen-<module>` task in tools/tasks.lua" -- this file is that
 promise, finally kept. Confirmed by grep across the whole tree before this
 revision: no tools/tasks.lua existed, and no task() was declared anywhere
 in the project.
@@ -32,32 +32,32 @@ by reading a source comment. Now it is a normal, discoverable, tab-completable
 xmake task, run BEFORE `xmake f`/`xmake build` (same as you would run a
 `configure` script once before `make`):
 
-    xmake eteleos-regen-userland
-    xmake eteleos-regen-kernel
-    xmake eteleos-regen-libraries
-    xmake eteleos-regen-tests
-    xmake eteleos-regen-gui
-    xmake eteleos-regen-all        -- runs all five, in one command
+    xmake peteleos-regen-userland
+    xmake peteleos-regen-kernel
+    xmake peteleos-regen-libraries
+    xmake peteleos-regen-tests
+    xmake peteleos-regen-gui
+    xmake peteleos-regen-all        -- runs all five, in one command
 --]]
 
--- Shared by every eteleos-regen-* task below. Confirmed safe to call from a
+-- Shared by every peteleos-regen-* task below. Confirmed safe to call from a
 -- plain helper function (unlike import()/find_tool()/os.execv() -- see the
 -- long comment above): only touches path.join/os.isfile/os.projectdir.
 local function eteleos_resolve_script(name, script_rel)
     local scriptpath = path.join(os.projectdir(), script_rel)
     if not os.isfile(scriptpath) then
-        print(string.format("eteleos-regen-%s: generator script not found at %s", name, scriptpath))
+        print(string.format("peteleos-regen-%s: generator script not found at %s", name, scriptpath))
         return nil
     end
     return scriptpath
 end
 
-task("eteleos-regen-userland")
+task("peteleos-regen-userland")
     on_run(function ()
         import("lib.detect.find_tool")
         local xm = find_tool("xmake")
         if not xm then
-            print("eteleos-regen-userland: could not find the xmake binary on PATH -- "
+            print("peteleos-regen-userland: could not find the xmake binary on PATH -- "
                   .. "run `xmake lua tools/gen/gen_userland_manifest.lua` by hand instead")
             return
         end
@@ -67,17 +67,17 @@ task("eteleos-regen-userland")
         end
     end)
     set_menu({
-        usage = "xmake eteleos-regen-userland",
+        usage = "xmake peteleos-regen-userland",
         description = "Regenerate userland/generated_manifest.lua from userland/ Makefiles",
     })
 task_end()
 
-task("eteleos-regen-kernel")
+task("peteleos-regen-kernel")
     on_run(function ()
         import("lib.detect.find_tool")
         local xm = find_tool("xmake")
         if not xm then
-            print("eteleos-regen-kernel: could not find the xmake binary on PATH -- "
+            print("peteleos-regen-kernel: could not find the xmake binary on PATH -- "
                   .. "run `xmake lua tools/gen/gen_kernel_manifest.lua` by hand instead")
             return
         end
@@ -87,17 +87,17 @@ task("eteleos-regen-kernel")
         end
     end)
     set_menu({
-        usage = "xmake eteleos-regen-kernel",
+        usage = "xmake peteleos-regen-kernel",
         description = "Regenerate kernel/generated_manifest.lua by running real config(8) per arch",
     })
 task_end()
 
-task("eteleos-regen-libraries")
+task("peteleos-regen-libraries")
     on_run(function ()
         import("lib.detect.find_tool")
         local xm = find_tool("xmake")
         if not xm then
-            print("eteleos-regen-libraries: could not find the xmake binary on PATH -- "
+            print("peteleos-regen-libraries: could not find the xmake binary on PATH -- "
                   .. "run `xmake lua tools/gen/gen_libraries_manifest.lua` by hand instead")
             return
         end
@@ -107,17 +107,17 @@ task("eteleos-regen-libraries")
         end
     end)
     set_menu({
-        usage = "xmake eteleos-regen-libraries",
+        usage = "xmake peteleos-regen-libraries",
         description = "Regenerate libraries/generated_manifest.lua (shlib_version lookup table)",
     })
 task_end()
 
-task("eteleos-regen-tests")
+task("peteleos-regen-tests")
     on_run(function ()
         import("lib.detect.find_tool")
         local xm = find_tool("xmake")
         if not xm then
-            print("eteleos-regen-tests: could not find the xmake binary on PATH -- "
+            print("peteleos-regen-tests: could not find the xmake binary on PATH -- "
                   .. "run `xmake lua tools/gen/gen_tests_manifest.lua` by hand instead")
             return
         end
@@ -127,17 +127,17 @@ task("eteleos-regen-tests")
         end
     end)
     set_menu({
-        usage = "xmake eteleos-regen-tests",
+        usage = "xmake peteleos-regen-tests",
         description = "Regenerate tests/generated_manifest.lua from tests/ Makefiles",
     })
 task_end()
 
-task("eteleos-regen-gui")
+task("peteleos-regen-gui")
     on_run(function ()
         import("lib.detect.find_tool")
         local xm = find_tool("xmake")
         if not xm then
-            print("eteleos-regen-gui: could not find the xmake binary on PATH -- "
+            print("peteleos-regen-gui: could not find the xmake binary on PATH -- "
                   .. "run `xmake lua tools/gen/gen_gui_manifest.lua` by hand instead")
             return
         end
@@ -147,17 +147,17 @@ task("eteleos-regen-gui")
         end
     end)
     set_menu({
-        usage = "xmake eteleos-regen-gui",
+        usage = "xmake peteleos-regen-gui",
         description = "Regenerate gui/generated_manifest.lua from gui/MODULES",
     })
 task_end()
 
-task("eteleos-regen-all")
+task("peteleos-regen-all")
     on_run(function ()
         import("lib.detect.find_tool")
         local xm = find_tool("xmake")
         if not xm then
-            print("eteleos-regen-all: could not find the xmake binary on PATH -- "
+            print("peteleos-regen-all: could not find the xmake binary on PATH -- "
                   .. "run each tools/gen/gen_*.lua by hand instead")
             return
         end
@@ -176,7 +176,7 @@ task("eteleos-regen-all")
         end
     end)
     set_menu({
-        usage = "xmake eteleos-regen-all",
+        usage = "xmake peteleos-regen-all",
         description = "Regenerate every module's generated_manifest.lua",
     })
 task_end()

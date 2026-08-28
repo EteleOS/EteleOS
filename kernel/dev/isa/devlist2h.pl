@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# EteleOS: kernel/dev/isa/devlist2h.pl, time wirte: 2026/08/26
+# PeteleOS: kernel/dev/isa/devlist2h.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 #
 # Converted from devlist2h.awk (see original comment block below for

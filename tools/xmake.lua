@@ -1,10 +1,10 @@
 --[[
-EteleOS: tools/xmake.lua, time write: 2026/07/26
+PeteleOS: tools/xmake.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
 --[[
-This file is the Build Framework of EteleOS. It owns every project-wide
+This file is the Build Framework of PeteleOS. It owns every project-wide
 piece of build infrastructure:
   - helper tables and utility functions        (helpers.lua)
   - all option() declarations                  (options.lua)
@@ -32,7 +32,7 @@ Usage in sibling modules (after tools/ is loaded first by root xmake.lua):
 
       target("sh")
           set_kind("binary")
-          add_rules("eteleos.base", "eteleos.userland", "eteleos.strip_release")
+          add_rules("peteleos.base", "peteleos.userland", "peteleos.strip_release")
           add_files("src/*.c")
 --------------------------------------------------------------------------------
 --]]
@@ -55,7 +55,7 @@ local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%
 -- 1. Helper tables and functions (ETELEOS_* globals, eteleos_* functions).
 --    Everything else depends on this. Description-scope-to-description-
 --    scope only (confirmed: this genuinely works) -- for script-scope
---    (on_load/on_build/...) use, see tools/modules/eteleos/helpers.lua
+--    (on_load/on_build/...) use, see tools/modules/peteleos/helpers.lua
 --    and the add_moduledirs()/import() pair right below instead; a plain
 --    global here is NOT visible from inside any callback, confirmed by
 --    isolated testing against a real xmake v3.0.9 build.
@@ -63,8 +63,8 @@ includes("helpers.lua")
 
 -- Registers tools/modules/ as an import() search path, so any on_load/
 -- on_build/after_install/on_test callback anywhere in this project can do
--- `import("eteleos.helpers")` to reach the script-scope twin of the table
--- above (tools/modules/eteleos/helpers.lua).
+-- `import("peteleos.helpers")` to reach the script-scope twin of the table
+-- above (tools/modules/peteleos/helpers.lua).
 add_moduledirs(path.join(os.scriptdir(), "modules"))
 
 -- 2. All option() declarations. Must precede compiler.lua (which calls
@@ -92,17 +92,17 @@ eteleos_check_arch()
 
 
 -- Phony diagnostic target
--- Builds nothing. Run with: xmake build eteleos-framework
+-- Builds nothing. Run with: xmake build peteleos-framework
 -- Prints a summary of the active build configuration.
-target("eteleos-framework")
+target("peteleos-framework")
     set_kind("phony")
     set_default(false)
     on_build(function (target)
-        import("eteleos.helpers")
+        import("peteleos.helpers")
         local arch   = get_config("target_arch") or "amd64"
         local triple = helpers.eteleos_get_triple()
         local tc     = get_config("toolchain") or "unknown"
-        cprint("${green}EteleOS build framework${clear}")
+        cprint("${green}PeteleOS build framework${clear}")
         cprint("  target arch : %s  ->  %s", arch, triple)
         cprint("  toolchain   : %s", tc)
         cprint("  build mode  : %s", get_config("mode") or "debug")

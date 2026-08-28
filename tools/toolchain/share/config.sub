@@ -1,9 +1,9 @@
 #!/bin/sh
-# EteleOS: config.sub, time wirte: 2026/07/08
+# PeteleOS: config.sub, time wirte: 2026/07/08
 # This file uses the Apache-2.0 license
 #
 # config.sub: validate and canonicalize a target triple.
-# Which only targets amd64, arm64, and riscv64 on EteleOS.
+# Which only targets amd64, arm64, and riscv64 on PeteleOS.
 #
 # Accepts a triple/alias like "amd64", "arm64", "riscv64"
 # and prints the canonical form: <arch>-unknown-<os>
@@ -11,16 +11,16 @@
 # Usage: config.sub [-h|--help] [-v|--version] TRIPLE
 
 progname=$(basename "$0")
-version_tag="eteleos-config.sub 1.0"
+version_tag="peteleos-config.sub 1.0"
 
 usage() {
 	cat <<EOF
 Usage: $progname [OPTION] CPU-MFR-OS
        $progname [OPTION] ALIAS
 
-Canonicalize a target configuration name for EteleOS.
+Canonicalize a target configuration name for PeteleOS.
 Supported CPUs: amd64, arm64, riscv64
-Supported OS:   eteleos
+Supported OS:   peteleos
 
   -h, --help     show this help and exit
   -v, --version  show version and exit
@@ -35,32 +35,32 @@ esac
 
 input="$1"
 
-# Split "CPU-MFR-OS..." or bare aliases like "amd64" / "arm64-eteleos".
+# Split "CPU-MFR-OS..." or bare aliases like "amd64" / "arm64-peteleos".
 cpu_part=$(echo "$input" | cut -d- -f1)
 rest=$(echo "$input" | cut -s -d- -f2-)
 
-# Normalize CPU aliases to EteleOS's three canonical names.
+# Normalize CPU aliases to PeteleOS's three canonical names.
 case "$cpu_part" in
 	amd64|x86_64) cpu=amd64 ;;
 	arm64|aarch64) cpu=arm64 ;;
 	riscv64) cpu=riscv64 ;;
 	*)
 		echo "$progname: invalid configuration \`$input': cpu \`$cpu_part' not supported" >&2
-		echo "$progname: EteleOS only supports amd64, arm64, riscv64" >&2
+		echo "$progname: PeteleOS only supports amd64, arm64, riscv64" >&2
 		exit 1
 		;;
 esac
 
 # Normalize whatever's left (vendor/os fields) down to just an OS name.
-# Accept forms like "eteleos", "unknown-eteleos" or empty.
+# Accept forms like "peteleos", "unknown-peteleos" or empty.
 os_raw=$(echo "$rest" | sed -e 's/^unknown-//' -e 's/^pc-//')
 
 case "$os_raw" in
-	eteleos*|"")
-		os=${os_raw:-eteleos}
+	peteleos*|"")
+		os=${os_raw:-peteleos}
 		;;
 		echo "$progname: invalid configuration \`$input': os \`$os_raw' not supported" >&2
-		echo "$progname: EteleOS only supports eteleos and openbsd targets" >&2
+		echo "$progname: PeteleOS only supports peteleos and openbsd targets" >&2
 		exit 1
 		;;
 esac

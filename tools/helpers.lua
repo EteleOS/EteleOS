@@ -1,10 +1,10 @@
 --[[
-EteleOS: tools/helpers.lua, time write: 2026/07/26
+PeteleOS: tools/helpers.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
 --[[
-Global helper tables and utility functions for the EteleOS build framework.
+Global helper tables and utility functions for the PeteleOS build framework.
 Loaded FIRST by tools/xmake.lua; every symbol defined here is a Lua global
 (ETELEOS_ prefix) so it remains accessible inside on_load() / on_build()
 callbacks defined in the files that follow.
@@ -15,7 +15,7 @@ entity (no option(), no toolchain(), no rule(), no target()).
 
 
 -- Architecture → LLVM target triple
--- Only the three architectures that remain in the EteleOS tree after pruning.
+-- Only the three architectures that remain in the PeteleOS tree after pruning.
 -- Keep this table in sync with option("target_arch") in options.lua.
 ETELEOS_TARGET_TRIPLES = {
     amd64   = "x86_64-unknown-openbsd",
@@ -29,7 +29,7 @@ ETELEOS_SUPPORTED_ARCHS = { "amd64", "arm64", "riscv64" }
 
 
 -- Architecture → GCC cross-prefix
--- Only meaningful for eteleos-gcc / external cross-toolchains.
+-- Only meaningful for peteleos-gcc / external cross-toolchains.
 ETELEOS_CROSS_PREFIXES = {
     amd64   = "x86_64-unknown-openbsd-",
     arm64   = "aarch64-unknown-openbsd-",
@@ -39,7 +39,7 @@ ETELEOS_CROSS_PREFIXES = {
 
 -- Architecture-specific compiler flags
 -- Flags required for correctness on a given ISA, beyond the -target triple.
--- Used in rules.lua (eteleos.base on_load) and toolchains.lua (on_load).
+-- Used in rules.lua (peteleos.base on_load) and toolchains.lua (on_load).
 ETELEOS_ARCH_CFLAGS = {
     amd64 = {
         "-m64",
@@ -106,7 +106,7 @@ function eteleos_check_arch()
     if not arch then return end
     if not ETELEOS_TARGET_TRIPLES[arch] then
         local supported = table.concat(ETELEOS_SUPPORTED_ARCHS, ", ")
-        print(string.format("EteleOS: unsupported target_arch '%s'. Supported: %s",
+        print(string.format("PeteleOS: unsupported target_arch '%s'. Supported: %s",
               arch, supported))
     end
 end

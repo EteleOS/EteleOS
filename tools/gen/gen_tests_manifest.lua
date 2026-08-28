@@ -1,5 +1,5 @@
 --[[
-EteleOS: tools/gen/gen_tests_manifest.lua, time write: 2026/07/26
+PeteleOS: tools/gen/gen_tests_manifest.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
@@ -194,11 +194,11 @@ for _, category in ipairs(TEST_CATEGORIES) do
             end
         end
     else
-        print(string.format("eteleos-gen-tests: tests/%s not found, skipping", category))
+        print(string.format("peteleos-gen-tests: tests/%s not found, skipping", category))
     end
 end
 
-print(string.format("eteleos-gen-tests: %d dirs with a Makefile, %d script-only (arch=%s)",
+print(string.format("peteleos-gen-tests: %d dirs with a Makefile, %d script-only (arch=%s)",
       stats.with_makefile, stats.script_only, arch))
 
 
@@ -244,4 +244,4 @@ local outpath = path.join(TESTS, "generated_manifest.lua")
 local f = io.open(outpath, "w")
 f:write(table.concat(out, "\n"))
 f:close()
-print(string.format("eteleos-gen-tests: manifest written to %s", outpath))
+print(string.format("peteleos-gen-tests: manifest written to %s", outpath))

@@ -1,5 +1,5 @@
 --[[
-EteleOS: tools/modules/eteleos/helpers.lua, time write: 2026/07/26
+PeteleOS: tools/modules/peteleos/helpers.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
@@ -20,7 +20,7 @@ xmake's real, working mechanism for exactly this need (share logic between
 project files and script-scope callbacks) is add_moduledirs() + import(),
 confirmed working by isolated test. This file is that module -- the SAME
 architecture data/logic as tools/helpers.lua, redefined here so it is
-reachable via `import("eteleos.helpers")` from inside any on_load/on_build/
+reachable via `import("peteleos.helpers")` from inside any on_load/on_build/
 after_install/on_test callback in this project.
 
 tools/helpers.lua ITSELF is UNCHANGED and still needed: it is still valid,

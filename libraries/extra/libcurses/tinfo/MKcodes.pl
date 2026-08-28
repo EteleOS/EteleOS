@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# EteleOS: libraries/extra/libcurses/tinfo/MKcodes.pl, time wirte: 2026/08/26
+# PeteleOS: libraries/extra/libcurses/tinfo/MKcodes.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 #
 # Perl translation of MKcodes.awk (provenance preserved below).

@@ -1,5 +1,5 @@
 --[[
-EteleOS: gui/xmake.lua, time write: 2026/07/26
+PeteleOS: gui/xmake.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
@@ -41,7 +41,7 @@ WHY THIS FILE LOOKS DIFFERENT FROM kernel/libraries/userland's xmake.lua
   xmake compilation, this file defines one GENERIC autotools-wrapper
   utility target per module (invoking that module's own real configure/
   make/make-install as subprocesses, cross-compiling via our own
-  eteleos-clang toolchain's target triple), plus a small override table
+  peteleos-clang toolchain's target triple), plus a small override table
   for the handful of modules confirmed to need non-default configure
   flags.
 
@@ -162,7 +162,7 @@ local function eteleos_gui_module(mod)
         moddir = path.join(os.scriptdir(), mod.category, mod.name)
     end
     if not os.isdir(moddir) then
-        print(string.format("eteleos-gui: %s not found on disk, skipping", mod.relpath))
+        print(string.format("peteleos-gui: %s not found on disk, skipping", mod.relpath))
         return
     end
 
@@ -174,7 +174,7 @@ local function eteleos_gui_module(mod)
 
         on_build(function (target)
             import("lib.detect.find_tool")
-            import("eteleos.helpers")
+            import("peteleos.helpers")
 
             local arch = get_config("target_arch") or "amd64"
             local triple = helpers.eteleos_get_triple()
@@ -192,7 +192,7 @@ local function eteleos_gui_module(mod)
                 end
             end
             if not os.isfile(configure) then
-                wprint("eteleos-gui: %s has no configure script (and autoreconf "
+                wprint("peteleos-gui: %s has no configure script (and autoreconf "
                        .. "unavailable/failed) -- skipping", mod.relpath)
                 return
             end
@@ -209,20 +209,20 @@ local function eteleos_gui_module(mod)
             local envs = { CC = cc }
             local ok = os.execv(configure, args, { curdir = moddir, envs = envs, try = true })
             if not ok then
-                wprint("eteleos-gui: %s: configure failed", mod.relpath)
+                wprint("peteleos-gui: %s: configure failed", mod.relpath)
                 return
             end
 
             local make = find_tool("make") or find_tool("gmake")
             if make then
                 if not os.execv(make.program, {}, { curdir = moddir, try = true }) then
-                    wprint("eteleos-gui: %s: make failed", mod.relpath)
+                    wprint("peteleos-gui: %s: make failed", mod.relpath)
                     return
                 end
                 os.execv(make.program, {"install", "DESTDIR=" .. installdir},
                           { curdir = moddir, try = true })
             else
-                wprint("eteleos-gui: no make/gmake found, cannot build %s", mod.relpath)
+                wprint("peteleos-gui: no make/gmake found, cannot build %s", mod.relpath)
             end
         end)
     target_end()
@@ -231,7 +231,7 @@ end
 
 -- Discover and wire up every module from the real MODULES file
 local all_modules = ETELEOS_GUI_MANIFEST or {}
-print(string.format("eteleos-gui: %d modules discovered from MODULES", #all_modules))
+print(string.format("peteleos-gui: %d modules discovered from MODULES", #all_modules))
 
 for _, mod in ipairs(all_modules) do
     eteleos_gui_module(mod)

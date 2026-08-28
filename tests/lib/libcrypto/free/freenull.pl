@@ -1,4 +1,4 @@
-# EteleOS: tests/lib/libcrypto/free/freenull.pl, time wirte: 2026/08/26
+# PeteleOS: tests/lib/libcrypto/free/freenull.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 #
 # Converted from freenull.awk to Perl.

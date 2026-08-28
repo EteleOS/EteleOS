@@ -1,5 +1,5 @@
 #!/bin/sh
-# EteleOS: move-if-change, time wirte: 2026/07/10
+# PeteleOS: move-if-change, time wirte: 2026/07/10
 # This file uses the Apache-2.0 license
 #
 # move-if-change: move $1 to $2 only if their contents differ.

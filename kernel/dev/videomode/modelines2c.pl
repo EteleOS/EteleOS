@@ -1,4 +1,4 @@
-# EteleOS: kernel/dev/videomode/modelines2c.pl, time wirte: 2026/08/26
+# PeteleOS: kernel/dev/videomode/modelines2c.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 #
 #	$NetBSD: modelines2c.awk,v 1.5 2011/03/21 19:32:26 jdc Exp $

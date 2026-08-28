@@ -1,5 +1,5 @@
 --[[
-EteleOS: tests/xmake.lua, time write: 2026/07/26
+PeteleOS: tests/xmake.lua, time write: 2026/07/26
 This file uses the Apache-2.0 license
 --]]
 
@@ -279,7 +279,7 @@ local function eteleos_test_unit(target_name, testdir, group, info)
     end
 
     if #info.unknown_includes > 0 then
-        print(string.format("eteleos-tests: %s includes non-standard %s", testdir,
+        print(string.format("peteleos-tests: %s includes non-standard %s", testdir,
               table.concat(info.unknown_includes, ", ")))
     end
 
@@ -328,16 +328,16 @@ local function eteleos_test_unit(target_name, testdir, group, info)
     target(target_name)
         set_kind("binary")
         set_default(false)
-        add_rules("eteleos.base")
+        add_rules("peteleos.base")
         add_files(unpack(c_files))
         add_includedirs(testdir)
-        add_deps("eteleos-headers")
+        add_deps("peteleos-headers")
 
         for _, libname in ipairs(info.ldadd_libs) do
             if ETELEOS_DECLARED_LIBRARIES and ETELEOS_DECLARED_LIBRARIES[libname] then
                 add_deps("lib" .. libname .. "-shared")
             else
-                print(string.format("eteleos-tests: %s: LDADD -l%s has no matching library "
+                print(string.format("peteleos-tests: %s: LDADD -l%s has no matching library "
                       .. "target (not yet built for this arch), linking without it",
                       target_name, libname))
             end
@@ -347,7 +347,7 @@ local function eteleos_test_unit(target_name, testdir, group, info)
             if ETELEOS_DECLARED_USERLAND and ETELEOS_DECLARED_USERLAND[dep_target] then
                 add_deps(dep_target)
             else
-                print(string.format("eteleos-tests: %s: matching userland program '%s' has no "
+                print(string.format("peteleos-tests: %s: matching userland program '%s' has no "
                       .. "compiled target (script-only or empty), building standalone", target_name, dep_target))
             end
         end
@@ -383,10 +383,10 @@ for _, category in ipairs(TEST_CATEGORIES) do
             eteleos_test_unit(safe_name, testdir, group, TESTS_MANIFEST[manifest_key])
         end
     else
-        print(string.format("eteleos-tests: tests/%s not found, skipping", category))
+        print(string.format("peteleos-tests: tests/%s not found, skipping", category))
     end
 end
 
-print(string.format("eteleos-tests: %d simple (build+run), %d golden-file-translated, "
+print(string.format("peteleos-tests: %d simple (build+run), %d golden-file-translated, "
       .. "%d script-only, %d empty, %d custom skipped (arch=%s)",
       stats.simple, stats.golden, stats.script, stats.empty, stats.custom_skipped, arch))

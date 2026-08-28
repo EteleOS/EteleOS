@@ -1,4 +1,4 @@
-# EteleOS: userland/network/tcpdump/stime.pl, time wirte: 2026/08/26
+# PeteleOS: userland/network/tcpdump/stime.pl, time wirte: 2026/08/26
 # This file uses the Apache-2.0 license
 #
 # Converted from stime.awk to Perl.
