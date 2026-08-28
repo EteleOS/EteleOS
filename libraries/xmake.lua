@@ -697,17 +697,15 @@ end
 -- libradius: RADIUS protocol client library.
 eteleos_bsd_library("radius", "extra/libradius")
 
--- librpcsvc: NOT handled through eteleos_bsd_library() -- every single
--- source file is rpcgen-generated from a .x RPC protocol spec (confirmed:
--- the real Makefile's SRCS is entirely `${RPCSRCS:R:S/$/.c/g}`, i.e.
--- "take every .x name, swap the extension for .c" -- there are no
--- hand-written .c files here at all). Each spec generates exactly one .c
--- (rpcgen -c, XDR marshaling routines only -- this library never needed
--- generated client/server stubs, only the wire-format encoding).
+-- librpcsvc: every source file is generated from an RPC .x specification and
+-- committed alongside that specification.  This deliberately keeps rpcgen
+-- out of the regular host and cross build path; use
+-- tools/verify-rpcgen-output.sh to check the pinned generated output.
 do
     local rpcsvc_srcdir = path.join(os.scriptdir(), "extra", "librpcsvc")
     local RPCSVC_SPECS = { "bootparam_prot", "klm_prot", "mount", "nfs_prot",
-                            "nlm_prot", "rnusers", "rquota", "rstat", "rusers", "rwall" }
+                            "nlm_prot", "rnusers", "rusers", "rquota", "rstat", "rwall",
+                            "sm_inter", "spray", "yp", "yppasswd" }
     if os.isdir(rpcsvc_srcdir) then
         ETELEOS_DECLARED_LIBRARIES = ETELEOS_DECLARED_LIBRARIES or {}
         ETELEOS_DECLARED_LIBRARIES["rpcsvc"] = true
@@ -720,45 +718,9 @@ do
                 add_includedirs(rpcsvc_srcdir)
                 add_deps("eteleos-headers")
 
-                on_load(function (target)
-                    import("lib.detect.find_tool")
-                    local rpcgen = find_tool("rpcgen")
-                    if not rpcgen then
-                        wprint("eteleos: librpcsvc: rpcgen not found on host -- none of "
-                               .. "the %d RPC spec(s) can be compiled, librpcsvc will "
-                               .. "be an empty library", #RPCSVC_SPECS)
-                        return
-                    end
-                    local gendir = path.join(os.projectdir(), "build",
-                                              "eteleos-libraries-gen", "librpcsvc")
-                    os.mkdir(gendir)
-                    local n = 0
-                    for _, spec in ipairs(RPCSVC_SPECS) do
-                        local x_file = path.join(rpcsvc_srcdir, spec .. ".x")
-                        local c_file = path.join(gendir, spec .. ".c")
-                        if os.isfile(c_file) then
-                            -- Already generated (by this same run's static
-                            -- target, or a previous invocation) -- rpcgen
-                            -- prompts interactively on overwrite, which
-                            -- hangs/fails non-interactively, so skip rather
-                            -- than re-run (confirmed necessary by testing).
-                            target:add("files", c_file)
-                            n = n + 1
-                        elseif os.isfile(x_file) then
-                            if os.execv(rpcgen.program, {"-c", x_file, "-o", c_file}, {try = true}) then
-                                target:add("files", c_file)
-                                n = n + 1
-                            else
-                                wprint("eteleos: librpcsvc: rpcgen failed on %s.x", spec)
-                            end
-                        else
-                            wprint("eteleos: librpcsvc: %s.x not found, skipping", spec)
-                        end
-                    end
-                    target:add("includedirs", gendir)
-                    cprint("${green}eteleos${clear}: librpcsvc: %d/%d RPC specs compiled",
-                           n, #RPCSVC_SPECS)
-                end)
+                for _, spec in ipairs(RPCSVC_SPECS) do
+                    add_files(path.join(rpcsvc_srcdir, spec .. ".c"))
+                end
             target_end()
         end
     else
@@ -796,4 +758,3 @@ eteleos_bsd_library("y", "extra/liby")
 --   support code consumed directly by libc's own build, not a
 --   separately-linked library. Both are real, additional gaps found while
 --   auditing this file -- worth a dedicated pass, not folded into this one.
-
