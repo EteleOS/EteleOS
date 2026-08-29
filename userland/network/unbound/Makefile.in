@@ -504,23 +504,11 @@ _unbound.la:	libunbound_wrap.lo libunbound.la
 	$(LIBTOOL) --tag=CC --mode=link $(CC) $(RUNTIME_PATH) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -module -avoid-version -no-undefined -shared -o $@ libunbound_wrap.lo -rpath $(PYTHON_SITE_PKG) -L. -L.libs libunbound.la $(PYTHON_LIBS)
 
 util/config_file.c:	util/configparser.h
-util/configlexer.c:  $(srcdir)/util/configlexer.lex util/configparser.h
-	@-if test ! -d util; then mkdir -p util; fi
-	if test "$(LEX)" != ":"; then \
-		echo "#include \"config.h\"" > $@ ;\
-		echo "#include \"util/configyyrename.h\"" >> $@ ;\
-		$(LEX) -t $(srcdir)/util/configlexer.lex >> $@ ;\
-	fi
-	@if test ! -f $@; then echo "No $@ : need flex and bison to compile from source repository"; exit 1; fi
 
-# Builds both util/configparser.c and util/configparser.h.
-# To avoid double-building we split one target out.
-util/configparser.c:  $(srcdir)/util/configparser.y
-	@-if test ! -d util; then mkdir -p util; fi
-	$(YACC) -d -o util/configparser.c $(srcdir)/util/configparser.y
-
-util/configparser.h: util/configparser.c
-	touch $@
+# util/configlexer.c and util/configparser.c/.h are committed static
+# sources generated once from util/configlexer.lex / util/configparser.y
+# (bison -d / flex -t, with symbol renames via util/configyyrename.h)
+# -- no longer built from bison/flex at build time.
 
 clean:
 	rm -f *.o *.d *.lo *~ tags
@@ -538,7 +526,6 @@ distclean: clean
 	rm -f Makefile
 
 maintainer-clean: distclean
-	rm -f util/configlexer.c util/configparser.c util/configparser.h
 
 realclean: maintainer-clean
 	rm -f configure config.h.in config.sub config.guess ltmain.sh aclocal.m4 libtool

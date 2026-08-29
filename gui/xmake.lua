@@ -41,7 +41,7 @@ WHY THIS FILE LOOKS DIFFERENT FROM kernel/libraries/userland's xmake.lua
   xmake compilation, this file defines one GENERIC autotools-wrapper
   utility target per module (invoking that module's own real configure/
   make/make-install as subprocesses, cross-compiling via our own
-  peteleos-clang toolchain's target triple), plus a small override table
+  os-clang toolchain's target triple), plus a small override table
   for the handful of modules confirmed to need non-default configure
   flags.
 
@@ -89,7 +89,7 @@ local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%
 -- io.open() cannot run at xmake.lua description scope (confirmed against a
 -- real xmake v3.0.9 build -- see userland/xmake.lua's header for the full
 -- explanation of this scope rule, which applies project-wide). This file
--- just reads the resulting ETELEOS_GUI_MANIFEST global table.
+-- just reads the resulting OS_GUI_MANIFEST global table.
 -- Regenerate with: xmake lua tools/gen/gen_gui_manifest.lua
 includes("generated_manifest.lua")
 
@@ -151,7 +151,7 @@ end
 
 -- Generic autotools wrapper: one utility target per module, cross-building
 -- via our own toolchain's target triple.
-local function eteleos_gui_module(mod)
+local function os_gui_module(mod)
     -- xserver is vendored directly at gui/xserver/ (MODULES lists it
     -- as a bare "xserver" entry with no category/name split), not nested
     -- as gui/xserver/xserver/ -- special-case its directory.
@@ -162,7 +162,7 @@ local function eteleos_gui_module(mod)
         moddir = path.join(os.scriptdir(), mod.category, mod.name)
     end
     if not os.isdir(moddir) then
-        print(string.format("peteleos-gui: %s not found on disk, skipping", mod.relpath))
+        print(string.format("os-gui: %s not found on disk, skipping", mod.relpath))
         return
     end
 
@@ -174,10 +174,10 @@ local function eteleos_gui_module(mod)
 
         on_build(function (target)
             import("lib.detect.find_tool")
-            import("peteleos.helpers")
+            import("helpers")
 
             local arch = get_config("target_arch") or "amd64"
-            local triple = helpers.eteleos_get_triple()
+            local triple = helpers.os_get_triple()
             local installdir = get_config("installdir")
                                 or path.join(os.scriptdir(), "..", "build", "install")
 
@@ -192,7 +192,7 @@ local function eteleos_gui_module(mod)
                 end
             end
             if not os.isfile(configure) then
-                wprint("peteleos-gui: %s has no configure script (and autoreconf "
+                wprint("os-gui: %s has no configure script (and autoreconf "
                        .. "unavailable/failed) -- skipping", mod.relpath)
                 return
             end
@@ -209,20 +209,20 @@ local function eteleos_gui_module(mod)
             local envs = { CC = cc }
             local ok = os.execv(configure, args, { curdir = moddir, envs = envs, try = true })
             if not ok then
-                wprint("peteleos-gui: %s: configure failed", mod.relpath)
+                wprint("os-gui: %s: configure failed", mod.relpath)
                 return
             end
 
             local make = find_tool("make") or find_tool("gmake")
             if make then
                 if not os.execv(make.program, {}, { curdir = moddir, try = true }) then
-                    wprint("peteleos-gui: %s: make failed", mod.relpath)
+                    wprint("os-gui: %s: make failed", mod.relpath)
                     return
                 end
                 os.execv(make.program, {"install", "DESTDIR=" .. installdir},
                           { curdir = moddir, try = true })
             else
-                wprint("peteleos-gui: no make/gmake found, cannot build %s", mod.relpath)
+                wprint("os-gui: no make/gmake found, cannot build %s", mod.relpath)
             end
         end)
     target_end()
@@ -230,15 +230,15 @@ end
 
 
 -- Discover and wire up every module from the real MODULES file
-local all_modules = ETELEOS_GUI_MANIFEST or {}
-print(string.format("peteleos-gui: %d modules discovered from MODULES", #all_modules))
+local all_modules = OS_GUI_MANIFEST or {}
+print(string.format("os-gui: %d modules discovered from MODULES", #all_modules))
 
 for _, mod in ipairs(all_modules) do
-    eteleos_gui_module(mod)
+    os_gui_module(mod)
 end
 
 -- xserver itself is not listed in MODULES (it is vendored directly under
 -- gui/xserver/, not gui/xserver/xserver/) -- wire it up
 -- explicitly since it is the single most important target here (the
 -- actual Window System / Display Server the user's spec asks for).
-eteleos_gui_module({ category = "xserver", name = "xserver", relpath = "xserver/xserver" })
+os_gui_module({ category = "xserver", name = "xserver", relpath = "xserver/xserver" })

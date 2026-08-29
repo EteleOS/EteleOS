@@ -3,7 +3,7 @@
 PROG=		btrace
 MAN=		bt.5 btrace.8
 
-SRCS=		bt_parse.y btrace.c ksyms.c map.c printf.c
+SRCS=		bt_parse.c btrace.c ksyms.c map.c printf.c
 
 # Use syscall names generated from sys/kern/makesyscalls.sh
 SRCS+=		syscalls.c

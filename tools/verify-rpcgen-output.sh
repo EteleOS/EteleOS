@@ -16,7 +16,7 @@ if [ "$actual_version" != "$RPCGEN_VERSION" ]; then
 	exit 1
 fi
 
-workdir=$(mktemp -d "${TMPDIR:-/tmp}/peteleos-rpcgen.XXXXXX")
+workdir=$(mktemp -d "${TMPDIR:-/tmp}/os-rpcgen.XXXXXX")
 trap 'rm -rf "$workdir"' EXIT HUP INT TERM
 libdir="$ROOT/libraries/extra/librpcsvc"
 failed=0

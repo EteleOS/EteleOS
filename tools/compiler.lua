@@ -23,19 +23,19 @@ Nothing in this file compiles any source file or declares any target.
 
 
 -- DEFAULT TOOLCHAIN
--- Drive the default toolchain from the eteleos_toolchain option. This is
--- equivalent to `xmake f --toolchain=peteleos-clang` but persisted in
+-- Drive the default toolchain from the os_toolchain option. This is
+-- equivalent to `xmake f --toolchain=os-clang` but persisted in
 -- xmake.lua so fresh checkouts get the right default automatically.
 -- The toolchain() declarations themselves live in tools/toolchains.lua.
-local _tc = get_config("eteleos_toolchain") or "peteleos-clang"
+local _tc = get_config("os_toolchain") or "os-clang"
 set_config("toolchain", _tc)
 
 
 -- Compiler / linker / assembler binary defaults
 -- These act as fallbacks when no custom toolchain is active, and also drive
 -- the `xmake f --cc / --cxx / --ld ...` CLI defaults for the Clang preset.
--- Switch to GCC equivalents when the peteleos-gcc preset is selected.
-if _tc == "peteleos-gcc" then
+-- Switch to GCC equivalents when the os-gcc preset is selected.
+if _tc == "os-gcc" then
     set_config("cc",     "gcc")
     set_config("cxx",    "g++")
     set_config("ld",     "g++")
@@ -59,7 +59,7 @@ end
 -- Activating LTO via a policy lets XMake coordinate the compiler, linker and
 -- archiver flags automatically. This policy is scope-limited to the tools/
 -- subtree here; other modules (libraries/, kernel/, userland/, ...) that want
--- LTO should either add the peteleos.lto rule (declared in rules.lua) to their
+-- LTO should either add the os.lto rule (declared in rules.lua) to their
 -- targets, or add their own set_policy("build.optimization.lto", true).
 if has_config("lto") then
     set_policy("build.optimization.lto", true)
@@ -69,7 +69,7 @@ end
 -- Sanitizer policies (tools/ scope)
 -- Scope-limited to tools/ intentionally: the kernel must NOT inherit hosted
 -- sanitizer runtime dependencies. Other modules that want sanitizers should
--- add the peteleos.asan / peteleos.ubsan rules (declared in rules.lua) to
+-- add the os.asan / os.ubsan rules (declared in rules.lua) to
 -- their specific targets, which injects the raw -fsanitize=... flags without
 -- relying on xmake's global policy mechanism.
 if has_config("asan") then

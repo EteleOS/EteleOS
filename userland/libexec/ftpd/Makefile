@@ -3,7 +3,7 @@
 #	@(#)Makefile	8.2 (Berkeley) 4/4/94
 
 PROG=	ftpd
-SRCS=	ftpd.c ftpcmd.y logutmp.c logwtmp.c monitor.c monitor_fdpass.c popen.c
+SRCS=	ftpd.c ftpcmd.c logutmp.c logwtmp.c monitor.c monitor_fdpass.c popen.c
 MAN=	ftpd.8
 YFLAGS=
 CLEANFILES+=y.tab.c

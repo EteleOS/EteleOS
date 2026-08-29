@@ -36,7 +36,7 @@ while [ $# -gt 0 ]; do
 	--dry-run|-n) run=:; shift ;;
 	--quiet|--silent) show=:; shift ;;
 	--help) usage; exit 0 ;;
-	--version) echo "$progname (PeteleOS libtool)"; exit 0 ;;
+	--version) echo "$progname (OS libtool)"; exit 0 ;;
 	--config)
 		sed -e '1,/^### BEGIN LIBTOOL CONFIG/d' -e '/^### END LIBTOOL CONFIG/,$d' "$0"
 		exit 0
@@ -168,7 +168,7 @@ link)
 		# .la metadata file, so `install` mode and dependents can find things.
 		$run $rm "$output"
 		cat > "$output" <<-EOF
-			# $outname - PeteleOS libtool library file
+			# $outname - OS libtool library file
 			dlname='$realname'
 			library_names='$realname lib${name}.so'
 			old_library='lib${name}.a'

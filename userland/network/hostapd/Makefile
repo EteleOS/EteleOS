@@ -2,7 +2,7 @@
 
 PROG=		hostapd
 SRCS=		privsep.c apme.c handle.c iapp.c llc.c hostapd.c \
-		print-802_11.c roaming.c parse.y
+		print-802_11.c roaming.c parse.c
 MAN=		hostapd.8 hostapd.conf.5
 LDADD=		-levent
 DPADD=		${LIBEVENT}

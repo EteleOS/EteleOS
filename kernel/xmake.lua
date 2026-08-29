@@ -113,7 +113,7 @@ local PER_FILE_CFLAGS = {
 }
 
 if not MD_CORE_DIRS[arch] then
-    print(string.format("peteleos-kernel: unsupported target_arch '%s' -- no kernel target "
+    print(string.format("os-kernel: unsupported target_arch '%s' -- no kernel target "
           .. "will be built for it", arch))
 end
 
@@ -130,7 +130,7 @@ local arch_conf_dir = path.join(os.scriptdir(), "arch", arch, "conf")
 -- interfaces can only be used in the script domain"). This is xmake's
 -- long-standing scope model, not a 3.0-specific change, so the previous
 -- revision of this file -- which built and ran config(8) directly in a bare
--- `do ... end` block at description scope, before target("peteleos-kernel")
+-- `do ... end` block at description scope, before target("os-kernel")
 -- even starts -- could not actually have loaded under a real xmake binary,
 -- at any version.
 --
@@ -140,7 +140,7 @@ local arch_conf_dir = path.join(os.scriptdir(), "arch", arch, "conf")
 -- approximate files/GENERIC parser when any of that fails) is UNCHANGED --
 -- only relocated to tools/gen/gen_kernel_manifest.lua, which runs via
 -- `xmake lua` (confirmed: io/os.execv/import are all real there) and writes
--- its result to generated_manifest.lua as a plain ETELEOS_KERNEL_MANIFEST
+-- its result to generated_manifest.lua as a plain OS_KERNEL_MANIFEST
 -- global-table assignment, keyed by arch.
 --
 -- Verified end to end against the real tree, with bison/flex available on
@@ -153,29 +153,29 @@ local arch_conf_dir = path.join(os.scriptdir(), "arch", arch, "conf")
 -- than failing outright.
 --
 -- Regenerate with: xmake lua tools/gen/gen_kernel_manifest.lua
--- (or: xmake peteleos-regen-kernel, once a project is configured)
+-- (or: xmake os-regen-kernel, once a project is configured)
 -- whenever kernel/ Makefiles, GENERIC/files lists, or directory layout
 -- change. The output is committed to the repo, like a `configure` script or
 -- generated protobuf code -- description scope cannot regenerate it itself.
 
 includes("generated_manifest.lua")
 local selected_files, ioconf_c_path, ioconf_gendir = {}, nil, nil
-local kernel_manifest = ETELEOS_KERNEL_MANIFEST and ETELEOS_KERNEL_MANIFEST[arch]
+local kernel_manifest = OS_KERNEL_MANIFEST and OS_KERNEL_MANIFEST[arch]
 if kernel_manifest then
     selected_files = kernel_manifest.selected_files or {}
     if kernel_manifest.mode == "real-config8" and kernel_manifest.ioconf_c then
-        ioconf_gendir = path.join(os.projectdir(), "build", "peteleos-kernel-gen", arch, "config-run", "build")
+        ioconf_gendir = path.join(os.projectdir(), "build", "os-kernel-gen", arch, "config-run", "build")
         ioconf_c_path = path.join(ioconf_gendir, "ioconf.c")
-        -- NOTE: the actual file write happens in target("peteleos-kernel")'s
+        -- NOTE: the actual file write happens in target("os-kernel")'s
         -- on_load below (io.open needs script scope -- see this block's own
         -- header comment) -- ioconf_c_path/ioconf_gendir here are just the
         -- plain strings description scope is allowed to compute.
     end
-    print(string.format("peteleos-kernel: %s: using %s output (%d files selected%s)",
+    print(string.format("os-kernel: %s: using %s output (%d files selected%s)",
           arch, kernel_manifest.mode == "real-config8" and "REAL config(8)" or "the approximate files/GENERIC parser",
           #selected_files, kernel_manifest.mode == "real-config8" and ", ioconf.c generated" or ""))
 else
-    print(string.format("peteleos-kernel: no generated_manifest.lua entry for arch '%s' -- "
+    print(string.format("os-kernel: no generated_manifest.lua entry for arch '%s' -- "
           .. "run: xmake lua tools/gen/gen_kernel_manifest.lua -- building with zero "
           .. "driver/MI-optional files", arch))
 end
@@ -191,12 +191,12 @@ local KERNEL_MI_DIRS = {
 
 
 -- Kernel image
-target("peteleos-kernel")
+target("os-kernel")
     set_kind("binary")
     set_basename("bsd")
     set_default(false)
 
-    add_rules("peteleos.base", "peteleos.kernel")
+    add_rules("os.base", "os.kernel")
 
     add_cxflags(unpack(CMACHFLAGS[arch] or {}))
     add_asflags(unpack(CMACHFLAGS[arch] or {}))
@@ -207,7 +207,7 @@ target("peteleos-kernel")
             local files = os.files(path.join(d, "**.c"))
             if #files > 0 then add_files(unpack(files)) end
         else
-            print(string.format("peteleos-kernel: kernel/%s not found, skipping", dir))
+            print(string.format("os-kernel: kernel/%s not found, skipping", dir))
         end
     end
 
@@ -216,7 +216,7 @@ target("peteleos-kernel")
         if os.isfile(f) then
             add_files(f)
         else
-            print(string.format("peteleos-kernel: kernel/core/conf/%s not found, skipping", name))
+            print(string.format("os-kernel: kernel/core/conf/%s not found, skipping", name))
         end
     end
 
@@ -225,7 +225,7 @@ target("peteleos-kernel")
         if os.isfile(f) then
             add_files(f, {cxflags = cflags})
         else
-            print(string.format("peteleos-kernel: per-file-cflags entry not found, skipping: %s", relpath))
+            print(string.format("os-kernel: per-file-cflags entry not found, skipping: %s", relpath))
         end
     end
 
@@ -259,10 +259,10 @@ target("peteleos-kernel")
                 end
                 -- Missing files are expected here: many files/GENERIC entries
                 -- are conditional on options that are always false on
-                -- PeteleOS's minimal enabled-set (vendor firmware blobs etc.)
+                -- os minimal enabled-set (vendor firmware blobs etc.)
             end
         end
-        print(string.format("peteleos-kernel: %d driver/MI-optional files added (arch=%s)",
+        print(string.format("os-kernel: %d driver/MI-optional files added (arch=%s)",
               added, arch))
     end
 
@@ -281,7 +281,7 @@ target("peteleos-kernel")
         if #c_files > 0 then add_files(unpack(c_files)) end
         if #s_files > 0 then add_files(unpack(s_files)) end
     else
-        print(string.format("peteleos-kernel: kernel/arch/%s/%s not found -- cannot build "
+        print(string.format("os-kernel: kernel/arch/%s/%s not found -- cannot build "
               .. "the kernel core for this architecture", arch, arch))
     end
 
@@ -291,7 +291,7 @@ target("peteleos-kernel")
             local files = os.files(path.join(d, "**.c"))
             if #files > 0 then add_files(unpack(files)) end
         else
-            print(string.format("peteleos-kernel: kernel/arch/%s/%s not found, skipping", arch, bus))
+            print(string.format("os-kernel: kernel/arch/%s/%s not found, skipping", arch, bus))
         end
     end
 
@@ -321,7 +321,7 @@ target("peteleos-kernel")
     -- requires Developer Mode or admin rights, which cannot be assumed).
     -- The actual copy (os.cp) happens in on_load below -- also nil at
     -- description scope, confirmed the same way as io/os.iorun/os.cp above.
-    local machine_gendir = path.join(os.projectdir(), "build", "peteleos-kernel-gen", arch)
+    local machine_gendir = path.join(os.projectdir(), "build", "os-kernel-gen", arch)
     add_includedirs(machine_gendir)
     add_includedirs(path.join(os.scriptdir(), "arch", arch, "include"))
     add_includedirs(os.scriptdir())
@@ -330,13 +330,13 @@ target("peteleos-kernel")
     if os.isfile(ldscript) then
         add_ldflags("-Wl,-T," .. ldscript, {force = true})
     else
-        print(string.format("peteleos-kernel: linker script not found at %s -- link step will fail", ldscript))
+        print(string.format("os-kernel: linker script not found at %s -- link step will fail", ldscript))
     end
 
-    add_deps("peteleos-headers")
+    add_deps("os-headers")
 
     on_load(function (target)
-        local gendir = path.join(os.projectdir(), "build", "peteleos-kernel-gen", arch)
+        local gendir = path.join(os.projectdir(), "build", "os-kernel-gen", arch)
         os.mkdir(gendir)
 
         local machine_gendir = gendir
@@ -347,7 +347,7 @@ target("peteleos-kernel")
                     os.cp(path.join(os.scriptdir(), "arch", arch, "include"),
                           path.join(machine_gendir, "machine"))
                 end,
-                catch { function(errs) wprint("peteleos-kernel: could not copy machine/ headers") end }
+                catch { function(errs) wprint("os-kernel: could not copy machine/ headers") end }
             }
         end
 
@@ -359,7 +359,7 @@ target("peteleos-kernel")
                 f:close()
                 target:add("files", ioconf_c_path)
             else
-                wprint("peteleos-kernel: could not open %s for writing -- ioconf.c will be "
+                wprint("os-kernel: could not open %s for writing -- ioconf.c will be "
                        .. "missing for this build", ioconf_c_path)
             end
         end
@@ -367,7 +367,7 @@ target("peteleos-kernel")
         local function write_file_safe(filepath, content)
             local f = (type(io) == "table" and io.open) and io.open(filepath, "w") or nil
             if not f then
-                wprint("peteleos-kernel: could not open %s for writing", filepath)
+                wprint("os-kernel: could not open %s for writing", filepath)
                 return false
             end
             f:write(content)
@@ -390,7 +390,7 @@ char version[] = "PeteleOS %s (%s) #0: %s\n";
         import("lib.detect.find_tool")
         local sh = find_tool("sh")
         if not sh then
-            wprint("peteleos-kernel: no POSIX shell (sh) found -- genassym.sh needs one "
+            wprint("os-kernel: no POSIX shell (sh) found -- genassym.sh needs one "
                    .. "to run. On Windows, install Git Bash, WSL, or MSYS2 and make sure "
                    .. "its sh is on PATH; on Linux/macOS this should already be present. "
                    .. "Writing a stub assym.h for now (locore.%s will likely fail to "
@@ -412,7 +412,7 @@ char version[] = "PeteleOS %s (%s) #0: %s\n";
                 }
             }
             if not outdata or outdata == "" then
-                wprint("peteleos-kernel: genassym.sh produced no usable output for %s "
+                wprint("os-kernel: genassym.sh produced no usable output for %s "
                        .. "-- assym.h will be a stub and locore.%s will likely fail to "
                        .. "assemble. Verify the genassym.sh invocation manually.",
                        genassym_cf, arch)
@@ -420,7 +420,7 @@ char version[] = "PeteleOS %s (%s) #0: %s\n";
             end
             write_file_safe(assym_h, outdata)
         else
-            wprint("peteleos-kernel: genassym.sh or %s not found, writing an empty assym.h",
+            wprint("os-kernel: genassym.sh or %s not found, writing an empty assym.h",
                    genassym_cf)
             write_file_safe(assym_h, "/* assym.h not generated -- inputs missing */\n")
         end
@@ -564,27 +564,27 @@ local function efi_collect(root, dir, names)
         if os.isfile(f) then
             out[#out + 1] = f
         else
-            wprint("peteleos-kernel-efiboot: expected source not found, skipping: %s", f)
+            wprint("os-kernel-efiboot: expected source not found, skipping: %s", f)
         end
     end
     return out
 end
 
-local function eteleos_efi_bootloader(target_arch)
+local function os_efi_bootloader(target_arch)
     local spec = EFI_BOOTLOADERS[target_arch]
     if not spec then return end
     local root = os.scriptdir()
 
     if not os.isdir(path.join(root, spec.prog_dir)) then
-        print(string.format("peteleos-kernel-efiboot: %s not found, skipping EFI bootloader for %s",
+        print(string.format("os-kernel-efiboot: %s not found, skipping EFI bootloader for %s",
               spec.prog_dir, target_arch))
         return
     end
 
-    ETELEOS_DECLARED_EFIBOOT = ETELEOS_DECLARED_EFIBOOT or {}
-    ETELEOS_DECLARED_EFIBOOT[target_arch] = true
+    OS_DECLARED_EFIBOOT = OS_DECLARED_EFIBOOT or {}
+    OS_DECLARED_EFIBOOT[target_arch] = true
 
-    target("peteleos-kernel-efiboot-" .. target_arch)
+    target("os-kernel-efiboot-" .. target_arch)
         set_kind("phony")
         set_default(false)
 
@@ -593,7 +593,7 @@ local function eteleos_efi_bootloader(target_arch)
             local cc = get_config("cc") or "clang"
             local have_lld = find_tool("ld.lld") ~= nil
             if not have_lld then
-                wprint("peteleos-kernel-efiboot: ld.lld not found -- the EFI bootloader "
+                wprint("os-kernel-efiboot: ld.lld not found -- the EFI bootloader "
                        .. "link step needs LLD specifically (--pack-dyn-relocs=none is "
                        .. "an LLD-only flag, matching every real efiboot Makefile in "
                        .. "this tree); skipping %s for %s rather than attempting a "
@@ -602,13 +602,13 @@ local function eteleos_efi_bootloader(target_arch)
             end
             local objcopy = find_tool("llvm-objcopy") or find_tool("objcopy")
             if not objcopy then
-                wprint("peteleos-kernel-efiboot: no objcopy/llvm-objcopy found, cannot "
+                wprint("os-kernel-efiboot: no objcopy/llvm-objcopy found, cannot "
                        .. "produce %s for %s", spec.prog_name, target_arch)
                 return
             end
 
             local gendir = path.join(os.projectdir(), "build",
-                                      "peteleos-kernel-gen", target_arch, "efiboot")
+                                      "os-kernel-gen", target_arch, "efiboot")
             os.mkdir(gendir)
 
             local srcs = {}
@@ -633,7 +633,7 @@ local function eteleos_efi_bootloader(target_arch)
             end
 
             if #srcs == 0 then
-                wprint("peteleos-kernel-efiboot: zero source files resolved for %s, aborting",
+                wprint("os-kernel-efiboot: zero source files resolved for %s, aborting",
                        target_arch)
                 return
             end
@@ -648,7 +648,7 @@ local function eteleos_efi_bootloader(target_arch)
                         os.cp(path.join(root, "arch", target_arch, "include"),
                               path.join(machine_alias_dir, "machine"))
                     end,
-                    catch { function(errs) wprint("peteleos-kernel-efiboot: could not copy machine/ headers") end }
+                    catch { function(errs) wprint("os-kernel-efiboot: could not copy machine/ headers") end }
                 }
             end
 
@@ -676,7 +676,7 @@ local function eteleos_efi_bootloader(target_arch)
                 for _, d in ipairs(spec.defines) do args[#args + 1] = "-D" .. d end
                 for _, f in ipairs(spec.cflags) do args[#args + 1] = f end
                 if not os.execv(cc, args, {try = true}) then
-                    wprint("peteleos-kernel-efiboot: failed to compile %s for %s, aborting",
+                    wprint("os-kernel-efiboot: failed to compile %s for %s, aborting",
                            src, target_arch)
                     return
                 end
@@ -701,7 +701,7 @@ local function eteleos_efi_bootloader(target_arch)
             for _, a in ipairs(more_link_args) do link_args[#link_args + 1] = a end
             for _, o in ipairs(objs) do link_args[#link_args + 1] = o end
             if not os.execv(cc, link_args, {try = true}) then
-                wprint("peteleos-kernel-efiboot: link step failed for %s, aborting", target_arch)
+                wprint("os-kernel-efiboot: link step failed for %s, aborting", target_arch)
                 return
             end
 
@@ -728,12 +728,12 @@ local function eteleos_efi_bootloader(target_arch)
                 }, {try = true})
             end
             if not ok or not os.isfile(efi_path) then
-                wprint("peteleos-kernel-efiboot: objcopy step failed for %s, aborting", target_arch)
+                wprint("os-kernel-efiboot: objcopy step failed for %s, aborting", target_arch)
                 return
             end
-            cprint("${green}peteleos-kernel-efiboot${clear}: built %s for %s", spec.prog_name, target_arch)
+            cprint("${green}os-kernel-efiboot${clear}: built %s for %s", spec.prog_name, target_arch)
         end)
     target_end()
 end
 
-eteleos_efi_bootloader(arch)
+os_efi_bootloader(arch)

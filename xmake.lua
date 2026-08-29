@@ -5,7 +5,7 @@ This file uses the Apache-2.0 license
 
 --[[
 This file does ONLY project-wide orchestration.
-NOTE ON LOCATION: this file lives at the repository ROOT. PeteleOS calls the
+NOTE ON LOCATION: this file lives at the repository ROOT. OS calls the
 whole source tree "src" (OpenBSD convention, as in /usr/src), but there is
 no literal src/ subdirectory in this repository -- tools/, include/,
 libraries/, kernel/, resources/, userland/, gui/, installer/, tests/,
@@ -21,7 +21,7 @@ set_xmakever("3.0.9")
 -- PROJECT IDENTITY
 set_project("PeteleOS")
 
--- Placeholder version -- replace with PeteleOS's real versioning scheme once
+-- Placeholder version -- replace with real versioning scheme once
 -- one is decided; this only needs to be *some* valid semver for now.
 set_version("0.1.0", {build = "%Y%m%d"})
 
@@ -35,7 +35,7 @@ set_policy("check.auto_ignore_flags", false)
 -- Stream compiler/linker warnings as they happen instead of only at the end.
 set_policy("build.warning", true)
 
--- Object-file build cache (ccache-style). PeteleOS has no add_requires()
+-- Object-file build cache (ccache-style). No add_requires()
 -- package dependencies, so the separate package-lock policies do not
 -- apply here.
 set_policy("build.ccache", true)
@@ -57,7 +57,7 @@ set_config("installdir", "$(projectdir)/build/install")
 
 -- xmake's own package cache/install locations are normally read from the
 -- XMAKE_PKG_CACHEDIR / XMAKE_PKG_INSTALLDIR environment variables at
--- process start-up. PeteleOS has no add_requires() package dependencies
+-- process start-up. No add_requires() package dependencies
 -- (see tools/compiler.lua), so these paths are never actually consulted --
 -- and as of xmake 3.0.9, os.setenv() is no longer callable at description
 -- scope at all (confirmed: it is not in the interpreter-scope os module,
@@ -101,7 +101,7 @@ for _, mod in ipairs(modules) do
     if os.isfile(modfile) then
         includes(mod)
     else
-        print(string.format("peteleos: skipping '%s' (no xmake.lua there yet)", mod))
+        print(string.format("os: skipping '%s' (no xmake.lua there yet)", mod))
     end
 end
 

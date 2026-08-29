@@ -2,7 +2,7 @@
 
 PROG=	atc
 CFLAGS+=-I${.CURDIR} -I.
-SRCS=	extern.c grammar.y graphics.c input.c lex.l list.c log.c \
+SRCS=	extern.c grammar.c graphics.c input.c lex.c list.c log.c \
 	main.c update.c
 MAN=	atc.6
 LDADD=	-ll -lm -lcurses

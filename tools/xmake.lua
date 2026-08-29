@@ -14,7 +14,7 @@ piece of build infrastructure:
 
 Loading order matters:
   helpers.lua     -> must be first; toolchains.lua and rules.lua close over
-                    the ETELEOS_* globals it defines.
+                    the OS_* globals it defines.
   options.lua     -> must be before compiler.lua (has_config() checks options).
   compiler.lua    -> must be before rules.lua (rules check has_config too).
   rules.lua       -> must be before toolchains.lua (rules reference helpers).
@@ -32,7 +32,7 @@ Usage in sibling modules (after tools/ is loaded first by root xmake.lua):
 
       target("sh")
           set_kind("binary")
-          add_rules("peteleos.base", "peteleos.userland", "peteleos.strip_release")
+          add_rules("os.base", "os.userland", "os.strip_release")
           add_files("src/*.c")
 --------------------------------------------------------------------------------
 --]]
@@ -52,10 +52,10 @@ local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%
 
 
 -- Load build framework sub-modules in dependency order
--- 1. Helper tables and functions (ETELEOS_* globals, eteleos_* functions).
+-- 1. Helper tables and functions (OS_* globals, os_* functions).
 --    Everything else depends on this. Description-scope-to-description-
 --    scope only (confirmed: this genuinely works) -- for script-scope
---    (on_load/on_build/...) use, see tools/modules/peteleos/helpers.lua
+--    (on_load/on_build/...) use, see tools/modules/os/helpers.lua
 --    and the add_moduledirs()/import() pair right below instead; a plain
 --    global here is NOT visible from inside any callback, confirmed by
 --    isolated testing against a real xmake v3.0.9 build.
@@ -63,8 +63,8 @@ includes("helpers.lua")
 
 -- Registers tools/modules/ as an import() search path, so any on_load/
 -- on_build/after_install/on_test callback anywhere in this project can do
--- `import("peteleos.helpers")` to reach the script-scope twin of the table
--- above (tools/modules/peteleos/helpers.lua).
+-- `import("helpers")` to reach the script-scope twin of the table
+-- above (tools/modules/os/helpers.lua).
 add_moduledirs(path.join(os.scriptdir(), "modules"))
 
 -- 2. All option() declarations. Must precede compiler.lua (which calls
@@ -76,11 +76,11 @@ includes("options.lua")
 includes("compiler.lua")
 
 -- 4. All rule() declarations. Must follow compiler.lua and helpers.lua;
---    on_load callbacks call eteleos_* helpers and has_config().
+--    on_load callbacks call os_* helpers and has_config().
 includes("rules.lua")
 
 -- 5. All toolchain() declarations. Must follow helpers.lua (uses
---    ETELEOS_TARGET_TRIPLES) and options.lua (reads target_arch / sysroot).
+--    OS_TARGET_TRIPLES) and options.lua (reads target_arch / sysroot).
 includes("toolchains.lua")
 
 -- Architecture validation
@@ -88,21 +88,21 @@ includes("toolchains.lua")
 -- so the failure is immediate and obvious rather than a confusing
 -- compiler error later.
 includes("tasks.lua")
-eteleos_check_arch()
+os_check_arch()
 
 
 -- Phony diagnostic target
--- Builds nothing. Run with: xmake build peteleos-framework
+-- Builds nothing. Run with: xmake build os-framework
 -- Prints a summary of the active build configuration.
-target("peteleos-framework")
+target("os-framework")
     set_kind("phony")
     set_default(false)
     on_build(function (target)
-        import("peteleos.helpers")
+        import("helpers")
         local arch   = get_config("target_arch") or "amd64"
-        local triple = helpers.eteleos_get_triple()
+        local triple = helpers.os_get_triple()
         local tc     = get_config("toolchain") or "unknown"
-        cprint("${green}PeteleOS build framework${clear}")
+        cprint("${green}OS build framework${clear}")
         cprint("  target arch : %s  ->  %s", arch, triple)
         cprint("  toolchain   : %s", tc)
         cprint("  build mode  : %s", get_config("mode") or "debug")
@@ -110,6 +110,6 @@ target("peteleos-framework")
         cprint("  asan        : %s", tostring(has_config("asan")))
         cprint("  ubsan       : %s", tostring(has_config("ubsan")))
         cprint("  werror      : %s", tostring(has_config("werror")))
-        cprint("  cross build : %s", tostring(helpers.eteleos_is_cross()))
+        cprint("  cross build : %s", tostring(helpers.os_is_cross()))
     end)
 target_end()

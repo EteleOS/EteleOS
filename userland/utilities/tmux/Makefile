@@ -38,7 +38,7 @@ SRCS=	alerts.c \
 	cmd-move-window.c \
 	cmd-new-session.c \
 	cmd-new-window.c \
-	cmd-parse.y \
+	cmd-parse.c \
 	cmd-paste-buffer.c \
 	cmd-pipe-pane.c \
 	cmd-queue.c \

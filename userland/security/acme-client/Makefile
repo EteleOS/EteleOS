@@ -2,7 +2,7 @@
 PROG=		acme-client
 SRCS=		acctproc.c base64.c certproc.c chngproc.c dbg.c dnsproc.c
 SRCS+=		fileproc.c http.c jsmn.c json.c keyproc.c main.c netproc.c
-SRCS+=		parse.y revokeproc.c key.c util.c
+SRCS+=		parse.c revokeproc.c key.c util.c
 
 MAN=		acme-client.1 acme-client.conf.5
 

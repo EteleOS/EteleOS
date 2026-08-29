@@ -11,7 +11,7 @@ CDIAGFLAGS=-W -Wall -Wstrict-prototypes -pedantic \
 LDADD= -lm -lutil
 DPADD= ${LIBM} ${LIBUTIL}
 
-SRCS=	eval.c expr.c look.c main.c misc.c gnum4.c trace.c tokenizer.l parser.y
+SRCS=	eval.c expr.c look.c main.c misc.c gnum4.c trace.c tokenizer.c parser.c
 MAN=	m4.1
 
 .include <bsd.prog.mk>

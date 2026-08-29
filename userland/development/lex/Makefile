@@ -14,11 +14,11 @@
 PROG=   lex
 CFLAGS+=-I. -I${.CURDIR} -DHAVE_CONFIG_H
 SRCS= buf.c ccl.c dfa.c ecs.c filter.c gen.c main.c misc.c \
-	  nfa.c options.c parse.y regex.c scan.l scanflags.c \
+	  nfa.c options.c parse.c regex.c scan.c scanflags.c \
 	  scanopt.c skel.c sym.c tables.c tables_shared.c \
 	  tblcmp.c yylex.c
 
-CLEANFILES+=skel.c parse.c parse.h
+CLEANFILES+=skel.c
 LDADD+=-lm
 
 MAN = flex.1
@@ -27,9 +27,6 @@ LINKS=  ${BINDIR}/lex ${BINDIR}/flex \
 		${BINDIR}/lex ${BINDIR}/flex++
 
 VERSION="2.5.39"
-
-parse.h parse.c: parse.y
-	yacc -d -o parse.c ${.CURDIR}/parse.y
 
 skel.c: flex.skl mkskel.sh flexint.h tables_shared.h
 	sed -e 's/m4_/m4postproc_/g' -e 's/m4preproc_/m4_/g' \

@@ -27,18 +27,18 @@ correct -- only WHERE it ran was the problem. It has been relocated,
 essentially unchanged, to tools/gen/gen_userland_manifest.lua, which runs
 via `xmake lua` (confirmed: io/os.iorun/import are all real there) and
 writes its result to generated_manifest.lua as a plain
-ETELEOS_USERLAND_MANIFEST global-table assignment -- no xmake API calls in
+OS_USERLAND_MANIFEST global-table assignment -- no xmake API calls in
 that file, so `includes()` (confirmed: shares plain Lua globals with its
 caller, though it does not propagate a `return` value) can hand it back
 here safely. This file then does nothing but iterate that table and call
-eteleos_program(), which is otherwise the exact same function as before
+os_program(), which is otherwise the exact same function as before
 (target()/add_files()/add_installfiles()/on_load()/after_install() were
 never the problem -- they are all real description- and script-scope APIs).
 
 Regenerate generated_manifest.lua with:
     xmake lua tools/gen/gen_userland_manifest.lua
 whenever userland/ Makefiles or directory layout change (also wired up as
-the `peteleos-regen-userland` task in tools/tasks.lua). The output is
+the `os-regen-userland` task in tools/tasks.lua). The output is
 committed to the repo, the same way a `configure` script or generated
 protobuf code would be -- description scope cannot regenerate it itself,
 so it has to already be correct at `xmake f` time.
@@ -65,12 +65,9 @@ GENERATED SOURCES (best-effort, tool-checked)
   *.y (yacc/bison), *.l (lex/flex): verified real, 53 + 8 files across
     userland (e.g. httpd/parse.y, security/doas/parse.y,
     utilities/mklocale/{lex.l,yacc.y}).
-  *.x (rpcgen): verified real but rare -- only 3 files found
-    (system/amd/rpcx/{amq,nfs_prot}.x, system/ypserv/ypserv/ypv1.x).
-    rpcgen conventionally emits MULTIPLE files per .x (_clnt.c, _svc.c,
-    _xdr.c, a header); this implementation is a reasonable best-effort
-    invocation, not a byte-verified replica of every rpcgen flag each of
-    those 3 Makefiles actually uses.
+  RPC .x specifications have their generated C/header output committed to
+    the source tree.  Regular builds intentionally never invoke rpcgen;
+    tools/verify-rpcgen-output.sh is the opt-in maintainer/CI freshness check.
 
 HOST-BUILD vs CROSS-BUILD
   Two programs here are needed as HOST-native build-time tools, not (only)
@@ -125,18 +122,18 @@ local function abspath(rel)
 end
 
 
--- Generated-source handling (yacc/lex/rpcgen), shared by every program --
+-- Generated-source handling (yacc/lex), shared by every program --
 -- unchanged: this was already entirely on_load-scoped (script scope), where
 -- import()/os.execv() genuinely do work.
 local function is_fresh(outc, srcfile)
     return os.isfile(outc) and os.isfile(srcfile) and os.mtime(outc) >= os.mtime(srcfile)
 end
 
-local function wire_generated_sources(target_name, progdir, y_files, l_files, x_files)
-    if #y_files == 0 and #l_files == 0 and #x_files == 0 then return end
+local function wire_generated_sources(target_name, progdir, y_files, l_files)
+    if #y_files == 0 and #l_files == 0 then return end
     on_load(function (target)
         import("lib.detect.find_tool")
-        local gendir = path.join(os.projectdir(), "build", "peteleos-userland-gen", target:name())
+        local gendir = path.join(os.projectdir(), "build", "os-userland-gen", target:name())
         os.mkdir(gendir)
 
         for _, yfile in ipairs(y_files) do
@@ -149,10 +146,10 @@ local function wire_generated_sources(target_name, progdir, y_files, l_files, x_
                     if os.execv(yacc.program, {"-o", outc, yfile}, {try = true}) then
                         target:add("files", outc)
                     else
-                        wprint("peteleos-userland: %s: bison/yacc failed on %s", target:name(), yfile)
+                        wprint("os-userland: %s: bison/yacc failed on %s", target:name(), yfile)
                     end
                 else
-                    wprint("peteleos-userland: %s: no bison/yacc found, skipping %s", target:name(), yfile)
+                    wprint("os-userland: %s: no bison/yacc found, skipping %s", target:name(), yfile)
                 end
             end
         end
@@ -167,42 +164,10 @@ local function wire_generated_sources(target_name, progdir, y_files, l_files, x_
                     if os.execv(lex.program, {"-o", outc, lfile}, {try = true}) then
                         target:add("files", outc)
                     else
-                        wprint("peteleos-userland: %s: flex/lex failed on %s", target:name(), lfile)
+                        wprint("os-userland: %s: flex/lex failed on %s", target:name(), lfile)
                     end
                 else
-                    wprint("peteleos-userland: %s: no flex/lex found, skipping %s", target:name(), lfile)
-                end
-            end
-        end
-
-        for _, xfile in ipairs(x_files) do
-            local base = basename_noext(xfile)
-            local all_cached = is_fresh(path.join(gendir, base .. "_clnt.c"), xfile)
-                and is_fresh(path.join(gendir, base .. "_svc.c"), xfile)
-                and is_fresh(path.join(gendir, base .. "_xdr.c"), xfile)
-            if all_cached then
-                for _, suffix in ipairs({"_clnt.c", "_svc.c", "_xdr.c"}) do
-                    target:add("files", path.join(gendir, base .. suffix))
-                end
-                target:add("includedirs", gendir)
-            else
-                local rpcgen = find_tool("rpcgen")
-                if rpcgen then
-                    -- rpcgen's usual output set: <base>_clnt.c, <base>_svc.c,
-                    -- <base>_xdr.c and <base>.h -- generated into gendir and
-                    -- added if rpcgen actually produced them (best-effort: not
-                    -- every .x file uses all four, e.g. header-only .x files).
-                    os.execv(rpcgen.program, {"-h", "-o", path.join(gendir, base .. ".h"), xfile}, {try = true})
-                    for _, suffix in ipairs({"_clnt.c", "_svc.c", "_xdr.c"}) do
-                        local outc = path.join(gendir, base .. suffix)
-                        local flag = (suffix == "_clnt.c" and "-l") or (suffix == "_svc.c" and "-m") or "-c"
-                        if os.execv(rpcgen.program, {flag, "-o", outc, xfile}, {try = true}) then
-                            target:add("files", outc)
-                        end
-                    end
-                    target:add("includedirs", gendir)
-                else
-                    wprint("peteleos-userland: %s: rpcgen not found, skipping %s", target:name(), xfile)
+                    wprint("os-userland: %s: no flex/lex found, skipping %s", target:name(), lfile)
                 end
             end
         end
@@ -220,7 +185,7 @@ local function wire_install_perms(info)
         if info.binmode then
             local is_setuid = info.binmode:match("^[24]") ~= nil
             if is_setuid then
-                cprint("${yellow}peteleos-userland${clear}: %s installs SETUID (mode %s, owner %s) -- "
+                cprint("${yellow}os-userland${clear}: %s installs SETUID (mode %s, owner %s) -- "
                        .. "review before shipping", target:name(), info.binmode, info.binown or "?")
             end
             os.execv("chmod", {info.binmode, installed}, {try = true})
@@ -253,17 +218,17 @@ end
 -- / opts.extra_srcdirs / opts.gen_termsort now hold paths relative to
 -- userland/ (resolved here via abspath()) instead of pre-resolved absolutes,
 -- since the generator cannot know this machine's checkout path.
-local function eteleos_program(target_name, progdir, opts, info)
+local function os_program(target_name, progdir, opts, info)
     opts = opts or {}
 
-    local portable_files, y_files, l_files, x_files
+    local portable_files, y_files, l_files
 
     if opts.explicit_srcs then
         -- PROGS= caller: exactly one source file, already resolved (path
         -- relative to userland/, from the generator).
         portable_files = {}
         for _, f in ipairs(opts.explicit_srcs) do portable_files[#portable_files + 1] = abspath(f) end
-        y_files, l_files, x_files = {}, {}, {}
+        y_files, l_files = {}, {}
     else
         local c_files  = os.files(path.join(progdir, "**.c"))
         local cc_files = os.files(path.join(progdir, "**.cc"))
@@ -271,7 +236,6 @@ local function eteleos_program(target_name, progdir, opts, info)
         local s_files  = os.files(path.join(progdir, "*.S"))
         y_files  = os.files(path.join(progdir, "*.y"))
         l_files  = os.files(path.join(progdir, "*.l"))
-        x_files  = os.files(path.join(progdir, "*.x"))
 
         -- Prefer the Makefile's own explicit SRCS= list when present (it is
         -- the ground truth for which files actually belong to this program,
@@ -312,32 +276,32 @@ local function eteleos_program(target_name, progdir, opts, info)
         end
     end
 
-    if #portable_files == 0 and #y_files == 0 and #l_files == 0 and #x_files == 0 then
+    if #portable_files == 0 and #y_files == 0 and #l_files == 0 then
         -- Script-only program (SCRIPTS=, no compiled sources at all).
         if info.found and #info.scripts > 0 then
             for _, s in ipairs(info.scripts) do
                 add_installfiles(path.join(progdir, s), {prefixdir = "bin"})
             end
-            print(string.format("peteleos-userland: %s installed as a script (SCRIPTS=), nothing compiled",
+            print(string.format("os-userland: %s installed as a script (SCRIPTS=), nothing compiled",
                   target_name))
         end
         return
     end
 
-    ETELEOS_DECLARED_USERLAND = ETELEOS_DECLARED_USERLAND or {}
-    ETELEOS_DECLARED_USERLAND[target_name] = true
+    OS_DECLARED_USERLAND = OS_DECLARED_USERLAND or {}
+    OS_DECLARED_USERLAND[target_name] = true
 
     target(target_name)
         set_kind("binary")
         set_default(false)
 
-        add_rules("peteleos.base", opts.static and "peteleos.userland_static" or "peteleos.userland",
-                   "peteleos.strip_release")
+        add_rules("os.base", opts.static and "os.userland_static" or "os.userland",
+                   "os.strip_release")
         if #portable_files > 0 then add_files(unpack(portable_files)) end
         add_includedirs(progdir)
         if info.found then add_includedirs(path.join(progdir, "..")) end
         for _, d in ipairs(opts.extra_includedirs or {}) do add_includedirs(abspath(d)) end
-        add_deps("peteleos-headers")
+        add_deps("os-headers")
 
         if opts.host then
             -- Host-native build tool: escape the project-wide cross
@@ -362,23 +326,23 @@ local function eteleos_program(target_name, progdir, opts, info)
                     target:set("toolset", "sh", cc.program)
                     target:set("toolset", "ar", cc.program)
                 else
-                    wprint("peteleos-userland: %s: no host C compiler (clang/gcc/cc) found -- "
+                    wprint("os-userland: %s: no host C compiler (clang/gcc/cc) found -- "
                            .. "this host-native tool will fail to build", target_name)
                 end
             end)
         end
 
         for _, libname in ipairs(info.ldadd_libs) do
-            if ETELEOS_DECLARED_LIBRARIES and ETELEOS_DECLARED_LIBRARIES[libname] then
+            if OS_DECLARED_LIBRARIES and OS_DECLARED_LIBRARIES[libname] then
                 add_deps("lib" .. libname .. "-shared")
             else
-                print(string.format("peteleos-userland: %s: LDADD -l%s has no matching library "
+                print(string.format("os-userland: %s: LDADD -l%s has no matching library "
                       .. "target (not yet built for this arch), linking without it",
                       target_name, libname))
             end
         end
 
-        wire_generated_sources(target_name, progdir, y_files, l_files, x_files)
+        wire_generated_sources(target_name, progdir, y_files, l_files)
         wire_install_perms(info)
 
         -- In PROGS= mode (opts.prog_name set), a shared MAN= list covers
@@ -409,14 +373,14 @@ local function eteleos_program(target_name, progdir, opts, info)
             on_load(function (target)
                 import("lib.detect.find_tool")
                 local gendir = path.join(os.projectdir(), "build",
-                                          "peteleos-userland-gen", target_name)
+                                          "os-userland-gen", target_name)
                 os.mkdir(gendir)
                 local termsort_h = path.join(gendir, "termsort.h")
                 local mkscript = path.join(tic_dir, "MKtermsort.sh")
                 local caps = path.join(curses_dir, "Caps")
                 local sh = find_tool("sh")
                 if not sh then
-                    wprint("peteleos-userland: %s: no POSIX shell (sh) found -- "
+                    wprint("os-userland: %s: no POSIX shell (sh) found -- "
                            .. "MKtermsort.sh needs one to run. On Windows, install "
                            .. "Git Bash, WSL, or MSYS2 and make sure its sh is on PATH; "
                            .. "on Linux/macOS this should already be present. "
@@ -427,16 +391,16 @@ local function eteleos_program(target_name, progdir, opts, info)
                     if type(io) == "table" and io.open then
                         local f = io.open(termsort_h, "w")
                         if f then f:write(out); f:close(); target:add("includedirs", gendir)
-                        else wprint("peteleos-userland: %s: could not write termsort.h", target_name) end
+                        else wprint("os-userland: %s: could not write termsort.h", target_name) end
                     else
-                        wprint("peteleos-userland: %s: io unavailable, skipping termsort.h", target_name)
+                        wprint("os-userland: %s: io unavailable, skipping termsort.h", target_name)
                     end
                     else
-                        wprint("peteleos-userland: %s: MKtermsort.sh produced no output, "
+                        wprint("os-userland: %s: MKtermsort.sh produced no output, "
                                .. "termsort.h will be missing", target_name)
                     end
                 else
-                    wprint("peteleos-userland: %s: MKtermsort.sh or Caps not found, "
+                    wprint("os-userland: %s: MKtermsort.sh or Caps not found, "
                            .. "skipping termsort.h generation", target_name)
                 end
             end)
@@ -446,16 +410,16 @@ end
 
 
 -- Consume the generated manifest (see file header). This is the ONLY thing
--- that replaces the previous eteleos_walk_dir()/eteleos_category() calls --
+-- that replaces the previous os_walk_dir()/os_category() calls --
 -- everything about WHICH programs exist and WHAT their Makefiles say was
 -- already decided by tools/gen/gen_userland_manifest.lua.
 includes("generated_manifest.lua")
 
-if type(ETELEOS_USERLAND_MANIFEST) == "table" then
-    for _, unit in ipairs(ETELEOS_USERLAND_MANIFEST) do
-        eteleos_program(unit.target_name, abspath(unit.progdir_rel), unit.opts, unit.info)
+if type(OS_USERLAND_MANIFEST) == "table" then
+    for _, unit in ipairs(OS_USERLAND_MANIFEST) do
+        os_program(unit.target_name, abspath(unit.progdir_rel), unit.opts, unit.info)
     end
 else
-    print("peteleos-userland: generated_manifest.lua did not define ETELEOS_USERLAND_MANIFEST -- "
+    print("os-userland: generated_manifest.lua did not define OS_USERLAND_MANIFEST -- "
           .. "no userland programs will be built. Run: xmake lua tools/gen/gen_userland_manifest.lua")
 end

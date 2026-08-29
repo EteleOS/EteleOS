@@ -9,7 +9,7 @@ librthread, libutil, libtls, libz, libedit, libelf, libevent, libexpat (all of
 libraries/core/), plus every library under libraries/extra/, following the
 current source layout (NOT the stale per-library Makefiles, which still reference pre-restructure paths).
 Every library is built as a PAIR of targets -- "<name>-static" and
-"<name>-shared" -- via the eteleos_bsd_library() helper below. This file does
+"<name>-shared" -- via the os_bsd_library() helper below. This file does
 not compile object/kernel/userland/driver/xenocara code; it only builds the
 libraries/ tree, per the build spec.
 
@@ -30,7 +30,7 @@ hand-written .S files (Ovfork.S, brk.S, sigprocmask.S, ...) are picked up
 by the ordinary glob exactly as before, unaffected by this change.
 
 2. All 19 libraries under libraries/extra/ (besides librthread, already
-wired) are now built. Most reuse eteleos_bsd_library() unchanged; four
+wired) are now built. Most reuse os_bsd_library() unchanged; four
 needed real per-library handling, documented at each call site:
 libkvm (arch-specific kvm_<arch>.c), libossaudio (sources shared with
 libsndio), libpcap (yacc/lex with a custom symbol prefix, plus one file
@@ -45,7 +45,7 @@ it is left as a follow-up rather than a build-correctness fix.
 used io.open() at description scope, which is nil there in a real
 xmake v3.0.9 run -- confirmed; only script-scope callbacks like on_load
 have it). The major/minor numbers now come from a lookup into
-ETELEOS_LIBRARIES_SHLIB_VERSIONS, precomputed offline by
+OS_LIBRARIES_SHLIB_VERSIONS, precomputed offline by
 tools/gen/gen_libraries_manifest.lua (xmake lua tools/gen/gen_libraries_manifest.lua
 to regenerate after any library gains/changes a shlib_version file).
 --]]
@@ -65,14 +65,14 @@ local cprint = cprint or function(fmt, ...) print(string.format((fmt:gsub("%${[%
 
 local unpack = table.unpack or unpack
 
--- Provides ETELEOS_LIBRARIES_SHLIB_VERSIONS (see read_shlib_version() below
+-- Provides OS_LIBRARIES_SHLIB_VERSIONS (see read_shlib_version() below
 -- and tools/gen/gen_libraries_manifest.lua for why this is a separate,
 -- generated file rather than read here directly).
 includes("generated_manifest.lua")
-if type(ETELEOS_LIBRARIES_SHLIB_VERSIONS) ~= "table" then
-    print("peteleos-libraries: generated_manifest.lua did not define ETELEOS_LIBRARIES_SHLIB_VERSIONS -- "
+if type(OS_LIBRARIES_SHLIB_VERSIONS) ~= "table" then
+    print("os-libraries: generated_manifest.lua did not define OS_LIBRARIES_SHLIB_VERSIONS -- "
           .. "every library will link with version 0.0. Run: xmake lua tools/gen/gen_libraries_manifest.lua")
-    ETELEOS_LIBRARIES_SHLIB_VERSIONS = {}
+    OS_LIBRARIES_SHLIB_VERSIONS = {}
 end
 
 
@@ -99,12 +99,12 @@ end
 
 local function write_file(filepath, content)
     if type(io) ~= "table" or not io.open then
-        print(string.format("peteleos: io unavailable, could not write %s", filepath))
+        print(string.format("os: io unavailable, could not write %s", filepath))
         return false
     end
     local f = io.open(filepath, "w")
     if not f then
-        print(string.format("peteleos: could not write %s", filepath))
+        print(string.format("os: could not write %s", filepath))
         return false
     end
     f:write(content)
@@ -164,11 +164,11 @@ end
 -- never actually have run. The major/minor numbers are now precomputed
 -- offline (xmake lua tools/gen/gen_libraries_manifest.lua, run against
 -- every libraries/{core,extra}/*/shlib_version file) into
--- generated_manifest.lua's ETELEOS_LIBRARIES_SHLIB_VERSIONS table; this
+-- generated_manifest.lua's OS_LIBRARIES_SHLIB_VERSIONS table; this
 -- function is now just a lookup, keyed by srcdir_rel exactly as passed to
--- eteleos_bsd_library() below (e.g. "core/libc", "extra/libcurses").
+-- os_bsd_library() below (e.g. "core/libc", "extra/libcurses").
 local function read_shlib_version(srcdir_rel)
-    local v = ETELEOS_LIBRARIES_SHLIB_VERSIONS and ETELEOS_LIBRARIES_SHLIB_VERSIONS[srcdir_rel]
+    local v = OS_LIBRARIES_SHLIB_VERSIONS and OS_LIBRARIES_SHLIB_VERSIONS[srcdir_rel]
     if not v then return 0, 0 end
     return v.major, v.minor
 end
@@ -248,7 +248,7 @@ local function parse_syscall_lists(makefile_inc_path)
             return out
         end
         if tok:find("%$") or tok:find("{") then
-            wprint("peteleos: libc syscall list parser: don't know how to expand "
+            wprint("os: libc syscall list parser: don't know how to expand "
                    .. "\"%s\" -- skipping this token (see parse_syscall_lists)", tok)
             return {}
         end
@@ -294,7 +294,7 @@ end
 local function generate_syscall_stubs(libc_srcdir, gendir)
     local lists = parse_syscall_lists(path.join(libc_srcdir, "sys", "Makefile.inc"))
     if not lists then
-        wprint("peteleos: libc/sys/Makefile.inc not found or unparseable -- syscall "
+        wprint("os: libc/sys/Makefile.inc not found or unparseable -- syscall "
                .. "stubs will NOT be generated; libc will build but have no syscall "
                .. "entry points")
         return {}
@@ -330,7 +330,7 @@ local function generate_syscall_stubs(libc_srcdir, gendir)
         end
     end
     if #generated == 0 then
-        wprint("peteleos: parsed libc/sys/Makefile.inc but found zero syscall names "
+        wprint("os: parsed libc/sys/Makefile.inc but found zero syscall names "
                .. "in ASM/ASM_NOERR/PSEUDO/PSEUDO_NOERR/HIDDEN -- check the file's "
                .. "shape hasn't changed upstream")
     end
@@ -355,12 +355,12 @@ end
 -- paths}, called from on_load so generated sources are still added
 -- to this same build's file list (matching this project's existing
 -- generated-sources convention -- see kernel/xmake.lua's vers.c).
-local function eteleos_bsd_library(name, srcdir_rel, opts)
+local function os_bsd_library(name, srcdir_rel, opts)
     opts = opts or {}
     local srcdir = path.join(os.scriptdir(), srcdir_rel)
 
     if not os.isdir(srcdir) then
-        print(string.format("peteleos: libraries/%s not found, skipping lib%s", srcdir_rel, name))
+        print(string.format("os: libraries/%s not found, skipping lib%s", srcdir_rel, name))
         return
     end
 
@@ -374,23 +374,23 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
                 mi_files[#mi_files + 1] = f
             end
         else
-            print(string.format("peteleos: lib%s: extra_srcdirs entry not found, skipping: %s", name, extra_dir))
+            print(string.format("os: lib%s: extra_srcdirs entry not found, skipping: %s", name, extra_dir))
         end
     end
 
     for _, f in ipairs(opts.extra_files or {}) do
         if os.isfile(f) then mi_files[#mi_files + 1] = f
-        else print(string.format("peteleos: lib%s: extra_files entry not found, skipping: %s", name, f)) end
+        else print(string.format("os: lib%s: extra_files entry not found, skipping: %s", name, f)) end
     end
 
     if opts.arch_files and opts.arch_files[arch] then
         local f = path.join(srcdir, opts.arch_files[arch])
         if os.isfile(f) then mi_files[#mi_files + 1] = f
-        else print(string.format("peteleos: lib%s: arch_files[%s] not found, skipping: %s", name, arch, f)) end
+        else print(string.format("os: lib%s: arch_files[%s] not found, skipping: %s", name, arch, f)) end
     end
 
     if #mi_files == 0 and #md_files == 0 then
-        print(string.format("peteleos: lib%s (%s) has no source files for arch '%s' yet, skipping",
+        print(string.format("os: lib%s (%s) has no source files for arch '%s' yet, skipping",
                name, srcdir_rel, arch))
         return
     end
@@ -404,8 +404,8 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
     -- (e.g. tests/sys/kern/signal/sig/stop2 LDADD's -lpthread, but
     -- libpthread currently has zero source files for amd64 and so never
     -- reaches this point).
-    ETELEOS_DECLARED_LIBRARIES = ETELEOS_DECLARED_LIBRARIES or {}
-    ETELEOS_DECLARED_LIBRARIES[name] = true
+    OS_DECLARED_LIBRARIES = OS_DECLARED_LIBRARIES or {}
+    OS_DECLARED_LIBRARIES[name] = true
 
     for _, kind in ipairs({"static", "shared"}) do
         target("lib" .. name .. "-" .. kind)
@@ -413,7 +413,7 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
             set_basename("lib" .. name)
             set_default(false)   -- built explicitly by userland/kernel deps, not by a plain `xmake`
 
-            add_rules("peteleos.base", "peteleos.library")
+            add_rules("os.base", "os.library")
 
             if #mi_files > 0 then add_files(unpack(mi_files)) end
             if #md_files > 0 then add_files(unpack(md_files)) end
@@ -429,8 +429,8 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
 
             if opts.defines then add_defines(unpack(opts.defines)) end
 
-            -- Every PeteleOS library builds against the exported headers.
-            add_deps("peteleos-headers")
+            -- Every library builds against the exported headers.
+            add_deps("os-headers")
             if opts.deps then add_deps(unpack(opts.deps)) end
 
             -- Soname/version, shared build only.
@@ -441,7 +441,7 @@ local function eteleos_bsd_library(name, srcdir_rel, opts)
             if opts.gen_files_fn then
                 on_load(function (target)
                     local gendir = path.join(os.projectdir(), "build",
-                                              "peteleos-libraries-gen", "lib" .. name, arch)
+                                              "os-libraries-gen", "lib" .. name, arch)
                     local files = opts.gen_files_fn(gendir)
                     for _, f in ipairs(files) do target:add("files", f) end
                     if #files > 0 then target:add("includedirs", gendir) end
@@ -457,7 +457,7 @@ end
 -- libc: the C standard library. Syscall stubs (open.S, read.S, ...) are now
 -- generated from libc/sys/Makefile.inc's own ASM/ASM_NOERR/PSEUDO/
 -- PSEUDO_NOERR/HIDDEN lists -- see generate_syscall_stubs() above.
-eteleos_bsd_library("c", "core/libc", {
+os_bsd_library("c", "core/libc", {
     defines = {"__LIBC__"},
     -- DEFS.h (needed by the generated syscall stubs' "#include SYS.h",
     -- which itself does "#include DEFS.h") lives at core/libc/arch/DEFS.h,
@@ -468,7 +468,7 @@ eteleos_bsd_library("c", "core/libc", {
         -- DEFS.h itself does "#include <machine/asm.h>" -- confirmed
         -- necessary by testing. kernel/arch/<arch>/include is the same
         -- real "machine" headers directory the kernel and (per
-        -- include/xmake.lua's own "peteleos-headers" relink() logic) the
+        -- include/xmake.lua's own "os-headers" relink() logic) the
         -- installed userland headers both resolve <machine/...> against;
         -- materialized here as a real directory copy (not a symlink, same
         -- Windows-host-portability reasoning as kernel/xmake.lua) directly
@@ -485,72 +485,72 @@ eteleos_bsd_library("c", "core/libc", {
 
 -- libm: math library. Portable C sources live under libm/src/, which the
 -- recursive glob below picks up automatically.
-eteleos_bsd_library("m", "core/libm")
+os_bsd_library("m", "core/libm")
 
 -- libcrypto: OpenSSL's libcrypto, vendored. arch/ here covers many more
 -- architectures than PeteleOS supports (alpha, hppa, i386, m88k, ...); the
 -- MD-override logic above only looks at arch/<target_arch>, so unrelated
 -- architectures are never compiled in.
-eteleos_bsd_library("crypto", "core/libcrypto")
+os_bsd_library("crypto", "core/libcrypto")
 
 -- libssl: TLS/SSL protocol implementation, layered on libcrypto.
-eteleos_bsd_library("ssl", "core/libssl", {
+os_bsd_library("ssl", "core/libssl", {
     deps = {"libcrypto-shared"},
 })
 
 -- libtls: the higher-level libtls API, layered on libssl + libcrypto.
-eteleos_bsd_library("tls", "core/libtls", {
+os_bsd_library("tls", "core/libtls", {
     deps = {"libssl-shared", "libcrypto-shared"},
 })
 
 -- libpthread: expected to have ZERO source files on the current tree (only
 -- a man/ directory) -- modern OpenBSD keeps libpthread as a thin
 -- compatibility shim while the real implementation lives in librthread
--- (libraries/extra/librthread). eteleos_bsd_library() will simply skip it
+-- (libraries/extra/librthread). os_bsd_library() will simply skip it
 -- with a warning until/unless real shim sources are added here; this is
 -- expected, not a bug.
-eteleos_bsd_library("pthread", "core/libpthread", {
+os_bsd_library("pthread", "core/libpthread", {
     deps = {"librthread-shared"},
 })
 
 -- libutil: assorted system utility routines (bcrypt_pbkdf, fmt_scaled,
 -- imsg, ...). Flat source layout, no arch/ overrides.
-eteleos_bsd_library("util", "core/libutil")
+os_bsd_library("util", "core/libutil")
 
 -- libz: zlib, vendored.
-eteleos_bsd_library("z", "core/libz")
+os_bsd_library("z", "core/libz")
 
 -- libedit: line-editing library used by ksh, ftp, etc.
-eteleos_bsd_library("edit", "core/libedit")
+os_bsd_library("edit", "core/libedit")
 
 -- libelf: ELF object file access library.
-eteleos_bsd_library("elf", "core/libelf")
+os_bsd_library("elf", "core/libelf")
 
 -- libevent: event-notification library.
-eteleos_bsd_library("event", "core/libevent")
+os_bsd_library("event", "core/libevent")
 
 -- libexpat: XML parser, vendored (sources under libexpat/lib/).
-eteleos_bsd_library("expat", "core/libexpat")
+os_bsd_library("expat", "core/libexpat")
 
 
 -- libraries/extra -- librthread (already wired) plus the 19 libraries this
--- revision adds. Most are plain eteleos_bsd_library() calls; a few needed
+-- revision adds. Most are plain os_bsd_library() calls; a few needed
 -- real per-library handling, called out below.
 
 
 -- librthread: the real pthread implementation (libpthread above is a thin
 -- shim over this).
-eteleos_bsd_library("rthread", "extra/librthread")
+os_bsd_library("rthread", "extra/librthread")
 
 -- libagentx: SNMP AgentX protocol library. Plain flat source layout.
-eteleos_bsd_library("agentx", "extra/libagentx")
+os_bsd_library("agentx", "extra/libagentx")
 
 -- libcbor: CBOR (RFC 8949) encoding library, vendored (needed by libfido2
 -- below). Sources are nested under src/ and src/cbor/{,internal}/, all
 -- picked up by the recursive glob; needs its own -I for "cbor/*.h"-style
 -- internal includes plus the 3 malloc/realloc/free macro substitutions its
 -- own Makefile always passes.
-eteleos_bsd_library("cbor", "extra/libcbor", {
+os_bsd_library("cbor", "extra/libcbor", {
     extra_includedirs = {"extra/libcbor/src"},
     defines = {"HAVE_ENDIAN_H", "_cbor_malloc=malloc", "_cbor_realloc=realloc", "_cbor_free=free"},
 })
@@ -558,34 +558,34 @@ eteleos_bsd_library("cbor", "extra/libcbor", {
 -- libcurses: terminal-handling library (the base for libform/libmenu/
 -- libpanel below). Sources nested under base/, tinfo/, trace/, tty/,
 -- widechar/ -- all picked up by the recursive glob.
-eteleos_bsd_library("curses", "extra/libcurses", {
+os_bsd_library("curses", "extra/libcurses", {
     defines = {"_XOPEN_SOURCE_EXTENDED", "NDEBUG"},
 })
 
 -- libform, libmenu, libpanel: the 3 libcurses companion libraries, each
 -- needing libcurses' own headers on their include path.
-eteleos_bsd_library("form", "extra/libform", {
+os_bsd_library("form", "extra/libform", {
     extra_includedirs = {"extra/libcurses", "extra/libmenu"},
     defines = {"_XOPEN_SOURCE_EXTENDED", "NDEBUG"},
 })
-eteleos_bsd_library("menu", "extra/libmenu", {
+os_bsd_library("menu", "extra/libmenu", {
     extra_includedirs = {"extra/libcurses"},
     defines = {"_XOPEN_SOURCE_EXTENDED", "NDEBUG"},
 })
-eteleos_bsd_library("panel", "extra/libpanel", {
+os_bsd_library("panel", "extra/libpanel", {
     extra_includedirs = {"extra/libcurses"},
     defines = {"_XOPEN_SOURCE_EXTENDED", "NDEBUG"},
 })
 
 -- libfido2: FIDO2/U2F security-key library, layered on libcbor above.
-eteleos_bsd_library("fido2", "extra/libfido2", {
+os_bsd_library("fido2", "extra/libfido2", {
     deps = {"libcbor-shared"},
     extra_includedirs = {"extra/libfido2/src"},
     defines = {"_FIDO_INTERNAL", "HAVE_UNISTD_H"},
 })
 
 -- libfuse: userspace filesystem library.
-eteleos_bsd_library("fuse", "extra/libfuse", {
+os_bsd_library("fuse", "extra/libfuse", {
     extra_includedirs = {"extra/libfuse"},
 })
 
@@ -593,14 +593,14 @@ eteleos_bsd_library("fuse", "extra/libfuse", {
 -- variant would normally be produced); this file still builds both
 -- static/shared for consistency with every other library here, since a
 -- shared build is not actually unsafe, just unnecessary upstream.
-eteleos_bsd_library("keynote", "extra/libkeynote", {
+os_bsd_library("keynote", "extra/libkeynote", {
     extra_includedirs = {"extra/libkeynote"},
 })
 
 -- libkvm: kernel-memory-access library. Real Makefile picks exactly one
 -- machine-specific file (kvm_<arch>.c) -- verified present for all three
 -- supported architectures (kvm_amd64.c, kvm_arm64.c, kvm_riscv64.c).
-eteleos_bsd_library("kvm", "extra/libkvm", {
+os_bsd_library("kvm", "extra/libkvm", {
     defines = {"_LIBKVM"},
     arch_files = { amd64 = "kvm_amd64.c", arm64 = "kvm_arm64.c", riscv64 = "kvm_riscv64.c" },
 })
@@ -610,19 +610,19 @@ eteleos_bsd_library("kvm", "extra/libkvm", {
 -- libkeynote above). Its own directory has no sources at all -- the real
 -- files live in userland/development/lex/ (confirmed on disk), pulled in
 -- via the real Makefile's own .PATH.
-eteleos_bsd_library("l", "extra/libl", {
+os_bsd_library("l", "extra/libl", {
     extra_srcdirs = {"../userland/development/lex"},
 })
 
 -- libossaudio: OSS audio-API compatibility shim, layered on libsndio's
 -- sources (its real Makefile pulls them in via .PATH rather than linking
 -- against libsndio itself).
-eteleos_bsd_library("ossaudio", "extra/libossaudio", {
+os_bsd_library("ossaudio", "extra/libossaudio", {
     extra_srcdirs = {"extra/libsndio"},
 })
 
 -- libpcap: packet-capture library. NOT handled through
--- eteleos_bsd_library() -- its real Makefile needs yacc/lex with a custom
+-- os_bsd_library() -- its real Makefile needs yacc/lex with a custom
 -- symbol prefix (-ppcap_yy/-Ppcap_yy, so multiple libraries' generated
 -- lexer/parser symbols don't collide at link time) and pulls
 -- bpf_filter.c from kernel/net/net/ (verified present there) via .PATH,
@@ -633,38 +633,38 @@ do
     local pcap_srcdir = path.join(os.scriptdir(), "extra", "libpcap")
     if os.isdir(pcap_srcdir) then
         local arch = get_config("target_arch") or "amd64"
-        ETELEOS_DECLARED_LIBRARIES = ETELEOS_DECLARED_LIBRARIES or {}
-        ETELEOS_DECLARED_LIBRARIES["pcap"] = true
+        OS_DECLARED_LIBRARIES = OS_DECLARED_LIBRARIES or {}
+        OS_DECLARED_LIBRARIES["pcap"] = true
         for _, kind in ipairs({"static", "shared"}) do
             target("libpcap-" .. kind)
                 set_kind(kind)
                 set_basename("libpcap")
                 set_default(false)
-                add_rules("peteleos.base", "peteleos.library")
+                add_rules("os.base", "os.library")
 
                 local mi_files = collect_sources(pcap_srcdir, arch)
                 if #mi_files > 0 then add_files(unpack(mi_files)) end
                 local bpf_filter_c = path.join(os.scriptdir(), "..", "kernel", "net", "net", "bpf_filter.c")
                 if os.isfile(bpf_filter_c) then add_files(bpf_filter_c)
-                else print("peteleos: libpcap: kernel/net/net/bpf_filter.c not found, skipping") end
+                else print("os: libpcap: kernel/net/net/bpf_filter.c not found, skipping") end
 
                 add_includedirs(pcap_srcdir)
                 add_defines("HAVE_SYS_IOCCOM_H", "HAVE_SYS_SOCKIO_H", "HAVE_ETHER_HOSTTON",
                             "yylval=pcap_yylval")
-                add_deps("peteleos-headers")
+                add_deps("os-headers")
 
                 on_load(function (target)
                     import("lib.detect.find_tool")
                     local yacc = find_tool("bison") or find_tool("yacc")
                     local lex  = find_tool("flex") or find_tool("lex")
                     if not yacc or not lex then
-                        wprint("peteleos: libpcap: no yacc/bison or lex/flex found -- "
+                        wprint("os: libpcap: no yacc/bison or lex/flex found -- "
                                .. "grammar.y/scanner.l will not be compiled, libpcap "
                                .. "will be missing its filter-expression parser")
                         return
                     end
                     local gendir = path.join(os.projectdir(), "build",
-                                              "peteleos-libraries-gen", "libpcap", arch)
+                                              "os-libraries-gen", "libpcap", arch)
                     os.mkdir(gendir)
                     local gram_c = path.join(gendir, "grammar.c")
                     local gram_h = path.join(gendir, "grammar.h")
@@ -674,7 +674,7 @@ do
                                 path.join(pcap_srcdir, "grammar.y")}, {try = true}) then
                         target:add("files", gram_c)
                     else
-                        wprint("peteleos: libpcap: yacc/bison failed on grammar.y")
+                        wprint("os: libpcap: yacc/bison failed on grammar.y")
                     end
                     local scan_c = path.join(gendir, "scanner.c")
                     if os.isfile(scan_c) then
@@ -683,108 +683,70 @@ do
                                 path.join(pcap_srcdir, "scanner.l")}, {try = true}) then
                         target:add("files", scan_c)
                     else
-                        wprint("peteleos: libpcap: lex/flex failed on scanner.l")
+                        wprint("os: libpcap: lex/flex failed on scanner.l")
                     end
                     target:add("includedirs", gendir)
                 end)
             target_end()
         end
     else
-        print("peteleos: libraries/extra/libpcap not found, skipping libpcap")
+        print("os: libraries/extra/libpcap not found, skipping libpcap")
     end
 end
 
 -- libradius: RADIUS protocol client library.
-eteleos_bsd_library("radius", "extra/libradius")
+os_bsd_library("radius", "extra/libradius")
 
--- librpcsvc: NOT handled through eteleos_bsd_library() -- every single
--- source file is rpcgen-generated from a .x RPC protocol spec (confirmed:
--- the real Makefile's SRCS is entirely `${RPCSRCS:R:S/$/.c/g}`, i.e.
--- "take every .x name, swap the extension for .c" -- there are no
--- hand-written .c files here at all). Each spec generates exactly one .c
--- (rpcgen -c, XDR marshaling routines only -- this library never needed
--- generated client/server stubs, only the wire-format encoding).
+-- librpcsvc: every source file is generated from an RPC .x specification and
+-- committed alongside that specification.  This deliberately keeps rpcgen
+-- out of the regular host and cross build path; use
+-- tools/verify-rpcgen-output.sh to check the pinned generated output.
 do
     local rpcsvc_srcdir = path.join(os.scriptdir(), "extra", "librpcsvc")
     local RPCSVC_SPECS = { "bootparam_prot", "klm_prot", "mount", "nfs_prot",
-                            "nlm_prot", "rnusers", "rquota", "rstat", "rusers", "rwall" }
+                            "nlm_prot", "rnusers", "rusers", "rquota", "rstat", "rwall",
+                            "sm_inter", "spray", "yp", "yppasswd" }
     if os.isdir(rpcsvc_srcdir) then
-        ETELEOS_DECLARED_LIBRARIES = ETELEOS_DECLARED_LIBRARIES or {}
-        ETELEOS_DECLARED_LIBRARIES["rpcsvc"] = true
+        OS_DECLARED_LIBRARIES = OS_DECLARED_LIBRARIES or {}
+        OS_DECLARED_LIBRARIES["rpcsvc"] = true
         for _, kind in ipairs({"static", "shared"}) do
             target("librpcsvc-" .. kind)
                 set_kind(kind)
                 set_basename("librpcsvc")
                 set_default(false)
-                add_rules("peteleos.base", "peteleos.library")
+                add_rules("os.base", "os.library")
                 add_includedirs(rpcsvc_srcdir)
-                add_deps("peteleos-headers")
+                add_deps("os-headers")
 
-                on_load(function (target)
-                    import("lib.detect.find_tool")
-                    local rpcgen = find_tool("rpcgen")
-                    if not rpcgen then
-                        wprint("peteleos: librpcsvc: rpcgen not found on host -- none of "
-                               .. "the %d RPC spec(s) can be compiled, librpcsvc will "
-                               .. "be an empty library", #RPCSVC_SPECS)
-                        return
-                    end
-                    local gendir = path.join(os.projectdir(), "build",
-                                              "peteleos-libraries-gen", "librpcsvc")
-                    os.mkdir(gendir)
-                    local n = 0
-                    for _, spec in ipairs(RPCSVC_SPECS) do
-                        local x_file = path.join(rpcsvc_srcdir, spec .. ".x")
-                        local c_file = path.join(gendir, spec .. ".c")
-                        if os.isfile(c_file) then
-                            -- Already generated (by this same run's static
-                            -- target, or a previous invocation) -- rpcgen
-                            -- prompts interactively on overwrite, which
-                            -- hangs/fails non-interactively, so skip rather
-                            -- than re-run (confirmed necessary by testing).
-                            target:add("files", c_file)
-                            n = n + 1
-                        elseif os.isfile(x_file) then
-                            if os.execv(rpcgen.program, {"-c", x_file, "-o", c_file}, {try = true}) then
-                                target:add("files", c_file)
-                                n = n + 1
-                            else
-                                wprint("peteleos: librpcsvc: rpcgen failed on %s.x", spec)
-                            end
-                        else
-                            wprint("peteleos: librpcsvc: %s.x not found, skipping", spec)
-                        end
-                    end
-                    target:add("includedirs", gendir)
-                    cprint("${green}peteleos${clear}: librpcsvc: %d/%d RPC specs compiled",
-                           n, #RPCSVC_SPECS)
-                end)
+                for _, spec in ipairs(RPCSVC_SPECS) do
+                    add_files(path.join(rpcsvc_srcdir, spec .. ".c"))
+                end
             target_end()
         end
     else
-        print("peteleos: libraries/extra/librpcsvc not found, skipping librpcsvc")
+        print("os: libraries/extra/librpcsvc not found, skipping librpcsvc")
     end
 end
 
 -- libskey: S/Key one-time-password library.
-eteleos_bsd_library("skey", "extra/libskey")
+os_bsd_library("skey", "extra/libskey")
 
 -- libsndio: sndio audio API. Also the source of libossaudio's sources
 -- above (via extra_srcdirs), but built here as its own library too, since
 -- libsndio is a normal, independently-linkable library in its own right.
-eteleos_bsd_library("sndio", "extra/libsndio", {
+os_bsd_library("sndio", "extra/libsndio", {
     defines = {"DEBUG"},
 })
 
 -- libusbhid: USB HID report descriptor parsing library.
-eteleos_bsd_library("usbhid", "extra/libusbhid", {
+os_bsd_library("usbhid", "extra/libusbhid", {
     extra_includedirs = {"extra/libusbhid"},
 })
 
 -- liby: tiny yacc/bison runtime support (main.c/yyerror.c), needed by
 -- programs built from plain yacc output. NOPIC upstream (same reasoning as
 -- libkeynote/libl above).
-eteleos_bsd_library("y", "extra/liby")
+os_bsd_library("y", "extra/liby")
 
 
 -- Not yet wired up (out of scope for this revision -- see the readiness
@@ -796,4 +758,3 @@ eteleos_bsd_library("y", "extra/liby")
 --   support code consumed directly by libc's own build, not a
 --   separately-linked library. Both are real, additional gaps found while
 --   auditing this file -- worth a dedicated pass, not folded into this one.
-

@@ -32,7 +32,7 @@ routines read), not C/C++ compilation, and are skipped gracefully if the
 tool is not found on the host.
 --]]
 
-target("peteleos-resources")
+target("os-resources")
     set_kind("headeronly")
     set_default(false)
 
@@ -61,7 +61,7 @@ target("peteleos-resources")
     -- btrace: example/skeleton scripts for btrace(8).
     add_installfiles("(btrace/**)",                {prefixdir = "share"})
 
-    add_deps("peteleos-headers")
+    add_deps("os-headers")
 
     -- Data compilation: zoneinfo (zic) and locale (mklocale)
     -- KNOWN LIMITATION: resources/zoneinfo/Makefile is the upstream IANA
@@ -90,16 +90,16 @@ target("peteleos-resources")
                 for _, f in ipairs(srcfiles) do args[#args + 1] = f end
                 local ok, err = pcall(os.execv, zic.program, args)
                 if ok then
-                    cprint("${green}peteleos-resources${clear}: compiled %d zoneinfo source files with zic",
+                    cprint("${green}os-resources${clear}: compiled %d zoneinfo source files with zic",
                            #srcfiles)
                 else
-                    wprint("peteleos-resources: zic failed: %s", tostring(err))
+                    wprint("os-resources: zic failed: %s", tostring(err))
                 end
             else
-                wprint("peteleos-resources: no zoneinfo source files found under %s", tzdatadir)
+                wprint("os-resources: no zoneinfo source files found under %s", tzdatadir)
             end
         else
-            wprint("peteleos-resources: zic not found (or %s missing) -- zoneinfo NOT compiled; "
+            wprint("os-resources: zic not found (or %s missing) -- zoneinfo NOT compiled; "
                    .. "the target will have no /usr/share/zoneinfo data", tzdatadir)
         end
 
@@ -110,11 +110,11 @@ target("peteleos-resources")
         local mklocale = find_tool("mklocale")
         local ctypedir = path.join(scriptdir, "locale", "ctype")
         if mklocale and os.isdir(ctypedir) then
-            cprint("${green}peteleos-resources${clear}: mklocale found "
+            cprint("${green}os-resources${clear}: mklocale found "
                    .. "(%s) -- locale/ctype build not yet wired up in detail, "
                    .. "see the note in this file", mklocale.program)
         else
-            wprint("peteleos-resources: mklocale not found (or locale/ctype missing) -- "
+            wprint("os-resources: mklocale not found (or locale/ctype missing) -- "
                    .. "locale databases NOT compiled")
         end
     end)

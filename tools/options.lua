@@ -16,7 +16,7 @@ User interface:
   xmake f --asan=y --ubsan=y
   xmake f --werror=y
   xmake f --sysroot=/path/to/sysroot
-  xmake f --eteleos_toolchain=peteleos-gcc
+  xmake f --os_toolchain=os-gcc
 --]]
 
 -- Target architecture
@@ -26,7 +26,7 @@ User interface:
 option("target_arch")
     set_default("amd64")
     set_showmenu(true)
-    set_description("PeteleOS target CPU architecture")
+    set_description("OS target CPU architecture")
     set_values("amd64", "arm64", "riscv64")
 option_end()
 
@@ -34,11 +34,11 @@ option_end()
 -- Selects which toolchain() declaration (from tools/toolchains.lua) is
 -- activated as the project default. Setting this option also drives the
 -- set_config("toolchain", ...) call in tools/compiler.lua.
-option("eteleos_toolchain")
-    set_default("peteleos-clang")
+option("os_toolchain")
+    set_default("os-clang")
     set_showmenu(true)
     set_description("Build toolchain preset")
-    set_values("peteleos-clang", "peteleos-gcc")
+    set_values("os-clang", "os-gcc")
 option_end()
 
 -- Cross-build sysroot
@@ -64,7 +64,7 @@ option_end()
 -- Sanitizers
 -- These are intentionally separate options so that, for example, a test build
 -- can enable ubsan without asan. Both are ONLY valid for hosted targets
--- (userland tools, tests); the peteleos.kernel rule blocks them on the kernel.
+-- (userland tools, tests); the os.kernel rule blocks them on the kernel.
 
 option("asan")
     set_default(false)

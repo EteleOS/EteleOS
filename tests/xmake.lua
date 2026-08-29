@@ -146,7 +146,7 @@ local INTERPRETER_BY_EXT = { sh = "sh", py = "python3", pl = "perl", lua = "lua"
 -- scope, so directory discovery still happens right here.
 -- Regenerate with: xmake lua tools/gen/gen_tests_manifest.lua
 includes("generated_manifest.lua")
-local TESTS_MANIFEST = ETELEOS_TESTS_MANIFEST or {}
+local TESTS_MANIFEST = OS_TESTS_MANIFEST or {}
 
 -- Portable recursive discovery via os.files()/os.dirs() instead of
 -- shelling out to `find` -- works the same on any host xmake itself runs on.
@@ -263,7 +263,7 @@ end
 -- Wire one discovered test directory.
 local stats = { simple = 0, golden = 0, script = 0, custom_skipped = 0, empty = 0 }
 
-local function eteleos_test_unit(target_name, testdir, group, info)
+local function os_test_unit(target_name, testdir, group, info)
     if not info or not info.has_makefile then
         -- No Makefile: check for a directly-runnable script (shell/python/
         -- perl/lua test with no build step at all).
@@ -279,7 +279,7 @@ local function eteleos_test_unit(target_name, testdir, group, info)
     end
 
     if #info.unknown_includes > 0 then
-        print(string.format("peteleos-tests: %s includes non-standard %s", testdir,
+        print(string.format("os-tests: %s includes non-standard %s", testdir,
               table.concat(info.unknown_includes, ", ")))
     end
 
@@ -328,26 +328,26 @@ local function eteleos_test_unit(target_name, testdir, group, info)
     target(target_name)
         set_kind("binary")
         set_default(false)
-        add_rules("peteleos.base")
+        add_rules("os.base")
         add_files(unpack(c_files))
         add_includedirs(testdir)
-        add_deps("peteleos-headers")
+        add_deps("os-headers")
 
         for _, libname in ipairs(info.ldadd_libs) do
-            if ETELEOS_DECLARED_LIBRARIES and ETELEOS_DECLARED_LIBRARIES[libname] then
+            if OS_DECLARED_LIBRARIES and OS_DECLARED_LIBRARIES[libname] then
                 add_deps("lib" .. libname .. "-shared")
             else
-                print(string.format("peteleos-tests: %s: LDADD -l%s has no matching library "
+                print(string.format("os-tests: %s: LDADD -l%s has no matching library "
                       .. "target (not yet built for this arch), linking without it",
                       target_name, libname))
             end
         end
         if dep_dir then
             local dep_target = "userland-" .. dep_cat:gsub("/", "-") .. "-" .. path.filename(testdir)
-            if ETELEOS_DECLARED_USERLAND and ETELEOS_DECLARED_USERLAND[dep_target] then
+            if OS_DECLARED_USERLAND and OS_DECLARED_USERLAND[dep_target] then
                 add_deps(dep_target)
             else
-                print(string.format("peteleos-tests: %s: matching userland program '%s' has no "
+                print(string.format("os-tests: %s: matching userland program '%s' has no "
                       .. "compiled target (script-only or empty), building standalone", target_name, dep_target))
             end
         end
@@ -380,13 +380,13 @@ for _, category in ipairs(TEST_CATEGORIES) do
             local group = (path.filename(testdir) == "benchmark") and "benchmark"
                           or (category == "sys" and "kernel" or category)
             local manifest_key = category .. "/" .. relpath
-            eteleos_test_unit(safe_name, testdir, group, TESTS_MANIFEST[manifest_key])
+            os_test_unit(safe_name, testdir, group, TESTS_MANIFEST[manifest_key])
         end
     else
-        print(string.format("peteleos-tests: tests/%s not found, skipping", category))
+        print(string.format("os-tests: tests/%s not found, skipping", category))
     end
 end
 
-print(string.format("peteleos-tests: %d simple (build+run), %d golden-file-translated, "
+print(string.format("os-tests: %d simple (build+run), %d golden-file-translated, "
       .. "%d script-only, %d empty, %d custom skipped (arch=%s)",
       stats.simple, stats.golden, stats.script, stats.empty, stats.custom_skipped, arch))

@@ -6,7 +6,7 @@ MAN=	ci.1 co.1 ident.1 merge.1 \
 	rcsfile.5
 
 SRCS=	ci.c co.c ident.c merge.c rcsclean.c rcsdiff.c rcsmerge.c rcsparse.c \
-	rcsprog.c rlog.c rcsutil.c buf.c date.y diff.c diff3.c rcs.c rcsnum.c \
+	rcsprog.c rlog.c rcsutil.c buf.c date.c diff.c diff3.c rcs.c rcsnum.c \
 	rcstime.c worklist.c xmalloc.c
 
 LINKS=	${BINDIR}/rcs ${BINDIR}/ci ${BINDIR}/rcs ${BINDIR}/co \

@@ -6,7 +6,7 @@ This file uses the Apache-2.0 license
 --[[
 Manages:
   - header installation: plain headers under include/*.h and the arpa/, protocols/, rpc/, rpcsvc/ subdirs
-  - exported include path: public add_includedirs so any module can add_deps("peteleos-headers") and inherit it
+  - exported include path: public add_includedirs so any module can add_deps("os-headers") and inherit it
   - generated headers: per-architecture "machine" headers and the kernel-exported directories -- crypto/, dev/, 
     net/, sys/, uvm/, etc. -- copied from kernel/ at install time, mirroring the "copies"
     target of the old include/Makefile)
@@ -24,7 +24,7 @@ not the stale include/Makefile, which still refers to pre-restructure
 paths (../sys, ../lib, ../gnu) and has not been converted yet.
 --]]
 
-target("peteleos-headers")
+target("os-headers")
 set_kind("headeronly")
 
 
@@ -47,7 +47,7 @@ add_headerfiles("(rpcsvc/*.h)",   "(rpcsvc/*.i)")
 
 
 -- 2. Exported include path
--- Public: any target that does add_deps("peteleos-headers") inherits this
+-- Public: any target that does add_deps("os-headers") inherits this
 -- include directory automatically. Root's own add_includedirs("include")
 -- still covers modules that do not use add_deps; both are harmless
 -- together since they point at the same directory.
@@ -140,7 +140,7 @@ after_install(function (target)
             -- subdirectories (scsi/, pci/, usb/, ...) with public headers.
             os.cp(path.join(src, "**.h"), dst, {rootdir = src})
         else
-            wprint("peteleos: kernel/%s not found, skipping include/%s export",
+            wprint("os: kernel/%s not found, skipping include/%s export",
                     kernel_subpath, exported_name)
         end
     end
@@ -159,10 +159,10 @@ after_install(function (target)
         os.cp(path.join(arch_src, "*.h"), arch_dst)
         relink(path.join(includedir, "machine"), arch)
     else
-        wprint("peteleos: kernel/arch/%s/include not found, skipping machine headers",
+        wprint("os: kernel/arch/%s/include not found, skipping machine headers",
                 arch)
     end
 
-    cprint("${green}peteleos-headers${clear}: installed to %s", includedir)
+    cprint("${green}os-headers${clear}: installed to %s", includedir)
 end)
 target_end()

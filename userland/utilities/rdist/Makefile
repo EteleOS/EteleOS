@@ -3,7 +3,7 @@
 
 PROG=	rdist
 CFLAGS+=-I. -I${.CURDIR}
-SRCS=	gram.y child.c client.c common.c distopt.c docmd.c expand.c \
+SRCS=	gram.c child.c client.c common.c distopt.c docmd.c expand.c \
 	isexec.c lookup.c message.c rdist.c
 WARNINGS=yes
 

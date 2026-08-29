@@ -1,7 +1,7 @@
 #	$OpenBSD: Makefile,v 1.16 2015/11/20 18:53:42 tedu Exp $
 
 PROG=	ntpd
-SRCS=	ntpd.c log.c ntp.c ntp_msg.c parse.y config.c \
+SRCS=	ntpd.c log.c ntp.c ntp_msg.c parse.c config.c \
 	server.c client.c sensors.c util.c ntp_dns.c \
 	control.c constraint.c
 CFLAGS+= -Wall -I${.CURDIR}

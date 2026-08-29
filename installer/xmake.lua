@@ -150,19 +150,19 @@ end
 -- xmake installdir) into `outdir`, using pax if available, else tar.
 local function write_tarball(setname, entries, destdir, outdir, version)
     if #entries == 0 then
-        wprint("peteleos-installer: %s set has no entries for arch '%s', skipping", setname, arch)
+        wprint("os-installer: %s set has no entries for arch '%s', skipping", setname, arch)
         return
     end
     os.mkdir(outdir)
     local outfile = path.join(outdir, setname .. version .. ".tgz")
     local listfile = path.join(outdir, "." .. setname .. ".list")
     if type(io) ~= "table" or not io.open then
-        wprint("peteleos-installer: io unavailable, cannot write %s", listfile)
+        wprint("os-installer: io unavailable, cannot write %s", listfile)
         return
     end
     local f = io.open(listfile, "w")
     if not f then
-        wprint("peteleos-installer: could not write %s", listfile)
+        wprint("os-installer: could not write %s", listfile)
         return
     end
     for _, e in ipairs(entries) do f:write(e, "\n") end
@@ -179,37 +179,37 @@ local function write_tarball(setname, entries, destdir, outdir, version)
             {try = true})
     else
         if not sh then
-            wprint("peteleos-installer: no POSIX shell (sh) found -- falling back to tar "
+            wprint("os-installer: no POSIX shell (sh) found -- falling back to tar "
                    .. "--files-from (not byte-identical to the real maketars, but produces "
                    .. "an equivalent .tgz). On Windows, install Git Bash, WSL, or MSYS2 for "
                    .. "the exact pax-based behavior.")
         else
-            wprint("peteleos-installer: pax not found, falling back to tar --files-from "
+            wprint("os-installer: pax not found, falling back to tar --files-from "
                    .. "(not byte-identical to the real maketars, but produces an "
                    .. "equivalent .tgz for plain path lists)")
         end
         ok = os.execv("tar", {"-czf", outfile, "-C", destdir, "--files-from=" .. listfile}, {try = true})
     end
     if ok then
-        cprint("${green}peteleos-installer${clear}: built %s (%d entries)", outfile, #entries)
+        cprint("${green}os-installer${clear}: built %s (%d entries)", outfile, #entries)
     else
-        wprint("peteleos-installer: failed to build %s", outfile)
+        wprint("os-installer: failed to build %s", outfile)
     end
 end
 
 
 -- Special (miniroot) tools: statically-linked, size-optimized rebuild of a
 -- same-named userland program, for the install ramdisk.
-local function eteleos_special_tool(name, specialdir)
+local function os_special_tool(name, specialdir)
     local srcdir = find_userland_program_dir(name)
     if not srcdir then
-        print(string.format("peteleos-installer: special/%s: no matching userland/ program found by name, skipping",
+        print(string.format("os-installer: special/%s: no matching userland/ program found by name, skipping",
               name))
         return
     end
     local c_files = os.files(path.join(srcdir, "**.c"))
     if #c_files == 0 then
-        print(string.format("peteleos-installer: special/%s: source dir %s has no .c files, skipping", name, srcdir))
+        print(string.format("os-installer: special/%s: source dir %s has no .c files, skipping", name, srcdir))
         return
     end
 
@@ -217,11 +217,11 @@ local function eteleos_special_tool(name, specialdir)
         set_kind("binary")
         set_default(false)
 
-        add_rules("peteleos.base")   -- deliberately NOT peteleos.userland: no PIE/relro here,
+        add_rules("os.base")   -- deliberately NOT os.userland: no PIE/relro here,
                                      -- matching the real NOPIE=/LDSTATIC=-static miniroot build
         add_files(unpack(c_files))
         add_includedirs(srcdir)
-        add_deps("peteleos-headers")
+        add_deps("os-headers")
 
         -- Matches the real installer/special/Makefile.inc flags: size-
         -- optimized, static, no unwind tables, no stack protector.
@@ -234,7 +234,7 @@ end
 
 -- TARGET
 -- Sets 
-target("peteleos-sets")
+target("os-sets")
     set_kind("phony")
     set_default(false)
     on_build(function (target)
@@ -244,7 +244,7 @@ target("peteleos-sets")
 
         for _, setname in ipairs(SET_NAMES) do
             if setname == "etc" then
-                wprint("peteleos-installer: etc.tgz built via the same simple tar-from-list "
+                wprint("os-installer: etc.tgz built via the same simple tar-from-list "
                        .. "path as the other sets -- the real installer/sets/makeetcset "
                        .. "does upgrade-merge-aware handling this does NOT replicate")
             end
@@ -261,20 +261,20 @@ do
         for _, dir in ipairs(list_subdirs(specialdir)) do
             local name = path.filename(dir)
             if os.isfile(path.join(dir, "Makefile")) then
-                eteleos_special_tool(name, dir)
+                os_special_tool(name, dir)
             end
         end
     else
-        print("peteleos-installer: installer/special not found, skipping miniroot tools")
+        print("os-installer: installer/special not found, skipping miniroot tools")
     end
 end
 
 -- Boot image (RAMDISK kernel) -- honest gap, see file header
-target("peteleos-boot-image")
+target("os-boot-image")
     set_kind("phony")
     set_default(false)
     on_build(function (target)
-        raise("peteleos-installer: boot image needs a RAMDISK-config kernel build, which "
+        raise("os-installer: boot image needs a RAMDISK-config kernel build, which "
               .. "kernel/xmake.lua does not yet support (it only builds the GENERIC-"
               .. "equivalent config) -- see the note at the top of this file")
     end)
@@ -305,7 +305,7 @@ target_end()
 --   - Only UEFI boot is produced (matches kernel/xmake.lua: legacy BIOS
 --     boot was explicitly never implemented there either). The ISO is
 --     also isohybrid-GPT, so the same file can be dd'd to a USB stick.
---   - The kernel built by peteleos-kernel (GENERIC-equivalent) is placed at
+--   - The kernel built by os-kernel (GENERIC-equivalent) is placed at
 --     the ISO9660 root as "/bsd" -- the real EFI bootloader's own libsa
 --     includes a cd9660.c driver (verified in EFI_BOOTLOADERS' own
 --     libsa_srcs list above), so it should be able to find and load a
@@ -323,12 +323,12 @@ target_end()
 
 local EFI_PROG_NAMES = {amd64 = "BOOTX64.EFI", arm64 = "BOOTAA64.EFI", riscv64 = "BOOTRISCV64.EFI"}
 
-target("peteleos-install-image")
+target("os-install-image")
     set_kind("phony")
     set_default(false)
-    add_deps("peteleos-kernel")
-    if ETELEOS_DECLARED_EFIBOOT and ETELEOS_DECLARED_EFIBOOT[arch] then
-        add_deps("peteleos-kernel-efiboot-" .. arch)
+    add_deps("os-kernel")
+    if OS_DECLARED_EFIBOOT and OS_DECLARED_EFIBOOT[arch] then
+        add_deps("os-kernel-efiboot-" .. arch)
     end
 
     on_build(function (target)
@@ -344,7 +344,7 @@ target("peteleos-install-image")
         if not mcopy   then missing[#missing + 1] = "mcopy" end
         if not xorriso then missing[#missing + 1] = "xorriso" end
         if #missing > 0 then
-            wprint("peteleos-installer: install image needs mtools (mformat/mmd/mcopy) and "
+            wprint("os-installer: install image needs mtools (mformat/mmd/mcopy) and "
                    .. "xorriso -- missing: %s. Install: Linux `apt install mtools xorriso`, "
                    .. "macOS `brew install mtools xorriso`, Windows via MSYS2 "
                    .. "`pacman -S mtools xorriso` (add MSYS2's usr/bin to PATH). Skipping.",
@@ -354,28 +354,28 @@ target("peteleos-install-image")
 
         local prog_name = EFI_PROG_NAMES[arch]
         if not prog_name then
-            wprint("peteleos-installer: no EFI bootloader filename known for arch '%s', "
+            wprint("os-installer: no EFI bootloader filename known for arch '%s', "
                    .. "skipping install image", arch)
             return
         end
-        local efi_bin = path.join(os.projectdir(), "build", "peteleos-kernel-gen", arch,
+        local efi_bin = path.join(os.projectdir(), "build", "os-kernel-gen", arch,
                                    "efiboot", prog_name)
         if not os.isfile(efi_bin) then
-            wprint("peteleos-installer: %s not found -- build the EFI bootloader first "
-                   .. "(xmake build peteleos-kernel-efiboot-%s). Skipping install image.",
+            wprint("os-installer: %s not found -- build the EFI bootloader first "
+                   .. "(xmake build os-kernel-efiboot-%s). Skipping install image.",
                    efi_bin, arch)
             return
         end
 
-        local kernel_dep = target:dep("peteleos-kernel")
+        local kernel_dep = target:dep("os-kernel")
         local kernel_bin = kernel_dep and kernel_dep:targetfile()
         if not kernel_bin or not os.isfile(kernel_bin) then
-            wprint("peteleos-installer: kernel binary not found -- build peteleos-kernel "
+            wprint("os-installer: kernel binary not found -- build os-kernel "
                    .. "first. Skipping install image.")
             return
         end
 
-        local gendir = path.join(os.projectdir(), "build", "peteleos-installer-gen", arch)
+        local gendir = path.join(os.projectdir(), "build", "os-installer-gen", arch)
         local isoroot = path.join(gendir, "isoroot")
         os.tryrm(isoroot)
         os.mkdir(path.join(isoroot, "EFI", "BOOT"))
@@ -387,7 +387,7 @@ target("peteleos-install-image")
         local esp_img = path.join(gendir, "efiboot.img")
         os.tryrm(esp_img)
         local esp_ok = os.execv(mformat.program,
-            {"-i", esp_img, "-C", "-T", "8192", "-v", "ETELEOSESP", "::"}, {try = true})
+            {"-i", esp_img, "-C", "-T", "8192", "-v", "OSESP", "::"}, {try = true})
         if esp_ok then
             esp_ok = os.execv(mmd.program, {"-i", esp_img, "::EFI"}, {try = true})
         end
@@ -399,7 +399,7 @@ target("peteleos-install-image")
                 {"-i", esp_img, efi_bin, "::EFI/BOOT/" .. prog_name}, {try = true})
         end
         if not esp_ok or not os.isfile(esp_img) then
-            wprint("peteleos-installer: building the FAT EFI System Partition image failed "
+            wprint("os-installer: building the FAT EFI System Partition image failed "
                    .. "(mformat/mmd/mcopy step) -- skipping install image")
             return
         end
@@ -420,25 +420,25 @@ target("peteleos-install-image")
         local iso_ok = os.execv(xorriso.program, {
             "-as", "mkisofs",
             "-o", isopath,
-            "-V", "ETELEOS_INSTALL",
+            "-V", "OS_INSTALL",
             "-R", "-J",
             "-e", "efiboot.img", "-no-emul-boot",
             "-isohybrid-gpt-basdat",
             isoroot,
         }, {try = true})
         if not iso_ok or not os.isfile(isopath) then
-            wprint("peteleos-installer: xorriso failed to build the ISO -- see output above")
+            wprint("os-installer: xorriso failed to build the ISO -- see output above")
             return
         end
-        cprint("${green}peteleos-installer${clear}: built %s (UEFI-bootable, arch=%s)", isopath, arch)
+        cprint("${green}os-installer${clear}: built %s (UEFI-bootable, arch=%s)", isopath, arch)
     end)
 target_end()
 
 -- Release image: notes + checksums, the tractable part of "make release"
-target("peteleos-release")
+target("os-release")
     set_kind("phony")
     set_default(false)
-    add_deps("peteleos-sets")
+    add_deps("os-sets")
     on_build(function (target)
         local outdir = path.join(os.scriptdir(), "..", "build", "release", arch)
         os.mkdir(outdir)
@@ -447,17 +447,17 @@ target("peteleos-release")
         if os.isfile(notes) then
             os.cp(notes, path.join(outdir, "INSTALL." .. arch))
         else
-            wprint("peteleos-installer: notes/%s/install not found, skipping INSTALL.%s", arch, arch)
+            wprint("os-installer: notes/%s/install not found, skipping INSTALL.%s", arch, arch)
         end
 
         local function write_file_safe(filepath, content)
             if type(io) ~= "table" or not io.open then
-                wprint("peteleos-installer: io unavailable, could not write %s", filepath)
+                wprint("os-installer: io unavailable, could not write %s", filepath)
                 return
             end
             local f = io.open(filepath, "w")
             if not f then
-                wprint("peteleos-installer: could not write %s", filepath)
+                wprint("os-installer: could not write %s", filepath)
                 return
             end
             f:write(content)
@@ -485,9 +485,9 @@ target("peteleos-release")
                 write_file_safe(path.join(outdir, "SHA256"), out or "")
             end
         else
-            wprint("peteleos-installer: no sha256/sha256sum found, skipping SHA256 manifest")
+            wprint("os-installer: no sha256/sha256sum found, skipping SHA256 manifest")
         end
 
-        cprint("${green}peteleos-installer${clear}: release metadata written to %s", outdir)
+        cprint("${green}os-installer${clear}: release metadata written to %s", outdir)
     end)
 target_end()

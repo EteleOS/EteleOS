@@ -1,7 +1,7 @@
 #	$OpenBSD: Makefile,v 1.31 2024/01/04 18:17:47 espie Exp $
 
 PROG=		httpd
-SRCS=		parse.y
+SRCS=		parse.c
 SRCS+=		config.c control.c httpd.c log.c logger.c proc.c
 SRCS+=		server.c server_http.c server_file.c server_fcgi.c
 MAN=		httpd.8 httpd.conf.5

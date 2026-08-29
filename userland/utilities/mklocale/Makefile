@@ -4,7 +4,7 @@
 .include <bsd.own.mk>
 
 PROG=		mklocale
-SRCS=		yacc.y lex.l
+SRCS=		yacc.c lex.c
 CPPFLAGS+=	-I. -I${.CURDIR} -I${.CURDIR}/../../lib/libc -I${.CURDIR}/../../lib/libc/include
 YHEADER=	1
 

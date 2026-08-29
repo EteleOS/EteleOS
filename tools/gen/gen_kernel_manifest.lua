@@ -10,7 +10,7 @@ xmake.lua description scope, confirmed against a real xmake v3.0.9 build).
 
 kernel/xmake.lua's own "REAL config(8), bootstrapped as a private host
 tool" section previously ran this entire pipeline directly at description
-scope (a bare `do ... end` block, before target("peteleos-kernel") even
+scope (a bare `do ... end` block, before target("os-kernel") even
 starts) -- which cannot work, for the same reason. The logic itself
 (building config(8) from userland/system/config/ with a host compiler,
 patching a scratch copy of util.c's sourcepath() for the post-restructure
@@ -21,17 +21,17 @@ UNCHANGED from the previous revision -- only relocated here, to run via
 closing over kernel/xmake.lua's single `arch` local.
 
 Regenerate with: xmake lua tools/gen/gen_kernel_manifest.lua
-(or: xmake peteleos-regen-kernel, once a project is configured)
+(or: xmake os-regen-kernel, once a project is configured)
 
 Output: kernel/generated_manifest.lua, containing
-ETELEOS_KERNEL_MANIFEST[arch] = { selected_files = {...}, ioconf_c = <string
+OS_KERNEL_MANIFEST[arch] = { selected_files = {...}, ioconf_c = <string
 or nil>, mode = "real-config8" | "approximate" } for each of amd64, arm64,
 riscv64.
 --]]
 
 local ROOT   = path.absolute(os.scriptdir() .. "/../..")
 local KERNEL = path.join(ROOT, "kernel")
-local GEN_ROOT = path.join(ROOT, "build", "peteleos-kernel-gen")
+local GEN_ROOT = path.join(ROOT, "build", "os-kernel-gen")
 
 local ARCHES = {"amd64", "arm64", "riscv64"}
 
@@ -49,7 +49,7 @@ end
 local function write_file(filepath, content)
     local f = io.open(filepath, "w")
     if not f then
-        print(string.format("peteleos-gen-kernel: could not write %s", filepath))
+        print(string.format("os-gen-kernel: could not write %s", filepath))
         return false
     end
     f:write(content)
@@ -92,7 +92,7 @@ local function build_host_config_tool()
 
     local config_srcdir = path.join(ROOT, "userland", "system", "config")
     if not os.isdir(config_srcdir) then
-        print("peteleos-gen-kernel: userland/system/config not found -- cannot bootstrap "
+        print("os-gen-kernel: userland/system/config not found -- cannot bootstrap "
               .. "real config(8), falling back to the approximate parser")
         return nil
     end
@@ -152,7 +152,7 @@ void errc(int eval, int code, const char *fmt, ...) {
 
     local cc = find_tool("clang") or find_tool("cc") or find_tool("gcc")
     if not cc then
-        print("peteleos-gen-kernel: no host C compiler (clang/cc/gcc) found -- cannot "
+        print("os-gen-kernel: no host C compiler (clang/cc/gcc) found -- cannot "
               .. "bootstrap real config(8), falling back to the approximate parser")
         return nil
     end
@@ -160,14 +160,14 @@ void errc(int eval, int code, const char *fmt, ...) {
     local yacc = find_tool("bison") or find_tool("yacc")
     local lex  = find_tool("flex") or find_tool("lex")
     if not yacc or not lex then
-        print("peteleos-gen-kernel: no yacc/bison or lex/flex found on host -- cannot "
+        print("os-gen-kernel: no yacc/bison or lex/flex found on host -- cannot "
               .. "bootstrap real config(8), falling back to the approximate parser")
         return nil
     end
 
     local util_c_src = read_file(path.join(config_srcdir, "util.c"))
     if not util_c_src then
-        print("peteleos-gen-kernel: could not read util.c, falling back to the approximate parser")
+        print("os-gen-kernel: could not read util.c, falling back to the approximate parser")
         return nil
     end
     local old_sourcepath = [[
@@ -184,17 +184,17 @@ sourcepath(const char *file)
 sourcepath(const char *file)
 {
 	char *cp;
-	/* peteleos: fall back to a handful of known-relocated prefixes when
+	/* os: fall back to a handful of known-relocated prefixes when
 	 * the plain srcdir-relative path doesn't exist -- see
 	 * tools/gen/gen_kernel_manifest.lua. */
-	static const char *eteleos_prefixes[] = { "", "core/", "dev/", "fs/" };
-	struct stat eteleos_sb;
-	size_t eteleos_i;
+	static const char *os_prefixes[] = { "", "core/", "dev/", "fs/" };
+	struct stat os_sb;
+	size_t os_i;
 
-	for (eteleos_i = 0; eteleos_i < 4; eteleos_i++) {
-		if (asprintf(&cp, "%s/%s%s", srcdir, eteleos_prefixes[eteleos_i], file) == -1)
+	for (os_i = 0; os_i < 4; os_i++) {
+		if (asprintf(&cp, "%s/%s%s", srcdir, os_prefixes[os_i], file) == -1)
 			err(1, NULL);
-		if (stat(cp, &eteleos_sb) == 0)
+		if (stat(cp, &os_sb) == 0)
 			return cp;
 		free(cp);
 	}
@@ -204,7 +204,7 @@ sourcepath(const char *file)
 }]]
     local patched_util_c, n = util_c_src:gsub(old_sourcepath:gsub("%p", "%%%1"), (new_sourcepath:gsub("%%", "%%%%")))
     if n == 0 then
-        print("peteleos-gen-kernel: util.c's sourcepath() was not found in the expected "
+        print("os-gen-kernel: util.c's sourcepath() was not found in the expected "
               .. "shape -- proceeding unpatched; real config(8) may fail to resolve "
               .. "some relocated include paths")
         patched_util_c = util_c_src
@@ -219,7 +219,7 @@ sourcepath(const char *file)
     local yacc_ok = os.execv(yacc.program,
         {"-d", "-o", gram_c, path.join(config_srcdir, "gram.y")}, {curdir = bootstrap_dir, try = true})
     if not yacc_ok or not os.isfile(gram_c) then
-        print("peteleos-gen-kernel: yacc/bison failed on gram.y, falling back to the approximate parser")
+        print("os-gen-kernel: yacc/bison failed on gram.y, falling back to the approximate parser")
         return nil
     end
     if not os.isfile(gram_h) then
@@ -232,7 +232,7 @@ sourcepath(const char *file)
         {"-o", scan_c, path.join(config_srcdir, "scan.l")},
         {curdir = bootstrap_dir, try = true})
     if not lex_ok or not os.isfile(scan_c) then
-        print("peteleos-gen-kernel: lex/flex failed on scan.l, falling back to the approximate parser")
+        print("os-gen-kernel: lex/flex failed on scan.l, falling back to the approximate parser")
         return nil
     end
 
@@ -248,7 +248,7 @@ sourcepath(const char *file)
 
     local compile_ok = os.execv(cc.program, cflags, {curdir = bootstrap_dir, try = true})
     if not compile_ok or not os.isfile(out_bin) then
-        print("peteleos-gen-kernel: host compile of config(8) failed, falling back to "
+        print("os-gen-kernel: host compile of config(8) failed, falling back to "
               .. "the approximate parser")
         return nil
     end
@@ -258,7 +258,7 @@ end
 local function run_real_config(config_bin, arch, arch_conf_dir)
     local real_generic = path.join(arch_conf_dir, "GENERIC")
     if not os.isfile(real_generic) then
-        print(string.format("peteleos-gen-kernel: %s not found, falling back to the approximate parser", real_generic))
+        print(string.format("os-gen-kernel: %s not found, falling back to the approximate parser", real_generic))
         return nil
     end
 
@@ -270,12 +270,12 @@ local function run_real_config(config_bin, arch, arch_conf_dir)
         {"-s", KERNEL, "-b", builddir, real_generic},
         {curdir = run_dir, try = true})
     if not ok then
-        print(string.format("peteleos-gen-kernel: real config(8) run failed for arch '%s', "
+        print(string.format("os-gen-kernel: real config(8) run failed for arch '%s', "
               .. "falling back to the approximate parser", arch))
         return nil
     end
     if not os.isfile(path.join(builddir, "ioconf.c")) then
-        print("peteleos-gen-kernel: config(8) ran but did not produce ioconf.c, falling "
+        print("os-gen-kernel: config(8) ran but did not produce ioconf.c, falling "
               .. "back to the approximate parser")
         return nil
     end
@@ -286,7 +286,7 @@ local function harvest_selected_files(builddir)
     local makefile_path = path.join(builddir, "Makefile")
     local content = read_file(makefile_path)
     if not content then
-        print(string.format("peteleos-gen-kernel: config(8) did not write a Makefile at %s, "
+        print(string.format("os-gen-kernel: config(8) did not write a Makefile at %s, "
               .. "falling back to the approximate parser", makefile_path))
         return nil
     end
@@ -299,7 +299,7 @@ local function harvest_selected_files(builddir)
         end
     end
     if #files == 0 then
-        print("peteleos-gen-kernel: parsed config(8)'s Makefile but found zero selected "
+        print("os-gen-kernel: parsed config(8)'s Makefile but found zero selected "
               .. "files, falling back to the approximate parser")
         return nil
     end
@@ -322,7 +322,7 @@ local function parse_generic(filepath, conf_dir, enabled, seen)
     seen[filepath] = true
     local content = read_file(filepath)
     if not content then
-        print(string.format("peteleos-gen-kernel: config file not found: %s", filepath))
+        print(string.format("os-gen-kernel: config file not found: %s", filepath))
         return
     end
     local from_dir = path.directory(filepath)
@@ -343,7 +343,7 @@ local function parse_generic(filepath, conf_dir, enabled, seen)
                 if resolved then
                     parse_generic(resolved, conf_dir, enabled, seen)
                 else
-                    print(string.format("peteleos-gen-kernel: could not resolve GENERIC include \"%s\" from %s",
+                    print(string.format("os-gen-kernel: could not resolve GENERIC include \"%s\" from %s",
                           incpath, filepath))
                 end
             elseif tokens[2] == "at" and not disabled then
@@ -363,7 +363,7 @@ local DIRECTIVES = {
 local function parse_files_list(filepath, entries)
     local content = read_file(filepath)
     if not content then
-        print(string.format("peteleos-gen-kernel: files list not found: %s", filepath))
+        print(string.format("os-gen-kernel: files list not found: %s", filepath))
         return
     end
     local pending
@@ -466,7 +466,7 @@ for _, arch in ipairs(ARCHES) do
             ioconf_c = read_file(path.join(builddir, "ioconf.c")),
             mode = "real-config8",
         }
-        print(string.format("peteleos-gen-kernel: %s: using REAL config(8) output "
+        print(string.format("os-gen-kernel: %s: using REAL config(8) output "
               .. "(%d files selected, ioconf.c generated)", arch, #harvested))
     else
         local approx = approximate_parser_selected_files(arch, core_conf_dir, arch_conf_dir)
@@ -475,7 +475,7 @@ for _, arch in ipairs(ARCHES) do
             ioconf_c = nil,
             mode = "approximate",
         }
-        print(string.format("peteleos-gen-kernel: %s: using the approximate files/GENERIC "
+        print(string.format("os-gen-kernel: %s: using the approximate files/GENERIC "
               .. "parser (%d files selected) -- no ioconf.c, attach-graph gap still applies",
               arch, #approx))
     end
@@ -496,10 +496,10 @@ local out = {}
 out[#out + 1] = "--[[ AUTO-GENERATED by tools/gen/gen_kernel_manifest.lua -- DO NOT EDIT BY HAND."
 out[#out + 1] = "     Regenerate with: xmake lua tools/gen/gen_kernel_manifest.lua ]]"
 out[#out + 1] = ""
-out[#out + 1] = "ETELEOS_KERNEL_MANIFEST = {}"
+out[#out + 1] = "OS_KERNEL_MANIFEST = {}"
 for _, arch in ipairs(ARCHES) do
     local m = MANIFEST[arch]
-    out[#out + 1] = string.format("ETELEOS_KERNEL_MANIFEST[%q] = {", arch)
+    out[#out + 1] = string.format("OS_KERNEL_MANIFEST[%q] = {", arch)
     out[#out + 1] = string.format("    mode = %q,", m.mode)
     out[#out + 1] = "    selected_files = " .. serialize_list(m.selected_files, "    ") .. ","
     out[#out + 1] = "    ioconf_c = " .. (m.ioconf_c and lua_quote(m.ioconf_c) or "nil") .. ","
@@ -509,4 +509,4 @@ out[#out + 1] = ""
 
 local outpath = path.join(KERNEL, "generated_manifest.lua")
 write_file(outpath, table.concat(out, "\n"))
-print(string.format("peteleos-gen-kernel: manifest written to %s", outpath))
+print(string.format("os-gen-kernel: manifest written to %s", outpath))
