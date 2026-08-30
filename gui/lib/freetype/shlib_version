@@ -1,4 +1,0 @@
-major=31
-minor=1
-# note: If bumping the major, also bump major for libXft, libXfont2
-#       and libfontconfig 

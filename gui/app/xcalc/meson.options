@@ -1,5 +1,0 @@
-option(
-  'appdefaultdir',
-  type: 'string',
-  description: 'directory for app-defaults files (default is autodetected)',
-)

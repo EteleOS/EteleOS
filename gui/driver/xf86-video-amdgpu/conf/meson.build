@@ -1,1 +1,0 @@
-install_data('10-amdgpu.conf', install_dir: configdir)
