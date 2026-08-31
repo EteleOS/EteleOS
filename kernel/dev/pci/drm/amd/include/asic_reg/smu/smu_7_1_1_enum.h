@@ -24,56 +24,7 @@
 #ifndef SMU_7_1_1_ENUM_H
 #define SMU_7_1_1_ENUM_H
 
-#define CG_SRBM_START_ADDR                        0x600
-#define CG_SRBM_END_ADDR                          0x8ff
-#define RCU_CCF_DWORDS0                           0x80
-#define RCU_CCF_BITS0                             0x1000
-#define RCU_CCF_DWORDS1                           0x0
-#define RCU_CCF_BITS1                             0x0
-#define RCU_SAM_BYTES                             0x0
-#define RCU_SAM_RTL_BYTES                         0x0
-#define RCU_SMU_BYTES                             0x0
-#define RCU_SMU_RTL_BYTES                         0x0
-#define SFP_CHAIN_ADDR                            0x0
-#define SFP_BYTES                                 0x80
-#define SFP_SADR                                  0x180
-#define SFP_EADR                                  0x1ff
-#define SAMU_KEY_CHAIN_ADR                        0x0
-#define SAMU_KEY_SADR                             0x0
-#define SAMU_KEY_EADR                             0x0
-#define SMU_KEY_CHAIN_ADR                         0x0
-#define SMU_KEY_SADR                              0x0
-#define SMU_KEY_EADR                              0x0
-#define SMC_MSG_TEST                              0x1
-#define SMC_MSG_PHY_LN_OFF                        0x2
-#define SMC_MSG_PHY_LN_ON                         0x3
-#define SMC_MSG_DDI_PHY_OFF                       0x4
-#define SMC_MSG_DDI_PHY_ON                        0x5
-#define SMC_MSG_CASCADE_PLL_OFF                   0x6
-#define SMC_MSG_CASCADE_PLL_ON                    0x7
-#define SMC_MSG_PWR_OFF_x16                       0x8
-#define SMC_MSG_CONFIG_LCLK_DPM                   0x9
-#define SMC_MSG_FLUSH_DATA_CACHE                  0xa
-#define SMC_MSG_FLUSH_INSTRUCTION_CACHE           0xb
-#define SMC_MSG_CONFIG_VPC_ACCUMULATOR            0xc
-#define SMC_MSG_CONFIG_BAPM                       0xd
-#define SMC_MSG_CONFIG_TDC_LIMIT                  0xe
-#define SMC_MSG_CONFIG_LPMx                       0xf
-#define SMC_MSG_CONFIG_HTC_LIMIT                  0x10
-#define SMC_MSG_CONFIG_THERMAL_CNTL               0x11
-#define SMC_MSG_CONFIG_VOLTAGE_CNTL               0x12
-#define SMC_MSG_CONFIG_TDP_CNTL                   0x13
-#define SMC_MSG_EN_PM_CNTL                        0x14
-#define SMC_MSG_DIS_PM_CNTL                       0x15
-#define SMC_MSG_CONFIG_NBDPM                      0x16
-#define SMC_MSG_CONFIG_LOADLINE                   0x17
-#define SMC_MSG_ADJUST_LOADLINE                   0x18
-#define SMC_MSG_RESET                             0x20
-#define SMC_MSG_VOLTAGE                           0x25
-#define SMC_VERSION_MAJOR                         0x7
-#define SMC_VERSION_MINOR                         0x0
-#define SMC_HEADER_SIZE                           0x40
-#define ROM_SIGNATURE                             0xaa55
+#define ROM_SIGNATURE 0xaa55
 typedef enum SurfaceEndian {
 	ENDIAN_NONE                                      = 0x0,
 	ENDIAN_8IN16                                     = 0x1,
@@ -1201,5 +1152,4 @@ typedef enum DepthArray {
 typedef enum ENUM_NUM_SIMD_PER_CU {
 	NUM_SIMD_PER_CU                                  = 0x4,
 } ENUM_NUM_SIMD_PER_CU;
-
 #endif /* SMU_7_1_1_ENUM_H */

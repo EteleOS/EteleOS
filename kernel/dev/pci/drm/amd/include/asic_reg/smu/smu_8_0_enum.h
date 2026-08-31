@@ -1064,9 +1064,4 @@ typedef enum MEM_PWR_SEL_CTRL2 {
 	DYNAMIC_DEEP_SLEEP_EN                            = 0x0,
 	DYNAMIC_LIGHT_SLEEP_EN                           = 0x1,
 } MEM_PWR_SEL_CTRL2;
-#define CG_SRBM_START_ADDR                        0x600
-#define CG_SRBM_END_ADDR                          0x8ff
-#define CG_SRBM_DEC0_START_ADDR                   0x200
-#define CG_SRBM_DEC0_END_ADDR                     0x2ff
-
 #endif /* SMU_8_0_ENUM_H */

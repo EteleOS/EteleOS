@@ -21,13 +21,12 @@
 #ifndef _umc_12_0_0_OFFSET_HEADER
 #define _umc_12_0_0_OFFSET_HEADER
 
-#define regUMCCH0_OdEccCntSel                                                   0x032c
-#define regUMCCH0_OdEccCntSel_BASE_IDX                                          0
-#define regUMCCH0_OdEccErrCnt                                                   0x032d
-#define regUMCCH0_OdEccErrCnt_BASE_IDX                                          0
-#define regMCA_UMC_UMC0_MCUMC_STATUST0                                          0x03c2
-#define regMCA_UMC_UMC0_MCUMC_STATUST0_BASE_IDX                                 0
-#define regMCA_UMC_UMC0_MCUMC_ADDRT0                                            0x03c4
-#define regMCA_UMC_UMC0_MCUMC_ADDRT0_BASE_IDX                                   0
-
+#define regUMCCH0_OdEccCntSel 0x032c
+#define regUMCCH0_OdEccCntSel_BASE_IDX 0
+#define regUMCCH0_OdEccErrCnt 0x032d
+#define regUMCCH0_OdEccErrCnt_BASE_IDX 0
+#define regMCA_UMC_UMC0_MCUMC_STATUST0 0x03c2
+#define regMCA_UMC_UMC0_MCUMC_STATUST0_BASE_IDX 0
+#define regMCA_UMC_UMC0_MCUMC_ADDRT0 0x03c4
+#define regMCA_UMC_UMC0_MCUMC_ADDRT0_BASE_IDX 0
 #endif

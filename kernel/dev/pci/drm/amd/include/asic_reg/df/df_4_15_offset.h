@@ -22,7 +22,6 @@
 #ifndef _df_4_15_OFFSET_HEADER
 #define _df_4_15_OFFSET_HEADER
 
-#define regNCSConfigurationRegister1               0x0901
-#define regNCSConfigurationRegister1_BASE_IDX           4
-
+#define regNCSConfigurationRegister1 0x0901
+#define regNCSConfigurationRegister1_BASE_IDX 4
 #endif

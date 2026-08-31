@@ -22,16 +22,11 @@
 #define _umc_8_14_0_SH_MASK_HEADER
 
 //UMCCH0_GeccErrCntSel
-#define UMCCH0_GeccErrCntSel__GeccErrInt__SHIFT              0xc
-#define UMCCH0_GeccErrCntSel__GeccErrCntEn__SHIFT            0xf
-#define UMCCH0_GeccErrCntSel__PoisonCntEn__SHIFT             0x10
-#define UMCCH0_GeccErrCntSel__GeccErrInt_MASK                0x00003000L
-#define UMCCH0_GeccErrCntSel__GeccErrCntEn_MASK              0x00008000L
-#define UMCCH0_GeccErrCntSel__PoisonCntEn_MASK               0x00030000L
+#define UMCCH0_GeccErrCntSel__GeccErrInt__SHIFT 0xc
+#define UMCCH0_GeccErrCntSel__GeccErrInt_MASK 0x00003000L
 //UMCCH0_GeccErrCnt
-#define UMCCH0_GeccErrCnt__GeccErrCnt__SHIFT                 0x0
-#define UMCCH0_GeccErrCnt__GeccUnCorrErrCnt__SHIFT           0x10
-#define UMCCH0_GeccErrCnt__GeccErrCnt_MASK                   0x0000FFFFL
-#define UMCCH0_GeccErrCnt__GeccUnCorrErrCnt_MASK             0xFFFF0000L
-
+#define UMCCH0_GeccErrCnt__GeccErrCnt__SHIFT 0x0
+#define UMCCH0_GeccErrCnt__GeccUnCorrErrCnt__SHIFT 0x10
+#define UMCCH0_GeccErrCnt__GeccErrCnt_MASK 0x0000FFFFL
+#define UMCCH0_GeccErrCnt__GeccUnCorrErrCnt_MASK 0xFFFF0000L
 #endif

@@ -1113,5 +1113,4 @@ typedef enum DepthArray {
 	ARRAY_2D_ALT_DEPTH                               = 0x0,
 	ARRAY_2D_DEPTH                                   = 0x1,
 } DepthArray;
-
 #endif /* DCE_8_0_ENUM_H */

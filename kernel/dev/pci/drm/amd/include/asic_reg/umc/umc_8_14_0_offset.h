@@ -21,9 +21,8 @@
 #ifndef _umc_8_14_0_OFFSET_HEADER
 #define _umc_8_14_0_OFFSET_HEADER
 
-#define regUMCCH0_GeccErrCntSel                                         0x0328
-#define regUMCCH0_GeccErrCntSel_BASE_IDX                                0
-#define regUMCCH0_GeccErrCnt                                            0x0329
-#define regUMCCH0_GeccErrCnt_BASE_IDX                                   0
-
+#define regUMCCH0_GeccErrCntSel 0x0328
+#define regUMCCH0_GeccErrCntSel_BASE_IDX 0
+#define regUMCCH0_GeccErrCnt 0x0329
+#define regUMCCH0_GeccErrCnt_BASE_IDX 0
 #endif

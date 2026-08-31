@@ -22,7 +22,6 @@
 #ifndef _df_4_15_SH_MASK_HEADER
 #define _df_4_15_SH_MASK_HEADER
 
-#define NCSConfigurationRegister1__DisIntAtomicsLclProcessing__SHIFT         0x3
-#define NCSConfigurationRegister1__DisIntAtomicsLclProcessing_MASK    0x0003FFF8L
-
+#define NCSConfigurationRegister1__DisIntAtomicsLclProcessing__SHIFT 0x3
+#define NCSConfigurationRegister1__DisIntAtomicsLclProcessing_MASK 0x0003FFF8L
 #endif

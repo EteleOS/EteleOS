@@ -1336,5 +1336,4 @@ typedef enum DepthArray {
 typedef enum ENUM_NUM_SIMD_PER_CU {
 	NUM_SIMD_PER_CU                                  = 0x4,
 } ENUM_NUM_SIMD_PER_CU;
-
 #endif /* OSS_2_4_ENUM_H */

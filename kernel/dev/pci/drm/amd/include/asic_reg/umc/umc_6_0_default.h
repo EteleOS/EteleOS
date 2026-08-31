@@ -21,11 +21,4 @@
 
 #ifndef _umc_6_0_DEFAULT_HEADER
 #define _umc_6_0_DEFAULT_HEADER
-
-#define mmUMCCH0_0_EccCtrl_DEFAULT				0x00000000
-
-#define mmUMCCH0_0_UMC_CONFIG_DEFAULT				0x00000203
-
-#define mmUMCCH0_0_UmcLocalCap_DEFAULT				0x00000000
-
 #endif

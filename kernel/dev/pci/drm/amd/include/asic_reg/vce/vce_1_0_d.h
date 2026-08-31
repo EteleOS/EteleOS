@@ -28,7 +28,6 @@
 #define mmVCE_LMI_CACHE_CTRL 0x83BD
 #define mmVCE_LMI_CTRL 0x83A6
 #define mmVCE_LMI_CTRL2 0x839D
-#define mmVCE_LMI_MISC_CTRL 0x83B5
 #define mmVCE_LMI_STATUS 0x83A7
 #define mmVCE_LMI_SWAP_CNTL 0x83AD
 #define mmVCE_LMI_SWAP_CNTL1 0x83AE
@@ -47,7 +46,6 @@
 #define mmVCE_RB_WPTR2 0x805F
 #define mmVCE_SOFT_RESET 0x8048
 #define mmVCE_STATUS 0x8001
-#define mmVCE_SYS_INT_ACK 0x8341
 #define mmVCE_SYS_INT_EN 0x8340
 #define mmVCE_SYS_INT_STATUS 0x8341
 #define mmVCE_UENC_CLOCK_GATING 0x816F
@@ -60,5 +58,4 @@
 #define mmVCE_VCPU_CACHE_SIZE1 0x800C
 #define mmVCE_VCPU_CACHE_SIZE2 0x800E
 #define mmVCE_VCPU_CNTL 0x8005
-
 #endif

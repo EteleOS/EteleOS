@@ -1460,5 +1460,4 @@ typedef enum MEM_PWR_SEL_CTRL2 {
 	DYNAMIC_DEEP_SLEEP_EN                            = 0x0,
 	DYNAMIC_LIGHT_SLEEP_EN                           = 0x1,
 } MEM_PWR_SEL_CTRL2;
-
 #endif /* OSS_3_0_1_ENUM_H */
