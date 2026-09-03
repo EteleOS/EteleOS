@@ -1,0 +1,316 @@
+/*-
+ * PeteleOS: libraries/core/libelf/elf_types_data.h, time write: 2026/09/03
+ * This file uses the Apache-2.0 license
+ *
+ * Copyright (c) 2006,2008 Joseph Koshy
+ * All rights reserved.
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ */
+
+/*
+ * Shared type data replacing elf_types.m4.
+ *
+ * This file is hand-written once.  It captures ELF_TYPE_LIST (25 pairs
+ * NAME/suffix, last entry NUM/_ is the sentinel terminating m4 recursion)
+ * and every *_DEF field list from elf_types.m4, as plain C tables for the
+ * host generator (gen_libelf.c).
+ */
+
+#ifndef ELF_TYPES_DATA_H
+#define ELF_TYPES_DATA_H
+
+struct elf_type_entry {
+	const char *name;	/* Elf_Type symbol without ELF_T_ prefix */
+	const char *suffix;	/* Elf32_/Elf64_ suffix; "-" if none, "_" for NUM */
+};
+
+/* Order must match ELF_TYPE_LIST in elf_types.m4. */
+static const struct elf_type_entry elf_type_list[] = {
+	{ "ADDR",	"Addr" },
+	{ "BYTE",	"Byte" },
+	{ "CAP",	"Cap" },
+	{ "DYN",	"Dyn" },
+	{ "EHDR",	"Ehdr" },
+	{ "GNUHASH",	"-" },
+	{ "HALF",	"Half" },
+	{ "LWORD",	"Lword" },
+	{ "MOVE",	"Move" },
+	{ "MOVEP",	"MoveP" },
+	{ "NOTE",	"Note" },
+	{ "OFF",	"Off" },
+	{ "PHDR",	"Phdr" },
+	{ "REL",	"Rel" },
+	{ "RELA",	"Rela" },
+	{ "SHDR",	"Shdr" },
+	{ "SWORD",	"Sword" },
+	{ "SXWORD",	"Sxword" },
+	{ "SYMINFO",	"Syminfo" },
+	{ "SYM",	"Sym" },
+	{ "VDEF",	"Verdef" },
+	{ "VNEED",	"Verneed" },
+	{ "WORD",	"Word" },
+	{ "XWORD",	"Xword" },
+	{ "NUM",	"_" },
+};
+
+#define ELF_TYPE_COUNT	((int)(sizeof(elf_type_list) / sizeof(elf_type_list[0])))
+/* Number of real types; last entry (NUM) is the m4 recursion sentinel. */
+#define ELF_TYPE_REALCOUNT	(ELF_TYPE_COUNT - 1)
+
+struct elf_field {
+	const char *fname;	/* field name, e.g. "e_ident", "c_un.c_val" */
+	const char *ftype;	/* basic type: IDENT, HALF, WORD, LWORD, */
+				/* ADDR, OFF, SWORD, XWORD, SXWORD, BYTE */
+};
+
+/* --- Cap --- */
+static const struct elf_field Elf32_Cap_fields[] = {
+	{ "c_tag",	"WORD" },
+	{ "c_un.c_val",	"WORD" },
+};
+static const struct elf_field Elf64_Cap_fields[] = {
+	{ "c_tag",	"XWORD" },
+	{ "c_un.c_val",	"XWORD" },
+};
+
+/* --- Dyn --- */
+static const struct elf_field Elf32_Dyn_fields[] = {
+	{ "d_tag",	"SWORD" },
+	{ "d_un.d_ptr",	"WORD" },
+};
+static const struct elf_field Elf64_Dyn_fields[] = {
+	{ "d_tag",	"SXWORD" },
+	{ "d_un.d_ptr",	"XWORD" },
+};
+
+/* --- Ehdr --- */
+static const struct elf_field Elf32_Ehdr_fields[] = {
+	{ "e_ident",	"IDENT" },
+	{ "e_type",	"HALF" },
+	{ "e_machine",	"HALF" },
+	{ "e_version",	"WORD" },
+	{ "e_entry",	"ADDR" },
+	{ "e_phoff",	"OFF" },
+	{ "e_shoff",	"OFF" },
+	{ "e_flags",	"WORD" },
+	{ "e_ehsize",	"HALF" },
+	{ "e_phentsize","HALF" },
+	{ "e_phnum",	"HALF" },
+	{ "e_shentsize","HALF" },
+	{ "e_shnum",	"HALF" },
+	{ "e_shstrndx",	"HALF" },
+};
+static const struct elf_field Elf64_Ehdr_fields[] = {
+	{ "e_ident",	"IDENT" },
+	{ "e_type",	"HALF" },
+	{ "e_machine",	"HALF" },
+	{ "e_version",	"WORD" },
+	{ "e_entry",	"ADDR" },
+	{ "e_phoff",	"OFF" },
+	{ "e_shoff",	"OFF" },
+	{ "e_flags",	"WORD" },
+	{ "e_ehsize",	"HALF" },
+	{ "e_phentsize","HALF" },
+	{ "e_phnum",	"HALF" },
+	{ "e_shentsize","HALF" },
+	{ "e_shnum",	"HALF" },
+	{ "e_shstrndx",	"HALF" },
+};
+
+/* --- Move --- */
+static const struct elf_field Elf32_Move_fields[] = {
+	{ "m_value",	"LWORD" },
+	{ "m_info",	"WORD" },
+	{ "m_poffset",	"WORD" },
+	{ "m_repeat",	"HALF" },
+	{ "m_stride",	"HALF" },
+};
+static const struct elf_field Elf64_Move_fields[] = {
+	{ "m_value",	"LWORD" },
+	{ "m_info",	"XWORD" },
+	{ "m_poffset",	"XWORD" },
+	{ "m_repeat",	"HALF" },
+	{ "m_stride",	"HALF" },
+};
+
+/* --- Phdr --- */
+static const struct elf_field Elf32_Phdr_fields[] = {
+	{ "p_type",	"WORD" },
+	{ "p_offset",	"OFF" },
+	{ "p_vaddr",	"ADDR" },
+	{ "p_paddr",	"ADDR" },
+	{ "p_filesz",	"WORD" },
+	{ "p_memsz",	"WORD" },
+	{ "p_flags",	"WORD" },
+	{ "p_align",	"WORD" },
+};
+static const struct elf_field Elf64_Phdr_fields[] = {
+	{ "p_type",	"WORD" },
+	{ "p_flags",	"WORD" },
+	{ "p_offset",	"OFF" },
+	{ "p_vaddr",	"ADDR" },
+	{ "p_paddr",	"ADDR" },
+	{ "p_filesz",	"XWORD" },
+	{ "p_memsz",	"XWORD" },
+	{ "p_align",	"XWORD" },
+};
+
+/* --- Rel --- */
+static const struct elf_field Elf32_Rel_fields[] = {
+	{ "r_offset",	"ADDR" },
+	{ "r_info",	"WORD" },
+};
+static const struct elf_field Elf64_Rel_fields[] = {
+	{ "r_offset",	"ADDR" },
+	{ "r_info",	"XWORD" },
+};
+
+/* --- Rela --- */
+static const struct elf_field Elf32_Rela_fields[] = {
+	{ "r_offset",	"ADDR" },
+	{ "r_info",	"WORD" },
+	{ "r_addend",	"SWORD" },
+};
+static const struct elf_field Elf64_Rela_fields[] = {
+	{ "r_offset",	"ADDR" },
+	{ "r_info",	"XWORD" },
+	{ "r_addend",	"SXWORD" },
+};
+
+/* --- Shdr --- */
+static const struct elf_field Elf32_Shdr_fields[] = {
+	{ "sh_name",	"WORD" },
+	{ "sh_type",	"WORD" },
+	{ "sh_flags",	"WORD" },
+	{ "sh_addr",	"ADDR" },
+	{ "sh_offset",	"OFF" },
+	{ "sh_size",	"WORD" },
+	{ "sh_link",	"WORD" },
+	{ "sh_info",	"WORD" },
+	{ "sh_addralign","WORD" },
+	{ "sh_entsize",	"WORD" },
+};
+static const struct elf_field Elf64_Shdr_fields[] = {
+	{ "sh_name",	"WORD" },
+	{ "sh_type",	"WORD" },
+	{ "sh_flags",	"XWORD" },
+	{ "sh_addr",	"ADDR" },
+	{ "sh_offset",	"OFF" },
+	{ "sh_size",	"XWORD" },
+	{ "sh_link",	"WORD" },
+	{ "sh_info",	"WORD" },
+	{ "sh_addralign","XWORD" },
+	{ "sh_entsize",	"XWORD" },
+};
+
+/* --- Sym --- */
+static const struct elf_field Elf32_Sym_fields[] = {
+	{ "st_name",	"WORD" },
+	{ "st_value",	"ADDR" },
+	{ "st_size",	"WORD" },
+	{ "st_info",	"BYTE" },
+	{ "st_other",	"BYTE" },
+	{ "st_shndx",	"HALF" },
+};
+static const struct elf_field Elf64_Sym_fields[] = {
+	{ "st_name",	"WORD" },
+	{ "st_info",	"BYTE" },
+	{ "st_other",	"BYTE" },
+	{ "st_shndx",	"HALF" },
+	{ "st_value",	"ADDR" },
+	{ "st_size",	"XWORD" },
+};
+
+/* --- Syminfo --- */
+static const struct elf_field Elf32_Syminfo_fields[] = {
+	{ "si_boundto",	"HALF" },
+	{ "si_flags",	"HALF" },
+};
+static const struct elf_field Elf64_Syminfo_fields[] = {
+	{ "si_boundto",	"HALF" },
+	{ "si_flags",	"HALF" },
+};
+
+/* --- Verdaux (aux of Verdef) --- */
+static const struct elf_field Elf32_Verdaux_fields[] = {
+	{ "vda_name",	"WORD" },
+	{ "vda_next",	"WORD" },
+};
+static const struct elf_field Elf64_Verdaux_fields[] = {
+	{ "vda_name",	"WORD" },
+	{ "vda_next",	"WORD" },
+};
+
+/* --- Verdef --- */
+static const struct elf_field Elf32_Verdef_fields[] = {
+	{ "vd_version",	"HALF" },
+	{ "vd_flags",	"HALF" },
+	{ "vd_ndx",	"HALF" },
+	{ "vd_cnt",	"HALF" },
+	{ "vd_hash",	"WORD" },
+	{ "vd_aux",	"WORD" },
+	{ "vd_next",	"WORD" },
+};
+static const struct elf_field Elf64_Verdef_fields[] = {
+	{ "vd_version",	"HALF" },
+	{ "vd_flags",	"HALF" },
+	{ "vd_ndx",	"HALF" },
+	{ "vd_cnt",	"HALF" },
+	{ "vd_hash",	"WORD" },
+	{ "vd_aux",	"WORD" },
+	{ "vd_next",	"WORD" },
+};
+
+/* --- Verneed --- */
+static const struct elf_field Elf32_Verneed_fields[] = {
+	{ "vn_version",	"HALF" },
+	{ "vn_cnt",	"HALF" },
+	{ "vn_file",	"WORD" },
+	{ "vn_aux",	"WORD" },
+	{ "vn_next",	"WORD" },
+};
+static const struct elf_field Elf64_Verneed_fields[] = {
+	{ "vn_version",	"HALF" },
+	{ "vn_cnt",	"HALF" },
+	{ "vn_file",	"WORD" },
+	{ "vn_aux",	"WORD" },
+	{ "vn_next",	"WORD" },
+};
+
+/* --- Vernaux (aux of Verneed) --- */
+static const struct elf_field Elf32_Vernaux_fields[] = {
+	{ "vna_hash",	"WORD" },
+	{ "vna_flags",	"HALF" },
+	{ "vna_other",	"HALF" },
+	{ "vna_name",	"WORD" },
+	{ "vna_next",	"WORD" },
+};
+static const struct elf_field Elf64_Vernaux_fields[] = {
+	{ "vna_hash",	"WORD" },
+	{ "vna_flags",	"HALF" },
+	{ "vna_other",	"HALF" },
+	{ "vna_name",	"WORD" },
+	{ "vna_next",	"WORD" },
+};
+
+#endif /* ELF_TYPES_DATA_H */

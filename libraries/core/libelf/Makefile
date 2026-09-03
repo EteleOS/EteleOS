@@ -7,7 +7,7 @@ VERSION_SCRIPT= ${.CURDIR}/Symbols.map
 HDRS=	libelf.h gelf.h
 
 GENSRC=	libelf_fsize.c libelf_msize.c libelf_convert.c
-CLEANFILES += ${GENSRC}
+CLEANFILES += ${GENSRC} gen_libelf
 
 SRCS=	elf.c elf_begin.c elf_cntl.c elf_end.c elf_errmsg.c elf_errno.c \
 	elf_data.c elf_fill.c elf_flag.c elf_getarhdr.c elf_getarsym.c \
@@ -36,8 +36,21 @@ MAN=	elf.3 elf_begin.3 elf_cntl.3 elf_end.3 elf_errmsg.3 elf_fill.3 \
 
 CPPFLAGS+= -I${.CURDIR}
 
-.m4.c:
-	m4 -DSRCDIR=${.CURDIR} $< > $@
+# Host generator replacing m4 (see gen_libelf.c, elf_types_data.h).
+# Follows the HOSTCC pattern from kernel/arch/amd64/conf/Makefile.amd64
+# and kernel/core/kern/genassym.sh: build a small C program with $(HOSTCC)
+# and run it on the build host. No m4 dependency remains in libelf/.
+gen_libelf: ${.CURDIR}/gen_libelf.c ${.CURDIR}/elf_types_data.h
+	${HOSTCC} ${HOSTCFLAGS} -o ${.TARGET} ${.CURDIR}/gen_libelf.c
+
+libelf_msize.c: gen_libelf
+	./gen_libelf msize > ${.TARGET}
+
+libelf_fsize.c: gen_libelf
+	./gen_libelf fsize > ${.TARGET}
+
+libelf_convert.c: gen_libelf
+	./gen_libelf convert > ${.TARGET}
 
 PC_FILES=libelf.pc
 CLEANFILES+=${PC_FILES}

@@ -21,7 +21,7 @@ YFLAGS=
 
 .for h in css.h js.h
 $h: $h.in
-	sed -f ${.CURDIR}/toheader.sed <${.CURDIR}/$h.in >$@.tmp && mv $@.tmp $@
+	perl ${.CURDIR}/toheader.pl <${.CURDIR}/$h.in >$@.tmp && mv $@.tmp $@
 .endfor
 
 server_file.o: css.h js.h
