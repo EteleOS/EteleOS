@@ -1,2 +1,0 @@
-set append asksub dot save 
-ignore Mail-From Message-Id Received Resent-Message-Id Return-Path Status Via

@@ -1,2 +1,0 @@
-queue rootq on lo1000000 bandwidth 10G
-queue defq parent rootq bandwidth 8G default

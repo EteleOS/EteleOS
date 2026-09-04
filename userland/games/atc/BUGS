@@ -1,4 +1,0 @@
-log restarts if interrupted
-Still refreshes after exit
-Should ^Z be disabled?
-upon hup, leaves tty misconfigured
