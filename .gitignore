@@ -4,7 +4,6 @@
 # Build outputs & cache
 build/
 .xmake/
-.freebuff/
 *.o
 *.a
 *.so
