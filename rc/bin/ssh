@@ -1,4 +1,0 @@
-#!/bin/rc
-# ssh host arg... - invoke ssh v1.  if it fails, try v2.
-if (! /$cputype/bin/ssh1 $* >[2]/dev/null)
-	exec /$cputype/bin/ssh2 $*
